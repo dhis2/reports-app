@@ -8,7 +8,7 @@ script:
 after_script:
 - "./cc-test-reporter after-build -d --exit-code $TRAVIS_TEST_RESULT"
 - if ( [ "$TRAVIS_BRANCH" == "master" ] || [ ! -z "$TRAVIS_TAG" ] ) && [ "$TRAVIS_REPO_SLUG"
-  == "dhis2/data-quality-app" ]  &&  [ "$TRAVIS_PULL_REQUEST" == "false" ] ; then
+  == "dhis2/reports-app" ]  &&  [ "$TRAVIS_PULL_REQUEST" == "false" ] ; then
   mvn clean deploy --settings deploy/settings.xml && exit 0; fi
 env:
   global:
