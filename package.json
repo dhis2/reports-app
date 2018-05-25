@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@dhis2/d2-ui-header-bar": "^1.0.13",
     "d2": "^30.0.0",
     "d2-manifest": "^1.0.0",
     "react": "^16.4.0",
