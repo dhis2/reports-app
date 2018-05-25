@@ -1,9 +1,5 @@
-import React, {PureComponent} from 'react';
+import React from 'react';
 
-class Resource extends PureComponent {
-    render() {
-        return (<h1>Resource</h1>);
-    }
-}
+const Resource = () => (<h1>Resource</h1>);
 
 export default Resource;

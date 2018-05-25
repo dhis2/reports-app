@@ -1,9 +1,5 @@
-import React, {PureComponent} from 'react';
+import React from 'react';
 
-class ReportingRateSummary extends PureComponent {
-    render() {
-        return (<h1>Reporting Rate Summary</h1>);
-    }
-}
+const ReportingRateSummary = () => (<h1>Reporting Rate Summary</h1>);
 
 export default ReportingRateSummary;

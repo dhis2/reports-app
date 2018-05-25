@@ -30,12 +30,12 @@ getManifest('manifest.webapp').then((manifest) => {
             'organisationUnit',
             'dataSet',
         ],
-    }).then(d2 => {
+    }).then((d2) => {
         ReactDOM.render(
             <HashRouter>
                 <AppComponent d2={d2} />
             </HashRouter>,
-            document.getElementById('app')
+            document.getElementById('app'),
         );
     });
 });

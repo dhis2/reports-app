@@ -1,9 +1,5 @@
-import React, {PureComponent} from 'react';
+import React from 'react';
 
-class DataApproval extends PureComponent {
-    render() {
-        return (<h1>Data Approval</h1>);
-    }
-}
+const DataApproval = () => (<h1>Data Approval</h1>);
 
 export default DataApproval;

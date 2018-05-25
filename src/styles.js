@@ -21,7 +21,7 @@ const styles = {
         paddingBottom: CONTENT_AREA_PADDING,
         paddingLeft: CONTENT_AREA_PADDING,
         paddingRight: CONTENT_AREA_PADDING,
-    }
+    },
 };
 
 export default styles;

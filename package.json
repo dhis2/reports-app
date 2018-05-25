@@ -1,6 +1,6 @@
 {
   "name": "reports-app",
-  "version": "0.1.0",
+  "version": "1.0.0-beta.1",
   "private": true,
   "dependencies": {
     "@dhis2/d2-ui-app": "^1.0.4",
@@ -14,13 +14,44 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  },
   "devDependencies": {
     "eslint-config-dhis2": "^3.0.7"
+  },
+  "scripts": {
+    "manifest": "d2-manifest package.json ./public/manifest.webapp",
+    "prestart": "yarn run manifest",
+    "start": "react-scripts start",
+    "prebuild": "yarn run manifest",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "lint": "eslint src/",
+    "validate": "yarn list",
+    "deploy": "yarn run build && mvn clean deploy",
+    "coverage": "yarn test -- --coverage"
+  },
+  "pre-commit": [
+    "lint",
+    "validate",
+    "test"
+  ],
+  "manifest.webapp": {
+    "name": "DHIS2 Reports App",
+    "description": "DHIS2 reports App",
+    "icons": {
+      "48": "icon.png"
+    },
+    "developer": {
+      "url": "https://dhis2.github.io",
+      "name": "DHIS2"
+    },
+    "dhis2": {
+      "apiVersion": "29"
+    },
+    "activities": {
+      "dhis": {
+        "href": ".."
+      }
+    }
   }
 }

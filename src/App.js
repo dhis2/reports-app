@@ -1,5 +1,5 @@
 /* React */
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 /* React Router */
@@ -8,13 +8,13 @@ import { Link } from 'react-router-dom';
 /* d2-ui */
 import D2UIApp from '@dhis2/d2-ui-app';
 import HeaderBar from '@dhis2/d2-ui-header-bar';
-import {Sidebar} from '@dhis2/d2-ui-core';
+import { Sidebar } from '@dhis2/d2-ui-core';
 
 /* App components */
 import AppRouter from './components/app-router/AppRouter';
 
 /* App configs */
-import {sections} from './pages/sections.conf';
+import { sections } from './pages/sections.conf';
 
 /* styles */
 import styles from './styles';
@@ -54,7 +54,7 @@ class App extends PureComponent {
                         <AppRouter />
                     </div>
                 </div>
-                <HeaderBar d2={this.props.d2}/>
+                <HeaderBar d2={this.props.d2} />
             </D2UIApp>
         );
     }
