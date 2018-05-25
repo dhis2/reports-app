@@ -1,4 +1,13 @@
-// i18n
+/* Page Components */
+import StandardReport from './standard-report/StandardReport';
+import DataSetReport from './data-set-report/DataSetReport';
+import ReportingRateSummary from './reporting-rate-summary/ReportingRateSummary';
+import Resource from './resource/Resource';
+import OrganisationUnitDistributionReport
+    from './organisation-unit-distribution-report/OrganisationUnitDistributionReport';
+import DataApproval from './data-approval/DataApproval';
+
+/* i18n */
 import { i18nKeys } from '../i18n';
 
 export const STANDARD_REPORT_SECTION_KEY = 'standardReport';
@@ -12,7 +21,7 @@ export const sections = [
     {
         key: STANDARD_REPORT_SECTION_KEY,
         path: '/standard-report',
-        component: null,
+        component: StandardReport,
         info: {
             label: i18nKeys.standardReport.homeLabel,
             icon: 'done_all',
@@ -24,7 +33,7 @@ export const sections = [
     {
         key: DATA_SET_REPORT_SECTION_KEY,
         path: '/data-set-report',
-        component: null,
+        component: DataSetReport,
         info: {
             label: i18nKeys.dataSetReport.homeLabel,
             icon: 'done_all',
@@ -36,7 +45,7 @@ export const sections = [
     {
         key: REPORTING_RATE_SUMMARY_SECTION_KEY,
         path: '/reporting-rate-summary',
-        component: null,
+        component: ReportingRateSummary,
         info: {
             label: i18nKeys.reportingRateSummary.homeLabel,
             icon: 'done_all',
@@ -48,7 +57,7 @@ export const sections = [
     {
         key: RESOURCE_SECTION_KEY,
         path: '/resource',
-        component: null,
+        component: Resource,
         info: {
             label: i18nKeys.resource.homeLabel,
             icon: 'done_all',
@@ -60,7 +69,7 @@ export const sections = [
     {
         key: ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_KEY,
         path: '/organisation-unit-distribution-report',
-        component: null,
+        component: OrganisationUnitDistributionReport,
         info: {
             label: i18nKeys.organisationUnitDistributionReport.homeLabel,
             icon: 'done_all',
@@ -72,7 +81,7 @@ export const sections = [
     {
         key: DATA_APPROVAL_SECTION_KEY,
         path: '/data-approval',
-        component: null,
+        component: DataApproval,
         info: {
             label: i18nKeys.dataApproval.homeLabel,
             icon: 'done_all',

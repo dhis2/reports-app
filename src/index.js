@@ -2,6 +2,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+/* React Router */
+import { HashRouter, withRouter } from 'react-router-dom';
+
 /* d2 */
 import { getManifest, init } from 'd2/lib/d2';
 
@@ -9,6 +12,8 @@ import './index.css';
 import App from './App';
 
 import registerServiceWorker from './registerServiceWorker';
+
+const AppComponent = withRouter(App);
 
 /* init d2 */
 getManifest('manifest.webapp').then((manifest) => {
@@ -26,7 +31,12 @@ getManifest('manifest.webapp').then((manifest) => {
             'dataSet',
         ],
     }).then(d2 => {
-        ReactDOM.render(<App d2={d2}/>, document.getElementById('app'));
+        ReactDOM.render(
+            <HashRouter>
+                <AppComponent d2={d2} />
+            </HashRouter>,
+            document.getElementById('app')
+        );
     });
 });
 

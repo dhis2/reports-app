@@ -3,12 +3,15 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
 /* React Router */
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 /* d2-ui */
 import D2UIApp from '@dhis2/d2-ui-app';
 import HeaderBar from '@dhis2/d2-ui-header-bar';
 import {Sidebar} from '@dhis2/d2-ui-core';
+
+/* App components */
+import AppRouter from './components/app-router/AppRouter';
 
 /* App configs */
 import {sections} from './pages/sections.conf';
@@ -36,18 +39,22 @@ class App extends PureComponent {
             {
                 icon: section.info.icon,
                 label: section.info.label,
-                /* containerElement: <Link to={section.path} />, */
+                containerElement: <Link to={section.path} />,
             },
         ));
         return (
             <D2UIApp>
                 <div style={styles.leftBar}>
                     <Sidebar
-                        styles={styles}
                         sections={sidebarSections}
                         currentSection={this.state.currentSection}
                         onChangeSection={nonOnChangeSection}
                     />
+                </div>
+                <div style={styles.contentWrapper}>
+                    <div style={styles.contentArea}>
+                        <AppRouter />
+                    </div>
                 </div>
                 <HeaderBar d2={this.props.d2}/>
             </D2UIApp>

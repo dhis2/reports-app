@@ -1,5 +1,7 @@
 const LEFT_BART_WIDTH = 295;
 const HEADER_HEIGHT = '3rem';
+const MAX_WIDTH = 1400;
+const CONTENT_AREA_PADDING = 20;
 
 const styles = {
     leftBar: {
@@ -9,6 +11,16 @@ const styles = {
         top: 0,
         left: 0,
         paddingTop: HEADER_HEIGHT,
+    },
+    contentWrapper: {
+        marginLeft: 295,
+        maxWidth: MAX_WIDTH,
+    },
+    contentArea: {
+        paddingTop: HEADER_HEIGHT,
+        paddingBottom: CONTENT_AREA_PADDING,
+        paddingLeft: CONTENT_AREA_PADDING,
+        paddingRight: CONTENT_AREA_PADDING,
     }
 };
 
