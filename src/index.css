@@ -3,3 +3,17 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+html {
+  background: #f3f3f3;
+  font-family: 'Roboto', sans-serif;
+}
+
+.left-bar {
+    width: 295px;
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    padding-top: 3rem;
+}

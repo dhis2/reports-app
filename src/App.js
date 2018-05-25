@@ -44,13 +44,11 @@ class App extends PureComponent {
         ));
         return (
             <D2UIApp>
-                <div style={styles.leftBar}>
-                    <Sidebar
-                        sections={sidebarSections}
-                        currentSection={this.state.currentSection}
-                        onChangeSection={nonOnChangeSection}
-                    />
-                </div>
+                <Sidebar
+                    sections={sidebarSections}
+                    currentSection={this.state.currentSection}
+                    onChangeSection={nonOnChangeSection}
+                />
                 <div style={styles.contentWrapper}>
                     <div style={styles.contentArea}>
                         <AppRouter />
