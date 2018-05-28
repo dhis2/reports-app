@@ -13,6 +13,9 @@ import { Sidebar } from '@dhis2/d2-ui-core';
 /* App components */
 import AppRouter from './components/app-router/AppRouter';
 
+/* App context */
+import AppContext from './context';
+
 /* App configs */
 import { sections } from './pages/sections.conf';
 
@@ -24,12 +27,42 @@ class App extends PureComponent {
         d2: PropTypes.object.isRequired,
     };
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
+            d2: props.d2,
             currentSection: '',
+            showSnackbar: false,
+            snackbarConf: {
+                type: '',
+                message: '',
+            },
+            pageState: {},
         };
+    }
+
+    getContext() {
+        return {
+            d2: this.props.d2,
+            showSnackbar: this.state.showSnackbar,
+            snackbarConf: this.state.snackbarConf,
+            currentSection: this.state.currentSection,
+            updateAppState: this.updateAppState,
+        };
+    }
+
+    /* function to keep app state */
+    /* using arrow function no need for binding on constructor */
+    updateAppState = (appState) => {
+        if (appState.currentSection
+            && !appState.pageState
+            && this.state.currentSection !== appState.currentSection) {
+            // clear page state because we are updating page
+            this.setState({ ...appState, pageState: {}, showSnackbar: false });
+        } else {
+            this.setState(appState);
+        }
     }
 
     render() {
@@ -42,20 +75,23 @@ class App extends PureComponent {
                 containerElement: <Link to={section.path} />,
             },
         ));
+
         return (
-            <D2UIApp>
-                <Sidebar
-                    sections={sidebarSections}
-                    currentSection={this.state.currentSection}
-                    onChangeSection={nonOnChangeSection}
-                />
-                <div style={styles.contentWrapper}>
-                    <div style={styles.contentArea}>
-                        <AppRouter />
+            <AppContext.Provider value={this.getContext()}>
+                <D2UIApp>
+                    <Sidebar
+                        sections={sidebarSections}
+                        currentSection={this.state.currentSection}
+                        onChangeSection={nonOnChangeSection}
+                    />
+                    <div style={styles.contentWrapper}>
+                        <div style={styles.contentArea}>
+                            <AppRouter />
+                        </div>
                     </div>
-                </div>
-                <HeaderBar d2={this.props.d2} />
-            </D2UIApp>
+                    <HeaderBar d2={this.props.d2} />
+                </D2UIApp>
+            </AppContext.Provider>
         );
     }
 }

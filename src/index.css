@@ -9,6 +9,7 @@ html {
   font-family: 'Roboto', sans-serif;
 }
 
+/* D2-UI sidebar overrides */
 .left-bar {
     width: 295px;
     position: fixed;
