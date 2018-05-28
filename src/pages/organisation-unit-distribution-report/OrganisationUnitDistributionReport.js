@@ -1,5 +1,13 @@
+/* React */
 import React from 'react';
 
-const OrganisationUnitDistributionReport = () => (<h1>Organisation Unit Distribution Report</h1>);
+/* App components */
+import Page from '../Page';
+
+class OrganisationUnitDistributionReport extends Page {
+    render() {
+        return (<h1>Organisation Unit Distribution Report</h1>);
+    }
+}
 
 export default OrganisationUnitDistributionReport;

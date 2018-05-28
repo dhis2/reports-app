@@ -23,6 +23,10 @@ const AppRouter = () => {
                     { appContext => (
                         <Page
                             d2={appContext.d2}
+                            updateAppState={appContext.updateAppState}
+                            showSnackbar={appContext.showSnackbar}
+                            snackbarConf={appContext.snackbarConf}
+                            currentSection={appContext.currentSection}
                             sectionKey={section.key}
                             {...appContext.pageState}
                         />
