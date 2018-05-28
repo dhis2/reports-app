@@ -1,5 +1,13 @@
+/* React */
 import React from 'react';
 
-const ReportingRateSummary = () => (<h1>Reporting Rate Summary</h1>);
+/* App components */
+import Page from '../Page';
+
+class ReportingRateSummary extends Page {
+    render() {
+        return (<h1>Reporting Rate Summary</h1>);
+    }
+}
 
 export default ReportingRateSummary;

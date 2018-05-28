@@ -1,23 +1,35 @@
+/* React */
 import React from 'react';
-import PropTypes from 'prop-types';
 
+/* React Router */
 import { Route, Switch } from 'react-router-dom';
 
+/* App components */
 import Home from '../../pages/home/Home';
 import NoMatch from './NoMatch';
 
-// App configs
+/* App context */
+import AppContext from '../../context';
+
+/* App configs */
 import { sections } from '../../pages/sections.conf';
 
-const AppRouter = ({ pageState }) => {
+const AppRouter = () => {
     const routes = sections.map((section) => {
         const routeRender = () => {
             const Page = section.component;
             return (
-                <Page
-                    sectionKey={section.key}
-                    {...pageState}
-                />
+                <AppContext.Consumer>
+                    { appContext => (
+                        <Page
+                            d2={appContext.d2}
+                            updateAppState={appContext.updateAppState}
+                            currentSection={appContext.currentSection}
+                            sectionKey={section.key}
+                            {...appContext.pageState}
+                        />
+                    )}
+                </AppContext.Consumer>
             );
         };
         return (
@@ -47,14 +59,6 @@ const AppRouter = ({ pageState }) => {
             </Switch>
         </main>
     );
-};
-
-AppRouter.propTypes = {
-    pageState: PropTypes.object,
-};
-
-AppRouter.defaultProps = {
-    pageState: {},
 };
 
 export default AppRouter;
