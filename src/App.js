@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 /* d2-ui */
 import D2UIApp from '@dhis2/d2-ui-app';
 import HeaderBar from '@dhis2/d2-ui-header-bar';
-import { Sidebar } from '@dhis2/d2-ui-core';
+import { Sidebar, FeedbackSnackbar, CircularProgress } from '@dhis2/d2-ui-core';
 
 /* App components */
 import AppRouter from './components/app-router/AppRouter';
@@ -76,9 +76,22 @@ class App extends PureComponent {
             },
         ));
 
+        const feedbackElement = this.state.pageState.loading ?
+            (
+                <div style={styles.feedbackSnackBar}>
+                    <CircularProgress />
+                </div>
+            ) : (
+                <FeedbackSnackbar
+                    show={this.state.showSnackbar}
+                    conf={this.state.snackbarConf}
+                />
+            );
+
         return (
             <AppContext.Provider value={this.getContext()}>
                 <D2UIApp>
+                    <HeaderBar d2={this.props.d2} />
                     <Sidebar
                         sections={sidebarSections}
                         currentSection={this.state.currentSection}
@@ -89,7 +102,9 @@ class App extends PureComponent {
                             <AppRouter />
                         </div>
                     </div>
-                    <HeaderBar d2={this.props.d2} />
+                    <div id="feedback-snackbar">
+                        {feedbackElement}
+                    </div>
                 </D2UIApp>
             </AppContext.Provider>
         );

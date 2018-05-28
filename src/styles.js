@@ -22,6 +22,12 @@ const styles = {
         paddingLeft: CONTENT_AREA_PADDING,
         paddingRight: CONTENT_AREA_PADDING,
     },
+    feedbackSnackBar: {
+        position: 'fixed',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+    },
 };
 
 export default styles;
