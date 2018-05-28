@@ -1,6 +1,6 @@
-# DHIS2 Data Quality App
+# DHIS2 Reports App
 
-[![Build Status](https://travis-ci.org/dhis2/data-reports-app.svg?branch=master)](https://travis-ci.org/dhis2/data-reports-app)
+[![Build Status](https://travis-ci.org/dhis2/reports-app.svg?branch=master)](https://travis-ci.org/dhis2/reports-app)
 
 ### Pre-requisites
 * DHIS2 instance;
