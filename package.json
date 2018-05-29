@@ -15,7 +15,10 @@
     "react-scripts": "1.1.4"
   },
   "devDependencies": {
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eslint-config-dhis2": "^3.0.7",
+    "jest-enzyme": "^6.0.1",
     "pre-commit": "^1.2.2"
   },
   "scripts": {
