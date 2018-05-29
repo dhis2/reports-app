@@ -15,11 +15,18 @@
     "react-scripts": "1.1.4"
   },
   "devDependencies": {
+    "chai": "^4.1.2",
+    "cucumber": "^3.2.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "eslint-config-dhis2": "^3.0.7",
-    "jest-enzyme": "^6.0.1",
-    "pre-commit": "^1.2.2"
+    "jest-enzyme": "^4.0.2",
+    "pre-commit": "^1.2.2",
+    "wdio-allure-reporter": "^0.6.2",
+    "wdio-cucumber-framework": "^1.0.2",
+    "wdio-selenium-standalone-service": "0.0.10",
+    "wdio-spec-reporter": "^0.1.4",
+    "webdriverio": "^4.12.0"
   },
   "scripts": {
     "manifest": "d2-manifest package.json ./public/manifest.webapp",
@@ -28,6 +35,7 @@
     "prebuild": "yarn run manifest",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "test-e2e": "wdio ./e2e/config/wdio.conf.js",
     "eject": "react-scripts eject",
     "lint": "eslint src/",
     "validate": "yarn list",
