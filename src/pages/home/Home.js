@@ -1,5 +1,8 @@
 import React from 'react';
+import MenuGrid from '../../components/menu-grid/MenuGrid';
 
-const Home = () => (<h1>Home</h1>);
+const Home = () => (
+    <MenuGrid />
+);
 
 export default Home;
