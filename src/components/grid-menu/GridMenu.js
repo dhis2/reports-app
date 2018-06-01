@@ -8,31 +8,50 @@ import injectSheet from 'react-jss';
 import classNames from 'classnames';
 import styles from './GridMenu.style';
 
-const MenuGrid = ({ classes }) => (
-    <div id={'menu-grid-id'} className={'row'}>
-        <div className={classNames('col-sm-12 col-md-6 col-lg-4', classes.elementContainer)}>
-            <Link to={'/standard-report'}>
+const MenuGrid = ({ classes, sections }) => {
+    const menuCells = sections.map(section => (
+        <div key={section.key} className={classNames('col-sm-12 col-md-6 col-lg-4', classes.elementContainer)}>
+            <Link to={section.path}>
                 <GridTile className={classNames('section', classes.element)}>
                     <div className={classNames('row', classes.elementTitleBar)}>
-                        <span className={classNames('section-title', classes.sectionName)}>Standard Report</span>
+                        <span className={classNames('section-title', classes.sectionName)}>{section.info.label}</span>
                         <FontIcon className={classNames('material-icons', 'icon', classes.sectionIcon)}>
-                            done
+                            {section.info.icon}
                         </FontIcon>
                     </div>
                     <span className={classNames('section-description', 'row', classes.sectionDescription)}>
-                        This is a great description of this feature!
+                        {section.info.description}
                     </span>
                     <span className={classNames('section-action-text', 'row', classes.sectionActionText)}>
-                        This is the action Text!
+                        {section.info.actionText}
                     </span>
                 </GridTile>
             </Link>
         </div>
-    </div>
-);
+    ));
+    return (
+        <div id={'menu-grid-id'} className={'row'}>
+            {menuCells}
+        </div>
+    );
+};
 
 MenuGrid.propTypes = {
     classes: PropTypes.object.isRequired,
+    sections: PropTypes.arrayOf(
+        PropTypes.shape(
+            PropTypes.shape({
+                key: PropTypes.string,
+                path: PropTypes.string,
+                info: PropTypes.shape({
+                    label: PropTypes.string,
+                    description: PropTypes.string,
+                    icon: PropTypes.string,
+                    actionText: PropTypes.string,
+                }),
+            }),
+        ),
+    ).isRequired,
 };
 
 export default injectSheet(styles)(MenuGrid);
