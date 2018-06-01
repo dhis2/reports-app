@@ -6,8 +6,11 @@
     "@dhis2/d2-ui-app": "^1.0.4",
     "@dhis2/d2-ui-core": "^1.1.4",
     "@dhis2/d2-ui-header-bar": "^1.0.13",
+    "classnames": "^2.2.5",
     "d2": "^30.0.0",
     "d2-manifest": "^1.0.0",
+    "flexboxgrid": "^6.3.1",
+    "material-ui": "^0.20.1",
     "prop-types": "^15.6.1",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
@@ -29,18 +32,18 @@
     "webdriverio": "^4.12.0"
   },
   "scripts": {
-    "manifest": "d2-manifest package.json ./public/manifest.webapp",
     "prestart": "yarn run manifest",
     "start": "react-scripts start",
     "prebuild": "yarn run manifest",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "test-e2e": "wdio ./e2e/config/wdio.conf.js",
-    "eject": "react-scripts eject",
     "lint": "eslint src/",
     "validate": "yarn list",
     "deploy": "yarn run build && mvn clean deploy",
-    "coverage": "yarn test -- --coverage"
+    "coverage": "yarn test -- --coverage",
+    "manifest": "d2-manifest package.json ./public/manifest.webapp",
+    "eject": "react-scripts eject"
   },
   "pre-commit": [
     "lint",
