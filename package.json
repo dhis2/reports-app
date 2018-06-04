@@ -77,7 +77,7 @@
     "localize": "d2-i18n-generate -n reports-app -p ./i18n/ -o ./src/locales/",
     "test": "node scripts/test.js --env=jsdom",
     "test-e2e": "wdio ./e2e/config/wdio.conf.js",
-    "lint": "eslint src/",
+    "lint": "yarn localize && eslint src/",
     "validate": "yarn list",
     "deploy": "yarn run build && mvn clean deploy",
     "extract-pot": "node scripts/pot-extractor.js",
