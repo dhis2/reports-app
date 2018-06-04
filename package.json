@@ -3,6 +3,7 @@
   "version": "1.0.0-beta.1",
   "private": true,
   "dependencies": {
+    "@dhis2/d2-i18n": "^1.0.3",
     "@dhis2/d2-ui-app": "^1.0.4",
     "@dhis2/d2-ui-core": "^1.1.4",
     "@dhis2/d2-ui-header-bar": "^1.0.13",
@@ -15,6 +16,7 @@
     "react-scripts": "1.1.4"
   },
   "devDependencies": {
+    "@dhis2/d2-i18n-generate": "^1.0.18",
     "chai": "^4.1.2",
     "cucumber": "^3.2.0",
     "enzyme": "^3.3.0",
@@ -30,10 +32,11 @@
   },
   "scripts": {
     "manifest": "d2-manifest package.json ./public/manifest.webapp",
-    "prestart": "yarn run manifest",
+    "prestart": "yarn manifest && yarn localize",
     "start": "react-scripts start",
-    "prebuild": "yarn run manifest",
+    "prebuild": "yarn manifest && yarn localize",
     "build": "react-scripts build",
+    "localize": "d2-i18n-generate -n reports-app -p ./i18n/ -o ./src/locales/",
     "test": "react-scripts test --env=jsdom",
     "test-e2e": "wdio ./e2e/config/wdio.conf.js",
     "eject": "react-scripts eject",
