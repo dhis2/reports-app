@@ -1,0 +1,66 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"POT-Creation-Date: 2018-06-04T12:48:10.008Z\n"
+"PO-Revision-Date: 2018-06-04T12:48:10.008Z\n"
+
+msgid "Standard Report"
+msgstr ""
+
+msgid "Generate Report"
+msgstr ""
+
+msgid ""
+"View and add reports based on the JasperReports library. These can be based "
+"on report tables and can be designed in iReport."
+msgstr ""
+
+msgid "Data Set Report"
+msgstr ""
+
+msgid ""
+"View data set reports. These reports are based on data entry screens and "
+"will produce a report with aggregated data."
+msgstr ""
+
+msgid "Report Rate Summary"
+msgstr ""
+
+msgid ""
+"Browse the reporting rates of data sets by organisation unit and period "
+"based on various criteria for submission."
+msgstr ""
+
+msgid "Resource"
+msgstr ""
+
+msgid "Generate Resource"
+msgstr ""
+
+msgid ""
+"View and add resources. These resources can be uploaded documents or URLs "
+"on the web."
+msgstr ""
+
+msgid "Organisation Unit Distribution Report"
+msgstr ""
+
+msgid ""
+"Browse the organisation unit distribution report based on the organisation "
+"unit group sets and its groups."
+msgstr ""
+
+msgid "Data Approval"
+msgstr ""
+
+msgid "Manage data Approvals"
+msgstr ""
+
+msgid ""
+"View data and manage data approval by approving or unapproving, accepting "
+"or unaccepting data."
+msgstr ""
