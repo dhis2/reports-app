@@ -59,6 +59,7 @@
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "eslint-config-dhis2": "^3.0.7",
+    "import-export": "^1.0.1",
     "jest-enzyme": "^4.0.2",
     "postcss-cssnext": "^3.1.0",
     "postcss-rtl": "^1.2.3",
@@ -81,12 +82,15 @@
     "lint": "eslint src/",
     "validate": "yarn list",
     "deploy": "yarn run build && mvn clean deploy",
+    "extract-pot": "node scripts/pot-extractor.js",
+    "refresh-translations-template": "yarn extract-pot -- -o translations.pot && git add ./i18n/translations.pot",
     "coverage": "yarn test -- --coverage"
   },
   "pre-commit": [
     "lint",
     "validate",
-    "test"
+    "test",
+    "refresh-translations-template"
   ],
   "manifest.webapp": {
     "name": "DHIS2 Reports App",

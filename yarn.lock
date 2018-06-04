@@ -4523,6 +4523,12 @@ ignore@^3.3.3:
   version "3.3.8"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-3.3.8.tgz#3f8e9c35d38708a3a7e0e9abb6c73e7ee7707b2b"
 
+import-export@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/import-export/-/import-export-1.0.1.tgz#2b705fc9d022a32cf86a43e41224b8e25ab6335e"
+  dependencies:
+    node-hook "^0.4.0"
+
 import-lazy@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/import-lazy/-/import-lazy-2.1.0.tgz#05698e3d45c88e8d7e9d92cb0584e77f096f3e43"
@@ -6452,6 +6458,10 @@ node-gyp@^3.6.2:
     semver "~5.3.0"
     tar "^2.0.0"
     which "1"
+
+node-hook@^0.4.0:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/node-hook/-/node-hook-0.4.1.tgz#1016a106e93ebd959fd337cbe35fa6397fa9d61c"
 
 node-int64@^0.4.0:
   version "0.4.0"
