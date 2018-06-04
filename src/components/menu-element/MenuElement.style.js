@@ -1,25 +1,19 @@
 const MenuGridStyle = {
-    elementContainer: {
-        marginBottom: '8px',
-        '& a': {
-            textDecoration: 'none !important',
-        },
-    },
-    element: {
+    section: {
         display: 'inline-block',
         position: 'relative',
         minWidth: '200px',
         minHeight: '218px',
         height: '100%',
-        paddingLeft: '38px',
-        paddingRight: '38px',
-        marginBottom: '20px',
+        paddingLeft: '30px',
+        paddingRight: '30px',
+        paddingBottom: '20px',
         backgroundColor: '#ffffff',
         boxShadow: '0 4px 10px 0 rgba(0, 0, 0, 0.25)',
         borderRadius: '5px',
     },
-    elementTitleBar: {
-        marginTop: '30px',
+    sectionTitleBar: {
+        marginTop: '28px',
         minHeight: '42px',
         flexWrap: 'nowrap',
         display: 'flex',
@@ -40,8 +34,8 @@ const MenuGridStyle = {
         fontSize: '14px',
         textAlign: 'left',
         color: '#757575',
-        marginTop: '42px',
-        marginBottom: '35px',
+        marginTop: '38px',
+        marginBottom: '38px',
         display: 'block',
     },
     sectionActionText: {
