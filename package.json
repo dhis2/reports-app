@@ -72,10 +72,8 @@
   },
   "scripts": {
     "manifest": "d2-manifest package.json ./public/manifest.webapp",
-    "prestart": "yarn manifest && yarn localize",
-    "start": "node scripts/start.js",
-    "prebuild": "yarn manifest && yarn localize",
-    "build": "node scripts/build.js",
+    "start": "yarn manifest && yarn localize && node scripts/start.js",
+    "build": "yarn manifest && yarn localize && node scripts/build.js",
     "localize": "d2-i18n-generate -n reports-app -p ./i18n/ -o ./src/locales/",
     "test": "node scripts/test.js --env=jsdom",
     "test-e2e": "wdio ./e2e/config/wdio.conf.js",
