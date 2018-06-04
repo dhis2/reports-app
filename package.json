@@ -33,7 +33,6 @@
     "fs-extra": "3.0.1",
     "html-webpack-plugin": "2.29.0",
     "jest": "20.0.4",
-    "moment": "^2.22.2",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "2.0.8",
@@ -82,7 +81,7 @@
     "validate": "yarn list",
     "deploy": "yarn run build && mvn clean deploy",
     "extract-pot": "node scripts/pot-extractor.js",
-    "refresh-translations-template": "yarn extract-pot -- -o translations.pot && git add ./i18n/translations.pot",
+    "refresh-translations-template": "yarn extract-pot -- -o en.pot && git add ./i18n/en.pot",
     "coverage": "yarn test -- --coverage"
   },
   "pre-commit": [
