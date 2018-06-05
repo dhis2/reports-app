@@ -4,6 +4,8 @@ import { shallow } from 'enzyme';
 
 import ReportingRateSummary from './ReportingRateSummary';
 
+import fakerData from '../../helpers/fakerTests';
+
 import {
     sections,
     REPORTING_RATE_SUMMARY_SECTION_KEY
@@ -25,6 +27,7 @@ const ownShallow = () => {
             pageInfo={pageInfo}
             updateAppState={jest.fn()}
             currentSection={REPORTING_RATE_SUMMARY_SECTION_KEY}
+            d2={fakerData.d2}
         />,
         {
             disableLifecycleMethods: true

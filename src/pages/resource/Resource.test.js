@@ -4,6 +4,8 @@ import { shallow } from 'enzyme';
 
 import Resource from './Resource';
 
+import fakerData from '../../helpers/fakerTests';
+
 import {
     sections,
     RESOURCE_SECTION_KEY
@@ -25,6 +27,7 @@ const ownShallow = () => {
             pageInfo={pageInfo}
             updateAppState={jest.fn()}
             currentSection={RESOURCE_SECTION_KEY}
+            d2={fakerData.d2}
         />,
         {
             disableLifecycleMethods: true
