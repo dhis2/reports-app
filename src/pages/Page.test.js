@@ -6,6 +6,8 @@ import Page from './Page';
 import StandardReport from './standard-report/StandardReport';
 import Home from './home/Home';
 
+import fakerData from '../helpers/fakerTests';
+
 import {STANDARD_REPORT_SECTION_KEY} from './sections.conf';
 
 jest.mock('./Page'); // Page is now a mock constructor
@@ -18,7 +20,10 @@ const notPageComponentShallow = () => {
 
 const pageComponentShallow = () => {
     return shallow(
-        <StandardReport sectionKey={STANDARD_REPORT_SECTION_KEY} />,
+        <StandardReport
+            sectionKey={STANDARD_REPORT_SECTION_KEY}
+            d2={fakerData.d2}
+        />,
     );
 };
 

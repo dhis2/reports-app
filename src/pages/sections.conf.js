@@ -91,3 +91,14 @@ export const sections = [
         },
     },
 ];
+
+export const getDocsKeyForSection = (sectionKey) => {
+    for (let i = 0; i < sections.length; i++) {
+        const section = sections[i];
+        if (section.key === sectionKey) {
+            return section.info.docs;
+        }
+    }
+
+    return '';
+};
