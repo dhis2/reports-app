@@ -4,6 +4,8 @@ import { shallow } from 'enzyme';
 
 import OrganisationUnitDistributionReport from './OrganisationUnitDistributionReport';
 
+import fakerData from '../../helpers/fakerTests';
+
 import {
     sections,
     ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_KEY
@@ -25,6 +27,7 @@ const ownShallow = () => {
             pageInfo={pageInfo}
             updateAppState={jest.fn()}
             currentSection={ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_KEY}
+            d2={fakerData.d2}
         />,
         {
             disableLifecycleMethods: true
