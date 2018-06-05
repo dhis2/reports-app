@@ -1,5 +1,5 @@
 const LEFT_BART_WIDTH = 295;
-const HEADER_HEIGHT = '3rem';
+const HEADER_HEIGHT = '4rem';
 const MAX_WIDTH = 1400;
 const CONTENT_AREA_PADDING = 20;
 
