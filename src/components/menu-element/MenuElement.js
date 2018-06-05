@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Card, FontIcon } from 'material-ui';
+import { Paper } from 'material-ui';
 
 import styles from './MenuElement.style';
 
 const MenuElement = ({ entry }) => (
-    <Card className={'section'} style={styles.section}>
+    <Paper className={'section'} style={styles.section}>
         <div style={styles.sectionTitleBar}>
             <div className={'section-title'} style={styles.sectionName}>{entry.label}</div>
-            <FontIcon className={'material-icons icon'} style={styles.sectionIcon}>
+            <span className={'material-icons icon'} style={styles.sectionIcon}>
                 {entry.icon}
-            </FontIcon>
+            </span>
         </div>
         <div className={'section-description'} style={styles.sectionDescription}>
             {entry.description}
@@ -19,7 +19,7 @@ const MenuElement = ({ entry }) => (
         <div className={'section-action-text'} style={styles.sectionActionText}>
             {entry.actionText}
         </div>
-    </Card>
+    </Paper>
 );
 
 MenuElement.propTypes = {
