@@ -42,6 +42,19 @@
     lodash "^4.17.10"
     material-ui "^0.20.0"
 
+"@dhis2/d2-ui-forms@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@dhis2/d2-ui-forms/-/d2-ui-forms-1.0.6.tgz#6cfa7ba10887adf4ea46316f0ef499cf2aa48181"
+  dependencies:
+    "@dhis2/d2-ui-core" "^1.2.0"
+    babel-runtime "^6.26.0"
+    classnames "^2.2.5"
+    d2 "^30.0.0"
+    lodash "^4.17.10"
+    loglevel "^1.6.1"
+    material-ui "^0.20.0"
+    rxjs "^5.5.7"
+
 "@dhis2/d2-ui-header-bar@^1.0.13":
   version "1.0.14"
   resolved "https://registry.yarnpkg.com/@dhis2/d2-ui-header-bar/-/d2-ui-header-bar-1.0.14.tgz#7b52c37776804940b9fd5ccaa35a580ccb0d6b82"
@@ -54,6 +67,32 @@
     lodash "^4.17.10"
     material-ui "1.0.0-beta.45"
     material-ui-icons "^1.0.0-beta.36"
+    rxjs "^5.5.7"
+
+"@dhis2/d2-ui-table@^1.0.11":
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/@dhis2/d2-ui-table/-/d2-ui-table-1.0.11.tgz#aa701b2c793b9921d626b110399f45db33dcabf6"
+  dependencies:
+    "@dhis2/d2-ui-core" "^1.2.0"
+    "@dhis2/d2-ui-translation-dialog" "^1.0.11"
+    babel-runtime "^6.26.0"
+    d2-utilizr "^0.2.15"
+    lodash "^4.17.10"
+    material-ui "^0.19.3"
+    prop-types "^15.5.10"
+    recompose "^0.26.0"
+    rxjs "^5.5.7"
+
+"@dhis2/d2-ui-translation-dialog@^1.0.11":
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/@dhis2/d2-ui-translation-dialog/-/d2-ui-translation-dialog-1.0.11.tgz#0e314fda68c3dcb43a354ea2de0122f7803ef17b"
+  dependencies:
+    "@dhis2/d2-ui-core" "^1.2.0"
+    babel-runtime "^6.26.0"
+    d2-utilizr "^0.2.15"
+    material-ui "^0.19.3"
+    prop-types "^15.5.10"
+    recompose "^0.26.0"
     rxjs "^5.5.7"
 
 "@types/jss@^9.3.0":
@@ -2519,6 +2558,10 @@ d2@^30.0.0:
     jsdoc "^3.5.5"
     whatwg-fetch "^2.0.3"
 
+d3-color@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/d3-color/-/d3-color-1.2.0.tgz#d1ea19db5859c86854586276ec892cf93148459a"
+
 d@1:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/d/-/d-1.0.0.tgz#754bb5bfe55451da69a58b94d45f4c5b0462d58f"
@@ -4600,7 +4643,7 @@ init-package-json@^1.10.3:
     validate-npm-package-license "^3.0.1"
     validate-npm-package-name "^3.0.0"
 
-inline-style-prefixer@^3.0.8:
+inline-style-prefixer@^3.0.2, inline-style-prefixer@^3.0.8:
   version "3.0.8"
   resolved "https://registry.yarnpkg.com/inline-style-prefixer/-/inline-style-prefixer-3.0.8.tgz#8551b8e5b4d573244e66a34b04f7d32076a2b534"
   dependencies:
@@ -5880,7 +5923,7 @@ lodash@^3.10.1:
   version "3.10.1"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
 
-loglevel@^1.4.0, loglevel@^1.4.1:
+loglevel@^1.4.0, loglevel@^1.4.1, loglevel@^1.6.1:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/loglevel/-/loglevel-1.6.1.tgz#e0fc95133b6ef276cdc8887cdaf24aa6f156f8fa"
 
@@ -6036,6 +6079,22 @@ material-ui@1.0.0-beta.45:
     react-transition-group "^2.2.1"
     recompose "^0.26.0 || ^0.27.0"
     scroll "^2.0.3"
+    warning "^3.0.0"
+
+material-ui@^0.19.3:
+  version "0.19.4"
+  resolved "https://registry.yarnpkg.com/material-ui/-/material-ui-0.19.4.tgz#ca9cdca8aa8bb594dfac5db38ec9ff045a323587"
+  dependencies:
+    babel-runtime "^6.23.0"
+    inline-style-prefixer "^3.0.2"
+    keycode "^2.1.8"
+    lodash.merge "^4.6.0"
+    lodash.throttle "^4.1.1"
+    prop-types "^15.5.7"
+    react-event-listener "^0.5.1"
+    react-transition-group "^1.2.1"
+    recompose "^0.26.0"
+    simple-assign "^0.1.0"
     warning "^3.0.0"
 
 material-ui@^0.20.0:
