@@ -13,18 +13,13 @@ class PageHelper extends PureComponent {
     render() {
         return (
             <a
-                style={styles.container}
-                className="helper-icon"
+                style={styles.helpLink}
+                className="helper-icon material-icons"
                 href={this.props.url}
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                <span
-                    className="material-icons"
-                    style={styles.icon}
-                >
-                        help
-                </span>
+                help
             </a>
         );
     }

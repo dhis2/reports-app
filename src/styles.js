@@ -1,12 +1,11 @@
-const LEFT_BAR_WIDTH = 295;
+const LEFT_BART_WIDTH = 295;
+const HEADER_HEIGHT = '4rem';
 const MAX_WIDTH = 1400;
-const HEADER_HEIGHT = '3rem';
-const CONTENT_MARGIN_TOP = '4rem'; // Header height plus 1
 const CONTENT_AREA_PADDING = 20;
 
 const styles = {
     leftBar: {
-        width: LEFT_BAR_WIDTH,
+        width: LEFT_BART_WIDTH,
         position: 'fixed',
         bottom: 0,
         top: 0,
@@ -14,11 +13,11 @@ const styles = {
         paddingTop: HEADER_HEIGHT,
     },
     contentWrapper: {
-        marginLeft: LEFT_BAR_WIDTH,
+        marginLeft: 295,
         maxWidth: MAX_WIDTH,
     },
     contentArea: {
-        paddingTop: CONTENT_MARGIN_TOP,
+        paddingTop: HEADER_HEIGHT,
         paddingBottom: CONTENT_AREA_PADDING,
         paddingLeft: CONTENT_AREA_PADDING,
         paddingRight: CONTENT_AREA_PADDING,

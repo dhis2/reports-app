@@ -1,9 +1,8 @@
 const PageHelperStyle = {
-    container: {
-        padding: '12px',
-    },
-    icon: {
+    helpLink: {
+        paddingLeft: '12px',
         color: '#276696',
+        textDecoration: 'none',
     },
 };
 
