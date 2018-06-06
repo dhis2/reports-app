@@ -5,6 +5,9 @@ const fakerData = {
             version: 30,
             snapshot: true,
         },
+        Api: {
+            getApi: () => {},
+        },
     },
 };
 
