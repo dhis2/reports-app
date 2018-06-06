@@ -4,6 +4,11 @@ const MAX_WIDTH = 1400;
 const CONTENT_AREA_PADDING = 20;
 
 const styles = {
+    addButton: {
+        position: 'fixed',
+        bottom: '1.5rem',
+        right: '1.5rem',
+    },
     leftBar: {
         width: LEFT_BART_WIDTH,
         position: 'fixed',

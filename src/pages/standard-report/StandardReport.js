@@ -5,10 +5,13 @@ import PropTypes from 'prop-types';
 /* d2-ui */
 import Table from '@dhis2/d2-ui-table';
 import { FormBuilder } from '@dhis2/d2-ui-forms';
-import { TextField } from '@dhis2/d2-ui-core';
+import { SvgIcon, Button, TextField } from '@dhis2/d2-ui-core';
 
 /* d2-ui styles */
 import '@dhis2/d2-ui-core/build/css/Table.css';
+
+/* style */
+import appStyles from '../../styles';
 
 /* App components */
 import Page from '../Page';
@@ -17,27 +20,27 @@ import PageHelper from '../../components/page-helper/PageHelper';
 /* Utils */
 import { getDocsUrl } from '../../helpers/docs';
 
-const myRows = [
-    { name: 'ANC: 1st Visit Cumulative Chart' },
-    { name: 'ANC: Coverages This Year' },
-];
-
 // TODO: Check permissions
 const contextMenuOptions = {
     createReport(...args) {
-        console.log('createReport', ...args);
+        this.setState(...args);
+        // console.log('createReport', ...args);
     },
     editReport(...args) {
-        console.log('editReport', ...args);
+        this.setState(...args);
+        // console.log('editReport', ...args);
     },
     sharingSettings(...args) {
-        console.log('sharingSettings', ...args);
+        this.setState(...args);
+        // console.log('sharingSettings', ...args);
     },
     delete(...args) {
-        console.log('delete', ...args);
+        this.setState(...args);
+        // console.log('delete', ...args);
     },
     showDetails(...args) {
-        console.log('showDetails', ...args);
+        this.setState(...args);
+        // console.log('showDetails', ...args);
     },
 };
 
@@ -50,12 +53,45 @@ const contextMenuIcons = {
 };
 
 class StandardReport extends Page {
+    constructor() {
+        super();
+
+        this.state = {
+            reportRows: [],
+        };
+    }
     getChildContext() {
         return { d2: this.props.d2 };
     }
 
+    componentDidMount() {
+        super.componentDidMount();
+        this.loadData();
+    }
+
+    loadData() {
+        const api = this.props.d2.Api.getApi();
+        if (api) {
+            api.get('reports').then((response) => {
+                if (response) {
+                    this.setState({ reportRows: response.reports });
+                }
+            }).catch(() => {
+                // TODO:
+            });
+        }
+    }
+
     onUpdateField(fieldName, newValue) {
-        console.log(this.d2, fieldName, '=', newValue);
+        if (fieldName !== newValue) {
+            this.setState({ ...this.state, searchTerm: newValue });
+        }
+        // console.log(this.d2, fieldName, '=', newValue);
+    }
+
+    addNewReport() {
+        this.setState({ loading: true });
+        // console.log(this.d2, 'Add new report!');
     }
 
     render() {
@@ -90,11 +126,14 @@ class StandardReport extends Page {
                     />
                 </div>
                 <Table
-                    columns={['name']}
-                    rows={myRows}
+                    columns={['displayName']}
+                    rows={this.state.reportRows}
                     contextMenuActions={contextMenuOptions}
                     contextMenuIcons={contextMenuIcons}
                 />
+                <Button fab onClick={this.addNewReport} style={appStyles.addButton}>
+                    <SvgIcon icon={'Add'} />
+                </Button>
             </div>
         );
     }
