@@ -27,3 +27,31 @@ h1 {
     left: 0;
     padding-top: 3rem;
 }
+
+/* D2-UI table overrides */
+.d2-ui-table {
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* D2-UI pagination overrides */
+.data-table-pager {
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.data-table-pager--page-info {
+    padding: 0 !important;
+}
+
+.data-table-pager--buttons {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
+
+.data-table-pager--buttons .material-icons {
+    margin: 0 !important;
+    padding: 0 !important;
+}

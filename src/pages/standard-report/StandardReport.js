@@ -5,10 +5,11 @@ import PropTypes from 'prop-types';
 /* d2-ui */
 import Table from '@dhis2/d2-ui-table';
 import { FormBuilder } from '@dhis2/d2-ui-forms';
-import { SvgIcon, Button, TextField } from '@dhis2/d2-ui-core';
+import { Pagination, SvgIcon, Button, TextField } from '@dhis2/d2-ui-core';
 
 /* d2-ui styles */
 import '@dhis2/d2-ui-core/build/css/Table.css';
+import '@dhis2/d2-ui-core/build/css/Pagination.css';
 
 /* style */
 import appStyles from '../../styles';
@@ -52,12 +53,16 @@ const contextMenuIcons = {
     showDetails: 'info',
 };
 
+const PAGE_SIZE = 50;
+const REPORTS_ENDPOINT = 'reports';
+
 class StandardReport extends Page {
     constructor() {
         super();
 
         this.state = {
-            reportRows: [],
+            pager: {},
+            reports: [],
         };
     }
     getChildContext() {
@@ -71,10 +76,11 @@ class StandardReport extends Page {
 
     loadData() {
         const api = this.props.d2.Api.getApi();
+        const url = `${REPORTS_ENDPOINT}?page=1&pageSize=${PAGE_SIZE}`;
         if (api) {
-            api.get('reports').then((response) => {
+            api.get(url).then((response) => {
                 if (response) {
-                    this.setState({ reportRows: response.reports });
+                    this.setState(response);
                 }
             }).catch(() => {
                 // TODO:
@@ -82,6 +88,15 @@ class StandardReport extends Page {
         }
     }
 
+    hasNextPage() {
+        return this.state.pager.page < this.state.pager.pageCount;
+    }
+
+    hasPreviousPage() {
+        return this.state.pager.page > 1;
+    }
+
+    // TODO: Rename
     onUpdateField(fieldName, newValue) {
         if (fieldName !== newValue) {
             this.setState({ ...this.state, searchTerm: newValue });
@@ -127,10 +142,18 @@ class StandardReport extends Page {
                 </div>
                 <Table
                     columns={['displayName']}
-                    rows={this.state.reportRows}
+                    rows={this.state.reports}
                     contextMenuActions={contextMenuOptions}
                     contextMenuIcons={contextMenuIcons}
                 />
+                <div id={'footer-pagination-id'} style={appStyles.marginForAddButton}>
+                    <Pagination
+                        total={this.state.pager.total}
+                        hasNextPage={this.hasNextPage}
+                        hasPreviousPage={this.hasPreviousPage}
+                        currentlyShown={`${this.state.pager.page} - ${this.state.pager.pageSize}`}
+                    />
+                </div>
                 <Button fab onClick={this.addNewReport} style={appStyles.addButton}>
                     <SvgIcon icon={'Add'} />
                 </Button>
