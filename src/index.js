@@ -22,11 +22,10 @@ const AppComponent = withRouter(App);
 let d2Instance;
 
 getManifest('manifest.webapp').then((manifest) => {
-    const api = process.env.REACT_APP_DHIS2_API_VERSION ? `/${process.env.REACT_APP_DHIS2_API_VERSION}` : '/';
     const baseUrl =
         process.env.NODE_ENV === 'production'
             ? `${manifest.getBaseUrl()}/api/${manifest.dhis2.apiVersion}`
-            : `${process.env.REACT_APP_DHIS2_BASE_URL}/api${api}`;
+            : `${process.env.REACT_APP_DHIS2_BASE_URL}/api/${manifest.dhis2.apiVersion}`;
 
     // init d2 with configs
     init({
@@ -34,6 +33,7 @@ getManifest('manifest.webapp').then((manifest) => {
         schemas: [
             'organisationUnit',
             'dataSet',
+            'reportTable',
         ],
     })
         .then((d2) => { d2Instance = d2; })
