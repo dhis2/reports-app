@@ -11,7 +11,7 @@ msgstr ""
 msgid "Standard Report"
 msgstr ""
 
-msgid "Generate Report"
+msgid "View Reports"
 msgstr ""
 
 msgid ""
@@ -20,6 +20,9 @@ msgid ""
 msgstr ""
 
 msgid "Data Set Report"
+msgstr ""
+
+msgid "Get Report"
 msgstr ""
 
 msgid ""
@@ -38,7 +41,7 @@ msgstr ""
 msgid "Resource"
 msgstr ""
 
-msgid "Generate Resource"
+msgid "View Resources"
 msgstr ""
 
 msgid ""
@@ -57,7 +60,7 @@ msgstr ""
 msgid "Data Approval"
 msgstr ""
 
-msgid "Manage data Approvals"
+msgid "View Data Values"
 msgstr ""
 
 msgid ""
