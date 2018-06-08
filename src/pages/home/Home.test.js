@@ -3,6 +3,9 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import Home from './Home';
+import MenuElement from "../../components/menu-element/MenuElement";
+
+import { sections } from '../sections.conf';
 
 const ownShallow = () => {
     return shallow(
@@ -19,7 +22,11 @@ describe('Test <Home /> rendering:', () => {
         wrapper = ownShallow();
     });
 
-    it('renders without crashing', () => {
+    it('Renders without crashing.', () => {
         ownShallow();
+    });
+
+    it('Renders the correct number of elements.', () => {
+        expect(wrapper.find(MenuElement)).toHaveLength(sections.length);
     });
 });

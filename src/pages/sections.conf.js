@@ -24,7 +24,7 @@ export const sections = [
         component: StandardReport,
         info: {
             label: i18nKeys.standardReport.homeLabel,
-            icon: 'done_all',
+            icon: 'bar_chart',
             description: i18nKeys.standardReport.description,
             actionText: i18nKeys.standardReport.homeAction,
             docs: 'using_reporting_standard_reports',
@@ -36,7 +36,7 @@ export const sections = [
         component: DataSetReport,
         info: {
             label: i18nKeys.dataSetReport.homeLabel,
-            icon: 'done_all',
+            icon: 'assignment',
             description: i18nKeys.dataSetReport.description,
             actionText: i18nKeys.dataSetReport.homeAction,
             docs: 'using_reporting_dataset_reports',
@@ -48,7 +48,7 @@ export const sections = [
         component: ReportingRateSummary,
         info: {
             label: i18nKeys.reportingRateSummary.homeLabel,
-            icon: 'done_all',
+            icon: 'format_list_bulleted',
             description: i18nKeys.reportingRateSummary.description,
             actionText: i18nKeys.reportingRateSummary.homeAction,
             docs: 'using_reporting_reporting_rate_summary',
@@ -60,7 +60,7 @@ export const sections = [
         component: Resource,
         info: {
             label: i18nKeys.resource.homeLabel,
-            icon: 'done_all',
+            icon: 'cloud_upload',
             description: i18nKeys.resource.description,
             actionText: i18nKeys.resource.homeAction,
             docs: 'using_reporting_resources',
@@ -72,7 +72,7 @@ export const sections = [
         component: OrganisationUnitDistributionReport,
         info: {
             label: i18nKeys.organisationUnitDistributionReport.homeLabel,
-            icon: 'done_all',
+            icon: 'device_hub',
             description: i18nKeys.organisationUnitDistributionReport.description,
             actionText: i18nKeys.organisationUnitDistributionReport.homeAction,
             docs: 'using_reporting_orgunit_distribution_reports',
@@ -84,7 +84,7 @@ export const sections = [
         component: DataApproval,
         info: {
             label: i18nKeys.dataApproval.homeLabel,
-            icon: 'done_all',
+            icon: 'playlist_add_check',
             description: i18nKeys.dataApproval.description,
             actionText: i18nKeys.dataApproval.homeAction,
             docs: 'data_approval',
