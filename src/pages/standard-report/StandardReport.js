@@ -63,6 +63,7 @@ class StandardReport extends Page {
         this.state = {
             pager: INITIAL_PAGER,
             reports: [],
+            search: undefined,
         };
 
         this.hasNextPage = this.hasNextPage.bind(this);
@@ -79,12 +80,16 @@ class StandardReport extends Page {
 
     componentDidMount() {
         super.componentDidMount();
-        this.loadData(this.state.pager);
+        this.loadData(INITIAL_PAGER);
     }
 
-    loadData(pager) {
+    loadData(pager, search) {
         const api = this.props.d2.Api.getApi();
-        const url = `${REPORTS_ENDPOINT}?page=${pager.page}&pageSize=${pager.pageSize}`;
+        let url = `${REPORTS_ENDPOINT}?page=${pager.page}&pageSize=${pager.pageSize}`;
+        this.setState({ search });
+        if (search && /\S/.test(search)) {
+            url = `${url}&filter=displayName:ilike:${search}`;
+        }
         if (api) {
             api.get(url).then((response) => {
                 if (response) {
@@ -113,15 +118,13 @@ class StandardReport extends Page {
     onPreviousPageClick() {
         const pager = Object.assign({}, this.state.pager);
         pager.page -= 1;
-        this.loadData(pager, true);
+        this.loadData(pager);
     }
 
-    // TODO: implement
     search(fieldName, newValue) {
-        if (fieldName !== newValue) {
-            this.setState({ ...this.state, searchTerm: newValue });
+        if (this.state.search !== newValue) {
+            this.loadData(INITIAL_PAGER, newValue);
         }
-        // console.log(this.d2, fieldName, '=', newValue);
     }
 
     // TODO: implement
@@ -133,8 +136,9 @@ class StandardReport extends Page {
     render() {
         const fields = [
             {
-                name: 'searchField',
+                name: 'searchInput',
                 component: TextField,
+                value: this.state.search,
                 props: {
                     floatingLabelText: 'Search',
                     style: {
