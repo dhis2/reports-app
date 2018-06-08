@@ -20,6 +20,7 @@ import PageHelper from '../../components/page-helper/PageHelper';
 
 /* Utils */
 import { getDocsUrl } from '../../helpers/docs';
+import { calculatePageValue, INITIAL_PAGER } from '../../helpers/pagination';
 
 // TODO: Check permissions
 const contextMenuOptions = {
@@ -53,30 +54,37 @@ const contextMenuIcons = {
     showDetails: 'info',
 };
 
-const PAGE_SIZE = 50;
 const REPORTS_ENDPOINT = 'reports';
 
 class StandardReport extends Page {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
-            pager: {},
+            pager: INITIAL_PAGER,
             reports: [],
         };
+
+        this.hasNextPage = this.hasNextPage.bind(this);
+        this.hasPreviousPage = this.hasPreviousPage.bind(this);
+        this.search = this.search.bind(this);
+        this.addNewReport = this.addNewReport.bind(this);
+        this.onNextPageClick = this.onNextPageClick.bind(this);
+        this.onPreviousPageClick = this.onPreviousPageClick.bind(this);
     }
+
     getChildContext() {
         return { d2: this.props.d2 };
     }
 
     componentDidMount() {
         super.componentDidMount();
-        this.loadData();
+        this.loadData(this.state.pager);
     }
 
-    loadData() {
+    loadData(pager) {
         const api = this.props.d2.Api.getApi();
-        const url = `${REPORTS_ENDPOINT}?page=1&pageSize=${PAGE_SIZE}`;
+        const url = `${REPORTS_ENDPOINT}?page=${pager.page}&pageSize=${pager.pageSize}`;
         if (api) {
             api.get(url).then((response) => {
                 if (response) {
@@ -96,14 +104,27 @@ class StandardReport extends Page {
         return this.state.pager.page > 1;
     }
 
-    // TODO: Rename
-    onUpdateField(fieldName, newValue) {
+    onNextPageClick() {
+        const pager = Object.assign({}, this.state.pager);
+        pager.page += 1;
+        this.loadData(pager);
+    }
+
+    onPreviousPageClick() {
+        const pager = Object.assign({}, this.state.pager);
+        pager.page -= 1;
+        this.loadData(pager, true);
+    }
+
+    // TODO: implement
+    search(fieldName, newValue) {
         if (fieldName !== newValue) {
             this.setState({ ...this.state, searchTerm: newValue });
         }
         // console.log(this.d2, fieldName, '=', newValue);
     }
 
+    // TODO: implement
     addNewReport() {
         this.setState({ loading: true });
         // console.log(this.d2, 'Add new report!');
@@ -137,7 +158,7 @@ class StandardReport extends Page {
                     <FormBuilder
                         style={{ backgroundColor: '#ffffff', width: '33%', paddingLeft: '1.6rem' }}
                         fields={fields}
-                        onUpdateField={this.onUpdateField}
+                        onUpdateField={this.search}
                     />
                 </div>
                 <Table
@@ -151,7 +172,9 @@ class StandardReport extends Page {
                         total={this.state.pager.total}
                         hasNextPage={this.hasNextPage}
                         hasPreviousPage={this.hasPreviousPage}
-                        currentlyShown={`${this.state.pager.page} - ${this.state.pager.pageSize}`}
+                        onNextPageClick={this.onNextPageClick}
+                        onPreviousPageClick={this.onPreviousPageClick}
+                        currentlyShown={calculatePageValue(this.state.pager)}
                     />
                 </div>
                 <Button fab onClick={this.addNewReport} style={appStyles.addButton}>
