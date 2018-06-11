@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 /* d2-ui */
 import Table from '@dhis2/d2-ui-table';
-import { FormBuilder } from '@dhis2/d2-ui-forms';
 import { Pagination, SvgIcon, Button, TextField } from '@dhis2/d2-ui-core';
 
 /* d2-ui styles */
@@ -13,6 +12,7 @@ import '@dhis2/d2-ui-core/build/css/Pagination.css';
 
 /* style */
 import appStyles from '../../styles';
+import styles from './StandardReport.style';
 
 /* App components */
 import Page from '../Page';
@@ -21,6 +21,7 @@ import PageHelper from '../../components/page-helper/PageHelper';
 /* Utils */
 import { getDocsUrl } from '../../helpers/docs';
 import { calculatePageValue, INITIAL_PAGER } from '../../helpers/pagination';
+
 
 // TODO: Check permissions
 const contextMenuOptions = {
@@ -63,7 +64,7 @@ class StandardReport extends Page {
         this.state = {
             pager: INITIAL_PAGER,
             reports: [],
-            search: undefined,
+            search: '',
         };
 
         this.hasNextPage = this.hasNextPage.bind(this);
@@ -121,9 +122,9 @@ class StandardReport extends Page {
         this.loadData(pager);
     }
 
-    search(fieldName, newValue) {
-        if (this.state.search !== newValue) {
-            this.loadData(INITIAL_PAGER, newValue);
+    search(event) {
+        if (this.state.search !== event.target.value) {
+            this.loadData(INITIAL_PAGER, event.target.value);
         }
     }
 
@@ -134,22 +135,6 @@ class StandardReport extends Page {
     }
 
     render() {
-        const fields = [
-            {
-                name: 'searchInput',
-                component: TextField,
-                value: this.state.search,
-                props: {
-                    floatingLabelText: 'Search',
-                    style: {
-                        width: '100%',
-                        marginTop: '0px',
-                    },
-                    changeEvent: 'onBlur',
-                    type: 'search',
-                },
-            },
-        ];
         return (
             <div>
                 <h1>
@@ -158,11 +143,12 @@ class StandardReport extends Page {
                         url={getDocsUrl(this.props.d2.system.version, this.props.sectionKey)}
                     />
                 </h1>
-                <div id={'search-box-id'} style={{ backgroundColor: '#ffffff' }}>
-                    <FormBuilder
-                        style={{ backgroundColor: '#ffffff', width: '33%', paddingLeft: '1.6rem' }}
-                        fields={fields}
-                        onUpdateField={this.search}
+                <div id={'search-box-id'} style={styles.searchContainer}>
+                    <TextField
+                        value={this.state.search || ''}
+                        type="search"
+                        hintText="Search"
+                        onBlur={this.search}
                     />
                 </div>
                 <Table
