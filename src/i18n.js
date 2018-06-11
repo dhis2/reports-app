@@ -1,4 +1,7 @@
 export const i18nKeys = {
+    datasetsDropdown: {
+        hintText: 'Select Data Set',
+    },
     standardReport: {
         homeLabel: 'Standard Report',
         homeAction: 'View Reports',
