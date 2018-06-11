@@ -4,6 +4,7 @@ import React from 'react';
 /* App components */
 import Page from '../Page';
 import PageHelper from '../../components/page-helper/PageHelper';
+import Form from './Form';
 
 /* utils */
 import { getDocsUrl } from '../../helpers/docs';
@@ -18,6 +19,7 @@ class DataSetReport extends Page {
                         url={getDocsUrl(this.props.d2.system.version, this.props.sectionKey)}
                     />
                 </h1>
+                <Form />
             </div>
         );
     }

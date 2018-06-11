@@ -6,6 +6,10 @@ import MenuElement from './MenuElement';
 
 import { sections } from '../../pages/sections.conf';
 
+jest.mock('@dhis2/d2-ui-org-unit-tree', () => ({
+    OrgUnitTree: ('OrgUnitTree'),
+}));
+
 const ownShallow = () => {
     return shallow(
         <MenuElement entry={sections[0].info} />,

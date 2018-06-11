@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-06-11T08:56:03.964Z\n"
-"PO-Revision-Date: 2018-06-11T08:56:03.964Z\n"
+"POT-Creation-Date: 2018-06-11T10:30:19.922Z\n"
+"PO-Revision-Date: 2018-06-11T10:30:19.922Z\n"
 
 msgid "Select Data Set"
 msgstr ""
@@ -34,6 +34,18 @@ msgstr ""
 msgid ""
 "View data set reports. These reports are based on data entry screens and "
 "will produce a report with aggregated data."
+msgstr ""
+
+msgid "Data set"
+msgstr ""
+
+msgid "Report period"
+msgstr ""
+
+msgid "Use data for selected unit only"
+msgstr ""
+
+msgid "Report organisation unit"
 msgstr ""
 
 msgid "Report Rate Summary"

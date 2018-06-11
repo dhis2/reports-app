@@ -18,6 +18,10 @@ export const i18nKeys = {
         header: 'Data Set Report',
         description: 'View data set reports. These reports are based on data entry screens and ' +
         'will produce a report with aggregated data.',
+        dataSetLabel: 'Data set',
+        reportPeriodLabel: 'Report period',
+        selectedDataSetOnlyLabel: 'Use data for selected unit only',
+        organisationUnitLabel: 'Report organisation unit',
     },
     reportingRateSummary: {
         homeLabel: 'Report Rate Summary',

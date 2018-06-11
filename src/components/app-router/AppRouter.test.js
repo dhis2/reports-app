@@ -9,6 +9,10 @@ import {sections} from "../../pages/sections.conf";
 
 const pageState = {};
 
+jest.mock('@dhis2/d2-ui-org-unit-tree', () => ({
+    OrgUnitTree: ('OrgUnitTree'),
+}));
+
 const ownShallow = () => {
     return shallow(
         <AppRouter

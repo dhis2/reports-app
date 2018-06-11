@@ -6,6 +6,10 @@ import Resource from './Resource';
 
 import fakerData from '../../helpers/fakerTests';
 
+jest.mock('@dhis2/d2-ui-org-unit-tree', () => ({
+    OrgUnitTree: ('OrgUnitTree'),
+}));
+
 import {
     sections,
     RESOURCE_SECTION_KEY

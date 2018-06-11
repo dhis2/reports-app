@@ -11,6 +11,9 @@ import fakerData from '../helpers/fakerTests';
 import {STANDARD_REPORT_SECTION_KEY} from './sections.conf';
 
 jest.mock('./Page'); // Page is now a mock constructor
+jest.mock('@dhis2/d2-ui-org-unit-tree', () => ({
+    OrgUnitTree: ('OrgUnitTree'),
+}));
 
 const notPageComponentShallow = () => {
     return shallow(
