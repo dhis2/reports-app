@@ -2,6 +2,9 @@ export const i18nKeys = {
     datasetsDropdown: {
         hintText: 'Select Data Set',
     },
+    availableOrganisationUnitsTree: {
+        updatingMessage: 'Updating Organisation Units Tree...',
+    },
     standardReport: {
         homeLabel: 'Standard Report',
         homeAction: 'View Reports',
