@@ -76,3 +76,102 @@ msgstr ""
 
 msgid "Search"
 msgstr ""
+
+msgid "week"
+msgstr ""
+
+msgid "month"
+msgstr ""
+
+msgid "year"
+msgstr ""
+
+msgid "bi monthly"
+msgstr ""
+
+msgid "day"
+msgstr ""
+
+msgid "jan"
+msgstr ""
+
+msgid "feb"
+msgstr ""
+
+msgid "mar"
+msgstr ""
+
+msgid "apr"
+msgstr ""
+
+msgid "may"
+msgstr ""
+
+msgid "jun"
+msgstr ""
+
+msgid "jul"
+msgstr ""
+
+msgid "aug"
+msgstr ""
+
+msgid "sep"
+msgstr ""
+
+msgid "oct"
+msgstr ""
+
+msgid "nov"
+msgstr ""
+
+msgid "dec"
+msgstr ""
+
+msgid "jan-feb"
+msgstr ""
+
+msgid "mar-apr"
+msgstr ""
+
+msgid "may-jun"
+msgstr ""
+
+msgid "jul-aug"
+msgstr ""
+
+msgid "sep-oct"
+msgstr ""
+
+msgid "nov-dec"
+msgstr ""
+
+msgid "quarter"
+msgstr ""
+
+msgid "Q1"
+msgstr ""
+
+msgid "Q2"
+msgstr ""
+
+msgid "Q3"
+msgstr ""
+
+msgid "Q4"
+msgstr ""
+
+msgid "six monthly"
+msgstr ""
+
+msgid "jan-jun"
+msgstr ""
+
+msgid "jul-dec"
+msgstr ""
+
+msgid "apr-sep"
+msgstr ""
+
+msgid "oct-mar"
+msgstr ""
