@@ -14,6 +14,10 @@ import { AvailableOrganisationUnitsTree } from './AvailableOrganisationUnitsTree
 /* fake data */
 import fakerData from '../../helpers/fakerTests';
 
+jest.mock('@dhis2/d2-ui-org-unit-tree', () => ({
+    OrgUnitTree: ('OrgUnitTree'),
+}));
+
 const ownShallow = () => {
     const onChange = jest.fn();
     return shallow(
