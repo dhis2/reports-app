@@ -1,4 +1,8 @@
 export const i18nKeys = {
+    buttons: {
+        cancel: 'Cancel',
+        save: 'Save',
+    },
     datasetsDropdown: {
         hintText: 'Select Data Set',
     },
@@ -51,14 +55,33 @@ export const i18nKeys = {
         description: 'View data and manage data approval by approving or unapproving, accepting or unaccepting data.',
     },
     d2UiComponents: {
-        actions: 'Actions',
+        app_search_placeholder: 'Search',
         display_name: 'Name',
+        // Context Menu
+        actions: 'Actions',
         createReport: 'Create',
         editReport: 'Edit Report',
         sharingSettings: 'Sharing Settings',
         delete: 'Delete',
         showDetails: 'Show Details',
-        app_search_placeholder: 'Search',
+        // Sharing Settings
+        add_users_and_user_groups: 'Add users and user groups',
+        enter_names: 'Enter names',
+        share: 'Sharing settings',
+        metadata: 'Permissions',
+        created_by: 'Created By',
+        who_has_access: 'Who has access',
+        external_access: 'External access (without login)',
+        can_edit_and_view: 'Can edit and view',
+        can_view: 'Can view',
+        can_view_only: 'Can view only',
+        no_access: 'No access',
+        public_access: 'Public access (with login)',
+        public_can_edit: 'Public can edit',
+        public_can_view: 'Public can view',
+        anyone_can_find_view_and_edit: 'Public can find, view and edit',
+        // Buttons
+        close: 'Close',
         week: 'week',
         month: 'month',
         year: 'year',
