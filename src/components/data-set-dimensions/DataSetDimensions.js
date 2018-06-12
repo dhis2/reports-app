@@ -5,26 +5,19 @@ import PropTypes from 'prop-types';
 /* d2-ui components */
 import { DropDown } from '@dhis2/d2-ui-core';
 
+/* App context */
+import AppContext from '../../context';
+
 /* i18n */
 import i18n from '../../locales';
 import { i18nKeys } from '../../i18n';
 
-class DataSetDimensions extends PureComponent {
+export class DataSetDimensions extends PureComponent {
     static propTypes = {
+        d2: PropTypes.object.isRequired,
         onChange: PropTypes.func.isRequired,
         values: PropTypes.object.isRequired,
-        dimensions: PropTypes.arrayOf(
-            PropTypes.shape({
-                id: PropTypes.string.isRequired,
-                displayName: PropTypes.string.isRequired,
-                items: PropTypes.arrayOf(
-                    PropTypes.shape({
-                        id: PropTypes.string.isRequired,
-                        displayName: PropTypes.string.isRequired,
-                    }),
-                ).isRequired,
-            }),
-        ).isRequired,
+        dataSetId: PropTypes.string.isRequired,
         dropdownStyle: PropTypes.object,
     }
 
@@ -40,6 +33,30 @@ class DataSetDimensions extends PureComponent {
         this.state = {
             dimensions: [],
         };
+    }
+
+    componentDidMount() {
+        this.fetchDataDimensions(this.props.dataSetId);
+    }
+
+    componentWillReceiveProps({ dataSetId }) {
+        this.fetchDataDimensions(dataSetId);
+    }
+
+    fetchDataDimensions = (dataSetId) => {
+        const api = this.props.d2.Api.getApi();
+        const url =
+            `dimensions/dataSet/${dataSetId}?fields=id,displayName,items[id,displayName]&order=name:asc&paging=false`;
+        api.get(url).then((response) => {
+            const dimensions = response.dimensions || [];
+            this.setState({
+                dimensions,
+            });
+        }).catch(() => {
+            this.setState({
+                dimensions: [],
+            });
+        });
     }
 
     handleDimensionChange = dimensionId => (element) => {
@@ -62,10 +79,20 @@ class DataSetDimensions extends PureComponent {
     );
 
     render = () => (
-        this.props.dimensions.map(
+        this.state.dimensions.map(
             dimension => this.renderDimensionDropdown(dimension),
         )
     );
 }
 
-export default DataSetDimensions;
+export default props => (
+    <AppContext.Consumer>
+        { appContext => (
+            <DataSetDimensions
+                d2={appContext.d2}
+                {...props}
+            />
+        )}
+    </AppContext.Consumer>
+);
+

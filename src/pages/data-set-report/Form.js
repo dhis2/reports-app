@@ -1,18 +1,14 @@
 /* React */
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 
 /* d2-ui components */
 import { CheckBox, Button } from '@dhis2/d2-ui-core';
-
-/* App context */
-import AppContext from '../../context';
 
 /* App components */
 import DataSets from '../../components/datasets-dropdown/DatasetsDropdown';
 import OrganisationUnitsTree from '../../components/available-organisation-units-tree/AvailableOrganisationUnitsTree';
 import OrganisationUnitGroupOptions from '../../components/organisation-unit-group-sets/OrganisationUnitGroupSets';
-import DataSetDimensions from '../../components/data-set-dimensions/DataSetDimensions';
+import DataSetOptions from '../../components/data-set-dimensions/DataSetDimensions';
 
 /* i18n */
 import i18n from '../../locales';
@@ -21,11 +17,7 @@ import { i18nKeys } from '../../i18n';
 /* styles */
 import styles from './Form.style';
 
-export class DataSetReportForm extends PureComponent {
-    static propTypes = {
-        d2: PropTypes.object.isRequired,
-    }
-
+class DataSetReportForm extends PureComponent {
     constructor() {
         super();
 
@@ -63,10 +55,6 @@ export class DataSetReportForm extends PureComponent {
             dimensions: [],
             selectedOptionsForDimensions: {},
         });
-
-        if (selectedDataSet) {
-            this.fetchDimensionsForDataSet(selectedDataSet);
-        }
     }
 
     handleDimensionChange = (dimensionsId, element) => {
@@ -97,20 +85,6 @@ export class DataSetReportForm extends PureComponent {
         });
     }
 
-    fetchDimensionsForDataSet = (dataSetId) => {
-        const api = this.props.d2.Api.getApi();
-        const url =
-            `dimensions/dataSet/${dataSetId}?fields=id,displayName,items[id,displayName]&order=name:asc&paging=false`;
-        api.get(url).then((response) => {
-            const dimensions = response.dimensions || [];
-            this.setState({
-                dimensions,
-            });
-        }).catch(() => {
-            // TODO Manage error
-        });
-    }
-
     renderExtraOptions = () => (
         <div style={this.state.showOptions ? styles.showOptions : styles.hideOptions}>
             <OrganisationUnitGroupOptions
@@ -126,11 +100,13 @@ export class DataSetReportForm extends PureComponent {
                 <DataSets
                     onChange={this.handleDataSetChange}
                 />
-                <DataSetDimensions
-                    dimensions={this.state.dimensions}
-                    values={this.state.selectedOptionsForDimensions}
-                    onChange={this.handleDimensionChange}
-                />
+                { this.state.selectedDataSet &&
+                    <DataSetOptions
+                        dataSetId={this.state.selectedDataSet}
+                        values={this.state.selectedOptionsForDimensions}
+                        onChange={this.handleDimensionChange}
+                    />
+                }
                 <CheckBox
                     onChange={this.handleSelectedDataSetOnlyChange}
                     value={this.state.selectedDataSetOnly}
@@ -165,13 +141,4 @@ export class DataSetReportForm extends PureComponent {
     }
 }
 
-export default props => (
-    <AppContext.Consumer>
-        {appContext => (
-            <DataSetReportForm
-                d2={appContext.d2}
-                {...props}
-            />
-        )}
-    </AppContext.Consumer>
-);
+export default DataSetReportForm;
