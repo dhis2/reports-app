@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-06-12T07:54:33.305Z\n"
-"PO-Revision-Date: 2018-06-12T07:54:33.305Z\n"
+"POT-Creation-Date: 2018-06-12T08:04:29.605Z\n"
+"PO-Revision-Date: 2018-06-12T08:04:29.605Z\n"
 
 msgid "Select Data Set"
 msgstr ""
@@ -49,6 +49,9 @@ msgid "Use data for selected unit only"
 msgstr ""
 
 msgid "Report organisation unit"
+msgstr ""
+
+msgid "Show more options"
 msgstr ""
 
 msgid "Report Rate Summary"

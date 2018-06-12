@@ -35,7 +35,7 @@ export class DataSetReportForm extends PureComponent {
             selectedOptionsForDimensions: {},
             organisationUnitGroupSets: [],
             selectedOptionsForOrganisationUnitGroupSets: {},
-            showOptions: true,
+            showOptions: false,
         };
     }
 
@@ -167,6 +167,13 @@ export class DataSetReportForm extends PureComponent {
                     label={i18n.t(i18nKeys.dataSetReport.selectedDataSetOnlyLabel)}
                 />
                 <OrganisationUnitsTree />
+                <span
+                    role="button"
+                    tabIndex="0"
+                    onClick={this.toggleShowOptions}
+                >
+                    { i18n.t(i18nKeys.dataSetReport.showMoreOptions) }
+                </span>
                 { this.renderExtraOptions() }
             </div>
         );
