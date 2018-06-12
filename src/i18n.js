@@ -5,6 +5,9 @@ export const i18nKeys = {
     dimensionsDropdown: {
         hintText: 'Select Option',
     },
+    organisationUnitGroupSetDropdown: {
+        hintText: 'Select Option',
+    },
     availableOrganisationUnitsTree: {
         updatingMessage: 'Updating Organisation Units Tree...',
     },

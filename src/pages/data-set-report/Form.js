@@ -33,7 +33,21 @@ export class DataSetReportForm extends PureComponent {
             selectedOrgUnit: null,
             dimensions: [],
             selectedOptionsForDimensions: {},
+            organisationUnitGroupSets: [],
+            selectedOptionsForOrganisationUnitGroupSets: {},
+            showOptions: true,
         };
+    }
+
+    componentDidMount() {
+        this.fetchOrganisationUnitGroupSets();
+    }
+
+    toggleShowOptions = () => {
+        const newShowOptionsValue = !this.state.showOptions;
+        this.setState({
+            showOptions: newShowOptionsValue,
+        });
     }
 
     handleDataSetChange = (selectedDataSet) => {
@@ -65,6 +79,18 @@ export class DataSetReportForm extends PureComponent {
         });
     }
 
+    handleOrganisationUnitGroupSetChange = organisationUnitGroupSetId => (element) => {
+        // copy of current selections
+        const selectedOptionsForOrganisationUnitGroupSets = {
+            ...this.state.selectedOptionsForOrganisationUnitGroupSets,
+        };
+        selectedOptionsForOrganisationUnitGroupSets[organisationUnitGroupSetId] = element.target.value;
+
+        this.setState({
+            selectedOptionsForOrganisationUnitGroupSets,
+        });
+    }
+
     fetchDimensionsForDataSet = (dataSetId) => {
         const api = this.props.d2.Api.getApi();
         const url = `dimensions/dataSet/${dataSetId}?fields=id,displayName,items[id,displayName]&order=name:asc`;
@@ -72,6 +98,20 @@ export class DataSetReportForm extends PureComponent {
             const dimensions = response.dimensions || [];
             this.setState({
                 dimensions,
+            });
+        }).catch(() => {
+            // TODO Manage error
+        });
+    }
+
+    fetchOrganisationUnitGroupSets = () => {
+        const api = this.props.d2.Api.getApi();
+        const url = 'organisationUnitGroupSets?' +
+            'fields=id,displayName,organisationUnitGroups[id,displayName]&order=name:asc&paging=false';
+        api.get(url).then((response) => {
+            const organisationUnitGroupSets = response.organisationUnitGroupSets || [];
+            this.setState({
+                organisationUnitGroupSets,
             });
         }).catch(() => {
             // TODO Manage error
@@ -93,6 +133,27 @@ export class DataSetReportForm extends PureComponent {
         </div>
     ))
 
+    renderOrganisationUnitGroupSets = () => this.state.organisationUnitGroupSets.map(organisationUnitGroupSet => (
+        <div key={organisationUnitGroupSet.id}>
+            <span>{organisationUnitGroupSet.displayName}</span>
+            <DropDown
+                style={styles.organisationUnitGroupSetDropdown}
+                value={this.state.selectedOptionsForOrganisationUnitGroupSets[organisationUnitGroupSet.id]}
+                onChange={this.handleOrganisationUnitGroupSetChange(organisationUnitGroupSet.id)}
+                menuItems={organisationUnitGroupSet.organisationUnitGroups}
+                includeEmpty
+                emptyLabel={i18n.t(i18nKeys.organisationUnitGroupSetDropdown.hintText)}
+                hintText={i18n.t(i18nKeys.organisationUnitGroupSetDropdown.hintText)}
+            />
+        </div>
+    ))
+
+    renderExtraOptions = () => (
+        <div style={this.state.showOptions ? styles.showOptions : styles.hideOptions}>
+            { this.renderOrganisationUnitGroupSets() }
+        </div>
+    )
+
     render() {
         return (
             <div>
@@ -106,6 +167,7 @@ export class DataSetReportForm extends PureComponent {
                     label={i18n.t(i18nKeys.dataSetReport.selectedDataSetOnlyLabel)}
                 />
                 <OrganisationUnitsTree />
+                { this.renderExtraOptions() }
             </div>
         );
     }
