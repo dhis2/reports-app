@@ -8,6 +8,9 @@ export const i18nKeys = {
     organisationUnitGroupSetDropdown: {
         hintText: 'Select Option',
     },
+    periodPicker: {
+        periodTypeHintText: 'Select Period Type',
+    },
     availableOrganisationUnitsTree: {
         updatingMessage: 'Updating Organisation Units Tree...',
     },

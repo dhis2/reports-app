@@ -9,6 +9,7 @@ import DataSets from '../../components/datasets-dropdown/DatasetsDropdown';
 import OrganisationUnitsTree from '../../components/available-organisation-units-tree/AvailableOrganisationUnitsTree';
 import OrganisationUnitGroupOptions from '../../components/organisation-unit-group-sets/OrganisationUnitGroupSets';
 import DataSetOptions from '../../components/data-set-dimensions/DataSetDimensions';
+import PeriodPickerComponent from '../../components/period-picker-with-period-type/PeriodPickerWithPeriodType';
 
 /* i18n */
 import i18n from '../../locales';
@@ -30,6 +31,7 @@ class DataSetReportForm extends PureComponent {
             organisationUnitGroupSets: [],
             selectedOptionsForOrganisationUnitGroupSets: {},
             showOptions: false,
+            selectedPeriod: null,
         };
     }
 
@@ -57,28 +59,34 @@ class DataSetReportForm extends PureComponent {
         });
     }
 
-    handleDimensionChange = (dimensionsId, element) => {
+    handleDimensionChange = (dimensionsId, event) => {
         // copy of current selections
         const selectedOptionsForDimensions = { ...this.state.selectedOptionsForDimensions };
-        selectedOptionsForDimensions[dimensionsId] = element.target.value;
+        selectedOptionsForDimensions[dimensionsId] = event.target.value;
 
         this.setState({
             selectedOptionsForDimensions,
         });
     }
 
-    handleSelectedDataSetOnlyChange = (event, value) => {
+    handlePeriodChange = (selectedPeriod) => {
         this.setState({
-            selectedDataSetOnly: value,
+            selectedPeriod,
         });
     }
 
-    handleOrganisationUnitGroupSetChange = (organisationUnitGroupSetId, element) => {
+    handleSelectedDataSetOnlyChange = (event, selectedDataSetOnly) => {
+        this.setState({
+            selectedDataSetOnly,
+        });
+    }
+
+    handleOrganisationUnitGroupSetChange = (organisationUnitGroupSetId, event) => {
         // copy of current selections
         const selectedOptionsForOrganisationUnitGroupSets = {
             ...this.state.selectedOptionsForOrganisationUnitGroupSets,
         };
-        selectedOptionsForOrganisationUnitGroupSets[organisationUnitGroupSetId] = element.target.value;
+        selectedOptionsForOrganisationUnitGroupSets[organisationUnitGroupSetId] = event.target.value;
 
         this.setState({
             selectedOptionsForOrganisationUnitGroupSets,
@@ -107,6 +115,9 @@ class DataSetReportForm extends PureComponent {
                         onChange={this.handleDimensionChange}
                     />
                 }
+                <PeriodPickerComponent
+                    onChange={this.handlePeriodChange}
+                />
                 <CheckBox
                     onChange={this.handleSelectedDataSetOnlyChange}
                     value={this.state.selectedDataSetOnly}
