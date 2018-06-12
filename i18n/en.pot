@@ -5,8 +5,14 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-06-12T08:04:40.181Z\n"
-"PO-Revision-Date: 2018-06-12T08:04:40.181Z\n"
+"POT-Creation-Date: 2018-06-12T17:13:02.147Z\n"
+"PO-Revision-Date: 2018-06-12T17:13:02.147Z\n"
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Save"
+msgstr ""
 
 msgid "Select Data Set"
 msgstr ""
@@ -83,10 +89,10 @@ msgid ""
 "or unaccepting data."
 msgstr ""
 
-msgid "Actions"
+msgid "Name"
 msgstr ""
 
-msgid "Name"
+msgid "Actions"
 msgstr ""
 
 msgid "Create"
@@ -102,6 +108,54 @@ msgid "Delete"
 msgstr ""
 
 msgid "Show Details"
+msgstr ""
+
+msgid "Add users and user groups"
+msgstr ""
+
+msgid "Enter names"
+msgstr ""
+
+msgid "Sharing settings"
+msgstr ""
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Created By"
+msgstr ""
+
+msgid "Who has access"
+msgstr ""
+
+msgid "External access (without login)"
+msgstr ""
+
+msgid "Can edit and view"
+msgstr ""
+
+msgid "Can view"
+msgstr ""
+
+msgid "Can view only"
+msgstr ""
+
+msgid "No access"
+msgstr ""
+
+msgid "Public access (with login)"
+msgstr ""
+
+msgid "Public can edit"
+msgstr ""
+
+msgid "Public can view"
+msgstr ""
+
+msgid "Public can find, view and edit"
+msgstr ""
+
+msgid "Close"
 msgstr ""
 
 msgid "week"

@@ -5,7 +5,7 @@ import { MultiToggle, DatePicker, SelectField, CheckBox, TextField } from '@dhis
 import { FormBuilder, Validators } from '@dhis2/d2-ui-forms';
 
 /* Styles */
-import styles from './AddNewReport.style';
+import styles from './AddNewStdReport.style';
 
 /* i18n */
 import i18n from '../../../locales';
