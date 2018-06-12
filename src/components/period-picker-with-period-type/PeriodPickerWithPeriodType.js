@@ -50,7 +50,7 @@ export class PeriodPickerWithPeriodType extends PureComponent {
             this.setState({
                 periodTypes: periodTypesResponse.periodTypes.map(periodType => ({
                     id: periodType.name,
-                    displayName: periodType.name,
+                    displayName: i18n.t(i18nKeys.periodPicker.labels[periodType.name]),
                 })),
             });
         }).catch(() => {

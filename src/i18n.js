@@ -10,6 +10,25 @@ export const i18nKeys = {
     },
     periodPicker: {
         periodTypeHintText: 'Select Period Type',
+        /* do not change property names, those are ids from period types server */
+        labels: {
+            Daily: 'Daily',
+            Weekly: 'Weekly',
+            WeeklyWednesday: 'Weekly Wednesday',
+            WeeklyThursday: 'Weekly Thursday',
+            WeeklySaturday: 'Weekly Saturday',
+            WeeklySunday: 'Weekly Sunday',
+            BiWeekly: 'Bi-Weekly',
+            Monthly: 'Monthly',
+            BiMonthly: 'Bi-Monthly',
+            Quarterly: 'Quarterly',
+            SixMonthly: 'Six-Monthly',
+            SixMonthlyApril: 'Six-Monthly April',
+            Yearly: 'Yearly',
+            FinancialApril: 'Financial-April',
+            FinancialJuly: 'Financial-July',
+            FinancialOct: 'Financial-Oct',
+        },
     },
     availableOrganisationUnitsTree: {
         updatingMessage: 'Updating Organisation Units Tree...',
