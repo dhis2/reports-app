@@ -2,6 +2,9 @@ export const i18nKeys = {
     datasetsDropdown: {
         hintText: 'Select Data Set',
     },
+    dimensionsDropdown: {
+        hintText: 'Select Option',
+    },
     availableOrganisationUnitsTree: {
         updatingMessage: 'Updating Organisation Units Tree...',
     },
