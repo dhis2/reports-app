@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 /* d2-ui components */
-import { CheckBox, DropDown } from '@dhis2/d2-ui-core';
+import { CheckBox, DropDown, Button } from '@dhis2/d2-ui-core';
 
 /* App context */
 import AppContext from '../../context';
@@ -41,6 +41,14 @@ export class DataSetReportForm extends PureComponent {
 
     componentDidMount() {
         this.fetchOrganisationUnitGroupSets();
+    }
+
+    getReport = () => {
+
+    }
+
+    cancelReport = () => {
+
     }
 
     toggleShowOptions = () => {
@@ -150,7 +158,7 @@ export class DataSetReportForm extends PureComponent {
 
     renderExtraOptions = () => (
         <div style={this.state.showOptions ? styles.showOptions : styles.hideOptions}>
-            { this.renderOrganisationUnitGroupSets() }
+            {this.renderOrganisationUnitGroupSets()}
         </div>
     )
 
@@ -160,7 +168,7 @@ export class DataSetReportForm extends PureComponent {
                 <DataSets
                     onChange={this.handleDataSetChange}
                 />
-                { this.renderDimensionDropdowns() }
+                {this.renderDimensionDropdowns()}
                 <CheckBox
                     onChange={this.handleSelectedDataSetOnlyChange}
                     value={this.state.selectedDataSetOnly}
@@ -168,13 +176,28 @@ export class DataSetReportForm extends PureComponent {
                 />
                 <OrganisationUnitsTree />
                 <span
+                    style={styles.showMoreOptionsButton}
                     role="button"
                     tabIndex="0"
                     onClick={this.toggleShowOptions}
                 >
-                    { i18n.t(i18nKeys.dataSetReport.showMoreOptions) }
+                    {i18n.t(i18nKeys.dataSetReport.showMoreOptions)}
                 </span>
-                { this.renderExtraOptions() }
+                {this.renderExtraOptions()}
+                <Button
+                    raised
+                    color="primary"
+                    onClick={this.getReport}
+                >
+                    {i18n.t(i18nKeys.dataSetReport.mainAction)}
+                </Button>
+                <Button
+                    raised
+                    color="accent"
+                    onClick={this.cancelReport}
+                >
+                    {i18n.t(i18nKeys.dataSetReport.cancelAction)}
+                </Button>
             </div>
         );
     }
@@ -182,7 +205,7 @@ export class DataSetReportForm extends PureComponent {
 
 export default props => (
     <AppContext.Consumer>
-        { appContext => (
+        {appContext => (
             <DataSetReportForm
                 d2={appContext.d2}
                 {...props}

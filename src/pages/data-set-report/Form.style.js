@@ -11,6 +11,9 @@ const DataReportForm = {
     organisationUnitGroupSetDropdown: {
         display: 'block',
     },
+    showMoreOptionsButton: {
+        display: 'block',
+    },
 };
 
 export default DataReportForm;

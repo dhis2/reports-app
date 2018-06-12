@@ -29,6 +29,8 @@ export const i18nKeys = {
         selectedDataSetOnlyLabel: 'Use data for selected unit only',
         organisationUnitLabel: 'Report organisation unit',
         showMoreOptions: 'Show more options',
+        mainAction: 'Get Report',
+        cancelAction: 'Cancel',
     },
     reportingRateSummary: {
         homeLabel: 'Report Rate Summary',
