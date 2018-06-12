@@ -11,6 +11,11 @@ export const i18nKeys = {
         header: 'Standard Report',
         description: 'View and add reports based on the JasperReports library. ' +
         'These can be based on report tables and can be designed in iReport.',
+        search: 'Search',
+        addNewReport: {
+            title: 'Add New Report',
+            reportRightsMessage: 'This object will be created with public edit and view rights',
+        },
     },
     dataSetReport: {
         homeLabel: 'Data Set Report',
@@ -46,6 +51,13 @@ export const i18nKeys = {
         description: 'View data and manage data approval by approving or unapproving, accepting or unaccepting data.',
     },
     d2UiComponents: {
+        actions: 'Actions',
+        display_name: 'Name',
+        createReport: 'Create',
+        editReport: 'Edit Report',
+        sharingSettings: 'Sharing Settings',
+        delete: 'Delete',
+        showDetails: 'Show Details',
         app_search_placeholder: 'Search',
         week: 'week',
         month: 'month',

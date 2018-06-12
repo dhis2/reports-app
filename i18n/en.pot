@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-06-12T07:56:29.633Z\n"
-"PO-Revision-Date: 2018-06-12T07:56:29.633Z\n"
+"POT-Creation-Date: 2018-06-12T08:02:52.028Z\n"
+"PO-Revision-Date: 2018-06-12T08:02:52.028Z\n"
 
 msgid "Select Data Set"
 msgstr ""
@@ -23,6 +23,15 @@ msgstr ""
 msgid ""
 "View and add reports based on the JasperReports library. These can be based "
 "on report tables and can be designed in iReport."
+msgstr ""
+
+msgid "Search"
+msgstr ""
+
+msgid "Add New Report"
+msgstr ""
+
+msgid "This object will be created with public edit and view rights"
 msgstr ""
 
 msgid "Data Set Report"
@@ -74,7 +83,25 @@ msgid ""
 "or unaccepting data."
 msgstr ""
 
-msgid "Search"
+msgid "Actions"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Create"
+msgstr ""
+
+msgid "Edit Report"
+msgstr ""
+
+msgid "Sharing Settings"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Show Details"
 msgstr ""
 
 msgid "week"

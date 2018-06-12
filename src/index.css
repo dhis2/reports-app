@@ -1,11 +1,11 @@
 body {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 html {
-  background: #f3f3f3;
-  font-family: 'Roboto', sans-serif;
+    background: #f3f3f3;
+    font-family: 'Roboto', sans-serif;
 }
 
 h1 {
@@ -32,16 +32,13 @@ h1 {
 .d2-ui-table {
     margin-bottom: 0 !important;
     margin-top: 0 !important;
+}
+
+.d2-ui-table__rows__row {
     font-size: 14px;
-    font-family: 'Roboto', sans-serif;
 }
 
 /* D2-UI pagination overrides */
-.data-table-pager {
-    font-size: 14px;
-    font-family: 'Roboto', sans-serif;
-}
-
 .data-table-pager--page-info {
     padding: 0 !important;
 }
