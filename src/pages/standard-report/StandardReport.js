@@ -1,36 +1,32 @@
 /* React */
 import React from 'react';
 import PropTypes from 'prop-types';
-
-/* Material ui */
+/* material ui */
 import { Dialog } from 'material-ui';
-
 /* d2-ui */
 import Table from '@dhis2/d2-ui-table';
-import { Pagination, SvgIcon, Button, TextField } from '@dhis2/d2-ui-core';
-
+import SharingDialog from '@dhis2/d2-ui-sharing-dialog';
+import { Button, Pagination, SvgIcon, TextField } from '@dhis2/d2-ui-core';
 /* d2-ui styles */
 import '@dhis2/d2-ui-core/build/css/Table.css';
 import '@dhis2/d2-ui-core/build/css/Pagination.css';
-
-/* style */
+/* styles */
 import styles from './StandardReport.style';
 import appStyles from '../../styles';
-
-/* App components */
-import AddNewReport from './add-new-report/AddNewReport';
+/* app components */
 import Page from '../Page';
 import PageHelper from '../../components/page-helper/PageHelper';
-
-/* Utils */
+import AddNewStdReport from './add-new-report/AddNewStdReport';
+import CreateStdReport from './create-report/CreateStdReport';
+import EditStdReport from './edit-report/EditStdReport';
+/* app config */
+import { CONTEXT_MENU_ACTION, CONTEXT_MENU_ICONS, REPORTS_ENDPOINT } from './standard.report.conf';
+/* utils */
 import { getDocsUrl } from '../../helpers/docs';
 import { calculatePageValue, INITIAL_PAGER } from '../../helpers/pagination';
-
 /* i18n */
 import i18n from '../../locales';
 import { i18nKeys } from '../../i18n';
-import SharingSettings from './sharing-settings/SharingSettings';
-import { CONTEXT_MENU_ACTION, REPORTS_ENDPOINT, CONTEXT_MENU_ICONS } from './standard.report.conf';
 
 class StandardReport extends Page {
     constructor(props) {
@@ -39,7 +35,7 @@ class StandardReport extends Page {
         this.state = {
             pager: INITIAL_PAGER,
             reports: [],
-            selectedReport: {},
+            selectedReport: { id: '', displayName: '' },
             selectedAction: null,
             search: '',
             open: false,
@@ -119,6 +115,7 @@ class StandardReport extends Page {
     }
 
     /* Add new Report */
+
     // TODO: implement
     addNewReport() {
         this.setState({ loading: true, open: true });
@@ -131,31 +128,96 @@ class StandardReport extends Page {
 
     /* Context Menu */
     createReport(...args) {
-        this.setState({ ...this.state, open: true, selectedReport: args, selectedAction: CONTEXT_MENU_ACTION.CREATE });
+        this.setState({ open: true, selectedReport: args, selectedAction: CONTEXT_MENU_ACTION.CREATE });
     }
 
     editReport(...args) {
-        this.setState({ ...this.state, open: true, selectedReport: args, selectedAction: CONTEXT_MENU_ACTION.EDIT });
+        this.setState({ open: true, selectedReport: args, selectedAction: CONTEXT_MENU_ACTION.EDIT });
     }
 
-    sharingSettings(...args) {
-        this.setState({ ...this.state, open: true, selectedReport: args, selectedAction: CONTEXT_MENU_ACTION.SHARING_SETTINGS });
+    sharingSettings(args) {
+        this.setState({
+            open: true,
+            selectedReport: args,
+            selectedAction: CONTEXT_MENU_ACTION.SHARING_SETTINGS,
+        });
     }
 
     delete(...args) {
-        this.setState({ ...this.state, open: true, selectedReport: args, selectedAction: CONTEXT_MENU_ACTION.DELETE });
+        this.setState({
+            open: true,
+            selectedReport: args,
+            selectedAction: CONTEXT_MENU_ACTION.DELETE,
+        });
     }
 
     showDetails(...args) {
-        this.setState({ ...this.state, open: true, selectedReport: args, selectedAction: CONTEXT_MENU_ACTION.SHOW_DETAILS });
+        this.setState({
+            open: true,
+            selectedReport: args,
+            selectedAction: CONTEXT_MENU_ACTION.SHOW_DETAILS,
+        });
+    }
+
+    // TODO: Check Show Details
+    getActionComponent() {
+        let dialogContent;
+
+        const actions = [
+            <Button
+                style={appStyles.dialogBtn}
+                onClick={this.handleClose}
+            >
+                {i18n.t(i18nKeys.buttons.cancel)}
+            </Button>,
+            <Button
+                raised
+                color={'primary'}
+                style={appStyles.dialogBtn}
+                onClick={this.handleClose}
+            >
+                {i18n.t(i18nKeys.buttons.save)}
+            </Button>,
+        ];
+
+        switch (this.state.selectedAction) {
+        case CONTEXT_MENU_ACTION.CREATE:
+            dialogContent = <CreateStdReport />;
+            break;
+        case CONTEXT_MENU_ACTION.SHARING_SETTINGS:
+            return (
+                <SharingDialog
+                    open={this.state.open}
+                    id={this.state.selectedReport.id}
+                    type={'report'}
+                    onRequestClose={this.handleClose}
+                    d2={this.props.d2}
+                />
+            );
+        case CONTEXT_MENU_ACTION.DELETE:
+            dialogContent = (<div>Are you Sure?</div>);
+            break;
+        case CONTEXT_MENU_ACTION.EDIT:
+            dialogContent = <EditStdReport />;
+            break;
+        default:
+            dialogContent = <AddNewStdReport />;
+            break;
+        }
+
+        return (
+            <Dialog
+                title={i18n.t(i18nKeys.standardReport.addNewReport.title)}
+                actions={actions}
+                modal={Boolean(true)}
+                open={this.state.open}
+            >
+                {dialogContent}
+            </Dialog>
+        );
     }
 
     render() {
-        const actions = [
-            <Button raised style={appStyles.dialogBtn} onClick={this.handleClose}>CANCEL</Button>,
-            <Button raised color={'primary'} style={appStyles.dialogBtn} onClick={this.handleClose}>SAVE</Button>,
-        ];
-
         // TODO: Check permissions
         const contextMenuOptions = {
             createReport: this.createReport,
@@ -165,28 +227,10 @@ class StandardReport extends Page {
             showDetails: this.showDetails,
         };
 
-        let actionContent;
-        switch (this.state.selectedAction) {
-        case CONTEXT_MENU_ACTION.CREATE:
-            actionContent = <AddNewReport />;
-            break;
-        case CONTEXT_MENU_ACTION.SHOW_DETAILS:
-            actionContent = <SharingSettings />;
-            break;
-        case CONTEXT_MENU_ACTION.DELETE:
-            actionContent = <AddNewReport />;
-            break;
-        case CONTEXT_MENU_ACTION.EDIT:
-            actionContent = <AddNewReport />;
-            break;
-        default:
-            break;
-        }
-
         return (
             <div>
                 <h1>
-                    Standard Report
+                    { i18n.t(i18nKeys.standardReport.homeLabel) }
                     <PageHelper
                         url={getDocsUrl(this.props.d2.system.version, this.props.sectionKey)}
                     />
@@ -218,14 +262,7 @@ class StandardReport extends Page {
                 <Button fab onClick={this.addNewReport} style={appStyles.addButton}>
                     <SvgIcon icon={'Add'} />
                 </Button>
-                <Dialog
-                    title={i18n.t(i18nKeys.standardReport.addNewReport.title)}
-                    actions={actions}
-                    modal={Boolean(true)}
-                    open={this.state.open}
-                >
-                    { actionContent }
-                </Dialog>
+                { this.getActionComponent() }
             </div>
         );
     }

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 
-class SharingSettings extends PureComponent {
+class CreateStdReport extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -10,9 +10,9 @@ class SharingSettings extends PureComponent {
 
     render() {
         return (
-            <h1>SharingSettings</h1>
+            <h1>CreateStdReport</h1>
         );
     }
 }
 
-export default SharingSettings;
+export default CreateStdReport;
