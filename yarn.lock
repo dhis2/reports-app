@@ -80,6 +80,17 @@
     recompose "^0.26.0"
     rxjs "^5.5.7"
 
+"@dhis2/d2-ui-sharing-dialog@^1.0.10":
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/@dhis2/d2-ui-sharing-dialog/-/d2-ui-sharing-dialog-1.0.10.tgz#a565840cab83c5bf0ccf8c5228cf46b4c0175f03"
+  dependencies:
+    "@dhis2/d2-ui-core" "^1.2.0"
+    babel-runtime "^6.26.0"
+    material-ui "^0.19.3"
+    prop-types "^15.5.10"
+    recompose "^0.26.0"
+    rxjs "^5.5.7"
+
 "@dhis2/d2-ui-table@^1.0.11":
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/@dhis2/d2-ui-table/-/d2-ui-table-1.0.11.tgz#aa701b2c793b9921d626b110399f45db33dcabf6"
