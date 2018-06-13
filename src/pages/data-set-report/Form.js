@@ -16,7 +16,8 @@ import i18n from '../../locales';
 import { i18nKeys } from '../../i18n';
 
 /* styles */
-import styles from './Form.style';
+import styles from '../../styles';
+import formStyles from './Form.style';
 
 class DataSetReportForm extends PureComponent {
     constructor() {
@@ -26,9 +27,7 @@ class DataSetReportForm extends PureComponent {
             selectedDataSet: null,
             selectedDataSetOnly: false,
             selectedOrgUnit: null,
-            dimensions: [],
             selectedOptionsForDimensions: {},
-            organisationUnitGroupSets: [],
             selectedOptionsForOrganisationUnitGroupSets: {},
             showOptions: false,
             selectedPeriod: null,
@@ -36,10 +35,6 @@ class DataSetReportForm extends PureComponent {
     }
 
     getReport = () => {
-
-    }
-
-    cancelReport = () => {
 
     }
 
@@ -54,7 +49,6 @@ class DataSetReportForm extends PureComponent {
         /* update selected data set and reset options */
         this.setState({
             selectedDataSet,
-            dimensions: [],
             selectedOptionsForDimensions: {},
         });
     }
@@ -94,7 +88,7 @@ class DataSetReportForm extends PureComponent {
     }
 
     renderExtraOptions = () => (
-        <div style={this.state.showOptions ? styles.showOptions : styles.hideOptions}>
+        <div style={this.state.showOptions ? formStyles.showOptions : formStyles.hideOptions}>
             <OrganisationUnitGroupOptions
                 values={this.state.selectedOptionsForOrganisationUnitGroupSets}
                 onChange={this.handleOrganisationUnitGroupSetChange}
@@ -104,49 +98,52 @@ class DataSetReportForm extends PureComponent {
 
     render() {
         return (
-            <div>
-                <DataSets
-                    onChange={this.handleDataSetChange}
-                />
-                { this.state.selectedDataSet &&
-                    <DataSetOptions
-                        dataSetId={this.state.selectedDataSet}
-                        values={this.state.selectedOptionsForDimensions}
-                        onChange={this.handleDimensionChange}
+            <div className="row">
+                <div className="col-md-6">
+                    <div style={styles.formLabel}>
+                        {i18n.t(i18nKeys.dataSetReport.organisationUnitLabel)}
+                    </div>
+                    <OrganisationUnitsTree />
+                    <span
+                        style={formStyles.showMoreOptionsButton}
+                        role="button"
+                        tabIndex="0"
+                        onClick={this.toggleShowOptions}
+                    >
+                        {i18n.t(i18nKeys.dataSetReport.showMoreOptions)}
+                    </span>
+                    {this.renderExtraOptions()}
+                </div>
+                <div className="col-md-6">
+                    <DataSets
+                        onChange={this.handleDataSetChange}
                     />
-                }
-                <PeriodPickerComponent
-                    onChange={this.handlePeriodChange}
-                />
-                <CheckBox
-                    onChange={this.handleSelectedDataSetOnlyChange}
-                    value={this.state.selectedDataSetOnly}
-                    label={i18n.t(i18nKeys.dataSetReport.selectedDataSetOnlyLabel)}
-                />
-                <OrganisationUnitsTree />
-                <span
-                    style={styles.showMoreOptionsButton}
-                    role="button"
-                    tabIndex="0"
-                    onClick={this.toggleShowOptions}
-                >
-                    {i18n.t(i18nKeys.dataSetReport.showMoreOptions)}
-                </span>
-                {this.renderExtraOptions()}
-                <Button
-                    raised
-                    color="primary"
-                    onClick={this.getReport}
-                >
-                    {i18n.t(i18nKeys.dataSetReport.mainAction)}
-                </Button>
-                <Button
-                    raised
-                    color="accent"
-                    onClick={this.cancelReport}
-                >
-                    {i18n.t(i18nKeys.dataSetReport.cancelAction)}
-                </Button>
+                    {this.state.selectedDataSet &&
+                        <DataSetOptions
+                            dataSetId={this.state.selectedDataSet}
+                            values={this.state.selectedOptionsForDimensions}
+                            onChange={this.handleDimensionChange}
+                        />
+                    }
+                    <PeriodPickerComponent
+                        label={i18n.t(i18nKeys.dataSetReport.reportPeriodLabel)}
+                        onChange={this.handlePeriodChange}
+                    />
+                    <CheckBox
+                        onChange={this.handleSelectedDataSetOnlyChange}
+                        value={this.state.selectedDataSetOnly}
+                        label={i18n.t(i18nKeys.dataSetReport.selectedDataSetOnlyLabel)}
+                    />
+                </div>
+                <div style={styles.actionsContainer}>
+                    <Button
+                        raised
+                        color="primary"
+                        onClick={this.getReport}
+                    >
+                        {i18n.t(i18nKeys.dataSetReport.mainAction)}
+                    </Button>
+                </div>
             </div>
         );
     }

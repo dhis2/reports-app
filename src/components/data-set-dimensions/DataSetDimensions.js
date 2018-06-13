@@ -12,6 +12,9 @@ import AppContext from '../../context';
 import i18n from '../../locales';
 import { i18nKeys } from '../../i18n';
 
+/* styles */
+import styles from '../../styles';
+
 export class DataSetDimensions extends PureComponent {
     static propTypes = {
         d2: PropTypes.object.isRequired,
@@ -19,9 +22,11 @@ export class DataSetDimensions extends PureComponent {
         values: PropTypes.object.isRequired,
         dataSetId: PropTypes.string.isRequired,
         dropdownStyle: PropTypes.object,
+        fullWidth: PropTypes.bool,
     }
 
     static defaultProps = {
+        fullWidth: true,
         dropdownStyle: {
             display: 'block',
         },
@@ -65,9 +70,10 @@ export class DataSetDimensions extends PureComponent {
 
     renderDimensionDropdown = dimension => (
         <div key={dimension.id}>
-            <span>{dimension.displayName}</span>
+            <span style={styles.formLabel}>{dimension.displayName}</span>
             <DropDown
                 style={this.props.dropdownStyle}
+                fullWidth={this.props.fullWidth}
                 value={this.props.values[dimension.id]}
                 onChange={this.handleDimensionChange(dimension.id)}
                 menuItems={dimension.items}

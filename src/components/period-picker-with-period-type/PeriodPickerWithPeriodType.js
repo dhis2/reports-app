@@ -12,14 +12,19 @@ import AppContext from '../../context';
 import i18n from '../../locales';
 import { i18nKeys } from '../../i18n';
 
+/* styles */
+import styles from '../../styles';
+
 export class PeriodPickerWithPeriodType extends PureComponent {
     static propTypes = {
         d2: PropTypes.object.isRequired,
         onChange: PropTypes.func,
+        label: PropTypes.string,
     }
 
     static defaultProps = {
         onChange: () => {},
+        label: i18n.t(i18nKeys.periodPicker.periodLabel),
     }
 
     /* FIXME: right now d2-ui periodPicker forces us to pass d2 through old  context api */
@@ -79,6 +84,7 @@ export class PeriodPickerWithPeriodType extends PureComponent {
     render() {
         return (
             <div>
+                <span style={{ ...styles.formLabel, display: 'block' }}>{this.props.label}</span>
                 { this.renderPeriodTypeDropdown() }
                 { this.state.selectedPeriodType &&
                     <PeriodPicker

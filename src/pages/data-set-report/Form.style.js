@@ -1,3 +1,6 @@
+/* styles */
+import { PRIMARY_COLOR } from '../../styles';
+
 const DataReportForm = {
     hideOptions: {
         display: 'none',
@@ -7,6 +10,10 @@ const DataReportForm = {
     },
     showMoreOptionsButton: {
         display: 'block',
+        cursor: 'pointer',
+        color: PRIMARY_COLOR,
+        marginTop: 5,
+        marginBottom: 5,
     },
 };
 

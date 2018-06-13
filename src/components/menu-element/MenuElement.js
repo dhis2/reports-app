@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+/* Material UI */
 import { Paper } from 'material-ui';
 
 import styles from './MenuElement.style';

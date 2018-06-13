@@ -1,7 +1,8 @@
-const LEFT_BART_WIDTH = 295;
-const HEADER_HEIGHT = '4rem';
-const MAX_WIDTH = 1400;
-const CONTENT_AREA_PADDING = 20;
+export const LEFT_BART_WIDTH = 295;
+export const HEADER_HEIGHT = '4rem';
+export const MAX_WIDTH = 1400;
+export const CONTENT_AREA_PADDING = 20;
+export const PRIMARY_COLOR = '#004ba0';
 
 const styles = {
     leftBar: {
@@ -27,6 +28,19 @@ const styles = {
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
+    },
+    formLabel: {
+        textAlign: 'left',
+        color: '#757575',
+        marginBottom: 5,
+        fontSize: '14px',
+    },
+    actionsContainer: {
+        display: 'block',
+        marginTop: 48,
+    },
+    dropdowns: {
+        margin: 0,
     },
 };
 

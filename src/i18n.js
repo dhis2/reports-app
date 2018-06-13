@@ -1,6 +1,7 @@
 export const i18nKeys = {
     datasetsDropdown: {
         hintText: 'Select Data Set',
+        dataSetLabel: 'Data set',
     },
     dimensionsDropdown: {
         hintText: 'Select Option',
@@ -9,6 +10,7 @@ export const i18nKeys = {
         hintText: 'Select Option',
     },
     periodPicker: {
+        periodLabel: 'Period',
         periodTypeHintText: 'Select Period Type',
         /* do not change property names, those are ids from period types server */
         labels: {
@@ -46,13 +48,11 @@ export const i18nKeys = {
         header: 'Data Set Report',
         description: 'View data set reports. These reports are based on data entry screens and ' +
         'will produce a report with aggregated data.',
-        dataSetLabel: 'Data set',
         reportPeriodLabel: 'Report period',
         selectedDataSetOnlyLabel: 'Use data for selected unit only',
         organisationUnitLabel: 'Report organisation unit',
         showMoreOptions: 'Show more options',
         mainAction: 'Get Report',
-        cancelAction: 'Cancel',
     },
     reportingRateSummary: {
         homeLabel: 'Report Rate Summary',

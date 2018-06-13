@@ -12,15 +12,20 @@ import AppContext from '../../context';
 import i18n from '../../locales';
 import { i18nKeys } from '../../i18n';
 
+/* styles */
+import styles from '../../styles';
+
 export class OrganisationUnitGroupSets extends PureComponent {
     static propTypes = {
         d2: PropTypes.object.isRequired,
         onChange: PropTypes.func.isRequired,
         values: PropTypes.object.isRequired,
         dropdownStyle: PropTypes.object,
+        fullWidth: PropTypes.bool,
     }
 
     static defaultProps = {
+        fullWidth: true,
         dropdownStyle: {
             display: 'block',
         },
@@ -54,9 +59,10 @@ export class OrganisationUnitGroupSets extends PureComponent {
 
     renderOrganisationUnitGroupSetDropdown = organisationUnitGroupSet => (
         <div key={organisationUnitGroupSet.id}>
-            <span>{organisationUnitGroupSet.displayName}</span>
+            <span style={styles.formLabel}>{organisationUnitGroupSet.displayName}</span>
             <DropDown
                 style={this.props.dropdownStyle}
+                fullWidth={this.props.fullWidth}
                 value={this.props.values[organisationUnitGroupSet.id]}
                 onChange={this.handleOrganisationUnitGroupSetChange(organisationUnitGroupSet.id)}
                 menuItems={organisationUnitGroupSet.organisationUnitGroups}

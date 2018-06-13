@@ -5,13 +5,19 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-06-12T13:44:38.988Z\n"
-"PO-Revision-Date: 2018-06-12T13:44:38.988Z\n"
+"POT-Creation-Date: 2018-06-13T09:31:38.514Z\n"
+"PO-Revision-Date: 2018-06-13T09:31:38.514Z\n"
 
 msgid "Select Data Set"
 msgstr ""
 
+msgid "Data set"
+msgstr ""
+
 msgid "Select Option"
+msgstr ""
+
+msgid "Period"
 msgstr ""
 
 msgid "Select Period Type"
@@ -90,9 +96,6 @@ msgid ""
 "will produce a report with aggregated data."
 msgstr ""
 
-msgid "Data set"
-msgstr ""
-
 msgid "Report period"
 msgstr ""
 
@@ -103,9 +106,6 @@ msgid "Report organisation unit"
 msgstr ""
 
 msgid "Show more options"
-msgstr ""
-
-msgid "Cancel"
 msgstr ""
 
 msgid "Report Rate Summary"
