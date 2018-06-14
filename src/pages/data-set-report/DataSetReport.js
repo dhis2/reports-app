@@ -27,9 +27,9 @@ class DataSetReport extends Page {
     }
 
     onBeforeSubmit = () => {
-        this.props.updateAppState({
+        /*        this.props.updateAppState({
             showSnackbar: true,
-        });
+        }); */
     }
 
     onSuccess = (reportHtml) => {
