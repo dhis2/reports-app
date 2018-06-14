@@ -24,7 +24,7 @@ export class DatasetsDropdown extends PureComponent {
     }
 
     static defaultProps = {
-        onChange: null,
+        onChange: () => {},
         label: i18n.t(i18nKeys.datasetsDropdown.dataSetLabel),
         fullWidth: true,
     }

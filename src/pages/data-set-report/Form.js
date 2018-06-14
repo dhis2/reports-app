@@ -1,8 +1,12 @@
 /* React */
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
 /* d2-ui components */
 import { CheckBox, Button } from '@dhis2/d2-ui-core';
+
+/* App context */
+import AppContext from '../../context';
 
 /* App components */
 import DataSets from '../../components/datasets-dropdown/DatasetsDropdown';
@@ -19,7 +23,21 @@ import { i18nKeys } from '../../i18n';
 import styles from '../../styles';
 import formStyles from './Form.style';
 
-class DataSetReportForm extends PureComponent {
+export class DataSetReportForm extends PureComponent {
+    static propTypes = {
+        d2: PropTypes.object.isRequired,
+        onBeforeSubmit: PropTypes.func,
+        onSuccess: PropTypes.func,
+        onError: PropTypes.func,
+    }
+
+    static defaultProps = {
+        onBeforeSubmit: () => {},
+        onSuccess: () => {},
+        onError: () => {},
+        fullWidth: true,
+    }
+
     constructor() {
         super();
 
@@ -35,13 +53,36 @@ class DataSetReportForm extends PureComponent {
     }
 
     getReport = () => {
+        this.props.onBeforeSubmit();
 
+        const api = this.props.d2.Api.getApi();
+        const dataSetOptions = Object.keys(this.state.selectedOptionsForDimensions)
+            .map(dimensionKey => `${dimensionKey}:${this.state.selectedOptionsForDimensions[dimensionKey]}`);
+        const orgUnitGroupsOptions = Object.keys(this.state.selectedOptionsForOrganisationUnitGroupSets)
+            .map(dimensionKey =>
+                `${dimensionKey}:${this.state.selectedOptionsForOrganisationUnitGroupSets[dimensionKey]}`,
+            );
+        const dimensions = [...dataSetOptions, ...orgUnitGroupsOptions];
+
+        // eslint-disable-next-line
+        const url = `dataSetReport?ds=${this.state.selectedDataSet}&pe=${this.state.selectedPeriod}&ou=${this.state.selectedOrgUnit}&selectedUnitOnly=${this.state.selectedDataSetOnly}&dimension=${dimensions}`;
+        api.get(url).then((response) => {
+            this.props.onSuccess(response);
+        }).catch((error) => {
+            this.props.onError(error);
+        });
     }
 
     toggleShowOptions = () => {
         const newShowOptionsValue = !this.state.showOptions;
         this.setState({
             showOptions: newShowOptionsValue,
+        });
+    }
+
+    handleOrganisationUnitChange = (selectedOrgUnit) => {
+        this.setState({
+            selectedOrgUnit,
         });
     }
 
@@ -103,7 +144,9 @@ class DataSetReportForm extends PureComponent {
                     <div style={styles.formLabel}>
                         {i18n.t(i18nKeys.dataSetReport.organisationUnitLabel)}
                     </div>
-                    <OrganisationUnitsTree />
+                    <OrganisationUnitsTree
+                        onChange={this.handleOrganisationUnitChange}
+                    />
                     <span
                         style={formStyles.showMoreOptionsButton}
                         role="button"
@@ -149,4 +192,13 @@ class DataSetReportForm extends PureComponent {
     }
 }
 
-export default DataSetReportForm;
+export default props => (
+    <AppContext.Consumer>
+        { appContext => (
+            <DataSetReportForm
+                d2={appContext.d2}
+                {...props}
+            />
+        )}
+    </AppContext.Consumer>
+);

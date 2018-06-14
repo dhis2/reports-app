@@ -8,6 +8,7 @@ import { Paper } from 'material-ui';
 import Page from '../Page';
 import PageHelper from '../../components/page-helper/PageHelper';
 import Form from './Form';
+import Report from './Report';
 
 /* utils */
 import { getDocsUrl } from '../../helpers/docs';
@@ -21,7 +22,20 @@ class DataSetReport extends Page {
 
         this.state = {
             showForm: true,
+            reportHtml: null,
         };
+    }
+
+    onBeforeSubmit = () => {
+        this.props.updateAppState({
+            showSnackbar: true,
+        });
+    }
+
+    onSuccess = (reportHtml) => {
+        this.setState({
+            reportHtml,
+        });
     }
 
     render() {
@@ -35,8 +49,16 @@ class DataSetReport extends Page {
                 </h1>
                 <Paper style={styles.container}>
                     <div style={{ display: this.state.showForm ? 'block' : 'none' }}>
-                        <Form />
+                        <Form
+                            onBeforeSubmit={this.onBeforeSubmit}
+                            onSuccess={this.onSuccess}
+                        />
                     </div>
+                    { this.state.reportHtml &&
+                        <div className="report">
+                            <Report reportHtml={this.state.reportHtml} />
+                        </div>
+                    }
                 </Paper>
             </div>
         );

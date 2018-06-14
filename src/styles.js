@@ -5,14 +5,6 @@ export const CONTENT_AREA_PADDING = 20;
 export const PRIMARY_COLOR = '#004ba0';
 
 const styles = {
-    leftBar: {
-        width: LEFT_BART_WIDTH,
-        position: 'fixed',
-        bottom: 0,
-        top: 0,
-        left: 0,
-        paddingTop: HEADER_HEIGHT,
-    },
     contentWrapper: {
         marginLeft: 295,
         maxWidth: MAX_WIDTH,
@@ -38,6 +30,7 @@ const styles = {
     actionsContainer: {
         display: 'block',
         marginTop: 48,
+        marginBotton: 16,
     },
     dropdowns: {
         margin: 0,

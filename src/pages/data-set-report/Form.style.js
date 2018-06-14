@@ -14,6 +14,7 @@ const DataReportForm = {
         color: PRIMARY_COLOR,
         marginTop: 5,
         marginBottom: 5,
+        outline: 'none',
     },
 };
 
