@@ -9,7 +9,7 @@ const MenuGridStyle = {
         paddingRight: '30px',
         paddingBottom: '20px',
         backgroundColor: '#ffffff',
-        boxShadow: '0 4px 10px 0 rgba(0, 0, 0, 0.25)',
+        boxShadow: 'rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px',
         borderRadius: '5px',
     },
     sectionTitleBar: {
