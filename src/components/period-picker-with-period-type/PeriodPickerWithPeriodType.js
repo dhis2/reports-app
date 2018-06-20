@@ -76,6 +76,7 @@ export class PeriodPickerWithPeriodType extends PureComponent {
             onChange={this.onChangePeriodType}
             menuItems={this.state.periodTypes}
             includeEmpty
+            fullWidth
             emptyLabel={i18n.t(i18nKeys.periodPicker.periodTypeHintText)}
             hintText={i18n.t(i18nKeys.periodPicker.periodTypeHintText)}
         />
