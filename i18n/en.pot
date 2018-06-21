@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-06-21T12:08:29.571Z\n"
-"PO-Revision-Date: 2018-06-21T12:08:29.571Z\n"
+"POT-Creation-Date: 2018-06-21T13:14:51.398Z\n"
+"PO-Revision-Date: 2018-06-21T13:14:51.398Z\n"
 
 msgid "Select Data Set"
 msgstr ""
@@ -105,10 +105,22 @@ msgstr ""
 msgid "Report organisation unit"
 msgstr ""
 
+msgid "Share"
+msgstr ""
+
+msgid "Share a comment"
+msgstr ""
+
 msgid "Show more options"
 msgstr ""
 
 msgid "Export Report"
+msgstr ""
+
+msgid "Comment Shared"
+msgstr ""
+
+msgid "A comment must be defined"
 msgstr ""
 
 msgid "Report Rate Summary"

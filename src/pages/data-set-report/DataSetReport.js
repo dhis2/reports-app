@@ -24,10 +24,11 @@ import OrganisationUnitGroupOptions from '../../components/organisation-unit-gro
 import DataSetOptions from '../../components/data-set-dimensions/DataSetDimensions';
 import PeriodPickerComponent from '../../components/period-picker-with-period-type/PeriodPickerWithPeriodType';
 import Report from './Report';
+import Share from './Share';
 
 /* utils */
 import { getDocsUrl } from '../../helpers/docs';
-import { LOADING, SUCCESS } from '../../helpers/feedbackSnackBarTypes';
+import { ERROR, LOADING, SUCCESS } from '../../helpers/feedbackSnackBarTypes';
 
 /* styles */
 import styles from '../../styles';
@@ -51,6 +52,7 @@ class DataSetReport extends Page {
             selectedOptionsForOrganisationUnitGroupSets: {},
             showOptions: false,
             selectedPeriod: null,
+            comment: '',
         };
     }
 
@@ -132,6 +134,57 @@ class DataSetReport extends Page {
             });
         }).catch((error) => {
             this.manageError(error);
+        });
+    }
+
+    shareComment = () => {
+        // eslint-disable-next-line
+        const url = `interpretations/dataSetReport/${this.state.selectedDataSet}?pe=${this.state.selectedPeriod}&ou=${this.state.selectedOrgUnit}`;
+        const api = this.props.d2.Api.getApi();
+
+        if (this.state.comment.trim()) {
+            this.props.updateAppState({
+                showSnackbar: true,
+                snackbarConf: {
+                    type: LOADING,
+                    message: i18n.t(i18nKeys.messages.loading),
+                },
+            });
+
+            const headersRequest = {
+                headers: {
+                    'content-type': 'text/plain',
+                },
+            };
+
+            api.post(url, this.state.comment, headersRequest).then(() => {
+                this.props.updateAppState({
+                    showSnackbar: true,
+                    snackbarConf: {
+                        type: SUCCESS,
+                        message: i18n.t(i18nKeys.dataSetReport.commentShared),
+                    },
+                });
+            }).catch((error) => {
+                this.manageError(error);
+            });
+        } else {
+            this.props.updateAppState({
+                showSnackbar: true,
+                snackbarConf: {
+                    type: ERROR,
+                    message: i18n.t(i18nKeys.dataSetReport.invalidComment),
+                },
+                pageState: {
+                    loading: false,
+                },
+            });
+        }
+    }
+
+    handleCommentChange = (comment) => {
+        this.setState({
+            comment,
         });
     }
 
@@ -276,6 +329,11 @@ class DataSetReport extends Page {
                             id="report-container"
                             style={{ display: this.state.reportHtml && !this.state.showForm ? 'block' : 'none' }}
                         >
+                            <Share
+                                comment={this.state.comment}
+                                onChange={this.handleCommentChange}
+                                onSubmit={this.shareComment}
+                            />
                             <Report reportHtml={this.state.reportHtml} />
                             <div style={styles.actionsContainer}>
                                 <Button
