@@ -4,6 +4,9 @@ import React from 'react';
 /* Material UI */
 import { Paper } from 'material-ui';
 
+/* js-xlsx */
+import XLSX from 'xlsx';
+
 /* App components */
 import Page from '../Page';
 import PageHelper from '../../components/page-helper/PageHelper';
@@ -38,6 +41,20 @@ class DataSetReport extends Page {
         });
     }
 
+    onError = () => {
+
+    }
+
+    exportReportToXls = () => {
+        const reportTables = document.querySelectorAll('#report-container table');
+        const workbook = XLSX.utils.book_new();
+        for (let i = 0; i < reportTables.length; i++) {
+            const worksheet = XLSX.utils.table_to_sheet(reportTables[i]);
+            XLSX.utils.book_append_sheet(workbook, worksheet, `Worksheet ${i}`);
+        }
+        XLSX.writeFile(workbook, 'report.xlsx');
+    }
+
     render() {
         return (
             <div>
@@ -52,10 +69,12 @@ class DataSetReport extends Page {
                         <Form
                             onBeforeSubmit={this.onBeforeSubmit}
                             onSuccess={this.onSuccess}
+                            onError={this.onError}
+                            exportReportToXls={this.exportReportToXls}
                         />
                     </div>
                     { this.state.reportHtml &&
-                        <div className="report">
+                        <div id="report-container">
                             <Report reportHtml={this.state.reportHtml} />
                         </div>
                     }

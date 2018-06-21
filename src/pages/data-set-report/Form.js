@@ -26,16 +26,10 @@ import formStyles from './Form.style';
 export class DataSetReportForm extends PureComponent {
     static propTypes = {
         d2: PropTypes.object.isRequired,
-        onBeforeSubmit: PropTypes.func,
-        onSuccess: PropTypes.func,
-        onError: PropTypes.func,
-    }
-
-    static defaultProps = {
-        onBeforeSubmit: () => {},
-        onSuccess: () => {},
-        onError: () => {},
-        fullWidth: true,
+        onBeforeSubmit: PropTypes.func.isRequired,
+        onSuccess: PropTypes.func.isRequired,
+        onError: PropTypes.func.isRequired,
+        exportReportToXls: PropTypes.func.isRequired,
     }
 
     constructor() {
@@ -161,6 +155,13 @@ export class DataSetReportForm extends PureComponent {
                             raised
                             color="primary"
                             onClick={this.getReport}
+                        >
+                            {i18n.t(i18nKeys.dataSetReport.mainAction)}
+                        </Button>
+                        <Button
+                            raised
+                            color="primary"
+                            onClick={this.props.exportReportToXls}
                         >
                             {i18n.t(i18nKeys.dataSetReport.mainAction)}
                         </Button>
