@@ -9,9 +9,6 @@ import { InputField, Button } from '@dhis2/d2-ui-core';
 import i18n from '../../locales';
 import { i18nKeys } from '../../i18n';
 
-/* styles */
-import styles from '../../styles';
-
 class Share extends PureComponent {
     static propTypes = {
         onChange: PropTypes.func.isRequired,
@@ -26,7 +23,6 @@ class Share extends PureComponent {
     render() {
         return (
             <div>
-                <span style={styles.formLabel}>{i18n.t(i18nKeys.dataSetReport.shareLabel)}</span>
                 <InputField
                     placeholder={i18n.t(i18nKeys.dataSetReport.sharePlaceholder)}
                     type="text"
