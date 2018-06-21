@@ -5,6 +5,9 @@ const CONTENT_AREA_PADDING = 20;
 const PAGING_BOTTOM_MARGIN = 60;
 
 const styles = {
+    downloadLink: {
+        marginRight: '10px',
+    },
     dialogBtn: {
         marginRight: '10px',
     },

@@ -1,8 +1,6 @@
 /* React */
 import React from 'react';
 import PropTypes from 'prop-types';
-/* material ui */
-import { Dialog } from 'material-ui';
 /* d2-ui */
 import Table from '@dhis2/d2-ui-table';
 import SharingDialog from '@dhis2/d2-ui-sharing-dialog';
@@ -20,7 +18,9 @@ import AddNewStdReport from './add-new-report/AddNewStdReport';
 import CreateStdReport from './create-report/CreateStdReport';
 import EditStdReport from './edit-report/EditStdReport';
 /* app config */
-import { CONTEXT_MENU_ACTION, CONTEXT_MENU_ICONS, REPORTS_ENDPOINT } from './standard.report.conf';
+import {
+    ADD_NEW_REPORT_ACTION, CONTEXT_MENU_ACTION, CONTEXT_MENU_ICONS, REPORTS_ENDPOINT,
+} from './standard.report.conf';
 /* utils */
 import { getDocsUrl } from '../../helpers/docs';
 import { calculatePageValue, INITIAL_PAGER } from '../../helpers/pagination';
@@ -72,7 +72,7 @@ class StandardReport extends Page {
         const api = this.props.d2.Api.getApi();
         let url = `${REPORTS_ENDPOINT}?page=${pager.page}&pageSize=${pager.pageSize}`;
         this.setState({ search });
-        if (search && /\S/.test(search)) {
+        if (search) {
             url = `${url}&filter=displayName:ilike:${search}`;
         }
         if (api) {
@@ -109,7 +109,8 @@ class StandardReport extends Page {
 
     /* Search */
     search(event) {
-        if (this.state.search !== event.target.value) {
+        // ...and not empty search
+        if (this.state.search !== event.target.value && /\S/.test(event.target.value)) {
             this.loadData(INITIAL_PAGER, event.target.value);
         }
     }
@@ -118,8 +119,7 @@ class StandardReport extends Page {
 
     // TODO: implement
     addNewReport() {
-        this.setState({ loading: true, open: true });
-        // console.log(this.d2, 'Add new report!');
+        this.setState({ loading: true, open: true, selectedAction: ADD_NEW_REPORT_ACTION });
     }
 
     handleClose() {
@@ -127,63 +127,38 @@ class StandardReport extends Page {
     }
 
     /* Context Menu */
-    createReport(...args) {
+    createReport(args) {
         this.setState({ open: true, selectedReport: args, selectedAction: CONTEXT_MENU_ACTION.CREATE });
     }
 
-    editReport(...args) {
+    editReport(args) {
         this.setState({ open: true, selectedReport: args, selectedAction: CONTEXT_MENU_ACTION.EDIT });
     }
 
     sharingSettings(args) {
-        this.setState({
-            open: true,
-            selectedReport: args,
-            selectedAction: CONTEXT_MENU_ACTION.SHARING_SETTINGS,
-        });
+        this.setState({ open: true, selectedReport: args, selectedAction: CONTEXT_MENU_ACTION.SHARING_SETTINGS });
     }
 
-    delete(...args) {
-        this.setState({
-            open: true,
-            selectedReport: args,
-            selectedAction: CONTEXT_MENU_ACTION.DELETE,
-        });
+    delete(args) {
+        this.setState({ open: true, selectedReport: args, selectedAction: CONTEXT_MENU_ACTION.DELETE });
     }
 
-    showDetails(...args) {
-        this.setState({
-            open: true,
-            selectedReport: args,
-            selectedAction: CONTEXT_MENU_ACTION.SHOW_DETAILS,
-        });
+    showDetails(args) {
+        this.setState({ open: true, selectedReport: args, selectedAction: CONTEXT_MENU_ACTION.SHOW_DETAILS });
     }
 
     // TODO: Check Show Details
     getActionComponent() {
-        let dialogContent;
-
-        const actions = [
-            <Button
-                style={appStyles.dialogBtn}
-                onClick={this.handleClose}
-            >
-                {i18n.t(i18nKeys.buttons.cancel)}
-            </Button>,
-            <Button
-                raised
-                color={'primary'}
-                style={appStyles.dialogBtn}
-                onClick={this.handleClose}
-            >
-                {i18n.t(i18nKeys.buttons.save)}
-            </Button>,
-        ];
-
         switch (this.state.selectedAction) {
         case CONTEXT_MENU_ACTION.CREATE:
-            dialogContent = <CreateStdReport />;
-            break;
+            return (
+                <CreateStdReport
+                    id={this.state.selectedReport.id}
+                    open={this.state.open}
+                    onRequestClose={this.handleClose}
+                    d2={this.props.d2}
+                />
+            );
         case CONTEXT_MENU_ACTION.SHARING_SETTINGS:
             return (
                 <SharingDialog
@@ -195,26 +170,24 @@ class StandardReport extends Page {
                 />
             );
         case CONTEXT_MENU_ACTION.DELETE:
-            dialogContent = (<div>Are you Sure?</div>);
-            break;
+            // FeedbackSnackBar
+            this.props.updateAppState({
+                showSnackbar: true,
+                snackbarConf: {
+                    type: 'ACTION_MESSAGE',
+                    message: 'Tens a certeza?',
+                    action: 'Sim',
+                    onActionClick: () => {
+                        // console.log('Are you sure?');
+                    },
+                },
+            });
+            return null;
         case CONTEXT_MENU_ACTION.EDIT:
-            dialogContent = <EditStdReport />;
-            break;
+            return <EditStdReport open={this.state.open} onRequestClose={this.handleClose} d2={this.props.d2} />;
         default:
-            dialogContent = <AddNewStdReport />;
-            break;
+            return <AddNewStdReport open={this.state.open} onRequestClose={this.handleClose} d2={this.props.d2} />;
         }
-
-        return (
-            <Dialog
-                title={i18n.t(i18nKeys.standardReport.addNewReport.title)}
-                actions={actions}
-                modal={Boolean(true)}
-                open={this.state.open}
-            >
-                {dialogContent}
-            </Dialog>
-        );
     }
 
     render() {

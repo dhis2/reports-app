@@ -9,9 +9,7 @@ const AddNewReportStyle = {
     sectionBox: {
         border: '1px solid #f1f1f1',
         color: '#000000',
-        marginBottom: '20px',
         marginTop: '10px',
-        paddingBottom: '6px',
     },
     sectionTitle: {
         lineHeight: 2,
@@ -21,6 +19,12 @@ const AddNewReportStyle = {
     sectionSubTitle: {
         lineHeight: 2,
         fontWeight: 'bold',
+    },
+    sectionContent: {
+        paddingLeft: '5px',
+    },
+    width100: {
+        width: '100%',
     },
 };
 

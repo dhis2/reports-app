@@ -29,6 +29,9 @@ const ownShallow = () => {
     );
 };
 
+/* Mocks */
+jest.mock('@dhis2/d2-ui-org-unit-tree', () => ('OrgUnitTree'));
+
 it('DatasetsDropdown renders without crashing', () => {
     ownShallow();
 });

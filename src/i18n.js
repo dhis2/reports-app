@@ -2,12 +2,14 @@ export const i18nKeys = {
     buttons: {
         cancel: 'Cancel',
         save: 'Save',
+        downloadAsExcel: 'Download as excel',
     },
     datasetsDropdown: {
         hintText: 'Select Data Set',
     },
     availableOrganisationUnitsTree: {
         updatingMessage: 'Updating Organisation Units Tree...',
+        treeLabel: 'Organisation Unit',
     },
     standardReport: {
         homeLabel: 'Standard Report',
@@ -16,9 +18,29 @@ export const i18nKeys = {
         description: 'View and add reports based on the JasperReports library. ' +
         'These can be based on report tables and can be designed in iReport.',
         search: 'Search',
+        details: 'Details',
+        settings: 'Settings',
+        relativePeriods: 'Relative periods',
+        reportParameters: 'Report parameters',
+        cacheStrategy: 'Cache Strategy',
+        reportingPeriod: 'Reporting Pperiod',
+        reportingOrganisationUnit: 'Organization Unit',
         addNewReport: {
             title: 'Add New Report',
             reportRightsMessage: 'This object will be created with public edit and view rights',
+            nameLabel: 'Name',
+            typeLabel: 'Type',
+            designFileLabel: 'Design File',
+            reportTableLabel: 'Report table',
+        },
+        editReport: {
+            title: 'Edit Report',
+        },
+        createReport: {
+            title: 'Create Report Table',
+        },
+        removeReport: {
+            title: 'Remove Report',
         },
     },
     dataSetReport: {

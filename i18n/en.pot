@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-06-12T17:18:24.989Z\n"
-"PO-Revision-Date: 2018-06-12T17:18:24.989Z\n"
+"POT-Creation-Date: 2018-06-21T15:34:59.832Z\n"
+"PO-Revision-Date: 2018-06-21T15:34:59.832Z\n"
 
 msgid "Cancel"
 msgstr ""
@@ -14,10 +14,16 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
+msgid "Download as excel"
+msgstr ""
+
 msgid "Select Data Set"
 msgstr ""
 
 msgid "Updating Organisation Units Tree..."
+msgstr ""
+
+msgid "Organisation Unit"
 msgstr ""
 
 msgid "Standard Report"
@@ -34,10 +40,52 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
+msgid "Details"
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+msgid "Relative periods"
+msgstr ""
+
+msgid "Report parameters"
+msgstr ""
+
+msgid "Cache Strategy"
+msgstr ""
+
+msgid "Reporting Pperiod"
+msgstr ""
+
+msgid "Organization Unit"
+msgstr ""
+
 msgid "Add New Report"
 msgstr ""
 
 msgid "This object will be created with public edit and view rights"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "Design File"
+msgstr ""
+
+msgid "Report table"
+msgstr ""
+
+msgid "Edit Report"
+msgstr ""
+
+msgid "Create Report Table"
+msgstr ""
+
+msgid "Remove Report"
 msgstr ""
 
 msgid "Data Set Report"
@@ -89,16 +137,10 @@ msgid ""
 "or unaccepting data."
 msgstr ""
 
-msgid "Name"
-msgstr ""
-
 msgid "Actions"
 msgstr ""
 
 msgid "Create"
-msgstr ""
-
-msgid "Edit Report"
 msgstr ""
 
 msgid "Sharing Settings"

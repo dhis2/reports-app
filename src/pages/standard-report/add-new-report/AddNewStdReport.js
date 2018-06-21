@@ -1,153 +1,215 @@
+/* React */
+import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
-
+/* material-ui */
+import { Dialog } from 'material-ui';
 /* d2-ui */
-import { MultiToggle, DatePicker, SelectField, CheckBox, TextField } from '@dhis2/d2-ui-core';
-import { FormBuilder, Validators } from '@dhis2/d2-ui-forms';
-
-/* Styles */
+import { Button, TextField, SelectField, CheckBox } from '@dhis2/d2-ui-core';
+/* styles */
+import appStyles from '../../../styles';
 import styles from './AddNewStdReport.style';
-
+import { CACHE_STATEGIES, REPORT_TABLES_ENDPOINT, REPORT_TYPES } from '../standard.report.conf';
 /* i18n */
 import i18n from '../../../locales';
 import { i18nKeys } from '../../../i18n';
 
 class AddNewReport extends PureComponent {
+    static propTypes = {
+        d2: PropTypes.object.isRequired,
+        onRequestClose: PropTypes.func.isRequired,
+        open: PropTypes.bool.isRequired,
+    };
+
     constructor(props) {
         super(props);
         this.state = {
-
+            selectedReportType: REPORT_TYPES[0],
+            selectedCacheStrategy: CACHE_STATEGIES[0],
+            reportTables: [{ id: 'none', name: '[ None ]' }],
+            selectedReportTable: { id: 'none', name: '[ None ]' },
         };
-
-        this.onUpdateField = this.onUpdateField.bind(this);
     }
 
-    onUpdateField() {
-        // console.log('###########################3', this.state);
-        this.setState({ ...this.state });
+    componentDidMount() {
+        this.loadReportTables();
     }
+
+    /* Handle form changes */
+    onChangeType = (selecteReportType) => {
+        this.setState({ selecteReportType });
+    };
+
+    onChangeCacheStrategy = (selectedCacheStrategy) => {
+        this.setState({ selectedCacheStrategy });
+    };
+
+    onChangeReportTable = (selectedReportTable) => {
+        this.setState({ selectedReportTable });
+    };
+
+    /* load data */
+    loadReportTables = () => {
+        const api = this.props.d2.Api.getApi();
+        const url = `${REPORT_TABLES_ENDPOINT}?paging=false&fields=:id,name`;
+        if (api) {
+            api.get(url).then((response) => {
+                if (response) {
+                    this.setState({ reportTables: [...this.state.reportTables, ...response.reportTables] });
+                }
+            }).catch(() => {
+                // TODO:
+            });
+        }
+    };
 
     render() {
-        const fields = [
-            {
-                name: 'exampleTextField',
-                value: 'Default Value',
-                component: TextField,
-                props: {
-                    floatingLabelText: 'Floating Label',
-                    style: { width: '100%' },
-                    hintText: 'Example hint text',
-                    changeEvent: 'onBlur',
-                    type: 'search',
-                },
-                validators: [{
-                    message: 'The field must have a value',
-                    validator(value) {
-                        return Validators.isRequired(value);
-                    },
-                }],
-            },
-            {
-                name: 'exampleMultilineTextField',
-                value: 'DHIS2',
-                component: TextField,
-                props: {
-                    floatingLabelText: 'Multiline TextField',
-                    style: { width: '100%' },
-                    hintText: 'Press enter for new line',
-                    multiLine: true,
-                    changeEvent: 'onBlur',
-                },
-            },
-            {
-                name: 'exampleCheckBox',
-                value: '',
-                component: CheckBox,
-                props: {
-                    label: 'Checkbox Example',
-                    style: { width: '100%' },
-                    onCheck: (e, v) => {
-                        this.onUpdateField('exampleCheckBox', v ? 'true' : 'false');
-                    },
-                },
-            },
-            {
-                name: 'exampleDropDown',
-                value: null,
-                component: SelectField,
-                props: {
-                    menuItems: [{ id: '1', displayName: 'Option 1' }, { id: '2', displayName: 'Option 2' }],
-                    includeEmpty: true,
-                    emptyLabel: 'No Options',
-                },
-            },
-            {
-                name: 'startDate',
-                value: new Date(),
-                component: DatePicker,
-                props: {
-                    floatingLabelText: 'Example Start Date Picker',
-                    dateFormat: 'yyyy-MM-dd',
-                    allowFuture: false,
-                },
-                validators: [{
-                    message: 'Closed date cannot be before open date',
-                    validator(value, formModel) {
-                        return Validators.isStartDateBeforeEndDate(value, formModel.fields.endDate.value);
-                    },
-                }],
-            },
-            {
-                name: 'endDate',
-                value: new Date(),
-                component: DatePicker,
-                props: {
-                    floatingLabelText: 'Example End Date Picker',
-                    dateFormat: 'yyyy-MM-dd',
-                    allowFuture: false,
-                },
-                validators: [{
-                    message: 'Closed date cannot be before open date',
-                    validator(value, formModel) {
-                        return Validators.isStartDateBeforeEndDate(formModel.fields.startDate.value, value);
-                    },
-                }],
-            },
-            {
-                name: 'exampleMultiToggle',
-                value: '',
-                component: MultiToggle,
-                props: {
-                    items: [
-                        {
-                            name: 'Monday',
-                            value: true,
-                            text: 'Monday is best',
-                        },
-                        {
-                            name: 'Friday',
-                            text: 'Friday is worst',
-                        },
-                    ],
-                    label: 'Example of MultiToggle',
-                    onChange: () => {},
-                },
-            },
+        const actions = [
+            <Button
+                style={appStyles.dialogBtn}
+                onClick={this.props.onRequestClose}
+            >
+                {i18n.t(i18nKeys.buttons.cancel)}
+            </Button>,
+            <Button
+                raised
+                color={'primary'}
+                style={appStyles.dialogBtn}
+                onClick={this.props.onRequestClose}
+            >
+                {i18n.t(i18nKeys.buttons.save)}
+            </Button>,
         ];
+
+        const items = [{
+            id: 'cat',
+            name: 'Cat',
+        }, {
+            id: 'mouse',
+            name: 'Mouse',
+        }, {
+            id: 'dog',
+            name: 'Dog',
+        }];
+
         return (
-            <div>
-                <span className={'row'} style={{ color: '#999999', backgroundColor: '#f1f1f1', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '5px' }}>
-                    {i18n.t(i18nKeys.standardReport.addNewReport.reportRightsMessage)}
-                </span>
-                <div className={'row'} style={styles.sectionBox}>
-                    <div className={'col-xs-12'} style={styles.sectionTitle}>
-                       Details
+            <Dialog
+                autoDetectWindowHeight={Boolean(true)}
+                autoScrollBodyContent={Boolean(true)}
+                title={i18n.t(i18nKeys.standardReport.addNewReport.title)}
+                actions={actions}
+                modal={Boolean(true)}
+                open={this.props.open}
+            >
+                <div style={{ paddingTop: '5px' }}>
+                    <span className={'row'} style={styles.rightsMessage}>
+                        {i18n.t(i18nKeys.standardReport.addNewReport.reportRightsMessage)}
+                    </span>
+                    {/* details */}
+                    <div className={'row'} style={styles.sectionBox}>
+                        <div className={'col-xs-12'} style={styles.sectionTitle}>
+                            {i18n.t(i18nKeys.standardReport.details)}
+                        </div>
+                        <div className={'col-xs-12'} style={styles.sectionContent}>
+                            {/* report name */}
+                            <TextField
+                                fullWidth={Boolean(true)}
+                                name={'reportName'}
+                                floatingLabelText={i18n.t(i18nKeys.standardReport.addNewReport.nameLabel)}
+                            />
+                            {/* report type */}
+                            <SelectField
+                                style={styles.width100}
+                                name={'reportType'}
+                                label={i18n.t(i18nKeys.standardReport.addNewReport.typeLabel)}
+                                items={REPORT_TYPES}
+                                value={this.state.selectedReportType.id}
+                                onChange={this.onChangeType}
+                            />
+                            {/* design file */}
+                            <SelectField
+                                style={styles.width100}
+                                label={i18n.t(i18nKeys.standardReport.addNewReport.designFileLabel)}
+                                items={items}
+                                value="cat"
+                                onChange={this.onChangeType}
+                            />
+                            {/* get report template */}
+                            <div style={{ width: '100%', textAlign: 'right' }}>
+                                <a href={'http://www.google.com'}>
+                                    Get Jasper Report Template
+                                </a>
+                            </div>
+                            {/* report table */}
+                            <SelectField
+                                selector={'displayName'}
+                                style={styles.width100}
+                                label={i18n.t(i18nKeys.standardReport.addNewReport.reportTableLabel)}
+                                items={this.state.reportTables}
+                                value={this.state.selectedReportTable.id}
+                                onChange={this.onChangeReportTable}
+                            />
+                        </div>
                     </div>
-                    <FormBuilder
-                        fields={fields}
-                        onUpdateField={this.onUpdateField}
-                    />
+                    {/* relative periods  */}
+                    <div className={'row'} style={styles.sectionBox}>
+                        <div className={'col-xs-12'} style={styles.sectionTitle}>
+                            {i18n.t(i18nKeys.standardReport.relativePeriods)}
+                        </div>
+                        <div className={'col-xs-12'} style={styles.sectionContent}>
+                            <TextField
+                                fullWidth={Boolean(true)}
+                                name={'newReportName'}
+                                floatingLabelText={i18n.t(i18nKeys.standardReport.addNewReport.nameLabel)}
+                            />
+                            <SelectField
+                                style={styles.width100}
+                                label={i18n.t(i18nKeys.standardReport.addNewReport.typeLabel)}
+                                items={items}
+                                value="cat"
+                                onChange={this.onChangeType}
+                            />
+                            <SelectField
+                                style={styles.width100}
+                                label={i18n.t(i18nKeys.standardReport.addNewReport.designFileLabel)}
+                                items={items}
+                                value="cat"
+                                onChange={this.onChangeType}
+                            />
+                            <div style={{ width: '100%', textAlign: 'right' }}>
+                                <a href={'http://www.google.com'}>Get Jasper Report Template</a>
+                            </div>
+                        </div>
+                    </div>
+                    {/* report parameters */}
+                    <div className={'row'} style={styles.sectionBox}>
+                        <div className={'col-xs-12'} style={styles.sectionTitle}>
+                            {i18n.t(i18nKeys.standardReport.reportParameters)}
+                        </div>
+                        <div className={'col-xs-4'} style={styles.sectionContent}>
+                            <CheckBox label={i18n.t(i18nKeys.standardReport.reportingPeriod)} />
+                        </div>
+                        <div className={'col-xs-4'} style={styles.sectionContent}>
+                            <CheckBox label={i18n.t(i18nKeys.standardReport.reportingOrganisationUnit)} />
+                        </div>
+                    </div>
+                    {/* settings */}
+                    <div className={'row'} style={styles.sectionBox}>
+                        <div className={'col-xs-12'} style={styles.sectionTitle}>
+                            {i18n.t(i18nKeys.standardReport.settings)}
+                        </div>
+                        {/* cache strategy */}
+                        <div className={'col-xs-12'} style={styles.sectionContent}>
+                            <SelectField
+                                style={styles.width100}
+                                label={i18n.t(i18nKeys.standardReport.cacheStrategy)}
+                                items={CACHE_STATEGIES}
+                                value={this.state.selectedCacheStrategy.id}
+                                onChange={this.onChangeCacheStrategy}
+                            />
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </Dialog>
         );
     }
 }
