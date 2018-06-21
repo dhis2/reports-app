@@ -156,6 +156,15 @@ export class DataSetReportForm extends PureComponent {
                         {i18n.t(i18nKeys.dataSetReport.showMoreOptions)}
                     </span>
                     {this.renderExtraOptions()}
+                    <div style={styles.actionsContainer}>
+                        <Button
+                            raised
+                            color="primary"
+                            onClick={this.getReport}
+                        >
+                            {i18n.t(i18nKeys.dataSetReport.mainAction)}
+                        </Button>
+                    </div>
                 </div>
                 <div className="col-md-6">
                     <DataSets
@@ -177,15 +186,6 @@ export class DataSetReportForm extends PureComponent {
                         value={this.state.selectedDataSetOnly}
                         label={i18n.t(i18nKeys.dataSetReport.selectedDataSetOnlyLabel)}
                     />
-                </div>
-                <div style={styles.actionsContainer}>
-                    <Button
-                        raised
-                        color="primary"
-                        onClick={this.getReport}
-                    >
-                        {i18n.t(i18nKeys.dataSetReport.mainAction)}
-                    </Button>
                 </div>
             </div>
         );
