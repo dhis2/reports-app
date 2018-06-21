@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-06-21T08:25:44.854Z\n"
-"PO-Revision-Date: 2018-06-21T08:25:44.854Z\n"
+"POT-Creation-Date: 2018-06-21T09:56:08.511Z\n"
+"PO-Revision-Date: 2018-06-21T09:56:08.511Z\n"
 
 msgid "Select Data Set"
 msgstr ""
@@ -108,6 +108,9 @@ msgstr ""
 msgid "Show more options"
 msgstr ""
 
+msgid "Export Report"
+msgstr ""
+
 msgid "Report Rate Summary"
 msgstr ""
 
@@ -144,6 +147,15 @@ msgstr ""
 msgid ""
 "View data and manage data approval by approving or unapproving, accepting "
 "or unaccepting data."
+msgstr ""
+
+msgid "Loading..."
+msgstr ""
+
+msgid "Report generated"
+msgstr ""
+
+msgid "Unexpected Error"
 msgstr ""
 
 msgid "Search"

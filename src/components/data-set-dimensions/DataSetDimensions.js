@@ -45,7 +45,9 @@ export class DataSetDimensions extends PureComponent {
     }
 
     componentWillReceiveProps({ dataSetId }) {
-        this.fetchDataDimensions(dataSetId);
+        if (this.state.dataSetId !== dataSetId) {
+            this.fetchDataDimensions(dataSetId);
+        }
     }
 
     fetchDataDimensions = (dataSetId) => {

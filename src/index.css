@@ -28,10 +28,10 @@ h1 {
     padding-top: 3rem;
 }
 
-.report table, th, td {
+#report-container table, th, td {
     border: 1px solid black;
 }
 
-.report table {
+#report-container table {
     width: 100% !important;
 }

@@ -2,6 +2,13 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 
+/* i18n */
+import i18n from '../locales';
+import { i18nKeys } from '../i18n';
+
+/* Feedback Snackbar */
+import { ERROR } from '../helpers/feedbackSnackBarTypes';
+
 class Page extends Component {
     static propTypes = {
         sectionKey: PropTypes.string.isRequired,
@@ -26,6 +33,25 @@ class Page extends Component {
 
     isPageMounted() {
         return this.pageMounted;
+    }
+
+    manageError(error) {
+        if (this.isPageMounted()) {
+            const messageError = error && error.message ?
+                error.message :
+                i18n.t(i18nKeys.messages.unexpectedError);
+
+            this.props.updateAppState({
+                showSnackbar: true,
+                snackbarConf: {
+                    type: ERROR,
+                    message: messageError,
+                },
+                pageState: {
+                    loading: false,
+                },
+            });
+        }
     }
 }
 
