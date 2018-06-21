@@ -41,13 +41,10 @@ export class DataSetDimensions extends PureComponent {
     }
 
     componentDidMount() {
-        console.log('componentDidMount');
         this.fetchDataDimensions(this.props.dataSetId);
     }
 
     componentWillReceiveProps({ dataSetId }) {
-        console.log('componentWillReceiveProps', dataSetId);
-        console.log('componentWillReceiveProps State', this.state);
         if (this.props.dataSetId !== dataSetId) {
             this.fetchDataDimensions(dataSetId);
         }
