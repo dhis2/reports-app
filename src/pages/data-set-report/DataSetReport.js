@@ -30,7 +30,7 @@ import { getDocsUrl } from '../../helpers/docs';
 import { LOADING, SUCCESS } from '../../helpers/feedbackSnackBarTypes';
 
 /* styles */
-import styles from '../Page.style';
+import styles from '../../styles';
 import formStyles from './Form.style';
 
 class DataSetReport extends Page {
@@ -82,6 +82,12 @@ class DataSetReport extends Page {
         this.setState(newState);
     }
 
+    goToForm = () => {
+        this.setState({
+            showForm: true,
+        });
+    }
+
     exportReportToXls = () => {
         const reportTables = document.querySelectorAll('#report-container table');
         const workbook = XLSX.utils.book_new();
@@ -116,6 +122,7 @@ class DataSetReport extends Page {
             this.props.updateAppState({
                 pageState: {
                     reportHtml: response,
+                    showForm: false,
                 },
                 showSnackbar: true,
                 snackbarConf: {
@@ -196,6 +203,17 @@ class DataSetReport extends Page {
         return (
             <div>
                 <h1>
+                    { !this.state.showForm &&
+                        <span
+                            style={formStyles.backButton}
+                            className="material-icons"
+                            role="button"
+                            tabIndex="0"
+                            onClick={this.goToForm}
+                        >
+                            arrow_back
+                        </span>
+                    }
                     { i18n.t(i18nKeys.dataSetReport.header) }
                     <PageHelper
                         url={getDocsUrl(this.props.d2.system.version, this.props.sectionKey)}
@@ -228,13 +246,6 @@ class DataSetReport extends Page {
                                     >
                                         {i18n.t(i18nKeys.dataSetReport.mainAction)}
                                     </Button>
-                                    <Button
-                                        raised
-                                        color="accent"
-                                        onClick={this.exportReportToXls}
-                                    >
-                                        {i18n.t(i18nKeys.dataSetReport.exportReport)}
-                                    </Button>
                                 </div>
                             </div>
                             <div className="col-md-6">
@@ -260,9 +271,21 @@ class DataSetReport extends Page {
                             </div>
                         </div>
                     </div>
-                    { this.state.reportHtml &&
-                        <div id="report-container">
+                    { this.state.reportHtml && !this.state.showForm &&
+                        <div
+                            id="report-container"
+                            style={{ display: this.state.reportHtml && !this.state.showForm ? 'block' : 'none' }}
+                        >
                             <Report reportHtml={this.state.reportHtml} />
+                            <div style={styles.actionsContainer}>
+                                <Button
+                                    raised
+                                    color="primary"
+                                    onClick={this.exportReportToXls}
+                                >
+                                    {i18n.t(i18nKeys.dataSetReport.exportReport)}
+                                </Button>
+                            </div>
                         </div>
                     }
                 </Paper>

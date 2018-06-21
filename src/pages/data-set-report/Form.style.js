@@ -16,6 +16,10 @@ const DataReportForm = {
         marginBottom: 5,
         outline: 'none',
     },
+    backButton: {
+        cursor: 'pointer',
+        outline: 'none',
+    },
 };
 
 export default DataReportForm;

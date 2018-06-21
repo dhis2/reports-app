@@ -5,6 +5,9 @@ export const CONTENT_AREA_PADDING = 20;
 export const PRIMARY_COLOR = '#004ba0';
 
 const styles = {
+    container: {
+        padding: 16,
+    },
     contentWrapper: {
         marginLeft: 295,
         maxWidth: MAX_WIDTH,
