@@ -45,6 +45,11 @@ export const i18nKeys = {
         header: 'Data Approval',
         description: 'View data and manage data approval by approving or unapproving, accepting or unaccepting data.',
     },
+    messages: {
+        loading: 'Loading...',
+        reportGenerated: 'Report generated',
+        unexpectedError: 'Unexpected Error',
+    },
     d2UiComponents: {
         app_search_placeholder: 'Search',
         week: 'week',
