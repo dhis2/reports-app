@@ -294,21 +294,22 @@ class DataSetReport extends Page {
                             id="report-container"
                             style={{ display: this.state.reportHtml && !this.state.showForm ? 'block' : 'none' }}
                         >
+                            <div style={styles.downloadContainer}>
+                                <span
+                                    style={styles.downloadButton}
+                                    role="button"
+                                    tabIndex="0"
+                                    onClick={this.exportReportToXls}
+                                >
+                                    {i18n.t(i18nKeys.dataSetReport.exportReport)}
+                                </span>
+                            </div>
                             <ShareComment
                                 dataSetId={this.state.selectedDataSet}
                                 period={this.state.selectedPeriod}
                                 orgUnitId={this.state.selectedOrgUnit}
                             />
                             <Report reportHtml={this.state.reportHtml} />
-                            <div style={globalStyles.actionsContainer}>
-                                <Button
-                                    raised
-                                    color="primary"
-                                    onClick={this.exportReportToXls}
-                                >
-                                    {i18n.t(i18nKeys.dataSetReport.exportReport)}
-                                </Button>
-                            </div>
                         </div>
                     }
                 </Paper>

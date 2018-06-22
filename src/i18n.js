@@ -54,7 +54,7 @@ export const i18nKeys = {
         sharePlaceholder: 'Write a comment, question or interpretation of this report',
         showMoreOptions: 'Show more options',
         mainAction: 'Get Report',
-        exportReport: 'Export Report',
+        exportReport: 'download as xls',
         share: 'Share',
         interpretationShared: 'Interpretation Shared',
     },
