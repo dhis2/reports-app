@@ -65,11 +65,11 @@ describe('Test <OrganisationUnitGroupSets /> rendering:', () => {
         const wrapper = ownShallow();
         expect(wrapper.find(DropDown)).toHaveLength(0);
     });
-    /*
-    it('Should render the correct number of DropDown Components', () => {
+
+    it('Should render the correct number of div for each DropDown Component', () => {
         const wrapper = ownShallow();
         wrapper.setState({ dimensions: dimensions });
-        expect(wrapper.find(DropDown)).toHaveLength(dimensions.length);
+        const arrayWrapper = wrapper.first();       // Array wrapper for Dropdowns created by enzyme
+        expect(arrayWrapper.find('div')).toHaveLength(dimensions.length);
     });
-    */
 });
