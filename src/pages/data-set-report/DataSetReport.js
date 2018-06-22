@@ -23,16 +23,16 @@ import OrganisationUnitsTree from '../../components/available-organisation-units
 import OrganisationUnitGroupOptions from '../../components/organisation-unit-group-sets/OrganisationUnitGroupSets';
 import DataSetOptions from '../../components/data-set-dimensions/DataSetDimensions';
 import PeriodPickerComponent from '../../components/period-picker-with-period-type/PeriodPickerWithPeriodType';
+import ShareComment from './Share';
 import Report from './Report';
-import Share from './Share';
 
 /* utils */
 import { getDocsUrl } from '../../helpers/docs';
-import { ERROR, LOADING, SUCCESS } from '../../helpers/feedbackSnackBarTypes';
+import { LOADING, SUCCESS } from '../../helpers/feedbackSnackBarTypes';
 
 /* styles */
-import styles from '../../styles';
-import formStyles from './Form.style';
+import globalStyles from '../../styles';
+import styles from './DataSetReport.style';
 
 class DataSetReport extends Page {
     static propTypes = {
@@ -53,6 +53,7 @@ class DataSetReport extends Page {
             showOptions: false,
             selectedPeriod: null,
             comment: '',
+            loading: false,
         };
     }
 
@@ -107,6 +108,9 @@ class DataSetReport extends Page {
                 type: LOADING,
                 message: i18n.t(i18nKeys.messages.loading),
             },
+            pageState: {
+                loading: true,
+            },
         });
 
         const api = this.props.d2.Api.getApi();
@@ -125,6 +129,7 @@ class DataSetReport extends Page {
                 pageState: {
                     reportHtml: response,
                     showForm: false,
+                    loading: false,
                 },
                 showSnackbar: true,
                 snackbarConf: {
@@ -134,57 +139,6 @@ class DataSetReport extends Page {
             });
         }).catch((error) => {
             this.manageError(error);
-        });
-    }
-
-    shareComment = () => {
-        // eslint-disable-next-line
-        const url = `interpretations/dataSetReport/${this.state.selectedDataSet}?pe=${this.state.selectedPeriod}&ou=${this.state.selectedOrgUnit}`;
-        const api = this.props.d2.Api.getApi();
-
-        if (this.state.comment.trim()) {
-            this.props.updateAppState({
-                showSnackbar: true,
-                snackbarConf: {
-                    type: LOADING,
-                    message: i18n.t(i18nKeys.messages.loading),
-                },
-            });
-
-            const headersRequest = {
-                headers: {
-                    'content-type': 'text/plain',
-                },
-            };
-
-            api.post(url, this.state.comment, headersRequest).then(() => {
-                this.props.updateAppState({
-                    showSnackbar: true,
-                    snackbarConf: {
-                        type: SUCCESS,
-                        message: i18n.t(i18nKeys.dataSetReport.commentShared),
-                    },
-                });
-            }).catch((error) => {
-                this.manageError(error);
-            });
-        } else {
-            this.props.updateAppState({
-                showSnackbar: true,
-                snackbarConf: {
-                    type: ERROR,
-                    message: i18n.t(i18nKeys.dataSetReport.invalidComment),
-                },
-                pageState: {
-                    loading: false,
-                },
-            });
-        }
-    }
-
-    handleCommentChange = (comment) => {
-        this.setState({
-            comment,
         });
     }
 
@@ -244,7 +198,7 @@ class DataSetReport extends Page {
     }
 
     renderExtraOptions = () => (
-        <div style={this.state.showOptions ? formStyles.showOptions : formStyles.hideOptions}>
+        <div style={this.state.showOptions ? styles.showOptions : styles.hideOptions}>
             <OrganisationUnitGroupOptions
                 values={this.state.selectedOptionsForOrganisationUnitGroupSets}
                 onChange={this.handleOrganisationUnitGroupSetChange}
@@ -252,13 +206,23 @@ class DataSetReport extends Page {
         </div>
     )
 
+    isFormValid() {
+        return this.state.selectedOrgUnit &&
+            this.state.selectedDataSet &&
+            this.state.selectedPeriod;
+    }
+
+    isActionEnabled() {
+        return this.isFormValid() && !this.state.loading;
+    }
+
     render() {
         return (
             <div>
                 <h1>
                     { !this.state.showForm &&
                         <span
-                            style={formStyles.backButton}
+                            style={styles.backButton}
                             className="material-icons"
                             role="button"
                             tabIndex="0"
@@ -272,18 +236,18 @@ class DataSetReport extends Page {
                         url={getDocsUrl(this.props.d2.system.version, this.props.sectionKey)}
                     />
                 </h1>
-                <Paper style={styles.container}>
+                <Paper style={globalStyles.container}>
                     <div id="data-set-report-form" style={{ display: this.state.showForm ? 'block' : 'none' }}>
                         <div className="row">
                             <div className="col-md-6">
-                                <div style={styles.formLabel}>
+                                <div style={globalStyles.formLabel}>
                                     {i18n.t(i18nKeys.dataSetReport.organisationUnitLabel)}
                                 </div>
                                 <OrganisationUnitsTree
                                     onChange={this.handleOrganisationUnitChange}
                                 />
                                 <span
-                                    style={formStyles.showMoreOptionsButton}
+                                    style={styles.showMoreOptionsButton}
                                     role="button"
                                     tabIndex="0"
                                     onClick={this.toggleShowOptions}
@@ -291,11 +255,12 @@ class DataSetReport extends Page {
                                     {i18n.t(i18nKeys.dataSetReport.showMoreOptions)}
                                 </span>
                                 {this.renderExtraOptions()}
-                                <div style={styles.actionsContainer}>
+                                <div style={globalStyles.actionsContainer}>
                                     <Button
                                         raised
                                         color="primary"
                                         onClick={this.getReport}
+                                        disabled={!this.isActionEnabled()}
                                     >
                                         {i18n.t(i18nKeys.dataSetReport.mainAction)}
                                     </Button>
@@ -329,13 +294,13 @@ class DataSetReport extends Page {
                             id="report-container"
                             style={{ display: this.state.reportHtml && !this.state.showForm ? 'block' : 'none' }}
                         >
-                            <Share
-                                comment={this.state.comment}
-                                onChange={this.handleCommentChange}
-                                onSubmit={this.shareComment}
+                            <ShareComment
+                                dataSetId={this.state.selectedDataSet}
+                                period={this.state.selectedPeriod}
+                                orgUnitId={this.state.selectedOrgUnit}
                             />
                             <Report reportHtml={this.state.reportHtml} />
-                            <div style={styles.actionsContainer}>
+                            <div style={globalStyles.actionsContainer}>
                                 <Button
                                     raised
                                     color="primary"

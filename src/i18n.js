@@ -56,8 +56,7 @@ export const i18nKeys = {
         mainAction: 'Get Report',
         exportReport: 'Export Report',
         share: 'Share',
-        commentShared: 'Comment Shared',
-        invalidComment: 'A comment must be defined',
+        interpretationShared: 'Interpretation Shared',
     },
     reportingRateSummary: {
         homeLabel: 'Report Rate Summary',
