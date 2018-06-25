@@ -53,6 +53,7 @@ export const i18nKeys = {
         organisationUnitLabel: 'Report organisation unit',
         sharePlaceholder: 'Write a comment, question or interpretation of this report',
         showMoreOptions: 'Show more options',
+        showFewOptions: 'Show few options',
         mainAction: 'Get Report',
         exportReport: 'download as xls',
         share: 'Share',

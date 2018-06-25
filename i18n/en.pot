@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-06-22T09:44:34.231Z\n"
-"PO-Revision-Date: 2018-06-22T09:44:34.231Z\n"
+"POT-Creation-Date: 2018-06-25T12:35:37.424Z\n"
+"PO-Revision-Date: 2018-06-25T12:35:37.424Z\n"
 
 msgid "Select Data Set"
 msgstr ""
@@ -109,6 +109,9 @@ msgid "Write a comment, question or interpretation of this report"
 msgstr ""
 
 msgid "Show more options"
+msgstr ""
+
+msgid "Show few options"
 msgstr ""
 
 msgid "download as xls"

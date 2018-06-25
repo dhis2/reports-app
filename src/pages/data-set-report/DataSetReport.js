@@ -198,12 +198,24 @@ class DataSetReport extends Page {
     }
 
     renderExtraOptions = () => (
-        <div style={this.state.showOptions ? styles.showOptions : styles.hideOptions}>
-            <OrganisationUnitGroupOptions
-                values={this.state.selectedOptionsForOrganisationUnitGroupSets}
-                onChange={this.handleOrganisationUnitGroupSetChange}
-            />
+        <div>
+            <span
+                style={styles.showMoreOptionsButton}
+                role="button"
+                tabIndex="0"
+                onClick={this.toggleShowOptions}
+            >
+                {i18n.t(this.state.showOptions ?
+                    i18nKeys.dataSetReport.showFewOptions : i18nKeys.dataSetReport.showMoreOptions)}
+            </span>
+            <div style={this.state.showOptions ? styles.showOptions : styles.hideOptions}>
+                <OrganisationUnitGroupOptions
+                    values={this.state.selectedOptionsForOrganisationUnitGroupSets}
+                    onChange={this.handleOrganisationUnitGroupSetChange}
+                />
+            </div>
         </div>
+
     )
 
     isFormValid() {
@@ -246,14 +258,6 @@ class DataSetReport extends Page {
                                 <OrganisationUnitsTree
                                     onChange={this.handleOrganisationUnitChange}
                                 />
-                                <span
-                                    style={styles.showMoreOptionsButton}
-                                    role="button"
-                                    tabIndex="0"
-                                    onClick={this.toggleShowOptions}
-                                >
-                                    {i18n.t(i18nKeys.dataSetReport.showMoreOptions)}
-                                </span>
                                 {this.renderExtraOptions()}
                                 <div style={globalStyles.actionsContainer}>
                                     <Button
