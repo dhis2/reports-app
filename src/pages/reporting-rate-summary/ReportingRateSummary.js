@@ -188,14 +188,6 @@ class ReportingRateSummary extends Page {
                                 <OrganisationUnitsTree
                                     onChange={this.handleOrganisationUnitChange}
                                 />
-                                <span
-                                    style={styles.showMoreOptionsButton}
-                                    role="button"
-                                    tabIndex="0"
-                                    onClick={this.toggleShowOptions}
-                                >
-                                    {i18n.t(i18nKeys.reportingRateSummary.showMoreOptions)}
-                                </span>
                                 {this.renderExtraOptions()}
                                 <div style={globalStyles.actionsContainer}>
                                     <Button
