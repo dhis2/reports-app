@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-06-25T11:04:56.868Z\n"
-"PO-Revision-Date: 2018-06-25T11:04:56.868Z\n"
+"POT-Creation-Date: 2018-06-25T16:30:55.222Z\n"
+"PO-Revision-Date: 2018-06-25T16:30:55.222Z\n"
 
 msgid "Cancel"
 msgstr ""
@@ -86,6 +86,21 @@ msgstr ""
 msgid "Organisation Unit"
 msgstr ""
 
+msgid "No cache"
+msgstr ""
+
+msgid "Respect system setting"
+msgstr ""
+
+msgid "Cache for one hour"
+msgstr ""
+
+msgid "Cache until 6 AM tomorrow"
+msgstr ""
+
+msgid "Cache for two weeks"
+msgstr ""
+
 msgid "Standard Report"
 msgstr ""
 
@@ -115,13 +130,10 @@ msgstr ""
 msgid "Cache Strategy"
 msgstr ""
 
-msgid "Reporting Pperiod"
+msgid "Reporting Period"
 msgstr ""
 
 msgid "Organization Unit"
-msgstr ""
-
-msgid "Add New Report"
 msgstr ""
 
 msgid "This object will be created with public edit and view rights"
@@ -139,6 +151,9 @@ msgstr ""
 msgid "Report table"
 msgstr ""
 
+msgid "Add New Report"
+msgstr ""
+
 msgid "Edit Report"
 msgstr ""
 
@@ -146,6 +161,24 @@ msgid "Create Report Table"
 msgstr ""
 
 msgid "Remove Report"
+msgstr ""
+
+msgid "No File Chosen"
+msgstr ""
+
+msgid "Get Jasper Report Template"
+msgstr ""
+
+msgid "Get HTML Report Template"
+msgstr ""
+
+msgid "HTML report"
+msgstr ""
+
+msgid "Jasper report with JDBC data source"
+msgstr ""
+
+msgid "Jasper report with report table data source"
 msgstr ""
 
 msgid "Data Set Report"

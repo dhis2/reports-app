@@ -75,7 +75,7 @@ class CreateStdReport extends PureComponent {
         ];
         return (
             <Dialog
-                title={i18n.t(i18nKeys.standardReport.createReport.title)}
+                title={i18n.t(i18nKeys.standardReport.createReportTitle)}
                 actions={actions}
                 modal={Boolean(true)}
                 open={this.props.open}

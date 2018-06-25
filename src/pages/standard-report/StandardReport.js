@@ -122,8 +122,11 @@ class StandardReport extends Page {
         this.setState({ loading: true, open: true, selectedAction: ADD_NEW_REPORT_ACTION });
     }
 
-    handleClose() {
+    handleClose(refreshList) {
         this.setState({ open: false });
+        if (refreshList) {
+            this.loadData(INITIAL_PAGER);
+        }
     }
 
     /* Context Menu */

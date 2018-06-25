@@ -1,3 +1,7 @@
+/* i18n */
+import i18n from '../../locales';
+import { i18nKeys } from '../../i18n';
+
 export const REPORTS_ENDPOINT = 'reports';
 export const REPORT_TABLES_ENDPOINT = 'reportTables';
 export const FILE_RESOURCES_ENDPOINT = 'fileResources';
@@ -23,37 +27,37 @@ export const CONTEXT_MENU_ICONS = {
 export const REPORT_TYPES = [
     {
         id: 'JASPER_REPORT_TABLE',
-        name: 'Jasper report with report table data source',
+        name: i18n.t(i18nKeys.standardReport.jasperReportTable),
     },
     {
         id: 'JASPER_JDBC',
-        name: 'Jasper report with JDBC data source',
+        name: i18n.t(i18nKeys.standardReport.jasperJDBCReportType),
     },
     {
         id: 'HTML',
-        name: 'HTML report',
+        name: i18n.t(i18nKeys.standardReport.htmlReportType),
     },
 ];
 
-export const CACHE_STATEGIES = [
+export const CACHE_STRATEGIES = [
     {
         id: 'NO_CACHE',
-        name: 'No cache',
+        name: i18n.t(i18nKeys.standardReport.noCache),
     },
     {
         id: 'RESPECT_SYSTEM_SETTING',
-        name: 'Respect system setting',
+        name: i18n.t(i18nKeys.standardReport.respectSystemSettings),
     },
     {
         id: 'CACHE_1_HOUR',
-        name: 'Cache for one hour',
+        name: i18n.t(i18nKeys.standardReport.cacheForOneHour),
     },
     {
         id: 'CACHE_6AM_TOMORROW',
-        name: 'Cache until 6 AM tomorrow',
+        name: i18n.t(i18nKeys.standardReport.cache6AmTomorrow),
     },
     {
         id: 'CACHE_TWO_WEEKS',
-        name: 'Cache for two weeks',
+        name: i18n.t(i18nKeys.standardReport.cacheFour2Weeks),
     },
 ];

@@ -41,7 +41,7 @@ class EditStdReport extends PureComponent {
         ];
         return (
             <Dialog
-                title={i18n.t(i18nKeys.standardReport.editReport.title)}
+                title={i18n.t(i18nKeys.standardReport.editReportTitle)}
                 actions={actions}
                 modal={Boolean(true)}
                 open={this.props.open}
