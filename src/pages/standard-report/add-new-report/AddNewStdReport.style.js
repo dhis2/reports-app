@@ -23,8 +23,23 @@ const AddNewReportStyle = {
     sectionContent: {
         paddingLeft: '5px',
     },
+    dialogContainer: {
+        paddingTop: '5px',
+    },
     width100: {
         width: '100%',
+    },
+    uploadFileInput: {
+        position: 'relative',
+        display: 'inline-block',
+        width: '100%',
+    },
+    uploadFileInputIcon: {
+        position: 'absolute',
+        right: 14,
+        bottom: 15,
+        width: 20,
+        height: 20,
     },
 };
 

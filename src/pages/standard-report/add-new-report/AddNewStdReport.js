@@ -169,14 +169,14 @@ class AddNewReport extends PureComponent {
 
         return (
             <Dialog
-                autoDetectWindowHeight={Boolean(true)}
-                autoScrollBodyContent={Boolean(true)}
+                autoDetectWindowHeight
+                autoScrollBodyContent
                 title={i18n.t(i18nKeys.standardReport.addNewReportTitle)}
                 actions={actions}
-                modal={Boolean(true)}
+                modal
                 open={this.props.open}
             >
-                <div style={{ paddingTop: '5px' }}>
+                <div style={styles.dialogContainer}>
                     <span className={'row'} style={styles.rightsMessage}>
                         {i18n.t(i18nKeys.standardReport.reportRightsMessage)}
                     </span>
@@ -211,10 +211,10 @@ class AddNewReport extends PureComponent {
                                 onChange={this.onChangeFileTemplate}
                             />
                             {/* design file - file input interface */}
-                            <div style={{ position: 'relative', display: 'inline-block', width: '100%' }}>
+                            <div style={styles.uploadFileInput}>
                                 <SvgIcon
                                     icon={'Add'}
-                                    style={{ position: 'absolute', right: 14, bottom: 15, width: 20, height: 20 }}
+                                    style={styles.uploadFileInputIcon}
                                 />
                                 <TextField
                                     readOnly
