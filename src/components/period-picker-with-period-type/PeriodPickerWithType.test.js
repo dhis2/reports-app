@@ -6,32 +6,34 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 /* d2-ui components */
-import { DropDown } from '@dhis2/d2-ui-core';
+import { DropDown, PeriodPicker } from '@dhis2/d2-ui-core';
 
-import { DatasetsDropdown } from './DatasetsDropdown';
+import { PeriodPickerWithPeriodType } from './PeriodPickerWithPeriodType';
 
 /* fake data */
 import fakerData from '../../helpers/fakerTests';
 
-/* Mocks */
-jest.mock('@dhis2/d2-ui-org-unit-tree', () => ('OrgUnitTree'));
 jest.mock('@dhis2/d2-ui-core', () => ({
     DropDown: ('DropDown'),
+    PeriodPicker: ('PeriodPicker'),
 }));
+
+const periodType = 'Weekly';
 
 const ownShallow = () => {
     const onChange = jest.fn();
     return shallow(
-        <DatasetsDropdown
+        <PeriodPickerWithPeriodType
             d2={fakerData.d2}
-            onChange={onChange} />,
+            onChange={onChange}
+        />,
         {
             disableLifecycleMethods: true,
         }
     );
 };
 
-describe('Test <DatasetsDropdown /> rendering:', () => {
+describe('Test <PeriodPickerWithPeriodType /> rendering:', () => {
     let wrapper;
     beforeEach(() => {
         wrapper = ownShallow();
@@ -41,8 +43,14 @@ describe('Test <DatasetsDropdown /> rendering:', () => {
         ownShallow();
     });
 
-    it('Should render DropDown', () => {
+    it('Should render DropDown for PeriodType', () => {
         const wrapper = ownShallow();
         expect(wrapper.find(DropDown)).toHaveLength(1);
+    });
+
+    it('Should render d2-ui PeriodPicker when period type is defined', () => {
+        const wrapper = ownShallow();
+        wrapper.setState({ selectedPeriodType: periodType });
+        expect(wrapper.find(PeriodPicker)).toHaveLength(1);
     });
 });

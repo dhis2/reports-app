@@ -3,8 +3,12 @@ const HEADER_HEIGHT = '4rem';
 const MAX_WIDTH = 1400;
 const CONTENT_AREA_PADDING = 20;
 const PAGING_BOTTOM_MARGIN = 60;
+export const PRIMARY_COLOR = '#004ba0';
 
 const styles = {
+    container: {
+        padding: 16,
+    },
     downloadLink: {
         marginRight: '10px',
     },
@@ -42,6 +46,20 @@ const styles = {
     },
     marginForAddButton: {
         marginBottom: PAGING_BOTTOM_MARGIN,
+    },
+    formLabel: {
+        textAlign: 'left',
+        color: '#757575',
+        marginBottom: 5,
+        fontSize: '14px',
+    },
+    actionsContainer: {
+        display: 'block',
+        marginTop: 48,
+        marginBotton: 16,
+    },
+    dropdowns: {
+        margin: 0,
     },
 };
 

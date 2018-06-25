@@ -18,7 +18,6 @@ const defaultStyles = {
         border: 'solid 1px #bcbcbc',
         overflow: 'auto',
         width: '100%',
-        height: '100%',
     },
 };
 

@@ -30,17 +30,24 @@ const ownShallow = () => {
     );
 };
 
-it('AvaiableOrganisationUnitsTree renders without crashing', () => {
-    ownShallow();
-});
+describe('Test <OrganisationUnitGroupSets /> rendering:', () => {
+    let wrapper;
+    beforeEach(() => {
+        wrapper = ownShallow();
+    });
 
-it('AvaiableOrganisationUnitsTree does not render OrgUnitTree', () => {
-    const wrapper = ownShallow();
-    expect(wrapper.find(OrgUnitTree)).toHaveLength(0);
-});
+    it('Should render without crashing', () => {
+        ownShallow();
+    });
 
-it('AvaiableOrganisationUnitsTree does render OrgUnitTree', () => {
-    const wrapper = ownShallow();
-    wrapper.setState({rootWithMembers: {}});
-    expect(wrapper.find(OrgUnitTree)).toHaveLength(1);
+    it('Should render no OrgUnitTree', () => {
+        const wrapper = ownShallow();
+        expect(wrapper.find(OrgUnitTree)).toHaveLength(0);
+    });
+
+    it('Should render OrgUnitTree', () => {
+        const wrapper = ownShallow();
+        wrapper.setState({rootWithMembers: {}});
+        expect(wrapper.find(OrgUnitTree)).toHaveLength(1);
+    });
 });

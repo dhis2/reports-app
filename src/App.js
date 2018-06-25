@@ -49,6 +49,7 @@ class App extends PureComponent {
             snackbarConf: this.state.snackbarConf,
             currentSection: this.state.currentSection,
             updateAppState: this.updateAppState,
+            pageState: this.state.pageState,
         };
     }
 

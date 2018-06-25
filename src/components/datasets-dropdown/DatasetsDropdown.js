@@ -12,14 +12,21 @@ import AppContext from '../../context';
 import i18n from '../../locales';
 import { i18nKeys } from '../../i18n';
 
+/* styles */
+import styles from '../../styles';
+
 export class DatasetsDropdown extends PureComponent {
     static propTypes = {
         d2: PropTypes.object.isRequired,
         onChange: PropTypes.func,
+        label: PropTypes.string,
+        fullWidth: PropTypes.bool,
     }
 
     static defaultProps = {
-        onChange: null,
+        onChange: () => {},
+        label: i18n.t(i18nKeys.datasetsDropdown.dataSetLabel),
+        fullWidth: true,
     }
 
     constructor() {
@@ -58,14 +65,18 @@ export class DatasetsDropdown extends PureComponent {
 
     render() {
         return (
-            <DropDown
-                value={this.state.selected}
-                onChange={this.onChange}
-                menuItems={this.state.dataSets}
-                includeEmpty
-                emptyLabel={i18n.t(i18nKeys.datasetsDropdown.hintText)}
-                hintText={i18n.t(i18nKeys.datasetsDropdown.hintText)}
-            />
+            <div>
+                <span style={styles.formLabel}>{this.props.label}</span>
+                <DropDown
+                    fullWidth={this.props.fullWidth}
+                    value={this.state.selected}
+                    onChange={this.onChange}
+                    menuItems={this.state.dataSets}
+                    includeEmpty
+                    emptyLabel={i18n.t(i18nKeys.datasetsDropdown.hintText)}
+                    hintText={i18n.t(i18nKeys.datasetsDropdown.hintText)}
+                />
+            </div>
         );
     }
 }

@@ -7,6 +7,10 @@ import MenuElement from "../../components/menu-element/MenuElement";
 
 import { sections } from '../sections.conf';
 
+jest.mock('@dhis2/d2-ui-org-unit-tree', () => ({
+    OrgUnitTree: ('OrgUnitTree'),
+}));
+
 const ownShallow = () => {
     return shallow(
         <Home />,

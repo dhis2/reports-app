@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-06-21T15:34:59.832Z\n"
-"PO-Revision-Date: 2018-06-21T15:34:59.832Z\n"
+"POT-Creation-Date: 2018-06-25T11:04:56.868Z\n"
+"PO-Revision-Date: 2018-06-25T11:04:56.868Z\n"
 
 msgid "Cancel"
 msgstr ""
@@ -18,6 +18,66 @@ msgid "Download as excel"
 msgstr ""
 
 msgid "Select Data Set"
+msgstr ""
+
+msgid "Data set"
+msgstr ""
+
+msgid "Select Option"
+msgstr ""
+
+msgid "Period"
+msgstr ""
+
+msgid "Select Period Type"
+msgstr ""
+
+msgid "Daily"
+msgstr ""
+
+msgid "Weekly"
+msgstr ""
+
+msgid "Weekly Wednesday"
+msgstr ""
+
+msgid "Weekly Thursday"
+msgstr ""
+
+msgid "Weekly Saturday"
+msgstr ""
+
+msgid "Weekly Sunday"
+msgstr ""
+
+msgid "Bi-Weekly"
+msgstr ""
+
+msgid "Monthly"
+msgstr ""
+
+msgid "Bi-Monthly"
+msgstr ""
+
+msgid "Quarterly"
+msgstr ""
+
+msgid "Six-Monthly"
+msgstr ""
+
+msgid "Six-Monthly April"
+msgstr ""
+
+msgid "Yearly"
+msgstr ""
+
+msgid "Financial-April"
+msgstr ""
+
+msgid "Financial-July"
+msgstr ""
+
+msgid "Financial-Oct"
 msgstr ""
 
 msgid "Updating Organisation Units Tree..."
@@ -99,6 +159,30 @@ msgid ""
 "will produce a report with aggregated data."
 msgstr ""
 
+msgid "Report period"
+msgstr ""
+
+msgid "Use data for selected unit only"
+msgstr ""
+
+msgid "Report organisation unit"
+msgstr ""
+
+msgid "Write a comment, question or interpretation of this report"
+msgstr ""
+
+msgid "Show more options"
+msgstr ""
+
+msgid "download as xls"
+msgstr ""
+
+msgid "Share"
+msgstr ""
+
+msgid "Interpretation Shared"
+msgstr ""
+
 msgid "Report Rate Summary"
 msgstr ""
 
@@ -135,6 +219,15 @@ msgstr ""
 msgid ""
 "View data and manage data approval by approving or unapproving, accepting "
 "or unaccepting data."
+msgstr ""
+
+msgid "Loading..."
+msgstr ""
+
+msgid "Report generated"
+msgstr ""
+
+msgid "Unexpected Error"
 msgstr ""
 
 msgid "Actions"
