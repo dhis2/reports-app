@@ -30,13 +30,13 @@ Feature: Data Set Report
   Scenario: I want to see options based on data set
   And select data set
   Then available options are updated for selected data set
-  And default value is displayed for selectable options
+  And no option is selected for selectable options
   
   Scenario: I want to see options updated after change data set
   And select data set
   And select different data set
   Then available options are updated for selected data set
-  And default value is displayed for selectable options
+  And no option is selected for selectable options
 	
   Scenario: I do not want to see more options
   And open more options
