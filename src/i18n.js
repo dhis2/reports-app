@@ -1,6 +1,36 @@
 export const i18nKeys = {
     datasetsDropdown: {
         hintText: 'Select Data Set',
+        dataSetLabel: 'Data set',
+    },
+    dimensionsDropdown: {
+        hintText: 'Select Option',
+    },
+    organisationUnitGroupSetDropdown: {
+        hintText: 'Select Option',
+    },
+    periodPicker: {
+        periodLabel: 'Period',
+        periodTypeHintText: 'Select Period Type',
+        /* do not change property names, those are ids from period types server */
+        labels: {
+            Daily: 'Daily',
+            Weekly: 'Weekly',
+            WeeklyWednesday: 'Weekly Wednesday',
+            WeeklyThursday: 'Weekly Thursday',
+            WeeklySaturday: 'Weekly Saturday',
+            WeeklySunday: 'Weekly Sunday',
+            BiWeekly: 'Bi-Weekly',
+            Monthly: 'Monthly',
+            BiMonthly: 'Bi-Monthly',
+            Quarterly: 'Quarterly',
+            SixMonthly: 'Six-Monthly',
+            SixMonthlyApril: 'Six-Monthly April',
+            Yearly: 'Yearly',
+            FinancialApril: 'Financial-April',
+            FinancialJuly: 'Financial-July',
+            FinancialOct: 'Financial-Oct',
+        },
     },
     availableOrganisationUnitsTree: {
         updatingMessage: 'Updating Organisation Units Tree...',
@@ -18,6 +48,15 @@ export const i18nKeys = {
         header: 'Data Set Report',
         description: 'View data set reports. These reports are based on data entry screens and ' +
         'will produce a report with aggregated data.',
+        reportPeriodLabel: 'Report period',
+        selectedDataSetOnlyLabel: 'Use data for selected unit only',
+        organisationUnitLabel: 'Report organisation unit',
+        sharePlaceholder: 'Write a comment, question or interpretation of this report',
+        showMoreOptions: 'Show more options',
+        mainAction: 'Get Report',
+        exportReport: 'download as xls',
+        share: 'Share',
+        interpretationShared: 'Interpretation Shared',
     },
     reportingRateSummary: {
         homeLabel: 'Report Rate Summary',
