@@ -11,10 +11,10 @@ Feature: Help
     And I click help icon
     Then A documentation page in a new tab is opened
     Examples:
-      | section                  |
-      | Standard Report          | 
-      | Data Set Report          |
-      | Reporting Rate Summary   |
-      | Resource                 |
-	  | Organisation Unit Report |
-	  | Data Approval            |
+      | section                                 |
+      | Standard Report                         |
+      | Data Set Report                         |
+      | Reporting Rate Summary                  |
+      | Resource                                |
+	  | Organisation Unit Distribution Report   |
+	  | Data Approval                           |

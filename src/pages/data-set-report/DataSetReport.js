@@ -24,7 +24,7 @@ import OrganisationUnitGroupOptions from '../../components/organisation-unit-gro
 import DataSetOptions from '../../components/data-set-dimensions/DataSetDimensions';
 import PeriodPickerComponent from '../../components/period-picker-with-period-type/PeriodPickerWithPeriodType';
 import ShareComment from './Share';
-import Report from './Report';
+import Report from '../../components/report/Report';
 
 /* utils */
 import { getDocsUrl } from '../../helpers/docs';
@@ -80,6 +80,7 @@ class DataSetReport extends Page {
             showOptions: (newProps.hasOwnProperty('showOptions') ? newProps.showOptions : this.state.showOptions),
             selectedPeriod:
                 (newProps.hasOwnProperty('selectedPeriod') ? newProps.selectedPeriod : this.state.selectedPeriod),
+            loading: (newProps.hasOwnProperty('loading') ? newProps.loading : this.state.loading),
         };
 
         this.setState(newState);
@@ -117,8 +118,8 @@ class DataSetReport extends Page {
         const dataSetOptions = Object.keys(this.state.selectedOptionsForDimensions)
             .map(dimensionKey => `${dimensionKey}:${this.state.selectedOptionsForDimensions[dimensionKey]}`);
         const orgUnitGroupsOptions = Object.keys(this.state.selectedOptionsForOrganisationUnitGroupSets)
-            .map(dimensionKey =>
-                `${dimensionKey}:${this.state.selectedOptionsForOrganisationUnitGroupSets[dimensionKey]}`,
+            .map(orgUnitGroupKey =>
+                `${orgUnitGroupKey}:${this.state.selectedOptionsForOrganisationUnitGroupSets[orgUnitGroupKey]}`,
             );
         const dimensions = [...dataSetOptions, ...orgUnitGroupsOptions];
 
@@ -200,6 +201,7 @@ class DataSetReport extends Page {
     renderExtraOptions = () => (
         <div>
             <span
+                id="extra-options-action"
                 style={styles.showMoreOptionsButton}
                 role="button"
                 tabIndex="0"
@@ -208,14 +210,13 @@ class DataSetReport extends Page {
                 {i18n.t(this.state.showOptions ?
                     i18nKeys.dataSetReport.showFewOptions : i18nKeys.dataSetReport.showMoreOptions)}
             </span>
-            <div style={this.state.showOptions ? styles.showOptions : styles.hideOptions}>
+            <div id="extra-options" style={this.state.showOptions ? styles.showOptions : styles.hideOptions}>
                 <OrganisationUnitGroupOptions
                     values={this.state.selectedOptionsForOrganisationUnitGroupSets}
                     onChange={this.handleOrganisationUnitGroupSetChange}
                 />
             </div>
         </div>
-
     )
 
     isFormValid() {

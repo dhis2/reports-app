@@ -52,8 +52,8 @@ export class DatasetsDropdown extends PureComponent {
         });
     }
 
-    onChange = (element) => {
-        const value = element.target.value;
+    onChange = (event) => {
+        const value = event.target.value;
         this.setState({
             selected: value,
         });

@@ -1,10 +1,10 @@
-Feature: Report Rate Summary
+Feature: Reporting Rate Summary
   As a user of DHIS2
   I want to be able to preform actions on Report Rate section
 
   Background:
     Given that I am logged in to the Sierra Leone DHIS2
-    When I open Report Rate Summary page
+    When I open Reporting Rate Summary page
 
   Scenario: I want to see all items in the page
     Then a report organisation unit selection is displayed
