@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-06-26T12:43:12.299Z\n"
-"PO-Revision-Date: 2018-06-26T12:43:12.299Z\n"
+"POT-Creation-Date: 2018-06-26T12:48:23.253Z\n"
+"PO-Revision-Date: 2018-06-26T12:48:23.253Z\n"
 
 msgid "Select Data Set"
 msgstr ""
@@ -123,12 +123,21 @@ msgstr ""
 msgid "Interpretation Shared"
 msgstr ""
 
-msgid "Report Rate Summary"
+msgid "Reporting Rate Summary"
 msgstr ""
 
 msgid ""
 "Browse the reporting rates of data sets by organisation unit and period "
 "based on various criteria for submission."
+msgstr ""
+
+msgid "Based on"
+msgstr ""
+
+msgid "Complete data set registrations"
+msgstr ""
+
+msgid "Compulsory data elements"
 msgstr ""
 
 msgid "Resource"

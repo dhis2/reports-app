@@ -14,7 +14,7 @@ Feature: Home
       | item                                  | text_link                              |
       | Standard Report                       | View Reports                           |
       | Data Set Report                       | Get Report                             |
-      | Report Rate Summary                   | Get Report                             |
+      | Reporting Rate Summary                | Get Report                             |
       | Resource                              | View Resources                         |
 	  | Organisation Unit Distribution Report | Get Report                             |
 	  | Data Approval                         | View Data Values                       |
