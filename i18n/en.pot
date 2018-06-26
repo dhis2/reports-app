@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-06-25T16:47:18.893Z\n"
-"PO-Revision-Date: 2018-06-25T16:47:18.893Z\n"
+"POT-Creation-Date: 2018-06-26T15:49:20.889Z\n"
+"PO-Revision-Date: 2018-06-26T15:49:20.889Z\n"
 
 msgid "Cancel"
 msgstr ""
@@ -78,6 +78,96 @@ msgid "Financial-July"
 msgstr ""
 
 msgid "Financial-Oct"
+msgstr ""
+
+msgid "Days"
+msgstr ""
+
+msgid "Reporting day"
+msgstr ""
+
+msgid "Yesterday"
+msgstr ""
+
+msgid "Last 3 days"
+msgstr ""
+
+msgid "Last 7 days"
+msgstr ""
+
+msgid "Last 14 days"
+msgstr ""
+
+msgid "Weeks"
+msgstr ""
+
+msgid "Reporting week"
+msgstr ""
+
+msgid "Last Week"
+msgstr ""
+
+msgid "Last 2 weeks"
+msgstr ""
+
+msgid "Last 12 weeks"
+msgstr ""
+
+msgid "Last 52 weeks"
+msgstr ""
+
+msgid "Weeks this year"
+msgstr ""
+
+msgid "Months"
+msgstr ""
+
+msgid "Reporting month"
+msgstr ""
+
+msgid "Last month"
+msgstr ""
+
+msgid "Last 3 months"
+msgstr ""
+
+msgid "Last 6 months"
+msgstr ""
+
+msgid "Last 12 months"
+msgstr ""
+
+msgid "Months this year"
+msgstr ""
+
+msgid "Bi-months"
+msgstr ""
+
+msgid "Reporting bi-month"
+msgstr ""
+
+msgid "Last bi-month"
+msgstr ""
+
+msgid "Last 6 bi-month"
+msgstr ""
+
+msgid "Bi-months this year"
+msgstr ""
+
+msgid "Quarters"
+msgstr ""
+
+msgid "Reporting quarter"
+msgstr ""
+
+msgid "Last quarter"
+msgstr ""
+
+msgid "Last 4 quarters"
+msgstr ""
+
+msgid "Quarters of reporting year"
 msgstr ""
 
 msgid "Updating Organisation Units Tree..."
