@@ -22,10 +22,11 @@ import DataSets from '../../components/datasets-dropdown/DatasetsDropdown';
 import OrganisationUnitsTree from '../../components/available-organisation-units-tree/AvailableOrganisationUnitsTree';
 import OrganisationUnitGroupOptions from '../../components/organisation-unit-group-sets/OrganisationUnitGroupSets';
 import PeriodPickerComponent from '../../components/period-picker-with-period-type/PeriodPickerWithPeriodType';
-import Report from './Report';
+import Report from '../../components/report/Report';
 
 /* utils */
 import { getDocsUrl } from '../../helpers/docs';
+import { LOADING, SUCCESS } from '../../helpers/feedbackSnackBarTypes';
 
 /* styles */
 import globalStyles from '../../styles';
@@ -64,6 +65,31 @@ class ReportingRateSummary extends Page {
         };
     }
 
+    // eslint-disable-next-line
+    componentWillReceiveProps(newProps) {
+        /* FIXME make this code more readable */
+        const newState = {
+            showForm: (newProps.hasOwnProperty('showForm') ? newProps.showForm : this.state.showForm),
+            reportHtml: (newProps.hasOwnProperty('reportHtml') ? newProps.reportHtml : this.state.reportHtml),
+            selectedDataSet:
+                (newProps.hasOwnProperty('selectedDataSet') ? newProps.selectedDataSet : this.state.selectedDataSet),
+            selectedOrgUnit:
+                (newProps.hasOwnProperty('selectedOrgUnit') ? newProps.selectedOrgUnit : this.state.selectedOrgUnit),
+            selectedOptionsForOrganisationUnitGroupSets:
+                (newProps.hasOwnProperty('selectedOptionsForOrganisationUnitGroupSets') ?
+                    newProps.selectedOptionsForOrganisationUnitGroupSets :
+                    this.state.selectedOptionsForOrganisationUnitGroupSets),
+            showOptions: (newProps.hasOwnProperty('showOptions') ? newProps.showOptions : this.state.showOptions),
+            selectedPeriod:
+                (newProps.hasOwnProperty('selectedPeriod') ? newProps.selectedPeriod : this.state.selectedPeriod),
+            selectedCriteria:
+                (newProps.hasOwnProperty('selectedCriteria') ? newProps.selectedCriteria : this.state.selectedCriteria),
+            loading: (newProps.hasOwnProperty('loading') ? newProps.loading : this.state.loading),
+        };
+
+        this.setState(newState);
+    }
+
     goToForm = () => {
         this.setState({
             showForm: true,
@@ -81,7 +107,39 @@ class ReportingRateSummary extends Page {
     }
 
     getReport = () => {
+        this.props.updateAppState({
+            showSnackbar: true,
+            snackbarConf: {
+                type: LOADING,
+                message: i18n.t(i18nKeys.messages.loading),
+            },
+            pageState: {
+                loading: true,
+            },
+        });
 
+        const api = this.props.d2.Api.getApi();
+        const groupUids = Object.keys(this.state.selectedOptionsForOrganisationUnitGroupSets)
+            .map(orgUnitGroupKey => this.state.selectedOptionsForOrganisationUnitGroupSets[orgUnitGroupKey]);
+
+        // eslint-disable-next-line
+        const url = `reports/rateSummary?ds=${this.state.selectedDataSet}&pe=${this.state.selectedPeriod}&ou=${this.state.selectedOrgUnit}&criteria=${this.state.selectedCriteria}&groupUids=${groupUids}`;
+        api.get(url).then((response) => {
+            this.props.updateAppState({
+                pageState: {
+                    reportHtml: response,
+                    showForm: false,
+                    loading: false,
+                },
+                showSnackbar: true,
+                snackbarConf: {
+                    type: SUCCESS,
+                    message: i18n.t(i18nKeys.messages.reportGenerated),
+                },
+            });
+        }).catch((error) => {
+            this.manageError(error);
+        });
     }
 
     toggleShowOptions = () => {
@@ -131,6 +189,7 @@ class ReportingRateSummary extends Page {
     renderExtraOptions = () => (
         <div>
             <span
+                id="extra-options-action"
                 style={styles.showMoreOptionsButton}
                 role="button"
                 tabIndex="0"
@@ -139,7 +198,7 @@ class ReportingRateSummary extends Page {
                 {i18n.t(this.state.showOptions ?
                     i18nKeys.reportingRateSummary.showFewOptions : i18nKeys.reportingRateSummary.showMoreOptions)}
             </span>
-            <div style={this.state.showOptions ? styles.showOptions : styles.hideOptions}>
+            <div id="extra-options" style={this.state.showOptions ? styles.showOptions : styles.hideOptions}>
                 <OrganisationUnitGroupOptions
                     values={this.state.selectedOptionsForOrganisationUnitGroupSets}
                     onChange={this.handleOrganisationUnitGroupSetChange}
@@ -150,7 +209,6 @@ class ReportingRateSummary extends Page {
 
     isFormValid() {
         return this.state.selectedOrgUnit &&
-            this.state.selectedDataSet &&
             this.state.selectedPeriod;
     }
 
