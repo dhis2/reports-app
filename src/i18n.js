@@ -65,6 +65,16 @@ export const i18nKeys = {
         header: 'Report Rate Summary',
         description: 'Browse the reporting rates of data sets by organisation unit and period based' +
         ' on various criteria for submission.',
+        reportPeriodLabel: 'Report period',
+        organisationUnitLabel: 'Report organisation unit',
+        showMoreOptions: 'Show more options',
+        showFewOptions: 'Show few options',
+        mainAction: 'Get Report',
+        exportReport: 'download as xls',
+        basedOnLabel: 'Based on',
+        basedOnCompleteOptionLabel: 'Complete data set registrations',
+        basedOnCompulsoryOptionLabel: 'Compulsory data elements',
+
     },
     resource: {
         homeLabel: 'Resource',
