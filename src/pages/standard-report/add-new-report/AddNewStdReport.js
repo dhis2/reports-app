@@ -12,7 +12,7 @@ import { Button, TextField, SelectField, CheckBox, SvgIcon, InputField } from '@
 import appStyles from '../../../styles';
 import styles from './AddNewStdReport.style';
 import {
-    CACHE_STRATEGIES, REPORT_TABLES_ENDPOINT, REPORT_TYPES, REPORTS_ENDPOINT,
+    relativePeriods, CACHE_STRATEGIES, REPORT_TABLES_ENDPOINT, REPORT_TYPES, REPORTS_ENDPOINT,
 } from '../standard.report.conf';
 
 /* i18n */
@@ -22,7 +22,7 @@ import { i18nKeys } from '../../../i18n';
 const initialState = {
     report: {
         name: '',
-        cacheStrategy: CACHE_STRATEGIES[0].id,
+        cacheStrategy: CACHE_STRATEGIES[1].id,
         type: REPORT_TYPES[0].id,
         designContent: null,
         reportTable: {
@@ -34,6 +34,33 @@ const initialState = {
             paramReportingPeriod: false,
             paramOrganisationUnit: false,
             paramParentOrganisationUnit: false,
+        },
+        relativePeriods: {
+            thisDay: false,
+            yesterday: false,
+            last3Days: false,
+            last7Days: false,
+            last14Days: false,
+            thisWeek: false,
+            lastWeek: false,
+            last4Weeks: false,
+            last12Weeks: false,
+            last52Weeks: false,
+            weeksThisYear: false,
+            thisMonth: false,
+            lastMonth: false,
+            last3Months: false,
+            last6Months: false,
+            last12Months: false,
+            monthsThisYear: false,
+            thisBimonth: false,
+            lastBimonth: false,
+            last6BiMonths: false,
+            biMonthsThisYear: false,
+            thisQuarter: false,
+            lastQuarter: false,
+            last4Quarters: false,
+            quartersThisYear: false,
         },
     },
     selectedFileToUpload: null,
@@ -48,8 +75,10 @@ class AddNewReport extends PureComponent {
 
     constructor(props) {
         super(props);
-        this.state = initialState;
+        this.state = this.getInitialState();
     }
+
+    getInitialState = () => JSON.parse(JSON.stringify(initialState));
 
     componentDidMount() {
         this.loadReportTables();
@@ -70,6 +99,10 @@ class AddNewReport extends PureComponent {
 
     onChangeReportTable = (table) => {
         this.setState({ report: { ...this.state.report, reportTable: { id: table.id } } });
+    };
+
+    onChangeCheck = (event) => {
+        this.state.report.relativePeriods[event.target.id] = !this.state.report.relativePeriods[event.target.id];
     };
 
     onChangeFileTemplate = (event) => {
@@ -110,7 +143,7 @@ class AddNewReport extends PureComponent {
     };
 
     close = (refreshList) => {
-        this.setState(initialState);
+        this.setState(this.getInitialState());
         this.props.onRequestClose(refreshList);
     };
 
@@ -256,6 +289,23 @@ class AddNewReport extends PureComponent {
                     <div className={'row'} style={styles.sectionBox}>
                         <div className={'col-xs-12'} style={styles.sectionTitle}>
                             {i18n.t(i18nKeys.standardReport.relativePeriods)}
+                        </div>
+                        <div className="row" style={{ width: '100%', paddingLeft: 5 }}>
+                            {relativePeriods.map(relativePeriod => (
+                                <div key={relativePeriod.label} className="col-xs-12 col-sm-6 col-md-4">
+                                    <h4>{relativePeriod.label}</h4>
+                                    {
+                                        relativePeriod.periods.map(period => (
+                                            <CheckBox
+                                                id={period.id}
+                                                key={period.id}
+                                                label={period.name}
+                                                onChange={this.onChangeCheck}
+                                            />
+                                        ))
+                                    }
+                                </div>
+                            ))}
                         </div>
                     </div>
                     {/* report parameters */}
