@@ -38,13 +38,14 @@ export const i18nKeys = {
         },
     },
     relativePeriods: {
-        // FIXME: Add Missing periods
+        // days
         days: 'Days',
         thisDay: 'Reporting day',
         yesterday: 'Yesterday',
         last3Days: 'Last 3 days',
         last7Days: 'Last 7 days',
         last14Days: 'Last 14 days',
+        // weeks
         weeks: 'Weeks',
         thisWeek: 'Reporting week',
         lastWeek: 'Last Week',
@@ -52,6 +53,7 @@ export const i18nKeys = {
         last12Weeks: 'Last 12 weeks',
         last52Weeks: 'Last 52 weeks',
         weeksThisYear: 'Weeks this year',
+        // month
         months: 'Months',
         thisMonth: 'Reporting month',
         lastMonth: 'Last month',
@@ -59,22 +61,46 @@ export const i18nKeys = {
         last6Months: 'Last 6 months',
         last12Months: 'Last 12 months',
         monthsThisYear: 'Months this year',
+        // bi-month
         biMonths: 'Bi-months',
         thisBimonth: 'Reporting bi-month',
         lastBimonth: 'Last bi-month',
         last6BiMonths: 'Last 6 bi-month',
         biMonthsThisYear: 'Bi-months this year',
+        // quarters
         quarters: 'Quarters',
         thisQuarter: 'Reporting quarter',
         lastQuarter: 'Last quarter',
         last4Quarters: 'Last 4 quarters',
         quartersThisYear: 'Quarters of reporting year',
+        // six-months
+        sixMonths: 'Six-Months',
+        thisSixMonth: 'Reporting six-month',
+        lastSixMonth: 'Last six-month',
+        last2SixMonths: 'Last 2 six-months',
+        // financial years
+        financialYears: 'Financial Years',
+        thisFinancialYear: 'Reporting financial year',
+        lastFinancialYear: 'Last financial year',
+        last5FinancialYears: 'Last 5 financial years',
+        // years
+        years: 'Years',
+        thisYear: 'Reporting year',
+        lastYear: 'Last year',
+        last5Years: 'Last 5 years',
+        // not used
+        monthsLastYear: 'Months last year',
+        quartersLastYear: 'Quartes last year',
+        thisBiWeek: 'This bi-week',
+        lastBiWeek: 'Last bi-week',
+        last4BiWeeks: 'Last 4 bi-weeks',
     },
     availableOrganisationUnitsTree: {
         updatingMessage: 'Updating Organisation Units Tree...',
         treeLabel: 'Organisation Unit',
     },
     standardReport: {
+        none: '[ None ]',
         noCache: 'No cache',
         respectSystemSettings: 'Respect system setting',
         cacheForOneHour: 'Cache for one hour',

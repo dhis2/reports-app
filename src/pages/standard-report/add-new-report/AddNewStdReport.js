@@ -12,7 +12,7 @@ import { Button, TextField, SelectField, CheckBox, SvgIcon, InputField } from '@
 import appStyles from '../../../styles';
 import styles from './AddNewStdReport.style';
 import {
-    relativePeriods, CACHE_STRATEGIES, REPORT_TABLES_ENDPOINT, REPORT_TYPES, REPORTS_ENDPOINT,
+    relativePeriods, NONE, CACHE_STRATEGIES, REPORT_TABLES_ENDPOINT, REPORT_TYPES, REPORTS_ENDPOINT,
 } from '../standard.report.conf';
 
 /* i18n */
@@ -23,44 +23,59 @@ const initialState = {
     report: {
         name: '',
         cacheStrategy: CACHE_STRATEGIES[1].id,
-        type: REPORT_TYPES[0].id,
+        typeId: REPORT_TYPES[0].id,
         designContent: null,
-        reportTable: {
-            name: '[ None ]',
-            id: 'none',
-        },
+        reportTable: NONE,
         reportParams: {
-            paramGrandParentOrganisationUnit: false,
             paramReportingPeriod: false,
             paramOrganisationUnit: false,
-            paramParentOrganisationUnit: false,
         },
         relativePeriods: {
+            // days
             thisDay: false,
             yesterday: false,
             last3Days: false,
             last7Days: false,
             last14Days: false,
+            // weeks
             thisWeek: false,
             lastWeek: false,
             last4Weeks: false,
             last12Weeks: false,
             last52Weeks: false,
             weeksThisYear: false,
+            // month
             thisMonth: false,
             lastMonth: false,
             last3Months: false,
             last6Months: false,
             last12Months: false,
             monthsThisYear: false,
+            // bi-motnhs
             thisBimonth: false,
             lastBimonth: false,
             last6BiMonths: false,
             biMonthsThisYear: false,
+            // quartes
             thisQuarter: false,
             lastQuarter: false,
             last4Quarters: false,
             quartersThisYear: false,
+            // six-months
+            sixMonths: false,
+            thisSixMonth: false,
+            lastSixMonth: false,
+            last2SixMonths: false,
+            // financial years
+            financialYears: false,
+            thisFinancialYear: false,
+            lastFinancialYear: false,
+            last5FinancialYears: false,
+            // years
+            years: false,
+            thisYear: false,
+            lastYear: false,
+            last5Years: false,
         },
     },
     selectedFileToUpload: null,
@@ -90,7 +105,7 @@ class AddNewReport extends PureComponent {
     };
 
     onChangeType = (type) => {
-        this.setState({ report: { ...this.state.report, type: type.id } });
+        this.setState({ report: { ...this.state.report, typeId: type.id } });
     };
 
     onChangeCacheStrategy = (strategy) => {
@@ -108,8 +123,10 @@ class AddNewReport extends PureComponent {
     onChangeFileTemplate = (event) => {
         const that = this;
         const reader = new FileReader();
-        reader.readAsText(event.target.files[0]);
-        this.setState({ selectedFileToUpload: event.target.files[0] });
+        if (event.target.files[0]) {
+            reader.readAsText(event.target.files[0]);
+            this.setState({ selectedFileToUpload: event.target.files[0] });
+        }
         // FIXME: Handle errors
         reader.onload = (evt) => {
             if (evt.target.readyState !== 2) return;
@@ -137,7 +154,7 @@ class AddNewReport extends PureComponent {
         this.setState({
             report: {
                 ...this.state.report,
-                reportParams: { ...this.state.report.reportParams, paramOrgUnit: event.target.checked },
+                reportParams: { ...this.state.report.reportParams, paramOrganisationUnit: event.target.checked },
             },
         });
     };
@@ -154,7 +171,7 @@ class AddNewReport extends PureComponent {
         if (api) {
             api.get(url).then((response) => {
                 if (response) {
-                    this.setState({ reportTables: [{ name: '[ None ]', id: 'none' }, ...response.reportTables] });
+                    this.setState({ reportTables: [NONE, ...response.reportTables] });
                 }
             }).catch(() => {
                 // TODO:
@@ -182,6 +199,13 @@ class AddNewReport extends PureComponent {
 
     ifFormValid = () => true;
 
+    showSection = () => {
+        if (this.state.report.typeId !== REPORT_TYPES[0].id) {
+            return styles.sectionBox;
+        }
+        return { display: 'none' };
+    };
+
     render() {
         const actions = [
             <Button
@@ -207,9 +231,10 @@ class AddNewReport extends PureComponent {
                 title={i18n.t(i18nKeys.standardReport.addNewReportTitle)}
                 actions={actions}
                 modal
+                contentStyle={styles.dialog}
                 open={this.props.open}
             >
-                <div style={styles.dialogContainer}>
+                <div style={styles.dialogContentContainer}>
                     <span className={'row'} style={styles.rightsMessage}>
                         {i18n.t(i18nKeys.standardReport.reportRightsMessage)}
                     </span>
@@ -233,7 +258,7 @@ class AddNewReport extends PureComponent {
                                 name={'reportType'}
                                 label={i18n.t(i18nKeys.standardReport.typeLabel)}
                                 items={REPORT_TYPES}
-                                value={this.state.report.type}
+                                value={this.state.report.typeId}
                                 onChange={this.onChangeType}
                             />
                             {/* design file hidden file input */}
@@ -261,9 +286,9 @@ class AddNewReport extends PureComponent {
                                 />
                             </div>
                             {/* get report template */}
-                            <div style={{ width: '100%', textAlign: 'right' }}>
+                            <div style={styles.getTemplateLink}>
                                 {
-                                    this.state.report.type === 'HTML' ? (
+                                    this.state.report.typeId === 'HTML' ? (
                                         <a href={'http://www.google.com'}>
                                             {i18n.t(i18nKeys.standardReport.getHTMLTemplate)}
                                         </a>
@@ -286,13 +311,13 @@ class AddNewReport extends PureComponent {
                         </div>
                     </div>
                     {/* relative periods  */}
-                    <div className={'row'} style={styles.sectionBox}>
+                    <div className={'row'} style={this.showSection()}>
                         <div className={'col-xs-12'} style={styles.sectionTitle}>
                             {i18n.t(i18nKeys.standardReport.relativePeriods)}
                         </div>
-                        <div className="row" style={{ width: '100%', paddingLeft: 5 }}>
+                        <div className="row" style={styles.relativePeriodsRow}>
                             {relativePeriods.map(relativePeriod => (
-                                <div key={relativePeriod.label} className="col-xs-12 col-sm-6 col-md-4">
+                                <div key={relativePeriod.label} className="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                                     <h4>{relativePeriod.label}</h4>
                                     {
                                         relativePeriod.periods.map(period => (
@@ -309,7 +334,7 @@ class AddNewReport extends PureComponent {
                         </div>
                     </div>
                     {/* report parameters */}
-                    <div className={'row'} style={styles.sectionBox}>
+                    <div className={'row'} style={this.showSection()}>
                         <div className={'col-xs-12'} style={styles.sectionTitle}>
                             {i18n.t(i18nKeys.standardReport.reportParameters)}
                         </div>

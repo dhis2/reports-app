@@ -1,15 +1,21 @@
 const AddNewReportStyle = {
+    dialog: {
+        maxWidth: '900px',
+    },
+    dialogContentContainer: {
+        paddingTop: 5,
+    },
     rightsMessage: {
         color: '#999999',
         backgroundColor: '#f1f1f1',
         justifyContent: 'center',
         alignItems: 'center',
-        padding: '5px',
+        padding: 5,
     },
     sectionBox: {
         border: '1px solid #f1f1f1',
         color: '#000000',
-        marginTop: '10px',
+        marginTop: 10,
     },
     sectionTitle: {
         lineHeight: 2,
@@ -21,10 +27,7 @@ const AddNewReportStyle = {
         fontWeight: 'bold',
     },
     sectionContent: {
-        paddingLeft: '5px',
-    },
-    dialogContainer: {
-        paddingTop: '5px',
+        paddingLeft: 5,
     },
     width100: {
         width: '100%',
@@ -40,6 +43,14 @@ const AddNewReportStyle = {
         bottom: 15,
         width: 20,
         height: 20,
+    },
+    relativePeriodsRow: {
+        width: '100%',
+        paddingLeft: 5,
+    },
+    getTemplateLink: {
+        width: '100%',
+        textAlign: 'right',
     },
 };
 

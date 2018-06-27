@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-06-26T16:50:39.595Z\n"
-"PO-Revision-Date: 2018-06-26T16:50:39.595Z\n"
+"POT-Creation-Date: 2018-06-27T13:37:46.031Z\n"
+"PO-Revision-Date: 2018-06-27T13:37:46.031Z\n"
 
 msgid "Cancel"
 msgstr ""
@@ -170,10 +170,64 @@ msgstr ""
 msgid "Quarters of reporting year"
 msgstr ""
 
+msgid "Six-Months"
+msgstr ""
+
+msgid "Reporting six-month"
+msgstr ""
+
+msgid "Last six-month"
+msgstr ""
+
+msgid "Last 2 six-months"
+msgstr ""
+
+msgid "Financial Years"
+msgstr ""
+
+msgid "Reporting financial year"
+msgstr ""
+
+msgid "Last financial year"
+msgstr ""
+
+msgid "Last 5 financial years"
+msgstr ""
+
+msgid "Years"
+msgstr ""
+
+msgid "Reporting year"
+msgstr ""
+
+msgid "Last year"
+msgstr ""
+
+msgid "Last 5 years"
+msgstr ""
+
+msgid "Months last year"
+msgstr ""
+
+msgid "Quartes last year"
+msgstr ""
+
+msgid "This bi-week"
+msgstr ""
+
+msgid "Last bi-week"
+msgstr ""
+
+msgid "Last 4 bi-weeks"
+msgstr ""
+
 msgid "Updating Organisation Units Tree..."
 msgstr ""
 
 msgid "Organisation Unit"
+msgstr ""
+
+msgid "[ None ]"
 msgstr ""
 
 msgid "No cache"

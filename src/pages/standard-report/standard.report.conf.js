@@ -23,6 +23,11 @@ export const CONTEXT_MENU_ICONS = {
     showDetails: 'info',
 };
 
+export const NONE = {
+    id: 'none',
+    name: i18n.t(i18nKeys.standardReport.none),
+};
+
 export const REPORT_TYPES = [
     {
         id: 'JASPER_REPORT_TABLE',
@@ -189,6 +194,60 @@ export const relativePeriods = [
             {
                 id: 'quartersThisYear',
                 name: i18n.t(i18nKeys.relativePeriods.quartersThisYear),
+            },
+        ],
+    },
+    // Six-Months
+    {
+        label: i18n.t(i18nKeys.relativePeriods.sixMonths),
+        periods: [
+            {
+                id: 'thisSixMonth',
+                name: i18n.t(i18nKeys.relativePeriods.thisSixMonth),
+            },
+            {
+                id: 'lastSixMonth',
+                name: i18n.t(i18nKeys.relativePeriods.lastSixMonth),
+            },
+            {
+                id: 'last2SixMonths',
+                name: i18n.t(i18nKeys.relativePeriods.last2SixMonths),
+            },
+        ],
+    },
+    // Financial years
+    {
+        label: i18n.t(i18nKeys.relativePeriods.financialYears),
+        periods: [
+            {
+                id: 'thisFinancialYear',
+                name: i18n.t(i18nKeys.relativePeriods.thisFinancialYear),
+            },
+            {
+                id: 'lastFinancialYear',
+                name: i18n.t(i18nKeys.relativePeriods.lastFinancialYear),
+            },
+            {
+                id: 'last5FinancialYears',
+                name: i18n.t(i18nKeys.relativePeriods.last5FinancialYears),
+            },
+        ],
+    },
+    // years
+    {
+        label: i18n.t(i18nKeys.relativePeriods.years),
+        periods: [
+            {
+                id: 'thisYear',
+                name: i18n.t(i18nKeys.relativePeriods.thisYear),
+            },
+            {
+                id: 'lastYear',
+                name: i18n.t(i18nKeys.relativePeriods.lastYear),
+            },
+            {
+                id: 'last5Years',
+                name: i18n.t(i18nKeys.relativePeriods.last5Years),
             },
         ],
     },
