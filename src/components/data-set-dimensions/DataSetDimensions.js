@@ -71,7 +71,7 @@ export class DataSetDimensions extends PureComponent {
     }
 
     renderDimensionDropdown = dimension => (
-        <div key={dimension.id}>
+        <div key={dimension.id} className="data-set-dimension">
             <span style={styles.formLabel}>{dimension.displayName}</span>
             <DropDown
                 style={this.props.dropdownStyle}
