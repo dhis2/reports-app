@@ -2,6 +2,7 @@ const {expect} = require('chai');
 const {defineSupportCode} = require('cucumber');
 
 const dataSetReport = require('../pages/dataSetReport.page');
+const reportingRateSummary = require('../pages/reportingRateSummary.page');
 
 const DEFAULT_WAIT_TIME = 5000;
 
@@ -9,6 +10,7 @@ const VALID_DATA_SET = 'ART monthly summary';
 const DIFFERENT_VALID_DATA_SET_WITH_OPTIONS = 'Emergency Response';
 const VALID_PERIOD_TYPE = 'Yearly';
 const VALID_PERIOD = '2018';
+const DEFAULT_CRITERIA_REPORTING_RATE_SUMMARY = 'Complete data set registrations';
 
 const fsExtra = require('fs-extra');
 const fs = require('fs');
@@ -99,11 +101,20 @@ defineSupportCode(({Given, When, Then}) => {
         dataSetReport.open();
     });
 
+    When(/^I open Reporting Rate Summary page$/, () => {
+        reportingRateSummary.open();
+    });
+
     // *********************************************************
     // Scenario: I want to see all items in the page
     // *********************************************************
     Then(/^a report organisation unit selection is displayed$/, () => {
         browser.element('.tree-view').waitForVisible(DEFAULT_WAIT_TIME);
+    });
+
+    Then(/^a criteria selection is displayed$/, () => {
+        browser.element('#criteria-selection').waitForVisible(DEFAULT_WAIT_TIME);
+        expect(browser.element('#criteria-selection > div > div:nth-child(2) > div:nth-child(1) > div:nth-child(2)').getText()).to.equal(DEFAULT_CRITERIA_REPORTING_RATE_SUMMARY);
     });
 
     Then(/^a data set selection is displayed$/, () => {

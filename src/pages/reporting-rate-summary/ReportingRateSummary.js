@@ -260,7 +260,7 @@ class ReportingRateSummary extends Page {
                                 </div>
                             </div>
                             <div className="col-md-6">
-                                <div>
+                                <div id="criteria-selection">
                                     <span style={globalStyles.formLabel}>
                                         {i18n.t(i18nKeys.reportingRateSummary.basedOnLabel)}
                                     </span>

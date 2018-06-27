@@ -1,16 +1,16 @@
-Feature: Data Set Report
+Feature: Reporting Rate Summary
   As a user of DHIS2
-  I want to be able to preform actions on Data Set Report section
+  I want to be able to preform actions on Report Rate section
 
   Background:
     Given that I am logged in to the Sierra Leone DHIS2
-    When I open Data Set Report page
+    When I open Reporting Rate Summary page
 
   Scenario: I want to see all items in the page
     Then a report organisation unit selection is displayed
+    And a criteria selection is displayed
     And a data set selection is displayed
     And a report period selection is displayed
-    And checkbox for selected unit only
     And a show more options selector
     And get report button is disabled
 
@@ -26,17 +26,6 @@ Feature: Data Set Report
   Scenario: I want to see button generate disabled when no organisation unit is selected
     And fill the form with valid data without selecting organisation unit
     Then get report button is disabled
-
-  Scenario: I want to see options based on data set
-    And select data set
-    Then available options are updated for selected data set
-    And no option is selected for selectable options
-
-  Scenario: I want to see options updated after change data set
-    And select data set
-    And select different data set with options
-    Then available options are updated for selected data set
-    And no option is selected for selectable options
 
   Scenario: I do not want to see more options
     And open more options
@@ -55,7 +44,3 @@ Feature: Data Set Report
     And click to generate the report
     And I click to download as xls
     Then a download is started
-  
-
-  
-  
