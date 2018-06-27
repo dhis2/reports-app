@@ -35,7 +35,7 @@ class Home extends Page {
     getMenuItemForSection(section) {
         browser.waitForVisible('.left-bar', 5000);
         const sections = browser.elements('.left-bar a').value;
-        for (let i = 1; i <= sections.length; i++) {
+        for (let currentSection of sections) {
             if (currentSection.element('div > div > div').getText().includes(section)) {
                 return currentSection;
             }

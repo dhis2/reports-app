@@ -13,9 +13,9 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        // './e2e/features/home.feature',
-        // './e2e/features/help.feature',
-        // './e2e/features/help.feature',
+        './e2e/features/home.feature',
+        './e2e/features/help.feature',
+        './e2e/features/help.feature',
         './e2e/features/dataSetReport.feature',
     ],
     // Patterns to exclude.
