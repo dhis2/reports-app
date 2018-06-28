@@ -24,7 +24,7 @@ import Report from '../../components/report/Report';
 
 /* utils */
 import { getDocsUrl } from '../../helpers/docs';
-// import { LOADING, SUCCESS } from '../../helpers/feedbackSnackBarTypes';
+import { LOADING, SUCCESS } from '../../helpers/feedbackSnackBarTypes';
 
 /* styles */
 import globalStyles from '../../styles';
@@ -44,6 +44,7 @@ class OrganisationUnitDistributionReport extends Page {
             selectedGroupSet: null,
             selectedOrgUnit: null,
             loading: false,
+            imageUrl: null,
         };
     }
 
@@ -53,6 +54,7 @@ class OrganisationUnitDistributionReport extends Page {
         const newState = {
             showForm: (newProps.hasOwnProperty('showForm') ? newProps.showForm : this.state.showForm),
             reportHtml: (newProps.hasOwnProperty('reportHtml') ? newProps.reportHtml : this.state.reportHtml),
+            imageUrl: (newProps.hasOwnProperty('imageUrl') ? newProps.imageUrl : this.state.imageUrl),
             selectedOrgUnit:
                 (newProps.hasOwnProperty('selectedOrgUnit') ? newProps.selectedOrgUnit : this.state.selectedOrgUnit),
             selectedGroupSet:
@@ -80,11 +82,79 @@ class OrganisationUnitDistributionReport extends Page {
     }
 
     getReport = () => {
+        this.props.updateAppState({
+            showSnackbar: true,
+            snackbarConf: {
+                type: LOADING,
+                message: i18n.t(i18nKeys.messages.loading),
+            },
+            pageState: {
+                loading: true,
+            },
+        });
 
+        const api = this.props.d2.Api.getApi();
+
+        // eslint-disable-next-line
+        const url = `organisationUnits/distributionReport?ou=${this.state.selectedOrgUnit}&groupSetId=${this.state.selectedGroupSet}`;
+        api.get(url).then((response) => {
+            this.props.updateAppState({
+                pageState: {
+                    reportHtml: response,
+                    imageUrl: null,
+                    showForm: false,
+                    loading: false,
+                },
+                showSnackbar: true,
+                snackbarConf: {
+                    type: SUCCESS,
+                    message: i18n.t(i18nKeys.messages.reportGenerated),
+                },
+            });
+        }).catch((error) => {
+            this.manageError(error);
+        });
     }
 
     getChart = () => {
+        /*
+        this.props.updateAppState({
+            showSnackbar: true,
+            snackbarConf: {
+                type: LOADING,
+                message: i18n.t(i18nKeys.messages.loading),
+            },
+            pageState: {
+                loading: true,
+            },
+        });
 
+        const api = this.props.d2.Api.getApi();
+
+        // eslint-disable-next-line
+        const url = `organisationUnits/distributionChart.png?ou=${this.state.selectedOrgUnit}&groupSetId=${this.state.selectedGroupSet}`;
+        api.get(url).then((response) => {
+            const blob = new Blob(
+                [response],
+                { type: 'image/png' },
+            );
+            this.props.updateAppState({
+                pageState: {
+                    reportHtml: null,
+                    imageUrl: URL.createObjectURL(blob),
+                    showForm: false,
+                    loading: false,
+                },
+                showSnackbar: true,
+                snackbarConf: {
+                    type: SUCCESS,
+                    message: i18n.t(i18nKeys.messages.chartGenerated),
+                },
+            });
+        }).catch((error) => {
+            this.manageError(error);
+        });
+        */
     }
 
     handleOrganisationUnitChange = (selectedOrgUnit) => {
@@ -165,22 +235,32 @@ class OrganisationUnitDistributionReport extends Page {
                             </Button>
                         </div>
                     </div>
-                    { this.state.reportHtml && !this.state.showForm &&
+                    { !this.state.showForm &&
                     <div
                         id="report-container"
-                        style={{ display: this.state.reportHtml && !this.state.showForm ? 'block' : 'none' }}
+                        style={{ display: !this.state.showForm ? 'block' : 'none' }}
                     >
-                        <div style={styles.downloadContainer}>
-                            <span
-                                style={styles.downloadButton}
-                                role="button"
-                                tabIndex="0"
-                                onClick={this.exportReportToXls}
-                            >
-                                {i18n.t(i18nKeys.organisationUnitDistributionReport.exportReport)}
-                            </span>
-                        </div>
-                        <Report reportHtml={this.state.reportHtml} />
+                        {this.state.reportHtml &&
+                            <div style={styles.downloadContainer}>
+                                <span
+                                    style={styles.downloadButton}
+                                    role="button"
+                                    tabIndex="0"
+                                    onClick={this.exportReportToXls}
+                                >
+                                    {i18n.t(i18nKeys.organisationUnitDistributionReport.exportReport)}
+                                </span>
+                            </div>
+                        }
+                        { this.state.reportHtml &&
+                            <Report reportHtml={this.state.reportHtml} />
+                        }
+                        { this.state.imageUrl &&
+                            <img
+                                alt={i18n.t(i18nKeys.organisationUnitDistributionReport.getChartAction)}
+                                src={this.state.imageUrl}
+                            />
+                        }
                     </div>
                     }
                 </Paper>

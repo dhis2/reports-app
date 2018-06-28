@@ -95,6 +95,7 @@ export const i18nKeys = {
         exportReport: 'download as xls',
         getReportAction: 'Get Report',
         getChartAction: 'Get Chart',
+        chartImageAlt: 'Chart',
     },
     dataApproval: {
         homeLabel: 'Data Approval',
@@ -105,6 +106,7 @@ export const i18nKeys = {
     messages: {
         loading: 'Loading...',
         reportGenerated: 'Report generated',
+        chartGenerated: 'Chart generated',
         unexpectedError: 'Unexpected Error',
     },
     d2UiComponents: {

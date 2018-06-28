@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-06-28T08:07:54.278Z\n"
-"PO-Revision-Date: 2018-06-28T08:07:54.278Z\n"
+"POT-Creation-Date: 2018-06-28T12:48:51.363Z\n"
+"PO-Revision-Date: 2018-06-28T12:48:51.363Z\n"
 
 msgid "Select Data Set"
 msgstr ""
@@ -168,6 +168,9 @@ msgstr ""
 msgid "Get Chart"
 msgstr ""
 
+msgid "Chart"
+msgstr ""
+
 msgid "Data Approval"
 msgstr ""
 
@@ -183,6 +186,9 @@ msgid "Loading..."
 msgstr ""
 
 msgid "Report generated"
+msgstr ""
+
+msgid "Chart generated"
 msgstr ""
 
 msgid "Unexpected Error"
