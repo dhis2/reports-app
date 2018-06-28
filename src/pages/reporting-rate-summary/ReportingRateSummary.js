@@ -222,6 +222,7 @@ class ReportingRateSummary extends Page {
                 <h1>
                     { !this.state.showForm &&
                     <span
+                        id="back-button"
                         style={styles.backButton}
                         className="material-icons"
                         role="button"
@@ -249,7 +250,7 @@ class ReportingRateSummary extends Page {
                                 {this.renderExtraOptions()}
                             </div>
                             <div className="col-md-6">
-                                <div>
+                                <div id="criteria-selection">
                                     <span style={globalStyles.formLabel}>
                                         {i18n.t(i18nKeys.reportingRateSummary.basedOnLabel)}
                                     </span>
@@ -260,16 +261,20 @@ class ReportingRateSummary extends Page {
                                         menuItems={BASED_ON_OPTIONS}
                                     />
                                 </div>
-                                <DataSets
-                                    onChange={this.handleDataSetChange}
-                                />
-                                <PeriodPickerComponent
-                                    label={i18n.t(i18nKeys.reportingRateSummary.reportPeriodLabel)}
-                                    onChange={this.handlePeriodChange}
-                                />
+                                <div id="data-set-selection">
+                                    <DataSets
+                                        onChange={this.handleDataSetChange}
+                                    />
+                                </div>
+                                <div id="report-period">
+                                    <PeriodPickerComponent
+                                        label={i18n.t(i18nKeys.reportingRateSummary.reportPeriodLabel)}
+                                        onChange={this.handlePeriodChange}
+                                    />
+                                </div>
                             </div>
                         </div>
-                        <div style={globalStyles.actionsContainer}>
+                        <div id="main-action-button" style={globalStyles.actionsContainer}>
                             <Button
                                 raised
                                 color="primary"
@@ -285,7 +290,7 @@ class ReportingRateSummary extends Page {
                             id="report-container"
                             style={{ display: this.state.reportHtml && !this.state.showForm ? 'block' : 'none' }}
                         >
-                            <div style={styles.downloadContainer}>
+                            <div id="download-options-container" style={styles.downloadContainer}>
                                 <span
                                     style={styles.downloadButton}
                                     role="button"

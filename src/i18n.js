@@ -53,7 +53,7 @@ export const i18nKeys = {
         description: 'View data set reports. These reports are based on data entry screens and ' +
         'will produce a report with aggregated data.',
         reportPeriodLabel: 'Report period',
-        selectedDataSetOnlyLabel: 'Use data for selected unit only',
+        selectedUnitOnlyLabel: 'Use data for selected unit only',
         organisationUnitLabel: 'Report organisation unit',
         sharePlaceholder: 'Write a comment, question or interpretation of this report',
         showMoreOptions: 'Show more options',

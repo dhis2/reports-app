@@ -35,8 +35,7 @@ Feature: Reporting Rate Summary
   Scenario: I want to see a report
     And I fill the form with valid data
     And click to generate the report
-    Then a title for reports is displayed
-    And a table with report is displayed
+    And one or more tables with report are displayed
     And download option is available
     And return button is displayed
 
