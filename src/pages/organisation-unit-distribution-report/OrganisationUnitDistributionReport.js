@@ -117,44 +117,17 @@ class OrganisationUnitDistributionReport extends Page {
     }
 
     getChart = () => {
-        /*
-        this.props.updateAppState({
-            showSnackbar: true,
-            snackbarConf: {
-                type: LOADING,
-                message: i18n.t(i18nKeys.messages.loading),
-            },
-            pageState: {
-                loading: true,
-            },
-        });
-
+        // FIXME need to be improved to show loading - lazy loading of image
         const api = this.props.d2.Api.getApi();
 
         // eslint-disable-next-line
-        const url = `organisationUnits/distributionChart.png?ou=${this.state.selectedOrgUnit}&groupSetId=${this.state.selectedGroupSet}`;
-        api.get(url).then((response) => {
-            const blob = new Blob(
-                [response],
-                { type: 'image/png' },
-            );
-            this.props.updateAppState({
-                pageState: {
-                    reportHtml: null,
-                    imageUrl: URL.createObjectURL(blob),
-                    showForm: false,
-                    loading: false,
-                },
-                showSnackbar: true,
-                snackbarConf: {
-                    type: SUCCESS,
-                    message: i18n.t(i18nKeys.messages.chartGenerated),
-                },
-            });
-        }).catch((error) => {
-            this.manageError(error);
+        const imageUrl = `${api.baseUrl}/organisationUnits/distributionChart.png?ou=${this.state.selectedOrgUnit}&groupSetId=${this.state.selectedGroupSet}`;
+        this.setState({
+            reportHtml: null,
+            imageUrl,
+            showForm: false,
+            loading: false,
         });
-        */
     }
 
     handleOrganisationUnitChange = (selectedOrgUnit) => {
