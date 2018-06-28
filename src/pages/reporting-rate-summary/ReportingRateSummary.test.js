@@ -141,9 +141,8 @@ describe('Test <ReportingRateSummary /> actions:', () => {
     });
     /*
     it('Should call generateReport function when form button is clicked.', () => {
-        const form = wrapper.find('#data-set-report-form');
-        wrapper.instance().generateReport = jest.fn();
-        wrapper.generateReport = jest.fn();
+        const form = wrapper.find('#report-rate-summary-form');
+        wrapper.instance().getReport = jest.fn();
         wrapper.setState({
             selectedOrgUnit: 'OrgUnitId',
             selectedPeriod: '2018',
@@ -151,7 +150,7 @@ describe('Test <ReportingRateSummary /> actions:', () => {
         });
         wrapper.update();
         form.find(Button).simulate('click');
-        expect(wrapper.instance().generateReport).toHaveBeenCalled();
+        expect(wrapper.instance().getReport).toHaveBeenCalled();
     });
     */
     /*

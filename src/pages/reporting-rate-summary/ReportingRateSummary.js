@@ -248,16 +248,6 @@ class ReportingRateSummary extends Page {
                                     onChange={this.handleOrganisationUnitChange}
                                 />
                                 {this.renderExtraOptions()}
-                                <div id="main-action-button" style={globalStyles.actionsContainer}>
-                                    <Button
-                                        raised
-                                        color="primary"
-                                        onClick={this.getReport}
-                                        disabled={!this.isActionEnabled()}
-                                    >
-                                        {i18n.t(i18nKeys.reportingRateSummary.mainAction)}
-                                    </Button>
-                                </div>
                             </div>
                             <div className="col-md-6">
                                 <div id="criteria-selection">
@@ -283,6 +273,16 @@ class ReportingRateSummary extends Page {
                                     />
                                 </div>
                             </div>
+                        </div>
+                        <div id="main-action-button" style={globalStyles.actionsContainer}>
+                            <Button
+                                raised
+                                color="primary"
+                                onClick={this.getReport}
+                                disabled={!this.isActionEnabled()}
+                            >
+                                {i18n.t(i18nKeys.reportingRateSummary.mainAction)}
+                            </Button>
                         </div>
                     </div>
                     {this.state.reportHtml && !this.state.showForm &&
