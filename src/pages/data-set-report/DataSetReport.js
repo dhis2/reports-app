@@ -46,7 +46,7 @@ class DataSetReport extends Page {
             showForm: true,
             reportHtml: null,
             selectedDataSet: null,
-            selectedDataSetOnly: false,
+            selectedUnitOnly: false,
             selectedOrgUnit: null,
             selectedOptionsForDimensions: {},
             selectedOptionsForOrganisationUnitGroupSets: {},
@@ -65,9 +65,9 @@ class DataSetReport extends Page {
             reportHtml: (newProps.hasOwnProperty('reportHtml') ? newProps.reportHtml : this.state.reportHtml),
             selectedDataSet:
                 (newProps.hasOwnProperty('selectedDataSet') ? newProps.selectedDataSet : this.state.selectedDataSet),
-            selectedDataSetOnly:
-                (newProps.hasOwnProperty('selectedDataSetOnly') ?
-                    newProps.selectedDataSetOnly : this.state.selectedDataSetOnly),
+            selectedUnitOnly:
+                (newProps.hasOwnProperty('selectedUnitOnly') ?
+                    newProps.selectedUnitOnly : this.state.selectedUnitOnly),
             selectedOrgUnit:
                 (newProps.hasOwnProperty('selectedOrgUnit') ? newProps.selectedOrgUnit : this.state.selectedOrgUnit),
             selectedOptionsForDimensions:
@@ -124,7 +124,7 @@ class DataSetReport extends Page {
         const dimensions = [...dataSetOptions, ...orgUnitGroupsOptions];
 
         // eslint-disable-next-line
-        const url = `dataSetReport?ds=${this.state.selectedDataSet}&pe=${this.state.selectedPeriod}&ou=${this.state.selectedOrgUnit}&selectedUnitOnly=${this.state.selectedDataSetOnly}&dimension=${dimensions}`;
+        const url = `dataSetReport?ds=${this.state.selectedDataSet}&pe=${this.state.selectedPeriod}&ou=${this.state.selectedOrgUnit}&selectedUnitOnly=${this.state.selectedUnitOnly}&dimension=${dimensions}`;
         api.get(url).then((response) => {
             this.props.updateAppState({
                 pageState: {
@@ -180,9 +180,9 @@ class DataSetReport extends Page {
         });
     }
 
-    handleSelectedDataSetOnlyChange = (event, selectedDataSetOnly) => {
+    handleSelectedUnitOnlyChange = (event, selectedUnitOnly) => {
         this.setState({
-            selectedDataSetOnly,
+            selectedUnitOnly,
         });
     }
 
@@ -235,6 +235,7 @@ class DataSetReport extends Page {
                 <h1>
                     { !this.state.showForm &&
                         <span
+                            id="back-button"
                             style={styles.backButton}
                             className="material-icons"
                             role="button"
@@ -260,8 +261,9 @@ class DataSetReport extends Page {
                                     onChange={this.handleOrganisationUnitChange}
                                 />
                                 {this.renderExtraOptions()}
-                                <div style={globalStyles.actionsContainer}>
+                                <div id="main-action-button" style={globalStyles.actionsContainer}>
                                     <Button
+                                        id="main-action-button"
                                         raised
                                         color="primary"
                                         onClick={this.getReport}
@@ -272,24 +274,31 @@ class DataSetReport extends Page {
                                 </div>
                             </div>
                             <div className="col-md-6">
-                                <DataSets
-                                    onChange={this.handleDataSetChange}
-                                />
+                                <div id="data-set-selection">
+                                    <DataSets
+                                        onChange={this.handleDataSetChange}
+                                    />
+                                </div>
                                 {this.state.selectedDataSet &&
-                                <DataSetOptions
-                                    dataSetId={this.state.selectedDataSet}
-                                    values={this.state.selectedOptionsForDimensions}
-                                    onChange={this.handleDimensionChange}
-                                />
+                                    <div id="data-set-dimensions-container">
+                                        <DataSetOptions
+                                            dataSetId={this.state.selectedDataSet}
+                                            values={this.state.selectedOptionsForDimensions}
+                                            onChange={this.handleDimensionChange}
+                                        />
+                                    </div>
                                 }
-                                <PeriodPickerComponent
-                                    label={i18n.t(i18nKeys.dataSetReport.reportPeriodLabel)}
-                                    onChange={this.handlePeriodChange}
-                                />
+                                <div id="report-period">
+                                    <PeriodPickerComponent
+                                        label={i18n.t(i18nKeys.dataSetReport.reportPeriodLabel)}
+                                        onChange={this.handlePeriodChange}
+                                    />
+                                </div>
                                 <CheckBox
-                                    onChange={this.handleSelectedDataSetOnlyChange}
-                                    value={this.state.selectedDataSetOnly}
-                                    label={i18n.t(i18nKeys.dataSetReport.selectedDataSetOnlyLabel)}
+                                    id="selected-unit-only"
+                                    onChange={this.handleSelectedUnitOnlyChange}
+                                    value={this.state.selectedUnitOnly}
+                                    label={i18n.t(i18nKeys.dataSetReport.selectedUnitOnlyLabel)}
                                 />
                             </div>
                         </div>
@@ -299,7 +308,7 @@ class DataSetReport extends Page {
                             id="report-container"
                             style={{ display: this.state.reportHtml && !this.state.showForm ? 'block' : 'none' }}
                         >
-                            <div style={styles.downloadContainer}>
+                            <div id="download-options-container" style={styles.downloadContainer}>
                                 <span
                                     style={styles.downloadButton}
                                     role="button"
