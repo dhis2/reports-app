@@ -220,9 +220,7 @@ class DataSetReport extends Page {
     )
 
     isFormValid() {
-        return this.state.selectedOrgUnit &&
-            this.state.selectedDataSet &&
-            this.state.selectedPeriod;
+        return this.state.selectedOrgUnit && this.state.selectedDataSet && this.state.selectedPeriod;
     }
 
     isActionEnabled() {
@@ -260,16 +258,6 @@ class DataSetReport extends Page {
                                     onChange={this.handleOrganisationUnitChange}
                                 />
                                 {this.renderExtraOptions()}
-                                <div style={globalStyles.actionsContainer}>
-                                    <Button
-                                        raised
-                                        color="primary"
-                                        onClick={this.getReport}
-                                        disabled={!this.isActionEnabled()}
-                                    >
-                                        {i18n.t(i18nKeys.dataSetReport.mainAction)}
-                                    </Button>
-                                </div>
                             </div>
                             <div className="col-md-6">
                                 <DataSets
@@ -292,6 +280,16 @@ class DataSetReport extends Page {
                                     label={i18n.t(i18nKeys.dataSetReport.selectedDataSetOnlyLabel)}
                                 />
                             </div>
+                        </div>
+                        <div style={globalStyles.actionsContainer}>
+                            <Button
+                                raised
+                                color="primary"
+                                onClick={this.getReport}
+                                disabled={!this.isActionEnabled()}
+                            >
+                                {i18n.t(i18nKeys.dataSetReport.mainAction)}
+                            </Button>
                         </div>
                     </div>
                     { this.state.reportHtml && !this.state.showForm &&

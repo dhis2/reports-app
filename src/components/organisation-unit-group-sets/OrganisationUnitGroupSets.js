@@ -40,13 +40,13 @@ export class OrganisationUnitGroupSets extends PureComponent {
     }
 
     componentDidMount() {
-        const api = this.props.d2.Api.getApi();
-        const url = 'organisationUnitGroupSets?' +
-            'fields=id,displayName,organisationUnitGroups[id,displayName]&order=name:asc&paging=false';
-        api.get(url).then((response) => {
-            const organisationUnitGroupSets = response.organisationUnitGroupSets || [];
+        const d2 = this.props.d2;
+        d2.models.organisationUnitGroupSet.list({
+            paging: false,
+            fields: 'id,displayName,organisationUnitGroups[id,displayName]',
+        }).then((organisationUnitGroupSetsResponse) => {
             this.setState({
-                organisationUnitGroupSets,
+                organisationUnitGroupSets: organisationUnitGroupSetsResponse.toArray(),
             });
         }).catch(() => {
             // TODO Manage error

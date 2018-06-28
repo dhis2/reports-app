@@ -247,16 +247,6 @@ class ReportingRateSummary extends Page {
                                     onChange={this.handleOrganisationUnitChange}
                                 />
                                 {this.renderExtraOptions()}
-                                <div style={globalStyles.actionsContainer}>
-                                    <Button
-                                        raised
-                                        color="primary"
-                                        onClick={this.getReport}
-                                        disabled={!this.isActionEnabled()}
-                                    >
-                                        {i18n.t(i18nKeys.reportingRateSummary.mainAction)}
-                                    </Button>
-                                </div>
                             </div>
                             <div className="col-md-6">
                                 <div>
@@ -278,6 +268,16 @@ class ReportingRateSummary extends Page {
                                     onChange={this.handlePeriodChange}
                                 />
                             </div>
+                        </div>
+                        <div style={globalStyles.actionsContainer}>
+                            <Button
+                                raised
+                                color="primary"
+                                onClick={this.getReport}
+                                disabled={!this.isActionEnabled()}
+                            >
+                                {i18n.t(i18nKeys.reportingRateSummary.mainAction)}
+                            </Button>
                         </div>
                     </div>
                     {this.state.reportHtml && !this.state.showForm &&

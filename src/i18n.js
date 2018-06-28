@@ -9,6 +9,10 @@ export const i18nKeys = {
     organisationUnitGroupSetDropdown: {
         hintText: 'Select Option',
     },
+    groupSetsDropdown: {
+        hintText: 'Select Group Set',
+        label: 'Group Set',
+    },
     periodPicker: {
         periodLabel: 'Period',
         periodTypeHintText: 'Select Period Type',
@@ -74,7 +78,6 @@ export const i18nKeys = {
         basedOnLabel: 'Based on',
         basedOnCompleteOptionLabel: 'Complete data set registrations',
         basedOnCompulsoryOptionLabel: 'Compulsory data elements',
-
     },
     resource: {
         homeLabel: 'Resource',
@@ -88,6 +91,10 @@ export const i18nKeys = {
         header: 'Organisation Unit Distribution Report',
         description: 'Browse the organisation unit distribution report based on the organisation unit group sets' +
         ' and its groups.',
+        organisationUnitLabel: 'Report organisation unit',
+        exportReport: 'download as xls',
+        getReportAction: 'Get Report',
+        getChartAction: 'Get Chart',
     },
     dataApproval: {
         homeLabel: 'Data Approval',

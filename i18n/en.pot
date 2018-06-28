@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-06-26T12:50:44.929Z\n"
-"PO-Revision-Date: 2018-06-26T12:50:44.929Z\n"
+"POT-Creation-Date: 2018-06-28T08:07:54.278Z\n"
+"PO-Revision-Date: 2018-06-28T08:07:54.278Z\n"
 
 msgid "Select Data Set"
 msgstr ""
@@ -15,6 +15,12 @@ msgid "Data set"
 msgstr ""
 
 msgid "Select Option"
+msgstr ""
+
+msgid "Select Group Set"
+msgstr ""
+
+msgid "Group Set"
 msgstr ""
 
 msgid "Period"
@@ -157,6 +163,9 @@ msgstr ""
 msgid ""
 "Browse the organisation unit distribution report based on the organisation "
 "unit group sets and its groups."
+msgstr ""
+
+msgid "Get Chart"
 msgstr ""
 
 msgid "Data Approval"
