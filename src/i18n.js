@@ -61,7 +61,6 @@ export const i18nKeys = {
         mainAction: 'Get Report',
         exportReport: 'download as xls',
         share: 'Share',
-        interpretationShared: 'Interpretation Shared',
     },
     reportingRateSummary: {
         homeLabel: 'Reporting Rate Summary',
@@ -108,6 +107,7 @@ export const i18nKeys = {
         reportGenerated: 'Report generated',
         chartGenerated: 'Chart generated',
         unexpectedError: 'Unexpected Error',
+        interpretationShared: 'Interpretation Shared',
     },
     d2UiComponents: {
         app_search_placeholder: 'Search',

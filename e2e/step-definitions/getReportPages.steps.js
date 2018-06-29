@@ -241,6 +241,10 @@ defineSupportCode(({Given, When, Then}) => {
         browser.element('#back-button').waitForVisible(DEFAULT_WAIT_TIME);
     });
 
+    Then(/^share comment for results option is displayed$/, () => {
+        browser.element('#share-component').waitForVisible(DEFAULT_WAIT_TIME);
+    });
+
     // *********************************************************
     // Scenario: I want to export a report
     // *********************************************************
@@ -257,5 +261,25 @@ defineSupportCode(({Given, When, Then}) => {
     Then(/^a download is started$/, () => {
         browser.pause(DEFAULT_WAIT_TIME);
         expect(fs.existsSync(pathToReportFile)).to.equal(true);
+    });
+
+    // *********************************************************
+    // Scenario: I want to share a report comment
+    // *********************************************************
+    When(/^I write some comment in the share field$/, () => {
+        browser.element('#share-component').waitForVisible(DEFAULT_WAIT_TIME);
+        browser.element('#share-component textarea:nth-child(2)').setValue('Comment');
+    });
+
+    When(/^I click in the share link$/, () => {
+        browser.element('#share-component').waitForVisible(DEFAULT_WAIT_TIME);
+        browser.element('#share-component button').click();
+        browser.pause(DEFAULT_WAIT_TIME);                       // give time for previous snackbar disappear
+    });
+
+    Then(/^comment is submitted$/, () => {
+        const snackbarMessage = browser.element('#feedback-snackbar > div > div > div > span > div > div');
+        snackbarMessage.waitForVisible(DEFAULT_WAIT_TIME);
+        expect(snackbarMessage.getText()).to.equal('Interpretation Shared');
     });
 });

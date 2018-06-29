@@ -15,7 +15,6 @@ exports.config = {
     specs: [
         './e2e/features/home.feature',
         './e2e/features/help.feature',
-        './e2e/features/help.feature',
         './e2e/features/dataSetReport.feature',
         './e2e/features/reportingRateSummary.feature',
     ],
