@@ -46,9 +46,10 @@ Feature: Data Set Report
   Scenario: I want to see a report
     And I fill the form with valid data
     And click to generate the report
-    And one or more tables with report are displayed
+    Then one or more tables with report are displayed
     And download option is available
     And return button is displayed
+	And share comment for results option is displayed
 
   Scenario: I want to export a report
     And I fill the form with valid data
@@ -56,6 +57,9 @@ Feature: Data Set Report
     And I click to download as xls
     Then a download is started
   
-
-  
-  
+  Scenario: I want to share a report comment
+    And I fill the form with valid data
+    And click to generate the report
+    And I write some comment in the share field
+	And I click in the share link
+    Then comment is submitted
