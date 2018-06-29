@@ -31,8 +31,7 @@ import { getDocsUrl } from '../../helpers/docs';
 import { LOADING, SUCCESS } from '../../helpers/feedbackSnackBarTypes';
 
 /* styles */
-import globalStyles from '../../styles';
-import styles from './DataSetReport.style';
+import styles from '../../styles';
 
 class DataSetReport extends Page {
     static propTypes = {
@@ -248,11 +247,11 @@ class DataSetReport extends Page {
                         url={getDocsUrl(this.props.d2.system.version, this.props.sectionKey)}
                     />
                 </h1>
-                <Paper style={globalStyles.container}>
+                <Paper style={styles.container}>
                     <div id="data-set-report-form" style={{ display: this.state.showForm ? 'block' : 'none' }}>
                         <div className="row">
                             <div className="col-md-6">
-                                <div style={globalStyles.formLabel}>
+                                <div style={styles.formLabel}>
                                     {i18n.t(i18nKeys.dataSetReport.organisationUnitLabel)}
                                 </div>
                                 <OrganisationUnitsTree
@@ -289,7 +288,7 @@ class DataSetReport extends Page {
                                 />
                             </div>
                         </div>
-                        <div id="main-action-button" style={globalStyles.actionsContainer}>
+                        <div id="main-action-button" style={styles.actionsContainer}>
                             <Button
                                 id="main-action-button"
                                 raised

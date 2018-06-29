@@ -29,9 +29,7 @@ import { getDocsUrl } from '../../helpers/docs';
 import { LOADING, SUCCESS } from '../../helpers/feedbackSnackBarTypes';
 
 /* styles */
-import globalStyles from '../../styles';
-import styles from './ReportingRateSummary.style';
-
+import styles from '../../styles';
 
 const BASED_ON_OPTIONS = [
     {
@@ -237,11 +235,11 @@ class ReportingRateSummary extends Page {
                         url={getDocsUrl(this.props.d2.system.version, this.props.sectionKey)}
                     />
                 </h1>
-                <Paper style={globalStyles.container}>
+                <Paper style={styles.container}>
                     <div id="report-rate-summary-form" style={{ display: this.state.showForm ? 'block' : 'none' }}>
                         <div className="row">
                             <div className="col-md-6">
-                                <div style={globalStyles.formLabel}>
+                                <div style={styles.formLabel}>
                                     {i18n.t(i18nKeys.reportingRateSummary.organisationUnitLabel)}
                                 </div>
                                 <OrganisationUnitsTree
@@ -251,7 +249,7 @@ class ReportingRateSummary extends Page {
                             </div>
                             <div className="col-md-6">
                                 <div id="criteria-selection">
-                                    <span style={globalStyles.formLabel}>
+                                    <span style={styles.formLabel}>
                                         {i18n.t(i18nKeys.reportingRateSummary.basedOnLabel)}
                                     </span>
                                     <DropDown
@@ -274,7 +272,7 @@ class ReportingRateSummary extends Page {
                                 </div>
                             </div>
                         </div>
-                        <div id="main-action-button" style={globalStyles.actionsContainer}>
+                        <div id="main-action-button" style={styles.actionsContainer}>
                             <Button
                                 raised
                                 color="primary"

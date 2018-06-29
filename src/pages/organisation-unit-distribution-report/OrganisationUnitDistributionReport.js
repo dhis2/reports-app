@@ -27,8 +27,7 @@ import { getDocsUrl } from '../../helpers/docs';
 import { LOADING, SUCCESS } from '../../helpers/feedbackSnackBarTypes';
 
 /* styles */
-import globalStyles from '../../styles';
-import styles from './OrganisationUnitDistributionReport.style';
+import styles from '../../styles';
 
 class OrganisationUnitDistributionReport extends Page {
     static propTypes = {
@@ -170,11 +169,11 @@ class OrganisationUnitDistributionReport extends Page {
                         url={getDocsUrl(this.props.d2.system.version, this.props.sectionKey)}
                     />
                 </h1>
-                <Paper style={globalStyles.container}>
+                <Paper style={styles.container}>
                     <div id="org-unit-dist-report-form" style={{ display: this.state.showForm ? 'block' : 'none' }}>
                         <div className="row">
                             <div className="col-md-6">
-                                <div style={globalStyles.formLabel}>
+                                <div style={styles.formLabel}>
                                     {i18n.t(i18nKeys.organisationUnitDistributionReport.organisationUnitLabel)}
                                 </div>
                                 <OrganisationUnitsTree
@@ -187,7 +186,7 @@ class OrganisationUnitDistributionReport extends Page {
                                 />
                             </div>
                         </div>
-                        <div style={globalStyles.actionsContainer}>
+                        <div style={styles.actionsContainer}>
                             <Button
                                 style={styles.actionButton}
                                 raised
