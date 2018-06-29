@@ -104,13 +104,13 @@ class StandardReport extends Page {
     onNextPageClick() {
         const pager = Object.assign({}, this.state.pager);
         pager.page += 1;
-        this.loadData(pager);
+        this.loadData(pager, this.state.search);
     }
 
     onPreviousPageClick() {
         const pager = Object.assign({}, this.state.pager);
         pager.page -= 1;
-        this.loadData(pager);
+        this.loadData(pager, this.state.search);
     }
 
     /* Search */
@@ -118,6 +118,8 @@ class StandardReport extends Page {
         // ...and not empty search
         if (this.state.search !== event.target.value && /\S/.test(event.target.value)) {
             this.loadData(INITIAL_PAGER, event.target.value);
+        } else if (this.state.search !== event.target.value) {
+            this.loadData(INITIAL_PAGER);
         }
     }
 

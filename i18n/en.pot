@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-06-29T10:29:09.555Z\n"
-"PO-Revision-Date: 2018-06-29T10:29:09.555Z\n"
+"POT-Creation-Date: 2018-06-29T11:36:25.066Z\n"
+"PO-Revision-Date: 2018-06-29T11:36:25.066Z\n"
 
 msgid "Cancel"
 msgstr ""
@@ -231,6 +231,9 @@ msgid "Updating Organisation Units Tree..."
 msgstr ""
 
 msgid "Organisation Unit"
+msgstr ""
+
+msgid "No results have been found"
 msgstr ""
 
 msgid "[ None ]"
