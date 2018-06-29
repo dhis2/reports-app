@@ -1,3 +1,6 @@
+const path = require('path');
+const pathToDownload = path.resolve('chromeDownloads');
+
 exports.config = {
 
     //
@@ -11,6 +14,9 @@ exports.config = {
     //
     specs: [
         './e2e/features/home.feature',
+        './e2e/features/help.feature',
+        './e2e/features/dataSetReport.feature',
+        './e2e/features/reportingRateSummary.feature',
     ],
     // Patterns to exclude.
     exclude: [
@@ -43,7 +49,15 @@ exports.config = {
         // grid with only 5 firefox instances available you can make sure that not more than
         // 5 instances get started at a time.
         maxInstances: 1,
-        browserName: 'chrome'
+        browserName: 'chrome',
+        chromeOptions: {
+            args: [
+                'user-data-dir=./chrome/user-data',
+            ],
+            prefs: {
+                "download.default_directory": pathToDownload,
+            }
+        }
     }],
     //
     // ===================

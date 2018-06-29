@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-06-27T13:37:46.031Z\n"
-"PO-Revision-Date: 2018-06-27T13:37:46.031Z\n"
+"POT-Creation-Date: 2018-06-29T09:42:30.570Z\n"
+"PO-Revision-Date: 2018-06-29T09:42:30.570Z\n"
 
 msgid "Cancel"
 msgstr ""
@@ -24,6 +24,12 @@ msgid "Data set"
 msgstr ""
 
 msgid "Select Option"
+msgstr ""
+
+msgid "Select Group Set"
+msgstr ""
+
+msgid "Group Set"
 msgstr ""
 
 msgid "Period"
@@ -351,21 +357,30 @@ msgstr ""
 msgid "Show more options"
 msgstr ""
 
+msgid "Show few options"
+msgstr ""
+
 msgid "download as xls"
 msgstr ""
 
 msgid "Share"
 msgstr ""
 
-msgid "Interpretation Shared"
-msgstr ""
-
-msgid "Report Rate Summary"
+msgid "Reporting Rate Summary"
 msgstr ""
 
 msgid ""
 "Browse the reporting rates of data sets by organisation unit and period "
 "based on various criteria for submission."
+msgstr ""
+
+msgid "Based on"
+msgstr ""
+
+msgid "Complete data set registrations"
+msgstr ""
+
+msgid "Compulsory data elements"
 msgstr ""
 
 msgid "Resource"
@@ -387,6 +402,12 @@ msgid ""
 "unit group sets and its groups."
 msgstr ""
 
+msgid "Get Chart"
+msgstr ""
+
+msgid "Chart"
+msgstr ""
+
 msgid "Data Approval"
 msgstr ""
 
@@ -404,7 +425,13 @@ msgstr ""
 msgid "Report generated"
 msgstr ""
 
+msgid "Chart generated"
+msgstr ""
+
 msgid "Unexpected Error"
+msgstr ""
+
+msgid "Interpretation Shared"
 msgstr ""
 
 msgid "Actions"

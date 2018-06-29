@@ -15,7 +15,7 @@ import { i18nKeys } from '../../i18n';
 /* styles */
 import styles from '../../styles';
 
-export class DatasetsDropdown extends PureComponent {
+export class GroupSetsDropdown extends PureComponent {
     static propTypes = {
         d2: PropTypes.object.isRequired,
         onChange: PropTypes.func,
@@ -25,7 +25,7 @@ export class DatasetsDropdown extends PureComponent {
 
     static defaultProps = {
         onChange: () => {},
-        label: i18n.t(i18nKeys.datasetsDropdown.dataSetLabel),
+        label: i18n.t(i18nKeys.groupSetsDropdown.label),
         fullWidth: true,
     }
 
@@ -33,19 +33,19 @@ export class DatasetsDropdown extends PureComponent {
         super();
 
         this.state = {
-            dataSets: [],
+            groupSets: [],
             selected: null,
         };
     }
 
     componentDidMount() {
         const d2 = this.props.d2;
-        d2.models.dataSet.list({
+        d2.models.organisationUnitGroupSet.list({
             paging: false,
             fields: 'id,displayName',
-        }).then((dataSetsResponse) => {
+        }).then((groupSetsResponse) => {
             this.setState({
-                dataSets: dataSetsResponse.toArray(),
+                groupSets: groupSetsResponse.toArray(),
             });
         }).catch(() => {
             // TODO Manage error
@@ -71,10 +71,10 @@ export class DatasetsDropdown extends PureComponent {
                     fullWidth={this.props.fullWidth}
                     value={this.state.selected}
                     onChange={this.onChange}
-                    menuItems={this.state.dataSets}
+                    menuItems={this.state.groupSets}
                     includeEmpty
-                    emptyLabel={i18n.t(i18nKeys.datasetsDropdown.hintText)}
-                    hintText={i18n.t(i18nKeys.datasetsDropdown.hintText)}
+                    emptyLabel={i18n.t(i18nKeys.groupSetsDropdown.hintText)}
+                    hintText={i18n.t(i18nKeys.groupSetsDropdown.hintText)}
                 />
             </div>
         );
@@ -84,7 +84,7 @@ export class DatasetsDropdown extends PureComponent {
 export default props => (
     <AppContext.Consumer>
         { appContext => (
-            <DatasetsDropdown
+            <GroupSetsDropdown
                 d2={appContext.d2}
                 {...props}
             />

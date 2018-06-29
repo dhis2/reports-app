@@ -34,6 +34,7 @@ getManifest('manifest.webapp').then((manifest) => {
             'organisationUnit',
             'dataSet',
             'reportTable',
+            'organisationUnitGroupSet',
         ],
     })
         .then((d2) => { d2Instance = d2; })

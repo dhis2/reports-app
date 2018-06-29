@@ -24,7 +24,7 @@ import OrganisationUnitGroupOptions from '../../components/organisation-unit-gro
 import DataSetOptions from '../../components/data-set-dimensions/DataSetDimensions';
 import PeriodPickerComponent from '../../components/period-picker-with-period-type/PeriodPickerWithPeriodType';
 import ShareComment from './Share';
-import Report from './Report';
+import Report from '../../components/report/Report';
 
 /* utils */
 import { getDocsUrl } from '../../helpers/docs';
@@ -46,7 +46,7 @@ class DataSetReport extends Page {
             showForm: true,
             reportHtml: null,
             selectedDataSet: null,
-            selectedDataSetOnly: false,
+            selectedUnitOnly: false,
             selectedOrgUnit: null,
             selectedOptionsForDimensions: {},
             selectedOptionsForOrganisationUnitGroupSets: {},
@@ -65,9 +65,9 @@ class DataSetReport extends Page {
             reportHtml: (newProps.hasOwnProperty('reportHtml') ? newProps.reportHtml : this.state.reportHtml),
             selectedDataSet:
                 (newProps.hasOwnProperty('selectedDataSet') ? newProps.selectedDataSet : this.state.selectedDataSet),
-            selectedDataSetOnly:
-                (newProps.hasOwnProperty('selectedDataSetOnly') ?
-                    newProps.selectedDataSetOnly : this.state.selectedDataSetOnly),
+            selectedUnitOnly:
+                (newProps.hasOwnProperty('selectedUnitOnly') ?
+                    newProps.selectedUnitOnly : this.state.selectedUnitOnly),
             selectedOrgUnit:
                 (newProps.hasOwnProperty('selectedOrgUnit') ? newProps.selectedOrgUnit : this.state.selectedOrgUnit),
             selectedOptionsForDimensions:
@@ -80,6 +80,7 @@ class DataSetReport extends Page {
             showOptions: (newProps.hasOwnProperty('showOptions') ? newProps.showOptions : this.state.showOptions),
             selectedPeriod:
                 (newProps.hasOwnProperty('selectedPeriod') ? newProps.selectedPeriod : this.state.selectedPeriod),
+            loading: (newProps.hasOwnProperty('loading') ? newProps.loading : this.state.loading),
         };
 
         this.setState(newState);
@@ -117,13 +118,13 @@ class DataSetReport extends Page {
         const dataSetOptions = Object.keys(this.state.selectedOptionsForDimensions)
             .map(dimensionKey => `${dimensionKey}:${this.state.selectedOptionsForDimensions[dimensionKey]}`);
         const orgUnitGroupsOptions = Object.keys(this.state.selectedOptionsForOrganisationUnitGroupSets)
-            .map(dimensionKey =>
-                `${dimensionKey}:${this.state.selectedOptionsForOrganisationUnitGroupSets[dimensionKey]}`,
+            .map(orgUnitGroupKey =>
+                `${orgUnitGroupKey}:${this.state.selectedOptionsForOrganisationUnitGroupSets[orgUnitGroupKey]}`,
             );
         const dimensions = [...dataSetOptions, ...orgUnitGroupsOptions];
 
         // eslint-disable-next-line
-        const url = `dataSetReport?ds=${this.state.selectedDataSet}&pe=${this.state.selectedPeriod}&ou=${this.state.selectedOrgUnit}&selectedUnitOnly=${this.state.selectedDataSetOnly}&dimension=${dimensions}`;
+        const url = `dataSetReport?ds=${this.state.selectedDataSet}&pe=${this.state.selectedPeriod}&ou=${this.state.selectedOrgUnit}&selectedUnitOnly=${this.state.selectedUnitOnly}&dimension=${dimensions}`;
         api.get(url).then((response) => {
             this.props.updateAppState({
                 pageState: {
@@ -179,9 +180,9 @@ class DataSetReport extends Page {
         });
     }
 
-    handleSelectedDataSetOnlyChange = (event, selectedDataSetOnly) => {
+    handleSelectedUnitOnlyChange = (event, selectedUnitOnly) => {
         this.setState({
-            selectedDataSetOnly,
+            selectedUnitOnly,
         });
     }
 
@@ -198,18 +199,28 @@ class DataSetReport extends Page {
     }
 
     renderExtraOptions = () => (
-        <div style={this.state.showOptions ? styles.showOptions : styles.hideOptions}>
-            <OrganisationUnitGroupOptions
-                values={this.state.selectedOptionsForOrganisationUnitGroupSets}
-                onChange={this.handleOrganisationUnitGroupSetChange}
-            />
+        <div>
+            <span
+                id="extra-options-action"
+                style={styles.showMoreOptionsButton}
+                role="button"
+                tabIndex="0"
+                onClick={this.toggleShowOptions}
+            >
+                {i18n.t(this.state.showOptions ?
+                    i18nKeys.dataSetReport.showFewOptions : i18nKeys.dataSetReport.showMoreOptions)}
+            </span>
+            <div id="extra-options" style={this.state.showOptions ? styles.showOptions : styles.hideOptions}>
+                <OrganisationUnitGroupOptions
+                    values={this.state.selectedOptionsForOrganisationUnitGroupSets}
+                    onChange={this.handleOrganisationUnitGroupSetChange}
+                />
+            </div>
         </div>
     )
 
     isFormValid() {
-        return this.state.selectedOrgUnit &&
-            this.state.selectedDataSet &&
-            this.state.selectedPeriod;
+        return this.state.selectedOrgUnit && this.state.selectedDataSet && this.state.selectedPeriod;
     }
 
     isActionEnabled() {
@@ -222,6 +233,7 @@ class DataSetReport extends Page {
                 <h1>
                     { !this.state.showForm &&
                         <span
+                            id="back-button"
                             style={styles.backButton}
                             className="material-icons"
                             role="button"
@@ -246,47 +258,47 @@ class DataSetReport extends Page {
                                 <OrganisationUnitsTree
                                     onChange={this.handleOrganisationUnitChange}
                                 />
-                                <span
-                                    style={styles.showMoreOptionsButton}
-                                    role="button"
-                                    tabIndex="0"
-                                    onClick={this.toggleShowOptions}
-                                >
-                                    {i18n.t(i18nKeys.dataSetReport.showMoreOptions)}
-                                </span>
                                 {this.renderExtraOptions()}
-                                <div style={globalStyles.actionsContainer}>
-                                    <Button
-                                        raised
-                                        color="primary"
-                                        onClick={this.getReport}
-                                        disabled={!this.isActionEnabled()}
-                                    >
-                                        {i18n.t(i18nKeys.dataSetReport.mainAction)}
-                                    </Button>
-                                </div>
                             </div>
                             <div className="col-md-6">
-                                <DataSets
-                                    onChange={this.handleDataSetChange}
-                                />
+                                <div id="data-set-selection">
+                                    <DataSets
+                                        onChange={this.handleDataSetChange}
+                                    />
+                                </div>
                                 {this.state.selectedDataSet &&
-                                <DataSetOptions
-                                    dataSetId={this.state.selectedDataSet}
-                                    values={this.state.selectedOptionsForDimensions}
-                                    onChange={this.handleDimensionChange}
-                                />
+                                    <div id="data-set-dimensions-container">
+                                        <DataSetOptions
+                                            dataSetId={this.state.selectedDataSet}
+                                            values={this.state.selectedOptionsForDimensions}
+                                            onChange={this.handleDimensionChange}
+                                        />
+                                    </div>
                                 }
-                                <PeriodPickerComponent
-                                    label={i18n.t(i18nKeys.dataSetReport.reportPeriodLabel)}
-                                    onChange={this.handlePeriodChange}
-                                />
+                                <div id="report-period">
+                                    <PeriodPickerComponent
+                                        label={i18n.t(i18nKeys.dataSetReport.reportPeriodLabel)}
+                                        onChange={this.handlePeriodChange}
+                                    />
+                                </div>
                                 <CheckBox
-                                    onChange={this.handleSelectedDataSetOnlyChange}
-                                    value={this.state.selectedDataSetOnly}
-                                    label={i18n.t(i18nKeys.dataSetReport.selectedDataSetOnlyLabel)}
+                                    id="selected-unit-only"
+                                    onChange={this.handleSelectedUnitOnlyChange}
+                                    value={this.state.selectedUnitOnly}
+                                    label={i18n.t(i18nKeys.dataSetReport.selectedUnitOnlyLabel)}
                                 />
                             </div>
+                        </div>
+                        <div id="main-action-button" style={globalStyles.actionsContainer}>
+                            <Button
+                                id="main-action-button"
+                                raised
+                                color="primary"
+                                onClick={this.getReport}
+                                disabled={!this.isActionEnabled()}
+                            >
+                                {i18n.t(i18nKeys.dataSetReport.mainAction)}
+                            </Button>
                         </div>
                     </div>
                     { this.state.reportHtml && !this.state.showForm &&
@@ -294,7 +306,7 @@ class DataSetReport extends Page {
                             id="report-container"
                             style={{ display: this.state.reportHtml && !this.state.showForm ? 'block' : 'none' }}
                         >
-                            <div style={styles.downloadContainer}>
+                            <div id="download-options-container" style={styles.downloadContainer}>
                                 <span
                                     style={styles.downloadButton}
                                     role="button"
@@ -304,11 +316,13 @@ class DataSetReport extends Page {
                                     {i18n.t(i18nKeys.dataSetReport.exportReport)}
                                 </span>
                             </div>
-                            <ShareComment
-                                dataSetId={this.state.selectedDataSet}
-                                period={this.state.selectedPeriod}
-                                orgUnitId={this.state.selectedOrgUnit}
-                            />
+                            <div id="share-component">
+                                <ShareComment
+                                    dataSetId={this.state.selectedDataSet}
+                                    period={this.state.selectedPeriod}
+                                    orgUnitId={this.state.selectedOrgUnit}
+                                />
+                            </div>
                             <Report reportHtml={this.state.reportHtml} />
                         </div>
                     }

@@ -14,6 +14,10 @@ export const i18nKeys = {
     organisationUnitGroupSetDropdown: {
         hintText: 'Select Option',
     },
+    groupSetsDropdown: {
+        hintText: 'Select Group Set',
+        label: 'Group Set',
+    },
     periodPicker: {
         periodLabel: 'Period',
         periodTypeHintText: 'Select Period Type',
@@ -142,21 +146,30 @@ export const i18nKeys = {
         description: 'View data set reports. These reports are based on data entry screens and ' +
         'will produce a report with aggregated data.',
         reportPeriodLabel: 'Report period',
-        selectedDataSetOnlyLabel: 'Use data for selected unit only',
+        selectedUnitOnlyLabel: 'Use data for selected unit only',
         organisationUnitLabel: 'Report organisation unit',
         sharePlaceholder: 'Write a comment, question or interpretation of this report',
         showMoreOptions: 'Show more options',
+        showFewOptions: 'Show few options',
         mainAction: 'Get Report',
         exportReport: 'download as xls',
         share: 'Share',
-        interpretationShared: 'Interpretation Shared',
     },
     reportingRateSummary: {
-        homeLabel: 'Report Rate Summary',
+        homeLabel: 'Reporting Rate Summary',
         homeAction: 'Get Report',
-        header: 'Report Rate Summary',
+        header: 'Reporting Rate Summary',
         description: 'Browse the reporting rates of data sets by organisation unit and period based' +
         ' on various criteria for submission.',
+        reportPeriodLabel: 'Report period',
+        organisationUnitLabel: 'Report organisation unit',
+        showMoreOptions: 'Show more options',
+        showFewOptions: 'Show few options',
+        mainAction: 'Get Report',
+        exportReport: 'download as xls',
+        basedOnLabel: 'Based on',
+        basedOnCompleteOptionLabel: 'Complete data set registrations',
+        basedOnCompulsoryOptionLabel: 'Compulsory data elements',
     },
     resource: {
         homeLabel: 'Resource',
@@ -170,6 +183,11 @@ export const i18nKeys = {
         header: 'Organisation Unit Distribution Report',
         description: 'Browse the organisation unit distribution report based on the organisation unit group sets' +
         ' and its groups.',
+        organisationUnitLabel: 'Report organisation unit',
+        exportReport: 'download as xls',
+        getReportAction: 'Get Report',
+        getChartAction: 'Get Chart',
+        chartImageAlt: 'Chart',
     },
     dataApproval: {
         homeLabel: 'Data Approval',
@@ -180,7 +198,9 @@ export const i18nKeys = {
     messages: {
         loading: 'Loading...',
         reportGenerated: 'Report generated',
+        chartGenerated: 'Chart generated',
         unexpectedError: 'Unexpected Error',
+        interpretationShared: 'Interpretation Shared',
     },
     d2UiComponents: {
         app_search_placeholder: 'Search',
