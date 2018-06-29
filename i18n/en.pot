@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-06-28T13:42:08.079Z\n"
-"PO-Revision-Date: 2018-06-28T13:42:08.079Z\n"
+"POT-Creation-Date: 2018-06-29T07:28:59.536Z\n"
+"PO-Revision-Date: 2018-06-29T07:28:59.536Z\n"
 
 msgid "Select Data Set"
 msgstr ""
@@ -126,9 +126,6 @@ msgstr ""
 msgid "Share"
 msgstr ""
 
-msgid "Interpretation Shared"
-msgstr ""
-
 msgid "Reporting Rate Summary"
 msgstr ""
 
@@ -192,6 +189,9 @@ msgid "Chart generated"
 msgstr ""
 
 msgid "Unexpected Error"
+msgstr ""
+
+msgid "Interpretation Shared"
 msgstr ""
 
 msgid "Search"

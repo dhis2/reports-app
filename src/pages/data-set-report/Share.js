@@ -56,7 +56,7 @@ export class Share extends PureComponent {
                 showSnackbar: true,
                 snackbarConf: {
                     type: SUCCESS,
-                    message: i18n.t(i18nKeys.dataSetReport.interpretationShared),
+                    message: i18n.t(i18nKeys.messages.interpretationShared),
                 },
             });
         }).catch((error) => {

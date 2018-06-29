@@ -316,11 +316,13 @@ class DataSetReport extends Page {
                                     {i18n.t(i18nKeys.dataSetReport.exportReport)}
                                 </span>
                             </div>
-                            <ShareComment
-                                dataSetId={this.state.selectedDataSet}
-                                period={this.state.selectedPeriod}
-                                orgUnitId={this.state.selectedOrgUnit}
-                            />
+                            <div id="share-component">
+                                <ShareComment
+                                    dataSetId={this.state.selectedDataSet}
+                                    period={this.state.selectedPeriod}
+                                    orgUnitId={this.state.selectedOrgUnit}
+                                />
+                            </div>
                             <Report reportHtml={this.state.reportHtml} />
                         </div>
                     }
