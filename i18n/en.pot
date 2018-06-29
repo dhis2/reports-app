@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-06-29T11:45:45.401Z\n"
-"PO-Revision-Date: 2018-06-29T11:45:45.401Z\n"
+"POT-Creation-Date: 2018-06-29T15:13:47.867Z\n"
+"PO-Revision-Date: 2018-06-29T15:13:47.867Z\n"
 
 msgid "Cancel"
 msgstr ""
@@ -498,6 +498,9 @@ msgid "Public can view"
 msgstr ""
 
 msgid "Public can find, view and edit"
+msgstr ""
+
+msgid "Public can find and view"
 msgstr ""
 
 msgid "Close"

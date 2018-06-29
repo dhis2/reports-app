@@ -230,6 +230,7 @@ export const i18nKeys = {
         public_can_edit: 'Public can edit',
         public_can_view: 'Public can view',
         anyone_can_find_view_and_edit: 'Public can find, view and edit',
+        anyone_can_find_and_view: 'Public can find and view',
         // Buttons
         close: 'Close',
         week: 'week',
