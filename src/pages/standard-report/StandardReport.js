@@ -232,6 +232,14 @@ class StandardReport extends Page {
                         url={getDocsUrl(this.props.d2.system.version, this.props.sectionKey)}
                     />
                 </h1>
+                <Pagination
+                    total={this.state.pager.total}
+                    hasNextPage={this.hasNextPage}
+                    hasPreviousPage={this.hasPreviousPage}
+                    onNextPageClick={this.onNextPageClick}
+                    onPreviousPageClick={this.onPreviousPageClick}
+                    currentlyShown={calculatePageValue(this.state.pager)}
+                />
                 <div id={'search-box-id'} style={styles.searchContainer}>
                     <TextField
                         value={this.state.search || ''}
