@@ -49,6 +49,7 @@ const AddNewReportStyle = {
         paddingLeft: 5,
     },
     getTemplateLink: {
+        marginTop: 14,
         width: '100%',
         textAlign: 'right',
     },

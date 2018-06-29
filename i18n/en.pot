@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-06-29T09:42:30.570Z\n"
-"PO-Revision-Date: 2018-06-29T09:42:30.570Z\n"
+"POT-Creation-Date: 2018-06-29T09:53:53.111Z\n"
+"PO-Revision-Date: 2018-06-29T09:53:53.111Z\n"
 
 msgid "Cancel"
 msgstr ""
@@ -314,6 +314,9 @@ msgid "Remove Report"
 msgstr ""
 
 msgid "No File Chosen"
+msgstr ""
+
+msgid "Get current design"
 msgstr ""
 
 msgid "Get Jasper Report Template"

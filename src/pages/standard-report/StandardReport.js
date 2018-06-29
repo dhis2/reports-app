@@ -1,29 +1,35 @@
 /* React */
 import React from 'react';
 import PropTypes from 'prop-types';
+
 /* d2-ui */
 import Table from '@dhis2/d2-ui-table';
 import SharingDialog from '@dhis2/d2-ui-sharing-dialog';
 import { Button, Pagination, SvgIcon, TextField } from '@dhis2/d2-ui-core';
+
 /* d2-ui styles */
 import '@dhis2/d2-ui-core/build/css/Table.css';
 import '@dhis2/d2-ui-core/build/css/Pagination.css';
+
 /* styles */
 import styles from './StandardReport.style';
 import appStyles from '../../styles';
+
 /* app components */
 import Page from '../Page';
 import PageHelper from '../../components/page-helper/PageHelper';
 import AddNewStdReport from './add-new-report/AddNewStdReport';
 import CreateStdReport from './create-report/CreateStdReport';
-import EditStdReport from './edit-report/EditStdReport';
+
 /* app config */
 import {
     ADD_NEW_REPORT_ACTION, CONTEXT_MENU_ACTION, CONTEXT_MENU_ICONS, REPORTS_ENDPOINT,
 } from './standard.report.conf';
+
 /* utils */
 import { getDocsUrl } from '../../helpers/docs';
 import { calculatePageValue, INITIAL_PAGER } from '../../helpers/pagination';
+
 /* i18n */
 import i18n from '../../locales';
 import { i18nKeys } from '../../i18n';
@@ -35,7 +41,7 @@ class StandardReport extends Page {
         this.state = {
             pager: INITIAL_PAGER,
             reports: [],
-            selectedReport: { id: '', displayName: '' },
+            selectedReport: null,
             selectedAction: null,
             search: '',
             open: false,
@@ -123,7 +129,7 @@ class StandardReport extends Page {
     }
 
     handleClose(refreshList) {
-        this.setState({ open: false });
+        this.setState({ open: false, selectedReport: null });
         if (refreshList) {
             this.loadData(INITIAL_PAGER);
         }
@@ -187,9 +193,22 @@ class StandardReport extends Page {
             });
             return null;
         case CONTEXT_MENU_ACTION.EDIT:
-            return <EditStdReport open={this.state.open} onRequestClose={this.handleClose} d2={this.props.d2} />;
+            return (
+                <AddNewStdReport
+                    selectedReport={this.state.selectedReport}
+                    open={this.state.open}
+                    onRequestClose={this.handleClose}
+                    d2={this.props.d2}
+                />
+            );
         default:
-            return <AddNewStdReport open={this.state.open} onRequestClose={this.handleClose} d2={this.props.d2} />;
+            return (
+                <AddNewStdReport
+                    open={this.state.open}
+                    onRequestClose={this.handleClose}
+                    d2={this.props.d2}
+                />
+            );
         }
     }
 

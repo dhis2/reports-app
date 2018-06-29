@@ -133,6 +133,7 @@ export const i18nKeys = {
         createReportTableTitle: 'Create Report Table',
         removeReportTitle: 'Remove Report',
         noFileChosen: 'No File Chosen',
+        getCurrentDesign: 'Get current design',
         getJasperTemplate: 'Get Jasper Report Template',
         getHTMLTemplate: 'Get HTML Report Template',
         htmlReportType: 'HTML report',

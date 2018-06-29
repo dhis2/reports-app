@@ -23,7 +23,7 @@ const initialState = {
     report: {
         name: '',
         cacheStrategy: CACHE_STRATEGIES[1].id,
-        typeId: REPORT_TYPES[0].id,
+        type: REPORT_TYPES[0].id, // default JASPER_REPORT_TABLE
         designContent: null,
         reportTable: NONE,
         reportParams: {
@@ -86,6 +86,11 @@ class AddNewReport extends PureComponent {
         d2: PropTypes.object.isRequired,
         onRequestClose: PropTypes.func.isRequired,
         open: PropTypes.bool.isRequired,
+        selectedReport: PropTypes.object,
+    };
+
+    static defaultProps = {
+        selectedReport: null,
     };
 
     constructor(props) {
@@ -99,13 +104,19 @@ class AddNewReport extends PureComponent {
         this.loadReportTables();
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.selectedReport) {
+            this.loadSelectedReport(nextProps.selectedReport);
+        }
+    }
+
     /* Handle form changes */
     onChangeName = (name) => {
         this.setState({ report: { ...this.state.report, name } });
     };
 
     onChangeType = (type) => {
-        this.setState({ report: { ...this.state.report, typeId: type.id } });
+        this.setState({ report: { ...this.state.report, type: type.id } });
     };
 
     onChangeCacheStrategy = (strategy) => {
@@ -118,6 +129,7 @@ class AddNewReport extends PureComponent {
 
     onChangeCheck = (event) => {
         this.state.report.relativePeriods[event.target.id] = !this.state.report.relativePeriods[event.target.id];
+        this.forceUpdate();
     };
 
     onChangeFileTemplate = (event) => {
@@ -131,7 +143,7 @@ class AddNewReport extends PureComponent {
         reader.onload = (evt) => {
             if (evt.target.readyState !== 2) return;
             if (evt.target.error) {
-                alert('Error while reading file.');
+                alert('Error while reading fileeee.');
                 return;
             }
             const designContent = evt.target.result;
@@ -159,12 +171,34 @@ class AddNewReport extends PureComponent {
         });
     };
 
+    getAuxLink = () => {
+        const api = this.props.d2.Api.getApi();
+        const type = this.state.report.type === 'HTML' ? 'html' : 'jasper';
+        let url;
+        let label;
+        if (this.state.report.id) {
+            label = i18n.t(i18nKeys.standardReport.getCurrentDesign);
+            url = `${api.baseUrl}/${REPORTS_ENDPOINT}/${this.state.report.id}/design`;
+        } else {
+            label = this.state.report.type === 'HTML' ?
+                i18n.t(i18nKeys.standardReport.getHTMLTemplate) :
+                i18n.t(i18nKeys.standardReport.getJasperTemplate);
+            url = `${api.baseUrl}/${REPORTS_ENDPOINT}/templates/${type}`;
+        }
+        return (
+            <a href={url} target="_blank">
+                {label}
+            </a>
+        );
+    };
+
+    /* close dialog */
     close = (refreshList) => {
         this.setState(this.getInitialState());
         this.props.onRequestClose(refreshList);
     };
 
-    /* load data */
+    /* load report tables to use is select */
     loadReportTables = () => {
         const api = this.props.d2.Api.getApi();
         const url = `${REPORT_TABLES_ENDPOINT}?paging=false&fields=:id,name`;
@@ -179,20 +213,54 @@ class AddNewReport extends PureComponent {
         }
     };
 
+    /* load report info to edit it */
+    loadSelectedReport = (report) => {
+        const api = this.props.d2.Api.getApi();
+        const url = `${REPORTS_ENDPOINT}/${report.id}`;
+        if (api) {
+            api.get(url).then((response) => {
+                if (response) {
+                    this.setState({
+                        ...this.state,
+                        report: {
+                            ...response,
+                        },
+                    });
+                }
+            }).catch(() => {
+                // TODO:
+            });
+        }
+    };
+
     /* create report */
     createReport = () => {
-        console.log('############### STATE: ', this.state);
         if (this.ifFormValid) {
             const api = this.props.d2.Api.getApi();
             if (api) {
-                api.post(REPORTS_ENDPOINT, this.state.report).then((response) => {
-                    if (response) {
-                        console.log('#### ADD NEW REPORT RESPONSE: ', response);
-                        this.close(true);
-                    }
-                }).catch(() => {
-                    // TODO:
-                });
+                if (this.state.report.type !== REPORT_TYPES[0].id) {
+                    delete this.state.report.reportTable;
+                }
+                // Edit report
+                if (this.state.report.id) {
+                    const url = `${REPORTS_ENDPOINT}/${this.state.report.id}`;
+                    api.update(url, this.state.report).then((response) => {
+                        if (response) {
+                            this.close(true);
+                        }
+                    }).catch(() => {
+                        // TODO:
+                    });
+                // Create report
+                } else {
+                    api.post(REPORTS_ENDPOINT, this.state.report).then((response) => {
+                        if (response) {
+                            this.close(true);
+                        }
+                    }).catch(() => {
+                        // TODO:
+                    });
+                }
             }
         }
     };
@@ -200,7 +268,8 @@ class AddNewReport extends PureComponent {
     ifFormValid = () => true;
 
     showSection = () => {
-        if (this.state.report.typeId !== REPORT_TYPES[0].id) {
+        //  If JASPER_REPORT_TABLE
+        if (this.state.report.type !== REPORT_TYPES[0].id) {
             return styles.sectionBox;
         }
         return { display: 'none' };
@@ -258,7 +327,7 @@ class AddNewReport extends PureComponent {
                                 name={'reportType'}
                                 label={i18n.t(i18nKeys.standardReport.typeLabel)}
                                 items={REPORT_TYPES}
-                                value={this.state.report.typeId}
+                                value={this.state.report.type}
                                 onChange={this.onChangeType}
                             />
                             {/* design file hidden file input */}
@@ -287,25 +356,20 @@ class AddNewReport extends PureComponent {
                             </div>
                             {/* get report template */}
                             <div style={styles.getTemplateLink}>
-                                {
-                                    this.state.report.typeId === 'HTML' ? (
-                                        <a href={'http://www.google.com'}>
-                                            {i18n.t(i18nKeys.standardReport.getHTMLTemplate)}
-                                        </a>
-                                    ) : (
-                                        <a href={'http://www.google.com'}>
-                                            {i18n.t(i18nKeys.standardReport.getJasperTemplate)}
-                                        </a>
-                                    )
-                                }
+                                {this.getAuxLink()}
                             </div>
                             {/* report table */}
                             <SelectField
                                 selector={'displayName'}
-                                style={styles.width100}
+                                style={
+                                    {
+                                        ...styles.width100,
+                                        ...(this.state.report.type !== REPORT_TYPES[0].id ? { display: 'none' } : ''),
+                                    }
+                                }
                                 label={i18n.t(i18nKeys.standardReport.reportTableLabel)}
                                 items={this.state.reportTables}
-                                value={this.state.report.reportTable.id}
+                                value={this.state.report.reportTable ? this.state.report.reportTable.id : NONE.id}
                                 onChange={this.onChangeReportTable}
                             />
                         </div>
@@ -325,6 +389,7 @@ class AddNewReport extends PureComponent {
                                                 id={period.id}
                                                 key={period.id}
                                                 label={period.name}
+                                                checked={this.state.report.relativePeriods[period.id]}
                                                 onChange={this.onChangeCheck}
                                             />
                                         ))
@@ -340,13 +405,17 @@ class AddNewReport extends PureComponent {
                         </div>
                         <div className={'col-xs-4'} style={styles.sectionContent}>
                             <CheckBox
+                                id={'reportingPeriodCB'}
                                 label={i18n.t(i18nKeys.standardReport.reportingPeriod)}
+                                checked={this.state.report.reportParams.paramReportingPeriod}
                                 onChange={this.onChangeCbReportingPeriod}
                             />
                         </div>
                         <div className={'col-xs-4'} style={styles.sectionContent}>
                             <CheckBox
+                                id={'paramOrganisationUnitCB'}
                                 label={i18n.t(i18nKeys.standardReport.reportingOrganisationUnit)}
+                                checked={this.state.report.reportParams.paramOrganisationUnit}
                                 onChange={this.onChangeCbOrgUnit}
                             />
                         </div>
