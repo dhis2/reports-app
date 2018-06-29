@@ -1,4 +1,4 @@
-const AddNewReportStyle = {
+const AddEditStdReportStyle = {
     dialog: {
         maxWidth: '900px',
     },
@@ -55,4 +55,4 @@ const AddNewReportStyle = {
     },
 };
 
-export default AddNewReportStyle;
+export default AddEditStdReportStyle;

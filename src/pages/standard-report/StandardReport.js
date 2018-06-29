@@ -18,7 +18,7 @@ import appStyles from '../../styles';
 /* app components */
 import Page from '../Page';
 import PageHelper from '../../components/page-helper/PageHelper';
-import AddNewStdReport from './add-new-report/AddNewStdReport';
+import AddEditStdReport from './add-edit-report/AddEditStdReport';
 import CreateStdReport from './create-report/CreateStdReport';
 
 /* app config */
@@ -194,7 +194,7 @@ class StandardReport extends Page {
             return null;
         case CONTEXT_MENU_ACTION.EDIT:
             return (
-                <AddNewStdReport
+                <AddEditStdReport
                     selectedReport={this.state.selectedReport}
                     open={this.state.open}
                     onRequestClose={this.handleClose}
@@ -203,7 +203,7 @@ class StandardReport extends Page {
             );
         default:
             return (
-                <AddNewStdReport
+                <AddEditStdReport
                     open={this.state.open}
                     onRequestClose={this.handleClose}
                     d2={this.props.d2}

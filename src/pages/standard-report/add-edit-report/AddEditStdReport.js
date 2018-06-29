@@ -10,7 +10,7 @@ import { Button, TextField, SelectField, CheckBox, SvgIcon, InputField } from '@
 
 /* styles */
 import appStyles from '../../../styles';
-import styles from './AddNewStdReport.style';
+import styles from './AddEditStdReport.style';
 import {
     relativePeriods, NONE, CACHE_STRATEGIES, REPORT_TABLES_ENDPOINT, REPORT_TYPES, REPORTS_ENDPOINT,
 } from '../standard.report.conf';
@@ -81,7 +81,7 @@ const initialState = {
     selectedFileToUpload: null,
 };
 
-class AddNewReport extends PureComponent {
+class AddEditStdReport extends PureComponent {
     static propTypes = {
         d2: PropTypes.object.isRequired,
         onRequestClose: PropTypes.func.isRequired,
@@ -442,4 +442,4 @@ class AddNewReport extends PureComponent {
     }
 }
 
-export default AddNewReport;
+export default AddEditStdReport;
