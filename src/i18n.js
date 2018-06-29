@@ -104,6 +104,7 @@ export const i18nKeys = {
         treeLabel: 'Organisation Unit',
     },
     standardReport: {
+        noResultsFound: 'No results have been found',
         none: '[ None ]',
         noCache: 'No cache',
         respectSystemSettings: 'Respect system setting',
