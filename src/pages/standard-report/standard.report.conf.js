@@ -28,17 +28,23 @@ export const NONE = {
     name: i18n.t(i18nKeys.standardReport.none),
 };
 
+export const TYPES = {
+    JASPER_REPORT_TABLE: 'JASPER_REPORT_TABLE',
+    JASPER_JDBC: 'JASPER_JDBC',
+    HTML: 'HTML',
+};
+
 export const REPORT_TYPES = [
     {
-        id: 'JASPER_REPORT_TABLE',
+        id: TYPES.JASPER_REPORT_TABLE,
         name: i18n.t(i18nKeys.standardReport.jasperReportTable),
     },
     {
-        id: 'JASPER_JDBC',
+        id: TYPES.JASPER_JDBC,
         name: i18n.t(i18nKeys.standardReport.jasperJDBCReportType),
     },
     {
-        id: 'HTML',
+        id: TYPES.HTML,
         name: i18n.t(i18nKeys.standardReport.htmlReportType),
     },
 ];

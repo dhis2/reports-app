@@ -162,30 +162,24 @@ class StandardReport extends Page {
     getActionComponent() {
         switch (this.state.selectedAction) {
         case CONTEXT_MENU_ACTION.CREATE:
-            if (this.state.selectedReport) {
-                return (
-                    <CreateStdReport
-                        id={this.state.selectedReport.id}
-                        open={this.state.open}
-                        onRequestClose={this.handleClose}
-                        d2={this.props.d2}
-                    />
-                );
-            }
-            return null;
+            return (
+                <CreateStdReport
+                    id={this.state.selectedReport.id}
+                    open={this.state.open}
+                    onRequestClose={this.handleClose}
+                    d2={this.props.d2}
+                />
+            );
         case CONTEXT_MENU_ACTION.SHARING_SETTINGS:
-            if (this.state.selectedReport) {
-                return (
-                    <SharingDialog
-                        open={this.state.open}
-                        id={this.state.selectedReport.id || ''}
-                        type={'report'}
-                        onRequestClose={this.handleClose}
-                        d2={this.props.d2}
-                    />
-                );
-            }
-            return null;
+            return (
+                <SharingDialog
+                    open={this.state.open}
+                    id={this.state.selectedReport.id || ''}
+                    type={'report'}
+                    onRequestClose={this.handleClose}
+                    d2={this.props.d2}
+                />
+            );
         case CONTEXT_MENU_ACTION.DELETE:
             // FeedbackSnackBar
             this.props.updateAppState({
@@ -201,17 +195,14 @@ class StandardReport extends Page {
             });
             return null;
         case CONTEXT_MENU_ACTION.EDIT:
-            if (this.state.selectedReport) {
-                return (
-                    <AddEditStdReport
-                        selectedReport={this.state.selectedReport}
-                        open={this.state.open}
-                        onRequestClose={this.handleClose}
-                        d2={this.props.d2}
-                    />
-                );
-            }
-            return null;
+            return (
+                <AddEditStdReport
+                    selectedReport={this.state.selectedReport}
+                    open={this.state.open}
+                    onRequestClose={this.handleClose}
+                    d2={this.props.d2}
+                />
+            );
         default:
             return (
                 <AddEditStdReport

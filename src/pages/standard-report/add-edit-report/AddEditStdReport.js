@@ -12,7 +12,7 @@ import { Button, TextField, SelectField, CheckBox, SvgIcon, InputField } from '@
 import appStyles from '../../../styles';
 import styles from './AddEditStdReport.style';
 import {
-    relativePeriods, NONE, CACHE_STRATEGIES, REPORT_TABLES_ENDPOINT, REPORT_TYPES, REPORTS_ENDPOINT,
+    relativePeriods, NONE, CACHE_STRATEGIES, REPORT_TABLES_ENDPOINT, REPORT_TYPES, REPORTS_ENDPOINT, TYPES,
 } from '../standard.report.conf';
 
 /* i18n */
@@ -21,7 +21,7 @@ import { i18nKeys } from '../../../i18n';
 
 const initialState = {
     report: {
-        name: '',
+        name: null,
         cacheStrategy: CACHE_STRATEGIES[1].id,
         type: REPORT_TYPES[0].id, // default JASPER_REPORT_TABLE
         designContent: null,
@@ -138,6 +138,8 @@ class AddEditStdReport extends PureComponent {
         if (event.target.files[0]) {
             reader.readAsText(event.target.files[0]);
             this.setState({ selectedFileToUpload: event.target.files[0] });
+        } else {
+            this.setState({ selectedFileToUpload: null, report: { ...this.state.report, designContent: null } });
         }
         // FIXME: Handle errors
         reader.onload = (evt) => {
@@ -173,14 +175,14 @@ class AddEditStdReport extends PureComponent {
 
     getAuxLink = () => {
         const api = this.props.d2.Api.getApi();
-        const type = this.state.report.type === 'HTML' ? 'html' : 'jasper';
+        const type = this.state.report.type === TYPES.HTML ? 'html' : 'jasper';
         let url;
         let label;
         if (this.state.report.id) {
             label = i18n.t(i18nKeys.standardReport.getCurrentDesign);
             url = `${api.baseUrl}/${REPORTS_ENDPOINT}/${this.state.report.id}/design`;
         } else {
-            label = this.state.report.type === 'HTML' ?
+            label = this.state.report.type === TYPES.HTML ?
                 i18n.t(i18nKeys.standardReport.getHTMLTemplate) :
                 i18n.t(i18nKeys.standardReport.getJasperTemplate);
             url = `${api.baseUrl}/${REPORTS_ENDPOINT}/templates/${type}`;
@@ -235,10 +237,10 @@ class AddEditStdReport extends PureComponent {
 
     /* create report */
     createReport = () => {
-        if (this.ifFormValid) {
+        if (this.ifFormValid()) {
             const api = this.props.d2.Api.getApi();
             if (api) {
-                if (this.state.report.type !== REPORT_TYPES[0].id) {
+                if (this.state.report.type !== TYPES.JASPER_REPORT_TABLE) {
                     delete this.state.report.reportTable;
                 }
                 // Edit report
@@ -265,11 +267,26 @@ class AddEditStdReport extends PureComponent {
         }
     };
 
-    ifFormValid = () => true;
+    ifFormValid = () => {
+        if (this.validateGenericFields()) {
+            if (this.state.report.type === TYPES.JASPER_REPORT_TABLE && this.state.report.reportTable.id === NONE.id) {
+                return false;
+            }
+            return true;
+        }
+        return false;
+    };
+
+    validateGenericFields = () => {
+        if (this.state.report.name && this.state.report.designContent) {
+            return true;
+        }
+        return false;
+    };
 
     showSection = () => {
         //  If JASPER_REPORT_TABLE
-        if (this.state.report.type !== REPORT_TYPES[0].id) {
+        if (this.state.report.type !== TYPES.JASPER_REPORT_TABLE) {
             return styles.sectionBox;
         }
         return { display: 'none' };
@@ -287,6 +304,7 @@ class AddEditStdReport extends PureComponent {
                 raised
                 color={'primary'}
                 style={appStyles.dialogBtn}
+                disabled={!this.ifFormValid()}
                 onClick={this.createReport}
             >
                 {i18n.t(i18nKeys.buttons.save)}
@@ -318,7 +336,7 @@ class AddEditStdReport extends PureComponent {
                                 fullWidth
                                 name="name"
                                 label={i18n.t(i18nKeys.standardReport.nameLabel)}
-                                value={this.state.report.name}
+                                value={this.state.report.name || ''}
                                 onChange={this.onChangeName}
                             />
                             {/* report type */}
@@ -364,7 +382,7 @@ class AddEditStdReport extends PureComponent {
                                 style={
                                     {
                                         ...styles.width100,
-                                        ...(this.state.report.type !== REPORT_TYPES[0].id ? { display: 'none' } : ''),
+                                        ...(this.state.report.type !== TYPES.JASPER_REPORT_TABLE ? { display: 'none' } : ''),
                                     }
                                 }
                                 label={i18n.t(i18nKeys.standardReport.reportTableLabel)}
