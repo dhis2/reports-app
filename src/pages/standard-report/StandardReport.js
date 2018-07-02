@@ -186,7 +186,7 @@ class StandardReport extends Page {
                     });
                     api.delete(url).then((response) => {
                         if (response && this.isPageMounted()) {
-                            this.loadData(INITIAL_PAGER);
+                            this.loadData(INITIAL_PAGER, this.state.search);
                         }
                     }).catch(() => {
                         // TODO:
