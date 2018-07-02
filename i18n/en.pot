@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-07-02T10:34:16.702Z\n"
-"PO-Revision-Date: 2018-07-02T10:34:16.702Z\n"
+"POT-Creation-Date: 2018-07-02T17:12:06.210Z\n"
+"PO-Revision-Date: 2018-07-02T17:12:06.210Z\n"
 
 msgid "Cancel"
 msgstr ""
@@ -233,6 +233,12 @@ msgstr ""
 msgid "Organisation Unit"
 msgstr ""
 
+msgid "Confirm delete"
+msgstr ""
+
+msgid "Report deleted"
+msgstr ""
+
 msgid "No results have been found"
 msgstr ""
 
@@ -438,6 +444,12 @@ msgid "Unexpected Error"
 msgstr ""
 
 msgid "Interpretation Shared"
+msgstr ""
+
+msgid "Report Table"
+msgstr ""
+
+msgid "ID"
 msgstr ""
 
 msgid "Actions"

@@ -104,6 +104,8 @@ export const i18nKeys = {
         treeLabel: 'Organisation Unit',
     },
     standardReport: {
+        confirmDelete: 'Confirm delete',
+        reportDeleted: 'Report deleted',
         noResultsFound: 'No results have been found',
         none: '[ None ]',
         noCache: 'No cache',
@@ -207,6 +209,8 @@ export const i18nKeys = {
     d2UiComponents: {
         app_search_placeholder: 'Search',
         display_name: 'Name',
+        report_table: 'Report Table',
+        id: 'ID',
         // Context Menu
         actions: 'Actions',
         createReport: 'Create',

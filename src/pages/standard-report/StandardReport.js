@@ -29,6 +29,8 @@ import {
 /* utils */
 import { getDocsUrl } from '../../helpers/docs';
 import { calculatePageValue, INITIAL_PAGER } from '../../helpers/pagination';
+import { ACTION_MESSAGE, SUCCESS } from '../../helpers/feedbackSnackBarTypes';
+
 
 /* i18n */
 import i18n from '../../locales';
@@ -61,7 +63,6 @@ class StandardReport extends Page {
         this.editReport = this.editReport.bind(this);
         this.sharingSettings = this.sharingSettings.bind(this);
         this.delete = this.delete.bind(this);
-        this.showDetails = this.showDetails.bind(this);
         this.handleClose = this.handleClose.bind(this);
     }
 
@@ -76,7 +77,8 @@ class StandardReport extends Page {
 
     loadData(pager, search) {
         const api = this.props.d2.Api.getApi();
-        let url = `${REPORTS_ENDPOINT}?page=${pager.page}&pageSize=${pager.pageSize}`;
+        let url = `${REPORTS_ENDPOINT}?page=${pager.page}&pageSize=${pager.pageSize}` +
+        '&fields=displayName,id,reportTable[id,displayName]';
         this.setState({ search });
         if (search) {
             url = `${url}&filter=displayName:ilike:${search}`;
@@ -88,8 +90,17 @@ class StandardReport extends Page {
                 },
             });
             api.get(url).then((response) => {
-                if (response) {
-                    this.props.updateAppState({
+                if (response && this.isPageMounted()) {
+                    this.props.updateAppState((this.state.deleteInProgress) ? {
+                        pageState: {
+                            loading: false,
+                        },
+                        showSnackbar: true,
+                        snackbarConf: {
+                            type: SUCCESS,
+                            message: i18n.t(i18nKeys.standardReport.reportDeleted),
+                        },
+                    } : {
                         pageState: {
                             loading: false,
                         },
@@ -134,15 +145,13 @@ class StandardReport extends Page {
     }
 
     /* Add new Report */
-
-    // TODO: implement
     addNewReport() {
         this.setState({ loading: true, open: true, selectedAction: ADD_NEW_REPORT_ACTION });
     }
 
     handleClose(refreshList) {
         this.setState({ open: false, selectedReport: null });
-        if (refreshList) {
+        if (refreshList === true) {
             this.loadData(INITIAL_PAGER);
         }
     }
@@ -161,14 +170,32 @@ class StandardReport extends Page {
     }
 
     delete(args) {
-        this.setState({ open: true, selectedReport: args, selectedAction: CONTEXT_MENU_ACTION.DELETE });
+        this.props.updateAppState({
+            showSnackbar: true,
+            snackbarConf: {
+                type: ACTION_MESSAGE,
+                message: args.displayName,
+                action: i18n.t(i18nKeys.standardReport.confirmDelete),
+                onActionClick: () => {
+                    const api = this.props.d2.Api.getApi();
+                    const url = `${REPORTS_ENDPOINT}/${args.id}`;
+                    this.state.deleteInProgress = true;
+                    this.props.updateAppState({
+                        showSnackbar: false,
+                        pageState: { loading: true },
+                    });
+                    api.delete(url).then((response) => {
+                        if (response && this.isPageMounted()) {
+                            this.loadData(INITIAL_PAGER);
+                        }
+                    }).catch(() => {
+                        // TODO:
+                    });
+                },
+            },
+        });
     }
 
-    showDetails(args) {
-        this.setState({ open: true, selectedReport: args, selectedAction: CONTEXT_MENU_ACTION.SHOW_DETAILS });
-    }
-
-    // TODO: Check Show Details
     getActionComponent() {
         switch (this.state.selectedAction) {
         case CONTEXT_MENU_ACTION.CREATE:
@@ -181,29 +208,15 @@ class StandardReport extends Page {
                 />
             );
         case CONTEXT_MENU_ACTION.SHARING_SETTINGS:
-            return (
+            return this.state.selectedReport ? (
                 <SharingDialog
                     open={this.state.open}
-                    id={this.state.selectedReport.id || ''}
+                    id={this.state.selectedReport.id}
                     type={'report'}
                     onRequestClose={this.handleClose}
                     d2={this.props.d2}
                 />
-            );
-        case CONTEXT_MENU_ACTION.DELETE:
-            // FeedbackSnackBar
-            this.props.updateAppState({
-                showSnackbar: true,
-                snackbarConf: {
-                    type: 'ACTION_MESSAGE',
-                    message: 'Tens a certeza?',
-                    action: 'Sim',
-                    onActionClick: () => {
-                        // console.log('Are you sure?');
-                    },
-                },
-            });
-            return null;
+            ) : '';
         case CONTEXT_MENU_ACTION.EDIT:
             return (
                 <AddEditStdReport
@@ -233,7 +246,6 @@ class StandardReport extends Page {
             editReport: this.editReport,
             sharingSettings: this.sharingSettings,
             delete: this.delete,
-            showDetails: this.showDetails,
         };
 
         return (
@@ -261,7 +273,7 @@ class StandardReport extends Page {
                     />
                 </div>
                 <Table
-                    columns={['displayName']}
+                    columns={['displayName', 'reportTable', 'id']}
                     rows={this.state.reports}
                     contextMenuActions={contextMenuOptions}
                     contextMenuIcons={CONTEXT_MENU_ICONS}

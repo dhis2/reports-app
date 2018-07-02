@@ -322,7 +322,7 @@ class AddEditStdReport extends PureComponent {
         const actions = [
             <Button
                 style={appStyles.dialogBtn}
-                onClick={this.close}
+                onClick={() => this.close(false)}
             >
                 {i18n.t(i18nKeys.buttons.cancel)}
             </Button>,
@@ -408,7 +408,8 @@ class AddEditStdReport extends PureComponent {
                                 style={
                                     {
                                         ...styles.width100,
-                                        ...(this.state.report.type !== TYPES.JASPER_REPORT_TABLE ? { display: 'none' } : ''),
+                                        ...(this.state.report.type !== TYPES.JASPER_REPORT_TABLE ?
+                                            { display: 'none' } : ''),
                                     }
                                 }
                                 label={i18n.t(i18nKeys.standardReport.reportTableLabel)}
