@@ -82,8 +82,18 @@ class StandardReport extends Page {
             url = `${url}&filter=displayName:ilike:${search}`;
         }
         if (api) {
+            this.props.updateAppState({
+                pageState: {
+                    loading: true,
+                },
+            });
             api.get(url).then((response) => {
                 if (response) {
+                    this.props.updateAppState({
+                        pageState: {
+                            loading: false,
+                        },
+                    });
                     this.setState(response);
                 }
             }).catch(() => {
@@ -201,6 +211,7 @@ class StandardReport extends Page {
                     open={this.state.open}
                     onRequestClose={this.handleClose}
                     d2={this.props.d2}
+                    updateAppState={this.props.updateAppState}
                 />
             );
         default:
@@ -209,6 +220,7 @@ class StandardReport extends Page {
                     open={this.state.open}
                     onRequestClose={this.handleClose}
                     d2={this.props.d2}
+                    updateAppState={this.props.updateAppState}
                 />
             );
         }

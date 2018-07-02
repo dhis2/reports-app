@@ -43,6 +43,7 @@ const styles = {
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
+        zIndex: 3000, // over dialog
     },
     marginForAddButton: {
         marginBottom: PAGING_BOTTOM_MARGIN,

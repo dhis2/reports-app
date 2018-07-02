@@ -22,8 +22,8 @@ import { i18nKeys } from '../../../i18n';
 const initialState = {
     report: {
         name: null,
-        cacheStrategy: CACHE_STRATEGIES[1].id,
-        type: REPORT_TYPES[0].id, // default JASPER_REPORT_TABLE
+        cacheStrategy: CACHE_STRATEGIES[1].id, // default RESPECT_SYSTEM_SETTING
+        type: TYPES.JASPER_REPORT_TABLE, // default JASPER_REPORT_TABLE
         designContent: null,
         reportTable: NONE,
         reportParams: {
@@ -87,6 +87,7 @@ class AddEditStdReport extends PureComponent {
         onRequestClose: PropTypes.func.isRequired,
         open: PropTypes.bool.isRequired,
         selectedReport: PropTypes.object,
+        updateAppState: PropTypes.func.isRequired,
     };
 
     static defaultProps = {
@@ -205,8 +206,18 @@ class AddEditStdReport extends PureComponent {
         const api = this.props.d2.Api.getApi();
         const url = `${REPORT_TABLES_ENDPOINT}?paging=false&fields=:id,name`;
         if (api) {
+            this.props.updateAppState({
+                pageState: {
+                    loading: true,
+                },
+            });
             api.get(url).then((response) => {
                 if (response) {
+                    this.props.updateAppState({
+                        pageState: {
+                            loading: false,
+                        },
+                    });
                     this.setState({ reportTables: [NONE, ...response.reportTables] });
                 }
             }).catch(() => {
@@ -243,11 +254,21 @@ class AddEditStdReport extends PureComponent {
                 if (this.state.report.type !== TYPES.JASPER_REPORT_TABLE) {
                     delete this.state.report.reportTable;
                 }
+                this.props.updateAppState({
+                    pageState: {
+                        loading: true,
+                    },
+                });
                 // Edit report
                 if (this.state.report.id) {
                     const url = `${REPORTS_ENDPOINT}/${this.state.report.id}`;
                     api.update(url, this.state.report).then((response) => {
                         if (response) {
+                            this.props.updateAppState({
+                                pageState: {
+                                    loading: false,
+                                },
+                            });
                             this.close(true);
                         }
                     }).catch(() => {
@@ -257,6 +278,11 @@ class AddEditStdReport extends PureComponent {
                 } else {
                     api.post(REPORTS_ENDPOINT, this.state.report).then((response) => {
                         if (response) {
+                            this.props.updateAppState({
+                                pageState: {
+                                    loading: false,
+                                },
+                            });
                             this.close(true);
                         }
                     }).catch(() => {
