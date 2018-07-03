@@ -84,31 +84,26 @@ class StandardReport extends Page {
             url = `${url}&filter=displayName:ilike:${search}`;
         }
         if (api) {
-            this.props.updateAppState({
-                pageState: {
-                    loading: true,
-                },
-            });
+            this.props.updateAppState({ pageState: { loading: true } });
             api.get(url).then((response) => {
                 if (response && this.isPageMounted()) {
                     this.props.updateAppState((this.state.deleteInProgress) ? {
-                        pageState: {
-                            loading: false,
-                        },
+                        pageState: { loading: false },
                         showSnackbar: true,
                         snackbarConf: {
                             type: SUCCESS,
-                            message: i18n.t(i18nKeys.standardReport.reportDeleted),
+                            message: i18n.t(i18nKeys.messages.reportDeleted),
                         },
                     } : {
-                        pageState: {
-                            loading: false,
-                        },
+                        showSnackbar: false,
+                        pageState: { loading: false },
                     });
                     this.setState(response);
                 }
             }).catch(() => {
                 // TODO:
+            }).finally(() => {
+                this.state.deleteInProgress = false;
             });
         }
     }

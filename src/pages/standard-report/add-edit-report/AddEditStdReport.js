@@ -96,10 +96,8 @@ class AddEditStdReport extends PureComponent {
 
     constructor(props) {
         super(props);
-        this.state = this.getInitialState();
+        this.state = JSON.parse(JSON.stringify(initialState));
     }
-
-    getInitialState = () => JSON.parse(JSON.stringify(initialState));
 
     componentDidMount() {
         this.loadReportTables();
@@ -108,6 +106,8 @@ class AddEditStdReport extends PureComponent {
     componentWillReceiveProps(nextProps) {
         if (nextProps.selectedReport) {
             this.loadSelectedReport(nextProps.selectedReport);
+        } else {
+            this.setState(JSON.parse(JSON.stringify(initialState)));
         }
     }
 
@@ -129,8 +129,12 @@ class AddEditStdReport extends PureComponent {
     };
 
     onChangeCheck = (event) => {
-        this.state.report.relativePeriods[event.target.id] = !this.state.report.relativePeriods[event.target.id];
-        this.forceUpdate();
+        this.setState({
+            report: {
+                ...this.state.report,
+                relativePeriods: { ...this.state.report.relativePeriods, [event.target.id]: event.target.checked },
+            },
+        });
     };
 
     onChangeFileTemplate = (event) => {
@@ -146,7 +150,7 @@ class AddEditStdReport extends PureComponent {
         reader.onload = (evt) => {
             if (evt.target.readyState !== 2) return;
             if (evt.target.error) {
-                alert('Error while reading fileeee.');
+                alert('Error while reading file.');
                 return;
             }
             const designContent = evt.target.result;
@@ -174,11 +178,12 @@ class AddEditStdReport extends PureComponent {
         });
     };
 
-    getAuxLink = () => {
+    getDownloadLink = () => {
         const api = this.props.d2.Api.getApi();
         const type = this.state.report.type === TYPES.HTML ? 'html' : 'jasper';
         let url;
         let label;
+        // if editing
         if (this.state.report.id) {
             label = i18n.t(i18nKeys.standardReport.getCurrentDesign);
             url = `${api.baseUrl}/${REPORTS_ENDPOINT}/${this.state.report.id}/design`;
@@ -197,7 +202,6 @@ class AddEditStdReport extends PureComponent {
 
     /* close dialog */
     close = (refreshList) => {
-        this.setState(this.getInitialState());
         this.props.onRequestClose(refreshList);
     };
 
@@ -246,8 +250,8 @@ class AddEditStdReport extends PureComponent {
         }
     };
 
-    /* create report */
-    createReport = () => {
+    /* add report */
+    addReport = () => {
         if (this.ifFormValid()) {
             const api = this.props.d2.Api.getApi();
             if (api) {
@@ -274,7 +278,7 @@ class AddEditStdReport extends PureComponent {
                     }).catch(() => {
                         // TODO:
                     });
-                // Create report
+                // Add report
                 } else {
                     api.post(REPORTS_ENDPOINT, this.state.report).then((response) => {
                         if (response) {
@@ -311,7 +315,7 @@ class AddEditStdReport extends PureComponent {
     };
 
     showSection = () => {
-        //  If JASPER_REPORT_TABLE
+        //  if JASPER_REPORT_TABLE
         if (this.state.report.type !== TYPES.JASPER_REPORT_TABLE) {
             return styles.sectionBox;
         }
@@ -331,7 +335,7 @@ class AddEditStdReport extends PureComponent {
                 color={'primary'}
                 style={appStyles.dialogBtn}
                 disabled={!this.ifFormValid()}
-                onClick={this.createReport}
+                onClick={this.addReport}
             >
                 {i18n.t(i18nKeys.buttons.save)}
             </Button>,
@@ -349,7 +353,7 @@ class AddEditStdReport extends PureComponent {
             >
                 <div style={styles.dialogContentContainer}>
                     <span className={'row'} style={styles.rightsMessage}>
-                        {i18n.t(i18nKeys.standardReport.reportRightsMessage)}
+                        {i18n.t(i18nKeys.messages.reportRightsMessage)}
                     </span>
                     {/* details */}
                     <div className={'row'} style={styles.sectionBox}>
@@ -398,9 +402,9 @@ class AddEditStdReport extends PureComponent {
                                     onClick={() => this.fileInput.click()}
                                 />
                             </div>
-                            {/* get report template */}
+                            {/* get report template/design */}
                             <div style={styles.getTemplateLink}>
-                                {this.getAuxLink()}
+                                {this.getDownloadLink()}
                             </div>
                             {/* report table */}
                             <SelectField

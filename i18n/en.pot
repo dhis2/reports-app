@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-07-02T17:21:35.714Z\n"
-"PO-Revision-Date: 2018-07-02T17:21:35.714Z\n"
+"POT-Creation-Date: 2018-07-03T11:04:59.059Z\n"
+"PO-Revision-Date: 2018-07-03T11:04:59.059Z\n"
 
 msgid "Cancel"
 msgstr ""
@@ -233,13 +233,10 @@ msgstr ""
 msgid "Organisation Unit"
 msgstr ""
 
+msgid "Create Report Table"
+msgstr ""
+
 msgid "Confirm delete"
-msgstr ""
-
-msgid "Report deleted"
-msgstr ""
-
-msgid "No results have been found"
 msgstr ""
 
 msgid "[ None ]"
@@ -314,9 +311,6 @@ msgid "Add New Report"
 msgstr ""
 
 msgid "Edit Report"
-msgstr ""
-
-msgid "Create Report Table"
 msgstr ""
 
 msgid "Remove Report"
@@ -437,6 +431,9 @@ msgstr ""
 msgid "Report generated"
 msgstr ""
 
+msgid "Report deleted"
+msgstr ""
+
 msgid "Chart generated"
 msgstr ""
 
@@ -444,6 +441,9 @@ msgid "Unexpected Error"
 msgstr ""
 
 msgid "Interpretation Shared"
+msgstr ""
+
+msgid "No results have been found"
 msgstr ""
 
 msgid "Report Table"

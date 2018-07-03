@@ -104,9 +104,8 @@ export const i18nKeys = {
         treeLabel: 'Organisation Unit',
     },
     standardReport: {
+        createReportTitle: 'Create Report Table',
         confirmDelete: 'Confirm delete',
-        reportDeleted: 'Report deleted',
-        noResultsFound: 'No results have been found',
         none: '[ None ]',
         noCache: 'No cache',
         respectSystemSettings: 'Respect system setting',
@@ -202,9 +201,11 @@ export const i18nKeys = {
     messages: {
         loading: 'Loading...',
         reportGenerated: 'Report generated',
+        reportDeleted: 'Report deleted',
         chartGenerated: 'Chart generated',
         unexpectedError: 'Unexpected Error',
         interpretationShared: 'Interpretation Shared',
+        noResultsFound: 'No results have been found',
     },
     d2UiComponents: {
         app_search_placeholder: 'Search',
