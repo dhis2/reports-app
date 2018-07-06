@@ -27,7 +27,7 @@ const initialState = {
         designContent: null,
         reportTable: NONE,
         reportParams: {
-            paramReportingPeriod: false,
+            paramReportingPeriod: false, // paramReportingMonth
             paramOrganisationUnit: false,
         },
         relativePeriods: {
@@ -223,6 +223,7 @@ class AddEditStdReport extends PureComponent {
                         },
                     });
                     this.setState({ reportTables: [NONE, ...response.reportTables] });
+                    console.log('###########################', this.state.reportTables);
                 }
             }).catch(() => {
                 // TODO:
@@ -326,7 +327,7 @@ class AddEditStdReport extends PureComponent {
         const actions = [
             <Button
                 style={appStyles.dialogBtn}
-                onClick={() => this.close(false)}
+                onClick={this.close}
             >
                 {i18n.t(i18nKeys.buttons.cancel)}
             </Button>,
@@ -353,7 +354,7 @@ class AddEditStdReport extends PureComponent {
             >
                 <div style={styles.dialogContentContainer}>
                     <span className={'row'} style={styles.rightsMessage}>
-                        {i18n.t(i18nKeys.messages.reportRightsMessage)}
+                        {i18n.t(i18nKeys.standardReport.reportRightsMessage)}
                     </span>
                     {/* details */}
                     <div className={'row'} style={styles.sectionBox}>
@@ -382,6 +383,7 @@ class AddEditStdReport extends PureComponent {
                             <input
                                 style={{ display: 'none' }}
                                 type="file"
+                                // eslint-disable-next-line
                                 ref={(fileInput) => { this.fileInput = fileInput; }}
                                 onChange={this.onChangeFileTemplate}
                             />
@@ -399,6 +401,7 @@ class AddEditStdReport extends PureComponent {
                                     hintText={i18n.t(i18nKeys.standardReport.noFileChosen)}
                                     floatingLabelText={i18n.t(i18nKeys.standardReport.designFileLabel)}
                                     value={this.state.selectedFileToUpload ? this.state.selectedFileToUpload.name : ''}
+                                    // eslint-disable-next-line
                                     onClick={() => this.fileInput.click()}
                                 />
                             </div>
@@ -408,7 +411,7 @@ class AddEditStdReport extends PureComponent {
                             </div>
                             {/* report table */}
                             <SelectField
-                                selector={'displayName'}
+                                selector={'reportTable'}
                                 style={
                                     {
                                         ...styles.width100,

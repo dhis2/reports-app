@@ -23,8 +23,7 @@ import CreateStdReport from './create-report/CreateStdReport';
 
 /* app config */
 import {
-    ADD_NEW_REPORT_ACTION, CONTEXT_MENU_ACTION, CONTEXT_MENU_ICONS, REPORTS_ENDPOINT,
-} from './standard.report.conf';
+    ADD_NEW_REPORT_ACTION, CONTEXT_MENU_ACTION, CONTEXT_MENU_ICONS, REPORTS_ENDPOINT } from './standard.report.conf';
 
 /* utils */
 import { getDocsUrl } from '../../helpers/docs';
@@ -191,46 +190,64 @@ class StandardReport extends Page {
         });
     }
 
+    getCreateStdReportComponent() {
+        return this.state.selectedReport ? (
+            <CreateStdReport
+                selectedReport={this.state.selectedReport}
+                open={this.state.open}
+                onRequestClose={this.handleClose}
+                d2={this.props.d2}
+            />
+        ) : '';
+    }
+
+    getSharingDialog() {
+        return this.state.selectedReport ? (
+            <SharingDialog
+                open={this.state.open}
+                id={this.state.selectedReport.id}
+                type={'report'}
+                onRequestClose={this.handleClose}
+                d2={this.props.d2}
+            />
+        ) : '';
+    }
+
+    getEditComponent() {
+        return (
+            <AddEditStdReport
+                selectedReport={this.state.selectedReport}
+                open={this.state.open}
+                onRequestClose={this.handleClose}
+                d2={this.props.d2}
+                updateAppState={this.props.updateAppState}
+            />
+        );
+    }
+
+    getAddComponent() {
+        return (
+            <AddEditStdReport
+                open={this.state.open}
+                onRequestClose={this.handleClose}
+                d2={this.props.d2}
+                updateAppState={this.props.updateAppState}
+            />
+        );
+    }
+
     getActionComponent() {
         switch (this.state.selectedAction) {
         case CONTEXT_MENU_ACTION.CREATE:
-            return (
-                <CreateStdReport
-                    id={this.state.selectedReport.id}
-                    open={this.state.open}
-                    onRequestClose={this.handleClose}
-                    d2={this.props.d2}
-                />
-            );
+            return this.getCreateStdReportComponent();
         case CONTEXT_MENU_ACTION.SHARING_SETTINGS:
-            return this.state.selectedReport ? (
-                <SharingDialog
-                    open={this.state.open}
-                    id={this.state.selectedReport.id}
-                    type={'report'}
-                    onRequestClose={this.handleClose}
-                    d2={this.props.d2}
-                />
-            ) : '';
+            return this.getSharingDialog();
         case CONTEXT_MENU_ACTION.EDIT:
-            return (
-                <AddEditStdReport
-                    selectedReport={this.state.selectedReport}
-                    open={this.state.open}
-                    onRequestClose={this.handleClose}
-                    d2={this.props.d2}
-                    updateAppState={this.props.updateAppState}
-                />
-            );
+            return this.getEditComponent();
+        case ADD_NEW_REPORT_ACTION:
+            return this.getAddComponent();
         default:
-            return (
-                <AddEditStdReport
-                    open={this.state.open}
-                    onRequestClose={this.handleClose}
-                    d2={this.props.d2}
-                    updateAppState={this.props.updateAppState}
-                />
-            );
+            return '';
         }
     }
 
@@ -273,6 +290,15 @@ class StandardReport extends Page {
                     contextMenuActions={contextMenuOptions}
                     contextMenuIcons={CONTEXT_MENU_ICONS}
                 />
+                <p style={
+                    {
+                        textAlign: 'center',
+                        ...(this.state.reports.length > 0 ? { display: 'none' } : ''),
+                    }
+                }
+                >
+                    {i18n.t(i18nKeys.messages.noResultsFound)}
+                </p>
                 <div id={'footer-pagination-id'} style={appStyles.marginForAddButton}>
                     <Pagination
                         total={this.state.pager.total}
