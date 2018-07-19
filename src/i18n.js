@@ -2,6 +2,7 @@ export const i18nKeys = {
     buttons: {
         cancel: 'Cancel',
         save: 'Save',
+        getReport: 'Get Report',
         downloadAsExcel: 'Download as excel',
     },
     datasetsDropdown: {

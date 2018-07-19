@@ -5,13 +5,16 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-07-16T10:41:14.126Z\n"
-"PO-Revision-Date: 2018-07-16T10:41:14.126Z\n"
+"POT-Creation-Date: 2018-07-19T17:14:28.585Z\n"
+"PO-Revision-Date: 2018-07-19T17:14:28.585Z\n"
 
 msgid "Cancel"
 msgstr ""
 
 msgid "Save"
+msgstr ""
+
+msgid "Get Report"
 msgstr ""
 
 msgid "Download as excel"
@@ -338,9 +341,6 @@ msgid "Jasper report with report table data source"
 msgstr ""
 
 msgid "Data Set Report"
-msgstr ""
-
-msgid "Get Report"
 msgstr ""
 
 msgid ""

@@ -1,4 +1,8 @@
 const StandardReportStyle = {
+    backButton: {
+        cursor: 'pointer',
+        outline: 'none',
+    },
     searchContainer: {
         paddingLeft: 24,
         backgroundColor: '#ffffff',

@@ -34,6 +34,17 @@ export const TYPES = {
     HTML: 'HTML',
 };
 
+export const REPORT_MODE = {
+    REPORT: 'report',
+    REPORT_TABLE: 'table',
+};
+
+export const GET_REPORT_AS_ENDPOINT = {
+    PDF: 'data.pdf',
+    XLS: 'data.xls',
+    HTML: 'data.html',
+};
+
 export const REPORT_TYPES = [
     {
         id: TYPES.JASPER_REPORT_TABLE,

@@ -2,6 +2,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+/* material ui */
+import { Paper } from 'material-ui';
+
 /* d2-ui */
 import Table from '@dhis2/d2-ui-table';
 import SharingDialog from '@dhis2/d2-ui-sharing-dialog';
@@ -46,6 +49,7 @@ class StandardReport extends Page {
             selectedAction: null,
             search: '',
             open: false,
+            showHtmlReport: false,
         };
 
         this.search = this.search.bind(this);
@@ -63,21 +67,38 @@ class StandardReport extends Page {
         this.sharingSettings = this.sharingSettings.bind(this);
         this.delete = this.delete.bind(this);
         this.handleClose = this.handleClose.bind(this);
+        this.handleDisplayHtmlReport = this.handleDisplayHtmlReport.bind(this);
     }
 
     getChildContext() {
         return { d2: this.props.d2 };
     }
 
+    // TODO: Fix urls/paths to scripts or find a better way to do this
     componentDidMount() {
         super.componentDidMount();
+
+        const jqueryScript = document.createElement('script');
+        jqueryScript.type = 'text/javascript';
+        jqueryScript.src = 'http://localhost:8080/dhis-web-commons/javascripts/jQuery/jquery.min.js';
+        jqueryScript.onload = () => {
+            this.loadDHIS2Script();
+        };
+        document.head.appendChild(jqueryScript);
         this.loadData(INITIAL_PAGER);
     }
+
+    loadDHIS2Script = () => {
+        const dhis2Script = document.createElement('script');
+        dhis2Script.type = 'text/javascript';
+        dhis2Script.src = 'http://localhost:8080/dhis-web-commons/javascripts/dhis2/dhis2.util.js';
+        document.head.appendChild(dhis2Script);
+    };
 
     loadData(pager, search) {
         const api = this.props.d2.Api.getApi();
         let url = `${REPORTS_ENDPOINT}?page=${pager.page}&pageSize=${pager.pageSize}` +
-        '&fields=displayName,id,reportTable[id,displayName]';
+        '&fields=displayName,type,id,reportTable[id,displayName]';
         this.setState({ search });
         if (search) {
             url = `${url}&filter=displayName:ilike:${search}`;
@@ -150,6 +171,15 @@ class StandardReport extends Page {
         }
     }
 
+    handleDisplayHtmlReport(html) {
+        const domfrag = document.createRange().createContextualFragment(html);
+        document.getElementById('html-report-id').appendChild(domfrag);
+        this.setState({ showHtmlReport: true });
+        this.handleClose();
+    }
+
+    goBack = () => { this.setState({ showHtmlReport: false }); };
+
     /* Context Menu */
     createReport(args) {
         this.setState({ open: true, selectedReport: args, selectedAction: CONTEXT_MENU_ACTION.CREATE });
@@ -196,6 +226,7 @@ class StandardReport extends Page {
                 selectedReport={this.state.selectedReport}
                 open={this.state.open}
                 onRequestClose={this.handleClose}
+                onGetHtmlReport={this.handleDisplayHtmlReport}
                 d2={this.props.d2}
             />
         ) : '';
@@ -263,43 +294,24 @@ class StandardReport extends Page {
         return (
             <div>
                 <h1>
+                    { this.state.showHtmlReport &&
+                    <span
+                        id="back-button"
+                        style={styles.backButton}
+                        className="material-icons"
+                        role="button"
+                        tabIndex="0"
+                        onClick={this.goBack}
+                    >
+                        arrow_back
+                    </span>
+                    }
                     { i18n.t(i18nKeys.standardReport.homeLabel) }
                     <PageHelper
                         url={getDocsUrl(this.props.d2.system.version, this.props.sectionKey)}
                     />
                 </h1>
-                <Pagination
-                    total={this.state.pager.total}
-                    hasNextPage={this.hasNextPage}
-                    hasPreviousPage={this.hasPreviousPage}
-                    onNextPageClick={this.onNextPageClick}
-                    onPreviousPageClick={this.onPreviousPageClick}
-                    currentlyShown={calculatePageValue(this.state.pager)}
-                />
-                <div id={'search-box-id'} style={styles.searchContainer}>
-                    <TextField
-                        value={this.state.search || ''}
-                        type="search"
-                        hintText={i18n.t(i18nKeys.standardReport.search)}
-                        onBlur={this.search}
-                    />
-                </div>
-                <Table
-                    columns={['displayName', 'reportTable', 'id']}
-                    rows={this.state.reports}
-                    contextMenuActions={contextMenuOptions}
-                    contextMenuIcons={CONTEXT_MENU_ICONS}
-                />
-                <p style={
-                    {
-                        textAlign: 'center',
-                        ...(this.state.reports.length > 0 ? { display: 'none' } : ''),
-                    }
-                }
-                >
-                    {i18n.t(i18nKeys.messages.noResultsFound)}
-                </p>
-                <div id={'footer-pagination-id'} style={appStyles.marginForAddButton}>
+                <div style={{ display: this.state.showHtmlReport ? 'none' : 'block' }}>
                     <Pagination
                         total={this.state.pager.total}
                         hasNextPage={this.hasNextPage}
@@ -308,11 +320,53 @@ class StandardReport extends Page {
                         onPreviousPageClick={this.onPreviousPageClick}
                         currentlyShown={calculatePageValue(this.state.pager)}
                     />
+                    <div id={'search-box-id'} style={styles.searchContainer}>
+                        <TextField
+                            value={this.state.search || ''}
+                            type="search"
+                            hintText={i18n.t(i18nKeys.standardReport.search)}
+                            onBlur={this.search}
+                        />
+                    </div>
+                    <Table
+                        columns={['displayName', 'reportTable', 'id']}
+                        rows={this.state.reports}
+                        contextMenuActions={contextMenuOptions}
+                        contextMenuIcons={CONTEXT_MENU_ICONS}
+                    />
+                    <p style={
+                        {
+                            textAlign: 'center',
+                            ...(this.state.reports.length > 0 ? { display: 'none' } : ''),
+                        }
+                    }
+                    >
+                        {i18n.t(i18nKeys.messages.noResultsFound)}
+                    </p>
+                    <div id={'footer-pagination-id'} style={appStyles.marginForAddButton}>
+                        <Pagination
+                            total={this.state.pager.total}
+                            hasNextPage={this.hasNextPage}
+                            hasPreviousPage={this.hasPreviousPage}
+                            onNextPageClick={this.onNextPageClick}
+                            onPreviousPageClick={this.onPreviousPageClick}
+                            currentlyShown={calculatePageValue(this.state.pager)}
+                        />
+                    </div>
+                    <Button fab onClick={this.addNewReport} style={appStyles.addButton}>
+                        <SvgIcon icon={'Add'} />
+                    </Button>
+                    { this.getActionComponent() }
                 </div>
-                <Button fab onClick={this.addNewReport} style={appStyles.addButton}>
-                    <SvgIcon icon={'Add'} />
-                </Button>
-                { this.getActionComponent() }
+                <Paper
+                    style={{
+                        display: this.state.showHtmlReport ? 'flex' : 'none',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                    }}
+                >
+                    <div id={'html-report-id'} />
+                </Paper>
             </div>
         );
     }

@@ -150,7 +150,6 @@ class AddEditStdReport extends PureComponent {
         reader.onload = (evt) => {
             if (evt.target.readyState !== 2) return;
             if (evt.target.error) {
-                alert('Error while reading file.');
                 return;
             }
             const designContent = evt.target.result;
@@ -223,7 +222,6 @@ class AddEditStdReport extends PureComponent {
                         },
                     });
                     this.setState({ reportTables: [NONE, ...response.reportTables] });
-                    console.log('###########################', this.state.reportTables);
                 }
             }).catch(() => {
                 // TODO:
