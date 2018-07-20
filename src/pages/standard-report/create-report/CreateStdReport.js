@@ -67,7 +67,6 @@ class CreateStdReport extends PureComponent {
             url = `${url}&pe=${this.state.selectedPeriod.id}`;
         }
         if (this.props.selectedReport.type === TYPES.HTML) {
-            // this.props.onGetHtmlReport(`${api.baseUrl}/${url}`);
             api.get(url).then((response) => {
                 this.props.onGetHtmlReport(response);
             }).catch(() => {

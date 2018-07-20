@@ -13,6 +13,7 @@ import { Button, Pagination, SvgIcon, TextField } from '@dhis2/d2-ui-core';
 /* d2-ui styles */
 import '@dhis2/d2-ui-core/build/css/Table.css';
 import '@dhis2/d2-ui-core/build/css/Pagination.css';
+import HtmlReport from './HtmlReport';
 
 /* styles */
 import styles from './StandardReport.style';
@@ -49,7 +50,7 @@ class StandardReport extends Page {
             selectedAction: null,
             search: '',
             open: false,
-            showHtmlReport: false,
+            htmlReport: null,
         };
 
         this.search = this.search.bind(this);
@@ -77,23 +78,8 @@ class StandardReport extends Page {
     // TODO: Fix urls/paths to scripts or find a better way to do this
     componentDidMount() {
         super.componentDidMount();
-
-        const jqueryScript = document.createElement('script');
-        jqueryScript.type = 'text/javascript';
-        jqueryScript.src = 'http://localhost:8080/dhis-web-commons/javascripts/jQuery/jquery.min.js';
-        jqueryScript.onload = () => {
-            this.loadDHIS2Script();
-        };
-        document.head.appendChild(jqueryScript);
         this.loadData(INITIAL_PAGER);
     }
-
-    loadDHIS2Script = () => {
-        const dhis2Script = document.createElement('script');
-        dhis2Script.type = 'text/javascript';
-        dhis2Script.src = 'http://localhost:8080/dhis-web-commons/javascripts/dhis2/dhis2.util.js';
-        document.head.appendChild(dhis2Script);
-    };
 
     loadData(pager, search) {
         const api = this.props.d2.Api.getApi();
@@ -171,14 +157,11 @@ class StandardReport extends Page {
         }
     }
 
-    handleDisplayHtmlReport(html) {
-        const domfrag = document.createRange().createContextualFragment(html);
-        document.getElementById('html-report-id').appendChild(domfrag);
-        this.setState({ showHtmlReport: true });
-        this.handleClose();
+    handleDisplayHtmlReport(htmlReport) {
+        this.setState({ htmlReport, open: false, selectedReport: null });
     }
 
-    goBack = () => { this.setState({ showHtmlReport: false }); };
+    goBack = () => { this.setState({ htmlReport: null }); };
 
     /* Context Menu */
     createReport(args) {
@@ -294,7 +277,7 @@ class StandardReport extends Page {
         return (
             <div>
                 <h1>
-                    { this.state.showHtmlReport &&
+                    { this.state.htmlReport &&
                     <span
                         id="back-button"
                         style={styles.backButton}
@@ -311,7 +294,7 @@ class StandardReport extends Page {
                         url={getDocsUrl(this.props.d2.system.version, this.props.sectionKey)}
                     />
                 </h1>
-                <div style={{ display: this.state.showHtmlReport ? 'none' : 'block' }}>
+                <div style={{ display: this.state.htmlReport ? 'none' : 'block' }}>
                     <Pagination
                         total={this.state.pager.total}
                         hasNextPage={this.hasNextPage}
@@ -360,12 +343,12 @@ class StandardReport extends Page {
                 </div>
                 <Paper
                     style={{
-                        display: this.state.showHtmlReport ? 'flex' : 'none',
+                        display: this.state.htmlReport ? 'flex' : 'none',
                         justifyContent: 'center',
                         alignItems: 'center',
                     }}
                 >
-                    <div id={'html-report-id'} />
+                    <HtmlReport html={this.state.htmlReport} />
                 </Paper>
             </div>
         );
