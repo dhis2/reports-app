@@ -15,6 +15,7 @@ class HtmlReport extends Component {
     componentWillReceiveProps(newProps) {
         if (newProps.html) {
             const domFrag = document.createRange().createContextualFragment(newProps.html);
+            document.getElementById('html-report-id').innerHTML = '';
             document.getElementById('html-report-id').appendChild(domFrag);
         }
     }

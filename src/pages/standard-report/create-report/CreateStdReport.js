@@ -44,6 +44,7 @@ class CreateStdReport extends PureComponent {
     }
 
     componentDidMount() {
+        // TODO: validate if always report
         this.loadReportParams(REPORT_MODE.REPORT);
     }
 
@@ -83,8 +84,13 @@ class CreateStdReport extends PureComponent {
         const url = `${REPORTS_ENDPOINT}/${this.props.selectedReport.id}/parameters?mode=${reportMode}`;
         if (api) {
             api.get(url).then((response) => {
-                if (response) {
+                if (response && this.isSet(response)) {
+                    if (response.periods) {
+                        this.setState({ selectedPeriod: response.periods[0] });
+                    }
                     this.setState({ ...response }); // params && || periods
+                } else {
+                    this.getReport();
                 }
             }).catch(() => {
                 // TODO:
@@ -94,15 +100,22 @@ class CreateStdReport extends PureComponent {
         }
     };
 
-    isSet = () => !!(this.state.params && (this.state.params.paramReportingPeriod || this.isOrganisationUnitSet()));
+    isSet = (obj = this.state) => !!(obj.params &&
+        (obj.params.paramReportingPeriod || this.isOrganisationUnitSet(obj)));
 
-    isOrganisationUnitSet = () => !!(this.state.params.paramOrganisationUnit ||
-        this.state.params.paramParentOrganisationUnit ||
-        this.state.params.paramGrandParentOrganisationUnit);
+    isOrganisationUnitSet = (obj = this.state) => !!obj.params && (obj.params.paramOrganisationUnit ||
+        obj.params.paramParentOrganisationUnit ||
+        obj.params.paramGrandParentOrganisationUnit);
+
+    isReportingPeriod = () =>
+        !!this.state.periods && this.state.periods.length > 0 &&
+        this.state.params && this.state.params.paramReportingPeriod;
 
     displayPeriods = () => {
-        if (this.state.periods && this.state.periods.length > 0 &&
-            this.state.params && this.state.params.paramReportingPeriod) {
+        if (this.isReportingPeriod()) {
+            if (!this.state.selectedPeriod) {
+                this.state.selectedPeriod = this.state.periods[0];
+            }
             return (
                 <SelectField
                     selector={'periods'}
@@ -130,6 +143,17 @@ class CreateStdReport extends PureComponent {
         return null;
     };
 
+    validate = () => {
+        if (this.isReportingPeriod() && this.isOrganisationUnitSet()) {
+            return !!(this.state.selectedPeriod && this.state.selectedOrgUnitId);
+        } else if (this.isReportingPeriod()) {
+            return !!this.state.selectedPeriod;
+        } else if (this.isOrganisationUnitSet()) {
+            return !!this.state.selectedOrgUnitId;
+        }
+        return false;
+    }
+
     render() {
         const actions = [
             <Button
@@ -148,24 +172,29 @@ class CreateStdReport extends PureComponent {
                 raised
                 color={'primary'}
                 style={appStyles.dialogBtn}
+                disabled={!this.validate()}
                 onClick={this.getReport}
             >
                 {i18n.t(i18nKeys.buttons.getReport)}
             </Button>,
         ];
-        return (
-            <Dialog
-                autoScrollBodyContent
-                autoDetectWindowHeight
-                title={i18n.t(i18nKeys.standardReport.createReportTitle)}
-                actions={actions}
-                modal
-                open={this.props.open}
-            >
-                {this.displayPeriods()}
-                {this.displayOrgUnitTree()}
-            </Dialog>
-        );
+
+        if (this.isSet()) {
+            return (
+                <Dialog
+                    autoScrollBodyContent
+                    autoDetectWindowHeight
+                    title={i18n.t(i18nKeys.standardReport.createReportTitle)}
+                    actions={actions}
+                    modal
+                    open={this.props.open}
+                >
+                    {this.displayPeriods()}
+                    {this.displayOrgUnitTree()}
+                </Dialog>
+            );
+        }
+        return (null);
     }
 }
 
