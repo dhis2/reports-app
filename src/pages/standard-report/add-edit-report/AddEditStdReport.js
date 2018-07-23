@@ -224,7 +224,7 @@ class AddEditStdReport extends PureComponent {
                     this.setState({ reportTables: [NONE, ...response.reportTables] });
                 }
             }).catch(() => {
-                // TODO:
+                // TODO: manage error
             });
         }
     };
@@ -244,7 +244,7 @@ class AddEditStdReport extends PureComponent {
                     });
                 }
             }).catch(() => {
-                // TODO:
+                // TODO: manage error
             });
         }
     };
@@ -275,7 +275,7 @@ class AddEditStdReport extends PureComponent {
                             this.close(true);
                         }
                     }).catch(() => {
-                        // TODO:
+                        // TODO: manage error
                     });
                 // Add report
                 } else {
@@ -289,7 +289,7 @@ class AddEditStdReport extends PureComponent {
                             this.close(true);
                         }
                     }).catch(() => {
-                        // TODO:
+                        // TODO: manage error
                     });
                 }
             }

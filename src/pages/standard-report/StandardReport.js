@@ -75,7 +75,6 @@ class StandardReport extends Page {
         return { d2: this.props.d2 };
     }
 
-    // TODO: Fix urls/paths to scripts or find a better way to do this
     componentDidMount() {
         super.componentDidMount();
         this.loadData(INITIAL_PAGER);
@@ -107,7 +106,7 @@ class StandardReport extends Page {
                     this.setState(response);
                 }
             }).catch(() => {
-                // TODO:
+                // TODO: manage error
             }).finally(() => {
                 this.state.deleteInProgress = false;
             });
@@ -196,7 +195,7 @@ class StandardReport extends Page {
                             this.loadData(INITIAL_PAGER, this.state.search);
                         }
                     }).catch(() => {
-                        // TODO:
+                        // TODO: manage error
                     });
                 },
             },

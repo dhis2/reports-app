@@ -72,7 +72,7 @@ class CreateStdReport extends PureComponent {
             api.get(url).then((response) => {
                 this.props.onGetHtmlReport(response);
             }).catch(() => {
-                // TODO:
+                // TODO: manage error
                 // this.manageError(error);
             });
         } else {
@@ -94,7 +94,7 @@ class CreateStdReport extends PureComponent {
             api.get(url).then((response) => {
                 this.props.onGetHtmlReport(response);
             }).catch(() => {
-                // TODO:
+                // TODO: manage error
                 // this.manageError(error);
             });
         } else {
@@ -116,7 +116,7 @@ class CreateStdReport extends PureComponent {
                     this.getReport();
                 }
             }).catch(() => {
-                // TODO:
+                // TODO: manage error
             }).finally(() => {
 
             });
