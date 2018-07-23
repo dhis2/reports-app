@@ -56,6 +56,7 @@ class CreateStdReport extends PureComponent {
         this.setState({ selectedOrgUnitId });
     };
 
+    // TODO: Possible merge this and getExcelReport method
     getReport = () => {
         const api = this.props.d2.Api.getApi();
         const typeEndpoint = this.props.selectedReport.type === TYPES.HTML ?
@@ -78,6 +79,28 @@ class CreateStdReport extends PureComponent {
             window.open(`${api.baseUrl}/${url}`);
         }
     };
+
+    getExcelReport = () => {
+        const api = this.props.d2.Api.getApi();
+        const typeEndpoint = GET_REPORT_AS_ENDPOINT.XLS;
+        let url = `${REPORTS_ENDPOINT}/${this.props.selectedReport.id}/${typeEndpoint}?t=${new Date().getTime()}`;
+        if (this.state.selectedOrgUnitId) {
+            url = `${url}&ou=${this.state.selectedOrgUnitId}`;
+        }
+        if (this.state.selectedPeriod) {
+            url = `${url}&pe=${this.state.selectedPeriod.id}`;
+        }
+        if (this.props.selectedReport.type === TYPES.HTML) {
+            api.get(url).then((response) => {
+                this.props.onGetHtmlReport(response);
+            }).catch(() => {
+                // TODO:
+                // this.manageError(error);
+            });
+        } else {
+            window.open(`${api.baseUrl}/${url}`);
+        }
+    }
 
     loadReportParams = (reportMode) => {
         const api = this.props.d2.Api.getApi();
@@ -164,7 +187,8 @@ class CreateStdReport extends PureComponent {
             </Button>,
             <Button
                 style={appStyles.dialogBtn}
-                onClick={this.props.onRequestClose}
+                disabled={!this.validate()}
+                onClick={this.getExcelReport}
             >
                 {i18n.t(i18nKeys.buttons.downloadAsExcel)}
             </Button>,
