@@ -1,8 +1,4 @@
-const StandardReportStyle = {
-    backButton: {
-        cursor: 'pointer',
-        outline: 'none',
-    },
+const ResourceStyle = {
     searchContainer: {
         paddingLeft: 24,
         backgroundColor: '#ffffff',
@@ -11,4 +7,4 @@ const StandardReportStyle = {
     },
 };
 
-export default StandardReportStyle;
+export default ResourceStyle;

@@ -13,7 +13,6 @@ import { Button, Pagination, SvgIcon, TextField } from '@dhis2/d2-ui-core';
 /* d2-ui styles */
 import '@dhis2/d2-ui-core/build/css/Table.css';
 import '@dhis2/d2-ui-core/build/css/Pagination.css';
-import HtmlReport from './HtmlReport';
 
 /* styles */
 import styles from './StandardReport.style';
@@ -24,6 +23,7 @@ import Page from '../Page';
 import PageHelper from '../../components/page-helper/PageHelper';
 import AddEditStdReport from './add-edit-report/AddEditStdReport';
 import CreateStdReport from './create-report/CreateStdReport';
+import HtmlReport from './HtmlReport';
 
 /* app config */
 import {

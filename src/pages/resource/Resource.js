@@ -4,7 +4,14 @@ import PropTypes from 'prop-types';
 
 /* d2-ui */
 import Table from '@dhis2/d2-ui-table';
-import { Pagination } from '@dhis2/d2-ui-core';
+import { Pagination, TextField } from '@dhis2/d2-ui-core';
+
+/* d2-ui styles */
+import '@dhis2/d2-ui-core/build/css/Table.css';
+import '@dhis2/d2-ui-core/build/css/Pagination.css';
+
+/* styles */
+import styles from './Resource.style';
 
 /* app components */
 import Page from '../Page';
@@ -26,6 +33,7 @@ class Resource extends Page {
         this.state = {
             pager: INITIAL_PAGER,
             documents: [],
+            search: '',
         };
     }
 
@@ -40,9 +48,11 @@ class Resource extends Page {
 
     loadDocuments(pager, search) {
         const api = this.props.d2.Api.getApi();
-        const url = `${DOCUMENTS_ENDPOINT}?page=${pager.page}&pageSize=${pager.pageSize}` +
-            '&fields=displayName,id';
+        let url = `${DOCUMENTS_ENDPOINT}?page=${pager.page}&pageSize=${pager.pageSize}&fields=displayName,id`;
         this.setState({ search });
+        if (search) {
+            url = `${url}&filter=displayName:ilike:${search}`;
+        }
         if (api) {
             api.get(url).then((response) => {
                 if (response && this.isPageMounted()) {
@@ -64,12 +74,22 @@ class Resource extends Page {
         const pager = Object.assign({}, this.state.pager);
         pager.page += 1;
         this.loadDocuments(pager, this.state.search);
-    }
+    };
 
     onPreviousPageClick = () => {
         const pager = Object.assign({}, this.state.pager);
         pager.page -= 1;
         this.loadDocuments(pager, this.state.search);
+    };
+
+    /* Search */
+    search = (event) => {
+        // ...and not empty search
+        if (this.state.search !== event.target.value && /\S/.test(event.target.value)) {
+            this.loadDocuments(INITIAL_PAGER, event.target.value);
+        } else if (this.state.search !== event.target.value) {
+            this.loadDocuments(INITIAL_PAGER);
+        }
     }
 
     render() {
@@ -89,6 +109,14 @@ class Resource extends Page {
                     onPreviousPageClick={this.onPreviousPageClick}
                     currentlyShown={calculatePageValue(this.state.pager)}
                 />
+                <div id={'search-box-id'} style={styles.searchContainer}>
+                    <TextField
+                        value={this.state.search || ''}
+                        type="search"
+                        hintText={i18n.t(i18nKeys.resource.search)}
+                        onBlur={this.search}
+                    />
+                </div>
                 <Table
                     columns={['displayName']}
                     rows={this.state.documents}

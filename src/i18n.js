@@ -180,6 +180,7 @@ export const i18nKeys = {
         homeAction: 'View Resources',
         header: 'Resource',
         description: 'View and add resources. These resources can be uploaded documents or URLs on the web.',
+        search: 'Search',
     },
     organisationUnitDistributionReport: {
         homeLabel: 'Organisation Unit Distribution Report',
