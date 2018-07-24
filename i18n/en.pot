@@ -5,8 +5,20 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-06-29T11:20:59.671Z\n"
-"PO-Revision-Date: 2018-06-29T11:20:59.671Z\n"
+"POT-Creation-Date: 2018-07-23T17:57:52.469Z\n"
+"PO-Revision-Date: 2018-07-23T17:57:52.469Z\n"
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Get Report"
+msgstr ""
+
+msgid "Download as excel"
+msgstr ""
 
 msgid "Select Data Set"
 msgstr ""
@@ -77,7 +89,175 @@ msgstr ""
 msgid "Financial-Oct"
 msgstr ""
 
+msgid "Days"
+msgstr ""
+
+msgid "Reporting day"
+msgstr ""
+
+msgid "Yesterday"
+msgstr ""
+
+msgid "Last 3 days"
+msgstr ""
+
+msgid "Last 7 days"
+msgstr ""
+
+msgid "Last 14 days"
+msgstr ""
+
+msgid "Weeks"
+msgstr ""
+
+msgid "Reporting week"
+msgstr ""
+
+msgid "Last Week"
+msgstr ""
+
+msgid "Last 2 weeks"
+msgstr ""
+
+msgid "Last 12 weeks"
+msgstr ""
+
+msgid "Last 52 weeks"
+msgstr ""
+
+msgid "Weeks this year"
+msgstr ""
+
+msgid "Months"
+msgstr ""
+
+msgid "Reporting month"
+msgstr ""
+
+msgid "Last month"
+msgstr ""
+
+msgid "Last 3 months"
+msgstr ""
+
+msgid "Last 6 months"
+msgstr ""
+
+msgid "Last 12 months"
+msgstr ""
+
+msgid "Months this year"
+msgstr ""
+
+msgid "Bi-months"
+msgstr ""
+
+msgid "Reporting bi-month"
+msgstr ""
+
+msgid "Last bi-month"
+msgstr ""
+
+msgid "Last 6 bi-month"
+msgstr ""
+
+msgid "Bi-months this year"
+msgstr ""
+
+msgid "Quarters"
+msgstr ""
+
+msgid "Reporting quarter"
+msgstr ""
+
+msgid "Last quarter"
+msgstr ""
+
+msgid "Last 4 quarters"
+msgstr ""
+
+msgid "Quarters of reporting year"
+msgstr ""
+
+msgid "Six-Months"
+msgstr ""
+
+msgid "Reporting six-month"
+msgstr ""
+
+msgid "Last six-month"
+msgstr ""
+
+msgid "Last 2 six-months"
+msgstr ""
+
+msgid "Financial Years"
+msgstr ""
+
+msgid "Reporting financial year"
+msgstr ""
+
+msgid "Last financial year"
+msgstr ""
+
+msgid "Last 5 financial years"
+msgstr ""
+
+msgid "Years"
+msgstr ""
+
+msgid "Reporting year"
+msgstr ""
+
+msgid "Last year"
+msgstr ""
+
+msgid "Last 5 years"
+msgstr ""
+
+msgid "Months last year"
+msgstr ""
+
+msgid "Quartes last year"
+msgstr ""
+
+msgid "This bi-week"
+msgstr ""
+
+msgid "Last bi-week"
+msgstr ""
+
+msgid "Last 4 bi-weeks"
+msgstr ""
+
 msgid "Updating Organisation Units Tree..."
+msgstr ""
+
+msgid "Organisation Unit"
+msgstr ""
+
+msgid "Create Report Table"
+msgstr ""
+
+msgid "Confirm delete"
+msgstr ""
+
+msgid "[ None ]"
+msgstr ""
+
+msgid "No cache"
+msgstr ""
+
+msgid "Respect system setting"
+msgstr ""
+
+msgid "Cache for one hour"
+msgstr ""
+
+msgid "Cache until 6 AM tomorrow"
+msgstr ""
+
+msgid "Cache for two weeks"
 msgstr ""
 
 msgid "Standard Report"
@@ -91,10 +271,76 @@ msgid ""
 "on report tables and can be designed in iReport."
 msgstr ""
 
-msgid "Data Set Report"
+msgid "Search"
 msgstr ""
 
-msgid "Get Report"
+msgid "Details"
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+msgid "Relative periods"
+msgstr ""
+
+msgid "Report parameters"
+msgstr ""
+
+msgid "Cache Strategy"
+msgstr ""
+
+msgid "Reporting Period"
+msgstr ""
+
+msgid "Organization Unit"
+msgstr ""
+
+msgid "This object will be created with public edit and view rights"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "Design File"
+msgstr ""
+
+msgid "Report table"
+msgstr ""
+
+msgid "Add New Report"
+msgstr ""
+
+msgid "Edit Report"
+msgstr ""
+
+msgid "Remove Report"
+msgstr ""
+
+msgid "No File Chosen"
+msgstr ""
+
+msgid "Get current design"
+msgstr ""
+
+msgid "Get Jasper Report Template"
+msgstr ""
+
+msgid "Get HTML Report Template"
+msgstr ""
+
+msgid "HTML report"
+msgstr ""
+
+msgid "Jasper report with JDBC data source"
+msgstr ""
+
+msgid "Jasper report with report table data source"
+msgstr ""
+
+msgid "Data Set Report"
 msgstr ""
 
 msgid ""
@@ -185,6 +431,9 @@ msgstr ""
 msgid "Report generated"
 msgstr ""
 
+msgid "Report deleted"
+msgstr ""
+
 msgid "Chart generated"
 msgstr ""
 
@@ -194,7 +443,79 @@ msgstr ""
 msgid "Interpretation Shared"
 msgstr ""
 
-msgid "Search"
+msgid "No results have been found"
+msgstr ""
+
+msgid "Report Table"
+msgstr ""
+
+msgid "ID"
+msgstr ""
+
+msgid "Actions"
+msgstr ""
+
+msgid "Create"
+msgstr ""
+
+msgid "Sharing Settings"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Show Details"
+msgstr ""
+
+msgid "Add users and user groups"
+msgstr ""
+
+msgid "Enter names"
+msgstr ""
+
+msgid "Sharing settings"
+msgstr ""
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Created By"
+msgstr ""
+
+msgid "Who has access"
+msgstr ""
+
+msgid "External access (without login)"
+msgstr ""
+
+msgid "Can edit and view"
+msgstr ""
+
+msgid "Can view"
+msgstr ""
+
+msgid "Can view only"
+msgstr ""
+
+msgid "No access"
+msgstr ""
+
+msgid "Public access (with login)"
+msgstr ""
+
+msgid "Public can edit"
+msgstr ""
+
+msgid "Public can view"
+msgstr ""
+
+msgid "Public can find, view and edit"
+msgstr ""
+
+msgid "Public can find and view"
+msgstr ""
+
+msgid "Close"
 msgstr ""
 
 msgid "week"

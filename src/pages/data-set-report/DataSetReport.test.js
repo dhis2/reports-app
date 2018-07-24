@@ -48,6 +48,9 @@ const ownShallow = () => {
     );
 };
 
+/* Mocks */
+jest.mock('@dhis2/d2-ui-org-unit-tree', () => ('OrgUnitTree'));
+
 describe('Test <DataSetReport /> rendering:', () => {
     let wrapper;
     beforeEach(() => {

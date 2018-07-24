@@ -13,6 +13,8 @@ import { DatasetsDropdown } from './DatasetsDropdown';
 /* fake data */
 import fakerData from '../../helpers/fakerTests';
 
+/* Mocks */
+jest.mock('@dhis2/d2-ui-org-unit-tree', () => ('OrgUnitTree'));
 jest.mock('@dhis2/d2-ui-core', () => ({
     DropDown: ('DropDown'),
 }));

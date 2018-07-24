@@ -1,11 +1,11 @@
 body {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 html {
-  background: #f3f3f3;
-  font-family: 'Roboto', sans-serif;
+    background: #f3f3f3;
+    font-family: 'Roboto', sans-serif;
 }
 
 h1 {
@@ -26,6 +26,31 @@ h1 {
     top: 0;
     left: 0;
     padding-top: 3rem;
+}
+
+/* D2-UI table overrides */
+.d2-ui-table {
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+}
+
+.d2-ui-table__rows__row {
+    font-size: 14px;
+}
+
+/* D2-UI pagination overrides */
+.data-table-pager--page-info {
+    padding: 0 !important;
+}
+
+.data-table-pager--buttons {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
+
+.data-table-pager--buttons .material-icons {
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 #report-container table, th, td {

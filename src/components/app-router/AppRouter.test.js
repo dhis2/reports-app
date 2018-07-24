@@ -24,6 +24,9 @@ const ownShallow = () => {
     );
 };
 
+/* Mocks */
+jest.mock('@dhis2/d2-ui-org-unit-tree', () => ('OrgUnitTree'));
+
 it('AppRouter renders without crashing', () => {
     ownShallow();
 });

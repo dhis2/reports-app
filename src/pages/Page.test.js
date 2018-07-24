@@ -30,6 +30,9 @@ const pageComponentShallow = () => {
     );
 };
 
+/* Mocks */
+jest.mock('@dhis2/d2-ui-org-unit-tree', () => ('OrgUnitTree'));
+
 beforeEach(() => {
     // Clear all instances and calls to constructor and all methods:
     Page.mockClear();
