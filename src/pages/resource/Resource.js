@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 /* d2-ui */
 import Table from '@dhis2/d2-ui-table';
+import SharingDialog from '@dhis2/d2-ui-sharing-dialog';
 import { Button, Pagination, SvgIcon, TextField } from '@dhis2/d2-ui-core';
 
 /* d2-ui styles */
@@ -113,7 +114,11 @@ class Resource extends Page {
     /* Context Menu */
     viewResource = (args) => {
         this.setState({ open: true, selectedResource: args, selectedAction: CONTEXT_MENU_ACTION.VIEW });
-    }
+    };
+
+    sharingSettings = (args) => {
+        this.setState({ open: true, selectedResource: args, selectedAction: CONTEXT_MENU_ACTION.SHARING_SETTINGS });
+    };
 
     getAddResourceComponent() {
         return (
@@ -125,12 +130,21 @@ class Resource extends Page {
         );
     }
     getViewResourceComponent() {
-        // if (this.state.selectedResource.external === true) {
-        //     window.open(this.state.selectedResource.url);
-        // }
         const api = this.props.d2.Api.getApi();
         const url = `${api.baseUrl}/${DOCUMENTS_ENDPOINT}/${this.state.selectedResource.id}/data`;
         window.open(url);
+    }
+
+    getSharingDialog() {
+        return this.state.selectedResource && (
+            <SharingDialog
+                open={this.state.open}
+                id={this.state.selectedResource.id}
+                type={'document'}
+                onRequestClose={this.handleClose}
+                d2={this.props.d2}
+            />
+        );
     }
 
     getActionComponent() {
@@ -139,6 +153,8 @@ class Resource extends Page {
             return this.getAddResourceComponent();
         case CONTEXT_MENU_ACTION.VIEW:
             return this.getViewResourceComponent();
+        case CONTEXT_MENU_ACTION.SHARING_SETTINGS:
+            return this.getSharingDialog();
         default:
             return '';
         }
