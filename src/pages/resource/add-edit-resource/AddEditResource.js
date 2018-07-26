@@ -25,7 +25,7 @@ const initialState = {
         type: TYPES.UPLOAD_FILE, // default UPLOAD_FILE
         attachment: false,
         external: false,
-        url: null,
+        url: 'http://',
     },
     selectedFileToUpload: null,
 };
@@ -59,6 +59,10 @@ class AddEditResource extends PureComponent {
         this.setState({ selectedFileToUpload: event.target.files[0] });
     };
 
+    onChangeUrl = (url) => {
+        this.setState({ resource: { ...this.state.resource, url } });
+    };
+
     /* add resource */
     addResource = () => {
         if (this.ifFormValid()) {
@@ -68,8 +72,7 @@ class AddEditResource extends PureComponent {
                 formData.append('file', this.state.selectedFileToUpload);
                 api.post(FILE_RESOURCES_ENDPOINT, formData).then((response) => {
                     if (response.response) {
-                        this.setState({ fileResource: response.response.fileResource });
-                        this.addDocument();
+                        this.addDocument(response.response.fileResource);
                     }
                 }).catch(() => {
                     // TODO: manage error
@@ -79,10 +82,12 @@ class AddEditResource extends PureComponent {
     };
 
     /* add document */
-    addDocument = () => {
+    addDocument = (fileResource) => {
         const api = this.props.d2.Api.getApi();
         const documentData = this.state.resource;
-        documentData.url = this.state.fileResource.id;
+        if (this.state.resource.type === TYPES.UPLOAD_FILE) {
+            documentData.url = fileResource.id;
+        }
         if (api) {
             api.post(DOCUMENTS_ENDPOINT, documentData).then((response) => {
                 if (response) {
@@ -114,7 +119,7 @@ class AddEditResource extends PureComponent {
                 color={'primary'}
                 style={appStyles.dialogBtn}
                 disabled={!this.ifFormValid()}
-                onClick={this.addResource}
+                onClick={this.state.resource.type === TYPES.UPLOAD_FILE ? this.addResource : this.addDocument}
             >
                 {i18n.t(i18nKeys.buttons.save)}
             </Button>,
@@ -157,40 +162,59 @@ class AddEditResource extends PureComponent {
                             onChange={this.onChangeType}
                         />
                         {/* resource attachment */}
-                        <CheckBox
-                            id={'resourceAttachment'}
-                            label={i18n.t(i18nKeys.resource.attachmentLabel)}
-                            checked={this.state.resource.attachment}
-                            onChange={this.onChangeAttachment}
-                        />
-                        {/* file */}
-                        {/* hidden file input */}
-                        <input
-                            style={{ display: 'none' }}
-                            type="file"
-                            // eslint-disable-next-line
-                            ref={(fileInput) => { this.fileInput = fileInput; }}
-                            onChange={this.onChangeFileResource}
-                        />
-                        {/* file input interface */}
-                        <div style={styles.uploadFileInput}>
-                            <SvgIcon
-                                icon={'Add'}
-                                style={styles.uploadFileInputIcon}
+                        <div
+                            id={'upload_type_fields'}
+                            style={this.state.resource.type === TYPES.UPLOAD_FILE ?
+                                { display: 'block' } :
+                                { display: 'none' }
+                            }
+                        >
+                            <CheckBox
+                                id={'resourceAttachment'}
+                                label={i18n.t(i18nKeys.resource.attachmentLabel)}
+                                checked={this.state.resource.attachment}
+                                onChange={this.onChangeAttachment}
                             />
-                            <TextField
-                                readOnly
-                                fullWidth
-                                floatingLabelFixed
-                                name={'fileName'}
-                                hintText={i18n.t(i18nKeys.resource.noFileChosen)}
-                                floatingLabelText={i18n.t(i18nKeys.resource.fileLabel)}
-                                value={this.state.selectedFileToUpload ? this.state.selectedFileToUpload.name : ''}
+                            {/* file */}
+                            {/* hidden file input */}
+                            <input
+                                style={{ display: 'none' }}
+                                type="file"
                                 // eslint-disable-next-line
-                                onClick={() => this.fileInput.click()}
+                                ref={(fileInput) => { this.fileInput = fileInput; }}
+                                onChange={this.onChangeFileResource}
                             />
+                            {/* file input interface */}
+                            <div style={styles.uploadFileInput}>
+                                <SvgIcon
+                                    icon={'Add'}
+                                    style={styles.uploadFileInputIcon}
+                                />
+                                <TextField
+                                    readOnly
+                                    fullWidth
+                                    floatingLabelFixed
+                                    name={'fileName'}
+                                    hintText={i18n.t(i18nKeys.resource.noFileChosen)}
+                                    floatingLabelText={i18n.t(i18nKeys.resource.fileLabel)}
+                                    value={this.state.selectedFileToUpload ? this.state.selectedFileToUpload.name : ''}
+                                    // eslint-disable-next-line
+                                    onClick={() => this.fileInput.click()}
+                                />
+                            </div>
                         </div>
                         {/* url */}
+                        <InputField
+                            style={this.state.resource.type === TYPES.UPLOAD_FILE ?
+                                { display: 'none' } :
+                                { display: 'block' }
+                            }
+                            fullWidth
+                            name="resourceUrl"
+                            label={i18n.t(i18nKeys.resource.urlLabel)}
+                            value={this.state.resource.url || ''}
+                            onChange={this.onChangeUrl}
+                        />
                     </div>
                 </div>
             </Dialog>

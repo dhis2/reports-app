@@ -186,6 +186,7 @@ export const i18nKeys = {
         typeLabel: 'Type',
         attachmentLabel: 'Attachment',
         fileLabel: 'File',
+        urlLabel: 'URL',
         uploadResourceType: 'Upload File',
         externalResourceType: 'External URL',
         noFileChosen: 'No File Chosen',
