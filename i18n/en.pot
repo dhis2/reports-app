@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-07-24T15:29:21.031Z\n"
-"PO-Revision-Date: 2018-07-24T15:29:21.031Z\n"
+"POT-Creation-Date: 2018-07-26T14:00:30.545Z\n"
+"PO-Revision-Date: 2018-07-26T14:00:30.545Z\n"
 
 msgid "Cancel"
 msgstr ""
@@ -295,9 +295,6 @@ msgstr ""
 msgid "Organization Unit"
 msgstr ""
 
-msgid "This object will be created with public edit and view rights"
-msgstr ""
-
 msgid "Name"
 msgstr ""
 
@@ -400,6 +397,21 @@ msgid ""
 "on the web."
 msgstr ""
 
+msgid "Add New Resource"
+msgstr ""
+
+msgid "Attachment"
+msgstr ""
+
+msgid "File"
+msgstr ""
+
+msgid "Upload File"
+msgstr ""
+
+msgid "External URL"
+msgstr ""
+
 msgid "Organisation Unit Distribution Report"
 msgstr ""
 
@@ -444,6 +456,9 @@ msgid "Interpretation Shared"
 msgstr ""
 
 msgid "No results have been found"
+msgstr ""
+
+msgid "This object will be created with public edit and view rights"
 msgstr ""
 
 msgid "Report Table"

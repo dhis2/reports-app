@@ -2,9 +2,6 @@ const AddEditStdReportStyle = {
     dialog: {
         maxWidth: '900px',
     },
-    dialogContentContainer: {
-        paddingTop: 5,
-    },
     rightsMessage: {
         color: '#999999',
         backgroundColor: '#f1f1f1',
@@ -39,15 +36,6 @@ const AddEditStdReportStyle = {
         bottom: 15,
         width: 20,
         height: 20,
-    },
-    relativePeriodsRow: {
-        width: '100%',
-        paddingLeft: 5,
-    },
-    getTemplateLink: {
-        marginTop: 14,
-        width: '100%',
-        textAlign: 'right',
     },
 };
 

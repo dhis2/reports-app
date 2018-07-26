@@ -11,6 +11,8 @@ import { Button, TextField, SelectField, CheckBox, SvgIcon, InputField } from '@
 /* styles */
 import appStyles from '../../../styles';
 import styles from './AddEditStdReport.style';
+
+/* app conf */
 import {
     relativePeriods, NONE, CACHE_STRATEGIES, REPORT_TABLES_ENDPOINT, REPORT_TYPES, REPORTS_ENDPOINT, TYPES,
 } from '../standard.report.conf';
@@ -352,7 +354,7 @@ class AddEditStdReport extends PureComponent {
             >
                 <div style={styles.dialogContentContainer}>
                     <span className={'row'} style={styles.rightsMessage}>
-                        {i18n.t(i18nKeys.standardReport.reportRightsMessage)}
+                        {i18n.t(i18nKeys.messages.rightsMessage)}
                     </span>
                     {/* details */}
                     <div className={'row'} style={styles.sectionBox}>

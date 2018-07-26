@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 /* d2-ui */
 import Table from '@dhis2/d2-ui-table';
-import { Pagination, TextField } from '@dhis2/d2-ui-core';
+import { Button, Pagination, SvgIcon, TextField } from '@dhis2/d2-ui-core';
 
 /* d2-ui styles */
 import '@dhis2/d2-ui-core/build/css/Table.css';
@@ -12,15 +12,19 @@ import '@dhis2/d2-ui-core/build/css/Pagination.css';
 
 /* styles */
 import styles from './Resource.style';
+import appStyles from '../../styles';
 
 /* app components */
 import Page from '../Page';
 import PageHelper from '../../components/page-helper/PageHelper';
+import AddEditResource from './add-edit-resource/AddEditResource';
 
 /* utils */
 import { getDocsUrl } from '../../helpers/docs';
 import { calculatePageValue, INITIAL_PAGER } from '../../helpers/pagination';
-import DOCUMENTS_ENDPOINT from './resource.conf';
+
+/* app config */
+import { DOCUMENTS_ENDPOINT } from './resource.conf';
 
 /* i18n */
 import i18n from '../../locales';
@@ -34,6 +38,7 @@ class Resource extends Page {
             pager: INITIAL_PAGER,
             documents: [],
             search: '',
+            open: false,
         };
     }
 
@@ -90,6 +95,37 @@ class Resource extends Page {
         } else if (this.state.search !== event.target.value) {
             this.loadDocuments(INITIAL_PAGER);
         }
+    };
+
+    handleClose = (refreshList) => {
+        this.setState({ open: false });
+        if (refreshList === true) {
+            this.loadDocuments(INITIAL_PAGER);
+        }
+    };
+
+    /* Add new Resource */
+    addNewResource = () => {
+        this.setState({ loading: true, open: true, selectedAction: 'ADD_NEW_RESOURCE' });
+    };
+
+    getAddResourceComponent() {
+        return (
+            <AddEditResource
+                d2={this.props.d2}
+                open={this.state.open}
+                onRequestClose={this.handleClose}
+            />
+        );
+    }
+
+    getActionComponent() {
+        switch (this.state.selectedAction) {
+        case 'ADD_NEW_RESOURCE':
+            return this.getAddResourceComponent();
+        default:
+            return '';
+        }
     }
 
     render() {
@@ -140,6 +176,10 @@ class Resource extends Page {
                         currentlyShown={calculatePageValue(this.state.pager)}
                     />
                 </div>
+                <Button fab onClick={this.addNewResource} style={appStyles.addButton}>
+                    <SvgIcon icon={'Add'} />
+                </Button>
+                { this.getActionComponent() }
             </div>
         );
     }
