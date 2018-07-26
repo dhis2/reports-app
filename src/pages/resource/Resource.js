@@ -24,7 +24,7 @@ import { getDocsUrl } from '../../helpers/docs';
 import { calculatePageValue, INITIAL_PAGER } from '../../helpers/pagination';
 
 /* app config */
-import { DOCUMENTS_ENDPOINT } from './resource.conf';
+import { DOCUMENTS_ENDPOINT, ADD_NEW_RESOURCE_ACTION, CONTEXT_MENU_ACTION, CONTEXT_MENU_ICONS } from './resource.conf';
 
 /* i18n */
 import i18n from '../../locales';
@@ -53,7 +53,8 @@ class Resource extends Page {
 
     loadDocuments(pager, search) {
         const api = this.props.d2.Api.getApi();
-        let url = `${DOCUMENTS_ENDPOINT}?page=${pager.page}&pageSize=${pager.pageSize}&fields=displayName,id`;
+        let url = `${DOCUMENTS_ENDPOINT}?page=${pager.page}&pageSize=${pager.pageSize}
+        &fields=displayName,id,url,external`;
         this.setState({ search });
         if (search) {
             url = `${url}&filter=displayName:ilike:${search}`;
@@ -106,8 +107,13 @@ class Resource extends Page {
 
     /* Add new Resource */
     addNewResource = () => {
-        this.setState({ loading: true, open: true, selectedAction: 'ADD_NEW_RESOURCE' });
+        this.setState({ loading: true, open: true, selectedAction: ADD_NEW_RESOURCE_ACTION });
     };
+
+    /* Context Menu */
+    viewResource = (args) => {
+        this.setState({ open: true, selectedResource: args, selectedAction: CONTEXT_MENU_ACTION.VIEW });
+    }
 
     getAddResourceComponent() {
         return (
@@ -118,17 +124,33 @@ class Resource extends Page {
             />
         );
     }
+    getViewResourceComponent() {
+        // if (this.state.selectedResource.external === true) {
+        //     window.open(this.state.selectedResource.url);
+        // }
+        const api = this.props.d2.Api.getApi();
+        const url = `${api.baseUrl}/${DOCUMENTS_ENDPOINT}/${this.state.selectedResource.id}/data`;
+        window.open(url);
+    }
 
     getActionComponent() {
         switch (this.state.selectedAction) {
-        case 'ADD_NEW_RESOURCE':
+        case ADD_NEW_RESOURCE_ACTION:
             return this.getAddResourceComponent();
+        case CONTEXT_MENU_ACTION.VIEW:
+            return this.getViewResourceComponent();
         default:
             return '';
         }
     }
 
     render() {
+        const contextMenuOptions = {
+            viewResource: this.viewResource,
+            sharingSettings: this.sharingSettings,
+            editResource: this.editResource,
+            remove: this.delete,
+        };
         return (
             <div>
                 <h1>
@@ -156,6 +178,8 @@ class Resource extends Page {
                 <Table
                     columns={['displayName']}
                     rows={this.state.documents}
+                    contextMenuActions={contextMenuOptions}
+                    contextMenuIcons={CONTEXT_MENU_ICONS}
                 />
                 <p style={
                     {

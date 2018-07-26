@@ -224,13 +224,15 @@ export const i18nKeys = {
         display_name: 'Name',
         report_table: 'Report Table',
         id: 'ID',
-        // Context Menu
-        actions: 'Actions',
+        // Context Menu Standard Report
         createReport: 'Create',
         editReport: 'Edit Report',
-        sharingSettings: 'Sharing Settings',
+        // Context Menu Common
+        actions: 'Actions',
         delete: 'Delete',
-        showDetails: 'Show Details',
+        sharingSettings: 'Sharing Settings',
+        // Context Menu Resource
+        viewResource: 'View Resource',
         // Sharing Settings
         add_users_and_user_groups: 'Add users and user groups',
         enter_names: 'Enter names',
