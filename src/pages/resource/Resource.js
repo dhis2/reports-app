@@ -54,8 +54,8 @@ class Resource extends Page {
 
     loadDocuments(pager, search) {
         const api = this.props.d2.Api.getApi();
-        let url = `${DOCUMENTS_ENDPOINT}?page=${pager.page}&pageSize=${pager.pageSize}
-        &fields=displayName,id,url,external`;
+        let url = `${DOCUMENTS_ENDPOINT}?page=${pager.page}&pageSize=${pager.pageSize}` +
+        '&fields=displayName,id,url,external';
         this.setState({ search });
         if (search) {
             url = `${url}&filter=displayName:ilike:${search}`;
@@ -106,12 +106,16 @@ class Resource extends Page {
         }
     };
 
+    handleError = (error) => {
+        this.manageError(error);
+    };
+
     /* Add new Resource */
     addNewResource = () => {
         this.setState({ loading: true, open: true, selectedAction: ADD_NEW_RESOURCE_ACTION });
     };
 
-    /* Context Menu */
+    /* Context Menu Actions */
     viewResource = (args) => {
         this.setState({ open: true, selectedResource: args, selectedAction: CONTEXT_MENU_ACTION.VIEW });
     };
@@ -120,15 +124,34 @@ class Resource extends Page {
         this.setState({ open: true, selectedResource: args, selectedAction: CONTEXT_MENU_ACTION.SHARING_SETTINGS });
     };
 
+    editResource = (args) => {
+        this.setState({ open: true, selectedResource: args, selectedAction: CONTEXT_MENU_ACTION.EDIT });
+    };
+
+    /* Context Menu "Components" */
     getAddResourceComponent() {
         return (
             <AddEditResource
                 d2={this.props.d2}
                 open={this.state.open}
                 onRequestClose={this.handleClose}
+                onError={this.handleError}
             />
         );
     }
+
+    getEditComponent() {
+        return (
+            <AddEditResource
+                selectedResource={this.state.selectedResource}
+                open={this.state.open}
+                onRequestClose={this.handleClose}
+                d2={this.props.d2}
+                onError={this.handleError}
+            />
+        );
+    }
+
     getViewResourceComponent() {
         const api = this.props.d2.Api.getApi();
         const url = `${api.baseUrl}/${DOCUMENTS_ENDPOINT}/${this.state.selectedResource.id}/data`;
@@ -155,6 +178,8 @@ class Resource extends Page {
             return this.getViewResourceComponent();
         case CONTEXT_MENU_ACTION.SHARING_SETTINGS:
             return this.getSharingDialog();
+        case CONTEXT_MENU_ACTION.EDIT:
+            return this.getEditComponent();
         default:
             return '';
         }

@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-07-26T16:52:58.391Z\n"
-"PO-Revision-Date: 2018-07-26T16:52:58.391Z\n"
+"POT-Creation-Date: 2018-07-31T16:36:28.223Z\n"
+"PO-Revision-Date: 2018-07-31T16:36:28.223Z\n"
 
 msgid "Cancel"
 msgstr ""
@@ -483,6 +483,9 @@ msgid "Sharing Settings"
 msgstr ""
 
 msgid "View Resource"
+msgstr ""
+
+msgid "Edit Resource"
 msgstr ""
 
 msgid "Add users and user groups"

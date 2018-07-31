@@ -33,13 +33,32 @@ const initialState = {
 class AddEditResource extends PureComponent {
     static propTypes = {
         d2: PropTypes.object.isRequired,
-        onRequestClose: PropTypes.func.isRequired,
         open: PropTypes.bool.isRequired,
+        onRequestClose: PropTypes.func.isRequired,
+        onError: PropTypes.func.isRequired,
+        selectedResource: PropTypes.object,
+    };
+
+    static defaultProps = {
+        selectedResource: null,
     };
 
     constructor(props) {
         super(props);
         this.state = JSON.parse(JSON.stringify(initialState));
+    }
+    componentDidMount() {
+        this.state = JSON.parse(JSON.stringify(initialState));
+        if (this.props.selectedResource) {
+            this.loadSelectedResource(this.props.selectedResource);
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState(JSON.parse(JSON.stringify(initialState)));
+        if (nextProps.selectedResource) {
+            this.loadSelectedResource(nextProps.selectedResource);
+        }
     }
 
     /* Handle form changes */
@@ -63,6 +82,42 @@ class AddEditResource extends PureComponent {
         this.setState({ resource: { ...this.state.resource, url } });
     };
 
+    // getTypeForResource = () => RESOURCE_TYPES.filter(obj => obj.id === this.state.selectedResource.id);
+
+    getFileNameToDisplay = () => {
+        if (this.state.selectedFileToUpload) {
+            return this.state.selectedFileToUpload.name;
+        } else if (this.props.selectedResource && !this.state.resource.external) {
+            return this.state.resource.url;
+        }
+        return '';
+    };
+
+    /* load resource info to edit it */
+    loadSelectedResource = (resource) => {
+        const api = this.props.d2.Api.getApi();
+        const url = `${DOCUMENTS_ENDPOINT}/${resource.id}`;
+        if (api) {
+            api.get(url).then((response) => {
+                if (response) {
+                    if (response.external === true) {
+                        response.type = TYPES.EXTERNAL_URL;
+                    } else {
+                        response.type = TYPES.UPLOAD_FILE;
+                    }
+                    this.setState({
+                        ...this.state,
+                        resource: {
+                            ...response,
+                        },
+                    });
+                }
+            }).catch(() => {
+                // TODO: manage error
+            });
+        }
+    };
+
     /* add resource */
     addResource = () => {
         if (this.ifFormValid()) {
@@ -74,8 +129,8 @@ class AddEditResource extends PureComponent {
                     if (response.response) {
                         this.addDocument(response.response.fileResource);
                     }
-                }).catch(() => {
-                    // TODO: manage error
+                }).catch((error) => {
+                    this.props.onError(error);
                 });
             }
         }
@@ -85,17 +140,27 @@ class AddEditResource extends PureComponent {
     addDocument = (fileResource) => {
         const api = this.props.d2.Api.getApi();
         const documentData = this.state.resource;
-        if (this.state.resource.type === TYPES.UPLOAD_FILE) {
-            documentData.url = fileResource.id;
+        if (this.state.resource.type === TYPES.UPLOAD_FILE && fileResource.name) {
+            documentData.url = fileResource.name;
         }
         if (api) {
-            api.post(DOCUMENTS_ENDPOINT, documentData).then((response) => {
-                if (response) {
-                    this.close(true);
-                }
-            }).catch(() => {
-                // TODO: manage error
-            });
+            if (this.state.resource.id) {
+                api.update(`${DOCUMENTS_ENDPOINT}/${this.state.resource.id}`, documentData).then((response) => {
+                    if (response) {
+                        this.close(true);
+                    }
+                }).catch((error) => {
+                    this.props.onError(error);
+                });
+            } else {
+                api.post(DOCUMENTS_ENDPOINT, documentData).then((response) => {
+                    if (response) {
+                        this.close(true);
+                    }
+                }).catch((error) => {
+                    this.props.onError(error);
+                });
+            }
         }
     };
 
@@ -119,7 +184,11 @@ class AddEditResource extends PureComponent {
                 color={'primary'}
                 style={appStyles.dialogBtn}
                 disabled={!this.ifFormValid()}
-                onClick={this.state.resource.type === TYPES.UPLOAD_FILE ? this.addResource : this.addDocument}
+                onClick={
+                    (this.state.resource.type === TYPES.UPLOAD_FILE && this.state.selectedFileToUpload) ?
+                        this.addResource :
+                        this.addDocument
+                }
             >
                 {i18n.t(i18nKeys.buttons.save)}
             </Button>,
@@ -197,7 +266,7 @@ class AddEditResource extends PureComponent {
                                     name={'fileName'}
                                     hintText={i18n.t(i18nKeys.resource.noFileChosen)}
                                     floatingLabelText={i18n.t(i18nKeys.resource.fileLabel)}
-                                    value={this.state.selectedFileToUpload ? this.state.selectedFileToUpload.name : ''}
+                                    value={this.getFileNameToDisplay()}
                                     // eslint-disable-next-line
                                     onClick={() => this.fileInput.click()}
                                 />

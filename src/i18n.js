@@ -233,6 +233,7 @@ export const i18nKeys = {
         sharingSettings: 'Sharing Settings',
         // Context Menu Resource
         viewResource: 'View Resource',
+        editResource: 'Edit Resource',
         // Sharing Settings
         add_users_and_user_groups: 'Add users and user groups',
         enter_names: 'Enter names',
