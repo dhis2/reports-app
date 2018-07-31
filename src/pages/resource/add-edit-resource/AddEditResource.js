@@ -82,7 +82,12 @@ class AddEditResource extends PureComponent {
         this.setState({ resource: { ...this.state.resource, url } });
     };
 
-    // getTypeForResource = () => RESOURCE_TYPES.filter(obj => obj.id === this.state.selectedResource.id);
+    getTypeForResource = () => {
+        if (this.props.selectedResource) {
+            return RESOURCE_TYPES.filter(obj => obj.id === this.state.resource.type);
+        }
+        return RESOURCE_TYPES;
+    }
 
     getFileNameToDisplay = () => {
         if (this.state.selectedFileToUpload) {
@@ -238,7 +243,7 @@ class AddEditResource extends PureComponent {
                             style={styles.width100}
                             name={'resourceType'}
                             label={i18n.t(i18nKeys.resource.typeLabel)}
-                            items={RESOURCE_TYPES}
+                            items={this.getTypeForResource()}
                             value={this.state.resource.type}
                             onChange={this.onChangeType}
                         />
