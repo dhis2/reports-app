@@ -171,6 +171,18 @@ class AddEditResource extends PureComponent {
         this.props.onRequestClose(refreshList);
     };
 
+    displayUploadSection = () => (
+        this.state.resource.type === TYPES.UPLOAD_FILE ?
+            { display: 'block' } :
+            { display: 'none' }
+    );
+
+    displayUrl = () => (
+        this.state.resource.type === TYPES.UPLOAD_FILE ?
+            { display: 'none' } :
+            { display: 'block' }
+    );
+
     render() {
         const actions = [
             <Button
@@ -231,13 +243,7 @@ class AddEditResource extends PureComponent {
                             onChange={this.onChangeType}
                         />
                         {/* resource attachment */}
-                        <div
-                            id={'upload_type_fields'}
-                            style={this.state.resource.type === TYPES.UPLOAD_FILE ?
-                                { display: 'block' } :
-                                { display: 'none' }
-                            }
-                        >
+                        <div id={'upload_type_fields'} style={this.displayUploadSection()}>
                             <CheckBox
                                 id={'resourceAttachment'}
                                 label={i18n.t(i18nKeys.resource.attachmentLabel)}
@@ -274,10 +280,7 @@ class AddEditResource extends PureComponent {
                         </div>
                         {/* url */}
                         <InputField
-                            style={this.state.resource.type === TYPES.UPLOAD_FILE ?
-                                { display: 'none' } :
-                                { display: 'block' }
-                            }
+                            style={this.displayUrl()}
                             fullWidth
                             name="resourceUrl"
                             label={i18n.t(i18nKeys.resource.urlLabel)}
