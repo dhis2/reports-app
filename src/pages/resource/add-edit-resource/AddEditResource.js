@@ -37,10 +37,12 @@ class AddEditResource extends PureComponent {
         onRequestClose: PropTypes.func.isRequired,
         onError: PropTypes.func.isRequired,
         selectedResource: PropTypes.object,
+        isEditAction: PropTypes.bool,
     };
 
     static defaultProps = {
         selectedResource: null,
+        isEditAction: false,
     };
 
     constructor(props) {
@@ -48,16 +50,18 @@ class AddEditResource extends PureComponent {
         this.state = JSON.parse(JSON.stringify(initialState));
     }
     componentDidMount() {
-        this.state = JSON.parse(JSON.stringify(initialState));
         if (this.props.selectedResource) {
             this.loadSelectedResource(this.props.selectedResource);
+        } else if (!this.props.isEditAction) {
+            this.state = JSON.parse(JSON.stringify(initialState));
         }
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState(JSON.parse(JSON.stringify(initialState)));
         if (nextProps.selectedResource) {
             this.loadSelectedResource(nextProps.selectedResource);
+        } else if (!nextProps.isEditAction) {
+            this.state = JSON.parse(JSON.stringify(initialState));
         }
     }
 

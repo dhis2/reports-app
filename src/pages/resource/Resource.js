@@ -177,6 +177,7 @@ class Resource extends Page {
                 open={this.state.open}
                 onRequestClose={this.handleClose}
                 onError={this.handleError}
+                isEditAction={Boolean(false)}
             />
         );
     }
@@ -188,6 +189,7 @@ class Resource extends Page {
                 open={this.state.open}
                 onRequestClose={this.handleClose}
                 d2={this.props.d2}
+                isEditAction={Boolean(true)}
                 onError={this.handleError}
             />
         );
