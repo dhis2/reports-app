@@ -181,7 +181,7 @@ class StandardReport extends Page {
             snackbarConf: {
                 type: ACTION_MESSAGE,
                 message: args.displayName,
-                action: i18n.t(i18nKeys.standardReport.confirmDelete),
+                action: i18n.t(i18nKeys.messages.confirmDelete),
                 onActionClick: () => {
                     const api = this.props.d2.Api.getApi();
                     const url = `${REPORTS_ENDPOINT}/${args.id}`;

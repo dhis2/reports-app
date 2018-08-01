@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-07-31T17:22:29.324Z\n"
-"PO-Revision-Date: 2018-07-31T17:22:29.324Z\n"
+"POT-Creation-Date: 2018-08-01T13:58:50.265Z\n"
+"PO-Revision-Date: 2018-08-01T13:58:50.265Z\n"
 
 msgid "Cancel"
 msgstr ""
@@ -239,9 +239,6 @@ msgstr ""
 msgid "Create Report Table"
 msgstr ""
 
-msgid "Confirm delete"
-msgstr ""
-
 msgid "[ None ]"
 msgstr ""
 
@@ -449,6 +446,9 @@ msgstr ""
 msgid "Report deleted"
 msgstr ""
 
+msgid "Resource deleted"
+msgstr ""
+
 msgid "Chart generated"
 msgstr ""
 
@@ -462,6 +462,9 @@ msgid "No results have been found"
 msgstr ""
 
 msgid "This object will be created with public edit and view rights"
+msgstr ""
+
+msgid "Confirm delete"
 msgstr ""
 
 msgid "Report Table"

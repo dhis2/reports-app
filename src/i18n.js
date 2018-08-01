@@ -106,7 +106,6 @@ export const i18nKeys = {
     },
     standardReport: {
         createReportTitle: 'Create Report Table',
-        confirmDelete: 'Confirm delete',
         none: '[ None ]',
         noCache: 'No cache',
         respectSystemSettings: 'Respect system setting',
@@ -213,11 +212,13 @@ export const i18nKeys = {
         loading: 'Loading...',
         reportGenerated: 'Report generated',
         reportDeleted: 'Report deleted',
+        resourceDeleted: 'Resource deleted',
         chartGenerated: 'Chart generated',
         unexpectedError: 'Unexpected Error',
         interpretationShared: 'Interpretation Shared',
         noResultsFound: 'No results have been found',
         rightsMessage: 'This object will be created with public edit and view rights',
+        confirmDelete: 'Confirm delete',
     },
     d2UiComponents: {
         app_search_placeholder: 'Search',

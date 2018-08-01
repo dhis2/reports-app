@@ -19,6 +19,7 @@ import appStyles from '../../styles';
 import Page from '../Page';
 import PageHelper from '../../components/page-helper/PageHelper';
 import AddEditResource from './add-edit-resource/AddEditResource';
+import { ACTION_MESSAGE, SUCCESS } from '../../helpers/feedbackSnackBarTypes';
 
 /* utils */
 import { getDocsUrl } from '../../helpers/docs';
@@ -61,13 +62,26 @@ class Resource extends Page {
             url = `${url}&filter=displayName:ilike:${search}`;
         }
         if (api) {
+            this.props.updateAppState({ pageState: { loading: true } });
             api.get(url).then((response) => {
                 if (response && this.isPageMounted()) {
+                    this.props.updateAppState((this.state.deleteInProgress) ? {
+                        pageState: { loading: false },
+                        showSnackbar: true,
+                        snackbarConf: {
+                            type: SUCCESS,
+                            message: i18n.t(i18nKeys.messages.resourceDeleted),
+                        },
+                    } : {
+                        showSnackbar: false,
+                        pageState: { loading: false },
+                    });
                     this.setState(response);
                 }
             }).catch(() => {
                 // TODO: manage error
             }).finally(() => {
+                this.state.deleteInProgress = false;
             });
         }
     }
@@ -127,6 +141,33 @@ class Resource extends Page {
     editResource = (args) => {
         this.setState({ open: true, selectedResource: args, selectedAction: CONTEXT_MENU_ACTION.EDIT });
     };
+
+    delete = (args) => {
+        this.props.updateAppState({
+            showSnackbar: true,
+            snackbarConf: {
+                type: ACTION_MESSAGE,
+                message: args.displayName,
+                action: i18n.t(i18nKeys.messages.confirmDelete),
+                onActionClick: () => {
+                    const api = this.props.d2.Api.getApi();
+                    const url = `${DOCUMENTS_ENDPOINT}/${args.id}`;
+                    this.state.deleteInProgress = true;
+                    this.props.updateAppState({
+                        showSnackbar: false,
+                        pageState: { loading: true },
+                    });
+                    api.delete(url).then((response) => {
+                        if (response && this.isPageMounted()) {
+                            this.loadDocuments(INITIAL_PAGER, this.state.search);
+                        }
+                    }).catch(() => {
+                        // TODO: manage error
+                    });
+                },
+            },
+        });
+    }
 
     /* Context Menu "Components" */
     getAddResourceComponent() {
@@ -190,7 +231,7 @@ class Resource extends Page {
             viewResource: this.viewResource,
             sharingSettings: this.sharingSettings,
             editResource: this.editResource,
-            remove: this.delete,
+            delete: this.delete,
         };
         return (
             <div>
