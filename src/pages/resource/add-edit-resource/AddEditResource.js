@@ -215,11 +215,15 @@ class AddEditResource extends PureComponent {
             </Button>,
         ];
 
+        const title = this.props.isEditAction ?
+            i18n.t(i18nKeys.resource.editResourceTitle) :
+            i18n.t(i18nKeys.resource.addNewResourceTitle);
+
         return (
             <Dialog
                 autoDetectWindowHeight
                 autoScrollBodyContent
-                title={i18n.t(i18nKeys.resource.addNewResourceTitle)}
+                title={title}
                 actions={actions}
                 modal
                 contentStyle={styles.dialog}

@@ -90,10 +90,12 @@ class AddEditStdReport extends PureComponent {
         open: PropTypes.bool.isRequired,
         selectedReport: PropTypes.object,
         updateAppState: PropTypes.func.isRequired,
+        isEditAction: PropTypes.bool,
     };
 
     static defaultProps = {
         selectedReport: null,
+        isEditAction: false,
     };
 
     constructor(props) {
@@ -342,11 +344,15 @@ class AddEditStdReport extends PureComponent {
             </Button>,
         ];
 
+        const title = this.props.isEditAction ?
+            i18n.t(i18nKeys.standardReport.editReportTitle) :
+            i18n.t(i18nKeys.standardReport.addNewReportTitle);
+
         return (
             <Dialog
                 autoDetectWindowHeight
                 autoScrollBodyContent
-                title={i18n.t(i18nKeys.standardReport.addNewReportTitle)}
+                title={title}
                 actions={actions}
                 modal
                 contentStyle={styles.dialog}

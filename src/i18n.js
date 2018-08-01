@@ -180,6 +180,7 @@ export const i18nKeys = {
         description: 'View and add resources. These resources can be uploaded documents or URLs on the web.',
         search: 'Search',
         addNewResourceTitle: 'Add New Resource',
+        editResourceTitle: 'Edit Resource',
         details: 'Details',
         nameLabel: 'Name',
         typeLabel: 'Type',

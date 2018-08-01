@@ -230,6 +230,7 @@ class StandardReport extends Page {
         return (
             <AddEditStdReport
                 selectedReport={this.state.selectedReport}
+                isEditAction={Boolean(true)}
                 open={this.state.open}
                 onRequestClose={this.handleClose}
                 d2={this.props.d2}
