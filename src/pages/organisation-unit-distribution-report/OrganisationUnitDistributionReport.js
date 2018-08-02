@@ -70,6 +70,23 @@ class OrganisationUnitDistributionReport extends Page {
         });
     }
 
+    handleChartLoaded = () => {
+        this.props.updateAppState({
+            pageState: {
+                loading: false,
+            },
+            showSnackbar: true,
+            snackbarConf: {
+                type: SUCCESS,
+                message: i18n.t(i18nKeys.messages.chartGenerated),
+            },
+        });
+    }
+
+    handleChartLoadingError = () => {
+        this.manageError();
+    }
+
     exportReportToXls = () => {
         const reportTables = document.querySelectorAll('#report-container table');
         const workbook = XLSX.utils.book_new();
@@ -95,7 +112,7 @@ class OrganisationUnitDistributionReport extends Page {
         const api = this.props.d2.Api.getApi();
 
         // eslint-disable-next-line
-        const url = `organisationUnits/distributionReport?ou=${this.state.selectedOrgUnit}&groupSetId=${this.state.selectedGroupSet}`;
+        const url = `organisationUnits/${this.state.selectedOrgUnit}/distributionReport?groupSetId=${this.state.selectedGroupSet}`;
         api.get(url).then((response) => {
             this.props.updateAppState({
                 pageState: {
@@ -116,16 +133,23 @@ class OrganisationUnitDistributionReport extends Page {
     }
 
     getChart = () => {
-        // FIXME need to be improved to show loading - lazy loading of image
         const api = this.props.d2.Api.getApi();
+        const timestamp = new Date().getTime();
 
         // eslint-disable-next-line
-        const imageUrl = `${api.baseUrl}/organisationUnits/distributionChart.png?ou=${this.state.selectedOrgUnit}&groupSetId=${this.state.selectedGroupSet}`;
-        this.setState({
-            reportHtml: null,
-            imageUrl,
-            showForm: false,
-            loading: false,
+        const imageUrl = `${api.baseUrl}/organisationUnits/${this.state.selectedOrgUnit}/distributionChart.png?groupSetId=${this.state.selectedGroupSet}&t=${timestamp}`;
+        this.props.updateAppState({
+            showSnackbar: true,
+            snackbarConf: {
+                type: LOADING,
+                message: i18n.t(i18nKeys.messages.loading),
+            },
+            pageState: {
+                reportHtml: null,
+                imageUrl,
+                showForm: false,
+                loading: true,
+            },
         });
     }
 
@@ -155,6 +179,7 @@ class OrganisationUnitDistributionReport extends Page {
                 <h1>
                     { !this.state.showForm &&
                     <span
+                        id="back-button"
                         style={styles.backButton}
                         className="material-icons"
                         role="button"
@@ -181,12 +206,14 @@ class OrganisationUnitDistributionReport extends Page {
                                 />
                             </div>
                             <div className="col-md-6">
-                                <GroupSets
-                                    onChange={this.handleGroupSetChange}
-                                />
+                                <div id="group-sets-selection">
+                                    <GroupSets
+                                        onChange={this.handleGroupSetChange}
+                                    />
+                                </div>
                             </div>
                         </div>
-                        <div style={styles.actionsContainer}>
+                        <div id="actions" style={styles.actionsContainer}>
                             <Button
                                 style={styles.actionButton}
                                 raised
@@ -213,7 +240,7 @@ class OrganisationUnitDistributionReport extends Page {
                         style={{ display: !this.state.showForm ? 'block' : 'none' }}
                     >
                         {this.state.reportHtml &&
-                            <div style={styles.downloadContainer}>
+                            <div id="download-options-container" style={styles.downloadContainer}>
                                 <span
                                     style={styles.downloadButton}
                                     role="button"
@@ -229,6 +256,8 @@ class OrganisationUnitDistributionReport extends Page {
                         }
                         { this.state.imageUrl &&
                             <img
+                                onLoad={this.handleChartLoaded}
+                                onError={this.handleChartLoadingError}
                                 alt={i18n.t(i18nKeys.organisationUnitDistributionReport.getChartAction)}
                                 src={this.state.imageUrl}
                             />

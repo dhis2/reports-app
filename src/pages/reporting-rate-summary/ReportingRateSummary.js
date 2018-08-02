@@ -121,7 +121,7 @@ class ReportingRateSummary extends Page {
             .map(orgUnitGroupKey => this.state.selectedOptionsForOrganisationUnitGroupSets[orgUnitGroupKey]);
 
         // eslint-disable-next-line
-        const url = `reports/rateSummary?ds=${this.state.selectedDataSet}&pe=${this.state.selectedPeriod}&ou=${this.state.selectedOrgUnit}&criteria=${this.state.selectedCriteria}&groupUids=${groupUids}`;
+        const url = `organisationUnits/${this.state.selectedOrgUnit}/rateSummary?ds=${this.state.selectedDataSet}&pe=${this.state.selectedPeriod}&criteria=${this.state.selectedCriteria}&groupUids=${groupUids}`;
         api.get(url).then((response) => {
             this.props.updateAppState({
                 pageState: {

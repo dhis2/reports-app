@@ -3,6 +3,7 @@ const steps = [
     require('./home.steps'),
     require('./help.steps'),
     require('./getReportPages.steps'),
+    require('./organisationUnitDistributionReport.steps'),
 ];
 
 module.exports = function () {
