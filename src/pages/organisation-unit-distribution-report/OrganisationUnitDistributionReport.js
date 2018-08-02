@@ -179,6 +179,7 @@ class OrganisationUnitDistributionReport extends Page {
                 <h1>
                     { !this.state.showForm &&
                     <span
+                        id="back-button"
                         style={styles.backButton}
                         className="material-icons"
                         role="button"
@@ -205,12 +206,14 @@ class OrganisationUnitDistributionReport extends Page {
                                 />
                             </div>
                             <div className="col-md-6">
-                                <GroupSets
-                                    onChange={this.handleGroupSetChange}
-                                />
+                                <div id="group-sets-selection">
+                                    <GroupSets
+                                        onChange={this.handleGroupSetChange}
+                                    />
+                                </div>
                             </div>
                         </div>
-                        <div style={styles.actionsContainer}>
+                        <div id="actions" style={styles.actionsContainer}>
                             <Button
                                 style={styles.actionButton}
                                 raised
@@ -237,7 +240,7 @@ class OrganisationUnitDistributionReport extends Page {
                         style={{ display: !this.state.showForm ? 'block' : 'none' }}
                     >
                         {this.state.reportHtml &&
-                            <div style={styles.downloadContainer}>
+                            <div id="download-options-container" style={styles.downloadContainer}>
                                 <span
                                     style={styles.downloadButton}
                                     role="button"

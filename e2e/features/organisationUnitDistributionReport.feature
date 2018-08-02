@@ -11,7 +11,7 @@ Feature: Organisation Unit Distribution Report
     And a group set without option selected
 	And a get report button disabled
     And a get chart button disabled
-	
+
   Scenario:  I want to get report
     And I select parent organisation unit
 	And I select group set
@@ -20,7 +20,7 @@ Feature: Organisation Unit Distribution Report
 	And button to return to previous page is displayed
 	And a table with several columns with results is displayed
 	And Option to download as XLS is displayed
-	
+
   Scenario:  I want to get chart
     And I select parent organisation unit
 	And I select group set
@@ -28,20 +28,20 @@ Feature: Organisation Unit Distribution Report
 	Then a new page is displayed
 	And button to return to previous page is displayed
 	And a chart with results is displayed
-	
+
   Scenario:  I want to return from results
     And I select parent organisation unit
 	And I select group set
 	And click get report
 	And click  button to return to previous page
 	Then Organisation Unit Distribution Report page is displayed
-	
+
   Scenario Outline: I want to se results for group set
 	And I select parent organisation unit
-	And I select group set value <group_set>
+	And I select group set value "<group_set>"
 	And click get report
-	Then a new page with group <group_set> filter is displayed
-		
+	Then a new page is displayed
+
 	Examples:
 	|group_set|
 	|Area|

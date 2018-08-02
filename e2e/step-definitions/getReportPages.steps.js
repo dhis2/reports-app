@@ -47,7 +47,7 @@ const selectDifferentDataSet = () => {
 
 const getOneOrgUnitTreeFromTreeByIndex = (index) => {
     return browser.elements('.tree-view div[role=button]').value[index].element('<input>');
-}
+};
 
 const isOrganisationUnitSelected = () => {
     const checkboxes = browser.element('.tree-view').elements('.tree-view input[type=checkbox]').value;
