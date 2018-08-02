@@ -94,17 +94,18 @@ describe('Test <ReportingRateSummary /> rendering:', () => {
         const form = wrapper.find('#report-rate-summary-form');
         expect(form.find(Button).props().disabled).toBeTruthy();
     });
-    /*
+
     it('Should enable form Button', () => {
-        const form = wrapper.find('#report-rate-summary-form');
         wrapper.setState({
             selectedOrgUnit: 'OrgUnitId',
             selectedPeriod: '2018',
             loading: false,
         });
-        expect(form.find(Button).props().disabled).toBeFalsy();
+
+        wrapper.update();
+        expect(wrapper.find('#report-rate-summary-form').find(Button).props().disabled).toBeFalsy();
     });
-    */
+
     it('Should render no report container', () => {
         expect(wrapper.find('#report-container')).toHaveLength(0);
     });
@@ -139,9 +140,8 @@ describe('Test <ReportingRateSummary /> actions:', () => {
         showMoreOptions.simulate('click');
         expect(wrapper.state('showOptions')).toBeFalsy();
     });
-    /*
+
     it('Should call generateReport function when form button is clicked.', () => {
-        const form = wrapper.find('#report-rate-summary-form');
         wrapper.instance().getReport = jest.fn();
         wrapper.setState({
             selectedOrgUnit: 'OrgUnitId',
@@ -149,21 +149,18 @@ describe('Test <ReportingRateSummary /> actions:', () => {
             loading: false,
         });
         wrapper.update();
-        form.find(Button).simulate('click');
+        wrapper.find('#report-rate-summary-form').find(Button).simulate('click');
         expect(wrapper.instance().getReport).toHaveBeenCalled();
     });
-    */
-    /*
+
     it('Should call exportReportToXls function when download button is clicked.', () => {
+        wrapper.instance().exportReportToXls = jest.fn();
         wrapper.setState({
             reportHtml: '<div>Report</div>',
             showForm: false,
         });
-        const reportContainer = wrapper.find('#report-container');
-        wrapper.instance().exportReportToXls = jest.fn();
         wrapper.update();
-        reportContainer.find('span').simulate('click');
+        wrapper.find('#report-container').find('span').simulate('click');
         expect(wrapper.instance().exportReportToXls).toHaveBeenCalled();
     });
-    */
 });
