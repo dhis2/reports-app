@@ -112,7 +112,7 @@ class OrganisationUnitDistributionReport extends Page {
         const api = this.props.d2.Api.getApi();
 
         // eslint-disable-next-line
-        const url = `organisationUnits/distributionReport?ou=${this.state.selectedOrgUnit}&groupSetId=${this.state.selectedGroupSet}`;
+        const url = `organisationUnits/${this.state.selectedOrgUnit}/distributionReport?groupSetId=${this.state.selectedGroupSet}`;
         api.get(url).then((response) => {
             this.props.updateAppState({
                 pageState: {
@@ -137,7 +137,7 @@ class OrganisationUnitDistributionReport extends Page {
         const timestamp = new Date().getTime();
 
         // eslint-disable-next-line
-        const imageUrl = `${api.baseUrl}/organisationUnits/distributionChart.png?ou=${this.state.selectedOrgUnit}&groupSetId=${this.state.selectedGroupSet}&t=${timestamp}`;
+        const imageUrl = `${api.baseUrl}/organisationUnits/${this.state.selectedOrgUnit}/distributionChart.png?groupSetId=${this.state.selectedGroupSet}&t=${timestamp}`;
         this.props.updateAppState({
             showSnackbar: true,
             snackbarConf: {
