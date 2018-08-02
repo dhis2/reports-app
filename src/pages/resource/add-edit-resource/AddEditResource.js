@@ -28,6 +28,7 @@ const initialState = {
         url: 'http://',
     },
     selectedFileToUpload: null,
+    hasErrors: false,
 };
 
 class AddEditResource extends PureComponent {
@@ -49,20 +50,14 @@ class AddEditResource extends PureComponent {
         super(props);
         this.state = JSON.parse(JSON.stringify(initialState));
     }
-    componentDidMount() {
-        if (this.props.selectedResource) {
-            this.loadSelectedResource(this.props.selectedResource);
-        } else if (!this.props.isEditAction) {
-            this.state = JSON.parse(JSON.stringify(initialState));
-        }
-    }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.selectedResource) {
             this.loadSelectedResource(nextProps.selectedResource);
-        } else if (!nextProps.isEditAction) {
+        } else if (!nextProps.isEditAction && !this.state.hasErrors) {
             this.state = JSON.parse(JSON.stringify(initialState));
         }
+        this.setState({ selectedFileToUpload: null, hasErrors: false });
     }
 
     /* Handle form changes */
@@ -91,7 +86,7 @@ class AddEditResource extends PureComponent {
             return RESOURCE_TYPES.filter(obj => obj.id === this.state.resource.type);
         }
         return RESOURCE_TYPES;
-    }
+    };
 
     getFileNameToDisplay = () => {
         if (this.state.selectedFileToUpload) {
@@ -100,6 +95,15 @@ class AddEditResource extends PureComponent {
             return this.state.resource.url;
         }
         return '';
+    };
+
+    getTitle = () => (this.props.isEditAction ?
+        i18n.t(i18nKeys.resource.editResourceTitle) :
+        i18n.t(i18nKeys.resource.addNewResourceTitle));
+
+    /* close dialog */
+    close = (refreshList) => {
+        this.props.onRequestClose(refreshList);
     };
 
     /* load resource info to edit it */
@@ -139,7 +143,7 @@ class AddEditResource extends PureComponent {
                         this.addDocument(response.response.fileResource);
                     }
                 }).catch((error) => {
-                    this.props.onError(error);
+                    this.handleError(error);
                 });
             }
         }
@@ -148,9 +152,11 @@ class AddEditResource extends PureComponent {
     /* add document */
     addDocument = (fileResource) => {
         const api = this.props.d2.Api.getApi();
-        const documentData = this.state.resource;
+        const documentData = JSON.parse(JSON.stringify(this.state.resource));
         if (this.state.resource.type === TYPES.UPLOAD_FILE && fileResource.name) {
             documentData.url = fileResource.name;
+        } else if (this.state.resource.type === TYPES.EXTERNAL_URL && !this.state.resource.url.startsWith('http://') && !this.state.resource.url.startsWith('https://')) {
+            documentData.url = `http://${documentData.url}`;
         }
         if (api) {
             if (this.state.resource.id) {
@@ -159,7 +165,7 @@ class AddEditResource extends PureComponent {
                         this.close(true);
                     }
                 }).catch((error) => {
-                    this.props.onError(error);
+                    this.handleError(error);
                 });
             } else {
                 api.post(DOCUMENTS_ENDPOINT, documentData).then((response) => {
@@ -167,17 +173,34 @@ class AddEditResource extends PureComponent {
                         this.close(true);
                     }
                 }).catch((error) => {
-                    this.props.onError(error);
+                    this.handleError(error);
                 });
             }
         }
     };
 
-    ifFormValid = () => true;
+    ifFormValid = () => {
+        if (this.isNullOrWhiteSpace(this.state.resource.name)) {
+            return false;
+        }
+        switch (this.state.resource.type) {
+        case TYPES.UPLOAD_FILE:
+            return this.validateUploadType();
+        case TYPES.EXTERNAL_URL:
+            return !this.isNullOrWhiteSpace(this.state.resource.url);
+        default:
+            return true;
+        }
+    };
 
-    /* close dialog */
-    close = (refreshList) => {
-        this.props.onRequestClose(refreshList);
+    isNullOrWhiteSpace = str => (!str || str.length === 0 || /^\s*$/.test(str));
+
+    validateUploadType = () => !(!this.props.isEditAction &&
+            (!this.state.selectedFileToUpload || !this.state.selectedFileToUpload.name));
+
+    handleError = (error) => {
+        this.setState({ ...this.state, hasErrors: true });
+        this.props.onError(error);
     };
 
     displayUploadSection = () => (
@@ -215,15 +238,11 @@ class AddEditResource extends PureComponent {
             </Button>,
         ];
 
-        const title = this.props.isEditAction ?
-            i18n.t(i18nKeys.resource.editResourceTitle) :
-            i18n.t(i18nKeys.resource.addNewResourceTitle);
-
         return (
             <Dialog
                 autoDetectWindowHeight
                 autoScrollBodyContent
-                title={title}
+                title={this.getTitle()}
                 actions={actions}
                 modal
                 contentStyle={styles.dialog}

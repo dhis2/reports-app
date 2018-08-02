@@ -203,6 +203,10 @@ class AddEditStdReport extends PureComponent {
         );
     };
 
+    getTitle = () => (this.props.isEditAction ?
+        i18n.t(i18nKeys.standardReport.editReportTitle) :
+        i18n.t(i18nKeys.standardReport.addNewReportTitle));
+
     /* close dialog */
     close = (refreshList) => {
         this.props.onRequestClose(refreshList);
@@ -302,20 +306,13 @@ class AddEditStdReport extends PureComponent {
 
     ifFormValid = () => {
         if (this.validateGenericFields()) {
-            if (this.state.report.type === TYPES.JASPER_REPORT_TABLE && this.state.report.reportTable.id === NONE.id) {
-                return false;
-            }
-            return true;
+            return !(this.state.report.type === TYPES.JASPER_REPORT_TABLE &&
+                this.state.report.reportTable.id === NONE.id);
         }
         return false;
     };
 
-    validateGenericFields = () => {
-        if (this.state.report.name && this.state.report.designContent) {
-            return true;
-        }
-        return false;
-    };
+    validateGenericFields = () => (!!(this.state.report.name && this.state.report.designContent));
 
     showSection = () => {
         //  if JASPER_REPORT_TABLE
@@ -344,15 +341,11 @@ class AddEditStdReport extends PureComponent {
             </Button>,
         ];
 
-        const title = this.props.isEditAction ?
-            i18n.t(i18nKeys.standardReport.editReportTitle) :
-            i18n.t(i18nKeys.standardReport.addNewReportTitle);
-
         return (
             <Dialog
                 autoDetectWindowHeight
                 autoScrollBodyContent
-                title={title}
+                title={this.getTitle()}
                 actions={actions}
                 modal
                 contentStyle={styles.dialog}
