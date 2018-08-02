@@ -105,18 +105,18 @@ describe('Test <DataSetReport /> rendering:', () => {
         const form = wrapper.find('#data-set-report-form');
         expect(form.find(Button).props().disabled).toBeTruthy();
     });
-    /*
+
     it('Should enable form Button', () => {
-        const form = wrapper.find('#data-set-report-form');
         wrapper.setState({
             selectedOrgUnit: 'OrgUnitId',
             selectedDataSet: 'DataSetId',
             selectedPeriod: '2018',
             loading: false,
         });
-        expect(form.find(Button).props().disabled).toBeFalsy();
+        wrapper.update();
+        expect(wrapper.find('#data-set-report-form').find(Button).props().disabled).toBeFalsy();
     });
-    */
+
     it('Should render no report container', () => {
         expect(wrapper.find('#report-container')).toHaveLength(0);
     });
@@ -152,11 +152,9 @@ describe('Test <DataSetReport /> actions:', () => {
         showMoreOptions.simulate('click');
         expect(wrapper.state('showOptions')).toBeFalsy();
     });
-    /*
+
     it('Should call generateReport function when form button is clicked.', () => {
-        const form = wrapper.find('#data-set-report-form');
-        wrapper.instance().generateReport = jest.fn();
-        wrapper.generateReport = jest.fn();
+        wrapper.instance().getReport = jest.fn();
         wrapper.setState({
             selectedOrgUnit: 'OrgUnitId',
             selectedDataSet: 'DataSetId',
@@ -164,21 +162,18 @@ describe('Test <DataSetReport /> actions:', () => {
             loading: false,
         });
         wrapper.update();
-        form.find(Button).simulate('click');
-        expect(wrapper.instance().generateReport).toHaveBeenCalled();
+        wrapper.find('#data-set-report-form').find(Button).simulate('click');
+        expect(wrapper.instance().getReport).toHaveBeenCalled();
     });
-    */
-    /*
+
     it('Should call exportReportToXls function when download button is clicked.', () => {
+        wrapper.instance().exportReportToXls = jest.fn();
         wrapper.setState({
             reportHtml: '<div>Report</div>',
             showForm: false,
         });
-        const reportContainer = wrapper.find('#report-container');
-        wrapper.instance().exportReportToXls = jest.fn();
         wrapper.update();
-        reportContainer.find('span').simulate('click');
+        wrapper.find('#report-container').find('span').simulate('click');
         expect(wrapper.instance().exportReportToXls).toHaveBeenCalled();
     });
-    */
 });

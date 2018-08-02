@@ -75,19 +75,19 @@ describe('Test <OrganisationUnitDistributionReport /> rendering:', () => {
         expect(form.find(Button).at(0).props().disabled).toBeTruthy();
         expect(form.find(Button).at(1).props().disabled).toBeTruthy();
     });
-    /*
+
     it('Should enable form Button', () => {
-        const form = wrapper.find('#org-unit-dist-report-form');
         wrapper.setState({
             selectedOrgUnit: 'OrgUnitId',
             selectedGroupSet: 'GroupSetId',
             loading: false,
         });
         wrapper.update();
+        const form = wrapper.find('#org-unit-dist-report-form');
         expect(form.find(Button).at(0).props().disabled).toBeFalsy();
         expect(form.find(Button).at(1).props().disabled).toBeFalsy();
     });
-    */
+
     it('Should render no report container', () => {
         expect(wrapper.find('#report-container')).toHaveLength(0);
     });
@@ -114,9 +114,8 @@ describe('Test <OrganisationUnitDistributionReport /> actions:', () => {
         wrapper.find(GroupSets).simulate('change', groupSetId);
         expect(wrapper.state('selectedGroupSet')).toEqual(groupSetId);
     });
-    /*
+
     it('Should call getReport function when form button is clicked.', () => {
-        const form = wrapper.find('#org-unit-dist-report-form');
         wrapper.instance().getReport = jest.fn();
         wrapper.setState({
             selectedOrgUnit: 'OrgUnitId',
@@ -124,13 +123,11 @@ describe('Test <OrganisationUnitDistributionReport /> actions:', () => {
             loading: false,
         });
         wrapper.update();
-        form.find(Button).at(0).simulate('click');
+        wrapper.find('#org-unit-dist-report-form').find(Button).at(0).simulate('click');
         expect(wrapper.instance().getReport).toHaveBeenCalled();
     });
-    */
-    /*
+
     it('Should call getChart function when form button is clicked.', () => {
-        const form = wrapper.find('#org-unit-dist-report-form');
         wrapper.instance().getChart = jest.fn();
         wrapper.setState({
             selectedOrgUnit: 'OrgUnitId',
@@ -138,21 +135,18 @@ describe('Test <OrganisationUnitDistributionReport /> actions:', () => {
             loading: false,
         });
         wrapper.update();
-        form.find(Button).at(1).simulate('click');
+        wrapper.find('#org-unit-dist-report-form').find(Button).at(1).simulate('click');
         expect(wrapper.instance().getChart).toHaveBeenCalled();
     });
-    */
-    /*
+
     it('Should call exportReportToXls function when download button is clicked.', () => {
+        wrapper.instance().exportReportToXls = jest.fn();
         wrapper.setState({
             reportHtml: '<div>Report</div>',
             showForm: false,
         });
-        const reportContainer = wrapper.find('#report-container');
-        wrapper.instance().exportReportToXls = jest.fn();
         wrapper.update();
-        reportContainer.find('span').simulate('click');
+        wrapper.find('#report-container').find('span').simulate('click');
         expect(wrapper.instance().exportReportToXls).toHaveBeenCalled();
     });
-    */
 });
