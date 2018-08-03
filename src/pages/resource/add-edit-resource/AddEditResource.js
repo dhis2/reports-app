@@ -39,6 +39,7 @@ class AddEditResource extends PureComponent {
         onError: PropTypes.func.isRequired,
         selectedResource: PropTypes.object,
         isEditAction: PropTypes.bool,
+        updateAppState: PropTypes.func.isRequired,
     };
 
     static defaultProps = {
@@ -103,6 +104,7 @@ class AddEditResource extends PureComponent {
 
     /* close dialog */
     close = (refreshList) => {
+        this.props.updateAppState({ pageState: { loading: false } });
         this.props.onRequestClose(refreshList);
     };
 
@@ -111,6 +113,9 @@ class AddEditResource extends PureComponent {
         const api = this.props.d2.Api.getApi();
         const url = `${DOCUMENTS_ENDPOINT}/${resource.id}`;
         if (api) {
+            this.props.updateAppState({
+                pageState: { loading: true },
+            });
             api.get(url).then((response) => {
                 if (response) {
                     if (response.external === true) {
@@ -122,6 +127,11 @@ class AddEditResource extends PureComponent {
                         ...this.state,
                         resource: {
                             ...response,
+                        },
+                    });
+                    this.props.updateAppState({
+                        pageState: {
+                            loading: false,
                         },
                     });
                 }
@@ -136,10 +146,12 @@ class AddEditResource extends PureComponent {
         if (this.ifFormValid()) {
             const api = this.props.d2.Api.getApi();
             if (api) {
+                this.props.updateAppState({ pageState: { loading: true } });
                 const formData = new FormData();
                 formData.append('file', this.state.selectedFileToUpload);
                 api.post(FILE_RESOURCES_ENDPOINT, formData).then((response) => {
                     if (response.response) {
+                        this.props.updateAppState({ pageState: { loading: false } });
                         this.addDocument(response.response.fileResource);
                     }
                 }).catch((error) => {
@@ -159,6 +171,7 @@ class AddEditResource extends PureComponent {
             documentData.url = `http://${documentData.url}`;
         }
         if (api) {
+            this.props.updateAppState({ pageState: { loading: true } });
             if (this.state.resource.id) {
                 api.update(`${DOCUMENTS_ENDPOINT}/${this.state.resource.id}`, documentData).then((response) => {
                     if (response) {

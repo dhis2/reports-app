@@ -244,8 +244,10 @@ class AddEditStdReport extends PureComponent {
         const api = this.props.d2.Api.getApi();
         const url = `${REPORTS_ENDPOINT}/${report.id}`;
         if (api) {
+            this.props.updateAppState({ pageState: { loading: true } });
             api.get(url).then((response) => {
                 if (response) {
+                    this.props.updateAppState({ pageState: { loading: false } });
                     this.setState({
                         ...this.state,
                         report: {

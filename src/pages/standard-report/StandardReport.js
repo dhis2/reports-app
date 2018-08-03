@@ -210,6 +210,7 @@ class StandardReport extends Page {
                 onRequestClose={this.handleClose}
                 onGetHtmlReport={this.handleDisplayHtmlReport}
                 d2={this.props.d2}
+                onError={this.manageError}
             />
         ) : '';
     }
