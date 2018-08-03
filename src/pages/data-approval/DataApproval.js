@@ -21,6 +21,9 @@ import Report from '../../components/report/Report';
 
 /* utils */
 import { getDocsUrl } from '../../helpers/docs';
+import { LOADING, SUCCESS } from '../../helpers/feedbackSnackBarTypes';
+
+/* styles */
 import styles from '../../styles';
 
 class DataApproval extends Page {
@@ -44,6 +47,7 @@ class DataApproval extends Page {
             selectedPeriod: null,
             selectedPeriodType: null,
             loading: false,
+            approvalStatus: null,
         };
     }
 
@@ -68,6 +72,7 @@ class DataApproval extends Page {
                 ? newProps.selectedPeriodType : this.state.selectedPeriodType),
             selectedPeriod:
                 (newProps.hasOwnProperty('selectedPeriod') ? newProps.selectedPeriod : this.state.selectedPeriod),
+            approvalStatus: (newProps.hasOwnProperty('approvalStatus') ? newProps.loading : this.state.approvalStatus),
             loading: (newProps.hasOwnProperty('loading') ? newProps.loading : this.state.loading),
         };
 
@@ -83,7 +88,39 @@ class DataApproval extends Page {
     }
 
     getData = () => {
+        this.props.updateAppState({
+            showSnackbar: true,
+            snackbarConf: {
+                type: LOADING,
+                message: i18n.t(i18nKeys.messages.loading),
+            },
+            pageState: {
+                loading: true,
+            },
+        });
 
+        const api = this.props.d2.Api.getApi();
+
+        // eslint-disable-next-line
+        const url = `dataSetReport?ds=${this.state.selectedDataSet.id}&pe=${this.state.selectedPeriod}&ou=${this.state.selectedOrgUnit}`;
+        api.get(url).then((response) => {
+            this.props.updateAppState({
+                pageState: {
+                    reportHtml: response,
+                    showForm: false,
+                    loading: false,
+                },
+                showSnackbar: true,
+                snackbarConf: {
+                    type: SUCCESS,
+                    message: i18n.t(i18nKeys.messages.reportGenerated),
+                },
+            });
+
+            // TODO Set Regular Approval State
+        }).catch((error) => {
+            this.manageError(error);
+        });
     }
 
     handleOrganisationUnitChange = (selectedOrgUnit) => {
@@ -94,7 +131,7 @@ class DataApproval extends Page {
 
     handleDataSetChange = (selectedDataSet) => {
         this.setState({
-            selectedDataSet: selectedDataSet ? selectedDataSet.id : null,
+            selectedDataSet,
             selectedPeriodType: selectedDataSet ? selectedDataSet.workflow.periodType : null,
         });
     }
@@ -107,7 +144,7 @@ class DataApproval extends Page {
 
     isFormValid() {
         return this.state.selectedOrgUnit &&
-            this.state.selectedDataSet &&
+            this.state.selectedDataSet && this.state.selectedDataSet.id &&
             this.state.selectedPeriod;
     }
 
@@ -150,7 +187,7 @@ class DataApproval extends Page {
                             <div className="col-md-6">
                                 <div id="data-set-selection">
                                     <DataSets
-                                        fields="id,displayName,workflow[id,periodType]"
+                                        fields="id,displayName,workflow[id,periodType],categoryCombo[id,displayName]"
                                         filter={this.dataSetFilter}
                                         onChange={this.handleDataSetChange}
                                     />

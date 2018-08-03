@@ -76,8 +76,8 @@ describe('Test <DataSetReport /> rendering:', () => {
     });
 
     it('Should render DataSetOptions when data set selected', () => {
-        const dataSetId = 'fakeDataSetId';
-        wrapper.setState({ selectedDataSet: dataSetId });
+        const dataSet = { id: 'id' };
+        wrapper.setState({ selectedDataSet: dataSet });
         expect(wrapper.find(DataSetOptions)).toHaveLength(1);
     });
 
@@ -109,7 +109,7 @@ describe('Test <DataSetReport /> rendering:', () => {
     it('Should enable form Button', () => {
         wrapper.setState({
             selectedOrgUnit: 'OrgUnitId',
-            selectedDataSet: 'DataSetId',
+            selectedDataSet: { id: 'id' },
             selectedPeriod: '2018',
             loading: false,
         });
@@ -125,6 +125,7 @@ describe('Test <DataSetReport /> rendering:', () => {
         wrapper.setState({
             reportHtml: '<div>Report</div>',
             showForm: false,
+            selectedDataSet: { id: 'id' },
         });
         const reportContainer = wrapper.find('#report-container');
         expect(reportContainer.find('span')).toHaveLength(1);           // Download button
@@ -140,9 +141,9 @@ describe('Test <DataSetReport /> actions:', () => {
     });
 
     it('Should update selectedDataSet when DataSets selected', () => {
-        const dataSetId = 'fakeDataSetId';
-        wrapper.find(DataSets).simulate('change', { id: dataSetId });
-        expect(wrapper.state('selectedDataSet')).toEqual(dataSetId);
+        const dataSet = { id: 'id' };
+        wrapper.find(DataSets).simulate('change', dataSet);
+        expect(wrapper.state('selectedDataSet')).toEqual(dataSet);
     });
 
     it('Should update toggle showOptions when option is clicked', () => {
@@ -157,7 +158,7 @@ describe('Test <DataSetReport /> actions:', () => {
         wrapper.instance().getReport = jest.fn();
         wrapper.setState({
             selectedOrgUnit: 'OrgUnitId',
-            selectedDataSet: 'DataSetId',
+            selectedDataSet: { id: 'id' },
             selectedPeriod: '2018',
             loading: false,
         });
@@ -171,6 +172,7 @@ describe('Test <DataSetReport /> actions:', () => {
         wrapper.setState({
             reportHtml: '<div>Report</div>',
             showForm: false,
+            selectedDataSet: { id: 'id' },
         });
         wrapper.update();
         wrapper.find('#report-container').find('span').simulate('click');

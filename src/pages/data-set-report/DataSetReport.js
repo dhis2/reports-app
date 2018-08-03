@@ -123,7 +123,7 @@ class DataSetReport extends Page {
         const dimensions = [...dataSetOptions, ...orgUnitGroupsOptions];
 
         // eslint-disable-next-line
-        const url = `dataSetReport?ds=${this.state.selectedDataSet}&pe=${this.state.selectedPeriod}&ou=${this.state.selectedOrgUnit}&selectedUnitOnly=${this.state.selectedUnitOnly}&dimension=${dimensions}`;
+        const url = `dataSetReport?ds=${this.state.selectedDataSet.id}&pe=${this.state.selectedPeriod}&ou=${this.state.selectedOrgUnit}&selectedUnitOnly=${this.state.selectedUnitOnly}&dimension=${dimensions}`;
         api.get(url).then((response) => {
             this.props.updateAppState({
                 pageState: {
@@ -158,7 +158,7 @@ class DataSetReport extends Page {
     handleDataSetChange = (selectedDataSet) => {
         /* update selected data set and reset options */
         this.setState({
-            selectedDataSet: selectedDataSet ? selectedDataSet.id : null,
+            selectedDataSet,
             selectedOptionsForDimensions: {},
         });
     }
@@ -219,7 +219,9 @@ class DataSetReport extends Page {
     )
 
     isFormValid() {
-        return this.state.selectedOrgUnit && this.state.selectedDataSet && this.state.selectedPeriod;
+        return this.state.selectedOrgUnit &&
+            this.state.selectedDataSet && this.state.selectedDataSet.id &&
+            this.state.selectedPeriod;
     }
 
     isActionEnabled() {
@@ -265,10 +267,10 @@ class DataSetReport extends Page {
                                         onChange={this.handleDataSetChange}
                                     />
                                 </div>
-                                {this.state.selectedDataSet &&
+                                {this.state.selectedDataSet && this.state.selectedDataSet.id &&
                                     <div id="data-set-dimensions-container">
                                         <DataSetOptions
-                                            dataSetId={this.state.selectedDataSet}
+                                            dataSetId={this.state.selectedDataSet.id}
                                             values={this.state.selectedOptionsForDimensions}
                                             onChange={this.handleDimensionChange}
                                         />
@@ -300,7 +302,7 @@ class DataSetReport extends Page {
                             </Button>
                         </div>
                     </div>
-                    { this.state.reportHtml && !this.state.showForm &&
+                    { this.state.reportHtml && !this.state.showForm && this.state.selectedDataSet &&
                         <div
                             id="report-container"
                             style={{ display: this.state.reportHtml && !this.state.showForm ? 'block' : 'none' }}
@@ -317,7 +319,7 @@ class DataSetReport extends Page {
                             </div>
                             <div id="share-component">
                                 <ShareComment
-                                    dataSetId={this.state.selectedDataSet}
+                                    dataSetId={this.state.selectedDataSet.id}
                                     period={this.state.selectedPeriod}
                                     orgUnitId={this.state.selectedOrgUnit}
                                 />

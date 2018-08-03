@@ -128,9 +128,9 @@ describe('Test <ReportingRateSummary /> actions:', () => {
     });
 
     it('Should update selectedDataSet when DataSets selected', () => {
-        const dataSetId = 'fakeDataSetId';
-        wrapper.find(DataSets).simulate('change', { id: dataSetId });
-        expect(wrapper.state('selectedDataSet')).toEqual(dataSetId);
+        const dataSet = { id: 'id' };
+        wrapper.find(DataSets).simulate('change', dataSet);
+        expect(wrapper.state('selectedDataSet')).toEqual(dataSet);
     });
 
     it('Should update toggle showOptions when option is clicked', () => {
