@@ -198,6 +198,9 @@ export const i18nKeys = {
         homeAction: 'View Data Values',
         header: 'Data Approval',
         description: 'View data and manage data approval by approving or unapproving, accepting or unaccepting data.',
+        organisationUnitLabel: 'Organisation unit',
+        reportPeriodLabel: 'Period',
+        mainAction: 'Get Data',
     },
     messages: {
         loading: 'Loading...',

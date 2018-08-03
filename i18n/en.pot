@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-08-03T08:15:42.944Z\n"
-"PO-Revision-Date: 2018-08-03T08:15:42.944Z\n"
+"POT-Creation-Date: 2018-08-03T09:43:26.884Z\n"
+"PO-Revision-Date: 2018-08-03T09:43:26.884Z\n"
 
 msgid "Cancel"
 msgstr ""
@@ -423,6 +423,12 @@ msgstr ""
 msgid ""
 "View data and manage data approval by approving or unapproving, accepting "
 "or unaccepting data."
+msgstr ""
+
+msgid "Organisation unit"
+msgstr ""
+
+msgid "Get Data"
 msgstr ""
 
 msgid "Loading..."
