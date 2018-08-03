@@ -129,7 +129,7 @@ describe('Test <ReportingRateSummary /> actions:', () => {
 
     it('Should update selectedDataSet when DataSets selected', () => {
         const dataSetId = 'fakeDataSetId';
-        wrapper.find(DataSets).simulate('change', dataSetId);
+        wrapper.find(DataSets).simulate('change', { id: dataSetId });
         expect(wrapper.state('selectedDataSet')).toEqual(dataSetId);
     });
 

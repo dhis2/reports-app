@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { Paper } from 'material-ui';
 
 /* d2-ui components */
-import { Button } from '@dhis2/d2-ui-core';
+import { Button, PeriodPicker } from '@dhis2/d2-ui-core';
 
 /* i18n */
 import i18n from '../../locales';
@@ -17,7 +17,6 @@ import Page from '../Page';
 import PageHelper from '../../components/page-helper/PageHelper';
 import DataSets from '../../components/datasets-dropdown/DatasetsDropdown';
 import OrganisationUnitsTree from '../../components/available-organisation-units-tree/AvailableOrganisationUnitsTree';
-import PeriodPickerComponent from '../../components/period-picker-with-period-type/PeriodPickerWithPeriodType';
 import Report from '../../components/report/Report';
 
 /* utils */
@@ -26,6 +25,11 @@ import styles from '../../styles';
 
 class DataApproval extends Page {
     static propTypes = {
+        d2: PropTypes.object.isRequired,
+    }
+
+    /* FIXME: right now d2-ui periodPicker forces us to pass d2 through old  context api */
+    static childContextTypes = {
         d2: PropTypes.object.isRequired,
     }
 
@@ -38,7 +42,15 @@ class DataApproval extends Page {
             selectedDataSet: null,
             selectedOrgUnit: null,
             selectedPeriod: null,
+            selectedPeriodType: null,
             loading: false,
+        };
+    }
+
+    /* FIXME: right now d2-ui periodPicker forces us to pass d2 through old  context api */
+    getChildContext() {
+        return {
+            d2: this.props.d2,
         };
     }
 
@@ -52,6 +64,8 @@ class DataApproval extends Page {
                 (newProps.hasOwnProperty('selectedDataSet') ? newProps.selectedDataSet : this.state.selectedDataSet),
             selectedOrgUnit:
                 (newProps.hasOwnProperty('selectedOrgUnit') ? newProps.selectedOrgUnit : this.state.selectedOrgUnit),
+            selectedPeriodType: (newProps.hasOwnProperty('selectedPeriodType')
+                ? newProps.selectedPeriodType : this.state.selectedPeriodType),
             selectedPeriod:
                 (newProps.hasOwnProperty('selectedPeriod') ? newProps.selectedPeriod : this.state.selectedPeriod),
             loading: (newProps.hasOwnProperty('loading') ? newProps.loading : this.state.loading),
@@ -59,6 +73,8 @@ class DataApproval extends Page {
 
         this.setState(newState);
     }
+
+    dataSetFilter = dataSet => !!dataSet.workflow;
 
     goToForm = () => {
         this.setState({
@@ -78,7 +94,8 @@ class DataApproval extends Page {
 
     handleDataSetChange = (selectedDataSet) => {
         this.setState({
-            selectedDataSet,
+            selectedDataSet: selectedDataSet ? selectedDataSet.id : null,
+            selectedPeriodType: selectedDataSet ? selectedDataSet.workflow.periodType : null,
         });
     }
 
@@ -133,15 +150,22 @@ class DataApproval extends Page {
                             <div className="col-md-6">
                                 <div id="data-set-selection">
                                     <DataSets
+                                        fields="id,displayName,workflow[id,periodType]"
+                                        filter={this.dataSetFilter}
                                         onChange={this.handleDataSetChange}
                                     />
                                 </div>
-                                <div id="report-period">
-                                    <PeriodPickerComponent
-                                        label={i18n.t(i18nKeys.dataApproval.reportPeriodLabel)}
-                                        onChange={this.handlePeriodChange}
-                                    />
-                                </div>
+                                {this.state.selectedDataSet &&
+                                    <div id="report-period">
+                                        <div style={styles.formLabel}>
+                                            {i18n.t(i18nKeys.dataApproval.reportPeriodLabel)}
+                                        </div>
+                                        <PeriodPicker
+                                            periodType={this.state.selectedPeriodType}
+                                            onPickPeriod={this.handlePeriodChange}
+                                        />
+                                    </div>
+                                }
                             </div>
                         </div>
                         <div id="main-action-button" style={styles.actionsContainer}>

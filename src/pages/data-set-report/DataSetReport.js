@@ -158,7 +158,7 @@ class DataSetReport extends Page {
     handleDataSetChange = (selectedDataSet) => {
         /* update selected data set and reset options */
         this.setState({
-            selectedDataSet,
+            selectedDataSet: selectedDataSet ? selectedDataSet.id : null,
             selectedOptionsForDimensions: {},
         });
     }

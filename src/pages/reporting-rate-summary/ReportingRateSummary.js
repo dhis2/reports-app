@@ -155,7 +155,7 @@ class ReportingRateSummary extends Page {
 
     handleDataSetChange = (selectedDataSet) => {
         this.setState({
-            selectedDataSet,
+            selectedDataSet: selectedDataSet ? selectedDataSet.id : null,
         });
     }
 
