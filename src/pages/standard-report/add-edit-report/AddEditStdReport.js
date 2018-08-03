@@ -90,6 +90,7 @@ class AddEditStdReport extends PureComponent {
         open: PropTypes.bool.isRequired,
         selectedReport: PropTypes.object,
         updateAppState: PropTypes.func.isRequired,
+        onError: PropTypes.func.isRequired,
         isEditAction: PropTypes.bool,
     };
 
@@ -150,10 +151,11 @@ class AddEditStdReport extends PureComponent {
         } else {
             this.setState({ selectedFileToUpload: null, report: { ...this.state.report, designContent: null } });
         }
-        // FIXME: Handle errors
+
         reader.onload = (evt) => {
             if (evt.target.readyState !== 2) return;
             if (evt.target.error) {
+                this.props.onError(evt.target.error);
                 return;
             }
             const designContent = evt.target.result;
@@ -231,8 +233,8 @@ class AddEditStdReport extends PureComponent {
                     });
                     this.setState({ reportTables: [NONE, ...response.reportTables] });
                 }
-            }).catch(() => {
-                // TODO: manage error
+            }).catch((error) => {
+                this.props.onError(error);
             });
         }
     };
@@ -251,8 +253,8 @@ class AddEditStdReport extends PureComponent {
                         },
                     });
                 }
-            }).catch(() => {
-                // TODO: manage error
+            }).catch((error) => {
+                this.props.onError(error);
             });
         }
     };
@@ -282,8 +284,8 @@ class AddEditStdReport extends PureComponent {
                             });
                             this.close(true);
                         }
-                    }).catch(() => {
-                        // TODO: manage error
+                    }).catch((error) => {
+                        this.props.onError(error);
                     });
                 // Add report
                 } else {
@@ -296,8 +298,8 @@ class AddEditStdReport extends PureComponent {
                             });
                             this.close(true);
                         }
-                    }).catch(() => {
-                        // TODO: manage error
+                    }).catch((error) => {
+                        this.props.onError(error);
                     });
                 }
             }

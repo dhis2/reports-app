@@ -78,8 +78,8 @@ class Resource extends Page {
                     });
                     this.setState(response);
                 }
-            }).catch(() => {
-                // TODO: manage error
+            }).catch((error) => {
+                this.handleError(error);
             }).finally(() => {
                 this.state.deleteInProgress = false;
             });
@@ -161,8 +161,8 @@ class Resource extends Page {
                         if (response && this.isPageMounted()) {
                             this.loadDocuments(INITIAL_PAGER, this.state.search);
                         }
-                    }).catch(() => {
-                        // TODO: manage error
+                    }).catch((error) => {
+                        this.handleError(error);
                     });
                 },
             },

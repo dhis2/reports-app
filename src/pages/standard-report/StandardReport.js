@@ -105,8 +105,8 @@ class StandardReport extends Page {
                     });
                     this.setState(response);
                 }
-            }).catch(() => {
-                // TODO: manage error
+            }).catch((error) => {
+                this.manageError(error);
             }).finally(() => {
                 this.state.deleteInProgress = false;
             });
@@ -194,8 +194,8 @@ class StandardReport extends Page {
                         if (response && this.isPageMounted()) {
                             this.loadData(INITIAL_PAGER, this.state.search);
                         }
-                    }).catch(() => {
-                        // TODO: manage error
+                    }).catch((error) => {
+                        this.manageError(error);
                     });
                 },
             },
@@ -235,6 +235,7 @@ class StandardReport extends Page {
                 onRequestClose={this.handleClose}
                 d2={this.props.d2}
                 updateAppState={this.props.updateAppState}
+                onError={this.manageError}
             />
         );
     }
@@ -246,6 +247,7 @@ class StandardReport extends Page {
                 onRequestClose={this.handleClose}
                 d2={this.props.d2}
                 updateAppState={this.props.updateAppState}
+                onError={this.manageError}
             />
         );
     }

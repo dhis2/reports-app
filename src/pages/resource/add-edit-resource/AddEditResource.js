@@ -125,8 +125,8 @@ class AddEditResource extends PureComponent {
                         },
                     });
                 }
-            }).catch(() => {
-                // TODO: manage error
+            }).catch((error) => {
+                this.handleError(error);
             });
         }
     };
