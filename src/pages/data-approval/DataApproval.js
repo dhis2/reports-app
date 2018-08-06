@@ -131,8 +131,6 @@ class DataApproval extends Page {
                     message: i18n.t(i18nKeys.messages.reportGenerated),
                 },
             });
-
-            // TODO Set Regular Approval State
         }).catch((error) => {
             this.manageError(error);
         });

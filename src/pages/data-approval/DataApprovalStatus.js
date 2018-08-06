@@ -23,7 +23,7 @@ import {
     isReadyForUnapprove,
     isReadyForAcceptance,
     isReadyForUnacceptance,
-} from '../../helpers/dataApproval';
+} from './dataApproval.conf';
 
 /* styles */
 import appStyles from '../../styles';
