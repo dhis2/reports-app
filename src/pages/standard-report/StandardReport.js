@@ -80,6 +80,11 @@ class StandardReport extends Page {
         this.loadData(INITIAL_PAGER);
     }
 
+    // eslint-disable-next-line
+    componentWillReceiveProps(newProps) {
+        this.setState({ loadedReport: newProps.loadedReport, loading: newProps.loading });
+    }
+
     loadData(pager, search) {
         const api = this.props.d2.Api.getApi();
         let url = `${REPORTS_ENDPOINT}?page=${pager.page}&pageSize=${pager.pageSize}` +
@@ -156,6 +161,10 @@ class StandardReport extends Page {
         }
     }
 
+    handleError = (error) => {
+        this.manageError(error);
+    };
+
     handleDisplayHtmlReport(htmlReport) {
         this.setState({ htmlReport, open: false, selectedReport: null });
     }
@@ -210,7 +219,7 @@ class StandardReport extends Page {
                 onRequestClose={this.handleClose}
                 onGetHtmlReport={this.handleDisplayHtmlReport}
                 d2={this.props.d2}
-                onError={this.manageError}
+                onError={this.handleError}
             />
         ) : '';
     }
@@ -231,12 +240,14 @@ class StandardReport extends Page {
         return (
             <AddEditStdReport
                 selectedReport={this.state.selectedReport}
+                loadedReport={this.state.loadedReport}
+                loading={this.state.loading}
                 isEditAction={Boolean(true)}
                 open={this.state.open}
                 onRequestClose={this.handleClose}
                 d2={this.props.d2}
                 updateAppState={this.props.updateAppState}
-                onError={this.manageError}
+                onError={this.handleError}
             />
         );
     }
@@ -248,7 +259,7 @@ class StandardReport extends Page {
                 onRequestClose={this.handleClose}
                 d2={this.props.d2}
                 updateAppState={this.props.updateAppState}
-                onError={this.manageError}
+                onError={this.handleError}
             />
         );
     }

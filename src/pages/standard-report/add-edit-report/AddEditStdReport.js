@@ -89,13 +89,17 @@ class AddEditStdReport extends PureComponent {
         onRequestClose: PropTypes.func.isRequired,
         open: PropTypes.bool.isRequired,
         selectedReport: PropTypes.object,
-        updateAppState: PropTypes.func.isRequired,
+        loadedReport: PropTypes.object,
         onError: PropTypes.func.isRequired,
         isEditAction: PropTypes.bool,
+        updateAppState: PropTypes.func.isRequired,
+        loading: PropTypes.bool,
     };
 
     static defaultProps = {
         selectedReport: null,
+        loadedReport: null,
+        loading: false,
         isEditAction: false,
     };
 
@@ -109,7 +113,12 @@ class AddEditStdReport extends PureComponent {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.selectedReport) {
+        if (
+            ((nextProps.selectedReport && !nextProps.loadedReport) ||
+            (nextProps.selectedReport &&
+                nextProps.loadedReport &&
+                nextProps.selectedReport.id !== nextProps.loadedReport.id)) &&
+            !nextProps.loading) {
             this.loadSelectedReport(nextProps.selectedReport);
         } else {
             this.setState(JSON.parse(JSON.stringify(initialState)));
@@ -211,6 +220,7 @@ class AddEditStdReport extends PureComponent {
 
     /* close dialog */
     close = (refreshList) => {
+        this.props.updateAppState({ pageState: { loading: false } });
         this.props.onRequestClose(refreshList);
     };
 
@@ -219,19 +229,11 @@ class AddEditStdReport extends PureComponent {
         const api = this.props.d2.Api.getApi();
         const url = `${REPORT_TABLES_ENDPOINT}?paging=false&fields=:id,name`;
         if (api) {
-            this.props.updateAppState({
-                pageState: {
-                    loading: true,
-                },
-            });
+            this.props.updateAppState({ pageState: { loading: true } });
             api.get(url).then((response) => {
                 if (response) {
-                    this.props.updateAppState({
-                        pageState: {
-                            loading: false,
-                        },
-                    });
                     this.setState({ reportTables: [NONE, ...response.reportTables] });
+                    this.props.updateAppState({ pageState: { loading: false } });
                 }
             }).catch((error) => {
                 this.props.onError(error);
@@ -247,7 +249,7 @@ class AddEditStdReport extends PureComponent {
             this.props.updateAppState({ pageState: { loading: true } });
             api.get(url).then((response) => {
                 if (response) {
-                    this.props.updateAppState({ pageState: { loading: false } });
+                    this.props.updateAppState({ pageState: { loading: false, loadedReport: { ...response } } });
                     this.setState({
                         ...this.state,
                         report: {
@@ -269,21 +271,12 @@ class AddEditStdReport extends PureComponent {
                 if (this.state.report.type !== TYPES.JASPER_REPORT_TABLE) {
                     delete this.state.report.reportTable;
                 }
-                this.props.updateAppState({
-                    pageState: {
-                        loading: true,
-                    },
-                });
+                this.props.updateAppState({ pageState: { loading: true } });
                 // Edit report
                 if (this.state.report.id) {
                     const url = `${REPORTS_ENDPOINT}/${this.state.report.id}`;
                     api.update(url, this.state.report).then((response) => {
                         if (response) {
-                            this.props.updateAppState({
-                                pageState: {
-                                    loading: false,
-                                },
-                            });
                             this.close(true);
                         }
                     }).catch((error) => {
@@ -293,11 +286,6 @@ class AddEditStdReport extends PureComponent {
                 } else {
                     api.post(REPORTS_ENDPOINT, this.state.report).then((response) => {
                         if (response) {
-                            this.props.updateAppState({
-                                pageState: {
-                                    loading: false,
-                                },
-                            });
                             this.close(true);
                         }
                     }).catch((error) => {
