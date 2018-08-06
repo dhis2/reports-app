@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-08-03T14:53:05.962Z\n"
-"PO-Revision-Date: 2018-08-03T14:53:05.962Z\n"
+"POT-Creation-Date: 2018-08-06T11:02:23.173Z\n"
+"PO-Revision-Date: 2018-08-06T11:02:23.173Z\n"
 
 msgid "Cancel"
 msgstr ""
@@ -431,6 +431,78 @@ msgstr ""
 msgid "Get Data"
 msgstr ""
 
+msgid "Approval status"
+msgstr ""
+
+msgid "Please make a selection below"
+msgstr ""
+
+msgid "Approval not relevant"
+msgstr ""
+
+msgid "Ready for approval at a higher level"
+msgstr ""
+
+msgid "Waiting for lower levels to approve"
+msgstr ""
+
+msgid "Waiting for approval elsewhere"
+msgstr ""
+
+msgid "Ready for approval"
+msgstr ""
+
+msgid "Approved for part of this period"
+msgstr ""
+
+msgid "Approved"
+msgstr ""
+
+msgid "Approved elsewhere for part of this period"
+msgstr ""
+
+msgid "Approved elsewhere"
+msgstr ""
+
+msgid "Accepted for part of this period"
+msgstr ""
+
+msgid "Approved and accepted"
+msgstr ""
+
+msgid "Accepted elsewhere for part of this period"
+msgstr ""
+
+msgid "Accepted elsewhere"
+msgstr ""
+
+msgid "Are you sure you want to approve this data set?"
+msgstr ""
+
+msgid "Are you sure you want to unapprove this data set?"
+msgstr ""
+
+msgid "Are you sure you want to accept this data set approval?"
+msgstr ""
+
+msgid "Are you sure you want to unaccept this data set approval?"
+msgstr ""
+
+msgid "Approve"
+msgstr ""
+
+msgid "Unapprove"
+msgstr ""
+
+msgid "Accept"
+msgstr ""
+
+msgid "Unaccept"
+msgstr ""
+
+msgid "Confirm"
+msgstr ""
+
 msgid "Loading..."
 msgstr ""
 
@@ -621,4 +693,8 @@ msgid "apr-sep"
 msgstr ""
 
 msgid "oct-mar"
+msgstr ""
+
+msgctxt "level"
+msgid "approved_at_a_higher"
 msgstr ""

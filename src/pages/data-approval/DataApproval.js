@@ -18,6 +18,7 @@ import PageHelper from '../../components/page-helper/PageHelper';
 import DataSets from '../../components/datasets-dropdown/DatasetsDropdown';
 import OrganisationUnitsTree from '../../components/available-organisation-units-tree/AvailableOrganisationUnitsTree';
 import Report from '../../components/report/Report';
+import DataApprovalStatusContainer from './DataApprovalStatus';
 
 /* utils */
 import { getDocsUrl } from '../../helpers/docs';
@@ -47,7 +48,7 @@ class DataApproval extends Page {
             selectedPeriod: null,
             selectedPeriodType: null,
             loading: false,
-            approvalStatus: null,
+            dataApprovalLevels: [],
         };
     }
 
@@ -68,15 +69,29 @@ class DataApproval extends Page {
                 (newProps.hasOwnProperty('selectedDataSet') ? newProps.selectedDataSet : this.state.selectedDataSet),
             selectedOrgUnit:
                 (newProps.hasOwnProperty('selectedOrgUnit') ? newProps.selectedOrgUnit : this.state.selectedOrgUnit),
-            selectedPeriodType: (newProps.hasOwnProperty('selectedPeriodType')
-                ? newProps.selectedPeriodType : this.state.selectedPeriodType),
+            selectedPeriodType: (newProps.hasOwnProperty('selectedPeriodType') ?
+                newProps.selectedPeriodType : this.state.selectedPeriodType),
             selectedPeriod:
                 (newProps.hasOwnProperty('selectedPeriod') ? newProps.selectedPeriod : this.state.selectedPeriod),
-            approvalStatus: (newProps.hasOwnProperty('approvalStatus') ? newProps.loading : this.state.approvalStatus),
+            dataApprovalLevels: (newProps.hasOwnProperty('dataApprovalLevels') ?
+                newProps.dataApprovalLevels : this.state.dataApprovalLevels),
             loading: (newProps.hasOwnProperty('loading') ? newProps.loading : this.state.loading),
         };
 
         this.setState(newState);
+    }
+
+    componentDidMount() {
+        const d2 = this.props.d2;
+        d2.models.dataApprovalLevel.list({
+            paging: false,
+        }).then((dataApprovalLevelsResponse) => {
+            this.setState({
+                dataApprovalLevels: dataApprovalLevelsResponse.toArray(),
+            });
+        }).catch(() => {
+            // TODO Manage error
+        });
     }
 
     dataSetFilter = dataSet => !!dataSet.workflow;
@@ -142,15 +157,19 @@ class DataApproval extends Page {
         });
     }
 
-    isFormValid() {
-        return this.state.selectedOrgUnit &&
-            this.state.selectedDataSet && this.state.selectedDataSet.id &&
-            this.state.selectedPeriod;
-    }
+    isApprovalStatusEnabled = () =>
+        !this.state.showForm &&
+        this.state.selectedDataSet &&
+        this.state.selectedPeriod &&
+        this.state.selectedOrgUnit;
 
-    isActionEnabled() {
-        return this.isFormValid() && !this.state.loading;
-    }
+    isFormValid = () =>
+        this.state.selectedOrgUnit &&
+        this.state.selectedDataSet &&
+        this.state.selectedDataSet.id &&
+        this.state.selectedPeriod;
+
+    isActionEnabled = () => this.isFormValid() && !this.state.loading;
 
     render() {
         return (
@@ -174,6 +193,15 @@ class DataApproval extends Page {
                     />
                 </h1>
                 <Paper style={styles.container}>
+                    <div id="data-approval-status">
+                        {this.isApprovalStatusEnabled() &&
+                            <DataApprovalStatusContainer
+                                dataSet={this.state.selectedDataSet}
+                                periodId={this.state.selectedPeriod}
+                                organisationUnitId={this.state.selectedOrgUnit}
+                            />
+                        }
+                    </div>
                     <div id="data-approval-form" style={{ display: this.state.showForm ? 'block' : 'none' }}>
                         <div className="row">
                             <div className="col-md-6">
