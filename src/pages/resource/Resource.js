@@ -177,7 +177,10 @@ class Resource extends Page {
                 open={this.state.open}
                 onRequestClose={this.handleClose}
                 onError={this.handleError}
-                isEditAction={Boolean(false)}
+                updateAppState={this.props.updateAppState}
+                loading={this.props.loading}
+                loadedResource={this.props.loadedResource}
+                resetComponentState={this.props.resetComponentState}
             />
         );
     }
@@ -189,8 +192,11 @@ class Resource extends Page {
                 open={this.state.open}
                 onRequestClose={this.handleClose}
                 d2={this.props.d2}
-                isEditAction={Boolean(true)}
                 onError={this.handleError}
+                updateAppState={this.props.updateAppState}
+                loading={this.props.loading}
+                loadedResource={this.props.loadedResource}
+                resetComponentState={this.props.resetComponentState}
             />
         );
     }

@@ -91,7 +91,6 @@ class AddEditStdReport extends PureComponent {
         selectedReport: PropTypes.object,
         loadedReport: PropTypes.object,
         onError: PropTypes.func.isRequired,
-        isEditAction: PropTypes.bool,
         updateAppState: PropTypes.func.isRequired,
         loading: PropTypes.bool,
     };
@@ -100,7 +99,6 @@ class AddEditStdReport extends PureComponent {
         selectedReport: null,
         loadedReport: null,
         loading: false,
-        isEditAction: false,
     };
 
     constructor(props) {
@@ -214,7 +212,7 @@ class AddEditStdReport extends PureComponent {
         );
     };
 
-    getTitle = () => (this.props.isEditAction ?
+    getTitle = () => (this.props.selectedReport ?
         i18n.t(i18nKeys.standardReport.editReportTitle) :
         i18n.t(i18nKeys.standardReport.addNewReportTitle));
 

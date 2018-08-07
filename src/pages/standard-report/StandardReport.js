@@ -80,7 +80,6 @@ class StandardReport extends Page {
         this.loadData(INITIAL_PAGER);
     }
 
-    // eslint-disable-next-line
     componentWillReceiveProps(newProps) {
         this.setState({ loadedReport: newProps.loadedReport, loading: newProps.loading });
     }
@@ -242,7 +241,6 @@ class StandardReport extends Page {
                 selectedReport={this.state.selectedReport}
                 loadedReport={this.state.loadedReport}
                 loading={this.state.loading}
-                isEditAction={Boolean(true)}
                 open={this.state.open}
                 onRequestClose={this.handleClose}
                 d2={this.props.d2}

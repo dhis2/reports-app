@@ -28,7 +28,6 @@ const initialState = {
         url: 'http://',
     },
     selectedFileToUpload: null,
-    hasErrors: false,
 };
 
 class AddEditResource extends PureComponent {
@@ -38,13 +37,17 @@ class AddEditResource extends PureComponent {
         onRequestClose: PropTypes.func.isRequired,
         onError: PropTypes.func.isRequired,
         selectedResource: PropTypes.object,
-        isEditAction: PropTypes.bool,
         updateAppState: PropTypes.func.isRequired,
+        loading: PropTypes.bool,
+        loadedResource: PropTypes.object,
+        resetComponentState: PropTypes.bool,
     };
 
     static defaultProps = {
         selectedResource: null,
-        isEditAction: false,
+        loading: false,
+        loadedResource: null,
+        resetComponentState: false,
     };
 
     constructor(props) {
@@ -52,13 +55,24 @@ class AddEditResource extends PureComponent {
         this.state = JSON.parse(JSON.stringify(initialState));
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.selectedResource) {
-            this.loadSelectedResource(nextProps.selectedResource);
-        } else if (!nextProps.isEditAction && !this.state.hasErrors) {
-            this.state = JSON.parse(JSON.stringify(initialState));
+    componentDidMount() {
+        if (this.props.selectedResource) {
+            this.loadSelectedResource(this.props.selectedResource);
         }
-        this.setState({ selectedFileToUpload: null, hasErrors: false });
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (
+            ((nextProps.selectedResource && !nextProps.loadedResource) ||
+                (nextProps.selectedResource &&
+                    nextProps.loadedResource &&
+                    nextProps.selectedResource.id !== nextProps.loadedResource.id)) &&
+            !nextProps.loading && nextProps.open) {
+            this.loadSelectedResource(nextProps.selectedResource);
+        } else if (nextProps.resetComponentState) {
+            this.setState({ resource: JSON.parse(JSON.stringify(initialState.resource)) });
+        }
+        this.setState({ selectedFileToUpload: null });
     }
 
     /* Handle form changes */
@@ -98,13 +112,13 @@ class AddEditResource extends PureComponent {
         return '';
     };
 
-    getTitle = () => (this.props.isEditAction ?
+    getTitle = () => (this.props.selectedResource ?
         i18n.t(i18nKeys.resource.editResourceTitle) :
         i18n.t(i18nKeys.resource.addNewResourceTitle));
 
     /* close dialog */
     close = (refreshList) => {
-        this.props.updateAppState({ pageState: { loading: false } });
+        this.props.updateAppState({ pageState: { loading: false, resetComponentState: true } });
         this.props.onRequestClose(refreshList);
     };
 
@@ -113,9 +127,7 @@ class AddEditResource extends PureComponent {
         const api = this.props.d2.Api.getApi();
         const url = `${DOCUMENTS_ENDPOINT}/${resource.id}`;
         if (api) {
-            this.props.updateAppState({
-                pageState: { loading: true },
-            });
+            this.props.updateAppState({ pageState: { loading: true } });
             api.get(url).then((response) => {
                 if (response) {
                     if (response.external === true) {
@@ -123,15 +135,11 @@ class AddEditResource extends PureComponent {
                     } else {
                         response.type = TYPES.UPLOAD_FILE;
                     }
+                    this.props.updateAppState({ pageState: { loading: false, loadedResource: { ...response } } });
                     this.setState({
                         ...this.state,
                         resource: {
                             ...response,
-                        },
-                    });
-                    this.props.updateAppState({
-                        pageState: {
-                            loading: false,
                         },
                     });
                 }
@@ -146,12 +154,11 @@ class AddEditResource extends PureComponent {
         if (this.ifFormValid()) {
             const api = this.props.d2.Api.getApi();
             if (api) {
-                this.props.updateAppState({ pageState: { loading: true } });
                 const formData = new FormData();
                 formData.append('file', this.state.selectedFileToUpload);
+                this.props.updateAppState({ pageState: { loading: true } });
                 api.post(FILE_RESOURCES_ENDPOINT, formData).then((response) => {
                     if (response.response) {
-                        this.props.updateAppState({ pageState: { loading: false } });
                         this.addDocument(response.response.fileResource);
                     }
                 }).catch((error) => {
@@ -175,6 +182,7 @@ class AddEditResource extends PureComponent {
             if (this.state.resource.id) {
                 api.update(`${DOCUMENTS_ENDPOINT}/${this.state.resource.id}`, documentData).then((response) => {
                     if (response) {
+                        this.props.updateAppState({ pageState: { loading: false } });
                         this.close(true);
                     }
                 }).catch((error) => {
@@ -183,6 +191,7 @@ class AddEditResource extends PureComponent {
             } else {
                 api.post(DOCUMENTS_ENDPOINT, documentData).then((response) => {
                     if (response) {
+                        this.props.updateAppState({ pageState: { loading: false } });
                         this.close(true);
                     }
                 }).catch((error) => {
@@ -208,11 +217,10 @@ class AddEditResource extends PureComponent {
 
     isNullOrWhiteSpace = str => (!str || str.length === 0 || /^\s*$/.test(str));
 
-    validateUploadType = () => !(!this.props.isEditAction &&
+    validateUploadType = () => !(!this.props.selectedResource &&
             (!this.state.selectedFileToUpload || !this.state.selectedFileToUpload.name));
 
     handleError = (error) => {
-        this.setState({ ...this.state, hasErrors: true });
         this.props.onError(error);
     };
 
