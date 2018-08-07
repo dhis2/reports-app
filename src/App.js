@@ -42,6 +42,16 @@ class App extends PureComponent {
         };
     }
 
+    onFeedbackSnackbarClose = () => {
+        this.setState({
+            showSnackbar: false,
+            snackbarConf: {
+                type: '',
+                message: '',
+            },
+        });
+    };
+
     getContext() {
         return {
             d2: this.props.d2,
@@ -84,6 +94,7 @@ class App extends PureComponent {
                 </div>
             ) : (
                 <FeedbackSnackbar
+                    onClose={this.onFeedbackSnackbarClose}
                     show={this.state.showSnackbar}
                     conf={this.state.snackbarConf}
                 />
