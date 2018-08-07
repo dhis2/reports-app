@@ -9,9 +9,9 @@
     core-js "^2.5.6"
     regenerator-runtime "^0.11.1"
 
-"@dhis2/d2-i18n-generate@^1.0.18":
-  version "1.0.18"
-  resolved "https://registry.yarnpkg.com/@dhis2/d2-i18n-generate/-/d2-i18n-generate-1.0.18.tgz#e3426d381030856232fbe1e2097b8ca2aebe90f3"
+"@dhis2/d2-i18n-generate@^1.0.19":
+  version "1.0.19"
+  resolved "https://registry.yarnpkg.com/@dhis2/d2-i18n-generate/-/d2-i18n-generate-1.0.19.tgz#263bce81d7cd0f58d33fcce9703481046f3c8e93"
   dependencies:
     argparse "^1.0.10"
     handlebars "^4.0.11"
@@ -19,13 +19,13 @@
     moment "^2.22.1"
     rimraf "^2.6.2"
 
-"@dhis2/d2-i18n@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@dhis2/d2-i18n/-/d2-i18n-1.0.3.tgz#2d309bc1f6cf85433056f573cbcc410d791415a1"
+"@dhis2/d2-i18n@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@dhis2/d2-i18n/-/d2-i18n-1.0.4.tgz#8fbd113f56699b9832a401e1cb8f54d75bc36b9a"
   dependencies:
     i18next "^10.3"
 
-"@dhis2/d2-ui-app@^1.0.4", "@dhis2/d2-ui-app@^1.0.5":
+"@dhis2/d2-ui-app@^1.0.5":
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/@dhis2/d2-ui-app/-/d2-ui-app-1.0.5.tgz#d6213fa16b30f99160f3b5712f760423fed444fa"
   dependencies:
@@ -34,7 +34,7 @@
     lodash "^4.17.10"
     material-ui "^0.20.0"
 
-"@dhis2/d2-ui-core@^1.1.4", "@dhis2/d2-ui-core@^1.2.0":
+"@dhis2/d2-ui-core@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@dhis2/d2-ui-core/-/d2-ui-core-1.2.0.tgz#e3b712fab9e5677fc54ef0488d1ecf8cc62302c6"
   dependencies:
@@ -55,9 +55,9 @@
     material-ui "^0.20.0"
     rxjs "^5.5.7"
 
-"@dhis2/d2-ui-header-bar@^1.0.13":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@dhis2/d2-ui-header-bar/-/d2-ui-header-bar-1.1.0.tgz#400d365fba2589ec2c9fe2da8e28844fd4474e53"
+"@dhis2/d2-ui-header-bar@^1.1.4":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@dhis2/d2-ui-header-bar/-/d2-ui-header-bar-1.1.4.tgz#b5cc9295202c573ca68f495878b11015c638874c"
   dependencies:
     "@dhis2/d2-ui-app" "^1.0.5"
     "@dhis2/d2-ui-core" "^1.2.0"
@@ -80,9 +80,9 @@
     recompose "^0.26.0"
     rxjs "^5.5.7"
 
-"@dhis2/d2-ui-sharing-dialog@^1.0.10":
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/@dhis2/d2-ui-sharing-dialog/-/d2-ui-sharing-dialog-1.0.10.tgz#a565840cab83c5bf0ccf8c5228cf46b4c0175f03"
+"@dhis2/d2-ui-sharing-dialog@^1.0.12":
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/@dhis2/d2-ui-sharing-dialog/-/d2-ui-sharing-dialog-1.0.12.tgz#88d4f172eb58c7d1add9ac78ce870c5621010909"
   dependencies:
     "@dhis2/d2-ui-core" "^1.2.0"
     babel-runtime "^6.26.0"
@@ -91,12 +91,12 @@
     recompose "^0.26.0"
     rxjs "^5.5.7"
 
-"@dhis2/d2-ui-table@^1.0.11":
-  version "1.0.11"
-  resolved "https://registry.yarnpkg.com/@dhis2/d2-ui-table/-/d2-ui-table-1.0.11.tgz#aa701b2c793b9921d626b110399f45db33dcabf6"
+"@dhis2/d2-ui-table@^1.0.12":
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/@dhis2/d2-ui-table/-/d2-ui-table-1.0.12.tgz#38b6654df24ec8197a4f6aecf48022974217692b"
   dependencies:
     "@dhis2/d2-ui-core" "^1.2.0"
-    "@dhis2/d2-ui-translation-dialog" "^1.0.11"
+    "@dhis2/d2-ui-translation-dialog" "^1.0.12"
     babel-runtime "^6.26.0"
     d2-utilizr "^0.2.15"
     lodash "^4.17.10"
@@ -105,9 +105,9 @@
     recompose "^0.26.0"
     rxjs "^5.5.7"
 
-"@dhis2/d2-ui-translation-dialog@^1.0.11":
-  version "1.0.11"
-  resolved "https://registry.yarnpkg.com/@dhis2/d2-ui-translation-dialog/-/d2-ui-translation-dialog-1.0.11.tgz#0e314fda68c3dcb43a354ea2de0122f7803ef17b"
+"@dhis2/d2-ui-translation-dialog@^1.0.12":
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/@dhis2/d2-ui-translation-dialog/-/d2-ui-translation-dialog-1.0.12.tgz#dfbc917563b7a6b152d77819630129dcc87dc7ad"
   dependencies:
     "@dhis2/d2-ui-core" "^1.2.0"
     babel-runtime "^6.26.0"
@@ -2630,6 +2630,14 @@ d2@^29.1.3:
 d2@^30.0.0:
   version "30.0.0"
   resolved "https://registry.yarnpkg.com/d2/-/d2-30.0.0.tgz#470b516f21bda6bda09b65579352e37225ca7e1d"
+  dependencies:
+    docdash "^0.4.0"
+    jsdoc "^3.5.5"
+    whatwg-fetch "^2.0.3"
+
+d2@^30.0.2:
+  version "30.0.2"
+  resolved "https://registry.yarnpkg.com/d2/-/d2-30.0.2.tgz#d231289aa24074044b4e6b552308fcad42523181"
   dependencies:
     docdash "^0.4.0"
     jsdoc "^3.5.5"
