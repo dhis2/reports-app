@@ -82,6 +82,8 @@ class DataApproval extends Page {
     }
 
     componentDidMount() {
+        super.componentDidMount();
+
         const d2 = this.props.d2;
         d2.models.dataApprovalLevel.list({
             paging: false,
