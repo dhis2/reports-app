@@ -29,6 +29,7 @@ class CreateStdReport extends PureComponent {
         onRequestClose: PropTypes.func.isRequired,
         onGetHtmlReport: PropTypes.func,
         open: PropTypes.bool.isRequired,
+        onError: PropTypes.func.isRequired,
     };
 
     static defaultProps = {
@@ -71,9 +72,8 @@ class CreateStdReport extends PureComponent {
         if (this.props.selectedReport.type === TYPES.HTML) {
             api.get(url).then((response) => {
                 this.props.onGetHtmlReport(response);
-            }).catch(() => {
-                // TODO: manage error
-                // this.manageError(error);
+            }).catch((error) => {
+                this.props.onError(error);
             });
         } else {
             window.open(`${api.baseUrl}/${url}`);
@@ -93,9 +93,8 @@ class CreateStdReport extends PureComponent {
         if (this.props.selectedReport.type === TYPES.HTML) {
             api.get(url).then((response) => {
                 this.props.onGetHtmlReport(response);
-            }).catch(() => {
-                // TODO: manage error
-                // this.manageError(error);
+            }).catch((error) => {
+                this.props.onError(error);
             });
         } else {
             window.open(`${api.baseUrl}/${url}`);
@@ -115,10 +114,8 @@ class CreateStdReport extends PureComponent {
                 } else {
                     this.getReport();
                 }
-            }).catch(() => {
-                // TODO: manage error
-            }).finally(() => {
-
+            }).catch((error) => {
+                this.props.onError(error);
             });
         }
     };
