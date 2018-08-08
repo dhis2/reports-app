@@ -178,27 +178,38 @@ class AddEditResource extends PureComponent {
             documentData.url = `http://${documentData.url}`;
         }
         if (api) {
-            if (!this.props.loading) {
-                this.props.updateAppState({ pageState: { loading: true } });
-            }
             if (this.state.resource.id) {
-                api.update(`${DOCUMENTS_ENDPOINT}/${this.state.resource.id}`, documentData).then((response) => {
-                    if (response) {
-                        this.close(true);
-                    }
-                }).catch((error) => {
-                    this.handleError(error);
-                });
+                this.updateDocument(api, documentData);
             } else {
-                api.post(DOCUMENTS_ENDPOINT, documentData).then((response) => {
-                    if (response) {
-                        this.close(true);
-                    }
-                }).catch((error) => {
-                    this.handleError(error);
-                });
+                this.postDocument(api, documentData);
             }
         }
+    };
+
+    updateDocument = (api, documentData) => {
+        if (!this.props.loading) {
+            this.props.updateAppState({ pageState: { loading: true } });
+        }
+        api.update(`${DOCUMENTS_ENDPOINT}/${this.state.resource.id}`, documentData).then((response) => {
+            if (response) {
+                this.close(true);
+            }
+        }).catch((error) => {
+            this.handleError(error);
+        });
+    };
+
+    postDocument = (api, documentData) => {
+        if (!this.props.loading) {
+            this.props.updateAppState({ pageState: { loading: true } });
+        }
+        api.post(DOCUMENTS_ENDPOINT, documentData).then((response) => {
+            if (response) {
+                this.close(true);
+            }
+        }).catch((error) => {
+            this.handleError(error);
+        });
     };
 
     ifFormValid = () => {
