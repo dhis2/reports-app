@@ -178,11 +178,12 @@ class AddEditResource extends PureComponent {
             documentData.url = `http://${documentData.url}`;
         }
         if (api) {
-            this.props.updateAppState({ pageState: { loading: true } });
+            if (!this.props.loading) {
+                this.props.updateAppState({ pageState: { loading: true } });
+            }
             if (this.state.resource.id) {
                 api.update(`${DOCUMENTS_ENDPOINT}/${this.state.resource.id}`, documentData).then((response) => {
                     if (response) {
-                        this.props.updateAppState({ pageState: { loading: false } });
                         this.close(true);
                     }
                 }).catch((error) => {
@@ -191,7 +192,6 @@ class AddEditResource extends PureComponent {
             } else {
                 api.post(DOCUMENTS_ENDPOINT, documentData).then((response) => {
                     if (response) {
-                        this.props.updateAppState({ pageState: { loading: false } });
                         this.close(true);
                     }
                 }).catch((error) => {

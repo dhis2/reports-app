@@ -53,6 +53,12 @@ class Resource extends Page {
         this.loadDocuments(INITIAL_PAGER);
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.resetComponentState) {
+            this.setState({ selectedResource: null });
+        }
+    }
+
     loadDocuments(pager, search) {
         const api = this.props.d2.Api.getApi();
         let url = `${DOCUMENTS_ENDPOINT}?page=${pager.page}&pageSize=${pager.pageSize}` +
@@ -114,7 +120,7 @@ class Resource extends Page {
     };
 
     handleClose = (refreshList) => {
-        this.setState({ open: false });
+        this.setState({ open: false, selectedResource: null });
         if (refreshList === true) {
             this.loadDocuments(INITIAL_PAGER);
         }
