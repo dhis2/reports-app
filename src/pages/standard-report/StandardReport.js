@@ -277,6 +277,8 @@ class StandardReport extends Page {
         }
     }
 
+    showContent = () => this.state.htmlReport || this.props.loading === true;
+
     render() {
         // TODO: Check permissions
         const contextMenuOptions = {
@@ -308,7 +310,7 @@ class StandardReport extends Page {
                 </h1>
                 <div
                     id="std-report-content"
-                    style={{ display: this.state.htmlReport || this.props.loading === true ? 'none' : 'block' }}
+                    style={{ display: this.showContent() ? 'none' : 'block' }}
                 >
                     <Pagination
                         total={this.state.pager.total}
