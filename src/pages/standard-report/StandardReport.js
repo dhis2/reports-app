@@ -306,7 +306,10 @@ class StandardReport extends Page {
                         url={getDocsUrl(this.props.d2.system.version, this.props.sectionKey)}
                     />
                 </h1>
-                <div style={{ display: this.state.htmlReport ? 'none' : 'block' }}>
+                <div
+                    id="std-report-content"
+                    style={{ display: this.state.htmlReport || this.props.loading === true ? 'none' : 'block' }}
+                >
                     <Pagination
                         total={this.state.pager.total}
                         hasNextPage={this.hasNextPage}
@@ -348,7 +351,7 @@ class StandardReport extends Page {
                             currentlyShown={calculatePageValue(this.state.pager)}
                         />
                     </div>
-                    <Button fab onClick={this.addNewReport} style={appStyles.addButton}>
+                    <Button id={'add-std-report-btn-id'} fab onClick={this.addNewReport} style={appStyles.addButton}>
                         <SvgIcon icon={'Add'} />
                     </Button>
                     { this.getActionComponent() }

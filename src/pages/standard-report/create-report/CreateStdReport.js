@@ -49,6 +49,14 @@ class CreateStdReport extends PureComponent {
         this.loadReportParams(REPORT_MODE.REPORT);
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (this.props.selectedReport.id !== nextProps.selectedReport.id) {
+            this.loadReportParams(REPORT_MODE.REPORT);
+        } else {
+            this.getReport();
+        }
+    }
+
     onChangePeriod = (selectedPeriod) => {
         this.setState({ selectedPeriod });
     };

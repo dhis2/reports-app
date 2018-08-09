@@ -255,38 +255,7 @@ class Resource extends Page {
                         url={getDocsUrl(this.props.d2.system.version, this.props.sectionKey)}
                     />
                 </h1>
-                <Pagination
-                    total={this.state.pager.total}
-                    hasNextPage={this.hasNextPage}
-                    hasPreviousPage={this.hasPreviousPage}
-                    onNextPageClick={this.onNextPageClick}
-                    onPreviousPageClick={this.onPreviousPageClick}
-                    currentlyShown={calculatePageValue(this.state.pager)}
-                />
-                <div id={'search-box-id'} style={styles.searchContainer}>
-                    <TextField
-                        value={this.state.search || ''}
-                        type="search"
-                        hintText={i18n.t(i18nKeys.resource.search)}
-                        onBlur={this.search}
-                    />
-                </div>
-                <Table
-                    columns={['displayName']}
-                    rows={this.state.documents}
-                    contextMenuActions={contextMenuOptions}
-                    contextMenuIcons={CONTEXT_MENU_ICONS}
-                />
-                <p style={
-                    {
-                        textAlign: 'center',
-                        ...(this.state.documents.length > 0 ? { display: 'none' } : ''),
-                    }
-                }
-                >
-                    {i18n.t(i18nKeys.messages.noResultsFound)}
-                </p>
-                <div id={'footer-pagination-id'}>
+                <div style={this.props.loading === false ? { display: 'block' } : { display: 'none' }}>
                     <Pagination
                         total={this.state.pager.total}
                         hasNextPage={this.hasNextPage}
@@ -295,11 +264,44 @@ class Resource extends Page {
                         onPreviousPageClick={this.onPreviousPageClick}
                         currentlyShown={calculatePageValue(this.state.pager)}
                     />
+                    <div id={'search-box-id'} style={styles.searchContainer}>
+                        <TextField
+                            value={this.state.search || ''}
+                            type="search"
+                            hintText={i18n.t(i18nKeys.resource.search)}
+                            onBlur={this.search}
+                        />
+                    </div>
+                    <Table
+                        columns={['displayName']}
+                        rows={this.state.documents}
+                        contextMenuActions={contextMenuOptions}
+                        contextMenuIcons={CONTEXT_MENU_ICONS}
+                    />
+                    <p style={
+                        {
+                            textAlign: 'center',
+                            ...(this.state.documents.length > 0 ? { display: 'none' } : ''),
+                        }
+                    }
+                    >
+                        {i18n.t(i18nKeys.messages.noResultsFound)}
+                    </p>
+                    <div id={'footer-pagination-id'}>
+                        <Pagination
+                            total={this.state.pager.total}
+                            hasNextPage={this.hasNextPage}
+                            hasPreviousPage={this.hasPreviousPage}
+                            onNextPageClick={this.onNextPageClick}
+                            onPreviousPageClick={this.onPreviousPageClick}
+                            currentlyShown={calculatePageValue(this.state.pager)}
+                        />
+                    </div>
+                    <Button fab onClick={this.addNewResource} style={appStyles.addButton}>
+                        <SvgIcon icon={'Add'} />
+                    </Button>
+                    { this.getActionComponent() }
                 </div>
-                <Button fab onClick={this.addNewResource} style={appStyles.addButton}>
-                    <SvgIcon icon={'Add'} />
-                </Button>
-                { this.getActionComponent() }
             </div>
         );
     }
