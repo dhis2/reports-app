@@ -119,9 +119,10 @@ class ReportingRateSummary extends Page {
         const api = this.props.d2.Api.getApi();
         const groupUids = Object.keys(this.state.selectedOptionsForOrganisationUnitGroupSets)
             .map(orgUnitGroupKey => this.state.selectedOptionsForOrganisationUnitGroupSets[orgUnitGroupKey]);
+        const dataSetId = this.state.selectedDataSet ? this.state.selectedDataSet.id : null;
 
         // eslint-disable-next-line
-        const url = `organisationUnits/${this.state.selectedOrgUnit}/rateSummary?ds=${this.state.selectedDataSet}&pe=${this.state.selectedPeriod}&criteria=${this.state.selectedCriteria}&groupUids=${groupUids}`;
+        const url = `organisationUnits/${this.state.selectedOrgUnit}/rateSummary?ds=${dataSetId}&pe=${this.state.selectedPeriod}&criteria=${this.state.selectedCriteria}&groupUids=${groupUids}`;
         api.get(url).then((response) => {
             this.props.updateAppState({
                 pageState: {
