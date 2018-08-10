@@ -6,7 +6,7 @@ import { shallow } from 'enzyme';
 import Table from '@dhis2/d2-ui-table';
 import { Pagination, TextField } from '@dhis2/d2-ui-core';
 
-import { CONTEXT_MENU_ACTION } from './standard.report.conf';
+import { ADD_NEW_REPORT_ACTION, CONTEXT_MENU_ACTION } from './standard.report.conf';
 
 import StandardReport from './StandardReport';
 
@@ -140,13 +140,16 @@ describe('Test <StandardReport /> actions:', () => {
 
     /* Add New */
     it('Should call addNewReport action when Add button clicked.', () => {
+        const spy = spyOn(StandardReport.prototype, 'addNewReport').and.callThrough();
         const wrapper = ownShallow();
-        wrapper.instance().addNewReport = jest.fn();
         wrapper.setState({
             selectedReport: 'newReport',
         });
         wrapper.find('#add-std-report-btn-id').simulate('click');
-        expect(wrapper.instance().addNewReport).toHaveBeenCalled();
+        expect(spy).toHaveBeenCalled();
+        expect(wrapper.state().selectedAction).toBe(ADD_NEW_REPORT_ACTION);
+        expect(wrapper.state().selectedReport).toBe('newReport');
+        expect(wrapper.state().open).toBe(true);
     });
 
     /* Create */
