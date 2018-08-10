@@ -228,4 +228,44 @@ describe('Test <StandardReport /> actions:', () => {
         expect(wrapper.instance().props.updateAppState).toHaveBeenCalled();
     });
 
+    /* Close dialog */
+    it('Should update state when close dialog action is trigger.', () => {
+        const wrapper = ownShallow();
+        wrapper.setState({
+            open: true,
+            selectedReport: 'closeReport',
+        });
+        expect(wrapper.state().open).toBe(true);
+        expect(wrapper.state().selectedReport).toBe('closeReport');
+        wrapper.instance().handleClose();
+        expect(wrapper.state().open).toBe(false);
+        expect(wrapper.state().selectedReport).toBe(null);
+    });
+
+    it('Should reload reports when close dialog action is trigger with true', () => {
+        const spy = spyOn(StandardReport.prototype, 'loadData');
+        const wrapper = ownShallow();
+        wrapper.setState({
+            open: true,
+            selectedReport: 'closeReport',
+        });
+        expect(wrapper.state().open).toBe(true);
+        expect(wrapper.state().selectedReport).toBe('closeReport');
+        wrapper.instance().handleClose(true);
+        expect(wrapper.state().open).toBe(false);
+        expect(wrapper.state().selectedReport).toBe(null);
+        expect(spy).toHaveBeenCalled();
+    });
+
+    /* Go Back */
+    it('Should update state when Go Back action is trigger.', () => {
+        const wrapper = ownShallow();
+        wrapper.setState({
+            htmlReport: 'htmlReport',
+        });
+        expect(wrapper.state().htmlReport).toBe('htmlReport');
+        wrapper.instance().goBack();
+        expect(wrapper.state().htmlReport).toBe(null);
+    });
+    
 });
