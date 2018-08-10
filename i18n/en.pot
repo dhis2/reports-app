@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-08-07T14:06:48.210Z\n"
-"PO-Revision-Date: 2018-08-07T14:06:48.210Z\n"
+"POT-Creation-Date: 2018-08-10T07:36:56.794Z\n"
+"PO-Revision-Date: 2018-08-10T07:36:56.794Z\n"
 
 msgid "Cancel"
 msgstr ""
@@ -239,9 +239,6 @@ msgstr ""
 msgid "Create Report Table"
 msgstr ""
 
-msgid "Confirm delete"
-msgstr ""
-
 msgid "[ None ]"
 msgstr ""
 
@@ -293,9 +290,6 @@ msgid "Reporting Period"
 msgstr ""
 
 msgid "Organization Unit"
-msgstr ""
-
-msgid "This object will be created with public edit and view rights"
 msgstr ""
 
 msgid "Name"
@@ -398,6 +392,27 @@ msgstr ""
 msgid ""
 "View and add resources. These resources can be uploaded documents or URLs "
 "on the web."
+msgstr ""
+
+msgid "Add New Resource"
+msgstr ""
+
+msgid "Edit Resource"
+msgstr ""
+
+msgid "Attachment"
+msgstr ""
+
+msgid "File"
+msgstr ""
+
+msgid "URL"
+msgstr ""
+
+msgid "Upload File"
+msgstr ""
+
+msgid "External URL"
 msgstr ""
 
 msgid "Organisation Unit Distribution Report"
@@ -512,6 +527,9 @@ msgstr ""
 msgid "Report deleted"
 msgstr ""
 
+msgid "Resource deleted"
+msgstr ""
+
 msgid "Chart generated"
 msgstr ""
 
@@ -524,25 +542,31 @@ msgstr ""
 msgid "No results have been found"
 msgstr ""
 
+msgid "This object will be created with public edit and view rights"
+msgstr ""
+
+msgid "Confirm delete"
+msgstr ""
+
 msgid "Report Table"
 msgstr ""
 
 msgid "ID"
 msgstr ""
 
-msgid "Actions"
-msgstr ""
-
 msgid "Create"
 msgstr ""
 
-msgid "Sharing Settings"
+msgid "Actions"
 msgstr ""
 
 msgid "Delete"
 msgstr ""
 
-msgid "Show Details"
+msgid "Sharing Settings"
+msgstr ""
+
+msgid "View Resource"
 msgstr ""
 
 msgid "Add users and user groups"

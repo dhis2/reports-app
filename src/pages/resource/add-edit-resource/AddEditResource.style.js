@@ -1,9 +1,6 @@
-const AddEditStdReportStyle = {
+const AddEditResourceStyle = {
     dialog: {
         maxWidth: '900px',
-    },
-    dialogContentContainer: {
-        paddingTop: 5,
     },
     rightsMessage: {
         color: '#999999',
@@ -40,15 +37,6 @@ const AddEditStdReportStyle = {
         width: 20,
         height: 20,
     },
-    relativePeriodsRow: {
-        width: '100%',
-        paddingLeft: 5,
-    },
-    getTemplateLink: {
-        marginTop: 14,
-        width: '100%',
-        textAlign: 'right',
-    },
 };
 
-export default AddEditStdReportStyle;
+export default AddEditResourceStyle;

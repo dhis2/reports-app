@@ -1,6 +1,7 @@
 # DHIS2 Reports App
 
 [![Build Status](https://travis-ci.org/dhis2/reports-app.svg?branch=master)](https://travis-ci.org/dhis2/reports-app)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdhis2%2Freports-app.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fdhis2%2Freports-app?ref=badge_shield)
 
 ### Pre-requisites
 * DHIS2 instance;
@@ -46,3 +47,6 @@ yarn test-e2e
 ```
 
 You must have the dev server running on port 3000, as explained previously.
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdhis2%2Freports-app.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fdhis2%2Freports-app?ref=badge_large)

@@ -13,7 +13,6 @@ import { Button, Pagination, SvgIcon, TextField } from '@dhis2/d2-ui-core';
 /* d2-ui styles */
 import '@dhis2/d2-ui-core/build/css/Table.css';
 import '@dhis2/d2-ui-core/build/css/Pagination.css';
-import HtmlReport from './HtmlReport';
 
 /* styles */
 import styles from './StandardReport.style';
@@ -24,6 +23,7 @@ import Page from '../Page';
 import PageHelper from '../../components/page-helper/PageHelper';
 import AddEditStdReport from './add-edit-report/AddEditStdReport';
 import CreateStdReport from './create-report/CreateStdReport';
+import HtmlReport from './HtmlReport';
 
 /* app config */
 import {
@@ -80,6 +80,10 @@ class StandardReport extends Page {
         this.loadData(INITIAL_PAGER);
     }
 
+    componentWillReceiveProps(newProps) {
+        this.setState({ loadedReport: newProps.loadedReport, loading: newProps.loading });
+    }
+
     loadData(pager, search) {
         const api = this.props.d2.Api.getApi();
         let url = `${REPORTS_ENDPOINT}?page=${pager.page}&pageSize=${pager.pageSize}` +
@@ -105,8 +109,8 @@ class StandardReport extends Page {
                     });
                     this.setState(response);
                 }
-            }).catch(() => {
-                // TODO: manage error
+            }).catch((error) => {
+                this.manageError(error);
             }).finally(() => {
                 this.state.deleteInProgress = false;
             });
@@ -156,6 +160,10 @@ class StandardReport extends Page {
         }
     }
 
+    handleError = (error) => {
+        this.manageError(error);
+    };
+
     handleDisplayHtmlReport(htmlReport) {
         this.setState({ htmlReport, open: false, selectedReport: null });
     }
@@ -181,7 +189,7 @@ class StandardReport extends Page {
             snackbarConf: {
                 type: ACTION_MESSAGE,
                 message: args.displayName,
-                action: i18n.t(i18nKeys.standardReport.confirmDelete),
+                action: i18n.t(i18nKeys.messages.confirmDelete),
                 onActionClick: () => {
                     const api = this.props.d2.Api.getApi();
                     const url = `${REPORTS_ENDPOINT}/${args.id}`;
@@ -194,8 +202,8 @@ class StandardReport extends Page {
                         if (response && this.isPageMounted()) {
                             this.loadData(INITIAL_PAGER, this.state.search);
                         }
-                    }).catch(() => {
-                        // TODO: manage error
+                    }).catch((error) => {
+                        this.manageError(error);
                     });
                 },
             },
@@ -210,6 +218,7 @@ class StandardReport extends Page {
                 onRequestClose={this.handleClose}
                 onGetHtmlReport={this.handleDisplayHtmlReport}
                 d2={this.props.d2}
+                onError={this.handleError}
             />
         ) : '';
     }
@@ -230,10 +239,13 @@ class StandardReport extends Page {
         return (
             <AddEditStdReport
                 selectedReport={this.state.selectedReport}
+                loadedReport={this.state.loadedReport}
+                loading={this.state.loading}
                 open={this.state.open}
                 onRequestClose={this.handleClose}
                 d2={this.props.d2}
                 updateAppState={this.props.updateAppState}
+                onError={this.handleError}
             />
         );
     }
@@ -245,6 +257,7 @@ class StandardReport extends Page {
                 onRequestClose={this.handleClose}
                 d2={this.props.d2}
                 updateAppState={this.props.updateAppState}
+                onError={this.handleError}
             />
         );
     }
@@ -263,6 +276,8 @@ class StandardReport extends Page {
             return '';
         }
     }
+
+    showContent = () => this.state.htmlReport || this.props.loading === true;
 
     render() {
         // TODO: Check permissions
@@ -293,7 +308,10 @@ class StandardReport extends Page {
                         url={getDocsUrl(this.props.d2.system.version, this.props.sectionKey)}
                     />
                 </h1>
-                <div style={{ display: this.state.htmlReport ? 'none' : 'block' }}>
+                <div
+                    id="std-report-content"
+                    style={{ display: this.showContent() ? 'none' : 'block' }}
+                >
                     <Pagination
                         total={this.state.pager.total}
                         hasNextPage={this.hasNextPage}
@@ -335,7 +353,7 @@ class StandardReport extends Page {
                             currentlyShown={calculatePageValue(this.state.pager)}
                         />
                     </div>
-                    <Button fab onClick={this.addNewReport} style={appStyles.addButton}>
+                    <Button id={'add-std-report-btn-id'} fab onClick={this.addNewReport} style={appStyles.addButton}>
                         <SvgIcon icon={'Add'} />
                     </Button>
                     { this.getActionComponent() }
