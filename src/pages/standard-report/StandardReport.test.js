@@ -267,5 +267,34 @@ describe('Test <StandardReport /> actions:', () => {
         wrapper.instance().goBack();
         expect(wrapper.state().htmlReport).toBe(null);
     });
-    
+
+    /* Pagination */
+    describe('Test pagination actions:', () => {
+        let wrapper;
+        beforeEach(() => {
+            wrapper = ownShallow();
+        });
+
+        it('Should have a "hasNextPage" function.', () => {
+            expect(wrapper.instance().hasNextPage).toBeDefined();
+            expect(typeof wrapper.instance().hasNextPage).toBe('function');
+        });
+
+        it('Should have a "hasPreviousPage" function.', () => {
+            expect(wrapper.instance().hasPreviousPage).toBeDefined();
+            expect(typeof wrapper.instance().hasPreviousPage).toBe('function');
+        });
+
+        it('Should have a "onNextPageClick" function.', () => {
+            expect(wrapper.instance().onNextPageClick).toBeDefined();
+            expect(typeof wrapper.instance().onNextPageClick).toBe('function');
+        });
+
+        it('Should have a "onPreviousPageClick" function.', () => {
+            expect(wrapper.instance().onPreviousPageClick).toBeDefined();
+            expect(typeof wrapper.instance().onPreviousPageClick).toBe('function');
+        });
+
+    });
+
 });
