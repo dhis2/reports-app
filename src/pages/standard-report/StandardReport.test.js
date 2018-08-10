@@ -127,6 +127,14 @@ describe('Test <StandardReport /> rendering:', () => {
 
 describe('Test <StandardReport /> actions:', () => {
 
+    /* Load Initial Data */
+    it('Should call loadData of standard report list when mount.', () => {
+        const spy = spyOn(StandardReport.prototype, 'loadData').and.callThrough();
+        const wrapper = ownShallow();
+        wrapper.instance().componentDidMount();
+        expect(spy).toHaveBeenCalled();
+    });
+
     /* Search */
     it('Should call search action on search TextField "onBlur".', () => {
         const wrapper = ownShallow();
