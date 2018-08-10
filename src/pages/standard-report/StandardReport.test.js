@@ -4,7 +4,9 @@ import { shallow } from 'enzyme';
 
 /* d2-ui */
 import Table from '@dhis2/d2-ui-table';
-import { Pagination } from '@dhis2/d2-ui-core';
+import { Pagination, TextField } from '@dhis2/d2-ui-core';
+
+import { CONTEXT_MENU_ACTION } from './standard.report.conf';
 
 import StandardReport from './StandardReport';
 
@@ -83,7 +85,7 @@ describe('Test <StandardReport /> rendering:', () => {
         expect(pageContent.find(Pagination)).toHaveLength(2);
     });
 
-    it('Should not render a "Standard Report" table when no elements.' , () => {
+    it('Should not render "Standard Report" table rows when no elements.' , () => {
         const reports = [];
         wrapper.setState({
             reports,
@@ -119,6 +121,100 @@ describe('Test <StandardReport /> rendering:', () => {
 
     it('Standard Report component renders Floating add button', () => {
         expect(wrapper.find('#add-std-report-btn-id')).toHaveLength(1);
+    });
+
+});
+
+describe('Test <StandardReport /> actions:', () => {
+
+    /* Search */
+    it('Should call search action on search TextField "onBlur".', () => {
+        const wrapper = ownShallow();
+        wrapper.instance().search = jest.fn();
+        wrapper.setState({
+            search: 'searchWord',
+        });
+        wrapper.find(TextField).simulate('blur');
+        expect(wrapper.instance().search).toHaveBeenCalled();
+    });
+
+    /* Add New */
+    it('Should call addNewReport action when Add button clicked.', () => {
+        const wrapper = ownShallow();
+        wrapper.instance().addNewReport = jest.fn();
+        wrapper.setState({
+            selectedReport: 'newReport',
+        });
+        wrapper.find('#add-std-report-btn-id').simulate('click');
+        expect(wrapper.instance().addNewReport).toHaveBeenCalled();
+    });
+
+    /* Create */
+    it('Should update state properly for "Create" menu action.', () => {
+        const wrapper = ownShallow();
+        const args = { displayName: 'nameCreate', reportTable: 'tableCreate', id: 'idCreate'};
+        wrapper.instance().createReport(args);
+        expect(wrapper.state().selectedReport.displayName).toBe('nameCreate');
+    });
+
+    it('Should call correct component for "Create" action.', () => {
+        const spy = spyOn(StandardReport.prototype, 'getCreateStdReportComponent');
+        const wrapper = ownShallow();
+        wrapper.setState({
+            open: true,
+            selectedReport: 'newReport',
+            selectedAction: CONTEXT_MENU_ACTION.CREATE,
+        });
+        wrapper.instance().getActionComponent();
+        expect(spy).toHaveBeenCalled();
+    });
+
+    /* Edit */
+    it('Should update state properly for "Edit" menu action.', () => {
+        const wrapper = ownShallow();
+        const args = { displayName: 'nameEdit', reportTable: 'tableEdit', id: 'idEdit'};
+        wrapper.instance().editReport(args);
+        expect(wrapper.state().selectedReport.displayName).toBe('nameEdit');
+    });
+
+    it('Should call correct component for "Edit" action.', () => {
+        const spy = spyOn(StandardReport.prototype, 'getEditComponent');
+        const wrapper = ownShallow();
+        wrapper.setState({
+            open: true,
+            selectedReport: 'editReport',
+            selectedAction: CONTEXT_MENU_ACTION.EDIT,
+        });
+        wrapper.instance().getActionComponent();
+        expect(spy).toHaveBeenCalled();
+    });
+
+    /* Sharing Settings  */
+    it('Should update state properly for "Sharing settings" menu action.', () => {
+        const wrapper = ownShallow();
+        const args = { displayName: 'nameSharingSettings', reportTable: 'tableSharingSettings', id: 'idSharingSettings'};
+        wrapper.instance().createReport(args);
+        expect(wrapper.state().selectedReport.displayName).toBe('nameSharingSettings');
+    });
+
+    it('Should call correct component for "Sharing settings" action.', () => {
+        const spy = spyOn(StandardReport.prototype, 'getSharingDialog');
+        const wrapper = ownShallow();
+        wrapper.setState({
+            open: true,
+            selectedReport: 'sharingSettingsReport',
+            selectedAction: CONTEXT_MENU_ACTION.SHARING_SETTINGS,
+        });
+        wrapper.instance().getActionComponent();
+        expect(spy).toHaveBeenCalled();
+    });
+
+    /* Delete */
+    it('Should allow "Delete" a standard report.', () => {
+        const wrapper = ownShallow();
+        const args = { displayName: 'nameDelete', reportTable: 'tableDelete', id: 'idDelete'};
+        wrapper.instance().delete(args);
+        expect(wrapper.instance().props.updateAppState).toHaveBeenCalled();
     });
 
 });
