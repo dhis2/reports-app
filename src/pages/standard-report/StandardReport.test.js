@@ -268,6 +268,14 @@ describe('Test <StandardReport /> actions:', () => {
         expect(wrapper.state().htmlReport).toBe(null);
     });
 
+    /* Display Html Report*/
+    it('Should update state on "handleDisplayHtmlReport" function.', () => {
+        const wrapper = ownShallow();
+        const report = { displayName: 'nameHtmlReport', reportTable: 'tableHtmlReport', id: 'idHtmlReport'};
+        wrapper.instance().handleDisplayHtmlReport(report);
+        expect(wrapper.state().htmlReport).toBe(report);
+    });
+
     /* Pagination */
     describe('Test pagination actions:', () => {
         let wrapper;
