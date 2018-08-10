@@ -334,12 +334,14 @@ class StandardReport extends Page {
                         contextMenuActions={contextMenuOptions}
                         contextMenuIcons={CONTEXT_MENU_ICONS}
                     />
-                    <p style={
-                        {
-                            textAlign: 'center',
-                            ...(this.state.reports.length > 0 ? { display: 'none' } : ''),
+                    <p
+                        id={'no-std-report-find-message-id'}
+                        style={
+                            {
+                                textAlign: 'center',
+                                ...(this.state.reports.length > 0 ? { display: 'none' } : ''),
+                            }
                         }
-                    }
                     >
                         {i18n.t(i18nKeys.messages.noResultsFound)}
                     </p>
