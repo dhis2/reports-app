@@ -305,7 +305,7 @@ class AddEditStdReport extends PureComponent {
     validateGenericFields = () => (!!(this.state.report.name && this.state.report.designContent));
 
     showSection = () => {
-        //  if JASPER_REPORT_TABLE
+        //  if not JASPER_REPORT_TABLE
         if (this.state.report.type !== TYPES.JASPER_REPORT_TABLE) {
             return styles.sectionBox;
         }
@@ -315,12 +315,14 @@ class AddEditStdReport extends PureComponent {
     render() {
         const actions = [
             <Button
+                key={'cancel-action-btn-key'}
                 style={appStyles.dialogBtn}
                 onClick={this.close}
             >
                 {i18n.t(i18nKeys.buttons.cancel)}
             </Button>,
             <Button
+                key={'save-action-btn-key'}
                 raised
                 color={'primary'}
                 style={appStyles.dialogBtn}
@@ -342,7 +344,7 @@ class AddEditStdReport extends PureComponent {
                 open={this.props.open}
             >
                 <div style={styles.dialogContentContainer}>
-                    <span className={'row'} style={styles.rightsMessage}>
+                    <span id={'display-right-message-id'} className={'row'} style={styles.rightsMessage}>
                         {i18n.t(i18nKeys.messages.rightsMessage)}
                     </span>
                     {/* details */}
@@ -371,6 +373,7 @@ class AddEditStdReport extends PureComponent {
                             {/* design file hidden file input */}
                             <input
                                 style={{ display: 'none' }}
+                                name={'hiddenInputFile'}
                                 type="file"
                                 // eslint-disable-next-line
                                 ref={(fileInput) => { this.fileInput = fileInput; }}
@@ -416,11 +419,11 @@ class AddEditStdReport extends PureComponent {
                         </div>
                     </div>
                     {/* relative periods  */}
-                    <div className={'row'} style={this.showSection()}>
+                    <div id={'relative-periods-id'} className={'row'} style={this.showSection()}>
                         <div className={'col-xs-12'} style={styles.sectionTitle}>
                             {i18n.t(i18nKeys.standardReport.relativePeriods)}
                         </div>
-                        <div className="row" style={styles.relativePeriodsRow}>
+                        <div id={'relative-periods-row-id'} className="row" style={styles.relativePeriodsRow}>
                             {relativePeriods.map(relativePeriod => (
                                 <div key={relativePeriod.label} className="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                                     <h4>{relativePeriod.label}</h4>
@@ -440,7 +443,7 @@ class AddEditStdReport extends PureComponent {
                         </div>
                     </div>
                     {/* report parameters */}
-                    <div className={'row'} style={this.showSection()}>
+                    <div id={'report-parameters-id'} className={'row'} style={this.showSection()}>
                         <div className={'col-xs-12'} style={styles.sectionTitle}>
                             {i18n.t(i18nKeys.standardReport.reportParameters)}
                         </div>
@@ -467,7 +470,7 @@ class AddEditStdReport extends PureComponent {
                             {i18n.t(i18nKeys.standardReport.settings)}
                         </div>
                         {/* cache strategy */}
-                        <div className={'col-xs-12'} style={styles.sectionContent}>
+                        <div id={'cache-strategy-id'} className={'col-xs-12'} style={styles.sectionContent}>
                             <SelectField
                                 style={styles.width100}
                                 label={i18n.t(i18nKeys.standardReport.cacheStrategy)}

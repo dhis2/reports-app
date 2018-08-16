@@ -63,7 +63,7 @@ describe('Test <StandardReport /> rendering:', () => {
         wrapper = ownShallow();
     });
 
-    it('Should render without crashing', () => {
+    it('Should render without crashing.', () => {
         ownShallow();
     });
 
@@ -129,10 +129,10 @@ describe('Test <StandardReport /> actions:', () => {
 
     /* Load Initial Data */
     it('Should call loadData of standard report list when mount.', () => {
-        const spy = spyOn(StandardReport.prototype, 'loadData').and.callThrough();
         const wrapper = ownShallow();
+        wrapper.instance().loadData = jest.fn();
         wrapper.instance().componentDidMount();
-        expect(spy).toHaveBeenCalled();
+        expect(wrapper.instance().loadData).toHaveBeenCalled();
     });
 
     /* Search */
