@@ -21,12 +21,16 @@ export class DatasetsDropdown extends PureComponent {
         onChange: PropTypes.func,
         label: PropTypes.string,
         fullWidth: PropTypes.bool,
+        fields: PropTypes.string,
+        filter: PropTypes.func,
     }
 
     static defaultProps = {
         onChange: () => {},
         label: i18n.t(i18nKeys.datasetsDropdown.dataSetLabel),
         fullWidth: true,
+        fields: 'id,displayName',
+        filter: null,
     }
 
     constructor() {
@@ -39,13 +43,14 @@ export class DatasetsDropdown extends PureComponent {
     }
 
     componentDidMount() {
-        const d2 = this.props.d2;
+        const { d2, filter, fields } = this.props;
         d2.models.dataSet.list({
             paging: false,
-            fields: 'id,displayName',
+            fields,
         }).then((dataSetsResponse) => {
+            const dataSets = dataSetsResponse.toArray();
             this.setState({
-                dataSets: dataSetsResponse.toArray(),
+                dataSets: filter ? dataSets.filter(filter) : dataSets,
             });
         }).catch(() => {
             // TODO Manage error
@@ -53,13 +58,14 @@ export class DatasetsDropdown extends PureComponent {
     }
 
     onChange = (event) => {
-        const value = event.target.value;
+        const dataSetId = event.target.value;
         this.setState({
-            selected: value,
+            selected: dataSetId,
         });
 
+        const dataSet = this.state.dataSets.find(currentDataSet => currentDataSet.id === dataSetId);
         if (this.props.onChange) {
-            this.props.onChange(value);
+            this.props.onChange(dataSet);
         }
     }
 
