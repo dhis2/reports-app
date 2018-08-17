@@ -166,6 +166,8 @@ describe('Test <StandardReport /> actions:', () => {
         const args = { displayName: 'nameCreate', reportTable: 'tableCreate', id: 'idCreate'};
         wrapper.instance().createReport(args);
         expect(wrapper.state().selectedReport.displayName).toBe('nameCreate');
+        expect(wrapper.state().selectedAction).toBe(CONTEXT_MENU_ACTION.CREATE);
+        expect(wrapper.state().open).toBe(true);
     });
 
     it('Should call correct component for "Create" action.', () => {
@@ -186,6 +188,8 @@ describe('Test <StandardReport /> actions:', () => {
         const args = { displayName: 'nameEdit', reportTable: 'tableEdit', id: 'idEdit'};
         wrapper.instance().editReport(args);
         expect(wrapper.state().selectedReport.displayName).toBe('nameEdit');
+        expect(wrapper.state().selectedAction).toBe(CONTEXT_MENU_ACTION.EDIT);
+        expect(wrapper.state().open).toBe(true);
     });
 
     it('Should call correct component for "Edit" action.', () => {
@@ -204,8 +208,10 @@ describe('Test <StandardReport /> actions:', () => {
     it('Should update state properly for "Sharing settings" menu action.', () => {
         const wrapper = ownShallow();
         const args = { displayName: 'nameSharingSettings', reportTable: 'tableSharingSettings', id: 'idSharingSettings'};
-        wrapper.instance().createReport(args);
+        wrapper.instance().sharingSettings(args);
         expect(wrapper.state().selectedReport.displayName).toBe('nameSharingSettings');
+        expect(wrapper.state().selectedAction).toBe(CONTEXT_MENU_ACTION.SHARING_SETTINGS);
+        expect(wrapper.state().open).toBe(true);
     });
 
     it('Should call correct component for "Sharing settings" action.', () => {
