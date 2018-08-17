@@ -185,12 +185,14 @@ class CreateStdReport extends PureComponent {
     render() {
         const actions = [
             <Button
+                key={'cancel-btn-key'}
                 style={appStyles.dialogBtn}
                 onClick={this.props.onRequestClose}
             >
                 {i18n.t(i18nKeys.buttons.cancel)}
             </Button>,
             <Button
+                key={'export-excel-btn-key'}
                 style={appStyles.dialogBtn}
                 disabled={!this.validate()}
                 onClick={this.getExcelReport}
@@ -198,6 +200,7 @@ class CreateStdReport extends PureComponent {
                 {i18n.t(i18nKeys.buttons.downloadAsExcel)}
             </Button>,
             <Button
+                key={'get-report-key'}
                 raised
                 color={'primary'}
                 style={appStyles.dialogBtn}

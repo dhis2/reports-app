@@ -131,7 +131,6 @@ export const i18nKeys = {
         reportTableLabel: 'Report table',
         addNewReportTitle: 'Add New Report',
         editReportTitle: 'Edit Report',
-        createReportTableTitle: 'Create Report Table',
         removeReportTitle: 'Remove Report',
         noFileChosen: 'No File Chosen',
         getCurrentDesign: 'Get current design',

@@ -6,7 +6,7 @@ const fakerData = {
             snapshot: true,
         },
         Api: {
-            getApi: () => {},
+            getApi: () => ({ baseUrl: 'http://localhost:8080' }),
         },
     },
 };

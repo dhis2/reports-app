@@ -3,12 +3,12 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import Page from './Page';
-import StandardReport from './standard-report/StandardReport';
+import DataSetReport from './data-set-report/DataSetReport';
 import Home from './home/Home';
 
 import fakerData from '../helpers/fakerTests';
 
-import {STANDARD_REPORT_SECTION_KEY} from './sections.conf';
+import {DATA_SET_REPORT_SECTION_KEY} from './sections.conf';
 
 jest.mock('./Page'); // Page is now a mock constructor
 jest.mock('@dhis2/d2-ui-org-unit-tree', () => ({
@@ -23,8 +23,8 @@ const notPageComponentShallow = () => {
 
 const pageComponentShallow = () => {
     return shallow(
-        <StandardReport
-            sectionKey={STANDARD_REPORT_SECTION_KEY}
+        <DataSetReport
+            sectionKey={DATA_SET_REPORT_SECTION_KEY}
             d2={fakerData.d2}
         />,
     );
