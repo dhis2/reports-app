@@ -5,6 +5,7 @@ import { shallow } from 'enzyme';
 /* d2-ui */
 import Table from '@dhis2/d2-ui-table';
 import { Pagination, TextField } from '@dhis2/d2-ui-core';
+import Resource from '../resource/Resource';
 
 import { ADD_NEW_REPORT_ACTION, CONTEXT_MENU_ACTION } from './standard.report.conf';
 
@@ -292,21 +293,49 @@ describe('Test <StandardReport /> actions:', () => {
         it('Should have a "hasNextPage" function.', () => {
             expect(wrapper.instance().hasNextPage).toBeDefined();
             expect(typeof wrapper.instance().hasNextPage).toBe('function');
+            wrapper.setState({
+                pager: { page: 1, pageCount: 10 },
+            });
+            expect(wrapper.instance().hasNextPage()).toBe(true);
+            wrapper.setState({
+                pager: { page: 10, pageCount: 10 },
+            });
+            expect(wrapper.instance().hasNextPage()).toBe(false);
         });
 
         it('Should have a "hasPreviousPage" function.', () => {
             expect(wrapper.instance().hasPreviousPage).toBeDefined();
             expect(typeof wrapper.instance().hasPreviousPage).toBe('function');
+            wrapper.setState({
+                pager: { page: 10, pageCount: 10 },
+            });
+            expect(wrapper.instance().hasPreviousPage()).toBe(true);
+            wrapper.setState({
+                pager: { page: 0, pageCount: 10 },
+            });
+            expect(wrapper.instance().hasPreviousPage()).toBe(false);
         });
 
         it('Should have a "onNextPageClick" function.', () => {
+            const spy = spyOn(StandardReport.prototype, 'loadData');
             expect(wrapper.instance().onNextPageClick).toBeDefined();
             expect(typeof wrapper.instance().onNextPageClick).toBe('function');
+            wrapper.setState({
+                pager: { page: 1, pageCount: 10 },
+            });
+            wrapper.instance().onNextPageClick();
+            expect(spy).toHaveBeenCalledWith({ page: 2, pageCount: 10 }, "");
         });
 
         it('Should have a "onPreviousPageClick" function.', () => {
+            const spy = spyOn(StandardReport.prototype, 'loadData');
             expect(wrapper.instance().onPreviousPageClick).toBeDefined();
             expect(typeof wrapper.instance().onPreviousPageClick).toBe('function');
+            wrapper.setState({
+                pager: { page: 2, pageCount: 10 },
+            });
+            wrapper.instance().onPreviousPageClick();
+            expect(spy).toHaveBeenCalledWith({ page: 1, pageCount: 10 }, "");
         });
 
     });
