@@ -58,6 +58,7 @@ class Resource extends Page {
         this.sharingSettings = this.sharingSettings.bind(this);
         this.delete = this.delete.bind(this);
         this.handleClose = this.handleClose.bind(this);
+        this.handleError = this.handleError.bind(this);
     }
 
     getChildContext() {

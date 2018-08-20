@@ -147,7 +147,7 @@ class AddEditResource extends PureComponent {
                     });
                 }
             }).catch((error) => {
-                this.handleError(error);
+                this.props.onError(error);
             });
         }
     };
@@ -165,7 +165,7 @@ class AddEditResource extends PureComponent {
                         this.addDocument(response.response.fileResource);
                     }
                 }).catch((error) => {
-                    this.handleError(error);
+                    this.props.onError(error);
                 });
             }
         }
@@ -198,7 +198,7 @@ class AddEditResource extends PureComponent {
                 this.close(true);
             }
         }).catch((error) => {
-            this.handleError(error);
+            this.props.onError(error);
         });
     };
 
@@ -211,7 +211,7 @@ class AddEditResource extends PureComponent {
                 this.close(true);
             }
         }).catch((error) => {
-            this.handleError(error);
+            this.props.onError(error);
         });
     };
 
@@ -233,10 +233,6 @@ class AddEditResource extends PureComponent {
 
     validateUploadType = () => !(!this.props.selectedResource &&
             (!this.state.selectedFileToUpload || !this.state.selectedFileToUpload.name));
-
-    handleError = (error) => {
-        this.props.onError(error);
-    };
 
     displayUploadSection = () => (
         this.state.resource.type === TYPES.UPLOAD_FILE ?

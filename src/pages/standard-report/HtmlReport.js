@@ -5,7 +5,8 @@ class HtmlReport extends Component {
     componentDidMount() {
         const jqueryScript = document.createElement('script');
         jqueryScript.type = 'text/javascript';
-        jqueryScript.src = 'http://localhost:8080/dhis-web-commons/javascripts/jQuery/jquery.min.js';
+        // jqueryScript.src = 'http://localhost:8080/dhis-web-commons/javascripts/jQuery/jquery.min.js';
+        jqueryScript.src = '../dhis-web-commons/javascripts/jQuery/jquery.min.js';
         jqueryScript.onload = () => {
             this.loadDHIS2Script();
         };
@@ -23,7 +24,8 @@ class HtmlReport extends Component {
     loadDHIS2Script = () => {
         const dhis2Script = document.createElement('script');
         dhis2Script.type = 'text/javascript';
-        dhis2Script.src = 'http://localhost:8080/dhis-web-commons/javascripts/dhis2/dhis2.util.js';
+        // dhis2Script.src = 'http://localhost:8080/dhis-web-commons/javascripts/dhis2/dhis2.util.js';
+        dhis2Script.src = '../dhis-web-commons/javascripts/dhis2/dhis2.util.js';
         document.head.appendChild(dhis2Script);
     };
 
