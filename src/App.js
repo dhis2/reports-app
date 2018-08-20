@@ -10,6 +10,11 @@ import D2UIApp from '@dhis2/d2-ui-app';
 import HeaderBar from '@dhis2/d2-ui-header-bar';
 import { Sidebar, FeedbackSnackbar, CircularProgress } from '@dhis2/d2-ui-core';
 
+/* Redux */
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { updateFeedbackState } from './reducers/feedback';
+
 /* App components */
 import AppRouter from './components/app-router/AppRouter';
 
@@ -25,6 +30,14 @@ import styles from './styles';
 class App extends PureComponent {
     static propTypes = {
         d2: PropTypes.object.isRequired,
+        showSnackbar: PropTypes.bool.isRequired,
+        snackbarConf: PropTypes.shape({
+            type: PropTypes.string,
+            message: PropTypes.string,
+            action: PropTypes.string,
+            onActionClick: PropTypes.func,
+        }).isRequired,
+        updateFeedbackState: PropTypes.func.isRequired,
     };
 
     constructor(props) {
@@ -33,30 +46,20 @@ class App extends PureComponent {
         this.state = {
             d2: props.d2,
             currentSection: '',
-            showSnackbar: false,
-            snackbarConf: {
-                type: '',
-                message: '',
-            },
             pageState: {},
         };
     }
 
     onFeedbackSnackbarClose = () => {
-        this.setState({
-            showSnackbar: false,
-            snackbarConf: {
-                type: '',
-                message: '',
-            },
+        this.props.updateFeedbackState(false, {
+            type: '',
+            message: 'test',
         });
     };
 
     getContext() {
         return {
             d2: this.props.d2,
-            showSnackbar: this.state.showSnackbar,
-            snackbarConf: this.state.snackbarConf,
             currentSection: this.state.currentSection,
             updateAppState: this.updateAppState,
             pageState: this.state.pageState,
@@ -95,8 +98,8 @@ class App extends PureComponent {
             ) : (
                 <FeedbackSnackbar
                     onClose={this.onFeedbackSnackbarClose}
-                    show={this.state.showSnackbar}
-                    conf={this.state.snackbarConf}
+                    show={this.props.showSnackbar}
+                    conf={this.props.snackbarConf}
                 />
             );
 
@@ -123,4 +126,16 @@ class App extends PureComponent {
     }
 }
 
-export default App;
+const mapStateToProps = ({ feedback }) => ({
+    showSnackbar: feedback.showSnackbar,
+    snackbarConf: { ...feedback.snackbarConf },
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+    updateFeedbackState,
+}, dispatch);
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(App);
