@@ -8,7 +8,7 @@ import { Paper } from 'material-ui';
 /* d2-ui */
 import Table from '@dhis2/d2-ui-table';
 import SharingDialog from '@dhis2/d2-ui-sharing-dialog';
-import { Button, Pagination, SvgIcon, TextField } from '@dhis2/d2-ui-core';
+import { Button, Pagination, SvgIcon, InputField } from '@dhis2/d2-ui-core';
 
 /* d2-ui styles */
 import '@dhis2/d2-ui-core/build/css/Table.css';
@@ -139,11 +139,11 @@ class StandardReport extends Page {
     }
 
     /* Search */
-    search(event) {
+    search(field, value) {
         // ...and not empty search
-        if (this.state.search !== event.target.value && /\S/.test(event.target.value)) {
-            this.loadData(INITIAL_PAGER, event.target.value);
-        } else if (this.state.search !== event.target.value) {
+        if (this.state.search !== value && /\S/.test(value)) {
+            this.loadData(INITIAL_PAGER, value);
+        } else if (this.state.search !== value) {
             this.loadData(INITIAL_PAGER);
         }
     }
@@ -321,11 +321,12 @@ class StandardReport extends Page {
                         currentlyShown={calculatePageValue(this.state.pager)}
                     />
                     <div id={'search-box-id'} style={styles.searchContainer}>
-                        <TextField
+                        <InputField
                             value={this.state.search || ''}
                             type="search"
                             hintText={i18n.t(i18nKeys.standardReport.search)}
-                            onBlur={this.search}
+                            // eslint-disable-next-line
+                            onChange={value => this.search('search', value)}
                         />
                     </div>
                     <Table
