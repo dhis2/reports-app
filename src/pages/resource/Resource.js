@@ -42,6 +42,23 @@ class Resource extends Page {
             search: '',
             open: false,
         };
+
+        this.search = this.search.bind(this);
+        this.addNewResource = this.addNewResource.bind(this);
+
+        /* Pagination */
+        this.hasNextPage = this.hasNextPage.bind(this);
+        this.hasPreviousPage = this.hasPreviousPage.bind(this);
+        this.onNextPageClick = this.onNextPageClick.bind(this);
+        this.onPreviousPageClick = this.onPreviousPageClick.bind(this);
+
+        /* Context Menu */
+        this.viewResource = this.viewResource.bind(this);
+        this.editResource = this.editResource.bind(this);
+        this.sharingSettings = this.sharingSettings.bind(this);
+        this.delete = this.delete.bind(this);
+        this.handleClose = this.handleClose.bind(this);
+        this.handleError = this.handleError.bind(this);
     }
 
     getChildContext() {
@@ -93,62 +110,66 @@ class Resource extends Page {
     }
 
     /* Pagination */
-    hasNextPage = () => this.state.pager.page < this.state.pager.pageCount;
+    hasNextPage() {
+        return this.state.pager.page < this.state.pager.pageCount;
+    }
 
-    hasPreviousPage = () => this.state.pager.page > 1;
+    hasPreviousPage() {
+        return this.state.pager.page > 1;
+    }
 
-    onNextPageClick = () => {
+    onNextPageClick() {
         const pager = Object.assign({}, this.state.pager);
         pager.page += 1;
         this.loadDocuments(pager, this.state.search);
-    };
+    }
 
-    onPreviousPageClick = () => {
+    onPreviousPageClick() {
         const pager = Object.assign({}, this.state.pager);
         pager.page -= 1;
         this.loadDocuments(pager, this.state.search);
-    };
+    }
 
     /* Search */
-    search = (event) => {
+    search(event) {
         // ...and not empty search
         if (this.state.search !== event.target.value && /\S/.test(event.target.value)) {
             this.loadDocuments(INITIAL_PAGER, event.target.value);
         } else if (this.state.search !== event.target.value) {
             this.loadDocuments(INITIAL_PAGER);
         }
-    };
+    }
 
-    handleClose = (refreshList) => {
+    handleClose(refreshList) {
         this.setState({ open: false, selectedResource: null });
         if (refreshList === true) {
             this.loadDocuments(INITIAL_PAGER);
         }
-    };
+    }
 
-    handleError = (error) => {
+    handleError(error) {
         this.manageError(error);
-    };
+    }
 
     /* Add new Resource */
-    addNewResource = () => {
+    addNewResource() {
         this.setState({ loading: true, open: true, selectedAction: ADD_NEW_RESOURCE_ACTION });
-    };
+    }
 
     /* Context Menu Actions */
-    viewResource = (args) => {
+    viewResource(args) {
         this.setState({ open: true, selectedResource: args, selectedAction: CONTEXT_MENU_ACTION.VIEW });
-    };
+    }
 
-    sharingSettings = (args) => {
+    sharingSettings(args) {
         this.setState({ open: true, selectedResource: args, selectedAction: CONTEXT_MENU_ACTION.SHARING_SETTINGS });
-    };
+    }
 
-    editResource = (args) => {
+    editResource(args) {
         this.setState({ open: true, selectedResource: args, selectedAction: CONTEXT_MENU_ACTION.EDIT });
-    };
+    }
 
-    delete = (args) => {
+    delete(args) {
         this.props.updateAppState({
             showSnackbar: true,
             snackbarConf: {
@@ -255,7 +276,10 @@ class Resource extends Page {
                         url={getDocsUrl(this.props.d2.system.version, this.props.sectionKey)}
                     />
                 </h1>
-                <div style={this.props.loading === false ? { display: 'block' } : { display: 'none' }}>
+                <div
+                    id="resource-content"
+                    style={this.props.loading === false ? { display: 'block' } : { display: 'none' }}
+                >
                     <Pagination
                         total={this.state.pager.total}
                         hasNextPage={this.hasNextPage}
@@ -278,12 +302,14 @@ class Resource extends Page {
                         contextMenuActions={contextMenuOptions}
                         contextMenuIcons={CONTEXT_MENU_ICONS}
                     />
-                    <p style={
-                        {
-                            textAlign: 'center',
-                            ...(this.state.documents.length > 0 ? { display: 'none' } : ''),
+                    <p
+                        id={'no-resource-find-message-id'}
+                        style={
+                            {
+                                textAlign: 'center',
+                                ...(this.state.documents.length > 0 ? { display: 'none' } : ''),
+                            }
                         }
-                    }
                     >
                         {i18n.t(i18nKeys.messages.noResultsFound)}
                     </p>
@@ -297,7 +323,7 @@ class Resource extends Page {
                             currentlyShown={calculatePageValue(this.state.pager)}
                         />
                     </div>
-                    <Button fab onClick={this.addNewResource} style={appStyles.addButton}>
+                    <Button id={'add-resource-btn-id'} fab onClick={this.addNewResource} style={appStyles.addButton}>
                         <SvgIcon icon={'Add'} />
                     </Button>
                     { this.getActionComponent() }
