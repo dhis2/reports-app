@@ -96,6 +96,9 @@ class AddEditResource extends PureComponent {
         this.setState({ resource: { ...this.state.resource, url } });
     };
 
+    /**
+     * When editing a resource user cannot change it's type, soo we return an array only with the selected resource type
+     */
     getTypeForResource = () => {
         if (this.props.selectedResource) {
             return RESOURCE_TYPES.filter(obj => obj.id === this.state.resource.type);
@@ -250,12 +253,14 @@ class AddEditResource extends PureComponent {
     render() {
         const actions = [
             <Button
+                key={'close-btn-key'}
                 style={appStyles.dialogBtn}
                 onClick={this.close}
             >
                 {i18n.t(i18nKeys.buttons.cancel)}
             </Button>,
             <Button
+                key={'save-btn-key'}
                 raised
                 color={'primary'}
                 style={appStyles.dialogBtn}
