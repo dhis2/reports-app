@@ -291,7 +291,7 @@ class Resource extends Page {
                     <div id={'search-box-id'} style={styles.searchContainer}>
                         <InputField
                             value={this.state.search || ''}
-                            type="search"
+                            type="text"
                             hintText={i18n.t(i18nKeys.resource.search)}
                             // eslint-disable-next-line
                             onChange={value => this.search('search', value)}
