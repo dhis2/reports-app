@@ -1,4 +1,4 @@
-export const UPDATE_FEEDBACK_STATE = 'feedback/UPDATE_FEEDBACK_STATE';
+import { ACTION_TYPE } from '../actions/feedback';
 
 const initialState = {
     showSnackbar: false,
@@ -8,9 +8,9 @@ const initialState = {
     },
 };
 
-export default (state = initialState, action) => {
+const feedback = (state = initialState, action) => {
     switch (action.type) {
-    case UPDATE_FEEDBACK_STATE:
+    case ACTION_TYPE.UPDATE_FEEDBACK_STATE:
         return {
             ...state,
             showSnackbar: action.showSnackbar,
@@ -21,10 +21,4 @@ export default (state = initialState, action) => {
     }
 };
 
-export const updateFeedbackState = (showSnackbar, snackbarConf = {}) => (dispatch) => {
-    dispatch({
-        type: UPDATE_FEEDBACK_STATE,
-        showSnackbar,
-        snackbarConf,
-    });
-};
+export default feedback;

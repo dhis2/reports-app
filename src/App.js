@@ -11,15 +11,15 @@ import HeaderBar from '@dhis2/d2-ui-header-bar';
 import { Sidebar, FeedbackSnackbar, CircularProgress } from '@dhis2/d2-ui-core';
 
 /* Redux */
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { updateFeedbackState } from './reducers/feedback';
+import { updateFeedbackState } from './actions/feedback';
 
 /* App components */
 import AppRouter from './components/app-router/AppRouter';
 
 /* App context */
 import AppContext from './context';
+import { LOADING } from './helpers/feedbackSnackBarTypes';
 
 /* App configs */
 import { sections } from './pages/sections.conf';
@@ -90,7 +90,7 @@ class App extends PureComponent {
             },
         ));
 
-        const feedbackElement = this.state.pageState.loading ?
+        const feedbackElement = this.props.snackbarConf.type === LOADING ?
             (
                 <div style={styles.feedbackSnackBar}>
                     <CircularProgress />
@@ -126,14 +126,14 @@ class App extends PureComponent {
     }
 }
 
-const mapStateToProps = ({ feedback }) => ({
-    showSnackbar: feedback.showSnackbar,
-    snackbarConf: { ...feedback.snackbarConf },
+const mapStateToProps = state => ({
+    showSnackbar: state.feedback.showSnackbar,
+    snackbarConf: { ...state.feedback.snackbarConf },
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-    updateFeedbackState,
-}, dispatch);
+const mapDispatchToProps = dispatch => ({
+    updateFeedbackState: updateFeedbackState(dispatch),
+});
 
 export default connect(
     mapStateToProps,
