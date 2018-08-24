@@ -191,28 +191,34 @@ export default class AddEditResource extends PureComponent {
     };
 
     updateDocument = (api, documentData) => {
-        // if (!this.props.loading) {
-        //     this.props.updateAppState({ pageState: { loading: true } });
-        // }
+        if (!this.state.loading) {
+            this.props.updateFeedbackState(true, { type: LOADING });
+            this.state.loading = true;
+        }
         api.update(`${DOCUMENTS_ENDPOINT}/${this.state.resource.id}`, documentData).then((response) => {
             if (response) {
                 this.close(true);
             }
         }).catch((error) => {
             this.props.onError(error);
+        }).finally(() => {
+            this.state.loading = false;
         });
     };
 
     postDocument = (api, documentData) => {
-        // if (!this.props.loading) {
-        //     this.props.updateAppState({ pageState: { loading: true } });
-        // }
+        if (!this.state.loading) {
+            this.props.updateFeedbackState(true, { type: LOADING });
+            this.state.loading = true;
+        }
         api.post(DOCUMENTS_ENDPOINT, documentData).then((response) => {
             if (response) {
                 this.close(true);
             }
         }).catch((error) => {
             this.props.onError(error);
+        }).finally(() => {
+            this.state.loading = false;
         });
     };
 
