@@ -2,7 +2,7 @@
 import StandardReport from './standard-report/StandardReport';
 import DataSetReport from './data-set-report/DataSetReport';
 import ReportingRateSummary from './reporting-rate-summary/ReportingRateSummary';
-import Resource from './resource/Resource';
+import { ConnectedResource } from './resource/Resource';
 import OrganisationUnitDistributionReport
     from './organisation-unit-distribution-report/OrganisationUnitDistributionReport';
 import DataApproval from './data-approval/DataApproval';
@@ -57,7 +57,7 @@ export const sections = [
     {
         key: RESOURCE_SECTION_KEY,
         path: '/resource',
-        component: Resource,
+        component: ConnectedResource,
         info: {
             label: i18nKeys.resource.homeLabel,
             icon: 'cloud_upload',

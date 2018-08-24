@@ -14,7 +14,7 @@ class Page extends Component {
         sectionKey: PropTypes.string.isRequired,
         currentSection: PropTypes.string.isRequired,
         updateAppState: PropTypes.func.isRequired,
-    }
+    };
 
     componentDidMount() {
         this.pageMounted = true;

@@ -8,7 +8,6 @@ import { Pagination, TextField } from '@dhis2/d2-ui-core';
 
 /* React Components */
 import PageHelper from '../../components/page-helper/PageHelper';
-import StandardReport from '../standard-report/StandardReport';
 
 /* app config */
 import { ADD_NEW_RESOURCE_ACTION, CONTEXT_MENU_ACTION } from './resource.conf';
@@ -51,6 +50,7 @@ const ownShallow = () => {
             sectionKey={RESOURCE_SECTION_KEY}
             pageInfo={pageInfo}
             updateAppState={jest.fn()}
+            updateFeedbackState={jest.fn()}
             currentSection={RESOURCE_SECTION_KEY}
             d2={fakerData.d2}
         />,
@@ -228,7 +228,7 @@ describe('Test <Resource /> actions:', () => {
         const wrapper = ownShallow();
         const args = { displayName: 'nameDelete', id: 'idDelete'};
         wrapper.instance().delete(args);
-        expect(wrapper.instance().props.updateAppState).toHaveBeenCalled();
+        expect(wrapper.instance().props.updateFeedbackState).toHaveBeenCalled();
     });
 
     /* Close dialog */
