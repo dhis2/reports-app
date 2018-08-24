@@ -1,5 +1,5 @@
 /* Page Components */
-import StandardReport from './standard-report/StandardReport';
+import { ConnectedStandardReport } from './standard-report/StandardReport';
 import DataSetReport from './data-set-report/DataSetReport';
 import ReportingRateSummary from './reporting-rate-summary/ReportingRateSummary';
 import { ConnectedResource } from './resource/Resource';
@@ -21,7 +21,7 @@ export const sections = [
     {
         key: STANDARD_REPORT_SECTION_KEY,
         path: '/standard-report',
-        component: StandardReport,
+        component: ConnectedStandardReport,
         info: {
             label: i18nKeys.standardReport.homeLabel,
             icon: 'bar_chart',

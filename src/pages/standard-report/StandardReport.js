@@ -14,6 +14,10 @@ import { Button, Pagination, SvgIcon, TextField } from '@dhis2/d2-ui-core';
 import '@dhis2/d2-ui-core/build/css/Table.css';
 import '@dhis2/d2-ui-core/build/css/Pagination.css';
 
+/* Redux */
+import { connect } from 'react-redux';
+import { updateFeedbackState } from '../../actions/feedback';
+
 /* styles */
 import styles from './StandardReport.style';
 import appStyles from '../../styles';
@@ -32,14 +36,23 @@ import {
 /* utils */
 import { getDocsUrl } from '../../helpers/docs';
 import { calculatePageValue, INITIAL_PAGER } from '../../helpers/pagination';
-import { ACTION_MESSAGE, SUCCESS } from '../../helpers/feedbackSnackBarTypes';
-
+import { ACTION_MESSAGE, LOADING, SUCCESS } from '../../helpers/feedbackSnackBarTypes';
 
 /* i18n */
 import i18n from '../../locales';
 import { i18nKeys } from '../../i18n';
 
-class StandardReport extends Page {
+export default class StandardReport extends Page {
+    static propTypes = {
+        showSnackbar: PropTypes.bool,
+        snackbarConf: PropTypes.object,
+    };
+
+    static defaultProps = {
+        showSnackbar: false,
+        snackbarConf: {},
+    };
+
     constructor(props) {
         super(props);
 
@@ -93,20 +106,32 @@ class StandardReport extends Page {
             url = `${url}&filter=displayName:ilike:${search}`;
         }
         if (api) {
-            this.props.updateAppState({ pageState: { loading: true } });
+            // this.props.updateAppState({ pageState: { loading: true } });
+            this.props.updateFeedbackState(true, { type: LOADING });
             api.get(url).then((response) => {
                 if (response && this.isPageMounted()) {
-                    this.props.updateAppState((this.state.deleteInProgress) ? {
-                        pageState: { loading: false },
-                        showSnackbar: true,
-                        snackbarConf: {
-                            type: SUCCESS,
-                            message: i18n.t(i18nKeys.messages.reportDeleted),
-                        },
-                    } : {
-                        showSnackbar: false,
-                        pageState: { loading: false },
-                    });
+                    // this.props.updateAppState((this.state.deleteInProgress) ? {
+                    //     pageState: { loading: false },
+                    //     showSnackbar: true,
+                    //     snackbarConf: {
+                    //         type: SUCCESS,
+                    //         message: i18n.t(i18nKeys.messages.reportDeleted),
+                    //     },
+                    // } : {
+                    //     showSnackbar: false,
+                    //     pageState: { loading: false },
+                    // });
+                    if (this.state.deleteInProgress) {
+                        this.props.updateFeedbackState(
+                            true,
+                            {
+                                type: SUCCESS,
+                                message: i18n.t(i18nKeys.messages.reportDeleted),
+                            },
+                        );
+                    } else {
+                        this.props.updateFeedbackState(false);
+                    }
                     this.setState(response);
                 }
             }).catch((error) => {
@@ -184,28 +209,46 @@ class StandardReport extends Page {
     }
 
     delete(args) {
-        this.props.updateAppState({
-            showSnackbar: true,
-            snackbarConf: {
-                type: ACTION_MESSAGE,
-                message: args.displayName,
-                action: i18n.t(i18nKeys.messages.confirmDelete),
-                onActionClick: () => {
-                    const api = this.props.d2.Api.getApi();
-                    const url = `${REPORTS_ENDPOINT}/${args.id}`;
-                    this.state.deleteInProgress = true;
-                    this.props.updateAppState({
-                        showSnackbar: false,
-                        pageState: { loading: true },
-                    });
-                    api.delete(url).then((response) => {
-                        if (response && this.isPageMounted()) {
-                            this.loadData(INITIAL_PAGER, this.state.search);
-                        }
-                    }).catch((error) => {
-                        this.manageError(error);
-                    });
-                },
+        // this.props.updateAppState({
+        //     showSnackbar: true,
+        //     snackbarConf: {
+        //         type: ACTION_MESSAGE,
+        //         message: args.displayName,
+        //         action: i18n.t(i18nKeys.messages.confirmDelete),
+        //         onActionClick: () => {
+        //             const api = this.props.d2.Api.getApi();
+        //             const url = `${REPORTS_ENDPOINT}/${args.id}`;
+        //             this.state.deleteInProgress = true;
+        //             this.props.updateAppState({
+        //                 showSnackbar: false,
+        //                 pageState: { loading: true },
+        //             });
+        //             api.delete(url).then((response) => {
+        //                 if (response && this.isPageMounted()) {
+        //                     this.loadData(INITIAL_PAGER, this.state.search);
+        //                 }
+        //             }).catch((error) => {
+        //                 this.manageError(error);
+        //             });
+        //         },
+        //     },
+        // });
+        this.props.updateFeedbackState(true, {
+            type: ACTION_MESSAGE,
+            message: args.displayName,
+            action: i18n.t(i18nKeys.messages.confirmDelete),
+            onActionClick: () => {
+                const api = this.props.d2.Api.getApi();
+                const url = `${REPORTS_ENDPOINT}/${args.id}`;
+                this.state.deleteInProgress = true;
+                this.props.updateFeedbackState(false);
+                api.delete(url).then((response) => {
+                    if (response && this.isPageMounted()) {
+                        this.loadData(INITIAL_PAGER, this.state.search);
+                    }
+                }).catch((error) => {
+                    this.manageError(error);
+                });
             },
         });
     }
@@ -378,4 +421,16 @@ StandardReport.childContextTypes = {
     d2: PropTypes.object,
 };
 
-export default StandardReport;
+const mapStateToProps = state => ({
+    showSnackbar: state.feedback.showSnackbar,
+    snackbarConf: { ...state.feedback.snackbarConf },
+});
+
+const mapDispatchToProps = dispatch => ({
+    updateFeedbackState: updateFeedbackState(dispatch),
+});
+
+export const ConnectedStandardReport = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(StandardReport);

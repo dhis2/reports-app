@@ -5,7 +5,6 @@ import { shallow } from 'enzyme';
 /* d2-ui */
 import Table from '@dhis2/d2-ui-table';
 import { Pagination, TextField } from '@dhis2/d2-ui-core';
-import Resource from '../resource/Resource';
 
 import { ADD_NEW_REPORT_ACTION, CONTEXT_MENU_ACTION } from './standard.report.conf';
 
@@ -49,6 +48,7 @@ const ownShallow = () => {
             sectionKey={STANDARD_REPORT_SECTION_KEY}
             pageInfo={pageInfo}
             updateAppState={jest.fn()}
+            updateFeedbackState={jest.fn()}
             currentSection={STANDARD_REPORT_SECTION_KEY}
             d2={fakerData.d2}
         />,
@@ -232,7 +232,7 @@ describe('Test <StandardReport /> actions:', () => {
         const wrapper = ownShallow();
         const args = { displayName: 'nameDelete', reportTable: 'tableDelete', id: 'idDelete'};
         wrapper.instance().delete(args);
-        expect(wrapper.instance().props.updateAppState).toHaveBeenCalled();
+        expect(wrapper.instance().props.updateFeedbackState).toHaveBeenCalled();
     });
 
     /* Close dialog */
