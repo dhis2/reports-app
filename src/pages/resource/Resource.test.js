@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 
 /* d2-ui */
 import Table from '@dhis2/d2-ui-table';
-import { Pagination, TextField } from '@dhis2/d2-ui-core';
+import { Pagination, InputField } from '@dhis2/d2-ui-core';
 
 /* React Components */
 import PageHelper from '../../components/page-helper/PageHelper';
@@ -137,13 +137,13 @@ describe('Test <Resource /> actions:', () => {
     });
 
     /* Search */
-    it('Should call search action on search TextField "onBlur".', () => {
+    it('Should call search action on search InputField "onChange".', () => {
         const wrapper = ownShallow();
         wrapper.instance().search = jest.fn();
         wrapper.setState({
             search: 'searchWord',
         });
-        wrapper.find(TextField).simulate('blur');
+        wrapper.find(InputField).simulate('change');
         expect(wrapper.instance().search).toHaveBeenCalled();
     });
 
