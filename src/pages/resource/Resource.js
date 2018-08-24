@@ -22,7 +22,7 @@ import appStyles from '../../styles';
 /* app components */
 import Page from '../Page';
 import PageHelper from '../../components/page-helper/PageHelper';
-import AddEditResource from './add-edit-resource/AddEditResource';
+import { ConnectedAddEditResource } from './add-edit-resource/AddEditResource';
 import { ACTION_MESSAGE, SUCCESS, LOADING } from '../../helpers/feedbackSnackBarTypes';
 
 /* utils */
@@ -82,12 +82,6 @@ export default class Resource extends Page {
     componentDidMount() {
         super.componentDidMount();
         this.loadDocuments(INITIAL_PAGER);
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.resetComponentState) {
-            this.setState({ selectedResource: null });
-        }
     }
 
     loadDocuments(pager, search) {
@@ -207,31 +201,25 @@ export default class Resource extends Page {
     /* Context Menu "Components" */
     getAddResourceComponent() {
         return (
-            <AddEditResource
+            <ConnectedAddEditResource
                 d2={this.props.d2}
                 open={this.state.open}
                 onRequestClose={this.handleClose}
                 onError={this.handleError}
                 updateAppState={this.props.updateAppState}
-                loading={this.props.loading}
-                loadedResource={this.props.loadedResource}
-                resetComponentState={this.props.resetComponentState}
             />
         );
     }
 
     getEditComponent() {
         return (
-            <AddEditResource
+            <ConnectedAddEditResource
                 selectedResource={this.state.selectedResource}
                 open={this.state.open}
                 onRequestClose={this.handleClose}
                 d2={this.props.d2}
                 onError={this.handleError}
                 updateAppState={this.props.updateAppState}
-                loading={this.props.loading}
-                loadedResource={this.props.loadedResource}
-                resetComponentState={this.props.resetComponentState}
             />
         );
     }

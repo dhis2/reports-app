@@ -14,6 +14,7 @@ class Page extends Component {
         sectionKey: PropTypes.string.isRequired,
         currentSection: PropTypes.string.isRequired,
         updateAppState: PropTypes.func.isRequired,
+        updateFeedbackState: PropTypes.func.isRequired,
     };
 
     componentDidMount() {
@@ -41,15 +42,9 @@ class Page extends Component {
                 error.message :
                 i18n.t(i18nKeys.messages.unexpectedError);
 
-            this.props.updateAppState({
-                showSnackbar: true,
-                snackbarConf: {
-                    type: ERROR,
-                    message: messageError,
-                },
-                pageState: {
-                    loading: false,
-                },
+            this.props.updateFeedbackState(true, {
+                type: ERROR,
+                message: messageError,
             });
         }
     }
