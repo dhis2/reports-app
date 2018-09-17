@@ -18,8 +18,6 @@ import '@dhis2/d2-ui-core/build/css/Pagination.css';
 import { connect } from 'react-redux';
 import { updateFeedbackState } from '../../actions/feedback';
 
-import { DEBOUNCE_DELAY } from '../sections.conf';
-
 /* styles */
 import styles from './StandardReport.style';
 import appStyles from '../../styles';
@@ -34,6 +32,7 @@ import HtmlReport from './HtmlReport';
 /* app config */
 import {
     ADD_NEW_REPORT_ACTION, CONTEXT_MENU_ACTION, CONTEXT_MENU_ICONS, REPORTS_ENDPOINT } from './standard.report.conf';
+import { DEBOUNCE_DELAY } from '../sections.conf';
 
 /* utils */
 import { getDocsUrl } from '../../helpers/docs';
