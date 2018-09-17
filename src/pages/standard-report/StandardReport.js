@@ -18,6 +18,8 @@ import '@dhis2/d2-ui-core/build/css/Pagination.css';
 import { connect } from 'react-redux';
 import { updateFeedbackState } from '../../actions/feedback';
 
+import { DEBOUNCE_DELAY } from '../sections.conf';
+
 /* styles */
 import styles from './StandardReport.style';
 import appStyles from '../../styles';
@@ -64,9 +66,11 @@ export default class StandardReport extends Page {
             search: '',
             open: false,
             htmlReport: null,
+            timeoutId: null,
         };
 
         this.search = this.search.bind(this);
+        this.debounceSearch = this.debounceSearch.bind(this);
         this.addNewReport = this.addNewReport.bind(this);
 
         /* Pagination */
@@ -91,6 +95,12 @@ export default class StandardReport extends Page {
     componentDidMount() {
         super.componentDidMount();
         this.loadData(INITIAL_PAGER);
+    }
+
+    componentWillUnmount() {
+        if (this.state.timeoutId) {
+            clearTimeout(this.state.timeoutId);
+        }
     }
 
     componentWillReceiveProps(newProps) {
@@ -171,6 +181,14 @@ export default class StandardReport extends Page {
         } else if (this.state.search !== value) {
             this.loadData(INITIAL_PAGER);
         }
+    }
+
+    debounceSearch(field, lastSearch) {
+        if (this.state.timeoutId) {
+            clearTimeout(this.state.timeoutId);
+        }
+        this.state.timeoutId = setTimeout(() => { this.search(field, lastSearch); }, DEBOUNCE_DELAY);
+        this.setState({ lastSearch });
     }
 
     /* Add new Report */
@@ -365,11 +383,11 @@ export default class StandardReport extends Page {
                     />
                     <div id={'search-box-id'} style={styles.searchContainer}>
                         <InputField
-                            value={this.state.search || ''}
+                            value={this.state.lastSearch || ''}
                             type="text"
                             hintText={i18n.t(i18nKeys.standardReport.search)}
                             // eslint-disable-next-line
-                            onChange={value => this.search('search', value)}
+                            onChange={value => this.debounceSearch('search', value)}
                         />
                     </div>
                     <Table

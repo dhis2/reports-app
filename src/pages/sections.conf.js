@@ -17,6 +17,8 @@ export const RESOURCE_SECTION_KEY = 'resource';
 export const ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_KEY = 'orgUnitDistReport';
 export const DATA_APPROVAL_SECTION_KEY = 'dataApproval';
 
+export const DEBOUNCE_DELAY = 500;
+
 export const sections = [
     {
         key: STANDARD_REPORT_SECTION_KEY,

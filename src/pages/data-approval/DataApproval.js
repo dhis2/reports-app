@@ -30,12 +30,12 @@ import styles from '../../styles';
 class DataApproval extends Page {
     static propTypes = {
         d2: PropTypes.object.isRequired,
-    }
+    };
 
     /* FIXME: right now d2-ui periodPicker forces us to pass d2 through old  context api */
     static childContextTypes = {
         d2: PropTypes.object.isRequired,
-    }
+    };
 
     constructor() {
         super();
@@ -102,7 +102,7 @@ class DataApproval extends Page {
         this.setState({
             showForm: true,
         });
-    }
+    };
 
     getData = () => {
         this.props.updateAppState({
@@ -136,26 +136,26 @@ class DataApproval extends Page {
         }).catch((error) => {
             this.manageError(error);
         });
-    }
+    };
 
     handleOrganisationUnitChange = (selectedOrgUnit) => {
         this.setState({
             selectedOrgUnit,
         });
-    }
+    };
 
     handleDataSetChange = (selectedDataSet) => {
         this.setState({
             selectedDataSet,
             selectedPeriodType: selectedDataSet ? selectedDataSet.workflow.periodType : null,
         });
-    }
+    };
 
     handlePeriodChange = (selectedPeriod) => {
         this.setState({
             selectedPeriod,
         });
-    }
+    };
 
     isApprovalStatusEnabled = () =>
         !this.state.showForm &&
