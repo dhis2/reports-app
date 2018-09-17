@@ -31,6 +31,7 @@ import { calculatePageValue, INITIAL_PAGER } from '../../helpers/pagination';
 
 /* app config */
 import { DOCUMENTS_ENDPOINT, ADD_NEW_RESOURCE_ACTION, CONTEXT_MENU_ACTION, CONTEXT_MENU_ICONS } from './resource.conf';
+import { DEBOUNCE_DELAY } from '../sections.conf';
 
 /* i18n */
 import i18n from '../../locales';
@@ -55,9 +56,11 @@ export default class Resource extends Page {
             documents: [],
             search: '',
             open: false,
+            timeoutId: null,
         };
 
         this.search = this.search.bind(this);
+        this.debounceSearch = this.debounceSearch.bind(this);
         this.addNewResource = this.addNewResource.bind(this);
 
         /* Pagination */
@@ -82,6 +85,12 @@ export default class Resource extends Page {
     componentDidMount() {
         super.componentDidMount();
         this.loadDocuments(INITIAL_PAGER);
+    }
+
+    componentWillUnmount() {
+        if (this.state.timeoutId) {
+            clearTimeout(this.state.timeoutId);
+        }
     }
 
     loadDocuments(pager, search) {
@@ -146,6 +155,14 @@ export default class Resource extends Page {
         } else if (this.state.search !== value) {
             this.loadDocuments(INITIAL_PAGER);
         }
+    }
+
+    debounceSearch(field, lastSearch) {
+        if (this.state.timeoutId) {
+            clearTimeout(this.state.timeoutId);
+        }
+        this.state.timeoutId = setTimeout(() => { this.search(field, lastSearch); }, DEBOUNCE_DELAY);
+        this.setState({ lastSearch });
     }
 
     handleClose(refreshList) {
@@ -272,10 +289,7 @@ export default class Resource extends Page {
                         url={getDocsUrl(this.props.d2.system.version, this.props.sectionKey)}
                     />
                 </h1>
-                <div
-                    id="resource-content"
-                    style={this.props.snackbarConf.type === LOADING ? { display: 'none' } : { display: 'block' }}
-                >
+                <div id="resource-content">
                     <Pagination
                         total={this.state.pager.total}
                         hasNextPage={this.hasNextPage}
@@ -286,11 +300,11 @@ export default class Resource extends Page {
                     />
                     <div id={'search-box-id'} style={styles.searchContainer}>
                         <InputField
-                            value={this.state.search || ''}
+                            value={this.state.lastSearch || ''}
                             type="text"
                             hintText={i18n.t(i18nKeys.resource.search)}
                             // eslint-disable-next-line
-                            onChange={value => this.search('search', value)}
+                            onChange={value => this.debounceSearch('search', value)}
                         />
                     </div>
                     <Table
@@ -304,7 +318,11 @@ export default class Resource extends Page {
                         style={
                             {
                                 textAlign: 'center',
-                                ...(this.state.documents.length > 0 ? { display: 'none' } : ''),
+                                ...(
+                                    this.state.documents.length > 0 ||
+                                    this.props.snackbarConf.type === LOADING ?
+                                        { display: 'none' } : ''
+                                ),
                             }
                         }
                     >

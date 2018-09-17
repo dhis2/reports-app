@@ -139,12 +139,12 @@ describe('Test <Resource /> actions:', () => {
     /* Search */
     it('Should call search action on search InputField "onChange".', () => {
         const wrapper = ownShallow();
-        wrapper.instance().search = jest.fn();
+        wrapper.instance().debounceSearch = jest.fn();
         wrapper.setState({
             search: 'searchWord',
         });
         wrapper.find(InputField).simulate('change');
-        expect(wrapper.instance().search).toHaveBeenCalled();
+        expect(wrapper.instance().debounceSearch).toHaveBeenCalled();
     });
 
     /* Add New */
