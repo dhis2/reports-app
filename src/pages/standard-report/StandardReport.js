@@ -115,21 +115,9 @@ export default class StandardReport extends Page {
             url = `${url}&filter=displayName:ilike:${search}`;
         }
         if (api) {
-            // this.props.updateAppState({ pageState: { loading: true } });
             this.props.updateFeedbackState(true, { type: LOADING });
             api.get(url).then((response) => {
                 if (response && this.isPageMounted()) {
-                    // this.props.updateAppState((this.state.deleteInProgress) ? {
-                    //     pageState: { loading: false },
-                    //     showSnackbar: true,
-                    //     snackbarConf: {
-                    //         type: SUCCESS,
-                    //         message: i18n.t(i18nKeys.messages.reportDeleted),
-                    //     },
-                    // } : {
-                    //     showSnackbar: false,
-                    //     pageState: { loading: false },
-                    // });
                     if (this.state.deleteInProgress) {
                         this.props.updateFeedbackState(
                             true,
@@ -192,7 +180,7 @@ export default class StandardReport extends Page {
 
     /* Add new Report */
     addNewReport() {
-        this.setState({ loading: true, open: true, selectedAction: ADD_NEW_REPORT_ACTION });
+        this.setState({ open: true, selectedAction: ADD_NEW_REPORT_ACTION });
     }
 
     handleClose(refreshList) {
@@ -226,30 +214,6 @@ export default class StandardReport extends Page {
     }
 
     delete(args) {
-        // this.props.updateAppState({
-        //     showSnackbar: true,
-        //     snackbarConf: {
-        //         type: ACTION_MESSAGE,
-        //         message: args.displayName,
-        //         action: i18n.t(i18nKeys.messages.confirmDelete),
-        //         onActionClick: () => {
-        //             const api = this.props.d2.Api.getApi();
-        //             const url = `${REPORTS_ENDPOINT}/${args.id}`;
-        //             this.state.deleteInProgress = true;
-        //             this.props.updateAppState({
-        //                 showSnackbar: false,
-        //                 pageState: { loading: true },
-        //             });
-        //             api.delete(url).then((response) => {
-        //                 if (response && this.isPageMounted()) {
-        //                     this.loadData(INITIAL_PAGER, this.state.search);
-        //                 }
-        //             }).catch((error) => {
-        //                 this.manageError(error);
-        //             });
-        //         },
-        //     },
-        // });
         this.props.updateFeedbackState(true, {
             type: ACTION_MESSAGE,
             message: args.displayName,
@@ -337,7 +301,9 @@ export default class StandardReport extends Page {
         }
     }
 
-    showContent = () => this.state.htmlReport || this.props.loading === true;
+    displayNoResults = () => (
+        (this.state.reports.length > 0 || this.props.snackbarConf.type === LOADING) ? { display: 'none' } : ''
+    );
 
     render() {
         // TODO: Check permissions
@@ -368,10 +334,7 @@ export default class StandardReport extends Page {
                         url={getDocsUrl(this.props.d2.system.version, this.props.sectionKey)}
                     />
                 </h1>
-                <div
-                    id="std-report-content"
-                    style={{ display: this.showContent() ? 'none' : 'block' }}
-                >
+                <div id="std-report-content" style={{ display: this.state.htmlReport ? 'none' : 'block' }} >
                     <Pagination
                         total={this.state.pager.total}
                         hasNextPage={this.hasNextPage}
@@ -397,12 +360,7 @@ export default class StandardReport extends Page {
                     />
                     <p
                         id={'no-std-report-find-message-id'}
-                        style={
-                            {
-                                textAlign: 'center',
-                                ...(this.state.reports.length > 0 ? { display: 'none' } : ''),
-                            }
-                        }
+                        style={{ textAlign: 'center', ...(this.displayNoResults()) }}
                     >
                         {i18n.t(i18nKeys.messages.noResultsFound)}
                     </p>
