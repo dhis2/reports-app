@@ -25,7 +25,7 @@ import appStyles from '../../styles';
 /* app components */
 import Page from '../Page';
 import PageHelper from '../../components/page-helper/PageHelper';
-import AddEditStdReport from './add-edit-report/AddEditStdReport';
+import { ConnectedAddEditStdReport } from './add-edit-report/AddEditStdReport';
 import CreateStdReport from './create-report/CreateStdReport';
 import HtmlReport from './HtmlReport';
 
@@ -100,10 +100,6 @@ export default class StandardReport extends Page {
         if (this.state.timeoutId) {
             clearTimeout(this.state.timeoutId);
         }
-    }
-
-    componentWillReceiveProps(newProps) {
-        this.setState({ loadedReport: newProps.loadedReport, loading: newProps.loading });
     }
 
     loadData(pager, search) {
@@ -261,14 +257,11 @@ export default class StandardReport extends Page {
 
     getEditComponent() {
         return (
-            <AddEditStdReport
+            <ConnectedAddEditStdReport
                 selectedReport={this.state.selectedReport}
-                loadedReport={this.state.loadedReport}
-                loading={this.state.loading}
                 open={this.state.open}
                 onRequestClose={this.handleClose}
                 d2={this.props.d2}
-                updateAppState={this.props.updateAppState}
                 onError={this.handleError}
             />
         );
@@ -276,11 +269,10 @@ export default class StandardReport extends Page {
 
     getAddComponent() {
         return (
-            <AddEditStdReport
+            <ConnectedAddEditStdReport
                 open={this.state.open}
                 onRequestClose={this.handleClose}
                 d2={this.props.d2}
-                updateAppState={this.props.updateAppState}
                 onError={this.handleError}
             />
         );
