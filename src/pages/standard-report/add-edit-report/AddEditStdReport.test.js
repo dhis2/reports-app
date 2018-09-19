@@ -85,7 +85,6 @@ const ownShallow = (selectedReport) => {
         <AddEditStdReport
             d2={fakerData.d2}
             onRequestClose={jest.fn()}
-            updateAppState={jest.fn()}
             open={true}
             onError={jest.fn()}
             selectedReport={selectedReport}

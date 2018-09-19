@@ -223,7 +223,6 @@ export default class Resource extends Page {
                 open={this.state.open}
                 onRequestClose={this.handleClose}
                 onError={this.handleError}
-                updateAppState={this.props.updateAppState}
             />
         );
     }
@@ -236,7 +235,6 @@ export default class Resource extends Page {
                 onRequestClose={this.handleClose}
                 d2={this.props.d2}
                 onError={this.handleError}
-                updateAppState={this.props.updateAppState}
             />
         );
     }
@@ -352,16 +350,11 @@ Resource.childContextTypes = {
     d2: PropTypes.object,
 };
 
-const mapStateToProps = state => ({
-    showSnackbar: state.feedback.showSnackbar,
-    snackbarConf: { ...state.feedback.snackbarConf },
-});
-
 const mapDispatchToProps = dispatch => ({
     updateFeedbackState: updateFeedbackState(dispatch),
 });
 
 export const ConnectedResource = connect(
-    mapStateToProps,
+    null,
     mapDispatchToProps,
 )(Resource);

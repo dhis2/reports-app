@@ -49,7 +49,6 @@ const ownShallow = () => {
         <Resource
             sectionKey={RESOURCE_SECTION_KEY}
             pageInfo={pageInfo}
-            updateAppState={jest.fn()}
             updateFeedbackState={jest.fn()}
             currentSection={RESOURCE_SECTION_KEY}
             d2={fakerData.d2}

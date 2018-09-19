@@ -337,6 +337,7 @@ export default class StandardReport extends Page {
                     />
                     <div id={'search-box-id'} style={styles.searchContainer}>
                         <InputField
+                            id={'search-std-report-id'}
                             value={this.state.lastSearch || ''}
                             type="text"
                             hintText={i18n.t(i18nKeys.standardReport.search)}
@@ -389,16 +390,11 @@ StandardReport.childContextTypes = {
     d2: PropTypes.object,
 };
 
-const mapStateToProps = state => ({
-    showSnackbar: state.feedback.showSnackbar,
-    snackbarConf: { ...state.feedback.snackbarConf },
-});
-
 const mapDispatchToProps = dispatch => ({
     updateFeedbackState: updateFeedbackState(dispatch),
 });
 
 export const ConnectedStandardReport = connect(
-    mapStateToProps,
+    null,
     mapDispatchToProps,
 )(StandardReport);
