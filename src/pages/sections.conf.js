@@ -1,6 +1,6 @@
 /* Page Components */
 import { ConnectedStandardReport } from './standard-report/StandardReport';
-import DataSetReport from './data-set-report/DataSetReport';
+import { ConnectedDataSetReport } from './data-set-report/DataSetReport';
 import ReportingRateSummary from './reporting-rate-summary/ReportingRateSummary';
 import { ConnectedResource } from './resource/Resource';
 import OrganisationUnitDistributionReport
@@ -35,7 +35,7 @@ export const sections = [
     {
         key: DATA_SET_REPORT_SECTION_KEY,
         path: '/data-set-report',
-        component: DataSetReport,
+        component: ConnectedDataSetReport,
         info: {
             label: i18nKeys.dataSetReport.homeLabel,
             icon: 'assignment',

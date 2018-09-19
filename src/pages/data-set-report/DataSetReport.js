@@ -11,6 +11,10 @@ import { CheckBox, Button } from '@dhis2/d2-ui-core';
 /* js-xlsx */
 import XLSX from 'xlsx';
 
+/* Redux */
+import { connect } from 'react-redux';
+import { updateFeedbackState } from '../../actions/feedback';
+
 /* i18n */
 import i18n from '../../locales';
 import { i18nKeys } from '../../i18n';
@@ -33,7 +37,7 @@ import { LOADING, SUCCESS } from '../../helpers/feedbackSnackBarTypes';
 /* styles */
 import styles from '../../styles';
 
-class DataSetReport extends Page {
+export default class DataSetReport extends Page {
     static propTypes = {
         d2: PropTypes.object.isRequired,
     }
@@ -102,17 +106,17 @@ class DataSetReport extends Page {
     }
 
     getReport = () => {
-        this.props.updateAppState({
-            showSnackbar: true,
-            snackbarConf: {
-                type: LOADING,
-                message: i18n.t(i18nKeys.messages.loading),
-            },
-            pageState: {
-                loading: true,
-            },
-        });
-
+        // this.props.updateAppState({
+        //     showSnackbar: true,
+        //     snackbarConf: {
+        //         type: LOADING,
+        //         message: i18n.t(i18nKeys.messages.loading),
+        //     },
+        //     pageState: {
+        //         loading: true,
+        //     },
+        // });
+        this.props.updateFeedbackState(true, { type: LOADING });
         const api = this.props.d2.Api.getApi();
         const dataSetOptions = Object.keys(this.state.selectedOptionsForDimensions)
             .map(dimensionKey => `${dimensionKey}:${this.state.selectedOptionsForDimensions[dimensionKey]}`);
@@ -125,18 +129,26 @@ class DataSetReport extends Page {
         // eslint-disable-next-line
         const url = `dataSetReport?ds=${this.state.selectedDataSet.id}&pe=${this.state.selectedPeriod}&ou=${this.state.selectedOrgUnit}&selectedUnitOnly=${this.state.selectedUnitOnly}&dimension=${dimensions}`;
         api.get(url).then((response) => {
-            this.props.updateAppState({
-                pageState: {
-                    reportHtml: response,
-                    showForm: false,
-                    loading: false,
-                },
-                showSnackbar: true,
-                snackbarConf: {
+            // this.props.updateAppState({
+            //     pageState: {
+            //         reportHtml: response,
+            //         showForm: false,
+            //         loading: false,
+            //     },
+            //     showSnackbar: true,
+            //     snackbarConf: {
+            //         type: SUCCESS,
+            //         message: i18n.t(i18nKeys.messages.reportGenerated),
+            //     },
+            // });
+            this.setState({ reportHtml: response, showForm: false, loading: true });
+            this.props.updateFeedbackState(
+                true,
+                {
                     type: SUCCESS,
-                    message: i18n.t(i18nKeys.messages.reportGenerated),
+                    message: i18n.t(i18nKeys.messages.resourceDeleted),
                 },
-            });
+            );
         }).catch((error) => {
             this.manageError(error);
         });
@@ -333,4 +345,11 @@ class DataSetReport extends Page {
     }
 }
 
-export default DataSetReport;
+const mapDispatchToProps = dispatch => ({
+    updateFeedbackState: updateFeedbackState(dispatch),
+});
+
+export const ConnectedDataSetReport = connect(
+    null,
+    mapDispatchToProps,
+)(DataSetReport);
