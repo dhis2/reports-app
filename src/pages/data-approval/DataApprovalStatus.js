@@ -46,6 +46,7 @@ export class DataApprovalStatus extends PureComponent {
         dataSet: PropTypes.string.isRequired,
         periodId: PropTypes.string.isRequired,
         organisationUnitId: PropTypes.string.isRequired,
+        onError: PropTypes.func.isRequired,
     };
 
     static resetState = {
@@ -77,8 +78,8 @@ export class DataApprovalStatus extends PureComponent {
         const url = `dataApprovals?ds=${dataSet.id}&pe=${periodId}&ou=${organisationUnitId}`;
         d2.Api.getApi().get(url).then((approvalResponse) => {
             this.httpResponseToState(approvalResponse);
-        }).catch(() => {
-            // TODO Manage Error
+        }).catch((error) => {
+            this.props.onError(error);
         });
     };
 
@@ -139,11 +140,12 @@ export class DataApprovalStatus extends PureComponent {
             `dataApprovals?ds=${dataSet.id}&pe=${periodId}&ou=${organisationUnitId}`;
         d2.Api.getApi().post(url).then(() => {
             this.fetchApprovalStatus();
-            this.closeDialog();
-        }).catch(() => {
-            // TODO Manage Error
-            this.closeDialog();
-        });
+        }).catch((error) => {
+            this.props.onError(error);
+        })
+            .finally(() => {
+                this.closeDialog();
+            });
     };
 
     unapprove = () => {
@@ -152,11 +154,12 @@ export class DataApprovalStatus extends PureComponent {
             `dataApprovals?ds=${dataSet.id}&pe=${periodId}&ou=${organisationUnitId}`;
         d2.Api.getApi().delete(url).then(() => {
             this.fetchApprovalStatus();
-            this.closeDialog();
-        }).catch(() => {
-            // TODO Manage Error
-            this.closeDialog();
-        });
+        }).catch((error) => {
+            this.props.onError(error);
+        })
+            .finally(() => {
+                this.closeDialog();
+            });
     };
 
     accept = () => {
@@ -165,11 +168,12 @@ export class DataApprovalStatus extends PureComponent {
             `dataAcceptances?ds=${dataSet.id}&pe=${periodId}&ou=${organisationUnitId}`;
         d2.Api.getApi().post(url).then(() => {
             this.fetchApprovalStatus();
-            this.closeDialog();
-        }).catch(() => {
-            // TODO Manage Error
-            this.closeDialog();
-        });
+        }).catch((error) => {
+            this.props.onError(error);
+        })
+            .finally(() => {
+                this.closeDialog();
+            });
     };
 
     unaccept = () => {
@@ -178,11 +182,12 @@ export class DataApprovalStatus extends PureComponent {
             `dataAcceptances?ds=${dataSet.id}&pe=${periodId}&ou=${organisationUnitId}`;
         d2.Api.getApi().delete(url).then(() => {
             this.fetchApprovalStatus();
-            this.closeDialog();
-        }).catch(() => {
-            // TODO Manage Error
-            this.closeDialog();
-        });
+        }).catch((error) => {
+            this.props.onError(error);
+        })
+            .finally(() => {
+                this.closeDialog();
+            });
     };
 
     render() {

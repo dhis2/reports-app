@@ -169,6 +169,7 @@ export default class DataApproval extends Page {
                                 dataSet={this.state.selectedDataSet}
                                 periodId={this.state.selectedPeriod}
                                 organisationUnitId={this.state.selectedOrgUnit}
+                                onError={this.manageError}
                             />
                         }
                     </div>
