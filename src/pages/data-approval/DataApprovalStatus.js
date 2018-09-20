@@ -46,7 +46,7 @@ export class DataApprovalStatus extends PureComponent {
         dataSet: PropTypes.string.isRequired,
         periodId: PropTypes.string.isRequired,
         organisationUnitId: PropTypes.string.isRequired,
-    }
+    };
 
     static resetState = {
         status: DataApprovalStatusEnum.NONE,
@@ -65,7 +65,6 @@ export class DataApprovalStatus extends PureComponent {
 
     constructor() {
         super();
-
         this.state = DataApprovalStatus.resetState;
     }
 
@@ -75,17 +74,12 @@ export class DataApprovalStatus extends PureComponent {
 
     fetchApprovalStatus = () => {
         const { dataSet, periodId, organisationUnitId, d2 } = this.props;
-        const url =
-            `dataApprovals?ds=${dataSet.id}&pe=${periodId}&ou=${organisationUnitId}`;
+        const url = `dataApprovals?ds=${dataSet.id}&pe=${periodId}&ou=${organisationUnitId}`;
         d2.Api.getApi().get(url).then((approvalResponse) => {
             this.httpResponseToState(approvalResponse);
         }).catch(() => {
             // TODO Manage Error
         });
-    };
-
-    resetState = () => {
-        this.setState({ ...DataApprovalStatus.resetState });
     };
 
     httpResponseToState = (approvalResponse) => {

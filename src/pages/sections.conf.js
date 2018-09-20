@@ -5,7 +5,7 @@ import { ConnectedReportingRateSummary } from './reporting-rate-summary/Reportin
 import { ConnectedResource } from './resource/Resource';
 import { ConnectedOrganisationUnitDistributionReport }
     from './organisation-unit-distribution-report/OrganisationUnitDistributionReport';
-import DataApproval from './data-approval/DataApproval';
+import { ConnectedDataApproval } from './data-approval/DataApproval';
 
 /* i18n */
 import { i18nKeys } from '../i18n';
@@ -83,7 +83,7 @@ export const sections = [
     {
         key: DATA_APPROVAL_SECTION_KEY,
         path: '/data-approval',
-        component: DataApproval,
+        component: ConnectedDataApproval,
         info: {
             label: i18nKeys.dataApproval.homeLabel,
             icon: 'playlist_add_check',
