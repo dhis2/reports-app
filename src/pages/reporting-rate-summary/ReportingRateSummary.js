@@ -49,7 +49,7 @@ const BASED_ON_OPTIONS = [
 export default class ReportingRateSummary extends Page {
     static propTypes = {
         d2: PropTypes.object.isRequired,
-    }
+    };
 
     constructor() {
         super();
@@ -71,7 +71,7 @@ export default class ReportingRateSummary extends Page {
         this.setState({
             showForm: true,
         });
-    }
+    };
 
     exportReportToXls = () => {
         const reportTables = document.querySelectorAll('#report-container table');
@@ -81,7 +81,7 @@ export default class ReportingRateSummary extends Page {
             XLSX.utils.book_append_sheet(workbook, worksheet, `Worksheet ${i}`);
         }
         XLSX.writeFile(workbook, 'report.xlsx');
-    }
+    };
 
     getReport = () => {
         this.setState({ loading: true });
@@ -106,32 +106,32 @@ export default class ReportingRateSummary extends Page {
         }).catch((error) => {
             this.manageError(error);
         });
-    }
+    };
 
     toggleShowOptions = () => {
         const newShowOptionsValue = !this.state.showOptions;
         this.setState({
             showOptions: newShowOptionsValue,
         });
-    }
+    };
 
     handleOrganisationUnitChange = (selectedOrgUnit) => {
         this.setState({
             selectedOrgUnit,
         });
-    }
+    };
 
     handleDataSetChange = (selectedDataSet) => {
         this.setState({
             selectedDataSet,
         });
-    }
+    };
 
     handlePeriodChange = (selectedPeriod) => {
         this.setState({
             selectedPeriod,
         });
-    }
+    };
 
     handleOrganisationUnitGroupSetChange = (organisationUnitGroupSetId, event) => {
         // copy of current selections
@@ -143,14 +143,14 @@ export default class ReportingRateSummary extends Page {
         this.setState({
             selectedOptionsForOrganisationUnitGroupSets,
         });
-    }
+    };
 
     handleCriteriaChange = (event) => {
         const selectedCriteria = event.target.value;
         this.setState({
             selectedCriteria,
         });
-    }
+    };
 
     renderExtraOptions = () => (
         <div>
@@ -171,7 +171,7 @@ export default class ReportingRateSummary extends Page {
                 />
             </div>
         </div>
-    )
+    );
 
     isFormValid() {
         return this.state.selectedOrgUnit &&

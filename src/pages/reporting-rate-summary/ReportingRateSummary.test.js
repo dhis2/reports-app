@@ -36,7 +36,6 @@ const ownShallow = () => {
         <ReportingRateSummary
             sectionKey={REPORTING_RATE_SUMMARY_SECTION_KEY}
             pageInfo={pageInfo}
-            updateFeedbackState={jest.fn()}
             currentSection={REPORTING_RATE_SUMMARY_SECTION_KEY}
             d2={fakerData.d2}
         />,

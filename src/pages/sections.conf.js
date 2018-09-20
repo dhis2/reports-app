@@ -3,7 +3,7 @@ import { ConnectedStandardReport } from './standard-report/StandardReport';
 import { ConnectedDataSetReport } from './data-set-report/DataSetReport';
 import { ConnectedReportingRateSummary } from './reporting-rate-summary/ReportingRateSummary';
 import { ConnectedResource } from './resource/Resource';
-import OrganisationUnitDistributionReport
+import { ConnectedOrganisationUnitDistributionReport }
     from './organisation-unit-distribution-report/OrganisationUnitDistributionReport';
 import DataApproval from './data-approval/DataApproval';
 
@@ -71,7 +71,7 @@ export const sections = [
     {
         key: ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_KEY,
         path: '/organisation-unit-distribution-report',
-        component: OrganisationUnitDistributionReport,
+        component: ConnectedOrganisationUnitDistributionReport,
         info: {
             label: i18nKeys.organisationUnitDistributionReport.homeLabel,
             icon: 'device_hub',
