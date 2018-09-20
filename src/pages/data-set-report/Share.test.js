@@ -19,11 +19,9 @@ jest.mock('@dhis2/d2-ui-core', () => ({
 }));
 
 const ownShallow = () => {
-    const updateAppState = jest.fn();
     return shallow(
         <Share
             d2={fakerData.d2}
-            updateAppState={updateAppState}
             period="2018"
             orgUnitId="orgUnitId"
             dataSetId="dataSetId"
@@ -67,7 +65,7 @@ describe('Test <Share /> actions:', () => {
     beforeEach(() => {
         wrapper = ownShallow();
     });
-    
+
     it('Should changes comment state when InputField changes.', () => {
         const newComment = 'new comment';
         wrapper.find(InputField).simulate('change', newComment);

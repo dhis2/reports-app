@@ -40,7 +40,7 @@ import styles from '../../styles';
 export default class DataSetReport extends Page {
     static propTypes = {
         d2: PropTypes.object.isRequired,
-    }
+    };
 
     constructor() {
         super();
@@ -60,40 +60,11 @@ export default class DataSetReport extends Page {
         };
     }
 
-    // eslint-disable-next-line
-    componentWillReceiveProps(newProps) {
-        /* FIXME make this code more readable */
-        const newState = {
-            showForm: (newProps.hasOwnProperty('showForm') ? newProps.showForm : this.state.showForm),
-            reportHtml: (newProps.hasOwnProperty('reportHtml') ? newProps.reportHtml : this.state.reportHtml),
-            selectedDataSet:
-                (newProps.hasOwnProperty('selectedDataSet') ? newProps.selectedDataSet : this.state.selectedDataSet),
-            selectedUnitOnly:
-                (newProps.hasOwnProperty('selectedUnitOnly') ?
-                    newProps.selectedUnitOnly : this.state.selectedUnitOnly),
-            selectedOrgUnit:
-                (newProps.hasOwnProperty('selectedOrgUnit') ? newProps.selectedOrgUnit : this.state.selectedOrgUnit),
-            selectedOptionsForDimensions:
-                (newProps.hasOwnProperty('selectedOptionsForDimensions') ?
-                    newProps.selectedOptionsForDimensions : this.state.selectedOptionsForDimensions),
-            selectedOptionsForOrganisationUnitGroupSets:
-                (newProps.hasOwnProperty('selectedOptionsForOrganisationUnitGroupSets') ?
-                    newProps.selectedOptionsForOrganisationUnitGroupSets :
-                    this.state.selectedOptionsForOrganisationUnitGroupSets),
-            showOptions: (newProps.hasOwnProperty('showOptions') ? newProps.showOptions : this.state.showOptions),
-            selectedPeriod:
-                (newProps.hasOwnProperty('selectedPeriod') ? newProps.selectedPeriod : this.state.selectedPeriod),
-            loading: (newProps.hasOwnProperty('loading') ? newProps.loading : this.state.loading),
-        };
-
-        this.setState(newState);
-    }
-
     goToForm = () => {
         this.setState({
             showForm: true,
         });
-    }
+    };
 
     exportReportToXls = () => {
         const reportTables = document.querySelectorAll('#report-container table');
@@ -103,19 +74,10 @@ export default class DataSetReport extends Page {
             XLSX.utils.book_append_sheet(workbook, worksheet, `Worksheet ${i}`);
         }
         XLSX.writeFile(workbook, 'report.xlsx');
-    }
+    };
 
     getReport = () => {
-        // this.props.updateAppState({
-        //     showSnackbar: true,
-        //     snackbarConf: {
-        //         type: LOADING,
-        //         message: i18n.t(i18nKeys.messages.loading),
-        //     },
-        //     pageState: {
-        //         loading: true,
-        //     },
-        // });
+        this.setState({ loading: false });
         this.props.updateFeedbackState(true, { type: LOADING });
         const api = this.props.d2.Api.getApi();
         const dataSetOptions = Object.keys(this.state.selectedOptionsForDimensions)
@@ -129,43 +91,31 @@ export default class DataSetReport extends Page {
         // eslint-disable-next-line
         const url = `dataSetReport?ds=${this.state.selectedDataSet.id}&pe=${this.state.selectedPeriod}&ou=${this.state.selectedOrgUnit}&selectedUnitOnly=${this.state.selectedUnitOnly}&dimension=${dimensions}`;
         api.get(url).then((response) => {
-            // this.props.updateAppState({
-            //     pageState: {
-            //         reportHtml: response,
-            //         showForm: false,
-            //         loading: false,
-            //     },
-            //     showSnackbar: true,
-            //     snackbarConf: {
-            //         type: SUCCESS,
-            //         message: i18n.t(i18nKeys.messages.reportGenerated),
-            //     },
-            // });
-            this.setState({ reportHtml: response, showForm: false, loading: true });
+            this.setState({ reportHtml: response, showForm: false, loading: false });
             this.props.updateFeedbackState(
                 true,
                 {
                     type: SUCCESS,
-                    message: i18n.t(i18nKeys.messages.resourceDeleted),
+                    message: i18n.t(i18nKeys.messages.reportGenerated),
                 },
             );
         }).catch((error) => {
             this.manageError(error);
         });
-    }
+    };
 
     toggleShowOptions = () => {
         const newShowOptionsValue = !this.state.showOptions;
         this.setState({
             showOptions: newShowOptionsValue,
         });
-    }
+    };
 
     handleOrganisationUnitChange = (selectedOrgUnit) => {
         this.setState({
             selectedOrgUnit,
         });
-    }
+    };
 
     handleDataSetChange = (selectedDataSet) => {
         /* update selected data set and reset options */
@@ -173,7 +123,7 @@ export default class DataSetReport extends Page {
             selectedDataSet,
             selectedOptionsForDimensions: {},
         });
-    }
+    };
 
     handleDimensionChange = (dimensionsId, event) => {
         // copy of current selections
@@ -183,19 +133,19 @@ export default class DataSetReport extends Page {
         this.setState({
             selectedOptionsForDimensions,
         });
-    }
+    };
 
     handlePeriodChange = (selectedPeriod) => {
         this.setState({
             selectedPeriod,
         });
-    }
+    };
 
     handleSelectedUnitOnlyChange = (event, selectedUnitOnly) => {
         this.setState({
             selectedUnitOnly,
         });
-    }
+    };
 
     handleOrganisationUnitGroupSetChange = (organisationUnitGroupSetId, event) => {
         // copy of current selections
@@ -207,7 +157,7 @@ export default class DataSetReport extends Page {
         this.setState({
             selectedOptionsForOrganisationUnitGroupSets,
         });
-    }
+    };
 
     renderExtraOptions = () => (
         <div>
@@ -228,7 +178,7 @@ export default class DataSetReport extends Page {
                 />
             </div>
         </div>
-    )
+    );
 
     isFormValid() {
         return this.state.selectedOrgUnit &&
