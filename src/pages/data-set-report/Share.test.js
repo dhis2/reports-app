@@ -22,6 +22,7 @@ const ownShallow = () => {
     return shallow(
         <Share
             d2={fakerData.d2}
+            updateFeedbackState={jest.fn()}
             period="2018"
             orgUnitId="orgUnitId"
             dataSetId="dataSetId"
