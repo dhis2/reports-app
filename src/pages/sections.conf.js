@@ -1,7 +1,7 @@
 /* Page Components */
 import { ConnectedStandardReport } from './standard-report/StandardReport';
 import { ConnectedDataSetReport } from './data-set-report/DataSetReport';
-import ReportingRateSummary from './reporting-rate-summary/ReportingRateSummary';
+import { ConnectedReportingRateSummary } from './reporting-rate-summary/ReportingRateSummary';
 import { ConnectedResource } from './resource/Resource';
 import OrganisationUnitDistributionReport
     from './organisation-unit-distribution-report/OrganisationUnitDistributionReport';
@@ -47,7 +47,7 @@ export const sections = [
     {
         key: REPORTING_RATE_SUMMARY_SECTION_KEY,
         path: '/reporting-rate-summary',
-        component: ReportingRateSummary,
+        component: ConnectedReportingRateSummary,
         info: {
             label: i18nKeys.reportingRateSummary.homeLabel,
             icon: 'format_list_bulleted',

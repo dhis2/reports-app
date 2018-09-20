@@ -77,7 +77,7 @@ export default class DataSetReport extends Page {
     };
 
     getReport = () => {
-        this.setState({ loading: false });
+        this.setState({ loading: true });
         this.props.updateFeedbackState(true, { type: LOADING });
         const api = this.props.d2.Api.getApi();
         const dataSetOptions = Object.keys(this.state.selectedOptionsForDimensions)
