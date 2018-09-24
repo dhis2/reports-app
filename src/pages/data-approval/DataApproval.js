@@ -95,14 +95,16 @@ export default class DataApproval extends Page {
         // eslint-disable-next-line
         const url = `dataSetReport?ds=${this.state.selectedDataSet.id}&pe=${this.state.selectedPeriod}&ou=${this.state.selectedOrgUnit}`;
         api.get(url).then((response) => {
-            this.setState({ reportHtml: response, showForm: false, loading: false });
-            this.props.updateFeedbackState(
-                true,
-                {
-                    type: SUCCESS,
-                    message: i18n.t(i18nKeys.messages.reportGenerated),
-                },
-            );
+            if (response && this.isPageMounted()) {
+                this.setState({ reportHtml: response, showForm: false, loading: false });
+                this.props.updateFeedbackState(
+                    true,
+                    {
+                        type: SUCCESS,
+                        message: i18n.t(i18nKeys.messages.reportGenerated),
+                    },
+                );
+            }
         }).catch((error) => {
             this.manageError(error);
         });

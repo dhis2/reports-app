@@ -51,10 +51,7 @@ class App extends PureComponent {
     }
 
     onFeedbackSnackbarClose = () => {
-        this.props.updateFeedbackState(false, {
-            type: '',
-            message: 'test',
-        });
+        this.props.updateFeedbackState(false, this.state.snackbarConf);
     };
 
     getContext() {

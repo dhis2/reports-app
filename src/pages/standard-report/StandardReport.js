@@ -111,7 +111,7 @@ export default class StandardReport extends Page {
             url = `${url}&filter=displayName:ilike:${search}`;
         }
         if (api) {
-            this.props.updateFeedbackState(true, { type: LOADING });
+            this.startLoading();
             api.get(url).then((response) => {
                 if (response && this.isPageMounted()) {
                     if (this.state.deleteInProgress) {
@@ -123,7 +123,7 @@ export default class StandardReport extends Page {
                             },
                         );
                     } else {
-                        this.props.updateFeedbackState(false);
+                        this.stopLoading();
                     }
                     this.setState(response);
                 }
@@ -134,6 +134,16 @@ export default class StandardReport extends Page {
             });
         }
     }
+
+    startLoading = () => {
+        this.props.updateFeedbackState(true, { type: LOADING });
+        this.setState({ loading: true });
+    };
+
+    stopLoading = () => {
+        this.props.updateFeedbackState(false);
+        this.setState({ loading: false });
+    };
 
     /* Pagination */
     hasNextPage() {
@@ -218,7 +228,7 @@ export default class StandardReport extends Page {
                 const api = this.props.d2.Api.getApi();
                 const url = `${REPORTS_ENDPOINT}/${args.id}`;
                 this.state.deleteInProgress = true;
-                this.props.updateFeedbackState(false);
+                this.startLoading();
                 api.delete(url).then((response) => {
                     if (response && this.isPageMounted()) {
                         this.loadData(INITIAL_PAGER, this.state.search);
@@ -294,7 +304,7 @@ export default class StandardReport extends Page {
     }
 
     displayNoResults = () => (
-        (this.state.reports.length > 0 || this.props.snackbarConf.type === LOADING) ? { display: 'none' } : ''
+        (this.state.reports.length > 0 || this.state.loading) ? { display: 'none' } : ''
     );
 
     render() {

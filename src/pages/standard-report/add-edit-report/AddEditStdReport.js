@@ -309,7 +309,7 @@ export default class AddEditStdReport extends PureComponent {
     };
 
     ifFormValid = () => {
-        if (this.validateGenericFields()) {
+        if (!this.state.loading && this.validateGenericFields()) {
             return !(this.state.report.type === TYPES.JASPER_REPORT_TABLE &&
                 this.state.report.reportTable.id === NONE.id);
         }

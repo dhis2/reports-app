@@ -57,6 +57,7 @@ export default class Resource extends Page {
             search: '',
             open: false,
             timeoutId: null,
+            loading: false,
         };
 
         this.search = this.search.bind(this);
@@ -102,7 +103,7 @@ export default class Resource extends Page {
             url = `${url}&filter=displayName:ilike:${search}`;
         }
         if (api) {
-            this.props.updateFeedbackState(true, { type: LOADING });
+            this.startLoading();
             api.get(url).then((response) => {
                 if (response && this.isPageMounted()) {
                     if (this.state.deleteInProgress) {
@@ -114,7 +115,7 @@ export default class Resource extends Page {
                             },
                         );
                     } else {
-                        this.props.updateFeedbackState(false);
+                        this.stopLoading();
                     }
                     this.setState(response);
                 }
@@ -125,6 +126,16 @@ export default class Resource extends Page {
             });
         }
     }
+
+    startLoading = () => {
+        this.props.updateFeedbackState(true, { type: LOADING });
+        this.setState({ loading: true });
+    };
+
+    stopLoading = () => {
+        this.props.updateFeedbackState(false);
+        this.setState({ loading: false });
+    };
 
     /* Pagination */
     hasNextPage() {
@@ -203,7 +214,7 @@ export default class Resource extends Page {
                 const api = this.props.d2.Api.getApi();
                 const url = `${DOCUMENTS_ENDPOINT}/${args.id}`;
                 this.state.deleteInProgress = true;
-                this.props.updateFeedbackState(false);
+                this.stopLoading();
                 api.delete(url).then((response) => {
                     if (response && this.isPageMounted()) {
                         this.loadDocuments(INITIAL_PAGER, this.state.search);
@@ -317,9 +328,7 @@ export default class Resource extends Page {
                             {
                                 textAlign: 'center',
                                 ...(
-                                    this.state.documents.length > 0 ||
-                                    this.props.snackbarConf.type === LOADING ?
-                                        { display: 'none' } : ''
+                                    this.state.documents.length > 0 || this.state.loading ? { display: 'none' } : ''
                                 ),
                             }
                         }
