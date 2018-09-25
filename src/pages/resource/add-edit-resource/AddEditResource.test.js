@@ -59,7 +59,7 @@ const ownShallow = (selectedResource) => {
         <AddEditResource
             d2={fakerData.d2}
             onRequestClose={jest.fn()}
-            updateAppState={jest.fn()}
+            updateFeedbackState={jest.fn()}
             open={true}
             onError={jest.fn()}
             selectedResource={selectedResource}

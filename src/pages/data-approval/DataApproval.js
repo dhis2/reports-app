@@ -8,6 +8,10 @@ import { Paper } from 'material-ui';
 /* d2-ui components */
 import { Button, PeriodPicker } from '@dhis2/d2-ui-core';
 
+/* Redux */
+import { connect } from 'react-redux';
+import { updateFeedbackState } from '../../actions/feedback';
+
 /* i18n */
 import i18n from '../../locales';
 import { i18nKeys } from '../../i18n';
@@ -27,15 +31,15 @@ import { LOADING, SUCCESS } from '../../helpers/feedbackSnackBarTypes';
 /* styles */
 import styles from '../../styles';
 
-class DataApproval extends Page {
+export default class DataApproval extends Page {
     static propTypes = {
         d2: PropTypes.object.isRequired,
-    }
+    };
 
     /* FIXME: right now d2-ui periodPicker forces us to pass d2 through old  context api */
     static childContextTypes = {
         d2: PropTypes.object.isRequired,
-    }
+    };
 
     constructor() {
         super();
@@ -59,28 +63,6 @@ class DataApproval extends Page {
         };
     }
 
-    // eslint-disable-next-line
-    componentWillReceiveProps(newProps) {
-        /* FIXME make this code more readable */
-        const newState = {
-            showForm: (newProps.hasOwnProperty('showForm') ? newProps.showForm : this.state.showForm),
-            reportHtml: (newProps.hasOwnProperty('reportHtml') ? newProps.reportHtml : this.state.reportHtml),
-            selectedDataSet:
-                (newProps.hasOwnProperty('selectedDataSet') ? newProps.selectedDataSet : this.state.selectedDataSet),
-            selectedOrgUnit:
-                (newProps.hasOwnProperty('selectedOrgUnit') ? newProps.selectedOrgUnit : this.state.selectedOrgUnit),
-            selectedPeriodType: (newProps.hasOwnProperty('selectedPeriodType') ?
-                newProps.selectedPeriodType : this.state.selectedPeriodType),
-            selectedPeriod:
-                (newProps.hasOwnProperty('selectedPeriod') ? newProps.selectedPeriod : this.state.selectedPeriod),
-            dataApprovalLevels: (newProps.hasOwnProperty('dataApprovalLevels') ?
-                newProps.dataApprovalLevels : this.state.dataApprovalLevels),
-            loading: (newProps.hasOwnProperty('loading') ? newProps.loading : this.state.loading),
-        };
-
-        this.setState(newState);
-    }
-
     componentDidMount() {
         super.componentDidMount();
 
@@ -91,8 +73,8 @@ class DataApproval extends Page {
             this.setState({
                 dataApprovalLevels: dataApprovalLevelsResponse.toArray(),
             });
-        }).catch(() => {
-            // TODO Manage error
+        }).catch((error) => {
+            this.manageError(error);
         });
     }
 
@@ -102,60 +84,50 @@ class DataApproval extends Page {
         this.setState({
             showForm: true,
         });
-    }
+    };
 
     getData = () => {
-        this.props.updateAppState({
-            showSnackbar: true,
-            snackbarConf: {
-                type: LOADING,
-                message: i18n.t(i18nKeys.messages.loading),
-            },
-            pageState: {
-                loading: true,
-            },
-        });
+        this.setState({ loading: true });
+        this.props.updateFeedbackState(true, { type: LOADING });
 
         const api = this.props.d2.Api.getApi();
 
         // eslint-disable-next-line
         const url = `dataSetReport?ds=${this.state.selectedDataSet.id}&pe=${this.state.selectedPeriod}&ou=${this.state.selectedOrgUnit}`;
         api.get(url).then((response) => {
-            this.props.updateAppState({
-                pageState: {
-                    reportHtml: response,
-                    showForm: false,
-                    loading: false,
-                },
-                showSnackbar: true,
-                snackbarConf: {
-                    type: SUCCESS,
-                    message: i18n.t(i18nKeys.messages.reportGenerated),
-                },
-            });
+            if (response && this.isPageMounted()) {
+                this.setState({ reportHtml: response, showForm: false, loading: false });
+                this.props.updateFeedbackState(
+                    true,
+                    {
+                        type: SUCCESS,
+                        message: i18n.t(i18nKeys.messages.reportGenerated),
+                    },
+                );
+            }
         }).catch((error) => {
             this.manageError(error);
         });
-    }
+    };
 
     handleOrganisationUnitChange = (selectedOrgUnit) => {
         this.setState({
             selectedOrgUnit,
         });
-    }
+    };
 
     handleDataSetChange = (selectedDataSet) => {
         this.setState({
             selectedDataSet,
             selectedPeriodType: selectedDataSet ? selectedDataSet.workflow.periodType : null,
         });
-    }
+    };
 
     handlePeriodChange = (selectedPeriod) => {
         this.setState({
             selectedPeriod,
         });
-    }
+    };
 
     isApprovalStatusEnabled = () =>
         !this.state.showForm &&
@@ -199,6 +171,7 @@ class DataApproval extends Page {
                                 dataSet={this.state.selectedDataSet}
                                 periodId={this.state.selectedPeriod}
                                 organisationUnitId={this.state.selectedOrgUnit}
+                                onError={this.manageError}
                             />
                         }
                     </div>
@@ -258,4 +231,11 @@ class DataApproval extends Page {
     }
 }
 
-export default DataApproval;
+const mapDispatchToProps = dispatch => ({
+    updateFeedbackState: updateFeedbackState(dispatch),
+});
+
+export const ConnectedDataApproval = connect(
+    null,
+    mapDispatchToProps,
+)(DataApproval);

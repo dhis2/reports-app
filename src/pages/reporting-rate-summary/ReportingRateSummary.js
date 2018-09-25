@@ -11,6 +11,10 @@ import { Button, DropDown } from '@dhis2/d2-ui-core';
 /* js-xlsx */
 import XLSX from 'xlsx';
 
+/* Redux */
+import { connect } from 'react-redux';
+import { updateFeedbackState } from '../../actions/feedback';
+
 /* i18n */
 import i18n from '../../locales';
 import { i18nKeys } from '../../i18n';
@@ -42,10 +46,10 @@ const BASED_ON_OPTIONS = [
     },
 ];
 
-class ReportingRateSummary extends Page {
+export default class ReportingRateSummary extends Page {
     static propTypes = {
         d2: PropTypes.object.isRequired,
-    }
+    };
 
     constructor() {
         super();
@@ -63,36 +67,11 @@ class ReportingRateSummary extends Page {
         };
     }
 
-    // eslint-disable-next-line
-    componentWillReceiveProps(newProps) {
-        /* FIXME make this code more readable */
-        const newState = {
-            showForm: (newProps.hasOwnProperty('showForm') ? newProps.showForm : this.state.showForm),
-            reportHtml: (newProps.hasOwnProperty('reportHtml') ? newProps.reportHtml : this.state.reportHtml),
-            selectedDataSet:
-                (newProps.hasOwnProperty('selectedDataSet') ? newProps.selectedDataSet : this.state.selectedDataSet),
-            selectedOrgUnit:
-                (newProps.hasOwnProperty('selectedOrgUnit') ? newProps.selectedOrgUnit : this.state.selectedOrgUnit),
-            selectedOptionsForOrganisationUnitGroupSets:
-                (newProps.hasOwnProperty('selectedOptionsForOrganisationUnitGroupSets') ?
-                    newProps.selectedOptionsForOrganisationUnitGroupSets :
-                    this.state.selectedOptionsForOrganisationUnitGroupSets),
-            showOptions: (newProps.hasOwnProperty('showOptions') ? newProps.showOptions : this.state.showOptions),
-            selectedPeriod:
-                (newProps.hasOwnProperty('selectedPeriod') ? newProps.selectedPeriod : this.state.selectedPeriod),
-            selectedCriteria:
-                (newProps.hasOwnProperty('selectedCriteria') ? newProps.selectedCriteria : this.state.selectedCriteria),
-            loading: (newProps.hasOwnProperty('loading') ? newProps.loading : this.state.loading),
-        };
-
-        this.setState(newState);
-    }
-
     goToForm = () => {
         this.setState({
             showForm: true,
         });
-    }
+    };
 
     exportReportToXls = () => {
         const reportTables = document.querySelectorAll('#report-container table');
@@ -102,19 +81,11 @@ class ReportingRateSummary extends Page {
             XLSX.utils.book_append_sheet(workbook, worksheet, `Worksheet ${i}`);
         }
         XLSX.writeFile(workbook, 'report.xlsx');
-    }
+    };
 
     getReport = () => {
-        this.props.updateAppState({
-            showSnackbar: true,
-            snackbarConf: {
-                type: LOADING,
-                message: i18n.t(i18nKeys.messages.loading),
-            },
-            pageState: {
-                loading: true,
-            },
-        });
+        this.setState({ loading: true });
+        this.props.updateFeedbackState(true, { type: LOADING });
 
         const api = this.props.d2.Api.getApi();
         const groupUids = Object.keys(this.state.selectedOptionsForOrganisationUnitGroupSets)
@@ -124,47 +95,43 @@ class ReportingRateSummary extends Page {
         // eslint-disable-next-line
         const url = `organisationUnits/${this.state.selectedOrgUnit}/rateSummary?ds=${dataSetId}&pe=${this.state.selectedPeriod}&criteria=${this.state.selectedCriteria}&groupUids=${groupUids}`;
         api.get(url).then((response) => {
-            this.props.updateAppState({
-                pageState: {
-                    reportHtml: response,
-                    showForm: false,
-                    loading: false,
-                },
-                showSnackbar: true,
-                snackbarConf: {
+            this.setState({ reportHtml: response, showForm: false, loading: false });
+            this.props.updateFeedbackState(
+                true,
+                {
                     type: SUCCESS,
                     message: i18n.t(i18nKeys.messages.reportGenerated),
                 },
-            });
+            );
         }).catch((error) => {
             this.manageError(error);
         });
-    }
+    };
 
     toggleShowOptions = () => {
         const newShowOptionsValue = !this.state.showOptions;
         this.setState({
             showOptions: newShowOptionsValue,
         });
-    }
+    };
 
     handleOrganisationUnitChange = (selectedOrgUnit) => {
         this.setState({
             selectedOrgUnit,
         });
-    }
+    };
 
     handleDataSetChange = (selectedDataSet) => {
         this.setState({
             selectedDataSet,
         });
-    }
+    };
 
     handlePeriodChange = (selectedPeriod) => {
         this.setState({
             selectedPeriod,
         });
-    }
+    };
 
     handleOrganisationUnitGroupSetChange = (organisationUnitGroupSetId, event) => {
         // copy of current selections
@@ -176,14 +143,14 @@ class ReportingRateSummary extends Page {
         this.setState({
             selectedOptionsForOrganisationUnitGroupSets,
         });
-    }
+    };
 
     handleCriteriaChange = (event) => {
         const selectedCriteria = event.target.value;
         this.setState({
             selectedCriteria,
         });
-    }
+    };
 
     renderExtraOptions = () => (
         <div>
@@ -204,7 +171,7 @@ class ReportingRateSummary extends Page {
                 />
             </div>
         </div>
-    )
+    );
 
     isFormValid() {
         return this.state.selectedOrgUnit &&
@@ -308,4 +275,11 @@ class ReportingRateSummary extends Page {
     }
 }
 
-export default ReportingRateSummary;
+const mapDispatchToProps = dispatch => ({
+    updateFeedbackState: updateFeedbackState(dispatch),
+});
+
+export const ConnectedReportingRateSummary = connect(
+    null,
+    mapDispatchToProps,
+)(ReportingRateSummary);

@@ -34,7 +34,6 @@ const ownShallow = () => {
         <OrganisationUnitDistributionReport
             sectionKey={ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_KEY}
             pageInfo={pageInfo}
-            updateAppState={jest.fn()}
             currentSection={ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_KEY}
             d2={fakerData.d2}
         />,

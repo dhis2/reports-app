@@ -8,6 +8,10 @@ import { Dialog } from 'material-ui';
 /* d2-ui */
 import { Button, TextField, SelectField, CheckBox, SvgIcon, InputField } from '@dhis2/d2-ui-core';
 
+/* Redux */
+import { connect } from 'react-redux';
+import { updateFeedbackState } from '../../../actions/feedback';
+
 /* styles */
 import appStyles from '../../../styles';
 import styles from './AddEditStdReport.style';
@@ -17,12 +21,16 @@ import {
     relativePeriods, NONE, CACHE_STRATEGIES, REPORT_TABLES_ENDPOINT, REPORT_TYPES, REPORTS_ENDPOINT, TYPES,
 } from '../standard.report.conf';
 
+/* utils */
+import { LOADING } from '../../../helpers/feedbackSnackBarTypes';
+
 /* i18n */
 import i18n from '../../../locales';
 import { i18nKeys } from '../../../i18n';
 
 const initialState = {
     report: {
+        id: null,
         name: null,
         cacheStrategy: CACHE_STRATEGIES[1].id, // default RESPECT_SYSTEM_SETTING
         type: TYPES.JASPER_REPORT_TABLE, // default JASPER_REPORT_TABLE
@@ -81,24 +89,21 @@ const initialState = {
         },
     },
     selectedFileToUpload: null,
+    loading: false,
 };
 
-class AddEditStdReport extends PureComponent {
+export default class AddEditStdReport extends PureComponent {
     static propTypes = {
         d2: PropTypes.object.isRequired,
         onRequestClose: PropTypes.func.isRequired,
         open: PropTypes.bool.isRequired,
         selectedReport: PropTypes.object,
-        loadedReport: PropTypes.object,
         onError: PropTypes.func.isRequired,
-        updateAppState: PropTypes.func.isRequired,
-        loading: PropTypes.bool,
+        updateFeedbackState: PropTypes.func.isRequired,
     };
 
     static defaultProps = {
         selectedReport: null,
-        loadedReport: null,
-        loading: false,
     };
 
     constructor(props) {
@@ -108,15 +113,13 @@ class AddEditStdReport extends PureComponent {
 
     componentDidMount() {
         this.loadReportTables();
+        if (this.props.selectedReport) {
+            this.loadSelectedReport(this.props.selectedReport);
+        }
     }
 
     componentWillReceiveProps(nextProps) {
-        if (
-            ((nextProps.selectedReport && !nextProps.loadedReport) ||
-            (nextProps.selectedReport &&
-                nextProps.loadedReport &&
-                nextProps.selectedReport.id !== nextProps.loadedReport.id)) &&
-            !nextProps.loading) {
+        if (nextProps.selectedReport && nextProps.selectedReport.id !== this.state.report.id && !this.state.loading) {
             this.loadSelectedReport(nextProps.selectedReport);
         } else {
             this.setState(JSON.parse(JSON.stringify(initialState)));
@@ -214,11 +217,12 @@ class AddEditStdReport extends PureComponent {
 
     getTitle = () => (this.props.selectedReport ?
         i18n.t(i18nKeys.standardReport.editReportTitle) :
-        i18n.t(i18nKeys.standardReport.addNewReportTitle));
+        i18n.t(i18nKeys.standardReport.addNewReportTitle)
+    );
 
     /* close dialog */
     close = (refreshList) => {
-        this.props.updateAppState({ pageState: { loading: false } });
+        this.stopLoading();
         this.props.onRequestClose(refreshList);
     };
 
@@ -227,11 +231,11 @@ class AddEditStdReport extends PureComponent {
         const api = this.props.d2.Api.getApi();
         const url = `${REPORT_TABLES_ENDPOINT}?paging=false&fields=:id,name`;
         if (api) {
-            this.props.updateAppState({ pageState: { loading: true } });
+            this.startLoading();
             api.get(url).then((response) => {
                 if (response) {
                     this.setState({ reportTables: [NONE, ...response.reportTables] });
-                    this.props.updateAppState({ pageState: { loading: false } });
+                    this.stopLoading();
                 }
             }).catch((error) => {
                 this.props.onError(error);
@@ -239,15 +243,25 @@ class AddEditStdReport extends PureComponent {
         }
     };
 
+    startLoading = () => {
+        this.props.updateFeedbackState(true, { type: LOADING });
+        this.setState({ loading: true });
+    };
+
+    stopLoading = () => {
+        this.props.updateFeedbackState(false);
+        this.setState({ loading: false });
+    };
+
     /* load report info to edit it */
     loadSelectedReport = (report) => {
         const api = this.props.d2.Api.getApi();
         const url = `${REPORTS_ENDPOINT}/${report.id}`;
         if (api) {
-            this.props.updateAppState({ pageState: { loading: true } });
+            this.startLoading();
             api.get(url).then((response) => {
                 if (response) {
-                    this.props.updateAppState({ pageState: { loading: false, loadedReport: { ...response } } });
+                    this.stopLoading();
                     this.setState({
                         ...this.state,
                         report: {
@@ -269,7 +283,7 @@ class AddEditStdReport extends PureComponent {
                 if (this.state.report.type !== TYPES.JASPER_REPORT_TABLE) {
                     delete this.state.report.reportTable;
                 }
-                this.props.updateAppState({ pageState: { loading: true } });
+                this.startLoading();
                 // Edit report
                 if (this.state.report.id) {
                     const url = `${REPORTS_ENDPOINT}/${this.state.report.id}`;
@@ -295,7 +309,7 @@ class AddEditStdReport extends PureComponent {
     };
 
     ifFormValid = () => {
-        if (this.validateGenericFields()) {
+        if (!this.state.loading && this.validateGenericFields()) {
             return !(this.state.report.type === TYPES.JASPER_REPORT_TABLE &&
                 this.state.report.reportTable.id === NONE.id);
         }
@@ -486,4 +500,11 @@ class AddEditStdReport extends PureComponent {
     }
 }
 
-export default AddEditStdReport;
+const mapDispatchToProps = dispatch => ({
+    updateFeedbackState: updateFeedbackState(dispatch),
+});
+
+export const ConnectedAddEditStdReport = connect(
+    null,
+    mapDispatchToProps,
+)(AddEditStdReport);

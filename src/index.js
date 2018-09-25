@@ -2,11 +2,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-/* React Router */
-import { HashRouter, withRouter } from 'react-router-dom';
-
 /* d2 */
 import { init, getManifest, getUserSettings } from 'd2/lib/d2';
+
+/* Redux */
+import { Provider } from 'react-redux';
+import { ConnectedRouter } from 'react-router-redux';
+import store, { history } from './store';
 
 /* i18n */
 import { configI18n, injectTranslationsToD2 } from './configI18n';
@@ -15,8 +17,6 @@ import './index.css';
 import App from './App';
 
 import registerServiceWorker from './registerServiceWorker';
-
-const AppComponent = withRouter(App);
 
 /* init d2 */
 let d2Instance;
@@ -44,11 +44,13 @@ getManifest('manifest.webapp').then((manifest) => {
         .then(() => {
             injectTranslationsToD2(d2Instance);
             ReactDOM.render(
-                <HashRouter>
-                    <AppComponent
-                        d2={d2Instance}
-                    />
-                </HashRouter>,
+                <Provider store={store}>
+                    <ConnectedRouter history={history}>
+                        <App
+                            d2={d2Instance}
+                        />
+                    </ConnectedRouter>
+                </Provider>,
                 document.getElementById('app'),
             );
         });

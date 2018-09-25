@@ -47,7 +47,7 @@ const ownShallow = () => {
         <StandardReport
             sectionKey={STANDARD_REPORT_SECTION_KEY}
             pageInfo={pageInfo}
-            updateAppState={jest.fn()}
+            updateFeedbackState={jest.fn()}
             currentSection={STANDARD_REPORT_SECTION_KEY}
             d2={fakerData.d2}
         />,
@@ -138,12 +138,12 @@ describe('Test <StandardReport /> actions:', () => {
     /* Search */
     it('Should call search action on search InputField "onChange".', () => {
         const wrapper = ownShallow();
-        wrapper.instance().search = jest.fn();
+        wrapper.instance().debounceSearch = jest.fn();
         wrapper.setState({
             search: 'searchWord',
         });
         wrapper.find(InputField).simulate('change');
-        expect(wrapper.instance().search).toHaveBeenCalled();
+        expect(wrapper.instance().debounceSearch).toHaveBeenCalled();
     });
 
     /* Add New */
@@ -231,7 +231,7 @@ describe('Test <StandardReport /> actions:', () => {
         const wrapper = ownShallow();
         const args = { displayName: 'nameDelete', reportTable: 'tableDelete', id: 'idDelete'};
         wrapper.instance().delete(args);
-        expect(wrapper.instance().props.updateAppState).toHaveBeenCalled();
+        expect(wrapper.instance().props.updateFeedbackState).toHaveBeenCalled();
     });
 
     /* Close dialog */

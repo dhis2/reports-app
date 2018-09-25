@@ -49,7 +49,7 @@ const ownShallow = () => {
         <Resource
             sectionKey={RESOURCE_SECTION_KEY}
             pageInfo={pageInfo}
-            updateAppState={jest.fn()}
+            updateFeedbackState={jest.fn()}
             currentSection={RESOURCE_SECTION_KEY}
             d2={fakerData.d2}
         />,
@@ -138,12 +138,12 @@ describe('Test <Resource /> actions:', () => {
     /* Search */
     it('Should call search action on search InputField "onChange".', () => {
         const wrapper = ownShallow();
-        wrapper.instance().search = jest.fn();
+        wrapper.instance().debounceSearch = jest.fn();
         wrapper.setState({
             search: 'searchWord',
         });
         wrapper.find(InputField).simulate('change');
-        expect(wrapper.instance().search).toHaveBeenCalled();
+        expect(wrapper.instance().debounceSearch).toHaveBeenCalled();
     });
 
     /* Add New */
@@ -227,7 +227,7 @@ describe('Test <Resource /> actions:', () => {
         const wrapper = ownShallow();
         const args = { displayName: 'nameDelete', id: 'idDelete'};
         wrapper.instance().delete(args);
-        expect(wrapper.instance().props.updateAppState).toHaveBeenCalled();
+        expect(wrapper.instance().props.updateFeedbackState).toHaveBeenCalled();
     });
 
     /* Close dialog */

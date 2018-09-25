@@ -11,6 +11,10 @@ import { Button } from '@dhis2/d2-ui-core';
 /* js-xlsx */
 import XLSX from 'xlsx';
 
+/* Redux */
+import { connect } from 'react-redux';
+import { updateFeedbackState } from '../../actions/feedback';
+
 /* i18n */
 import i18n from '../../locales';
 import { i18nKeys } from '../../i18n';
@@ -29,10 +33,10 @@ import { LOADING, SUCCESS } from '../../helpers/feedbackSnackBarTypes';
 /* styles */
 import styles from '../../styles';
 
-class OrganisationUnitDistributionReport extends Page {
+export default class OrganisationUnitDistributionReport extends Page {
     static propTypes = {
         d2: PropTypes.object.isRequired,
-    }
+    };
 
     constructor() {
         super();
@@ -47,45 +51,26 @@ class OrganisationUnitDistributionReport extends Page {
         };
     }
 
-    // eslint-disable-next-line
-    componentWillReceiveProps(newProps) {
-        /* FIXME make this code more readable */
-        const newState = {
-            showForm: (newProps.hasOwnProperty('showForm') ? newProps.showForm : this.state.showForm),
-            reportHtml: (newProps.hasOwnProperty('reportHtml') ? newProps.reportHtml : this.state.reportHtml),
-            imageUrl: (newProps.hasOwnProperty('imageUrl') ? newProps.imageUrl : this.state.imageUrl),
-            selectedOrgUnit:
-                (newProps.hasOwnProperty('selectedOrgUnit') ? newProps.selectedOrgUnit : this.state.selectedOrgUnit),
-            selectedGroupSet:
-                (newProps.hasOwnProperty('selectedGroupSet') ? newProps.selectedGroupSet : this.state.selectedGroupSet),
-            loading: (newProps.hasOwnProperty('loading') ? newProps.loading : this.state.loading),
-        };
-
-        this.setState(newState);
-    }
-
     goToForm = () => {
         this.setState({
             showForm: true,
         });
-    }
+    };
 
     handleChartLoaded = () => {
-        this.props.updateAppState({
-            pageState: {
-                loading: false,
-            },
-            showSnackbar: true,
-            snackbarConf: {
+        this.setState({ loading: false });
+        this.props.updateFeedbackState(
+            true,
+            {
                 type: SUCCESS,
                 message: i18n.t(i18nKeys.messages.chartGenerated),
             },
-        });
-    }
+        );
+    };
 
     handleChartLoadingError = () => {
         this.manageError();
-    }
+    };
 
     exportReportToXls = () => {
         const reportTables = document.querySelectorAll('#report-container table');
@@ -95,42 +80,28 @@ class OrganisationUnitDistributionReport extends Page {
             XLSX.utils.book_append_sheet(workbook, worksheet, `Worksheet ${i}`);
         }
         XLSX.writeFile(workbook, 'report.xlsx');
-    }
+    };
 
     getReport = () => {
-        this.props.updateAppState({
-            showSnackbar: true,
-            snackbarConf: {
-                type: LOADING,
-                message: i18n.t(i18nKeys.messages.loading),
-            },
-            pageState: {
-                loading: true,
-            },
-        });
-
-        const api = this.props.d2.Api.getApi();
-
+        this.setState({ loading: true });
+        this.props.updateFeedbackState(true, { type: LOADING });
         // eslint-disable-next-line
         const url = `organisationUnits/${this.state.selectedOrgUnit}/distributionReport?groupSetId=${this.state.selectedGroupSet}`;
+        const api = this.props.d2.Api.getApi();
+
         api.get(url).then((response) => {
-            this.props.updateAppState({
-                pageState: {
-                    reportHtml: response,
-                    imageUrl: null,
-                    showForm: false,
-                    loading: false,
-                },
-                showSnackbar: true,
-                snackbarConf: {
+            this.setState({ reportHtml: response, imageUrl: null, showForm: false, loading: false });
+            this.props.updateFeedbackState(
+                true,
+                {
                     type: SUCCESS,
                     message: i18n.t(i18nKeys.messages.reportGenerated),
                 },
-            });
+            );
         }).catch((error) => {
             this.manageError(error);
         });
-    }
+    };
 
     getChart = () => {
         const api = this.props.d2.Api.getApi();
@@ -138,32 +109,22 @@ class OrganisationUnitDistributionReport extends Page {
 
         // eslint-disable-next-line
         const imageUrl = `${api.baseUrl}/organisationUnits/${this.state.selectedOrgUnit}/distributionChart.png?groupSetId=${this.state.selectedGroupSet}&t=${timestamp}`;
-        this.props.updateAppState({
-            showSnackbar: true,
-            snackbarConf: {
-                type: LOADING,
-                message: i18n.t(i18nKeys.messages.loading),
-            },
-            pageState: {
-                reportHtml: null,
-                imageUrl,
-                showForm: false,
-                loading: true,
-            },
-        });
-    }
+
+        this.setState({ reportHtml: null, imageUrl, showForm: false, loading: true });
+        this.props.updateFeedbackState(true, { type: LOADING });
+    };
 
     handleOrganisationUnitChange = (selectedOrgUnit) => {
         this.setState({
             selectedOrgUnit,
         });
-    }
+    };
 
     handleGroupSetChange = (selectedGroupSet) => {
         this.setState({
             selectedGroupSet,
         });
-    }
+    };
 
     isFormValid() {
         return this.state.selectedOrgUnit && this.state.selectedGroupSet;
@@ -270,4 +231,11 @@ class OrganisationUnitDistributionReport extends Page {
     }
 }
 
-export default OrganisationUnitDistributionReport;
+const mapDispatchToProps = dispatch => ({
+    updateFeedbackState: updateFeedbackState(dispatch),
+});
+
+export const ConnectedOrganisationUnitDistributionReport = connect(
+    null,
+    mapDispatchToProps,
+)(OrganisationUnitDistributionReport);

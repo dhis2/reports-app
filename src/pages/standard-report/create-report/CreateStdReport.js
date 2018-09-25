@@ -107,7 +107,7 @@ class CreateStdReport extends PureComponent {
         } else {
             window.open(`${api.baseUrl}/${url}`);
         }
-    }
+    };
 
     loadReportParams = (reportMode) => {
         const api = this.props.d2.Api.getApi();
@@ -180,7 +180,7 @@ class CreateStdReport extends PureComponent {
             return !!this.state.selectedOrgUnitId;
         }
         return false;
-    }
+    };
 
     render() {
         const actions = [

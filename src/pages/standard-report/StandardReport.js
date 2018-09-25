@@ -14,6 +14,10 @@ import { Button, Pagination, SvgIcon, InputField } from '@dhis2/d2-ui-core';
 import '@dhis2/d2-ui-core/build/css/Table.css';
 import '@dhis2/d2-ui-core/build/css/Pagination.css';
 
+/* Redux */
+import { connect } from 'react-redux';
+import { updateFeedbackState } from '../../actions/feedback';
+
 /* styles */
 import styles from './StandardReport.style';
 import appStyles from '../../styles';
@@ -21,25 +25,35 @@ import appStyles from '../../styles';
 /* app components */
 import Page from '../Page';
 import PageHelper from '../../components/page-helper/PageHelper';
-import AddEditStdReport from './add-edit-report/AddEditStdReport';
+import { ConnectedAddEditStdReport } from './add-edit-report/AddEditStdReport';
 import CreateStdReport from './create-report/CreateStdReport';
 import HtmlReport from './HtmlReport';
 
 /* app config */
 import {
     ADD_NEW_REPORT_ACTION, CONTEXT_MENU_ACTION, CONTEXT_MENU_ICONS, REPORTS_ENDPOINT } from './standard.report.conf';
+import { DEBOUNCE_DELAY } from '../sections.conf';
 
 /* utils */
 import { getDocsUrl } from '../../helpers/docs';
 import { calculatePageValue, INITIAL_PAGER } from '../../helpers/pagination';
-import { ACTION_MESSAGE, SUCCESS } from '../../helpers/feedbackSnackBarTypes';
-
+import { ACTION_MESSAGE, LOADING, SUCCESS } from '../../helpers/feedbackSnackBarTypes';
 
 /* i18n */
 import i18n from '../../locales';
 import { i18nKeys } from '../../i18n';
 
-class StandardReport extends Page {
+export default class StandardReport extends Page {
+    static propTypes = {
+        showSnackbar: PropTypes.bool,
+        snackbarConf: PropTypes.object,
+    };
+
+    static defaultProps = {
+        showSnackbar: false,
+        snackbarConf: {},
+    };
+
     constructor(props) {
         super(props);
 
@@ -51,9 +65,11 @@ class StandardReport extends Page {
             search: '',
             open: false,
             htmlReport: null,
+            timeoutId: null,
         };
 
         this.search = this.search.bind(this);
+        this.debounceSearch = this.debounceSearch.bind(this);
         this.addNewReport = this.addNewReport.bind(this);
 
         /* Pagination */
@@ -80,8 +96,10 @@ class StandardReport extends Page {
         this.loadData(INITIAL_PAGER);
     }
 
-    componentWillReceiveProps(newProps) {
-        this.setState({ loadedReport: newProps.loadedReport, loading: newProps.loading });
+    componentWillUnmount() {
+        if (this.state.timeoutId) {
+            clearTimeout(this.state.timeoutId);
+        }
     }
 
     loadData(pager, search) {
@@ -93,20 +111,20 @@ class StandardReport extends Page {
             url = `${url}&filter=displayName:ilike:${search}`;
         }
         if (api) {
-            this.props.updateAppState({ pageState: { loading: true } });
+            this.startLoading();
             api.get(url).then((response) => {
                 if (response && this.isPageMounted()) {
-                    this.props.updateAppState((this.state.deleteInProgress) ? {
-                        pageState: { loading: false },
-                        showSnackbar: true,
-                        snackbarConf: {
-                            type: SUCCESS,
-                            message: i18n.t(i18nKeys.messages.reportDeleted),
-                        },
-                    } : {
-                        showSnackbar: false,
-                        pageState: { loading: false },
-                    });
+                    if (this.state.deleteInProgress) {
+                        this.props.updateFeedbackState(
+                            true,
+                            {
+                                type: SUCCESS,
+                                message: i18n.t(i18nKeys.messages.reportDeleted),
+                            },
+                        );
+                    } else {
+                        this.stopLoading();
+                    }
                     this.setState(response);
                 }
             }).catch((error) => {
@@ -116,6 +134,16 @@ class StandardReport extends Page {
             });
         }
     }
+
+    startLoading = () => {
+        this.props.updateFeedbackState(true, { type: LOADING });
+        this.setState({ loading: true });
+    };
+
+    stopLoading = () => {
+        this.props.updateFeedbackState(false);
+        this.setState({ loading: false });
+    };
 
     /* Pagination */
     hasNextPage() {
@@ -148,9 +176,17 @@ class StandardReport extends Page {
         }
     }
 
+    debounceSearch(field, lastSearch) {
+        if (this.state.timeoutId) {
+            clearTimeout(this.state.timeoutId);
+        }
+        this.state.timeoutId = setTimeout(() => { this.search(field, lastSearch); }, DEBOUNCE_DELAY);
+        this.setState({ lastSearch });
+    }
+
     /* Add new Report */
     addNewReport() {
-        this.setState({ loading: true, open: true, selectedAction: ADD_NEW_REPORT_ACTION });
+        this.setState({ open: true, selectedAction: ADD_NEW_REPORT_ACTION });
     }
 
     handleClose(refreshList) {
@@ -184,28 +220,22 @@ class StandardReport extends Page {
     }
 
     delete(args) {
-        this.props.updateAppState({
-            showSnackbar: true,
-            snackbarConf: {
-                type: ACTION_MESSAGE,
-                message: args.displayName,
-                action: i18n.t(i18nKeys.messages.confirmDelete),
-                onActionClick: () => {
-                    const api = this.props.d2.Api.getApi();
-                    const url = `${REPORTS_ENDPOINT}/${args.id}`;
-                    this.state.deleteInProgress = true;
-                    this.props.updateAppState({
-                        showSnackbar: false,
-                        pageState: { loading: true },
-                    });
-                    api.delete(url).then((response) => {
-                        if (response && this.isPageMounted()) {
-                            this.loadData(INITIAL_PAGER, this.state.search);
-                        }
-                    }).catch((error) => {
-                        this.manageError(error);
-                    });
-                },
+        this.props.updateFeedbackState(true, {
+            type: ACTION_MESSAGE,
+            message: args.displayName,
+            action: i18n.t(i18nKeys.messages.confirmDelete),
+            onActionClick: () => {
+                const api = this.props.d2.Api.getApi();
+                const url = `${REPORTS_ENDPOINT}/${args.id}`;
+                this.state.deleteInProgress = true;
+                this.startLoading();
+                api.delete(url).then((response) => {
+                    if (response && this.isPageMounted()) {
+                        this.loadData(INITIAL_PAGER, this.state.search);
+                    }
+                }).catch((error) => {
+                    this.manageError(error);
+                });
             },
         });
     }
@@ -237,14 +267,11 @@ class StandardReport extends Page {
 
     getEditComponent() {
         return (
-            <AddEditStdReport
+            <ConnectedAddEditStdReport
                 selectedReport={this.state.selectedReport}
-                loadedReport={this.state.loadedReport}
-                loading={this.state.loading}
                 open={this.state.open}
                 onRequestClose={this.handleClose}
                 d2={this.props.d2}
-                updateAppState={this.props.updateAppState}
                 onError={this.handleError}
             />
         );
@@ -252,11 +279,10 @@ class StandardReport extends Page {
 
     getAddComponent() {
         return (
-            <AddEditStdReport
+            <ConnectedAddEditStdReport
                 open={this.state.open}
                 onRequestClose={this.handleClose}
                 d2={this.props.d2}
-                updateAppState={this.props.updateAppState}
                 onError={this.handleError}
             />
         );
@@ -277,7 +303,9 @@ class StandardReport extends Page {
         }
     }
 
-    showContent = () => this.state.htmlReport || this.props.loading === true;
+    displayNoResults = () => (
+        (this.state.reports.length > 0 || this.state.loading) ? { display: 'none' } : ''
+    );
 
     render() {
         // TODO: Check permissions
@@ -308,10 +336,7 @@ class StandardReport extends Page {
                         url={getDocsUrl(this.props.d2.system.version, this.props.sectionKey)}
                     />
                 </h1>
-                <div
-                    id="std-report-content"
-                    style={{ display: this.showContent() ? 'none' : 'block' }}
-                >
+                <div id="std-report-content" style={{ display: this.state.htmlReport ? 'none' : 'block' }} >
                     <Pagination
                         total={this.state.pager.total}
                         hasNextPage={this.hasNextPage}
@@ -322,11 +347,12 @@ class StandardReport extends Page {
                     />
                     <div id={'search-box-id'} style={styles.searchContainer}>
                         <InputField
-                            value={this.state.search || ''}
+                            id={'search-std-report-id'}
+                            value={this.state.lastSearch || ''}
                             type="text"
                             hintText={i18n.t(i18nKeys.standardReport.search)}
                             // eslint-disable-next-line
-                            onChange={value => this.search('search', value)}
+                            onChange={value => this.debounceSearch('search', value)}
                         />
                     </div>
                     <Table
@@ -337,12 +363,7 @@ class StandardReport extends Page {
                     />
                     <p
                         id={'no-std-report-find-message-id'}
-                        style={
-                            {
-                                textAlign: 'center',
-                                ...(this.state.reports.length > 0 ? { display: 'none' } : ''),
-                            }
-                        }
+                        style={{ textAlign: 'center', ...(this.displayNoResults()) }}
                     >
                         {i18n.t(i18nKeys.messages.noResultsFound)}
                     </p>
@@ -379,4 +400,16 @@ StandardReport.childContextTypes = {
     d2: PropTypes.object,
 };
 
-export default StandardReport;
+const mapStateToProps = state => ({
+    showSnackbar: state.feedback.showSnackbar,
+    snackbarConf: { ...state.feedback.snackbarConf },
+});
+
+const mapDispatchToProps = dispatch => ({
+    updateFeedbackState: updateFeedbackState(dispatch),
+});
+
+export const ConnectedStandardReport = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(StandardReport);

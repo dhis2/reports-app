@@ -38,7 +38,6 @@ const ownShallow = () => {
         <DataSetReport
             sectionKey={DATA_SET_REPORT_SECTION_KEY}
             pageInfo={pageInfo}
-            updateAppState={jest.fn()}
             currentSection={DATA_SET_REPORT_SECTION_KEY}
             d2={fakerData.d2}
         />,

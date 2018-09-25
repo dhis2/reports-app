@@ -11,6 +11,10 @@ import { Button, Pagination, SvgIcon, InputField } from '@dhis2/d2-ui-core';
 import '@dhis2/d2-ui-core/build/css/Table.css';
 import '@dhis2/d2-ui-core/build/css/Pagination.css';
 
+/* Redux */
+import { connect } from 'react-redux';
+import { updateFeedbackState } from '../../actions/feedback';
+
 /* styles */
 import styles from './Resource.style';
 import appStyles from '../../styles';
@@ -18,8 +22,8 @@ import appStyles from '../../styles';
 /* app components */
 import Page from '../Page';
 import PageHelper from '../../components/page-helper/PageHelper';
-import AddEditResource from './add-edit-resource/AddEditResource';
-import { ACTION_MESSAGE, SUCCESS } from '../../helpers/feedbackSnackBarTypes';
+import { ConnectedAddEditResource } from './add-edit-resource/AddEditResource';
+import { ACTION_MESSAGE, SUCCESS, LOADING } from '../../helpers/feedbackSnackBarTypes';
 
 /* utils */
 import { getDocsUrl } from '../../helpers/docs';
@@ -27,12 +31,23 @@ import { calculatePageValue, INITIAL_PAGER } from '../../helpers/pagination';
 
 /* app config */
 import { DOCUMENTS_ENDPOINT, ADD_NEW_RESOURCE_ACTION, CONTEXT_MENU_ACTION, CONTEXT_MENU_ICONS } from './resource.conf';
+import { DEBOUNCE_DELAY } from '../sections.conf';
 
 /* i18n */
 import i18n from '../../locales';
 import { i18nKeys } from '../../i18n';
 
-class Resource extends Page {
+export default class Resource extends Page {
+    static propTypes = {
+        showSnackbar: PropTypes.bool,
+        snackbarConf: PropTypes.object,
+    };
+
+    static defaultProps = {
+        showSnackbar: false,
+        snackbarConf: {},
+    };
+
     constructor(props) {
         super(props);
 
@@ -41,9 +56,12 @@ class Resource extends Page {
             documents: [],
             search: '',
             open: false,
+            timeoutId: null,
+            loading: false,
         };
 
         this.search = this.search.bind(this);
+        this.debounceSearch = this.debounceSearch.bind(this);
         this.addNewResource = this.addNewResource.bind(this);
 
         /* Pagination */
@@ -70,9 +88,9 @@ class Resource extends Page {
         this.loadDocuments(INITIAL_PAGER);
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.resetComponentState) {
-            this.setState({ selectedResource: null });
+    componentWillUnmount() {
+        if (this.state.timeoutId) {
+            clearTimeout(this.state.timeoutId);
         }
     }
 
@@ -85,20 +103,20 @@ class Resource extends Page {
             url = `${url}&filter=displayName:ilike:${search}`;
         }
         if (api) {
-            this.props.updateAppState({ pageState: { loading: true } });
+            this.startLoading();
             api.get(url).then((response) => {
                 if (response && this.isPageMounted()) {
-                    this.props.updateAppState((this.state.deleteInProgress) ? {
-                        pageState: { loading: false },
-                        showSnackbar: true,
-                        snackbarConf: {
-                            type: SUCCESS,
-                            message: i18n.t(i18nKeys.messages.resourceDeleted),
-                        },
-                    } : {
-                        showSnackbar: false,
-                        pageState: { loading: false },
-                    });
+                    if (this.state.deleteInProgress) {
+                        this.props.updateFeedbackState(
+                            true,
+                            {
+                                type: SUCCESS,
+                                message: i18n.t(i18nKeys.messages.resourceDeleted),
+                            },
+                        );
+                    } else {
+                        this.stopLoading();
+                    }
                     this.setState(response);
                 }
             }).catch((error) => {
@@ -108,6 +126,16 @@ class Resource extends Page {
             });
         }
     }
+
+    startLoading = () => {
+        this.props.updateFeedbackState(true, { type: LOADING });
+        this.setState({ loading: true });
+    };
+
+    stopLoading = () => {
+        this.props.updateFeedbackState(false);
+        this.setState({ loading: false });
+    };
 
     /* Pagination */
     hasNextPage() {
@@ -140,6 +168,14 @@ class Resource extends Page {
         }
     }
 
+    debounceSearch(field, lastSearch) {
+        if (this.state.timeoutId) {
+            clearTimeout(this.state.timeoutId);
+        }
+        this.state.timeoutId = setTimeout(() => { this.search(field, lastSearch); }, DEBOUNCE_DELAY);
+        this.setState({ lastSearch });
+    }
+
     handleClose(refreshList) {
         this.setState({ open: false, selectedResource: null });
         if (refreshList === true) {
@@ -170,28 +206,22 @@ class Resource extends Page {
     }
 
     delete(args) {
-        this.props.updateAppState({
-            showSnackbar: true,
-            snackbarConf: {
-                type: ACTION_MESSAGE,
-                message: args.displayName,
-                action: i18n.t(i18nKeys.messages.confirmDelete),
-                onActionClick: () => {
-                    const api = this.props.d2.Api.getApi();
-                    const url = `${DOCUMENTS_ENDPOINT}/${args.id}`;
-                    this.state.deleteInProgress = true;
-                    this.props.updateAppState({
-                        showSnackbar: false,
-                        pageState: { loading: true },
-                    });
-                    api.delete(url).then((response) => {
-                        if (response && this.isPageMounted()) {
-                            this.loadDocuments(INITIAL_PAGER, this.state.search);
-                        }
-                    }).catch((error) => {
-                        this.handleError(error);
-                    });
-                },
+        this.props.updateFeedbackState(true, {
+            type: ACTION_MESSAGE,
+            message: args.displayName,
+            action: i18n.t(i18nKeys.messages.confirmDelete),
+            onActionClick: () => {
+                const api = this.props.d2.Api.getApi();
+                const url = `${DOCUMENTS_ENDPOINT}/${args.id}`;
+                this.state.deleteInProgress = true;
+                this.stopLoading();
+                api.delete(url).then((response) => {
+                    if (response && this.isPageMounted()) {
+                        this.loadDocuments(INITIAL_PAGER, this.state.search);
+                    }
+                }).catch((error) => {
+                    this.handleError(error);
+                });
             },
         });
     }
@@ -199,31 +229,23 @@ class Resource extends Page {
     /* Context Menu "Components" */
     getAddResourceComponent() {
         return (
-            <AddEditResource
+            <ConnectedAddEditResource
                 d2={this.props.d2}
                 open={this.state.open}
                 onRequestClose={this.handleClose}
                 onError={this.handleError}
-                updateAppState={this.props.updateAppState}
-                loading={this.props.loading}
-                loadedResource={this.props.loadedResource}
-                resetComponentState={this.props.resetComponentState}
             />
         );
     }
 
     getEditComponent() {
         return (
-            <AddEditResource
+            <ConnectedAddEditResource
                 selectedResource={this.state.selectedResource}
                 open={this.state.open}
                 onRequestClose={this.handleClose}
                 d2={this.props.d2}
                 onError={this.handleError}
-                updateAppState={this.props.updateAppState}
-                loading={this.props.loading}
-                loadedResource={this.props.loadedResource}
-                resetComponentState={this.props.resetComponentState}
             />
         );
     }
@@ -276,10 +298,7 @@ class Resource extends Page {
                         url={getDocsUrl(this.props.d2.system.version, this.props.sectionKey)}
                     />
                 </h1>
-                <div
-                    id="resource-content"
-                    style={this.props.loading === false ? { display: 'block' } : { display: 'none' }}
-                >
+                <div id="resource-content">
                     <Pagination
                         total={this.state.pager.total}
                         hasNextPage={this.hasNextPage}
@@ -290,11 +309,11 @@ class Resource extends Page {
                     />
                     <div id={'search-box-id'} style={styles.searchContainer}>
                         <InputField
-                            value={this.state.search || ''}
+                            value={this.state.lastSearch || ''}
                             type="text"
                             hintText={i18n.t(i18nKeys.resource.search)}
                             // eslint-disable-next-line
-                            onChange={value => this.search('search', value)}
+                            onChange={value => this.debounceSearch('search', value)}
                         />
                     </div>
                     <Table
@@ -308,7 +327,9 @@ class Resource extends Page {
                         style={
                             {
                                 textAlign: 'center',
-                                ...(this.state.documents.length > 0 ? { display: 'none' } : ''),
+                                ...(
+                                    this.state.documents.length > 0 || this.state.loading ? { display: 'none' } : ''
+                                ),
                             }
                         }
                     >
@@ -338,4 +359,16 @@ Resource.childContextTypes = {
     d2: PropTypes.object,
 };
 
-export default Resource;
+const mapStateToProps = state => ({
+    showSnackbar: state.feedback.showSnackbar,
+    snackbarConf: { ...state.feedback.snackbarConf },
+});
+
+const mapDispatchToProps = dispatch => ({
+    updateFeedbackState: updateFeedbackState(dispatch),
+});
+
+export const ConnectedResource = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(Resource);

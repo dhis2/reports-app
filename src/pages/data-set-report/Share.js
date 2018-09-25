@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 
 /* d2-ui components */
 import { InputField, Button } from '@dhis2/d2-ui-core';
+import { connect } from 'react-redux';
+import { updateFeedbackState } from '../../actions/feedback';
 
 /* App context */
 import AppContext from '../../context';
@@ -18,11 +20,11 @@ import { ERROR, LOADING, SUCCESS } from '../../helpers/feedbackSnackBarTypes';
 export class Share extends PureComponent {
     static propTypes = {
         d2: PropTypes.object.isRequired,
-        updateAppState: PropTypes.func.isRequired,
+        updateFeedbackState: PropTypes.func.isRequired,
         dataSetId: PropTypes.string.isRequired,
         period: PropTypes.string.isRequired,
         orgUnitId: PropTypes.string.isRequired,
-    }
+    };
 
     constructor() {
         super();
@@ -37,13 +39,7 @@ export class Share extends PureComponent {
         const url = `interpretations/dataSetReport/${this.props.dataSetId}?pe=${this.props.period}&ou=${this.props.orgUnitId}`;
         const api = this.props.d2.Api.getApi();
 
-        this.props.updateAppState({
-            showSnackbar: true,
-            snackbarConf: {
-                type: LOADING,
-                message: i18n.t(i18nKeys.messages.loading),
-            },
-        });
+        this.props.updateFeedbackState(true, { type: LOADING });
 
         const headersRequest = {
             headers: {
@@ -52,33 +48,33 @@ export class Share extends PureComponent {
         };
 
         api.post(url, this.state.comment, headersRequest).then(() => {
-            this.props.updateAppState({
-                showSnackbar: true,
-                snackbarConf: {
+            this.props.updateFeedbackState(
+                true,
+                {
                     type: SUCCESS,
                     message: i18n.t(i18nKeys.messages.interpretationShared),
                 },
-            });
+            );
         }).catch((error) => {
             const messageError = error && error.message ?
                 error.message :
                 i18n.t(i18nKeys.messages.unexpectedError);
 
-            this.props.updateAppState({
-                showSnackbar: true,
-                snackbarConf: {
+            this.props.updateFeedbackState(
+                true,
+                {
                     type: ERROR,
                     message: messageError,
                 },
-            });
+            );
         });
-    }
+    };
 
     handleCommentChange = (comment) => {
         this.setState({
             comment,
         });
-    }
+    };
 
     isSharedActionEnabled() {
         return this.state.comment.trim();
@@ -108,12 +104,20 @@ export class Share extends PureComponent {
     }
 }
 
+const mapDispatchToProps = dispatch => ({
+    updateFeedbackState: updateFeedbackState(dispatch),
+});
+
+export const ConnectedShare = connect(
+    null,
+    mapDispatchToProps,
+)(Share);
+
 export default props => (
     <AppContext.Consumer>
         { appContext => (
-            <Share
+            <ConnectedShare
                 d2={appContext.d2}
-                updateAppState={appContext.updateAppState}
                 {...props}
             />
         )}

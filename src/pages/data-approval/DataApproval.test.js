@@ -29,7 +29,6 @@ const ownShallow = () => {
         <DataApproval
             sectionKey={DATA_APPROVAL_SECTION_KEY}
             pageInfo={pageInfo}
-            updateAppState={jest.fn()}
             currentSection={DATA_APPROVAL_SECTION_KEY}
             d2={fakerData.d2}
         />,

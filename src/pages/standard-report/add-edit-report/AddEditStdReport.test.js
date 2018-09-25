@@ -84,8 +84,8 @@ const ownShallow = (selectedReport) => {
     return shallow(
         <AddEditStdReport
             d2={fakerData.d2}
+            updateFeedbackState={jest.fn()}
             onRequestClose={jest.fn()}
-            updateAppState={jest.fn()}
             open={true}
             onError={jest.fn()}
             selectedReport={selectedReport}

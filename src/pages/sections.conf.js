@@ -1,11 +1,11 @@
 /* Page Components */
-import StandardReport from './standard-report/StandardReport';
-import DataSetReport from './data-set-report/DataSetReport';
-import ReportingRateSummary from './reporting-rate-summary/ReportingRateSummary';
-import Resource from './resource/Resource';
-import OrganisationUnitDistributionReport
+import { ConnectedStandardReport } from './standard-report/StandardReport';
+import { ConnectedDataSetReport } from './data-set-report/DataSetReport';
+import { ConnectedReportingRateSummary } from './reporting-rate-summary/ReportingRateSummary';
+import { ConnectedResource } from './resource/Resource';
+import { ConnectedOrganisationUnitDistributionReport }
     from './organisation-unit-distribution-report/OrganisationUnitDistributionReport';
-import DataApproval from './data-approval/DataApproval';
+import { ConnectedDataApproval } from './data-approval/DataApproval';
 
 /* i18n */
 import { i18nKeys } from '../i18n';
@@ -17,11 +17,13 @@ export const RESOURCE_SECTION_KEY = 'resource';
 export const ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_KEY = 'orgUnitDistReport';
 export const DATA_APPROVAL_SECTION_KEY = 'dataApproval';
 
+export const DEBOUNCE_DELAY = 500;
+
 export const sections = [
     {
         key: STANDARD_REPORT_SECTION_KEY,
         path: '/standard-report',
-        component: StandardReport,
+        component: ConnectedStandardReport,
         info: {
             label: i18nKeys.standardReport.homeLabel,
             icon: 'bar_chart',
@@ -33,7 +35,7 @@ export const sections = [
     {
         key: DATA_SET_REPORT_SECTION_KEY,
         path: '/data-set-report',
-        component: DataSetReport,
+        component: ConnectedDataSetReport,
         info: {
             label: i18nKeys.dataSetReport.homeLabel,
             icon: 'assignment',
@@ -45,7 +47,7 @@ export const sections = [
     {
         key: REPORTING_RATE_SUMMARY_SECTION_KEY,
         path: '/reporting-rate-summary',
-        component: ReportingRateSummary,
+        component: ConnectedReportingRateSummary,
         info: {
             label: i18nKeys.reportingRateSummary.homeLabel,
             icon: 'format_list_bulleted',
@@ -57,7 +59,7 @@ export const sections = [
     {
         key: RESOURCE_SECTION_KEY,
         path: '/resource',
-        component: Resource,
+        component: ConnectedResource,
         info: {
             label: i18nKeys.resource.homeLabel,
             icon: 'cloud_upload',
@@ -69,7 +71,7 @@ export const sections = [
     {
         key: ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_KEY,
         path: '/organisation-unit-distribution-report',
-        component: OrganisationUnitDistributionReport,
+        component: ConnectedOrganisationUnitDistributionReport,
         info: {
             label: i18nKeys.organisationUnitDistributionReport.homeLabel,
             icon: 'device_hub',
@@ -81,7 +83,7 @@ export const sections = [
     {
         key: DATA_APPROVAL_SECTION_KEY,
         path: '/data-approval',
-        component: DataApproval,
+        component: ConnectedDataApproval,
         info: {
             label: i18nKeys.dataApproval.homeLabel,
             icon: 'playlist_add_check',

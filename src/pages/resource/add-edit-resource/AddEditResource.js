@@ -8,6 +8,11 @@ import { Dialog } from 'material-ui';
 /* d2-ui */
 import { Button, InputField, SelectField, CheckBox, SvgIcon, TextField } from '@dhis2/d2-ui-core';
 
+/* Redux */
+import { connect } from 'react-redux';
+import { updateFeedbackState } from '../../../actions/feedback';
+import { LOADING } from '../../../helpers/feedbackSnackBarTypes';
+
 /* styles */
 import appStyles from '../../../styles';
 import styles from './AddEditResource.style';
@@ -28,26 +33,21 @@ const initialState = {
         url: 'http://',
     },
     selectedFileToUpload: null,
+    loading: false,
 };
 
-class AddEditResource extends PureComponent {
+export default class AddEditResource extends PureComponent {
     static propTypes = {
         d2: PropTypes.object.isRequired,
         open: PropTypes.bool.isRequired,
         onRequestClose: PropTypes.func.isRequired,
         onError: PropTypes.func.isRequired,
         selectedResource: PropTypes.object,
-        updateAppState: PropTypes.func.isRequired,
-        loading: PropTypes.bool,
-        loadedResource: PropTypes.object,
-        resetComponentState: PropTypes.bool,
+        updateFeedbackState: PropTypes.func.isRequired,
     };
 
     static defaultProps = {
         selectedResource: null,
-        loading: false,
-        loadedResource: null,
-        resetComponentState: false,
     };
 
     constructor(props) {
@@ -62,15 +62,8 @@ class AddEditResource extends PureComponent {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (
-            ((nextProps.selectedResource && !nextProps.loadedResource) ||
-                (nextProps.selectedResource &&
-                    nextProps.loadedResource &&
-                    nextProps.selectedResource.id !== nextProps.loadedResource.id)) &&
-            !nextProps.loading && nextProps.open) {
+        if (nextProps.selectedResource && !this.state.loading) {
             this.loadSelectedResource(nextProps.selectedResource);
-        } else if (nextProps.resetComponentState) {
-            this.setState({ resource: JSON.parse(JSON.stringify(initialState.resource)) });
         }
         this.setState({ selectedFileToUpload: null });
     }
@@ -121,7 +114,7 @@ class AddEditResource extends PureComponent {
 
     /* close dialog */
     close = (refreshList) => {
-        this.props.updateAppState({ pageState: { loading: false, resetComponentState: true } });
+        this.setState({ resource: JSON.parse(JSON.stringify(initialState.resource)) });
         this.props.onRequestClose(refreshList);
     };
 
@@ -130,15 +123,18 @@ class AddEditResource extends PureComponent {
         const api = this.props.d2.Api.getApi();
         const url = `${DOCUMENTS_ENDPOINT}/${resource.id}`;
         if (api) {
-            this.props.updateAppState({ pageState: { loading: true } });
+            this.props.updateFeedbackState(true, { type: LOADING });
+            this.state.loading = true;
             api.get(url).then((response) => {
                 if (response) {
+                    this.props.updateFeedbackState(false);
+
                     if (response.external === true) {
                         response.type = TYPES.EXTERNAL_URL;
                     } else {
                         response.type = TYPES.UPLOAD_FILE;
                     }
-                    this.props.updateAppState({ pageState: { loading: false, loadedResource: { ...response } } });
+
                     this.setState({
                         ...this.state,
                         resource: {
@@ -148,6 +144,8 @@ class AddEditResource extends PureComponent {
                 }
             }).catch((error) => {
                 this.props.onError(error);
+            }).finally(() => {
+                this.state.loading = false;
             });
         }
     };
@@ -159,13 +157,16 @@ class AddEditResource extends PureComponent {
             if (api) {
                 const formData = new FormData();
                 formData.append('file', this.state.selectedFileToUpload);
-                this.props.updateAppState({ pageState: { loading: true } });
+                this.props.updateFeedbackState(true, { type: LOADING });
+                this.state.loading = true;
                 api.post(FILE_RESOURCES_ENDPOINT, formData).then((response) => {
                     if (response.response) {
                         this.addDocument(response.response.fileResource);
                     }
                 }).catch((error) => {
                     this.props.onError(error);
+                }).finally(() => {
+                    this.state.loading = false;
                 });
             }
         }
@@ -190,8 +191,9 @@ class AddEditResource extends PureComponent {
     };
 
     updateDocument = (api, documentData) => {
-        if (!this.props.loading) {
-            this.props.updateAppState({ pageState: { loading: true } });
+        if (!this.state.loading) {
+            this.props.updateFeedbackState(true, { type: LOADING });
+            this.state.loading = true;
         }
         api.update(`${DOCUMENTS_ENDPOINT}/${this.state.resource.id}`, documentData).then((response) => {
             if (response) {
@@ -199,12 +201,15 @@ class AddEditResource extends PureComponent {
             }
         }).catch((error) => {
             this.props.onError(error);
+        }).finally(() => {
+            this.state.loading = false;
         });
     };
 
     postDocument = (api, documentData) => {
-        if (!this.props.loading) {
-            this.props.updateAppState({ pageState: { loading: true } });
+        if (!this.state.loading) {
+            this.props.updateFeedbackState(true, { type: LOADING });
+            this.state.loading = true;
         }
         api.post(DOCUMENTS_ENDPOINT, documentData).then((response) => {
             if (response) {
@@ -212,6 +217,8 @@ class AddEditResource extends PureComponent {
             }
         }).catch((error) => {
             this.props.onError(error);
+        }).finally(() => {
+            this.state.loading = false;
         });
     };
 
@@ -359,4 +366,11 @@ class AddEditResource extends PureComponent {
     }
 }
 
-export default AddEditResource;
+const mapDispatchToProps = dispatch => ({
+    updateFeedbackState: updateFeedbackState(dispatch),
+});
+
+export const ConnectedAddEditResource = connect(
+    null,
+    mapDispatchToProps,
+)(AddEditResource);
