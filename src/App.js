@@ -45,7 +45,6 @@ class App extends PureComponent {
 
         this.state = {
             d2: props.d2,
-            currentSection: '',
             pageState: {},
         };
     }
@@ -57,26 +56,12 @@ class App extends PureComponent {
     getContext() {
         return {
             d2: this.props.d2,
-            currentSection: this.state.currentSection,
-            updateAppState: this.updateAppState,
             pageState: this.state.pageState,
         };
     }
 
-    /* function to keep app state */
-    /* using arrow function no need for binding on constructor */
-    updateAppState = (appState) => {
-        if (appState.currentSection
-            && !appState.pageState
-            && this.state.currentSection !== appState.currentSection) {
-            // clear page state because we are updating page
-            this.setState({ ...appState, pageState: {}, showSnackbar: false });
-        } else {
-            this.setState(appState);
-        }
-    }
-
     render() {
+        // is not "marked" as required but it's used by Sidebar
         const nonOnChangeSection = () => null;
         const sidebarSections = sections.map(section => Object.assign(
             section,
@@ -106,7 +91,6 @@ class App extends PureComponent {
                     <HeaderBar d2={this.props.d2} />
                     <Sidebar
                         sections={sidebarSections}
-                        currentSection={this.state.currentSection}
                         onChangeSection={nonOnChangeSection}
                     />
                     <div style={styles.contentWrapper}>

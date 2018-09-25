@@ -23,8 +23,6 @@ const AppRouter = () => {
                     { appContext => (
                         <Page
                             d2={appContext.d2}
-                            updateAppState={appContext.updateAppState}
-                            currentSection={appContext.currentSection}
                             sectionKey={section.key}
                             {...appContext.pageState}
                         />

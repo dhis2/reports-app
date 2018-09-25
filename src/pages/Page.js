@@ -11,21 +11,14 @@ import { ERROR } from '../helpers/feedbackSnackBarTypes';
 
 class Page extends Component {
     static propTypes = {
+        // sectionKey - required and used by pages to get help link
+        // eslint-disable-next-line
         sectionKey: PropTypes.string.isRequired,
-        currentSection: PropTypes.string.isRequired,
-        updateAppState: PropTypes.func.isRequired,
         updateFeedbackState: PropTypes.func.isRequired,
     };
 
     componentDidMount() {
         this.pageMounted = true;
-
-        // update section on side bar
-        if (this.props.currentSection !== this.props.sectionKey) {
-            this.props.updateAppState({
-                currentSection: this.props.sectionKey,
-            });
-        }
     }
 
     componentWillUnmount() {
