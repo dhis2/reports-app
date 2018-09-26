@@ -105,7 +105,7 @@ export default class StandardReport extends Page {
     loadData(pager, search) {
         const api = this.props.d2.Api.getApi();
         let url = `${REPORTS_ENDPOINT}?page=${pager.page}&pageSize=${pager.pageSize}` +
-        '&fields=displayName,type,id,reportTable[id,displayName]';
+        '&fields=displayName,type,id,reportTable[id,displayName],access';
         this.setState({ search });
         if (search) {
             url = `${url}&filter=displayName:ilike:${search}`;
@@ -307,8 +307,18 @@ export default class StandardReport extends Page {
         (this.state.reports.length > 0 || this.state.loading) ? { display: 'none' } : ''
     );
 
+    showContextAction = (report, action) => {
+        const access = report && report.access ? report.access : {};
+        const actions = {
+            [CONTEXT_MENU_ACTION.CREATE]: access.read,
+            [CONTEXT_MENU_ACTION.EDIT]: access.update,
+            [CONTEXT_MENU_ACTION.SHARING_SETTINGS]: (access.manage || access.externalize),
+            [CONTEXT_MENU_ACTION.DELETE]: access.delete,
+        };
+        return (actions[action] || false);
+    };
+
     render() {
-        // TODO: Check permissions
         const contextMenuOptions = {
             createReport: this.createReport,
             editReport: this.editReport,
@@ -360,6 +370,7 @@ export default class StandardReport extends Page {
                         rows={this.state.reports}
                         contextMenuActions={contextMenuOptions}
                         contextMenuIcons={CONTEXT_MENU_ICONS}
+                        isContextActionAllowed={this.showContextAction}
                     />
                     <p
                         id={'no-std-report-find-message-id'}

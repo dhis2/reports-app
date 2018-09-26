@@ -8,10 +8,10 @@ export const REPORT_TABLES_ENDPOINT = 'reportTables';
 export const ADD_NEW_REPORT_ACTION = 'ADD_NEW_REPORT_ACTION';
 
 export const CONTEXT_MENU_ACTION = {
-    CREATE: 'CREATE',
-    EDIT: 'EDIT',
-    DELETE: 'DELETE',
-    SHARING_SETTINGS: 'SHARING_SETTINGS',
+    CREATE: 'createReport',
+    EDIT: 'editReport',
+    DELETE: 'delete',
+    SHARING_SETTINGS: 'sharingSettings',
 };
 
 export const CONTEXT_MENU_ICONS = {
