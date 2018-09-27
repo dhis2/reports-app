@@ -15,10 +15,10 @@ export const CONTEXT_MENU_ACTION = {
 };
 
 export const CONTEXT_MENU_ICONS = {
-    createReport: 'arrow_right',
-    editReport: 'edit',
-    sharingSettings: 'people',
-    remove: 'delete',
+    [CONTEXT_MENU_ACTION.CREATE]: 'arrow_right',
+    [CONTEXT_MENU_ACTION.EDIT]: 'edit',
+    [CONTEXT_MENU_ACTION.SHARING_SETTINGS]: 'people',
+    [CONTEXT_MENU_ACTION.DELETE]: 'delete',
 };
 
 export const NONE = {

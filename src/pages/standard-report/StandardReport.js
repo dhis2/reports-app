@@ -320,10 +320,10 @@ export default class StandardReport extends Page {
 
     render() {
         const contextMenuOptions = {
-            createReport: this.createReport,
-            editReport: this.editReport,
-            sharingSettings: this.sharingSettings,
-            delete: this.delete,
+            [CONTEXT_MENU_ACTION.CREATE]: this.createReport,
+            [CONTEXT_MENU_ACTION.EDIT]: this.editReport,
+            [CONTEXT_MENU_ACTION.SHARING_SETTINGS]: this.sharingSettings,
+            [CONTEXT_MENU_ACTION.DELETE]: this.delete,
         };
 
         return (
