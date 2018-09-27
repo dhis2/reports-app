@@ -10,12 +10,12 @@ import { ConnectedDataApproval } from './data-approval/DataApproval';
 /* i18n */
 import { i18nKeys } from '../i18n';
 
-export const STANDARD_REPORT_SECTION_KEY = 'standardReport';
-export const DATA_SET_REPORT_SECTION_KEY = 'dataSetReport';
-export const REPORTING_RATE_SUMMARY_SECTION_KEY = 'reportingRateSummary';
+export const STANDARD_REPORT_SECTION_KEY = 'standard-report';
+export const DATA_SET_REPORT_SECTION_KEY = 'data-set-report';
+export const REPORTING_RATE_SUMMARY_SECTION_KEY = 'reporting-rate-summary';
 export const RESOURCE_SECTION_KEY = 'resource';
-export const ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_KEY = 'orgUnitDistReport';
-export const DATA_APPROVAL_SECTION_KEY = 'dataApproval';
+export const ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_KEY = 'organisation-unit-distribution-report';
+export const DATA_APPROVAL_SECTION_KEY = 'data-approval';
 
 export const DEBOUNCE_DELAY = 500;
 

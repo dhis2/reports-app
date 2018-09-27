@@ -38,6 +38,7 @@ class App extends PureComponent {
             onActionClick: PropTypes.func,
         }).isRequired,
         updateFeedbackState: PropTypes.func.isRequired,
+        currentSection: PropTypes.string.isRequired,
     };
 
     constructor(props) {
@@ -92,6 +93,7 @@ class App extends PureComponent {
                     <Sidebar
                         sections={sidebarSections}
                         onChangeSection={nonOnChangeSection}
+                        currentSection={this.props.currentSection}
                     />
                     <div style={styles.contentWrapper}>
                         <div style={styles.contentArea}>
@@ -110,6 +112,7 @@ class App extends PureComponent {
 const mapStateToProps = state => ({
     showSnackbar: state.feedback.showSnackbar,
     snackbarConf: { ...state.feedback.snackbarConf },
+    currentSection: state.router.location.pathname.substring(1),
 });
 
 const mapDispatchToProps = dispatch => ({
