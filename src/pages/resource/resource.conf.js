@@ -26,15 +26,15 @@ export const RESOURCE_TYPES = [
 ];
 
 export const CONTEXT_MENU_ACTION = {
-    VIEW: 'VIEW',
-    EDIT: 'EDIT',
-    DELETE: 'DELETE',
-    SHARING_SETTINGS: 'SHARING_SETTINGS',
+    VIEW: 'viewResource',
+    EDIT: 'editResource',
+    SHARING_SETTINGS: 'sharingSettings',
+    DELETE: 'delete',
 };
 
 export const CONTEXT_MENU_ICONS = {
-    viewResource: 'arrow_right',
-    editResource: 'edit',
-    sharingSettings: 'people',
-    remove: 'delete',
+    [CONTEXT_MENU_ACTION.VIEW]: 'arrow_right',
+    [CONTEXT_MENU_ACTION.EDIT]: 'edit',
+    [CONTEXT_MENU_ACTION.SHARING_SETTINGS]: 'people',
+    [CONTEXT_MENU_ACTION.DELETE]: 'delete',
 };
