@@ -97,7 +97,7 @@ export default class Resource extends Page {
     loadDocuments(pager, search) {
         const api = this.props.d2.Api.getApi();
         let url = `${DOCUMENTS_ENDPOINT}?page=${pager.page}&pageSize=${pager.pageSize}` +
-        '&fields=displayName,id,url,external';
+        '&fields=displayName,id,url,external,access';
         this.setState({ search });
         if (search) {
             url = `${url}&filter=displayName:ilike:${search}`;
@@ -283,12 +283,23 @@ export default class Resource extends Page {
         }
     }
 
+    showContextAction = (document, action) => {
+        const access = document && document.access ? document.access : {};
+        const actions = {
+            [CONTEXT_MENU_ACTION.VIEW]: access.read,
+            [CONTEXT_MENU_ACTION.EDIT]: access.update,
+            [CONTEXT_MENU_ACTION.SHARING_SETTINGS]: (access.manage || access.externalize),
+            [CONTEXT_MENU_ACTION.DELETE]: access.delete,
+        };
+        return (actions[action] || false);
+    };
+
     render() {
         const contextMenuOptions = {
-            viewResource: this.viewResource,
-            sharingSettings: this.sharingSettings,
-            editResource: this.editResource,
-            delete: this.delete,
+            [CONTEXT_MENU_ACTION.VIEW]: this.viewResource,
+            [CONTEXT_MENU_ACTION.EDIT]: this.editResource,
+            [CONTEXT_MENU_ACTION.SHARING_SETTINGS]: this.sharingSettings,
+            [CONTEXT_MENU_ACTION.DELETE]: this.delete,
         };
         return (
             <div>
@@ -321,6 +332,7 @@ export default class Resource extends Page {
                         rows={this.state.documents}
                         contextMenuActions={contextMenuOptions}
                         contextMenuIcons={CONTEXT_MENU_ICONS}
+                        isContextActionAllowed={this.showContextAction}
                     />
                     <p
                         id={'no-resource-find-message-id'}
