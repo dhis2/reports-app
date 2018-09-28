@@ -7,6 +7,8 @@ import { Dialog } from 'material-ui';
 
 /* d2-ui */
 import { Button, InputField, SelectField, CheckBox, SvgIcon, TextField } from '@dhis2/d2-ui-core';
+import SelectFieldMui from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
 
 /* Redux */
 import { connect } from 'react-redux';
@@ -112,6 +114,33 @@ export default class AddEditResource extends PureComponent {
         i18n.t(i18nKeys.resource.editResourceTitle) :
         i18n.t(i18nKeys.resource.addNewResourceTitle));
 
+    getTypeDropdownComponent = () => (this.getTypeForResource().length > 1 ?
+        (
+            <SelectField
+                style={styles.width100}
+                name={'resourceType'}
+                label={i18n.t(i18nKeys.resource.typeLabel)}
+                items={this.getTypeForResource()}
+                value={this.state.resource.type}
+                onChange={this.onChangeType}
+                disabled={Boolean(true)}
+            />
+        ) : (
+            <SelectFieldMui
+                floatingLabelText={i18n.t(i18nKeys.resource.typeLabel)}
+                value={this.state.resource.type}
+                name={'resourceType'}
+                onChange={this.onChangeType}
+                fullWidth
+                disabled
+            >
+                <MenuItem
+                    value={this.state.resource.type}
+                    primaryText={this.getTypeForResource()[0].name}
+                />
+            </SelectFieldMui>
+        ));
+
     /* close dialog */
     close = (refreshList) => {
         this.setState({ resource: JSON.parse(JSON.stringify(initialState.resource)) });
@@ -124,7 +153,7 @@ export default class AddEditResource extends PureComponent {
         const url = `${DOCUMENTS_ENDPOINT}/${resource.id}`;
         if (api) {
             this.props.updateFeedbackState(true, { type: LOADING });
-            this.state.loading = true;
+            this.setState({ loading: true });
             api.get(url).then((response) => {
                 if (response) {
                     this.props.updateFeedbackState(false);
@@ -145,7 +174,7 @@ export default class AddEditResource extends PureComponent {
             }).catch((error) => {
                 this.props.onError(error);
             }).finally(() => {
-                this.state.loading = false;
+                this.setState({ loading: false });
             });
         }
     };
@@ -158,7 +187,7 @@ export default class AddEditResource extends PureComponent {
                 const formData = new FormData();
                 formData.append('file', this.state.selectedFileToUpload);
                 this.props.updateFeedbackState(true, { type: LOADING });
-                this.state.loading = true;
+                this.setState({ loading: true });
                 api.post(FILE_RESOURCES_ENDPOINT, formData).then((response) => {
                     if (response.response) {
                         this.addDocument(response.response.fileResource);
@@ -166,7 +195,7 @@ export default class AddEditResource extends PureComponent {
                 }).catch((error) => {
                     this.props.onError(error);
                 }).finally(() => {
-                    this.state.loading = false;
+                    this.setState({ loading: false });
                 });
             }
         }
@@ -193,7 +222,7 @@ export default class AddEditResource extends PureComponent {
     updateDocument = (api, documentData) => {
         if (!this.state.loading) {
             this.props.updateFeedbackState(true, { type: LOADING });
-            this.state.loading = true;
+            this.setState({ loading: true });
         }
         api.update(`${DOCUMENTS_ENDPOINT}/${this.state.resource.id}`, documentData).then((response) => {
             if (response) {
@@ -202,14 +231,14 @@ export default class AddEditResource extends PureComponent {
         }).catch((error) => {
             this.props.onError(error);
         }).finally(() => {
-            this.state.loading = false;
+            this.setState({ loading: false });
         });
     };
 
     postDocument = (api, documentData) => {
         if (!this.state.loading) {
             this.props.updateFeedbackState(true, { type: LOADING });
-            this.state.loading = true;
+            this.setState({ loading: true });
         }
         api.post(DOCUMENTS_ENDPOINT, documentData).then((response) => {
             if (response) {
@@ -218,7 +247,7 @@ export default class AddEditResource extends PureComponent {
         }).catch((error) => {
             this.props.onError(error);
         }).finally(() => {
-            this.state.loading = false;
+            this.setState({ loading: false });
         });
     };
 
@@ -239,7 +268,7 @@ export default class AddEditResource extends PureComponent {
     isNullOrWhiteSpace = str => (!str || str.length === 0 || /^\s*$/.test(str));
 
     validateUploadType = () => !(!this.props.selectedResource &&
-            (!this.state.selectedFileToUpload || !this.state.selectedFileToUpload.name));
+        (!this.state.selectedFileToUpload || !this.state.selectedFileToUpload.name));
 
     displayUploadSection = () => (
         this.state.resource.type === TYPES.UPLOAD_FILE ?
@@ -259,6 +288,7 @@ export default class AddEditResource extends PureComponent {
                 key={'close-btn-key'}
                 style={appStyles.dialogBtn}
                 onClick={this.close}
+                disabled={this.state.loading}
             >
                 {i18n.t(i18nKeys.buttons.cancel)}
             </Button>,
@@ -267,7 +297,7 @@ export default class AddEditResource extends PureComponent {
                 raised
                 color={'primary'}
                 style={appStyles.dialogBtn}
-                disabled={!this.ifFormValid()}
+                disabled={!this.ifFormValid() || this.state.loading}
                 onClick={
                     (this.state.resource.type === TYPES.UPLOAD_FILE && this.state.selectedFileToUpload) ?
                         this.addResource :
@@ -306,14 +336,9 @@ export default class AddEditResource extends PureComponent {
                             onChange={this.onChangeName}
                         />
                         {/* resource type */}
-                        <SelectField
-                            style={styles.width100}
-                            name={'resourceType'}
-                            label={i18n.t(i18nKeys.resource.typeLabel)}
-                            items={this.getTypeForResource()}
-                            value={this.state.resource.type}
-                            onChange={this.onChangeType}
-                        />
+                        {
+                            this.getTypeDropdownComponent()
+                        }
                         {/* resource attachment */}
                         <div id={'upload_type_fields'} style={this.displayUploadSection()}>
                             <CheckBox

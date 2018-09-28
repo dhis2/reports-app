@@ -2,7 +2,7 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
 import { i18nKeys } from '../../../i18n';
-import { TYPES } from '../resource.conf';
+import { RESOURCE_TYPES, TYPES } from '../resource.conf';
 
 import AddEditResource from './AddEditResource';
 
@@ -95,7 +95,7 @@ describe('Test <AddEditResource /> rendering:', () => {
 
     /* type */
     it('Should display "type" selector with correct value.', () => {
-        expect(dialog.find('[name="resourceType"]')).toHaveLength(1);
+    expect(dialog.find('[name="resourceType"]')).toHaveLength(1);
         expect(dialog.find('[name="resourceType"]').props().value).toBe(mockResource.type);
     });
 
@@ -220,7 +220,7 @@ describe('Test <AddEditResource /> actions:', () => {
         expect(wrapper.instance().addDocument).toBeDefined();
         expect(typeof wrapper.instance().addDocument).toBe('function');
         wrapper.instance().addDocument = jest.fn();
-        wrapper.setState({ resource: { ...mockResource, type: TYPES.HTML }, selectedFileToUpload: 'file' });
+        wrapper.setState({ resource: { ...mockResource, type: TYPES.EXTERNAL_URL }, selectedFileToUpload: 'file' });
         const actions = mount(<MuiThemeProvider><span>{wrapper.find(Dialog).props().actions}</span></MuiThemeProvider>);
         actions.find(Button).at(1).find('button').simulate('click');
         expect(wrapper.instance().addDocument).toHaveBeenCalled();
@@ -228,7 +228,7 @@ describe('Test <AddEditResource /> actions:', () => {
 
     it('Should call updateDocument function when editing a document.', () => {
         wrapper.instance().updateDocument = jest.fn();
-        wrapper.setState({ resource: { ...mockResource, type: TYPES.HTML }, selectedFileToUpload: 'file' });
+        wrapper.setState({ resource: { ...mockResource, type: TYPES.EXTERNAL_URL }, selectedFileToUpload: 'file' });
         wrapper.instance().addDocument();
         expect(wrapper.instance().updateDocument).toHaveBeenCalled();
     });
