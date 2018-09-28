@@ -9,7 +9,7 @@
         "@dhis2/d2-ui-forms": "^1.0.7",
         "@dhis2/d2-ui-header-bar": "^1.1.4",
         "@dhis2/d2-ui-org-unit-tree": "^1.0.10",
-        "@dhis2/d2-ui-sharing-dialog": "^1.0.12",
+        "@dhis2/d2-ui-sharing-dialog": "^2.0.2",
         "@dhis2/d2-ui-table": "^1.0.12",
         "autoprefixer": "7.1.6",
         "babel-core": "6.26.0",
