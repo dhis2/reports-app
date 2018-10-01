@@ -89,6 +89,8 @@ export default class Resource extends Page {
     }
 
     componentWillUnmount() {
+        super.componentWillUnmount();
+        this.stopLoading();
         if (this.state.timeoutId) {
             clearTimeout(this.state.timeoutId);
         }
@@ -214,13 +216,15 @@ export default class Resource extends Page {
                 const api = this.props.d2.Api.getApi();
                 const url = `${DOCUMENTS_ENDPOINT}/${args.id}`;
                 this.state.deleteInProgress = true;
-                this.stopLoading();
+                this.startLoading();
                 api.delete(url).then((response) => {
                     if (response && this.isPageMounted()) {
                         this.loadDocuments(INITIAL_PAGER, this.state.search);
                     }
                 }).catch((error) => {
                     this.handleError(error);
+                }).finally(() => {
+                    this.stopLoading();
                 });
             },
         });

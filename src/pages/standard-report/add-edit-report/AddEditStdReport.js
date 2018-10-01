@@ -332,6 +332,7 @@ export default class AddEditStdReport extends PureComponent {
                 key={'cancel-action-btn-key'}
                 style={appStyles.dialogBtn}
                 onClick={this.close}
+                disabled={this.state.loading}
             >
                 {i18n.t(i18nKeys.buttons.cancel)}
             </Button>,

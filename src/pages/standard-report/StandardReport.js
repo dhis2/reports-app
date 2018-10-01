@@ -97,6 +97,8 @@ export default class StandardReport extends Page {
     }
 
     componentWillUnmount() {
+        super.componentWillUnmount();
+        this.stopLoading();
         if (this.state.timeoutId) {
             clearTimeout(this.state.timeoutId);
         }
