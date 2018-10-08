@@ -235,10 +235,11 @@ export default class AddEditStdReport extends PureComponent {
             api.get(url).then((response) => {
                 if (response) {
                     this.setState({ reportTables: [NONE, ...response.reportTables] });
-                    this.stopLoading();
                 }
             }).catch((error) => {
                 this.props.onError(error);
+            }).finally(() => {
+                this.stopLoading();
             });
         }
     };
@@ -261,7 +262,6 @@ export default class AddEditStdReport extends PureComponent {
             this.startLoading();
             api.get(url).then((response) => {
                 if (response) {
-                    this.stopLoading();
                     this.setState({
                         ...this.state,
                         report: {
@@ -271,6 +271,8 @@ export default class AddEditStdReport extends PureComponent {
                 }
             }).catch((error) => {
                 this.props.onError(error);
+            }).finally(() => {
+                this.stopLoading();
             });
         }
     };
@@ -292,6 +294,7 @@ export default class AddEditStdReport extends PureComponent {
                             this.close(true);
                         }
                     }).catch((error) => {
+                        this.stopLoading();
                         this.props.onError(error);
                     });
                 // Add report
@@ -301,6 +304,7 @@ export default class AddEditStdReport extends PureComponent {
                             this.close(true);
                         }
                     }).catch((error) => {
+                        this.stopLoading();
                         this.props.onError(error);
                     });
                 }

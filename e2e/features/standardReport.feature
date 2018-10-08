@@ -30,37 +30,37 @@ Feature: Standard Report
   Scenario: I want to get a report
 	And I click more options icon in the reports list item
 	And I select option to create report
-	And fill the form report options
+	And fill the get report form options
 	And I click get report button
 	Then report is generated
 
   Scenario: I want to download a report
 	And I click more options icon in the reports list item
 	And I select option to create report
-	And fill the form report options
+	And fill the get report form options
 	And I click download as excel button
 	Then report is downloaded
 
   Scenario: I want to abort the generation of a report
 	And I click more options icon in the reports list item
 	And I select option to create report
-	And fill the form report options
+	And fill the get report form options
 	And I click cancel button
 	Then the report was not generated
 	And create report form is dismissed
 
-#  Scenario: I want to edit a report
-#	And I click more options icon in the reports list item
-#	And I select option to edit report
-#	And fill the form report options
-#	And I save the changes
-#	Then the standart report is updated
-#
-#  Scenario: I want to see configure share settings of report form
-#	And I click more options icon in the reports list item
-#	And I select option to configure share settings
-#	Then form with selected report name is displayed
-#
+  Scenario: I want to edit a report
+	And I click more options icon on the report I want to edit
+	And I select option to edit report
+	And I update report name
+	And click save
+	Then the standart report is updated
+
+  Scenario: I want to see configure share settings of report form
+	And I click more options icon in the reports list item
+	And I select option to configure share settings
+	Then form with selected report name is displayed
+
 #  Scenario: I want to configure share settings of report
 #	And I click more options icon in the reports list item
 #	And I select option to configure share settings
