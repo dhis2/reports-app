@@ -61,14 +61,14 @@ Feature: Standard Report
 	And I select option to configure share settings
 	Then form with selected report name is displayed
 
-#  Scenario: I want to configure share settings of report
-#	And I click more options icon in the reports list item
-#	And I select option to configure share settings
-#	And I change share options
-#	Then share settings of report was updated
-#
-#  Scenario: I want to delete a standart report
-#	And I click more options icon in the reports list item
-#	And I select option to delete report
-#	And confirm the deletion
-#	Then the standart report is removed form standard report list
+  Scenario: I want to configure share settings of report
+	And I click more options icon on the report I want to edit
+	And I select option to configure share settings
+	And I change share options
+	Then share settings of report where updated
+
+  Scenario: I want to delete a standart report
+	And I click more options icon on the report I want to delete
+	And I select option to delete report
+	And confirm the deletion
+	Then the standart report is removed form standard report list

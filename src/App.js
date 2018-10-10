@@ -79,11 +79,13 @@ class App extends PureComponent {
                     <CircularProgress />
                 </div>
             ) : (
-                <FeedbackSnackbar
-                    onClose={this.onFeedbackSnackbarClose}
-                    show={this.props.showSnackbar}
-                    conf={this.props.snackbarConf}
-                />
+                <span id={'feedbackSnackbarId'}>
+                    <FeedbackSnackbar
+                        onClose={this.onFeedbackSnackbarClose}
+                        show={this.props.showSnackbar}
+                        conf={this.props.snackbarConf}
+                    />
+                </span>
             );
 
         return (

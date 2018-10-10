@@ -29,6 +29,7 @@ defineSupportCode(({ Given, When, Then }) => {
         browser.element('.d2-ui-table').waitForVisible(DEFAULT_WAIT_TIME);
         selectedReportName = standardReport.getNameOfReportFromList(0);
         standardReport.getContextMenuBtnForReportFromList(0).click();
+        browser.pause(DEFAULT_WAIT_TIME);
     });
 
     Then(/^fill the get report form options$/, () => {
@@ -46,6 +47,16 @@ defineSupportCode(({ Given, When, Then }) => {
         browser.pause(DEFAULT_WAIT_TIME);
         browser.element('#save-action-btn-id').click();
         browser.pause(DEFAULT_WAIT_TIME);
+    });
+
+    Then(/^I select option to configure share settings$/, () => {
+        browser.element('.d2-ui-table__context-menu :nth-child(3) > span').waitForVisible(DEFAULT_WAIT_TIME);
+        browser.element('.d2-ui-table__context-menu :nth-child(3) > span').click();
+    });
+
+    Then(/^I click more options icon on the report I want to edit$/, () => {
+        browser.element('.d2-ui-table').waitForVisible(DEFAULT_WAIT_TIME);
+        standardReport.getContextMenuBtnForReportFromList(2).click();
     });
 
     // *********************************************************
@@ -152,6 +163,9 @@ defineSupportCode(({ Given, When, Then }) => {
 
     Then(/^report is generated$/, () => {
         expect(browser.getTabIds().length).to.equal(this.tabsCount + 1);
+        // Switch to first open tab soo tests can continue
+        browser.switchTab();
+        browser.pause(DEFAULT_WAIT_TIME);
     });
 
     // *********************************************************
@@ -199,7 +213,7 @@ defineSupportCode(({ Given, When, Then }) => {
     });
 
     Then(/^create report form is dismissed$/, () => {
-        browser.pause(1000);
+        browser.pause(DEFAULT_WAIT_TIME);
         expect(browser.element('#create-std-report-form-id').isVisible()).to.equal(false);
     });
 
@@ -207,10 +221,7 @@ defineSupportCode(({ Given, When, Then }) => {
     // Scenario: I want to edit a report
     // *********************************************************
 
-    Then(/^I click more options icon on the report I want to edit$/, () => {
-        browser.element('.d2-ui-table').waitForVisible(DEFAULT_WAIT_TIME);
-        standardReport.getContextMenuBtnForReportFromList(2).click();
-    });
+    // Shared: I click more options icon on the report I want to edit
 
     Then(/^I select option to edit report$/, () => {
         browser.element('.d2-ui-table__context-menu').waitForVisible(DEFAULT_WAIT_TIME);
@@ -234,18 +245,76 @@ defineSupportCode(({ Given, When, Then }) => {
     // Scenario: I want to see configure share settings of report form
     // *********************************************************
 
-    // Shared: I click more options icon in the reports list item
+    // Shared: I click more options icon on the report I want to edit
 
-    Then(/^I select option to configure share settings$/, () => {
-        browser.element('.d2-ui-table__context-menu').waitForVisible(DEFAULT_WAIT_TIME);
-        browser.pause(DEFAULT_WAIT_TIME);
-        browser.element('.d2-ui-table__context-menu :nth-child(3) > span').click();
-        browser.pause(DEFAULT_WAIT_TIME);
-    });
+    // Shared: I select option to configure share settings
 
     Then(/^form with selected report name is displayed$/, () => {
-        browser.element('div[class^=MuiPaper]').element('div[class^=MuiDialogTitle]').waitForVisible(DEFAULT_WAIT_TIME);
-        expect(browser.element('div[class^=MuiDialogTitle] > h2').getText()).to.equal('Sharing settings');
-        expect(browser.element('div[class^=MuiDialogContent] > div > h2').getText()).to.equal(selectedReportName);
+        browser.element('div[class^="MuiModal"]').waitForExist(DEFAULT_WAIT_TIME);
+        browser.element('div[class^="MuiDialogTitle"]').waitForExist(DEFAULT_WAIT_TIME);
+        expect(browser.element('div[class^="MuiDialogTitle"]').getText()).to.equal('Sharing settings');
+        expect(browser.element('div[class^="MuiDialogContent"] > div > h2').getText()).to.equal(selectedReportName);
+    });
+
+    // *********************************************************
+    // Scenario: I want to configure share settings of report
+    // *********************************************************
+
+    // Shared: I click more options icon on the report I want to edit
+
+    // Shared: I select option to configure share settings
+
+    Then(/^I change share options$/, () => {
+        // nth-child(6) 6 - "rules list" once (1-title, 2-created by, 3-"div space", 4-label, 5-hr... )
+        this.existingRules = browser.elements('div[class^="MuiDialogContent"] > div :nth-child(6) > div').value.length;
+        this.existingRules = standardReport.processAccessRulesNumber(this.existingRules);
+        if (this.existingRules > 3) {
+            this.action = 'DELETE';
+            browser.elements('div[class^="MuiDialogContent"] > div :nth-child(6) :nth-child(6) button')
+                .value[1].click();
+        } else {
+            this.action = 'ADD';
+            browser.element('#user-autocomplete-input').setValue('Jo');
+            browser.element('div[role=tooltip]').waitForVisible(DEFAULT_WAIT_TIME);
+            browser.element('div[role=tooltip] :nth-child(1)').click();
+        }
+    });
+
+    Then(/^share settings of report where updated$/, () => {
+        browser.pause(DEFAULT_WAIT_TIME);
+        const newRules = standardReport.processAccessRulesNumber(
+            browser.elements('div[class^="MuiDialogContent"] > div :nth-child(6) > div').value.length,
+        );
+        if (this.action === 'DELETE') {
+            expect(newRules).to.equal(this.existingRules - 1);
+        } else {
+            expect(newRules).to.equal(this.existingRules + 1);
+        }
+    });
+
+
+    // *********************************************************
+    // Scenario: I want to delete a standart report
+    // *********************************************************
+
+    Then(/^I click more options icon on the report I want to delete$/, () => {
+        browser.element('.d2-ui-table').waitForVisible(DEFAULT_WAIT_TIME);
+        this.oldVisibleReports = browser.element('.d2-ui-table').elements('.d2-ui-table__rows__row').value.length;
+        standardReport.getContextMenuBtnForReportFromList(this.oldVisibleReports - 1).click();
+    });
+
+    Then(/^I select option to delete report$/, () => {
+        browser.element('.d2-ui-table__context-menu').waitForVisible(DEFAULT_WAIT_TIME);
+        browser.element('.d2-ui-table__context-menu :nth-child(4) > span').click();
+    });
+
+    Then(/^confirm the deletion$/, () => {
+        standardReport.confirmRemoveSnackbar().click();
+    });
+
+    Then(/^the standart report is removed form standard report list$/, () => {
+        browser.pause(DEFAULT_WAIT_TIME);
+        const newVisibleReports = browser.element('.d2-ui-table').elements('.d2-ui-table__rows__row').value.length;
+        expect(newVisibleReports).to.equal(this.oldVisibleReports - 1);
     });
 });
