@@ -19,6 +19,7 @@ exports.config = {
         './e2e/features/resourceReport.feature',
         './e2e/features/dataSetReport.feature',
         './e2e/features/reportingRateSummary.feature',
+        './e2e/features/dataApproval.feature',
         './e2e/features/organisationUnitDistributionReport.feature',
     ],
     // Patterns to exclude.
