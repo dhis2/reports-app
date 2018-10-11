@@ -62,13 +62,10 @@ defineSupportCode(({ Given, When, Then }) => {
     // *********************************************************
     // Scenario: I want to see all items in the page
     // *********************************************************
-    Then(/^a pagination component is displayed$/, () => {
-        browser.element('.data-table-pager').waitForVisible(DEFAULT_WAIT_TIME);
-    });
 
-    Then(/^a search field is displayed$/, () => {
-        browser.element('#search-box-id').waitForVisible(DEFAULT_WAIT_TIME);
-    });
+    // Global Shared: a pagination component is displayed
+
+    // Global Shared: a search field is displayed
 
     Then(/^a table with list of reports is displayed$/, () => {
         browser.element('.d2-ui-table').waitForVisible(DEFAULT_WAIT_TIME);
@@ -80,11 +77,7 @@ defineSupportCode(({ Given, When, Then }) => {
         fullDownloadReportFilePath = `${pathToChromeDownloads}/${firstStdReportName}.xls`;
     });
 
-    Then(/^each item of the list contains more options icon$/, () => {
-        const elements = browser.elements('.d2-ui-table__rows__row').value;
-        const contextMenuElements = browser.element('.d2-ui-table').elements('button').value;
-        expect(elements.length).to.equal(contextMenuElements.length);
-    });
+    // Global Shared: each item of the list contains more options icon
 
     Then(/^button to add report is displayed$/, () => {
         browser.element('#add-std-report-btn-container-id').waitForVisible(DEFAULT_WAIT_TIME);
@@ -308,13 +301,12 @@ defineSupportCode(({ Given, When, Then }) => {
         browser.element('.d2-ui-table__context-menu :nth-child(4) > span').click();
     });
 
-    Then(/^confirm the deletion$/, () => {
-        standardReport.confirmRemoveSnackbar().click();
-    });
+    // Global Shared: confirm the deletion
 
-    Then(/^the standart report is removed form standard report list$/, () => {
+    Then(/^the standard report is removed form standard report list$/, () => {
         browser.pause(DEFAULT_WAIT_TIME);
         const newVisibleReports = browser.element('.d2-ui-table').elements('.d2-ui-table__rows__row').value.length;
         expect(newVisibleReports).to.equal(this.oldVisibleReports - 1);
     });
+
 });

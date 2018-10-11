@@ -71,4 +71,4 @@ Feature: Standard Report
 	And I click more options icon on the report I want to delete
 	And I select option to delete report
 	And confirm the deletion
-	Then the standart report is removed form standard report list
+	Then the standard report is removed form standard report list

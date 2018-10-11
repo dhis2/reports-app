@@ -16,6 +16,7 @@ exports.config = {
         './e2e/features/home.feature',
         './e2e/features/help.feature',
         './e2e/features/standardReport.feature',
+        './e2e/features/resourceReport.feature',
         './e2e/features/dataSetReport.feature',
         './e2e/features/reportingRateSummary.feature',
         './e2e/features/organisationUnitDistributionReport.feature',
