@@ -235,10 +235,11 @@ export default class AddEditStdReport extends PureComponent {
             api.get(url).then((response) => {
                 if (response) {
                     this.setState({ reportTables: [NONE, ...response.reportTables] });
-                    this.stopLoading();
                 }
             }).catch((error) => {
                 this.props.onError(error);
+            }).finally(() => {
+                this.stopLoading();
             });
         }
     };
@@ -261,7 +262,6 @@ export default class AddEditStdReport extends PureComponent {
             this.startLoading();
             api.get(url).then((response) => {
                 if (response) {
-                    this.stopLoading();
                     this.setState({
                         ...this.state,
                         report: {
@@ -271,6 +271,8 @@ export default class AddEditStdReport extends PureComponent {
                 }
             }).catch((error) => {
                 this.props.onError(error);
+            }).finally(() => {
+                this.stopLoading();
             });
         }
     };
@@ -292,6 +294,7 @@ export default class AddEditStdReport extends PureComponent {
                             this.close(true);
                         }
                     }).catch((error) => {
+                        this.stopLoading();
                         this.props.onError(error);
                     });
                 // Add report
@@ -301,6 +304,7 @@ export default class AddEditStdReport extends PureComponent {
                             this.close(true);
                         }
                     }).catch((error) => {
+                        this.stopLoading();
                         this.props.onError(error);
                     });
                 }
@@ -328,24 +332,28 @@ export default class AddEditStdReport extends PureComponent {
 
     render() {
         const actions = [
-            <Button
-                key={'cancel-action-btn-key'}
-                style={appStyles.dialogBtn}
-                onClick={this.close}
-                disabled={this.state.loading}
-            >
-                {i18n.t(i18nKeys.buttons.cancel)}
-            </Button>,
-            <Button
-                key={'save-action-btn-key'}
-                raised
-                color={'primary'}
-                style={appStyles.dialogBtn}
-                disabled={!this.ifFormValid()}
-                onClick={this.addReport}
-            >
-                {i18n.t(i18nKeys.buttons.save)}
-            </Button>,
+            <span id={'cancel-action-btn-id'}>
+                <Button
+                    key={'cancel-action-btn-key'}
+                    style={appStyles.dialogBtn}
+                    onClick={this.close}
+                    disabled={this.state.loading}
+                >
+                    {i18n.t(i18nKeys.buttons.cancel)}
+                </Button>
+            </span>,
+            <span id={'save-action-btn-id'}>
+                <Button
+                    key={'save-action-btn-key'}
+                    raised
+                    color={'primary'}
+                    style={appStyles.dialogBtn}
+                    disabled={!this.ifFormValid()}
+                    onClick={this.addReport}
+                >
+                    {i18n.t(i18nKeys.buttons.save)}
+                </Button>
+            </span>,
         ];
 
         return (
@@ -358,7 +366,7 @@ export default class AddEditStdReport extends PureComponent {
                 contentStyle={styles.dialog}
                 open={this.props.open}
             >
-                <div style={styles.dialogContentContainer}>
+                <div id={'add-edit-std-report-form-id'} style={styles.dialogContentContainer}>
                     <span id={'display-right-message-id'} className={'row'} style={styles.rightsMessage}>
                         {i18n.t(i18nKeys.messages.rightsMessage)}
                     </span>

@@ -184,31 +184,37 @@ class CreateStdReport extends PureComponent {
 
     render() {
         const actions = [
-            <Button
-                key={'cancel-btn-key'}
-                style={appStyles.dialogBtn}
-                onClick={this.props.onRequestClose}
-            >
-                {i18n.t(i18nKeys.buttons.cancel)}
-            </Button>,
-            <Button
-                key={'export-excel-btn-key'}
-                style={appStyles.dialogBtn}
-                disabled={!this.validate()}
-                onClick={this.getExcelReport}
-            >
-                {i18n.t(i18nKeys.buttons.downloadAsExcel)}
-            </Button>,
-            <Button
-                key={'get-report-key'}
-                raised
-                color={'primary'}
-                style={appStyles.dialogBtn}
-                disabled={!this.validate()}
-                onClick={this.getReport}
-            >
-                {i18n.t(i18nKeys.buttons.getReport)}
-            </Button>,
+            <span id={'create-std-report-cancel-action-id'}>
+                <Button
+                    key={'cancel-btn-key'}
+                    style={appStyles.dialogBtn}
+                    onClick={this.props.onRequestClose}
+                >
+                    {i18n.t(i18nKeys.buttons.cancel)}
+                </Button>
+            </span>,
+            <span id={'create-std-report-export-action-id'}>
+                <Button
+                    key={'export-excel-btn-key'}
+                    style={appStyles.dialogBtn}
+                    disabled={!this.validate()}
+                    onClick={this.getExcelReport}
+                >
+                    {i18n.t(i18nKeys.buttons.downloadAsExcel)}
+                </Button>
+            </span>,
+            <span id={'create-std-report-get-action-id'}>
+                <Button
+                    key={'get-report-key'}
+                    raised
+                    color={'primary'}
+                    style={appStyles.dialogBtn}
+                    disabled={!this.validate()}
+                    onClick={this.getReport}
+                >
+                    {i18n.t(i18nKeys.buttons.getReport)}
+                </Button>
+            </span>,
         ];
 
         if (this.isSet()) {
@@ -221,8 +227,10 @@ class CreateStdReport extends PureComponent {
                     modal
                     open={this.props.open}
                 >
-                    {this.displayPeriods()}
-                    {this.displayOrgUnitTree()}
+                    <div id={'create-std-report-form-id'}>
+                        {this.displayPeriods()}
+                        {this.displayOrgUnitTree()}
+                    </div>
                 </Dialog>
             );
         }

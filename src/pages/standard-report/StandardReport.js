@@ -390,9 +390,16 @@ export default class StandardReport extends Page {
                             currentlyShown={calculatePageValue(this.state.pager)}
                         />
                     </div>
-                    <Button id={'add-std-report-btn-id'} fab onClick={this.addNewReport} style={appStyles.addButton}>
-                        <SvgIcon icon={'Add'} />
-                    </Button>
+                    <div id={'add-std-report-btn-container-id'}>
+                        <Button
+                            id={'add-std-report-btn-id'}
+                            fab
+                            onClick={this.addNewReport}
+                            style={appStyles.addButton}
+                        >
+                            <SvgIcon icon={'Add'} />
+                        </Button>
+                    </div>
                     { this.getActionComponent() }
                 </div>
                 <Paper
