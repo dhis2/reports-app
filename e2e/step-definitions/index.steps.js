@@ -5,6 +5,7 @@ const steps = [
     require('./standardReport.steps'),
     require('./resource.steps'),
     require('./getReportPages.steps'),
+    require('./dataApproval.steps'),
     require('./organisationUnitDistributionReport.steps'),
 ];
 

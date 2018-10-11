@@ -7,15 +7,14 @@ Feature: Data Approval
     When I open Data Approval page
 
   Scenario:  I want to see all items in the page
-    Then report organisation unit selection is displayed
-    And a selectable data set is displayed
-	And report period selection is displayed
+    Then organisation unit selection for data approval is displayed
+    And data set selection for data approval is displayed
 	And get data button disabled
-	
+
   Scenario: I want to get data
-	And I select report organisation unit
-	And I select data set
-	And I select report period to retrieve data
+	And I select organisation unit for data approval
+	And I select data set for data approval
+	And I select period to retrieve data
 	And click get data button
 	Then new page with data approval is displayed
 	And return to previous page is displayed
