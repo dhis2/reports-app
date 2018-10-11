@@ -62,13 +62,13 @@ Feature: Resource
 
   Scenario: I want to see configure share settings of resource form
 	And I click more options icon in the resource list item
-	And I select option to configure share settings
+	And I select option to configure resource share settings
 	Then form with selected resource name is displayed
 
   Scenario: I want to configure share settings of resource
 	And I click more options icon in the resource list item
-	And I select option to configure share settings
-	And I change share options
+	And I select option to configure resource share settings
+	And I change resource share rules
 	Then share settings of resource was updated
 
   Scenario: I want to delete a resource

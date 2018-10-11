@@ -48,7 +48,7 @@ defineSupportCode(({ Given, When, Then }) => {
         browser.pause(DEFAULT_WAIT_TIME);
     });
 
-    Then(/^I select option to configure share settings$/, () => {
+    Then(/^I select option to configure resource share settings$/, () => {
         browser.element('.d2-ui-table__context-menu :nth-child(3) > span').waitForVisible(DEFAULT_WAIT_TIME);
         browser.element('.d2-ui-table__context-menu :nth-child(3) > span').click();
     });
@@ -234,7 +234,7 @@ defineSupportCode(({ Given, When, Then }) => {
 
     // Shared: I click more options icon in the resource list item
 
-    // Shared: I select option to configure share settings
+    // Shared: I select option to configure resource share settings
 
     Then(/^form with selected resource name is displayed$/, () => {
         browser.element('div[class^="MuiModal"]').waitForExist(DEFAULT_WAIT_TIME);
@@ -250,9 +250,9 @@ defineSupportCode(({ Given, When, Then }) => {
 
     // Shared: I click more options icon in the resource list item
 
-    // Shared: I select option to configure share settings
+    // Shared: I select option to configure resource share settings
 
-    Then(/^I change share options$/, () => {
+    Then(/^I change resource share rules/, () => {
         // nth-child(6) 6 - "rules list" once (1-title, 2-created by, 3-"div space", 4-label, 5-hr... )
         this.existingRules = browser.elements('div[class^="MuiDialogContent"] > div :nth-child(6) > div').value.length;
         this.existingRules = resource.processAccessRulesNumber(this.existingRules);
