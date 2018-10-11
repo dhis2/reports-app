@@ -3,6 +3,7 @@ const steps = [
     require('./home.steps'),
     require('./help.steps'),
     require('./standardReport.steps'),
+    require('./resource.steps'),
     require('./getReportPages.steps'),
     require('./organisationUnitDistributionReport.steps'),
 ];

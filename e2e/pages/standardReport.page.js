@@ -26,13 +26,6 @@ class StandardReportPage extends Page {
     processAccessRulesNumber(number) {
         return number > 3 ? number - 1 : number;
     }
-
-    confirmRemoveSnackbar() {
-        browser.waitForVisible('#feedbackSnackbarId', 5000);
-        const snackbar = browser.element('#feedbackSnackbarId');
-        const confirmBtn = snackbar.elements('<button>').value[0];
-        return confirmBtn;
-    }
 }
 
 module.exports = new StandardReportPage();

@@ -361,9 +361,16 @@ export default class Resource extends Page {
                             currentlyShown={calculatePageValue(this.state.pager)}
                         />
                     </div>
-                    <Button id={'add-resource-btn-id'} fab onClick={this.addNewResource} style={appStyles.addButton}>
-                        <SvgIcon icon={'Add'} />
-                    </Button>
+                    <div id={'add-resource-btn-container-id'}>
+                        <Button
+                            id={'add-resource-btn-id'}
+                            fab
+                            onClick={this.addNewResource}
+                            style={appStyles.addButton}
+                        >
+                            <SvgIcon icon={'Add'} />
+                        </Button>
+                    </div>
                     { this.getActionComponent() }
                 </div>
             </div>
