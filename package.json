@@ -87,13 +87,12 @@
     "scripts": {
         "manifest": "d2-manifest package.json ./public/manifest.webapp",
         "start": "yarn manifest && yarn localize && node scripts/start.js",
-        "build": "yarn manifest && yarn localize && node scripts/build.js",
+        "build": "yarn manifest && yarn localize && node scripts/build.js && cp ./package.json ./build/package.json",
         "localize": "d2-i18n-generate -n reports-app -p ./i18n/ -o ./src/locales/",
         "test": "node scripts/test.js --env=jsdom",
         "test-e2e": "wdio ./e2e/config/wdio.conf.js",
         "lint": "yarn localize && eslint src/",
         "validate": "yarn list",
-        "deploy": "yarn run build && mvn clean deploy",
         "extract-pot": "node scripts/pot-extractor.js",
         "refresh-translations-template": "yarn extract-pot -- -o en.pot && git add ./i18n/en.pot",
         "coverage": "yarn test -- --coverage"
