@@ -4,11 +4,11 @@ import React, { PureComponent } from 'react';
 
 /* material-ui */
 import { Dialog } from 'material-ui';
+import SelectFieldMui from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
 
 /* d2-ui */
 import { Button, InputField, SelectField, CheckBox, SvgIcon, TextField } from '@dhis2/d2-ui-core';
-import SelectFieldMui from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
 
 /* Redux */
 import { connect } from 'react-redux';

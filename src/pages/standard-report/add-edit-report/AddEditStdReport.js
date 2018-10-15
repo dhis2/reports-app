@@ -4,6 +4,8 @@ import React, { PureComponent } from 'react';
 
 /* material-ui */
 import { Dialog } from 'material-ui';
+import SelectFieldMui from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
 
 /* d2-ui */
 import { Button, TextField, SelectField, CheckBox, SvgIcon, InputField } from '@dhis2/d2-ui-core';
@@ -193,6 +195,13 @@ export default class AddEditStdReport extends PureComponent {
         });
     };
 
+    getTypeForReport = () => {
+        if (this.props.selectedReport) {
+            return REPORT_TYPES.filter(obj => obj.id === this.state.report.type);
+        }
+        return REPORT_TYPES;
+    };
+
     getDownloadLink = () => {
         const api = this.props.d2.Api.getApi();
         const type = this.state.report.type === TYPES.HTML ? 'html' : 'jasper';
@@ -219,6 +228,32 @@ export default class AddEditStdReport extends PureComponent {
         i18n.t(i18nKeys.standardReport.editReportTitle) :
         i18n.t(i18nKeys.standardReport.addNewReportTitle)
     );
+
+    getTypeDropdownComponent = () => (this.state.report.id ?
+        (
+            <SelectFieldMui
+                floatingLabelText={i18n.t(i18nKeys.standardReport.typeLabel)}
+                value={this.state.report.type}
+                name={'reportType'}
+                onChange={this.onChangeType}
+                fullWidth
+                disabled
+            >
+                <MenuItem
+                    value={this.state.report.type}
+                    primaryText={this.getTypeForReport()[0].name}
+                />
+            </SelectFieldMui>
+        ) : (
+            <SelectField
+                style={styles.width100}
+                name={'reportType'}
+                label={i18n.t(i18nKeys.standardReport.typeLabel)}
+                items={REPORT_TYPES}
+                value={this.state.report.type}
+                onChange={this.onChangeType}
+            />
+        ));
 
     /* close dialog */
     close = (refreshList) => {
@@ -385,14 +420,9 @@ export default class AddEditStdReport extends PureComponent {
                                 onChange={this.onChangeName}
                             />
                             {/* report type */}
-                            <SelectField
-                                style={styles.width100}
-                                name={'reportType'}
-                                label={i18n.t(i18nKeys.standardReport.typeLabel)}
-                                items={REPORT_TYPES}
-                                value={this.state.report.type}
-                                onChange={this.onChangeType}
-                            />
+                            {
+                                this.getTypeDropdownComponent()
+                            }
                             {/* design file hidden file input */}
                             <input
                                 style={{ display: 'none' }}
