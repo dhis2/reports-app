@@ -177,7 +177,7 @@ export default class DataApproval extends Page {
                     </div>
                     <div id="data-approval-form" style={{ display: this.state.showForm ? 'block' : 'none' }}>
                         <div className="row">
-                            <div className="col-md-6">
+                            <div className="col-xs-12 col-md-6">
                                 <div style={styles.formLabel}>
                                     {i18n.t(i18nKeys.dataApproval.organisationUnitLabel)}
                                 </div>
@@ -185,7 +185,7 @@ export default class DataApproval extends Page {
                                     onChange={this.handleOrganisationUnitChange}
                                 />
                             </div>
-                            <div className="col-md-6">
+                            <div className="col-xs-12 col-md-6">
                                 <div id="data-set-selection">
                                     <DataSets
                                         fields="id,displayName,workflow[id,periodType],categoryCombo[id,displayName]"

@@ -206,7 +206,7 @@ export default class ReportingRateSummary extends Page {
                 <Paper style={styles.container}>
                     <div id="report-rate-summary-form" style={{ display: this.state.showForm ? 'block' : 'none' }}>
                         <div className="row">
-                            <div className="col-md-6">
+                            <div className="col-xs-12 col-md-6">
                                 <div style={styles.formLabel}>
                                     {i18n.t(i18nKeys.reportingRateSummary.organisationUnitLabel)}
                                 </div>
@@ -215,7 +215,7 @@ export default class ReportingRateSummary extends Page {
                                 />
                                 {this.renderExtraOptions()}
                             </div>
-                            <div className="col-md-6">
+                            <div className="col-xs-12 col-md-6">
                                 <div id="criteria-selection">
                                     <span style={styles.formLabel}>
                                         {i18n.t(i18nKeys.reportingRateSummary.basedOnLabel)}

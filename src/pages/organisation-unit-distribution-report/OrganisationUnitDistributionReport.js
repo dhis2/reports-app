@@ -158,7 +158,7 @@ export default class OrganisationUnitDistributionReport extends Page {
                 <Paper style={styles.container}>
                     <div id="org-unit-dist-report-form" style={{ display: this.state.showForm ? 'block' : 'none' }}>
                         <div className="row">
-                            <div className="col-md-6">
+                            <div className="col-xs-12 col-md-6">
                                 <div style={styles.formLabel}>
                                     {i18n.t(i18nKeys.organisationUnitDistributionReport.organisationUnitLabel)}
                                 </div>
@@ -166,7 +166,7 @@ export default class OrganisationUnitDistributionReport extends Page {
                                     onChange={this.handleOrganisationUnitChange}
                                 />
                             </div>
-                            <div className="col-md-6">
+                            <div className="col-xs-12 col-md-6">
                                 <div id="group-sets-selection">
                                     <GroupSets
                                         onChange={this.handleGroupSetChange}

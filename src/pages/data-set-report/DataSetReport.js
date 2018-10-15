@@ -214,7 +214,7 @@ export default class DataSetReport extends Page {
                 <Paper style={styles.container}>
                     <div id="data-set-report-form" style={{ display: this.state.showForm ? 'block' : 'none' }}>
                         <div className="row">
-                            <div className="col-md-6">
+                            <div className="col-xs-12 col-md-6">
                                 <div style={styles.formLabel}>
                                     {i18n.t(i18nKeys.dataSetReport.organisationUnitLabel)}
                                 </div>
@@ -223,7 +223,7 @@ export default class DataSetReport extends Page {
                                 />
                                 {this.renderExtraOptions()}
                             </div>
-                            <div className="col-md-6">
+                            <div className="col-xs-12 col-md-6">
                                 <div id="data-set-selection">
                                     <DataSets
                                         onChange={this.handleDataSetChange}
