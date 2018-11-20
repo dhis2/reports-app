@@ -259,7 +259,8 @@ export const i18nKeys = {
         confirmDelete: 'Confirm delete',
     },
     d2UiComponents: {
-        app_search_placeholder: 'Search',
+        app_search_placeholder: 'Search apps',
+        manage_my_apps: 'Manage my apps',
         display_name: 'Name',
         report_table: 'Report Table',
         id: 'ID',
