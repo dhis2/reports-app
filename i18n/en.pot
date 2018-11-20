@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-10-15T13:26:55.075Z\n"
-"PO-Revision-Date: 2018-10-15T13:26:55.075Z\n"
+"POT-Creation-Date: 2018-11-20T12:34:35.704Z\n"
+"PO-Revision-Date: 2018-11-20T12:34:35.704Z\n"
 
 msgid "Cancel"
 msgstr ""
@@ -546,6 +546,12 @@ msgid "This object will be created with public edit and view rights"
 msgstr ""
 
 msgid "Confirm delete"
+msgstr ""
+
+msgid "Search apps"
+msgstr ""
+
+msgid "Manage my apps"
 msgstr ""
 
 msgid "Report Table"
