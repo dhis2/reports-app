@@ -43,6 +43,26 @@ import { ACTION_MESSAGE, LOADING, SUCCESS } from '../../helpers/feedbackSnackBar
 import i18n from '../../locales';
 import { i18nKeys } from '../../i18n';
 
+const StyledHtmlReport = ({ htmlReport }) => (
+    <Paper
+        style={{
+            display: htmlReport ? 'flex' : 'none',
+            justifyContent: 'center',
+            alignItems: 'center',
+        }}
+    >
+        <HtmlReport html={htmlReport} />
+    </Paper>
+);
+
+StyledHtmlReport.propTypes = {
+    htmlReport: PropTypes.object,
+};
+
+StyledHtmlReport.defaultProps = {
+    htmlReport: null,
+};
+
 export default class StandardReport extends Page {
     static propTypes = {
         showSnackbar: PropTypes.bool,
@@ -320,6 +340,8 @@ export default class StandardReport extends Page {
         return (actions[action] || false);
     };
 
+    onSearchBoxChange = value => this.debounceSearch('search', value);
+
     render() {
         const contextMenuOptions = {
             [CONTEXT_MENU_ACTION.CREATE]: this.createReport,
@@ -330,43 +352,25 @@ export default class StandardReport extends Page {
 
         return (
             <div>
-                <h1>
-                    { this.state.htmlReport &&
-                    <span
-                        id="back-button"
-                        style={styles.backButton}
-                        className="material-icons"
-                        role="button"
-                        tabIndex="0"
-                        onClick={this.goBack}
-                    >
-                        arrow_back
-                    </span>
-                    }
-                    { i18n.t(i18nKeys.standardReport.homeLabel) }
-                    <PageHelper
-                        url={getDocsUrl(this.props.d2.system.version, this.props.sectionKey)}
-                    />
-                </h1>
+                <Headline
+                    showBackButton={!!this.state.htmlReport}
+                    onGoBackClick={this.goBack}
+                    systemVersion={this.props.d2.system.version}
+                    sectionKey={this.props.sectionKey}
+                />
                 <div id="std-report-content" style={{ display: this.state.htmlReport ? 'none' : 'block' }} >
-                    <Pagination
+                    <StandardReportPagination
                         total={this.state.pager.total}
                         hasNextPage={this.hasNextPage}
                         hasPreviousPage={this.hasPreviousPage}
                         onNextPageClick={this.onNextPageClick}
                         onPreviousPageClick={this.onPreviousPageClick}
-                        currentlyShown={calculatePageValue(this.state.pager)}
+                        currentlyShown={this.state.pager}
                     />
-                    <div id={'search-box-id'} style={styles.searchContainer}>
-                        <InputField
-                            id={'search-std-report-id'}
-                            value={this.state.lastSearch || ''}
-                            type="text"
-                            hintText={i18n.t(i18nKeys.standardReport.search)}
-                            // eslint-disable-next-line
-                            onChange={value => this.debounceSearch('search', value)}
-                        />
-                    </div>
+                    <SearchBox
+                        value={this.state.lastSearch || ''}
+                        onChange={this.onSearchBoxChange}
+                    />
                     <Table
                         columns={['displayName', 'reportTable', 'id']}
                         rows={this.state.reports}
@@ -374,43 +378,19 @@ export default class StandardReport extends Page {
                         contextMenuIcons={CONTEXT_MENU_ICONS}
                         isContextActionAllowed={this.showContextAction}
                     />
-                    <p
-                        id={'no-std-report-find-message-id'}
-                        style={{ textAlign: 'center', ...(this.displayNoResults()) }}
-                    >
-                        {i18n.t(i18nKeys.messages.noResultsFound)}
-                    </p>
-                    <div id={'footer-pagination-id'} style={appStyles.marginForAddButton}>
-                        <Pagination
-                            total={this.state.pager.total}
-                            hasNextPage={this.hasNextPage}
-                            hasPreviousPage={this.hasPreviousPage}
-                            onNextPageClick={this.onNextPageClick}
-                            onPreviousPageClick={this.onPreviousPageClick}
-                            currentlyShown={calculatePageValue(this.state.pager)}
-                        />
-                    </div>
-                    <div id={'add-std-report-btn-container-id'}>
-                        <Button
-                            id={'add-std-report-btn-id'}
-                            fab
-                            onClick={this.addNewReport}
-                            style={appStyles.addButton}
-                        >
-                            <SvgIcon icon={'Add'} />
-                        </Button>
-                    </div>
+                    <NoResultsMessage styles={this.displayNoResults()} />
+                    <StandardReportPagination
+                        total={this.state.pager.total}
+                        hasNextPage={this.hasNextPage}
+                        hasPreviousPage={this.hasPreviousPage}
+                        onNextPageClick={this.onNextPageClick}
+                        onPreviousPageClick={this.onPreviousPageClick}
+                        currentlyShown={this.state.pager}
+                    />
+                    <AddReportButton onClick={this.addNewReport} />
                     { this.getActionComponent() }
                 </div>
-                <Paper
-                    style={{
-                        display: this.state.htmlReport ? 'flex' : 'none',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                    }}
-                >
-                    <HtmlReport html={this.state.htmlReport} />
-                </Paper>
+                <StyledHtmlReport htmlReport={this.state.htmlReport} />
             </div>
         );
     }
@@ -418,6 +398,110 @@ export default class StandardReport extends Page {
 
 StandardReport.childContextTypes = {
     d2: PropTypes.object,
+};
+
+const Headline = ({ showBackButton, onGoBackClick, systemVersion, sectionKey }) => (
+    <h1>
+        { showBackButton &&
+            <span
+                id="back-button"
+                style={styles.backButton}
+                className="material-icons"
+                role="button"
+                tabIndex="0"
+                onClick={onGoBackClick}
+            />
+        }
+        { i18n.t(i18nKeys.standardReport.homeLabel) }
+        <PageHelper
+            url={getDocsUrl(systemVersion, sectionKey)}
+        />
+    </h1>
+);
+
+Headline.propTypes = {
+    showBackButton: PropTypes.bool.isRequired,
+    onGoBackClick: PropTypes.func.isRequired,
+    systemVersion: PropTypes.number.isRequired,
+    sectionKey: PropTypes.string.isRequired,
+};
+
+const SearchBox = ({ value, onChange }) => (
+    <div id="search-box-id" style={styles.searchContainer}>
+        <InputField
+            id="search-std-report-id"
+            value={value}
+            type="text"
+            hintText={i18n.t(i18nKeys.standardReport.search)}
+            onChange={onChange}
+        />
+    </div>
+);
+
+SearchBox.propTypes = {
+    value: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+};
+
+const NoResultsMessage = ({ additionalStyles }) => (
+    <p
+        id="no-std-report-find-message-id"
+        style={{ textAlign: 'center', ...additionalStyles }}
+    >
+        {i18n.t(i18nKeys.messages.noResultsFound)}
+    </p>
+);
+
+NoResultsMessage.propTypes = {
+    additionalStyles: PropTypes.object,
+};
+
+NoResultsMessage.defaultProps = {
+    additionalStyles: {},
+};
+
+const AddReportButton = ({ onClick }) => (
+    <div id="add-std-report-btn-container-id">
+        <Button
+            fab
+            id="add-std-report-btn-id"
+            onClick={onClick}
+            style={appStyles.addButton}
+        >
+            <SvgIcon icon="Add" />
+        </Button>
+    </div>
+);
+
+AddReportButton.propTypes = {
+    onClick: PropTypes.func.isRequired,
+};
+
+const StandardReportPagination = props => (
+    <div id={'footer-pagination-id'} style={appStyles.marginForAddButton}>
+        <Pagination
+            total={props.total}
+            hasNextPage={props.hasNextPage}
+            hasPreviousPage={props.hasPreviousPage}
+            onNextPageClick={props.onNextPageClick}
+            onPreviousPageClick={props.onPreviousPageClick}
+            currentlyShown={calculatePageValue(props.pager)}
+        />
+    </div>
+);
+
+StandardReportPagination.propTypes = {
+    total: PropTypes.number.isRequired,
+    hasNextPage: PropTypes.func.isRequired,
+    hasPreviousPage: PropTypes.func.isRequired,
+    onNextPageClick: PropTypes.func.isRequired,
+    onPreviousPageClick: PropTypes.func.isRequired,
+    pager: PropTypes.shapeOf({
+        page: PropTypes.number.isRequired,
+        pageCount: PropTypes.number.isRequired,
+        pageSize: PropTypes.number.isRequired,
+        total: PropTypes.number.isRequired,
+    }).isRequired,
 };
 
 const mapStateToProps = state => ({
