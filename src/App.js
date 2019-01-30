@@ -13,6 +13,7 @@ import { Sidebar, FeedbackSnackbar, CircularProgress } from '@dhis2/d2-ui-core';
 /* Redux */
 import { connect } from 'react-redux';
 import { updateFeedbackState } from './actions/feedback';
+import { deleteStandardReport } from './actions/standardReport';
 
 /* App components */
 import AppRouter from './components/app-router/AppRouter';
@@ -20,6 +21,7 @@ import AppRouter from './components/app-router/AppRouter';
 /* App context */
 import AppContext from './context';
 import { LOADING } from './helpers/feedbackSnackBarTypes';
+import createSnackbarConfig from './utils/snackbar/createSnackbarConfig';
 
 /* App configs */
 import { sections } from './pages/sections.conf';
@@ -113,15 +115,47 @@ class App extends PureComponent {
 
 const mapStateToProps = state => ({
     showSnackbar: state.feedback.showSnackbar,
-    snackbarConf: { ...state.feedback.snackbarConf },
+    snackbarConf: createSnackbarConfig(state),
     currentSection: state.router.location.pathname.substring(1),
+
+    state,
 });
 
 const mapDispatchToProps = dispatch => ({
     updateFeedbackState: updateFeedbackState(dispatch),
+    deleteStandardReport: () => dispatch(deleteStandardReport()),
 });
+
+/**
+ * This is a temporary solution until all components
+ * have been separated from business logic.
+ */
+const mergeProps = (stateProps, dispatchProps, ownProps) => {
+    const { state, ...realStateProps } = stateProps;
+    const {
+        deleteStandardReport: deleteStandardReportActionDispatcher,
+        ...realDispatchProps
+    } = dispatchProps;
+
+    if (stateProps.state.standardReport.requestDelete) {
+        return {
+            ...ownProps,
+            ...{
+                ...realStateProps,
+                snackbarConf: {
+                    ...realStateProps.snackbarConf,
+                    onActionClick: deleteStandardReportActionDispatcher,
+                },
+            },
+            ...realDispatchProps,
+        };
+    }
+
+    return { ...ownProps, ...realStateProps, ...realDispatchProps };
+};
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps,
+    mergeProps,
 )(App);

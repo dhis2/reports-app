@@ -1,21 +1,29 @@
-import createActionTypes from '../utils/redux/createActionTypes';
 import { REPORTS_ENDPOINT } from '../pages/standard-report/standard.report.conf';
 
-export const actionTypes = createActionTypes(
-    'LOAD_STANDARD_REPORTS',
-    'LOADING_STANDARD_REPORTS_START',
-    'LOADING_STANDARD_REPORTS_SUCCESS',
-    'LOADING_STANDARD_REPORTS_ERROR',
-    'SET_PAGE',
-    'ADD_REPORT_FORM_SHOW',
-    'ADD_REPORT_FORM_HIDE',
-    'EDIT_REPORT_FORM_SHOW',
-    'EDIT_REPORT_FORM_HIDE',
-    'CREATE_REPORT_SHOW',
-    'CREATE_REPORT_HIDE',
-    'SHARING_SETTINGS_SHOW',
-    'SHARING_SETTINGS_HIDE',
-);
+export const actionTypes = {
+    LOAD_STANDARD_REPORTS: 'LOAD_STANDARD_REPORTS',
+    LOADING_STANDARD_REPORTS_START: 'LOADING_STANDARD_REPORTS_START',
+    LOADING_STANDARD_REPORTS_SUCCESS: 'LOADING_STANDARD_REPORTS_SUCCESS',
+    LOADING_STANDARD_REPORTS_ERROR: 'LOADING_STANDARD_REPORTS_ERROR',
+    GO_TO_NEXT_PAGE: 'GO_TO_NEXT_PAGE',
+    GO_TO_PREV_PAGE: 'GO_TO_PREV_PAGE',
+    SET_SEARCH: 'SET_SEARCH',
+    ADD_REPORT_FORM_SHOW: 'ADD_REPORT_FORM_SHOW',
+    ADD_REPORT_FORM_HIDE: 'ADD_REPORT_FORM_HIDE',
+    EDIT_REPORT_FORM_SHOW: 'EDIT_REPORT_FORM_SHOW',
+    EDIT_REPORT_FORM_HIDE: 'EDIT_REPORT_FORM_HIDE',
+    CREATE_REPORT_SHOW: 'CREATE_REPORT_SHOW',
+    CREATE_REPORT_HIDE: 'CREATE_REPORT_HIDE',
+    SHARING_SETTINGS_SHOW: 'SHARING_SETTINGS_SHOW',
+    SHARING_SETTINGS_HIDE: 'SHARING_SETTINGS_HIDE',
+    REQUEST_DELETE_STANDARD_REPORT: 'REQUEST_DELETE_STANDARD_REPORT',
+    DELETE_STANDARD_REPORT_START: 'DELETE_STANDARD_REPORT_START',
+    DELETE_STANDARD_REPORT_SUCCESS: 'DELETE_STANDARD_REPORT_SUCCESS',
+    DELETE_STANDARD_REPORT_ERROR: 'DELETE_STANDARD_REPORT_ERROR',
+    HTML_REPORT_SHOW: 'HTML_REPORT_SHOW',
+    HTML_REPORT_HIDE: 'HTML_REPORT_HIDE',
+    CLOSE_CONTEXT_MENU: 'CLOSE_CONTEXT_MENU',
+};
 
 /**
  * @returns {Object}
@@ -59,9 +67,9 @@ const createReportsApiUrl = (page, pageSize, search) => [
 /**
  * @return {Function} Redux thunk
  */
-export const loadStandartReports = () => (dispatch, getState) => {
-    const api = this.props.d2.Api.getApi();
-    const { pager, search } = getState();
+export const loadStandardReports = d2 => (dispatch, getState) => {
+    const api = d2.Api.getApi();
+    const { pager, search } = getState().standardReport;
     const { page, pageSize } = pager;
     const url = createReportsApiUrl(page, pageSize, search);
 
@@ -78,9 +86,18 @@ export const loadStandartReports = () => (dispatch, getState) => {
  * @param {number} nextPage
  * @return {Object}
  */
-export const setPage = nextPage => (dispatch) => {
-    dispatch({ type: actionTypes.SET_PAGE, payload: nextPage });
-    dispatch(loadStandartReports());
+export const goToNextPage = () => (dispatch) => {
+    dispatch({ type: actionTypes.GO_TO_NEXT_PAGE });
+    dispatch(loadStandardReports());
+};
+
+/**
+ * @param {number} nextPage
+ * @return {Object}
+ */
+export const goToPrevPage = () => (dispatch) => {
+    dispatch({ type: actionTypes.GO_TO_PREV_PAGE });
+    dispatch(loadStandardReports());
 };
 
 // workaround for debouncing loading reports while typing in the search field
@@ -99,7 +116,7 @@ export const setSearch = searchTerm => (dispatch) => {
     }
 
     timeoutId = setTimeout(() => {
-        dispatch(loadStandartReports());
+        dispatch(loadStandardReports());
         timeoutId = null;
     }, DEBOUNCE_DELAY);
 };
@@ -156,4 +173,98 @@ export const createReportShow = report => ({
 export const createReportHide = report => ({
     type: actionTypes.CREATE_REPORT_HIDE,
     payload: report,
+});
+
+/**
+ * @param {Object} report A d2 report model
+ * @return {Object}
+ */
+export const sharingSettingsShow = report => ({
+    type: actionTypes.SHARING_SETTINGS_SHOW,
+    payload: report,
+});
+
+/**
+ * @param {Object} report A d2 report model
+ * @return {Object}
+ */
+export const sharingSettingsHide = report => ({
+    type: actionTypes.SHARIING_SETTINGS_HIDE,
+    payload: report,
+});
+
+/**
+ * Used to get a confirmation from the user
+ * @return {Object}
+ */
+export const requestDeleteStandardReport = () => ({
+    type: actionTypes.REQUEST_DELETE_STANDARD_REPORT,
+});
+
+/**
+ * @return {Object}
+ */
+export const deleteStandardReportStart = () => ({
+    type: actionTypes.DELETE_STANDARD_REPORT_START,
+});
+
+/**
+ * @return {Object}
+ */
+export const deleteStandardReportSuccess = () => (dispatch) => {
+    dispatch({ type: actionTypes.DELETE_STANDARD_REPORT_SUCCESS });
+    dispatch(loadStandardReports());
+};
+
+/**
+ * @return {Object}
+ */
+export const deleteStandardReportError = error => ({
+    type: actionTypes.DELETE_STANDARD_REPORT_ERROR,
+    payload: error,
+});
+
+/**
+ * @param {Object} report
+ * @return {Function} A redux thunk
+ */
+export const deleteStandardReport = (d2, report) =>
+    (dispatch) => {
+        const api = d2.Api.getApi();
+        const url = `${REPORTS_ENDPOINT}/${report.id}`;
+
+        dispatch(deleteStandardReportStart());
+
+        api.delete(url)
+            .then(() => dispatch(deleteStandardReportSuccess()))
+            .catch(error => dispatch(deleteStandardReportError(error)))
+        ;
+    }
+;
+
+/**
+ * @returns {Object}
+ */
+export const closeContextMenu = refreshList => (dispatch) => {
+    dispatch({ type: actionTypes.CLOSE_CONTEXT_MENU });
+
+    if (refreshList) {
+        dispatch(loadStandardReports());
+    }
+};
+
+/**
+ * @param {string} htmlReport
+ * @returns {Object}
+ */
+export const showHtmlReport = htmlReport => (dispatch) => {
+    dispatch({ type: actionTypes.HTML_REPORT_SHOW, payload: htmlReport });
+    dispatch(closeContextMenu());
+};
+
+/**
+ * @returns {Object}
+ */
+export const hideHtmlReport = () => ({
+    type: actionTypes.HTML_REPORT_HIDE,
 });

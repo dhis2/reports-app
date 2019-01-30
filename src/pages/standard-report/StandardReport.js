@@ -17,6 +17,20 @@ import '@dhis2/d2-ui-core/build/css/Pagination.css';
 /* Redux */
 import { connect } from 'react-redux';
 import { updateFeedbackState } from '../../actions/feedback';
+import {
+    loadStandardReports,
+    createReportShow,
+    addReportFormShow,
+    editReportFormShow,
+    sharingSettingsShow,
+    goToNextPage,
+    goToPrevPage,
+    requestDeleteStandardReport,
+    setSearch,
+    showHtmlReport,
+    hideHtmlReport,
+    closeContextMenu,
+} from '../../actions/standardReport';
 
 /* styles */
 import styles from './StandardReport.style';
@@ -31,82 +45,56 @@ import HtmlReport from './HtmlReport';
 
 /* app config */
 import {
-    ADD_NEW_REPORT_ACTION, CONTEXT_MENU_ACTION, CONTEXT_MENU_ICONS, REPORTS_ENDPOINT } from './standard.report.conf';
-import { DEBOUNCE_DELAY } from '../sections.conf';
+    ADD_NEW_REPORT_ACTION,
+    CONTEXT_MENU_ACTION,
+    CONTEXT_MENU_ICONS,
+} from './standard.report.conf';
 
 /* utils */
 import { getDocsUrl } from '../../helpers/docs';
-import { calculatePageValue, INITIAL_PAGER } from '../../helpers/pagination';
-import { ACTION_MESSAGE, LOADING, SUCCESS } from '../../helpers/feedbackSnackBarTypes';
+import { calculatePageValue } from '../../helpers/pagination';
 
 /* i18n */
 import i18n from '../../locales';
 import { i18nKeys } from '../../i18n';
 
-const StyledHtmlReport = ({ htmlReport }) => (
-    <Paper
-        style={{
-            display: htmlReport ? 'flex' : 'none',
-            justifyContent: 'center',
-            alignItems: 'center',
-        }}
-    >
-        <HtmlReport html={htmlReport} />
-    </Paper>
+/* Pagination */
+const hasNextPageCreator = (page, pageCount) => () =>
+    page < pageCount;
+
+const hasPreviousPageCreator = page => () =>
+    page > 1;
+
+/* Context Menu */
+const displayNoResults = (reports, loading) => (
+    reports.length > 0 || loading
+        ? { display: 'none' }
+        : ''
 );
 
-StyledHtmlReport.propTypes = {
-    htmlReport: PropTypes.object,
-};
-
-StyledHtmlReport.defaultProps = {
-    htmlReport: null,
+const showContextAction = (report, action) => {
+    const access = report && report.access ? report.access : {};
+    const actions = {
+        [CONTEXT_MENU_ACTION.CREATE]: access.read,
+        [CONTEXT_MENU_ACTION.EDIT]: access.update,
+        [CONTEXT_MENU_ACTION.SHARING_SETTINGS]: (access.manage || access.externalize),
+        [CONTEXT_MENU_ACTION.DELETE]: access.delete,
+    };
+    return (actions[action] || false);
 };
 
 export default class StandardReport extends Page {
     static propTypes = {
         showSnackbar: PropTypes.bool,
         snackbarConf: PropTypes.object,
+        pager: PropTypes.object.isRequired,
+        reports: PropTypes.array.isRequired,
+        selectedReport: PropTypes.object.isRequired,
+        selectedAction: PropTypes.string.isRequired,
+        search: PropTypes.string.isRequired,
+        open: PropTypes.bool.isRequired,
+        htmlReport: PropTypes.string,
     };
-
-    static defaultProps = {
-        showSnackbar: false,
-        snackbarConf: {},
-    };
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            pager: INITIAL_PAGER,
-            reports: [],
-            selectedReport: null,
-            selectedAction: null,
-            search: '',
-            open: false,
-            htmlReport: null,
-            timeoutId: null,
-        };
-        console.log(INITIAL_PAGER);
-
-        this.search = this.search.bind(this);
-        this.debounceSearch = this.debounceSearch.bind(this);
-        this.addNewReport = this.addNewReport.bind(this);
-
-        /* Pagination */
-        this.hasNextPage = this.hasNextPage.bind(this);
-        this.hasPreviousPage = this.hasPreviousPage.bind(this);
-        this.onNextPageClick = this.onNextPageClick.bind(this);
-        this.onPreviousPageClick = this.onPreviousPageClick.bind(this);
-
-        /* Context Menu */
-        this.createReport = this.createReport.bind(this);
-        this.editReport = this.editReport.bind(this);
-        this.sharingSettings = this.sharingSettings.bind(this);
-        this.delete = this.delete.bind(this);
-        this.handleClose = this.handleClose.bind(this);
-        this.handleDisplayHtmlReport = this.handleDisplayHtmlReport.bind(this);
-    }
 
     getChildContext() {
         return { d2: this.props.d2 };
@@ -114,284 +102,70 @@ export default class StandardReport extends Page {
 
     componentDidMount() {
         super.componentDidMount();
-        this.loadData(INITIAL_PAGER);
+        this.props.loadStandardReports();
     }
-
-    componentWillUnmount() {
-        super.componentWillUnmount();
-        this.stopLoading();
-        if (this.state.timeoutId) {
-            clearTimeout(this.state.timeoutId);
-        }
-    }
-
-    loadData(pager, search) {
-        const api = this.props.d2.Api.getApi();
-        let url = `${REPORTS_ENDPOINT}?page=${pager.page}&pageSize=${pager.pageSize}` +
-        '&fields=displayName,type,id,reportTable[id,displayName],access';
-        this.setState({ search });
-        if (search) {
-            url = `${url}&filter=displayName:ilike:${search}`;
-        }
-        if (api) {
-            this.startLoading();
-            api.get(url).then((response) => {
-                if (response && this.isPageMounted()) {
-                    if (this.state.deleteInProgress) {
-                        this.props.updateFeedbackState(
-                            true,
-                            {
-                                type: SUCCESS,
-                                message: i18n.t(i18nKeys.messages.reportDeleted),
-                            },
-                        );
-                    } else {
-                        this.stopLoading();
-                    }
-                    this.setState(response);
-                }
-            }).catch((error) => {
-                this.manageError(error);
-            }).finally(() => {
-                this.state.deleteInProgress = false;
-            });
-        }
-    }
-
-    startLoading = () => {
-        this.props.updateFeedbackState(true, { type: LOADING });
-        this.setState({ loading: true });
-    };
-
-    stopLoading = () => {
-        this.props.updateFeedbackState(false);
-        this.setState({ loading: false });
-    };
-
-    /* Pagination */
-    hasNextPage() {
-        return this.state.pager.page < this.state.pager.pageCount;
-    }
-
-    hasPreviousPage() {
-        return this.state.pager.page > 1;
-    }
-
-    onNextPageClick() {
-        const pager = Object.assign({}, this.state.pager);
-        pager.page += 1;
-        this.loadData(pager, this.state.search);
-    }
-
-    onPreviousPageClick() {
-        const pager = Object.assign({}, this.state.pager);
-        pager.page -= 1;
-        this.loadData(pager, this.state.search);
-    }
-
-    /* Search */
-    search(field, value) {
-        // ...and not empty search
-        if (this.state.search !== value && /\S/.test(value)) {
-            this.loadData(INITIAL_PAGER, value);
-        } else if (this.state.search !== value) {
-            this.loadData(INITIAL_PAGER);
-        }
-    }
-
-    debounceSearch(field, lastSearch) {
-        if (this.state.timeoutId) {
-            clearTimeout(this.state.timeoutId);
-        }
-        this.state.timeoutId = setTimeout(() => { this.search(field, lastSearch); }, DEBOUNCE_DELAY);
-        this.setState({ lastSearch });
-    }
-
-    /* Add new Report */
-    addNewReport() {
-        this.setState({ open: true, selectedAction: ADD_NEW_REPORT_ACTION });
-    }
-
-    handleClose(refreshList) {
-        this.setState({ open: false, selectedReport: null });
-        if (refreshList === true) {
-            this.loadData(INITIAL_PAGER);
-        }
-    }
-
-    handleError = (error) => {
-        this.manageError(error);
-    };
-
-    handleDisplayHtmlReport(htmlReport) {
-        this.setState({ htmlReport, open: false, selectedReport: null });
-    }
-
-    goBack = () => { this.setState({ htmlReport: null }); };
-
-    /* Context Menu */
-    createReport(args) {
-        this.setState({ open: true, selectedReport: args, selectedAction: CONTEXT_MENU_ACTION.CREATE });
-    }
-
-    editReport(args) {
-        this.setState({ open: true, selectedReport: args, selectedAction: CONTEXT_MENU_ACTION.EDIT });
-    }
-
-    sharingSettings(args) {
-        this.setState({ open: true, selectedReport: args, selectedAction: CONTEXT_MENU_ACTION.SHARING_SETTINGS });
-    }
-
-    delete(args) {
-        this.props.updateFeedbackState(true, {
-            type: ACTION_MESSAGE,
-            message: args.displayName,
-            action: i18n.t(i18nKeys.messages.confirmDelete),
-            onActionClick: () => {
-                const api = this.props.d2.Api.getApi();
-                const url = `${REPORTS_ENDPOINT}/${args.id}`;
-                this.state.deleteInProgress = true;
-                this.startLoading();
-                api.delete(url).then((response) => {
-                    if (response && this.isPageMounted()) {
-                        this.loadData(INITIAL_PAGER, this.state.search);
-                    }
-                }).catch((error) => {
-                    this.manageError(error);
-                });
-            },
-        });
-    }
-
-    getCreateStdReportComponent() {
-        return this.state.selectedReport ? (
-            <CreateStdReport
-                selectedReport={this.state.selectedReport}
-                open={this.state.open}
-                onRequestClose={this.handleClose}
-                onGetHtmlReport={this.handleDisplayHtmlReport}
-                d2={this.props.d2}
-                onError={this.handleError}
-            />
-        ) : '';
-    }
-
-    getSharingDialog() {
-        return this.state.selectedReport ? (
-            <SharingDialog
-                open={this.state.open}
-                id={this.state.selectedReport.id}
-                type={'report'}
-                onRequestClose={this.handleClose}
-                d2={this.props.d2}
-            />
-        ) : '';
-    }
-
-    getEditComponent() {
-        return (
-            <ConnectedAddEditStdReport
-                selectedReport={this.state.selectedReport}
-                open={this.state.open}
-                onRequestClose={this.handleClose}
-                d2={this.props.d2}
-                onError={this.handleError}
-            />
-        );
-    }
-
-    getAddComponent() {
-        return (
-            <ConnectedAddEditStdReport
-                open={this.state.open}
-                onRequestClose={this.handleClose}
-                d2={this.props.d2}
-                onError={this.handleError}
-            />
-        );
-    }
-
-    getActionComponent() {
-        switch (this.state.selectedAction) {
-        case CONTEXT_MENU_ACTION.CREATE:
-            return this.getCreateStdReportComponent();
-        case CONTEXT_MENU_ACTION.SHARING_SETTINGS:
-            return this.getSharingDialog();
-        case CONTEXT_MENU_ACTION.EDIT:
-            return this.getEditComponent();
-        case ADD_NEW_REPORT_ACTION:
-            return this.getAddComponent();
-        default:
-            return '';
-        }
-    }
-
-    displayNoResults = () => (
-        (this.state.reports.length > 0 || this.state.loading) ? { display: 'none' } : ''
-    );
-
-    showContextAction = (report, action) => {
-        const access = report && report.access ? report.access : {};
-        const actions = {
-            [CONTEXT_MENU_ACTION.CREATE]: access.read,
-            [CONTEXT_MENU_ACTION.EDIT]: access.update,
-            [CONTEXT_MENU_ACTION.SHARING_SETTINGS]: (access.manage || access.externalize),
-            [CONTEXT_MENU_ACTION.DELETE]: access.delete,
-        };
-        return (actions[action] || false);
-    };
-
-    onSearchBoxChange = value => this.debounceSearch('search', value);
 
     render() {
+        const { props } = this;
+        const { pager } = props;
+        const hasNextPage = hasNextPageCreator(pager.page, pager.pageCount);
+        const hasPreviousPage = hasPreviousPageCreator(pager.page);
         const contextMenuOptions = {
-            [CONTEXT_MENU_ACTION.CREATE]: this.createReport,
-            [CONTEXT_MENU_ACTION.EDIT]: this.editReport,
-            [CONTEXT_MENU_ACTION.SHARING_SETTINGS]: this.sharingSettings,
-            [CONTEXT_MENU_ACTION.DELETE]: this.delete,
+            [CONTEXT_MENU_ACTION.CREATE]: this.props.createReport,
+            [CONTEXT_MENU_ACTION.EDIT]: this.props.editReport,
+            [CONTEXT_MENU_ACTION.SHARING_SETTINGS]: this.props.sharingSettings,
+            [CONTEXT_MENU_ACTION.DELETE]: this.props.delete,
         };
 
         return (
             <div>
                 <Headline
-                    showBackButton={!!this.state.htmlReport}
-                    onGoBackClick={this.goBack}
-                    systemVersion={this.props.d2.system.version}
-                    sectionKey={this.props.sectionKey}
+                    showBackButton={!!props.htmlReport}
+                    onGoBackClick={props.hideHtmlReport}
+                    systemVersion={props.d2.system.version}
+                    sectionKey={props.sectionKey}
                 />
-                <div id="std-report-content" style={{ display: this.state.htmlReport ? 'none' : 'block' }} >
+                <div id="std-report-content" style={{ display: props.htmlReport ? 'none' : 'block' }} >
                     <StandardReportPagination
-                        total={this.state.pager.total}
-                        hasNextPage={this.hasNextPage}
-                        hasPreviousPage={this.hasPreviousPage}
-                        onNextPageClick={this.onNextPageClick}
-                        onPreviousPageClick={this.onPreviousPageClick}
-                        pager={this.state.pager}
+                        total={props.pager.total}
+                        hasNextPage={hasNextPage}
+                        hasPreviousPage={hasPreviousPage}
+                        onNextPageClick={props.goToNextPage}
+                        onPreviousPageClick={props.goToPrevPage}
+                        pager={props.pager}
                     />
                     <SearchBox
-                        value={this.state.lastSearch || ''}
-                        onChange={this.onSearchBoxChange}
+                        value={props.search}
+                        onChange={props.setSearch}
                     />
                     <Table
                         columns={['displayName', 'reportTable', 'id']}
-                        rows={this.state.reports}
+                        rows={props.reports}
                         contextMenuActions={contextMenuOptions}
                         contextMenuIcons={CONTEXT_MENU_ICONS}
-                        isContextActionAllowed={this.showContextAction}
+                        isContextActionAllowed={showContextAction}
                     />
-                    <NoResultsMessage styles={this.displayNoResults()} />
+                    <NoResultsMessage styles={displayNoResults(props.reports, props.loading)} />
                     <StandardReportPagination
-                        total={this.state.pager.total}
-                        hasNextPage={this.hasNextPage}
-                        hasPreviousPage={this.hasPreviousPage}
-                        onNextPageClick={this.onNextPageClick}
-                        onPreviousPageClick={this.onPreviousPageClick}
-                        pager={this.state.pager}
+                        total={props.pager.total}
+                        hasNextPage={hasNextPage}
+                        hasPreviousPage={hasPreviousPage}
+                        onNextPageClick={props.goToNextPage}
+                        onPreviousPageClick={props.goToPrevPage}
+                        pager={props.pager}
                     />
-                    <AddReportButton onClick={this.addNewReport} />
-                    { this.getActionComponent() }
+                    <AddReportButton onClick={props.addReportFormShow} />
+                    <ActionComponent
+                        d2={props.d2}
+                        open={props.open}
+                        selectedAction={props.selectedAction}
+                        selectedReport={props.selectedReport}
+                        handleClose={props.closeContextMenu}
+                        handleError={this.manageError}
+                        handleDisplayHtmlReport={props.showHtmlReport}
+                    />
                 </div>
-                <StyledHtmlReport htmlReport={this.state.htmlReport} />
+                <StyledHtmlReport htmlReport={props.htmlReport} />
             </div>
         );
     }
@@ -505,16 +279,129 @@ StandardReportPagination.propTypes = {
     }).isRequired,
 };
 
+const ActionComponent = ({
+    d2,
+    open,
+    selectedAction,
+    selectedReport,
+    handleClose,
+    handleError,
+    handleDisplayHtmlReport,
+}) => {
+    if (selectedAction === CONTEXT_MENU_ACTION.CREATE) {
+        return (
+            <CreateStdReport
+                d2={d2}
+                open={open}
+                selectedReport={selectedReport}
+                onRequestClose={handleClose}
+                onGetHtmlReport={handleDisplayHtmlReport}
+                onError={handleError}
+            />
+        );
+    }
+
+    if (selectedAction === CONTEXT_MENU_ACTION.SHARING_SETTINGS) {
+        return (
+            <SharingDialog
+                id={selectedReport.id}
+                d2={d2}
+                open={open}
+                type="report"
+                onRequestClose={handleClose}
+            />
+        );
+    }
+
+    if (selectedAction === CONTEXT_MENU_ACTION.EDIT) {
+        return (
+            <ConnectedAddEditStdReport
+                selectedReport={selectedReport}
+                open={open}
+                onRequestClose={handleClose}
+                d2={d2}
+                onError={handleError}
+            />
+        );
+    }
+
+    if (selectedAction === ADD_NEW_REPORT_ACTION) {
+        return (
+            <ConnectedAddEditStdReport
+                open={open}
+                onRequestClose={handleClose}
+                d2={d2}
+                onError={handleError}
+            />
+        );
+    }
+
+    return null;
+};
+
+ActionComponent.propTypes = {
+    d2: PropTypes.object.isRequired,
+    open: PropTypes.bool.isRequired,
+    selectedAction: PropTypes.string.isRequired,
+    selectedReport: PropTypes.object.isRequired,
+    handleClose: PropTypes.func.isRequired,
+    handleError: PropTypes.func.isRequired,
+    handleDisplayHtmlReport: PropTypes.func.isRequired,
+};
+
+const StyledHtmlReport = ({ htmlReport }) => (
+    <Paper
+        style={{
+            display: htmlReport ? 'flex' : 'none',
+            justifyContent: 'center',
+            alignItems: 'center',
+        }}
+    >
+        <HtmlReport html={htmlReport} />
+    </Paper>
+);
+
+StyledHtmlReport.propTypes = {
+    htmlReport: PropTypes.string,
+};
+
+StyledHtmlReport.defaultProps = {
+    htmlReport: null,
+};
+
 const mapStateToProps = state => ({
     showSnackbar: state.feedback.showSnackbar,
     snackbarConf: { ...state.feedback.snackbarConf },
+    ...state.standardReport,
 });
 
 const mapDispatchToProps = dispatch => ({
     updateFeedbackState: updateFeedbackState(dispatch),
+    loadStandardReports: d2 => () => dispatch(loadStandardReports(d2)),
+    addReportFormShow: report => dispatch(addReportFormShow(report)),
+    createReport: report => dispatch(createReportShow(report)),
+    editReport: report => dispatch(editReportFormShow(report)),
+    sharingSettings: report => dispatch(sharingSettingsShow(report)),
+    goToNextPage: () => dispatch(goToNextPage()),
+    goToPrevPage: () => dispatch(goToPrevPage()),
+    requestDeleteStandardReport: report => dispatch(requestDeleteStandardReport(report)),
+    setSearch: term => dispatch(setSearch(term)),
+    showHtmlReport: htmlReport => dispatch(showHtmlReport(htmlReport)),
+    hideHtmlReport: htmlReport => dispatch(hideHtmlReport(htmlReport)),
+    closeContextMenu: refreshList => dispatch(closeContextMenu(refreshList)),
+});
+
+const mergeProps = (stateProps, dispatchProps, ownProps) => ({
+    ...ownProps,
+    ...stateProps,
+    ...({
+        ...dispatchProps,
+        loadStandardReports: dispatchProps.loadStandardReports(ownProps.d2),
+    }),
 });
 
 export const ConnectedStandardReport = connect(
     mapStateToProps,
     mapDispatchToProps,
+    mergeProps,
 )(StandardReport);
