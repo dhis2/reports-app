@@ -1,7 +1,9 @@
-export const createActionTypes = (...actionTypeNames) => actionTypeNames.reduce(
+const createActionTypes = (...actionTypeNames) => actionTypeNames.reduce(
     (actionTypes, actionTypeName) => ({
         ...actionTypes,
-        [actionTypeName]: Symbol(actionTypeName)
+        [actionTypeName]: Symbol(actionTypeName),
     }),
     {},
 );
+
+export default createActionTypes;

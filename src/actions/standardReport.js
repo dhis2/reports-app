@@ -1,4 +1,5 @@
-export const DEBOUNCE_DELAY = 500;
+import createActionTypes from '../utils/redux/createActionTypes';
+import { REPORTS_ENDPOINT } from '../pages/standard-report/standard.report.conf';
 
 export const actionTypes = createActionTypes(
     'LOAD_STANDARD_REPORTS',
@@ -15,34 +16,6 @@ export const actionTypes = createActionTypes(
     'SHARING_SETTINGS_SHOW',
     'SHARING_SETTINGS_HIDE',
 );
-
-/**
- * @param {number} nextPage
- * @return {Object}
- */
-export const setPage = nextPage => (dispatch, getState) => {
-    dispatch({ type: actionTypes.SET_PAGE, payload: nextPage });
-    dispatch(loadStandartReports());
-};
-
-// workaround for debouncing loading reports while typing in the search field
-let timeoutId = null;
-/**
- * @param {string} searchTerm
- * @return {Function} Redux thunk
- */
-export const setSearch = searchTerm => dispatch => {
-    dispatch({ type: actionTypes.SET_SEARCH, payload: searchTerm });
-
-    if (timeoutId) {
-        clearTimeout(timeoutId);
-    }
-
-    timeoutId = setTimeout(() => {
-        dispatch(loadStandartReports());
-        timeoutId = null;
-    }, DEBOUNCE_DELAY);
-};
 
 /**
  * @returns {Object}
@@ -75,30 +48,61 @@ export const loadingStandardReportsError = error => ({
  * @param {string} search
  * @returns {string}
  */
-const createReportsApiUrl = (page, pageSize, search) =>
-    `${REPORTS_ENDPOINT}?page=${page}&pageSize=${pageSize}`
-    + '&fields=displayName,type,id,reportTable[id,displayName],access'
-    + search ? `&filter=displayName:ilike:${search}` : ''
-;
+// tslint-disable no-confusing-arrow
+const createReportsApiUrl = (page, pageSize, search) => [
+    `${REPORTS_ENDPOINT}?page=${page}&pageSize=${pageSize}`,
+    '&fields=displayName,type,id,reportTable[id,displayName],access',
+    search ? `&filter=displayName:ilike:${search}` : '',
+].join('');
+// tslint-enable no-confusing-arrow
 
 /**
  * @return {Function} Redux thunk
  */
 export const loadStandartReports = () => (dispatch, getState) => {
-        const api = this.props.d2.Api.getApi();
-        const { pager, search } = getState();
-        const { page, pageSize } = pager;
-        const url = createReportsApiUrl(page, pageSize, search);
+    const api = this.props.d2.Api.getApi();
+    const { pager, search } = getState();
+    const { page, pageSize } = pager;
+    const url = createReportsApiUrl(page, pageSize, search);
 
-        dispatch(startLoadingStandardReports());
-        api.get(url)
-            .then(response =>
-                dispatch(loadingStandardReportsSuccess(response)))
-            .catch(error =>
-                dispatch(loadingStandardReportsError(error)))
-        ;
+    dispatch(startLoadingStandardReports());
+    api.get(url)
+        .then(response =>
+            dispatch(loadingStandardReportsSuccess(response)))
+        .catch(error =>
+            dispatch(loadingStandardReportsError(error)))
+    ;
+};
+
+/**
+ * @param {number} nextPage
+ * @return {Object}
+ */
+export const setPage = nextPage => (dispatch) => {
+    dispatch({ type: actionTypes.SET_PAGE, payload: nextPage });
+    dispatch(loadStandartReports());
+};
+
+// workaround for debouncing loading reports while typing in the search field
+let timeoutId = null;
+export const DEBOUNCE_DELAY = 500;
+
+/**
+ * @param {string} searchTerm
+ * @return {Function} Redux thunk
+ */
+export const setSearch = searchTerm => (dispatch) => {
+    dispatch({ type: actionTypes.SET_SEARCH, payload: searchTerm });
+
+    if (timeoutId) {
+        clearTimeout(timeoutId);
     }
-;
+
+    timeoutId = setTimeout(() => {
+        dispatch(loadStandartReports());
+        timeoutId = null;
+    }, DEBOUNCE_DELAY);
+};
 
 /**
  * @param {Object} report A d2 report model
