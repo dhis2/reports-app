@@ -87,6 +87,7 @@ export default class StandardReport extends Page {
             htmlReport: null,
             timeoutId: null,
         };
+        console.log(INITIAL_PAGER);
 
         this.search = this.search.bind(this);
         this.debounceSearch = this.debounceSearch.bind(this);
@@ -365,7 +366,7 @@ export default class StandardReport extends Page {
                         hasPreviousPage={this.hasPreviousPage}
                         onNextPageClick={this.onNextPageClick}
                         onPreviousPageClick={this.onPreviousPageClick}
-                        currentlyShown={this.state.pager}
+                        pager={this.state.pager}
                     />
                     <SearchBox
                         value={this.state.lastSearch || ''}
@@ -385,7 +386,7 @@ export default class StandardReport extends Page {
                         hasPreviousPage={this.hasPreviousPage}
                         onNextPageClick={this.onNextPageClick}
                         onPreviousPageClick={this.onPreviousPageClick}
-                        currentlyShown={this.state.pager}
+                        pager={this.state.pager}
                     />
                     <AddReportButton onClick={this.addNewReport} />
                     { this.getActionComponent() }
@@ -422,7 +423,7 @@ const Headline = ({ showBackButton, onGoBackClick, systemVersion, sectionKey }) 
 Headline.propTypes = {
     showBackButton: PropTypes.bool.isRequired,
     onGoBackClick: PropTypes.func.isRequired,
-    systemVersion: PropTypes.number.isRequired,
+    systemVersion: PropTypes.object.isRequired,
     sectionKey: PropTypes.string.isRequired,
 };
 
@@ -496,7 +497,7 @@ StandardReportPagination.propTypes = {
     hasPreviousPage: PropTypes.func.isRequired,
     onNextPageClick: PropTypes.func.isRequired,
     onPreviousPageClick: PropTypes.func.isRequired,
-    pager: PropTypes.shapeOf({
+    pager: PropTypes.shape({
         page: PropTypes.number.isRequired,
         pageCount: PropTypes.number.isRequired,
         pageSize: PropTypes.number.isRequired,
