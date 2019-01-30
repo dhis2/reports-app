@@ -100,7 +100,6 @@
     "pre-commit": [
         "lint",
         "validate",
-        "test",
         "refresh-translations-template"
     ],
     "manifest.webapp": {
@@ -114,7 +113,7 @@
             "name": "DHIS2"
         },
         "dhis2": {
-            "apiVersion": "29"
+            "apiVersion": "31"
         },
         "activities": {
             "dhis": {
