@@ -197,8 +197,9 @@ export const sharingSettingsHide = report => ({
  * Used to get a confirmation from the user
  * @return {Object}
  */
-export const requestDeleteStandardReport = () => ({
+export const requestDeleteStandardReport = report => ({
     type: actionTypes.REQUEST_DELETE_STANDARD_REPORT,
+    payload: report,
 });
 
 /**

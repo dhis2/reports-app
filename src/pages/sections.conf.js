@@ -1,5 +1,5 @@
 /* Page Components */
-import { ConnectedStandardReport } from './standard-report/StandardReport';
+import { ConnectedStandardReport } from './StandardReport';
 import { ConnectedDataSetReport } from './data-set-report/DataSetReport';
 import { ConnectedReportingRateSummary } from './reporting-rate-summary/ReportingRateSummary';
 import { ConnectedResource } from './resource/Resource';
