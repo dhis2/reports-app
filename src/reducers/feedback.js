@@ -11,28 +11,28 @@ const initialState = {
 
 const feedback = (state = initialState, action) => {
     switch (action.type) {
-    case ACTION_TYPE.UPDATE_FEEDBACK_STATE:
-        return {
-            ...state,
-            showSnackbar: action.showSnackbar,
-            snackbarConf: { ...action.snackbarConf },
-        };
+        case ACTION_TYPE.UPDATE_FEEDBACK_STATE:
+            return {
+                ...state,
+                showSnackbar: action.showSnackbar,
+                snackbarConf: { ...action.snackbarConf },
+            };
 
-    case standardReportActionTypes.REQUEST_DELETE_STANDARD_REPORT:
-        return {
-            ...state,
-            showSnackbar: true,
-            snackbarConf: {},
-        };
+        case standardReportActionTypes.REQUEST_DELETE_STANDARD_REPORT:
+            return {
+                ...state,
+                showSnackbar: true,
+                snackbarConf: {},
+            };
 
-    case ACTION_TYPE.CONFIRM_SNACKBAR_ACTION:
-        return {
-            ...state,
-            showSnackbar: false,
-        };
+        case ACTION_TYPE.CONFIRM_SNACKBAR_ACTION:
+            return {
+                ...state,
+                showSnackbar: false,
+            };
 
-    default:
-        return state;
+        default:
+            return state;
     }
 };
 

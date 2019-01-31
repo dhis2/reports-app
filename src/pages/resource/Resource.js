@@ -274,16 +274,16 @@ export default class Resource extends Page {
 
     getActionComponent() {
         switch (this.state.selectedAction) {
-        case ADD_NEW_RESOURCE_ACTION:
-            return this.getAddResourceComponent();
-        case CONTEXT_MENU_ACTION.VIEW:
-            return this.getViewResourceComponent();
-        case CONTEXT_MENU_ACTION.SHARING_SETTINGS:
-            return this.getSharingDialog();
-        case CONTEXT_MENU_ACTION.EDIT:
-            return this.getEditComponent();
-        default:
-            return '';
+            case ADD_NEW_RESOURCE_ACTION:
+                return this.getAddResourceComponent();
+            case CONTEXT_MENU_ACTION.VIEW:
+                return this.getViewResourceComponent();
+            case CONTEXT_MENU_ACTION.SHARING_SETTINGS:
+                return this.getSharingDialog();
+            case CONTEXT_MENU_ACTION.EDIT:
+                return this.getEditComponent();
+            default:
+                return '';
         }
     }
 

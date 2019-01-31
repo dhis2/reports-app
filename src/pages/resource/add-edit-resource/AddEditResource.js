@@ -256,12 +256,12 @@ export default class AddEditResource extends PureComponent {
             return false;
         }
         switch (this.state.resource.type) {
-        case TYPES.UPLOAD_FILE:
-            return this.validateUploadType();
-        case TYPES.EXTERNAL_URL:
-            return !this.isNullOrWhiteSpace(this.state.resource.url);
-        default:
-            return true;
+            case TYPES.UPLOAD_FILE:
+                return this.validateUploadType();
+            case TYPES.EXTERNAL_URL:
+                return !this.isNullOrWhiteSpace(this.state.resource.url);
+            default:
+                return true;
         }
     };
 

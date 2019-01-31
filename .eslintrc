@@ -4,5 +4,8 @@
   "env": { "browser": true },
   "globals": {
     "DHIS_CONFIG": true
+  },
+  "rules": {
+    "indent": [2, 4, {"SwitchCase": 1}]
   }
 }
