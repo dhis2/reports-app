@@ -37,7 +37,7 @@ import styles from './StandardReport.style';
 import appStyles from '../../styles';
 
 /* app components */
-import Page from '../Page';
+import manageError from '../manageError.HOC';
 import PageHelper from '../../components/page-helper/PageHelper';
 import { ConnectedAddEditStdReport } from './add-edit-report/AddEditStdReport';
 import CreateStdReport from './create-report/CreateStdReport';
@@ -83,17 +83,23 @@ const showContextAction = (report, action) => {
     return (actions[action] || false);
 };
 
-export default class StandardReport extends Page {
+export default class StandardReport extends React.Component {
     static propTypes = {
-        showSnackbar: PropTypes.bool,
-        snackbarConf: PropTypes.object,
+        d2: PropTypes.object.isRequired,
+        showSnackbar: PropTypes.bool.isRequired,
+        snackbarConf: PropTypes.object.isRequired,
         pager: PropTypes.object.isRequired,
         reports: PropTypes.array.isRequired,
         selectedReport: PropTypes.object.isRequired,
         selectedAction: PropTypes.string.isRequired,
         search: PropTypes.string.isRequired,
         open: PropTypes.bool.isRequired,
-        htmlReport: PropTypes.string,
+        htmlReport: PropTypes.string.isRequired,
+        loadStandardReports: PropTypes.func.isRequired,
+        createReport: PropTypes.func.isRequired,
+        editReport: PropTypes.func.isRequired,
+        sharingSettings: PropTypes.func.isRequired,
+        requestDeleteStandardReport: PropTypes.func.isRequired,
     };
 
     getChildContext() {
@@ -101,7 +107,6 @@ export default class StandardReport extends Page {
     }
 
     componentDidMount() {
-        super.componentDidMount();
         this.props.loadStandardReports();
     }
 
@@ -404,4 +409,4 @@ export const ConnectedStandardReport = connect(
     mapStateToProps,
     mapDispatchToProps,
     mergeProps,
-)(StandardReport);
+)(manageError(StandardReport));
