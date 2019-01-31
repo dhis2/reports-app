@@ -4,5 +4,8 @@
   "env": { "browser": true },
   "globals": {
     "DHIS_CONFIG": true
+  },
+  "rules": {
+    "no-shadow": 0
   }
 }

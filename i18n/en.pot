@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2019-01-31T12:17:28.594Z\n"
-"PO-Revision-Date: 2019-01-31T12:17:28.594Z\n"
+"POT-Creation-Date: 2019-01-31T16:20:42.038Z\n"
+"PO-Revision-Date: 2019-01-31T16:20:42.038Z\n"
 
 msgid "Cancel"
 msgstr ""
@@ -33,60 +33,6 @@ msgid "Select Group Set"
 msgstr ""
 
 msgid "Group Set"
-msgstr ""
-
-msgid "Period"
-msgstr ""
-
-msgid "Select Period Type"
-msgstr ""
-
-msgid "Daily"
-msgstr ""
-
-msgid "Weekly"
-msgstr ""
-
-msgid "Weekly Wednesday"
-msgstr ""
-
-msgid "Weekly Thursday"
-msgstr ""
-
-msgid "Weekly Saturday"
-msgstr ""
-
-msgid "Weekly Sunday"
-msgstr ""
-
-msgid "Bi-Weekly"
-msgstr ""
-
-msgid "Monthly"
-msgstr ""
-
-msgid "Bi-Monthly"
-msgstr ""
-
-msgid "Quarterly"
-msgstr ""
-
-msgid "Six-Monthly"
-msgstr ""
-
-msgid "Six-Monthly April"
-msgstr ""
-
-msgid "Yearly"
-msgstr ""
-
-msgid "Financial-April"
-msgstr ""
-
-msgid "Financial-July"
-msgstr ""
-
-msgid "Financial-Oct"
 msgstr ""
 
 msgid "Days"
@@ -441,6 +387,9 @@ msgid ""
 msgstr ""
 
 msgid "Organisation unit"
+msgstr ""
+
+msgid "Period"
 msgstr ""
 
 msgid "Get Data"
