@@ -15,6 +15,18 @@ import { i18nKeys } from '../../i18n';
 /* styles */
 import styles from '../../styles';
 
+function pluckPeriodtypes(periodTypes) {
+    return periodTypes.reduce((acc, periodType) => {
+        if (periodType.name !== 'BiWeekly') {
+            acc.push({
+                id: periodType.name,
+                displayName: i18n.t(i18nKeys.periodPicker.labels[periodType.name]),
+            });
+        }
+        return acc;
+    }, []);
+}
+
 export class PeriodPickerWithPeriodType extends PureComponent {
     static propTypes = {
         d2: PropTypes.object.isRequired,
@@ -53,10 +65,7 @@ export class PeriodPickerWithPeriodType extends PureComponent {
         const api = this.props.d2.Api.getApi();
         api.get('periodTypes').then((periodTypesResponse) => {
             this.setState({
-                periodTypes: periodTypesResponse.periodTypes.map(periodType => ({
-                    id: periodType.name,
-                    displayName: i18n.t(i18nKeys.periodPicker.labels[periodType.name]),
-                })),
+                periodTypes: pluckPeriodtypes(periodTypesResponse.periodTypes),
             });
         }).catch(() => {
             // TODO Manage error
@@ -75,7 +84,6 @@ export class PeriodPickerWithPeriodType extends PureComponent {
             value={this.state.selectedPeriodType}
             onChange={this.onChangePeriodType}
             menuItems={this.state.periodTypes}
-            includeEmpty
             fullWidth
             emptyLabel={i18n.t(i18nKeys.periodPicker.periodTypeHintText)}
             hintText={i18n.t(i18nKeys.periodPicker.periodTypeHintText)}
