@@ -119,7 +119,7 @@ export default class StandardReport extends React.Component {
             [CONTEXT_MENU_ACTION.CREATE]: this.props.createReport,
             [CONTEXT_MENU_ACTION.EDIT]: this.props.editReport,
             [CONTEXT_MENU_ACTION.SHARING_SETTINGS]: this.props.sharingSettings,
-            [CONTEXT_MENU_ACTION.DELETE]: this.props.delete,
+            [CONTEXT_MENU_ACTION.DELETE]: this.props.requestDeleteStandardReport,
         };
 
         return (
