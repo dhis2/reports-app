@@ -17,6 +17,7 @@ import styles from '../../styles';
 
 function pluckPeriodtypes(periodTypes) {
     return periodTypes.reduce((acc, periodType) => {
+        // The API returns a bi-weekly periodType but this is not supported by the d2ui/core PeriodPicker
         if (periodType.name !== 'BiWeekly') {
             acc.push({
                 id: periodType.name,
