@@ -2,6 +2,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import i18n from '@dhis2/d2-i18n';
 
 /* d2-ui components */
 import { DropDown, PeriodPicker } from '@dhis2/d2-ui-core';
@@ -14,7 +15,6 @@ import loadPeriodTypes from '../../actions/periodTypes';
 import pluckPeriodTypes from '../../selectors/periodTypes';
 
 /* i18n */
-import i18n from '../../locales';
 
 /* styles */
 import styles from '../../styles';
