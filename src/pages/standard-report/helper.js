@@ -26,9 +26,19 @@ const showContextAction = (report, action) => {
     return (actions[action] || false);
 };
 
+const createFeedbackConf = props => (
+    props.requestDelete
+        ? {
+            ...props.feedbackConf,
+            onActionClick: props.deleteStandardReport,
+        }
+        : props.feedbackConf
+);
+
 export {
     hasNextPageCreator,
     hasPreviousPageCreator,
     displayNoResults,
     showContextAction,
+    createFeedbackConf,
 };
