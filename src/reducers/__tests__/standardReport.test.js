@@ -5,6 +5,7 @@ import {
     ADD_NEW_REPORT_ACTION,
     CONTEXT_MENU_ACTION,
 } from '../../pages/standard-report/standard.report.conf';
+import { ACTION_MESSAGE, ERROR, LOADING, SUCCESS } from '../../helpers/feedbackSnackBarTypes';
 
 describe('Reducer - standardReport', function() {
     const mockReport = () => ({ displayName: 'foobar' });
@@ -18,21 +19,47 @@ describe('Reducer - standardReport', function() {
     describe('loading reports', function() {
         it('should start loading', function() {
             const { LOADING_STANDARD_REPORTS_START } = actionTypes;
-            const preState = { ...defaultState, loading: false, loadingError: 'previous error' };
+            const preState = {
+                ...defaultState,
+                loading: false,
+                loadingError: 'previous error',
+                showFeedback: false,
+                feedbackConf: {},
+            };
+            const expected = {
+                ...defaultState,
+                loading: true,
+                loadingError: '',
+                showFeedback: true,
+                feedbackConf: { type: LOADING },
+            };
             const actual = standardReport(preState, { type: LOADING_STANDARD_REPORTS_START });
-            const expected = { ...defaultState, loading: true, loadingError: '' };
             expect(actual).toEqual(expected);
         });
 
         it('should capture the error', function() {
             const loadingError = 'Foobar';
             const { LOADING_STANDARD_REPORTS_ERROR } = actionTypes;
-            const preState = { ...defaultState, loading: true };
+            const preState = {
+                ...defaultState,
+                loading: true,
+                showFeedback: false,
+                feedbackConf: {},
+            };
+            const expected = {
+                ...defaultState,
+                loading: false,
+                loadingError,
+                showFeedback: true,
+                feedbackConf: {
+                    type: ERROR,
+                    message: loadingError,
+                },
+            };
             const actual = standardReport(
                 preState,
                 { type: LOADING_STANDARD_REPORTS_ERROR, payload: loadingError },
             );
-            const expected = { ...defaultState, loading: false, loadingError };
 
             expect(actual).toEqual(expected);
         });
@@ -42,16 +69,16 @@ describe('Reducer - standardReport', function() {
         it('should increase the current page num by 1', function() {
             const { GO_TO_NEXT_PAGE } = actionTypes;
             const preState = { ...defaultState, pager: { ...defaultState.pager, page: 1 }};
-            const actual = standardReport(preState, { type: GO_TO_NEXT_PAGE });
             const expected = { ...defaultState, pager: { ...defaultState.pager, page: 2 }};
+            const actual = standardReport(preState, { type: GO_TO_NEXT_PAGE });
             expect(actual).toEqual(expected);
         });
 
         it('should decrease the current page num by 1', function() {
             const { GO_TO_PREV_PAGE } = actionTypes;
             const preState = { ...defaultState, pager: { ...defaultState.pager, page: 2 }};
-            const actual = standardReport(preState, { type: GO_TO_PREV_PAGE });
             const expected = { ...defaultState, pager: { ...defaultState.pager, page: 1 }};
+            const actual = standardReport(preState, { type: GO_TO_PREV_PAGE });
             expect(actual).toEqual(expected);
         });
     });
@@ -61,8 +88,8 @@ describe('Reducer - standardReport', function() {
             const term = 'foobar';
             const { SET_SEARCH } = actionTypes;
             const preState = { ...defaultState, search: 'fooba' };
-            const actual = standardReport(preState, { type: SET_SEARCH, payload: term });
             const expected = { ...defaultState, search: term };
+            const actual = standardReport(preState, { type: SET_SEARCH, payload: term });
             expect(actual).toEqual(expected);
         });
     });
@@ -83,58 +110,58 @@ describe('Reducer - standardReport', function() {
         });
 
         it('should show the add report form', function() {
-            const actual = standardReport(
-                preState,
-                { type: ADD_REPORT_FORM_SHOW, payload: report },
-            );
             const expected = {
                 ...defaultState,
                 open: true,
                 selectedReport: report,
                 selectedAction: ADD_NEW_REPORT_ACTION,
             };
+            const actual = standardReport(
+                preState,
+                { type: ADD_REPORT_FORM_SHOW, payload: report },
+            );
             expect(actual).toEqual(expected);
         });
 
         it('should show the edit report form', function() {
-            const actual = standardReport(
-                preState,
-                { type: EDIT_REPORT_FORM_SHOW, payload: report },
-            );
             const expected = {
                 ...defaultState,
                 open: true,
                 selectedReport: report,
                 selectedAction: CONTEXT_MENU_ACTION.EDIT,
             };
+            const actual = standardReport(
+                preState,
+                { type: EDIT_REPORT_FORM_SHOW, payload: report },
+            );
             expect(actual).toEqual(expected);
         });
 
         it('should show the create report', function() {
-            const actual = standardReport(
-                preState,
-                { type: CREATE_REPORT_SHOW, payload: report },
-            );
             const expected = {
                 ...defaultState,
                 open: true,
                 selectedReport: report,
                 selectedAction: CONTEXT_MENU_ACTION.CREATE,
             };
+            const actual = standardReport(
+                preState,
+                { type: CREATE_REPORT_SHOW, payload: report },
+            );
             expect(actual).toEqual(expected);
         });
 
         it('should show the sharing settings', function() {
-            const actual = standardReport(
-                preState,
-                { type: SHARING_SETTINGS_SHOW, payload: report },
-            );
             const expected = {
                 ...defaultState,
                 open: true,
                 selectedReport: report,
                 selectedAction: CONTEXT_MENU_ACTION.SHARING_SETTINGS,
             };
+            const actual = standardReport(
+                preState,
+                { type: SHARING_SETTINGS_SHOW, payload: report },
+            );
             expect(actual).toEqual(expected);
         });
     });
@@ -202,6 +229,8 @@ describe('Reducer - standardReport', function() {
                 requestDelete: false,
                 selectedReport: report,
                 selectedAction: CONTEXT_MENU_ACTION.DELETE,
+                showFeedback: false,
+                feedbackConf: {},
             };
         });
 
@@ -212,22 +241,26 @@ describe('Reducer - standardReport', function() {
                 selectedReport: {},
                 selectedAction: '',
             };
-            const actual = standardReport(preState, {
-                type: REQUEST_DELETE_STANDARD_REPORT,
-                payload: report,
-            });
             const expected = {
                 ...defaultState,
                 selectedReport: report,
                 requestDelete: true,
                 selectedAction: CONTEXT_MENU_ACTION.DELETE,
+                showFeedback: true,
+                feedbackConf: expect.objectContaining({
+                    type: ACTION_MESSAGE,
+                    message: report.displayName,
+                }),
             };
+            const actual = standardReport(preState, {
+                type: REQUEST_DELETE_STANDARD_REPORT,
+                payload: report,
+            });
             expect(actual).toEqual(expected);
         });
 
         it('should start deleting the report', function() {
             preState = { ...preState, requestDelete: true, loadingError: 'previous error' };
-            const actual = standardReport(preState, { type: DELETE_STANDARD_REPORT_START });
             const expected = {
                 ...defaultState,
                 requestDelete: false,
@@ -235,12 +268,16 @@ describe('Reducer - standardReport', function() {
                 selectedAction: CONTEXT_MENU_ACTION.DELETE,
                 loading: true,
                 loadingError: '',
+                showFeedback: true,
+                feedbackConf: {
+                    type: LOADING,
+                },
             };
+            const actual = standardReport(preState, { type: DELETE_STANDARD_REPORT_START });
             expect(actual).toEqual(expected);
         });
 
         it('should have deleted the report successfully', function() {
-            const actual = standardReport(preState, { type: DELETE_STANDARD_REPORT_SUCCESS });
             const expected = {
                 ...defaultState,
                 selectedReport: {},
@@ -248,22 +285,28 @@ describe('Reducer - standardReport', function() {
                 loading: false,
                 loadingError: '',
             };
+            const actual = standardReport(preState, { type: DELETE_STANDARD_REPORT_SUCCESS });
             expect(actual).toEqual(expected);
         });
 
         it('should not have deleted the report successfully', function() {
             const error = 'Error: foobar';
-            const actual = standardReport(preState, { 
-                type: DELETE_STANDARD_REPORT_ERROR,
-                payload: error,
-            });
             const expected = {
                 ...defaultState,
                 selectedReport: report,
                 selectedAction: CONTEXT_MENU_ACTION.DELETE,
                 loading: false,
                 loadingError: error,
+                showFeedback: true,
+                feedbackConf: {
+                    type: ERROR,
+                    message: error,
+                }
             };
+            const actual = standardReport(preState, { 
+                type: DELETE_STANDARD_REPORT_ERROR,
+                payload: error,
+            });
             expect(actual).toEqual(expected);
         });
     });
@@ -281,6 +324,7 @@ describe('Reducer - standardReport', function() {
 
         it('should show the htmlReport', function() {
             const preState = { ...defaultState, htmlReport: '' };
+            const expected = { ...defaultState, htmlReport };
             const actual = standardReport(
                 preState,
                 {
@@ -288,14 +332,13 @@ describe('Reducer - standardReport', function() {
                     payload: htmlReport,
                 },
             );
-            const expected = { ...defaultState, htmlReport };
             expect(actual).toEqual(expected);
         });
 
         it('should hide the htmlReport', function() {
             const preState = { ...defaultState, htmlReport };
-            const actual = standardReport(preState, { type: HTML_REPORT_HIDE });
             const expected = { ...defaultState, htmlReport: '' };
+            const actual = standardReport(preState, { type: HTML_REPORT_HIDE });
             expect(actual).toEqual(expected);
         });
     });
