@@ -90,7 +90,7 @@ class App extends PureComponent {
                     </div>
                     <div id="feedback-snackbar">
                         <Feedback
-                            show={this.props.showSnackbar}
+                            open={this.props.showSnackbar}
                             conf={this.props.snackbarConf}
                             onClose={this.onFeedbackSnackbarClose}
                         />

@@ -60,10 +60,9 @@ export const loadingStandardReportsError = error => ({
 const DEFAULT_SUCCESS_MESSAGE = 'Successfully loaded the reports';
 export const loadStandardReports = (successMessage = DEFAULT_SUCCESS_MESSAGE) =>
     (dispatch, getState) => {
-        const {
-            pager: { page, pageSize },
-            search,
-        } = getState().standardReport;
+        const { standardReport } = getState();
+        const { page, pageSize } = standardReport.pager;
+        const { search } = standardReport;
 
         dispatch(startLoadingStandardReports());
         getStandardReports(page, pageSize, search)
@@ -72,8 +71,8 @@ export const loadStandardReports = (successMessage = DEFAULT_SUCCESS_MESSAGE) =>
                     ...response,
                     successMessage: i18n.t(successMessage),
                 })))
-            .catch(error =>
-                dispatch(loadingStandardReportsError(error)))
+            .catch(({ message }) =>
+                dispatch(loadingStandardReportsError(message)))
         ;
     }
 ;
@@ -225,12 +224,14 @@ export const deleteStandardReportError = error => ({
  * @param {Object} report
  * @return {Function} A redux thunk
  */
-export const deleteStandardReport = report =>
-    (dispatch) => {
+export const deleteStandardReport = () =>
+    (dispatch, getState) => {
+        const { selectedReport } = getState().standardReport;
+
         dispatch(deleteStandardReportStart());
-        deleteStandardReportRequest(report.id)
+        deleteStandardReportRequest(selectedReport.id)
             .then(() => dispatch(deleteStandardReportSuccess()))
-            .catch(error => dispatch(deleteStandardReportError(error)))
+            .catch(({ message }) => dispatch(deleteStandardReportError(message)))
         ;
     }
 ;

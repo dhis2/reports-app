@@ -1,4 +1,3 @@
-import { actionTypes as standardReportActionTypes } from '../actions/standardReport';
 import { ACTION_TYPE } from '../actions/feedback';
 
 const initialState = {
@@ -16,19 +15,6 @@ const feedback = (state = initialState, action) => {
                 ...state,
                 showSnackbar: action.showSnackbar,
                 snackbarConf: { ...action.snackbarConf },
-            };
-
-        case standardReportActionTypes.REQUEST_DELETE_STANDARD_REPORT:
-            return {
-                ...state,
-                showSnackbar: true,
-                snackbarConf: {},
-            };
-
-        case ACTION_TYPE.CONFIRM_SNACKBAR_ACTION:
-            return {
-                ...state,
-                showSnackbar: false,
             };
 
         default:

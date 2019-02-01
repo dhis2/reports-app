@@ -36,6 +36,7 @@ export default class StandardReport extends React.Component {
         loadStandardReports: PropTypes.func.isRequired,
         createReport: PropTypes.func.isRequired,
         editReport: PropTypes.func.isRequired,
+        deleteStandardReport: PropTypes.func.isRequired,
         sharingSettings: PropTypes.func.isRequired,
         requestDeleteStandardReport: PropTypes.func.isRequired,
     };
@@ -54,10 +55,10 @@ export default class StandardReport extends React.Component {
         const hasNextPage = hasNextPageCreator(pager.page, pager.pageCount);
         const hasPreviousPage = hasPreviousPageCreator(pager.page);
         const contextMenuOptions = {
-            [CONTEXT_MENU_ACTION.CREATE]: this.props.createReport,
-            [CONTEXT_MENU_ACTION.EDIT]: this.props.editReport,
-            [CONTEXT_MENU_ACTION.SHARING_SETTINGS]: this.props.sharingSettings,
-            [CONTEXT_MENU_ACTION.DELETE]: this.props.requestDeleteStandardReport,
+            [CONTEXT_MENU_ACTION.CREATE]: props.createReport,
+            [CONTEXT_MENU_ACTION.EDIT]: props.editReport,
+            [CONTEXT_MENU_ACTION.SHARING_SETTINGS]: props.sharingSettings,
+            [CONTEXT_MENU_ACTION.DELETE]: props.requestDeleteStandardReport,
         };
 
         return (
@@ -115,7 +116,7 @@ export default class StandardReport extends React.Component {
                         props.requestDelete
                             ? {
                                 ...props.feedbackConf,
-                                onActionClick: props.deleteStandardReportError,
+                                onActionClick: props.deleteStandardReport,
                             }
                             : props.feedbackConf
                     }
