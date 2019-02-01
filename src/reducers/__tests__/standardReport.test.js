@@ -303,7 +303,7 @@ describe('Reducer - standardReport', function() {
                     message: error,
                 }
             };
-            const actual = standardReport(preState, { 
+            const actual = standardReport(preState, {
                 type: DELETE_STANDARD_REPORT_ERROR,
                 payload: error,
             });
