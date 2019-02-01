@@ -1,4 +1,6 @@
+import { getInstance } from 'd2/lib/d2';
 import { REPORTS_ENDPOINT } from '../pages/standard-report/standard.report.conf';
+import i18n from '../locales';
 
 export const actionTypes = {
     LOAD_STANDARD_REPORTS: 'LOAD_STANDARD_REPORTS',
@@ -67,20 +69,28 @@ const createReportsApiUrl = (page, pageSize, search) => [
 /**
  * @return {Function} Redux thunk
  */
-export const loadStandardReports = d2 => (dispatch, getState) => {
-    const api = d2.Api.getApi();
-    const { pager, search } = getState().standardReport;
-    const { page, pageSize } = pager;
-    const url = createReportsApiUrl(page, pageSize, search);
+const DEFAULT_SUCCESS_MESSAGE = 'Successfully loaded the reports';
+export const loadStandardReports = (successMessage = DEFAULT_SUCCESS_MESSAGE) =>
+    async (dispatch, getState) => {
+        const d2 = await getInstance();
+        const api = d2.Api.getApi();
 
-    dispatch(startLoadingStandardReports());
-    api.get(url)
-        .then(response =>
-            dispatch(loadingStandardReportsSuccess(response)))
-        .catch(error =>
-            dispatch(loadingStandardReportsError(error)))
-    ;
-};
+        const { pager, search } = getState().standardReport;
+        const { page, pageSize } = pager;
+        const url = createReportsApiUrl(page, pageSize, search);
+
+        dispatch(startLoadingStandardReports());
+        api.get(url)
+            .then(response =>
+                dispatch(loadingStandardReportsSuccess({
+                    ...response,
+                    successMessage: i18n.t(successMessage),
+                })))
+            .catch(error =>
+                dispatch(loadingStandardReportsError(error)))
+        ;
+    }
+;
 
 /**
  * @param {number} nextPage
@@ -214,7 +224,7 @@ export const deleteStandardReportStart = () => ({
  */
 export const deleteStandardReportSuccess = () => (dispatch) => {
     dispatch({ type: actionTypes.DELETE_STANDARD_REPORT_SUCCESS });
-    dispatch(loadStandardReports());
+    dispatch(loadStandardReports('Successfully deleted the report'));
 };
 
 /**
@@ -229,13 +239,13 @@ export const deleteStandardReportError = error => ({
  * @param {Object} report
  * @return {Function} A redux thunk
  */
-export const deleteStandardReport = (d2, report) =>
-    (dispatch) => {
+export const deleteStandardReport = report =>
+    async (dispatch) => {
+        const d2 = await getInstance();
         const api = d2.Api.getApi();
         const url = `${REPORTS_ENDPOINT}/${report.id}`;
 
         dispatch(deleteStandardReportStart());
-
         api.delete(url)
             .then(() => dispatch(deleteStandardReportSuccess()))
             .catch(error => dispatch(deleteStandardReportError(error)))

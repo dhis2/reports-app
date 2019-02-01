@@ -4,6 +4,7 @@ import Table from '@dhis2/d2-ui-table';
 import '@dhis2/d2-ui-core/build/css/Table.css';
 import '@dhis2/d2-ui-core/build/css/Pagination.css';
 import manageError from './manageError.HOC';
+import Feedback from '../components/Feedback';
 import Headline from './standard-report/Headline';
 import SearchBox from './standard-report/SearchBox';
 import NoResultsMessage from './standard-report/NoResultsMessage';
@@ -20,12 +21,11 @@ import {
 } from './standard-report/helper';
 import connectStandardReport from './standard-report/connectStandardReport';
 
-/* Pagination */
 export default class StandardReport extends React.Component {
     static propTypes = {
         d2: PropTypes.object.isRequired,
-        showSnackbar: PropTypes.bool.isRequired,
-        snackbarConf: PropTypes.object.isRequired,
+        showFeedback: PropTypes.bool.isRequired,
+        feedbackConf: PropTypes.object.isRequired,
         pager: PropTypes.object.isRequired,
         reports: PropTypes.array.isRequired,
         selectedReport: PropTypes.object.isRequired,
@@ -109,6 +109,17 @@ export default class StandardReport extends React.Component {
                     />
                 </div>
                 <StyledHtmlReport htmlReport={props.htmlReport} />
+                <Feedback
+                    open={props.showFeedback}
+                    conf={
+                        props.requestDelete
+                            ? {
+                                ...props.feedbackConf,
+                                onActionClick: props.deleteStandardReportError,
+                            }
+                            : props.feedbackConf
+                    }
+                />
             </div>
         );
     }

@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { updateFeedbackState } from '../../actions/feedback';
 import {
     loadStandardReports,
     createReportShow,
@@ -16,14 +15,11 @@ import {
 } from '../../actions/standardReport';
 
 const mapStateToProps = state => ({
-    showSnackbar: state.feedback.showSnackbar,
-    snackbarConf: state.feedback.snackbarConf,
     ...state.standardReport,
 });
 
 const mapDispatchToProps = dispatch => ({
-    updateFeedbackState: updateFeedbackState(dispatch),
-    loadStandardReports: d2 => () => dispatch(loadStandardReports(d2)),
+    loadStandardReports: () => dispatch(loadStandardReports()),
     addReportFormShow: report => dispatch(addReportFormShow(report)),
     createReport: report => dispatch(createReportShow(report)),
     editReport: report => dispatch(editReportFormShow(report)),
@@ -37,19 +33,9 @@ const mapDispatchToProps = dispatch => ({
     closeContextMenu: refreshList => dispatch(closeContextMenu(refreshList)),
 });
 
-const mergeProps = (stateProps, dispatchProps, ownProps) => ({
-    ...ownProps,
-    ...stateProps,
-    ...({
-        ...dispatchProps,
-        loadStandardReports: dispatchProps.loadStandardReports(ownProps.d2),
-    }),
-});
-
 const connectStandardReport = StandardReport => connect(
     mapStateToProps,
     mapDispatchToProps,
-    mergeProps,
 )(StandardReport);
 
 export default connectStandardReport;

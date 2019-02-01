@@ -10,7 +10,6 @@ const manageError = (component) => {
             // sectionKey - required and used by pages to get help link
             // eslint-disable-next-line
             sectionKey: PropTypes.string.isRequired,
-            updateFeedbackState: PropTypes.func.isRequired,
         };
 
         static defaultProps = component.defaultProps || {};

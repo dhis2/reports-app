@@ -4,6 +4,9 @@ import {
     CONTEXT_MENU_ACTION,
 } from '../pages/standard-report/standard.report.conf';
 import { INITIAL_PAGER } from '../helpers/pagination';
+import { ACTION_MESSAGE, ERROR, LOADING, SUCCESS } from '../helpers/feedbackSnackBarTypes';
+import i18n from '../locales';
+import { i18nKeys } from '../i18n';
 
 const defaultState = {
     pager: INITIAL_PAGER,
@@ -16,6 +19,8 @@ const defaultState = {
     loading: false,
     loadingError: '',
     requestDelete: false,
+    showFeedback: false,
+    feedbackConf: {},
 };
 
 const standardReport = (state = defaultState, action = {}) => {
@@ -23,10 +28,25 @@ const standardReport = (state = defaultState, action = {}) => {
 
     switch (type) {
         case actionTypes.LOADING_STANDARD_REPORTS_START:
-            return { ...state, loading: true, loadingError: '' };
+            return {
+                ...state,
+                loading: true,
+                loadingError: '',
+                showFeedback: true,
+                feedbackConf: { type: LOADING },
+            };
 
         case actionTypes.LOADING_STANDARD_REPORTS_ERROR:
-            return { ...state, loading: false, loadingError: payload };
+            return {
+                ...state,
+                loading: false,
+                loadingError: payload,
+                showFeedback: true,
+                feedbackConf: {
+                    type: ERROR,
+                    message: payload,
+                },
+            };
 
         case actionTypes.LOADING_STANDARD_REPORTS_SUCCESS:
             return {
@@ -35,6 +55,11 @@ const standardReport = (state = defaultState, action = {}) => {
                 loadingError: '',
                 reports: payload.reports,
                 pager: payload.pager,
+                showFeedback: true,
+                feedbackConf: {
+                    type: SUCCESS,
+                    message: payload.successMessage,
+                },
             };
 
         case actionTypes.GO_TO_NEXT_PAGE:
@@ -105,6 +130,12 @@ const standardReport = (state = defaultState, action = {}) => {
                 requestDelete: true,
                 selectedReport: payload,
                 selectedAction: CONTEXT_MENU_ACTION.DELETE,
+                showFeedback: true,
+                feedbackConf: {
+                    type: ACTION_MESSAGE,
+                    message: payload.displayName,
+                    action: i18n.t(i18nKeys.messages.confirmDelete),
+                },
             };
 
         case actionTypes.DELETE_STANDARD_REPORT_START:
@@ -113,6 +144,8 @@ const standardReport = (state = defaultState, action = {}) => {
                 requestDelete: false,
                 loading: true,
                 loadingError: '',
+                showFeedback: true,
+                feedbackConf: { type: LOADING },
             };
 
         case actionTypes.DELETE_STANDARD_REPORT_SUCCESS:
@@ -122,6 +155,7 @@ const standardReport = (state = defaultState, action = {}) => {
                 loadingError: '',
                 selectedReport: {},
                 selectedAction: '',
+                showFeedback: false,
             };
 
         case actionTypes.DELETE_STANDARD_REPORT_ERROR:
@@ -129,6 +163,11 @@ const standardReport = (state = defaultState, action = {}) => {
                 ...state,
                 loading: false,
                 loadingError: payload,
+                showFeedback: true,
+                feedbackConf: {
+                    type: ERROR,
+                    message: payload,
+                },
             };
 
         case actionTypes.HTML_REPORT_SHOW:
