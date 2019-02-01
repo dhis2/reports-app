@@ -1,6 +1,8 @@
 /* React */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import i18n from '@dhis2/d2-i18n';
 
 /* d2-ui components */
 import { DropDown, PeriodPicker } from '@dhis2/d2-ui-core';
@@ -8,39 +10,21 @@ import { DropDown, PeriodPicker } from '@dhis2/d2-ui-core';
 /* App context */
 import AppContext from '../../context';
 
+/* Actions */
+import loadPeriodTypes from '../../actions/periodTypes';
+import pluckPeriodTypes from '../../selectors/periodTypes';
+
 /* i18n */
-import i18n from '../../locales';
-import { i18nKeys } from '../../i18n';
 
 /* styles */
 import styles from '../../styles';
 
 export class PeriodPickerWithPeriodType extends PureComponent {
-    static propTypes = {
-        d2: PropTypes.object.isRequired,
-        onChange: PropTypes.func,
-        label: PropTypes.string,
-    }
-
-    static defaultProps = {
-        onChange: () => {},
-        label: i18n.t(i18nKeys.periodPicker.periodLabel),
-    }
-
-    /* FIXME: right now d2-ui periodPicker forces us to pass d2 through old  context api */
-    static childContextTypes = {
-        d2: PropTypes.object.isRequired,
-    }
-
-    constructor() {
-        super();
-
-        this.state = {
-            periodTypes: [],
-            selectedPeriodType: null,
-            selected: null,
-        };
-    }
+    state = {
+        periodTypes: [],
+        selectedPeriodType: null,
+        selected: null,
+    };
 
     /* FIXME: right now d2-ui periodPicker forces us to pass d2 through old  context api */
     getChildContext() {
@@ -50,17 +34,10 @@ export class PeriodPickerWithPeriodType extends PureComponent {
     }
 
     componentDidMount() {
-        const api = this.props.d2.Api.getApi();
-        api.get('periodTypes').then((periodTypesResponse) => {
-            this.setState({
-                periodTypes: periodTypesResponse.periodTypes.map(periodType => ({
-                    id: periodType.name,
-                    displayName: i18n.t(i18nKeys.periodPicker.labels[periodType.name]),
-                })),
-            });
-        }).catch(() => {
-            // TODO Manage error
-        });
+        const { loadPeriodTypes, periodTypes } = this.props;
+        if (Array.isArray(periodTypes) && periodTypes.length === 0) {
+            loadPeriodTypes();
+        }
     }
 
     onChangePeriodType = (event) => {
@@ -70,23 +47,29 @@ export class PeriodPickerWithPeriodType extends PureComponent {
         });
     }
 
-    renderPeriodTypeDropdown = () => (
-        <DropDown
-            value={this.state.selectedPeriodType}
-            onChange={this.onChangePeriodType}
-            menuItems={this.state.periodTypes}
-            includeEmpty
-            fullWidth
-            emptyLabel={i18n.t(i18nKeys.periodPicker.periodTypeHintText)}
-            hintText={i18n.t(i18nKeys.periodPicker.periodTypeHintText)}
-        />
-    )
+    renderPeriodTypeDropdown = () => {
+        const msg = i18n.t('Select Period Type');
+        return (
+            <DropDown
+                value={this.state.selectedPeriodType}
+                onChange={this.onChangePeriodType}
+                menuItems={this.props.periodTypes}
+                fullWidth
+                emptyLabel={msg}
+                hintText={msg}
+            />
+        );
+    }
 
     render() {
+        const { periodTypes } = this.props;
+        const error = periodTypes instanceof Error ? periodTypes.toString() : null;
+
         return (
             <div>
                 <span style={{ ...styles.formLabel, display: 'block' }}>{this.props.label}</span>
-                { this.renderPeriodTypeDropdown() }
+                { error && <span style={styles.error}>{error}</span> }
+                { !error && this.renderPeriodTypeDropdown() }
                 { this.state.selectedPeriodType &&
                     <PeriodPicker
                         periodType={this.state.selectedPeriodType}
@@ -98,7 +81,28 @@ export class PeriodPickerWithPeriodType extends PureComponent {
     }
 }
 
-export default props => (
+PeriodPickerWithPeriodType.propTypes = {
+    d2: PropTypes.object.isRequired,
+    onChange: PropTypes.func,
+    label: PropTypes.string,
+    loadPeriodTypes: PropTypes.func.isRequired,
+    periodTypes: PropTypes.oneOfType([
+        PropTypes.object,
+        PropTypes.array,
+    ]).isRequired,
+};
+
+PeriodPickerWithPeriodType.defaultProps = {
+    onChange: () => {},
+    label: i18n.t('Period'),
+};
+
+/* FIXME: right now d2-ui periodPicker forces us to pass d2 through old  context api */
+PeriodPickerWithPeriodType.childContextTypes = {
+    d2: PropTypes.object.isRequired,
+};
+
+const PeriodPickerWithPeriodTypeWithContext = props => (
     <AppContext.Consumer>
         { appContext => (
             <PeriodPickerWithPeriodType
@@ -108,3 +112,14 @@ export default props => (
         )}
     </AppContext.Consumer>
 );
+
+const mapStateToProps = ({ periodTypes }) => ({
+    periodTypes: pluckPeriodTypes(periodTypes),
+});
+
+export default connect(
+    mapStateToProps,
+    {
+        loadPeriodTypes,
+    },
+)(PeriodPickerWithPeriodTypeWithContext);
