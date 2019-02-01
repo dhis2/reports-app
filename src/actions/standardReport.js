@@ -1,6 +1,8 @@
-import { getInstance } from 'd2/lib/d2';
-import { REPORTS_ENDPOINT } from '../pages/standard-report/standard.report.conf';
 import i18n from '../locales';
+import {
+    getStandardReports,
+    deleteStandardReport as deleteStandardReportRequest,
+} from '../api/index';
 
 export const actionTypes = {
     LOAD_STANDARD_REPORTS: 'LOAD_STANDARD_REPORTS',
@@ -53,34 +55,18 @@ export const loadingStandardReportsError = error => ({
 });
 
 /**
- * @param {number} page
- * @param {number} pageSize
- * @param {string} search
- * @returns {string}
- */
-// tslint-disable no-confusing-arrow
-const createReportsApiUrl = (page, pageSize, search) => [
-    `${REPORTS_ENDPOINT}?page=${page}&pageSize=${pageSize}`,
-    '&fields=displayName,type,id,reportTable[id,displayName],access',
-    search ? `&filter=displayName:ilike:${search}` : '',
-].join('');
-// tslint-enable no-confusing-arrow
-
-/**
  * @return {Function} Redux thunk
  */
 const DEFAULT_SUCCESS_MESSAGE = 'Successfully loaded the reports';
 export const loadStandardReports = (successMessage = DEFAULT_SUCCESS_MESSAGE) =>
-    async (dispatch, getState) => {
-        const d2 = await getInstance();
-        const api = d2.Api.getApi();
-
-        const { pager, search } = getState().standardReport;
-        const { page, pageSize } = pager;
-        const url = createReportsApiUrl(page, pageSize, search);
+    (dispatch, getState) => {
+        const {
+            pager: { page, pageSize },
+            search,
+        } = getState().standardReport;
 
         dispatch(startLoadingStandardReports());
-        api.get(url)
+        getStandardReports(page, pageSize, search)
             .then(response =>
                 dispatch(loadingStandardReportsSuccess({
                     ...response,
@@ -240,13 +226,9 @@ export const deleteStandardReportError = error => ({
  * @return {Function} A redux thunk
  */
 export const deleteStandardReport = report =>
-    async (dispatch) => {
-        const d2 = await getInstance();
-        const api = d2.Api.getApi();
-        const url = `${REPORTS_ENDPOINT}/${report.id}`;
-
+    (dispatch) => {
         dispatch(deleteStandardReportStart());
-        api.delete(url)
+        deleteStandardReportRequest(report.id)
             .then(() => dispatch(deleteStandardReportSuccess()))
             .catch(error => dispatch(deleteStandardReportError(error)))
         ;

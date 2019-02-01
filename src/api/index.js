@@ -1,23 +1,46 @@
 import { getInstance } from 'd2/lib/d2';
+import createGetStandardReportsUrl from './standardReports/createGetStandardReportsUrl';
+import createDeleteStandardReportUrl from './standardReports/createDeleteStandardReportUrl';
 
 let d2;
 let api;
 
-async function init() {
+/**
+ * Sets d2 and the api
+ */
+export const init = async () => {
     d2 = await getInstance();
     api = d2.Api.getApi();
-}
-
-export function getD2() {
-    return d2;
-}
-
-export function getApi() {
-    return api;
-}
-
-export function getPeriodTypes() {
-    return api.get('periodTypes');
-}
-
+};
 init();
+
+/**
+ * @return {Object} d2 instance
+ */
+export const getD2 = () => d2;
+
+/**
+ * @return {Object} d2 api instance
+ */
+export const getApi = () => api;
+
+/**
+ * @return {Promise} Period types
+ */
+export const getPeriodTypes = () => api.get('periodTypes');
+
+/**
+ * @param {number} page
+ * @param {number} pageSize
+ * @param {string} nameFilter
+ * @return {Promise}
+ */
+export const getStandardReports = (page, pageSize, nameFilter) =>
+    api.get(createGetStandardReportsUrl(page, pageSize, nameFilter));
+
+/**
+ * @param {string} id
+ * @return {Promise}
+ */
+export const deleteStandardReport = id =>
+    api.delete(createDeleteStandardReportUrl(id));
