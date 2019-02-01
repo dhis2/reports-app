@@ -23,6 +23,7 @@ const defaultState = {
     feedbackConf: {},
 };
 
+// eslint-disable-next-line complexity
 const standardReport = (state = defaultState, action = {}) => {
     const { type, payload } = action;
 
