@@ -26,7 +26,7 @@ import { ConnectedAddEditResource } from './add-edit-resource/AddEditResource';
 import { ACTION_MESSAGE, SUCCESS, LOADING } from '../../helpers/feedbackSnackBarTypes';
 
 /* utils */
-import { getDocsUrl } from '../../helpers/docs';
+import { getDocsUrl } from '../../helpers/getDocsUrl';
 import { calculatePageValue, INITIAL_PAGER } from '../../helpers/pagination';
 
 /* app config */

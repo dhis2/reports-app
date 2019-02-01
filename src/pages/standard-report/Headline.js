@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import i18n from '../../locales';
 import { i18nKeys } from '../../i18n';
 import PageHelper from '../../components/page-helper/PageHelper';
-import { getDocsUrl } from '../../helpers/docs';
+import { getDocsUrl } from '../../helpers/getDocsUrl';
 import styles from './StandardReport.style';
 
 const Headline = ({ showBackButton, onGoBackClick, systemVersion, sectionKey }) => (
