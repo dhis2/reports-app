@@ -15,7 +15,7 @@ import { connect } from 'react-redux';
 import { updateFeedbackState } from '../../../redux/actions/feedback';
 
 /* styles */
-import appStyles from '../../../styles';
+import appStyles from '../../../utils/styles';
 import styles from './AddEditStdReport.style';
 
 /* app conf */

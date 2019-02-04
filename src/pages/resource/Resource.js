@@ -17,7 +17,7 @@ import { updateFeedbackState } from '../../redux/actions/feedback';
 
 /* styles */
 import styles from './Resource.style';
-import appStyles from '../../styles';
+import appStyles from '../../utils/styles';
 
 /* app components */
 import Page from '../Page';

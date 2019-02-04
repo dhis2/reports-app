@@ -1,4 +1,5 @@
-const i18nKeys = {
+// eslint-disable-next-line import/prefer-default-export
+export const i18nKeys = {
     buttons: {
         cancel: 'Cancel',
         save: 'Save',
@@ -314,10 +315,4 @@ const i18nKeys = {
         'oct-mar': 'oct-mar',
 
     },
-};
-
-export default i18nKeys;
-// required for ES5 script (/scripts/pot-extractor.js)
-module.exports = {
-    i18nKeys,
 };

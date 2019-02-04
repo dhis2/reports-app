@@ -16,7 +16,7 @@ import { updateFeedbackState } from '../../../redux/actions/feedback';
 import { LOADING } from '../../../utils/feedbackSnackBarTypes';
 
 /* styles */
-import appStyles from '../../../styles';
+import appStyles from '../../../utils/styles';
 import styles from './AddEditResource.style';
 
 /* app conf */

@@ -12,7 +12,7 @@ import store, { history } from './redux/store';
 
 /* i18n */
 import { configI18n } from './utils/i18n/configI18n';
-import { injectTranslationsToD2 } from './utils/i18n/injectTranslationsToD2';
+import injectTranslationsToD2 from './utils/i18n/injectTranslationsToD2';
 
 import './index.css';
 import App from './App';

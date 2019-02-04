@@ -26,7 +26,7 @@ import {
 } from './dataApproval.conf';
 
 /* styles */
-import appStyles from '../../styles';
+import appStyles from '../../utils/styles';
 
 const styles = {
     notificationBar: {

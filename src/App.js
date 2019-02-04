@@ -26,7 +26,7 @@ import createSnackbarConfig from './utils/snackbar/createSnackbarConfig';
 import { sections } from './pages/sections.conf';
 
 /* styles */
-import styles from './styles';
+import styles from './utils/styles';
 
 class App extends PureComponent {
     static propTypes = {

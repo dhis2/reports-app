@@ -35,7 +35,7 @@ import { getDocsUrl } from '../../utils/getDocsUrl';
 import { LOADING, SUCCESS } from '../../utils/feedbackSnackBarTypes';
 
 /* styles */
-import styles from '../../styles';
+import styles from '../../utils/styles';
 
 export default class DataSetReport extends Page {
     static propTypes = {

@@ -13,7 +13,7 @@ import i18n from '../../utils/i18n/locales';
 import { i18nKeys } from '../../utils/i18n/i18nKeys';
 
 /* styles */
-import styles from '../../styles';
+import styles from '../../utils/styles';
 
 export class OrganisationUnitGroupSets extends PureComponent {
     static propTypes = {

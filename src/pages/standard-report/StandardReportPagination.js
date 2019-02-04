@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Pagination } from '@dhis2/d2-ui-core';
 import { calculatePageValue } from '../../utils/pagination';
-import appStyles from '../../styles';
+import appStyles from '../../utils/styles';
 
 const StandardReportPagination = props => (
     <div id={'footer-pagination-id'} style={appStyles.marginForAddButton}>

@@ -17,7 +17,7 @@ import pluckPeriodTypes from '../../redux/selectors/periodTypes';
 /* i18n */
 
 /* styles */
-import styles from '../../styles';
+import styles from '../../utils/styles';
 
 export class PeriodPickerWithPeriodType extends PureComponent {
     state = {
