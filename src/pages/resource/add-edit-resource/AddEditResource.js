@@ -23,8 +23,8 @@ import styles from './AddEditResource.style';
 import { FILE_RESOURCES_ENDPOINT, DOCUMENTS_ENDPOINT, RESOURCE_TYPES, TYPES } from '../resource.conf';
 
 /* i18n */
-import i18n from '../../../locales';
-import { i18nKeys } from '../../../i18n';
+import i18n from '../../../utils/i18n/locales';
+import { i18nKeys } from '../../../utils/i18n/i18nKeys';
 
 const initialState = {
     resource: {

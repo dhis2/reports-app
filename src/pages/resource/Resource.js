@@ -34,8 +34,8 @@ import { DOCUMENTS_ENDPOINT, ADD_NEW_RESOURCE_ACTION, CONTEXT_MENU_ACTION, CONTE
 import { DEBOUNCE_DELAY } from '../sections.conf';
 
 /* i18n */
-import i18n from '../../locales';
-import { i18nKeys } from '../../i18n';
+import i18n from '../../utils/i18n/locales';
+import { i18nKeys } from '../../utils/i18n/i18nKeys';
 
 export default class Resource extends Page {
     static propTypes = {

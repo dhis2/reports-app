@@ -27,8 +27,8 @@ import {
 import { LOADING } from '../../../utils/feedbackSnackBarTypes';
 
 /* i18n */
-import i18n from '../../../locales';
-import { i18nKeys } from '../../../i18n';
+import i18n from '../../../utils/i18n/locales';
+import { i18nKeys } from '../../../utils/i18n/i18nKeys';
 
 const initialState = {
     report: {

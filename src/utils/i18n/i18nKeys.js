@@ -1,4 +1,4 @@
-export const i18nKeys = {
+const i18nKeys = {
     buttons: {
         cancel: 'Cancel',
         save: 'Save',
@@ -317,3 +317,7 @@ export const i18nKeys = {
 };
 
 export default i18nKeys;
+// required for ES5 script (/scripts/pot-extractor.js)
+module.exports = {
+    i18nKeys,
+};

@@ -8,7 +8,7 @@ import { ConnectedOrganisationUnitDistributionReport }
 import { ConnectedDataApproval } from './data-approval/DataApproval';
 
 /* i18n */
-import { i18nKeys } from '../i18n';
+import { i18nKeys } from '../utils/i18n/i18nKeys';
 
 export const STANDARD_REPORT_SECTION_KEY = 'standard-report';
 export const DATA_SET_REPORT_SECTION_KEY = 'data-set-report';

@@ -7,7 +7,7 @@ const argv = require('minimist')(process.argv.slice(2));
 
 const filename = argv.o || 'en.pot';
 
-const i18nKeys = require('../src/i18n.js');
+const i18nKeys = require('../src/utils/i18n/i18nKeys.js');
 
 // save file to disk
 const save = target => (result) => {

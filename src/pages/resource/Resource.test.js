@@ -21,7 +21,7 @@ import {
     RESOURCE_SECTION_KEY
 } from '../sections.conf';
 
-import { i18nKeys } from '../../i18n';
+import { i18nKeys } from '../../utils/i18n/i18nKeys';
 
 let pageInfo = {};
 for(let i = 0; i < sections.length; i++) {

@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 import { mount, shallow } from 'enzyme';
-import { i18nKeys } from '../../../i18n';
+import { i18nKeys } from '../../../utils/i18n/i18nKeys';
 
 import CreateStdReport from './CreateStdReport';
 
