@@ -68,17 +68,17 @@
         "xlsx": "^0.13.0"
     },
     "devDependencies": {
+        "@dhis2/cli-style": "^0.10.1",
         "@dhis2/d2-i18n-generate": "^1.0.19",
         "chai": "^4.1.2",
         "cucumber": "^3.2.0",
         "enzyme": "^3.3.0",
         "enzyme-adapter-react-16": "^1.1.1",
-        "eslint-config-dhis2": "^3.0.7",
+        "husky": "^1.3.1",
         "import-export": "^1.0.1",
         "jest-enzyme": "^4.0.2",
         "postcss-cssnext": "^3.1.0",
         "postcss-rtl": "^1.2.3",
-        "pre-commit": "^1.2.2",
         "wdio-allure-reporter": "^0.6.2",
         "wdio-cucumber-framework": "^1.0.2",
         "wdio-selenium-standalone-service": "0.0.10",
@@ -89,6 +89,8 @@
         "manifest": "d2-manifest package.json ./public/manifest.webapp",
         "start": "yarn manifest && yarn localize && node scripts/start.js",
         "build": "yarn manifest && yarn localize && node scripts/build.js && cp ./package.json ./build/package.json",
+        "code-style": "yarn d2-style js",
+        "format-all": "yarn prettier --write src/**/*.js",
         "localize": "d2-i18n-generate -n reports-app -p ./i18n/ -o ./src/locales/",
         "test": "node scripts/test.js --env=jsdom --coverage",
         "test-watch": "node scripts/test.js --env=jsdom",
@@ -99,11 +101,12 @@
         "refresh-translations-template": "yarn extract-pot -- -o en.pot && git add ./i18n/en.pot",
         "coverage": "yarn test -- --coverage"
     },
-    "pre-commit": [
-        "lint",
-        "validate",
-        "refresh-translations-template"
-    ],
+    "husky": {
+        "hooks": {
+            "commit-msg": "yarn d2-style commit",
+            "pre-commit": "yarn code-style && yarn refresh-translations-template"
+        }
+    },
     "manifest.webapp": {
         "name": "DHIS2 Reports App",
         "description": "DHIS2 reports App",
