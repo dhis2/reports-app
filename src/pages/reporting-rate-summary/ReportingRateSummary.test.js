@@ -11,7 +11,7 @@ import OrganisationUnitGroupOptions from '../../components/organisation-unit-gro
 import PeriodPickerComponent from '../../components/period-picker-with-period-type/PeriodPickerWithPeriodType';
 import Report from '../../components/report/Report';
 
-import fakerData from '../../helpers/fakerTests';
+import fakerData from '../../utils/fakerTests';
 
 import {
     sections,

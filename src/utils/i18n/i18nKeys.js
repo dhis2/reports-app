@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/prefer-default-export
 export const i18nKeys = {
     buttons: {
         cancel: 'Cancel',
@@ -315,5 +316,3 @@ export const i18nKeys = {
 
     },
 };
-
-export default i18nKeys;

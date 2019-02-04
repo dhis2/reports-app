@@ -6,7 +6,7 @@ import Page from '../Page';
 import DataSetReport from '../data-set-report/DataSetReport';
 import Home from '../home/Home';
 
-import fakerData from '../../helpers/fakerTests';
+import fakerData from '../../utils/fakerTests';
 
 import {DATA_SET_REPORT_SECTION_KEY} from '../sections.conf';
 

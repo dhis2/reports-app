@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 import { mount, shallow } from 'enzyme';
-import { i18nKeys } from '../../../i18n';
+import { i18nKeys } from '../../../utils/i18n/i18nKeys';
 
 import CreateStdReport from './CreateStdReport';
 
@@ -17,7 +17,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 /* d2-ui */
 import { Button, SelectField } from '@dhis2/d2-ui-core';
 
-import fakerData from '../../../helpers/fakerTests';
+import fakerData from '../../../utils/fakerTests';
 import { TYPES } from '../standard.report.conf';
 
 /* Mocks */

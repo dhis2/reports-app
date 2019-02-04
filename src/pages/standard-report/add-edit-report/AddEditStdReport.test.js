@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 import { mount, shallow } from 'enzyme';
-import { i18nKeys } from '../../../i18n';
+import { i18nKeys } from '../../../utils/i18n/i18nKeys';
 
 import { relativePeriods, NONE, TYPES, CACHE_STRATEGIES } from '../standard.report.conf';
 
@@ -18,7 +18,7 @@ jest.mock('@dhis2/d2-ui-org-unit-tree', () => ({
     OrgUnitTree: ('OrgUnitTree'),
 }));
 
-import fakerData from '../../../helpers/fakerTests';
+import fakerData from '../../../utils/fakerTests';
 
 const mockReport = {
     id: 'reportId',

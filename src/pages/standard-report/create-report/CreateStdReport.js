@@ -14,11 +14,11 @@ OrganisationUnitsTree
     from '../../../components/available-organisation-units-tree/AvailableOrganisationUnitsTree';
 
 /* i18n */
-import { i18nKeys } from '../../../i18n';
-import i18n from '../../../locales';
+import { i18nKeys } from '../../../utils/i18n/i18nKeys';
+import i18n from '../../../utils/i18n/locales';
 
 /* styles */
-import appStyles from '../../../styles';
+import appStyles from '../../../utils/styles';
 
 import { REPORTS_ENDPOINT, REPORT_MODE, GET_REPORT_AS_ENDPOINT, TYPES } from '../standard.report.conf';
 

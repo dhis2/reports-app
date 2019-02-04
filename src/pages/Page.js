@@ -3,11 +3,11 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 
 /* i18n */
-import i18n from '../locales';
-import { i18nKeys } from '../i18n';
+import i18n from '../utils/i18n/locales';
+import { i18nKeys } from '../utils/i18n/i18nKeys';
 
 /* Feedback Snackbar */
-import { ERROR } from '../helpers/feedbackSnackBarTypes';
+import { ERROR } from '../utils/feedbackSnackBarTypes';
 
 class Page extends Component {
     static propTypes = {

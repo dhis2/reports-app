@@ -8,16 +8,16 @@ import i18n from '@dhis2/d2-i18n';
 import { DropDown, PeriodPicker } from '@dhis2/d2-ui-core';
 
 /* App context */
-import AppContext from '../../context';
+import AppContext from '../../pages/AppContext';
 
 /* Actions */
-import loadPeriodTypes from '../../actions/periodTypes';
-import pluckPeriodTypes from '../../selectors/periodTypes';
+import loadPeriodTypes from '../../redux/actions/periodTypes';
+import pluckPeriodTypes from '../../redux/selectors/periodTypes';
 
 /* i18n */
 
 /* styles */
-import styles from '../../styles';
+import styles from '../../utils/styles';
 
 export class PeriodPickerWithPeriodType extends PureComponent {
     state = {

@@ -12,21 +12,21 @@ import { Sidebar } from '@dhis2/d2-ui-core';
 
 /* Redux */
 import { connect } from 'react-redux';
-import { updateFeedbackState } from './actions/feedback';
+import { updateFeedbackState } from './redux/actions/feedback';
 
 /* App components */
 import AppRouter from './components/app-router/AppRouter';
 import Feedback from './components/Feedback';
 
 /* App context */
-import AppContext from './context';
+import AppContext from './pages/AppContext';
 import createSnackbarConfig from './utils/snackbar/createSnackbarConfig';
 
 /* App configs */
 import { sections } from './pages/sections.conf';
 
 /* styles */
-import styles from './styles';
+import styles from './utils/styles';
 
 class App extends PureComponent {
     static propTypes = {

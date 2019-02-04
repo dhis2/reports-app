@@ -13,29 +13,29 @@ import '@dhis2/d2-ui-core/build/css/Pagination.css';
 
 /* Redux */
 import { connect } from 'react-redux';
-import { updateFeedbackState } from '../../actions/feedback';
+import { updateFeedbackState } from '../../redux/actions/feedback';
 
 /* styles */
 import styles from './Resource.style';
-import appStyles from '../../styles';
+import appStyles from '../../utils/styles';
 
 /* app components */
 import Page from '../Page';
 import PageHelper from '../../components/page-helper/PageHelper';
 import { ConnectedAddEditResource } from './add-edit-resource/AddEditResource';
-import { ACTION_MESSAGE, SUCCESS, LOADING } from '../../helpers/feedbackSnackBarTypes';
+import { ACTION_MESSAGE, SUCCESS, LOADING } from '../../utils/feedbackSnackBarTypes';
 
 /* utils */
-import { getDocsUrl } from '../../helpers/getDocsUrl';
-import { calculatePageValue, INITIAL_PAGER } from '../../helpers/pagination';
+import { getDocsUrl } from '../../utils/getDocsUrl';
+import { calculatePageValue, INITIAL_PAGER } from '../../utils/pagination';
 
 /* app config */
 import { DOCUMENTS_ENDPOINT, ADD_NEW_RESOURCE_ACTION, CONTEXT_MENU_ACTION, CONTEXT_MENU_ICONS } from './resource.conf';
 import { DEBOUNCE_DELAY } from '../sections.conf';
 
 /* i18n */
-import i18n from '../../locales';
-import { i18nKeys } from '../../i18n';
+import i18n from '../../utils/i18n/locales';
+import { i18nKeys } from '../../utils/i18n/i18nKeys';
 
 export default class Resource extends Page {
     static propTypes = {

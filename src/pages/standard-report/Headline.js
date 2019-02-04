@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import i18n from '../../locales';
-import { i18nKeys } from '../../i18n';
+import i18n from '../../utils/i18n/locales';
+import { i18nKeys } from '../../utils/i18n/i18nKeys';
 import PageHelper from '../../components/page-helper/PageHelper';
-import { getDocsUrl } from '../../helpers/getDocsUrl';
+import { getDocsUrl } from '../../utils/getDocsUrl';
 import styles from './StandardReport.style';
 
 const Headline = ({ showBackButton, onGoBackClick, systemVersion, sectionKey }) => (

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
-import i18n from '../locales';
-import { i18nKeys } from '../i18n';
-import { ERROR } from '../helpers/feedbackSnackBarTypes';
+import i18n from '../utils/i18n/locales';
+import { i18nKeys } from '../utils/i18n/i18nKeys';
+import { ERROR } from '../utils/feedbackSnackBarTypes';
 import getDisplayName from '../utils/react/getDisplayName';
 
 const manageError = (component) => {

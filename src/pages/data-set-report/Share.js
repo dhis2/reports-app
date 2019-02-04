@@ -5,17 +5,17 @@ import PropTypes from 'prop-types';
 /* d2-ui components */
 import { InputField, Button } from '@dhis2/d2-ui-core';
 import { connect } from 'react-redux';
-import { updateFeedbackState } from '../../actions/feedback';
+import { updateFeedbackState } from '../../redux/actions/feedback';
 
 /* App context */
-import AppContext from '../../context';
+import AppContext from '../../pages/AppContext';
 
 /* i18n */
-import i18n from '../../locales';
-import { i18nKeys } from '../../i18n';
+import i18n from '../../utils/i18n/locales';
+import { i18nKeys } from '../../utils/i18n/i18nKeys';
 
 /* utils */
-import { ERROR, LOADING, SUCCESS } from '../../helpers/feedbackSnackBarTypes';
+import { ERROR, LOADING, SUCCESS } from '../../utils/feedbackSnackBarTypes';
 
 export class Share extends PureComponent {
     static propTypes = {

@@ -9,7 +9,7 @@ import Home from '../../pages/home/Home';
 import NoMatch from './NoMatch';
 
 /* App context */
-import AppContext from '../../context';
+import AppContext from '../../pages/AppContext';
 
 /* App configs */
 import { sections } from '../../pages/sections.conf';

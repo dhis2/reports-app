@@ -10,11 +10,11 @@ import { Button, PeriodPicker } from '@dhis2/d2-ui-core';
 
 /* Redux */
 import { connect } from 'react-redux';
-import { updateFeedbackState } from '../../actions/feedback';
+import { updateFeedbackState } from '../../redux/actions/feedback';
 
 /* i18n */
-import i18n from '../../locales';
-import { i18nKeys } from '../../i18n';
+import i18n from '../../utils/i18n/locales';
+import { i18nKeys } from '../../utils/i18n/i18nKeys';
 
 /* App components */
 import Page from '../Page';
@@ -25,11 +25,11 @@ import Report from '../../components/report/Report';
 import DataApprovalStatusContainer from './DataApprovalStatus';
 
 /* utils */
-import { getDocsUrl } from '../../helpers/getDocsUrl';
-import { LOADING, SUCCESS } from '../../helpers/feedbackSnackBarTypes';
+import { getDocsUrl } from '../../utils/getDocsUrl';
+import { LOADING, SUCCESS } from '../../utils/feedbackSnackBarTypes';
 
 /* styles */
-import styles from '../../styles';
+import styles from '../../utils/styles';
 
 export default class DataApproval extends Page {
     static propTypes = {

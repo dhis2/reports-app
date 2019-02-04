@@ -1,8 +1,8 @@
-import i18n from '../locales';
+import i18n from '../../utils/i18n/locales';
 import {
     getStandardReports,
     deleteStandardReport as deleteStandardReportRequest,
-} from '../api/index';
+} from '../../utils/api';
 
 export const actionTypes = {
     LOAD_STANDARD_REPORTS: 'LOAD_STANDARD_REPORTS',

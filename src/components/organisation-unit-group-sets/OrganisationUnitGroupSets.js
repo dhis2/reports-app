@@ -6,14 +6,14 @@ import PropTypes from 'prop-types';
 import { DropDown } from '@dhis2/d2-ui-core';
 
 /* App context */
-import AppContext from '../../context';
+import AppContext from '../../pages/AppContext';
 
 /* i18n */
-import i18n from '../../locales';
-import { i18nKeys } from '../../i18n';
+import i18n from '../../utils/i18n/locales';
+import { i18nKeys } from '../../utils/i18n/i18nKeys';
 
 /* styles */
-import styles from '../../styles';
+import styles from '../../utils/styles';
 
 export class OrganisationUnitGroupSets extends PureComponent {
     static propTypes = {

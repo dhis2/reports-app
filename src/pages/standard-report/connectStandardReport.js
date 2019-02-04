@@ -13,7 +13,7 @@ import {
     showHtmlReport,
     hideHtmlReport,
     closeContextMenu,
-} from '../../actions/standardReport';
+} from '../../redux/actions/standardReport';
 
 const mapStateToProps = state => ({
     ...state.standardReport,

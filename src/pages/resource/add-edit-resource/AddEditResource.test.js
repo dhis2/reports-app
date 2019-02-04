@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 import { mount, shallow } from 'enzyme';
-import { i18nKeys } from '../../../i18n';
+import { i18nKeys } from '../../../utils/i18n/i18nKeys';
 import { RESOURCE_TYPES, TYPES } from '../resource.conf';
 
 import AddEditResource from './AddEditResource';
@@ -17,7 +17,7 @@ jest.mock('@dhis2/d2-ui-org-unit-tree', () => ({
     OrgUnitTree: ('OrgUnitTree'),
 }));
 
-import fakerData from '../../../helpers/fakerTests';
+import fakerData from '../../../utils/fakerTests';
 
 const mockResource = {
     created: "2012-11-13T13:14:26.466",

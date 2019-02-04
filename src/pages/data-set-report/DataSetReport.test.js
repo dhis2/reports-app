@@ -13,7 +13,7 @@ import PeriodPickerComponent from '../../components/period-picker-with-period-ty
 import ShareComment from './Share';
 import Report from '../../components/report/Report';
 
-import fakerData from '../../helpers/fakerTests';
+import fakerData from '../../utils/fakerTests';
 
 import {
     sections,

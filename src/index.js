@@ -8,10 +8,11 @@ import { init, getManifest, getUserSettings } from 'd2/lib/d2';
 /* Redux */
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
-import store, { history } from './store';
+import store, { history } from './redux/store';
 
 /* i18n */
-import { configI18n, injectTranslationsToD2 } from './configI18n';
+import { configI18n } from './utils/i18n/configI18n';
+import injectTranslationsToD2 from './utils/i18n/injectTranslationsToD2';
 
 import './index.css';
 import App from './App';

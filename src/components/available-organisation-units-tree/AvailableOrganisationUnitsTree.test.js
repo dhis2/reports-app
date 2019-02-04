@@ -12,7 +12,7 @@ import { OrgUnitTree } from '@dhis2/d2-ui-org-unit-tree';
 import { AvailableOrganisationUnitsTree } from './AvailableOrganisationUnitsTree';
 
 /* fake data */
-import fakerData from '../../helpers/fakerTests';
+import fakerData from '../../utils/fakerTests';
 
 jest.mock('@dhis2/d2-ui-org-unit-tree', () => ({
     OrgUnitTree: ('OrgUnitTree'),

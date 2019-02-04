@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 
 import DataApproval from './DataApproval';
 
-import fakerData from '../../helpers/fakerTests';
+import fakerData from '../../utils/fakerTests';
 
 import {
     sections,

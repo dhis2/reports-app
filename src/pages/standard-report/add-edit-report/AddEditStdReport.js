@@ -12,10 +12,10 @@ import { Button, TextField, SelectField, CheckBox, SvgIcon, InputField } from '@
 
 /* Redux */
 import { connect } from 'react-redux';
-import { updateFeedbackState } from '../../../actions/feedback';
+import { updateFeedbackState } from '../../../redux/actions/feedback';
 
 /* styles */
-import appStyles from '../../../styles';
+import appStyles from '../../../utils/styles';
 import styles from './AddEditStdReport.style';
 
 /* app conf */
@@ -24,11 +24,11 @@ import {
 } from '../standard.report.conf';
 
 /* utils */
-import { LOADING } from '../../../helpers/feedbackSnackBarTypes';
+import { LOADING } from '../../../utils/feedbackSnackBarTypes';
 
 /* i18n */
-import i18n from '../../../locales';
-import { i18nKeys } from '../../../i18n';
+import i18n from '../../../utils/i18n/locales';
+import { i18nKeys } from '../../../utils/i18n/i18nKeys';
 
 const initialState = {
     report: {

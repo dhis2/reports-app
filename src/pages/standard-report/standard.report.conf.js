@@ -1,6 +1,6 @@
 /* i18n */
-import i18n from '../../locales';
-import { i18nKeys } from '../../i18n';
+import i18n from '../../utils/i18n/locales';
+import { i18nKeys } from '../../utils/i18n/i18nKeys';
 
 export const REPORTS_ENDPOINT = 'reports';
 export const REPORT_TABLES_ENDPOINT = 'reportTables';

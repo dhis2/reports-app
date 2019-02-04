@@ -1,6 +1,6 @@
 import { getInstance } from 'd2/lib/d2';
-import createGetStandardReportsUrl from './standardReports/createGetStandardReportsUrl';
-import createDeleteStandardReportUrl from './standardReports/createDeleteStandardReportUrl';
+import createGetStandardReportsUrl from './api/standardReports/createGetStandardReportsUrl';
+import createDeleteStandardReportUrl from './api/standardReports/createDeleteStandardReportUrl';
 
 let d2;
 let api;

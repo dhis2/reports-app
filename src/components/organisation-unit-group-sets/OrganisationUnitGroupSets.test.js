@@ -11,7 +11,7 @@ import { DropDown } from '@dhis2/d2-ui-core';
 import { OrganisationUnitGroupSets } from './OrganisationUnitGroupSets';
 
 /* fake data */
-import fakerData from '../../helpers/fakerTests';
+import fakerData from '../../utils/fakerTests';
 
 jest.mock('@dhis2/d2-ui-core', () => ({
     DropDown: ('DropDown'),

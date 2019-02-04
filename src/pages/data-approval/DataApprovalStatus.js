@@ -9,11 +9,11 @@ import { Dialog } from 'material-ui';
 import { Button } from '@dhis2/d2-ui-core';
 
 /* App context */
-import AppContext from '../../context';
+import AppContext from '../../pages/AppContext';
 
 /* i18n */
-import i18n from '../../locales';
-import { i18nKeys } from '../../i18n';
+import i18n from '../../utils/i18n/locales';
+import { i18nKeys } from '../../utils/i18n/i18nKeys';
 
 /* utils */
 import {
@@ -26,7 +26,7 @@ import {
 } from './dataApproval.conf';
 
 /* styles */
-import appStyles from '../../styles';
+import appStyles from '../../utils/styles';
 
 const styles = {
     notificationBar: {
