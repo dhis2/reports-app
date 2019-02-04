@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Pagination } from '@dhis2/d2-ui-core';
-import { calculatePageValue } from '../../utils/pagination';
-import appStyles from '../../utils/styles';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Pagination } from '@dhis2/d2-ui-core'
+import { calculatePageValue } from '../../utils/pagination'
+import appStyles from '../../utils/styles'
 
 const StandardReportPagination = props => (
     <div id={'footer-pagination-id'} style={appStyles.marginForAddButton}>
@@ -15,7 +15,7 @@ const StandardReportPagination = props => (
             currentlyShown={calculatePageValue(props.pager)}
         />
     </div>
-);
+)
 
 StandardReportPagination.propTypes = {
     total: PropTypes.number.isRequired,
@@ -29,6 +29,6 @@ StandardReportPagination.propTypes = {
         pageSize: PropTypes.number.isRequired,
         total: PropTypes.number.isRequired,
     }).isRequired,
-};
+}
 
-export default StandardReportPagination;
+export default StandardReportPagination

@@ -1,4 +1,4 @@
-import { REPORTS_ENDPOINT } from './constants';
+import { REPORTS_ENDPOINT } from './constants'
 
 const fieldsToFetch = [
     'displayName',
@@ -6,7 +6,7 @@ const fieldsToFetch = [
     'id',
     'reportTable[id,displayName]',
     'access',
-];
+]
 
 /**
  * @param {number} page
@@ -19,13 +19,13 @@ const createGetStandardReportsUrl = (page, pageSize, nameFilter) => {
         `page=${page}`,
         `pageSize=${pageSize}`,
         `fields=${fieldsToFetch.join(',')}`,
-    ];
+    ]
 
     if (nameFilter) {
-        parameters.push(`filter=displayName:ilike:${nameFilter}`);
+        parameters.push(`filter=displayName:ilike:${nameFilter}`)
     }
 
-    return `${REPORTS_ENDPOINT}?${parameters.join('&')}`;
-};
+    return `${REPORTS_ENDPOINT}?${parameters.join('&')}`
+}
 
-export default createGetStandardReportsUrl;
+export default createGetStandardReportsUrl

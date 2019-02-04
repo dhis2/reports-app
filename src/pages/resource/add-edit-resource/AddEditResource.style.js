@@ -37,6 +37,6 @@ const AddEditResourceStyle = {
         width: 20,
         height: 20,
     },
-};
+}
 
-export default AddEditResourceStyle;
+export default AddEditResourceStyle

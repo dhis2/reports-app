@@ -1,14 +1,14 @@
 /* React */
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 
 /* styles */
-import styles from './PageHelper.style';
+import styles from './PageHelper.style'
 
 class PageHelper extends PureComponent {
     static propTypes = {
         url: PropTypes.string.isRequired,
-    };
+    }
 
     render() {
         return (
@@ -21,8 +21,8 @@ class PageHelper extends PureComponent {
             >
                 help
             </a>
-        );
+        )
     }
 }
 
-export default PageHelper;
+export default PageHelper

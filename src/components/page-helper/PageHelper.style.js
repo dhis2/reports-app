@@ -4,6 +4,6 @@ const PageHelperStyle = {
         color: '#276696',
         textDecoration: 'none',
     },
-};
+}
 
-export default PageHelperStyle;
+export default PageHelperStyle

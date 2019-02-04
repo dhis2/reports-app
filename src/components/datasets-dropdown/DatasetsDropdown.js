@@ -1,19 +1,19 @@
 /* React */
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 
 /* d2-ui components */
-import { DropDown } from '@dhis2/d2-ui-core';
+import { DropDown } from '@dhis2/d2-ui-core'
 
 /* App context */
-import AppContext from '../../pages/AppContext';
+import AppContext from '../../pages/AppContext'
 
 /* i18n */
-import i18n from '../../utils/i18n/locales';
-import { i18nKeys } from '../../utils/i18n/i18nKeys';
+import i18n from '../../utils/i18n/locales'
+import { i18nKeys } from '../../utils/i18n/i18nKeys'
 
 /* styles */
-import styles from '../../utils/styles';
+import styles from '../../utils/styles'
 
 export class DatasetsDropdown extends PureComponent {
     static propTypes = {
@@ -34,38 +34,43 @@ export class DatasetsDropdown extends PureComponent {
     }
 
     constructor() {
-        super();
+        super()
 
         this.state = {
             dataSets: [],
             selected: null,
-        };
+        }
     }
 
     componentDidMount() {
-        const { d2, filter, fields } = this.props;
-        d2.models.dataSet.list({
-            paging: false,
-            fields,
-        }).then((dataSetsResponse) => {
-            const dataSets = dataSetsResponse.toArray();
-            this.setState({
-                dataSets: filter ? dataSets.filter(filter) : dataSets,
-            });
-        }).catch(() => {
-            // TODO Manage error
-        });
+        const { d2, filter, fields } = this.props
+        d2.models.dataSet
+            .list({
+                paging: false,
+                fields,
+            })
+            .then(dataSetsResponse => {
+                const dataSets = dataSetsResponse.toArray()
+                this.setState({
+                    dataSets: filter ? dataSets.filter(filter) : dataSets,
+                })
+            })
+            .catch(() => {
+                // TODO Manage error
+            })
     }
 
-    onChange = (event) => {
-        const dataSetId = event.target.value;
+    onChange = event => {
+        const dataSetId = event.target.value
         this.setState({
             selected: dataSetId,
-        });
+        })
 
-        const dataSet = this.state.dataSets.find(currentDataSet => currentDataSet.id === dataSetId);
+        const dataSet = this.state.dataSets.find(
+            currentDataSet => currentDataSet.id === dataSetId
+        )
         if (this.props.onChange) {
-            this.props.onChange(dataSet);
+            this.props.onChange(dataSet)
         }
     }
 
@@ -83,17 +88,12 @@ export class DatasetsDropdown extends PureComponent {
                     hintText={i18n.t(i18nKeys.datasetsDropdown.hintText)}
                 />
             </div>
-        );
+        )
     }
 }
 
 export default props => (
     <AppContext.Consumer>
-        { appContext => (
-            <DatasetsDropdown
-                d2={appContext.d2}
-                {...props}
-            />
-        )}
+        {appContext => <DatasetsDropdown d2={appContext.d2} {...props} />}
     </AppContext.Consumer>
-);
+)

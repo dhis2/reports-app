@@ -91,7 +91,7 @@
         "start": "yarn manifest && yarn localize && node scripts/start.js",
         "build": "yarn manifest && yarn localize && node scripts/build.js && cp ./package.json ./build/package.json",
         "code-style": "yarn d2-style js",
-        "format-all": "yarn prettier --write src/**/*.js",
+        "format-all": "yarn prettier --write 'src/**/*.js'",
         "localize": "d2-i18n-generate -n reports-app -p ./i18n/ -o ./src/utils/i18n/locales/",
         "test": "node scripts/test.js --env=jsdom --coverage",
         "test-watch": "node scripts/test.js --env=jsdom",

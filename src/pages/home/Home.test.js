@@ -1,39 +1,36 @@
 /* eslint-disable */
-import React from 'react';
-import { shallow } from 'enzyme';
+import React from 'react'
+import { shallow } from 'enzyme'
 
-import Home from './Home';
-import MenuElement from "../../components/menu-element/MenuElement";
+import Home from './Home'
+import MenuElement from '../../components/menu-element/MenuElement'
 
-import { sections } from '../sections.conf';
+import { sections } from '../sections.conf'
 
 jest.mock('@dhis2/d2-ui-org-unit-tree', () => ({
-    OrgUnitTree: ('OrgUnitTree'),
-}));
+    OrgUnitTree: 'OrgUnitTree',
+}))
 
 const ownShallow = () => {
-    return shallow(
-        <Home />,
-        {
-            disableLifecycleMethods: true
-        }
-    );
-};
+    return shallow(<Home />, {
+        disableLifecycleMethods: true,
+    })
+}
 
 /* Mocks */
-jest.mock('@dhis2/d2-ui-org-unit-tree', () => ('OrgUnitTree'));
+jest.mock('@dhis2/d2-ui-org-unit-tree', () => 'OrgUnitTree')
 
 describe('Test <Home /> rendering:', () => {
-    let wrapper;
+    let wrapper
     beforeEach(() => {
-        wrapper = ownShallow();
-    });
+        wrapper = ownShallow()
+    })
 
     it('Renders without crashing.', () => {
-        ownShallow();
-    });
+        ownShallow()
+    })
 
     it('Renders the correct number of elements.', () => {
-        expect(wrapper.find(MenuElement)).toHaveLength(sections.length);
-    });
-});
+        expect(wrapper.find(MenuElement)).toHaveLength(sections.length)
+    })
+})

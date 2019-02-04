@@ -93,8 +93,9 @@ export const i18nKeys = {
         homeLabel: 'Standard Report',
         homeAction: 'View Reports',
         header: 'Standard Report',
-        description: 'View and add reports based on the JasperReports library. ' +
-        'These can be based on report tables and can be designed in iReport.',
+        description:
+            'View and add reports based on the JasperReports library. ' +
+            'These can be based on report tables and can be designed in iReport.',
         search: 'Search',
         details: 'Details',
         settings: 'Settings',
@@ -122,12 +123,14 @@ export const i18nKeys = {
         homeLabel: 'Data Set Report',
         homeAction: 'Get Report',
         header: 'Data Set Report',
-        description: 'View data set reports. These reports are based on data entry screens and ' +
-        'will produce a report with aggregated data.',
+        description:
+            'View data set reports. These reports are based on data entry screens and ' +
+            'will produce a report with aggregated data.',
         reportPeriodLabel: 'Report period',
         selectedUnitOnlyLabel: 'Use data for selected unit only',
         organisationUnitLabel: 'Report organisation unit',
-        sharePlaceholder: 'Write a comment, question or interpretation of this report',
+        sharePlaceholder:
+            'Write a comment, question or interpretation of this report',
         showMoreOptions: 'Show more options',
         showFewOptions: 'Show few options',
         mainAction: 'Get Report',
@@ -138,8 +141,9 @@ export const i18nKeys = {
         homeLabel: 'Reporting Rate Summary',
         homeAction: 'Get Report',
         header: 'Reporting Rate Summary',
-        description: 'Browse the reporting rates of data sets by organisation unit and period based' +
-        ' on various criteria for submission.',
+        description:
+            'Browse the reporting rates of data sets by organisation unit and period based' +
+            ' on various criteria for submission.',
         reportPeriodLabel: 'Report period',
         organisationUnitLabel: 'Report organisation unit',
         showMoreOptions: 'Show more options',
@@ -154,7 +158,8 @@ export const i18nKeys = {
         homeLabel: 'Resource',
         homeAction: 'View Resources',
         header: 'Resource',
-        description: 'View and add resources. These resources can be uploaded documents or URLs on the web.',
+        description:
+            'View and add resources. These resources can be uploaded documents or URLs on the web.',
         search: 'Search',
         addNewResourceTitle: 'Add New Resource',
         editResourceTitle: 'Edit Resource',
@@ -172,8 +177,9 @@ export const i18nKeys = {
         homeLabel: 'Organisation Unit Distribution Report',
         homeAction: 'Get Report',
         header: 'Organisation Unit Distribution Report',
-        description: 'Browse the organisation unit distribution report based on the organisation unit group sets' +
-        ' and its groups.',
+        description:
+            'Browse the organisation unit distribution report based on the organisation unit group sets' +
+            ' and its groups.',
         organisationUnitLabel: 'Report organisation unit',
         exportReport: 'download as xls',
         getReportAction: 'Get Report',
@@ -184,7 +190,8 @@ export const i18nKeys = {
         homeLabel: 'Data Approval',
         homeAction: 'View Data Values',
         header: 'Data Approval',
-        description: 'View data and manage data approval by approving or unapproving, accepting or unaccepting data.',
+        description:
+            'View data and manage data approval by approving or unapproving, accepting or unaccepting data.',
         organisationUnitLabel: 'Organisation unit',
         reportPeriodLabel: 'Period',
         mainAction: 'Get Data',
@@ -199,18 +206,21 @@ export const i18nKeys = {
             PARTIALLY_APPROVED_HERE: 'Approved for part of this period',
             APPROVED_ABOVE: 'approved_at_a_higher_level',
             APPROVED_HERE: 'Approved',
-            PARTIALLY_APPROVED_ELSEWHERE: 'Approved elsewhere for part of this period',
+            PARTIALLY_APPROVED_ELSEWHERE:
+                'Approved elsewhere for part of this period',
             APPROVED_ELSEWHERE: 'Approved elsewhere',
             PARTIALLY_ACCEPTED_HERE: 'Accepted for part of this period',
             ACCEPTED_HERE: 'Approved and accepted',
-            PARTIALLY_ACCEPTED_ELSEWHERE: 'Accepted elsewhere for part of this period',
+            PARTIALLY_ACCEPTED_ELSEWHERE:
+                'Accepted elsewhere for part of this period',
             ACCEPTED_ELSEWHERE: 'Accepted elsewhere',
         },
         confirmActionNotifications: {
             APPROVE: 'Are you sure you want to approve this data set?',
             UNAPPROVE: 'Are you sure you want to unapprove this data set?',
             ACCEPT: 'Are you sure you want to accept this data set approval?',
-            UNACCEPT: 'Are you sure you want to unaccept this data set approval?',
+            UNACCEPT:
+                'Are you sure you want to unaccept this data set approval?',
         },
         buttonLabels: {
             approve: 'Approve',
@@ -233,7 +243,8 @@ export const i18nKeys = {
         unexpectedError: 'Unexpected Error',
         interpretationShared: 'Interpretation Shared',
         noResultsFound: 'No results have been found',
-        rightsMessage: 'This object will be created with public edit and view rights',
+        rightsMessage:
+            'This object will be created with public edit and view rights',
         confirmDelete: 'Confirm delete',
     },
     d2UiComponents: {
@@ -313,6 +324,5 @@ export const i18nKeys = {
         'jul-dec': 'jul-dec',
         'apr-sep': 'apr-sep',
         'oct-mar': 'oct-mar',
-
     },
-};
+}

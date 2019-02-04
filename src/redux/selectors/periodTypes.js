@@ -1,4 +1,4 @@
-import i18n from '@dhis2/d2-i18n';
+import i18n from '@dhis2/d2-i18n'
 
 /* do not change property names, those are ids from period types server */
 const translations = {
@@ -18,11 +18,11 @@ const translations = {
     FinancialApril: i18n.t('Financial-April'),
     FinancialJuly: i18n.t('Financial-July'),
     FinancialOct: i18n.t('Financial-Oct'),
-};
+}
 
 export default function pluckPeriodTypes(periodTypes) {
     if (!Array.isArray(periodTypes)) {
-        return periodTypes;
+        return periodTypes
     }
 
     return periodTypes.reduce((acc, periodType) => {
@@ -31,8 +31,8 @@ export default function pluckPeriodTypes(periodTypes) {
             acc.push({
                 id: periodType.name,
                 displayName: translations[periodType.name],
-            });
+            })
         }
-        return acc;
-    }, []);
+        return acc
+    }, [])
 }

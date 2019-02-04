@@ -5,6 +5,6 @@ const HomeStyle = {
             textDecoration: 'none !important',
         },
     },
-};
+}
 
-export default HomeStyle;
+export default HomeStyle

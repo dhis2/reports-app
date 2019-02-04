@@ -1,26 +1,26 @@
 /* React */
-import React from 'react';
+import React from 'react'
 
 /* React Router */
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom'
 
 /* App components */
-import Home from '../../pages/home/Home';
-import NoMatch from './NoMatch';
+import Home from '../../pages/home/Home'
+import NoMatch from './NoMatch'
 
 /* App context */
-import AppContext from '../../pages/AppContext';
+import AppContext from '../../pages/AppContext'
 
 /* App configs */
-import { sections } from '../../pages/sections.conf';
+import { sections } from '../../pages/sections.conf'
 
 const AppRouter = () => {
-    const routes = sections.map((section) => {
+    const routes = sections.map(section => {
         const routeRender = () => {
-            const Page = section.component;
+            const Page = section.component
             return (
                 <AppContext.Consumer>
-                    { appContext => (
+                    {appContext => (
                         <Page
                             d2={appContext.d2}
                             sectionKey={section.key}
@@ -28,8 +28,8 @@ const AppRouter = () => {
                         />
                     )}
                 </AppContext.Consumer>
-            );
-        };
+            )
+        }
         return (
             <Route
                 key={section.key}
@@ -37,26 +37,22 @@ const AppRouter = () => {
                 path={section.path}
                 render={routeRender}
             />
-        );
-    });
+        )
+    })
 
     /* Home route */
-    const homeRouteRender = () => (
-        <Home sectionKey="home" />
-    );
+    const homeRouteRender = () => <Home sectionKey="home" />
 
-    routes.push(<Route key="home" exact path="/" render={homeRouteRender} />);
+    routes.push(<Route key="home" exact path="/" render={homeRouteRender} />)
 
     /* No Match Route */
-    routes.push(<Route key="no-match-route" component={NoMatch} />);
+    routes.push(<Route key="no-match-route" component={NoMatch} />)
 
     return (
         <main>
-            <Switch>
-                {routes}
-            </Switch>
+            <Switch>{routes}</Switch>
         </main>
-    );
-};
+    )
+}
 
-export default AppRouter;
+export default AppRouter
