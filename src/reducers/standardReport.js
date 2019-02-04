@@ -3,8 +3,8 @@ import {
     ADD_NEW_REPORT_ACTION,
     CONTEXT_MENU_ACTION,
 } from '../pages/standard-report/standard.report.conf';
-import { INITIAL_PAGER } from '../helpers/pagination';
-import { ACTION_MESSAGE, ERROR, LOADING, SUCCESS } from '../helpers/feedbackSnackBarTypes';
+import { INITIAL_PAGER } from '../utils/pagination';
+import { ACTION_MESSAGE, ERROR, LOADING, SUCCESS } from '../utils/feedbackSnackBarTypes';
 import i18n from '../locales';
 import { i18nKeys } from '../i18n';
 

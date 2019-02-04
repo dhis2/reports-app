@@ -13,7 +13,7 @@ import { Button, InputField, SelectField, CheckBox, SvgIcon, TextField } from '@
 /* Redux */
 import { connect } from 'react-redux';
 import { updateFeedbackState } from '../../../actions/feedback';
-import { LOADING } from '../../../helpers/feedbackSnackBarTypes';
+import { LOADING } from '../../../utils/feedbackSnackBarTypes';
 
 /* styles */
 import appStyles from '../../../styles';

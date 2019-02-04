@@ -25,8 +25,8 @@ import Report from '../../components/report/Report';
 import DataApprovalStatusContainer from './DataApprovalStatus';
 
 /* utils */
-import { getDocsUrl } from '../../helpers/getDocsUrl';
-import { LOADING, SUCCESS } from '../../helpers/feedbackSnackBarTypes';
+import { getDocsUrl } from '../../utils/getDocsUrl';
+import { LOADING, SUCCESS } from '../../utils/feedbackSnackBarTypes';
 
 /* styles */
 import styles from '../../styles';

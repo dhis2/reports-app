@@ -23,11 +23,11 @@ import appStyles from '../../styles';
 import Page from '../Page';
 import PageHelper from '../../components/page-helper/PageHelper';
 import { ConnectedAddEditResource } from './add-edit-resource/AddEditResource';
-import { ACTION_MESSAGE, SUCCESS, LOADING } from '../../helpers/feedbackSnackBarTypes';
+import { ACTION_MESSAGE, SUCCESS, LOADING } from '../../utils/feedbackSnackBarTypes';
 
 /* utils */
-import { getDocsUrl } from '../../helpers/getDocsUrl';
-import { calculatePageValue, INITIAL_PAGER } from '../../helpers/pagination';
+import { getDocsUrl } from '../../utils/getDocsUrl';
+import { calculatePageValue, INITIAL_PAGER } from '../../utils/pagination';
 
 /* app config */
 import { DOCUMENTS_ENDPOINT, ADD_NEW_RESOURCE_ACTION, CONTEXT_MENU_ACTION, CONTEXT_MENU_ICONS } from './resource.conf';

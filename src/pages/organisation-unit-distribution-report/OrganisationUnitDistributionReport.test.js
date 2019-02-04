@@ -9,7 +9,7 @@ import OrganisationUnitsTree from '../../components/available-organisation-units
 import GroupSets from '../../components/group-sets-dropdown/GroupSetsDropdown';
 import Report from '../../components/report/Report';
 
-import fakerData from '../../helpers/fakerTests';
+import fakerData from '../../utils/fakerTests';
 
 import {
     sections,

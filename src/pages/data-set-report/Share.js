@@ -15,7 +15,7 @@ import i18n from '../../locales';
 import { i18nKeys } from '../../i18n';
 
 /* utils */
-import { ERROR, LOADING, SUCCESS } from '../../helpers/feedbackSnackBarTypes';
+import { ERROR, LOADING, SUCCESS } from '../../utils/feedbackSnackBarTypes';
 
 export class Share extends PureComponent {
     static propTypes = {

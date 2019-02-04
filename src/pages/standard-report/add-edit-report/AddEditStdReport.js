@@ -24,7 +24,7 @@ import {
 } from '../standard.report.conf';
 
 /* utils */
-import { LOADING } from '../../../helpers/feedbackSnackBarTypes';
+import { LOADING } from '../../../utils/feedbackSnackBarTypes';
 
 /* i18n */
 import i18n from '../../../locales';

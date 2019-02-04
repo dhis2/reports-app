@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FeedbackSnackbar, CircularProgress } from '@dhis2/d2-ui-core';
-import { LOADING } from '../helpers/feedbackSnackBarTypes';
+import { LOADING } from '../utils/feedbackSnackBarTypes';
 import styles from '../styles';
 
 const Feedback = ({ open, conf, onClose }) => (

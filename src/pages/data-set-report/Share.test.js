@@ -11,7 +11,7 @@ import { Button, InputField } from '@dhis2/d2-ui-core';
 import { Share } from './Share';
 
 /* fake data */
-import fakerData from '../../helpers/fakerTests';
+import fakerData from '../../utils/fakerTests';
 
 jest.mock('@dhis2/d2-ui-core', () => ({
     Button: ('Button'),

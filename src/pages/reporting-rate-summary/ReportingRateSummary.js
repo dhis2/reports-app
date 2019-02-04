@@ -29,8 +29,8 @@ import PeriodPickerComponent from '../../components/period-picker-with-period-ty
 import Report from '../../components/report/Report';
 
 /* utils */
-import { getDocsUrl } from '../../helpers/getDocsUrl';
-import { LOADING, SUCCESS } from '../../helpers/feedbackSnackBarTypes';
+import { getDocsUrl } from '../../utils/getDocsUrl';
+import { LOADING, SUCCESS } from '../../utils/feedbackSnackBarTypes';
 
 /* styles */
 import styles from '../../styles';

@@ -18,7 +18,7 @@ jest.mock('@dhis2/d2-ui-org-unit-tree', () => ({
     OrgUnitTree: ('OrgUnitTree'),
 }));
 
-import fakerData from '../../../helpers/fakerTests';
+import fakerData from '../../../utils/fakerTests';
 
 const mockReport = {
     id: 'reportId',

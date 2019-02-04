@@ -17,7 +17,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 /* d2-ui */
 import { Button, SelectField } from '@dhis2/d2-ui-core';
 
-import fakerData from '../../../helpers/fakerTests';
+import fakerData from '../../../utils/fakerTests';
 import { TYPES } from '../standard.report.conf';
 
 /* Mocks */

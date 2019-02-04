@@ -14,7 +14,7 @@ import { ADD_NEW_RESOURCE_ACTION, CONTEXT_MENU_ACTION } from './resource.conf';
 
 import Resource from './Resource';
 
-import fakerData from '../../helpers/fakerTests';
+import fakerData from '../../utils/fakerTests';
 
 import {
     sections,

@@ -7,7 +7,7 @@ import i18n from '../locales';
 import { i18nKeys } from '../i18n';
 
 /* Feedback Snackbar */
-import { ERROR } from '../helpers/feedbackSnackBarTypes';
+import { ERROR } from '../utils/feedbackSnackBarTypes';
 
 class Page extends Component {
     static propTypes = {

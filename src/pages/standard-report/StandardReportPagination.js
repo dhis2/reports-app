@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Pagination } from '@dhis2/d2-ui-core';
-import { calculatePageValue } from '../../helpers/pagination';
+import { calculatePageValue } from '../../utils/pagination';
 import appStyles from '../../styles';
 
 const StandardReportPagination = props => (

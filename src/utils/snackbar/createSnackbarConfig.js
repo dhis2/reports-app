@@ -1,6 +1,6 @@
 import i18n from '../../locales';
 import { i18nKeys } from '../../i18n';
-import { ACTION_MESSAGE } from '../../helpers/feedbackSnackBarTypes';
+import { ACTION_MESSAGE } from '../../utils/feedbackSnackBarTypes';
 
 const createSnackbarConfig = (state) => {
     if (state.standardReport.requestDelete) {
