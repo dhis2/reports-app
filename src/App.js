@@ -19,7 +19,7 @@ import AppRouter from './components/app-router/AppRouter';
 import Feedback from './components/Feedback';
 
 /* App context */
-import AppContext from './context';
+import AppContext from './pages/AppContext';
 import createSnackbarConfig from './utils/snackbar/createSnackbarConfig';
 
 /* App configs */

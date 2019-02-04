@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { OrgUnitTree } from '@dhis2/d2-ui-org-unit-tree';
 
 /* App context */
-import AppContext from '../../context';
+import AppContext from '../../pages/AppContext';
 
 /* i18n */
 import i18n from '../../locales';

@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { updateFeedbackState } from '../../redux/actions/feedback';
 
 /* App context */
-import AppContext from '../../context';
+import AppContext from '../../pages/AppContext';
 
 /* i18n */
 import i18n from '../../locales';

@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { DropDown } from '@dhis2/d2-ui-core';
 
 /* App context */
-import AppContext from '../../context';
+import AppContext from '../../pages/AppContext';
 
 /* i18n */
 import i18n from '../../locales';
