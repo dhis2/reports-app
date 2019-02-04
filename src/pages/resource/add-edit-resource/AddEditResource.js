@@ -12,7 +12,7 @@ import { Button, InputField, SelectField, CheckBox, SvgIcon, TextField } from '@
 
 /* Redux */
 import { connect } from 'react-redux';
-import { updateFeedbackState } from '../../../actions/feedback';
+import { updateFeedbackState } from '../../../redux/actions/feedback';
 import { LOADING } from '../../../utils/feedbackSnackBarTypes';
 
 /* styles */

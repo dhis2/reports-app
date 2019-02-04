@@ -8,7 +8,7 @@ import { init, getManifest, getUserSettings } from 'd2/lib/d2';
 /* Redux */
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
-import store, { history } from './store';
+import store, { history } from './redux/store';
 
 /* i18n */
 import { configI18n, injectTranslationsToD2 } from './configI18n';

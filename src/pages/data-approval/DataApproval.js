@@ -10,7 +10,7 @@ import { Button, PeriodPicker } from '@dhis2/d2-ui-core';
 
 /* Redux */
 import { connect } from 'react-redux';
-import { updateFeedbackState } from '../../actions/feedback';
+import { updateFeedbackState } from '../../redux/actions/feedback';
 
 /* i18n */
 import i18n from '../../locales';

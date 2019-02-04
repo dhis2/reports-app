@@ -12,7 +12,7 @@ import { Sidebar } from '@dhis2/d2-ui-core';
 
 /* Redux */
 import { connect } from 'react-redux';
-import { updateFeedbackState } from './actions/feedback';
+import { updateFeedbackState } from './redux/actions/feedback';
 
 /* App components */
 import AppRouter from './components/app-router/AppRouter';

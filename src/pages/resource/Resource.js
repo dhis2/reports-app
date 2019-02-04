@@ -13,7 +13,7 @@ import '@dhis2/d2-ui-core/build/css/Pagination.css';
 
 /* Redux */
 import { connect } from 'react-redux';
-import { updateFeedbackState } from '../../actions/feedback';
+import { updateFeedbackState } from '../../redux/actions/feedback';
 
 /* styles */
 import styles from './Resource.style';

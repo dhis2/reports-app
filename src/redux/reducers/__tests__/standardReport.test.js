@@ -4,8 +4,8 @@ import { defaultState } from '../standardReport';
 import {
     ADD_NEW_REPORT_ACTION,
     CONTEXT_MENU_ACTION,
-} from '../../pages/standard-report/standard.report.conf';
-import { ACTION_MESSAGE, ERROR, LOADING, SUCCESS } from '../../utils/feedbackSnackBarTypes';
+} from '../../../pages/standard-report/standard.report.conf';
+import { ACTION_MESSAGE, ERROR, LOADING, SUCCESS } from '../../../utils/feedbackSnackBarTypes';
 
 describe('Reducer - standardReport', function() {
     const mockReport = () => ({ displayName: 'foobar' });

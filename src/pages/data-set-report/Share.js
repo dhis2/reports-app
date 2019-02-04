@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 /* d2-ui components */
 import { InputField, Button } from '@dhis2/d2-ui-core';
 import { connect } from 'react-redux';
-import { updateFeedbackState } from '../../actions/feedback';
+import { updateFeedbackState } from '../../redux/actions/feedback';
 
 /* App context */
 import AppContext from '../../context';

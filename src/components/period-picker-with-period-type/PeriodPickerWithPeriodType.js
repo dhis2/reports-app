@@ -11,8 +11,8 @@ import { DropDown, PeriodPicker } from '@dhis2/d2-ui-core';
 import AppContext from '../../context';
 
 /* Actions */
-import loadPeriodTypes from '../../actions/periodTypes';
-import pluckPeriodTypes from '../../selectors/periodTypes';
+import loadPeriodTypes from '../../redux/actions/periodTypes';
+import pluckPeriodTypes from '../../redux/selectors/periodTypes';
 
 /* i18n */
 

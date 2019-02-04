@@ -1,4 +1,4 @@
-import { getPeriodTypes } from '../api';
+import { getPeriodTypes } from '../../utils/api';
 
 export const ACTION_TYPES = {
     PERIOD_TYPES_RECEIVED: 'PERIOD_TYPES_RECEIVED',
