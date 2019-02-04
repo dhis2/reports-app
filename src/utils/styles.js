@@ -1,9 +1,9 @@
-const LEFT_BART_WIDTH = 295;
-const HEADER_HEIGHT = '4rem';
-const MAX_WIDTH = 1400;
-const CONTENT_AREA_PADDING = 20;
-const PAGING_BOTTOM_MARGIN = 60;
-export const PRIMARY_COLOR = '#004ba0';
+const LEFT_BART_WIDTH = 295
+const HEADER_HEIGHT = '4rem'
+const MAX_WIDTH = 1400
+const CONTENT_AREA_PADDING = 20
+const PAGING_BOTTOM_MARGIN = 60
+export const PRIMARY_COLOR = '#004ba0'
 
 const styles = {
     container: {
@@ -94,6 +94,6 @@ const styles = {
     actionButton: {
         marginRight: 16,
     },
-};
+}
 
-export default styles;
+export default styles

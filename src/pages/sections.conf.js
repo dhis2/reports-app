@@ -1,23 +1,23 @@
 /* Page Components */
-import { ConnectedStandardReport } from './StandardReport';
-import { ConnectedDataSetReport } from './data-set-report/DataSetReport';
-import { ConnectedReportingRateSummary } from './reporting-rate-summary/ReportingRateSummary';
-import { ConnectedResource } from './resource/Resource';
-import { ConnectedOrganisationUnitDistributionReport }
-    from './organisation-unit-distribution-report/OrganisationUnitDistributionReport';
-import { ConnectedDataApproval } from './data-approval/DataApproval';
+import { ConnectedStandardReport } from './StandardReport'
+import { ConnectedDataSetReport } from './data-set-report/DataSetReport'
+import { ConnectedReportingRateSummary } from './reporting-rate-summary/ReportingRateSummary'
+import { ConnectedResource } from './resource/Resource'
+import { ConnectedOrganisationUnitDistributionReport } from './organisation-unit-distribution-report/OrganisationUnitDistributionReport'
+import { ConnectedDataApproval } from './data-approval/DataApproval'
 
 /* i18n */
-import { i18nKeys } from '../utils/i18n/i18nKeys';
+import { i18nKeys } from '../utils/i18n/i18nKeys'
 
-export const STANDARD_REPORT_SECTION_KEY = 'standard-report';
-export const DATA_SET_REPORT_SECTION_KEY = 'data-set-report';
-export const REPORTING_RATE_SUMMARY_SECTION_KEY = 'reporting-rate-summary';
-export const RESOURCE_SECTION_KEY = 'resource';
-export const ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_KEY = 'organisation-unit-distribution-report';
-export const DATA_APPROVAL_SECTION_KEY = 'data-approval';
+export const STANDARD_REPORT_SECTION_KEY = 'standard-report'
+export const DATA_SET_REPORT_SECTION_KEY = 'data-set-report'
+export const REPORTING_RATE_SUMMARY_SECTION_KEY = 'reporting-rate-summary'
+export const RESOURCE_SECTION_KEY = 'resource'
+export const ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_KEY =
+    'organisation-unit-distribution-report'
+export const DATA_APPROVAL_SECTION_KEY = 'data-approval'
 
-export const DEBOUNCE_DELAY = 500;
+export const DEBOUNCE_DELAY = 500
 
 export const sections = [
     {
@@ -75,7 +75,8 @@ export const sections = [
         info: {
             label: i18nKeys.organisationUnitDistributionReport.homeLabel,
             icon: 'device_hub',
-            description: i18nKeys.organisationUnitDistributionReport.description,
+            description:
+                i18nKeys.organisationUnitDistributionReport.description,
             actionText: i18nKeys.organisationUnitDistributionReport.homeAction,
             docs: 'using_reporting_orgunit_distribution_reports',
         },
@@ -92,15 +93,15 @@ export const sections = [
             docs: 'data_approval',
         },
     },
-];
+]
 
-export const getDocsKeyForSection = (sectionKey) => {
+export const getDocsKeyForSection = sectionKey => {
     for (let i = 0; i < sections.length; i++) {
-        const section = sections[i];
+        const section = sections[i]
         if (section.key === sectionKey) {
-            return section.info.docs;
+            return section.info.docs
         }
     }
 
-    return '';
-};
+    return ''
+}

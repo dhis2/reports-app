@@ -9,7 +9,6 @@ const fakerData = {
             getApi: () => ({ baseUrl: 'http://localhost:8080' }),
         },
     },
-};
+}
 
-export default fakerData;
-
+export default fakerData

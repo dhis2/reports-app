@@ -1,26 +1,29 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Table from '@dhis2/d2-ui-table';
-import '@dhis2/d2-ui-core/build/css/Table.css';
-import '@dhis2/d2-ui-core/build/css/Pagination.css';
-import manageError from './manageError.HOC';
-import Feedback from '../components/Feedback';
-import Headline from './standard-report/Headline';
-import SearchBox from './standard-report/SearchBox';
-import NoResultsMessage from './standard-report/NoResultsMessage';
-import AddReportButton from './standard-report/AddReportButton';
-import StandardReportPagination from './standard-report/StandardReportPagination';
-import ActionComponent from './standard-report/ActionComponent';
-import StyledHtmlReport from './standard-report/StyledHtmlReport';
-import { CONTEXT_MENU_ACTION, CONTEXT_MENU_ICONS } from './standard-report/standard.report.conf';
+import React from 'react'
+import PropTypes from 'prop-types'
+import Table from '@dhis2/d2-ui-table'
+import '@dhis2/d2-ui-core/build/css/Table.css'
+import '@dhis2/d2-ui-core/build/css/Pagination.css'
+import manageError from './manageError.HOC'
+import Feedback from '../components/Feedback'
+import Headline from './standard-report/Headline'
+import SearchBox from './standard-report/SearchBox'
+import NoResultsMessage from './standard-report/NoResultsMessage'
+import AddReportButton from './standard-report/AddReportButton'
+import StandardReportPagination from './standard-report/StandardReportPagination'
+import ActionComponent from './standard-report/ActionComponent'
+import StyledHtmlReport from './standard-report/StyledHtmlReport'
+import {
+    CONTEXT_MENU_ACTION,
+    CONTEXT_MENU_ICONS,
+} from './standard-report/standard.report.conf'
 import {
     hasNextPageCreator,
     hasPreviousPageCreator,
     displayNoResults,
     showContextAction,
     createFeedbackConf,
-} from './standard-report/helper';
-import connectStandardReport from './standard-report/connectStandardReport';
+} from './standard-report/helper'
+import connectStandardReport from './standard-report/connectStandardReport'
 
 export default class StandardReport extends React.Component {
     static propTypes = {
@@ -40,27 +43,27 @@ export default class StandardReport extends React.Component {
         deleteStandardReport: PropTypes.func.isRequired,
         sharingSettings: PropTypes.func.isRequired,
         requestDeleteStandardReport: PropTypes.func.isRequired,
-    };
+    }
 
     getChildContext() {
-        return { d2: this.props.d2 };
+        return { d2: this.props.d2 }
     }
 
     componentDidMount() {
-        this.props.loadStandardReports();
+        this.props.loadStandardReports()
     }
 
     render() {
-        const { props } = this;
-        const { pager } = props;
-        const hasNextPage = hasNextPageCreator(pager.page, pager.pageCount);
-        const hasPreviousPage = hasPreviousPageCreator(pager.page);
+        const { props } = this
+        const { pager } = props
+        const hasNextPage = hasNextPageCreator(pager.page, pager.pageCount)
+        const hasPreviousPage = hasPreviousPageCreator(pager.page)
         const contextMenuOptions = {
             [CONTEXT_MENU_ACTION.CREATE]: props.createReport,
             [CONTEXT_MENU_ACTION.EDIT]: props.editReport,
             [CONTEXT_MENU_ACTION.SHARING_SETTINGS]: props.sharingSettings,
             [CONTEXT_MENU_ACTION.DELETE]: props.requestDeleteStandardReport,
-        };
+        }
 
         return (
             <div>
@@ -70,7 +73,10 @@ export default class StandardReport extends React.Component {
                     systemVersion={props.d2.system.version}
                     sectionKey={props.sectionKey}
                 />
-                <div id="std-report-content" style={{ display: props.htmlReport ? 'none' : 'block' }} >
+                <div
+                    id="std-report-content"
+                    style={{ display: props.htmlReport ? 'none' : 'block' }}
+                >
                     <StandardReportPagination
                         total={props.pager.total}
                         hasNextPage={hasNextPage}
@@ -90,7 +96,9 @@ export default class StandardReport extends React.Component {
                         contextMenuIcons={CONTEXT_MENU_ICONS}
                         isContextActionAllowed={showContextAction}
                     />
-                    <NoResultsMessage styles={displayNoResults(props.reports, props.loading)} />
+                    <NoResultsMessage
+                        styles={displayNoResults(props.reports, props.loading)}
+                    />
                     <StandardReportPagination
                         total={props.pager.total}
                         hasNextPage={hasNextPage}
@@ -110,22 +118,22 @@ export default class StandardReport extends React.Component {
                         handleDisplayHtmlReport={props.showHtmlReport}
                     />
                 </div>
-                { props.htmlReport &&
+                {props.htmlReport && (
                     <StyledHtmlReport htmlReport={props.htmlReport} />
-                }
+                )}
                 <Feedback
                     open={props.showFeedback}
                     conf={createFeedbackConf(props)}
                 />
             </div>
-        );
+        )
     }
 }
 
 StandardReport.childContextTypes = {
     d2: PropTypes.object,
-};
+}
 
 export const ConnectedStandardReport = connectStandardReport(
-    manageError(StandardReport),
-);
+    manageError(StandardReport)
+)
