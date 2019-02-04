@@ -27,7 +27,7 @@ import GroupSets from '../../components/group-sets-dropdown/GroupSetsDropdown';
 import Report from '../../components/report/Report';
 
 /* utils */
-import { getDocsUrl } from '../../helpers/docs';
+import { getDocsUrl } from '../../helpers/getDocsUrl';
 import { LOADING, SUCCESS } from '../../helpers/feedbackSnackBarTypes';
 
 /* styles */

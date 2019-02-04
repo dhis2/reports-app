@@ -31,7 +31,7 @@ import ShareComment from './Share';
 import Report from '../../components/report/Report';
 
 /* utils */
-import { getDocsUrl } from '../../helpers/docs';
+import { getDocsUrl } from '../../helpers/getDocsUrl';
 import { LOADING, SUCCESS } from '../../helpers/feedbackSnackBarTypes';
 
 /* styles */

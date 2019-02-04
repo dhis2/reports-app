@@ -9,4 +9,5 @@ export const updateFeedbackState = dispatch => (
             showSnackbar,
             snackbarConf,
         });
-    });
+    })
+;

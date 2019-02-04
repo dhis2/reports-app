@@ -106,16 +106,16 @@ export class DataApprovalStatus extends PureComponent {
 
     handlerForCurrentAction = () => {
         switch (this.state.action) {
-        case DataApprovalActionsEnum.APPROVE:
-            return this.approve;
-        case DataApprovalActionsEnum.UNAPPROVE:
-            return this.unapprove;
-        case DataApprovalActionsEnum.ACCEPT:
-            return this.accept;
-        case DataApprovalActionsEnum.UNACCEPT:
-            return this.unaccept;
-        default:
-            return null;
+            case DataApprovalActionsEnum.APPROVE:
+                return this.approve;
+            case DataApprovalActionsEnum.UNAPPROVE:
+                return this.unapprove;
+            case DataApprovalActionsEnum.ACCEPT:
+                return this.accept;
+            case DataApprovalActionsEnum.UNACCEPT:
+                return this.unaccept;
+            default:
+                return null;
         }
     };
 

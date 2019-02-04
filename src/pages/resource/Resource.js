@@ -26,7 +26,7 @@ import { ConnectedAddEditResource } from './add-edit-resource/AddEditResource';
 import { ACTION_MESSAGE, SUCCESS, LOADING } from '../../helpers/feedbackSnackBarTypes';
 
 /* utils */
-import { getDocsUrl } from '../../helpers/docs';
+import { getDocsUrl } from '../../helpers/getDocsUrl';
 import { calculatePageValue, INITIAL_PAGER } from '../../helpers/pagination';
 
 /* app config */
@@ -274,16 +274,16 @@ export default class Resource extends Page {
 
     getActionComponent() {
         switch (this.state.selectedAction) {
-        case ADD_NEW_RESOURCE_ACTION:
-            return this.getAddResourceComponent();
-        case CONTEXT_MENU_ACTION.VIEW:
-            return this.getViewResourceComponent();
-        case CONTEXT_MENU_ACTION.SHARING_SETTINGS:
-            return this.getSharingDialog();
-        case CONTEXT_MENU_ACTION.EDIT:
-            return this.getEditComponent();
-        default:
-            return '';
+            case ADD_NEW_RESOURCE_ACTION:
+                return this.getAddResourceComponent();
+            case CONTEXT_MENU_ACTION.VIEW:
+                return this.getViewResourceComponent();
+            case CONTEXT_MENU_ACTION.SHARING_SETTINGS:
+                return this.getSharingDialog();
+            case CONTEXT_MENU_ACTION.EDIT:
+                return this.getEditComponent();
+            default:
+                return '';
         }
     }
 

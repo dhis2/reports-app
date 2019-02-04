@@ -6,6 +6,9 @@
     "DHIS_CONFIG": true
   },
   "rules": {
+    "indent": [2, 4, {"SwitchCase": 1}],
+    "react/no-unused-prop-types": 0,
+    "no-unused-vars": 1,
     "no-shadow": 0
   }
 }

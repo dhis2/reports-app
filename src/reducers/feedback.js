@@ -10,14 +10,15 @@ const initialState = {
 
 const feedback = (state = initialState, action) => {
     switch (action.type) {
-    case ACTION_TYPE.UPDATE_FEEDBACK_STATE:
-        return {
-            ...state,
-            showSnackbar: action.showSnackbar,
-            snackbarConf: { ...action.snackbarConf },
-        };
-    default:
-        return state;
+        case ACTION_TYPE.UPDATE_FEEDBACK_STATE:
+            return {
+                ...state,
+                showSnackbar: action.showSnackbar,
+                snackbarConf: { ...action.snackbarConf },
+            };
+
+        default:
+            return state;
     }
 };
 

@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 /* d2-ui */
 import D2UIApp from '@dhis2/d2-ui-app';
 import HeaderBar from '@dhis2/d2-ui-header-bar';
-import { Sidebar, FeedbackSnackbar, CircularProgress } from '@dhis2/d2-ui-core';
+import { Sidebar } from '@dhis2/d2-ui-core';
 
 /* Redux */
 import { connect } from 'react-redux';
@@ -16,10 +16,11 @@ import { updateFeedbackState } from './actions/feedback';
 
 /* App components */
 import AppRouter from './components/app-router/AppRouter';
+import Feedback from './components/Feedback';
 
 /* App context */
 import AppContext from './context';
-import { LOADING } from './helpers/feedbackSnackBarTypes';
+import createSnackbarConfig from './utils/snackbar/createSnackbarConfig';
 
 /* App configs */
 import { sections } from './pages/sections.conf';
@@ -73,21 +74,6 @@ class App extends PureComponent {
             },
         ));
 
-        const feedbackElement = this.props.snackbarConf.type === LOADING ?
-            (
-                <div style={styles.feedbackSnackBar}>
-                    <CircularProgress />
-                </div>
-            ) : (
-                <span id={'feedbackSnackbarId'}>
-                    <FeedbackSnackbar
-                        onClose={this.onFeedbackSnackbarClose}
-                        show={this.props.showSnackbar}
-                        conf={this.props.snackbarConf}
-                    />
-                </span>
-            );
-
         return (
             <AppContext.Provider value={this.getContext()}>
                 <D2UIApp>
@@ -103,7 +89,11 @@ class App extends PureComponent {
                         </div>
                     </div>
                     <div id="feedback-snackbar">
-                        {feedbackElement}
+                        <Feedback
+                            open={this.props.showSnackbar}
+                            conf={this.props.snackbarConf}
+                            onClose={this.onFeedbackSnackbarClose}
+                        />
                     </div>
                 </D2UIApp>
             </AppContext.Provider>
@@ -113,7 +103,7 @@ class App extends PureComponent {
 
 const mapStateToProps = state => ({
     showSnackbar: state.feedback.showSnackbar,
-    snackbarConf: { ...state.feedback.snackbarConf },
+    snackbarConf: createSnackbarConfig(state),
     currentSection: state.router.location.pathname.substring(1),
 });
 
