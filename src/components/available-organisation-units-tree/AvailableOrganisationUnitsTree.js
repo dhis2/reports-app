@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
 /* d2-ui components */
-import { OrgUnitTree } from '@dhis2/d2-ui-org-unit-tree'
+import { OrgUnitTreeMultipleRoots } from '@dhis2/d2-ui-org-unit-tree'
 
 /* App context */
 import AppContext from '../../pages/AppContext'
@@ -22,24 +22,9 @@ const defaultStyles = {
 }
 
 export class AvailableOrganisationUnitsTree extends PureComponent {
-    static propTypes = {
-        d2: PropTypes.object.isRequired,
-        onChange: PropTypes.func,
-        style: PropTypes.object,
-    }
-
-    static defaultProps = {
-        onChange: null,
-        style: defaultStyles,
-    }
-
-    constructor() {
-        super()
-
-        this.state = {
-            selected: [],
-            rootWithMember: null,
-        }
+    state = {
+        selected: [],
+        rootsWithMembers: null,
     }
 
     componentDidMount() {
@@ -52,9 +37,8 @@ export class AvailableOrganisationUnitsTree extends PureComponent {
                         'id,displayName,path,children::isNotEmpty,memberCount',
                 })
                 .then(organisationUnitsResponse => {
-                    const organisationUnits = organisationUnitsResponse.toArray()
                     this.setState({
-                        rootWithMembers: organisationUnits[0],
+                        rootsWithMembers: organisationUnitsResponse.toArray(),
                     })
                 })
                 .catch(() => {
@@ -78,16 +62,17 @@ export class AvailableOrganisationUnitsTree extends PureComponent {
     }
 
     render() {
-        if (this.state.rootWithMembers) {
+        const { rootsWithMembers, selected } = this.state
+        if (rootsWithMembers) {
             return (
                 <div style={this.props.style.tree}>
-                    <OrgUnitTree
+                    <OrgUnitTreeMultipleRoots
                         hideMemberCount
-                        root={this.state.rootWithMembers}
-                        selected={this.state.selected}
-                        initiallyExpanded={[
-                            `/${this.state.rootWithMembers.id}`,
-                        ]}
+                        roots={rootsWithMembers}
+                        selected={selected}
+                        initiallyExpanded={rootsWithMembers.map(
+                            ({ id }) => `/${id}`
+                        )}
                         onSelectClick={this.handleOrgUnitClick}
                     />
                 </div>
@@ -102,6 +87,17 @@ export class AvailableOrganisationUnitsTree extends PureComponent {
             </span>
         )
     }
+}
+
+AvailableOrganisationUnitsTree.propTypes = {
+    d2: PropTypes.object.isRequired,
+    onChange: PropTypes.func,
+    style: PropTypes.object,
+}
+
+AvailableOrganisationUnitsTree.defaultProps = {
+    onChange: null,
+    style: defaultStyles,
 }
 
 export default props => (
