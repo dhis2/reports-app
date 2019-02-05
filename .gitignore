@@ -34,4 +34,4 @@ chrome
 chromeDownloads
 
 # i18n json files
-src/locales/
+src/utils/i18n/locales
