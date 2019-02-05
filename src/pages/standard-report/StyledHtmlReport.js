@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Paper } from 'material-ui';
-import HtmlReport from './HtmlReport';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Paper } from 'material-ui'
+import HtmlReport from './HtmlReport'
 
 const StyledHtmlReport = ({ htmlReport }) => (
     <Paper
@@ -13,14 +13,14 @@ const StyledHtmlReport = ({ htmlReport }) => (
     >
         <HtmlReport html={htmlReport} />
     </Paper>
-);
+)
 
 StyledHtmlReport.propTypes = {
     htmlReport: PropTypes.string,
-};
+}
 
 StyledHtmlReport.defaultProps = {
     htmlReport: null,
-};
+}
 
-export default StyledHtmlReport;
+export default StyledHtmlReport

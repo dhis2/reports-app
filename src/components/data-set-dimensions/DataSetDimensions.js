@@ -1,19 +1,19 @@
 /* React */
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 
 /* d2-ui components */
-import { DropDown } from '@dhis2/d2-ui-core';
+import { DropDown } from '@dhis2/d2-ui-core'
 
 /* App context */
-import AppContext from '../../pages/AppContext';
+import AppContext from '../../pages/AppContext'
 
 /* i18n */
-import i18n from '../../utils/i18n/locales';
-import { i18nKeys } from '../../utils/i18n/i18nKeys';
+import i18n from '../../utils/i18n/locales'
+import { i18nKeys } from '../../utils/i18n/i18nKeys'
 
 /* styles */
-import styles from '../../utils/styles';
+import styles from '../../utils/styles'
 
 export class DataSetDimensions extends PureComponent {
     static propTypes = {
@@ -33,41 +33,42 @@ export class DataSetDimensions extends PureComponent {
     }
 
     constructor() {
-        super();
+        super()
 
         this.state = {
             dimensions: [],
-        };
+        }
     }
 
     componentDidMount() {
-        this.fetchDataDimensions(this.props.dataSetId);
+        this.fetchDataDimensions(this.props.dataSetId)
     }
 
     componentWillReceiveProps({ dataSetId }) {
         if (this.props.dataSetId !== dataSetId) {
-            this.fetchDataDimensions(dataSetId);
+            this.fetchDataDimensions(dataSetId)
         }
     }
 
-    fetchDataDimensions = (dataSetId) => {
-        const api = this.props.d2.Api.getApi();
-        const url =
-            `dimensions/dataSet/${dataSetId}?fields=id,displayName,items[id,displayName]&order=name:asc&paging=false`;
-        api.get(url).then((response) => {
-            const dimensions = response.dimensions || [];
-            this.setState({
-                dimensions,
-            });
-        }).catch(() => {
-            this.setState({
-                dimensions: [],
-            });
-        });
+    fetchDataDimensions = dataSetId => {
+        const api = this.props.d2.Api.getApi()
+        const url = `dimensions/dataSet/${dataSetId}?fields=id,displayName,items[id,displayName]&order=name:asc&paging=false`
+        api.get(url)
+            .then(response => {
+                const dimensions = response.dimensions || []
+                this.setState({
+                    dimensions,
+                })
+            })
+            .catch(() => {
+                this.setState({
+                    dimensions: [],
+                })
+            })
     }
 
-    handleDimensionChange = dimensionId => (element) => {
-        this.props.onChange(dimensionId, element);
+    handleDimensionChange = dimensionId => element => {
+        this.props.onChange(dimensionId, element)
     }
 
     renderDimensionDropdown = dimension => (
@@ -84,23 +85,16 @@ export class DataSetDimensions extends PureComponent {
                 hintText={i18n.t(i18nKeys.dimensionsDropdown.hintText)}
             />
         </div>
-    );
+    )
 
-    render = () => (
-        this.state.dimensions.map(
-            dimension => this.renderDimensionDropdown(dimension),
+    render = () =>
+        this.state.dimensions.map(dimension =>
+            this.renderDimensionDropdown(dimension)
         )
-    );
 }
 
 export default props => (
     <AppContext.Consumer>
-        { appContext => (
-            <DataSetDimensions
-                d2={appContext.d2}
-                {...props}
-            />
-        )}
+        {appContext => <DataSetDimensions d2={appContext.d2} {...props} />}
     </AppContext.Consumer>
-);
-
+)

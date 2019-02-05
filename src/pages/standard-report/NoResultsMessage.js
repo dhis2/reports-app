@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import i18n from '../../utils/i18n/locales';
-import { i18nKeys } from '../../utils/i18n/i18nKeys';
+import React from 'react'
+import PropTypes from 'prop-types'
+import i18n from '../../utils/i18n/locales'
+import { i18nKeys } from '../../utils/i18n/i18nKeys'
 
 const NoResultsMessage = ({ additionalStyles }) => (
     <p
@@ -10,14 +10,14 @@ const NoResultsMessage = ({ additionalStyles }) => (
     >
         {i18n.t(i18nKeys.messages.noResultsFound)}
     </p>
-);
+)
 
 NoResultsMessage.propTypes = {
     additionalStyles: PropTypes.object,
-};
+}
 
 NoResultsMessage.defaultProps = {
     additionalStyles: {},
-};
+}
 
-export default NoResultsMessage;
+export default NoResultsMessage

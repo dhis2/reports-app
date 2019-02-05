@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import SharingDialog from '@dhis2/d2-ui-sharing-dialog';
+import React from 'react'
+import PropTypes from 'prop-types'
+import SharingDialog from '@dhis2/d2-ui-sharing-dialog'
 import {
     ADD_NEW_REPORT_ACTION,
     CONTEXT_MENU_ACTION,
-} from './standard.report.conf';
-import CreateStdReport from './create-report/CreateStdReport';
-import { ConnectedAddEditStdReport } from './add-edit-report/AddEditStdReport';
+} from './standard.report.conf'
+import CreateStdReport from './create-report/CreateStdReport'
+import { ConnectedAddEditStdReport } from './add-edit-report/AddEditStdReport'
 
 const ActionComponent = ({
     d2,
@@ -27,7 +27,7 @@ const ActionComponent = ({
                 onGetHtmlReport={handleDisplayHtmlReport}
                 onError={handleError}
             />
-        );
+        )
     }
 
     if (selectedAction === CONTEXT_MENU_ACTION.SHARING_SETTINGS) {
@@ -39,7 +39,7 @@ const ActionComponent = ({
                 type="report"
                 onRequestClose={handleClose}
             />
-        );
+        )
     }
 
     if (selectedAction === CONTEXT_MENU_ACTION.EDIT) {
@@ -51,7 +51,7 @@ const ActionComponent = ({
                 d2={d2}
                 onError={handleError}
             />
-        );
+        )
     }
 
     if (selectedAction === ADD_NEW_REPORT_ACTION) {
@@ -62,11 +62,11 @@ const ActionComponent = ({
                 d2={d2}
                 onError={handleError}
             />
-        );
+        )
     }
 
-    return null;
-};
+    return null
+}
 
 ActionComponent.propTypes = {
     d2: PropTypes.object.isRequired,
@@ -76,6 +76,6 @@ ActionComponent.propTypes = {
     handleClose: PropTypes.func.isRequired,
     handleError: PropTypes.func.isRequired,
     handleDisplayHtmlReport: PropTypes.func.isRequired,
-};
+}
 
-export default ActionComponent;
+export default ActionComponent

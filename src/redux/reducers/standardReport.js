@@ -1,12 +1,17 @@
-import { actionTypes } from '../actions/standardReport';
+import { actionTypes } from '../actions/standardReport'
 import {
     ADD_NEW_REPORT_ACTION,
     CONTEXT_MENU_ACTION,
-} from '../../pages/standard-report/standard.report.conf';
-import { INITIAL_PAGER } from '../../utils/pagination';
-import { ACTION_MESSAGE, ERROR, LOADING, SUCCESS } from '../../utils/feedbackSnackBarTypes';
-import i18n from '../../utils/i18n/locales';
-import { i18nKeys } from '../../utils/i18n/i18nKeys';
+} from '../../pages/standard-report/standard.report.conf'
+import { INITIAL_PAGER } from '../../utils/pagination'
+import {
+    ACTION_MESSAGE,
+    ERROR,
+    LOADING,
+    SUCCESS,
+} from '../../utils/feedbackSnackBarTypes'
+import i18n from '../../utils/i18n/locales'
+import { i18nKeys } from '../../utils/i18n/i18nKeys'
 
 const defaultState = {
     pager: INITIAL_PAGER,
@@ -21,11 +26,11 @@ const defaultState = {
     requestDelete: false,
     showFeedback: false,
     feedbackConf: {},
-};
+}
 
 // eslint-disable-next-line complexity
 const standardReport = (state = defaultState, action = {}) => {
-    const { type, payload } = action;
+    const { type, payload } = action
 
     switch (type) {
         case actionTypes.LOADING_STANDARD_REPORTS_START:
@@ -35,7 +40,7 @@ const standardReport = (state = defaultState, action = {}) => {
                 loadingError: '',
                 showFeedback: true,
                 feedbackConf: { type: LOADING },
-            };
+            }
 
         case actionTypes.LOADING_STANDARD_REPORTS_ERROR:
             return {
@@ -47,7 +52,7 @@ const standardReport = (state = defaultState, action = {}) => {
                     type: ERROR,
                     message: payload,
                 },
-            };
+            }
 
         case actionTypes.LOADING_STANDARD_REPORTS_SUCCESS:
             return {
@@ -61,25 +66,25 @@ const standardReport = (state = defaultState, action = {}) => {
                     type: SUCCESS,
                     message: payload.successMessage,
                 },
-            };
+            }
 
         case actionTypes.GO_TO_NEXT_PAGE:
             return {
                 ...state,
                 pager: { ...state.pager, page: state.pager.page + 1 },
-            };
+            }
 
         case actionTypes.GO_TO_PREV_PAGE:
             return {
                 ...state,
                 pager: { ...state.pager, page: state.pager.page - 1 },
-            };
+            }
 
         case actionTypes.SET_SEARCH:
             return {
                 ...state,
                 search: payload,
-            };
+            }
 
         case actionTypes.ADD_REPORT_FORM_SHOW:
             return {
@@ -87,7 +92,7 @@ const standardReport = (state = defaultState, action = {}) => {
                 open: true,
                 selectedReport: payload,
                 selectedAction: ADD_NEW_REPORT_ACTION,
-            };
+            }
 
         case actionTypes.EDIT_REPORT_FORM_SHOW:
             return {
@@ -95,7 +100,7 @@ const standardReport = (state = defaultState, action = {}) => {
                 open: true,
                 selectedReport: payload,
                 selectedAction: CONTEXT_MENU_ACTION.EDIT,
-            };
+            }
 
         case actionTypes.CREATE_REPORT_SHOW:
             return {
@@ -103,7 +108,7 @@ const standardReport = (state = defaultState, action = {}) => {
                 open: true,
                 selectedReport: payload,
                 selectedAction: CONTEXT_MENU_ACTION.CREATE,
-            };
+            }
 
         case actionTypes.SHARING_SETTINGS_SHOW:
             return {
@@ -111,7 +116,7 @@ const standardReport = (state = defaultState, action = {}) => {
                 open: true,
                 selectedReport: payload,
                 selectedAction: CONTEXT_MENU_ACTION.SHARING_SETTINGS,
-            };
+            }
 
         case actionTypes.ADD_REPORT_FORM_HIDE:
         case actionTypes.EDIT_REPORT_FORM_HIDE:
@@ -123,7 +128,7 @@ const standardReport = (state = defaultState, action = {}) => {
                 open: false,
                 selectedReport: {},
                 selectedAction: '',
-            };
+            }
 
         case actionTypes.REQUEST_DELETE_STANDARD_REPORT:
             return {
@@ -137,7 +142,7 @@ const standardReport = (state = defaultState, action = {}) => {
                     message: payload.displayName,
                     action: i18n.t(i18nKeys.messages.confirmDelete),
                 },
-            };
+            }
 
         case actionTypes.DELETE_STANDARD_REPORT_START:
             return {
@@ -147,7 +152,7 @@ const standardReport = (state = defaultState, action = {}) => {
                 loadingError: '',
                 showFeedback: true,
                 feedbackConf: { type: LOADING },
-            };
+            }
 
         case actionTypes.DELETE_STANDARD_REPORT_SUCCESS:
             return {
@@ -157,7 +162,7 @@ const standardReport = (state = defaultState, action = {}) => {
                 selectedReport: {},
                 selectedAction: '',
                 showFeedback: false,
-            };
+            }
 
         case actionTypes.DELETE_STANDARD_REPORT_ERROR:
             return {
@@ -169,20 +174,18 @@ const standardReport = (state = defaultState, action = {}) => {
                     type: ERROR,
                     message: payload,
                 },
-            };
+            }
 
         case actionTypes.HTML_REPORT_SHOW:
-            return { ...state, htmlReport: payload };
+            return { ...state, htmlReport: payload }
 
         case actionTypes.HTML_REPORT_HIDE:
-            return { ...state, htmlReport: '' };
+            return { ...state, htmlReport: '' }
 
         default:
-            return state;
+            return state
     }
-};
+}
 
-export default standardReport;
-export {
-    defaultState,
-};
+export default standardReport
+export { defaultState }

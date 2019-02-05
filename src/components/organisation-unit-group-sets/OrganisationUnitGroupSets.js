@@ -1,19 +1,19 @@
 /* React */
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 
 /* d2-ui components */
-import { DropDown } from '@dhis2/d2-ui-core';
+import { DropDown } from '@dhis2/d2-ui-core'
 
 /* App context */
-import AppContext from '../../pages/AppContext';
+import AppContext from '../../pages/AppContext'
 
 /* i18n */
-import i18n from '../../utils/i18n/locales';
-import { i18nKeys } from '../../utils/i18n/i18nKeys';
+import i18n from '../../utils/i18n/locales'
+import { i18nKeys } from '../../utils/i18n/i18nKeys'
 
 /* styles */
-import styles from '../../utils/styles';
+import styles from '../../utils/styles'
 
 export class OrganisationUnitGroupSets extends PureComponent {
     static propTypes = {
@@ -32,61 +32,70 @@ export class OrganisationUnitGroupSets extends PureComponent {
     }
 
     constructor() {
-        super();
+        super()
 
         this.state = {
             organisationUnitGroupSets: [],
-        };
+        }
     }
 
     componentDidMount() {
-        const d2 = this.props.d2;
-        d2.models.organisationUnitGroupSet.list({
-            paging: false,
-            fields: 'id,displayName,organisationUnitGroups[id,displayName]',
-        }).then((organisationUnitGroupSetsResponse) => {
-            this.setState({
-                organisationUnitGroupSets: organisationUnitGroupSetsResponse.toArray(),
-            });
-        }).catch(() => {
-            // TODO Manage error
-        });
+        const d2 = this.props.d2
+        d2.models.organisationUnitGroupSet
+            .list({
+                paging: false,
+                fields: 'id,displayName,organisationUnitGroups[id,displayName]',
+            })
+            .then(organisationUnitGroupSetsResponse => {
+                this.setState({
+                    organisationUnitGroupSets: organisationUnitGroupSetsResponse.toArray(),
+                })
+            })
+            .catch(() => {
+                // TODO Manage error
+            })
     }
 
-    handleOrganisationUnitGroupSetChange = organisationUnitGroupSetId => (element) => {
-        this.props.onChange(organisationUnitGroupSetId, element);
+    handleOrganisationUnitGroupSetChange = organisationUnitGroupSetId => element => {
+        this.props.onChange(organisationUnitGroupSetId, element)
     }
 
     renderOrganisationUnitGroupSetDropdown = organisationUnitGroupSet => (
         <div key={organisationUnitGroupSet.id}>
-            <span style={styles.formLabel}>{organisationUnitGroupSet.displayName}</span>
+            <span style={styles.formLabel}>
+                {organisationUnitGroupSet.displayName}
+            </span>
             <DropDown
                 style={this.props.dropdownStyle}
                 fullWidth={this.props.fullWidth}
                 value={this.props.values[organisationUnitGroupSet.id]}
-                onChange={this.handleOrganisationUnitGroupSetChange(organisationUnitGroupSet.id)}
+                onChange={this.handleOrganisationUnitGroupSetChange(
+                    organisationUnitGroupSet.id
+                )}
                 menuItems={organisationUnitGroupSet.organisationUnitGroups}
                 includeEmpty
-                emptyLabel={i18n.t(i18nKeys.organisationUnitGroupSetDropdown.hintText)}
-                hintText={i18n.t(i18nKeys.organisationUnitGroupSetDropdown.hintText)}
+                emptyLabel={i18n.t(
+                    i18nKeys.organisationUnitGroupSetDropdown.hintText
+                )}
+                hintText={i18n.t(
+                    i18nKeys.organisationUnitGroupSetDropdown.hintText
+                )}
             />
         </div>
-    );
+    )
 
-    render = () => (
-        this.state.organisationUnitGroupSets.map(
-            organisationUnitGroupSet => this.renderOrganisationUnitGroupSetDropdown(organisationUnitGroupSet),
+    render = () =>
+        this.state.organisationUnitGroupSets.map(organisationUnitGroupSet =>
+            this.renderOrganisationUnitGroupSetDropdown(
+                organisationUnitGroupSet
+            )
         )
-    );
 }
 
 export default props => (
     <AppContext.Consumer>
-        { appContext => (
-            <OrganisationUnitGroupSets
-                d2={appContext.d2}
-                {...props}
-            />
+        {appContext => (
+            <OrganisationUnitGroupSets d2={appContext.d2} {...props} />
         )}
     </AppContext.Consumer>
-);
+)

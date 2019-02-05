@@ -1,4 +1,4 @@
-import { ACTION_TYPE } from '../actions/feedback';
+import { ACTION_TYPE } from '../actions/feedback'
 
 const initialState = {
     showSnackbar: false,
@@ -6,7 +6,7 @@ const initialState = {
         type: '',
         message: '',
     },
-};
+}
 
 const feedback = (state = initialState, action) => {
     switch (action.type) {
@@ -15,11 +15,11 @@ const feedback = (state = initialState, action) => {
                 ...state,
                 showSnackbar: action.showSnackbar,
                 snackbarConf: { ...action.snackbarConf },
-            };
+            }
 
         default:
-            return state;
+            return state
     }
-};
+}
 
-export default feedback;
+export default feedback

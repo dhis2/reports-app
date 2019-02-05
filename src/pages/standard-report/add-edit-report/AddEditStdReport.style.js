@@ -49,6 +49,6 @@ const AddEditStdReportStyle = {
         width: '100%',
         textAlign: 'right',
     },
-};
+}
 
-export default AddEditStdReportStyle;
+export default AddEditStdReportStyle

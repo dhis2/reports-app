@@ -1,4 +1,4 @@
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 import {
     loadStandardReports,
     createReportShow,
@@ -13,11 +13,11 @@ import {
     showHtmlReport,
     hideHtmlReport,
     closeContextMenu,
-} from '../../redux/actions/standardReport';
+} from '../../redux/actions/standardReport'
 
 const mapStateToProps = state => ({
     ...state.standardReport,
-});
+})
 
 const mapDispatchToProps = dispatch => ({
     loadStandardReports: () => dispatch(loadStandardReports()),
@@ -28,16 +28,18 @@ const mapDispatchToProps = dispatch => ({
     sharingSettings: report => dispatch(sharingSettingsShow(report)),
     goToNextPage: () => dispatch(goToNextPage()),
     goToPrevPage: () => dispatch(goToPrevPage()),
-    requestDeleteStandardReport: report => dispatch(requestDeleteStandardReport(report)),
+    requestDeleteStandardReport: report =>
+        dispatch(requestDeleteStandardReport(report)),
     setSearch: term => dispatch(setSearch(term)),
     showHtmlReport: htmlReport => dispatch(showHtmlReport(htmlReport)),
     hideHtmlReport: htmlReport => dispatch(hideHtmlReport(htmlReport)),
     closeContextMenu: refreshList => dispatch(closeContextMenu(refreshList)),
-});
+})
 
-const connectStandardReport = StandardReport => connect(
-    mapStateToProps,
-    mapDispatchToProps,
-)(StandardReport);
+const connectStandardReport = StandardReport =>
+    connect(
+        mapStateToProps,
+        mapDispatchToProps
+    )(StandardReport)
 
-export default connectStandardReport;
+export default connectStandardReport
