@@ -31,7 +31,8 @@ export const getApi = () => api
 /**
  * @return {Promise} Period types
  */
-export const getPeriodTypes = () => api.get('periodTypes')
+export const getPeriodTypes = () =>
+    api.get('periodTypes').then(resp => resp.periodTypes)
 
 /**
  * @return {Promise} Organisation units

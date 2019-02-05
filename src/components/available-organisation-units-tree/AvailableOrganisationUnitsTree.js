@@ -67,7 +67,7 @@ export class AvailableOrganisationUnitsTree extends PureComponent {
                     initiallyExpanded={organisationUnits.collection.map(
                         unit => `/${unit.id}`
                     )}
-                    // onSelectClick={this.handleOrgUnitClick}
+                    onSelectClick={this.handleOrgUnitClick}
                 />
             </div>
         )

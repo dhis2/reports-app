@@ -1,20 +1,14 @@
 import { createStore, applyMiddleware } from 'redux'
 import reduxThunk from 'redux-thunk'
-import createHistory from 'history/createHashHistory'
+import { routerMiddleware } from 'connected-react-router'
+import { composeWithDevTools } from 'redux-devtools-extension'
 
+import history from '../utils/history'
 import rootReducer from './reducers/index'
 
-export const history = createHistory()
-
-/* eslint-disable no-underscore-dangle */
 const store = createStore(
     rootReducer,
-    process.env.NODE_ENV === 'development'
-        ? window.__REDUX_DEVTOOLS_EXTENSION__ &&
-              window.__REDUX_DEVTOOLS_EXTENSION__()
-        : '',
-    applyMiddleware(reduxThunk)
+    composeWithDevTools(applyMiddleware(routerMiddleware(history), reduxThunk))
 )
-/* eslint-enable */
 
 export default store

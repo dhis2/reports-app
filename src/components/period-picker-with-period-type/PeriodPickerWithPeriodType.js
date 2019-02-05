@@ -61,7 +61,7 @@ export class PeriodPickerWithPeriodType extends PureComponent {
             <DropDown
                 value={this.state.selectedPeriodType}
                 onChange={this.onChangePeriodType}
-                menuItems={this.props.periodTypes.collection}
+                menuItems={periodTypes.collection}
                 fullWidth
                 emptyLabel={msg}
                 hintText={msg}
