@@ -1,43 +1,47 @@
 /* eslint-disable */
 /* React */
-import React from 'react';
+import React from 'react'
 
 /* unit testing tools */
-import { shallow } from 'enzyme';
+import { shallow } from 'enzyme'
 
 /* d2-ui components */
-import { DropDown } from '@dhis2/d2-ui-core';
+import { DropDown } from '@dhis2/d2-ui-core'
 
-import { DataSetDimensions } from './DataSetDimensions';
+import { DataSetDimensions } from './DataSetDimensions'
 
 /* fake data */
-import fakerData from '../../helpers/fakerTests';
+import fakerData from '../../utils/fakerTests'
 
 jest.mock('@dhis2/d2-ui-core', () => ({
-    DropDown: ('DropDown'),
-}));
+    DropDown: 'DropDown',
+}))
 
 const dimensions = [
     {
         id: 'dimensions1',
         displayName: 'dimension1',
-        items: [{
-            id: 'item1',
-            displayName: 'item1',
-        }],
+        items: [
+            {
+                id: 'item1',
+                displayName: 'item1',
+            },
+        ],
     },
     {
         id: 'dimensions2',
         displayName: 'dimension2',
-        items: [{
-            id: 'item1',
-            displayName: 'item1',
-        }],
-    }
-];
+        items: [
+            {
+                id: 'item1',
+                displayName: 'item1',
+            },
+        ],
+    },
+]
 
 const ownShallow = () => {
-    const onChange = jest.fn();
+    const onChange = jest.fn()
     return shallow(
         <DataSetDimensions
             d2={fakerData.d2}
@@ -48,28 +52,28 @@ const ownShallow = () => {
         {
             disableLifecycleMethods: true,
         }
-    );
-};
+    )
+}
 
 describe('Test <OrganisationUnitGroupSets /> rendering:', () => {
-    let wrapper;
+    let wrapper
     beforeEach(() => {
-        wrapper = ownShallow();
-    });
+        wrapper = ownShallow()
+    })
 
     it('Should render without crashing', () => {
-        ownShallow();
-    });
+        ownShallow()
+    })
 
     it('Should render no DropDown', () => {
-        const wrapper = ownShallow();
-        expect(wrapper.find(DropDown)).toHaveLength(0);
-    });
+        const wrapper = ownShallow()
+        expect(wrapper.find(DropDown)).toHaveLength(0)
+    })
 
     it('Should render the correct number of div for each DropDown Component', () => {
-        const wrapper = ownShallow();
-        wrapper.setState({ dimensions: dimensions });
-        const arrayWrapper = wrapper.first();       // Array wrapper for Dropdowns created by enzyme
-        expect(arrayWrapper.find('div')).toHaveLength(dimensions.length);
-    });
-});
+        const wrapper = ownShallow()
+        wrapper.setState({ dimensions: dimensions })
+        const arrayWrapper = wrapper.first() // Array wrapper for Dropdowns created by enzyme
+        expect(arrayWrapper.find('div')).toHaveLength(dimensions.length)
+    })
+})

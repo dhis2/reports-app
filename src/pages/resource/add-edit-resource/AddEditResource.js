@@ -1,30 +1,42 @@
 /* React */
-import PropTypes from 'prop-types';
-import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types'
+import React, { PureComponent } from 'react'
 
 /* material-ui */
-import { Dialog } from 'material-ui';
-import SelectFieldMui from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
+import { Dialog } from 'material-ui'
+import SelectFieldMui from 'material-ui/SelectField'
+import MenuItem from 'material-ui/MenuItem'
 
 /* d2-ui */
-import { Button, InputField, SelectField, CheckBox, SvgIcon, TextField } from '@dhis2/d2-ui-core';
+import {
+    Button,
+    InputField,
+    SelectField,
+    CheckBox,
+    SvgIcon,
+    TextField,
+} from '@dhis2/d2-ui-core'
 
 /* Redux */
-import { connect } from 'react-redux';
-import { updateFeedbackState } from '../../../actions/feedback';
-import { LOADING } from '../../../helpers/feedbackSnackBarTypes';
+import { connect } from 'react-redux'
+import { updateFeedbackState } from '../../../redux/actions/feedback'
+import { LOADING } from '../../../utils/feedbackSnackBarTypes'
 
 /* styles */
-import appStyles from '../../../styles';
-import styles from './AddEditResource.style';
+import appStyles from '../../../utils/styles'
+import styles from './AddEditResource.style'
 
 /* app conf */
-import { FILE_RESOURCES_ENDPOINT, DOCUMENTS_ENDPOINT, RESOURCE_TYPES, TYPES } from '../resource.conf';
+import {
+    FILE_RESOURCES_ENDPOINT,
+    DOCUMENTS_ENDPOINT,
+    RESOURCE_TYPES,
+    TYPES,
+} from '../resource.conf'
 
 /* i18n */
-import i18n from '../../../locales';
-import { i18nKeys } from '../../../i18n';
+import i18n from '../../../utils/i18n/locales'
+import { i18nKeys } from '../../../utils/i18n/i18nKeys'
 
 const initialState = {
     resource: {
@@ -36,7 +48,7 @@ const initialState = {
     },
     selectedFileToUpload: null,
     loading: false,
-};
+}
 
 export default class AddEditResource extends PureComponent {
     static propTypes = {
@@ -46,76 +58,93 @@ export default class AddEditResource extends PureComponent {
         onError: PropTypes.func.isRequired,
         selectedResource: PropTypes.object,
         updateFeedbackState: PropTypes.func.isRequired,
-    };
+    }
 
     static defaultProps = {
         selectedResource: null,
-    };
+    }
 
     constructor(props) {
-        super(props);
-        this.state = JSON.parse(JSON.stringify(initialState));
+        super(props)
+        this.state = JSON.parse(JSON.stringify(initialState))
     }
 
     componentDidMount() {
         if (this.props.selectedResource) {
-            this.loadSelectedResource(this.props.selectedResource);
+            this.loadSelectedResource(this.props.selectedResource)
         }
     }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.selectedResource && !this.state.loading) {
-            this.loadSelectedResource(nextProps.selectedResource);
+            this.loadSelectedResource(nextProps.selectedResource)
         }
-        this.setState({ selectedFileToUpload: null });
+        this.setState({ selectedFileToUpload: null })
     }
 
     /* Handle form changes */
-    onChangeName = (name) => {
-        this.setState({ resource: { ...this.state.resource, name } });
-    };
+    onChangeName = name => {
+        this.setState({ resource: { ...this.state.resource, name } })
+    }
 
-    onChangeType = (type) => {
-        this.setState({ resource: { ...this.state.resource, type: type.id, external: type.external } });
-    };
+    onChangeType = type => {
+        this.setState({
+            resource: {
+                ...this.state.resource,
+                type: type.id,
+                external: type.external,
+            },
+        })
+    }
 
-    onChangeAttachment = (event) => {
-        this.setState({ resource: { ...this.state.resource, attachment: event.target.checked } });
-    };
+    onChangeAttachment = event => {
+        this.setState({
+            resource: {
+                ...this.state.resource,
+                attachment: event.target.checked,
+            },
+        })
+    }
 
-    onChangeFileResource = (event) => {
-        this.setState({ selectedFileToUpload: event.target.files[0] });
-    };
+    onChangeFileResource = event => {
+        this.setState({ selectedFileToUpload: event.target.files[0] })
+    }
 
-    onChangeUrl = (url) => {
-        this.setState({ resource: { ...this.state.resource, url } });
-    };
+    onChangeUrl = url => {
+        this.setState({ resource: { ...this.state.resource, url } })
+    }
 
     /**
      * When editing a resource user cannot change it's type, soo we return an array only with the selected resource type
      */
     getTypeForResource = () => {
         if (this.props.selectedResource) {
-            return RESOURCE_TYPES.filter(obj => obj.id === this.state.resource.type);
+            return RESOURCE_TYPES.filter(
+                obj => obj.id === this.state.resource.type
+            )
         }
-        return RESOURCE_TYPES;
-    };
+        return RESOURCE_TYPES
+    }
 
     getFileNameToDisplay = () => {
         if (this.state.selectedFileToUpload) {
-            return this.state.selectedFileToUpload.name;
-        } else if (this.props.selectedResource && !this.state.resource.external) {
-            return this.state.resource.url;
+            return this.state.selectedFileToUpload.name
+        } else if (
+            this.props.selectedResource &&
+            !this.state.resource.external
+        ) {
+            return this.state.resource.url
         }
-        return '';
-    };
+        return ''
+    }
 
-    getTitle = () => (this.props.selectedResource ?
-        i18n.t(i18nKeys.resource.editResourceTitle) :
-        i18n.t(i18nKeys.resource.addNewResourceTitle));
+    getTitle = () =>
+        this.props.selectedResource
+            ? i18n.t(i18nKeys.resource.editResourceTitle)
+            : i18n.t(i18nKeys.resource.addNewResourceTitle)
 
-    getTypeDropdownComponent = () => (this.getTypeForResource().length > 1 ?
-        (
+    getTypeDropdownComponent = () =>
+        this.getTypeForResource().length > 1 ? (
             <SelectField
                 style={styles.width100}
                 name={'resourceType'}
@@ -139,148 +168,174 @@ export default class AddEditResource extends PureComponent {
                     primaryText={this.getTypeForResource()[0].name}
                 />
             </SelectFieldMui>
-        ));
+        )
 
     /* close dialog */
-    close = (refreshList) => {
-        this.setState({ resource: JSON.parse(JSON.stringify(initialState.resource)) });
-        this.props.onRequestClose(refreshList);
-    };
+    close = refreshList => {
+        this.setState({
+            resource: JSON.parse(JSON.stringify(initialState.resource)),
+        })
+        this.props.onRequestClose(refreshList)
+    }
 
     /* load resource info to edit it */
-    loadSelectedResource = (resource) => {
-        const api = this.props.d2.Api.getApi();
-        const url = `${DOCUMENTS_ENDPOINT}/${resource.id}`;
+    loadSelectedResource = resource => {
+        const api = this.props.d2.Api.getApi()
+        const url = `${DOCUMENTS_ENDPOINT}/${resource.id}`
         if (api) {
-            this.props.updateFeedbackState(true, { type: LOADING });
-            this.setState({ loading: true });
-            api.get(url).then((response) => {
-                if (response) {
-                    this.props.updateFeedbackState(false);
+            this.props.updateFeedbackState(true, { type: LOADING })
+            this.setState({ loading: true })
+            api.get(url)
+                .then(response => {
+                    if (response) {
+                        this.props.updateFeedbackState(false)
 
-                    if (response.external === true) {
-                        response.type = TYPES.EXTERNAL_URL;
-                    } else {
-                        response.type = TYPES.UPLOAD_FILE;
+                        if (response.external === true) {
+                            response.type = TYPES.EXTERNAL_URL
+                        } else {
+                            response.type = TYPES.UPLOAD_FILE
+                        }
+
+                        this.setState({
+                            ...this.state,
+                            resource: {
+                                ...response,
+                            },
+                        })
                     }
-
-                    this.setState({
-                        ...this.state,
-                        resource: {
-                            ...response,
-                        },
-                    });
-                }
-            }).catch((error) => {
-                this.props.onError(error);
-            }).finally(() => {
-                this.setState({ loading: false });
-            });
+                })
+                .catch(error => {
+                    this.props.onError(error)
+                })
+                .finally(() => {
+                    this.setState({ loading: false })
+                })
         }
-    };
+    }
 
     /* add resource */
     addResource = () => {
         if (this.ifFormValid()) {
-            const api = this.props.d2.Api.getApi();
+            const api = this.props.d2.Api.getApi()
             if (api) {
-                const formData = new FormData();
-                formData.append('file', this.state.selectedFileToUpload);
-                this.props.updateFeedbackState(true, { type: LOADING });
-                this.setState({ loading: true });
-                api.post(FILE_RESOURCES_ENDPOINT, formData).then((response) => {
-                    if (response.response) {
-                        this.addDocument(response.response.fileResource);
-                    }
-                }).catch((error) => {
-                    this.props.onError(error);
-                }).finally(() => {
-                    this.setState({ loading: false });
-                });
+                const formData = new FormData()
+                formData.append('file', this.state.selectedFileToUpload)
+                this.props.updateFeedbackState(true, { type: LOADING })
+                this.setState({ loading: true })
+                api.post(FILE_RESOURCES_ENDPOINT, formData)
+                    .then(response => {
+                        if (response.response) {
+                            this.addDocument(response.response.fileResource)
+                        }
+                    })
+                    .catch(error => {
+                        this.props.onError(error)
+                    })
+                    .finally(() => {
+                        this.setState({ loading: false })
+                    })
             }
         }
-    };
+    }
 
     /* add document */
-    addDocument = (fileResource) => {
-        const api = this.props.d2.Api.getApi();
-        const documentData = JSON.parse(JSON.stringify(this.state.resource));
-        if (this.state.resource.type === TYPES.UPLOAD_FILE && fileResource.name) {
-            documentData.url = fileResource.name;
-        } else if (this.state.resource.type === TYPES.EXTERNAL_URL && !this.state.resource.url.startsWith('http://') && !this.state.resource.url.startsWith('https://')) {
-            documentData.url = `http://${documentData.url}`;
+    addDocument = fileResource => {
+        const api = this.props.d2.Api.getApi()
+        const documentData = JSON.parse(JSON.stringify(this.state.resource))
+        if (
+            this.state.resource.type === TYPES.UPLOAD_FILE &&
+            fileResource.name
+        ) {
+            documentData.url = fileResource.name
+        } else if (
+            this.state.resource.type === TYPES.EXTERNAL_URL &&
+            !this.state.resource.url.startsWith('http://') &&
+            !this.state.resource.url.startsWith('https://')
+        ) {
+            documentData.url = `http://${documentData.url}`
         }
         if (api) {
             if (this.state.resource.id) {
-                this.updateDocument(api, documentData);
+                this.updateDocument(api, documentData)
             } else {
-                this.postDocument(api, documentData);
+                this.postDocument(api, documentData)
             }
         }
-    };
+    }
 
     updateDocument = (api, documentData) => {
         if (!this.state.loading) {
-            this.props.updateFeedbackState(true, { type: LOADING });
-            this.setState({ loading: true });
+            this.props.updateFeedbackState(true, { type: LOADING })
+            this.setState({ loading: true })
         }
-        api.update(`${DOCUMENTS_ENDPOINT}/${this.state.resource.id}`, documentData).then((response) => {
-            if (response) {
-                this.close(true);
-            }
-        }).catch((error) => {
-            this.props.onError(error);
-        }).finally(() => {
-            this.setState({ loading: false });
-        });
-    };
+        api.update(
+            `${DOCUMENTS_ENDPOINT}/${this.state.resource.id}`,
+            documentData
+        )
+            .then(response => {
+                if (response) {
+                    this.close(true)
+                }
+            })
+            .catch(error => {
+                this.props.onError(error)
+            })
+            .finally(() => {
+                this.setState({ loading: false })
+            })
+    }
 
     postDocument = (api, documentData) => {
         if (!this.state.loading) {
-            this.props.updateFeedbackState(true, { type: LOADING });
-            this.setState({ loading: true });
+            this.props.updateFeedbackState(true, { type: LOADING })
+            this.setState({ loading: true })
         }
-        api.post(DOCUMENTS_ENDPOINT, documentData).then((response) => {
-            if (response) {
-                this.close(true);
-            }
-        }).catch((error) => {
-            this.props.onError(error);
-        }).finally(() => {
-            this.setState({ loading: false });
-        });
-    };
+        api.post(DOCUMENTS_ENDPOINT, documentData)
+            .then(response => {
+                if (response) {
+                    this.close(true)
+                }
+            })
+            .catch(error => {
+                this.props.onError(error)
+            })
+            .finally(() => {
+                this.setState({ loading: false })
+            })
+    }
 
     ifFormValid = () => {
         if (this.isNullOrWhiteSpace(this.state.resource.name)) {
-            return false;
+            return false
         }
         switch (this.state.resource.type) {
-        case TYPES.UPLOAD_FILE:
-            return this.validateUploadType();
-        case TYPES.EXTERNAL_URL:
-            return !this.isNullOrWhiteSpace(this.state.resource.url);
-        default:
-            return true;
+            case TYPES.UPLOAD_FILE:
+                return this.validateUploadType()
+            case TYPES.EXTERNAL_URL:
+                return !this.isNullOrWhiteSpace(this.state.resource.url)
+            default:
+                return true
         }
-    };
+    }
 
-    isNullOrWhiteSpace = str => (!str || str.length === 0 || /^\s*$/.test(str));
+    isNullOrWhiteSpace = str => !str || str.length === 0 || /^\s*$/.test(str)
 
-    validateUploadType = () => !(!this.props.selectedResource &&
-        (!this.state.selectedFileToUpload || !this.state.selectedFileToUpload.name));
+    validateUploadType = () =>
+        !(
+            !this.props.selectedResource &&
+            (!this.state.selectedFileToUpload ||
+                !this.state.selectedFileToUpload.name)
+        )
 
-    displayUploadSection = () => (
-        this.state.resource.type === TYPES.UPLOAD_FILE ?
-            { display: 'block' } :
-            { display: 'none' }
-    );
+    displayUploadSection = () =>
+        this.state.resource.type === TYPES.UPLOAD_FILE
+            ? { display: 'block' }
+            : { display: 'none' }
 
-    displayUrl = () => (
-        this.state.resource.type === TYPES.UPLOAD_FILE ?
-            { display: 'none' } :
-            { display: 'block' }
-    );
+    displayUrl = () =>
+        this.state.resource.type === TYPES.UPLOAD_FILE
+            ? { display: 'none' }
+            : { display: 'block' }
 
     render() {
         const actions = [
@@ -302,15 +357,16 @@ export default class AddEditResource extends PureComponent {
                     style={appStyles.dialogBtn}
                     disabled={!this.ifFormValid() || this.state.loading}
                     onClick={
-                        (this.state.resource.type === TYPES.UPLOAD_FILE && this.state.selectedFileToUpload) ?
-                            this.addResource :
-                            this.addDocument
+                        this.state.resource.type === TYPES.UPLOAD_FILE &&
+                        this.state.selectedFileToUpload
+                            ? this.addResource
+                            : this.addDocument
                     }
                 >
                     {i18n.t(i18nKeys.buttons.save)}
                 </Button>
             </span>,
-        ];
+        ]
 
         return (
             <Dialog
@@ -328,10 +384,16 @@ export default class AddEditResource extends PureComponent {
                     </span>
                     {/* details */}
                     <div className={'row'} style={styles.sectionBox}>
-                        <div className={'col-xs-12'} style={styles.sectionTitle}>
+                        <div
+                            className={'col-xs-12'}
+                            style={styles.sectionTitle}
+                        >
                             {i18n.t(i18nKeys.resource.details)}
                         </div>
-                        <div className={'col-xs-12'} style={styles.sectionContent}>
+                        <div
+                            className={'col-xs-12'}
+                            style={styles.sectionContent}
+                        >
                             {/* resource name */}
                             <InputField
                                 fullWidth
@@ -341,14 +403,17 @@ export default class AddEditResource extends PureComponent {
                                 onChange={this.onChangeName}
                             />
                             {/* resource type */}
-                            {
-                                this.getTypeDropdownComponent()
-                            }
+                            {this.getTypeDropdownComponent()}
                             {/* resource attachment */}
-                            <div id={'upload_type_fields'} style={this.displayUploadSection()}>
+                            <div
+                                id={'upload_type_fields'}
+                                style={this.displayUploadSection()}
+                            >
                                 <CheckBox
                                     id={'resourceAttachment'}
-                                    label={i18n.t(i18nKeys.resource.attachmentLabel)}
+                                    label={i18n.t(
+                                        i18nKeys.resource.attachmentLabel
+                                    )}
                                     checked={this.state.resource.attachment}
                                     onChange={this.onChangeAttachment}
                                 />
@@ -359,7 +424,9 @@ export default class AddEditResource extends PureComponent {
                                     name={'hiddenInputFile'}
                                     type="file"
                                     // eslint-disable-next-line
-                                    ref={(fileInput) => { this.fileInput = fileInput; }}
+                                    ref={fileInput => {
+                                        this.fileInput = fileInput
+                                    }}
                                     onChange={this.onChangeFileResource}
                                 />
                                 {/* file input interface */}
@@ -373,8 +440,12 @@ export default class AddEditResource extends PureComponent {
                                         fullWidth
                                         floatingLabelFixed
                                         name={'fileName'}
-                                        hintText={i18n.t(i18nKeys.resource.noFileChosen)}
-                                        floatingLabelText={i18n.t(i18nKeys.resource.fileLabel)}
+                                        hintText={i18n.t(
+                                            i18nKeys.resource.noFileChosen
+                                        )}
+                                        floatingLabelText={i18n.t(
+                                            i18nKeys.resource.fileLabel
+                                        )}
                                         value={this.getFileNameToDisplay()}
                                         // eslint-disable-next-line
                                         onClick={() => this.fileInput.click()}
@@ -394,15 +465,15 @@ export default class AddEditResource extends PureComponent {
                     </div>
                 </div>
             </Dialog>
-        );
+        )
     }
 }
 
 const mapDispatchToProps = dispatch => ({
     updateFeedbackState: updateFeedbackState(dispatch),
-});
+})
 
 export const ConnectedAddEditResource = connect(
     null,
-    mapDispatchToProps,
-)(AddEditResource);
+    mapDispatchToProps
+)(AddEditResource)

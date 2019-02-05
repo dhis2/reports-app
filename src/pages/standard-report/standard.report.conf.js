@@ -1,47 +1,47 @@
 /* i18n */
-import i18n from '../../locales';
-import { i18nKeys } from '../../i18n';
+import i18n from '../../utils/i18n/locales'
+import { i18nKeys } from '../../utils/i18n/i18nKeys'
 
-export const REPORTS_ENDPOINT = 'reports';
-export const REPORT_TABLES_ENDPOINT = 'reportTables';
+export const REPORTS_ENDPOINT = 'reports'
+export const REPORT_TABLES_ENDPOINT = 'reportTables'
 
-export const ADD_NEW_REPORT_ACTION = 'ADD_NEW_REPORT_ACTION';
+export const ADD_NEW_REPORT_ACTION = 'ADD_NEW_REPORT_ACTION'
 
 export const CONTEXT_MENU_ACTION = {
     CREATE: 'createReport',
     EDIT: 'editReport',
     DELETE: 'delete',
     SHARING_SETTINGS: 'sharingSettings',
-};
+}
 
 export const CONTEXT_MENU_ICONS = {
     [CONTEXT_MENU_ACTION.CREATE]: 'arrow_right',
     [CONTEXT_MENU_ACTION.EDIT]: 'edit',
     [CONTEXT_MENU_ACTION.SHARING_SETTINGS]: 'people',
     [CONTEXT_MENU_ACTION.DELETE]: 'delete',
-};
+}
 
 export const NONE = {
     id: 'none',
     name: i18n.t(i18nKeys.standardReport.none),
-};
+}
 
 export const TYPES = {
     JASPER_REPORT_TABLE: 'JASPER_REPORT_TABLE',
     JASPER_JDBC: 'JASPER_JDBC',
     HTML: 'HTML',
-};
+}
 
 export const REPORT_MODE = {
     REPORT: 'report',
     REPORT_TABLE: 'table',
-};
+}
 
 export const GET_REPORT_AS_ENDPOINT = {
     PDF: 'data.pdf',
     XLS: 'data.xls',
     HTML: 'data.html',
-};
+}
 
 export const REPORT_TYPES = [
     {
@@ -56,7 +56,7 @@ export const REPORT_TYPES = [
         id: TYPES.HTML,
         name: i18n.t(i18nKeys.standardReport.htmlReportType),
     },
-];
+]
 
 export const CACHE_STRATEGIES = [
     {
@@ -79,7 +79,7 @@ export const CACHE_STRATEGIES = [
         id: 'CACHE_TWO_WEEKS',
         name: i18n.t(i18nKeys.standardReport.cacheFour2Weeks),
     },
-];
+]
 
 export const relativePeriods = [
     // Days
@@ -266,4 +266,4 @@ export const relativePeriods = [
             },
         ],
     },
-];
+]

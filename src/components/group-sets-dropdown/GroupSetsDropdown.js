@@ -1,19 +1,19 @@
 /* React */
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 
 /* d2-ui components */
-import { DropDown } from '@dhis2/d2-ui-core';
+import { DropDown } from '@dhis2/d2-ui-core'
 
 /* App context */
-import AppContext from '../../context';
+import AppContext from '../../pages/AppContext'
 
 /* i18n */
-import i18n from '../../locales';
-import { i18nKeys } from '../../i18n';
+import i18n from '../../utils/i18n/locales'
+import { i18nKeys } from '../../utils/i18n/i18nKeys'
 
 /* styles */
-import styles from '../../styles';
+import styles from '../../utils/styles'
 
 export class GroupSetsDropdown extends PureComponent {
     static propTypes = {
@@ -30,36 +30,39 @@ export class GroupSetsDropdown extends PureComponent {
     }
 
     constructor() {
-        super();
+        super()
 
         this.state = {
             groupSets: [],
             selected: null,
-        };
+        }
     }
 
     componentDidMount() {
-        const d2 = this.props.d2;
-        d2.models.organisationUnitGroupSet.list({
-            paging: false,
-            fields: 'id,displayName',
-        }).then((groupSetsResponse) => {
-            this.setState({
-                groupSets: groupSetsResponse.toArray(),
-            });
-        }).catch(() => {
-            // TODO Manage error
-        });
+        const d2 = this.props.d2
+        d2.models.organisationUnitGroupSet
+            .list({
+                paging: false,
+                fields: 'id,displayName',
+            })
+            .then(groupSetsResponse => {
+                this.setState({
+                    groupSets: groupSetsResponse.toArray(),
+                })
+            })
+            .catch(() => {
+                // TODO Manage error
+            })
     }
 
-    onChange = (event) => {
-        const value = event.target.value;
+    onChange = event => {
+        const value = event.target.value
         this.setState({
             selected: value,
-        });
+        })
 
         if (this.props.onChange) {
-            this.props.onChange(value);
+            this.props.onChange(value)
         }
     }
 
@@ -77,17 +80,12 @@ export class GroupSetsDropdown extends PureComponent {
                     hintText={i18n.t(i18nKeys.groupSetsDropdown.hintText)}
                 />
             </div>
-        );
+        )
     }
 }
 
 export default props => (
     <AppContext.Consumer>
-        { appContext => (
-            <GroupSetsDropdown
-                d2={appContext.d2}
-                {...props}
-            />
-        )}
+        {appContext => <GroupSetsDropdown d2={appContext.d2} {...props} />}
     </AppContext.Consumer>
-);
+)

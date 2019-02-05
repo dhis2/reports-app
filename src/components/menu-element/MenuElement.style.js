@@ -9,7 +9,8 @@ const MenuGridStyle = {
         paddingRight: '30px',
         paddingBottom: '20px',
         backgroundColor: '#ffffff',
-        boxShadow: 'rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px',
+        boxShadow:
+            'rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px',
         borderRadius: '5px',
         width: '100%',
     },
@@ -48,6 +49,6 @@ const MenuGridStyle = {
         textAlign: 'left',
         color: '#2196f3',
     },
-};
+}
 
-export default MenuGridStyle;
+export default MenuGridStyle

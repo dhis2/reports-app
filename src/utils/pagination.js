@@ -1,0 +1,23 @@
+export const DEFAULT_PAGE_SIZE = 50
+
+export const INITIAL_PAGER = {
+    pageSize: DEFAULT_PAGE_SIZE,
+    page: 1,
+    total: 0,
+    pageCount: 1,
+    nextPage: '',
+    prevPage: '',
+}
+
+export const calculatePageValue = pager => {
+    const pageSize = pager.pageSize
+    const { total, pageCount, page } = pager
+    const pageCalculationValue =
+        total - (total - (pageCount - (pageCount - page)) * pageSize)
+    const startItem = pageCalculationValue - pageSize + 1
+    const endItem = pageCalculationValue
+
+    return `${startItem} - ${endItem > total ? total : endItem}`
+}
+
+export default calculatePageValue
