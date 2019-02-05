@@ -1,174 +1,175 @@
 {
-    "name": "reports-app",
-    "version": "1.0.0-beta.1",
-    "private": true,
-    "dependencies": {
-        "@dhis2/d2-i18n": "^1.0.4",
-        "@dhis2/d2-ui-app": "^1.0.5",
-        "@dhis2/d2-ui-core": "^1.3.2",
-        "@dhis2/d2-ui-forms": "^1.0.7",
-        "@dhis2/d2-ui-header-bar": "^1.1.4",
-        "@dhis2/d2-ui-org-unit-tree": "^1.0.10",
-        "@dhis2/d2-ui-sharing-dialog": "^2.0.2",
-        "@dhis2/d2-ui-table": "^1.0.12",
-        "autoprefixer": "7.1.6",
-        "babel-core": "6.26.0",
-        "babel-eslint": "7.2.3",
-        "babel-jest": "20.0.3",
-        "babel-loader": "7.1.2",
-        "babel-preset-react-app": "^3.1.1",
-        "babel-runtime": "6.26.0",
-        "case-sensitive-paths-webpack-plugin": "2.1.1",
-        "chalk": "1.1.3",
-        "classnames": "^2.2.6",
-        "css-loader": "0.28.7",
-        "d2": "^30.0.2",
-        "d2-manifest": "^1.0.0",
-        "d3-color": "^1.2.0",
-        "dotenv": "4.0.0",
-        "dotenv-expand": "4.2.0",
-        "eslint": "4.10.0",
-        "eslint-config-react-app": "^2.1.0",
-        "eslint-loader": "1.9.0",
-        "eslint-plugin-flowtype": "2.39.1",
-        "eslint-plugin-import": "2.8.0",
-        "eslint-plugin-jsx-a11y": "5.1.1",
-        "eslint-plugin-react": "7.4.0",
-        "extract-text-webpack-plugin": "3.0.2",
-        "file-loader": "1.1.5",
-        "flexboxgrid": "^6.3.1",
-        "fs-extra": "3.0.1",
-        "history": "^4.7.2",
-        "html-webpack-plugin": "2.29.0",
-        "jest": "20.0.4",
-        "material-ui": "^0.20.1",
-        "moment": "^2.24.0",
-        "object-assign": "4.1.1",
-        "postcss-flexbugs-fixes": "3.2.0",
-        "postcss-loader": "2.0.8",
-        "promise": "8.0.1",
-        "prop-types": "^15.6.1",
-        "raf": "3.4.0",
-        "react": "^16.4.0",
-        "react-dev-utils": "^5.0.1",
-        "react-dom": "^16.4.0",
-        "react-jss": "^8.4.0",
-        "react-redux": "^5.0.7",
-        "react-router-dom": "^4.2.2",
-        "react-router-redux": "^5.0.0-alpha.9",
-        "redux": "^4.0.0",
-        "redux-thunk": "^2.3.0",
-        "resolve": "1.6.0",
-        "style-loader": "0.19.0",
-        "sw-precache-webpack-plugin": "0.11.4",
-        "url-loader": "0.6.2",
-        "webpack": "3.8.1",
-        "webpack-dev-server": "2.9.4",
-        "webpack-manifest-plugin": "1.3.2",
-        "whatwg-fetch": "2.0.3",
-        "xlsx": "^0.13.0"
-    },
-    "devDependencies": {
-        "@dhis2/cli-style": "^0.10.1",
-        "@dhis2/d2-i18n-generate": "^1.0.19",
-        "chai": "^4.1.2",
-        "cucumber": "^3.2.0",
-        "enzyme": "^3.3.0",
-        "enzyme-adapter-react-16": "^1.1.1",
-        "husky": "^1.3.1",
-        "import-export": "^1.0.1",
-        "jest-enzyme": "^4.0.2",
-        "postcss-cssnext": "^3.1.0",
-        "postcss-rtl": "^1.2.3",
-        "wdio-allure-reporter": "^0.6.2",
-        "wdio-cucumber-framework": "^1.0.2",
-        "wdio-selenium-standalone-service": "0.0.10",
-        "wdio-spec-reporter": "^0.1.4",
-        "webdriverio": "^4.12.0"
-    },
-    "scripts": {
-        "manifest": "d2-manifest package.json ./public/manifest.webapp",
-        "start": "yarn manifest && yarn localize && node scripts/start.js",
-        "build": "yarn manifest && yarn localize && node scripts/build.js && cp ./package.json ./build/package.json",
-        "code-style": "yarn d2-style js",
-        "format-all": "yarn prettier --write src/**/*.js",
-        "localize": "d2-i18n-generate -n reports-app -p ./i18n/ -o ./src/utils/i18n/locales/",
-        "test": "node scripts/test.js --env=jsdom --coverage",
-        "test-watch": "node scripts/test.js --env=jsdom",
-        "test-e2e": "wdio ./e2e/config/wdio.conf.js",
-        "lint": "yarn localize && eslint src/",
-        "validate": "yarn list",
-        "extract-pot": "node scripts/pot-extractor.js",
-        "refresh-translations-template": "yarn extract-pot -- -o en.pot && git add ./i18n/en.pot",
-        "coverage": "yarn test -- --coverage"
-    },
-    "husky": {
-        "hooks": {
-            "commit-msg": "yarn d2-style commit",
-            "pre-commit": "yarn code-style && yarn refresh-translations-template"
-        }
-    },
-    "manifest.webapp": {
-        "name": "DHIS2 Reports App",
-        "description": "DHIS2 reports App",
-        "icons": {
-            "48": "icon.png"
-        },
-        "developer": {
-            "url": "https://dhis2.github.io",
-            "name": "DHIS2"
-        },
-        "dhis2": {
-            "apiVersion": "31"
-        },
-        "activities": {
-            "dhis": {
-                "href": ".."
-            }
-        }
-    },
-    "homepage": ".",
-    "jest": {
-        "collectCoverageFrom": [
-            "src/**/*.{js,jsx,mjs}"
-        ],
-        "setupFiles": [
-            "<rootDir>/config/polyfills.js"
-        ],
-        "setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.js",
-        "testMatch": [
-            "<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
-            "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}"
-        ],
-        "testEnvironment": "node",
-        "testURL": "http://localhost",
-        "transform": {
-            "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest",
-            "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
-            "^(?!.*\\.(js|jsx|mjs|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
-        },
-        "transformIgnorePatterns": [
-            "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
-        ],
-        "moduleNameMapper": {
-            "^react-native$": "react-native-web"
-        },
-        "moduleFileExtensions": [
-            "web.js",
-            "js",
-            "json",
-            "web.jsx",
-            "jsx",
-            "node",
-            "mjs"
-        ]
-    },
-    "babel": {
-        "presets": [
-            "react-app"
-        ]
-    },
-    "eslintConfig": {
-        "extends": "react-app"
+  "name": "reports-app",
+  "version": "1.0.0-beta.1",
+  "private": true,
+  "dependencies": {
+    "@dhis2/d2-i18n": "^1.0.4",
+    "@dhis2/d2-ui-app": "^1.0.5",
+    "@dhis2/d2-ui-core": "^1.3.2",
+    "@dhis2/d2-ui-forms": "^1.0.7",
+    "@dhis2/d2-ui-header-bar": "^1.1.4",
+    "@dhis2/d2-ui-org-unit-tree": "^1.0.10",
+    "@dhis2/d2-ui-sharing-dialog": "^2.0.2",
+    "@dhis2/d2-ui-table": "^1.0.12",
+    "autoprefixer": "7.1.6",
+    "babel-core": "6.26.0",
+    "babel-eslint": "7.2.3",
+    "babel-jest": "20.0.3",
+    "babel-loader": "7.1.2",
+    "babel-preset-react-app": "^3.1.1",
+    "babel-runtime": "6.26.0",
+    "case-sensitive-paths-webpack-plugin": "2.1.1",
+    "chalk": "1.1.3",
+    "classnames": "^2.2.6",
+    "css-loader": "0.28.7",
+    "d2": "^30.0.2",
+    "d2-manifest": "^1.0.0",
+    "d3-color": "^1.2.0",
+    "dotenv": "4.0.0",
+    "dotenv-expand": "4.2.0",
+    "eslint": "4.10.0",
+    "eslint-config-react-app": "^2.1.0",
+    "eslint-loader": "1.9.0",
+    "eslint-plugin-flowtype": "2.39.1",
+    "eslint-plugin-import": "2.8.0",
+    "eslint-plugin-jsx-a11y": "5.1.1",
+    "eslint-plugin-react": "7.4.0",
+    "extract-text-webpack-plugin": "3.0.2",
+    "file-loader": "1.1.5",
+    "flexboxgrid": "^6.3.1",
+    "fs-extra": "3.0.1",
+    "history": "^4.7.2",
+    "html-webpack-plugin": "2.29.0",
+    "jest": "20.0.4",
+    "lodash": "^4.17.11",
+    "material-ui": "^0.20.1",
+    "moment": "^2.24.0",
+    "object-assign": "4.1.1",
+    "postcss-flexbugs-fixes": "3.2.0",
+    "postcss-loader": "2.0.8",
+    "promise": "8.0.1",
+    "prop-types": "^15.6.1",
+    "raf": "3.4.0",
+    "react": "^16.4.0",
+    "react-dev-utils": "^5.0.1",
+    "react-dom": "^16.4.0",
+    "react-jss": "^8.4.0",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^5.0.0-alpha.9",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0",
+    "resolve": "1.6.0",
+    "style-loader": "0.19.0",
+    "sw-precache-webpack-plugin": "0.11.4",
+    "url-loader": "0.6.2",
+    "webpack": "3.8.1",
+    "webpack-dev-server": "2.9.4",
+    "webpack-manifest-plugin": "1.3.2",
+    "whatwg-fetch": "2.0.3",
+    "xlsx": "^0.13.0"
+  },
+  "devDependencies": {
+    "@dhis2/cli-style": "^0.10.1",
+    "@dhis2/d2-i18n-generate": "^1.0.19",
+    "chai": "^4.1.2",
+    "cucumber": "^3.2.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "husky": "^1.3.1",
+    "import-export": "^1.0.1",
+    "jest-enzyme": "^4.0.2",
+    "postcss-cssnext": "^3.1.0",
+    "postcss-rtl": "^1.2.3",
+    "wdio-allure-reporter": "^0.6.2",
+    "wdio-cucumber-framework": "^1.0.2",
+    "wdio-selenium-standalone-service": "0.0.10",
+    "wdio-spec-reporter": "^0.1.4",
+    "webdriverio": "^4.12.0"
+  },
+  "scripts": {
+    "manifest": "d2-manifest package.json ./public/manifest.webapp",
+    "start": "yarn manifest && yarn localize && node scripts/start.js",
+    "build": "yarn manifest && yarn localize && node scripts/build.js && cp ./package.json ./build/package.json",
+    "code-style": "yarn d2-style js",
+    "format-all": "yarn prettier --write src/**/*.js",
+    "localize": "d2-i18n-generate -n reports-app -p ./i18n/ -o ./src/utils/i18n/locales/",
+    "test": "node scripts/test.js --env=jsdom --coverage",
+    "test-watch": "node scripts/test.js --env=jsdom",
+    "test-e2e": "wdio ./e2e/config/wdio.conf.js",
+    "lint": "yarn localize && eslint src/",
+    "validate": "yarn list",
+    "extract-pot": "node scripts/pot-extractor.js",
+    "refresh-translations-template": "yarn extract-pot -- -o en.pot && git add ./i18n/en.pot",
+    "coverage": "yarn test -- --coverage"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "yarn d2-style commit",
+      "pre-commit": "yarn code-style && yarn refresh-translations-template"
     }
+  },
+  "manifest.webapp": {
+    "name": "DHIS2 Reports App",
+    "description": "DHIS2 reports App",
+    "icons": {
+      "48": "icon.png"
+    },
+    "developer": {
+      "url": "https://dhis2.github.io",
+      "name": "DHIS2"
+    },
+    "dhis2": {
+      "apiVersion": "31"
+    },
+    "activities": {
+      "dhis": {
+        "href": ".."
+      }
+    }
+  },
+  "homepage": ".",
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,mjs}"
+    ],
+    "setupFiles": [
+      "<rootDir>/config/polyfills.js"
+    ],
+    "setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.js",
+    "testMatch": [
+      "<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
+      "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}"
+    ],
+    "testEnvironment": "node",
+    "testURL": "http://localhost",
+    "transform": {
+      "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest",
+      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
+      "^(?!.*\\.(js|jsx|mjs|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+    },
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
+    ],
+    "moduleNameMapper": {
+      "^react-native$": "react-native-web"
+    },
+    "moduleFileExtensions": [
+      "web.js",
+      "js",
+      "json",
+      "web.jsx",
+      "jsx",
+      "node",
+      "mjs"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "react-app"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  }
 }
