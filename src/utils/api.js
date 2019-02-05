@@ -1,6 +1,10 @@
 import { getInstance } from 'd2/lib/d2'
-import createGetStandardReportsUrl from './api/standardReports/createGetStandardReportsUrl'
-import createDeleteStandardReportUrl from './api/standardReports/createDeleteStandardReportUrl'
+import { isDevelopment } from './env/isDevelopment'
+import {
+    createGetStandardReportsUrl,
+    createDeleteStandardReportUrl,
+    createGetDataSetReportsUrl,
+} from './api/helpers'
 
 let d2
 let api
@@ -8,11 +12,16 @@ let api
 /**
  * Sets d2 and the api
  */
-export const init = async () => {
+export const initApi = async () => {
     d2 = await getInstance()
     api = d2.Api.getApi()
+
+    if (isDevelopment()) {
+        window.d2 = d2
+    }
+
+    return d2
 }
-init()
 
 /**
  * @return {Object} d2 instance
@@ -44,3 +53,22 @@ export const getStandardReports = (page, pageSize, nameFilter) =>
  */
 export const deleteStandardReport = id =>
     api.delete(createDeleteStandardReportUrl(id))
+
+export const getDataSetReport = (
+    dataSetOptions,
+    orgUnitGroupsOptions,
+    dataSetId,
+    orgUnit,
+    period,
+    selectedUnitOnly
+) =>
+    api.get(
+        createGetDataSetReportsUrl(
+            dataSetOptions,
+            orgUnitGroupsOptions,
+            dataSetId,
+            orgUnit,
+            period,
+            selectedUnitOnly
+        )
+    )
