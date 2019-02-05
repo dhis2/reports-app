@@ -33,5 +33,6 @@ e2e/results
 chrome
 chromeDownloads
 
-# i18n json files
-src/utils/i18n/locales
+# i18n files
+/src/utils/i18n/locales
+/i18n
