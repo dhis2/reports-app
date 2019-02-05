@@ -1,16 +1,17 @@
 /* React */
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import i18n from '@dhis2/d2-i18n'
 
 /* d2-ui components */
 import { OrgUnitTreeMultipleRoots } from '@dhis2/d2-ui-org-unit-tree'
 
-/* App context */
-import AppContext from '../../pages/AppContext'
+/* actions */
+import loadOrganisationUnits from '../../redux/actions/organisationUnits'
 
-/* i18n */
-import i18n from '../../utils/i18n/locales'
-import { i18nKeys } from '../../utils/i18n/i18nKeys'
+/* styles */
+import styles from '../../utils/styles'
 
 /* styles */
 const defaultStyles = {
@@ -24,75 +25,55 @@ const defaultStyles = {
 export class AvailableOrganisationUnitsTree extends PureComponent {
     state = {
         selected: [],
-        rootsWithMembers: null,
     }
 
     componentDidMount() {
-        if (this.state.rootWithMember == null) {
-            this.props.d2.models.organisationUnits
-                .list({
-                    paging: false,
-                    level: 1,
-                    fields:
-                        'id,displayName,path,children::isNotEmpty,memberCount',
-                })
-                .then(organisationUnitsResponse => {
-                    this.setState({
-                        rootsWithMembers: organisationUnitsResponse.toArray(),
-                    })
-                })
-                .catch(() => {
-                    // TODO manage error
-                })
+        if (!this.props.organisationUnits) {
+            this.props.loadOrganisationUnits()
         }
     }
 
     handleOrgUnitClick = (event, orgUnit) => {
         if (!this.state.selected.includes(orgUnit.path)) {
             this.setState({ selected: [orgUnit.path] })
-            if (this.props.onChange) {
-                const selectedOrganisationUnitSplitted = orgUnit.path.split('/')
-                const selectedOrganisationUnitId =
-                    selectedOrganisationUnitSplitted[
-                        selectedOrganisationUnitSplitted.length - 1
-                    ]
-                this.props.onChange(selectedOrganisationUnitId)
-            }
+            this.props.onChange(orgUnit.id)
         }
     }
 
     render() {
-        const { rootsWithMembers, selected } = this.state
-        if (rootsWithMembers) {
+        const { organisationUnits } = this.props
+
+        if (!organisationUnits) {
+            return <span>{i18n.t('Updating Organisation Units Tree...')}</span>
+        }
+
+        if (organisationUnits instanceof Error) {
             return (
-                <div style={this.props.style.tree}>
-                    <OrgUnitTreeMultipleRoots
-                        hideMemberCount
-                        roots={rootsWithMembers}
-                        selected={selected}
-                        initiallyExpanded={rootsWithMembers.map(
-                            ({ id }) => `/${id}`
-                        )}
-                        onSelectClick={this.handleOrgUnitClick}
-                    />
-                </div>
+                <span style={styles.error}>
+                    {i18n.t('Could not load Organisation Units tree')}
+                </span>
             )
         }
 
         return (
-            <span>
-                {i18n.t(
-                    i18nKeys.availableOrganisationUnitsTree.updatingMessage
-                )}
-            </span>
+            <div style={this.props.style.tree}>
+                <OrgUnitTreeMultipleRoots
+                    hideMemberCount
+                    roots={organisationUnits}
+                    selected={this.state.selected}
+                    initiallyExpanded={organisationUnits.map(u => `/${u.id}`)}
+                    onSelectClick={this.handleOrgUnitClick}
+                />
+            </div>
         )
     }
 }
 
 AvailableOrganisationUnitsTree.propTypes = {
-    d2: PropTypes.object.isRequired,
-    onChange: PropTypes.func,
+    onChange: PropTypes.func.isRequired,
     style: PropTypes.object,
+    organisationUnits: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+    loadOrganisationUnits: PropTypes.func.isRequired,
 }
 
 AvailableOrganisationUnitsTree.defaultProps = {
@@ -100,10 +81,11 @@ AvailableOrganisationUnitsTree.defaultProps = {
     style: defaultStyles,
 }
 
-export default props => (
-    <AppContext.Consumer>
-        {appContext => (
-            <AvailableOrganisationUnitsTree d2={appContext.d2} {...props} />
-        )}
-    </AppContext.Consumer>
-)
+const mapStateToProps = ({ organisationUnits }) => ({ organisationUnits })
+
+export default connect(
+    mapStateToProps,
+    {
+        loadOrganisationUnits,
+    }
+)(AvailableOrganisationUnitsTree)

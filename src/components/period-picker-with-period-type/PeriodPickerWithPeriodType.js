@@ -14,19 +14,15 @@ import AppContext from '../../pages/AppContext'
 import loadPeriodTypes from '../../redux/actions/periodTypes'
 import pluckPeriodTypes from '../../redux/selectors/periodTypes'
 
-/* i18n */
-
 /* styles */
 import styles from '../../utils/styles'
 
 export class PeriodPickerWithPeriodType extends PureComponent {
     state = {
-        periodTypes: [],
         selectedPeriodType: null,
         selected: null,
     }
 
-    /* FIXME: right now d2-ui periodPicker forces us to pass d2 through old  context api */
     getChildContext() {
         return {
             d2: this.props.d2,
@@ -34,21 +30,33 @@ export class PeriodPickerWithPeriodType extends PureComponent {
     }
 
     componentDidMount() {
-        const { loadPeriodTypes, periodTypes } = this.props
-        if (Array.isArray(periodTypes) && periodTypes.length === 0) {
-            loadPeriodTypes()
+        if (!this.props.periodTypes) {
+            this.props.loadPeriodTypes()
         }
     }
 
     onChangePeriodType = event => {
-        const selectedPeriodType = event.target.value
         this.setState({
-            selectedPeriodType,
+            selectedPeriodType: event.target.value,
         })
     }
 
     renderPeriodTypeDropdown = () => {
+        const { periodTypes } = this.props
         const msg = i18n.t('Select Period Type')
+
+        if (!periodTypes) {
+            return (
+                <span style={styles.error}>
+                    {i18n.t('Could not load period types dropdown')}
+                </span>
+            )
+        }
+
+        if (periodTypes instanceof Error) {
+            return <span style={styles.error}>{periodTypes.toString()}</span>
+        }
+
         return (
             <DropDown
                 value={this.state.selectedPeriodType}
@@ -62,17 +70,12 @@ export class PeriodPickerWithPeriodType extends PureComponent {
     }
 
     render() {
-        const { periodTypes } = this.props
-        const error =
-            periodTypes instanceof Error ? periodTypes.toString() : null
-
         return (
             <div>
                 <span style={{ ...styles.formLabel, display: 'block' }}>
                     {this.props.label}
                 </span>
-                {error && <span style={styles.error}>{error}</span>}
-                {!error && this.renderPeriodTypeDropdown()}
+                {this.renderPeriodTypeDropdown()}
                 {this.state.selectedPeriodType && (
                     <PeriodPicker
                         periodType={this.state.selectedPeriodType}
@@ -89,8 +92,7 @@ PeriodPickerWithPeriodType.propTypes = {
     onChange: PropTypes.func,
     label: PropTypes.string,
     loadPeriodTypes: PropTypes.func.isRequired,
-    periodTypes: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
-        .isRequired,
+    periodTypes: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 }
 
 PeriodPickerWithPeriodType.defaultProps = {

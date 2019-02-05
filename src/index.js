@@ -34,11 +34,11 @@ getManifest('manifest.webapp').then(manifest => {
     init({
         baseUrl,
         schemas: [
-            'organisationUnit',
-            'dataSet',
-            'reportTable',
-            'organisationUnitGroupSet',
             'dataApprovalLevel',
+            'dataSet',
+            'organisationUnit',
+            'organisationUnitGroupSet',
+            'reportTable',
         ],
     })
         .then(d2 => {

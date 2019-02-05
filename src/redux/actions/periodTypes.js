@@ -11,7 +11,7 @@ export const loadPeriodTypesSuccess = periodTypes => ({
 })
 
 export const loadPeriodTypesError = error => ({
-    type: ACTION_TYPES.PERIOD_TYPES_RECEIVED,
+    type: ACTION_TYPES.PERIOD_TYPES_ERRORED,
     payload: error,
 })
 
