@@ -1,8 +1,32 @@
+import { curry } from 'lodash/fp'
 import {
     STANDARD_REPORTS_ENDPOINT,
     DATA_SET_REPORTS_ENDPOINT,
 } from './constants'
 
+/**
+ * @param {Object} d2 object retrieved by the list() method
+ * @return {Array}
+ */
+const mapResponseToJSArray = model =>
+    model.toArray().map(report => report.toJSON())
+/**
+ * @param {string} name
+ * @param {Object} model
+ * @return {Object} The model with the filter if it wasn't an empty string otherwise the model without the filter
+ */
+export const addFilterForName = curry((name, model) =>
+    !name
+        ? model
+        : model
+              .filter()
+              .on('displayName')
+              .ilike(name)
+)
+
+/**
+ * Required fields for displaying the standard reports
+ */
 const standardReportsFields = [
     'displayName',
     'type',
@@ -14,22 +38,27 @@ const standardReportsFields = [
 /**
  * @param {number} page
  * @param {number} pageSize
- * @param {string} nameFilter
- * @returns {string}
+ * @param {Object} model
+ * @return {Promise} The request
  */
-export const createGetStandardReportsUrl = (page, pageSize, nameFilter) => {
-    const parameters = [
-        `page=${page}`,
-        `pageSize=${pageSize}`,
-        `fields=${standardReportsFields.join(',')}`,
-    ]
+export const getStandardReports = curry((page, pageSize, model) =>
+    model.list({ page, pageSize, fields: standardReportsFields })
+)
 
-    if (nameFilter) {
-        parameters.push(`filter=displayName:ilike:${nameFilter}`)
-    }
-
-    return `${STANDARD_REPORTS_ENDPOINT}?${parameters.join('&')}`
-}
+/**
+ * @param {Promise} request
+ * @return {Object}
+ */
+export const formatStandardReportsResponse = request =>
+    request.then(model => ({
+        reports: mapResponseToJSArray(model),
+        pager: {
+            pageSize: model.pager.query.pageSize,
+            page: model.pager.page,
+            pageCount: model.pager.pageCount,
+            total: model.pager.total,
+        },
+    }))
 
 /**
  * @param {string} id
