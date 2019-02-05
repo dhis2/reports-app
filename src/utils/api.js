@@ -1,9 +1,12 @@
 import { getInstance } from 'd2/lib/d2'
+import { pipe } from 'lodash/fp'
 import { isDevelopment } from './env/isDevelopment'
 import {
-    createGetStandardReportsUrl,
     createDeleteStandardReportUrl,
     createGetDataSetReportsUrl,
+    addFilterForName,
+    getStandardReports,
+    formatStandardReportsResponse,
 } from './api/helpers'
 
 let d2
@@ -12,15 +15,13 @@ let api
 /**
  * Sets d2 and the api
  */
-export const initApi = async () => {
-    d2 = await getInstance()
+export const initApi = d2Instance => {
+    d2 = d2Instance
     api = d2.Api.getApi()
 
     if (isDevelopment()) {
         window.d2 = d2
     }
-
-    return d2
 }
 
 /**
@@ -44,8 +45,12 @@ export const getPeriodTypes = () => api.get('periodTypes')
  * @param {string} nameFilter
  * @return {Promise}
  */
-export const getStandardReports = (page, pageSize, nameFilter) =>
-    api.get(createGetStandardReportsUrl(page, pageSize, nameFilter))
+export const getFilteredStandardReports = (page, pageSize, nameFilter) =>
+    pipe(
+        addFilterForName(nameFilter),
+        getStandardReports(page, pageSize),
+        formatStandardReportsResponse
+    )(d2.models.report)
 
 /**
  * @param {string} id

@@ -6,7 +6,7 @@ import { ConnectedRouter } from 'react-router-redux'
 import store, { history } from './redux/store'
 import { configI18n } from './utils/i18n/configI18n'
 import injectTranslationsToD2 from './utils/i18n/injectTranslationsToD2'
-import { initApi } from './utils/api'
+import { initApi, getD2 } from './utils/api'
 import App from './App'
 import registerServiceWorker from './registerServiceWorker'
 import './index.css'
@@ -30,18 +30,15 @@ getManifest('manifest.webapp').then(manifest => {
             'dataSet',
             'organisationUnit',
             'organisationUnitGroupSet',
-            'pager',
-            'reports',
+            'report',
             'reportTable',
         ],
     })
-        .then(d2 => {
-            d2Instance = d2
-        })
         .then(initApi)
         .then(getUserSettings)
         .then(configI18n)
         .then(() => {
+            const d2Instance = getD2()
             injectTranslationsToD2(d2Instance)
             ReactDOM.render(
                 <Provider store={store}>
