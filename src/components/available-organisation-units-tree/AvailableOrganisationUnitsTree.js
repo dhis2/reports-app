@@ -28,7 +28,7 @@ export class AvailableOrganisationUnitsTree extends PureComponent {
     }
 
     componentDidMount() {
-        if (!this.props.organisationUnits) {
+        if (!this.props.organisationUnits.ready) {
             this.props.loadOrganisationUnits()
         }
     }
@@ -42,27 +42,32 @@ export class AvailableOrganisationUnitsTree extends PureComponent {
 
     render() {
         const { organisationUnits } = this.props
+        console.log(organisationUnits.collection)
 
-        if (!organisationUnits) {
+        if (!organisationUnits.ready) {
             return <span>{i18n.t('Updating Organisation Units Tree...')}</span>
         }
 
-        if (organisationUnits instanceof Error) {
+        if (organisationUnits.loadingError) {
             return (
                 <span style={styles.error}>
-                    {i18n.t('Could not load Organisation Units tree')}
+                    {organisationUnits.loadingError}
                 </span>
             )
         }
+
+        console.log('error now?')
 
         return (
             <div style={this.props.style.tree}>
                 <OrgUnitTreeMultipleRoots
                     hideMemberCount
-                    roots={organisationUnits}
+                    roots={organisationUnits.collection}
                     selected={this.state.selected}
-                    initiallyExpanded={organisationUnits.map(u => `/${u.id}`)}
-                    onSelectClick={this.handleOrgUnitClick}
+                    initiallyExpanded={organisationUnits.collection.map(
+                        unit => `/${unit.id}`
+                    )}
+                    // onSelectClick={this.handleOrgUnitClick}
                 />
             </div>
         )

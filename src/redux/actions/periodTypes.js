@@ -1,4 +1,5 @@
 import { getPeriodTypes } from '../../utils/api'
+import i18n from '@dhis2/d2-i18n'
 
 export const ACTION_TYPES = {
     PERIOD_TYPES_RECEIVED: 'PERIOD_TYPES_RECEIVED',
@@ -10,18 +11,14 @@ export const loadPeriodTypesSuccess = periodTypes => ({
     payload: periodTypes,
 })
 
-export const loadPeriodTypesError = error => ({
+export const loadPeriodTypesError = () => ({
     type: ACTION_TYPES.PERIOD_TYPES_ERRORED,
-    payload: error,
+    payload: i18n.t('Could not load period types'),
 })
 
 const loadPeriodTypes = () => dispatch => {
     getPeriodTypes()
         .then(periodTypes => dispatch(loadPeriodTypesSuccess(periodTypes)))
-        .catch(() =>
-            dispatch(
-                loadPeriodTypesError(new Error('Could not load period types'))
-            )
-        )
+        .catch(() => dispatch(loadPeriodTypesError()))
 }
 export default loadPeriodTypes

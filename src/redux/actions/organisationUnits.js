@@ -1,4 +1,5 @@
 import { getOrganisationUnits } from '../../utils/api'
+import i18n from '@dhis2/d2-i18n'
 
 export const ACTION_TYPES = {
     ORGANISATION_UNITS_RECEIVED: 'ORGANISATION_UNITS_RECEIVED',
@@ -10,9 +11,9 @@ export const loadOrganisationUnitsSuccess = periodTypes => ({
     payload: periodTypes,
 })
 
-export const loadOrganisationUnitsError = error => ({
+export const loadOrganisationUnitsError = () => ({
     type: ACTION_TYPES.ORGANISATION_UNITS_ERRORED,
-    payload: error,
+    payload: i18n.t('Could not load organisation units'),
 })
 
 const loadOrganisationUnits = () => dispatch => {
@@ -20,12 +21,6 @@ const loadOrganisationUnits = () => dispatch => {
         .then(organisationUnits =>
             dispatch(loadOrganisationUnitsSuccess(organisationUnits))
         )
-        .catch(() =>
-            dispatch(
-                loadOrganisationUnitsError(
-                    new Error('Could not load organisation units')
-                )
-            )
-        )
+        .catch(() => dispatch(loadOrganisationUnitsError()))
 }
 export default loadOrganisationUnits

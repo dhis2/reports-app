@@ -30,7 +30,7 @@ export class PeriodPickerWithPeriodType extends PureComponent {
     }
 
     componentDidMount() {
-        if (!this.props.periodTypes) {
+        if (!this.props.periodTypes.ready) {
             this.props.loadPeriodTypes()
         }
     }
@@ -45,23 +45,23 @@ export class PeriodPickerWithPeriodType extends PureComponent {
         const { periodTypes } = this.props
         const msg = i18n.t('Select Period Type')
 
-        if (!periodTypes) {
+        if (!periodTypes.ready) {
             return (
                 <span style={styles.error}>
-                    {i18n.t('Could not load period types dropdown')}
+                    {i18n.t('Loading period types dropdown')}
                 </span>
             )
         }
 
-        if (periodTypes instanceof Error) {
-            return <span style={styles.error}>{periodTypes.toString()}</span>
+        if (periodTypes.loadingError) {
+            return <span style={styles.error}>{periodTypes.loadingError}</span>
         }
 
         return (
             <DropDown
                 value={this.state.selectedPeriodType}
                 onChange={this.onChangePeriodType}
-                menuItems={this.props.periodTypes}
+                menuItems={this.props.periodTypes.collection}
                 fullWidth
                 emptyLabel={msg}
                 hintText={msg}
