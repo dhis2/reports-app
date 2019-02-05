@@ -1,6 +1,9 @@
 # General information
 
-This are general information on how this app works internally
+This are general information on how this app works internally.
+If you need info on a specific section, please refer to the section's docs:
+
+-   [Standard reports](./standard-reports.md)
 
 ## Loading the initial data for each section
 
