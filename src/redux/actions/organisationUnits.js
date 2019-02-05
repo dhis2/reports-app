@@ -15,16 +15,17 @@ export const loadOrganisationUnitsError = error => ({
     payload: error,
 })
 
-const loadOrganisationUnits = () => async dispatch => {
-    try {
-        const organisationUnits = await getOrganisationUnits()
-        dispatch(loadOrganisationUnitsSuccess(organisationUnits))
-    } catch (error) {
-        dispatch(
-            loadOrganisationUnitsError(
-                new Error('Could not load organisation units')
+const loadOrganisationUnits = () => dispatch => {
+    getOrganisationUnits()
+        .then(organisationUnits =>
+            dispatch(loadOrganisationUnitsSuccess(organisationUnits))
+        )
+        .catch(() =>
+            dispatch(
+                loadOrganisationUnitsError(
+                    new Error('Could not load organisation units')
+                )
             )
         )
-    }
 }
 export default loadOrganisationUnits

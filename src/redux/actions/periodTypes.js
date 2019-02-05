@@ -15,12 +15,13 @@ export const loadPeriodTypesError = error => ({
     payload: error,
 })
 
-const loadPeriodTypes = () => async dispatch => {
-    try {
-        const { periodTypes } = await getPeriodTypes()
-        dispatch(loadPeriodTypesSuccess(periodTypes))
-    } catch (error) {
-        dispatch(loadPeriodTypesError(new Error('Could not load period types')))
-    }
+const loadPeriodTypes = () => dispatch => {
+    getPeriodTypes()
+        .then(periodTypes => dispatch(loadPeriodTypesSuccess(periodTypes)))
+        .catch(() =>
+            dispatch(
+                loadPeriodTypesError(new Error('Could not load period types'))
+            )
+        )
 }
 export default loadPeriodTypes
