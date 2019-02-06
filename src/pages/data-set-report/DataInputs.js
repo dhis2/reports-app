@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import i18n from '../../utils/i18n/locales'
 import { CheckBox } from '@dhis2/d2-ui-core'
-import DataSets from '../../components/datasets-dropdown/DatasetsDropdown'
-import DataSetOptions from '../../components/data-set-dimensions/DataSetDimensions'
-import PeriodPickerComponent from '../../components/period-picker-with-period-type/PeriodPickerWithPeriodType'
+import DataSets from '../../components/DatasetsDropdown'
+import DataSetOptions from '../../components/DataSetDimensions'
+import PeriodPickerComponent from '../../components/PeriodPickerWithPeriodType'
 import { OrgUnitsTree } from './OrgUnitsTree'
 
 export const DataInputs = props => (

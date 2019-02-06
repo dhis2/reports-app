@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Report from '../../components/report/Report'
+import Report from '../../components/Report'
 import i18n from '../../utils/i18n/locales'
 import ShareComment from './Share'
 import styles from '../../utils/styles'

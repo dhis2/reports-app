@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import i18n from '../../utils/i18n/locales'
 import styles from '../../utils/styles'
-import OrganisationUnitsTree from '../../components/available-organisation-units-tree/AvailableOrganisationUnitsTree'
-import OrganisationUnitGroupOptions from '../../components/organisation-unit-group-sets/OrganisationUnitGroupSets'
+import OrganisationUnitsTree from '../../components/AvailableOrganisationUnitsTree'
+import OrganisationUnitGroupOptions from '../../components/OrganisationUnitGroupSets'
 
 const getExtraOptionsLabel = showOptions =>
     i18n.t(showOptions ? 'Show more options' : 'Show few options')

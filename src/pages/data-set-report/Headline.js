@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import i18n from '../../utils/i18n/locales'
 import styles from '../../utils/styles'
 import { getDocsUrl } from '../../utils/getDocsUrl'
-import PageHelper from '../../components/page-helper/PageHelper'
+import PageHelper from '../../components/PageHelper'
 
 export const Headline = props => (
     <h1>
