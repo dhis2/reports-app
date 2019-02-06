@@ -1,5 +1,7 @@
-import { ACTION_TYPES as ACTIONS } from '../actions/organisationUnits'
+import { LOCATION_CHANGE } from 'connected-react-router'
+import { ACTION_TYPES } from '../actions/organisationUnits'
 
+const ACTIONS = { LOCATION_CHANGE, ...ACTION_TYPES }
 export const initialState = {
     ready: false,
     loadingError: '',
@@ -33,6 +35,12 @@ export default function organisationUnits(
             return {
                 ...state,
                 selected: payload,
+            }
+
+        case ACTIONS.LOCATION_CHANGE:
+            return {
+                ...state,
+                selected: null,
             }
 
         default:
