@@ -4,7 +4,7 @@ import { DropDown } from '@dhis2/d2-ui-core'
 import i18n from '@dhis2/d2-i18n'
 
 /* styles */
-import styles from '../../utils/styles'
+import styles from '../utils/styles'
 
 const labelText = i18n.t('Select Period Type')
 

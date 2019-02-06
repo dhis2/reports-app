@@ -21,7 +21,7 @@ import appStyles from '../../utils/styles'
 
 /* app components */
 import Page from '../Page'
-import PageHelper from '../../components/page-helper/PageHelper'
+import PageHelper from '../../components/PageHelper'
 import { ConnectedAddEditResource } from './add-edit-resource/AddEditResource'
 import {
     ACTION_MESSAGE,

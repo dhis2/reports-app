@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
 /* styles */
-import styles from './PageHelper.style'
+import styles from '../utils/styles'
 
 class PageHelper extends PureComponent {
     static propTypes = {
