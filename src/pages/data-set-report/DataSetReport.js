@@ -307,7 +307,8 @@ export default class DataSetReport extends Page {
                                             i18nKeys.dataSetReport
                                                 .reportPeriodLabel
                                         )}
-                                        onChange={this.handlePeriodChange}
+                                        // handled via an action instead
+                                        // onChange={this.handlePeriodChange}
                                     />
                                 </div>
                                 <CheckBox

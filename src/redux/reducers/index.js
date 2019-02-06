@@ -1,12 +1,16 @@
 import { combineReducers } from 'redux'
-import { routerReducer } from 'react-router-redux'
+import { connectRouter } from 'connected-react-router'
+import history from '../../utils/history'
+
 import feedback from './feedback'
 import standardReport from './standardReport'
-import periodTypes from './periodTypes'
+import reportPeriod from './reportPeriod'
+import organisationUnits from './organisationUnits'
 
 export default combineReducers({
-    router: routerReducer,
+    router: connectRouter(history),
     feedback,
     standardReport,
-    periodTypes,
+    reportPeriod,
+    organisationUnits,
 })

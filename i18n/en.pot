@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2019-02-05T11:58:32.555Z\n"
-"PO-Revision-Date: 2019-02-05T11:58:32.555Z\n"
+"POT-Creation-Date: 2019-02-06T13:32:57.603Z\n"
+"PO-Revision-Date: 2019-02-06T13:32:57.603Z\n"
 
 msgid "Cancel"
 msgstr ""
@@ -174,12 +174,6 @@ msgid "Last bi-week"
 msgstr ""
 
 msgid "Last 4 bi-weeks"
-msgstr ""
-
-msgid "Updating Organisation Units Tree..."
-msgstr ""
-
-msgid "Organisation Unit"
 msgstr ""
 
 msgid "Create Report Table"

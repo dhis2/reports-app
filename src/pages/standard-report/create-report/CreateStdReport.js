@@ -191,11 +191,7 @@ class CreateStdReport extends PureComponent {
         if (this.state.params && this.isOrganisationUnitSet()) {
             return (
                 <div style={{ height: 350 }}>
-                    <div>
-                        {i18n.t(
-                            i18nKeys.availableOrganisationUnitsTree.treeLabel
-                        )}
-                    </div>
+                    <div>{i18n.t('Organisation Unit')}</div>
                     <OrganisationUnitsTree
                         d2={this.props.d2}
                         onChange={this.onChangeOrgUnit}

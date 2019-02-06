@@ -7,8 +7,9 @@ import { init, getManifest, getUserSettings } from 'd2/lib/d2'
 
 /* Redux */
 import { Provider } from 'react-redux'
-import { ConnectedRouter } from 'react-router-redux'
-import store, { history } from './redux/store'
+import { ConnectedRouter } from 'connected-react-router'
+import store from './redux/store'
+import history from './utils/history'
 
 /* i18n */
 import { configI18n } from './utils/i18n/configI18n'
@@ -34,11 +35,11 @@ getManifest('manifest.webapp').then(manifest => {
     init({
         baseUrl,
         schemas: [
-            'organisationUnit',
-            'dataSet',
-            'reportTable',
-            'organisationUnitGroupSet',
             'dataApprovalLevel',
+            'dataSet',
+            'organisationUnit',
+            'organisationUnitGroupSet',
+            'reportTable',
         ],
     })
         .then(d2 => {

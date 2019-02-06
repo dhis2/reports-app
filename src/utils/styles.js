@@ -94,6 +94,9 @@ const styles = {
     actionButton: {
         marginRight: 16,
     },
+    error: {
+        color: '#f44336',
+    },
 }
 
 export default styles
