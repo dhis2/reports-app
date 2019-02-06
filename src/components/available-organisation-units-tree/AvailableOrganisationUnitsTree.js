@@ -1,5 +1,5 @@
 /* React */
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import i18n from '@dhis2/d2-i18n'
@@ -70,10 +70,3 @@ export default connect(
     mapStateToProps,
     { selectOrganisationUnit }
 )(AvailableOrganisationUnitsTree)
-
-// handleOrgUnitClick = (event, orgUnit) => {
-//     if (!this.state.selected.includes(orgUnit.path)) {
-//         this.setState({ selected: [orgUnit.path] })
-//         this.props.onChange(orgUnit.id)
-//     }
-// }
