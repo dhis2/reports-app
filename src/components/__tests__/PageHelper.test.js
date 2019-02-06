@@ -6,7 +6,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 /* App components */
-import PageHelper from './PageHelper'
+import PageHelper from '../PageHelper'
 
 const ownShallow = () => {
     return shallow(<PageHelper url="http://dummy.com" />)

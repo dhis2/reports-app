@@ -5,11 +5,11 @@ import { shallow } from 'enzyme'
 import { Button, DropDown } from '@dhis2/d2-ui-core'
 
 import ReportingRateSummary from './ReportingRateSummary'
-import DataSets from '../../components/datasets-dropdown/DatasetsDropdown'
-import OrganisationUnitsTree from '../../components/available-organisation-units-tree/AvailableOrganisationUnitsTree'
-import OrganisationUnitGroupOptions from '../../components/organisation-unit-group-sets/OrganisationUnitGroupSets'
-import PeriodPickerComponent from '../../components/period-picker-with-period-type/PeriodPickerWithPeriodType'
-import Report from '../../components/report/Report'
+import DataSets from '../../components/DatasetsDropdown'
+import OrganisationUnitsTree from '../../components/AvailableOrganisationUnitsTree'
+import OrganisationUnitGroupOptions from '../../components/OrganisationUnitGroupSets'
+import PeriodPickerComponent from '../../components/PeriodPickerWithPeriodType'
+import Report from '../../components/Report'
 
 import fakerData from '../../utils/fakerTests'
 

@@ -8,7 +8,7 @@ import { shallow } from 'enzyme'
 /* d2-ui components */
 import { DropDown } from '@dhis2/d2-ui-core'
 
-import { DataSetDimensions } from './DataSetDimensions'
+import { DataSetDimensions } from '../DataSetDimensions'
 
 /* fake data */
 import fakerData from '../../utils/fakerTests'

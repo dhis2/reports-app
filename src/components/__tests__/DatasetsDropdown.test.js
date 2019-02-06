@@ -8,7 +8,7 @@ import { shallow } from 'enzyme'
 /* d2-ui components */
 import { DropDown } from '@dhis2/d2-ui-core'
 
-import { DatasetsDropdown } from './DatasetsDropdown'
+import { DatasetsDropdown } from '../DatasetsDropdown'
 
 /* fake data */
 import fakerData from '../../utils/fakerTests'
