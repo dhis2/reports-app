@@ -17,12 +17,18 @@ const manageError = component => {
         pageMounted = false
 
         componentDidMount() {
-            super.componentDidMount()
+            if (super.componentDidMount) {
+                super.componentDidMount()
+            }
+
             this.pageMounted = true
         }
 
         componentWillUnmount() {
-            super.componentWillUnmount()
+            if (super.componentWillUnmount) {
+                super.componentWillUnmount()
+            }
+
             this.pageMounted = false
         }
 

@@ -4,14 +4,14 @@ import { shallow } from 'enzyme'
 
 import { CheckBox, Button } from '@dhis2/d2-ui-core'
 
-import DataSetReport from './DataSetReport'
 import DataSets from '../../components/datasets-dropdown/DatasetsDropdown'
 import OrganisationUnitsTree from '../../components/available-organisation-units-tree/AvailableOrganisationUnitsTree'
 import OrganisationUnitGroupOptions from '../../components/organisation-unit-group-sets/OrganisationUnitGroupSets'
 import DataSetOptions from '../../components/data-set-dimensions/DataSetDimensions'
 import PeriodPickerComponent from '../../components/period-picker-with-period-type/PeriodPickerWithPeriodType'
-import ShareComment from './Share'
 import Report from '../../components/report/Report'
+import DataSetReport from '../DataSetReport'
+import ShareComment from '../Share'
 
 import fakerData from '../../utils/fakerTests'
 

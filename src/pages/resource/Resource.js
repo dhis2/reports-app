@@ -107,10 +107,9 @@ export default class Resource extends Page {
 
     loadDocuments(pager, search) {
         const api = this.props.d2.Api.getApi()
-        let url =
-            `${DOCUMENTS_ENDPOINT}?page=${pager.page}&pageSize=${
-                pager.pageSize
-            }` + '&fields=displayName,id,url,external,access'
+        let url = `${DOCUMENTS_ENDPOINT}?page=${pager.page}&pageSize=${
+            pager.pageSize
+        }&fields=displayName,id,url,external,access`
         this.setState({ search })
         if (search) {
             url = `${url}&filter=displayName:ilike:${search}`
