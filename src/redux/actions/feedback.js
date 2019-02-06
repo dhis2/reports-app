@@ -2,13 +2,11 @@ export const ACTION_TYPE = {
     UPDATE_FEEDBACK_STATE: 'UPDATE_FEEDBACK_STATE',
 }
 
-export const updateFeedbackState = dispatch => (
+export const updateFeedbackState = (
     showSnackbar = false,
     snackbarConf = {}
-) => {
-    dispatch({
-        type: ACTION_TYPE.UPDATE_FEEDBACK_STATE,
-        showSnackbar,
-        snackbarConf,
-    })
-}
+) => ({
+    type: ACTION_TYPE.UPDATE_FEEDBACK_STATE,
+    showSnackbar,
+    snackbarConf,
+})

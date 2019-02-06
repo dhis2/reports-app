@@ -8,7 +8,7 @@ import i18n from '@dhis2/d2-i18n'
 import { OrgUnitTreeMultipleRoots } from '@dhis2/d2-ui-org-unit-tree'
 
 /* actions */
-import loadOrganisationUnits from '../../redux/actions/organisationUnits'
+import { selectOrganisationUnit } from '../../redux/actions/organisationUnits'
 
 /* styles */
 import styles from '../../utils/styles'
@@ -22,75 +22,58 @@ const defaultStyles = {
     },
 }
 
-export class AvailableOrganisationUnitsTree extends PureComponent {
-    state = {
-        selected: [],
+export function AvailableOrganisationUnitsTree({
+    selectOrganisationUnit,
+    style,
+    ready,
+    loadingError,
+    collection,
+    selected,
+}) {
+    if (!ready) {
+        return <span>{i18n.t('Updating Organisation Units Tree...')}</span>
     }
 
-    componentDidMount() {
-        if (!this.props.organisationUnits.ready) {
-            this.props.loadOrganisationUnits()
-        }
+    if (loadingError) {
+        return <span style={styles.error}>{loadingError}</span>
     }
 
-    handleOrgUnitClick = (event, orgUnit) => {
-        if (!this.state.selected.includes(orgUnit.path)) {
-            this.setState({ selected: [orgUnit.path] })
-            this.props.onChange(orgUnit.id)
-        }
-    }
-
-    render() {
-        const { organisationUnits } = this.props
-        console.log(organisationUnits.collection)
-
-        if (!organisationUnits.ready) {
-            return <span>{i18n.t('Updating Organisation Units Tree...')}</span>
-        }
-
-        if (organisationUnits.loadingError) {
-            return (
-                <span style={styles.error}>
-                    {organisationUnits.loadingError}
-                </span>
-            )
-        }
-
-        console.log('error now?')
-
-        return (
-            <div style={this.props.style.tree}>
-                <OrgUnitTreeMultipleRoots
-                    hideMemberCount
-                    roots={organisationUnits.collection}
-                    selected={this.state.selected}
-                    initiallyExpanded={organisationUnits.collection.map(
-                        unit => `/${unit.id}`
-                    )}
-                    onSelectClick={this.handleOrgUnitClick}
-                />
-            </div>
-        )
-    }
+    return (
+        <div style={style.tree}>
+            <OrgUnitTreeMultipleRoots
+                hideMemberCount
+                roots={collection}
+                selected={selected ? [selected.path] : []}
+                initiallyExpanded={collection.map(unit => `/${unit.id}`)}
+                onSelectClick={selectOrganisationUnit}
+            />
+        </div>
+    )
 }
 
 AvailableOrganisationUnitsTree.propTypes = {
-    onChange: PropTypes.func.isRequired,
+    selectOrganisationUnit: PropTypes.func.isRequired,
     style: PropTypes.object,
-    organisationUnits: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-    loadOrganisationUnits: PropTypes.func.isRequired,
+    ready: PropTypes.bool.isRequired,
+    loadingError: PropTypes.string.isRequired,
+    collection: PropTypes.array.isRequired,
+    selected: PropTypes.object,
 }
 
 AvailableOrganisationUnitsTree.defaultProps = {
-    onChange: null,
     style: defaultStyles,
 }
 
-const mapStateToProps = ({ organisationUnits }) => ({ organisationUnits })
+const mapStateToProps = ({ organisationUnits }) => ({ ...organisationUnits })
 
 export default connect(
     mapStateToProps,
-    {
-        loadOrganisationUnits,
-    }
+    { selectOrganisationUnit }
 )(AvailableOrganisationUnitsTree)
+
+// handleOrgUnitClick = (event, orgUnit) => {
+//     if (!this.state.selected.includes(orgUnit.path)) {
+//         this.setState({ selected: [orgUnit.path] })
+//         this.props.onChange(orgUnit.id)
+//     }
+// }

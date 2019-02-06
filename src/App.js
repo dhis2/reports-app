@@ -13,6 +13,8 @@ import { Sidebar } from '@dhis2/d2-ui-core'
 /* Redux */
 import { connect } from 'react-redux'
 import { updateFeedbackState } from './redux/actions/feedback'
+import { loadPeriodTypes } from './redux/actions/reportPeriod'
+import { loadOrganisationUnits } from './redux/actions/organisationUnits'
 
 /* App components */
 import AppRouter from './components/app-router/AppRouter'
@@ -29,19 +31,6 @@ import { sections } from './pages/sections.conf'
 import styles from './utils/styles'
 
 class App extends PureComponent {
-    static propTypes = {
-        d2: PropTypes.object.isRequired,
-        showSnackbar: PropTypes.bool.isRequired,
-        snackbarConf: PropTypes.shape({
-            type: PropTypes.string,
-            message: PropTypes.string,
-            action: PropTypes.string,
-            onActionClick: PropTypes.func,
-        }).isRequired,
-        updateFeedbackState: PropTypes.func.isRequired,
-        currentSection: PropTypes.string.isRequired,
-    }
-
     constructor(props) {
         super(props)
 
@@ -49,6 +38,15 @@ class App extends PureComponent {
             d2: props.d2,
             pageState: {},
         }
+    }
+
+    getChildContext() {
+        return { d2: this.props.d2 }
+    }
+
+    componentDidMount() {
+        this.props.loadOrganisationUnits()
+        this.props.loadPeriodTypes()
     }
 
     onFeedbackSnackbarClose = () => {
@@ -100,17 +98,36 @@ class App extends PureComponent {
     }
 }
 
+App.propTypes = {
+    d2: PropTypes.object.isRequired,
+    showSnackbar: PropTypes.bool.isRequired,
+    snackbarConf: PropTypes.shape({
+        type: PropTypes.string,
+        message: PropTypes.string,
+        action: PropTypes.string,
+        onActionClick: PropTypes.func,
+    }).isRequired,
+    updateFeedbackState: PropTypes.func.isRequired,
+    loadOrganisationUnits: PropTypes.func.isRequired,
+    loadPeriodTypes: PropTypes.func.isRequired,
+    currentSection: PropTypes.string.isRequired,
+}
+
+App.childContextTypes = {
+    d2: PropTypes.object.isRequired,
+}
+
 const mapStateToProps = state => ({
     showSnackbar: state.feedback.showSnackbar,
     snackbarConf: createSnackbarConfig(state),
     currentSection: state.router.location.pathname.substring(1),
 })
 
-const mapDispatchToProps = dispatch => ({
-    updateFeedbackState: updateFeedbackState(dispatch),
-})
-
 export default connect(
     mapStateToProps,
-    mapDispatchToProps
+    {
+        loadOrganisationUnits,
+        loadPeriodTypes,
+        updateFeedbackState,
+    }
 )(App)

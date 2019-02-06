@@ -289,7 +289,8 @@ export default class ReportingRateSummary extends Page {
                                             i18nKeys.reportingRateSummary
                                                 .reportPeriodLabel
                                         )}
-                                        onChange={this.handlePeriodChange}
+                                        // handled via an action instead
+                                        // onChange={this.handlePeriodChange}
                                     />
                                 </div>
                             </div>

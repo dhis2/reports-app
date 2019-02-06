@@ -1,5 +1,11 @@
 import { ACTION_TYPES as ACTIONS } from '../actions/organisationUnits'
-import { staticList as initialState } from '../../utils/defaults'
+
+export const initialState = {
+    ready: false,
+    loadingError: '',
+    collection: [],
+    selected: null,
+}
 
 export default function organisationUnits(
     state = initialState,
@@ -12,12 +18,23 @@ export default function organisationUnits(
                 ready: true,
                 collection: payload,
             }
+
         case ACTIONS.ORGANISATION_UNITS_ERRORED:
             return {
                 ...state,
                 ready: true,
                 loadingError: payload,
             }
+
+        case ACTIONS.ORGANISATION_UNIT_SELECTED:
+            if (state.selected && state.selected.id === payload.id) {
+                return state
+            }
+            return {
+                ...state,
+                selected: payload,
+            }
+
         default:
             return state
     }
