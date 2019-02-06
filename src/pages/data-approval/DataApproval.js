@@ -18,10 +18,10 @@ import { i18nKeys } from '../../utils/i18n/i18nKeys'
 
 /* App components */
 import Page from '../Page'
-import PageHelper from '../../components/page-helper/PageHelper'
-import DataSets from '../../components/datasets-dropdown/DatasetsDropdown'
-import OrganisationUnitsTree from '../../components/available-organisation-units-tree/AvailableOrganisationUnitsTree'
-import Report from '../../components/report/Report'
+import PageHelper from '../../components/PageHelper'
+import DataSets from '../../components/DatasetsDropdown'
+import OrganisationUnitsTree from '../../components/AvailableOrganisationUnitsTree'
+import Report from '../../components/Report'
 import DataApprovalStatusContainer from './DataApprovalStatus'
 
 /* utils */

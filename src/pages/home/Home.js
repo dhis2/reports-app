@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import MenuElement from '../../components/menu-element/MenuElement'
+import MenuElement from '../../components/MenuElement'
 
 import { sections } from '../sections.conf'
 import styles from './Home.style'

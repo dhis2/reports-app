@@ -1,3 +1,5 @@
+import menuGrid from './menu-element'
+
 const LEFT_BART_WIDTH = 295
 const HEADER_HEIGHT = '4rem'
 const MAX_WIDTH = 1400
@@ -94,6 +96,17 @@ const styles = {
     actionButton: {
         marginRight: 16,
     },
+    error: {
+        color: '#f44336',
+    },
+    helpLink: {
+        paddingLeft: '12px',
+        color: '#276696',
+        textDecoration: 'none',
+    },
 }
 
-export default styles
+export default {
+    ...styles,
+    menuGrid,
+}

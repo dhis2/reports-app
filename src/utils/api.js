@@ -23,6 +23,7 @@ export const initApi = d2Instance => {
 
     if (isDevelopment()) {
         window.d2 = d2
+        window.d2Api = api
     }
 }
 
@@ -39,7 +40,26 @@ export const getApi = () => api
 /**
  * @return {Promise} Period types
  */
-export const getPeriodTypes = () => api.get('periodTypes')
+export const getPeriodTypes = () =>
+    api.get('periodTypes').then(resp => resp.periodTypes)
+
+/**
+ * @return {Promise} Organisation units
+ */
+export const getOrganisationUnits = () =>
+    d2.models.organisationUnits
+        .list({
+            paging: false,
+            level: 1,
+            fields: [
+                'id',
+                'displayName',
+                'path',
+                'children::isNotEmpty',
+                'memberCount',
+            ],
+        })
+        .then(modelCollection => modelCollection.toArray())
 
 /**
  * @param {number} page

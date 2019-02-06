@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import i18n from '../../utils/i18n/locales'
 import { i18nKeys } from '../../utils/i18n/i18nKeys'
-import PageHelper from '../../components/page-helper/PageHelper'
+import PageHelper from '../../components/PageHelper'
 import { getDocsUrl } from '../../utils/getDocsUrl'
 import styles from './StandardReport.style'
 

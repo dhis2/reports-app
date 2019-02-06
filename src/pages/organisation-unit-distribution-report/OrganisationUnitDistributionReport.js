@@ -21,10 +21,10 @@ import { i18nKeys } from '../../utils/i18n/i18nKeys'
 
 /* App components */
 import Page from '../Page'
-import PageHelper from '../../components/page-helper/PageHelper'
-import OrganisationUnitsTree from '../../components/available-organisation-units-tree/AvailableOrganisationUnitsTree'
-import GroupSets from '../../components/group-sets-dropdown/GroupSetsDropdown'
-import Report from '../../components/report/Report'
+import PageHelper from '../../components/PageHelper'
+import OrganisationUnitsTree from '../../components/AvailableOrganisationUnitsTree'
+import GroupSets from '../../components/GroupSetsDropdown'
+import Report from '../../components/Report'
 
 /* utils */
 import { getDocsUrl } from '../../utils/getDocsUrl'

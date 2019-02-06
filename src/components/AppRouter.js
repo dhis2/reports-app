@@ -5,14 +5,14 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 
 /* App components */
-import Home from '../../pages/home/Home'
+import Home from '../pages/home/Home'
 import NoMatch from './NoMatch'
 
 /* App context */
-import AppContext from '../../pages/AppContext'
+import AppContext from '../pages/AppContext'
 
 /* App configs */
-import { sections } from '../../pages/sections.conf'
+import { sections } from '../pages/sections.conf'
 
 const AppRouter = () => {
     const routes = sections.map(section => {

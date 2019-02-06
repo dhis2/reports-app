@@ -78,10 +78,6 @@ export const i18nKeys = {
         lastBiWeek: 'Last bi-week',
         last4BiWeeks: 'Last 4 bi-weeks',
     },
-    availableOrganisationUnitsTree: {
-        updatingMessage: 'Updating Organisation Units Tree...',
-        treeLabel: 'Organisation Unit',
-    },
     standardReport: {
         createReportTitle: 'Create Report Table',
         none: '[ None ]',
