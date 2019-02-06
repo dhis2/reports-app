@@ -3,7 +3,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import Page from '../Page'
-import DataSetReport from '../data-set-report/DataSetReport'
+import DataSetReport from '../DataSetReport'
 import Home from '../home/Home'
 
 import fakerData from '../../utils/fakerTests'

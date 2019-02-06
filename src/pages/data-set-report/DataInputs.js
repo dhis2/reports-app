@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import i18n from '../../utils/i18n/locales'
 import { CheckBox } from '@dhis2/d2-ui-core'
-import { If } from '../../components/conditional/If'
 import DataSets from '../../components/datasets-dropdown/DatasetsDropdown'
 import DataSetOptions from '../../components/data-set-dimensions/DataSetDimensions'
 import PeriodPickerComponent from '../../components/period-picker-with-period-type/PeriodPickerWithPeriodType'
@@ -25,7 +24,7 @@ export const DataInputs = props => (
             <div id="data-set-selection">
                 <DataSets onChange={props.onDataSetChange} />
             </div>
-            <If condition={props.selectedDataSet && props.selectedDataSet.id}>
+            {props.selectedDataSet && props.selectedDataSet.id && (
                 <div id="data-set-dimensions-container">
                     <DataSetOptions
                         dataSetId={props.selectedDataSet.id}
@@ -33,7 +32,7 @@ export const DataInputs = props => (
                         onChange={props.onDimensionChange}
                     />
                 </div>
-            </If>
+            )}
             <div id="report-period">
                 <PeriodPickerComponent
                     label={i18n.t('Report period')}

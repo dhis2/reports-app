@@ -3,12 +3,11 @@ import PropTypes from 'prop-types'
 import i18n from '../../utils/i18n/locales'
 import styles from '../../utils/styles'
 import { getDocsUrl } from '../../utils/getDocsUrl'
-import { If } from '../../components/conditional/If'
 import PageHelper from '../../components/page-helper/PageHelper'
 
 export const Headline = props => (
     <h1>
-        <If condition={!props.showForm}>
+        {!props.showForm && (
             <span
                 id="back-button"
                 style={styles.backButton}
@@ -17,10 +16,8 @@ export const Headline = props => (
                 tabIndex="0"
                 onClick={props.onBackClick}
             />
-        </If>
-
+        )}
         {i18n.t('Data Set Report')}
-
         <PageHelper url={getDocsUrl(props.systemVersion, props.sectionKey)} />
     </h1>
 )

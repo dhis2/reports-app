@@ -211,6 +211,7 @@ class DataSetReport extends React.Component {
     }
 }
 
+export default DataSetReport
 export const ConnectedDataSetReport = connectDataSetReport(
     manageError(DataSetReport)
 )
