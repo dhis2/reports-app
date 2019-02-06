@@ -11,9 +11,6 @@ import App from './App'
 import registerServiceWorker from './registerServiceWorker'
 import './index.css'
 
-/* init d2 */
-let d2Instance
-
 getManifest('manifest.webapp').then(manifest => {
     const baseUrl =
         process.env.NODE_ENV === 'production'

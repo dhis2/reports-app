@@ -1,8 +1,4 @@
 import { curry } from 'lodash/fp'
-import {
-    STANDARD_REPORTS_ENDPOINT,
-    DATA_SET_REPORTS_ENDPOINT,
-} from './constants'
 
 /**
  * @param {Object} d2 object retrieved by the list() method
@@ -47,7 +43,7 @@ export const getStandardReports = curry((page, pageSize, model) =>
 
 /**
  * @param {Promise} request
- * @return {Object}
+ * @returns {Object}
  */
 export const formatStandardReportsResponse = request =>
     request.then(model => ({
@@ -61,37 +57,14 @@ export const formatStandardReportsResponse = request =>
     }))
 
 /**
- * @param {string} id
- * @return {string}
+ * @param {...Object} collections
+ * @returns {string[]}
  */
-export const createDeleteStandardReportUrl = id =>
-    `${STANDARD_REPORTS_ENDPOINT}/${id}`
-
-export const createGetDataSetReportsUrl = (
-    dataSetOptions,
-    orgUnitGroupsOptions,
-    dataSetId,
-    orgUnit,
-    period,
-    selectedUnitOnly
-) => {
-    const dimensions = [
-        ...Object.keys(dataSetOptions).map(
-            dimensionKey => `${dimensionKey}:${dataSetOptions[dimensionKey]}`
-        ),
-        ...Object.keys(orgUnitGroupsOptions).map(
-            orgUnitGroupKey =>
-                `${orgUnitGroupKey}:${orgUnitGroupsOptions[orgUnitGroupKey]}`
-        ),
-    ]
-
-    const parameters = [
-        `ds=${dataSetId}`,
-        `pe=${period}`,
-        `ou=${orgUnit}`,
-        `selectedUnitOnly=${selectedUnitOnly}`,
-        `dimension=${dimensions}`,
-    ]
-
-    return `${DATA_SET_REPORTS_ENDPOINT}?${parameters.join('&')}`
-}
+export const mapCollectionToDimensionQueryString = (...collections) =>
+    collections.reduce(
+        (dimensionQueryString, collection) => [
+            ...dimensionQueryString,
+            ...collection.keys.map(key => `${key}:${collection[key]}`),
+        ],
+        []
+    )

@@ -1,13 +1,15 @@
-import { getInstance } from 'd2/lib/d2'
 import { pipe } from 'lodash/fp'
 import { isDevelopment } from './env/isDevelopment'
 import {
-    createDeleteStandardReportUrl,
-    createGetDataSetReportsUrl,
     addFilterForName,
     getStandardReports,
     formatStandardReportsResponse,
+    mapCollectionToDimensionQueryString,
 } from './api/helpers'
+import {
+    STANDARD_REPORTS_ENDPOINT,
+    DATA_SET_REPORTS_ENDPOINT,
+} from './api/constants'
 
 let d2
 let api
@@ -57,9 +59,9 @@ export const getFilteredStandardReports = (page, pageSize, nameFilter) =>
  * @return {Promise}
  */
 export const deleteStandardReport = id =>
-    api.delete(createDeleteStandardReportUrl(id))
+    api.delete(`${STANDARD_REPORTS_ENDPOINT}/${id}`)
 
-export const getDataSetReport = (
+export const getDataSetReports = (
     dataSetOptions,
     orgUnitGroupsOptions,
     dataSetId,
@@ -67,13 +69,13 @@ export const getDataSetReport = (
     period,
     selectedUnitOnly
 ) =>
-    api.get(
-        createGetDataSetReportsUrl(
+    api.get(DATA_SET_REPORTS_ENDPOINT, {
+        ds: dataSetId,
+        pe: period,
+        ou: orgUnit,
+        selectedUnitOnly,
+        dimensions: mapCollectionToDimensionQueryString(
             dataSetOptions,
-            orgUnitGroupsOptions,
-            dataSetId,
-            orgUnit,
-            period,
-            selectedUnitOnly
-        )
-    )
+            orgUnitGroupsOptions
+        ),
+    })
