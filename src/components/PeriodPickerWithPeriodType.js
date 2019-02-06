@@ -10,14 +10,11 @@ import { PeriodPicker } from '@dhis2/d2-ui-core'
 import PeriodTypeDropDown from './PeriodTypeDropDown'
 
 /* Actions */
-import {
-    selectPeriodType,
-    selectPeriod,
-} from '../../redux/actions/reportPeriod'
-import pluckPeriodTypes from '../../redux/selectors/periodTypes'
+import { selectPeriodType, selectPeriod } from '../redux/actions/reportPeriod'
+import pluckPeriodTypes from '../redux/selectors/periodTypes'
 
 /* styles */
-import styles from '../../utils/styles'
+import styles from '../utils/styles'
 
 export function PeriodPickerWithPeriodType({
     selectPeriodType,

@@ -17,7 +17,7 @@ import { loadPeriodTypes } from './redux/actions/reportPeriod'
 import { loadOrganisationUnits } from './redux/actions/organisationUnits'
 
 /* App components */
-import AppRouter from './components/app-router/AppRouter'
+import AppRouter from './components/AppRouter'
 import Feedback from './components/Feedback'
 
 /* App context */

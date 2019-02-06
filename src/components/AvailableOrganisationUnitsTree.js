@@ -8,10 +8,10 @@ import i18n from '@dhis2/d2-i18n'
 import { OrgUnitTreeMultipleRoots } from '@dhis2/d2-ui-org-unit-tree'
 
 /* actions */
-import { selectOrganisationUnit } from '../../redux/actions/organisationUnits'
+import { selectOrganisationUnit } from '../redux/actions/organisationUnits'
 
 /* styles */
-import styles from '../../utils/styles'
+import styles from '../utils/styles'
 
 /* styles */
 const defaultStyles = {

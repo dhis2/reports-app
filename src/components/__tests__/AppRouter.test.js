@@ -2,7 +2,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import AppRouter from './AppRouter'
+import AppRouter from '../AppRouter'
 import { Route, Switch } from 'react-router-dom'
 
 import { sections } from '../../pages/sections.conf'

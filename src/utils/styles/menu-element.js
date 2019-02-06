@@ -1,4 +1,4 @@
-const MenuGridStyle = {
+const menuGrid = {
     section: {
         display: 'inline-block',
         position: 'relative',
@@ -51,4 +51,4 @@ const MenuGridStyle = {
     },
 }
 
-export default MenuGridStyle
+export default menuGrid

@@ -9,7 +9,7 @@ import { Dialog } from 'material-ui'
 import { Button, SelectField } from '@dhis2/d2-ui-core'
 
 /* app components */
-import OrganisationUnitsTree from '../../../components/available-organisation-units-tree/AvailableOrganisationUnitsTree'
+import OrganisationUnitsTree from '../../../components/AvailableOrganisationUnitsTree'
 
 /* i18n */
 import { i18nKeys } from '../../../utils/i18n/i18nKeys'
