@@ -8,7 +8,7 @@ import { shallow } from 'enzyme'
 /* d2-ui components */
 import { DropDown, PeriodPicker } from '@dhis2/d2-ui-core'
 
-import { PeriodPickerWithPeriodType } from './PeriodPickerWithPeriodType'
+import { PeriodPickerWithPeriodType } from '../PeriodPickerWithPeriodType'
 
 /* fake data */
 import fakerData from '../../utils/fakerTests'

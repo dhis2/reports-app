@@ -2,7 +2,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import MenuElement from './MenuElement'
+import MenuElement from '../MenuElement'
 
 import { sections } from '../../pages/sections.conf'
 

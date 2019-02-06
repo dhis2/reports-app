@@ -9,7 +9,7 @@ import { shallow } from 'enzyme'
 import { OrgUnitTree } from '@dhis2/d2-ui-org-unit-tree'
 
 /* App components */
-import { AvailableOrganisationUnitsTree } from './AvailableOrganisationUnitsTree'
+import { AvailableOrganisationUnitsTree } from '../AvailableOrganisationUnitsTree'
 
 /* fake data */
 import fakerData from '../../utils/fakerTests'

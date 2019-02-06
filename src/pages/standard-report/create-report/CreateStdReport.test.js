@@ -6,7 +6,7 @@ import { i18nKeys } from '../../../utils/i18n/i18nKeys'
 import CreateStdReport from './CreateStdReport'
 
 /* app components */
-import OrganisationUnitsTree from '../../../components/available-organisation-units-tree/AvailableOrganisationUnitsTree'
+import OrganisationUnitsTree from '../../../components/AvailableOrganisationUnitsTree'
 
 /* material-ui */
 import { Dialog } from 'material-ui'

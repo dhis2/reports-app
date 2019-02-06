@@ -5,9 +5,9 @@ import { shallow } from 'enzyme'
 import { Button } from '@dhis2/d2-ui-core'
 
 import OrganisationUnitDistributionReport from './OrganisationUnitDistributionReport'
-import OrganisationUnitsTree from '../../components/available-organisation-units-tree/AvailableOrganisationUnitsTree'
-import GroupSets from '../../components/group-sets-dropdown/GroupSetsDropdown'
-import Report from '../../components/report/Report'
+import OrganisationUnitsTree from '../../components/AvailableOrganisationUnitsTree'
+import GroupSets from '../../components/GroupSetsDropdown'
+import Report from '../../components/Report'
 
 import fakerData from '../../utils/fakerTests'
 
