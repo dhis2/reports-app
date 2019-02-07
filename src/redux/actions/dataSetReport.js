@@ -50,28 +50,13 @@ export const loadingHtmlReportError = errorMessage => ({
 export const loadHtmlReport = () => (dispatch, getState) => {
     dispatch(startLoadingHtmlReport())
 
-    const { dataSetReport } = getState()
-    console.log(
-        'selectedOptionsForDimensions',
-        'selectedOptionsForOrganisationUnitGroupSets',
-        'selectedDataSet.id',
-        'selectedOrgUnit',
-        'selectedPeriod',
-        'selectedUnitOnly',
-
-        dataSetReport.selectedOptionsForDimensions,
-        dataSetReport.selectedOptionsForOrganisationUnitGroupSets,
-        dataSetReport.selectedDataSet.id,
-        dataSetReport.selectedOrgUnit,
-        dataSetReport.selectedPeriod,
-        dataSetReport.selectedUnitOnly
-    )
+    const { dataSetReport, organisationUnits, reportPeriod } = getState()
     getDataSetReports(
-        dataSetReport.selectedOptionsForDimensions,
-        dataSetReport.selectedOptionsForOrganisationUnitGroupSets,
+        dataSetReport.selectedDimensionOptions,
+        dataSetReport.selectedOrgUnitGroupOptions,
         dataSetReport.selectedDataSet.id,
-        dataSetReport.selectedOrgUnit,
-        dataSetReport.selectedPeriod,
+        organisationUnits.selected.id,
+        reportPeriod.selectedPeriod,
         dataSetReport.selectedUnitOnly
     )
         .then(response => dispatch(loadingHtmlReportSuccess(response)))
