@@ -6,7 +6,7 @@ import OrganisationUnitsTree from '../../components/AvailableOrganisationUnitsTr
 import OrganisationUnitGroupOptions from '../../components/OrganisationUnitGroupSets'
 
 const getExtraOptionsLabel = showOptions =>
-    i18n.t(showOptions ? 'Show more options' : 'Show few options')
+    i18n.t(!showOptions ? 'Show more options' : 'Show few options')
 
 const getExtraOptionsStyle = showOptions =>
     showOptions ? styles.showOptions : styles.hideOptions
@@ -14,7 +14,7 @@ const getExtraOptionsStyle = showOptions =>
 export const OrgUnitsTree = props => (
     <div className="col-xs-12 col-md-6">
         <div style={styles.formLabel}>{i18n.t('Report organisation unit')}</div>
-        <OrganisationUnitsTree onChange={props.onOrgUnitChange} />
+        <OrganisationUnitsTree />
         <div>
             <span
                 id="extra-options-action"
@@ -30,7 +30,7 @@ export const OrgUnitsTree = props => (
                 style={getExtraOptionsStyle(props.showOptions)}
             >
                 <OrganisationUnitGroupOptions
-                    values={props.selectedOptionsForOrganisationUnitGroupSets}
+                    values={props.selectedOrgUnitOptions}
                     onChange={props.onOrganisationUnitGroupSetChange}
                 />
             </div>
@@ -40,8 +40,7 @@ export const OrgUnitsTree = props => (
 
 OrgUnitsTree.propTypes = {
     showOptions: PropTypes.bool.isRequired,
-    selectedOptionsForOrganisationUnitGroupSets: PropTypes.object.isRequired,
-    onOrgUnitChange: PropTypes.func.isRequired,
+    selectedOrgUnitOptions: PropTypes.object.isRequired,
     toggleShowOptions: PropTypes.func.isRequired,
     onOrganisationUnitGroupSetChange: PropTypes.func.isRequired,
 }

@@ -1,5 +1,5 @@
 import XLSX from 'xlsx'
-import { getDataSetReports } from '../../utils/api'
+import { getDataSetReports, getDimensions } from '../../utils/api'
 
 export const actionTypes = {
     SHOW_DATA_SET_REPORT_FORM: 'SHOW_DATA_SET_REPORT_FORM',
@@ -7,14 +7,14 @@ export const actionTypes = {
     LOADING_HTML_REPORT_START: 'LOADING_HTML_REPORT_START',
     LOADING_HTML_REPORT_SUCCESS: 'LOADING_HTML_REPORT_SUCCESS',
     LOADING_HTML_REPORT_ERROR: 'LOADING_HTML_REPORT_ERROR',
-    SELECT_DIMENSION: 'SELECT_DIMENSION',
+    LOADING_DIMENSIONS_START: 'LOADING_DIMENSIONS_START',
+    LOADING_DIMENSIONS_SUCCESS: 'LOADING_DIMENSIONS_SUCCESS',
+    LOADING_DIMENSIONS_ERROR: 'LOADING_DIMENSIONS_ERROR',
+    SELECT_DIMENSION_OPTION: 'SELECT_DIMENSION_OPTION',
     SELECT_DATA_SET: 'SELECT_DATA_SET',
-    SELECT_ORG_UNIT: 'SELECT_ORG_UNIT',
-    SELECT_PERIOD: 'SELECT_PERIOD',
-    SELECT_OPTIONS_FOR_ORGANISATION_UNIT_GROUP_SETS:
-        'SELECT_OPTIONS_FOR_ORGANISATION_UNIT_GROUP_SETS',
+    SELECT_ORG_UNIT_OPTION: 'SELECT_ORG_UNIT_OPTION',
     TOGGLE_SHOW_OPTIONS: 'TOGGLE_SHOW_OPTIONS',
-    SET_SELECTED_UNIT_ONLY: 'SET_SELECTED_UNIT_ONLY',
+    TOGGLE_SELECTED_UNIT_ONLY: 'TOGGLE_SELECTED_UNIT_ONLY',
 }
 
 export const exportReportToXls = () => {
@@ -78,36 +78,57 @@ export const loadHtmlReport = () => (dispatch, getState) => {
         .catch(({ message }) => dispatch(loadingHtmlReportError(message)))
 }
 
+export const loadingDimensionsStart = () => ({
+    type: actionTypes.LOADING_DIMENSIONS_START,
+})
+
+export const loadingDimensionsSuccess = dimensions => ({
+    type: actionTypes.LOADING_DIMENSIONS_SUCCESS,
+    payload: dimensions,
+})
+
+export const loadingDimensionsError = errorMessage => ({
+    type: actionTypes.LOADING_DIMENSIONS_ERROR,
+    payload: errorMessage,
+})
+
+export const loadDimensions = () => (dispatch, getState) => {
+    dispatch(loadingDimensionsStart())
+
+    const { dataSetReport } = getState()
+    getDimensions(dataSetReport.selectedDataSet.id)
+        .then(response =>
+            response.error
+                ? Promise.reject(response.error)
+                : Promise.resolve(response.dimensions)
+        )
+        .then(dimensions => dispatch(loadingDimensionsSuccess(dimensions)))
+        .catch(({ message }) => dispatch(loadingDimensionsError(message)))
+}
+
 export const toggleShowOptions = () => ({
     type: actionTypes.TOGGLE_SHOW_OPTIONS,
 })
 
-export const selectOrgUnit = orgUnit => ({
-    type: actionTypes.SELECT_ORG_UNIT,
-    payload: orgUnit,
-})
+export const selectDataSet = dataSet => dispatch => {
+    dispatch({
+        type: actionTypes.SELECT_DATA_SET,
+        payload: dataSet,
+    })
+    dispatch(loadDimensions(dataSet.id))
+}
 
-export const selectDataSet = dataSet => ({
-    type: actionTypes.SELECT_DATA_SET,
-    payload: dataSet,
-})
-
-export const selectDimension = (dimension, value) => ({
-    type: actionTypes.SELECT_DIMENSION,
+export const selectDimensionOption = (dimension, value) => ({
+    type: actionTypes.SELECT_DIMENSION_OPTION,
     payload: { dimension, value },
 })
 
-export const selectPeriod = period => ({
-    type: actionTypes.SELECT_PERIOD,
-    payload: period,
-})
-
-export const setSelectedUnitOnly = selectedUnitOnly => ({
-    type: actionTypes.SET_SELECTED_UNIT_ONLY,
+export const toggleSelectedUnitOnly = selectedUnitOnly => ({
+    type: actionTypes.TOGGLE_SELECTED_UNIT_ONLY,
     payload: selectedUnitOnly,
 })
 
-export const selectOptionsForOrganisationUnitGroupSets = (id, value) => ({
-    type: actionTypes.SELECT_OPTIONS_FOR_ORGANISATION_UNIT_GROUP_SETS,
+export const selectOrgUnitOption = (id, value) => ({
+    type: actionTypes.SELECT_ORG_UNIT_OPTION,
     payload: { id, value },
 })

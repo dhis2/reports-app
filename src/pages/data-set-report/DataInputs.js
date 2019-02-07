@@ -11,10 +11,7 @@ export const DataInputs = props => (
     <div className="row">
         <OrgUnitsTree
             showOptions={props.showOptions}
-            selectedOptionsForOrganisationUnitGroupSets={
-                props.selectedOptionsForOrganisationUnitGroupSets
-            }
-            onOrgUnitChange={props.onOrganisationUnitChange}
+            selectedOrgUnitOptions={props.selectedOrgUnitOptions}
             toggleShowOptions={props.onToggleShowOptions}
             onOrganisationUnitGroupSetChange={
                 props.onOrganisationUnitGroupSetChange
@@ -24,20 +21,16 @@ export const DataInputs = props => (
             <div id="data-set-selection">
                 <DataSets onChange={props.onDataSetChange} />
             </div>
-            {props.selectedDataSet && props.selectedDataSet.id && (
-                <div id="data-set-dimensions-container">
-                    <DataSetOptions
-                        dataSetId={props.selectedDataSet.id}
-                        values={props.selectedOptionsForDimensions}
-                        onChange={props.onDimensionChange}
-                    />
-                </div>
-            )}
-            <div id="report-period">
-                <PeriodPickerComponent
-                    label={i18n.t('Report period')}
-                    onChange={props.onPeriodChange}
+            <div id="data-set-dimensions-container">
+                <DataSetOptions
+                    dimensions={props.dataSetDimensions}
+                    dataSetId={props.selectedDataSet.id}
+                    values={props.selectedDimensionOptions}
+                    onChange={props.onDimensionChange}
                 />
+            </div>
+            <div id="report-period">
+                <PeriodPickerComponent label={i18n.t('Report period')} />
             </div>
             <CheckBox
                 id="selected-unit-only"
@@ -50,16 +43,15 @@ export const DataInputs = props => (
 )
 
 DataInputs.propTypes = {
+    dataSetDimensions: PropTypes.array.isRequired,
     showOptions: PropTypes.bool.isRequired,
-    selectedOptionsForOrganisationUnitGroupSets: PropTypes.object.isRequired,
+    selectedOrgUnitOptions: PropTypes.object.isRequired,
     selectedDataSet: PropTypes.object.isRequired,
-    selectedOptionsForDimensions: PropTypes.object.isRequired,
+    selectedDimensionOptions: PropTypes.object.isRequired,
     selectedUnitOnly: PropTypes.bool.isRequired,
     onToggleShowOptions: PropTypes.func.isRequired,
-    onOrganisationUnitChange: PropTypes.func.isRequired,
     onOrganisationUnitGroupSetChange: PropTypes.func.isRequired,
     onDataSetChange: PropTypes.func.isRequired,
     onDimensionChange: PropTypes.func.isRequired,
-    onPeriodChange: PropTypes.func.isRequired,
     onSelectedUnitOnlyChange: PropTypes.func.isRequired,
 }

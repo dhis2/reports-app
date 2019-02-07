@@ -46,7 +46,11 @@ HtmlReport.propTypes = {
     reportHtml: PropTypes.string.isRequired,
     dataSetId: PropTypes.string.isRequired,
     selectedDataSet: PropTypes.object.isRequired,
-    selectedPeriod: PropTypes.object.isRequired,
-    selectedOrgUnit: PropTypes.object.isRequired,
+    selectedPeriod: PropTypes.string.isRequired,
     onDownloadXlsClick: PropTypes.func.isRequired,
+    selectedOrgUnit: PropTypes.object,
+}
+
+HtmlReport.defaultProps = {
+    selectedOrgUnit: null,
 }

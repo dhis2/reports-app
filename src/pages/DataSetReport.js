@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Paper } from 'material-ui'
 import manageError from './manageError.HOC'
+import Feedback from '../components/Feedback'
 import { Headline } from './data-set-report/Headline'
 import { DataInputs } from './data-set-report/DataInputs'
 import { FormActions } from './data-set-report/FormActions'
@@ -27,23 +28,24 @@ class DataSetReport extends React.Component {
                     <div id="data-set-report-form" style={formStyle}>
                         <DataInputs
                             showOptions={props.showOptions}
-                            selectedOptionsForOrganisationUnitGroupSets={
-                                props.selectedOptionsForOrganisationUnitGroupSets
+                            dataSetDimensions={props.dataSetDimensions}
+                            selectedOrgUnitOptions={
+                                props.selectedOrgUnitGroupOptions
                             }
                             selectedDataSet={props.selectedDataSet}
-                            selectedOptionsForDimensions={
-                                props.selectedOptionsForDimensions
+                            selectedDimensionOptions={
+                                props.selectedDimensionOptions
                             }
                             selectedUnitOnly={props.selectedUnitOnly}
                             onToggleShowOptions={props.toggleShowOptions}
-                            onOrganisationUnitChange={props.selectOrgUnit}
                             onOrganisationUnitGroupSetChange={
-                                props.selectOptionsForOrganisationUnitGroupSets
+                                props.selectOrgUnitOption
                             }
                             onDataSetChange={props.selectDataSet}
-                            onDimensionChange={props.selectDimension}
-                            onPeriodChange={props.selectPeriod}
-                            onSelectedUnitOnlyChange={props.setSelectedUnitOnly}
+                            onDimensionChange={props.selectDimensionOption}
+                            onSelectedUnitOnlyChange={
+                                props.toggleSelectedUnitOnly
+                            }
                         />
                         <FormActions
                             onGetReportClick={props.loadHtmlReport}
@@ -60,6 +62,7 @@ class DataSetReport extends React.Component {
                         onDownloadXlsClick={props.exportReportToXls}
                     />
                 </Paper>
+                <Feedback open={props.showFeedback} conf={props.feedbackConf} />
             </div>
         )
     }
@@ -69,24 +72,25 @@ DataSetReport.propTypes = {
     d2: PropTypes.object.isRequired,
     showForm: PropTypes.bool.isRequired,
     reportHtml: PropTypes.string.isRequired,
+    dataSetDimensions: PropTypes.array.isRequired,
     selectedDataSet: PropTypes.object.isRequired,
     selectedUnitOnly: PropTypes.bool.isRequired,
     selectedOrgUnit: PropTypes.object.isRequired,
-    selectedOptionsForDimensions: PropTypes.object.isRequired,
-    selectedOptionsForOrganisationUnitGroupSets: PropTypes.object.isRequired,
+    selectedPeriod: PropTypes.string.isRequired,
+    selectedDimensionOptions: PropTypes.object.isRequired,
+    selectedOrgUnitGroupOptions: PropTypes.object.isRequired,
     showOptions: PropTypes.bool.isRequired,
-    selectedPeriod: PropTypes.object.isRequired,
     loading: PropTypes.bool.isRequired,
+    showFeedback: PropTypes.bool.isRequired,
+    feedbackConf: PropTypes.object.isRequired,
     exportReportToXls: PropTypes.func.isRequired,
     loadHtmlReport: PropTypes.func.isRequired,
     selectDataSet: PropTypes.func.isRequired,
-    selectOrgUnit: PropTypes.func.isRequired,
-    selectDimension: PropTypes.func.isRequired,
-    selectPeriod: PropTypes.func.isRequired,
-    selectOptionsForOrganisationUnitGroupSets: PropTypes.func.isRequired,
-    setSelectedUnitOnly: PropTypes.func.isRequired,
-    showDataSetReportForm: PropTypes.func.isRequired,
+    selectDimensionOption: PropTypes.func.isRequired,
+    selectOrgUnitOption: PropTypes.func.isRequired,
+    toggleSelectedUnitOnly: PropTypes.func.isRequired,
     toggleShowOptions: PropTypes.func.isRequired,
+    showDataSetReportForm: PropTypes.func.isRequired,
 }
 
 export default DataSetReport

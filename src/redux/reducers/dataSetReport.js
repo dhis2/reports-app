@@ -8,11 +8,12 @@ const defaultState = {
     showOptions: false,
     selectedUnitOnly: false,
     reportHtml: '',
-    selectedPeriod: {},
-    selectedDataSet: { id: '' },
-    selectedOrgUnit: {},
-    selectedOptionsForDimensions: {},
-    selectedOptionsForOrganisationUnitGroupSets: {},
+    dataSetDimensions: [],
+    selectedDataSet: { id: '', displayName: '' },
+    selectedDimensionOptions: {},
+    selectedOrgUnitGroupOptions: {},
+    showFeedback: false,
+    feedbackConf: {},
 }
 
 const dataSetReport = (state = defaultState, action = {}) => {
@@ -57,38 +58,62 @@ const dataSetReport = (state = defaultState, action = {}) => {
                 },
             }
 
+        case actionTypes.LOADING_DIMENSIONS_START:
+            return {
+                ...state,
+                loading: true,
+                loadingError: '',
+                showFeedback: true,
+                feedbackConf: { type: LOADING },
+            }
+
+        case actionTypes.LOADING_DIMENSIONS_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                dataSetDimensions: payload,
+                showFeedback: false,
+                feedbackConf: {
+                    type: SUCCESS,
+                    message: i18n.t(
+                        'Successfully loaded the data set dimensions'
+                    ),
+                },
+            }
+
+        case actionTypes.LOADING_DIMENSIONS_ERROR:
+            return {
+                ...state,
+                loading: false,
+                loadingError: payload,
+                dataSetDimensions: [],
+                showFeedback: false,
+                feedbackConf: {
+                    type: SUCCESS,
+                    message: i18n.t(payload),
+                },
+            }
+
         case actionTypes.TOGGLE_SHOW_OPTIONS:
             return {
                 ...state,
-                showForm: !state.showForm,
-            }
-
-        case actionTypes.SELECT_ORG_UNIT:
-            return {
-                ...state,
-                selectedOrgUnit: payload,
+                showOptions: !state.showOptions,
             }
 
         case actionTypes.SELECT_DATA_SET:
             return {
                 ...state,
                 selectedDataSet: payload,
-                selectedOptionsForDimensions: {},
+                selectedDimensionOptions: {},
             }
 
-        case actionTypes.SELECT_DIMENSION:
+        case actionTypes.SELECT_DIMENSION_OPTION:
             return {
                 ...state,
-                selectedOptionsForDimensions: {
-                    ...state.selectedOptionsForDimensions,
+                selectedDimensionOptions: {
+                    ...state.selectedDimensionOptions,
                     [payload.dimension]: payload.value,
                 },
-            }
-
-        case actionTypes.SELECT_PERIOD:
-            return {
-                ...state,
-                selectedPeriod: payload,
             }
 
         case actionTypes.SET_SELECTED_UNIT_ONLY:
@@ -97,11 +122,11 @@ const dataSetReport = (state = defaultState, action = {}) => {
                 selectedUnitOnly: payload,
             }
 
-        case actionTypes.SELECT_OPTIONS_FOR_ORGANISATION_UNIT_GROUP_SETS:
+        case actionTypes.SELECT_ORG_UNIT_OPTION:
             return {
                 ...state,
-                selectedOptionsForOrganisationUnitGroupSets: {
-                    ...state.selectedOptionsForOrganisationUnitGroupSets,
+                selectedOrgUnitGroupOptions: {
+                    ...state.selectedOrgUnitGroupOptions,
                     [payload.id]: payload.value,
                 },
             }

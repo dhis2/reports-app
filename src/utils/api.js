@@ -9,6 +9,7 @@ import {
 import {
     STANDARD_REPORTS_ENDPOINT,
     DATA_SET_REPORTS_ENDPOINT,
+    DATA_SET_DIMENSIONS_ENDPOINT,
 } from './api/constants'
 
 let d2
@@ -98,4 +99,11 @@ export const getDataSetReports = (
             dataSetOptions,
             orgUnitGroupsOptions
         ),
+    })
+
+export const getDimensions = dataSetId =>
+    api.get(`${DATA_SET_DIMENSIONS_ENDPOINT}/${dataSetId}`, {
+        fields: ['id', 'displayName', 'items[id,displayName]'].join(','),
+        order: 'name:asc',
+        paging: false,
     })
