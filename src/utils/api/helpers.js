@@ -64,7 +64,7 @@ export const mapCollectionToDimensionQueryString = (...collections) =>
     collections.reduce(
         (dimensionQueryString, collection) => [
             ...dimensionQueryString,
-            ...collection.keys.map(key => `${key}:${collection[key]}`),
+            ...Object.keys(collection).map(key => `${key}:${collection[key]}`),
         ],
         []
     )

@@ -50,11 +50,11 @@ export const DataInputs = props => (
 )
 
 DataInputs.propTypes = {
-    showOptions: PropTypes,
-    selectedOptionsForOrganisationUnitGroupSets: PropTypes,
-    selectedDataSet: PropTypes,
-    selectedOptionsForDimensions: PropTypes,
-    selectedUnitOnly: PropTypes,
+    showOptions: PropTypes.bool.isRequired,
+    selectedOptionsForOrganisationUnitGroupSets: PropTypes.object.isRequired,
+    selectedDataSet: PropTypes.object.isRequired,
+    selectedOptionsForDimensions: PropTypes.object.isRequired,
+    selectedUnitOnly: PropTypes.bool.isRequired,
     onToggleShowOptions: PropTypes.func.isRequired,
     onOrganisationUnitChange: PropTypes.func.isRequired,
     onOrganisationUnitGroupSetChange: PropTypes.func.isRequired,

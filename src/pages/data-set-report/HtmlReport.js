@@ -44,7 +44,7 @@ export const HtmlReport = props => {
 HtmlReport.propTypes = {
     showForm: PropTypes.bool.isRequired,
     reportHtml: PropTypes.string.isRequired,
-    dataSetId: PropTypes.object.isRequired,
+    dataSetId: PropTypes.string.isRequired,
     selectedDataSet: PropTypes.object.isRequired,
     selectedPeriod: PropTypes.object.isRequired,
     selectedOrgUnit: PropTypes.object.isRequired,

@@ -47,23 +47,32 @@ export const loadingHtmlReportError = errorMessage => ({
     payload: errorMessage,
 })
 
-export const loadHtmlReport = ({
-    selectedOptionsForDimensions,
-    selectedOptionsForOrganisationUnitGroupSets,
-    dataSetId,
-    selectedOrgUnit,
-    selectedPeriod,
-    selectedUnitOnly,
-}) => dispatch => {
+export const loadHtmlReport = () => (dispatch, getState) => {
     dispatch(startLoadingHtmlReport())
 
+    const { dataSetReport } = getState()
+    console.log(
+        'selectedOptionsForDimensions',
+        'selectedOptionsForOrganisationUnitGroupSets',
+        'selectedDataSet.id',
+        'selectedOrgUnit',
+        'selectedPeriod',
+        'selectedUnitOnly',
+
+        dataSetReport.selectedOptionsForDimensions,
+        dataSetReport.selectedOptionsForOrganisationUnitGroupSets,
+        dataSetReport.selectedDataSet.id,
+        dataSetReport.selectedOrgUnit,
+        dataSetReport.selectedPeriod,
+        dataSetReport.selectedUnitOnly
+    )
     getDataSetReports(
-        selectedOptionsForDimensions,
-        selectedOptionsForOrganisationUnitGroupSets,
-        dataSetId,
-        selectedOrgUnit,
-        selectedPeriod,
-        selectedUnitOnly
+        dataSetReport.selectedOptionsForDimensions,
+        dataSetReport.selectedOptionsForOrganisationUnitGroupSets,
+        dataSetReport.selectedDataSet.id,
+        dataSetReport.selectedOrgUnit,
+        dataSetReport.selectedPeriod,
+        dataSetReport.selectedUnitOnly
     )
         .then(response => dispatch(loadingHtmlReportSuccess(response)))
         .catch(({ message }) => dispatch(loadingHtmlReportError(message)))

@@ -7,15 +7,8 @@ import { DataInputs } from './data-set-report/DataInputs'
 import { FormActions } from './data-set-report/FormActions'
 import { HtmlReport } from './data-set-report/HtmlReport'
 import { connectDataSetReport } from './data-set-report/connectDataSetReport'
+import { isActionEnabled } from './data-set-report/helpers'
 import styles from '../utils/styles'
-
-const isFormValid = props =>
-    props.selectedOrgUnit &&
-    props.selectedDataSet &&
-    props.selectedDataSet.id &&
-    props.selectedPeriod
-
-const isActionEnabled = props => isFormValid(props) && !props.loading
 
 class DataSetReport extends React.Component {
     render() {

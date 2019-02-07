@@ -9,7 +9,7 @@ const defaultState = {
     selectedUnitOnly: false,
     reportHtml: '',
     selectedPeriod: {},
-    selectedDataSet: {},
+    selectedDataSet: { id: '' },
     selectedOrgUnit: {},
     selectedOptionsForDimensions: {},
     selectedOptionsForOrganisationUnitGroupSets: {},
