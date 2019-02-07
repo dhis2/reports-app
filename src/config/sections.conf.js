@@ -1,10 +1,10 @@
 /* Page Components */
-import { ConnectedStandardReport } from './StandardReport'
-import { ConnectedDataSetReport } from './DataSetReport'
-import { ConnectedReportingRateSummary } from './reporting-rate-summary/ReportingRateSummary'
-import { ConnectedResource } from './resource/Resource'
-import { ConnectedOrganisationUnitDistributionReport } from './organisation-unit-distribution-report/OrganisationUnitDistributionReport'
-import { ConnectedDataApproval } from './data-approval/DataApproval'
+import { ConnectedStandardReport } from '../pages/StandardReport'
+import { ConnectedDataSetReport } from '../pages/DataSetReport'
+import { ConnectedReportingRateSummary } from '../pages/reporting-rate-summary/ReportingRateSummary'
+import { ConnectedResource } from '../pages/resource/Resource'
+import { ConnectedOrganisationUnitDistributionReport } from '../pages/organisation-unit-distribution-report/OrganisationUnitDistributionReport'
+import { ConnectedDataApproval } from '../pages/data-approval/DataApproval'
 
 /* i18n */
 import { i18nKeys } from '../utils/i18n/i18nKeys'

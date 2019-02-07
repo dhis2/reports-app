@@ -13,7 +13,10 @@ import Report from '../../components/Report'
 
 import fakerData from '../../utils/fakerTests'
 
-import { sections, REPORTING_RATE_SUMMARY_SECTION_KEY } from '../sections.conf'
+import {
+    sections,
+    REPORTING_RATE_SUMMARY_SECTION_KEY,
+} from '../../config/sections.conf'
 
 let pageInfo = {}
 for (let i = 0; i < sections.length; i++) {

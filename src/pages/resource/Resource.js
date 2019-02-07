@@ -40,7 +40,7 @@ import {
     CONTEXT_MENU_ACTION,
     CONTEXT_MENU_ICONS,
 } from './resource.conf'
-import { DEBOUNCE_DELAY } from '../sections.conf'
+import { DEBOUNCE_DELAY } from '../../config/sections.conf'
 
 /* i18n */
 import i18n from '../../utils/i18n/locales'

@@ -8,7 +8,7 @@ import Home from '../home/Home'
 
 import fakerData from '../../utils/fakerTests'
 
-import { DATA_SET_REPORT_SECTION_KEY } from '../sections.conf'
+import { DATA_SET_REPORT_SECTION_KEY } from '../../config/sections.conf'
 
 jest.mock('../Page') // Page is now a mock constructor
 jest.mock('@dhis2/d2-ui-org-unit-tree', () => ({

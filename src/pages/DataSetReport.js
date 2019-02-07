@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Paper } from 'material-ui'
-import manageError from './manageError.HOC'
+import manageError from '../utils/pageEnhancers/manageError.HOC'
 import Feedback from '../components/Feedback'
 import { Headline } from './data-set-report/Headline'
 import { DataInputs } from './data-set-report/DataInputs'
