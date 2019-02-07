@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render a <PeriodTypeDropDown/> and <PeriodPicker/> when selectedPeriodType is truthy 1`] = `
+<ContextConsumer>
+  <Component />
+</ContextConsumer>
+`;
+
+exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render a <PeriodTypeDropDown/> when selectedPeriodType is falsy 1`] = `
+<ContextConsumer>
+  <Component />
+</ContextConsumer>
+`;

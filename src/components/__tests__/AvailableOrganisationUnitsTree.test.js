@@ -1,54 +1,41 @@
-/* eslint-disable */
-/* React */
-import React from 'react'
-
-/* unit testing tools */
-import { shallow } from 'enzyme'
-
-/* d2-ui components */
-import { OrgUnitTree } from '@dhis2/d2-ui-org-unit-tree'
+import createComponentRenderer from '../../utils/createComponentRenderer'
 
 /* App components */
 import { AvailableOrganisationUnitsTree } from '../AvailableOrganisationUnitsTree'
 
-/* fake data */
-import fakerData from '../../utils/fakerTests'
-
 jest.mock('@dhis2/d2-ui-org-unit-tree', () => ({
-    OrgUnitTree: 'OrgUnitTree',
+    OrgUnitTreeMultipleRoots: 'OrgUnitTreeMultipleRoots',
 }))
 
-const ownShallow = () => {
-    const onChange = jest.fn()
-    return shallow(
-        <AvailableOrganisationUnitsTree
-            d2={fakerData.d2}
-            onChange={onChange}
-        />,
-        {
-            disableLifecycleMethods: true,
-        }
-    )
-}
-
 describe('Test <OrganisationUnitGroupSets /> rendering:', () => {
-    let wrapper
-    beforeEach(() => {
-        wrapper = ownShallow()
+    const selectMock = jest.fn()
+
+    const defaultProps = {
+        selectOrganisationUnit: selectMock,
+        ready: true,
+        loadingError: '',
+        collection: [],
+        selected: null,
+    }
+
+    const componentRenderer = createComponentRenderer(
+        AvailableOrganisationUnitsTree,
+        defaultProps
+    )
+
+    afterEach(() => {
+        selectMock.mockClear()
     })
 
-    it('Should render without crashing', () => {
-        ownShallow()
+    it('Should render OrgUnitTree when ready', () => {
+        expect(componentRenderer()).toMatchSnapshot()
     })
 
-    it('Should render no OrgUnitTree', () => {
-        const wrapper = ownShallow()
-        expect(wrapper.find(OrgUnitTree)).toHaveLength(0)
+    it('Should render a loading message when not ready', () => {
+        expect(componentRenderer({ ready: false })).toMatchSnapshot()
     })
 
-    it('Should render OrgUnitTree', () => {
-        const wrapper = ownShallow()
-        wrapper.setState({ rootWithMembers: {} })
-        expect(wrapper.find(OrgUnitTree)).toHaveLength(1)
+    it('Should render an error message when it has a loadingError', () => {
+        expect(componentRenderer({ loadingError: 'Oops' })).toMatchSnapshot()
     })
 })
