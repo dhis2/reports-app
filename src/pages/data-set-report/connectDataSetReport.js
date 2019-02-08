@@ -4,13 +4,13 @@ import {
     loadHtmlReport,
     selectDataSet,
     selectDimensionOption,
-    selectOrgUnitOption,
     toggleSelectedUnitOnly,
     shareDataSetReportComment,
     setDataSetReportComment,
     showDataSetReportForm,
     toggleShowOptions,
 } from '../../redux/actions/dataSetReport'
+import { selectOrgUnitOption } from '../../redux/actions/organisationUnits'
 
 const mapStateToProps = ({
     dataSetReport,
@@ -24,7 +24,7 @@ const mapStateToProps = ({
     selectedDataSet: dataSetReport.selectedDataSet,
     selectedUnitOnly: dataSetReport.selectedUnitOnly,
     selectedDimensionOptions: dataSetReport.selectedDimensionOptions,
-    selectedOrgUnitGroupOptions: dataSetReport.selectedOrgUnitGroupOptions,
+    selectedOrgUnitGroupOptions: organisationUnits.selectedOptions,
     selectedOrgUnit: organisationUnits.selected,
     selectedPeriod: reportPeriod.selectedPeriod,
     showOptions: dataSetReport.showOptions,

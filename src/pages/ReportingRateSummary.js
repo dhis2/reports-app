@@ -8,8 +8,7 @@ import { updateFeedbackState } from '../redux/actions/feedback'
 import i18n from '../utils/i18n/locales'
 import Page from './Page'
 import DataSets from '../components/DatasetsDropdown'
-import OrganisationUnitsTree from '../components/AvailableOrganisationUnitsTree'
-import OrganisationUnitGroupOptions from '../components/OrganisationUnitGroupSets'
+import { OrgUnitsTreeWithExtraOptions } from '../components/OrgUnitsTreeWithExtraOptions'
 import PeriodPickerComponent from '../components/PeriodPickerWithPeriodType'
 import Report from '../components/Report'
 import { LOADING, SUCCESS } from '../utils/feedbackSnackBarTypes'
@@ -153,39 +152,6 @@ export default class ReportingRateSummary extends Page {
         })
     }
 
-    renderExtraOptions = () => (
-        <div>
-            <span
-                id="extra-options-action"
-                style={styles.showMoreOptionsButton}
-                role="button"
-                tabIndex="0"
-                onClick={this.toggleShowOptions}
-            >
-                {i18n.t(
-                    this.state.showOptions
-                        ? 'Show few options'
-                        : 'Show more options'
-                )}
-            </span>
-            <div
-                id="extra-options"
-                style={
-                    this.state.showOptions
-                        ? styles.showOptions
-                        : styles.hideOptions
-                }
-            >
-                <OrganisationUnitGroupOptions
-                    values={
-                        this.state.selectedOptionsForOrganisationUnitGroupSets
-                    }
-                    onChange={this.handleOrganisationUnitGroupSetChange}
-                />
-            </div>
-        </div>
-    )
-
     isFormValid() {
         return this.state.selectedOrgUnit && this.state.selectedPeriod
     }
@@ -213,13 +179,16 @@ export default class ReportingRateSummary extends Page {
                     >
                         <div className="row">
                             <div className="col-xs-12 col-md-6">
-                                <div style={styles.formLabel}>
-                                    {i18n.t('Report organisation unit')}
-                                </div>
-                                <OrganisationUnitsTree
-                                    onChange={this.handleOrganisationUnitChange}
+                                {/* @TODO Add extra options visibility to state}
+                                <OrgUnitsTreeWithExtraOptions
+                                    showOptions={props.showOptions}
+                                    selectedOrgUnitOptions={props.selectedOrgUnitOptions}
+                                    toggleShowOptions={props.onToggleShowOptions}
+                                    onOrganisationUnitGroupSetChange={
+                                        props.onOrganisationUnitGroupSetChange
+                                    }
                                 />
-                                {this.renderExtraOptions()}
+                                {*/}
                             </div>
                             <div className="col-xs-12 col-md-6">
                                 <div id="criteria-selection">
@@ -241,8 +210,6 @@ export default class ReportingRateSummary extends Page {
                                 <div id="report-period">
                                     <PeriodPickerComponent
                                         label={i18n.t('Report period')}
-                                        // handled via an action instead
-                                        // onChange={this.handlePeriodChange}
                                     />
                                 </div>
                             </div>

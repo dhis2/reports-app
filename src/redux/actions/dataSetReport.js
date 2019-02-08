@@ -23,7 +23,6 @@ export const actionTypes = {
     SET_DATA_SET_REPORT_COMMENT: 'SET_DATA_SET_REPORT_COMMENT',
     SELECT_DIMENSION_OPTION: 'SELECT_DIMENSION_OPTION',
     SELECT_DATA_SET: 'SELECT_DATA_SET',
-    SELECT_ORG_UNIT_OPTION: 'SELECT_ORG_UNIT_OPTION',
     TOGGLE_SHOW_OPTIONS: 'TOGGLE_SHOW_OPTIONS',
     TOGGLE_SELECTED_UNIT_ONLY: 'TOGGLE_SELECTED_UNIT_ONLY',
 }
@@ -64,7 +63,7 @@ export const loadHtmlReport = () => (dispatch, getState) => {
     const { dataSetReport, organisationUnits, reportPeriod } = getState()
     getDataSetReports(
         dataSetReport.selectedDimensionOptions,
-        dataSetReport.selectedOrgUnitGroupOptions,
+        organisationUnits.selectedOptions,
         dataSetReport.selectedDataSet.id,
         organisationUnits.selected.id,
         reportPeriod.selectedPeriod,
@@ -122,11 +121,6 @@ export const selectDimensionOption = (dimension, value) => ({
 export const toggleSelectedUnitOnly = selectedUnitOnly => ({
     type: actionTypes.TOGGLE_SELECTED_UNIT_ONLY,
     payload: selectedUnitOnly,
-})
-
-export const selectOrgUnitOption = (id, value) => ({
-    type: actionTypes.SELECT_ORG_UNIT_OPTION,
-    payload: { id, value },
 })
 
 export const sharingDataSetReportCommentStart = () => ({

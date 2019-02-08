@@ -7,6 +7,7 @@ export const initialState = {
     loadingError: '',
     collection: [],
     selected: null,
+    selectedOptions: {},
 }
 
 export default function organisationUnits(
@@ -37,10 +38,20 @@ export default function organisationUnits(
                 selected: payload,
             }
 
+        case ACTIONS.ORGANISATION_UNITS_OPTION_SELECTED:
+            return {
+                ...state,
+                selectedOptions: {
+                    ...state.selectedOptions,
+                    [payload.id]: payload.value,
+                },
+            }
+
         case ACTIONS.LOCATION_CHANGE:
             return {
                 ...state,
                 selected: null,
+                selectedOptions: {},
             }
 
         default:

@@ -12,7 +12,6 @@ const defaultState = {
     dataSetDimensions: [],
     selectedDataSet: { id: '', displayName: '' },
     selectedDimensionOptions: {},
-    selectedOrgUnitGroupOptions: {},
     showFeedback: false,
     feedbackConf: {},
 }
@@ -121,15 +120,6 @@ const dataSetReport = (state = defaultState, action = {}) => {
             return {
                 ...state,
                 selectedUnitOnly: payload,
-            }
-
-        case actionTypes.SELECT_ORG_UNIT_OPTION:
-            return {
-                ...state,
-                selectedOrgUnitGroupOptions: {
-                    ...state.selectedOrgUnitGroupOptions,
-                    [payload.id]: payload.value,
-                },
             }
 
         case actionTypes.SHARING_DATA_SET_REPORT_COMMENT_START:

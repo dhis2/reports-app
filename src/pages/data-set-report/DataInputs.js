@@ -5,18 +5,20 @@ import { CheckBox } from '@dhis2/d2-ui-core'
 import DataSets from '../../components/DatasetsDropdown'
 import DataSetOptions from '../../components/DataSetDimensions'
 import PeriodPickerComponent from '../../components/PeriodPickerWithPeriodType'
-import { OrgUnitsTree } from './OrgUnitsTree'
+import { OrgUnitsTreeWithExtraOptions } from '../../components/OrgUnitsTreeWithExtraOptions'
 
 export const DataInputs = props => (
     <div className="row">
-        <OrgUnitsTree
-            showOptions={props.showOptions}
-            selectedOrgUnitOptions={props.selectedOrgUnitOptions}
-            toggleShowOptions={props.onToggleShowOptions}
-            onOrganisationUnitGroupSetChange={
-                props.onOrganisationUnitGroupSetChange
-            }
-        />
+        <div className="col-xs-12 col-md-6">
+            <OrgUnitsTreeWithExtraOptions
+                showOptions={props.showOptions}
+                selectedOrgUnitOptions={props.selectedOrgUnitOptions}
+                toggleShowOptions={props.onToggleShowOptions}
+                onOrganisationUnitGroupSetChange={
+                    props.onOrganisationUnitGroupSetChange
+                }
+            />
+        </div>
         <div className="col-xs-12 col-md-6">
             <div id="data-set-selection">
                 <DataSets onChange={props.onDataSetChange} />
