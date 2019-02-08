@@ -1,25 +1,11 @@
-/* React */
 import React from 'react'
 import PropTypes from 'prop-types'
-
-/* Material UI */
 import { Paper } from 'material-ui'
-
-/* d2-ui components */
 import { Button, DropDown } from '@dhis2/d2-ui-core'
-
-/* js-xlsx */
 import XLSX from 'xlsx'
-
-/* Redux */
 import { connect } from 'react-redux'
 import { updateFeedbackState } from '../../redux/actions/feedback'
-
-/* i18n */
 import i18n from '../../utils/i18n/locales'
-import { i18nKeys } from '../../utils/i18n/i18nKeys'
-
-/* App components */
 import Page from '../Page'
 import PageHelper from '../../components/PageHelper'
 import DataSets from '../../components/DatasetsDropdown'
@@ -27,26 +13,18 @@ import OrganisationUnitsTree from '../../components/AvailableOrganisationUnitsTr
 import OrganisationUnitGroupOptions from '../../components/OrganisationUnitGroupSets'
 import PeriodPickerComponent from '../../components/PeriodPickerWithPeriodType'
 import Report from '../../components/Report'
-
-/* utils */
 import { getDocsUrl } from '../../utils/getDocsUrl'
 import { LOADING, SUCCESS } from '../../utils/feedbackSnackBarTypes'
-
-/* styles */
 import styles from '../../utils/styles'
 
 const BASED_ON_OPTIONS = [
     {
         id: 'registration',
-        displayName: i18n.t(
-            i18nKeys.reportingRateSummary.basedOnCompleteOptionLabel
-        ),
+        displayName: i18n.t('Complete data set registrations'),
     },
     {
         id: 'compulsory',
-        displayName: i18n.t(
-            i18nKeys.reportingRateSummary.basedOnCompulsoryOptionLabel
-        ),
+        displayName: i18n.t('Compulsory data elements'),
     },
 ]
 
@@ -121,7 +99,7 @@ export default class ReportingRateSummary extends Page {
                 })
                 this.props.updateFeedbackState(true, {
                     type: SUCCESS,
-                    message: i18n.t(i18nKeys.messages.reportGenerated),
+                    message: i18n.t('Report generated'),
                 })
             })
             .catch(error => {
@@ -189,8 +167,8 @@ export default class ReportingRateSummary extends Page {
             >
                 {i18n.t(
                     this.state.showOptions
-                        ? i18nKeys.reportingRateSummary.showFewOptions
-                        : i18nKeys.reportingRateSummary.showMoreOptions
+                        ? 'Show few options'
+                        : 'Show more options'
                 )}
             </span>
             <div
@@ -235,7 +213,7 @@ export default class ReportingRateSummary extends Page {
                             arrow_back
                         </span>
                     )}
-                    {i18n.t(i18nKeys.reportingRateSummary.header)}
+                    {i18n.t('Resource')}
                     <PageHelper
                         url={getDocsUrl(
                             this.props.d2.system.version,
@@ -253,10 +231,7 @@ export default class ReportingRateSummary extends Page {
                         <div className="row">
                             <div className="col-xs-12 col-md-6">
                                 <div style={styles.formLabel}>
-                                    {i18n.t(
-                                        i18nKeys.reportingRateSummary
-                                            .organisationUnitLabel
-                                    )}
+                                    {i18n.t('Report organisation unit')}
                                 </div>
                                 <OrganisationUnitsTree
                                     onChange={this.handleOrganisationUnitChange}
@@ -266,10 +241,7 @@ export default class ReportingRateSummary extends Page {
                             <div className="col-xs-12 col-md-6">
                                 <div id="criteria-selection">
                                     <span style={styles.formLabel}>
-                                        {i18n.t(
-                                            i18nKeys.reportingRateSummary
-                                                .basedOnLabel
-                                        )}
+                                        {i18n.t('Based on')}
                                     </span>
                                     <DropDown
                                         fullWidth
@@ -285,10 +257,7 @@ export default class ReportingRateSummary extends Page {
                                 </div>
                                 <div id="report-period">
                                     <PeriodPickerComponent
-                                        label={i18n.t(
-                                            i18nKeys.reportingRateSummary
-                                                .reportPeriodLabel
-                                        )}
+                                        label={i18n.t('Report period')}
                                         // handled via an action instead
                                         // onChange={this.handlePeriodChange}
                                     />
@@ -305,9 +274,7 @@ export default class ReportingRateSummary extends Page {
                                 onClick={this.getReport}
                                 disabled={!this.isActionEnabled()}
                             >
-                                {i18n.t(
-                                    i18nKeys.reportingRateSummary.mainAction
-                                )}
+                                {i18n.t('Get Report')}
                             </Button>
                         </div>
                     </div>
@@ -332,9 +299,7 @@ export default class ReportingRateSummary extends Page {
                                     tabIndex="0"
                                     onClick={this.exportReportToXls}
                                 >
-                                    {i18n.t(
-                                        i18nKeys.dataSetReport.exportReport
-                                    )}
+                                    {i18n.t('download as xls')}
                                 </span>
                             </div>
                             <Report reportHtml={this.state.reportHtml} />
