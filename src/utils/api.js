@@ -10,6 +10,7 @@ import {
     STANDARD_REPORTS_ENDPOINT,
     DATA_SET_REPORTS_ENDPOINT,
     DATA_SET_DIMENSIONS_ENDPOINT,
+    postDataSetReportCommentUrl,
 } from './api/constants'
 
 let d2
@@ -107,3 +108,25 @@ export const getDimensions = dataSetId =>
         order: 'name:asc',
         paging: false,
     })
+
+/**
+ * @param {string} dataSetId
+ * @param {string} orgUnitId
+ * @param {string} period
+ * @param {string} comment
+ * @returns {Promise}
+ */
+export const postDataSetReportComment = (
+    dataSetId,
+    orgUnitId,
+    period,
+    comment
+) => {
+    const endpointUrl = postDataSetReportCommentUrl(
+        dataSetId,
+        orgUnitId,
+        period
+    )
+    const requestHeaders = { headers: { 'content-type': 'text/plain' } }
+    return api.post(endpointUrl, comment, requestHeaders)
+}

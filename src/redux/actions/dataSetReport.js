@@ -1,5 +1,9 @@
 import XLSX from 'xlsx'
-import { getDataSetReports, getDimensions } from '../../utils/api'
+import {
+    getDataSetReports,
+    getDimensions,
+    postDataSetReportComment,
+} from '../../utils/api'
 
 export const actionTypes = {
     SHOW_DATA_SET_REPORT_FORM: 'SHOW_DATA_SET_REPORT_FORM',
@@ -10,6 +14,13 @@ export const actionTypes = {
     LOADING_DIMENSIONS_START: 'LOADING_DIMENSIONS_START',
     LOADING_DIMENSIONS_SUCCESS: 'LOADING_DIMENSIONS_SUCCESS',
     LOADING_DIMENSIONS_ERROR: 'LOADING_DIMENSIONS_ERROR',
+    SHARING_DATA_SET_REPORT_COMMENT_SUCCESS:
+        'SHARING_DATA_SET_REPORT_COMMENT_SUCCESS',
+    SHARING_DATA_SET_REPORT_COMMENT_START:
+        'SHARING_DATA_SET_REPORT_COMMENT_START',
+    SHARING_DATA_SET_REPORT_COMMENT_ERROR:
+        'SHARING_DATA_SET_REPORT_COMMENT_ERROR',
+    SET_DATA_SET_REPORT_COMMENT: 'SET_DATA_SET_REPORT_COMMENT',
     SELECT_DIMENSION_OPTION: 'SELECT_DIMENSION_OPTION',
     SELECT_DATA_SET: 'SELECT_DATA_SET',
     SELECT_ORG_UNIT_OPTION: 'SELECT_ORG_UNIT_OPTION',
@@ -116,4 +127,34 @@ export const toggleSelectedUnitOnly = selectedUnitOnly => ({
 export const selectOrgUnitOption = (id, value) => ({
     type: actionTypes.SELECT_ORG_UNIT_OPTION,
     payload: { id, value },
+})
+
+export const sharingDataSetReportCommentStart = () => ({
+    type: actionTypes.SHARING_DATA_SET_REPORT_COMMENT_START,
+})
+
+export const sharingDataSetReportCommentSuccess = () => ({
+    type: actionTypes.SHARING_DATA_SET_REPORT_COMMENT_SUCCESS,
+})
+
+export const sharingDataSetReportCommentError = errorMessage => ({
+    type: actionTypes.SHARING_DATA_SET_REPORT_COMMENT_ERROR,
+    payload: errorMessage,
+})
+
+export const shareDataSetReportComment = comment => (dispatch, getState) => {
+    const { dataSetReport, organisationUnits, reportPeriod } = getState()
+    const dataSetId = dataSetReport.selectedDataSet.id
+    const orgUnitId = organisationUnits.selected.id
+    const period = reportPeriod.selectedPeriod
+
+    dispatch(sharingDataSetReportCommentStart())
+    postDataSetReportComment(dataSetId, orgUnitId, period, comment)
+        .then(() => dispatch(sharingDataSetReportCommentSuccess()))
+        .catch(({ error }) => dispatch(sharingDataSetReportCommentError(error)))
+}
+
+export const setDataSetReportComment = comment => ({
+    type: actionTypes.SET_DATA_SET_REPORT_COMMENT,
+    payload: comment,
 })

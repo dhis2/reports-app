@@ -6,6 +6,8 @@ import {
     selectDimensionOption,
     selectOrgUnitOption,
     toggleSelectedUnitOnly,
+    shareDataSetReportComment,
+    setDataSetReportComment,
     showDataSetReportForm,
     toggleShowOptions,
 } from '../../redux/actions/dataSetReport'
@@ -17,6 +19,7 @@ const mapStateToProps = ({
 }) => ({
     showForm: dataSetReport.showForm,
     reportHtml: dataSetReport.reportHtml,
+    reportComment: dataSetReport.reportComment,
     dataSetDimensions: dataSetReport.dataSetDimensions,
     selectedDataSet: dataSetReport.selectedDataSet,
     selectedUnitOnly: dataSetReport.selectedUnitOnly,
@@ -42,6 +45,10 @@ const mapDispatchToProps = dispatch => ({
         dispatch(selectOrgUnitOption(id, event.target.value)),
     toggleSelectedUnitOnly: (e, selectedUnitOnly) =>
         dispatch(toggleSelectedUnitOnly(selectedUnitOnly)),
+    shareDataSetReportComment: comment =>
+        dispatch(shareDataSetReportComment(comment)),
+    setDataSetReportComment: comment =>
+        dispatch(setDataSetReportComment(comment)),
 })
 
 export const connectDataSetReport = component =>

@@ -31,9 +31,12 @@ export const HtmlReport = props => {
             </div>
             <div id="share-component">
                 <ShareComment
+                    comment={props.reportComment}
                     dataSetId={props.selectedDataSet.id}
                     period={props.selectedPeriod}
-                    orgUnitId={props.selectedOrgUnit}
+                    orgUnitId={props.selectedOrgUnit.id}
+                    shareDataSetReportComment={props.shareDataSetReportComment}
+                    setDataSetReportComment={props.setDataSetReportComment}
                 />
             </div>
             <Report reportHtml={props.reportHtml} />
@@ -44,10 +47,13 @@ export const HtmlReport = props => {
 HtmlReport.propTypes = {
     showForm: PropTypes.bool.isRequired,
     reportHtml: PropTypes.string.isRequired,
+    reportComment: PropTypes.string.isRequired,
     dataSetId: PropTypes.string.isRequired,
     selectedDataSet: PropTypes.object.isRequired,
     selectedPeriod: PropTypes.string.isRequired,
     onDownloadXlsClick: PropTypes.func.isRequired,
+    shareDataSetReportComment: PropTypes.func.isRequired,
+    setDataSetReportComment: PropTypes.func.isRequired,
     selectedOrgUnit: PropTypes.object,
 }
 

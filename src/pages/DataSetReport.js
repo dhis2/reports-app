@@ -59,7 +59,12 @@ class DataSetReport extends React.Component {
                         selectedPeriod={props.selectedPeriod}
                         selectedOrgUnit={props.selectedOrgUnit}
                         reportHtml={props.reportHtml}
+                        reportComment={props.reportComment}
                         onDownloadXlsClick={props.exportReportToXls}
+                        shareDataSetReportComment={
+                            props.shareDataSetReportComment
+                        }
+                        setDataSetReportComment={props.setDataSetReportComment}
                     />
                 </Paper>
                 <Feedback open={props.showFeedback} conf={props.feedbackConf} />
@@ -72,6 +77,7 @@ DataSetReport.propTypes = {
     d2: PropTypes.object.isRequired,
     showForm: PropTypes.bool.isRequired,
     reportHtml: PropTypes.string.isRequired,
+    reportComment: PropTypes.string.isRequired,
     dataSetDimensions: PropTypes.array.isRequired,
     selectedDataSet: PropTypes.object.isRequired,
     selectedUnitOnly: PropTypes.bool.isRequired,
@@ -90,6 +96,8 @@ DataSetReport.propTypes = {
     selectOrgUnitOption: PropTypes.func.isRequired,
     toggleSelectedUnitOnly: PropTypes.func.isRequired,
     toggleShowOptions: PropTypes.func.isRequired,
+    shareDataSetReportComment: PropTypes.func.isRequired,
+    setDataSetReportComment: PropTypes.func.isRequired,
     showDataSetReportForm: PropTypes.func.isRequired,
 }
 

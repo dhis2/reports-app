@@ -8,6 +8,7 @@ const defaultState = {
     showOptions: false,
     selectedUnitOnly: false,
     reportHtml: '',
+    reportComment: '',
     dataSetDimensions: [],
     selectedDataSet: { id: '', displayName: '' },
     selectedDimensionOptions: {},
@@ -129,6 +130,46 @@ const dataSetReport = (state = defaultState, action = {}) => {
                     ...state.selectedOrgUnitGroupOptions,
                     [payload.id]: payload.value,
                 },
+            }
+
+        case actionTypes.SHARING_DATA_SET_REPORT_COMMENT_START:
+            return {
+                ...state,
+                loading: true,
+                loadingError: '',
+                showFeedback: true,
+                feedbackConf: {
+                    type: LOADING,
+                },
+            }
+
+        case actionTypes.SHARING_DATA_SET_REPORT_COMMENT_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                showFeedback: true,
+                feedbackConf: {
+                    type: SUCCESS,
+                    message: i18n.t('Comment added'),
+                },
+            }
+
+        case actionTypes.SHARING_DATA_SET_REPORT_COMMENT_ERROR:
+            return {
+                ...state,
+                loading: false,
+                loadingError: payload,
+                showFeedback: true,
+                feedbackConf: {
+                    type: ERROR,
+                    message: i18n.t("Comment couldn't be added"),
+                },
+            }
+
+        case actionTypes.SET_DATA_SET_REPORT_COMMENT:
+            return {
+                ...state,
+                reportComment: payload,
             }
 
         default:
