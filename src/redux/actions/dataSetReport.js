@@ -61,11 +61,16 @@ export const loadingHtmlReportError = errorMessage => ({
 export const loadHtmlReport = () => (dispatch, getState) => {
     dispatch(startLoadingHtmlReport())
 
-    const { dataSetReport, organisationUnits, reportPeriod } = getState()
+    const {
+        dataSet,
+        dataSetReport,
+        organisationUnits,
+        reportPeriod,
+    } = getState()
     getDataSetReports(
         dataSetReport.selectedDimensionOptions,
         organisationUnits.selectedOptions,
-        dataSetReport.selectedDataSet.id,
+        dataSet.selected.id,
         organisationUnits.selected.id,
         reportPeriod.selectedPeriod,
         dataSetReport.selectedUnitOnly
@@ -91,8 +96,8 @@ export const loadingDimensionsError = errorMessage => ({
 export const loadDimensions = () => (dispatch, getState) => {
     dispatch(loadingDimensionsStart())
 
-    const { dataSetReport } = getState()
-    getDimensions(dataSetReport.selectedDataSet.id)
+    const { dataSet } = getState()
+    getDimensions(dataSet.selected.id)
         .then(response =>
             response.error
                 ? Promise.reject(response.error)
@@ -106,9 +111,11 @@ export const toggleShowOptions = () => ({
     type: actionTypes.TOGGLE_SHOW_OPTIONS,
 })
 
-export const selectDataSet = dataSet => dispatch => {
-    dispatch(selectDataSetOriginal(dataSet))
-    dispatch(loadDimensions(dataSet.id))
+export const selectDataSet = dataSetId => (dispatch, getState) => {
+    dispatch(selectDataSetOriginal(dataSetId))
+
+    const { dataSet } = getState()
+    dispatch(loadDimensions(dataSet.selected.id))
 }
 
 export const selectDimensionOption = (dimension, value) => ({

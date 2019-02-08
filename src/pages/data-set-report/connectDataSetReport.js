@@ -39,7 +39,7 @@ const mapDispatchToProps = dispatch => ({
     loadHtmlReport: () => dispatch(loadHtmlReport()),
     showDataSetReportForm: () => dispatch(showDataSetReportForm()),
     toggleShowOptions: () => dispatch(toggleShowOptions()),
-    selectDataSet: dataSet => dispatch(selectDataSet(dataSet)),
+    selectDataSet: e => dispatch(selectDataSet(e.target.value)),
     selectDimensionOption: (id, evt) =>
         dispatch(selectDimensionOption(id, evt.target.value)),
     selectOrgUnitOption: (id, event) =>

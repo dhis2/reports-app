@@ -4,9 +4,9 @@ import { Paper } from 'material-ui'
 import manageError from '../utils/pageEnhancers/manageError.HOC'
 import Feedback from '../components/Feedback'
 import { SectionHeadline } from '../components/SectionHeadline'
+import { InlineHtmlReportCommentable } from '../components/InlineHtmlReportCommentable'
 import { DataInputs } from './data-set-report/DataInputs'
 import { FormActions } from './data-set-report/FormActions'
-import { HtmlReport } from './data-set-report/HtmlReport'
 import { connectDataSetReport } from './data-set-report/connectDataSetReport'
 import { isActionEnabled } from './data-set-report/helpers'
 import i18n from '../utils/i18n/locales'
@@ -54,12 +54,21 @@ class DataSetReport extends React.Component {
                             isGetReportDisabled={!isActionEnabled(props)}
                         />
                     </div>
-                    <HtmlReport
-                        showForm={props.showForm}
+                    <InlineHtmlReportCommentable
+                        shouldRender={
+                            !!(
+                                props.reportHtml &&
+                                !props.showForm &&
+                                props.selectedDataSet
+                            )
+                        }
                         dataSetId={props.selectedDataSet.id}
-                        selectedDataSet={props.selectedDataSet}
-                        selectedPeriod={props.selectedPeriod}
-                        selectedOrgUnit={props.selectedOrgUnit}
+                        period={props.selectedPeriod}
+                        orgUnitId={
+                            props.selectedOrgUnit
+                                ? props.selectedOrgUnit.id
+                                : ''
+                        }
                         reportHtml={props.reportHtml}
                         reportComment={props.reportComment}
                         onDownloadXlsClick={props.exportReportToXls}

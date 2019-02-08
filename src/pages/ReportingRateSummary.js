@@ -10,10 +10,10 @@ import Page from './Page'
 import DataSets from '../components/DatasetsDropdown'
 import { OrgUnitsTreeWithExtraOptions } from '../components/OrgUnitsTreeWithExtraOptions'
 import PeriodPickerComponent from '../components/PeriodPickerWithPeriodType'
-import Report from '../components/Report'
 import { LOADING, SUCCESS } from '../utils/feedbackSnackBarTypes'
 import styles from '../utils/styles'
 
+import { InlineHtmlReport } from '../components/InlineHtmlReport'
 import { SectionHeadline } from '../components/SectionHeadline'
 
 const BASED_ON_OPTIONS = [
@@ -27,22 +27,23 @@ const BASED_ON_OPTIONS = [
 export default class ReportingRateSummary extends Page {
     static propTypes = {
         d2: PropTypes.object.isRequired,
+
+        showForm: PropTypes.bool.isRequired,
+        reportHtml: PropTypes.string.isRequired,
+        selectedDataSet: PropTypes.object.isRequired,
+        selectedOrgUnit: PropTypes.object.isRequired,
+        selectedOrgUnitOptions: PropTypes.object.isRequired,
+        selectedPeriod: PropTypes.string.isRequired,
+        showOptions: PropTypes.bool.isRequired,
+        selectedCriteria: PropTypes.string.isRequired,
+        loading: PropTypes.bool.isRequired,
+
+        exportReportToXls: PropTypes.func.isRequired,
+        loadHtmlReport: PropTypes.func.isRequired,
     }
 
     constructor() {
         super()
-
-        this.state = {
-            showForm: true,
-            reportHtml: null,
-            selectedDataSet: null,
-            selectedOrgUnit: null,
-            selectedOptionsForOrganisationUnitGroupSets: {},
-            showOptions: false,
-            selectedPeriod: null,
-            selectedCriteria: BASED_ON_OPTIONS[0].id,
-            loading: false,
-        }
     }
 
     goToForm = () => {
@@ -103,48 +104,6 @@ export default class ReportingRateSummary extends Page {
             })
     }
 
-    toggleShowOptions = () => {
-        const newShowOptionsValue = !this.state.showOptions
-        this.setState({
-            showOptions: newShowOptionsValue,
-        })
-    }
-
-    handleOrganisationUnitChange = selectedOrgUnit => {
-        this.setState({
-            selectedOrgUnit,
-        })
-    }
-
-    handleDataSetChange = selectedDataSet => {
-        this.setState({
-            selectedDataSet,
-        })
-    }
-
-    handlePeriodChange = selectedPeriod => {
-        this.setState({
-            selectedPeriod,
-        })
-    }
-
-    handleOrganisationUnitGroupSetChange = (
-        organisationUnitGroupSetId,
-        event
-    ) => {
-        // copy of current selections
-        const selectedOptionsForOrganisationUnitGroupSets = {
-            ...this.state.selectedOptionsForOrganisationUnitGroupSets,
-        }
-        selectedOptionsForOrganisationUnitGroupSets[
-            organisationUnitGroupSetId
-        ] = event.target.value
-
-        this.setState({
-            selectedOptionsForOrganisationUnitGroupSets,
-        })
-    }
-
     handleCriteriaChange = event => {
         const selectedCriteria = event.target.value
         this.setState({
@@ -161,34 +120,38 @@ export default class ReportingRateSummary extends Page {
     }
 
     render() {
+        const { props } = this
+        const summaryFormStyles = { display: props.showForm ? 'block' : 'none' }
+
         return (
             <div>
                 <SectionHeadline
                     label={i18n.t('Resource')}
-                    showBackButton={!this.state.showForm}
+                    showBackButton={!props.showForm}
                     onBackClick={this.goToForm}
-                    systemVersion={this.props.d2.system.version}
-                    sectionKey={this.props.sectionKey}
+                    systemVersion={props.d2.system.version}
+                    sectionKey={props.sectionKey}
                 />
                 <Paper style={styles.container}>
                     <div
                         id="report-rate-summary-form"
-                        style={{
-                            display: this.state.showForm ? 'block' : 'none',
-                        }}
+                        style={summaryFormStyles}
                     >
                         <div className="row">
                             <div className="col-xs-12 col-md-6">
-                                {/* @TODO Add extra options visibility to state}
+                                {/* @TODO Add extra options visibility to state */}
                                 <OrgUnitsTreeWithExtraOptions
                                     showOptions={props.showOptions}
-                                    selectedOrgUnitOptions={props.selectedOrgUnitOptions}
-                                    toggleShowOptions={props.onToggleShowOptions}
+                                    selectedOrgUnitOptions={
+                                        props.selectedOrgUnitOptions
+                                    }
+                                    toggleShowOptions={
+                                        props.onToggleShowOptions
+                                    }
                                     onOrganisationUnitGroupSetChange={
                                         props.onOrganisationUnitGroupSetChange
                                     }
                                 />
-                                {*/}
                             </div>
                             <div className="col-xs-12 col-md-6">
                                 <div id="criteria-selection">
@@ -197,8 +160,8 @@ export default class ReportingRateSummary extends Page {
                                     </span>
                                     <DropDown
                                         fullWidth
-                                        value={this.state.selectedCriteria}
-                                        onChange={this.handleCriteriaChange}
+                                        value={props.selectedCriteria}
+                                        onChange={props.onSelectCriteria}
                                         menuItems={BASED_ON_OPTIONS}
                                     />
                                 </div>
@@ -229,31 +192,13 @@ export default class ReportingRateSummary extends Page {
                         </div>
                     </div>
                     {this.state.reportHtml && !this.state.showForm && (
-                        <div
-                            id="report-container"
-                            style={{
-                                display:
-                                    this.state.reportHtml &&
-                                    !this.state.showForm
-                                        ? 'block'
-                                        : 'none',
-                            }}
-                        >
-                            <div
-                                id="download-options-container"
-                                style={styles.downloadContainer}
-                            >
-                                <span
-                                    style={styles.downloadButton}
-                                    role="button"
-                                    tabIndex="0"
-                                    onClick={this.exportReportToXls}
-                                >
-                                    {i18n.t('download as xls')}
-                                </span>
-                            </div>
-                            <Report reportHtml={this.state.reportHtml} />
-                        </div>
+                        <InlineHtmlReport
+                            shouldRender={
+                                this.state.reportHtml && this.state.showForm
+                            }
+                            onDownloadXlsClick={this.exportReportToXls}
+                            reportHtml={this.state.reportHtml}
+                        />
                     )}
                 </Paper>
             </div>
