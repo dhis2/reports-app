@@ -1,7 +1,7 @@
 /* Page Components */
 import { ConnectedStandardReport } from '../pages/StandardReport'
 import { ConnectedDataSetReport } from '../pages/DataSetReport'
-import { ConnectedReportingRateSummary } from '../pages/reporting-rate-summary/ReportingRateSummary'
+import { ConnectedReportingRateSummary } from '../pages/ReportingRateSummary'
 import { ConnectedResource } from '../pages/resource/Resource'
 import { ConnectedOrganisationUnitDistributionReport } from '../pages/organisation-unit-distribution-report/OrganisationUnitDistributionReport'
 import { ConnectedDataApproval } from '../pages/data-approval/DataApproval'

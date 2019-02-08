@@ -5,7 +5,7 @@ import '@dhis2/d2-ui-core/build/css/Table.css'
 import '@dhis2/d2-ui-core/build/css/Pagination.css'
 import manageError from '../utils/pageEnhancers/manageError.HOC'
 import Feedback from '../components/Feedback'
-import Headline from './standard-report/Headline'
+import { SectionHeadline } from '../components/SectionHeadline'
 import SearchBox from './standard-report/SearchBox'
 import NoResultsMessage from './standard-report/NoResultsMessage'
 import AddReportButton from './standard-report/AddReportButton'
@@ -24,6 +24,7 @@ import {
     createFeedbackConf,
 } from './standard-report/helper'
 import connectStandardReport from './standard-report/connectStandardReport'
+import i18n from '../utils/i18n/locales'
 
 export default class StandardReport extends React.Component {
     static propTypes = {
@@ -67,9 +68,10 @@ export default class StandardReport extends React.Component {
 
         return (
             <div>
-                <Headline
+                <SectionHeadline
+                    label={i18n.t('Standard Report')}
                     showBackButton={!!props.htmlReport}
-                    onGoBackClick={props.hideHtmlReport}
+                    onBackClick={this.hideHtmlReport}
                     systemVersion={props.d2.system.version}
                     sectionKey={props.sectionKey}
                 />

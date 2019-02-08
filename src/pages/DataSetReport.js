@@ -3,12 +3,13 @@ import PropTypes from 'prop-types'
 import { Paper } from 'material-ui'
 import manageError from '../utils/pageEnhancers/manageError.HOC'
 import Feedback from '../components/Feedback'
-import { Headline } from './data-set-report/Headline'
+import { SectionHeadline } from '../components/SectionHeadline'
 import { DataInputs } from './data-set-report/DataInputs'
 import { FormActions } from './data-set-report/FormActions'
 import { HtmlReport } from './data-set-report/HtmlReport'
 import { connectDataSetReport } from './data-set-report/connectDataSetReport'
 import { isActionEnabled } from './data-set-report/helpers'
+import i18n from '../utils/i18n/locales'
 import styles from '../utils/styles'
 
 class DataSetReport extends React.Component {
@@ -18,8 +19,9 @@ class DataSetReport extends React.Component {
 
         return (
             <div>
-                <Headline
-                    showForm={props.showForm}
+                <SectionHeadline
+                    label={i18n.t('Data Set Report')}
+                    showBackButton={!props.showForm}
                     onBackClick={props.showDataSetReportForm}
                     systemVersion={props.d2.system.version}
                     sectionKey={props.sectionKey}

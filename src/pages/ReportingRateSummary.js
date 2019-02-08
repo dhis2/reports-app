@@ -4,28 +4,25 @@ import { Paper } from 'material-ui'
 import { Button, DropDown } from '@dhis2/d2-ui-core'
 import XLSX from 'xlsx'
 import { connect } from 'react-redux'
-import { updateFeedbackState } from '../../redux/actions/feedback'
-import i18n from '../../utils/i18n/locales'
-import Page from '../Page'
-import PageHelper from '../../components/PageHelper'
-import DataSets from '../../components/DatasetsDropdown'
-import OrganisationUnitsTree from '../../components/AvailableOrganisationUnitsTree'
-import OrganisationUnitGroupOptions from '../../components/OrganisationUnitGroupSets'
-import PeriodPickerComponent from '../../components/PeriodPickerWithPeriodType'
-import Report from '../../components/Report'
-import { getDocsUrl } from '../../utils/getDocsUrl'
-import { LOADING, SUCCESS } from '../../utils/feedbackSnackBarTypes'
-import styles from '../../utils/styles'
+import { updateFeedbackState } from '../redux/actions/feedback'
+import i18n from '../utils/i18n/locales'
+import Page from './Page'
+import DataSets from '../components/DatasetsDropdown'
+import OrganisationUnitsTree from '../components/AvailableOrganisationUnitsTree'
+import OrganisationUnitGroupOptions from '../components/OrganisationUnitGroupSets'
+import PeriodPickerComponent from '../components/PeriodPickerWithPeriodType'
+import Report from '../components/Report'
+import { LOADING, SUCCESS } from '../utils/feedbackSnackBarTypes'
+import styles from '../utils/styles'
+
+import { SectionHeadline } from '../components/SectionHeadline'
 
 const BASED_ON_OPTIONS = [
     {
         id: 'registration',
         displayName: i18n.t('Complete data set registrations'),
     },
-    {
-        id: 'compulsory',
-        displayName: i18n.t('Compulsory data elements'),
-    },
+    { id: 'compulsory', displayName: i18n.t('Compulsory data elements') },
 ]
 
 export default class ReportingRateSummary extends Page {
@@ -200,27 +197,13 @@ export default class ReportingRateSummary extends Page {
     render() {
         return (
             <div>
-                <h1>
-                    {!this.state.showForm && (
-                        <span
-                            id="back-button"
-                            style={styles.backButton}
-                            className="material-icons"
-                            role="button"
-                            tabIndex="0"
-                            onClick={this.goToForm}
-                        >
-                            arrow_back
-                        </span>
-                    )}
-                    {i18n.t('Resource')}
-                    <PageHelper
-                        url={getDocsUrl(
-                            this.props.d2.system.version,
-                            this.props.sectionKey
-                        )}
-                    />
-                </h1>
+                <SectionHeadline
+                    label={i18n.t('Resource')}
+                    showBackButton={!this.state.showForm}
+                    onBackClick={this.goToForm}
+                    systemVersion={this.props.d2.system.version}
+                    sectionKey={this.props.sectionKey}
+                />
                 <Paper style={styles.container}>
                     <div
                         id="report-rate-summary-form"
