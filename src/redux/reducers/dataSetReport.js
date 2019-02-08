@@ -10,7 +10,6 @@ const defaultState = {
     reportHtml: '',
     reportComment: '',
     dataSetDimensions: [],
-    selectedDataSet: { id: '', displayName: '' },
     selectedDimensionOptions: {},
     showFeedback: false,
     feedbackConf: {},
@@ -98,13 +97,6 @@ const dataSetReport = (state = defaultState, action = {}) => {
             return {
                 ...state,
                 showOptions: !state.showOptions,
-            }
-
-        case actionTypes.SELECT_DATA_SET:
-            return {
-                ...state,
-                selectedDataSet: payload,
-                selectedDimensionOptions: {},
             }
 
         case actionTypes.SELECT_DIMENSION_OPTION:

@@ -4,6 +4,7 @@ import {
     getDimensions,
     postDataSetReportComment,
 } from '../../utils/api'
+import { selectDataSet as selectDataSetOriginal } from './dataSet'
 
 export const actionTypes = {
     SHOW_DATA_SET_REPORT_FORM: 'SHOW_DATA_SET_REPORT_FORM',
@@ -106,10 +107,7 @@ export const toggleShowOptions = () => ({
 })
 
 export const selectDataSet = dataSet => dispatch => {
-    dispatch({
-        type: actionTypes.SELECT_DATA_SET,
-        payload: dataSet,
-    })
+    dispatch(selectDataSetOriginal(dataSet))
     dispatch(loadDimensions(dataSet.id))
 }
 

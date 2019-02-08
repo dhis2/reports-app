@@ -4,7 +4,7 @@ import { routerMiddleware } from 'connected-react-router'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
 import history from '../utils/history'
-import rootReducer from './reducers/index'
+import rootReducer from './rootReducer'
 
 const store = createStore(
     rootReducer,

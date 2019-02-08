@@ -13,6 +13,7 @@ import {
 import { selectOrgUnitOption } from '../../redux/actions/organisationUnits'
 
 const mapStateToProps = ({
+    dataSet,
     dataSetReport,
     organisationUnits,
     reportPeriod,
@@ -21,7 +22,7 @@ const mapStateToProps = ({
     reportHtml: dataSetReport.reportHtml,
     reportComment: dataSetReport.reportComment,
     dataSetDimensions: dataSetReport.dataSetDimensions,
-    selectedDataSet: dataSetReport.selectedDataSet,
+    selectedDataSet: dataSet.selected,
     selectedUnitOnly: dataSetReport.selectedUnitOnly,
     selectedDimensionOptions: dataSetReport.selectedDimensionOptions,
     selectedOrgUnitGroupOptions: organisationUnits.selectedOptions,
