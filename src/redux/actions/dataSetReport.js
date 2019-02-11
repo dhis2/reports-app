@@ -5,13 +5,15 @@ import {
     postDataSetReportComment,
 } from '../../utils/api'
 import { selectDataSet as selectDataSetOriginal } from './dataSet'
+import {
+    loadingHtmlReportStart,
+    loadingHtmlReportSuccess,
+    loadingHtmlReportError,
+} from './htmlReport'
 
 export const actionTypes = {
     SHOW_DATA_SET_REPORT_FORM: 'SHOW_DATA_SET_REPORT_FORM',
     DOWNLOAD_DATA_SET_REPORT_XLS: 'DOWNLOAD_DATA_SET_REPORT_XLS',
-    LOADING_HTML_REPORT_START: 'LOADING_HTML_REPORT_START',
-    LOADING_HTML_REPORT_SUCCESS: 'LOADING_HTML_REPORT_SUCCESS',
-    LOADING_HTML_REPORT_ERROR: 'LOADING_HTML_REPORT_ERROR',
     LOADING_DIMENSIONS_START: 'LOADING_DIMENSIONS_START',
     LOADING_DIMENSIONS_SUCCESS: 'LOADING_DIMENSIONS_SUCCESS',
     LOADING_DIMENSIONS_ERROR: 'LOADING_DIMENSIONS_ERROR',
@@ -44,22 +46,8 @@ export const showDataSetReportForm = () => ({
     type: actionTypes.SHOW_DATA_SET_REPORT_FORM,
 })
 
-export const startLoadingHtmlReport = () => ({
-    type: actionTypes.LOADING_HTML_REPORT_START,
-})
-
-export const loadingHtmlReportSuccess = htmlReport => ({
-    type: actionTypes.LOADING_HTML_REPORT_SUCCESS,
-    payload: htmlReport,
-})
-
-export const loadingHtmlReportError = errorMessage => ({
-    type: actionTypes.LOADING_HTML_REPORT_ERROR,
-    payload: errorMessage,
-})
-
 export const loadHtmlReport = () => (dispatch, getState) => {
-    dispatch(startLoadingHtmlReport())
+    dispatch(loadingHtmlReportStart())
 
     const {
         dataSet,

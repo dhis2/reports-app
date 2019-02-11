@@ -1,4 +1,5 @@
 import { actionTypes } from '../actions/dataSetReport'
+import { actionTypes as reportHtmlActionTypes } from '../action/reportHtml'
 import { ERROR, LOADING, SUCCESS } from '../../utils/feedbackSnackBarTypes'
 import i18n from '../../utils/i18n/locales'
 
@@ -21,7 +22,7 @@ const dataSetReport = (state = defaultState, action = {}) => {
         case actionTypes.SHOW_DATA_SET_REPORT_FORM:
             return { ...state, showForm: true }
 
-        case actionTypes.LOADING_HTML_REPORT_START:
+        case reportHtmlActionTypes.LOADING_HTML_REPORT_START:
             return {
                 ...state,
                 loading: true,
@@ -32,10 +33,9 @@ const dataSetReport = (state = defaultState, action = {}) => {
                 },
             }
 
-        case actionTypes.LOADING_HTML_REPORT_SUCCESS:
+        case reportHtmlActionTypes.LOADING_HTML_REPORT_SUCCESS:
             return {
                 ...state,
-                reportHtml: payload,
                 showForm: false,
                 loadHtmlReport: false,
                 showFeedback: true,
@@ -45,7 +45,7 @@ const dataSetReport = (state = defaultState, action = {}) => {
                 },
             }
 
-        case actionTypes.LOADING_HTML_REPORT_ERROR:
+        case reportHtmlActionTypes.LOADING_HTML_REPORT_ERROR:
             return {
                 ...state,
                 loading: false,

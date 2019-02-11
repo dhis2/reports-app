@@ -17,9 +17,10 @@ const mapStateToProps = ({
     dataSetReport,
     organisationUnits,
     reportPeriod,
+    reportHtml,
 }) => ({
     showForm: dataSetReport.showForm,
-    reportHtml: dataSetReport.reportHtml,
+    reportHtml: reportHtml.reportHtml,
     reportComment: dataSetReport.reportComment,
     dataSetDimensions: dataSetReport.dataSetDimensions,
     selectedDataSet: dataSet.selected,
