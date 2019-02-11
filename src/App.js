@@ -25,7 +25,7 @@ import AppContext from './pages/AppContext'
 import createSnackbarConfig from './utils/snackbar/createSnackbarConfig'
 
 /* App configs */
-import { sections } from './pages/sections.conf'
+import { sections } from './conf../../config/sections.conf'
 
 /* styles */
 import styles from './utils/styles'

@@ -168,7 +168,9 @@ class CreateStdReport extends PureComponent {
     displayPeriods = () => {
         if (this.isReportingPeriod()) {
             if (!this.state.selectedPeriod) {
-                this.state.selectedPeriod = this.state.periods[0]
+                this.setState({
+                    selectedPeriod: this.state.periods[0],
+                })
             }
             return (
                 <SelectField
@@ -215,7 +217,10 @@ class CreateStdReport extends PureComponent {
 
     render() {
         const actions = [
-            <span id={'create-std-report-cancel-action-id'}>
+            <span
+                id="create-std-report-cancel-action-id"
+                key="create-std-report-cancel-action-id"
+            >
                 <Button
                     key={'cancel-btn-key'}
                     style={appStyles.dialogBtn}
@@ -224,7 +229,10 @@ class CreateStdReport extends PureComponent {
                     {i18n.t(i18nKeys.buttons.cancel)}
                 </Button>
             </span>,
-            <span id={'create-std-report-export-action-id'}>
+            <span
+                id="create-std-report-export-action-id"
+                key="create-std-report-export-action-id"
+            >
                 <Button
                     key={'export-excel-btn-key'}
                     style={appStyles.dialogBtn}
@@ -234,7 +242,10 @@ class CreateStdReport extends PureComponent {
                     {i18n.t(i18nKeys.buttons.downloadAsExcel)}
                 </Button>
             </span>,
-            <span id={'create-std-report-get-action-id'}>
+            <span
+                id="create-std-report-get-action-id"
+                key="create-std-report-get-action-id"
+            >
                 <Button
                     key={'get-report-key'}
                     raised

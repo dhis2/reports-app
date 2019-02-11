@@ -339,7 +339,7 @@ export default class AddEditResource extends PureComponent {
 
     render() {
         const actions = [
-            <span id={'cancel-action-btn-id'}>
+            <span id="cancel-action-btn-id" key="cancel-action-btn-id">
                 <Button
                     key={'close-btn-key'}
                     style={appStyles.dialogBtn}
@@ -349,7 +349,7 @@ export default class AddEditResource extends PureComponent {
                     {i18n.t(i18nKeys.buttons.cancel)}
                 </Button>
             </span>,
-            <span id={'save-action-btn-id'}>
+            <span id="save-action-btn-id" key="save-action-btn-id">
                 <Button
                     key={'save-btn-key'}
                     raised

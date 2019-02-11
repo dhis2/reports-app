@@ -1,27 +1,16 @@
-/* React */
 import React from 'react'
 import ReactDOM from 'react-dom'
-
-/* d2 */
 import { init, getManifest, getUserSettings } from 'd2/lib/d2'
-
-/* Redux */
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
 import store from './redux/store'
 import history from './utils/history'
-
-/* i18n */
 import { configI18n } from './utils/i18n/configI18n'
 import injectTranslationsToD2 from './utils/i18n/injectTranslationsToD2'
-
-import './index.css'
+import { initApi, getD2 } from './utils/api'
 import App from './App'
-
 import registerServiceWorker from './registerServiceWorker'
-
-/* init d2 */
-let d2Instance
+import './index.css'
 
 getManifest('manifest.webapp').then(manifest => {
     const baseUrl =
@@ -39,15 +28,15 @@ getManifest('manifest.webapp').then(manifest => {
             'dataSet',
             'organisationUnit',
             'organisationUnitGroupSet',
+            'report',
             'reportTable',
         ],
     })
-        .then(d2 => {
-            d2Instance = d2
-        })
+        .then(initApi)
         .then(getUserSettings)
         .then(configI18n)
         .then(() => {
+            const d2Instance = getD2()
             injectTranslationsToD2(d2Instance)
             ReactDOM.render(
                 <Provider store={store}>

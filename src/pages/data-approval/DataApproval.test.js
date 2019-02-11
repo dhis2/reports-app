@@ -6,7 +6,7 @@ import DataApproval from './DataApproval'
 
 import fakerData from '../../utils/fakerTests'
 
-import { sections, DATA_APPROVAL_SECTION_KEY } from '../sections.conf'
+import { sections, DATA_APPROVAL_SECTION_KEY } from '../../config/sections.conf'
 
 let pageInfo = {}
 for (let i = 0; i < sections.length; i++) {

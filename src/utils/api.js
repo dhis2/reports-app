@@ -1,6 +1,16 @@
-import { getInstance } from 'd2/lib/d2'
-import createGetStandardReportsUrl from './api/standardReports/createGetStandardReportsUrl'
-import createDeleteStandardReportUrl from './api/standardReports/createDeleteStandardReportUrl'
+import { isDevelopment } from './env/isDevelopment'
+import {
+    standardReportsFields,
+    addFilterForName,
+    formatStandardReportsResponse,
+    mapCollectionToDimensionQueryString,
+} from './api/helpers'
+import {
+    STANDARD_REPORTS_ENDPOINT,
+    DATA_SET_REPORTS_ENDPOINT,
+    DATA_SET_DIMENSIONS_ENDPOINT,
+    postDataSetReportCommentUrl,
+} from './api/constants'
 
 let d2
 let api
@@ -8,15 +18,15 @@ let api
 /**
  * Sets d2 and the api
  */
-export const init = async () => {
-    d2 = await getInstance()
+export const initApi = d2Instance => {
+    d2 = d2Instance
     api = d2.Api.getApi()
-    if (process.env.NODE_ENV === 'development') {
+
+    if (isDevelopment()) {
         window.d2 = d2
         window.d2Api = api
     }
 }
-init()
 
 /**
  * @return {Object} d2 instance
@@ -58,12 +68,62 @@ export const getOrganisationUnits = () =>
  * @param {string} nameFilter
  * @return {Promise}
  */
-export const getStandardReports = (page, pageSize, nameFilter) =>
-    api.get(createGetStandardReportsUrl(page, pageSize, nameFilter))
+export const getFilteredStandardReports = (page, pageSize, nameFilter) =>
+    addFilterForName(nameFilter, d2.models.report)
+        .list({ page, pageSize, fields: standardReportsFields })
+        .then(formatStandardReportsResponse)
 
 /**
  * @param {string} id
  * @return {Promise}
  */
 export const deleteStandardReport = id =>
-    api.delete(createDeleteStandardReportUrl(id))
+    api.delete(`${STANDARD_REPORTS_ENDPOINT}/${id}`)
+
+export const getDataSetReports = (
+    dataSetOptions,
+    orgUnitGroupsOptions,
+    dataSetId,
+    orgUnit,
+    period,
+    selectedUnitOnly
+) =>
+    api.get(DATA_SET_REPORTS_ENDPOINT, {
+        ds: dataSetId,
+        pe: period,
+        ou: orgUnit,
+        selectedUnitOnly,
+        dimensions: mapCollectionToDimensionQueryString(
+            dataSetOptions,
+            orgUnitGroupsOptions
+        ),
+    })
+
+export const getDimensions = dataSetId =>
+    api.get(`${DATA_SET_DIMENSIONS_ENDPOINT}/${dataSetId}`, {
+        fields: ['id', 'displayName', 'items[id,displayName]'].join(','),
+        order: 'name:asc',
+        paging: false,
+    })
+
+/**
+ * @param {string} dataSetId
+ * @param {string} orgUnitId
+ * @param {string} period
+ * @param {string} comment
+ * @returns {Promise}
+ */
+export const postDataSetReportComment = (
+    dataSetId,
+    orgUnitId,
+    period,
+    comment
+) => {
+    const endpointUrl = postDataSetReportCommentUrl(
+        dataSetId,
+        orgUnitId,
+        period
+    )
+    const requestHeaders = { headers: { 'content-type': 'text/plain' } }
+    return api.post(endpointUrl, comment, requestHeaders)
+}

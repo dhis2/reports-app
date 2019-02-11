@@ -14,7 +14,7 @@ import fakerData from '../../utils/fakerTests'
 import {
     sections,
     ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_KEY,
-} from '../sections.conf'
+} from '../../config/sections.conf'
 
 let pageInfo = {}
 for (let i = 0; i < sections.length; i++) {

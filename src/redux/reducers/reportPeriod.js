@@ -7,7 +7,7 @@ export const initialState = {
     loadingError: '',
     collection: [],
     selectedPeriodType: null,
-    selectedPeriod: null,
+    selectedPeriod: '',
 }
 
 export default function reportPeriod(state = initialState, { type, payload }) {
@@ -30,6 +30,7 @@ export default function reportPeriod(state = initialState, { type, payload }) {
             return {
                 ...state,
                 selectedPeriodType: payload,
+                selectedPeriod: '',
             }
 
         case ACTIONS.REPORT_PERIOD_SELECTED:
@@ -42,7 +43,7 @@ export default function reportPeriod(state = initialState, { type, payload }) {
             return {
                 ...state,
                 selectedPeriodType: null,
-                selectedPeriod: null,
+                selectedPeriod: '',
             }
 
         default:

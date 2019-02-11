@@ -1,6 +1,6 @@
 import i18n from '../../utils/i18n/locales'
 import {
-    getStandardReports,
+    getFilteredStandardReports,
     deleteStandardReport as deleteStandardReportRequest,
 } from '../../utils/api'
 
@@ -66,7 +66,7 @@ export const loadStandardReports = (
     const { search } = standardReport
 
     dispatch(startLoadingStandardReports())
-    getStandardReports(page, pageSize, search)
+    getFilteredStandardReports(page, pageSize, search)
         .then(response =>
             dispatch(
                 loadingStandardReportsSuccess({
