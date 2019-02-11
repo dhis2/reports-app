@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Report from '../../components/Report'
 import i18n from '../../utils/i18n/locales'
-import ShareComment from './Share'
+import HtmlReportComment from './HtmlReportComment'
 import styles from '../../utils/styles'
 
 export const HtmlReport = props => {
@@ -30,7 +30,7 @@ export const HtmlReport = props => {
                 </span>
             </div>
             <div id="share-component">
-                <ShareComment
+                <HtmlReportComment
                     comment={props.reportComment}
                     dataSetId={props.selectedDataSet.id}
                     period={props.selectedPeriod}

@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 import { InputField, Button } from '@dhis2/d2-ui-core'
 import i18n from '../../utils/i18n/locales'
 
-const isSharedActionEnabled = comment => comment.trim()
+const isCommentingActionEnabled = comment => comment.trim()
 const actionButtonPlaceholder = i18n.t('Share')
 const inputFieldPlaceholder = i18n.t(
     'Write a comment, question or interpretation of this report'
 )
 
-const Share = props => (
+const HtmlReportComment = props => (
     <div>
         <InputField
             placeholder={inputFieldPlaceholder}
@@ -23,14 +23,14 @@ const Share = props => (
             raised
             color="primary"
             onClick={props.shareDataSetReportComment}
-            disabled={!isSharedActionEnabled(props.comment)}
+            disabled={!isCommentingActionEnabled(props.comment)}
         >
             {actionButtonPlaceholder}
         </Button>
     </div>
 )
 
-Share.propTypes = {
+HtmlReportComment.propTypes = {
     dataSetId: PropTypes.string.isRequired,
     period: PropTypes.string.isRequired,
     orgUnitId: PropTypes.string.isRequired,
@@ -39,4 +39,4 @@ Share.propTypes = {
     setDataSetReportComment: PropTypes.func.isRequired,
 }
 
-export default Share
+export default HtmlReportComment
