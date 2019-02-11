@@ -8,6 +8,8 @@ export const ACTION_TYPES = {
     REPORT_PERIOD_SELECTED: 'REPORT_PERIOD_SELECTED',
 }
 
+export const loadErrorMessage = i18n.t('Could not load period types')
+
 export const loadPeriodTypesSuccess = periodTypes => ({
     type: ACTION_TYPES.REPORT_PERIOD_TYPES_RECEIVED,
     payload: periodTypes,
@@ -15,10 +17,11 @@ export const loadPeriodTypesSuccess = periodTypes => ({
 
 export const loadPeriodTypesError = () => ({
     type: ACTION_TYPES.REPORT_PERIOD_TYPES_ERRORED,
-    payload: i18n.t('Could not load period types'),
+    payload: loadErrorMessage,
 })
 
 export const loadPeriodTypes = () => dispatch => {
+    console.log('check dit', console.log(getPeriodTypes.toString()))
     getPeriodTypes()
         .then(periodTypes => dispatch(loadPeriodTypesSuccess(periodTypes)))
         .catch(error => {
