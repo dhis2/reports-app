@@ -15,7 +15,7 @@ export const DimensionDropdown = props => (
             style={props.dropdownStyle}
             fullWidth={props.fullWidth}
             value={props.values[props.dimension.id]}
-            onChange={handleDimensionChange(props.onChange, props.dimension.id)}
+            onChange={props.onChange}
             menuItems={props.dimension.items}
             includeEmpty
             emptyLabel={i18n.t(i18nKeys.dimensionsDropdown.hintText)}
@@ -41,7 +41,7 @@ const DataSetDimensions = props => (
                 dropdownStyle={props.dropdownStyle}
                 fullWidth={props.fullWidth}
                 values={props.values}
-                onChange={props.onChange}
+                onChange={handleDimensionChange(props.onChange, dimension.id)}
             />
         ))}
     </React.Fragment>
