@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { DownloadOptions } from './InlineHtmlReport/DownloadOptions'
-import { ShareComponent } from './InlineHtmlReport/ShareComponent'
+import { HtmlReportComment } from './InlineHtmlReport/HtmlReportComment'
 import Report from './Report'
 
 export const InlineHtmlReportCommentable = props => {
@@ -10,8 +10,8 @@ export const InlineHtmlReportCommentable = props => {
     return (
         <div id="report-container">
             <DownloadOptions onDownloadXlsClick={props.onDownloadXlsClick} />
-            <ShareComponent
-                reportComment={props.reportComment}
+            <HtmlReportComment
+                comment={props.reportComment}
                 dataSetId={props.dataSetId}
                 orgUnitId={props.orgUnitId}
                 period={props.period}
@@ -27,11 +27,12 @@ InlineHtmlReportCommentable.propTypes = {
     shouldRender: PropTypes.bool.isRequired,
     onDownloadXlsClick: DownloadOptions.propTypes.onDownloadXlsClick,
     reportHtml: Report.propTypes.reportHtml,
-    dataSetId: ShareComponent.propTypes.dataSetId,
-    orgUnitId: ShareComponent.propTypes.orgUnitId,
-    reportComment: ShareComponent.propTypes.reportComment,
-    period: ShareComponent.propTypes.period,
+    dataSetId: HtmlReportComment.propTypes.dataSetId,
+    orgUnitId: HtmlReportComment.propTypes.orgUnitId,
+    reportComment: HtmlReportComment.propTypes.reportComment,
+    period: HtmlReportComment.propTypes.period,
     shareDataSetReportComment:
-        ShareComponent.propTypes.shareDataSetReportComment,
-    setDataSetReportComment: ShareComponent.propTypes.setDataSetReportComment,
+        HtmlReportComment.propTypes.shareDataSetReportComment,
+    setDataSetReportComment:
+        HtmlReportComment.propTypes.setDataSetReportComment,
 }

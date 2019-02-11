@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { DropDown } from '@dhis2/d2-ui-core'
-import AppContext from '../pages/AppContext'
 import i18n from '../utils/i18n/locales'
 import { i18nKeys } from '../utils/i18n/i18nKeys'
 import styles from '../utils/styles'
@@ -16,7 +15,7 @@ export const DimensionDropdown = props => (
             style={props.dropdownStyle}
             fullWidth={props.fullWidth}
             value={props.values[props.dimension.id]}
-            onChange={handleDimensionChange(props.onChange, props.dimension.id)}
+            onChange={props.onChange}
             menuItems={props.dimension.items}
             includeEmpty
             emptyLabel={i18n.t(i18nKeys.dimensionsDropdown.hintText)}
@@ -34,21 +33,18 @@ DimensionDropdown.propTypes = {
 }
 
 const DataSetDimensions = props => (
-    <AppContext.Consumer>
-        {appContext =>
-            props.dimensions.map(dimension => (
-                <DimensionDropdown
-                    d2={appContext.d2}
-                    key={dimension.id}
-                    dimension={dimension}
-                    dropdownStyle={props.dropdownStyle}
-                    fullWidth={props.fullWidth}
-                    values={props.values}
-                    onChange={props.onChange}
-                />
-            ))
-        }
-    </AppContext.Consumer>
+    <React.Fragment>
+        {props.dimensions.map(dimension => (
+            <DimensionDropdown
+                key={dimension.id}
+                dimension={dimension}
+                dropdownStyle={props.dropdownStyle}
+                fullWidth={props.fullWidth}
+                values={props.values}
+                onChange={handleDimensionChange(props.onChange, dimension.id)}
+            />
+        ))}
+    </React.Fragment>
 )
 
 DataSetDimensions.propTypes = {
