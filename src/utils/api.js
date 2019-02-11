@@ -1,8 +1,7 @@
-import { pipe } from 'lodash/fp'
 import { isDevelopment } from './env/isDevelopment'
 import {
+    standardReportsFields,
     addFilterForName,
-    getStandardReports,
     formatStandardReportsResponse,
     mapCollectionToDimensionQueryString,
 } from './api/helpers'
@@ -70,11 +69,9 @@ export const getOrganisationUnits = () =>
  * @return {Promise}
  */
 export const getFilteredStandardReports = (page, pageSize, nameFilter) =>
-    pipe(
-        addFilterForName(nameFilter),
-        getStandardReports(page, pageSize),
-        formatStandardReportsResponse
-    )(d2.models.report)
+    addFilterForName(nameFilter, d2.models.report)
+        .list({ page, pageSize, fields: standardReportsFields })
+        .then(formatStandardReportsResponse)
 
 /**
  * @param {string} id
