@@ -5,7 +5,7 @@ import i18n from '../utils/i18n/locales'
 import { i18nKeys } from '../utils/i18n/i18nKeys'
 import styles from '../utils/styles'
 
-const handleDimensionChange = (onChange, dimensionId) => element =>
+const createDimensionChangeHandler = (onChange, dimensionId) => element =>
     onChange(dimensionId, element)
 
 export const DimensionDropdown = props => (
@@ -41,7 +41,10 @@ const DataSetDimensions = props => (
                 dropdownStyle={props.dropdownStyle}
                 fullWidth={props.fullWidth}
                 values={props.values}
-                onChange={handleDimensionChange(props.onChange, dimension.id)}
+                onChange={createDimensionChangeHandler(
+                    props.onChange,
+                    dimension.id
+                )}
             />
         ))}
     </React.Fragment>
