@@ -4,6 +4,10 @@ import i18n from '../utils/i18n/locales'
 import styles from '../utils/styles'
 import OrganisationUnitsTree from './AvailableOrganisationUnitsTree'
 import OrganisationUnitGroupOptions from './OrganisationUnitGroupSets'
+import {
+    toggleShowOptions,
+    selectOrgUnitOption,
+} from '../redux/actions/organisationUnits'
 
 const getExtraOptionsLabel = showOptions =>
     i18n.t(!showOptions ? 'Show more options' : 'Show few options')
@@ -44,3 +48,19 @@ OrgUnitsTreeWithExtraOptions.propTypes = {
     toggleShowOptions: PropTypes.func.isRequired,
     onOrganisationUnitGroupSetChange: PropTypes.func.isRequired,
 }
+
+const mapStateToProps = state => ({
+    showOptions: state.organisationUnits.showOptions,
+    selectedOrgUnitOptions: state.organisationUnits.selectedOptions,
+})
+
+const mapDispatchToProps = dispatch => ({
+    toggleShowOptions: () => dispatch(toggleShowOptions()),
+    onOrganisationUnitGroupSetChange: (id, value) =>
+        dispatch(selectOrgUnitOption(id, value)),
+})
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(OrgUnitsTreeWithExtraOptions)

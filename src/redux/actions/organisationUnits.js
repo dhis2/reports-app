@@ -33,3 +33,7 @@ export const selectOrgUnitOption = (id, value) => ({
     type: ACTION_TYPES.ORGANISATION_UNITS_OPTION_SELECTED,
     payload: { id, value },
 })
+
+export const toggleShowOptions = () => ({
+    type: actionTypes.TOGGLE_SHOW_OPTIONS,
+})

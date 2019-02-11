@@ -107,10 +107,6 @@ export const loadDimensions = () => (dispatch, getState) => {
         .catch(({ message }) => dispatch(loadingDimensionsError(message)))
 }
 
-export const toggleShowOptions = () => ({
-    type: actionTypes.TOGGLE_SHOW_OPTIONS,
-})
-
 export const selectDataSet = dataSetId => (dispatch, getState) => {
     dispatch(selectDataSetOriginal(dataSetId))
 

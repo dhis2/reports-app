@@ -25,7 +25,6 @@ const mapStateToProps = ({
     selectedDataSet: dataSet.selected,
     selectedUnitOnly: dataSetReport.selectedUnitOnly,
     selectedDimensionOptions: dataSetReport.selectedDimensionOptions,
-    selectedOrgUnitGroupOptions: organisationUnits.selectedOptions,
     selectedOrgUnit: organisationUnits.selected,
     selectedPeriod: reportPeriod.selectedPeriod,
     showOptions: dataSetReport.showOptions,
@@ -38,12 +37,9 @@ const mapDispatchToProps = dispatch => ({
     exportReportToXls: () => dispatch(exportReportToXls()),
     loadHtmlReport: () => dispatch(loadHtmlReport()),
     showDataSetReportForm: () => dispatch(showDataSetReportForm()),
-    toggleShowOptions: () => dispatch(toggleShowOptions()),
     selectDataSet: e => dispatch(selectDataSet(e.target.value)),
     selectDimensionOption: (id, evt) =>
         dispatch(selectDimensionOption(id, evt.target.value)),
-    selectOrgUnitOption: (id, event) =>
-        dispatch(selectOrgUnitOption(id, event.target.value)),
     toggleSelectedUnitOnly: (e, selectedUnitOnly) =>
         dispatch(toggleSelectedUnitOnly(selectedUnitOnly)),
     shareDataSetReportComment: comment =>
