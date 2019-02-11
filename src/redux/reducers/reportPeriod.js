@@ -6,7 +6,7 @@ export const initialState = {
     ready: false,
     loadingError: '',
     collection: [],
-    selectedPeriodType: null,
+    selectedPeriodType: '',
     selectedPeriod: '',
 }
 
@@ -42,7 +42,7 @@ export default function reportPeriod(state = initialState, { type, payload }) {
         case ACTIONS.LOCATION_CHANGE:
             return {
                 ...state,
-                selectedPeriodType: null,
+                selectedPeriodType: '',
                 selectedPeriod: '',
             }
 

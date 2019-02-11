@@ -76,8 +76,8 @@ describe('Reducer - reportPeriod', () => {
         const action = { type: ACTIONS.LOCATION_CHANGE }
         const expectedState = {
             ...stateWithPeriodTypeSelected,
-            selectedPeriodType: null,
-            selectedPeriod: null,
+            selectedPeriodType: '',
+            selectedPeriod: '',
         }
         expect(reducer(stateWithPeriodTypeSelected, action)).toEqual(
             expectedState
