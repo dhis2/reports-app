@@ -29,20 +29,12 @@ class DataSetReport extends React.Component {
                 <Paper style={styles.container}>
                     <div id="data-set-report-form" style={formStyle}>
                         <DataInputs
-                            showOptions={props.showOptions}
                             dataSetDimensions={props.dataSetDimensions}
-                            selectedOrgUnitOptions={
-                                props.selectedOrgUnitGroupOptions
-                            }
                             selectedDataSet={props.selectedDataSet}
                             selectedDimensionOptions={
                                 props.selectedDimensionOptions
                             }
                             selectedUnitOnly={props.selectedUnitOnly}
-                            onToggleShowOptions={props.toggleShowOptions}
-                            onOrganisationUnitGroupSetChange={
-                                props.selectOrgUnitOption
-                            }
                             onDataSetChange={props.selectDataSet}
                             onDimensionChange={props.selectDimensionOption}
                             onSelectedUnitOnlyChange={

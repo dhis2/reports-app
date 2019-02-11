@@ -4,17 +4,19 @@ import { Paper } from 'material-ui'
 import { Button, DropDown } from '@dhis2/d2-ui-core'
 import XLSX from 'xlsx'
 import { connect } from 'react-redux'
-import { updateFeedbackState } from '../redux/actions/feedback'
 import i18n from '../utils/i18n/locales'
 import Page from './Page'
 import DataSets from '../components/DatasetsDropdown'
-import { OrgUnitsTreeWithExtraOptions } from '../components/OrgUnitsTreeWithExtraOptions'
+import OrgUnitsTreeWithExtraOptions from '../components/OrgUnitsTreeWithExtraOptions'
 import PeriodPickerComponent from '../components/PeriodPickerWithPeriodType'
-import { LOADING, SUCCESS } from '../utils/feedbackSnackBarTypes'
 import styles from '../utils/styles'
 
 import { InlineHtmlReport } from '../components/InlineHtmlReport'
 import { SectionHeadline } from '../components/SectionHeadline'
+import {
+    selectCriteria,
+    loadHtmlReport,
+} from '../redux/actions/reportingRateSummary'
 
 const BASED_ON_OPTIONS = [
     {
@@ -26,7 +28,7 @@ const BASED_ON_OPTIONS = [
 
 const isFormValid = props => props.selectedOrgUnit && props.selectedPeriod
 
-const isActionEnabled = props => this.isFormValid(props) && !props.loading
+const isActionEnabled = props => isFormValid(props) && !props.loading
 
 export default class ReportingRateSummary extends Page {
     static propTypes = {

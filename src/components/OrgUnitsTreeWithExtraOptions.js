@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import i18n from '../utils/i18n/locales'
 import styles from '../utils/styles'
 import OrganisationUnitsTree from './AvailableOrganisationUnitsTree'
@@ -56,8 +57,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     toggleShowOptions: () => dispatch(toggleShowOptions()),
-    onOrganisationUnitGroupSetChange: (id, value) =>
-        dispatch(selectOrgUnitOption(id, value)),
+    onOrganisationUnitGroupSetChange: (id, event) =>
+        dispatch(selectOrgUnitOption(id, event.target.value)),
 })
 
 export default connect(

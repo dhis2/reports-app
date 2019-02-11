@@ -8,6 +8,7 @@ export const initialState = {
     collection: [],
     selected: null,
     selectedOptions: {},
+    showOptions: false,
 }
 
 export default function organisationUnits(
@@ -52,6 +53,12 @@ export default function organisationUnits(
                 ...state,
                 selected: null,
                 selectedOptions: {},
+            }
+
+        case ACTIONS.TOGGLE_SHOW_OPTIONS:
+            return {
+                ...state,
+                showOptions: !state.showOptions,
             }
 
         default:

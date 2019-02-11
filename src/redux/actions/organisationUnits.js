@@ -6,6 +6,7 @@ export const ACTION_TYPES = {
     ORGANISATION_UNITS_ERRORED: 'ORGANISATION_UNITS_ERRORED',
     ORGANISATION_UNIT_SELECTED: 'ORGANISATION_UNIT_SELECTED',
     ORGANISATION_UNITS_OPTION_SELECTED: 'ORGANISATION_UNITS_OPTION_SELECTED',
+    TOGGLE_SHOW_OPTIONS: 'TOGGLE_SHOW_OPTIONS',
 }
 
 export const loadOrganisationUnitsSuccess = periodTypes => ({
@@ -35,5 +36,5 @@ export const selectOrgUnitOption = (id, value) => ({
 })
 
 export const toggleShowOptions = () => ({
-    type: actionTypes.TOGGLE_SHOW_OPTIONS,
+    type: ACTION_TYPES.TOGGLE_SHOW_OPTIONS,
 })

@@ -134,7 +134,7 @@ export const getReportingRateSummaryReport = (
     dataSetId,
     selectedPeriod,
     criteria,
-    selectOrgUnitOptions
+    selectedOrgUnitOptions
 ) => {
     return api.get(
         REPORTING_RATE_SUMMARY_ENDPOINT.replace('%orgUnitId%', orgUnitId),
