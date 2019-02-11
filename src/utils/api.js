@@ -141,7 +141,7 @@ export const getReportingRateSummaryReport = (
         {
             ds: dataSetId,
             pe: selectedPeriod,
-            criteria: selectedCriteria,
+            criteria,
             groupUids: Object.keys(selectedOrgUnitOptions).map(
                 key => selectedOrgUnitOptions[key]
             ),
