@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types'
-import i18n from '../utils/i18n/locales'
-import { i18nKeys } from '../utils/i18n/i18nKeys'
-import { ERROR } from '../utils/feedbackSnackBarTypes'
-import getDisplayName from '../utils/react/getDisplayName'
+import i18n from '../i18n/locales'
+import { i18nKeys } from '../i18n/i18nKeys'
+import { ERROR } from '../feedbackSnackBarTypes'
+import getDisplayName from '../react/getDisplayName'
 
 const manageError = component => {
     const WrappedComponent = class extends component {
@@ -17,12 +17,18 @@ const manageError = component => {
         pageMounted = false
 
         componentDidMount() {
-            super.componentDidMount()
+            if (super.componentDidMount) {
+                super.componentDidMount()
+            }
+
             this.pageMounted = true
         }
 
         componentWillUnmount() {
-            super.componentWillUnmount()
+            if (super.componentWillUnmount) {
+                super.componentWillUnmount()
+            }
+
             this.pageMounted = false
         }
 

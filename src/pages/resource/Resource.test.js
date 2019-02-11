@@ -16,7 +16,7 @@ import Resource from './Resource'
 
 import fakerData from '../../utils/fakerTests'
 
-import { sections, RESOURCE_SECTION_KEY } from '../sections.conf'
+import { sections, RESOURCE_SECTION_KEY } from '../../config/sections.conf'
 
 import { i18nKeys } from '../../utils/i18n/i18nKeys'
 
