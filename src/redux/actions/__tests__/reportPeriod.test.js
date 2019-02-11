@@ -1,16 +1,24 @@
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
-import * as api from '../../../utils/api'
-import * as actions from '../reportPeriod'
+import {
+    ACTION_TYPES as TYPES,
+    errorMessage,
+    loadPeriodTypes,
+    selectPeriod,
+    selectPeriodType,
+} from '../reportPeriod'
+import { getPeriodTypes } from '../../../utils/api'
+
+jest.mock('../../../utils/api', () => ({
+    getPeriodTypes: jest.fn(),
+}))
 
 describe('Actions - reportPeriod', () => {
-    const TYPES = actions.ACTION_TYPES
     const mockStore = configureMockStore([thunk])
-    const mockResp = [1, 2, 3, 4]
-    const mockGetPeriodTypeSuccess = jest.fn(() => Promise.resolve(mockResp))
-    const mockGetPeriodTypeError = jest.fn(() => Promise.reject('Oops'))
-    const mockEvent = { target: { value: 'somePeriodType' } }
-    const mockPeriod = 'dummy value'
+    const mockResp = [1, 2, 3, 4, 5]
+    const state = { reportPeriod: {} }
+    const mockPeriodType = 'dummy period type'
+    const mockPeriod = 'dummy period'
 
     const MOCK_ACTIONS = {
         [TYPES.REPORT_PERIOD_TYPES_RECEIVED]: {
@@ -19,11 +27,11 @@ describe('Actions - reportPeriod', () => {
         },
         [TYPES.REPORT_PERIOD_TYPES_ERRORED]: {
             type: TYPES.REPORT_PERIOD_TYPES_ERRORED,
-            payload: actions.loadErrorMessage,
+            payload: errorMessage,
         },
         [TYPES.REPORT_PERIOD_TYPE_SELECTED]: {
             type: TYPES.REPORT_PERIOD_TYPE_SELECTED,
-            payload: mockEvent,
+            payload: mockPeriodType,
         },
         [TYPES.REPORT_PERIOD_SELECTED]: {
             type: TYPES.REPORT_PERIOD_SELECTED,
@@ -35,16 +43,44 @@ describe('Actions - reportPeriod', () => {
         jest.clearAllMocks()
     })
 
-    it('creates REPORT_PERIOD_TYPES_RECEIVED when loadPeriodTypes resolves successfully', () => {
-        jest.mock('../../../utils/api', () => ({
-            getPeriodTypes: mockGetPeriodTypeSuccess,
-        }))
-        const expectedActions = [
-            MOCK_ACTIONS[TYPES.REPORT_PERIOD_TYPES_RECEIVED],
-        ]
-        const store = mockStore({ reportPeriod: {} })
-        return store.dispatch(actions.loadPeriodTypes()).then(() => {
-            expect(store.getActions()).toEqual(expectedActions)
+    describe('loadPeriodTypes', () => {
+        it('creates REPORT_PERIOD_TYPES_RECEIVED when it resolves successfully', () => {
+            getPeriodTypes.mockImplementation(() => Promise.resolve(mockResp))
+            const expectedActions = [
+                MOCK_ACTIONS[TYPES.REPORT_PERIOD_TYPES_RECEIVED],
+            ]
+            const store = mockStore(state)
+            store.dispatch(loadPeriodTypes()).then(() => {
+                expect(store.getActions()).toEqual(expectedActions)
+            })
+        })
+
+        it('creates REPORT_PERIOD_TYPES_ERRORED when it is rejected', () => {
+            getPeriodTypes.mockImplementation(() => Promise.reject())
+            const expectedActions = [
+                MOCK_ACTIONS[TYPES.REPORT_PERIOD_TYPES_ERRORED],
+            ]
+            const store = mockStore(state)
+            store.dispatch(loadPeriodTypes()).then(() => {
+                expect(store.getActions()).toEqual(expectedActions)
+            })
+        })
+    })
+
+    describe('selectPeriodType', () => {
+        it('creates a REPORT_PERIOD_TYPE_SELECTED action', () => {
+            const mockEvent = { target: { value: mockPeriodType } }
+            expect(selectPeriodType(mockEvent)).toEqual(
+                MOCK_ACTIONS[TYPES.REPORT_PERIOD_TYPE_SELECTED]
+            )
+        })
+    })
+
+    describe('selectPeriod', () => {
+        it('creates a REPORT_PERIOD_SELECTED action', () => {
+            expect(selectPeriod(mockPeriod)).toEqual(
+                MOCK_ACTIONS[TYPES.REPORT_PERIOD_SELECTED]
+            )
         })
     })
 })
