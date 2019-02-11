@@ -1,4 +1,3 @@
-import XLSX from 'xlsx'
 import {
     getDataSetReports,
     getDimensions,
@@ -13,7 +12,6 @@ import {
 
 export const actionTypes = {
     SHOW_DATA_SET_REPORT_FORM: 'SHOW_DATA_SET_REPORT_FORM',
-    DOWNLOAD_DATA_SET_REPORT_XLS: 'DOWNLOAD_DATA_SET_REPORT_XLS',
     LOADING_DIMENSIONS_START: 'LOADING_DIMENSIONS_START',
     LOADING_DIMENSIONS_SUCCESS: 'LOADING_DIMENSIONS_SUCCESS',
     LOADING_DIMENSIONS_ERROR: 'LOADING_DIMENSIONS_ERROR',
@@ -28,20 +26,6 @@ export const actionTypes = {
     SELECT_DATA_SET: 'SELECT_DATA_SET',
     TOGGLE_SHOW_OPTIONS: 'TOGGLE_SHOW_OPTIONS',
     TOGGLE_SELECTED_UNIT_ONLY: 'TOGGLE_SELECTED_UNIT_ONLY',
-}
-
-export const exportReportToXls = () => {
-    const reportTables = document.querySelectorAll('#report-container table')
-    const workbook = XLSX.utils.book_new()
-
-    reportTables.forEach((reportTable, index) => {
-        const worksheet = XLSX.utils.table_to_sheet(reportTable)
-        XLSX.utils.book_append_sheet(workbook, worksheet, `Worksheet ${index}`)
-    })
-
-    XLSX.writeFile(workbook, 'report.xlsx')
-
-    return { type: actionTypes.DOWNLOAD_DATA_SET_REPORT_XLS }
 }
 
 export const showDataSetReportForm = () => ({

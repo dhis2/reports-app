@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { DropDown } from '@dhis2/d2-ui-core'
-import AppContext from '../pages/AppContext'
 import i18n from '../utils/i18n/locales'
 import styles from '../utils/styles'
 import { selectDataSet, loadDataSetOptions } from '../redux/actions/dataSet'
@@ -21,7 +20,7 @@ export class DatasetsDropdown extends PureComponent {
     }
 
     static defaultProps = {
-        onChange: () => {},
+        onChange: null,
         label: i18n.t('Data set'),
         fullWidth: true,
         filter: null,
@@ -35,27 +34,20 @@ export class DatasetsDropdown extends PureComponent {
         const { props } = this
 
         return (
-            <AppContext.Consumer>
-                {appContext => (
-                    <div>
-                        <span style={styles.formLabel}>{props.label}</span>
-                        <DropDown
-                            includeEmpty
-                            d2={appContext.d2}
-                            fullWidth={props.fullWidth}
-                            value={props.selected.id}
-                            onChange={
-                                props.onChange
-                                    ? props.onChange
-                                    : props.selectDataSet
-                            }
-                            menuItems={props.options}
-                            emptyLabel={i18n.t('Select Data Set')}
-                            hintText={i18n.t('Select Data Set')}
-                        />
-                    </div>
-                )}
-            </AppContext.Consumer>
+            <div>
+                <span style={styles.formLabel}>{props.label}</span>
+                <DropDown
+                    includeEmpty
+                    fullWidth={props.fullWidth}
+                    value={props.selected.id}
+                    onChange={
+                        props.onChange ? props.onChange : props.selectDataSet
+                    }
+                    menuItems={props.options}
+                    emptyLabel={i18n.t('Select Data Set')}
+                    hintText={i18n.t('Select Data Set')}
+                />
+            </div>
         )
     }
 }

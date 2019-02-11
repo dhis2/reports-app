@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Paper } from 'material-ui'
 import { Button, DropDown } from '@dhis2/d2-ui-core'
-import XLSX from 'xlsx'
 import { connect } from 'react-redux'
 import i18n from '../utils/i18n/locales'
 import Page from './Page'
@@ -17,6 +16,7 @@ import {
     selectCriteria,
     loadHtmlReport,
 } from '../redux/actions/reportingRateSummary'
+import { exportReportToXls } from '../redux/actions/htmlReport'
 
 const BASED_ON_OPTIONS = [
     {
@@ -39,7 +39,7 @@ export default class ReportingRateSummary extends Page {
         selectedPeriod: PropTypes.string.isRequired,
         selectedCriteria: PropTypes.string.isRequired,
         loading: PropTypes.bool.isRequired,
-        //exportReportToXls: PropTypes.func.isRequired,
+        exportReportToXls: PropTypes.func.isRequired,
         loadHtmlReport: PropTypes.func.isRequired,
         selectCriteria: PropTypes.func.isRequired,
         selectedOrgUnit: PropTypes.object,
@@ -48,25 +48,6 @@ export default class ReportingRateSummary extends Page {
     goToForm = () => {
         this.setState({
             showForm: true,
-        })
-    }
-
-    exportReportToXls = () => {
-        const reportTables = document.querySelectorAll(
-            '#report-container table'
-        )
-        const workbook = XLSX.utils.book_new()
-        for (let i = 0; i < reportTables.length; i++) {
-            const worksheet = XLSX.utils.table_to_sheet(reportTables[i])
-            XLSX.utils.book_append_sheet(workbook, worksheet, `Worksheet ${i}`)
-        }
-        XLSX.writeFile(workbook, 'report.xlsx')
-    }
-
-    handleCriteriaChange = event => {
-        const selectedCriteria = event.target.value
-        this.setState({
-            selectedCriteria,
         })
     }
 
@@ -130,7 +111,7 @@ export default class ReportingRateSummary extends Page {
                     </div>
                     <InlineHtmlReport
                         shouldRender={!!props.reportHtml && !props.showForm}
-                        onDownloadXlsClick={this.exportReportToXls}
+                        onDownloadXlsClick={props.exportReportToXls}
                         reportHtml={props.reportHtml}
                     />
                 </Paper>
@@ -150,9 +131,14 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    selectCriteria: selectedCriteria =>
-        dispatch(selectCriteria(selectedCriteria)),
+    selectCriteria: event => dispatch(selectCriteria(event.target.value)),
     loadHtmlReport: () => dispatch(loadHtmlReport()),
+    exportReportToXls: () =>
+        dispatch(
+            exportReportToXls(
+                document.querySelectorAll('#report-container table')
+            )
+        ),
 })
 
 export const ConnectedReportingRateSummary = connect(

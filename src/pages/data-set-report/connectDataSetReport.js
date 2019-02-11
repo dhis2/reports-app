@@ -1,6 +1,5 @@
 import { connect } from 'react-redux'
 import {
-    exportReportToXls,
     loadHtmlReport,
     selectDataSet,
     selectDimensionOption,
@@ -9,6 +8,7 @@ import {
     setDataSetReportComment,
     showDataSetReportForm,
 } from '../../redux/actions/dataSetReport'
+import { exportReportToXls } from '../../redux/actions/htmlReport'
 
 const mapStateToProps = ({
     dataSet,
@@ -33,7 +33,12 @@ const mapStateToProps = ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    exportReportToXls: () => dispatch(exportReportToXls()),
+    exportReportToXls: () =>
+        dispatch(
+            exportReportToXls(
+                document.querySelectorAll('#report-container table')
+            )
+        ),
     loadHtmlReport: () => dispatch(loadHtmlReport()),
     showDataSetReportForm: () => dispatch(showDataSetReportForm()),
     selectDataSet: e => dispatch(selectDataSet(e.target.value)),
