@@ -33,10 +33,12 @@ export const actionTypes = {
 export const exportReportToXls = () => {
     const reportTables = document.querySelectorAll('#report-container table')
     const workbook = XLSX.utils.book_new()
-    for (let i = 0; i < reportTables.length; i++) {
-        const worksheet = XLSX.utils.table_to_sheet(reportTables[i])
-        XLSX.utils.book_append_sheet(workbook, worksheet, `Worksheet ${i}`)
-    }
+
+    reportTables.forEach((reportTable, index) => {
+        const worksheet = XLSX.utils.table_to_sheet(reportTable)
+        XLSX.utils.book_append_sheet(workbook, worksheet, `Worksheet ${index}`)
+    })
+
     XLSX.writeFile(workbook, 'report.xlsx')
 
     return { type: actionTypes.DOWNLOAD_DATA_SET_REPORT_XLS }

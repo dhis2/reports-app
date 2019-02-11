@@ -33,19 +33,16 @@ const isActionEnabled = props => isFormValid(props) && !props.loading
 export default class ReportingRateSummary extends Page {
     static propTypes = {
         d2: PropTypes.object.isRequired,
-
         showForm: PropTypes.bool.isRequired,
         reportHtml: PropTypes.string.isRequired,
         selectedDataSet: PropTypes.object.isRequired,
-        selectedOrgUnit: PropTypes.object.isRequired,
         selectedPeriod: PropTypes.string.isRequired,
         selectedCriteria: PropTypes.string.isRequired,
         loading: PropTypes.bool.isRequired,
-
-        exportReportToXls: PropTypes.func.isRequired,
+        //exportReportToXls: PropTypes.func.isRequired,
         loadHtmlReport: PropTypes.func.isRequired,
-        onToggleShowOptions: PropTypes.func.isRequired,
-        onSelectCriteria: PropTypes.func.isRequired,
+        selectCriteria: PropTypes.func.isRequired,
+        selectedOrgUnit: PropTypes.object,
     }
 
     goToForm = () => {
@@ -103,7 +100,7 @@ export default class ReportingRateSummary extends Page {
                                     <DropDown
                                         fullWidth
                                         value={props.selectedCriteria}
-                                        onChange={props.onSelectCriteria}
+                                        onChange={props.selectCriteria}
                                         menuItems={BASED_ON_OPTIONS}
                                     />
                                 </div>
@@ -124,7 +121,7 @@ export default class ReportingRateSummary extends Page {
                             <Button
                                 raised
                                 color="primary"
-                                onClick={this.getReport}
+                                onClick={props.loadHtmlReport}
                                 disabled={!isActionEnabled(props)}
                             >
                                 {i18n.t('Get Report')}
@@ -132,7 +129,7 @@ export default class ReportingRateSummary extends Page {
                         </div>
                     </div>
                     <InlineHtmlReport
-                        shouldRender={props.reportHtml && !props.showForm}
+                        shouldRender={!!props.reportHtml && !props.showForm}
                         onDownloadXlsClick={this.exportReportToXls}
                         reportHtml={props.reportHtml}
                     />
@@ -143,14 +140,13 @@ export default class ReportingRateSummary extends Page {
 }
 
 const mapStateToProps = state => ({
+    loading: state.htmlReport.loading,
     showForm: state.reportingRateSummary.showForm,
-    reportHtml: state.reportingRateSummary.reportHtml,
+    reportHtml: state.htmlReport.reportHtml,
     selectedDataSet: state.dataSet.selected,
-    selectedOrgUnit: state.organisationUnits.selected,
-    selectedOrgUnitOptions: state.organisationUnits.selectedOptions,
     selectedPeriod: state.reportPeriod.selectedPeriod,
     selectedCriteria: state.reportingRateSummary.selectedCriteria,
-    loading: state.reportingRateSummary.loading,
+    selectedOrgUnit: state.organisationUnits,
 })
 
 const mapDispatchToProps = dispatch => ({
