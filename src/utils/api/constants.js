@@ -4,6 +4,8 @@ export const DATA_SET_REPORTS_ENDPOINT = 'dataSetReport'
 export const DATA_SET_DIMENSIONS_ENDPOINT = 'dimensions/dataSet'
 export const DATA_SET_REPORT_INTERPOLATION_ENDPOINT =
     'interpretations/dataSetReport'
+export const REPORTING_RATE_SUMMARY_ENDPOINT =
+    'organisationUnits/%orgUnitId%/rateSummary'
 
 // Url creaters
 export const postDataSetReportCommentUrl = (dataSetId, orgUnitId, period) =>

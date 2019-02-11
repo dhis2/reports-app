@@ -8,6 +8,7 @@ import dataSetReport from './reducers/dataSetReport'
 import reportPeriod from './reducers/reportPeriod'
 import organisationUnits from './reducers/organisationUnits'
 import { dataSet } from './reducers/dataSet'
+import { reportingRateSummary } from './reducers/reportingRateSummary'
 
 export default combineReducers({
     router: connectRouter(history),
@@ -17,4 +18,5 @@ export default combineReducers({
     reportPeriod,
     organisationUnits,
     dataSet,
+    reportingRateSummary,
 })
