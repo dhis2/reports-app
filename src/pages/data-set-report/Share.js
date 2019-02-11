@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { InputField, Button } from '@dhis2/d2-ui-core'
-import AppContext from '../../pages/AppContext'
 import i18n from '../../utils/i18n/locales'
 
 const isSharedActionEnabled = comment => comment.trim()
@@ -11,30 +10,24 @@ const inputFieldPlaceholder = i18n.t(
 )
 
 const Share = props => (
-    <AppContext.Consumer>
-        {({ d2 }) => (
-            <div>
-                <InputField
-                    d2={d2}
-                    placeholder={inputFieldPlaceholder}
-                    type="text"
-                    multiline
-                    fullWidth
-                    value={props.comment}
-                    onChange={props.setDataSetReportComment}
-                />
-                <Button
-                    d2={d2}
-                    raised
-                    color="primary"
-                    onClick={props.shareDataSetReportComment}
-                    disabled={!isSharedActionEnabled(props.comment)}
-                >
-                    {actionButtonPlaceholder}
-                </Button>
-            </div>
-        )}
-    </AppContext.Consumer>
+    <div>
+        <InputField
+            placeholder={inputFieldPlaceholder}
+            type="text"
+            multiline
+            fullWidth
+            value={props.comment}
+            onChange={props.setDataSetReportComment}
+        />
+        <Button
+            raised
+            color="primary"
+            onClick={props.shareDataSetReportComment}
+            disabled={!isSharedActionEnabled(props.comment)}
+        >
+            {actionButtonPlaceholder}
+        </Button>
+    </div>
 )
 
 Share.propTypes = {
