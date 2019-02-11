@@ -1,5 +1,5 @@
 import { actionTypes } from '../actions/dataSetReport'
-import { actionTypes as reportHtmlActionTypes } from '../action/reportHtml'
+import { actionTypes as reportHtmlActionTypes } from '../actions/htmlReport'
 import { ERROR, LOADING, SUCCESS } from '../../utils/feedbackSnackBarTypes'
 import i18n from '../../utils/i18n/locales'
 

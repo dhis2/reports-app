@@ -55,6 +55,7 @@ export const loadHtmlReport = () => (dispatch, getState) => {
         organisationUnits,
         reportPeriod,
     } = getState()
+
     getDataSetReports(
         dataSetReport.selectedDimensionOptions,
         organisationUnits.selectedOptions,

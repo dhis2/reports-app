@@ -29,7 +29,7 @@ InlineHtmlReportCommentable.propTypes = {
     reportHtml: Report.propTypes.reportHtml,
     dataSetId: HtmlReportComment.propTypes.dataSetId,
     orgUnitId: HtmlReportComment.propTypes.orgUnitId,
-    reportComment: HtmlReportComment.propTypes.reportComment,
+    reportComment: HtmlReportComment.propTypes.comment,
     period: HtmlReportComment.propTypes.period,
     shareDataSetReportComment:
         HtmlReportComment.propTypes.shareDataSetReportComment,

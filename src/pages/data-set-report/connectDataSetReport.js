@@ -8,19 +8,17 @@ import {
     shareDataSetReportComment,
     setDataSetReportComment,
     showDataSetReportForm,
-    toggleShowOptions,
 } from '../../redux/actions/dataSetReport'
-import { selectOrgUnitOption } from '../../redux/actions/organisationUnits'
 
 const mapStateToProps = ({
     dataSet,
     dataSetReport,
     organisationUnits,
     reportPeriod,
-    reportHtml,
+    htmlReport,
 }) => ({
     showForm: dataSetReport.showForm,
-    reportHtml: reportHtml.reportHtml,
+    reportHtml: htmlReport.reportHtml,
     reportComment: dataSetReport.reportComment,
     dataSetDimensions: dataSetReport.dataSetDimensions,
     selectedDataSet: dataSet.selected,

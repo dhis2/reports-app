@@ -3,6 +3,7 @@ import {
     loadingHtmlReportSuccess,
     loadingHtmlReportError,
 } from './htmlReport'
+import { getReportingRateSummaryReport } from '../../utils/api'
 
 export const actionTypes = {
     SET_SHOW_FORM: 'SET_SHOW_FORM',
@@ -30,7 +31,7 @@ export const selectCriteria = selectedCriteria => ({
 /**
  * @returns {Function} redux thunk
  */
-const loadHtmlReport = () => (dispatch, getState) => {
+export const loadHtmlReport = () => (dispatch, getState) => {
     dispatch(loadingHtmlReportStart())
 
     const {
