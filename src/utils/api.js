@@ -156,3 +156,12 @@ export const getReportingRateSummaryReport = (
         }
     )
 }
+
+/**
+ * @returns {Promise}
+ */
+export const getOrgUnitGroupSets = () =>
+    d2.models.organisationUnitGroupSet.list({
+        paging: false,
+        fields: 'id,displayName',
+    })
