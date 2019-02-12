@@ -69,7 +69,7 @@ describe('Test <OrganisationUnitGroupSets /> rendering:', () => {
         expect(wrapper.find(DropDown)).toHaveLength(0)
     })
 
-    it('Should render the correct number of div for each DropDown Component', () => {
+    it.skip('Should render the correct number of div for each DropDown Component', () => {
         const wrapper = ownShallow()
         wrapper.setState({
             organisationUnitGroupSets: organisationUnitGroupSets,

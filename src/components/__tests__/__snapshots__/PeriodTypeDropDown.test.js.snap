@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test <PeriodTypeDropDown /> rendering: It should render a <DropDown /> when ready 1`] = `
+<DropDown
+  emptyLabel="Select Period Type"
+  fullWidth={true}
+  hintText="Select Period Type"
+/>
+`;
+
+exports[`Test <PeriodTypeDropDown /> rendering: It should render a loading message when not ready 1`] = `
+<span
+  style={
+    Object {
+      "color": "#f44336",
+    }
+  }
+>
+  Loading period types dropdown
+</span>
+`;
+
+exports[`Test <PeriodTypeDropDown /> rendering: It should render an error message when loadingError is present 1`] = `
+<span
+  style={
+    Object {
+      "color": "#f44336",
+    }
+  }
+>
+  Oops
+</span>
+`;

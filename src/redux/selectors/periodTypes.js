@@ -14,6 +14,7 @@ const translations = {
     Quarterly: i18n.t('Quarterly'),
     SixMonthly: i18n.t('Six-Monthly'),
     SixMonthlyApril: i18n.t('Six-Monthly April'),
+    SixMonthlyNov: i18n.t('Six-Monthly November'),
     Yearly: i18n.t('Yearly'),
     FinancialApril: i18n.t('Financial-April'),
     FinancialJuly: i18n.t('Financial-July'),
