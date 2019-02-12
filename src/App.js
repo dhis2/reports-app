@@ -15,6 +15,7 @@ import { connect } from 'react-redux'
 import { updateFeedbackState } from './redux/actions/feedback'
 import { loadPeriodTypes } from './redux/actions/reportPeriod'
 import { loadOrganisationUnits } from './redux/actions/organisationUnits'
+import { loadDataSetOptions } from './redux/actions/dataSet'
 
 /* App components */
 import AppRouter from './components/AppRouter'
@@ -47,6 +48,7 @@ class App extends PureComponent {
     componentDidMount() {
         this.props.loadOrganisationUnits()
         this.props.loadPeriodTypes()
+        this.props.loadDataSetOptions()
     }
 
     onFeedbackSnackbarClose = () => {
@@ -110,6 +112,7 @@ App.propTypes = {
     updateFeedbackState: PropTypes.func.isRequired,
     loadOrganisationUnits: PropTypes.func.isRequired,
     loadPeriodTypes: PropTypes.func.isRequired,
+    loadDataSetOptions: PropTypes.func.isRequired,
     currentSection: PropTypes.string.isRequired,
 }
 
@@ -129,5 +132,6 @@ export default connect(
         loadOrganisationUnits,
         loadPeriodTypes,
         updateFeedbackState,
+        loadDataSetOptions,
     }
 )(App)
