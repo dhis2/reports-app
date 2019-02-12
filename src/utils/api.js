@@ -9,6 +9,7 @@ import {
     STANDARD_REPORTS_ENDPOINT,
     DATA_SET_REPORTS_ENDPOINT,
     DATA_SET_DIMENSIONS_ENDPOINT,
+    REPORTING_RATE_SUMMARY_ENDPOINT,
     postDataSetReportCommentUrl,
 } from './api/constants'
 
@@ -126,4 +127,32 @@ export const postDataSetReportComment = (
     )
     const requestHeaders = { headers: { 'content-type': 'text/plain' } }
     return api.post(endpointUrl, comment, requestHeaders)
+}
+
+/**
+ * @param {string} orgUnitId
+ * @param {string} dataSetId
+ * @param {string} period
+ * @param {string} criteria
+ * @param {Object} selectedOrgUnitOptions
+ * @returns {Promise}
+ */
+export const getReportingRateSummaryReport = (
+    orgUnitId,
+    dataSetId,
+    period,
+    criteria,
+    orgUnitOptions
+) => {
+    return api.get(
+        REPORTING_RATE_SUMMARY_ENDPOINT.replace('%orgUnitId%', orgUnitId),
+        {
+            ds: dataSetId,
+            pe: period,
+            criteria,
+            groupUids: Object.keys(orgUnitOptions).map(
+                key => orgUnitOptions[key]
+            ),
+        }
+    )
 }

@@ -17,6 +17,7 @@ import {
 
 const mapStateToProps = state => ({
     ...state.standardReport,
+    pager: state.pagination,
 })
 
 const mapDispatchToProps = dispatch => ({

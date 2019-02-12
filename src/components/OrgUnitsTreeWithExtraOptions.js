@@ -1,9 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import i18n from '../../utils/i18n/locales'
-import styles from '../../utils/styles'
-import OrganisationUnitsTree from '../../components/AvailableOrganisationUnitsTree'
-import OrganisationUnitGroupOptions from '../../components/OrganisationUnitGroupSets'
+import { connect } from 'react-redux'
+import i18n from '../utils/i18n/locales'
+import styles from '../utils/styles'
+import OrganisationUnitsTree from './AvailableOrganisationUnitsTree'
+import OrganisationUnitGroupOptions from './OrganisationUnitGroupSets'
+import {
+    toggleShowOptions,
+    selectOrgUnitOption,
+} from '../redux/actions/organisationUnits'
 
 const getExtraOptionsLabel = showOptions =>
     i18n.t(!showOptions ? 'Show more options' : 'Show few options')
@@ -11,8 +16,8 @@ const getExtraOptionsLabel = showOptions =>
 const getExtraOptionsStyle = showOptions =>
     showOptions ? styles.showOptions : styles.hideOptions
 
-export const OrgUnitsTree = props => (
-    <div className="col-xs-12 col-md-6">
+export const OrgUnitsTreeWithExtraOptions = props => (
+    <React.Fragment>
         <div style={styles.formLabel}>{i18n.t('Report organisation unit')}</div>
         <OrganisationUnitsTree />
         <div>
@@ -35,12 +40,28 @@ export const OrgUnitsTree = props => (
                 />
             </div>
         </div>
-    </div>
+    </React.Fragment>
 )
 
-OrgUnitsTree.propTypes = {
+OrgUnitsTreeWithExtraOptions.propTypes = {
     showOptions: PropTypes.bool.isRequired,
     selectedOrgUnitOptions: PropTypes.object.isRequired,
     toggleShowOptions: PropTypes.func.isRequired,
     onOrganisationUnitGroupSetChange: PropTypes.func.isRequired,
 }
+
+const mapStateToProps = state => ({
+    showOptions: state.organisationUnits.showOptions,
+    selectedOrgUnitOptions: state.organisationUnits.selectedOptions,
+})
+
+const mapDispatchToProps = dispatch => ({
+    toggleShowOptions: () => dispatch(toggleShowOptions()),
+    onOrganisationUnitGroupSetChange: (id, event) =>
+        dispatch(selectOrgUnitOption(id, event.target.value)),
+})
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(OrgUnitsTreeWithExtraOptions)

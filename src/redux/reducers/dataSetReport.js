@@ -1,5 +1,6 @@
 import { actionTypes } from '../actions/dataSetReport'
-import { ERROR, LOADING, SUCCESS } from '../../utils/feedbackTypes.js'
+import { actionTypes as reportHtmlActionTypes } from '../actions/htmlReport'
+import { ERROR, LOADING, SUCCESS } from '../../utils/feedbackSnackBarTypes'
 import i18n from '../../utils/i18n/locales'
 
 const defaultState = {
@@ -8,11 +9,8 @@ const defaultState = {
     showOptions: false,
     selectedUnitOnly: false,
     reportHtml: '',
-    reportComment: '',
     dataSetDimensions: [],
-    selectedDataSet: { id: '', displayName: '' },
     selectedDimensionOptions: {},
-    selectedOrgUnitGroupOptions: {},
     showFeedback: false,
     feedbackConf: {},
 }
@@ -23,7 +21,7 @@ const dataSetReport = (state = defaultState, action = {}) => {
         case actionTypes.SHOW_DATA_SET_REPORT_FORM:
             return { ...state, showForm: true }
 
-        case actionTypes.LOADING_HTML_REPORT_START:
+        case reportHtmlActionTypes.LOADING_HTML_REPORT_START:
             return {
                 ...state,
                 loading: true,
@@ -34,10 +32,9 @@ const dataSetReport = (state = defaultState, action = {}) => {
                 },
             }
 
-        case actionTypes.LOADING_HTML_REPORT_SUCCESS:
+        case reportHtmlActionTypes.LOADING_HTML_REPORT_SUCCESS:
             return {
                 ...state,
-                reportHtml: payload,
                 showForm: false,
                 loadHtmlReport: false,
                 showFeedback: true,
@@ -47,7 +44,7 @@ const dataSetReport = (state = defaultState, action = {}) => {
                 },
             }
 
-        case actionTypes.LOADING_HTML_REPORT_ERROR:
+        case reportHtmlActionTypes.LOADING_HTML_REPORT_ERROR:
             return {
                 ...state,
                 loading: false,
@@ -101,13 +98,6 @@ const dataSetReport = (state = defaultState, action = {}) => {
                 showOptions: !state.showOptions,
             }
 
-        case actionTypes.SELECT_DATA_SET:
-            return {
-                ...state,
-                selectedDataSet: payload,
-                selectedDimensionOptions: {},
-            }
-
         case actionTypes.SELECT_DIMENSION_OPTION:
             return {
                 ...state,
@@ -121,15 +111,6 @@ const dataSetReport = (state = defaultState, action = {}) => {
             return {
                 ...state,
                 selectedUnitOnly: payload,
-            }
-
-        case actionTypes.SELECT_ORG_UNIT_OPTION:
-            return {
-                ...state,
-                selectedOrgUnitGroupOptions: {
-                    ...state.selectedOrgUnitGroupOptions,
-                    [payload.id]: payload.value,
-                },
             }
 
         case actionTypes.SHARING_DATA_SET_REPORT_COMMENT_START:
@@ -164,12 +145,6 @@ const dataSetReport = (state = defaultState, action = {}) => {
                     type: ERROR,
                     message: i18n.t("Comment couldn't be added"),
                 },
-            }
-
-        case actionTypes.SET_DATA_SET_REPORT_COMMENT:
-            return {
-                ...state,
-                reportComment: payload,
             }
 
         default:

@@ -27,7 +27,8 @@ import { ACTION_MESSAGE, SUCCESS, LOADING } from '../../utils/feedbackTypes.js'
 
 /* utils */
 import { getDocsUrl } from '../../utils/getDocsUrl'
-import { calculatePageValue, INITIAL_PAGER } from '../../utils/pagination'
+import { calculatePageValue } from '../../utils/pagination'
+import { defaultState as INITIAL_PAGER } from '../../redux/reducers/pagination'
 
 /* app config */
 import {

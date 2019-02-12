@@ -1,30 +1,31 @@
 import { connect } from 'react-redux'
 import {
-    exportReportToXls,
     loadHtmlReport,
     selectDataSet,
     selectDimensionOption,
-    selectOrgUnitOption,
     toggleSelectedUnitOnly,
     shareDataSetReportComment,
-    setDataSetReportComment,
     showDataSetReportForm,
-    toggleShowOptions,
 } from '../../redux/actions/dataSetReport'
+import {
+    exportReportToXls,
+    setDataSetReportComment,
+} from '../../redux/actions/htmlReport'
 
 const mapStateToProps = ({
+    dataSet,
     dataSetReport,
     organisationUnits,
     reportPeriod,
+    htmlReport,
 }) => ({
     showForm: dataSetReport.showForm,
-    reportHtml: dataSetReport.reportHtml,
-    reportComment: dataSetReport.reportComment,
+    reportHtml: htmlReport.content,
+    reportComment: htmlReport.comment,
     dataSetDimensions: dataSetReport.dataSetDimensions,
-    selectedDataSet: dataSetReport.selectedDataSet,
+    selectedDataSet: dataSet.selected,
     selectedUnitOnly: dataSetReport.selectedUnitOnly,
     selectedDimensionOptions: dataSetReport.selectedDimensionOptions,
-    selectedOrgUnitGroupOptions: dataSetReport.selectedOrgUnitGroupOptions,
     selectedOrgUnit: organisationUnits.selected,
     selectedPeriod: reportPeriod.selectedPeriod,
     showOptions: dataSetReport.showOptions,
@@ -34,15 +35,17 @@ const mapStateToProps = ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    exportReportToXls: () => dispatch(exportReportToXls()),
+    exportReportToXls: () =>
+        dispatch(
+            exportReportToXls(
+                document.querySelectorAll('#report-container table')
+            )
+        ),
     loadHtmlReport: () => dispatch(loadHtmlReport()),
     showDataSetReportForm: () => dispatch(showDataSetReportForm()),
-    toggleShowOptions: () => dispatch(toggleShowOptions()),
-    selectDataSet: dataSet => dispatch(selectDataSet(dataSet)),
+    selectDataSet: e => dispatch(selectDataSet(e.target.value)),
     selectDimensionOption: (id, evt) =>
         dispatch(selectDimensionOption(id, evt.target.value)),
-    selectOrgUnitOption: (id, event) =>
-        dispatch(selectOrgUnitOption(id, event.target.value)),
     toggleSelectedUnitOnly: (e, selectedUnitOnly) =>
         dispatch(toggleSelectedUnitOnly(selectedUnitOnly)),
     shareDataSetReportComment: comment =>
