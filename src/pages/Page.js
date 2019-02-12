@@ -7,7 +7,7 @@ import i18n from '../utils/i18n/locales'
 import { i18nKeys } from '../utils/i18n/i18nKeys'
 
 /* Feedback Snackbar */
-import { ERROR } from '../utils/feedbackSnackBarTypes'
+import { ERROR } from '../utils/feedbackTypes.js'
 
 class Page extends Component {
     static propTypes = {

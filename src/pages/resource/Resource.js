@@ -23,11 +23,7 @@ import appStyles from '../../utils/styles'
 import Page from '../Page'
 import PageHelper from '../../components/PageHelper'
 import { ConnectedAddEditResource } from './add-edit-resource/AddEditResource'
-import {
-    ACTION_MESSAGE,
-    SUCCESS,
-    LOADING,
-} from '../../utils/feedbackSnackBarTypes'
+import { ACTION_MESSAGE, SUCCESS, LOADING } from '../../utils/feedbackTypes.js'
 
 /* utils */
 import { getDocsUrl } from '../../utils/getDocsUrl'

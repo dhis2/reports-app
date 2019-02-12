@@ -9,7 +9,7 @@ import {
     ERROR,
     LOADING,
     SUCCESS,
-} from '../../utils/feedbackSnackBarTypes'
+} from '../../utils/feedbackTypes.js'
 import i18n from '../../utils/i18n/locales'
 import { i18nKeys } from '../../utils/i18n/i18nKeys'
 

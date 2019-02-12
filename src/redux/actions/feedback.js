@@ -1,4 +1,4 @@
-import * as FEEDBACK_TYPES from '../utils/feedbackTypes'
+import * as FEEDBACK_TYPES from '../../utils/feedbackTypes'
 export const ACTION_TYPES = {
     FEEDBACK_CLEAR: 'FEEDBACK_CLEAR',
     FEEDBACK_SHOW_LOADER: 'FEEDBACK_SHOW_LOADER',
@@ -23,7 +23,7 @@ export const showSnackbar = (
 
 export const showSuccessSnackBar = message => ({
     type: ACTION_TYPES.FEEDBACK_SHOW_SNACKBAR,
-    payload: { message, type: FEEDBACK_TYPES.SUCCES },
+    payload: { message, type: FEEDBACK_TYPES.SUCCESS },
 })
 
 export const showErrorSnackBar = message => ({
@@ -35,3 +35,6 @@ export const showWarningSnackBar = message => ({
     type: ACTION_TYPES.FEEDBACK_SHOW_SNACKBAR,
     payload: { message, type: FEEDBACK_TYPES.WARNING },
 })
+
+// TODO: remove this
+export const updateFeedbackState = () => ({})
