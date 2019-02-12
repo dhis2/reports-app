@@ -10,6 +10,7 @@ import organisationUnits from './reducers/organisationUnits'
 import { dataSet } from './reducers/dataSet'
 import { reportingRateSummary } from './reducers/reportingRateSummary'
 import { htmlReport } from './reducers/htmlReport'
+import { pagination } from './reducers/pagination'
 
 export default combineReducers({
     router: connectRouter(history),
@@ -21,4 +22,5 @@ export default combineReducers({
     dataSet,
     reportingRateSummary,
     htmlReport,
+    pagination,
 })

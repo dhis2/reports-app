@@ -71,7 +71,7 @@ export default class StandardReport extends React.Component {
                 <SectionHeadline
                     label={i18n.t('Standard Report')}
                     showBackButton={!!props.htmlReport}
-                    onBackClick={this.hideHtmlReport}
+                    onBackClick={props.hideHtmlReport}
                     systemVersion={props.d2.system.version}
                     sectionKey={props.sectionKey}
                 />

@@ -3,14 +3,17 @@ import {
     getFilteredStandardReports,
     deleteStandardReport as deleteStandardReportRequest,
 } from '../../utils/api'
+import {
+    goToNextPage as goToNextPageOrig,
+    goToPrevPage as goToPrevPageOrig,
+    setPagination,
+} from './pagination'
 
 export const actionTypes = {
     LOAD_STANDARD_REPORTS: 'LOAD_STANDARD_REPORTS',
     LOADING_STANDARD_REPORTS_START: 'LOADING_STANDARD_REPORTS_START',
     LOADING_STANDARD_REPORTS_SUCCESS: 'LOADING_STANDARD_REPORTS_SUCCESS',
     LOADING_STANDARD_REPORTS_ERROR: 'LOADING_STANDARD_REPORTS_ERROR',
-    GO_TO_NEXT_PAGE: 'GO_TO_NEXT_PAGE',
-    GO_TO_PREV_PAGE: 'GO_TO_PREV_PAGE',
     SET_SEARCH: 'SET_SEARCH',
     ADD_REPORT_FORM_SHOW: 'ADD_REPORT_FORM_SHOW',
     ADD_REPORT_FORM_HIDE: 'ADD_REPORT_FORM_HIDE',
@@ -61,38 +64,39 @@ const DEFAULT_SUCCESS_MESSAGE = 'Successfully loaded the reports'
 export const loadStandardReports = (
     successMessage = DEFAULT_SUCCESS_MESSAGE
 ) => (dispatch, getState) => {
-    const { standardReport } = getState()
-    const { page, pageSize } = standardReport.pager
+    const { standardReport, pagination } = getState()
+    const { page, pageSize } = pagination
     const { search } = standardReport
 
     dispatch(startLoadingStandardReports())
     getFilteredStandardReports(page, pageSize, search)
-        .then(response =>
+        .then(response => {
             dispatch(
                 loadingStandardReportsSuccess({
-                    ...response,
+                    reports: response.reports,
                     successMessage: i18n.t(successMessage),
                 })
             )
-        )
+            dispatch(setPagination(response.pager))
+        })
         .catch(({ message }) => dispatch(loadingStandardReportsError(message)))
 }
 
 /**
  * @param {number} nextPage
- * @return {Object}
+ * @return {Function}
  */
 export const goToNextPage = () => dispatch => {
-    dispatch({ type: actionTypes.GO_TO_NEXT_PAGE })
+    dispatch(goToNextPageOrig())
     dispatch(loadStandardReports())
 }
 
 /**
  * @param {number} nextPage
- * @return {Object}
+ * @return {Function}
  */
 export const goToPrevPage = () => dispatch => {
-    dispatch({ type: actionTypes.GO_TO_PREV_PAGE })
+    dispatch(goToPrevPageOrig())
     dispatch(loadStandardReports())
 }
 
