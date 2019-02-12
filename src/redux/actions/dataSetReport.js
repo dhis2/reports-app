@@ -123,8 +123,3 @@ export const shareDataSetReportComment = comment => (dispatch, getState) => {
         .then(() => dispatch(sharingDataSetReportCommentSuccess()))
         .catch(({ error }) => dispatch(sharingDataSetReportCommentError(error)))
 }
-
-export const setDataSetReportComment = comment => ({
-    type: actionTypes.SET_DATA_SET_REPORT_COMMENT,
-    payload: comment,
-})

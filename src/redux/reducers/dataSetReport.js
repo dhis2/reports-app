@@ -9,7 +9,6 @@ const defaultState = {
     showOptions: false,
     selectedUnitOnly: false,
     reportHtml: '',
-    reportComment: '',
     dataSetDimensions: [],
     selectedDimensionOptions: {},
     showFeedback: false,
@@ -146,12 +145,6 @@ const dataSetReport = (state = defaultState, action = {}) => {
                     type: ERROR,
                     message: i18n.t("Comment couldn't be added"),
                 },
-            }
-
-        case actionTypes.SET_DATA_SET_REPORT_COMMENT:
-            return {
-                ...state,
-                reportComment: payload,
             }
 
         default:

@@ -5,10 +5,12 @@ import {
     selectDimensionOption,
     toggleSelectedUnitOnly,
     shareDataSetReportComment,
-    setDataSetReportComment,
     showDataSetReportForm,
 } from '../../redux/actions/dataSetReport'
-import { exportReportToXls } from '../../redux/actions/htmlReport'
+import {
+    exportReportToXls,
+    setDataSetReportComment,
+} from '../../redux/actions/htmlReport'
 
 const mapStateToProps = ({
     dataSet,
@@ -18,8 +20,8 @@ const mapStateToProps = ({
     htmlReport,
 }) => ({
     showForm: dataSetReport.showForm,
-    reportHtml: htmlReport.reportHtml,
-    reportComment: dataSetReport.reportComment,
+    reportHtml: htmlReport.content,
+    reportComment: htmlReport.comment,
     dataSetDimensions: dataSetReport.dataSetDimensions,
     selectedDataSet: dataSet.selected,
     selectedUnitOnly: dataSetReport.selectedUnitOnly,

@@ -3,7 +3,8 @@ import { actionTypes } from '../actions/htmlReport'
 export const defaultState = {
     loading: false,
     loadingError: '',
-    reportHtml: '',
+    content: '',
+    comment: '',
 }
 
 export const htmlReport = (state = defaultState, { type, payload } = {}) => {
@@ -13,14 +14,14 @@ export const htmlReport = (state = defaultState, { type, payload } = {}) => {
                 ...state,
                 loading: true,
                 loadingError: '',
-                reportHtml: '',
+                content: '',
             }
 
         case actionTypes.LOADING_HTML_REPORT_SUCCESS:
             return {
                 ...state,
                 loading: false,
-                reportHtml: payload,
+                content: payload,
             }
 
         case actionTypes.LOADING_HTML_REPORT_ERROR:
@@ -28,6 +29,12 @@ export const htmlReport = (state = defaultState, { type, payload } = {}) => {
                 ...state,
                 loading: false,
                 loadingError: payload,
+            }
+
+        case actionTypes.SET_DATA_SET_REPORT_COMMENT:
+            return {
+                ...state,
+                comment: payload,
             }
 
         default:
