@@ -3,7 +3,6 @@ import {
     ADD_NEW_REPORT_ACTION,
     CONTEXT_MENU_ACTION,
 } from '../../pages/standard-report/standard.report.conf'
-import { INITIAL_PAGER } from '../../utils/pagination'
 import {
     ACTION_MESSAGE,
     ERROR,
@@ -14,7 +13,6 @@ import i18n from '../../utils/i18n/locales'
 import { i18nKeys } from '../../utils/i18n/i18nKeys'
 
 const defaultState = {
-    pager: INITIAL_PAGER,
     reports: [],
     selectedReport: {},
     selectedAction: '',
@@ -60,24 +58,11 @@ const standardReport = (state = defaultState, action = {}) => {
                 loading: false,
                 loadingError: '',
                 reports: payload.reports,
-                pager: payload.pager,
                 showFeedback: true,
                 feedbackConf: {
                     type: SUCCESS,
                     message: payload.successMessage,
                 },
-            }
-
-        case actionTypes.GO_TO_NEXT_PAGE:
-            return {
-                ...state,
-                pager: { ...state.pager, page: state.pager.page + 1 },
-            }
-
-        case actionTypes.GO_TO_PREV_PAGE:
-            return {
-                ...state,
-                pager: { ...state.pager, page: state.pager.page - 1 },
             }
 
         case actionTypes.SET_SEARCH:
