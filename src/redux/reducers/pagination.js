@@ -1,4 +1,7 @@
+import { LOCATION_CHANGE } from 'connected-react-router'
 import { actionTypes } from '../actions/pagination'
+
+const allActionTypes = { ...actionTypes, LOCATION_CHANGE }
 
 export const DEFAULT_PAGE_SIZE = 50
 export const defaultState = {
@@ -12,20 +15,23 @@ export const defaultState = {
 
 export const pagination = (state = defaultState, { type, payload } = {}) => {
     switch (type) {
-        case actionTypes.GO_TO_NEXT_PAGE:
+        case allActionTypes.GO_TO_NEXT_PAGE:
             return {
                 ...state,
                 page: state.page + 1,
             }
 
-        case actionTypes.GO_TO_PREV_PAGE:
+        case allActionTypes.GO_TO_PREV_PAGE:
             return {
                 ...state,
                 page: state.page - 1,
             }
 
-        case actionTypes.SET_PAGINATION:
+        case allActionTypes.SET_PAGINATION:
             return payload
+
+        case allActionTypes.LOCATION_CHANGE:
+            return defaultState
 
         default:
             return state
