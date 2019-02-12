@@ -6,6 +6,8 @@ export const ACTION_TYPES = {
     ORGANISATION_UNITS_RECEIVED: 'ORGANISATION_UNITS_RECEIVED',
     ORGANISATION_UNITS_ERRORED: 'ORGANISATION_UNITS_ERRORED',
     ORGANISATION_UNIT_SELECTED: 'ORGANISATION_UNIT_SELECTED',
+    ORGANISATION_UNITS_OPTION_SELECTED: 'ORGANISATION_UNITS_OPTION_SELECTED',
+    TOGGLE_SHOW_OPTIONS: 'TOGGLE_SHOW_OPTIONS',
 }
 
 export const fallbackErrorMessage = i18n.t('Could not load organisation units')
@@ -37,4 +39,13 @@ export const loadOrganisationUnits = () => dispatch =>
 export const selectOrganisationUnit = (_event, { id, path, displayName }) => ({
     type: ACTION_TYPES.ORGANISATION_UNIT_SELECTED,
     payload: { id, path, displayName },
+})
+
+export const selectOrgUnitOption = (id, value) => ({
+    type: ACTION_TYPES.ORGANISATION_UNITS_OPTION_SELECTED,
+    payload: { id, value },
+})
+
+export const toggleShowOptions = () => ({
+    type: ACTION_TYPES.TOGGLE_SHOW_OPTIONS,
 })
