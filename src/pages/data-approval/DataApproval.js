@@ -26,7 +26,7 @@ import DataApprovalStatusContainer from './DataApprovalStatus'
 
 /* utils */
 import { getDocsUrl } from '../../utils/getDocsUrl'
-import { LOADING, SUCCESS } from '../../utils/feedbackSnackBarTypes'
+import { LOADING, SUCCESS } from '../../utils/feedbackTypes.js'
 
 /* styles */
 import styles from '../../utils/styles'

@@ -37,7 +37,7 @@ import {
 } from '../standard.report.conf'
 
 /* utils */
-import { LOADING } from '../../../utils/feedbackSnackBarTypes'
+import { LOADING } from '../../../utils/feedbackTypes.js'
 
 /* i18n */
 import i18n from '../../../utils/i18n/locales'
