@@ -14,9 +14,10 @@ export const fallBackDefault = i18n.t(
 )
 
 export default function humanReadableErrorMessage(
-    { message, messages, httpStatusCode },
+    errorInstance = {},
     fallbackMsg = fallBackDefault
 ) {
+    let { message, messages, httpStatusCode } = errorInstance
     const useMessage =
         (httpStatusCode && httpStatusCode >= 400 && httpStatusCode < 500) ||
         (!httpStatusCode && messages && messages.length > 0)

@@ -2,7 +2,7 @@ import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 import {
     ACTION_TYPES as TYPES,
-    errorMessage,
+    fallbackErrorMessage,
     loadPeriodTypes,
     selectPeriod,
     selectPeriodType,
@@ -27,7 +27,7 @@ describe('Actions - reportPeriod', () => {
         },
         [TYPES.REPORT_PERIOD_TYPES_ERRORED]: {
             type: TYPES.REPORT_PERIOD_TYPES_ERRORED,
-            payload: errorMessage,
+            payload: fallbackErrorMessage,
         },
         [TYPES.REPORT_PERIOD_TYPE_SELECTED]: {
             type: TYPES.REPORT_PERIOD_TYPE_SELECTED,

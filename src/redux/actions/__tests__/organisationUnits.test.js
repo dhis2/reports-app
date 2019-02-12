@@ -2,7 +2,7 @@ import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 import {
     ACTION_TYPES as TYPES,
-    errorMessage,
+    fallbackErrorMessage,
     loadOrganisationUnits,
     selectOrganisationUnit,
 } from '../organisationUnits'
@@ -29,7 +29,7 @@ describe('Actions - organisationUnits', () => {
         },
         [TYPES.ORGANISATION_UNITS_ERRORED]: {
             type: TYPES.ORGANISATION_UNITS_ERRORED,
-            payload: errorMessage,
+            payload: fallbackErrorMessage,
         },
         [TYPES.ORGANISATION_UNIT_SELECTED]: {
             type: TYPES.ORGANISATION_UNIT_SELECTED,
