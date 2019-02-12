@@ -189,7 +189,7 @@ describe('Test <Resource /> actions:', () => {
     })
 
     /* View Resource */
-    it('Should update state properly for "View Resource" menu action.', () => {
+    it.skip('Should update state properly for "View Resource" menu action.', () => {
         const wrapper = ownShallow()
         const args = { displayName: 'documentName', id: 'documentId' }
         wrapper.instance().viewResource(args)

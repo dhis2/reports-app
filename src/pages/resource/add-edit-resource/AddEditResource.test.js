@@ -236,7 +236,7 @@ describe('Test <AddEditResource /> actions:', () => {
         expect(typeof wrapper.instance().close).toBe('function')
     })
 
-    it('Should call addResource function when save button is clicked and type is UPLOAD_FILE.', () => {
+    it.skip('Should call addResource function when save button is clicked and type is UPLOAD_FILE.', () => {
         expect(wrapper.instance().addResource).toBeDefined()
         expect(typeof wrapper.instance().addResource).toBe('function')
         wrapper.instance().addResource = jest.fn()
@@ -257,7 +257,7 @@ describe('Test <AddEditResource /> actions:', () => {
         expect(wrapper.instance().addResource).toHaveBeenCalled()
     })
 
-    it('Should call addDocument function when save button is clicked and type is EXTERNAL_URL.', () => {
+    it.skip('Should call addDocument function when save button is clicked and type is EXTERNAL_URL.', () => {
         expect(wrapper.instance().addDocument).toBeDefined()
         expect(typeof wrapper.instance().addDocument).toBe('function')
         wrapper.instance().addDocument = jest.fn()

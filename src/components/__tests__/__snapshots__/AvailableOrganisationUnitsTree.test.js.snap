@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test <OrganisationUnitGroupSets /> rendering: Should render OrgUnitTree when ready 1`] = `
+<div
+  style={
+    Object {
+      "border": "solid 1px #bcbcbc",
+      "overflow": "auto",
+      "width": "100%",
+    }
+  }
+>
+  <OrgUnitTreeMultipleRoots
+    hideMemberCount={true}
+    initiallyExpanded={Array []}
+    onSelectClick={[Function]}
+    roots={Array []}
+    selected={Array []}
+  />
+</div>
+`;
+
+exports[`Test <OrganisationUnitGroupSets /> rendering: Should render a loading message when not ready 1`] = `
+<span>
+  Updating Organisation Units Tree...
+</span>
+`;
+
+exports[`Test <OrganisationUnitGroupSets /> rendering: Should render an error message when it has a loadingError 1`] = `
+<span
+  style={
+    Object {
+      "color": "#f44336",
+    }
+  }
+>
+  Oops
+</span>
+`;
