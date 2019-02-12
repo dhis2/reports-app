@@ -129,21 +129,29 @@ export const postDataSetReportComment = (
     return api.post(endpointUrl, comment, requestHeaders)
 }
 
+/**
+ * @param {string} orgUnitId
+ * @param {string} dataSetId
+ * @param {string} period
+ * @param {string} criteria
+ * @param {Object} selectedOrgUnitOptions
+ * @returns {Promise}
+ */
 export const getReportingRateSummaryReport = (
     orgUnitId,
     dataSetId,
-    selectedPeriod,
+    period,
     criteria,
-    selectedOrgUnitOptions
+    orgUnitOptions
 ) => {
     return api.get(
         REPORTING_RATE_SUMMARY_ENDPOINT.replace('%orgUnitId%', orgUnitId),
         {
             ds: dataSetId,
-            pe: selectedPeriod,
+            pe: period,
             criteria,
-            groupUids: Object.keys(selectedOrgUnitOptions).map(
-                key => selectedOrgUnitOptions[key]
+            groupUids: Object.keys(orgUnitOptions).map(
+                key => orgUnitOptions[key]
             ),
         }
     )
