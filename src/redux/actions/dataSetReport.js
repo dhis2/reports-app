@@ -21,7 +21,6 @@ export const actionTypes = {
         'SHARING_DATA_SET_REPORT_COMMENT_START',
     SHARING_DATA_SET_REPORT_COMMENT_ERROR:
         'SHARING_DATA_SET_REPORT_COMMENT_ERROR',
-    SET_DATA_SET_REPORT_COMMENT: 'SET_DATA_SET_REPORT_COMMENT',
     SELECT_DIMENSION_OPTION: 'SELECT_DIMENSION_OPTION',
     SELECT_DATA_SET: 'SELECT_DATA_SET',
     TOGGLE_SHOW_OPTIONS: 'TOGGLE_SHOW_OPTIONS',
@@ -113,8 +112,8 @@ export const sharingDataSetReportCommentError = errorMessage => ({
 })
 
 export const shareDataSetReportComment = comment => (dispatch, getState) => {
-    const { dataSetReport, organisationUnits, reportPeriod } = getState()
-    const dataSetId = dataSetReport.selectedDataSet.id
+    const { dataSet, organisationUnits, reportPeriod } = getState()
+    const dataSetId = dataSet.selected.id
     const orgUnitId = organisationUnits.selected.id
     const period = reportPeriod.selectedPeriod
 
