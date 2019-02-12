@@ -1,6 +1,6 @@
 import { ACTION_TYPES as TYPES } from '../actions/feedback'
 
-const initialState = {
+export const initialState = {
     showSnackbar: false,
     showLoader: false,
     message: '',

@@ -21,20 +21,14 @@ export const showSnackbar = (
     payload: { message, type },
 })
 
-export const showSuccessSnackBar = message => ({
-    type: ACTION_TYPES.FEEDBACK_SHOW_SNACKBAR,
-    payload: { message, type: FEEDBACK_TYPES.SUCCESS },
-})
+export const showSuccessSnackBar = message =>
+    showSnackbar(message, FEEDBACK_TYPES.SUCCESS)
 
-export const showErrorSnackBar = message => ({
-    type: ACTION_TYPES.FEEDBACK_SHOW_SNACKBAR,
-    payload: { message, type: FEEDBACK_TYPES.ERROR },
-})
+export const showErrorSnackBar = message =>
+    showSnackbar(message, FEEDBACK_TYPES.ERROR)
 
-export const showWarningSnackBar = message => ({
-    type: ACTION_TYPES.FEEDBACK_SHOW_SNACKBAR,
-    payload: { message, type: FEEDBACK_TYPES.WARNING },
-})
+export const showWarningSnackBar = message =>
+    showSnackbar(message, FEEDBACK_TYPES.WARNING)
 
 // TODO: remove this
 export const updateFeedbackState = () => ({})

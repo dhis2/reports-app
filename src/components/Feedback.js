@@ -5,7 +5,7 @@ import { FeedbackSnackbar, CircularProgress } from '@dhis2/d2-ui-core'
 import styles from '../utils/styles'
 import { clearFeedback } from '../redux/actions/feedback'
 
-const Feedback = ({
+export const Feedback = ({
     showSnackbar,
     showLoader,
     message,
