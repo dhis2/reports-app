@@ -1,4 +1,5 @@
 import i18n from '../../utils/i18n/locales'
+import debounce from 'lodash.debounce'
 import {
     getFilteredStandardReports,
     deleteStandardReport as deleteStandardReportRequest,
@@ -57,7 +58,7 @@ export const loadingStandardReportsError = error => ({
 /**
  * @return {Function} Redux thunk
  */
-const DEFAULT_SUCCESS_MESSAGE = 'Successfully loaded the reports'
+const DEFAULT_SUCCESS_MESSAGE = i18n.t('Successfully loaded the reports')
 export const loadStandardReports = (
     successMessage = DEFAULT_SUCCESS_MESSAGE
 ) => (dispatch, getState) => {
@@ -96,25 +97,14 @@ export const goToPrevPage = () => dispatch => {
     dispatch(loadStandardReports())
 }
 
-// workaround for debouncing loading reports while typing in the search field
-let timeoutId = null
-export const DEBOUNCE_DELAY = 500
-
 /**
  * @param {string} searchTerm
  * @return {Function} Redux thunk
  */
+export const DEBOUNCE_DELAY = 500
 export const setSearch = searchTerm => dispatch => {
     dispatch({ type: actionTypes.SET_SEARCH, payload: searchTerm })
-
-    if (timeoutId) {
-        clearTimeout(timeoutId)
-    }
-
-    timeoutId = setTimeout(() => {
-        dispatch(loadStandardReports())
-        timeoutId = null
-    }, DEBOUNCE_DELAY)
+    debounce(() => dispatch(loadStandardReports()), DEBOUNCE_DELAY)
 }
 
 /**
