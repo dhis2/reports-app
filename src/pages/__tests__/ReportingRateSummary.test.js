@@ -4,7 +4,7 @@ import { shallow } from 'enzyme'
 
 import { Button, DropDown } from '@dhis2/d2-ui-core'
 
-import ReportingRateSummary from './ReportingRateSummary'
+import ReportingRateSummary from '../ReportingRateSummary'
 import DataSets from '../../components/DatasetsDropdown'
 import OrganisationUnitsTree from '../../components/AvailableOrganisationUnitsTree'
 import OrganisationUnitGroupOptions from '../../components/OrganisationUnitGroupSets'

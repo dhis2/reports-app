@@ -10,7 +10,7 @@ import {
     ERROR,
     LOADING,
     SUCCESS,
-} from '../../../utils/feedbackSnackBarTypes'
+} from '../../../utils/feedbackTypes'
 
 describe('Reducer - standardReport', function() {
     const mockReport = () => ({ displayName: 'foobar' })
