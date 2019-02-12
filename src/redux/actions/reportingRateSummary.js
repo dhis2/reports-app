@@ -14,7 +14,7 @@ export const actionTypes = {
  * @param {boolean} toggle
  * @returns {Object} The set show form action
  */
-export const setShowForm = toggle => ({
+export const showForm = toggle => ({
     type: actionTypes.SET_SHOW_FORM,
     payload: toggle,
 })
