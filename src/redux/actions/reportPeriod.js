@@ -16,9 +16,9 @@ export const loadPeriodTypesSuccess = periodTypes => ({
     payload: periodTypes,
 })
 
-export const loadPeriodTypesError = () => ({
+export const loadPeriodTypesError = errorMessage => ({
     type: ACTION_TYPES.REPORT_PERIOD_TYPES_ERRORED,
-    payload: fallbackErrorMessage,
+    payload: errorMessage,
 })
 
 export const loadPeriodTypes = () => dispatch =>
