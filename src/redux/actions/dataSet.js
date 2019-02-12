@@ -1,10 +1,14 @@
-import { getD2 } from '../../utils/api'
+import { getDimensions, getD2 } from '../../utils/api'
 
 export const actionTypes = {
     SELECT_DATA_SET: 'SELECT_DATA_SET',
     LOADING_DATA_SET_OPTIONS_START: 'LOADING_DATA_SET_OPTIONS_START',
     LOADING_DATA_SET_OPTIONS_SUCCESS: 'LOADING_DATA_SET_OPTIONS_SUCCESS',
     LOADING_DATA_SET_OPTIONS_ERROR: 'LOADING_DATA_SET_OPTIONS_ERROR',
+    LOADING_DIMENSIONS_START: 'LOADING_DIMENSIONS_START',
+    LOADING_DIMENSIONS_SUCCESS: 'LOADING_DIMENSIONS_SUCCESS',
+    LOADING_DIMENSIONS_ERROR: 'LOADING_DIMENSIONS_ERROR',
+    SELECT_DIMENSION_OPTION: 'SELECT_DIMENSION_OPTION',
 }
 
 export const selectDataSet = dataSetId => ({
@@ -39,3 +43,36 @@ export const loadDataSetOptions = (filter = null) => dispatch => {
         .then(options => dispatch(loadingDataSetOptionsSuccess(options)))
         .catch(({ message }) => dispatch(loadingDataSetOptionsError(message)))
 }
+
+export const loadingDimensionsStart = () => ({
+    type: actionTypes.LOADING_DIMENSIONS_START,
+})
+
+export const loadingDimensionsSuccess = dimensions => ({
+    type: actionTypes.LOADING_DIMENSIONS_SUCCESS,
+    payload: dimensions,
+})
+
+export const loadingDimensionsError = errorMessage => ({
+    type: actionTypes.LOADING_DIMENSIONS_ERROR,
+    payload: errorMessage,
+})
+
+export const loadDimensions = () => (dispatch, getState) => {
+    dispatch(loadingDimensionsStart())
+
+    const { dataSet } = getState()
+    getDimensions(dataSet.selected.id)
+        .then(response =>
+            response.error
+                ? Promise.reject(response.error)
+                : Promise.resolve(response.dimensions)
+        )
+        .then(dimensions => dispatch(loadingDimensionsSuccess(dimensions)))
+        .catch(({ message }) => dispatch(loadingDimensionsError(message)))
+}
+
+export const selectDimensionOption = (dimension, value) => ({
+    type: actionTypes.SELECT_DIMENSION_OPTION,
+    payload: { dimension, value },
+})

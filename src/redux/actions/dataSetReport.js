@@ -1,9 +1,8 @@
+import { getDataSetReports, postDataSetReportComment } from '../../utils/api'
 import {
-    getDataSetReports,
-    getDimensions,
-    postDataSetReportComment,
-} from '../../utils/api'
-import { selectDataSet as selectDataSetOriginal } from './dataSet'
+    selectDataSet as selectDataSetOriginal,
+    loadDimensions,
+} from './dataSet'
 import {
     loadingHtmlReportStart,
     loadingHtmlReportSuccess,
@@ -12,16 +11,12 @@ import {
 
 export const actionTypes = {
     SHOW_DATA_SET_REPORT_FORM: 'SHOW_DATA_SET_REPORT_FORM',
-    LOADING_DIMENSIONS_START: 'LOADING_DIMENSIONS_START',
-    LOADING_DIMENSIONS_SUCCESS: 'LOADING_DIMENSIONS_SUCCESS',
-    LOADING_DIMENSIONS_ERROR: 'LOADING_DIMENSIONS_ERROR',
     SHARING_DATA_SET_REPORT_COMMENT_SUCCESS:
         'SHARING_DATA_SET_REPORT_COMMENT_SUCCESS',
     SHARING_DATA_SET_REPORT_COMMENT_START:
         'SHARING_DATA_SET_REPORT_COMMENT_START',
     SHARING_DATA_SET_REPORT_COMMENT_ERROR:
         'SHARING_DATA_SET_REPORT_COMMENT_ERROR',
-    SELECT_DIMENSION_OPTION: 'SELECT_DIMENSION_OPTION',
     SELECT_DATA_SET: 'SELECT_DATA_SET',
     TOGGLE_SHOW_OPTIONS: 'TOGGLE_SHOW_OPTIONS',
     TOGGLE_SELECTED_UNIT_ONLY: 'TOGGLE_SELECTED_UNIT_ONLY',
@@ -53,45 +48,12 @@ export const loadHtmlReport = () => (dispatch, getState) => {
         .catch(({ message }) => dispatch(loadingHtmlReportError(message)))
 }
 
-export const loadingDimensionsStart = () => ({
-    type: actionTypes.LOADING_DIMENSIONS_START,
-})
-
-export const loadingDimensionsSuccess = dimensions => ({
-    type: actionTypes.LOADING_DIMENSIONS_SUCCESS,
-    payload: dimensions,
-})
-
-export const loadingDimensionsError = errorMessage => ({
-    type: actionTypes.LOADING_DIMENSIONS_ERROR,
-    payload: errorMessage,
-})
-
-export const loadDimensions = () => (dispatch, getState) => {
-    dispatch(loadingDimensionsStart())
-
-    const { dataSet } = getState()
-    getDimensions(dataSet.selected.id)
-        .then(response =>
-            response.error
-                ? Promise.reject(response.error)
-                : Promise.resolve(response.dimensions)
-        )
-        .then(dimensions => dispatch(loadingDimensionsSuccess(dimensions)))
-        .catch(({ message }) => dispatch(loadingDimensionsError(message)))
-}
-
 export const selectDataSet = dataSetId => (dispatch, getState) => {
     dispatch(selectDataSetOriginal(dataSetId))
 
     const { dataSet } = getState()
     dispatch(loadDimensions(dataSet.selected.id))
 }
-
-export const selectDimensionOption = (dimension, value) => ({
-    type: actionTypes.SELECT_DIMENSION_OPTION,
-    payload: { dimension, value },
-})
 
 export const toggleSelectedUnitOnly = selectedUnitOnly => ({
     type: actionTypes.TOGGLE_SELECTED_UNIT_ONLY,

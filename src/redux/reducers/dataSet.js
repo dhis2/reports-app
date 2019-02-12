@@ -4,6 +4,8 @@ export const defaultState = {
     ready: false,
     selected: { id: '', displayName: '' },
     options: [],
+    dimensionOptions: [],
+    selectedDimensionOptions: {},
 }
 
 export const dataSet = (state = defaultState, { type, payload } = {}) => {
@@ -41,6 +43,37 @@ export const dataSet = (state = defaultState, { type, payload } = {}) => {
                 options: [],
                 selected: { id: '', displayName: '' },
                 loadingError: payload,
+            }
+
+        case actionTypes.LOADING_DIMENSIONS_START:
+            return {
+                ...state,
+                loading: true,
+                loadingError: '',
+                dimensionOptions: [],
+            }
+
+        case actionTypes.LOADING_DIMENSIONS_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                dimensionOptions: payload,
+            }
+
+        case actionTypes.LOADING_DIMENSIONS_ERROR:
+            return {
+                ...state,
+                loading: false,
+                loadingError: payload,
+            }
+
+        case actionTypes.SELECT_DIMENSION_OPTION:
+            return {
+                ...state,
+                selectedDimensionOptions: {
+                    ...state.selectedDimensionOptions,
+                    [payload.dimension]: payload.value,
+                },
             }
 
         default:
