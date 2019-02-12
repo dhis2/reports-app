@@ -1,4 +1,4 @@
-import createComponentRenderer from '../../utils/createComponentRenderer'
+import createComponentRenderer from '../../utils/test-helpers/createComponentRenderer'
 import PeriodTypeDropDown from '../PeriodTypeDropDown'
 
 jest.mock('@dhis2/d2-ui-core', () => ({

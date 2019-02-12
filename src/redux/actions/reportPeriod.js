@@ -1,5 +1,6 @@
-import { getPeriodTypes } from '../../utils/api'
 import i18n from '@dhis2/d2-i18n'
+import { getPeriodTypes } from '../../utils/api'
+import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
 
 export const ACTION_TYPES = {
     REPORT_PERIOD_TYPES_RECEIVED: 'REPORT_PERIOD_TYPES_RECEIVED',
@@ -8,7 +9,7 @@ export const ACTION_TYPES = {
     REPORT_PERIOD_SELECTED: 'REPORT_PERIOD_SELECTED',
 }
 
-export const errorMessage = i18n.t('Could not load period types')
+export const fallbackErrorMessage = i18n.t('Could not load period types')
 
 export const loadPeriodTypesSuccess = periodTypes => ({
     type: ACTION_TYPES.REPORT_PERIOD_TYPES_RECEIVED,
@@ -17,7 +18,7 @@ export const loadPeriodTypesSuccess = periodTypes => ({
 
 export const loadPeriodTypesError = () => ({
     type: ACTION_TYPES.REPORT_PERIOD_TYPES_ERRORED,
-    payload: errorMessage,
+    payload: fallbackErrorMessage,
 })
 
 export const loadPeriodTypes = () => dispatch =>
@@ -25,7 +26,11 @@ export const loadPeriodTypes = () => dispatch =>
         .then(periodTypes => dispatch(loadPeriodTypesSuccess(periodTypes)))
         .catch(error => {
             console.error(error)
-            dispatch(loadPeriodTypesError())
+            dispatch(
+                loadPeriodTypesError(
+                    humanReadableErrorMessage(error, fallbackErrorMessage)
+                )
+            )
         })
 
 export const selectPeriodType = event => ({

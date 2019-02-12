@@ -1,4 +1,4 @@
-import createComponentRenderer from '../../utils/createComponentRenderer'
+import createComponentRenderer from '../../utils/test-helpers/createComponentRenderer'
 
 /* App components */
 import { AvailableOrganisationUnitsTree } from '../AvailableOrganisationUnitsTree'
