@@ -3,12 +3,13 @@ import PropTypes from 'prop-types'
 import { Paper } from 'material-ui'
 import manageError from '../utils/pageEnhancers/manageError.HOC'
 import Feedback from '../components/Feedback'
-import { Headline } from './data-set-report/Headline'
+import { SectionHeadline } from '../components/SectionHeadline'
+import { InlineHtmlReportCommentable } from '../components/InlineHtmlReportCommentable'
 import { DataInputs } from './data-set-report/DataInputs'
 import { FormActions } from './data-set-report/FormActions'
-import { HtmlReport } from './data-set-report/HtmlReport'
 import { connectDataSetReport } from './data-set-report/connectDataSetReport'
 import { isActionEnabled } from './data-set-report/helpers'
+import i18n from '../utils/i18n/locales'
 import styles from '../utils/styles'
 
 class DataSetReport extends React.Component {
@@ -18,8 +19,9 @@ class DataSetReport extends React.Component {
 
         return (
             <div>
-                <Headline
-                    showForm={props.showForm}
+                <SectionHeadline
+                    label={i18n.t('Data Set Report')}
+                    showBackButton={!props.showForm}
                     onBackClick={props.showDataSetReportForm}
                     systemVersion={props.d2.system.version}
                     sectionKey={props.sectionKey}
@@ -27,20 +29,12 @@ class DataSetReport extends React.Component {
                 <Paper style={styles.container}>
                     <div id="data-set-report-form" style={formStyle}>
                         <DataInputs
-                            showOptions={props.showOptions}
                             dataSetDimensions={props.dataSetDimensions}
-                            selectedOrgUnitOptions={
-                                props.selectedOrgUnitGroupOptions
-                            }
                             selectedDataSet={props.selectedDataSet}
                             selectedDimensionOptions={
                                 props.selectedDimensionOptions
                             }
                             selectedUnitOnly={props.selectedUnitOnly}
-                            onToggleShowOptions={props.toggleShowOptions}
-                            onOrganisationUnitGroupSetChange={
-                                props.selectOrgUnitOption
-                            }
                             onDataSetChange={props.selectDataSet}
                             onDimensionChange={props.selectDimensionOption}
                             onSelectedUnitOnlyChange={
@@ -52,12 +46,21 @@ class DataSetReport extends React.Component {
                             isGetReportDisabled={!isActionEnabled(props)}
                         />
                     </div>
-                    <HtmlReport
-                        showForm={props.showForm}
+                    <InlineHtmlReportCommentable
+                        shouldRender={
+                            !!(
+                                props.reportHtml &&
+                                !props.showForm &&
+                                props.selectedDataSet
+                            )
+                        }
                         dataSetId={props.selectedDataSet.id}
-                        selectedDataSet={props.selectedDataSet}
-                        selectedPeriod={props.selectedPeriod}
-                        selectedOrgUnit={props.selectedOrgUnit}
+                        period={props.selectedPeriod}
+                        orgUnitId={
+                            props.selectedOrgUnit
+                                ? props.selectedOrgUnit.id
+                                : ''
+                        }
                         reportHtml={props.reportHtml}
                         reportComment={props.reportComment}
                         onDownloadXlsClick={props.exportReportToXls}
