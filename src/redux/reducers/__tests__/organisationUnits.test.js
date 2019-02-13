@@ -1,12 +1,13 @@
+import { LOCATION_CHANGE } from 'connected-react-router'
 import reducer, { ACTIONS, initialState } from '../organisationUnits'
 
 describe('Reducer - organisationUnits', () => {
+    const errorStr = 'Oops'
     const mockCollection = [
         { id: '1', displayName: '1' },
         { id: '2', displayName: '2' },
         { id: '3', displayName: '3' },
     ]
-    const errorStr = 'Oops'
 
     it('should return the default state', () => {
         expect(reducer(undefined, {})).toEqual(initialState)
@@ -40,14 +41,14 @@ describe('Reducer - organisationUnits', () => {
         })
     })
 
-    const stateWithSelected = {
-        ...initialState,
-        ready: true,
-        collection: mockCollection,
-        selected: mockCollection[0],
-    }
-
     describe('handling org unit selection', () => {
+        const stateWithSelected = {
+            ...initialState,
+            ready: true,
+            collection: mockCollection,
+            selected: mockCollection[0],
+        }
+
         it('should set the provided orgUnit as selected org Unit', () => {
             const action = {
                 type: ACTIONS.ORGANISATION_UNIT_SELECTED,
@@ -68,6 +69,15 @@ describe('Reducer - organisationUnits', () => {
             expect(reducer(stateWithSelected, action)).toEqual(
                 stateWithSelected
             )
+        })
+
+        it('should reset the selected org unit on location change', () => {
+            const action = { type: ACTIONS.LOCATION_CHANGE }
+            const expectedState = {
+                ...stateWithSelected,
+                selected: null,
+            }
+            expect(reducer(stateWithSelected, action)).toEqual(expectedState)
         })
     })
 
@@ -102,11 +112,7 @@ describe('Reducer - organisationUnits', () => {
             }
             const preState = { ...initialState, groupSets: [], loading: true }
             const postState = reducer(preState, action)
-            const expected = {
-                ...initialState,
-                groupSets,
-                loading: false,
-            }
+            const expected = { ...initialState, groupSets, loading: false }
 
             expect(postState).toEqual(expected)
         })
@@ -136,23 +142,30 @@ describe('Reducer - organisationUnits', () => {
             const action = { type: ACTIONS.SET_GROUP_SET, payload: groupSetId }
             const preState = { ...initialState, selectedGroupSet: '' }
             const postState = reducer(preState, action)
-            const expected = {
-                ...initialState,
-                selectedGroupSet: groupSetId,
-            }
+            const expected = { ...initialState, selectedGroupSet: groupSetId }
 
             expect(postState).toEqual(expected)
         })
-    })
 
-    describe('Resetting on location change', () => {
-        it('should reset the selected org unit on location change', () => {
-            const action = { type: ACTIONS.LOCATION_CHANGE }
-            const expectedState = {
-                ...stateWithSelected,
-                selected: null,
+        it('should reset the groupSet options on location change', () => {
+            const action = { type: LOCATION_CHANGE }
+            const preState = { ...initialState, groupSets }
+            const postState = reducer(preState, action)
+            const expected = { ...initialState, groupSets: [] }
+
+            expect(postState).toEqual(expected)
+        })
+
+        it('should reset the selected group set on location change', () => {
+            const action = { type: LOCATION_CHANGE }
+            const preState = {
+                ...initialState,
+                selectedGroupSet: groupSets[0].id,
             }
-            expect(reducer(stateWithSelected, action)).toEqual(expectedState)
+            const postState = reducer(preState, action)
+            const expected = { ...initialState, selectedGroupSet: '' }
+
+            expect(postState).toEqual(expected)
         })
     })
 })

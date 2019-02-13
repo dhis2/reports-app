@@ -1,8 +1,10 @@
+import { LOCATION_CHANGE } from 'connected-react-router'
 import { actionTypes } from '../actions/dataSet'
 
+export const defaultSelected = { id: '', displayName: '' }
 export const defaultState = {
     ready: false,
-    selected: { id: '', displayName: '' },
+    selected: defaultSelected,
     options: [],
     dimensionOptions: [],
     selectedDimensionOptions: {},
@@ -25,6 +27,7 @@ export const dataSet = (state = defaultState, { type, payload } = {}) => {
                 ...state,
                 loading: true,
                 loadingError: '',
+                options: [],
             }
 
         case actionTypes.LOADING_DATA_SET_OPTIONS_SUCCESS:
@@ -74,6 +77,15 @@ export const dataSet = (state = defaultState, { type, payload } = {}) => {
                     ...state.selectedDimensionOptions,
                     [payload.dimension]: payload.value,
                 },
+            }
+
+        case LOCATION_CHANGE:
+            return {
+                ...state,
+                options: [],
+                selected: defaultSelected,
+                dimensionOptions: [],
+                selectedDimensionOptions: {},
             }
 
         default:

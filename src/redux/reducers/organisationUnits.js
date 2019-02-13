@@ -50,13 +50,6 @@ export default function organisationUnits(
                 },
             }
 
-        case ACTIONS.LOCATION_CHANGE:
-            return {
-                ...state,
-                selected: null,
-                selectedOptions: {},
-            }
-
         case ACTIONS.TOGGLE_SHOW_OPTIONS:
             return {
                 ...state,
@@ -89,6 +82,15 @@ export default function organisationUnits(
             return {
                 ...state,
                 selectedGroupSet: payload,
+            }
+
+        case ACTIONS.LOCATION_CHANGE:
+            return {
+                ...state,
+                selected: null,
+                selectedOptions: {},
+                groupSets: [],
+                selectedGroupSet: '',
             }
 
         default:
