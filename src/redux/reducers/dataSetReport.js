@@ -6,7 +6,6 @@ import i18n from '../../utils/i18n/locales'
 const defaultState = {
     loading: false,
     showForm: true,
-    showOptions: false,
     selectedUnitOnly: false,
     selectedDimensionOptions: {},
     showFeedback: false,
@@ -52,12 +51,6 @@ const dataSetReport = (state = defaultState, action = {}) => {
                     type: ERROR,
                     message: i18n.t("Report couldn't be generated"),
                 },
-            }
-
-        case actionTypes.TOGGLE_SHOW_OPTIONS:
-            return {
-                ...state,
-                showOptions: !state.showOptions,
             }
 
         case actionTypes.SET_SELECTED_UNIT_ONLY:
