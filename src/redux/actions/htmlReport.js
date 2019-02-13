@@ -49,7 +49,7 @@ export const exportReportToXls = tableNodes => {
     return { type: actionTypes.DOWNLOAD_DATA_SET_REPORT_XLS }
 }
 
-export const setDataSetReportComment = comment => ({
+export const setReportComment = comment => ({
     type: actionTypes.SET_DATA_SET_REPORT_COMMENT,
     payload: comment,
 })

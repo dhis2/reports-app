@@ -8,8 +8,6 @@ const defaultState = {
     showForm: true,
     showOptions: false,
     selectedUnitOnly: false,
-    reportHtml: '',
-    dataSetDimensions: [],
     selectedDimensionOptions: {},
     showFeedback: false,
     feedbackConf: {},
@@ -56,55 +54,10 @@ const dataSetReport = (state = defaultState, action = {}) => {
                 },
             }
 
-        case actionTypes.LOADING_DIMENSIONS_START:
-            return {
-                ...state,
-                loading: true,
-                loadingError: '',
-                showFeedback: true,
-                feedbackConf: { type: LOADING },
-            }
-
-        case actionTypes.LOADING_DIMENSIONS_SUCCESS:
-            return {
-                ...state,
-                loading: false,
-                dataSetDimensions: payload,
-                showFeedback: false,
-                feedbackConf: {
-                    type: SUCCESS,
-                    message: i18n.t(
-                        'Successfully loaded the data set dimensions'
-                    ),
-                },
-            }
-
-        case actionTypes.LOADING_DIMENSIONS_ERROR:
-            return {
-                ...state,
-                loading: false,
-                loadingError: payload,
-                dataSetDimensions: [],
-                showFeedback: false,
-                feedbackConf: {
-                    type: SUCCESS,
-                    message: i18n.t(payload),
-                },
-            }
-
         case actionTypes.TOGGLE_SHOW_OPTIONS:
             return {
                 ...state,
                 showOptions: !state.showOptions,
-            }
-
-        case actionTypes.SELECT_DIMENSION_OPTION:
-            return {
-                ...state,
-                selectedDimensionOptions: {
-                    ...state.selectedDimensionOptions,
-                    [payload.dimension]: payload.value,
-                },
             }
 
         case actionTypes.SET_SELECTED_UNIT_ONLY:

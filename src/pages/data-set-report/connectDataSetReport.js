@@ -2,15 +2,15 @@ import { connect } from 'react-redux'
 import {
     loadHtmlReport,
     selectDataSet,
-    selectDimensionOption,
     toggleSelectedUnitOnly,
     shareDataSetReportComment,
     showDataSetReportForm,
 } from '../../redux/actions/dataSetReport'
 import {
     exportReportToXls,
-    setDataSetReportComment,
+    setReportComment,
 } from '../../redux/actions/htmlReport'
+import { selectDimensionOption } from '../../redux/actions/dataSet'
 
 const mapStateToProps = ({
     dataSet,
@@ -22,10 +22,10 @@ const mapStateToProps = ({
     showForm: dataSetReport.showForm,
     reportHtml: htmlReport.content,
     reportComment: htmlReport.comment,
-    dataSetDimensions: dataSetReport.dataSetDimensions,
+    dataSetDimensions: dataSet.dimensionOptions,
     selectedDataSet: dataSet.selected,
     selectedUnitOnly: dataSetReport.selectedUnitOnly,
-    selectedDimensionOptions: dataSetReport.selectedDimensionOptions,
+    selectedDimensionOptions: dataSet.selectedDimensionOptions,
     selectedOrgUnit: organisationUnits.selected,
     selectedPeriod: reportPeriod.selectedPeriod,
     showOptions: dataSetReport.showOptions,
@@ -50,8 +50,7 @@ const mapDispatchToProps = dispatch => ({
         dispatch(toggleSelectedUnitOnly(selectedUnitOnly)),
     shareDataSetReportComment: comment =>
         dispatch(shareDataSetReportComment(comment)),
-    setDataSetReportComment: comment =>
-        dispatch(setDataSetReportComment(comment)),
+    setDataSetReportComment: comment => dispatch(setReportComment(comment)),
 })
 
 export const connectDataSetReport = component =>
