@@ -64,7 +64,12 @@ AvailableOrganisationUnitsTree.defaultProps = {
     style: defaultStyles,
 }
 
-const mapStateToProps = ({ organisationUnits }) => ({ ...organisationUnits })
+const mapStateToProps = ({ organisationUnits }) => ({
+    ready: organisationUnits.ready,
+    loadingError: organisationUnits.loadingError,
+    collection: organisationUnits.collection,
+    selected: organisationUnits.selected,
+})
 
 export default connect(
     mapStateToProps,
