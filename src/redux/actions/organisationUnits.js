@@ -11,6 +11,7 @@ export const ACTION_TYPES = {
     LOADING_GROUP_SETS_START: 'LOADING_GROUP_SETS_START',
     LOADING_GROUP_SETS_SUCCESS: 'LOADING_GROUP_SETS_SUCCESS',
     LOADING_GROUP_SETS_ERROR: 'LOADING_GROUP_SETS_ERROR',
+    SET_GROUP_SET: 'SET_GROUP_SET',
 }
 
 export const fallbackErrorMessage = i18n.t('Could not load organisation units')
@@ -88,3 +89,12 @@ export const loadGroupSetOptions = () => dispatch => {
         .then(response => dispatch(loadingGroupSetsSuccess(response.toArray())))
         .catch(({ message }) => dispatch(loadingGroupSetsError(message)))
 }
+
+/**
+ * @param {string} groupSetId
+ * @return {Object}
+ */
+export const setGroupSet = groupSetId => ({
+    type: ACTION_TYPES.SET_GROUP_SET,
+    payload: groupSetId,
+})

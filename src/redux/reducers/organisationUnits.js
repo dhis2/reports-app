@@ -10,6 +10,7 @@ export const initialState = {
     selectedOptions: {},
     showOptions: false,
     groupSets: [],
+    selectedGroupSet: '',
 }
 
 export default function organisationUnits(
@@ -66,6 +67,7 @@ export default function organisationUnits(
             return {
                 ...state,
                 loading: true,
+                loadingError: '',
                 groupSets: [],
             }
 
@@ -81,6 +83,12 @@ export default function organisationUnits(
                 ...state,
                 loading: false,
                 loadingError: payload,
+            }
+
+        case ACTIONS.SET_GROUP_SET:
+            return {
+                ...state,
+                selectedGroupSet: payload,
             }
 
         default:
