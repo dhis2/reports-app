@@ -72,36 +72,6 @@ describe('Reducer - standardReport', function() {
         })
     })
 
-    describe('page navigation', function() {
-        it('should increase the current page num by 1', function() {
-            const { GO_TO_NEXT_PAGE } = actionTypes
-            const preState = {
-                ...defaultState,
-                pager: { ...defaultState.pager, page: 1 },
-            }
-            const expected = {
-                ...defaultState,
-                pager: { ...defaultState.pager, page: 2 },
-            }
-            const actual = standardReport(preState, { type: GO_TO_NEXT_PAGE })
-            expect(actual).toEqual(expected)
-        })
-
-        it('should decrease the current page num by 1', function() {
-            const { GO_TO_PREV_PAGE } = actionTypes
-            const preState = {
-                ...defaultState,
-                pager: { ...defaultState.pager, page: 2 },
-            }
-            const expected = {
-                ...defaultState,
-                pager: { ...defaultState.pager, page: 1 },
-            }
-            const actual = standardReport(preState, { type: GO_TO_PREV_PAGE })
-            expect(actual).toEqual(expected)
-        })
-    })
-
     describe('search', function() {
         it('should set the search term', function() {
             const term = 'foobar'

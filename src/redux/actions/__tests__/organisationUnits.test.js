@@ -41,7 +41,7 @@ describe('Actions - organisationUnits', () => {
         jest.clearAllMocks()
     })
 
-    describe('loadOrganisationUnits', () => {
+    describe('loadOrganisationUnits successfully', () => {
         it('creates ORGANISATION_UNITS_RECEIVED when it resolves successfully', () => {
             getOrganisationUnits.mockImplementation(() =>
                 Promise.resolve(mockResp)
@@ -54,6 +54,15 @@ describe('Actions - organisationUnits', () => {
                 expect(store.getActions()).toEqual(expectedActions)
             })
         })
+    })
+    describe('loadOrganisationUnits failure', () => {
+        beforeEach(() => {
+            jest.spyOn(console, 'error').mockImplementation(() => null)
+        })
+
+        afterEach(() => {
+            console.error.mockClear()
+        })
 
         it('creates ORGANISATION_UNITS_ERRORED when it is rejected', () => {
             getOrganisationUnits.mockImplementation(() => Promise.reject())
@@ -63,6 +72,14 @@ describe('Actions - organisationUnits', () => {
             const store = mockStore(state)
             store.dispatch(loadOrganisationUnits()).then(() => {
                 expect(store.getActions()).toEqual(expectedActions)
+            })
+        })
+
+        it('prints the error in the console when rejected', () => {
+            getOrganisationUnits.mockImplementation(() => Promise.reject())
+            const store = mockStore(state)
+            store.dispatch(loadOrganisationUnits()).then(() => {
+                expect(console.error).toHaveBeenCalledTimes(1)
             })
         })
     })
