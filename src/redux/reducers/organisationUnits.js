@@ -86,11 +86,10 @@ export default function organisationUnits(
 
         case ACTIONS.LOCATION_CHANGE:
             return {
-                ...state,
-                selected: null,
-                selectedOptions: {},
-                groupSets: [],
-                selectedGroupSet: '',
+                ...initialState,
+                ready: true,
+                collection: state.collection,
+                groupSets: state.groupSets,
             }
 
         default:

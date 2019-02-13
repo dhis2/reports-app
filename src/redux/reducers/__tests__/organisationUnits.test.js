@@ -71,12 +71,22 @@ describe('Reducer - organisationUnits', () => {
             )
         })
 
+        it('should keep the org unit collection on location change', () => {
+            const action = { type: ACTIONS.LOCATION_CHANGE }
+            const expectedState = expect.objectContaining({
+                collection: stateWithSelected.collection,
+                ready: true,
+            })
+
+            expect(reducer(stateWithSelected, action)).toEqual(expectedState)
+        })
+
         it('should reset the selected org unit on location change', () => {
             const action = { type: ACTIONS.LOCATION_CHANGE }
-            const expectedState = {
-                ...stateWithSelected,
+            const expectedState = expect.objectContaining({
                 selected: null,
-            }
+            })
+
             expect(reducer(stateWithSelected, action)).toEqual(expectedState)
         })
     })
@@ -147,11 +157,11 @@ describe('Reducer - organisationUnits', () => {
             expect(postState).toEqual(expected)
         })
 
-        it('should reset the groupSet options on location change', () => {
+        it('should keep the groupSet options on location change', () => {
             const action = { type: LOCATION_CHANGE }
             const preState = { ...initialState, groupSets }
             const postState = reducer(preState, action)
-            const expected = { ...initialState, groupSets: [] }
+            const expected = expect.objectContaining({ groupSets })
 
             expect(postState).toEqual(expected)
         })
@@ -163,7 +173,7 @@ describe('Reducer - organisationUnits', () => {
                 selectedGroupSet: groupSets[0].id,
             }
             const postState = reducer(preState, action)
-            const expected = { ...initialState, selectedGroupSet: '' }
+            const expected = expect.objectContaining({ selectedGroupSet: '' })
 
             expect(postState).toEqual(expected)
         })

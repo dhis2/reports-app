@@ -81,11 +81,9 @@ export const dataSet = (state = defaultState, { type, payload } = {}) => {
 
         case LOCATION_CHANGE:
             return {
-                ...state,
-                options: [],
-                selected: defaultSelected,
-                dimensionOptions: [],
-                selectedDimensionOptions: {},
+                ...defaultState,
+                ready: true,
+                options: state.options,
             }
 
         default:

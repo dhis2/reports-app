@@ -79,14 +79,14 @@ describe('Reducers - dataSet', () => {
             expect(postState).toEqual(expected)
         })
 
-        it('should reset the data set options on route change', () => {
+        it('should keep the data set options on route change', () => {
             const action = { type: LOCATION_CHANGE }
             const preState = { ...defaultState, options: dataSetOptions }
             const postState = dataSet(preState, action)
-            const expected = {
-                ...defaultState,
-                options: [],
-            }
+            const expected = expect.objectContaining({
+                options: dataSetOptions,
+                ready: true,
+            })
 
             expect(postState).toEqual(expected)
         })
@@ -112,10 +112,9 @@ describe('Reducers - dataSet', () => {
             const action = { type: LOCATION_CHANGE }
             const preState = { ...defaultState, selected: dataSetOptions[0] }
             const postState = dataSet(preState, action)
-            const expected = {
-                ...defaultState,
+            const expected = expect.objectContaining({
                 selected: defaultSelected,
-            }
+            })
 
             expect(postState).toEqual(expected)
         })
@@ -191,10 +190,9 @@ describe('Reducers - dataSet', () => {
             const action = { type: LOCATION_CHANGE }
             const preState = { ...defaultState, dimensionOptions }
             const postState = dataSet(preState, action)
-            const expected = {
-                ...defaultState,
+            const expected = expect.objectContaining({
                 dimensionOptions: [],
-            }
+            })
 
             expect(postState).toEqual(expected)
         })
@@ -235,10 +233,9 @@ describe('Reducers - dataSet', () => {
                 },
             }
             const postState = dataSet(preState, action)
-            const expected = {
-                ...defaultState,
+            const expected = expect.objectContaining({
                 selectedDimensionOptions: {},
-            }
+            })
 
             expect(postState).toEqual(expected)
         })
