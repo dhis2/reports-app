@@ -42,6 +42,7 @@
     "history": "^4.7.2",
     "html-webpack-plugin": "2.29.0",
     "jest": "20.0.4",
+    "lodash.debounce": "^4.0.8",
     "material-ui": "^0.20.1",
     "moment": "^2.24.0",
     "object-assign": "4.1.1",
@@ -107,7 +108,7 @@
   "husky": {
     "hooks": {
       "commit-msg": "yarn d2-style commit",
-      "pre-commit": "yarn code-style && yarn refresh-translations-template"
+      "pre-commit": "yarn code-style && yarn refresh-translations-template && yarn test"
     }
   },
   "manifest.webapp": {

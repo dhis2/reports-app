@@ -1,6 +1,6 @@
 import { actionTypes } from '../actions/dataSetReport'
 import { actionTypes as reportHtmlActionTypes } from '../actions/htmlReport'
-import { ERROR, LOADING, SUCCESS } from '../../utils/feedbackSnackBarTypes'
+import { ERROR, LOADING, SUCCESS } from '../../utils/feedbackTypes'
 import i18n from '../../utils/i18n/locales'
 
 const defaultState = {

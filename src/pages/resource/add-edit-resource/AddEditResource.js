@@ -20,7 +20,7 @@ import {
 /* Redux */
 import { connect } from 'react-redux'
 import { updateFeedbackState } from '../../../redux/actions/feedback'
-import { LOADING } from '../../../utils/feedbackSnackBarTypes'
+import { LOADING } from '../../../utils/feedbackTypes.js'
 
 /* styles */
 import appStyles from '../../../utils/styles'

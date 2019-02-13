@@ -43,7 +43,7 @@ describe('Actions - reportPeriod', () => {
         jest.clearAllMocks()
     })
 
-    describe('loadPeriodTypes', () => {
+    describe('loadPeriodTypes success', () => {
         it('creates REPORT_PERIOD_TYPES_RECEIVED when it resolves successfully', () => {
             getPeriodTypes.mockImplementation(() => Promise.resolve(mockResp))
             const expectedActions = [
@@ -54,6 +54,16 @@ describe('Actions - reportPeriod', () => {
                 expect(store.getActions()).toEqual(expectedActions)
             })
         })
+    })
+
+    describe('loadPeriodTypes failure', () => {
+        beforeEach(() => {
+            jest.spyOn(console, 'error').mockImplementation(() => null)
+        })
+
+        afterEach(() => {
+            console.error.mockClear()
+        })
 
         it('creates REPORT_PERIOD_TYPES_ERRORED when it is rejected', () => {
             getPeriodTypes.mockImplementation(() => Promise.reject())
@@ -63,6 +73,14 @@ describe('Actions - reportPeriod', () => {
             const store = mockStore(state)
             store.dispatch(loadPeriodTypes()).then(() => {
                 expect(store.getActions()).toEqual(expectedActions)
+            })
+        })
+
+        it('prints the error on the console when rejected', () => {
+            getPeriodTypes.mockImplementation(() => Promise.reject())
+            const store = mockStore(state)
+            store.dispatch(loadPeriodTypes()).then(() => {
+                expect(console.error).toHaveBeenCalledTimes(1)
             })
         })
     })

@@ -10,7 +10,7 @@ import {
     ERROR,
     LOADING,
     SUCCESS,
-} from '../../../utils/feedbackSnackBarTypes'
+} from '../../../utils/feedbackTypes'
 
 describe('Reducer - standardReport', function() {
     const mockReport = () => ({ displayName: 'foobar' })
@@ -68,36 +68,6 @@ describe('Reducer - standardReport', function() {
                 payload: loadingError,
             })
 
-            expect(actual).toEqual(expected)
-        })
-    })
-
-    describe('page navigation', function() {
-        it('should increase the current page num by 1', function() {
-            const { GO_TO_NEXT_PAGE } = actionTypes
-            const preState = {
-                ...defaultState,
-                pager: { ...defaultState.pager, page: 1 },
-            }
-            const expected = {
-                ...defaultState,
-                pager: { ...defaultState.pager, page: 2 },
-            }
-            const actual = standardReport(preState, { type: GO_TO_NEXT_PAGE })
-            expect(actual).toEqual(expected)
-        })
-
-        it('should decrease the current page num by 1', function() {
-            const { GO_TO_PREV_PAGE } = actionTypes
-            const preState = {
-                ...defaultState,
-                pager: { ...defaultState.pager, page: 2 },
-            }
-            const expected = {
-                ...defaultState,
-                pager: { ...defaultState.pager, page: 1 },
-            }
-            const actual = standardReport(preState, { type: GO_TO_PREV_PAGE })
             expect(actual).toEqual(expected)
         })
     })
