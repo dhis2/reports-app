@@ -7,9 +7,9 @@ exports[`<Feedback /> can render a default snackbar message 1`] = `
   <FeedbackSnackbar
     conf={
       Object {
-        "action": undefined,
+        "action": "",
         "message": "Message body",
-        "onActionClick": undefined,
+        "onActionClick": [Function],
         "type": "",
       }
     }
@@ -26,9 +26,9 @@ exports[`<Feedback /> can render a success snackbar message 1`] = `
   <FeedbackSnackbar
     conf={
       Object {
-        "action": undefined,
+        "action": "",
         "message": "Message body",
-        "onActionClick": undefined,
+        "onActionClick": [Function],
         "type": "SUCCESS",
       }
     }
@@ -45,9 +45,9 @@ exports[`<Feedback /> can render a warning snackbar message 1`] = `
   <FeedbackSnackbar
     conf={
       Object {
-        "action": undefined,
+        "action": "",
         "message": "Message body",
-        "onActionClick": undefined,
+        "onActionClick": [Function],
         "type": "WARNING",
       }
     }
@@ -64,9 +64,9 @@ exports[`<Feedback /> can render an error snackbar message 1`] = `
   <FeedbackSnackbar
     conf={
       Object {
-        "action": undefined,
+        "action": "",
         "message": "Message body",
-        "onActionClick": undefined,
+        "onActionClick": [Function],
         "type": "ERROR",
       }
     }

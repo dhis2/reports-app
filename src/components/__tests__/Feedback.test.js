@@ -14,7 +14,6 @@ describe('<Feedback />', () => {
         message: '',
         type: '',
         action: undefined,
-        onActionClick: undefined,
         onClose: jest.fn(),
     }
     const componentRenderer = createComponentRenderer(Feedback, defaultProps)
