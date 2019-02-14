@@ -1,8 +1,10 @@
 import i18n from '@dhis2/d2-i18n'
 import { getOrganisationUnits, getOrgUnitGroupSets } from '../../utils/api'
+import { showErrorSnackBar } from './feedback';
 import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
 
 export const ACTION_TYPES = {
+    ORGANISATION_UNITS_LOADING_START: 'ORGANISATION_UNITS_LOADING_START',
     ORGANISATION_UNITS_RECEIVED: 'ORGANISATION_UNITS_RECEIVED',
     ORGANISATION_UNITS_ERRORED: 'ORGANISATION_UNITS_ERRORED',
     ORGANISATION_UNIT_SELECTED: 'ORGANISATION_UNIT_SELECTED',
@@ -16,15 +18,34 @@ export const ACTION_TYPES = {
 
 export const fallbackErrorMessage = i18n.t('Could not load organisation units')
 
+/**
+ * @returns {Object}
+ */
+export const loadOrganisationUnitsStart = () => ({
+    type: ACTION_TYPES.ORGANISATION_UNITS_LOADING_START,
+})
+/**
+ * @param {Object} periodTypes
+ * @returns {Object}
+ */
 export const loadOrganisationUnitsSuccess = periodTypes => ({
     type: ACTION_TYPES.ORGANISATION_UNITS_RECEIVED,
     payload: periodTypes,
 })
 
-export const loadOrganisationUnitsError = errorMessage => ({
-    type: ACTION_TYPES.ORGANISATION_UNITS_ERRORED,
-    payload: errorMessage,
-})
+/**
+ * @param {Error} error
+ * @returns {Function}
+ */
+export const loadOrganisationUnitsError = error => (dispatch) => {
+    const defaultMessage = i18n.t('An error occurred while loading the organisation units!')
+    const displayMessage = humanReadableErrorMessage(error, defaultMessage)
+    dispatch(showErrorSnackBar(displayMessage, defaultMessage))
+    dispatch({
+        type: ACTION_TYPES.ORGANISATION_UNITS_ERRORED,
+        payload: displayMessage,
+    })
+}
 
 export const loadOrganisationUnits = () => dispatch =>
     getOrganisationUnits()
@@ -71,13 +92,18 @@ export const loadingGroupSetsSuccess = groupSets => ({
 })
 
 /**
- * @param {string} errorMessage
+ * @param {Error} error
  * @returns {Object}
  */
-export const loadingGroupSetsError = errorMessage => ({
-    type: ACTION_TYPES.LOADING_GROUP_SETS_START,
-    payload: errorMessage,
-})
+export const loadingGroupSetsError = error => (dispatch) => {
+    const defaultMessage = i18n.t('An error occurred while loading the group sets!')
+    const displayMessage = humanReadableErrorMessage(error, defaultMessage);
+    dispatch(showErrorSnackBar(displayMessage))
+    dispatch({
+        type: ACTION_TYPES.LOADING_GROUP_SETS_START,
+        payload: displayMessage,
+    })
+}
 
 /**
  * @returns {Function}
@@ -87,7 +113,7 @@ export const loadGroupSetOptions = () => dispatch => {
 
     getOrgUnitGroupSets()
         .then(response => dispatch(loadingGroupSetsSuccess(response.toArray())))
-        .catch(({ message }) => dispatch(loadingGroupSetsError(message)))
+        .catch(error => dispatch(loadingGroupSetsError(error)))
 }
 
 /**

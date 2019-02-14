@@ -9,6 +9,10 @@ import {
     goToPrevPage as goToPrevPageOrig,
     setPagination,
 } from './pagination'
+import {
+    showErrorSnackBar,
+} from './feedback';
+import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage';
 
 export const actionTypes = {
     LOAD_STANDARD_REPORTS: 'LOAD_STANDARD_REPORTS',
@@ -50,21 +54,23 @@ export const loadingStandardReportsSuccess = reports => ({
 })
 
 /**
- * @param {string} error
- * @returns {Object}
+ * @param {Error} error
+ * @returns {Function}
  */
-export const loadingStandardReportsError = error => ({
-    type: actionTypes.LOADING_STANDARD_REPORTS_ERROR,
-    payload: error,
-})
+export const loadingStandardReportsError = error => (dispatch) => {
+    const defaultMessage = i18n.t('An error occurred while loading the standard reports')
+    const displayMessage = humanReadableErrorMessage(error, defaultMessage)
+    dispatch(showErrorSnackBar(displayMessage))
+    dispatch({
+        type: actionTypes.LOADING_STANDARD_REPORTS_ERROR,
+        payload: error,
+    })
+}
 
 /**
  * @return {Function} Redux thunk
  */
-const DEFAULT_SUCCESS_MESSAGE = i18n.t('Successfully loaded the reports')
-export const loadStandardReports = (
-    successMessage = DEFAULT_SUCCESS_MESSAGE
-) => (dispatch, getState) => {
+export const loadStandardReports = () => (dispatch, getState) => {
     const { standardReport, pagination } = getState()
     const { page, pageSize } = pagination
     const { search } = standardReport
@@ -72,15 +78,10 @@ export const loadStandardReports = (
     dispatch(startLoadingStandardReports())
     getFilteredStandardReports(page, pageSize, search)
         .then(response => {
-            dispatch(
-                loadingStandardReportsSuccess({
-                    reports: response.reports,
-                    successMessage: i18n.t(successMessage),
-                })
-            )
+            dispatch(loadingStandardReportsSuccess(response.reports))
             dispatch(setPagination(response.pager))
         })
-        .catch(({ message }) => dispatch(loadingStandardReportsError(message)))
+        .catch(error => dispatch(loadingStandardReportsError(error)))
 }
 
 /**
@@ -209,12 +210,18 @@ export const deleteStandardReportSuccess = () => dispatch => {
 }
 
 /**
+ * @param {Error} error
  * @return {Object}
  */
-export const deleteStandardReportError = error => ({
-    type: actionTypes.DELETE_STANDARD_REPORT_ERROR,
-    payload: error,
-})
+export const deleteStandardReportError = error => (dispatch) => {
+    const defaultMessage = i18n.t('An error occurred while trying to delete the standard report')
+    const displayMessage = humanReadableErrorMessage(error, defaultMessage)
+    dispatch(showErrorSnackBar(displayMessage))
+    dispatch({
+        type: actionTypes.DELETE_STANDARD_REPORT_ERROR,
+        payload: error,
+    })
+}
 
 /**
  * @param {Object} report
@@ -226,7 +233,7 @@ export const deleteStandardReport = () => (dispatch, getState) => {
     dispatch(deleteStandardReportStart())
     deleteStandardReportRequest(selectedReport.id)
         .then(() => dispatch(deleteStandardReportSuccess()))
-        .catch(({ message }) => dispatch(deleteStandardReportError(message)))
+        .catch(error => dispatch(deleteStandardReportError(error)))
 }
 
 /**

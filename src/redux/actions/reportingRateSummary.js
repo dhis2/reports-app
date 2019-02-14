@@ -49,5 +49,5 @@ export const loadHtmlReport = () => (dispatch, getState) => {
         organisationUnits.selectedOptions
     )
         .then(response => dispatch(loadingHtmlReportSuccess(response)))
-        .catch(({ message }) => dispatch(loadingHtmlReportError(message)))
+        .catch(error => dispatch(loadingHtmlReportError(error)))
 }

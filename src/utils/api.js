@@ -96,7 +96,7 @@ export const getDataSetReports = (
         selectedUnitOnly,
         dimensions: mapCollectionToDimensionQueryString(
             dataSetOptions,
-            orgUnitGroupsOptions
+            orgUnitGroupsOptions,
         ),
     })
 

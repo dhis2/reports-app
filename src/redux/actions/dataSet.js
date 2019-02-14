@@ -1,4 +1,10 @@
 import { getDimensions, getD2 } from '../../utils/api'
+import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
+import i18n from '../../utils/i18n/locales'
+import {
+    showErrorSnackBar,
+    showWarningSnackBar,
+} from './feedback';
 
 export const actionTypes = {
     SELECT_DATA_SET: 'SELECT_DATA_SET',
@@ -25,10 +31,19 @@ export const loadingDataSetOptionsSuccess = options => ({
     payload: options,
 })
 
-export const loadingDataSetOptionsError = errorMessage => ({
-    type: actionTypes.LOADING_DATA_SET_OPTIONS_ERROR,
-    payload: errorMessage,
-})
+/**
+ * @param {Error} error
+ * @returns {Function}
+ */
+export const loadingDataSetOptionsError = error => (dispatch) => {
+    const defaultMessage = i18n.t('An error occurred whole loading the data set options')
+    const displayMessage = humanReadableErrorMessage(error, defaultMessage)
+    dispatch(showErrorSnackBar(displayMessage))
+    dispatch({
+        type: actionTypes.LOADING_DATA_SET_OPTIONS_ERROR,
+        payload: displayMessage,
+    })
+}
 
 export const loadDataSetOptions = (filter = null) => dispatch => {
     const d2 = getD2()
@@ -41,7 +56,7 @@ export const loadDataSetOptions = (filter = null) => dispatch => {
         .then(response => response.toArray())
         .then(options => (filter ? options.filter(filter) : options))
         .then(options => dispatch(loadingDataSetOptionsSuccess(options)))
-        .catch(({ message }) => dispatch(loadingDataSetOptionsError(message)))
+        .catch(error => dispatch(loadingDataSetOptionsError(error)))
 }
 
 export const loadingDimensionsStart = () => ({
@@ -53,10 +68,19 @@ export const loadingDimensionsSuccess = dimensions => ({
     payload: dimensions,
 })
 
-export const loadingDimensionsError = errorMessage => ({
-    type: actionTypes.LOADING_DIMENSIONS_ERROR,
-    payload: errorMessage,
-})
+/**
+ * @param (Error) error
+ * @returns {Function}
+ */
+export const loadingDimensionsError = error => (dispatch) => {
+    const defaultMessage = i18n.t('An error occurred while loading the data set dimensions')
+    const displayMessage = humanReadableErrorMessage(error, defaultMessage)
+    dispatch(showWarningSnackBar(displayMessage))
+    dispatch({
+        type: actionTypes.LOADING_DIMENSIONS_ERROR,
+        payload: displayMessage,
+    })
+}
 
 export const loadDimensions = () => (dispatch, getState) => {
     dispatch(loadingDimensionsStart())
@@ -69,7 +93,7 @@ export const loadDimensions = () => (dispatch, getState) => {
                 : Promise.resolve(response.dimensions)
         )
         .then(dimensions => dispatch(loadingDimensionsSuccess(dimensions)))
-        .catch(({ message }) => dispatch(loadingDimensionsError(message)))
+        .catch(error => dispatch(loadingDimensionsError(error)))
 }
 
 export const selectDimensionOption = (dimension, value) => ({
