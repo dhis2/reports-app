@@ -23,6 +23,7 @@ const feedback = (state = initialState, { type, payload }) => {
                 ...state,
                 ...payload,
                 showSnackbar: true,
+                showLoader: false,
             }
 
         default:
