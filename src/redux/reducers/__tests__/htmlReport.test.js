@@ -1,6 +1,7 @@
 import { LOCATION_CHANGE } from 'connected-react-router'
 import { actionTypes } from '../../actions/htmlReport'
 import { defaultState, htmlReport } from '../htmlReport'
+import { loading } from '../loading'
 
 describe('Reducer - htmlReport', () => {
     describe('Initial state', () => {
@@ -11,19 +12,15 @@ describe('Reducer - htmlReport', () => {
     })
 
     describe('Loading the html report', () => {
-        it('should set the loading state to true', () => {
+        it('should unset the content when loading a new report', () => {
             const action = { type: actionTypes.LOADING_HTML_REPORT_START }
             const preState = {
                 ...defaultState,
-                loading: false,
-                loadingError: 'foo',
-                content: '',
+                content: 'prev content',
             }
             const postState = htmlReport(preState, action)
             const expected = {
                 ...defaultState,
-                loading: true,
-                loadingError: '',
                 content: '',
             }
 
@@ -35,9 +32,9 @@ describe('Reducer - htmlReport', () => {
                 type: actionTypes.LOADING_HTML_REPORT_SUCCESS,
                 payload: 'foo',
             }
-            const preState = { ...defaultState, loading: true, content: '' }
+            const preState = { ...defaultState, content: '' }
             const postState = htmlReport(preState, action)
-            const expected = { ...defaultState, loading: false, content: 'foo' }
+            const expected = { ...defaultState, content: 'foo' }
 
             expect(postState).toEqual(expected)
         })
@@ -50,13 +47,13 @@ describe('Reducer - htmlReport', () => {
             const preState = {
                 ...defaultState,
                 loading: true,
-                loadingError: '',
+                error: '',
             }
-            const postState = htmlReport(preState, action)
+            const postState = loading(preState, action)
             const expected = {
                 ...defaultState,
                 loading: false,
-                loadingError: 'foo',
+                error: 'foo',
             }
 
             expect(postState).toEqual(expected)
