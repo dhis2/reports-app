@@ -33,11 +33,16 @@ export const Feedback = ({
 Feedback.propTypes = {
     showSnackbar: PropTypes.bool.isRequired,
     showLoader: PropTypes.bool.isRequired,
-    message: PropTypes.string,
-    type: PropTypes.string,
+    message: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    onClose: PropTypes.func.isRequired,
     action: PropTypes.string,
     onActionClick: PropTypes.func,
-    onClose: PropTypes.func.isRequired,
+}
+
+Feedback.defaultProps = {
+    action: '',
+    onActionClick: () => null,
 }
 
 const mapStateToProps = ({ feedback }) => ({
@@ -47,9 +52,11 @@ const mapStateToProps = ({ feedback }) => ({
     type: feedback.type,
 })
 
+const mapDispatchToProps = ({
+    onClose: clearFeedback,
+})
+
 export default connect(
     mapStateToProps,
-    {
-        onClose: clearFeedback,
-    }
+    mapDispatchToProps,
 )(Feedback)
