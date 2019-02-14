@@ -106,9 +106,10 @@ export const goToPrevPage = () => dispatch => {
  * @return {Function} Redux thunk
  */
 export const DEBOUNCE_DELAY = 500
+const debouncedLoadStandardReports = debounce(dispatch => dispatch(loadStandardReports()), DEBOUNCE_DELAY)
 export const setSearch = searchTerm => dispatch => {
     dispatch({ type: actionTypes.SET_SEARCH, payload: searchTerm })
-    debounce(() => dispatch(loadStandardReports()), DEBOUNCE_DELAY)
+    debouncedLoadStandardReports(dispatch)
 }
 
 /**
