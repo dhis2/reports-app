@@ -1,4 +1,5 @@
 import { actionTypes } from '../../actions/standardReport'
+import { loading, actionTypes as loadingDefaultState } from '../loading'
 import standardReport from '../standardReport'
 import { defaultState } from '../standardReport'
 import {
@@ -22,51 +23,45 @@ describe('Reducer - standardReport', function() {
     })
 
     describe('loading reports', function() {
+        const {
+            LOADING_STANDARD_REPORTS_START,
+            LOADING_STANDARD_REPORTS_SUCCESS,
+            LOADING_STANDARD_REPORTS_ERROR,
+        } = actionTypes
+
         it('should start loading', function() {
-            const { LOADING_STANDARD_REPORTS_START } = actionTypes
+            const action = { type: LOADING_STANDARD_REPORTS_START }
             const preState = {
-                ...defaultState,
+                ...loadingDefaultState,
                 loading: false,
-                loadingError: 'previous error',
-                showFeedback: false,
-                feedbackConf: {},
+                error: 'previous error',
             }
             const expected = {
-                ...defaultState,
+                ...loadingDefaultState,
                 loading: true,
-                loadingError: '',
-                showFeedback: true,
-                feedbackConf: { type: LOADING },
+                error: '',
             }
-            const actual = standardReport(preState, {
-                type: LOADING_STANDARD_REPORTS_START,
-            })
+            const actual = loading(preState, action)
             expect(actual).toEqual(expected)
         })
 
         it('should capture the error', function() {
             const loadingError = 'Foobar'
-            const { LOADING_STANDARD_REPORTS_ERROR } = actionTypes
-            const preState = {
-                ...defaultState,
-                loading: true,
-                showFeedback: false,
-                feedbackConf: {},
-            }
-            const expected = {
-                ...defaultState,
-                loading: false,
-                loadingError,
-                showFeedback: true,
-                feedbackConf: {
-                    type: ERROR,
-                    message: loadingError,
-                },
-            }
-            const actual = standardReport(preState, {
+            const action = {
                 type: LOADING_STANDARD_REPORTS_ERROR,
                 payload: loadingError,
-            })
+            }
+            const preState = {
+                ...loadingDefaultState,
+                loading: true,
+                error: '',
+            }
+            const expected = {
+                ...loadingDefaultState,
+                loading: false,
+                error: loadingError,
+            }
+            const actual = loading(preState, action)
 
             expect(actual).toEqual(expected)
         })
@@ -251,8 +246,6 @@ describe('Reducer - standardReport', function() {
                 requestDelete: false,
                 selectedReport: report,
                 selectedAction: CONTEXT_MENU_ACTION.DELETE,
-                showFeedback: false,
-                feedbackConf: {},
             }
         })
 
@@ -268,11 +261,6 @@ describe('Reducer - standardReport', function() {
                 selectedReport: report,
                 requestDelete: true,
                 selectedAction: CONTEXT_MENU_ACTION.DELETE,
-                showFeedback: true,
-                feedbackConf: expect.objectContaining({
-                    type: ACTION_MESSAGE,
-                    message: report.displayName,
-                }),
             }
             const actual = standardReport(preState, {
                 type: REQUEST_DELETE_STANDARD_REPORT,
@@ -285,85 +273,81 @@ describe('Reducer - standardReport', function() {
             preState = {
                 ...preState,
                 requestDelete: true,
-                loadingError: 'previous error',
             }
             const expected = {
                 ...defaultState,
                 requestDelete: false,
                 selectedReport: report,
                 selectedAction: CONTEXT_MENU_ACTION.DELETE,
-                loading: true,
-                loadingError: '',
-                showFeedback: true,
-                feedbackConf: {
-                    type: LOADING,
-                },
             }
-            const actual = standardReport(preState, {
-                type: DELETE_STANDARD_REPORT_START,
-            })
+            const action = { type: DELETE_STANDARD_REPORT_START }
+            const actual = standardReport(preState, action)
             expect(actual).toEqual(expected)
+
+            const loadingPreState = {
+                ...loadingDefaultState,
+                loading: false,
+                error: 'some error',
+            }
+            const expectedLoadingState = {
+                ...loadingDefaultState,
+                loading: true,
+                error: '',
+            }
+            expect(loading(loadingPreState, action)).toEqual(
+                expectedLoadingState
+            )
         })
 
         it('should have deleted the report successfully', function() {
+            const action = { type: DELETE_STANDARD_REPORT_SUCCESS }
+            const postState = standardReport(preState, action)
             const expected = {
                 ...defaultState,
                 selectedReport: {},
                 selectedAction: '',
-                loading: false,
-                loadingError: '',
             }
-            const actual = standardReport(preState, {
-                type: DELETE_STANDARD_REPORT_SUCCESS,
-            })
-            expect(actual).toEqual(expected)
+            expect(postState).toEqual(expected)
+
+            const loadingPreState = {
+                ...loadingDefaultState,
+                loading: true,
+            }
+            const loadingPostState = loading(loadingPreState, action)
+            const expectedLoadingState = {
+                ...loadingDefaultState,
+                loading: false,
+            }
+            expect(loadingPostState).toEqual(expectedLoadingState)
         })
 
         it('should not have deleted the report successfully', function() {
             const error = 'Error: foobar'
+            const action = {
+                type: DELETE_STANDARD_REPORT_ERROR,
+                payload: error,
+            }
             const expected = {
                 ...defaultState,
                 selectedReport: report,
                 selectedAction: CONTEXT_MENU_ACTION.DELETE,
-                loading: false,
-                loadingError: error,
-                showFeedback: true,
-                feedbackConf: {
-                    type: ERROR,
-                    message: error,
-                },
             }
-            const actual = standardReport(preState, {
-                type: DELETE_STANDARD_REPORT_ERROR,
-                payload: error,
-            })
+            const actual = standardReport(preState, action)
             expect(actual).toEqual(expected)
-        })
-    })
 
-    describe('Html Reports', function() {
-        let htmlReport
-        const { HTML_REPORT_SHOW, HTML_REPORT_HIDE } = actionTypes
+            const preLoadingState = {
+                ...loadingDefaultState,
+                loading: true,
+                error: '',
+            }
+            const postLoadingState = loading(preLoadingState, action)
+            const expectedLoadingState = {
+                ...loadingDefaultState,
+                loading: false,
+                error,
+            }
 
-        beforeEach(function() {
-            htmlReport = '<div>Html Report</div>'
-        })
-
-        it('should show the htmlReport', function() {
-            const preState = { ...defaultState, htmlReport: '' }
-            const expected = { ...defaultState, htmlReport }
-            const actual = standardReport(preState, {
-                type: HTML_REPORT_SHOW,
-                payload: htmlReport,
-            })
-            expect(actual).toEqual(expected)
-        })
-
-        it('should hide the htmlReport', function() {
-            const preState = { ...defaultState, htmlReport }
-            const expected = { ...defaultState, htmlReport: '' }
-            const actual = standardReport(preState, { type: HTML_REPORT_HIDE })
-            expect(actual).toEqual(expected)
+            expect(postLoadingState).toEqual(expectedLoadingState)
         })
     })
 })
