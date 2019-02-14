@@ -4,6 +4,7 @@ import { Paper } from 'material-ui'
 import i18n from '../utils/i18n/locales'
 import styles from '../utils/styles'
 import manageError from '../utils/pageEnhancers/manageError.HOC'
+import Feedback from '../components/Feedback'
 import { InlineHtmlReport } from '../components/InlineHtmlReport'
 import { SectionHeadline } from '../components/SectionHeadline'
 import { connectReportingRateSummary } from './reporting-rate-summary/connectReportingRateSummary'
@@ -38,6 +39,7 @@ export default class ReportingRateSummary extends React.Component {
                         reportHtml={props.reportHtml}
                     />
                 </Paper>
+                <Feedback />
             </div>
         )
     }

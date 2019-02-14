@@ -70,7 +70,7 @@ class DataSetReport extends React.Component {
                         setDataSetReportComment={props.setDataSetReportComment}
                     />
                 </Paper>
-                <Feedback open={props.showFeedback} conf={props.feedbackConf} />
+                <Feedback />
             </div>
         )
     }

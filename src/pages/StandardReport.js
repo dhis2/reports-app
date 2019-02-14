@@ -21,7 +21,6 @@ import {
     hasPreviousPageCreator,
     displayNoResults,
     showContextAction,
-    createFeedbackConf,
 } from './standard-report/helper'
 import connectStandardReport from './standard-report/connectStandardReport'
 import i18n from '../utils/i18n/locales'
@@ -123,10 +122,7 @@ export default class StandardReport extends React.Component {
                 {props.htmlReport && (
                     <StyledHtmlReport htmlReport={props.htmlReport} />
                 )}
-                <Feedback
-                    open={props.showFeedback}
-                    conf={createFeedbackConf(props)}
-                />
+                <Feedback onActionClick={props.deleteStandardReport} />
             </div>
         )
     }
