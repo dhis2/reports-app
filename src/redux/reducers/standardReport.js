@@ -98,12 +98,6 @@ const standardReport = (state = defaultState, action = {}) => {
                 selectedAction: '',
             }
 
-        case actionTypes.HTML_REPORT_SHOW:
-            return { ...state, htmlReport: payload }
-
-        case actionTypes.HTML_REPORT_HIDE:
-            return { ...state, htmlReport: '' }
-
         default:
             return state
     }
