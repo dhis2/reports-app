@@ -12,18 +12,15 @@ import { Sidebar } from '@dhis2/d2-ui-core'
 
 /* Redux */
 import { connect } from 'react-redux'
-import { updateFeedbackState } from './redux/actions/feedback'
 import { loadPeriodTypes } from './redux/actions/reportPeriod'
 import { loadOrganisationUnits } from './redux/actions/organisationUnits'
 import { loadDataSetOptions } from './redux/actions/dataSet'
 
 /* App components */
 import AppRouter from './components/AppRouter'
-import Feedback from './components/Feedback'
 
 /* App context */
 import AppContext from './pages/AppContext'
-import createSnackbarConfig from './utils/snackbar/createSnackbarConfig'
 
 /* App configs */
 import { sections } from './conf../../config/sections.conf'
@@ -49,10 +46,6 @@ class App extends PureComponent {
         this.props.loadOrganisationUnits()
         this.props.loadPeriodTypes()
         this.props.loadDataSetOptions()
-    }
-
-    onFeedbackSnackbarClose = () => {
-        this.props.updateFeedbackState(false, this.state.snackbarConf)
     }
 
     getContext() {
@@ -87,13 +80,6 @@ class App extends PureComponent {
                             <AppRouter />
                         </div>
                     </div>
-                    <div id="feedback-snackbar">
-                        <Feedback
-                            open={this.props.showSnackbar}
-                            conf={this.props.snackbarConf}
-                            onClose={this.onFeedbackSnackbarClose}
-                        />
-                    </div>
                 </D2UIApp>
             </AppContext.Provider>
         )
@@ -102,14 +88,6 @@ class App extends PureComponent {
 
 App.propTypes = {
     d2: PropTypes.object.isRequired,
-    showSnackbar: PropTypes.bool.isRequired,
-    snackbarConf: PropTypes.shape({
-        type: PropTypes.string,
-        message: PropTypes.string,
-        action: PropTypes.string,
-        onActionClick: PropTypes.func,
-    }).isRequired,
-    updateFeedbackState: PropTypes.func.isRequired,
     loadOrganisationUnits: PropTypes.func.isRequired,
     loadPeriodTypes: PropTypes.func.isRequired,
     loadDataSetOptions: PropTypes.func.isRequired,
@@ -121,8 +99,6 @@ App.childContextTypes = {
 }
 
 const mapStateToProps = state => ({
-    showSnackbar: state.feedback.showSnackbar,
-    snackbarConf: createSnackbarConfig(state),
     currentSection: state.router.location.pathname.substring(1),
 })
 
@@ -131,7 +107,6 @@ export default connect(
     {
         loadOrganisationUnits,
         loadPeriodTypes,
-        updateFeedbackState,
         loadDataSetOptions,
     }
 )(App)
