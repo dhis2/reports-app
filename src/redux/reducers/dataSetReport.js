@@ -1,13 +1,12 @@
 import { actionTypes } from '../actions/dataSetReport'
 import { actionTypes as reportHtmlActionTypes } from '../actions/htmlReport'
 
-const defaultState = {
+export const defaultState = {
     showForm: true,
     selectedUnitOnly: false,
 }
 
-const dataSetReport = (state = defaultState, action = {}) => {
-    const { type, payload } = action
+export const dataSetReport = (state = defaultState, { type, payload } = {}) => {
     switch (type) {
         case actionTypes.SHOW_DATA_SET_REPORT_FORM:
             return { ...state, showForm: true }
@@ -18,7 +17,7 @@ const dataSetReport = (state = defaultState, action = {}) => {
                 showForm: false,
             }
 
-        case actionTypes.SET_SELECTED_UNIT_ONLY:
+        case actionTypes.TOGGLE_SELECTED_UNIT_ONLY:
             return {
                 ...state,
                 selectedUnitOnly: payload,
@@ -28,6 +27,3 @@ const dataSetReport = (state = defaultState, action = {}) => {
             return state
     }
 }
-
-export default dataSetReport
-export { defaultState }
