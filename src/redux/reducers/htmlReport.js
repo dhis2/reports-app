@@ -1,3 +1,4 @@
+import { LOCATION_CHANGE } from 'connected-react-router'
 import { actionTypes } from '../actions/htmlReport'
 
 export const defaultState = {
@@ -14,7 +15,6 @@ export const htmlReport = (state = defaultState, { type, payload } = {}) => {
                 ...state,
                 loading: true,
                 loadingError: '',
-                content: '',
             }
 
         case actionTypes.LOADING_HTML_REPORT_SUCCESS:
@@ -36,6 +36,9 @@ export const htmlReport = (state = defaultState, { type, payload } = {}) => {
                 ...state,
                 comment: payload,
             }
+
+        case LOCATION_CHANGE:
+            return defaultState
 
         default:
             return state

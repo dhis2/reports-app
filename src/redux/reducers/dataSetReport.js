@@ -7,7 +7,6 @@ const defaultState = {
     loading: false,
     showForm: true,
     selectedUnitOnly: false,
-    selectedDimensionOptions: {},
     showFeedback: false,
     feedbackConf: {},
 }
