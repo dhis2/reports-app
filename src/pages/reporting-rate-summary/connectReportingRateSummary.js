@@ -7,7 +7,7 @@ import {
 import { exportReportToXls } from '../../redux/actions/htmlReport'
 
 const mapStateToProps = state => ({
-    loading: state.htmlReport.loading,
+    loading: state.loading.loading,
     showForm: state.reportingRateSummary.showForm,
     reportHtml: state.htmlReport.content,
     criteriaOptions: state.reportingRateSummary.criteriaOptions,

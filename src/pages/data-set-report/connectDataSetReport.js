@@ -18,6 +18,7 @@ const mapStateToProps = ({
     organisationUnits,
     reportPeriod,
     htmlReport,
+    loading,
 }) => ({
     showForm: dataSetReport.showForm,
     reportHtml: htmlReport.content,
@@ -29,9 +30,7 @@ const mapStateToProps = ({
     selectedOrgUnit: organisationUnits.selected,
     selectedPeriod: reportPeriod.selectedPeriod,
     showOptions: dataSetReport.showOptions,
-    loading: dataSetReport.loading,
-    showFeedback: dataSetReport.showFeedback,
-    feedbackConf: dataSetReport.feedbackConf,
+    loading: loading.loading,
 })
 
 const mapDispatchToProps = dispatch => ({
