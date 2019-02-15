@@ -1,9 +1,4 @@
-import {
-    loadingHtmlReportStart,
-    loadingHtmlReportSuccess,
-    loadingHtmlReportError,
-} from './htmlReport'
-import { getReportingRateSummaryReport } from '../../utils/api'
+import { loadHtmlReport } from './reportingRateSummary/asyncThunks'
 
 export const actionTypes = {
     SET_SHOW_FORM: 'SET_SHOW_FORM',
@@ -28,26 +23,4 @@ export const selectCriteria = selectedCriteria => ({
     payload: selectedCriteria,
 })
 
-/**
- * @returns {Function} redux thunk
- */
-export const loadHtmlReport = () => (dispatch, getState) => {
-    dispatch(loadingHtmlReportStart())
-
-    const {
-        organisationUnits,
-        dataSet,
-        reportPeriod,
-        reportingRateSummary,
-    } = getState()
-
-    getReportingRateSummaryReport(
-        organisationUnits.selected.id,
-        dataSet.selected.id,
-        reportPeriod.selectedPeriod,
-        reportingRateSummary.criteria,
-        organisationUnits.selectedOptions
-    )
-        .then(response => dispatch(loadingHtmlReportSuccess(response)))
-        .catch(error => dispatch(loadingHtmlReportError(error)))
-}
+export { loadHtmlReport }
