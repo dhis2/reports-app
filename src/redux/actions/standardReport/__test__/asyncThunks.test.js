@@ -15,16 +15,18 @@ import {
 } from '../../standardReport'
 
 jest.mock('../../standardReport', () => ({
-    startLoadingStandardReports: jest.fn(),
-    loadingStandardReportsSuccess: jest.fn(),
-    loadingStandardReportsError: jest.fn(),
-    deleteStandardReportStart: jest.fn(),
-    deleteStandardReportSuccess: jest.fn(),
-    deleteStandardReportError: jest.fn(),
+    startLoadingStandardReports: jest.fn(() => 'startLoadingStandardReports'),
+    loadingStandardReportsSuccess: jest.fn(
+        () => 'loadingStandardReportsSuccess'
+    ),
+    loadingStandardReportsError: jest.fn(() => 'loadingStandardReportsError'),
+    deleteStandardReportStart: jest.fn(() => 'deleteStandardReportStart'),
+    deleteStandardReportSuccess: jest.fn(() => 'deleteStandardReportSuccess'),
+    deleteStandardReportError: jest.fn(() => 'deleteStandardReportError'),
 }))
 
 jest.mock('../../pagination', () => ({
-    setPagination: jest.fn(),
+    setPagination: jest.fn(() => 'setPagination'),
 }))
 
 jest.mock('../../../../utils/api', () => ({
@@ -33,10 +35,10 @@ jest.mock('../../../../utils/api', () => ({
 }))
 
 describe('Actions - Standard Reports - Async Thunks', () => {
-    const dispatch = () => null
+    const dispatch = jest.fn()
 
     describe('loading standard reports', () => {
-        const getState = () => ({ pagination: {}, standardReport: {} })
+        const getState = jest.fn(() => ({ pagination: {}, standardReport: {} }))
         const reports = [1, 2, 3, 4]
         const pager = INITIAL_PAGER
         const responseSuccess = Promise.resolve({ reports, pager })
@@ -54,6 +56,9 @@ describe('Actions - Standard Reports - Async Thunks', () => {
                 )
                 loadStandardReports()(dispatch, getState)
                 expect(startLoadingStandardReports).toHaveBeenCalledTimes(1)
+                expect(dispatch).toHaveBeenCalledWith(
+                    'startLoadingStandardReports'
+                )
             })
         })
 
@@ -71,6 +76,9 @@ describe('Actions - Standard Reports - Async Thunks', () => {
                     expect(loadingStandardReportsSuccess).toHaveBeenCalledWith(
                         reports
                     )
+                    expect(dispatch).toHaveBeenCalledWith(
+                        'loadingStandardReportsSuccess'
+                    )
                     done()
                 })
             })
@@ -80,6 +88,7 @@ describe('Actions - Standard Reports - Async Thunks', () => {
 
                 responseSuccess.finally(() => {
                     expect(setPagination).toHaveBeenCalledWith(pager)
+                    expect(dispatch).toHaveBeenCalledWith('setPagination')
                     done()
                 })
             })
@@ -93,6 +102,9 @@ describe('Actions - Standard Reports - Async Thunks', () => {
 
                 loadStandardReports()(dispatch, getState).then(() => {
                     expect(loadingStandardReportsError).toHaveBeenCalledTimes(1)
+                    expect(dispatch).toHaveBeenCalledWith(
+                        'loadingStandardReportsError'
+                    )
                     done()
                 })
             })

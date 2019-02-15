@@ -1,16 +1,11 @@
-import { getDataSetReports, postDataSetReportComment } from '../../utils/api'
 import {
     selectDataSet as selectDataSetOriginal,
     loadDimensions,
 } from './dataSet'
 import {
-    loadingHtmlReportStart,
-    loadingHtmlReportSuccess,
-    loadingHtmlReportError,
-    sharingReportCommentStart,
-    sharingReportCommentSuccess,
-    sharingReportCommentError,
-} from './htmlReport'
+    loadHtmlReport,
+    shareDataSetReportComment,
+} from './dataSetReport/asyncThunks'
 
 export const actionTypes = {
     SHOW_DATA_SET_REPORT_FORM: 'SHOW_DATA_SET_REPORT_FORM',
@@ -20,28 +15,6 @@ export const actionTypes = {
 export const showDataSetReportForm = () => ({
     type: actionTypes.SHOW_DATA_SET_REPORT_FORM,
 })
-
-export const loadHtmlReport = () => (dispatch, getState) => {
-    dispatch(loadingHtmlReportStart())
-
-    const {
-        dataSet,
-        dataSetReport,
-        organisationUnits,
-        reportPeriod,
-    } = getState()
-
-    getDataSetReports(
-        dataSet.selectedDimensionOptions,
-        organisationUnits.selectedOptions,
-        dataSet.selected.id,
-        organisationUnits.selected.id,
-        reportPeriod.selectedPeriod,
-        dataSetReport.selectedUnitOnly
-    )
-        .then(response => dispatch(loadingHtmlReportSuccess(response)))
-        .catch(error => dispatch(loadingHtmlReportError(error)))
-}
 
 export const selectDataSet = dataSetId => (dispatch, getState) => {
     dispatch(selectDataSetOriginal(dataSetId))
@@ -55,14 +28,4 @@ export const toggleSelectedUnitOnly = selectedUnitOnly => ({
     payload: selectedUnitOnly,
 })
 
-export const shareDataSetReportComment = comment => (dispatch, getState) => {
-    const { dataSet, organisationUnits, reportPeriod } = getState()
-    const dataSetId = dataSet.selected.id
-    const orgUnitId = organisationUnits.selected.id
-    const period = reportPeriod.selectedPeriod
-
-    dispatch(sharingReportCommentStart())
-    postDataSetReportComment(dataSetId, orgUnitId, period, comment)
-        .then(() => dispatch(sharingReportCommentSuccess()))
-        .catch(error => dispatch(sharingReportCommentError(error)))
-}
+export { loadHtmlReport, shareDataSetReportComment }
