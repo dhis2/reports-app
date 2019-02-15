@@ -1,18 +1,16 @@
-import i18n from '../../utils/i18n/locales'
 import debounce from 'lodash.debounce'
-import {
-    getFilteredStandardReports,
-    deleteStandardReport as deleteStandardReportRequest,
-} from '../../utils/api'
+import { DEBOUNCE_DELAY } from '../../config/search.config'
+import i18n from '../../utils/i18n/locales'
 import {
     goToNextPage as goToNextPageOrig,
     goToPrevPage as goToPrevPageOrig,
-    setPagination,
 } from './pagination'
+import { showErrorSnackBar } from './feedback'
+import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
 import {
-    showErrorSnackBar,
-} from './feedback';
-import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage';
+    loadStandardReports,
+    deleteStandardReport,
+} from './standardReport/asyncThunks'
 
 export const actionTypes = {
     LOAD_STANDARD_REPORTS: 'LOAD_STANDARD_REPORTS',
@@ -57,8 +55,10 @@ export const loadingStandardReportsSuccess = reports => ({
  * @param {Error} error
  * @returns {Function}
  */
-export const loadingStandardReportsError = error => (dispatch) => {
-    const defaultMessage = i18n.t('An error occurred while loading the standard reports')
+export const loadingStandardReportsError = error => dispatch => {
+    const defaultMessage = i18n.t(
+        'An error occurred while loading the standard reports'
+    )
     const displayMessage = humanReadableErrorMessage(error, defaultMessage)
     dispatch(showErrorSnackBar(displayMessage))
     dispatch({
@@ -68,20 +68,16 @@ export const loadingStandardReportsError = error => (dispatch) => {
 }
 
 /**
+ * @param {string} searchTerm
  * @return {Function} Redux thunk
  */
-export const loadStandardReports = () => (dispatch, getState) => {
-    const { standardReport, pagination } = getState()
-    const { page, pageSize } = pagination
-    const { search } = standardReport
-
-    dispatch(startLoadingStandardReports())
-    getFilteredStandardReports(page, pageSize, search)
-        .then(response => {
-            dispatch(loadingStandardReportsSuccess(response.reports))
-            dispatch(setPagination(response.pager))
-        })
-        .catch(error => dispatch(loadingStandardReportsError(error)))
+const debouncedLoadStandardReports = debounce(
+    dispatch => dispatch(loadStandardReports()),
+    DEBOUNCE_DELAY
+)
+export const setSearch = searchTerm => dispatch => {
+    dispatch({ type: actionTypes.SET_SEARCH, payload: searchTerm })
+    debouncedLoadStandardReports(dispatch)
 }
 
 /**
@@ -100,17 +96,6 @@ export const goToNextPage = () => dispatch => {
 export const goToPrevPage = () => dispatch => {
     dispatch(goToPrevPageOrig())
     dispatch(loadStandardReports())
-}
-
-/**
- * @param {string} searchTerm
- * @return {Function} Redux thunk
- */
-export const DEBOUNCE_DELAY = 500
-const debouncedLoadStandardReports = debounce(dispatch => dispatch(loadStandardReports()), DEBOUNCE_DELAY)
-export const setSearch = searchTerm => dispatch => {
-    dispatch({ type: actionTypes.SET_SEARCH, payload: searchTerm })
-    debouncedLoadStandardReports(dispatch)
 }
 
 /**
@@ -213,27 +198,16 @@ export const deleteStandardReportSuccess = () => dispatch => {
  * @param {Error} error
  * @return {Object}
  */
-export const deleteStandardReportError = error => (dispatch) => {
-    const defaultMessage = i18n.t('An error occurred while trying to delete the standard report')
+export const deleteStandardReportError = error => dispatch => {
+    const defaultMessage = i18n.t(
+        'An error occurred while trying to delete the standard report'
+    )
     const displayMessage = humanReadableErrorMessage(error, defaultMessage)
     dispatch(showErrorSnackBar(displayMessage))
     dispatch({
         type: actionTypes.DELETE_STANDARD_REPORT_ERROR,
         payload: error,
     })
-}
-
-/**
- * @param {Object} report
- * @return {Function} A redux thunk
- */
-export const deleteStandardReport = () => (dispatch, getState) => {
-    const { selectedReport } = getState().standardReport
-
-    dispatch(deleteStandardReportStart())
-    deleteStandardReportRequest(selectedReport.id)
-        .then(() => dispatch(deleteStandardReportSuccess()))
-        .catch(error => dispatch(deleteStandardReportError(error)))
 }
 
 /**
@@ -262,3 +236,8 @@ export const showHtmlReport = htmlReport => dispatch => {
 export const hideHtmlReport = () => ({
     type: actionTypes.HTML_REPORT_HIDE,
 })
+
+/**
+ * Reexporting async thunks
+ */
+export { loadStandardReports, deleteStandardReport }
