@@ -1,5 +1,4 @@
-import configureMockStore from 'redux-mock-store'
-import thunk from 'redux-thunk'
+import { mockStore } from '../../../utils/test-helpers/mockStore'
 import {
     ACTION_TYPES as TYPES,
     fallbackErrorMessage,
@@ -17,7 +16,6 @@ jest.mock('../../../utils/api', () => ({
     getOrganisationUnits: jest.fn(),
     getOrgUnitGroupSets: jest.fn(),
 }))
-const mockStore = configureMockStore([thunk])
 
 describe('Actions - organisationUnits', () => {
     let store
