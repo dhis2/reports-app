@@ -1,8 +1,9 @@
-import { actionTypes as dataSetActionTypes } from '../actions/dataSet';
-import { actionTypes as htmlReportActionTypes } from '../actions/htmlReport';
-import { ACTION_TYPES as organisationUnitsActionTypes } from '../actions/organisationUnits';
-import { ACTION_TYPES as reportPeriodActionTypes } from '../actions/reportPeriod';
-import { actionTypes as standardReportActionTypes } from '../actions/standardReport';
+import { actionTypes as dataSetActionTypes } from '../actions/dataSet'
+import { actionTypes as dataSetDimensionsActionTypes } from '../actions/dataSetDimensions'
+import { actionTypes as htmlReportActionTypes } from '../actions/htmlReport'
+import { ACTION_TYPES as organisationUnitsActionTypes } from '../actions/organisationUnits'
+import { ACTION_TYPES as reportPeriodActionTypes } from '../actions/reportPeriod'
+import { actionTypes as standardReportActionTypes } from '../actions/standardReport'
 
 export const defaultState = {
     loading: false,
@@ -12,7 +13,7 @@ export const defaultState = {
 export const loading = (state = defaultState, { type, payload } = {}) => {
     switch (type) {
         case dataSetActionTypes.LOADING_DATA_SET_OPTIONS_START:
-        case dataSetActionTypes.LOADING_DIMENSIONS_START:
+        case dataSetDimensionsActionTypes.LOADING_DIMENSIONS_START:
         case htmlReportActionTypes.LOADING_HTML_REPORT_START:
         case htmlReportActionTypes.SHARING_DATA_SET_REPORT_COMMENT_START:
         case organisationUnitsActionTypes.ORGANISATION_UNITS_LOADING_START:
@@ -27,7 +28,7 @@ export const loading = (state = defaultState, { type, payload } = {}) => {
             }
 
         case dataSetActionTypes.LOADING_DATA_SET_OPTIONS_SUCCESS:
-        case dataSetActionTypes.LOADING_DIMENSIONS_SUCCESS:
+        case dataSetDimensionsActionTypes.LOADING_DIMENSIONS_SUCCESS:
         case htmlReportActionTypes.LOADING_HTML_REPORT_SUCCESS:
         case htmlReportActionTypes.SHARING_DATA_SET_REPORT_COMMENT_SUCCESS:
         case organisationUnitsActionTypes.ORGANISATION_UNITS_RECEIVED:
@@ -41,7 +42,7 @@ export const loading = (state = defaultState, { type, payload } = {}) => {
             }
 
         case dataSetActionTypes.LOADING_DATA_SET_OPTIONS_ERROR:
-        case dataSetActionTypes.LOADING_DIMENSIONS_ERROR:
+        case dataSetDimensionsActionTypes.LOADING_DIMENSIONS_ERROR:
         case htmlReportActionTypes.LOADING_HTML_REPORT_ERROR:
         case htmlReportActionTypes.SHARING_DATA_SET_REPORT_COMMENT_ERROR:
         case organisationUnitsActionTypes.ORGANISATION_UNITS_ERRORED:
@@ -56,6 +57,6 @@ export const loading = (state = defaultState, { type, payload } = {}) => {
             }
 
         default:
-            return state;
+            return state
     }
 }

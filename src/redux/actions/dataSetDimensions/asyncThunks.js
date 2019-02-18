@@ -2,7 +2,7 @@ import {
     loadingDimensionsStart,
     loadingDimensionsSuccess,
     loadingDimensionsError,
-} from '../dataSet'
+} from '../dataSetDimensions'
 import { getDimensions } from '../../../utils/api'
 
 export const loadDimensions = () => (dispatch, getState) => {

@@ -1,7 +1,5 @@
-import {
-    selectDataSet as selectDataSetOriginal,
-    loadDimensions,
-} from './dataSet'
+import { selectDataSet as selectDataSetOriginal } from './dataSet'
+import { loadDimensions } from './dataSetDimensions'
 import {
     loadHtmlReport,
     shareDataSetReportComment,

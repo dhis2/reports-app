@@ -10,7 +10,7 @@ import {
     exportReportToXls,
     setReportComment,
 } from '../../redux/actions/htmlReport'
-import { selectDimensionOption } from '../../redux/actions/dataSet'
+import { selectDimensionOption } from '../../redux/actions/dataSetDimensions'
 
 const mapStateToProps = ({
     dataSet,
@@ -26,7 +26,7 @@ const mapStateToProps = ({
     dataSetDimensions: dataSet.dimensionOptions,
     selectedDataSet: dataSet.selected,
     selectedUnitOnly: dataSetReport.selectedUnitOnly,
-    selectedDimensionOptions: dataSet.selectedDimensionOptions,
+    selectedDimensionOptions: dataSet.dataSetDimensions.selected,
     selectedOrgUnit: organisationUnits.selected,
     selectedPeriod: reportPeriod.selectedPeriod,
     showOptions: dataSetReport.showOptions,

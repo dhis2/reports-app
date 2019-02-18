@@ -3,10 +3,10 @@ import {
     loadingDimensionsStart,
     loadingDimensionsSuccess,
     loadingDimensionsError,
-} from '../../dataSet'
+} from '../../dataSetDimensions'
 import { getDimensions } from '../../../../utils/api'
 
-jest.mock('../../dataSet', () => ({
+jest.mock('../../dataSetDimensions', () => ({
     loadingDimensionsStart: jest.fn(() => 'loadingDimensionsStart'),
     loadingDimensionsSuccess: jest.fn(() => 'loadingDimensionsSuccess'),
     loadingDimensionsError: jest.fn(() => 'loadingDimensionsError'),
@@ -16,7 +16,7 @@ jest.mock('../../../../utils/api', () => ({
     getDimensions: jest.fn(() => Promise.resolve()),
 }))
 
-describe('Actions - dataSet - asyncThunks', () => {
+describe('Actions - dataSetDimensions - asyncThunks', () => {
     const dispatch = jest.fn()
 
     describe('loading dimensions', () => {

@@ -1,5 +1,6 @@
 import { defaultState, loading } from '../loading'
 import { actionTypes as dataSetActionTypes } from '../../actions/dataSet'
+import { actionTypes as dataSetDimensionsActionTypes } from '../../actions/dataSetDimensions'
 import { actionTypes as htmlReportActionTypes } from '../../actions/htmlReport'
 import { ACTION_TYPES as organisationUnitsActionTypes } from '../../actions/organisationUnits'
 import { ACTION_TYPES as reportPeriodActionTypes } from '../../actions/reportPeriod'
@@ -29,7 +30,9 @@ describe('Reducer - loading', () => {
         })
 
         it('should set loading to true when loading data set dimensions', () => {
-            action = { type: dataSetActionTypes.LOADING_DIMENSIONS_START }
+            action = {
+                type: dataSetDimensionsActionTypes.LOADING_DIMENSIONS_START,
+            }
         })
 
         it('should set loading to true when loading the html report', () => {
@@ -102,7 +105,9 @@ describe('Reducer - loading', () => {
         })
 
         it('should set loading to true when loading data set dimensions', () => {
-            action = { type: dataSetActionTypes.LOADING_DIMENSIONS_SUCCESS }
+            action = {
+                type: dataSetDimensionsActionTypes.LOADING_DIMENSIONS_SUCCESS,
+            }
         })
 
         it('should set loading to true when loading the html report', () => {
@@ -175,7 +180,9 @@ describe('Reducer - loading', () => {
         })
 
         it('should set loading to true when loading data set dimensions', () => {
-            action = { type: dataSetActionTypes.LOADING_DIMENSIONS_ERROR }
+            action = {
+                type: dataSetDimensionsActionTypes.LOADING_DIMENSIONS_ERROR,
+            }
         })
 
         it('should set loading to true when loading the html report', () => {
