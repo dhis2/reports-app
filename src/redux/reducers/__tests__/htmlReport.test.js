@@ -19,10 +19,9 @@ describe('Reducer - htmlReport', () => {
                 content: 'prev content',
             }
             const postState = htmlReport(preState, action)
-            const expected = {
-                ...defaultState,
+            const expected = expect.objectContaining({
                 content: '',
-            }
+            })
 
             expect(postState).toEqual(expected)
         })

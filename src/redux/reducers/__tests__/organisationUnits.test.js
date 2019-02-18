@@ -22,7 +22,7 @@ describe('Reducer - organisationUnits', () => {
             const expectedState = {
                 ...initialState,
                 collection: mockCollection,
-                ready: true,
+                loading: false,
             }
             expect(reducer(undefined, action)).toEqual(expectedState)
         })
@@ -35,7 +35,7 @@ describe('Reducer - organisationUnits', () => {
             const expectedState = {
                 ...initialState,
                 loadingError: errorStr,
-                ready: true,
+                loading: false,
             }
             expect(reducer(undefined, action)).toEqual(expectedState)
         })
@@ -44,7 +44,7 @@ describe('Reducer - organisationUnits', () => {
     describe('handling org unit selection', () => {
         const stateWithSelected = {
             ...initialState,
-            ready: true,
+            loading: false,
             collection: mockCollection,
             selected: mockCollection[0],
         }
@@ -75,7 +75,7 @@ describe('Reducer - organisationUnits', () => {
             const action = { type: ACTIONS.LOCATION_CHANGE }
             const expectedState = expect.objectContaining({
                 collection: stateWithSelected.collection,
-                ready: true,
+                loading: false,
             })
 
             expect(reducer(stateWithSelected, action)).toEqual(expectedState)

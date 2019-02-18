@@ -3,7 +3,7 @@ import { ACTION_TYPES } from '../actions/organisationUnits'
 
 export const ACTIONS = { LOCATION_CHANGE, ...ACTION_TYPES }
 export const initialState = {
-    ready: false,
+    loading: true,
     loadingError: '',
     collection: [],
     selected: null,
@@ -21,14 +21,14 @@ export default function organisationUnits(
         case ACTIONS.ORGANISATION_UNITS_RECEIVED:
             return {
                 ...state,
-                ready: true,
+                loading: false,
                 collection: payload,
             }
 
         case ACTIONS.ORGANISATION_UNITS_ERRORED:
             return {
                 ...state,
-                ready: true,
+                loading: false,
                 loadingError: payload,
             }
 
@@ -87,7 +87,7 @@ export default function organisationUnits(
         case ACTIONS.LOCATION_CHANGE:
             return {
                 ...initialState,
-                ready: true,
+                loading: false,
                 collection: state.collection,
                 groupSets: state.groupSets,
             }
