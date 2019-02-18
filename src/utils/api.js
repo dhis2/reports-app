@@ -141,7 +141,6 @@ export const getReportingRateSummaryReport = (
     orgUnitId,
     dataSetId,
     period,
-    criteria,
     orgUnitOptions
 ) => {
     return api.get(
@@ -149,7 +148,6 @@ export const getReportingRateSummaryReport = (
         {
             ds: dataSetId,
             pe: period,
-            criteria,
             groupUids: Object.keys(orgUnitOptions).map(
                 key => orgUnitOptions[key]
             ),

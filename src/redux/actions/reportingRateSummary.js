@@ -7,7 +7,6 @@ import { getReportingRateSummaryReport } from '../../utils/api'
 
 export const actionTypes = {
     SET_SHOW_FORM: 'SET_SHOW_FORM',
-    SET_SELECTED_CRITERIA: 'SET_SELECTED_CRITERIA',
 }
 
 /**
@@ -20,32 +19,17 @@ export const showForm = toggle => ({
 })
 
 /**
- * @param {string} selectedCriteria
- * @returns {Object} The select criteria action
- */
-export const selectCriteria = selectedCriteria => ({
-    type: actionTypes.SET_SELECTED_CRITERIA,
-    payload: selectedCriteria,
-})
-
-/**
  * @returns {Function} redux thunk
  */
 export const loadHtmlReport = () => (dispatch, getState) => {
     dispatch(loadingHtmlReportStart())
 
-    const {
-        organisationUnits,
-        dataSet,
-        reportPeriod,
-        reportingRateSummary,
-    } = getState()
+    const { organisationUnits, dataSet, reportPeriod } = getState()
 
     getReportingRateSummaryReport(
         organisationUnits.selected.id,
         dataSet.selected.id,
         reportPeriod.selectedPeriod,
-        reportingRateSummary.criteria,
         organisationUnits.selectedOptions
     )
         .then(response => dispatch(loadingHtmlReportSuccess(response)))

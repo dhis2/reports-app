@@ -26,10 +26,7 @@ export default class ReportingRateSummary extends React.Component {
                 <Paper style={styles.container}>
                     <Form
                         showForm={props.showForm}
-                        selectedCriteria={props.selectedCriteria}
-                        criteriaOptions={props.criteriaOptions}
                         loadHtmlReport={props.loadHtmlReport}
-                        selectCriteria={props.selectCriteria}
                         isActionEnabled={isActionEnabled(props)}
                     />
                     <InlineHtmlReport
