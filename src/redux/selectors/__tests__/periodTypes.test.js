@@ -1,11 +1,7 @@
 import pluckPeriodTypes from '../periodTypes'
 
 describe('pluckPeriodTypes', () => {
-    const periodTypes = [
-        { name: 'Daily' },
-        { name: 'WeeklyWednesday' },
-        { name: 'BiWeekly' },
-    ]
+    const periodTypes = [{ name: 'Daily' }, { name: 'WeeklyWednesday' }]
 
     const expectedOutput = [
         { id: 'Daily', displayName: 'Daily' },
@@ -14,8 +10,5 @@ describe('pluckPeriodTypes', () => {
 
     it('transforms the input array correctly', () => {
         expect(pluckPeriodTypes(periodTypes)).toEqual(expectedOutput)
-    })
-    it('skips the BiWeekly period type', () => {
-        expect(pluckPeriodTypes(periodTypes)).toHaveLength(2)
     })
 })
