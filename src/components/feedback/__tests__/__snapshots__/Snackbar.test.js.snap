@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Snackbar /> can render a default snackbar message 1`] = `
+<ContextConsumer>
+  <Component />
+</ContextConsumer>
+`;
+
+exports[`<Snackbar /> can render a success snackbar message 1`] = `
+<ContextConsumer>
+  <Component />
+</ContextConsumer>
+`;
+
+exports[`<Snackbar /> can render a warning snackbar message 1`] = `
+<ContextConsumer>
+  <Component />
+</ContextConsumer>
+`;
+
+exports[`<Snackbar /> can render an error snackbar message 1`] = `
+<ContextConsumer>
+  <Component />
+</ContextConsumer>
+`;

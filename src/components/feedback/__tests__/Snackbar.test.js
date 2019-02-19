@@ -1,13 +1,13 @@
-import createComponentRenderer from '../../utils/test-helpers/createComponentRenderer'
-import { SUCCESS, ERROR, WARNING } from '../../utils/feedbackTypes'
-import { Feedback } from '../Feedback'
+import createComponentRenderer from '../../../utils/test-helpers/createComponentRenderer'
+import { SUCCESS, ERROR, WARNING } from '../../../utils/feedbackTypes'
+import { Snackbar } from '../Snackbar'
 
 jest.mock('@dhis2/d2-ui-core', () => ({
-    FeedbackSnackbar: 'FeedbackSnackbar',
+    SnackbarSnackbar: 'SnackbarSnackbar',
     CircularProgress: 'CircularProgress',
 }))
 
-describe('<Feedback />', () => {
+describe('<Snackbar />', () => {
     const defaultProps = {
         showSnackbar: false,
         showLoader: false,
@@ -16,25 +16,21 @@ describe('<Feedback />', () => {
         action: undefined,
         onClose: jest.fn(),
     }
-    const componentRenderer = createComponentRenderer(Feedback, defaultProps)
+    const renderSnackbar = createComponentRenderer(Snackbar, defaultProps)
 
     afterEach(() => {
         jest.clearAllMocks()
     })
 
-    it('should render a loader when showLoader is true', () => {
-        expect(componentRenderer({ showLoader: true })).toMatchSnapshot()
-    })
-
     it('can render a default snackbar message', () => {
         expect(
-            componentRenderer({ showSnackbar: true, message: 'Message body' })
+            renderSnackbar({ showSnackbar: true, message: 'Message body' })
         ).toMatchSnapshot()
     })
 
     it('can render a success snackbar message', () => {
         expect(
-            componentRenderer({
+            renderSnackbar({
                 showSnackbar: true,
                 message: 'Message body',
                 type: SUCCESS,
@@ -44,7 +40,7 @@ describe('<Feedback />', () => {
 
     it('can render a warning snackbar message', () => {
         expect(
-            componentRenderer({
+            renderSnackbar({
                 showSnackbar: true,
                 message: 'Message body',
                 type: WARNING,
@@ -54,7 +50,7 @@ describe('<Feedback />', () => {
 
     it('can render an error snackbar message', () => {
         expect(
-            componentRenderer({
+            renderSnackbar({
                 showSnackbar: true,
                 message: 'Message body',
                 type: ERROR,
