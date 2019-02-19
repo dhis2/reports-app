@@ -21,36 +21,51 @@ export const actionTypes = {
 /**
  * @returns {Object}
  */
-export const loadingHtmlReportStart = () => dispatch => {
+export const loadingHtmlReportStart = () => ({
+    type: actionTypes.LOADING_HTML_REPORT_START,
+})
+
+/**
+ * @param {string} htmlReport
+ * @returns {Object}
+ */
+export const loadingHtmlReportSuccess = htmlReport => ({
+    type: actionTypes.LOADING_HTML_REPORT_SUCCESS,
+    payload: htmlReport,
+})
+
+/**
+ * @returns {Object}
+ */
+export const loadingHtmlReportError = () => ({
+    type: actionTypes.LOADING_HTML_REPORT_ERROR,
+})
+
+/**
+ * @returns {Function}
+ */
+export const loadingHtmlReportStartWithFeedback = () => dispatch => {
     dispatch(showLoader())
-    dispatch({
-        type: actionTypes.LOADING_HTML_REPORT_START,
-    })
+    dispatch(loadingHtmlReportStart())
 }
 
 /**
  * @param {string} htmlReport
  * @return {Object}
  */
-export const loadingHtmlReportSuccess = htmlReport => dispatch => {
+export const loadingHtmlReportSuccessWithFeedback = htmlReport => dispatch => {
     dispatch(showSuccessSnackBar(i18n.t('Successfully loaded the report')))
-    dispatch({
-        type: actionTypes.LOADING_HTML_REPORT_SUCCESS,
-        payload: htmlReport,
-    })
+    dispatch(loadingHtmlReportSuccess(htmlReport))
 }
 
 /**
  * @param {Error} error
  */
-export const loadingHtmlReportError = error => dispatch => {
+export const loadingHtmlReportErrorWithFeedback = error => dispatch => {
     const defaultMessage = i18n.t('An error occurred while loading the report!')
     const displayMessage = humanReadableErrorMessage(error, defaultMessage)
     dispatch(showErrorSnackBar(displayMessage))
-    dispatch({
-        type: actionTypes.LOADING_HTML_REPORT_ERROR,
-        payload: displayMessage,
-    })
+    dispatch(loadingHtmlReportError())
 }
 
 export const unsetHtmlReport = () => ({
@@ -84,37 +99,51 @@ export const setReportComment = comment => ({
 })
 
 /**
+ * @returns {Object}
+ */
+export const sharingReportCommentStart = () => ({
+    type: actionTypes.SHARING_DATA_SET_REPORT_COMMENT_START,
+})
+
+/**
+ * @returns {Object}
+ */
+export const sharingReportCommentSuccess = () => ({
+    type: actionTypes.SHARING_DATA_SET_REPORT_COMMENT_SUCCESS,
+})
+
+/**
+ * @returns {Object}
+ */
+export const sharingReportCommentError = () => ({
+    type: actionTypes.SHARING_DATA_SET_REPORT_COMMENT_ERROR,
+})
+
+/**
  * @returns {Function}
  */
-export const sharingReportCommentStart = () => dispatch => {
+export const sharingReportCommentStartWithFeedback = () => dispatch => {
     dispatch(showLoader())
-    dispatch({
-        type: actionTypes.SHARING_DATA_SET_REPORT_COMMENT_START,
-    })
+    dispatch(sharingReportCommentStart())
 }
 
 /**
  * @returns {Function}
  */
-export const sharingReportCommentSuccess = () => dispatch => {
+export const sharingReportCommentSuccessWithFeedback = () => dispatch => {
     dispatch(showSuccessSnackBar(i18n.t('Successfully added comment')))
-    dispatch({
-        type: actionTypes.SHARING_DATA_SET_REPORT_COMMENT_SUCCESS,
-    })
+    dispatch(sharingReportCommentSuccess())
 }
 
 /**
  * @param {Error} error
  * @returns {Function}
  */
-export const sharingReportCommentError = error => dispatch => {
+export const sharingReportCommentErrorWithFeedback = error => dispatch => {
     const defaultMessge = i18n.t(
         'An error occurred while submitting your comment!'
     )
     const displayMessage = humanReadableErrorMessage(error, defaultMessge)
     dispatch(showErrorSnackBar(displayMessage))
-    dispatch({
-        type: actionTypes.SHARING_DATA_SET_REPORT_COMMENT_ERROR,
-        payload: displayMessage,
-    })
+    dispatch(sharingReportCommentError())
 }

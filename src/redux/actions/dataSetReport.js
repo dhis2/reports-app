@@ -1,9 +1,14 @@
 import { selectDataSet as selectDataSetOriginal } from './dataSet'
 import { loadDimensions } from './dataSetDimensions'
+import { getDataSetReports, postDataSetReportComment } from '../../utils/api'
 import {
-    loadHtmlReport,
-    shareDataSetReportComment,
-} from './dataSetReport/asyncThunks'
+    loadingHtmlReportStartWithFeedback,
+    loadingHtmlReportSuccessWithFeedback,
+    loadingHtmlReportErrorWithFeedback,
+    sharingReportCommentStartWithFeedback,
+    sharingReportCommentSuccessWithFeedback,
+    sharingReportCommentErrorWithFeedback,
+} from './htmlReport'
 
 export const actionTypes = {
     SHOW_DATA_SET_REPORT_FORM: 'SHOW_DATA_SET_REPORT_FORM',
@@ -22,4 +27,39 @@ export const toggleSelectedUnitOnly = selectedUnitOnly => ({
     payload: selectedUnitOnly,
 })
 
-export { loadHtmlReport, shareDataSetReportComment }
+export const loadHtmlReport = () => (dispatch, getState) => {
+    dispatch(loadingHtmlReportStartWithFeedback())
+
+    const {
+        dataSet,
+        dataSetDimensions,
+        dataSetReport,
+        organisationUnits,
+        reportPeriod,
+    } = getState()
+
+    return getDataSetReports(
+        dataSetDimensions.selected,
+        organisationUnits.selectedOptions,
+        dataSet.selected.id,
+        organisationUnits.selected.id,
+        reportPeriod.selectedPeriod,
+        dataSetReport.selectedUnitOnly
+    )
+        .then(response =>
+            dispatch(loadingHtmlReportSuccessWithFeedback(response))
+        )
+        .catch(error => dispatch(loadingHtmlReportErrorWithFeedback(error)))
+}
+
+export const shareDataSetReportComment = comment => (dispatch, getState) => {
+    const { dataSet, organisationUnits, reportPeriod } = getState()
+    const dataSetId = dataSet.selected.id
+    const orgUnitId = organisationUnits.selected.id
+    const period = reportPeriod.selectedPeriod
+
+    dispatch(sharingReportCommentStartWithFeedback())
+    return postDataSetReportComment(dataSetId, orgUnitId, period, comment)
+        .then(() => dispatch(sharingReportCommentSuccessWithFeedback()))
+        .catch(error => dispatch(sharingReportCommentErrorWithFeedback(error)))
+}
