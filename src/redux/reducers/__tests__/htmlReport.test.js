@@ -17,10 +17,12 @@ describe('Reducer - htmlReport', () => {
             const preState = {
                 ...defaultState,
                 content: 'prev content',
+                loading: false,
             }
             const postState = htmlReport(preState, action)
             const expected = expect.objectContaining({
                 content: '',
+                loading: true,
             })
 
             expect(postState).toEqual(expected)
@@ -31,9 +33,9 @@ describe('Reducer - htmlReport', () => {
                 type: actionTypes.LOADING_HTML_REPORT_SUCCESS,
                 payload: 'foo',
             }
-            const preState = { ...defaultState, content: '' }
+            const preState = { ...defaultState, content: '', loading: true }
             const postState = htmlReport(preState, action)
-            const expected = { ...defaultState, content: 'foo' }
+            const expected = { ...defaultState, content: 'foo', loading: false }
 
             expect(postState).toEqual(expected)
         })

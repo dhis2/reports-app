@@ -37,7 +37,8 @@ export const dataSet = (state = defaultState, { type, payload } = {}) => {
 
         case actionTypes.LOADING_DATA_SET_OPTIONS_ERROR:
             return {
-                ...defaultState,
+                ...state,
+                loading: false,
             }
 
         case LOCATION_CHANGE:

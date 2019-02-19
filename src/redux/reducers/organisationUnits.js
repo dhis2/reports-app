@@ -29,9 +29,6 @@ export default function organisationUnits(
             }
 
         case ACTIONS.ORGANISATION_UNIT_SELECTED:
-            if (state.selected && state.selected.id === payload.id) {
-                return state
-            }
             return {
                 ...state,
                 selected: payload,
