@@ -19,15 +19,3 @@ exports[`Test <PeriodTypeDropDown /> rendering: It should render a loading messa
   Loading period types dropdown
 </span>
 `;
-
-exports[`Test <PeriodTypeDropDown /> rendering: It should render an error message when loadingError is present 1`] = `
-<span
-  style={
-    Object {
-      "color": "#f44336",
-    }
-  }
->
-  Oops
-</span>
-`;

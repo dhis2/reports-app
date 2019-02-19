@@ -8,8 +8,7 @@ jest.mock('@dhis2/d2-ui-core', () => ({
 
 describe('Test <PeriodTypeDropDown /> rendering:', () => {
     const defaultProps = {
-        ready: true,
-        loadingError: '',
+        loading: false,
     }
 
     const componentRenderer = createComponentRenderer(
@@ -22,10 +21,6 @@ describe('Test <PeriodTypeDropDown /> rendering:', () => {
     })
 
     it('It should render a loading message when not ready', () => {
-        expect(componentRenderer({ ready: false })).toMatchSnapshot()
-    })
-
-    it('It should render an error message when loadingError is present', () => {
-        expect(componentRenderer({ loadingError: 'Oops' })).toMatchSnapshot()
+        expect(componentRenderer({ loading: true })).toMatchSnapshot()
     })
 })

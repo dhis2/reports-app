@@ -32,6 +32,7 @@ describe('Actions - dataSetReport - Async thunks', () => {
     describe('loading the html report', () => {
         const getState = jest.fn(() => ({
             dataSet: { selected: {} },
+            dataSetDimensions: {},
             dataSetReport: {},
             organisationUnits: { selected: {} },
             reportPeriod: {},
