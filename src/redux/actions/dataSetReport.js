@@ -10,10 +10,6 @@ export const actionTypes = {
     TOGGLE_SELECTED_UNIT_ONLY: 'TOGGLE_SELECTED_UNIT_ONLY',
 }
 
-export const showDataSetReportForm = () => ({
-    type: actionTypes.SHOW_DATA_SET_REPORT_FORM,
-})
-
 export const selectDataSet = dataSetId => (dispatch, getState) => {
     dispatch(selectDataSetOriginal(dataSetId))
 

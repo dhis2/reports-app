@@ -1,5 +1,4 @@
 import { actionTypes } from '../../actions/standardReport'
-import { loading, actionTypes as loadingDefaultState } from '../loading'
 import standardReport from '../standardReport'
 import { defaultState } from '../standardReport'
 import {
@@ -32,14 +31,14 @@ describe('Reducer - standardReport', function() {
         it('should start loading', function() {
             const action = { type: LOADING_STANDARD_REPORTS_START }
             const preState = {
-                ...loadingDefaultState,
+                ...defaultState,
                 loading: false,
             }
             const expected = {
-                ...loadingDefaultState,
+                ...defaultState,
                 loading: true,
             }
-            const actual = loading(preState, action)
+            const actual = standardReport(preState, action)
             expect(actual).toEqual(expected)
         })
 
@@ -50,14 +49,14 @@ describe('Reducer - standardReport', function() {
                 payload: loadingError,
             }
             const preState = {
-                ...loadingDefaultState,
+                ...defaultState,
                 loading: true,
             }
             const expected = {
-                ...loadingDefaultState,
+                ...defaultState,
                 loading: false,
             }
-            const actual = loading(preState, action)
+            const actual = standardReport(preState, action)
 
             expect(actual).toEqual(expected)
         })
@@ -272,6 +271,7 @@ describe('Reducer - standardReport', function() {
             }
             const expected = {
                 ...defaultState,
+                loading: true,
                 requestDelete: false,
                 selectedReport: report,
                 selectedAction: CONTEXT_MENU_ACTION.DELETE,
@@ -279,18 +279,6 @@ describe('Reducer - standardReport', function() {
             const action = { type: DELETE_STANDARD_REPORT_START }
             const actual = standardReport(preState, action)
             expect(actual).toEqual(expected)
-
-            const loadingPreState = {
-                ...loadingDefaultState,
-                loading: false,
-            }
-            const expectedLoadingState = {
-                ...loadingDefaultState,
-                loading: true,
-            }
-            expect(loading(loadingPreState, action)).toEqual(
-                expectedLoadingState
-            )
         })
 
         it('should have deleted the report successfully', function() {
@@ -304,12 +292,12 @@ describe('Reducer - standardReport', function() {
             expect(postState).toEqual(expected)
 
             const loadingPreState = {
-                ...loadingDefaultState,
+                ...defaultState,
                 loading: true,
             }
-            const loadingPostState = loading(loadingPreState, action)
+            const loadingPostState = standardReport(loadingPreState, action)
             const expectedLoadingState = {
-                ...loadingDefaultState,
+                ...defaultState,
                 loading: false,
             }
             expect(loadingPostState).toEqual(expectedLoadingState)
@@ -329,12 +317,12 @@ describe('Reducer - standardReport', function() {
             expect(actual).toEqual(expected)
 
             const preLoadingState = {
-                ...loadingDefaultState,
+                ...defaultState,
                 loading: true,
             }
-            const postLoadingState = loading(preLoadingState, action)
+            const postLoadingState = standardReport(preLoadingState, action)
             const expectedLoadingState = {
-                ...loadingDefaultState,
+                ...defaultState,
                 loading: false,
             }
 

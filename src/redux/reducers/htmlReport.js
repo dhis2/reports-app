@@ -29,6 +29,12 @@ export const htmlReport = (state = defaultState, { type, payload } = {}) => {
                 loading: false,
             }
 
+        case actionTypes.UNSET_HTML_REPORT:
+            return {
+                ...state,
+                content: '',
+            }
+
         case actionTypes.SET_DATA_SET_REPORT_COMMENT:
             return {
                 ...state,

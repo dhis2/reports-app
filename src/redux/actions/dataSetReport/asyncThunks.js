@@ -13,13 +13,14 @@ export const loadHtmlReport = () => (dispatch, getState) => {
 
     const {
         dataSet,
+        dataSetDimensions,
         dataSetReport,
         organisationUnits,
         reportPeriod,
     } = getState()
 
     return getDataSetReports(
-        dataSet.selectedDimensionOptions,
+        dataSetDimensions.selected,
         organisationUnits.selectedOptions,
         dataSet.selected.id,
         organisationUnits.selected.id,

@@ -102,6 +102,7 @@ const standardReport = (state = defaultState, action = {}) => {
             return {
                 ...state,
                 requestDelete: false,
+                loading: true,
             }
 
         case actionTypes.DELETE_STANDARD_REPORT_SUCCESS:
@@ -109,6 +110,13 @@ const standardReport = (state = defaultState, action = {}) => {
                 ...state,
                 selectedReport: {},
                 selectedAction: '',
+                loading: false,
+            }
+
+        case actionTypes.DELETE_STANDARD_REPORT_ERROR:
+            return {
+                ...state,
+                loading: false,
             }
 
         default:

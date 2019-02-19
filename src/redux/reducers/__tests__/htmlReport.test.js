@@ -1,7 +1,6 @@
 import { LOCATION_CHANGE } from 'connected-react-router'
 import { actionTypes } from '../../actions/htmlReport'
 import { defaultState, htmlReport } from '../htmlReport'
-import { loading } from '../loading'
 
 describe('Reducer - htmlReport', () => {
     describe('Initial state', () => {
@@ -49,7 +48,7 @@ describe('Reducer - htmlReport', () => {
                 ...defaultState,
                 loading: true,
             }
-            const postState = loading(preState, action)
+            const postState = htmlReport(preState, action)
             const expected = {
                 ...defaultState,
                 loading: false,
