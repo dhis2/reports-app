@@ -4,33 +4,31 @@ import {
     selectDataSet,
     toggleSelectedUnitOnly,
     shareDataSetReportComment,
-    showDataSetReportForm,
 } from '../../redux/actions/dataSetReport'
+import { selectDimensionOption } from '../../redux/actions/dataSetDimensions'
 import {
     exportReportToXls,
     setReportComment,
+    unsetHtmlReport,
 } from '../../redux/actions/htmlReport'
-import { selectDimensionOption } from '../../redux/actions/dataSetDimensions'
 
 const mapStateToProps = ({
     dataSet,
+    dataSetDimensions,
     dataSetReport,
     organisationUnits,
     reportPeriod,
     htmlReport,
-    loading,
 }) => ({
-    showForm: dataSetReport.showForm,
     reportHtml: htmlReport.content,
     reportComment: htmlReport.comment,
-    dataSetDimensions: dataSet.dimensionOptions,
+    dataSetDimensions: dataSetDimensions.options,
     selectedDataSet: dataSet.selected,
     selectedUnitOnly: dataSetReport.selectedUnitOnly,
-    selectedDimensionOptions: dataSet.dataSetDimensions.selected,
+    selectedDimensionOptions: dataSetDimensions.selected,
     selectedOrgUnit: organisationUnits.selected,
     selectedPeriod: reportPeriod.selectedPeriod,
     showOptions: dataSetReport.showOptions,
-    loading: loading.loading,
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -41,7 +39,7 @@ const mapDispatchToProps = dispatch => ({
             )
         ),
     loadHtmlReport: () => dispatch(loadHtmlReport()),
-    showDataSetReportForm: () => dispatch(showDataSetReportForm()),
+    showDataSetReportForm: () => dispatch(unsetHtmlReport()),
     selectDataSet: e => dispatch(selectDataSet(e.target.value)),
     selectDimensionOption: (id, evt) =>
         dispatch(selectDimensionOption(id, evt.target.value)),

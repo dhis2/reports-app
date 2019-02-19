@@ -4,7 +4,7 @@ import Table from '@dhis2/d2-ui-table'
 import '@dhis2/d2-ui-core/build/css/Table.css'
 import '@dhis2/d2-ui-core/build/css/Pagination.css'
 import manageError from '../utils/pageEnhancers/manageError.HOC'
-import Feedback from '../components/Feedback'
+import { Snackbar } from '../components/feedback/Snackbar'
 import { SectionHeadline } from '../components/SectionHeadline'
 import SearchBox from './standard-report/SearchBox'
 import NoResultsMessage from './standard-report/NoResultsMessage'
@@ -122,7 +122,7 @@ export default class StandardReport extends React.Component {
                 {props.htmlReport && (
                     <StyledHtmlReport htmlReport={props.htmlReport} />
                 )}
-                <Feedback onActionClick={props.deleteStandardReport} />
+                <Snackbar onActionClick={props.deleteStandardReport} />
             </div>
         )
     }

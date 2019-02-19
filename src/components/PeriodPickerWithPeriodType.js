@@ -21,8 +21,7 @@ export function PeriodPickerWithPeriodType({
     selectPeriod,
     label,
     collection,
-    ready,
-    loadingError,
+    loading,
     selectedPeriodType,
 }) {
     return (
@@ -31,8 +30,7 @@ export function PeriodPickerWithPeriodType({
                 {label}
             </span>
             <PeriodTypeDropDown
-                ready={ready}
-                loadingError={loadingError}
+                loading={loading}
                 menuItems={collection}
                 onChange={selectPeriodType}
                 value={selectedPeriodType}
@@ -52,8 +50,7 @@ PeriodPickerWithPeriodType.propTypes = {
     selectPeriod: PropTypes.func.isRequired,
     label: PropTypes.string.isRequired,
     collection: PropTypes.array.isRequired,
-    ready: PropTypes.bool.isRequired,
-    loadingError: PropTypes.string.isRequired,
+    loading: PropTypes.bool.isRequired,
     selectedPeriodType: PropTypes.string,
 }
 

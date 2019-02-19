@@ -17,7 +17,6 @@ import {
 
 const mapStateToProps = state => ({
     ...state.standardReport,
-    loading: state.loading.loading,
     pager: state.pagination,
 })
 

@@ -1,31 +1,17 @@
-/* React */
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-
-/* React Router */
 import { Link } from 'react-router-dom'
-
-/* d2-ui */
 import D2UIApp from '@dhis2/d2-ui-app'
 import HeaderBar from '@dhis2/d2-ui-header-bar'
 import { Sidebar } from '@dhis2/d2-ui-core'
-
-/* Redux */
 import { connect } from 'react-redux'
 import { loadPeriodTypes } from './redux/actions/reportPeriod'
 import { loadOrganisationUnits } from './redux/actions/organisationUnits'
 import { loadDataSetOptions } from './redux/actions/dataSet'
-
-/* App components */
 import AppRouter from './components/AppRouter'
-
-/* App context */
+import { Loader } from './components/feedback/Loader'
 import AppContext from './pages/AppContext'
-
-/* App configs */
 import { sections } from './conf../../config/sections.conf'
-
-/* styles */
 import styles from './utils/styles'
 
 class App extends PureComponent {
@@ -80,6 +66,7 @@ class App extends PureComponent {
                             <AppRouter />
                         </div>
                     </div>
+                    <Loader />
                 </D2UIApp>
             </AppContext.Provider>
         )
@@ -87,11 +74,11 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
+    currentSection: PropTypes.string.isRequired,
     d2: PropTypes.object.isRequired,
-    loadOrganisationUnits: PropTypes.func.isRequired,
     loadPeriodTypes: PropTypes.func.isRequired,
     loadDataSetOptions: PropTypes.func.isRequired,
-    currentSection: PropTypes.string.isRequired,
+    loadOrganisationUnits: PropTypes.func.isRequired,
 }
 
 App.childContextTypes = {
