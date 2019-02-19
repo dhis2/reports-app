@@ -3,6 +3,7 @@ import { actionTypes as dataSetActionTypes } from '../../actions/dataSet'
 import { actionTypes as dataSetDimensionsActionTypes } from '../../actions/dataSetDimensions'
 import { actionTypes as htmlReportActionTypes } from '../../actions/htmlReport'
 import { ACTION_TYPES as organisationUnitsActionTypes } from '../../actions/organisationUnits'
+import { actionTypes as orgUnitGroupSetsActionTypes } from '../../actions/orgUnitGroupSets'
 import { ACTION_TYPES as reportPeriodActionTypes } from '../../actions/reportPeriod'
 import { actionTypes as standardReportActionTypes } from '../../actions/standardReport'
 
@@ -12,12 +13,10 @@ describe('Reducer - loading', () => {
         const preState = {
             ...defaultState,
             loading: false,
-            error: 'Error from previous loading',
         }
         const expectedState = {
             ...defaultState,
             loading: true,
-            error: '',
         }
 
         afterEach(() => {
@@ -55,7 +54,7 @@ describe('Reducer - loading', () => {
 
         it('should set loading to true when loading orginsation unit group sets', () => {
             action = {
-                type: organisationUnitsActionTypes.LOADING_GROUP_SETS_START,
+                type: orgUnitGroupSetsActionTypes.LOADING_GROUP_SETS_START,
             }
         })
 
@@ -83,7 +82,6 @@ describe('Reducer - loading', () => {
         const preState = {
             ...defaultState,
             loading: true,
-            error: '',
         }
         const expectedState = {
             ...defaultState,
@@ -129,7 +127,7 @@ describe('Reducer - loading', () => {
 
         it('should set loading to true when loading orginsation unit group sets', () => {
             action = {
-                type: organisationUnitsActionTypes.LOADING_GROUP_SETS_SUCCESS,
+                type: orgUnitGroupSetsActionTypes.LOADING_GROUP_SETS_SUCCESS,
             }
         })
 
@@ -159,12 +157,10 @@ describe('Reducer - loading', () => {
         const preState = {
             ...defaultState,
             loading: true,
-            error: '',
         }
         const expectedState = {
             ...defaultState,
             loading: false,
-            error: errorMessage,
         }
 
         afterEach(() => {

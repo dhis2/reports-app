@@ -4,13 +4,10 @@ import { ACTION_TYPES } from '../actions/organisationUnits'
 export const ACTIONS = { LOCATION_CHANGE, ...ACTION_TYPES }
 export const initialState = {
     loading: true,
-    loadingError: '',
     collection: [],
     selected: null,
     selectedOptions: {},
     showOptions: false,
-    groupSets: [],
-    selectedGroupSet: '',
 }
 
 export default function organisationUnits(
@@ -29,7 +26,6 @@ export default function organisationUnits(
             return {
                 ...state,
                 loading: false,
-                loadingError: payload,
             }
 
         case ACTIONS.ORGANISATION_UNIT_SELECTED:
@@ -56,40 +52,11 @@ export default function organisationUnits(
                 showOptions: !state.showOptions,
             }
 
-        case ACTIONS.LOADING_GROUP_SETS_START:
-            return {
-                ...state,
-                loading: true,
-                loadingError: '',
-                groupSets: [],
-            }
-
-        case ACTIONS.LOADING_GROUP_SETS_SUCCESS:
-            return {
-                ...state,
-                loading: false,
-                groupSets: payload,
-            }
-
-        case ACTIONS.LOADING_GROUP_SETS_ERROR:
-            return {
-                ...state,
-                loading: false,
-                loadingError: payload,
-            }
-
-        case ACTIONS.SET_GROUP_SET:
-            return {
-                ...state,
-                selectedGroupSet: payload,
-            }
-
         case ACTIONS.LOCATION_CHANGE:
             return {
                 ...initialState,
                 loading: false,
                 collection: state.collection,
-                groupSets: state.groupSets,
             }
 
         default:

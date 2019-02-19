@@ -38,7 +38,7 @@ describe('Reducer - htmlReport', () => {
             expect(postState).toEqual(expected)
         })
 
-        it('should set the error message to the provided value', () => {
+        it('should set loading to false on error', () => {
             const action = {
                 type: actionTypes.LOADING_HTML_REPORT_ERROR,
                 payload: 'foo',
@@ -46,13 +46,11 @@ describe('Reducer - htmlReport', () => {
             const preState = {
                 ...defaultState,
                 loading: true,
-                error: '',
             }
             const postState = loading(preState, action)
             const expected = {
                 ...defaultState,
                 loading: false,
-                error: 'foo',
             }
 
             expect(postState).toEqual(expected)

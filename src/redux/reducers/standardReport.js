@@ -21,10 +21,23 @@ const standardReport = (state = defaultState, action = {}) => {
     const { type, payload } = action
 
     switch (type) {
+        case actionTypes.LOADING_STANDARD_REPORTS_START:
+            return {
+                ...state,
+                loading: true,
+            }
+
         case actionTypes.LOADING_STANDARD_REPORTS_SUCCESS:
             return {
                 ...state,
                 reports: payload,
+                loading: false,
+            }
+
+        case actionTypes.LOADING_STANDARD_REPORTS_ERROR:
+            return {
+                ...state,
+                loading: false,
             }
 
         case actionTypes.SET_SEARCH:

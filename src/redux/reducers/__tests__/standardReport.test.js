@@ -34,18 +34,16 @@ describe('Reducer - standardReport', function() {
             const preState = {
                 ...loadingDefaultState,
                 loading: false,
-                error: 'previous error',
             }
             const expected = {
                 ...loadingDefaultState,
                 loading: true,
-                error: '',
             }
             const actual = loading(preState, action)
             expect(actual).toEqual(expected)
         })
 
-        it('should capture the error', function() {
+        it('should set loading to false on error', function() {
             const loadingError = 'Foobar'
             const action = {
                 type: LOADING_STANDARD_REPORTS_ERROR,
@@ -54,12 +52,10 @@ describe('Reducer - standardReport', function() {
             const preState = {
                 ...loadingDefaultState,
                 loading: true,
-                error: '',
             }
             const expected = {
                 ...loadingDefaultState,
                 loading: false,
-                error: loadingError,
             }
             const actual = loading(preState, action)
 
@@ -287,12 +283,10 @@ describe('Reducer - standardReport', function() {
             const loadingPreState = {
                 ...loadingDefaultState,
                 loading: false,
-                error: 'some error',
             }
             const expectedLoadingState = {
                 ...loadingDefaultState,
                 loading: true,
-                error: '',
             }
             expect(loading(loadingPreState, action)).toEqual(
                 expectedLoadingState
@@ -322,10 +316,9 @@ describe('Reducer - standardReport', function() {
         })
 
         it('should not have deleted the report successfully', function() {
-            const error = 'Error: foobar'
             const action = {
                 type: DELETE_STANDARD_REPORT_ERROR,
-                payload: error,
+                payload: '',
             }
             const expected = {
                 ...defaultState,
@@ -338,13 +331,11 @@ describe('Reducer - standardReport', function() {
             const preLoadingState = {
                 ...loadingDefaultState,
                 loading: true,
-                error: '',
             }
             const postLoadingState = loading(preLoadingState, action)
             const expectedLoadingState = {
                 ...loadingDefaultState,
                 loading: false,
-                error,
             }
 
             expect(postLoadingState).toEqual(expectedLoadingState)

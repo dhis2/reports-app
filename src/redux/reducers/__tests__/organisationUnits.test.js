@@ -34,7 +34,6 @@ describe('Reducer - organisationUnits', () => {
             }
             const expectedState = {
                 ...initialState,
-                loadingError: errorStr,
                 loading: false,
             }
             expect(reducer(undefined, action)).toEqual(expectedState)
@@ -88,94 +87,6 @@ describe('Reducer - organisationUnits', () => {
             })
 
             expect(reducer(stateWithSelected, action)).toEqual(expectedState)
-        })
-    })
-
-    describe('handling org unit group sets', () => {
-        const groupSets = [
-            { id: 'foo', displayName: 'foo' },
-            { id: 'bar', displayName: 'bar' },
-            { id: 'baz', displayName: 'baz' },
-        ]
-
-        it('should indicate that the group sets are being loaded', () => {
-            const action = { type: ACTIONS.LOADING_GROUP_SETS_START }
-            const preState = {
-                ...initialState,
-                loading: false,
-                loadingError: 'foo',
-            }
-            const postState = reducer(preState, action)
-            const expected = {
-                ...initialState,
-                loading: true,
-                loadingError: '',
-            }
-
-            expect(postState).toEqual(expected)
-        })
-
-        it('should set the group sets to the provided value', () => {
-            const action = {
-                type: ACTIONS.LOADING_GROUP_SETS_SUCCESS,
-                payload: groupSets,
-            }
-            const preState = { ...initialState, groupSets: [], loading: true }
-            const postState = reducer(preState, action)
-            const expected = { ...initialState, groupSets, loading: false }
-
-            expect(postState).toEqual(expected)
-        })
-
-        it('should set the error message to the provided value', () => {
-            const action = {
-                type: ACTIONS.LOADING_GROUP_SETS_ERROR,
-                payload: 'foo',
-            }
-            const preState = {
-                ...initialState,
-                loading: true,
-                loadingError: '',
-            }
-            const postState = reducer(preState, action)
-            const expected = {
-                ...initialState,
-                loading: false,
-                loadingError: 'foo',
-            }
-
-            expect(postState).toEqual(expected)
-        })
-
-        it('should set the provided groupSet as selected', () => {
-            const groupSetId = 'bar'
-            const action = { type: ACTIONS.SET_GROUP_SET, payload: groupSetId }
-            const preState = { ...initialState, selectedGroupSet: '' }
-            const postState = reducer(preState, action)
-            const expected = { ...initialState, selectedGroupSet: groupSetId }
-
-            expect(postState).toEqual(expected)
-        })
-
-        it('should keep the groupSet options on location change', () => {
-            const action = { type: LOCATION_CHANGE }
-            const preState = { ...initialState, groupSets }
-            const postState = reducer(preState, action)
-            const expected = expect.objectContaining({ groupSets })
-
-            expect(postState).toEqual(expected)
-        })
-
-        it('should reset the selected group set on location change', () => {
-            const action = { type: LOCATION_CHANGE }
-            const preState = {
-                ...initialState,
-                selectedGroupSet: groupSets[0].id,
-            }
-            const postState = reducer(preState, action)
-            const expected = expect.objectContaining({ selectedGroupSet: '' })
-
-            expect(postState).toEqual(expected)
         })
     })
 })
