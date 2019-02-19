@@ -104,6 +104,9 @@ const styles = {
         color: '#276696',
         textDecoration: 'none',
     },
+    parsedPeriod: {
+        marginBottom: '16px',
+    },
 }
 
 export default {

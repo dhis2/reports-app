@@ -1,5 +1,5 @@
 import createComponentRenderer from '../../utils/test-helpers/createComponentRenderer'
-import PeriodPickerWithPeriodType from '../PeriodPickerWithPeriodType'
+import { PeriodPickerWithPeriodType } from '../PeriodPickerWithPeriodType'
 
 jest.mock('@dhis2/d2-ui-core', () => ({
     DropDown: 'DropDown',
@@ -40,6 +40,15 @@ describe('Test <PeriodPickerWithPeriodType /> rendering:', () => {
     it('It should render a <PeriodTypeDropDown/> and <PeriodPicker/> when selectedPeriodType is truthy', () => {
         expect(
             componentRenderer({ selectedPeriodType: 'Quarterly' })
+        ).toMatchSnapshot()
+    })
+
+    it('It should render the parsed period when a period has been selected', () => {
+        expect(
+            componentRenderer({
+                selectedPeriodType: 'Daily',
+                selectedPeriod: '20180101',
+            })
         ).toMatchSnapshot()
     })
 })
