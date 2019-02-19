@@ -1,16 +1,17 @@
 import debounce from 'lodash.debounce'
+import {
+    getFilteredStandardReports,
+    deleteStandardReport as deleteStandardReportRequest,
+} from '../../utils/api'
 import { DEBOUNCE_DELAY } from '../../config/search.config'
 import i18n from '../../utils/i18n/locales'
 import {
     goToNextPage as goToNextPageOrig,
     goToPrevPage as goToPrevPageOrig,
 } from './pagination'
+import { setPagination } from './pagination'
 import { showErrorSnackBar } from './feedback'
 import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
-import {
-    loadStandardReports,
-    deleteStandardReport,
-} from './standardReport/asyncThunks'
 
 export const actionTypes = {
     LOAD_STANDARD_REPORTS: 'LOAD_STANDARD_REPORTS',
@@ -52,19 +53,23 @@ export const loadingStandardReportsSuccess = reports => ({
 })
 
 /**
+ * @returns {Object}
+ */
+export const loadingStandardReportsError = () => ({
+    type: actionTypes.LOADING_STANDARD_REPORTS_ERROR,
+})
+
+/**
  * @param {Error} error
  * @returns {Function}
  */
-export const loadingStandardReportsError = error => dispatch => {
+export const loadingStandardReportsErrorWithFeedback = error => dispatch => {
     const defaultMessage = i18n.t(
         'An error occurred while loading the standard reports'
     )
     const displayMessage = humanReadableErrorMessage(error, defaultMessage)
     dispatch(showErrorSnackBar(displayMessage))
-    dispatch({
-        type: actionTypes.LOADING_STANDARD_REPORTS_ERROR,
-        payload: error,
-    })
+    dispatch(loadingStandardReportsError())
 }
 
 /**
@@ -189,8 +194,22 @@ export const deleteStandardReportStart = () => ({
 /**
  * @return {Object}
  */
-export const deleteStandardReportSuccess = () => dispatch => {
-    dispatch({ type: actionTypes.DELETE_STANDARD_REPORT_SUCCESS })
+export const deleteStandardReportSuccess = () => ({
+    type: actionTypes.DELETE_STANDARD_REPORT_SUCCESS,
+})
+
+/**
+ * @returns {Object}
+ */
+export const deleteStandardReportError = () => ({
+    type: actionTypes.DELETE_STANDARD_REPORT_ERROR,
+})
+
+/**
+ * @return {Object}
+ */
+export const deleteStandardReportSuccessWithFeedback = () => dispatch => {
+    dispatch(deleteStandardReportSuccess())
     dispatch(loadStandardReports('Successfully deleted the report'))
 }
 
@@ -198,16 +217,13 @@ export const deleteStandardReportSuccess = () => dispatch => {
  * @param {Error} error
  * @return {Object}
  */
-export const deleteStandardReportError = error => dispatch => {
+export const deleteStandardReportErrorWithFeedback = error => dispatch => {
     const defaultMessage = i18n.t(
         'An error occurred while trying to delete the standard report'
     )
     const displayMessage = humanReadableErrorMessage(error, defaultMessage)
     dispatch(showErrorSnackBar(displayMessage))
-    dispatch({
-        type: actionTypes.DELETE_STANDARD_REPORT_ERROR,
-        payload: error,
-    })
+    dispatch(deleteStandardReportError())
 }
 
 /**
@@ -238,6 +254,33 @@ export const hideHtmlReport = () => ({
 })
 
 /**
- * Reexporting async thunks
+ * @return {Function} Redux thunk
  */
-export { loadStandardReports, deleteStandardReport }
+export const loadStandardReports = () => (dispatch, getState) => {
+    const { standardReport, pagination } = getState()
+    const { page, pageSize } = pagination
+    const { search } = standardReport
+
+    dispatch(startLoadingStandardReports())
+    return getFilteredStandardReports(page, pageSize, search)
+        .then(response => {
+            dispatch(loadingStandardReportsSuccess(response.reports))
+            dispatch(setPagination(response.pager))
+        })
+        .catch(error =>
+            dispatch(loadingStandardReportsErrorWithFeedback(error))
+        )
+}
+
+/**
+ * @param {Object} report
+ * @return {Function} A redux thunk
+ */
+export const deleteStandardReport = () => (dispatch, getState) => {
+    const { selectedReport } = getState().standardReport
+
+    dispatch(deleteStandardReportStart())
+    return deleteStandardReportRequest(selectedReport.id)
+        .then(() => dispatch(deleteStandardReportSuccessWithFeedback()))
+        .catch(error => dispatch(deleteStandardReportErrorWithFeedback(error)))
+}
