@@ -21,15 +21,10 @@ const translations = {
     FinancialOct: i18n.t('Financial-Oct'),
 }
 
-export default function pluckPeriodTypes(collection) {
-    return collection.reduce((acc, periodType) => {
-        // The API returns a bi-weekly periodType but this is not supported by the d2ui/core PeriodPicker
-        if (periodType.name !== 'BiWeekly') {
-            acc.push({
-                id: periodType.name,
-                displayName: translations[periodType.name],
-            })
-        }
-        return acc
-    }, [])
-}
+const periodTypes = collection =>
+    collection.map(periodType => ({
+        id: periodType.name,
+        displayName: translations[periodType.name],
+    }))
+
+export default periodTypes
