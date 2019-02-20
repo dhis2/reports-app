@@ -4,34 +4,21 @@ import {
     selectDataSet,
     toggleSelectedUnitOnly,
     shareDataSetReportComment,
-    showDataSetReportForm,
 } from '../../redux/actions/dataSetReport'
 import {
     exportReportToXls,
     setReportComment,
+    unsetHtmlReport,
 } from '../../redux/actions/htmlReport'
-import { selectDimensionOption } from '../../redux/actions/dataSet'
+import { isActionEnabled } from '../../redux/selectors/dataSetReport/isActionEnabled'
 
-const mapStateToProps = ({
-    dataSet,
-    dataSetReport,
-    organisationUnits,
-    reportPeriod,
-    htmlReport,
-}) => ({
-    showForm: dataSetReport.showForm,
-    reportHtml: htmlReport.content,
-    reportComment: htmlReport.comment,
-    dataSetDimensions: dataSet.dimensionOptions,
-    selectedDataSet: dataSet.selected,
-    selectedUnitOnly: dataSetReport.selectedUnitOnly,
-    selectedDimensionOptions: dataSet.selectedDimensionOptions,
-    selectedOrgUnit: organisationUnits.selected,
-    selectedPeriod: reportPeriod.selectedPeriod,
-    showOptions: dataSetReport.showOptions,
-    loading: dataSetReport.loading,
-    showFeedback: dataSetReport.showFeedback,
-    feedbackConf: dataSetReport.feedbackConf,
+const mapStateToProps = state => ({
+    reportHtml: state.htmlReport.content,
+    reportComment: state.htmlReport.comment,
+    selectedUnitOnly: state.dataSetReport.selectedUnitOnly,
+    selectedOrgUnit: state.organisationUnits.selected,
+    selectedPeriod: state.reportPeriod.selectedPeriod,
+    isActionEnabled: isActionEnabled(state),
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -42,10 +29,8 @@ const mapDispatchToProps = dispatch => ({
             )
         ),
     loadHtmlReport: () => dispatch(loadHtmlReport()),
-    showDataSetReportForm: () => dispatch(showDataSetReportForm()),
+    showDataSetReportForm: () => dispatch(unsetHtmlReport()),
     selectDataSet: e => dispatch(selectDataSet(e.target.value)),
-    selectDimensionOption: (id, evt) =>
-        dispatch(selectDimensionOption(id, evt.target.value)),
     toggleSelectedUnitOnly: (e, selectedUnitOnly) =>
         dispatch(toggleSelectedUnitOnly(selectedUnitOnly)),
     shareDataSetReportComment: comment =>

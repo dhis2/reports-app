@@ -1,23 +1,13 @@
-import {
-    loadingHtmlReportStart,
-    loadingHtmlReportSuccess,
-    loadingHtmlReportError,
-} from './htmlReport'
 import { getReportingRateSummaryReport } from '../../utils/api'
+import {
+    loadingHtmlReportStartWithFeedback,
+    loadingHtmlReportSuccessWithFeedback,
+    loadingHtmlReportErrorWithFeedback,
+} from './htmlReport'
 
 export const actionTypes = {
-    SET_SHOW_FORM: 'SET_SHOW_FORM',
     SET_SELECTED_CRITERIA: 'SET_SELECTED_CRITERIA',
 }
-
-/**
- * @param {boolean} toggle
- * @returns {Object} The set show form action
- */
-export const showForm = toggle => ({
-    type: actionTypes.SET_SHOW_FORM,
-    payload: toggle,
-})
 
 /**
  * @param {string} selectedCriteria
@@ -32,7 +22,7 @@ export const selectCriteria = selectedCriteria => ({
  * @returns {Function} redux thunk
  */
 export const loadHtmlReport = () => (dispatch, getState) => {
-    dispatch(loadingHtmlReportStart())
+    dispatch(loadingHtmlReportStartWithFeedback())
 
     const {
         organisationUnits,
@@ -41,13 +31,15 @@ export const loadHtmlReport = () => (dispatch, getState) => {
         reportingRateSummary,
     } = getState()
 
-    getReportingRateSummaryReport(
+    return getReportingRateSummaryReport(
         organisationUnits.selected.id,
         dataSet.selected.id,
         reportPeriod.selectedPeriod,
         reportingRateSummary.criteria,
         organisationUnits.selectedOptions
     )
-        .then(response => dispatch(loadingHtmlReportSuccess(response)))
-        .catch(({ message }) => dispatch(loadingHtmlReportError(message)))
+        .then(response =>
+            dispatch(loadingHtmlReportSuccessWithFeedback(response))
+        )
+        .catch(error => dispatch(loadingHtmlReportErrorWithFeedback(error)))
 }

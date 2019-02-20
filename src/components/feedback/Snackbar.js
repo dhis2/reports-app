@@ -1,13 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { FeedbackSnackbar, CircularProgress } from '@dhis2/d2-ui-core'
-import styles from '../utils/styles'
-import { clearFeedback } from '../redux/actions/feedback'
+import { FeedbackSnackbar } from '@dhis2/d2-ui-core'
+import { clearFeedback } from '../../redux/actions/feedback'
 
-export const Feedback = ({
+const Snackbar = ({
     showSnackbar,
-    showLoader,
     message,
     type,
     action,
@@ -15,11 +13,7 @@ export const Feedback = ({
     onClose,
 }) => {
     const conf = { message, type, action, onActionClick }
-    return showLoader ? (
-        <div style={styles.feedbackSnackBar}>
-            <CircularProgress />
-        </div>
-    ) : (
+    return (
         <span id="feedbackSnackbarId">
             <FeedbackSnackbar
                 onClose={onClose}
@@ -30,26 +24,33 @@ export const Feedback = ({
     )
 }
 
-Feedback.propTypes = {
+Snackbar.propTypes = {
     showSnackbar: PropTypes.bool.isRequired,
-    showLoader: PropTypes.bool.isRequired,
-    message: PropTypes.string,
-    type: PropTypes.string,
+    message: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    onClose: PropTypes.func.isRequired,
     action: PropTypes.string,
     onActionClick: PropTypes.func,
-    onClose: PropTypes.func.isRequired,
+}
+
+Snackbar.defaultProps = {
+    action: '',
+    onActionClick: () => null,
 }
 
 const mapStateToProps = ({ feedback }) => ({
     showSnackbar: feedback.showSnackbar,
-    showLoader: feedback.showLoader,
     message: feedback.message,
     type: feedback.type,
 })
 
-export default connect(
+const mapDispatchToProps = {
+    onClose: clearFeedback,
+}
+
+const connectedSnackbar = connect(
     mapStateToProps,
-    {
-        onClose: clearFeedback,
-    }
-)(Feedback)
+    mapDispatchToProps
+)(Snackbar)
+
+export { connectedSnackbar as Snackbar, Snackbar as SnackbarOriginal }

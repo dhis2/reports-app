@@ -8,17 +8,13 @@ import styles from '../utils/styles'
 
 const labelText = i18n.t('Select Period Type')
 
-function PeriodTypeDropDown({ ready, loadingError, ...props }) {
-    if (!ready) {
+function PeriodTypeDropDown({ loading, ...props }) {
+    if (loading) {
         return (
             <span style={styles.error}>
                 {i18n.t('Loading period types dropdown')}
             </span>
         )
-    }
-
-    if (loadingError) {
-        return <span style={styles.error}>{loadingError}</span>
     }
 
     return (
@@ -32,8 +28,7 @@ function PeriodTypeDropDown({ ready, loadingError, ...props }) {
 }
 
 PeriodTypeDropDown.propTypes = {
-    ready: PropTypes.bool.isRequired,
-    loadingError: PropTypes.string.isRequired,
+    loading: PropTypes.bool.isRequired,
 }
 
 export default PeriodTypeDropDown

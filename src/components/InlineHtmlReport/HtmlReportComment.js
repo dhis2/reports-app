@@ -33,9 +33,6 @@ export const HtmlReportComment = props => (
 )
 
 HtmlReportComment.propTypes = {
-    dataSetId: PropTypes.string.isRequired,
-    period: PropTypes.string.isRequired,
-    orgUnitId: PropTypes.string.isRequired,
     comment: PropTypes.string.isRequired,
     shareDataSetReportComment: PropTypes.func.isRequired,
     setDataSetReportComment: PropTypes.func.isRequired,

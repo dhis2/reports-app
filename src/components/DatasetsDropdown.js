@@ -6,6 +6,10 @@ import i18n from '../utils/i18n/locales'
 import styles from '../utils/styles'
 import { selectDataSet } from '../redux/actions/dataSet'
 
+const emptyLabel = i18n.t('Select Data Set')
+const hintTextLoading = i18n.t('Loading options...')
+const hintTextDefault = i18n.t('Select Data Set')
+
 export const DatasetsDropdown = props => (
     <div>
         <span style={styles.formLabel}>{props.label}</span>
@@ -15,14 +19,16 @@ export const DatasetsDropdown = props => (
             value={props.selected.id}
             onChange={props.onChange ? props.onChange : props.selectDataSet}
             menuItems={props.options}
-            emptyLabel={i18n.t('Select Data Set')}
-            hintText={i18n.t('Select Data Set')}
+            emptyLabel={emptyLabel}
+            hintText={props.loading ? hintTextLoading : hintTextDefault}
+            disabled={props.loading}
         />
     </div>
 )
 
 DatasetsDropdown.propTypes = {
     selected: PropTypes.object.isRequired,
+    loading: PropTypes.bool.isRequired,
     options: PropTypes.array.isRequired,
     selectDataSet: PropTypes.func.isRequired,
     onChange: PropTypes.func,
@@ -38,9 +44,10 @@ DatasetsDropdown.defaultProps = {
     filter: null,
 }
 
-const mapStateToProps = state => ({
-    selected: state.dataSet.selected,
-    options: state.dataSet.options,
+const mapStateToProps = ({ dataSet: { loading, selected, options } }) => ({
+    loading,
+    selected,
+    options,
 })
 
 const mapDispatchToProps = dispatch => ({

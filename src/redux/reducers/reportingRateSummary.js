@@ -13,7 +13,6 @@ const BASED_ON_OPTIONS = [
 ]
 
 export const defaultState = {
-    showForm: true,
     selectedCriteria: BASED_ON_OPTIONS[0].id,
     criteriaOptions: BASED_ON_OPTIONS,
 }
@@ -23,9 +22,6 @@ export const reportingRateSummary = (
     { type, payload } = {}
 ) => {
     switch (type) {
-        case actionTypes.SET_SHOW_FORM:
-            return { ...state, showForm: payload }
-
         case actionTypes.SET_SELECTED_CRITERIA:
             return { ...state, selectedCriteria: payload }
 
