@@ -16,9 +16,9 @@ export const ACTION_TYPES = {
 
 export const fallbackErrorMessage = i18n.t('Could not load organisation units')
 
-export const loadOrganisationUnitsSuccess = periodTypes => ({
+export const loadOrganisationUnitsSuccess = organisationUnits => ({
     type: ACTION_TYPES.ORGANISATION_UNITS_RECEIVED,
-    payload: periodTypes,
+    payload: organisationUnits,
 })
 
 export const loadOrganisationUnitsError = errorMessage => ({
@@ -40,9 +40,12 @@ export const loadOrganisationUnits = () => dispatch =>
             )
         })
 
-export const selectOrganisationUnit = (_event, { id, path, displayName }) => ({
+export const selectOrganisationUnit = (
+    _event,
+    { id, path, displayName, children }
+) => ({
     type: ACTION_TYPES.ORGANISATION_UNIT_SELECTED,
-    payload: { id, path, displayName },
+    payload: { id, path, displayName, children },
 })
 
 export const selectOrgUnitOption = (id, value) => ({
