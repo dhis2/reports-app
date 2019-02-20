@@ -5,7 +5,11 @@ import {
     loadOrganisationUnits,
     loadOrganisationUnitsErrorDefaultMessage,
     selectOrganisationUnit,
+    loadOrganisationUnitsStart,
+    loadOrganisationUnitsSuccess,
+    loadOrganisationUnitsError,
 } from '../organisationUnits'
+import { showErrorSnackBar } from '../feedback'
 import { getOrganisationUnits } from '../../../utils/api'
 import * as feedbackTypes from '../../../utils/feedbackTypes'
 import { ACTION_TYPES as feedbackActionTypes } from '../feedback'
@@ -20,43 +24,26 @@ describe('Actions - organisationUnits', () => {
         store = mockStore({})
     })
 
-    const mockShowErrorFeedback = errorMessage => ({
-        type: feedbackActionTypes.FEEDBACK_SHOW_SNACKBAR,
-        payload: { message: errorMessage, type: feedbackTypes.ERROR },
-    })
-
-    const mockLoadingOrgUnitsStart = () => ({
-        type: TYPES.ORGANISATION_UNITS_LOADING_START,
-    })
-
-    const mockLoadingOrgUnitsSuccess = orgUnits => ({
-        type: TYPES.ORGANISATION_UNITS_RECEIVED,
-        payload: orgUnits,
-    })
-
-    const mockLoadingOrgUnitsError = errorMessage => ({
-        type: TYPES.ORGANISATION_UNITS_ERRORED,
-        payload: errorMessage,
+    afterEach(() => {
+        getOrganisationUnits.mockClear()
     })
 
     describe('loadOrganisationUnits successfully', () => {
         const mockResp = [1, 2, 3, 4, 5]
+        getOrganisationUnits.mockImplementationOnce(() =>
+            Promise.resolve(mockResp)
+        )
 
-        beforeEach(() => {
-            getOrganisationUnits.mockImplementationOnce(() =>
-                Promise.resolve(mockResp)
-            )
-        })
-
-        it('should dispatch a loading start and success action', () => {
+        it('should dispatch a loading start and success action', done => {
             const expectedActions = expect.arrayContaining([
-                mockLoadingOrgUnitsStart(),
-                mockLoadingOrgUnitsSuccess(mockResp),
+                loadOrganisationUnitsStart(),
+                loadOrganisationUnitsSuccess(mockResp),
             ])
 
-            store
-                .dispatch(loadOrganisationUnits())
-                .then(() => expect(store.getActions()).toEqual(expectedActions))
+            store.dispatch(loadOrganisationUnits()).then(() => {
+                expect(store.getActions()).toEqual(expectedActions)
+                done()
+            })
         })
     })
 
@@ -71,32 +58,35 @@ describe('Actions - organisationUnits', () => {
             console.error.mockClear()
         })
 
-        it('should dispatch a loading start and error action', () => {
+        it('should dispatch a loading start and error action', done => {
             const expectedActions = expect.arrayContaining([
-                mockLoadingOrgUnitsStart(),
-                mockLoadingOrgUnitsError(
+                loadOrganisationUnitsStart(),
+                loadOrganisationUnitsError(
                     loadOrganisationUnitsErrorDefaultMessage
                 ),
             ])
 
             store.dispatch(loadOrganisationUnits()).then(() => {
                 expect(store.getActions()).toEqual(expectedActions)
+                done()
             })
         })
 
-        it('should dispatch a show feedback action', () => {
+        it('should dispatch a show feedback action', done => {
             const expectedActions = expect.arrayContaining([
-                mockShowErrorFeedback(loadOrganisationUnitsErrorDefaultMessage),
+                showErrorSnackBar(loadOrganisationUnitsErrorDefaultMessage),
             ])
 
-            store
-                .dispatch(loadOrganisationUnits())
-                .then(() => expect(store.getActions()).toEqual(expectedActions))
+            store.dispatch(loadOrganisationUnits()).then(() => {
+                expect(store.getActions()).toEqual(expectedActions)
+                done()
+            })
         })
 
-        it('prints the error in the console when rejected', () => {
+        it('prints the error in the console when rejected', done => {
             store.dispatch(loadOrganisationUnits()).then(() => {
                 expect(console.error).toHaveBeenCalledTimes(1)
+                done()
             })
         })
     })

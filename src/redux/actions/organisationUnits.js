@@ -30,22 +30,26 @@ export const loadOrganisationUnitsSuccess = periodTypes => ({
 })
 
 /**
+ * @returns {Object}
+ */
+export const loadOrganisationUnitsError = () => ({
+    type: ACTION_TYPES.ORGANISATION_UNITS_ERRORED,
+})
+
+/**
  * @param {Error} error
  * @returns {Function}
  */
 export const loadOrganisationUnitsErrorDefaultMessage = i18n.t(
     'An error occurred while loading the organisation units!'
 )
-export const loadOrganisationUnitsError = error => dispatch => {
+export const loadOrganisationUnitsErrorWithFeedback = error => dispatch => {
     const displayMessage = humanReadableErrorMessage(
         error,
         loadOrganisationUnitsErrorDefaultMessage
     )
     dispatch(showErrorSnackBar(displayMessage))
-    dispatch({
-        type: ACTION_TYPES.ORGANISATION_UNITS_ERRORED,
-        payload: displayMessage,
-    })
+    dispatch(loadOrganisationUnitsError())
 }
 
 export const loadOrganisationUnits = () => dispatch => {
@@ -56,7 +60,7 @@ export const loadOrganisationUnits = () => dispatch => {
         )
         .catch(error => {
             console.error(error)
-            dispatch(loadOrganisationUnitsError(error))
+            dispatch(loadOrganisationUnitsErrorWithFeedback(error))
         })
 }
 
