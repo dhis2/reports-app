@@ -35,3 +35,4 @@ chromeDownloads
 
 # i18n files
 /src/utils/i18n/locales
+.vscode
