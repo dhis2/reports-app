@@ -53,4 +53,4 @@ const connectedSnackbar = connect(
     mapDispatchToProps
 )(Snackbar)
 
-export { connectedSnackbar as Snackbar }
+export { connectedSnackbar as Snackbar, Snackbar as SnackbarOriginal }

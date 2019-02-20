@@ -24,4 +24,4 @@ const mapStateToProps = state => ({
 
 const connectedLoader = connect(mapStateToProps)(Loader)
 
-export { connectedLoader as Loader }
+export { connectedLoader as Loader, Loader as LoaderOriginal }

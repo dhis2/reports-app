@@ -1,6 +1,6 @@
 import createComponentRenderer from '../../../utils/test-helpers/createComponentRenderer'
 import { SUCCESS, ERROR, WARNING } from '../../../utils/feedbackTypes'
-import { Snackbar } from '../Snackbar'
+import { SnackbarOriginal as Snackbar } from '../Snackbar'
 
 jest.mock('@dhis2/d2-ui-core', () => ({
     SnackbarSnackbar: 'SnackbarSnackbar',
@@ -17,6 +17,10 @@ describe('<Snackbar />', () => {
         onClose: jest.fn(),
     }
     const renderSnackbar = createComponentRenderer(Snackbar, defaultProps)
+
+    // for whatever reason jest can't import the feedbacksnackbar from d2-ui
+    // and throws console errors....
+    jest.spyOn(console, 'error').mockImplementation(() => null)
 
     afterEach(() => {
         jest.clearAllMocks()
