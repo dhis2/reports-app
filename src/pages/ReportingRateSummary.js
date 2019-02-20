@@ -9,7 +9,6 @@ import { InlineHtmlReport } from '../components/InlineHtmlReport'
 import { SectionHeadline } from '../components/SectionHeadline'
 import { connectReportingRateSummary } from './reporting-rate-summary/connectReportingRateSummary'
 import { Form } from './reporting-rate-summary/Form'
-import { isActionEnabled } from './reporting-rate-summary/helpers'
 
 export default class ReportingRateSummary extends React.Component {
     render() {
@@ -31,7 +30,7 @@ export default class ReportingRateSummary extends React.Component {
                         criteriaOptions={props.criteriaOptions}
                         loadHtmlReport={props.loadHtmlReport}
                         selectCriteria={props.selectCriteria}
-                        isActionEnabled={isActionEnabled(props)}
+                        isActionEnabled={props.isActionEnabled}
                     />
                     <InlineHtmlReport
                         shouldRender={!!props.reportHtml}
@@ -47,9 +46,8 @@ export default class ReportingRateSummary extends React.Component {
 
 ReportingRateSummary.propTypes = {
     d2: PropTypes.object.isRequired,
+    isActionEnabled: PropTypes.bool.isRequired,
     reportHtml: PropTypes.string.isRequired,
-    selectedDataSet: PropTypes.object.isRequired,
-    selectedPeriod: PropTypes.string.isRequired,
     selectedCriteria: PropTypes.string.isRequired,
     criteriaOptions: PropTypes.array.isRequired,
     unsetHtmlReport: PropTypes.func.isRequired,

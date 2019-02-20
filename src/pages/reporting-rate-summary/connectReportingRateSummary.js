@@ -7,14 +7,14 @@ import {
     exportReportToXls,
     unsetHtmlReport,
 } from '../../redux/actions/htmlReport'
+import { isActionEnabled } from '../../redux/selectors/reportingRateSummary/isActionEnabled'
 
 const mapStateToProps = state => ({
     reportHtml: state.htmlReport.content,
     criteriaOptions: state.reportingRateSummary.criteriaOptions,
-    selectedDataSet: state.dataSet.selected,
-    selectedPeriod: state.reportPeriod.selectedPeriod,
     selectedCriteria: state.reportingRateSummary.selectedCriteria,
     selectedOrgUnit: state.organisationUnits,
+    isActionEnabled: isActionEnabled(state),
 })
 
 const mapDispatchToProps = dispatch => ({
