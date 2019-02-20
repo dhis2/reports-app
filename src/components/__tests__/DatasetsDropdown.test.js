@@ -9,6 +9,7 @@ jest.mock('@dhis2/d2-ui-core', () => ({ DropDown: 'DropDown' }))
 const ownShallow = () => {
     return shallow(
         <DatasetsDropdown
+            loading={false}
             selected={{ id: '', displayName: '' }}
             options={[]}
             selectDataSet={jest.fn()}

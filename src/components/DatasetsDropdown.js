@@ -16,13 +16,17 @@ export const DatasetsDropdown = props => (
             onChange={props.onChange ? props.onChange : props.selectDataSet}
             menuItems={props.options}
             emptyLabel={i18n.t('Select Data Set')}
-            hintText={i18n.t('Select Data Set')}
+            hintText={i18n.t(
+                props.loading ? 'Loading options...' : 'Select Data Set'
+            )}
+            disabled={props.loading}
         />
     </div>
 )
 
 DatasetsDropdown.propTypes = {
     selected: PropTypes.object.isRequired,
+    loading: PropTypes.bool.isRequired,
     options: PropTypes.array.isRequired,
     selectDataSet: PropTypes.func.isRequired,
     onChange: PropTypes.func,
@@ -38,9 +42,10 @@ DatasetsDropdown.defaultProps = {
     filter: null,
 }
 
-const mapStateToProps = state => ({
-    selected: state.dataSet.selected,
-    options: state.dataSet.options,
+const mapStateToProps = ({ dataSet: { loading, selected, options } }) => ({
+    loading,
+    selected,
+    options,
 })
 
 const mapDispatchToProps = dispatch => ({
