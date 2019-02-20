@@ -33,7 +33,6 @@ export const DataInputs = props => (
 )
 
 DataInputs.propTypes = {
-    selectedDataSet: PropTypes.object.isRequired,
     selectedUnitOnly: PropTypes.bool.isRequired,
     onDataSetChange: PropTypes.func.isRequired,
     onSelectedUnitOnlyChange: PropTypes.func.isRequired,

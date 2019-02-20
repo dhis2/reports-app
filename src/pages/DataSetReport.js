@@ -8,7 +8,6 @@ import { InlineHtmlReportCommentable } from '../components/InlineHtmlReportComme
 import { DataInputs } from './data-set-report/DataInputs'
 import { FormActions } from './data-set-report/FormActions'
 import { connectDataSetReport } from './data-set-report/connectDataSetReport'
-import { isActionEnabled } from './data-set-report/helpers'
 import i18n from '../utils/i18n/locales'
 import styles from '../utils/styles'
 
@@ -29,34 +28,19 @@ class DataSetReport extends React.Component {
                 <Paper style={styles.container}>
                     <div id="data-set-report-form" style={formStyle}>
                         <DataInputs
-                            dataSetDimensions={props.dataSetDimensions}
-                            selectedDataSet={props.selectedDataSet}
-                            selectedDimensionOptions={
-                                props.selectedDimensionOptions
-                            }
                             selectedUnitOnly={props.selectedUnitOnly}
                             onDataSetChange={props.selectDataSet}
-                            onDimensionChange={props.selectDimensionOption}
                             onSelectedUnitOnlyChange={
                                 props.toggleSelectedUnitOnly
                             }
                         />
                         <FormActions
                             onGetReportClick={props.loadHtmlReport}
-                            isGetReportDisabled={!isActionEnabled(props)}
+                            isGetReportDisabled={!props.isActionEnabled}
                         />
                     </div>
                     <InlineHtmlReportCommentable
-                        shouldRender={
-                            !!(props.reportHtml && props.selectedDataSet)
-                        }
-                        dataSetId={props.selectedDataSet.id}
-                        period={props.selectedPeriod}
-                        orgUnitId={
-                            props.selectedOrgUnit
-                                ? props.selectedOrgUnit.id
-                                : ''
-                        }
+                        shouldRender={!!props.reportHtml}
                         reportHtml={props.reportHtml}
                         reportComment={props.reportComment}
                         onDownloadXlsClick={props.exportReportToXls}
@@ -76,20 +60,14 @@ DataSetReport.propTypes = {
     d2: PropTypes.object.isRequired,
     reportHtml: PropTypes.string.isRequired,
     reportComment: PropTypes.string.isRequired,
-    selectedDataSet: PropTypes.object.isRequired,
+    isActionEnabled: PropTypes.bool.isRequired,
     selectedUnitOnly: PropTypes.bool.isRequired,
     selectedOrgUnit: PropTypes.object.isRequired,
     selectedPeriod: PropTypes.string.isRequired,
-    selectedOrgUnitGroupOptions: PropTypes.object.isRequired,
-    showOptions: PropTypes.bool.isRequired,
-    showFeedback: PropTypes.bool.isRequired,
-    feedbackConf: PropTypes.object.isRequired,
     exportReportToXls: PropTypes.func.isRequired,
     loadHtmlReport: PropTypes.func.isRequired,
     selectDataSet: PropTypes.func.isRequired,
-    selectOrgUnitOption: PropTypes.func.isRequired,
     toggleSelectedUnitOnly: PropTypes.func.isRequired,
-    toggleShowOptions: PropTypes.func.isRequired,
     shareDataSetReportComment: PropTypes.func.isRequired,
     setDataSetReportComment: PropTypes.func.isRequired,
     showDataSetReportForm: PropTypes.func.isRequired,

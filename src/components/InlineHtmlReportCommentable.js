@@ -12,9 +12,6 @@ export const InlineHtmlReportCommentable = props => {
             <DownloadOptions onDownloadXlsClick={props.onDownloadXlsClick} />
             <HtmlReportComment
                 comment={props.reportComment}
-                dataSetId={props.dataSetId}
-                orgUnitId={props.orgUnitId}
-                period={props.period}
                 shareDataSetReportComment={props.shareDataSetReportComment}
                 setDataSetReportComment={props.setDataSetReportComment}
             />
@@ -27,10 +24,7 @@ InlineHtmlReportCommentable.propTypes = {
     shouldRender: PropTypes.bool.isRequired,
     onDownloadXlsClick: DownloadOptions.propTypes.onDownloadXlsClick,
     reportHtml: Report.propTypes.reportHtml,
-    dataSetId: HtmlReportComment.propTypes.dataSetId,
-    orgUnitId: HtmlReportComment.propTypes.orgUnitId,
     reportComment: HtmlReportComment.propTypes.comment,
-    period: HtmlReportComment.propTypes.period,
     shareDataSetReportComment:
         HtmlReportComment.propTypes.shareDataSetReportComment,
     setDataSetReportComment:

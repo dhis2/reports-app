@@ -5,28 +5,20 @@ import {
     toggleSelectedUnitOnly,
     shareDataSetReportComment,
 } from '../../redux/actions/dataSetReport'
-import { selectDimensionOption } from '../../redux/actions/dataSetDimensions'
 import {
     exportReportToXls,
     setReportComment,
     unsetHtmlReport,
 } from '../../redux/actions/htmlReport'
+import { isActionEnabled } from '../../redux/selectors/dataSetReport/isActionEnabled'
 
-const mapStateToProps = ({
-    dataSet,
-    dataSetDimensions,
-    dataSetReport,
-    organisationUnits,
-    reportPeriod,
-    htmlReport,
-}) => ({
-    reportHtml: htmlReport.content,
-    reportComment: htmlReport.comment,
-    selectedDataSet: dataSet.selected,
-    selectedUnitOnly: dataSetReport.selectedUnitOnly,
-    selectedOrgUnit: organisationUnits.selected,
-    selectedPeriod: reportPeriod.selectedPeriod,
-    showOptions: dataSetReport.showOptions,
+const mapStateToProps = state => ({
+    reportHtml: state.htmlReport.content,
+    reportComment: state.htmlReport.comment,
+    selectedUnitOnly: state.dataSetReport.selectedUnitOnly,
+    selectedOrgUnit: state.organisationUnits.selected,
+    selectedPeriod: state.reportPeriod.selectedPeriod,
+    isActionEnabled: isActionEnabled(state),
 })
 
 const mapDispatchToProps = dispatch => ({
