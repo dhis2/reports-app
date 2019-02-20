@@ -167,19 +167,16 @@ export const getReportingRateSummaryReport = async (
  * @returns {Promise} - Array of IDs of the orgUnit and its direct descendants
  */
 export const getOrgUnitAndChildrenIds = orgUnit => {
-    if (orgUnit.children.size) {
-        return Promise.resolve([
-            orgUnit.id,
-            ...mapResponseToArrayOfIds(orgUnit.children),
-        ])
-    } else {
-        return d2.models.organisationUnits
-            .get(orgUnit.id, { fields: ['children[id]'] })
-            .then(({ children }) => [
-                orgUnit.id,
-                ...mapResponseToArrayOfIds(children),
-            ])
-    }
+    const children = orgUnit.children.size
+        ? Promise.resolve(orgUnit.children)
+        : d2.models.organisationUnits
+              .get(orgUnit.id, { fields: ['children[id]'] })
+              .then(({ children }) => children)
+
+    return children.then(children => [
+        orgUnit.id,
+        ...mapResponseToArrayOfIds(children),
+    ])
 }
 
 /**
