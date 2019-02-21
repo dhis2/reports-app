@@ -26,10 +26,7 @@ export default class ReportingRateSummary extends React.Component {
                 <Paper style={styles.container}>
                     <Form
                         showForm={!props.reportHtml}
-                        selectedCriteria={props.selectedCriteria}
-                        criteriaOptions={props.criteriaOptions}
                         loadHtmlReport={props.loadHtmlReport}
-                        selectCriteria={props.selectCriteria}
                         isActionEnabled={props.isActionEnabled}
                     />
                     <InlineHtmlReport
@@ -48,12 +45,9 @@ ReportingRateSummary.propTypes = {
     d2: PropTypes.object.isRequired,
     isActionEnabled: PropTypes.bool.isRequired,
     reportHtml: PropTypes.string.isRequired,
-    selectedCriteria: PropTypes.string.isRequired,
-    criteriaOptions: PropTypes.array.isRequired,
     unsetHtmlReport: PropTypes.func.isRequired,
     exportReportToXls: PropTypes.func.isRequired,
     loadHtmlReport: PropTypes.func.isRequired,
-    selectCriteria: PropTypes.func.isRequired,
     selectedOrgUnit: PropTypes.object,
 }
 

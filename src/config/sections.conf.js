@@ -4,7 +4,6 @@ import { ConnectedDataSetReport } from '../pages/DataSetReport'
 import { ConnectedReportingRateSummary } from '../pages/ReportingRateSummary'
 import { ConnectedResource } from '../pages/resource/Resource'
 import { ConnectedOrganisationUnitDistributionReport } from '../pages/organisation-unit-distribution-report/OrganisationUnitDistributionReport'
-import { ConnectedDataApproval } from '../pages/data-approval/DataApproval'
 
 /* i18n */
 import { i18nKeys } from '../utils/i18n/i18nKeys'
@@ -79,18 +78,6 @@ export const sections = [
                 i18nKeys.organisationUnitDistributionReport.description,
             actionText: i18nKeys.organisationUnitDistributionReport.homeAction,
             docs: 'using_reporting_orgunit_distribution_reports',
-        },
-    },
-    {
-        key: DATA_APPROVAL_SECTION_KEY,
-        path: '/data-approval',
-        component: ConnectedDataApproval,
-        info: {
-            label: i18nKeys.dataApproval.homeLabel,
-            icon: 'playlist_add_check',
-            description: i18nKeys.dataApproval.description,
-            actionText: i18nKeys.dataApproval.homeAction,
-            docs: 'data_approval',
         },
     },
 ]
