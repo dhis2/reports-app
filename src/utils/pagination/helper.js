@@ -1,3 +1,7 @@
+export const hasNextPageCreator = (page, pageCount) => () => page < pageCount
+
+export const hasPreviousPageCreator = page => () => page > 1
+
 export const calculatePageValue = pager => {
     const pageSize = pager.pageSize
     const { total, pageCount, page } = pager
@@ -8,5 +12,3 @@ export const calculatePageValue = pager => {
 
     return `${startItem} - ${endItem > total ? total : endItem}`
 }
-
-export default calculatePageValue

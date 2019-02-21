@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Table from '@dhis2/d2-ui-table'
 import SharingDialog from '@dhis2/d2-ui-sharing-dialog'
-import { Button, Pagination, SvgIcon, InputField } from '@dhis2/d2-ui-core'
+import { Button, InputField, Pagination, SvgIcon } from '@dhis2/d2-ui-core'
 import '@dhis2/d2-ui-core/build/css/Table.css'
 import '@dhis2/d2-ui-core/build/css/Pagination.css'
 import { connect } from 'react-redux'
@@ -14,7 +14,6 @@ import PageHelper from '../components/PageHelper'
 import { ConnectedAddEditResource } from './resource/add-edit-resource/AddEditResource'
 import { ACTION_MESSAGE, SUCCESS, LOADING } from '../utils/feedbackTypes.js'
 import { getDocsUrl } from '../utils/getDocsUrl'
-import { calculatePageValue } from '../utils/pagination'
 import { defaultState as INITIAL_PAGER } from '../redux/reducers/pagination'
 import {
     DOCUMENTS_ENDPOINT,
@@ -32,6 +31,12 @@ import {
     goToPrevPage,
     setSearch,
 } from '../redux/actions/resource'
+import {
+    hasNextPageCreator,
+    hasPreviousPageCreator,
+    calculatePageValue,
+} from '../utils/pagination/helper'
+import { SectionHeadline } from '../components/SectionHeadline'
 
 export default class Resource extends React.Component {
     constructor(props) {
@@ -43,7 +48,6 @@ export default class Resource extends React.Component {
             loading: false,
         }
 
-        this.debounceSearch = this.debounceSearch.bind(this)
         this.addNewResource = this.addNewResource.bind(this)
 
         /* Pagination */
@@ -215,6 +219,12 @@ export default class Resource extends React.Component {
     }
 
     render() {
+        const { props } = this
+        const { pager } = props
+        const hasNextPage = hasNextPageCreator(pager.page, pager.pageCount)
+        const hasPreviousPage = hasPreviousPageCreator(pager.page)
+        const paginationCurrentlyShown = calculatePageValue(pager)
+
         const contextMenuOptions = {
             [CONTEXT_MENU_ACTION.VIEW]: this.viewResource,
             [CONTEXT_MENU_ACTION.EDIT]: this.editResource,
@@ -224,23 +234,19 @@ export default class Resource extends React.Component {
 
         return (
             <div>
-                <h1>
-                    {i18n.t(i18nKeys.resource.homeLabel)}
-                    <PageHelper
-                        url={getDocsUrl(
-                            this.props.d2.system.version,
-                            this.props.sectionKey
-                        )}
-                    />
-                </h1>
+                <SectionHeadline
+                    label={i18n.t('Resource')}
+                    systemVersion={props.d2.system.version}
+                    sectionKey={props.sectionKey}
+                />
                 <div id="resource-content">
                     <Pagination
                         total={this.props.pager.total}
-                        hasNextPage={this.hasNextPage}
-                        hasPreviousPage={this.hasPreviousPage}
+                        hasNextPage={hasNextPage}
+                        hasPreviousPage={hasPreviousPage}
                         onNextPageClick={this.props.goToNextPage}
                         onPreviousPageClick={this.props.goToPrevPage}
-                        currentlyShown={calculatePageValue(this.props.pager)}
+                        currentlyShown={paginationCurrentlyShown}
                     />
                     <div id={'search-box-id'} style={styles.searchContainer}>
                         <InputField
@@ -273,13 +279,11 @@ export default class Resource extends React.Component {
                     <div id={'footer-pagination-id'}>
                         <Pagination
                             total={this.props.pager.total}
-                            hasNextPage={this.hasNextPage}
-                            hasPreviousPage={this.hasPreviousPage}
+                            hasNextPage={hasNextPage}
+                            hasPreviousPage={hasPreviousPage}
                             onNextPageClick={this.props.goToNextPage}
                             onPreviousPageClick={this.props.goToPrevPage}
-                            currentlyShown={calculatePageValue(
-                                this.props.pager
-                            )}
+                            currentlyShown={paginationCurrentlyShown}
                         />
                     </div>
                     <div id={'add-resource-btn-container-id'}>

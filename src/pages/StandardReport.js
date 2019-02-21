@@ -3,25 +3,25 @@ import PropTypes from 'prop-types'
 import Table from '@dhis2/d2-ui-table'
 import '@dhis2/d2-ui-core/build/css/Table.css'
 import '@dhis2/d2-ui-core/build/css/Pagination.css'
+import { Pagination } from '@dhis2/d2-ui-core'
 import manageError from '../utils/pageEnhancers/manageError.HOC'
 import { Snackbar } from '../components/feedback/Snackbar'
 import { SectionHeadline } from '../components/SectionHeadline'
 import SearchBox from './standard-report/SearchBox'
 import NoResultsMessage from './standard-report/NoResultsMessage'
 import AddReportButton from './standard-report/AddReportButton'
-import StandardReportPagination from './standard-report/StandardReportPagination'
 import ActionComponent from './standard-report/ActionComponent'
 import StyledHtmlReport from './standard-report/StyledHtmlReport'
 import {
     CONTEXT_MENU_ACTION,
     CONTEXT_MENU_ICONS,
 } from './standard-report/standard.report.conf'
+import { displayNoResults, showContextAction } from './standard-report/helper'
 import {
     hasNextPageCreator,
     hasPreviousPageCreator,
-    displayNoResults,
-    showContextAction,
-} from './standard-report/helper'
+    calculatePageValue,
+} from '../utils/pagination/helper'
 import connectStandardReport from './standard-report/connectStandardReport'
 import i18n from '../utils/i18n/locales'
 
@@ -58,6 +58,7 @@ export default class StandardReport extends React.Component {
         const { pager } = props
         const hasNextPage = hasNextPageCreator(pager.page, pager.pageCount)
         const hasPreviousPage = hasPreviousPageCreator(pager.page)
+        const paginationCurrentlyShown = calculatePageValue(pager)
         const contextMenuOptions = {
             [CONTEXT_MENU_ACTION.CREATE]: props.createReport,
             [CONTEXT_MENU_ACTION.EDIT]: props.editReport,
@@ -78,13 +79,13 @@ export default class StandardReport extends React.Component {
                     id="std-report-content"
                     style={{ display: props.htmlReport ? 'none' : 'block' }}
                 >
-                    <StandardReportPagination
+                    <Pagination
                         total={props.pager.total}
                         hasNextPage={hasNextPage}
                         hasPreviousPage={hasPreviousPage}
                         onNextPageClick={props.goToNextPage}
                         onPreviousPageClick={props.goToPrevPage}
-                        pager={props.pager}
+                        currentlyShown={paginationCurrentlyShown}
                     />
                     <SearchBox
                         value={props.search}
@@ -100,14 +101,16 @@ export default class StandardReport extends React.Component {
                     <NoResultsMessage
                         styles={displayNoResults(props.reports, props.loading)}
                     />
-                    <StandardReportPagination
-                        total={props.pager.total}
-                        hasNextPage={hasNextPage}
-                        hasPreviousPage={hasPreviousPage}
-                        onNextPageClick={props.goToNextPage}
-                        onPreviousPageClick={props.goToPrevPage}
-                        pager={props.pager}
-                    />
+                    <div id="footer-pagination-id">
+                        <Pagination
+                            total={props.pager.total}
+                            hasNextPage={hasNextPage}
+                            hasPreviousPage={hasPreviousPage}
+                            onNextPageClick={props.goToNextPage}
+                            onPreviousPageClick={props.goToPrevPage}
+                            currentlyShown={paginationCurrentlyShown}
+                        />
+                    </div>
                     <AddReportButton onClick={props.addReportFormShow} />
                     <ActionComponent
                         d2={props.d2}
