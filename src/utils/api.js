@@ -97,7 +97,7 @@ export const getDataSetReports = (
         selectedUnitOnly,
         dimensions: mapCollectionToDimensionQueryString(
             dataSetOptions,
-            orgUnitGroupsOptions,
+            orgUnitGroupsOptions
         ),
     })
 
@@ -170,7 +170,7 @@ export const getOrgUnitGroupSets = () =>
 /**
  * @returns {Promise}
  */
-export const getResources = () => {
+export const getResources = (page, pageSize, search) => {
     const requestData = {
         page,
         pageSize,
@@ -178,8 +178,5 @@ export const getResources = () => {
         ...(search ? { search } : {}),
     }
 
-    return api.get(
-        RESOURCE_ENDPOINT,
-        requestData,
-    )
+    return api.get(RESOURCE_ENDPOINT, requestData)
 }

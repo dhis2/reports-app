@@ -4,6 +4,10 @@ import { getResource } from '../../utils/api'
 import i18n from '../../utils/i18n/locales'
 import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
 import { showErrorSnackBar } from './feedback'
+import {
+    goToNextPage as goToNextPageOrig,
+    goToPrevPage as goToPrevPageOrig,
+} from './pagination'
 
 export const actionTypes = {
     LOADING_RESOURCES_START: 'LOADING_RESOURCES_START',
@@ -52,8 +56,33 @@ export const loadingResourcesErrorWithFeedback = error => dispatch => {
  */
 export const loadResources = () => (dispatch, getState) => {
     dispatch(loadingResourcesStart())
+    const { pagination, resource } = getState()
+    const { page, pageSize } = pagination
+    const { search } = resource
 
-    return getResource()
-        .then(resources => loadingResourcesSuccess(resources))
+    return getResource(page, pageSize, search)
+        .then(resources => {
+            // @TODO: Check for response property
+            loadingResourcesSuccess(resources.documents)
+            setPagination(response.pager)
+        })
         .catch(error => loadingResourcesErrorWithFeedback(error))
+}
+
+/**
+ * @param {number} nextPage
+ * @return {Function}
+ */
+export const goToNextPage = () => dispatch => {
+    dispatch(goToNextPageOrig())
+    dispatch(loadResources())
+}
+
+/**
+ * @param {number} nextPage
+ * @return {Function}
+ */
+export const goToPrevPage = () => dispatch => {
+    dispatch(goToPrevPageOrig())
+    dispatch(loadResources())
 }
