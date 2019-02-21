@@ -10,3 +10,11 @@ export const REPORTING_RATE_SUMMARY_ENDPOINT =
 // Url creaters
 export const postDataSetReportCommentUrl = (dataSetId, orgUnitId, period) =>
     `${DATA_SET_REPORT_INTERPOLATION_ENDPOINT}/${dataSetId}?pe=${period}&ou=${orgUnitId}`
+
+export const DATA_DIMENSION_SUFFIXES = [
+    'ACTUAL_REPORTS',
+    'EXPECTED_REPORTS',
+    'REPORTING_RATE',
+    'ACTUAL_REPORTS_ON_TIME',
+    'REPORTING_RATE_ON_TIME',
+]

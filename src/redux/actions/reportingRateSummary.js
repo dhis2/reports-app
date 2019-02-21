@@ -24,18 +24,12 @@ export const selectCriteria = selectedCriteria => ({
 export const loadHtmlReport = () => (dispatch, getState) => {
     dispatch(loadingHtmlReportStartWithFeedback())
 
-    const {
-        organisationUnits,
-        dataSet,
-        reportPeriod,
-        reportingRateSummary,
-    } = getState()
+    const { organisationUnits, dataSet, reportPeriod } = getState()
 
     return getReportingRateSummaryReport(
-        organisationUnits.selected.id,
+        organisationUnits.selected,
         dataSet.selected.id,
         reportPeriod.selectedPeriod,
-        reportingRateSummary.criteria,
         organisationUnits.selectedOptions
     )
         .then(response =>

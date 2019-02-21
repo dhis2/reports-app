@@ -6,6 +6,13 @@ const mapResponseToJSArray = model =>
     model.toArray().map(report => report.toJSON())
 
 /**
+ * @param {Object} d2 ModelCollection instance
+ * @return {Array<string>}
+ */
+export const mapResponseToArrayOfIds = model =>
+    model.toArray().map(({ id }) => id)
+
+/**
  * @param {string} name
  * @param {Object} model
  * @return {Object} The model with the filter if it wasn't an empty string otherwise the model without the filter
