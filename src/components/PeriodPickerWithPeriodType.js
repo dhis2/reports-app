@@ -2,6 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import parsePeriod from 'd2/lib/period/parser'
 
 /* d2-ui components */
 import { PeriodPicker } from '@dhis2/d2-ui-core'
@@ -11,7 +12,7 @@ import PeriodTypeDropDown from './PeriodTypeDropDown'
 
 /* Actions */
 import { selectPeriodType, selectPeriod } from '../redux/actions/reportPeriod'
-import pluckPeriodTypes from '../redux/selectors/periodTypes'
+import periodTypes from '../redux/selectors/periodTypes'
 
 /* styles */
 import styles from '../utils/styles'
@@ -21,9 +22,9 @@ export function PeriodPickerWithPeriodType({
     selectPeriod,
     label,
     collection,
-    ready,
-    loadingError,
+    loading,
     selectedPeriodType,
+    selectedPeriod,
 }) {
     return (
         <div>
@@ -31,8 +32,7 @@ export function PeriodPickerWithPeriodType({
                 {label}
             </span>
             <PeriodTypeDropDown
-                ready={ready}
-                loadingError={loadingError}
+                loading={loading}
                 menuItems={collection}
                 onChange={selectPeriodType}
                 value={selectedPeriodType}
@@ -43,6 +43,11 @@ export function PeriodPickerWithPeriodType({
                     onPickPeriod={selectPeriod}
                 />
             )}
+            {selectedPeriod && (
+                <div style={styles.parsedPeriod}>
+                    {parsePeriod(selectedPeriod).name}
+                </div>
+            )}
         </div>
     )
 }
@@ -52,14 +57,14 @@ PeriodPickerWithPeriodType.propTypes = {
     selectPeriod: PropTypes.func.isRequired,
     label: PropTypes.string.isRequired,
     collection: PropTypes.array.isRequired,
-    ready: PropTypes.bool.isRequired,
-    loadingError: PropTypes.string.isRequired,
+    loading: PropTypes.bool.isRequired,
     selectedPeriodType: PropTypes.string,
+    selectedPeriod: PropTypes.string,
 }
 
 const mapStateToProps = ({ reportPeriod }) => ({
     ...reportPeriod,
-    collection: pluckPeriodTypes(reportPeriod.collection),
+    collection: periodTypes(reportPeriod.collection),
 })
 
 export default connect(

@@ -1,8 +1,8 @@
+import { LOCATION_CHANGE } from 'connected-react-router'
 import { actionTypes } from '../actions/htmlReport'
 
 export const defaultState = {
     loading: false,
-    loadingError: '',
     content: '',
     comment: '',
 }
@@ -13,7 +13,6 @@ export const htmlReport = (state = defaultState, { type, payload } = {}) => {
             return {
                 ...state,
                 loading: true,
-                loadingError: '',
                 content: '',
             }
 
@@ -28,7 +27,12 @@ export const htmlReport = (state = defaultState, { type, payload } = {}) => {
             return {
                 ...state,
                 loading: false,
-                loadingError: payload,
+            }
+
+        case actionTypes.UNSET_HTML_REPORT:
+            return {
+                ...state,
+                content: '',
             }
 
         case actionTypes.SET_DATA_SET_REPORT_COMMENT:
@@ -36,6 +40,9 @@ export const htmlReport = (state = defaultState, { type, payload } = {}) => {
                 ...state,
                 comment: payload,
             }
+
+        case LOCATION_CHANGE:
+            return defaultState
 
         default:
             return state

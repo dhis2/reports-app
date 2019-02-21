@@ -133,7 +133,6 @@ export const postDataSetReportComment = (
  * @param {string} orgUnitId
  * @param {string} dataSetId
  * @param {string} period
- * @param {string} criteria
  * @param {Object} selectedOrgUnitOptions
  * @returns {Promise}
  */

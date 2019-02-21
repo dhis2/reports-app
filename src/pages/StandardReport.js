@@ -4,7 +4,7 @@ import Table from '@dhis2/d2-ui-table'
 import '@dhis2/d2-ui-core/build/css/Table.css'
 import '@dhis2/d2-ui-core/build/css/Pagination.css'
 import manageError from '../utils/pageEnhancers/manageError.HOC'
-import Feedback from '../components/Feedback'
+import { Snackbar } from '../components/feedback/Snackbar'
 import { SectionHeadline } from '../components/SectionHeadline'
 import SearchBox from './standard-report/SearchBox'
 import NoResultsMessage from './standard-report/NoResultsMessage'
@@ -21,7 +21,6 @@ import {
     hasPreviousPageCreator,
     displayNoResults,
     showContextAction,
-    createFeedbackConf,
 } from './standard-report/helper'
 import connectStandardReport from './standard-report/connectStandardReport'
 import i18n from '../utils/i18n/locales'
@@ -123,10 +122,7 @@ export default class StandardReport extends React.Component {
                 {props.htmlReport && (
                     <StyledHtmlReport htmlReport={props.htmlReport} />
                 )}
-                <Feedback
-                    open={props.showFeedback}
-                    conf={createFeedbackConf(props)}
-                />
+                <Snackbar onActionClick={props.deleteStandardReport} />
             </div>
         )
     }

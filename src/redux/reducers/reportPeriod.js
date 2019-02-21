@@ -3,8 +3,7 @@ import { ACTION_TYPES } from '../actions/reportPeriod'
 
 export const ACTIONS = { LOCATION_CHANGE, ...ACTION_TYPES }
 export const initialState = {
-    ready: false,
-    loadingError: '',
+    loading: true,
     collection: [],
     selectedPeriodType: '',
     selectedPeriod: '',
@@ -15,15 +14,14 @@ export default function reportPeriod(state = initialState, { type, payload }) {
         case ACTIONS.REPORT_PERIOD_TYPES_RECEIVED:
             return {
                 ...state,
-                ready: true,
+                loading: false,
                 collection: payload,
             }
 
         case ACTIONS.REPORT_PERIOD_TYPES_ERRORED:
             return {
                 ...state,
-                ready: true,
-                loadingError: payload,
+                loading: false,
             }
 
         case ACTIONS.REPORT_PERIOD_TYPE_SELECTED:
@@ -41,9 +39,9 @@ export default function reportPeriod(state = initialState, { type, payload }) {
 
         case ACTIONS.LOCATION_CHANGE:
             return {
-                ...state,
-                selectedPeriodType: '',
-                selectedPeriod: '',
+                ...initialState,
+                loading: state.loading,
+                collection: state.collection,
             }
 
         default:

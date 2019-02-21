@@ -12,7 +12,7 @@ describe('Test <OrganisationUnitGroupSets /> rendering:', () => {
 
     const defaultProps = {
         selectOrganisationUnit: selectMock,
-        ready: true,
+        loading: false,
         loadingError: '',
         collection: [],
         selected: null,
@@ -32,10 +32,6 @@ describe('Test <OrganisationUnitGroupSets /> rendering:', () => {
     })
 
     it('Should render a loading message when not ready', () => {
-        expect(componentRenderer({ ready: false })).toMatchSnapshot()
-    })
-
-    it('Should render an error message when it has a loadingError', () => {
-        expect(componentRenderer({ loadingError: 'Oops' })).toMatchSnapshot()
+        expect(componentRenderer({ loading: true })).toMatchSnapshot()
     })
 })

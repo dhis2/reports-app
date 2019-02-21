@@ -1,13 +1,123 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render a <PeriodTypeDropDown/> and <PeriodPicker/> when selectedPeriodType is truthy 1`] = `
-<ContextConsumer>
-  <Component />
-</ContextConsumer>
+<div>
+  <span
+    style={
+      Object {
+        "color": "#757575",
+        "display": "block",
+        "fontSize": "14px",
+        "marginBottom": 5,
+        "textAlign": "left",
+      }
+    }
+  >
+    This is my label
+  </span>
+  <PeriodTypeDropDown
+    loading={false}
+    menuItems={
+      Array [
+        Object {
+          "displayName": "Yes",
+          "id": "1",
+        },
+        Object {
+          "displayName": "No",
+          "id": "2",
+        },
+      ]
+    }
+    onChange={[Function]}
+    value="Quarterly"
+  />
+  <PeriodPicker
+    onPickPeriod={[Function]}
+    periodType="Quarterly"
+  />
+</div>
 `;
 
 exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render a <PeriodTypeDropDown/> when selectedPeriodType is falsy 1`] = `
-<ContextConsumer>
-  <Component />
-</ContextConsumer>
+<div>
+  <span
+    style={
+      Object {
+        "color": "#757575",
+        "display": "block",
+        "fontSize": "14px",
+        "marginBottom": 5,
+        "textAlign": "left",
+      }
+    }
+  >
+    This is my label
+  </span>
+  <PeriodTypeDropDown
+    loading={false}
+    menuItems={
+      Array [
+        Object {
+          "displayName": "Yes",
+          "id": "1",
+        },
+        Object {
+          "displayName": "No",
+          "id": "2",
+        },
+      ]
+    }
+    onChange={[Function]}
+    value=""
+  />
+</div>
+`;
+
+exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render the parsed period when a period has been selected 1`] = `
+<div>
+  <span
+    style={
+      Object {
+        "color": "#757575",
+        "display": "block",
+        "fontSize": "14px",
+        "marginBottom": 5,
+        "textAlign": "left",
+      }
+    }
+  >
+    This is my label
+  </span>
+  <PeriodTypeDropDown
+    loading={false}
+    menuItems={
+      Array [
+        Object {
+          "displayName": "Yes",
+          "id": "1",
+        },
+        Object {
+          "displayName": "No",
+          "id": "2",
+        },
+      ]
+    }
+    onChange={[Function]}
+    value="Daily"
+  />
+  <PeriodPicker
+    onPickPeriod={[Function]}
+    periodType="Daily"
+  />
+  <div
+    style={
+      Object {
+        "marginBottom": "16px",
+      }
+    }
+  >
+    January 1, 2018
+  </div>
+</div>
 `;

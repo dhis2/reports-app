@@ -1,4 +1,4 @@
-import menuGrid from './menu-element'
+import menuGrid from './styles/menu-element'
 
 const LEFT_BART_WIDTH = 295
 const HEADER_HEIGHT = '4rem'
@@ -40,12 +40,20 @@ const styles = {
         paddingLeft: CONTENT_AREA_PADDING,
         paddingRight: CONTENT_AREA_PADDING,
     },
-    feedbackSnackBar: {
+    loadingContainer: {
         position: 'fixed',
+        top: 0,
+        left: 0,
+        height: '100%',
+        width: '100%',
+        background: 'rgba(0,0,0,0.4)',
+        zIndex: 3000, // over dialog
+    },
+    feedbackSnackBar: {
+        position: 'absolute',
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        zIndex: 3000, // over dialog
     },
     marginForAddButton: {
         marginBottom: PAGING_BOTTOM_MARGIN,
@@ -103,6 +111,9 @@ const styles = {
         paddingLeft: '12px',
         color: '#276696',
         textDecoration: 'none',
+    },
+    parsedPeriod: {
+        marginBottom: '16px',
     },
 }
 
