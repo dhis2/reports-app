@@ -10,6 +10,7 @@ import {
     DATA_SET_REPORTS_ENDPOINT,
     DATA_SET_DIMENSIONS_ENDPOINT,
     REPORTING_RATE_SUMMARY_ENDPOINT,
+    RESOURCE_ENDPOINT,
     postDataSetReportCommentUrl,
 } from './api/constants'
 
@@ -165,3 +166,20 @@ export const getOrgUnitGroupSets = () =>
         paging: false,
         fields: 'id,displayName',
     })
+
+/**
+ * @returns {Promise}
+ */
+export const getResources = () => {
+    const requestData = {
+        page,
+        pageSize,
+        fields: 'displayName,id,url,external,access',
+        ...(search ? { search } : {}),
+    }
+
+    return api.get(
+        RESOURCE_ENDPOINT,
+        requestData,
+    )
+}
