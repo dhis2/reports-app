@@ -14,7 +14,7 @@ export const loadHtmlReport = () => (dispatch, getState) => {
     const { organisationUnits, dataSet, reportPeriod } = getState()
 
     return getReportingRateSummaryReport(
-        organisationUnits.selected.id,
+        organisationUnits.selected,
         dataSet.selected.id,
         reportPeriod.selectedPeriod,
         organisationUnits.selectedOptions

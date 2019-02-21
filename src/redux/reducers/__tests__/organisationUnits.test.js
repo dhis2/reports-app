@@ -4,9 +4,9 @@ import reducer, { ACTIONS, initialState } from '../organisationUnits'
 describe('Reducer - organisationUnits', () => {
     const errorStr = 'Oops'
     const mockCollection = [
-        { id: '1', displayName: '1' },
-        { id: '2', displayName: '2' },
-        { id: '3', displayName: '3' },
+        { id: 'id1', path: '/sf', displayName: 'test 1', children: [1, 2, 3] },
+        { id: 'id2', path: '/sf', displayName: 'test 2', children: [1, 2, 3] },
+        { id: 'id3', path: '/sf', displayName: 'test 3', children: [1, 2, 3] },
     ]
 
     it('should return the default state', () => {

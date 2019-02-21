@@ -4,12 +4,13 @@ import {
     addFilterForName,
     formatStandardReportsResponse,
     mapCollectionToDimensionQueryString,
+    mapResponseToArrayOfIds,
 } from './api/helpers'
 import {
     STANDARD_REPORTS_ENDPOINT,
     DATA_SET_REPORTS_ENDPOINT,
     DATA_SET_DIMENSIONS_ENDPOINT,
-    REPORTING_RATE_SUMMARY_ENDPOINT,
+    DATA_DIMENSION_SUFFIXES,
     postDataSetReportCommentUrl,
 } from './api/constants'
 
@@ -130,28 +131,52 @@ export const postDataSetReportComment = (
 }
 
 /**
- * @param {string} orgUnitId
+ * @param {Object} orgUnit
  * @param {string} dataSetId
  * @param {string} period
- * @param {Object} selectedOrgUnitOptions
+ * @param {Object} orgUnitOptions
  * @returns {Promise}
  */
-export const getReportingRateSummaryReport = (
-    orgUnitId,
+export const getReportingRateSummaryReport = async (
+    orgUnit,
     dataSetId,
     period,
     orgUnitOptions
 ) => {
-    return api.get(
-        REPORTING_RATE_SUMMARY_ENDPOINT.replace('%orgUnitId%', orgUnitId),
-        {
-            ds: dataSetId,
-            pe: period,
-            groupUids: Object.keys(orgUnitOptions).map(
-                key => orgUnitOptions[key]
-            ),
-        }
+    const orgUnitIds = await getOrgUnitAndChildrenIds(orgUnit)
+    const dataDimensions = DATA_DIMENSION_SUFFIXES.map(
+        suffix => `${dataSetId}.${suffix}`
     )
+    const req = new d2.analytics.request()
+        .addDataDimension(dataDimensions)
+        .addOrgUnitDimension(orgUnitIds)
+        .addPeriodFilter(period)
+        .withDisplayProperty('SHORTNAME')
+
+    for (let key in orgUnitOptions) {
+        if (orgUnitOptions[key]) {
+            req.addDimension(key, orgUnitOptions[key])
+        }
+    }
+
+    return d2.analytics.aggregate.get(req)
+}
+
+/**
+ * @param {Object} orgUnit
+ * @returns {Promise} - Array of IDs of the orgUnit and its direct descendants
+ */
+export const getOrgUnitAndChildrenIds = orgUnit => {
+    const children = orgUnit.children.size
+        ? Promise.resolve(orgUnit.children)
+        : d2.models.organisationUnits
+              .get(orgUnit.id, { fields: ['children[id]'] })
+              .then(({ children }) => children)
+
+    return children.then(children => [
+        orgUnit.id,
+        ...mapResponseToArrayOfIds(children),
+    ])
 }
 
 /**
