@@ -3,11 +3,9 @@ import { actionTypes } from '../actions/dataSet'
 
 export const defaultSelected = { id: '', displayName: '' }
 export const defaultState = {
-    ready: false,
+    loading: false,
     selected: defaultSelected,
     options: [],
-    dimensionOptions: [],
-    selectedDimensionOptions: {},
 }
 
 export const dataSet = (state = defaultState, { type, payload } = {}) => {
@@ -33,7 +31,6 @@ export const dataSet = (state = defaultState, { type, payload } = {}) => {
         case actionTypes.LOADING_DATA_SET_OPTIONS_SUCCESS:
             return {
                 ...state,
-                ready: true,
                 loading: false,
                 options: payload,
             }
@@ -41,49 +38,13 @@ export const dataSet = (state = defaultState, { type, payload } = {}) => {
         case actionTypes.LOADING_DATA_SET_OPTIONS_ERROR:
             return {
                 ...state,
-                ready: false,
                 loading: false,
-                options: [],
-                selected: { id: '', displayName: '' },
-                loadingError: payload,
-            }
-
-        case actionTypes.LOADING_DIMENSIONS_START:
-            return {
-                ...state,
-                loading: true,
-                loadingError: '',
-                dimensionOptions: [],
-            }
-
-        case actionTypes.LOADING_DIMENSIONS_SUCCESS:
-            return {
-                ...state,
-                loading: false,
-                dimensionOptions: payload,
-            }
-
-        case actionTypes.LOADING_DIMENSIONS_ERROR:
-            return {
-                ...state,
-                loading: false,
-                loadingError: payload,
-            }
-
-        case actionTypes.SELECT_DIMENSION_OPTION:
-            return {
-                ...state,
-                selectedDimensionOptions: {
-                    ...state.selectedDimensionOptions,
-                    [payload.dimension]: payload.value,
-                },
             }
 
         case LOCATION_CHANGE:
             return {
-                ...defaultState,
-                ready: true,
-                options: state.options,
+                ...state,
+                selected: defaultSelected,
             }
 
         default:

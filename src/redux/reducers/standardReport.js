@@ -3,14 +3,6 @@ import {
     ADD_NEW_REPORT_ACTION,
     CONTEXT_MENU_ACTION,
 } from '../../pages/standard-report/standard.report.conf'
-import {
-    ACTION_MESSAGE,
-    ERROR,
-    LOADING,
-    SUCCESS,
-} from '../../utils/feedbackTypes.js'
-import i18n from '../../utils/i18n/locales'
-import { i18nKeys } from '../../utils/i18n/i18nKeys'
 
 const defaultState = {
     reports: [],
@@ -22,8 +14,6 @@ const defaultState = {
     loading: false,
     loadingError: '',
     requestDelete: false,
-    showFeedback: false,
-    feedbackConf: {},
 }
 
 // eslint-disable-next-line complexity
@@ -35,34 +25,19 @@ const standardReport = (state = defaultState, action = {}) => {
             return {
                 ...state,
                 loading: true,
-                loadingError: '',
-                showFeedback: true,
-                feedbackConf: { type: LOADING },
+            }
+
+        case actionTypes.LOADING_STANDARD_REPORTS_SUCCESS:
+            return {
+                ...state,
+                reports: payload,
+                loading: false,
             }
 
         case actionTypes.LOADING_STANDARD_REPORTS_ERROR:
             return {
                 ...state,
                 loading: false,
-                loadingError: payload,
-                showFeedback: true,
-                feedbackConf: {
-                    type: ERROR,
-                    message: payload,
-                },
-            }
-
-        case actionTypes.LOADING_STANDARD_REPORTS_SUCCESS:
-            return {
-                ...state,
-                loading: false,
-                loadingError: '',
-                reports: payload.reports,
-                showFeedback: true,
-                feedbackConf: {
-                    type: SUCCESS,
-                    message: payload.successMessage,
-                },
             }
 
         case actionTypes.SET_SEARCH:
@@ -121,12 +96,6 @@ const standardReport = (state = defaultState, action = {}) => {
                 requestDelete: true,
                 selectedReport: payload,
                 selectedAction: CONTEXT_MENU_ACTION.DELETE,
-                showFeedback: true,
-                feedbackConf: {
-                    type: ACTION_MESSAGE,
-                    message: payload.displayName,
-                    action: i18n.t(i18nKeys.messages.confirmDelete),
-                },
             }
 
         case actionTypes.DELETE_STANDARD_REPORT_START:
@@ -134,38 +103,21 @@ const standardReport = (state = defaultState, action = {}) => {
                 ...state,
                 requestDelete: false,
                 loading: true,
-                loadingError: '',
-                showFeedback: true,
-                feedbackConf: { type: LOADING },
             }
 
         case actionTypes.DELETE_STANDARD_REPORT_SUCCESS:
             return {
                 ...state,
-                loading: false,
-                loadingError: '',
                 selectedReport: {},
                 selectedAction: '',
-                showFeedback: false,
+                loading: false,
             }
 
         case actionTypes.DELETE_STANDARD_REPORT_ERROR:
             return {
                 ...state,
                 loading: false,
-                loadingError: payload,
-                showFeedback: true,
-                feedbackConf: {
-                    type: ERROR,
-                    message: payload,
-                },
             }
-
-        case actionTypes.HTML_REPORT_SHOW:
-            return { ...state, htmlReport: payload }
-
-        case actionTypes.HTML_REPORT_HIDE:
-            return { ...state, htmlReport: '' }
 
         default:
             return state

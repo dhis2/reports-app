@@ -1,94 +1,93 @@
-import configureMockStore from 'redux-mock-store'
-import thunk from 'redux-thunk'
+import { mockStore } from '../../../utils/test-helpers/mockStore'
 import {
     ACTION_TYPES as TYPES,
     fallbackErrorMessage,
     loadOrganisationUnits,
+    loadOrganisationUnitsErrorDefaultMessage,
     selectOrganisationUnit,
+    loadOrganisationUnitsStart,
+    loadOrganisationUnitsSuccess,
+    loadOrganisationUnitsError,
 } from '../organisationUnits'
+import { showErrorSnackBar } from '../feedback'
 import { getOrganisationUnits } from '../../../utils/api'
+import * as feedbackTypes from '../../../utils/feedbackTypes'
+import { ACTION_TYPES as feedbackActionTypes } from '../feedback'
 
 jest.mock('../../../utils/api', () => ({
     getOrganisationUnits: jest.fn(),
 }))
 
 describe('Actions - organisationUnits', () => {
-    const mockStore = configureMockStore([thunk])
-    const mockResp = [1, 2, 3, 4, 5]
-    const state = { organisationUnits: {} }
-    const mockOrgUnit = {
-        id: 'myId',
-        path: '/my/path',
-        displayName: 'My displayName',
-    }
-
-    const MOCK_ACTIONS = {
-        [TYPES.ORGANISATION_UNITS_RECEIVED]: {
-            type: TYPES.ORGANISATION_UNITS_RECEIVED,
-            payload: mockResp,
-        },
-        [TYPES.ORGANISATION_UNITS_ERRORED]: {
-            type: TYPES.ORGANISATION_UNITS_ERRORED,
-            payload: fallbackErrorMessage,
-        },
-        [TYPES.ORGANISATION_UNIT_SELECTED]: {
-            type: TYPES.ORGANISATION_UNIT_SELECTED,
-            payload: mockOrgUnit,
-        },
-    }
+    let store
+    beforeEach(() => {
+        store = mockStore({})
+    })
 
     afterEach(() => {
-        jest.clearAllMocks()
+        getOrganisationUnits.mockClear()
     })
 
     describe('loadOrganisationUnits successfully', () => {
-        it('creates ORGANISATION_UNITS_RECEIVED when it resolves successfully', () => {
-            getOrganisationUnits.mockImplementation(() =>
-                Promise.resolve(mockResp)
-            )
-            const expectedActions = [
-                MOCK_ACTIONS[TYPES.ORGANISATION_UNITS_RECEIVED],
-            ]
-            const store = mockStore(state)
+        const mockResp = [1, 2, 3, 4, 5]
+        getOrganisationUnits.mockImplementationOnce(() =>
+            Promise.resolve(mockResp)
+        )
+
+        it('should dispatch a loading start and success action', done => {
+            const expectedActions = expect.arrayContaining([
+                loadOrganisationUnitsStart(),
+                loadOrganisationUnitsSuccess(mockResp),
+            ])
+
             store.dispatch(loadOrganisationUnits()).then(() => {
                 expect(store.getActions()).toEqual(expectedActions)
+                done()
             })
         })
     })
+
     describe('loadOrganisationUnits failure', () => {
+        jest.spyOn(console, 'error').mockImplementation(() => null)
+
         beforeEach(() => {
-            jest.spyOn(console, 'error').mockImplementation(() => null)
+            getOrganisationUnits.mockImplementationOnce(() => Promise.reject())
         })
 
         afterEach(() => {
             console.error.mockClear()
         })
 
-        it('creates ORGANISATION_UNITS_ERRORED when it is rejected', () => {
-            getOrganisationUnits.mockImplementation(() => Promise.reject())
-            const expectedActions = [
-                MOCK_ACTIONS[TYPES.ORGANISATION_UNITS_ERRORED],
-            ]
-            const store = mockStore(state)
+        it('should dispatch a loading start and error action', done => {
+            const expectedActions = expect.arrayContaining([
+                loadOrganisationUnitsStart(),
+                loadOrganisationUnitsError(
+                    loadOrganisationUnitsErrorDefaultMessage
+                ),
+            ])
+
             store.dispatch(loadOrganisationUnits()).then(() => {
                 expect(store.getActions()).toEqual(expectedActions)
+                done()
             })
         })
 
-        it('prints the error in the console when rejected', () => {
-            getOrganisationUnits.mockImplementation(() => Promise.reject())
-            const store = mockStore(state)
+        it('should dispatch a show feedback action', done => {
+            const expectedActions = expect.arrayContaining([
+                showErrorSnackBar(loadOrganisationUnitsErrorDefaultMessage),
+            ])
+
+            store.dispatch(loadOrganisationUnits()).then(() => {
+                expect(store.getActions()).toEqual(expectedActions)
+                done()
+            })
+        })
+
+        it('prints the error in the console when rejected', done => {
             store.dispatch(loadOrganisationUnits()).then(() => {
                 expect(console.error).toHaveBeenCalledTimes(1)
+                done()
             })
-        })
-    })
-
-    describe('selectOrganisationUnit', () => {
-        it('creates a REPORT_PERIOD_TYPE_SELECTED action', () => {
-            expect(selectOrganisationUnit(undefined, mockOrgUnit)).toEqual(
-                MOCK_ACTIONS[TYPES.ORGANISATION_UNIT_SELECTED]
-            )
         })
     })
 })

@@ -9,7 +9,7 @@ describe('Reducer - reportPeriod', () => {
     const errorStr = 'Oops'
     const stateWithPeriodTypeSelected = {
         ...initialState,
-        ready: true,
+        loading: false,
         collection: mockCollection,
         selectedPeriodType: mockCollection[0],
     }
@@ -29,7 +29,7 @@ describe('Reducer - reportPeriod', () => {
         const expectedState = {
             ...initialState,
             collection: mockCollection,
-            ready: true,
+            loading: false,
         }
         expect(reducer(undefined, action)).toEqual(expectedState)
     })
@@ -40,8 +40,7 @@ describe('Reducer - reportPeriod', () => {
         }
         const expectedState = {
             ...initialState,
-            loadingError: errorStr,
-            ready: true,
+            loading: false,
         }
         expect(reducer(undefined, action)).toEqual(expectedState)
     })

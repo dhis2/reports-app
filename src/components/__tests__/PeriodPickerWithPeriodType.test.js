@@ -19,8 +19,7 @@ describe('Test <PeriodPickerWithPeriodType /> rendering:', () => {
         selectPeriod: selectPeriodMock,
         label: 'This is my label',
         collection: collectionMock,
-        ready: true,
-        loadingError: '',
+        loading: false,
         selectedPeriodType: '',
     }
 

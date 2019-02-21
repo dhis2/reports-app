@@ -1,14 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { DropDown } from '@dhis2/d2-ui-core'
 import i18n from '../utils/i18n/locales'
 import { i18nKeys } from '../utils/i18n/i18nKeys'
 import styles from '../utils/styles'
+import { selectDimensionOption } from '../redux/actions/dataSetDimensions'
 
 const createDimensionChangeHandler = (onChange, dimensionId) => element =>
     onChange(dimensionId, element)
 
-export const DimensionDropdown = props => (
+const DimensionDropdown = props => (
     <div key={props.dimension.id} className="data-set-dimension">
         <span style={styles.formLabel}>{props.dimension.displayName}</span>
         <DropDown
@@ -34,13 +36,13 @@ DimensionDropdown.propTypes = {
 
 const DataSetDimensions = props => (
     <React.Fragment>
-        {props.dimensions.map(dimension => (
+        {props.options.map(dimension => (
             <DimensionDropdown
                 key={dimension.id}
                 dimension={dimension}
                 dropdownStyle={props.dropdownStyle}
                 fullWidth={props.fullWidth}
-                values={props.values}
+                values={props.selected}
                 onChange={createDimensionChangeHandler(
                     props.onChange,
                     dimension.id
@@ -51,9 +53,9 @@ const DataSetDimensions = props => (
 )
 
 DataSetDimensions.propTypes = {
-    dimensions: PropTypes.array.isRequired,
+    options: PropTypes.array.isRequired,
+    selected: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
-    values: PropTypes.object.isRequired,
     dropdownStyle: PropTypes.object,
     fullWidth: PropTypes.bool,
 }
@@ -65,4 +67,22 @@ DataSetDimensions.defaultProps = {
     },
 }
 
-export default DataSetDimensions
+const mapStateToProps = ({ dataSetDimensions }) => ({
+    options: dataSetDimensions.options,
+    selected: dataSetDimensions.selected,
+})
+
+const mapDispatchToProps = dispatch => ({
+    onChange: (id, evt) =>
+        dispatch(selectDimensionOption(id, evt.target.value)),
+})
+
+const ConnectedDataSetDimensions = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(DataSetDimensions)
+
+export {
+    DataSetDimensions as OriginalComponent,
+    ConnectedDataSetDimensions as DataSetDimensions,
+}

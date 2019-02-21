@@ -16,7 +16,7 @@ exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render a <Peri
     This is my label
   </span>
   <PeriodTypeDropDown
-    loadingError=""
+    loading={false}
     menuItems={
       Array [
         Object {
@@ -30,7 +30,6 @@ exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render a <Peri
       ]
     }
     onChange={[Function]}
-    ready={true}
     value="Quarterly"
   />
   <PeriodPicker
@@ -56,7 +55,7 @@ exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render a <Peri
     This is my label
   </span>
   <PeriodTypeDropDown
-    loadingError=""
+    loading={false}
     menuItems={
       Array [
         Object {
@@ -70,7 +69,6 @@ exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render a <Peri
       ]
     }
     onChange={[Function]}
-    ready={true}
     value=""
   />
 </div>
@@ -92,7 +90,7 @@ exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render the par
     This is my label
   </span>
   <PeriodTypeDropDown
-    loadingError=""
+    loading={false}
     menuItems={
       Array [
         Object {
@@ -106,7 +104,6 @@ exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render the par
       ]
     }
     onChange={[Function]}
-    ready={true}
     value="Daily"
   />
   <PeriodPicker

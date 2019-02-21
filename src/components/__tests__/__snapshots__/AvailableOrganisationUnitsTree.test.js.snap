@@ -25,15 +25,3 @@ exports[`Test <OrganisationUnitGroupSets /> rendering: Should render a loading m
   Updating Organisation Units Tree...
 </span>
 `;
-
-exports[`Test <OrganisationUnitGroupSets /> rendering: Should render an error message when it has a loadingError 1`] = `
-<span
-  style={
-    Object {
-      "color": "#f44336",
-    }
-  }
->
-  Oops
-</span>
-`;
