@@ -9,7 +9,7 @@ import { connect } from 'react-redux'
 import { updateFeedbackState } from '../redux/actions/feedback'
 import styles from './resource/Resource.style'
 import appStyles from '../utils/styles'
-import manageError from '../utils/pageEnhancers/manageError.HOC'
+import manageError from '../utils/pageEnhancers/manageError.HOC';
 import PageHelper from '../components/PageHelper'
 import { ConnectedAddEditResource } from './resource/add-edit-resource/AddEditResource'
 import { ACTION_MESSAGE, SUCCESS, LOADING } from '../utils/feedbackTypes.js'
@@ -26,13 +26,18 @@ import { DEBOUNCE_DELAY } from '../config/sections.conf'
 import i18n from '../utils/i18n/locales'
 import { i18nKeys } from '../utils/i18n/i18nKeys'
 
+import {
+    loadResources,
+    goToNextPage,
+    goToPrevPage,
+} from '../redux/actions/resource';
+
 export default class Resource extends React.Component {
     constructor(props) {
         super(props)
 
         this.state = {
             pager: INITIAL_PAGER,
-            documents: [],
             search: '',
             open: false,
             timeoutId: null,
@@ -63,52 +68,7 @@ export default class Resource extends React.Component {
     }
 
     componentDidMount() {
-        super.componentDidMount()
-        this.loadDocuments(INITIAL_PAGER)
-    }
-
-    componentWillUnmount() {
-        super.componentWillUnmount()
-        this.stopLoading()
-        if (this.state.timeoutId) {
-            clearTimeout(this.state.timeoutId)
-        }
-    }
-
-    loadDocuments(pager, search) {
-        const api = this.props.d2.Api.getApi()
-        let url = `${DOCUMENTS_ENDPOINT}?page=${pager.page}&pageSize=${
-            pager.pageSize
-        }&fields=displayName,id,url,external,access`
-        this.setState({ search })
-        if (search) {
-            url = `${url}&filter=displayName:ilike:${search}`
-        }
-        if (api) {
-            this.startLoading()
-            api.get(url)
-                .then(response => {
-                    if (response && this.isPageMounted()) {
-                        if (this.state.deleteInProgress) {
-                            this.props.updateFeedbackState(true, {
-                                type: SUCCESS,
-                                message: i18n.t(
-                                    i18nKeys.messages.resourceDeleted
-                                ),
-                            })
-                        } else {
-                            this.stopLoading()
-                        }
-                        this.setState(response)
-                    }
-                })
-                .catch(error => {
-                    this.handleError(error)
-                })
-                .finally(() => {
-                    this.state.deleteInProgress = false
-                })
-        }
+        this.props.loadResources()
     }
 
     onNextPageClick() {
@@ -328,7 +288,7 @@ export default class Resource extends React.Component {
                     </div>
                     <Table
                         columns={['displayName']}
-                        rows={this.state.documents}
+                        rows={this.props.resources}
                         contextMenuActions={contextMenuOptions}
                         contextMenuIcons={CONTEXT_MENU_ICONS}
                         isContextActionAllowed={this.showContextAction}
@@ -337,7 +297,7 @@ export default class Resource extends React.Component {
                         id={'no-resource-find-message-id'}
                         style={{
                             textAlign: 'center',
-                            ...(this.state.documents.length > 0 ||
+                            ...(this.props.resources.length > 0 ||
                             this.state.loading
                                 ? { display: 'none' }
                                 : ''),
@@ -378,11 +338,16 @@ Resource.childContextTypes = {
     d2: PropTypes.object,
 }
 
-const mapStateToProps = state => ({})
+const mapStateToProps = state => ({
+    resources: state.resource.collection,
+    pager: state.pagination,
+})
+const mapDispatchToProps = dispatch => ({
+    loadResources: () => dispatch(loadResources()),
+    goToNextPage: () => dispatch(goToNextPage()),
+    goToPrevPage: () => dispatch(goToPrevPage()),
+})
 
-const mapDispatchToProps = dispatch => ({})
-
-export const ConnectedResource = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(manageError(Resource))
+export const ConnectedResource = connect(mapStateToProps, mapDispatchToProps)(
+    manageError(Resource),
+)
