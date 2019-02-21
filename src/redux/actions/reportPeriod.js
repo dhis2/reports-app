@@ -1,6 +1,4 @@
-import i18n from '@dhis2/d2-i18n'
 import { getPeriodTypes } from '../../utils/api'
-import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
 
 export const ACTION_TYPES = {
     REPORT_PERIOD_TYPES_LOADING_START: 'REPORT_PERIOD_TYPES_LOADING_START',
