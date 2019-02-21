@@ -10,7 +10,7 @@ const defaultState = {
     selectedAction: '',
     search: '',
     open: false,
-    htmlReport: '',
+    reportData: '',
     loading: false,
     loadingError: '',
     requestDelete: false,

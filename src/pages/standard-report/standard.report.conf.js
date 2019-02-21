@@ -54,7 +54,7 @@ export const REPORT_TYPES = [
     },
     {
         id: TYPES.HTML,
-        name: i18n.t(i18nKeys.standardReport.htmlReportType),
+        name: i18n.t(i18nKeys.standardReport.reportDataType),
     },
 ]
 

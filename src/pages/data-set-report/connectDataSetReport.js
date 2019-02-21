@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import {
-    loadHtmlReport,
+    loadReportData,
     selectDataSet,
     toggleSelectedUnitOnly,
     shareDataSetReportComment,
@@ -8,13 +8,13 @@ import {
 import {
     exportReportToXls,
     setReportComment,
-    unsetHtmlReport,
-} from '../../redux/actions/htmlReport'
+    unsetReportData,
+} from '../../redux/actions/reportData'
 import { isActionEnabled } from '../../redux/selectors/dataSetReport/isActionEnabled'
 
 const mapStateToProps = state => ({
-    reportHtml: state.htmlReport.content,
-    reportComment: state.htmlReport.comment,
+    reportHtml: state.reportData.content,
+    reportComment: state.reportData.comment,
     selectedUnitOnly: state.dataSetReport.selectedUnitOnly,
     selectedOrgUnit: state.organisationUnits.selected,
     selectedPeriod: state.reportPeriod.selectedPeriod,
@@ -28,8 +28,8 @@ const mapDispatchToProps = dispatch => ({
                 document.querySelectorAll('#report-container table')
             )
         ),
-    loadHtmlReport: () => dispatch(loadHtmlReport()),
-    showDataSetReportForm: () => dispatch(unsetHtmlReport()),
+    loadReportData: () => dispatch(loadReportData()),
+    showDataSetReportForm: () => dispatch(unsetReportData()),
     selectDataSet: e => dispatch(selectDataSet(e.target.value)),
     toggleSelectedUnitOnly: (e, selectedUnitOnly) =>
         dispatch(toggleSelectedUnitOnly(selectedUnitOnly)),

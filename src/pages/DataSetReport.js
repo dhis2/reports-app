@@ -4,7 +4,7 @@ import { Paper } from 'material-ui'
 import manageError from '../utils/pageEnhancers/manageError.HOC'
 import { Snackbar } from '../components/feedback/Snackbar'
 import { SectionHeadline } from '../components/SectionHeadline'
-import { InlineHtmlReportCommentable } from '../components/InlineHtmlReportCommentable'
+import { TabularReportCommentable } from '../components/TabularReportCommentable'
 import { DataInputs } from './data-set-report/DataInputs'
 import { FormActions } from './data-set-report/FormActions'
 import { connectDataSetReport } from './data-set-report/connectDataSetReport'
@@ -35,11 +35,11 @@ class DataSetReport extends React.Component {
                             }
                         />
                         <FormActions
-                            onGetReportClick={props.loadHtmlReport}
+                            onGetReportClick={props.loadReportData}
                             isGetReportDisabled={!props.isActionEnabled}
                         />
                     </div>
-                    <InlineHtmlReportCommentable
+                    <TabularReportCommentable
                         shouldRender={!!props.reportHtml}
                         reportHtml={props.reportHtml}
                         reportComment={props.reportComment}
@@ -65,7 +65,7 @@ DataSetReport.propTypes = {
     selectedOrgUnit: PropTypes.object.isRequired,
     selectedPeriod: PropTypes.string.isRequired,
     exportReportToXls: PropTypes.func.isRequired,
-    loadHtmlReport: PropTypes.func.isRequired,
+    loadReportData: PropTypes.func.isRequired,
     selectDataSet: PropTypes.func.isRequired,
     toggleSelectedUnitOnly: PropTypes.func.isRequired,
     shareDataSetReportComment: PropTypes.func.isRequired,

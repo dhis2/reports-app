@@ -1,15 +1,15 @@
 import { getReportingRateSummaryReport } from '../../utils/api'
 import {
-    loadingHtmlReportStartWithFeedback,
-    loadingHtmlReportSuccessWithFeedback,
-    loadingHtmlReportErrorWithFeedback,
-} from './htmlReport'
+    loadingReportDataStartWithFeedback,
+    loadingReportDataSuccessWithFeedback,
+    loadingReportDataErrorWithFeedback,
+} from './reportData'
 
 /**
  * @returns {Function} redux thunk
  */
-export const loadHtmlReport = () => (dispatch, getState) => {
-    dispatch(loadingHtmlReportStartWithFeedback())
+export const loadReportData = () => (dispatch, getState) => {
+    dispatch(loadingReportDataStartWithFeedback())
 
     const { organisationUnits, dataSet, reportPeriod } = getState()
 
@@ -20,7 +20,7 @@ export const loadHtmlReport = () => (dispatch, getState) => {
         organisationUnits.selectedOptions
     )
         .then(response =>
-            dispatch(loadingHtmlReportSuccessWithFeedback(response))
+            dispatch(loadingReportDataSuccessWithFeedback(response))
         )
-        .catch(error => dispatch(loadingHtmlReportErrorWithFeedback(error)))
+        .catch(error => dispatch(loadingReportDataErrorWithFeedback(error)))
 }

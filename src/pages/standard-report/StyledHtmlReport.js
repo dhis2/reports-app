@@ -3,24 +3,24 @@ import PropTypes from 'prop-types'
 import { Paper } from 'material-ui'
 import HtmlReport from './HtmlReport'
 
-const StyledHtmlReport = ({ htmlReport }) => (
+const StyledReportData = ({ reportData }) => (
     <Paper
         style={{
-            display: htmlReport ? 'flex' : 'none',
+            display: reportData ? 'flex' : 'none',
             justifyContent: 'center',
             alignItems: 'center',
         }}
     >
-        <HtmlReport html={htmlReport} />
+        <HtmlReport html={reportData} />
     </Paper>
 )
 
-StyledHtmlReport.propTypes = {
-    htmlReport: PropTypes.string,
+StyledReportData.propTypes = {
+    reportData: PropTypes.string,
 }
 
-StyledHtmlReport.defaultProps = {
-    htmlReport: null,
+StyledReportData.defaultProps = {
+    reportData: null,
 }
 
-export default StyledHtmlReport
+export default StyledReportData

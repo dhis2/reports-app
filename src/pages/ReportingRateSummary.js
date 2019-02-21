@@ -5,7 +5,7 @@ import i18n from '../utils/i18n/locales'
 import styles from '../utils/styles'
 import manageError from '../utils/pageEnhancers/manageError.HOC'
 import { Snackbar } from '../components/feedback/Snackbar'
-import { InlineHtmlReport } from '../components/InlineHtmlReport'
+import { TabularReport } from '../components/TabularReport'
 import { SectionHeadline } from '../components/SectionHeadline'
 import { connectReportingRateSummary } from './reporting-rate-summary/connectReportingRateSummary'
 import { Form } from './reporting-rate-summary/Form'
@@ -19,17 +19,17 @@ export default class ReportingRateSummary extends React.Component {
                 <SectionHeadline
                     label={i18n.t('Resource')}
                     showBackButton={!!props.reportHtml}
-                    onBackClick={props.unsetHtmlReport}
+                    onBackClick={props.unsetReportData}
                     systemVersion={props.d2.system.version}
                     sectionKey={props.sectionKey}
                 />
                 <Paper style={styles.container}>
                     <Form
                         showForm={!props.reportHtml}
-                        loadHtmlReport={props.loadHtmlReport}
+                        loadReportData={props.loadReportData}
                         isActionEnabled={props.isActionEnabled}
                     />
-                    <InlineHtmlReport
+                    <TabularReport
                         shouldRender={!!props.reportHtml}
                         onDownloadXlsClick={props.exportReportToXls}
                         reportHtml={props.reportHtml}
@@ -45,9 +45,9 @@ ReportingRateSummary.propTypes = {
     d2: PropTypes.object.isRequired,
     isActionEnabled: PropTypes.bool.isRequired,
     reportHtml: PropTypes.string.isRequired,
-    unsetHtmlReport: PropTypes.func.isRequired,
+    unsetReportData: PropTypes.func.isRequired,
     exportReportToXls: PropTypes.func.isRequired,
-    loadHtmlReport: PropTypes.func.isRequired,
+    loadReportData: PropTypes.func.isRequired,
     selectedOrgUnit: PropTypes.object,
 }
 

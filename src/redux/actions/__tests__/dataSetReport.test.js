@@ -1,13 +1,13 @@
 import { mockStore } from '../../../utils/test-helpers/mockStore'
 import {
-    loadingHtmlReportStart,
-    loadingHtmlReportSuccess,
-    loadingHtmlReportError,
+    loadingReportDataStart,
+    loadingReportDataSuccess,
+    loadingReportDataError,
     sharingReportCommentStart,
     sharingReportCommentSuccess,
     sharingReportCommentError,
-} from '../htmlReport'
-import { loadHtmlReport, shareDataSetReportComment } from '../dataSetReport'
+} from '../reportData'
+import { loadReportData, shareDataSetReportComment } from '../dataSetReport'
 import { getDataSetReports, postDataSetReportComment } from '../../../utils/api'
 
 jest.mock('../../../utils/api', () => ({
@@ -34,24 +34,24 @@ describe('Actions - dataSetReport - Async thunks', () => {
 
         it('should dispatch a start loading action when loading the html report', () => {
             const expectedActions = expect.arrayContaining([
-                loadingHtmlReportStart(),
+                loadingReportDataStart(),
             ])
             getDataSetReports.mockImplementationOnce(() => Promise.resolve())
 
-            store.dispatch(loadHtmlReport())
+            store.dispatch(loadReportData())
             expect(store.getActions()).toEqual(expectedActions)
         })
 
         it('should dispatch a success action when loading the report successfully', done => {
             const report = 'Html Report'
             const expectedActions = expect.arrayContaining([
-                loadingHtmlReportSuccess(report),
+                loadingReportDataSuccess(report),
             ])
             getDataSetReports.mockImplementationOnce(() =>
                 Promise.resolve(report)
             )
 
-            store.dispatch(loadHtmlReport()).then(() => {
+            store.dispatch(loadReportData()).then(() => {
                 expect(store.getActions()).toEqual(expectedActions)
                 done()
             })
@@ -59,11 +59,11 @@ describe('Actions - dataSetReport - Async thunks', () => {
 
         it('should dispatch an error action when loading the html report fails', done => {
             const expectedActions = expect.arrayContaining([
-                loadingHtmlReportError(),
+                loadingReportDataError(),
             ])
             getDataSetReports.mockImplementationOnce(() => Promise.reject())
 
-            store.dispatch(loadHtmlReport()).then(() => {
+            store.dispatch(loadReportData()).then(() => {
                 expect(store.getActions()).toEqual(expectedActions)
                 done()
             })

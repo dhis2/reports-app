@@ -33,7 +33,7 @@ export const Form = props => (
             <Button
                 raised
                 color="primary"
-                onClick={props.loadHtmlReport}
+                onClick={props.loadReportData}
                 disabled={!props.isActionEnabled}
             >
                 {i18n.t('Get Report')}
@@ -45,5 +45,5 @@ export const Form = props => (
 Form.propTypes = {
     showForm: PropTypes.bool.isRequired,
     isActionEnabled: PropTypes.bool.isRequired,
-    loadHtmlReport: PropTypes.func.isRequired,
+    loadReportData: PropTypes.func.isRequired,
 }

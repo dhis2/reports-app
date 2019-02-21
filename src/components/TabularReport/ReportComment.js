@@ -9,7 +9,7 @@ const inputFieldPlaceholder = i18n.t(
     'Write a comment, question or interpretation of this report'
 )
 
-export const HtmlReportComment = props => (
+export const ReportComment = props => (
     <div id="share-component">
         <div>
             <InputField
@@ -32,7 +32,7 @@ export const HtmlReportComment = props => (
     </div>
 )
 
-HtmlReportComment.propTypes = {
+ReportComment.propTypes = {
     comment: PropTypes.string.isRequired,
     shareDataSetReportComment: PropTypes.func.isRequired,
     setDataSetReportComment: PropTypes.func.isRequired,

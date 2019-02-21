@@ -111,7 +111,7 @@ export const i18nKeys = {
         getCurrentDesign: 'Get current design',
         getJasperTemplate: 'Get Jasper Report Template',
         getHTMLTemplate: 'Get HTML Report Template',
-        htmlReportType: 'HTML report',
+        reportDataType: 'HTML report',
         jasperJDBCReportType: 'Jasper report with JDBC data source',
         jasperReportTable: 'Jasper report with report table data source',
     },
