@@ -1,3 +1,6 @@
+import i18n from '@dhis2/d2-i18n'
+import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
+import { showErrorSnackBar } from './feedback'
 import { getPeriodTypes } from '../../utils/api'
 
 export const ACTION_TYPES = {
@@ -24,12 +27,27 @@ export const loadPeriodTypesError = () => ({
     type: ACTION_TYPES.REPORT_PERIOD_TYPES_ERRORED,
 })
 
+/**
+ * @param {Error} error
+ * @return {Function}
+ */
+
+export const fallbackErrorMessage = i18n.t('Could not load period types')
+export const loadPeriodTypesErrorWithFeedback = error => dispatch => {
+    const displayMessage = humanReadableErrorMessage(
+        error,
+        fallbackErrorMessage
+    )
+    dispatch(showErrorSnackBar(displayMessage))
+    dispatch(loadPeriodTypesError())
+}
+
 export const loadPeriodTypes = () => dispatch =>
     getPeriodTypes()
         .then(periodTypes => dispatch(loadPeriodTypesSuccess(periodTypes)))
         .catch(error => {
             console.error(error)
-            dispatch(loadPeriodTypesError())
+            dispatch(loadPeriodTypesErrorWithFeedback(error))
         })
 
 export const selectPeriodType = event => ({
