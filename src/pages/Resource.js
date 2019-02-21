@@ -37,6 +37,7 @@ import {
     calculatePageValue,
 } from '../utils/pagination/helper'
 import { SectionHeadline } from '../components/SectionHeadline'
+import { NoResultsMessage } from '../components/NoResultsMessage'
 
 export default class Resource extends React.Component {
     constructor(props) {
@@ -44,7 +45,6 @@ export default class Resource extends React.Component {
 
         this.state = {
             open: false,
-            timeoutId: null,
             loading: false,
         }
 
@@ -264,18 +264,9 @@ export default class Resource extends React.Component {
                         contextMenuIcons={CONTEXT_MENU_ICONS}
                         isContextActionAllowed={this.showContextAction}
                     />
-                    <p
-                        id={'no-resource-find-message-id'}
-                        style={{
-                            textAlign: 'center',
-                            ...(this.props.resources.length > 0 ||
-                            this.state.loading
-                                ? { display: 'none' }
-                                : ''),
-                        }}
-                    >
-                        {i18n.t(i18nKeys.messages.noResultsFound)}
-                    </p>
+                    {props.resources.length && props.loadingResources && (
+                        <NoResultsMessage />
+                    )}
                     <div id={'footer-pagination-id'}>
                         <Pagination
                             total={this.props.pager.total}
@@ -308,6 +299,7 @@ Resource.childContextTypes = {
 }
 
 const mapStateToProps = state => ({
+    loadingResources: state.resource.loading,
     search: state.resource.search,
     resources: state.resource.collection,
     pager: state.pagination,
