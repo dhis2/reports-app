@@ -1,59 +1,32 @@
-/* React */
 import React from 'react'
 import PropTypes from 'prop-types'
-
-/* d2-ui */
 import Table from '@dhis2/d2-ui-table'
 import SharingDialog from '@dhis2/d2-ui-sharing-dialog'
 import { Button, Pagination, SvgIcon, InputField } from '@dhis2/d2-ui-core'
-
-/* d2-ui styles */
 import '@dhis2/d2-ui-core/build/css/Table.css'
 import '@dhis2/d2-ui-core/build/css/Pagination.css'
-
-/* Redux */
 import { connect } from 'react-redux'
-import { updateFeedbackState } from '../../redux/actions/feedback'
-
-/* styles */
-import styles from './Resource.style'
-import appStyles from '../../utils/styles'
-
-/* app components */
-import Page from '../Page'
-import PageHelper from '../../components/PageHelper'
-import { ConnectedAddEditResource } from './add-edit-resource/AddEditResource'
-import { ACTION_MESSAGE, SUCCESS, LOADING } from '../../utils/feedbackTypes.js'
-
-/* utils */
-import { getDocsUrl } from '../../utils/getDocsUrl'
-import { calculatePageValue } from '../../utils/pagination'
-import { defaultState as INITIAL_PAGER } from '../../redux/reducers/pagination'
-
-/* app config */
+import { updateFeedbackState } from '../redux/actions/feedback'
+import styles from './resource/Resource.style'
+import appStyles from '../utils/styles'
+import manageError from '../utils/pageEnhancers/manageError.HOC'
+import PageHelper from '../components/PageHelper'
+import { ConnectedAddEditResource } from './resource/add-edit-resource/AddEditResource'
+import { ACTION_MESSAGE, SUCCESS, LOADING } from '../utils/feedbackTypes.js'
+import { getDocsUrl } from '../utils/getDocsUrl'
+import { calculatePageValue } from '../utils/pagination'
+import { defaultState as INITIAL_PAGER } from '../redux/reducers/pagination'
 import {
     DOCUMENTS_ENDPOINT,
     ADD_NEW_RESOURCE_ACTION,
     CONTEXT_MENU_ACTION,
     CONTEXT_MENU_ICONS,
-} from './resource.conf'
-import { DEBOUNCE_DELAY } from '../../config/sections.conf'
+} from './resource/resource.conf'
+import { DEBOUNCE_DELAY } from '../config/sections.conf'
+import i18n from '../utils/i18n/locales'
+import { i18nKeys } from '../utils/i18n/i18nKeys'
 
-/* i18n */
-import i18n from '../../utils/i18n/locales'
-import { i18nKeys } from '../../utils/i18n/i18nKeys'
-
-export default class Resource extends Page {
-    static propTypes = {
-        showSnackbar: PropTypes.bool,
-        snackbarConf: PropTypes.object,
-    }
-
-    static defaultProps = {
-        showSnackbar: false,
-        snackbarConf: {},
-    }
-
+export default class Resource extends React.Component {
     constructor(props) {
         super(props)
 
@@ -136,25 +109,6 @@ export default class Resource extends Page {
                     this.state.deleteInProgress = false
                 })
         }
-    }
-
-    startLoading = () => {
-        this.props.updateFeedbackState(true, { type: LOADING })
-        this.setState({ loading: true })
-    }
-
-    stopLoading = () => {
-        this.props.updateFeedbackState(false)
-        this.setState({ loading: false })
-    }
-
-    /* Pagination */
-    hasNextPage() {
-        return this.state.pager.page < this.state.pager.pageCount
-    }
-
-    hasPreviousPage() {
-        return this.state.pager.page > 1
     }
 
     onNextPageClick() {
@@ -340,6 +294,7 @@ export default class Resource extends Page {
             [CONTEXT_MENU_ACTION.SHARING_SETTINGS]: this.sharingSettings,
             [CONTEXT_MENU_ACTION.DELETE]: this.delete,
         }
+
         return (
             <div>
                 <h1>
@@ -423,16 +378,11 @@ Resource.childContextTypes = {
     d2: PropTypes.object,
 }
 
-const mapStateToProps = state => ({
-    showSnackbar: state.feedback.showSnackbar,
-    snackbarConf: { ...state.feedback.snackbarConf },
-})
+const mapStateToProps = state => ({})
 
-const mapDispatchToProps = dispatch => ({
-    updateFeedbackState: updateFeedbackState(dispatch),
-})
+const mapDispatchToProps = dispatch => ({})
 
 export const ConnectedResource = connect(
     mapStateToProps,
     mapDispatchToProps
-)(Resource)
+)(manageError(Resource))
