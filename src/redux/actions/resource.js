@@ -13,6 +13,7 @@ export const actionTypes = {
     LOADING_RESOURCES_START: 'LOADING_RESOURCES_START',
     LOADING_RESOURCES_SUCCESS: 'LOADING_RESOURCES_SUCCESS',
     LOADING_RESOURCES_ERROR: 'LOADING_RESOURCES_ERROR',
+    SET_RESEARCH_SEARCH: 'SET_RESEARCH_SEARCH',
 }
 
 /**
@@ -85,4 +86,17 @@ export const goToNextPage = () => dispatch => {
 export const goToPrevPage = () => dispatch => {
     dispatch(goToPrevPageOrig())
     dispatch(loadResources())
+}
+
+/**
+ * @param {string} searchTerm
+ * @return {Function} Redux thunk
+ */
+const debouncedLoadResources = debounce(
+    dispatch => dispatch(loadResources()),
+    DEBOUNCE_DELAY
+)
+export const setSearch = searchTerm => dispatch => {
+    dispatch({ type: actionTypes.SET_RESEARCH_SEARCH, payload: searchTerm })
+    debouncedLoadResources(dispatch)
 }

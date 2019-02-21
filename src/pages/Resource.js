@@ -9,7 +9,7 @@ import { connect } from 'react-redux'
 import { updateFeedbackState } from '../redux/actions/feedback'
 import styles from './resource/Resource.style'
 import appStyles from '../utils/styles'
-import manageError from '../utils/pageEnhancers/manageError.HOC';
+import manageError from '../utils/pageEnhancers/manageError.HOC'
 import PageHelper from '../components/PageHelper'
 import { ConnectedAddEditResource } from './resource/add-edit-resource/AddEditResource'
 import { ACTION_MESSAGE, SUCCESS, LOADING } from '../utils/feedbackTypes.js'
@@ -30,29 +30,27 @@ import {
     loadResources,
     goToNextPage,
     goToPrevPage,
-} from '../redux/actions/resource';
+    setSearch,
+} from '../redux/actions/resource'
 
 export default class Resource extends React.Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            pager: INITIAL_PAGER,
-            search: '',
             open: false,
             timeoutId: null,
             loading: false,
         }
 
-        this.search = this.search.bind(this)
         this.debounceSearch = this.debounceSearch.bind(this)
         this.addNewResource = this.addNewResource.bind(this)
 
         /* Pagination */
         this.hasNextPage = this.hasNextPage.bind(this)
         this.hasPreviousPage = this.hasPreviousPage.bind(this)
-        this.onNextPageClick = this.onNextPageClick.bind(this)
-        this.onPreviousPageClick = this.onPreviousPageClick.bind(this)
+        this.props.goToNextPage = this.props.goToNextPage.bind(this)
+        this.props.goToPrevPage = this.props.goToPrevPage.bind(this)
 
         /* Context Menu */
         this.viewResource = this.viewResource.bind(this)
@@ -71,38 +69,7 @@ export default class Resource extends React.Component {
         this.props.loadResources()
     }
 
-    onNextPageClick() {
-        const pager = Object.assign({}, this.state.pager)
-        pager.page += 1
-        this.loadDocuments(pager, this.state.search)
-    }
-
-    onPreviousPageClick() {
-        const pager = Object.assign({}, this.state.pager)
-        pager.page -= 1
-        this.loadDocuments(pager, this.state.search)
-    }
-
     /* Search */
-    search(field, value) {
-        // ...and not empty search
-        if (this.state.search !== value && /\S/.test(value)) {
-            this.loadDocuments(INITIAL_PAGER, value)
-        } else if (this.state.search !== value) {
-            this.loadDocuments(INITIAL_PAGER)
-        }
-    }
-
-    debounceSearch(field, lastSearch) {
-        if (this.state.timeoutId) {
-            clearTimeout(this.state.timeoutId)
-        }
-        this.state.timeoutId = setTimeout(() => {
-            this.search(field, lastSearch)
-        }, DEBOUNCE_DELAY)
-        this.setState({ lastSearch })
-    }
-
     handleClose(refreshList) {
         this.setState({ open: false, selectedResource: null })
         if (refreshList === true) {
@@ -161,7 +128,7 @@ export default class Resource extends React.Component {
                 api.delete(url)
                     .then(response => {
                         if (response && this.isPageMounted()) {
-                            this.loadDocuments(INITIAL_PAGER, this.state.search)
+                            this.props.loadResources()
                         }
                     })
                     .catch(error => {
@@ -268,22 +235,20 @@ export default class Resource extends React.Component {
                 </h1>
                 <div id="resource-content">
                     <Pagination
-                        total={this.state.pager.total}
+                        total={this.props.pager.total}
                         hasNextPage={this.hasNextPage}
                         hasPreviousPage={this.hasPreviousPage}
-                        onNextPageClick={this.onNextPageClick}
-                        onPreviousPageClick={this.onPreviousPageClick}
-                        currentlyShown={calculatePageValue(this.state.pager)}
+                        onNextPageClick={this.props.goToNextPage}
+                        onPreviousPageClick={this.props.goToPrevPage}
+                        currentlyShown={calculatePageValue(this.props.pager)}
                     />
                     <div id={'search-box-id'} style={styles.searchContainer}>
                         <InputField
-                            value={this.state.lastSearch || ''}
+                            value={this.props.search}
                             type="text"
                             hintText={i18n.t(i18nKeys.resource.search)}
                             // eslint-disable-next-line
-                            onChange={value =>
-                                this.debounceSearch('search', value)
-                            }
+                            onChange={this.props.setSearch}
                         />
                     </div>
                     <Table
@@ -307,13 +272,13 @@ export default class Resource extends React.Component {
                     </p>
                     <div id={'footer-pagination-id'}>
                         <Pagination
-                            total={this.state.pager.total}
+                            total={this.props.pager.total}
                             hasNextPage={this.hasNextPage}
                             hasPreviousPage={this.hasPreviousPage}
-                            onNextPageClick={this.onNextPageClick}
-                            onPreviousPageClick={this.onPreviousPageClick}
+                            onNextPageClick={this.props.goToNextPage}
+                            onPreviousPageClick={this.props.goToPrevPage}
                             currentlyShown={calculatePageValue(
-                                this.state.pager
+                                this.props.pager
                             )}
                         />
                     </div>
@@ -339,6 +304,7 @@ Resource.childContextTypes = {
 }
 
 const mapStateToProps = state => ({
+    search: state.resource.search,
     resources: state.resource.collection,
     pager: state.pagination,
 })
@@ -346,8 +312,10 @@ const mapDispatchToProps = dispatch => ({
     loadResources: () => dispatch(loadResources()),
     goToNextPage: () => dispatch(goToNextPage()),
     goToPrevPage: () => dispatch(goToPrevPage()),
+    setSearch: value => dispatch(setSearch(value)),
 })
 
-export const ConnectedResource = connect(mapStateToProps, mapDispatchToProps)(
-    manageError(Resource),
-)
+export const ConnectedResource = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(manageError(Resource))
