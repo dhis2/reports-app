@@ -2,6 +2,11 @@ import pluckPeriodTypes from '../periodTypes'
 
 describe('pluckPeriodTypes', () => {
     const periodTypes = [{ name: 'Daily' }, { name: 'WeeklyWednesday' }]
+    const state = {
+        reportPeriod: {
+            collection: periodTypes,
+        },
+    }
 
     const expectedOutput = [
         { id: 'Daily', displayName: 'Daily' },
@@ -9,6 +14,6 @@ describe('pluckPeriodTypes', () => {
     ]
 
     it('transforms the input array correctly', () => {
-        expect(pluckPeriodTypes(periodTypes)).toEqual(expectedOutput)
+        expect(pluckPeriodTypes(state)).toEqual(expectedOutput)
     })
 })

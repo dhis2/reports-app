@@ -5,6 +5,7 @@ import {
     formatStandardReportsResponse,
     mapCollectionToDimensionQueryString,
     mapResponseToArrayOfIds,
+    parseFileUrls,
 } from './api/helpers'
 import {
     STANDARD_REPORTS_ENDPOINT,
@@ -158,25 +159,10 @@ export const getReportingRateSummaryReport = async (
             req.addDimension(key, orgUnitOptions[key])
         }
     }
-    const xlsUrl = req.buildUrl().replace('analytics.json?', 'analytics.xls?')
-    const query = req.buildQuery()
-    const suffix = Object.keys(query).reduce(
-        (suffix, key) => (suffix += `&${key}=${query[key]}`),
-        ''
-    )
-    const finalUrl = `${api.baseUrl}/${xlsUrl}${suffix}`
-    console.log(`
-    This is the final url
-    --- ${finalUrl} ---
-    really
-    `)
-    window.open(finalUrl)
-    // const fileUrls = parseFileUrls({ req, extensions: ['xls', 'csv'], })
 
-    return d2.analytics.aggregate.get(req).then(resp => {
-        console.log(resp)
-        return resp
-    })
+    const fileUrls = parseFileUrls(req, ['xls', 'csv'])
+
+    return d2.analytics.aggregate.get(req).then(data => ({ data, fileUrls }))
 }
 
 /**

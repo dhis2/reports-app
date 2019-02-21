@@ -5,9 +5,10 @@ import {
     unsetHtmlReport,
 } from '../../redux/actions/htmlReport'
 import { isActionEnabled } from '../../redux/selectors/reportingRateSummary/isActionEnabled'
+import parseTableData from '../../redux/selectors/reportingRateSummary/parseTableData'
 
 const mapStateToProps = state => ({
-    reportHtml: state.htmlReport.content,
+    reportHtml: parseTableData(state),
     selectedOrgUnit: state.organisationUnits,
     isActionEnabled: isActionEnabled(state),
 })
