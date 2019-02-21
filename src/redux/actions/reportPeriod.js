@@ -26,25 +26,12 @@ export const loadPeriodTypesError = () => ({
     type: ACTION_TYPES.REPORT_PERIOD_TYPES_ERRORED,
 })
 
-/**
- * @param {Error} error
- * @return {Function}
- */
-export const fallbackErrorMessage = i18n.t('Could not load period types')
-export const loadPeriodTypesErrorWithFeedback = error => dispatch => {
-    const displayMessage = humanReadableErrorMessage(
-        error,
-        fallbackErrorMessage
-    )
-    dispatch(loadPeriodTypesError())
-}
-
 export const loadPeriodTypes = () => dispatch =>
     getPeriodTypes()
         .then(periodTypes => dispatch(loadPeriodTypesSuccess(periodTypes)))
         .catch(error => {
             console.error(error)
-            dispatch(loadPeriodTypesErrorWithFeedback())
+            dispatch(loadPeriodTypesError())
         })
 
 export const selectPeriodType = event => ({
