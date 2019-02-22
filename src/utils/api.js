@@ -175,8 +175,19 @@ export const getResources = (page, pageSize, search) => {
         page,
         pageSize,
         fields: 'displayName,id,url,external,access',
-        ...(search ? { search } : {}),
+        ...(!search
+            ? {}
+            : {
+                  filter: `displayName:ilike:${search}`,
+              }),
     }
+    console.log('getResources requestData', requestData)
 
     return api.get(RESOURCE_ENDPOINT, requestData)
 }
+
+/**
+ * @returns {Promise}
+ */
+export const deleteResource = resourceId =>
+    api.delete(`${RESOURCE_ENDPOINT}/${resourceId}`)

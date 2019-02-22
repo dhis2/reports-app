@@ -1,12 +1,17 @@
 import debounce from 'lodash.debounce'
 import { DEBOUNCE_DELAY } from '../../config/search.config'
-import { getResource } from '../../utils/api'
+import {
+    getResources,
+    deleteResource as sendDeleteResourceRequest,
+} from '../../utils/api'
 import i18n from '../../utils/i18n/locales'
 import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
-import { showErrorSnackBar } from './feedback'
+import { showSuccessSnackBar, showErrorSnackBar } from './feedback'
 import {
     goToNextPage as goToNextPageOrig,
     goToPrevPage as goToPrevPageOrig,
+    resetPagination,
+    setPagination,
 } from './pagination'
 
 export const actionTypes = {
@@ -14,13 +19,21 @@ export const actionTypes = {
     LOADING_RESOURCES_SUCCESS: 'LOADING_RESOURCES_SUCCESS',
     LOADING_RESOURCES_ERROR: 'LOADING_RESOURCES_ERROR',
     SET_RESEARCH_SEARCH: 'SET_RESEARCH_SEARCH',
+    VIEW_RESOURCE: 'VIEW_RESOURCE',
+    SHOW_SHARING_SETTINGS: 'SHOW_SHARING_SETTINGS',
+    EDIT_RESOURCE: 'EDIT_RESOURCE',
+    ADD_RESOURCE: 'ADD_RESOURCE',
+    DELETE_RESOURCE_START: 'DELETE_RESOURCE_START',
+    DELETE_RESOURCE_SUCCESS: 'DELETE_RESOURCE_SUCCESS',
+    DELETE_RESOURCE_ERROR: 'DELETE_RESOURCE_ERROR',
+    RESET_CONTEXT_MENU: 'RESET_CONTEXT_MENU',
 }
 
 /**
  * @returns {Object}
  */
 export const loadingResourcesStart = () => ({
-    type: LOADING_RESOURCES_START,
+    type: actionTypes.LOADING_RESOURCES_START,
 })
 
 /**
@@ -28,7 +41,7 @@ export const loadingResourcesStart = () => ({
  * @returns {Object}
  */
 export const loadingResourcesSuccess = resources => ({
-    type: LOADING_RESOURCES_SUCCESS,
+    type: actionTypes.LOADING_RESOURCES_SUCCESS,
     payload: resources,
 })
 
@@ -36,7 +49,7 @@ export const loadingResourcesSuccess = resources => ({
  * @returns {Object}
  */
 export const loadingResourcesError = () => ({
-    type: LOADING_RESOURCES_ERROR,
+    type: actionTypes.LOADING_RESOURCES_ERROR,
 })
 
 /**
@@ -61,13 +74,14 @@ export const loadResources = () => (dispatch, getState) => {
     const { page, pageSize } = pagination
     const { search } = resource
 
-    return getResource(page, pageSize, search)
-        .then(resources => {
-            // @TODO: Check for response property
-            loadingResourcesSuccess(resources.documents)
-            setPagination(response.pager)
+    return getResources(page, pageSize, search)
+        .then(response => {
+            dispatch(loadingResourcesSuccess(response.documents))
+            dispatch(setPagination(response.pager))
         })
-        .catch(error => loadingResourcesErrorWithFeedback(error))
+        .catch(error => {
+            dispatch(loadingResourcesErrorWithFeedback(error))
+        })
 }
 
 /**
@@ -99,4 +113,88 @@ const debouncedLoadResources = debounce(
 export const setSearch = searchTerm => dispatch => {
     dispatch({ type: actionTypes.SET_RESEARCH_SEARCH, payload: searchTerm })
     debouncedLoadResources(dispatch)
+}
+
+/**
+ * @param {Object} resource
+ * @returns {Object}
+ */
+export const viewResource = (resource, action) => ({
+    type: actionTypes.VIEW_RESOURCE,
+    payload: resource,
+})
+
+/**
+ * @param {Object} resource
+ * @returns {Object}
+ */
+export const showSharingSettings = resource => ({
+    type: actionTypes.SHOW_SHARING_SETTINGS,
+    payload: resource,
+})
+
+/**
+ * @param {Object} resource
+ * @returns {Object}
+ */
+export const editResource = resource => ({
+    type: actionTypes.EDIT_RESOURCE,
+})
+
+/**
+ * @returns {Object}
+ */
+export const addResource = resource => ({
+    type: actionTypes.ADD_RESOURCE,
+})
+
+export const deleteResourceStart = {
+    type: actionTypes.DELETE_RESOURCE_START,
+}
+
+export const deleteResourceSuccess = {
+    type: actionTypes.DELETE_RESOURCE_SUCCESS,
+}
+
+export const deleteResourceError = {
+    type: actionTypes.DELETE_RESOURCE_ERROR,
+}
+
+const successMessage = i18n.t('The resource has been deleted successfully')
+export const deleteResourceSuccessWithFeedback = () => dispatch => {
+    dispatch(showSuccessSnackBar(successMessage))
+    dispatch(deleteResourceSuccess())
+}
+
+const defaultDeleteResourceErrorMessage = i18n.t(
+    'An error occurred when deleting the resource!'
+)
+export const deleteResourceErrorWithFeedback = error => dispatch => {
+    const message = humanReadableErrorMessage(
+        error,
+        defaultDeleteResourceErrorMessage
+    )
+    dispatch(showErrorSnackBar(message))
+    dispatch(deleteResourceError())
+}
+
+export const deleteResource = resource => (dispatch, getState) => {
+    dispatch(deleteResourceStart())
+
+    return sendDeleteResourceRequest(resource.id)
+        .then(() => dispatch(deleteResourceSuccessWithFeedback()))
+        .catch(error => dispatch(deleteResourceErrorWithFeedback(error)))
+}
+
+export const resetContextMenu = () => ({
+    type: actionTypes.RESET_CONTEXT_MENU,
+})
+
+export const closeContextMenu = refreshList => dispatch => {
+    dispatch(resetContextMenu())
+
+    if (refreshList) {
+        dispatch(resetPagination())
+        dispatch(loadResources())
+    }
 }

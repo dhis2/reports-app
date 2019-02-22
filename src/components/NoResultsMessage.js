@@ -1,9 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import i18n from '../../utils/i18n/locales'
-import { i18nKeys } from '../../utils/i18n/i18nKeys'
+import i18n from '../utils/i18n/locales'
 
-const NoResultsMessage = ({ additionalStyles }) => (
+export const NoResultsMessage = ({ additionalStyles }) => (
     <p
         id="no-std-report-find-message-id"
         style={{ textAlign: 'center', ...additionalStyles }}
@@ -19,5 +18,3 @@ NoResultsMessage.propTypes = {
 NoResultsMessage.defaultProps = {
     additionalStyles: {},
 }
-
-export default NoResultsMessage

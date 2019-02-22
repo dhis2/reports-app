@@ -32,6 +32,7 @@ export const loadPeriodTypesError = () => ({
  */
 export const fallbackErrorMessage = i18n.t('Could not load period types')
 export const loadPeriodTypesErrorWithFeedback = error => dispatch => {
+    // eslint-disable-next-line
     const displayMessage = humanReadableErrorMessage(
         error,
         fallbackErrorMessage
