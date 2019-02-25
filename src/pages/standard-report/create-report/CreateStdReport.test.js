@@ -60,7 +60,7 @@ const ownShallow = () => {
             d2={fakerData.d2}
             selectedReport={{ id: 'CreateReportId', type: TYPES.HTML }}
             onRequestClose={jest.fn()}
-            onGetHtmlReport={jest.fn()}
+            onGetReportData={jest.fn()}
             open={true}
             onError={jest.fn()}
         />,

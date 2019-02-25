@@ -4,9 +4,9 @@ import { showLoader, showSuccessSnackBar, showErrorSnackBar } from './feedback'
 import i18n from '../../utils/i18n/locales'
 
 export const actionTypes = {
-    LOADING_HTML_REPORT_START: 'LOADING_HTML_REPORT_START',
-    LOADING_HTML_REPORT_SUCCESS: 'LOADING_HTML_REPORT_SUCCESS',
-    LOADING_HTML_REPORT_ERROR: 'LOADING_HTML_REPORT_ERROR',
+    LOADING_REPORT_DATA_START: 'LOADING_REPORT_DATA_START',
+    LOADING_REPORT_DATA_SUCCESS: 'LOADING_REPORT_DATA_SUCCESS',
+    LOADING_REPORT_DATA_ERROR: 'LOADING_REPORT_DATA_ERROR',
     SET_DATA_SET_REPORT_COMMENT: 'SET_DATA_SET_REPORT_COMMENT',
     DOWNLOAD_DATA_SET_REPORT_XLS: 'DOWNLOAD_DATA_SET_REPORT_XLS',
     SHARING_DATA_SET_REPORT_COMMENT_SUCCESS:
@@ -15,61 +15,61 @@ export const actionTypes = {
         'SHARING_DATA_SET_REPORT_COMMENT_START',
     SHARING_DATA_SET_REPORT_COMMENT_ERROR:
         'SHARING_DATA_SET_REPORT_COMMENT_ERROR',
-    UNSET_HTML_REPORT: 'UNSET_HTML_REPORT',
+    UNSET_REPORT_DATA: 'UNSET_REPORT_DATA',
 }
 
 /**
  * @returns {Object}
  */
-export const loadingHtmlReportStart = () => ({
-    type: actionTypes.LOADING_HTML_REPORT_START,
+export const loadingReportDataStart = () => ({
+    type: actionTypes.LOADING_REPORT_DATA_START,
 })
 
 /**
- * @param {string} htmlReport
+ * @param {string} reportData
  * @returns {Object}
  */
-export const loadingHtmlReportSuccess = htmlReport => ({
-    type: actionTypes.LOADING_HTML_REPORT_SUCCESS,
-    payload: htmlReport,
+export const loadingReportDataSuccess = reportData => ({
+    type: actionTypes.LOADING_REPORT_DATA_SUCCESS,
+    payload: reportData,
 })
 
 /**
  * @returns {Object}
  */
-export const loadingHtmlReportError = () => ({
-    type: actionTypes.LOADING_HTML_REPORT_ERROR,
+export const loadingReportDataError = () => ({
+    type: actionTypes.LOADING_REPORT_DATA_ERROR,
 })
 
 /**
  * @returns {Function}
  */
-export const loadingHtmlReportStartWithFeedback = () => dispatch => {
+export const loadingReportDataStartWithFeedback = () => dispatch => {
     dispatch(showLoader())
-    dispatch(loadingHtmlReportStart())
+    dispatch(loadingReportDataStart())
 }
 
 /**
- * @param {string} htmlReport
+ * @param {string} reportData
  * @return {Object}
  */
-export const loadingHtmlReportSuccessWithFeedback = htmlReport => dispatch => {
+export const loadingReportDataSuccessWithFeedback = reportData => dispatch => {
     dispatch(showSuccessSnackBar(i18n.t('Successfully loaded the report')))
-    dispatch(loadingHtmlReportSuccess(htmlReport))
+    dispatch(loadingReportDataSuccess(reportData))
 }
 
 /**
  * @param {Error} error
  */
-export const loadingHtmlReportErrorWithFeedback = error => dispatch => {
+export const loadingReportDataErrorWithFeedback = error => dispatch => {
     const defaultMessage = i18n.t('An error occurred while loading the report!')
     const displayMessage = humanReadableErrorMessage(error, defaultMessage)
     dispatch(showErrorSnackBar(displayMessage))
-    dispatch(loadingHtmlReportError())
+    dispatch(loadingReportDataError())
 }
 
-export const unsetHtmlReport = () => ({
-    type: actionTypes.UNSET_HTML_REPORT,
+export const unsetReportData = () => ({
+    type: actionTypes.UNSET_REPORT_DATA,
 })
 
 /**

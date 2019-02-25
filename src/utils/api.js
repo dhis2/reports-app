@@ -5,6 +5,7 @@ import {
     formatStandardReportsResponse,
     mapCollectionToDimensionQueryString,
     mapResponseToArrayOfIds,
+    parseFileUrls,
 } from './api/helpers'
 import {
     STANDARD_REPORTS_ENDPOINT,
@@ -159,7 +160,9 @@ export const getReportingRateSummaryReport = async (
         }
     }
 
-    return d2.analytics.aggregate.get(req)
+    const fileUrls = parseFileUrls(req, ['xls', 'csv'])
+
+    return d2.analytics.aggregate.get(req).then(data => ({ data, fileUrls }))
 }
 
 /**

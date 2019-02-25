@@ -15,7 +15,7 @@ const ActionComponent = ({
     selectedReport,
     handleClose,
     handleError,
-    handleDisplayHtmlReport,
+    handleDisplayReportData,
 }) => {
     if (selectedAction === CONTEXT_MENU_ACTION.CREATE) {
         return (
@@ -24,7 +24,7 @@ const ActionComponent = ({
                 open={open}
                 selectedReport={selectedReport}
                 onRequestClose={handleClose}
-                onGetHtmlReport={handleDisplayHtmlReport}
+                onGetReportData={handleDisplayReportData}
                 onError={handleError}
             />
         )
@@ -75,7 +75,7 @@ ActionComponent.propTypes = {
     selectedReport: PropTypes.object.isRequired,
     handleClose: PropTypes.func.isRequired,
     handleError: PropTypes.func.isRequired,
-    handleDisplayHtmlReport: PropTypes.func.isRequired,
+    handleDisplayReportData: PropTypes.func.isRequired,
 }
 
 export default ActionComponent

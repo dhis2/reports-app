@@ -62,9 +62,9 @@ PeriodPickerWithPeriodType.propTypes = {
     selectedPeriod: PropTypes.string,
 }
 
-const mapStateToProps = ({ reportPeriod }) => ({
-    ...reportPeriod,
-    collection: periodTypes(reportPeriod.collection),
+const mapStateToProps = state => ({
+    ...state.reportPeriod,
+    collection: periodTypes(state),
 })
 
 export default connect(

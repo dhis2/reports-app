@@ -2,13 +2,13 @@ import { selectDataSet as selectDataSetOriginal } from './dataSet'
 import { loadDimensions } from './dataSetDimensions'
 import { getDataSetReports, postDataSetReportComment } from '../../utils/api'
 import {
-    loadingHtmlReportStartWithFeedback,
-    loadingHtmlReportSuccessWithFeedback,
-    loadingHtmlReportErrorWithFeedback,
+    loadingReportDataStartWithFeedback,
+    loadingReportDataSuccessWithFeedback,
+    loadingReportDataErrorWithFeedback,
     sharingReportCommentStartWithFeedback,
     sharingReportCommentSuccessWithFeedback,
     sharingReportCommentErrorWithFeedback,
-} from './htmlReport'
+} from './reportData'
 
 export const actionTypes = {
     SHOW_DATA_SET_REPORT_FORM: 'SHOW_DATA_SET_REPORT_FORM',
@@ -27,8 +27,8 @@ export const toggleSelectedUnitOnly = selectedUnitOnly => ({
     payload: selectedUnitOnly,
 })
 
-export const loadHtmlReport = () => (dispatch, getState) => {
-    dispatch(loadingHtmlReportStartWithFeedback())
+export const loadReportData = () => (dispatch, getState) => {
+    dispatch(loadingReportDataStartWithFeedback())
 
     const {
         dataSet,
@@ -47,9 +47,9 @@ export const loadHtmlReport = () => (dispatch, getState) => {
         dataSetReport.selectedUnitOnly
     )
         .then(response =>
-            dispatch(loadingHtmlReportSuccessWithFeedback(response))
+            dispatch(loadingReportDataSuccessWithFeedback(response))
         )
-        .catch(error => dispatch(loadingHtmlReportErrorWithFeedback(error)))
+        .catch(error => dispatch(loadingReportDataErrorWithFeedback(error)))
 }
 
 export const shareDataSetReportComment = comment => (dispatch, getState) => {
