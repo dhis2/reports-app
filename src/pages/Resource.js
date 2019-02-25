@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Table from '@dhis2/d2-ui-table'
-import SharingDialog from '@dhis2/d2-ui-sharing-dialog'
 import { Button, InputField, Pagination, SvgIcon } from '@dhis2/d2-ui-core'
 import '@dhis2/d2-ui-core/build/css/Table.css'
 import '@dhis2/d2-ui-core/build/css/Pagination.css'
@@ -9,14 +8,7 @@ import { connect } from 'react-redux'
 import styles from './resource/Resource.style'
 import appStyles from '../utils/styles'
 import manageError from '../utils/pageEnhancers/manageError.HOC'
-import { ConnectedAddEditResource } from './resource/add-edit-resource/AddEditResource'
-import { defaultState as INITIAL_PAGER } from '../redux/reducers/pagination'
-import {
-    DOCUMENTS_ENDPOINT,
-    ADD_NEW_RESOURCE_ACTION,
-    CONTEXT_MENU_ACTION,
-    CONTEXT_MENU_ICONS,
-} from './resource/resource.conf'
+import { resourceActions, contextMenuIcons } from '../utils/resource/constants'
 import i18n from '../utils/i18n/locales'
 import { i18nKeys } from '../utils/i18n/i18nKeys'
 
@@ -42,10 +34,10 @@ import { NoResultsMessage } from '../components/NoResultsMessage'
 import { Action } from './resource/Action'
 
 const createContextMenuOptions = props => ({
-    [CONTEXT_MENU_ACTION.VIEW]: props.viewResource,
-    [CONTEXT_MENU_ACTION.EDIT]: props.editResource,
-    [CONTEXT_MENU_ACTION.SHARING_SETTINGS]: props.showSharingSettings,
-    [CONTEXT_MENU_ACTION.DELETE]: props.deleteResource,
+    [resourceActions.VIEW]: props.viewResource,
+    [resourceActions.EDIT]: props.editResource,
+    [resourceActions.SHARING_SETTINGS]: props.showSharingSettings,
+    [resourceActions.DELETE]: props.deleteResource,
 })
 
 export default class Resource extends React.Component {
@@ -60,11 +52,11 @@ export default class Resource extends React.Component {
     showContextAction = (document, action) => {
         const access = document && document.access ? document.access : {}
         const actions = {
-            [CONTEXT_MENU_ACTION.VIEW]: access.read,
-            [CONTEXT_MENU_ACTION.EDIT]: access.update,
-            [CONTEXT_MENU_ACTION.SHARING_SETTINGS]:
+            [resourceActions.VIEW]: access.read,
+            [resourceActions.EDIT]: access.update,
+            [resourceActions.SHARING_SETTINGS]:
                 access.manage || access.externalize,
-            [CONTEXT_MENU_ACTION.DELETE]: this.props.deleteResource,
+            [resourceActions.DELETE]: this.props.deleteResource,
         }
         return actions[action] || false
     }
@@ -106,7 +98,7 @@ export default class Resource extends React.Component {
                         columns={['displayName']}
                         rows={this.props.resources}
                         contextMenuActions={contextMenuOptions}
-                        contextMenuIcons={CONTEXT_MENU_ICONS}
+                        contextMenuIcons={contextMenuIcons}
                         isContextActionAllowed={this.showContextAction}
                     />
                     {props.resources.length && props.loadingResources && (
@@ -154,6 +146,7 @@ Resource.propTypes = {
     goToNextPage: PropTypes.func.isRequired,
     goToPrevPage: PropTypes.func.isRequired,
     loadResources: PropTypes.func.isRequired,
+    deleteResource: PropTypes.func.isRequired,
 }
 
 Resource.childContextTypes = {

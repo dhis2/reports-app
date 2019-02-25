@@ -2,7 +2,7 @@
 import React from 'react'
 import { mount, shallow } from 'enzyme'
 import { i18nKeys } from '../../../utils/i18n/i18nKeys'
-import { RESOURCE_TYPES, TYPES } from '../resource.conf'
+import { options, types } from '../../../utils/resource/constants'
 
 import AddEditResource from './AddEditResource'
 
@@ -30,7 +30,7 @@ const mockResource = {
     url: 'http://dhis2.org',
     externalAccess: false,
     external: true,
-    type: TYPES.EXTERNAL_URL,
+    type: types.EXTERNAL_URL,
     attachment: false,
     favorite: false,
     lastUpdatedBy: {
@@ -141,7 +141,7 @@ describe('Test <AddEditResource /> rendering:', () => {
     it('Should show upload section when resource is upload.', () => {
         expect(dialog.find('#upload_type_fields')).toHaveLength(1)
         wrapper.setState({
-            resource: { ...mockResource, type: TYPES.UPLOAD_FILE },
+            resource: { ...mockResource, type: types.UPLOAD_FILE },
         })
         dialog = wrapper.find(Dialog)
         expect(dialog.find('#upload_type_fields').props().style.display).toBe(
@@ -192,7 +192,7 @@ describe('Test <AddEditResource /> actions:', () => {
     it('Should call onChangeFileResource when upload file changes.', () => {
         wrapper.instance().onChangeFileResource = jest.fn()
         wrapper.setState({
-            resource: { ...mockResource, type: TYPES.UPLOAD_FILE },
+            resource: { ...mockResource, type: types.UPLOAD_FILE },
         })
         wrapper.find('[type="file"]').simulate('change')
         expect(wrapper.instance().onChangeFileResource).toHaveBeenCalled()
@@ -201,7 +201,7 @@ describe('Test <AddEditResource /> actions:', () => {
     it('Should call onChangeUrl when external url changes.', () => {
         wrapper.instance().onChangeUrl = jest.fn()
         wrapper.setState({
-            resource: { ...mockResource, type: TYPES.EXTERNAL_URL },
+            resource: { ...mockResource, type: types.EXTERNAL_URL },
         })
         wrapper.find('[name="resourceUrl"]').simulate('change')
         expect(wrapper.instance().onChangeUrl).toHaveBeenCalled()
@@ -213,7 +213,7 @@ describe('Test <AddEditResource /> actions:', () => {
             { id: 'UPLOAD_FILE', name: 'Upload File', external: false },
         ])
         wrapper.setState({
-            resource: { ...mockResource, type: TYPES.EXTERNAL_URL },
+            resource: { ...mockResource, type: types.EXTERNAL_URL },
         })
         type = wrapper.instance().getTypeForResource()
         expect(type).toEqual([
@@ -241,7 +241,7 @@ describe('Test <AddEditResource /> actions:', () => {
         expect(typeof wrapper.instance().addResource).toBe('function')
         wrapper.instance().addResource = jest.fn()
         wrapper.setState({
-            resource: { ...mockResource, type: TYPES.UPLOAD_FILE },
+            resource: { ...mockResource, type: types.UPLOAD_FILE },
             selectedFileToUpload: 'file',
         })
         const actions = mount(
@@ -262,7 +262,7 @@ describe('Test <AddEditResource /> actions:', () => {
         expect(typeof wrapper.instance().addDocument).toBe('function')
         wrapper.instance().addDocument = jest.fn()
         wrapper.setState({
-            resource: { ...mockResource, type: TYPES.EXTERNAL_URL },
+            resource: { ...mockResource, type: types.EXTERNAL_URL },
             selectedFileToUpload: 'file',
         })
         const actions = mount(
@@ -281,7 +281,7 @@ describe('Test <AddEditResource /> actions:', () => {
     it('Should call updateDocument function when editing a document.', () => {
         wrapper.instance().updateDocument = jest.fn()
         wrapper.setState({
-            resource: { ...mockResource, type: TYPES.EXTERNAL_URL },
+            resource: { ...mockResource, type: types.EXTERNAL_URL },
             selectedFileToUpload: 'file',
         })
         wrapper.instance().addDocument()

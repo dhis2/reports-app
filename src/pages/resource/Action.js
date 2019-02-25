@@ -2,13 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import SharingDialog from '@dhis2/d2-ui-sharing-dialog'
 import { ConnectedAddEditResource } from './add-edit-resource/AddEditResource'
-import { ADD_NEW_RESOURCE_ACTION, CONTEXT_MENU_ACTION } from './resource.conf'
+import { resourceActions } from '../../utils/resource/constants'
 
 export const Action = props => {
     const { selectedAction } = props
     if (!props.selectedAction) return null
 
-    if (props.selectedAction === ADD_NEW_RESOURCE_ACTION) {
+    if (props.selectedAction === resourceActions.NEW) {
         return (
             <ConnectedAddEditResource
                 d2={props.d2}
@@ -19,7 +19,7 @@ export const Action = props => {
         )
     }
 
-    if (selectedAction === CONTEXT_MENU_ACTION.SHARING_SETTINGS) {
+    if (selectedAction === resourceActions.SHARING_SETTINGS) {
         if (!props.selectedResource) return null
 
         return (
@@ -33,7 +33,7 @@ export const Action = props => {
         )
     }
 
-    if (selectedAction === CONTEXT_MENU_ACTION.EDIT) {
+    if (selectedAction === resourceActions.EDIT) {
         return (
             <ConnectedAddEditResource
                 selectedResource={props.selectedResource}

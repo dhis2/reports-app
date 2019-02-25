@@ -1,8 +1,5 @@
 import { actionTypes } from '../actions/resource'
-import {
-    ADD_NEW_RESOURCE_ACTION,
-    CONTEXT_MENU_ACTION,
-} from '../../pages/resource/resource.conf'
+import { resourceActions } from '../../utils/resource/constants'
 
 export const defaultState = {
     open: false,
@@ -46,7 +43,7 @@ export const resource = (state = defaultState, { type, payload } = {}) => {
                 ...state,
                 open: true,
                 selectedResource: payload,
-                selectedAction: CONTEXT_MENU_ACTION.VIEW,
+                selectedAction: resourceActions.VIEW,
             }
 
         case actionTypes.EDIT_RESOURCE:
@@ -54,7 +51,7 @@ export const resource = (state = defaultState, { type, payload } = {}) => {
                 ...state,
                 open: true,
                 selectedResource: payload,
-                selectedAction: CONTEXT_MENU_ACTION.EDIT,
+                selectedAction: resourceActions.EDIT,
             }
 
         case actionTypes.SHOW_SHARING_SETTINGS:
@@ -62,14 +59,14 @@ export const resource = (state = defaultState, { type, payload } = {}) => {
                 ...state,
                 open: true,
                 selectedResource: payload,
-                selectedAction: ADD_NEW_RESOURCE_ACTION.SHARING_SETTINGS,
+                selectedAction: resourceActions.SHARING_SETTINGS,
             }
 
         case actionTypes.ADD_RESOURCE:
             return {
                 ...state,
                 open: true,
-                selectedAction: ADD_NEW_RESOURCE_ACTION,
+                selectedAction: resourceActions.NEW,
             }
 
         case actionTypes.DELETE_RESOURCE_START:

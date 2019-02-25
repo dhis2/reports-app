@@ -1,13 +1,8 @@
-/* React */
 import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
-
-/* material-ui */
 import { Dialog } from 'material-ui'
 import SelectFieldMui from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
-
-/* d2-ui */
 import {
     Button,
     InputField,
@@ -16,32 +11,23 @@ import {
     SvgIcon,
     TextField,
 } from '@dhis2/d2-ui-core'
-
-/* Redux */
 import { connect } from 'react-redux'
 import { updateFeedbackState } from '../../../redux/actions/feedback'
 import { LOADING } from '../../../utils/feedbackTypes.js'
-
-/* styles */
 import appStyles from '../../../utils/styles'
 import styles from './AddEditResource.style'
-
-/* app conf */
-import {
-    FILE_RESOURCES_ENDPOINT,
-    DOCUMENTS_ENDPOINT,
-    RESOURCE_TYPES,
-    TYPES,
-} from '../resource.conf'
+import { options, types } from '../../../utils/resource/constants'
+import { RESOURCE_ENDPOINT } from '../../../utils/api/constants'
 
 /* i18n */
 import i18n from '../../../utils/i18n/locales'
 import { i18nKeys } from '../../../utils/i18n/i18nKeys'
 
+const FILE_RESOURCES_ENDPOINT = 'fileResources'
 const initialState = {
     resource: {
         name: null,
-        type: TYPES.UPLOAD_FILE, // default UPLOAD_FILE
+        type: types.UPLOAD_FILE, // default UPLOAD_FILE
         attachment: false,
         external: false,
         url: 'http://',
@@ -119,11 +105,9 @@ export default class AddEditResource extends PureComponent {
      */
     getTypeForResource = () => {
         if (this.props.selectedResource) {
-            return RESOURCE_TYPES.filter(
-                obj => obj.id === this.state.resource.type
-            )
+            return options.filter(obj => obj.id === this.state.resource.type)
         }
-        return RESOURCE_TYPES
+        return options
     }
 
     getFileNameToDisplay = () => {
@@ -181,7 +165,7 @@ export default class AddEditResource extends PureComponent {
     /* load resource info to edit it */
     loadSelectedResource = resource => {
         const api = this.props.d2.Api.getApi()
-        const url = `${DOCUMENTS_ENDPOINT}/${resource.id}`
+        const url = `${RESOURCE_ENDPOINT}/${resource.id}`
         if (api) {
             this.props.updateFeedbackState(true, { type: LOADING })
             this.setState({ loading: true })
@@ -191,9 +175,9 @@ export default class AddEditResource extends PureComponent {
                         this.props.updateFeedbackState(false)
 
                         if (response.external === true) {
-                            response.type = TYPES.EXTERNAL_URL
+                            response.type = types.EXTERNAL_URL
                         } else {
-                            response.type = TYPES.UPLOAD_FILE
+                            response.type = types.UPLOAD_FILE
                         }
 
                         this.setState({
@@ -243,12 +227,12 @@ export default class AddEditResource extends PureComponent {
         const api = this.props.d2.Api.getApi()
         const documentData = JSON.parse(JSON.stringify(this.state.resource))
         if (
-            this.state.resource.type === TYPES.UPLOAD_FILE &&
+            this.state.resource.type === types.UPLOAD_FILE &&
             fileResource.name
         ) {
             documentData.url = fileResource.name
         } else if (
-            this.state.resource.type === TYPES.EXTERNAL_URL &&
+            this.state.resource.type === types.EXTERNAL_URL &&
             !this.state.resource.url.startsWith('http://') &&
             !this.state.resource.url.startsWith('https://')
         ) {
@@ -269,7 +253,7 @@ export default class AddEditResource extends PureComponent {
             this.setState({ loading: true })
         }
         api.update(
-            `${DOCUMENTS_ENDPOINT}/${this.state.resource.id}`,
+            `${RESOURCE_ENDPOINT}/${this.state.resource.id}`,
             documentData
         )
             .then(response => {
@@ -290,7 +274,7 @@ export default class AddEditResource extends PureComponent {
             this.props.updateFeedbackState(true, { type: LOADING })
             this.setState({ loading: true })
         }
-        api.post(DOCUMENTS_ENDPOINT, documentData)
+        api.post(RESOURCE_ENDPOINT, documentData)
             .then(response => {
                 if (response) {
                     this.close(true)
@@ -309,9 +293,9 @@ export default class AddEditResource extends PureComponent {
             return false
         }
         switch (this.state.resource.type) {
-            case TYPES.UPLOAD_FILE:
+            case types.UPLOAD_FILE:
                 return this.validateUploadType()
-            case TYPES.EXTERNAL_URL:
+            case types.EXTERNAL_URL:
                 return !this.isNullOrWhiteSpace(this.state.resource.url)
             default:
                 return true
@@ -328,12 +312,12 @@ export default class AddEditResource extends PureComponent {
         )
 
     displayUploadSection = () =>
-        this.state.resource.type === TYPES.UPLOAD_FILE
+        this.state.resource.type === types.UPLOAD_FILE
             ? { display: 'block' }
             : { display: 'none' }
 
     displayUrl = () =>
-        this.state.resource.type === TYPES.UPLOAD_FILE
+        this.state.resource.type === types.UPLOAD_FILE
             ? { display: 'none' }
             : { display: 'block' }
 
@@ -357,7 +341,7 @@ export default class AddEditResource extends PureComponent {
                     style={appStyles.dialogBtn}
                     disabled={!this.ifFormValid() || this.state.loading}
                     onClick={
-                        this.state.resource.type === TYPES.UPLOAD_FILE &&
+                        this.state.resource.type === types.UPLOAD_FILE &&
                         this.state.selectedFileToUpload
                             ? this.addResource
                             : this.addDocument

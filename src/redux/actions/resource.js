@@ -119,7 +119,7 @@ export const setSearch = searchTerm => dispatch => {
  * @param {Object} resource
  * @returns {Object}
  */
-export const viewResource = (resource, action) => ({
+export const viewResource = resource => ({
     type: actionTypes.VIEW_RESOURCE,
     payload: resource,
 })
@@ -139,6 +139,7 @@ export const showSharingSettings = resource => ({
  */
 export const editResource = resource => ({
     type: actionTypes.EDIT_RESOURCE,
+    payload: resource,
 })
 
 /**
@@ -146,6 +147,7 @@ export const editResource = resource => ({
  */
 export const addResource = resource => ({
     type: actionTypes.ADD_RESOURCE,
+    payload: resource,
 })
 
 export const deleteResourceStart = {
@@ -178,7 +180,7 @@ export const deleteResourceErrorWithFeedback = error => dispatch => {
     dispatch(deleteResourceError())
 }
 
-export const deleteResource = resource => (dispatch, getState) => {
+export const deleteResource = resource => dispatch => {
     dispatch(deleteResourceStart())
 
     return sendDeleteResourceRequest(resource.id)
