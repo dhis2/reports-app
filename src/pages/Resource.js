@@ -4,26 +4,13 @@ import Table from '@dhis2/d2-ui-table'
 import { Button, InputField, Pagination, SvgIcon } from '@dhis2/d2-ui-core'
 import '@dhis2/d2-ui-core/build/css/Table.css'
 import '@dhis2/d2-ui-core/build/css/Pagination.css'
-import { connect } from 'react-redux'
 import styles from './resource/Resource.style'
 import appStyles from '../utils/styles'
 import manageError from '../utils/pageEnhancers/manageError.HOC'
 import { resourceActions, contextMenuIcons } from '../utils/resource/constants'
 import i18n from '../utils/i18n/locales'
 import { i18nKeys } from '../utils/i18n/i18nKeys'
-
-import {
-    loadResources,
-    goToNextPage,
-    goToPrevPage,
-    setSearch,
-    addResource,
-    viewResource,
-    editResource,
-    showSharingSettings,
-    deleteResource,
-    closeContextMenu,
-} from '../redux/actions/resource'
+import { connectResource } from './resource/connectResource'
 import {
     hasNextPageCreator,
     hasPreviousPageCreator,
@@ -32,6 +19,7 @@ import {
 import { SectionHeadline } from '../components/SectionHeadline'
 import { NoResultsMessage } from '../components/NoResultsMessage'
 import { Action } from './resource/Action'
+import { showContextAction } from './resource/helper'
 
 const createContextMenuOptions = props => ({
     [resourceActions.VIEW]: props.viewResource,
@@ -47,18 +35,6 @@ export default class Resource extends React.Component {
 
     componentDidMount() {
         this.props.loadResources()
-    }
-
-    showContextAction = (document, action) => {
-        const access = document && document.access ? document.access : {}
-        const actions = {
-            [resourceActions.VIEW]: access.read,
-            [resourceActions.EDIT]: access.update,
-            [resourceActions.SHARING_SETTINGS]:
-                access.manage || access.externalize,
-            [resourceActions.DELETE]: this.props.deleteResource,
-        }
-        return actions[action] || false
     }
 
     render() {
@@ -99,7 +75,7 @@ export default class Resource extends React.Component {
                         rows={this.props.resources}
                         contextMenuActions={contextMenuOptions}
                         contextMenuIcons={contextMenuIcons}
-                        isContextActionAllowed={this.showContextAction}
+                        isContextActionAllowed={showContextAction}
                     />
                     {props.resources.length && props.loadingResources && (
                         <NoResultsMessage />
@@ -153,31 +129,4 @@ Resource.childContextTypes = {
     d2: PropTypes.object,
 }
 
-const mapStateToProps = state => ({
-    open: state.resource.open,
-    loading: state.resource.loading,
-    resources: state.resource.collection,
-    selectedAction: state.resource.selectedAction,
-    selectedResource: state.resource.selectedResource,
-    loadingResources: state.resource.loading,
-    search: state.resource.search,
-    pager: state.pagination,
-})
-
-const mapDispatchToProps = dispatch => ({
-    loadResources: () => dispatch(loadResources()),
-    goToNextPage: () => dispatch(goToNextPage()),
-    goToPrevPage: () => dispatch(goToPrevPage()),
-    setSearch: value => dispatch(setSearch(value)),
-    addResource: () => dispatch(addResource()),
-    viewResource: resource => dispatch(viewResource(resource)),
-    editResource: resource => dispatch(editResource(resource)),
-    showSharingSettings: resource => dispatch(showSharingSettings(resource)),
-    deleteResource: resource => dispatch(deleteResource(resource)),
-    closeContextMenu: refreshList => dispatch(closeContextMenu(refreshList)),
-})
-
-export const ConnectedResource = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(manageError(Resource))
+export const ConnectedResource = connectResource(manageError(Resource))
