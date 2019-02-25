@@ -44,6 +44,8 @@ export const Action = props => {
             />
         )
     }
+
+    return null
 }
 
 Action.propTypes = {

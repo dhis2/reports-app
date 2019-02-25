@@ -1,9 +1,11 @@
 import debounce from 'lodash.debounce'
 import { DEBOUNCE_DELAY } from '../../config/search.config'
 import {
+    getApi,
     getResources,
     deleteResource as sendDeleteResourceRequest,
 } from '../../utils/api'
+import { RESOURCE_ENDPOINT } from '../../utils/api/constants'
 import i18n from '../../utils/i18n/locales'
 import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
 import { showSuccessSnackBar, showErrorSnackBar } from './feedback'
@@ -117,12 +119,20 @@ export const setSearch = searchTerm => dispatch => {
 
 /**
  * @param {Object} resource
+ * @param {string} resource.id
  * @returns {Object}
  */
-export const viewResource = resource => ({
-    type: actionTypes.VIEW_RESOURCE,
-    payload: resource,
-})
+export const viewResource = resource => {
+    const { id } = resource
+    const baseUrl = getApi().baseUrl
+    const resourceUrl = `${baseUrl}/${RESOURCE_ENDPOINT}/${id}/data`
+    window.open(resourceUrl, '_blank')
+
+    return {
+        type: actionTypes.VIEW_RESOURCE,
+        payload: resource,
+    }
+}
 
 /**
  * @param {Object} resource
@@ -150,17 +160,17 @@ export const addResource = resource => ({
     payload: resource,
 })
 
-export const deleteResourceStart = {
+export const deleteResourceStart = () => ({
     type: actionTypes.DELETE_RESOURCE_START,
-}
+})
 
-export const deleteResourceSuccess = {
+export const deleteResourceSuccess = () => ({
     type: actionTypes.DELETE_RESOURCE_SUCCESS,
-}
+})
 
-export const deleteResourceError = {
+export const deleteResourceError = () => ({
     type: actionTypes.DELETE_RESOURCE_ERROR,
-}
+})
 
 const successMessage = i18n.t('The resource has been deleted successfully')
 export const deleteResourceSuccessWithFeedback = () => dispatch => {
@@ -184,7 +194,10 @@ export const deleteResource = resource => dispatch => {
     dispatch(deleteResourceStart())
 
     return sendDeleteResourceRequest(resource.id)
-        .then(() => dispatch(deleteResourceSuccessWithFeedback()))
+        .then(() => {
+            dispatch(deleteResourceSuccessWithFeedback())
+            dispatch(loadResources())
+        })
         .catch(error => dispatch(deleteResourceErrorWithFeedback(error)))
 }
 

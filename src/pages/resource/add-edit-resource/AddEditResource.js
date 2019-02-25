@@ -12,8 +12,6 @@ import {
     TextField,
 } from '@dhis2/d2-ui-core'
 import { connect } from 'react-redux'
-import { updateFeedbackState } from '../../../redux/actions/feedback'
-import { LOADING } from '../../../utils/feedbackTypes.js'
 import appStyles from '../../../utils/styles'
 import styles from './AddEditResource.style'
 import { options, types } from '../../../utils/resource/constants'
@@ -43,7 +41,6 @@ export default class AddEditResource extends PureComponent {
         onRequestClose: PropTypes.func.isRequired,
         onError: PropTypes.func.isRequired,
         selectedResource: PropTypes.object,
-        updateFeedbackState: PropTypes.func.isRequired,
     }
 
     static defaultProps = {
@@ -167,13 +164,10 @@ export default class AddEditResource extends PureComponent {
         const api = this.props.d2.Api.getApi()
         const url = `${RESOURCE_ENDPOINT}/${resource.id}`
         if (api) {
-            this.props.updateFeedbackState(true, { type: LOADING })
             this.setState({ loading: true })
             api.get(url)
                 .then(response => {
                     if (response) {
-                        this.props.updateFeedbackState(false)
-
                         if (response.external === true) {
                             response.type = types.EXTERNAL_URL
                         } else {
@@ -204,7 +198,6 @@ export default class AddEditResource extends PureComponent {
             if (api) {
                 const formData = new FormData()
                 formData.append('file', this.state.selectedFileToUpload)
-                this.props.updateFeedbackState(true, { type: LOADING })
                 this.setState({ loading: true })
                 api.post(FILE_RESOURCES_ENDPOINT, formData)
                     .then(response => {
@@ -249,7 +242,6 @@ export default class AddEditResource extends PureComponent {
 
     updateDocument = (api, documentData) => {
         if (!this.state.loading) {
-            this.props.updateFeedbackState(true, { type: LOADING })
             this.setState({ loading: true })
         }
         api.update(
@@ -271,7 +263,6 @@ export default class AddEditResource extends PureComponent {
 
     postDocument = (api, documentData) => {
         if (!this.state.loading) {
-            this.props.updateFeedbackState(true, { type: LOADING })
             this.setState({ loading: true })
         }
         api.post(RESOURCE_ENDPOINT, documentData)
@@ -453,11 +444,7 @@ export default class AddEditResource extends PureComponent {
     }
 }
 
-const mapDispatchToProps = dispatch => ({
-    updateFeedbackState: updateFeedbackState(dispatch),
-})
-
 export const ConnectedAddEditResource = connect(
     null,
-    mapDispatchToProps
+    null
 )(AddEditResource)

@@ -38,14 +38,6 @@ export const resource = (state = defaultState, { type, payload } = {}) => {
                 search: payload,
             }
 
-        case actionTypes.VIEW_RESOURCE:
-            return {
-                ...state,
-                open: true,
-                selectedResource: payload,
-                selectedAction: resourceActions.VIEW,
-            }
-
         case actionTypes.EDIT_RESOURCE:
             return {
                 ...state,
@@ -84,6 +76,7 @@ export const resource = (state = defaultState, { type, payload } = {}) => {
 
         case actionTypes.RESET_CONTEXT_MENU:
             return {
+                ...state,
                 open: false,
                 selectedAction: '',
                 selectedResource: {},
