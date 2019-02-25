@@ -1,45 +1,26 @@
 import { getReportingRateSummaryReport } from '../../utils/api'
 import {
-    loadingHtmlReportStartWithFeedback,
-    loadingHtmlReportSuccessWithFeedback,
-    loadingHtmlReportErrorWithFeedback,
-} from './htmlReport'
-
-export const actionTypes = {
-    SET_SELECTED_CRITERIA: 'SET_SELECTED_CRITERIA',
-}
-
-/**
- * @param {string} selectedCriteria
- * @returns {Object} The select criteria action
- */
-export const selectCriteria = selectedCriteria => ({
-    type: actionTypes.SET_SELECTED_CRITERIA,
-    payload: selectedCriteria,
-})
+    loadingReportDataStartWithFeedback,
+    loadingReportDataSuccessWithFeedback,
+    loadingReportDataErrorWithFeedback,
+} from './reportData'
 
 /**
  * @returns {Function} redux thunk
  */
-export const loadHtmlReport = () => (dispatch, getState) => {
-    dispatch(loadingHtmlReportStartWithFeedback())
+export const loadReportData = () => (dispatch, getState) => {
+    dispatch(loadingReportDataStartWithFeedback())
 
-    const {
-        organisationUnits,
-        dataSet,
-        reportPeriod,
-        reportingRateSummary,
-    } = getState()
+    const { organisationUnits, dataSet, reportPeriod } = getState()
 
     return getReportingRateSummaryReport(
-        organisationUnits.selected.id,
+        organisationUnits.selected,
         dataSet.selected.id,
         reportPeriod.selectedPeriod,
-        reportingRateSummary.criteria,
         organisationUnits.selectedOptions
     )
         .then(response =>
-            dispatch(loadingHtmlReportSuccessWithFeedback(response))
+            dispatch(loadingReportDataSuccessWithFeedback(response))
         )
-        .catch(error => dispatch(loadingHtmlReportErrorWithFeedback(error)))
+        .catch(error => dispatch(loadingReportDataErrorWithFeedback(error)))
 }

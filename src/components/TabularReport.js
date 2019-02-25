@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { DownloadOptions } from './InlineHtmlReport/DownloadOptions'
+import { DownloadOptions } from './TabularReport/DownloadOptions'
 import Report from './Report'
 
-export const InlineHtmlReport = props => {
+export const TabularReport = props => {
     if (!props.shouldRender) return null
 
     return (
@@ -14,7 +14,7 @@ export const InlineHtmlReport = props => {
     )
 }
 
-InlineHtmlReport.propTypes = {
+TabularReport.propTypes = {
     shouldRender: PropTypes.bool.isRequired,
     onDownloadXlsClick: DownloadOptions.propTypes.onDownloadXlsClick,
     reportHtml: Report.propTypes.reportHtml,

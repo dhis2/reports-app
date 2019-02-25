@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Button, DropDown } from '@dhis2/d2-ui-core'
+import { Button } from '@dhis2/d2-ui-core'
 import i18n from '../../utils/i18n/locales'
 import styles from '../../utils/styles'
 import DataSets from '../../components/DatasetsDropdown'
@@ -21,15 +21,6 @@ export const Form = props => (
                 <OrgUnitsTreeWithExtraOptions />
             </div>
             <div className="col-xs-12 col-md-6">
-                <div id="criteria-selection">
-                    <span style={styles.formLabel}>{i18n.t('Based on')}</span>
-                    <DropDown
-                        fullWidth
-                        value={props.selectedCriteria}
-                        onChange={props.selectCriteria}
-                        menuItems={props.criteriaOptions}
-                    />
-                </div>
                 <div id="data-set-selection">
                     <DataSets />
                 </div>
@@ -42,7 +33,7 @@ export const Form = props => (
             <Button
                 raised
                 color="primary"
-                onClick={props.loadHtmlReport}
+                onClick={props.loadReportData}
                 disabled={!props.isActionEnabled}
             >
                 {i18n.t('Get Report')}
@@ -53,9 +44,6 @@ export const Form = props => (
 
 Form.propTypes = {
     showForm: PropTypes.bool.isRequired,
-    selectedCriteria: PropTypes.string.isRequired,
-    criteriaOptions: PropTypes.array.isRequired,
     isActionEnabled: PropTypes.bool.isRequired,
-    loadHtmlReport: PropTypes.func.isRequired,
-    selectCriteria: PropTypes.func.isRequired,
+    loadReportData: PropTypes.func.isRequired,
 }

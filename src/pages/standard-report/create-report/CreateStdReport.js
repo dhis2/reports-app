@@ -30,13 +30,13 @@ class CreateStdReport extends PureComponent {
         d2: PropTypes.object.isRequired,
         selectedReport: PropTypes.object.isRequired,
         onRequestClose: PropTypes.func.isRequired,
-        onGetHtmlReport: PropTypes.func,
+        onGetReportData: PropTypes.func,
         open: PropTypes.bool.isRequired,
         onError: PropTypes.func.isRequired,
     }
 
     static defaultProps = {
-        onGetHtmlReport: () => {},
+        onGetReportData: () => {},
     }
 
     constructor(props) {
@@ -87,7 +87,7 @@ class CreateStdReport extends PureComponent {
         if (this.props.selectedReport.type === TYPES.HTML) {
             api.get(url)
                 .then(response => {
-                    this.props.onGetHtmlReport(response)
+                    this.props.onGetReportData(response)
                 })
                 .catch(error => {
                     this.props.onError(error)
@@ -112,7 +112,7 @@ class CreateStdReport extends PureComponent {
         if (this.props.selectedReport.type === TYPES.HTML) {
             api.get(url)
                 .then(response => {
-                    this.props.onGetHtmlReport(response)
+                    this.props.onGetReportData(response)
                 })
                 .catch(error => {
                     this.props.onError(error)

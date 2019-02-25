@@ -1,6 +1,7 @@
 import i18n from '@dhis2/d2-i18n'
-import { getPeriodTypes } from '../../utils/api'
 import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
+import { showErrorSnackBar } from './feedback'
+import { getPeriodTypes } from '../../utils/api'
 
 export const ACTION_TYPES = {
     REPORT_PERIOD_TYPES_LOADING_START: 'REPORT_PERIOD_TYPES_LOADING_START',
@@ -30,6 +31,7 @@ export const loadPeriodTypesError = () => ({
  * @param {Error} error
  * @return {Function}
  */
+
 export const fallbackErrorMessage = i18n.t('Could not load period types')
 export const loadPeriodTypesErrorWithFeedback = error => dispatch => {
     // eslint-disable-next-line
@@ -37,6 +39,7 @@ export const loadPeriodTypesErrorWithFeedback = error => dispatch => {
         error,
         fallbackErrorMessage
     )
+    dispatch(showErrorSnackBar(displayMessage))
     dispatch(loadPeriodTypesError())
 }
 
@@ -45,7 +48,7 @@ export const loadPeriodTypes = () => dispatch =>
         .then(periodTypes => dispatch(loadPeriodTypesSuccess(periodTypes)))
         .catch(error => {
             console.error(error)
-            dispatch(loadPeriodTypesErrorWithFeedback())
+            dispatch(loadPeriodTypesErrorWithFeedback(error))
         })
 
 export const selectPeriodType = event => ({

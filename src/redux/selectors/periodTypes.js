@@ -21,8 +21,8 @@ const translations = {
     FinancialOct: i18n.t('Financial-Oct'),
 }
 
-const periodTypes = collection =>
-    collection.map(periodType => ({
+const periodTypes = state =>
+    state.reportPeriod.collection.map(periodType => ({
         id: periodType.name,
         displayName: translations[periodType.name],
     }))

@@ -36,7 +36,7 @@ export default class StandardReport extends React.Component {
         selectedAction: PropTypes.string.isRequired,
         search: PropTypes.string.isRequired,
         open: PropTypes.bool.isRequired,
-        htmlReport: PropTypes.string.isRequired,
+        reportData: PropTypes.string.isRequired,
         loadStandardReports: PropTypes.func.isRequired,
         createReport: PropTypes.func.isRequired,
         editReport: PropTypes.func.isRequired,
@@ -70,14 +70,14 @@ export default class StandardReport extends React.Component {
             <div>
                 <SectionHeadline
                     label={i18n.t('Standard Report')}
-                    showBackButton={!!props.htmlReport}
-                    onBackClick={props.hideHtmlReport}
+                    showBackButton={!!props.reportData}
+                    onBackClick={props.hideReportData}
                     systemVersion={props.d2.system.version}
                     sectionKey={props.sectionKey}
                 />
                 <div
                     id="std-report-content"
-                    style={{ display: props.htmlReport ? 'none' : 'block' }}
+                    style={{ display: props.reportData ? 'none' : 'block' }}
                 >
                     <Pagination
                         total={props.pager.total}
@@ -119,11 +119,11 @@ export default class StandardReport extends React.Component {
                         selectedReport={props.selectedReport}
                         handleClose={props.closeContextMenu}
                         handleError={this.manageError}
-                        handleDisplayHtmlReport={props.showHtmlReport}
+                        handleDisplayReportData={props.showReportData}
                     />
                 </div>
-                {props.htmlReport && (
-                    <StyledHtmlReport htmlReport={props.htmlReport} />
+                {props.reportData && (
+                    <StyledHtmlReport reportData={props.reportData} />
                 )}
                 <Snackbar onActionClick={props.deleteStandardReport} />
             </div>

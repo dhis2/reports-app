@@ -1,5 +1,5 @@
 import { LOCATION_CHANGE } from 'connected-react-router'
-import { actionTypes } from '../actions/htmlReport'
+import { actionTypes } from '../actions/reportData'
 
 export const defaultState = {
     loading: false,
@@ -7,29 +7,29 @@ export const defaultState = {
     comment: '',
 }
 
-export const htmlReport = (state = defaultState, { type, payload } = {}) => {
+export const reportData = (state = defaultState, { type, payload } = {}) => {
     switch (type) {
-        case actionTypes.LOADING_HTML_REPORT_START:
+        case actionTypes.LOADING_REPORT_DATA_START:
             return {
                 ...state,
                 loading: true,
                 content: '',
             }
 
-        case actionTypes.LOADING_HTML_REPORT_SUCCESS:
+        case actionTypes.LOADING_REPORT_DATA_SUCCESS:
             return {
                 ...state,
                 loading: false,
                 content: payload,
             }
 
-        case actionTypes.LOADING_HTML_REPORT_ERROR:
+        case actionTypes.LOADING_REPORT_DATA_ERROR:
             return {
                 ...state,
                 loading: false,
             }
 
-        case actionTypes.UNSET_HTML_REPORT:
+        case actionTypes.UNSET_REPORT_DATA:
             return {
                 ...state,
                 content: '',

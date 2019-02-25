@@ -1,9 +1,17 @@
+import { getApi } from '../api'
 /**
  * @param {Object} d2 object retrieved by the list() method
  * @return {Array}
  */
 const mapResponseToJSArray = model =>
     model.toArray().map(report => report.toJSON())
+
+/**
+ * @param {Object} d2 ModelCollection instance
+ * @return {Array<string>}
+ */
+export const mapResponseToArrayOfIds = model =>
+    model.toArray().map(({ id }) => id)
 
 /**
  * @param {string} name
@@ -55,3 +63,24 @@ export const mapCollectionToDimensionQueryString = (...collections) =>
         ],
         []
     )
+/**
+ * @param {Object} req - D2 AnalyticsRequest instance
+ * @param {Array<String>} extensions - File extensions needed
+ * @returns {Object} - An object containing the download links for the requested file extensions
+ */
+export const parseFileUrls = (req, extensions) => {
+    const query = req.buildQuery()
+    const suffix = Object.keys(query).reduce(
+        (suffix, key) => (suffix += `&${key}=${query[key]}`),
+        ''
+    )
+    const jsonUrl = `${getApi().baseUrl}/${req.buildUrl()}${suffix}`
+
+    return extensions.reduce((fileUrls, extension) => {
+        fileUrls[extension] = jsonUrl.replace(
+            'analytics.json?',
+            `analytics.${extension}?`
+        )
+        return fileUrls
+    }, {})
+}

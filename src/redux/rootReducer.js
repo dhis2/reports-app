@@ -9,8 +9,7 @@ import organisationUnits from './reducers/organisationUnits'
 import { dataSet } from './reducers/dataSet'
 import { dataSetDimensions } from './reducers/dataSetDimensions'
 import { dataSetReport } from './reducers/dataSetReport'
-import { reportingRateSummary } from './reducers/reportingRateSummary'
-import { htmlReport } from './reducers/htmlReport'
+import { reportData } from './reducers/reportData'
 import { pagination } from './reducers/pagination'
 import { resource } from './reducers/resource'
 
@@ -23,8 +22,7 @@ export default combineReducers({
     organisationUnits,
     dataSet,
     dataSetDimensions,
-    reportingRateSummary,
-    htmlReport,
+    reportData,
     pagination,
     resource,
 })

@@ -10,8 +10,8 @@ import {
     goToPrevPage,
     requestDeleteStandardReport,
     setSearch,
-    showHtmlReport,
-    hideHtmlReport,
+    showReportData,
+    hideReportData,
     closeContextMenu,
 } from '../../redux/actions/standardReport'
 
@@ -32,8 +32,8 @@ const mapDispatchToProps = dispatch => ({
     requestDeleteStandardReport: report =>
         dispatch(requestDeleteStandardReport(report)),
     setSearch: term => dispatch(setSearch(term)),
-    showHtmlReport: htmlReport => dispatch(showHtmlReport(htmlReport)),
-    hideHtmlReport: htmlReport => dispatch(hideHtmlReport(htmlReport)),
+    showReportData: reportData => dispatch(showReportData(reportData)),
+    hideReportData: reportData => dispatch(hideReportData(reportData)),
     closeContextMenu: refreshList => dispatch(closeContextMenu(refreshList)),
 })
 

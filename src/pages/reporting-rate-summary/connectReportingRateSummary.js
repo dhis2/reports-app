@@ -1,26 +1,21 @@
 import { connect } from 'react-redux'
-import {
-    selectCriteria,
-    loadHtmlReport,
-} from '../../redux/actions/reportingRateSummary'
+import { loadReportData } from '../../redux/actions/reportingRateSummary'
 import {
     exportReportToXls,
-    unsetHtmlReport,
-} from '../../redux/actions/htmlReport'
+    unsetReportData,
+} from '../../redux/actions/reportData'
 import { isActionEnabled } from '../../redux/selectors/reportingRateSummary/isActionEnabled'
+import parseTableData from '../../redux/selectors/reportingRateSummary/parseTableData'
 
 const mapStateToProps = state => ({
-    reportHtml: state.htmlReport.content,
-    criteriaOptions: state.reportingRateSummary.criteriaOptions,
-    selectedCriteria: state.reportingRateSummary.selectedCriteria,
+    reportHtml: parseTableData(state),
     selectedOrgUnit: state.organisationUnits,
     isActionEnabled: isActionEnabled(state),
 })
 
 const mapDispatchToProps = dispatch => ({
-    unsetHtmlReport: () => dispatch(unsetHtmlReport()),
-    selectCriteria: event => dispatch(selectCriteria(event.target.value)),
-    loadHtmlReport: () => dispatch(loadHtmlReport()),
+    unsetReportData: () => dispatch(unsetReportData()),
+    loadReportData: () => dispatch(loadReportData()),
     exportReportToXls: () =>
         dispatch(
             exportReportToXls(

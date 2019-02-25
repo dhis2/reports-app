@@ -238,18 +238,18 @@ export const closeContextMenu = refreshList => dispatch => {
 }
 
 /**
- * @param {string} htmlReport
+ * @param {string} reportData
  * @returns {Object}
  */
-export const showHtmlReport = htmlReport => dispatch => {
-    dispatch({ type: actionTypes.HTML_REPORT_SHOW, payload: htmlReport })
+export const showReportData = reportData => dispatch => {
+    dispatch({ type: actionTypes.HTML_REPORT_SHOW, payload: reportData })
     dispatch(closeContextMenu())
 }
 
 /**
  * @returns {Object}
  */
-export const hideHtmlReport = () => ({
+export const hideReportData = () => ({
     type: actionTypes.HTML_REPORT_HIDE,
 })
 
