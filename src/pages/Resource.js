@@ -9,7 +9,6 @@ import appStyles from '../utils/styles'
 import manageError from '../utils/pageEnhancers/manageError.HOC'
 import { resourceActions, contextMenuIcons } from '../utils/resource/constants'
 import i18n from '../utils/i18n/locales'
-import { i18nKeys } from '../utils/i18n/i18nKeys'
 import { connectResource } from './resource/connectResource'
 import {
     hasNextPageCreator,
@@ -65,7 +64,7 @@ export default class Resource extends React.Component {
                         <InputField
                             value={props.search}
                             type="text"
-                            hintText={i18n.t(i18nKeys.resource.search)}
+                            hintText={i18n.t('Search')}
                             // eslint-disable-next-line
                             onChange={props.setSearch}
                         />

@@ -19,7 +19,6 @@ import { RESOURCE_ENDPOINT } from '../../../utils/api/constants'
 
 /* i18n */
 import i18n from '../../../utils/i18n/locales'
-import { i18nKeys } from '../../../utils/i18n/i18nKeys'
 
 const FILE_RESOURCES_ENDPOINT = 'fileResources'
 const initialState = {
@@ -121,15 +120,15 @@ export default class AddEditResource extends PureComponent {
 
     getTitle = () =>
         this.props.selectedResource
-            ? i18n.t(i18nKeys.resource.editResourceTitle)
-            : i18n.t(i18nKeys.resource.addNewResourceTitle)
+            ? i18n.t('Edit resource')
+            : i18n.t('Add new resource')
 
     getTypeDropdownComponent = () =>
         this.getTypeForResource().length > 1 ? (
             <SelectField
                 style={styles.width100}
                 name={'resourceType'}
-                label={i18n.t(i18nKeys.resource.typeLabel)}
+                label={i18n.t('Type')}
                 items={this.getTypeForResource()}
                 value={this.state.resource.type}
                 onChange={this.onChangeType}
@@ -137,7 +136,7 @@ export default class AddEditResource extends PureComponent {
             />
         ) : (
             <SelectFieldMui
-                floatingLabelText={i18n.t(i18nKeys.resource.typeLabel)}
+                floatingLabelText={i18n.t('Type')}
                 value={this.state.resource.type}
                 name={'resourceType'}
                 onChange={this.onChangeType}
@@ -320,7 +319,7 @@ export default class AddEditResource extends PureComponent {
                     onClick={this.close}
                     disabled={this.state.loading}
                 >
-                    {i18n.t(i18nKeys.buttons.cancel)}
+                    {i18n.t('Cancel')}
                 </Button>
             </span>,
             <span id="save-action-btn-id" key="save-action-btn-id">
@@ -337,7 +336,7 @@ export default class AddEditResource extends PureComponent {
                             : this.addDocument
                     }
                 >
-                    {i18n.t(i18nKeys.buttons.save)}
+                    {i18n.t('Save')}
                 </Button>
             </span>,
         ]
@@ -354,7 +353,9 @@ export default class AddEditResource extends PureComponent {
             >
                 <div id={'add-edit-resource-form-id'}>
                     <span className={'row'} style={styles.rightsMessage}>
-                        {i18n.t(i18nKeys.messages.rightsMessage)}
+                        {i18n.t(
+                            'This object will be created with public edit and view rights'
+                        )}
                     </span>
                     {/* details */}
                     <div className={'row'} style={styles.sectionBox}>
@@ -362,7 +363,7 @@ export default class AddEditResource extends PureComponent {
                             className={'col-xs-12'}
                             style={styles.sectionTitle}
                         >
-                            {i18n.t(i18nKeys.resource.details)}
+                            {i18n.t('Details')}
                         </div>
                         <div
                             className={'col-xs-12'}
@@ -372,7 +373,7 @@ export default class AddEditResource extends PureComponent {
                             <InputField
                                 fullWidth
                                 name="resourceName"
-                                label={i18n.t(i18nKeys.resource.nameLabel)}
+                                label={i18n.t('Name')}
                                 value={this.state.resource.name || ''}
                                 onChange={this.onChangeName}
                             />
@@ -385,9 +386,7 @@ export default class AddEditResource extends PureComponent {
                             >
                                 <CheckBox
                                     id={'resourceAttachment'}
-                                    label={i18n.t(
-                                        i18nKeys.resource.attachmentLabel
-                                    )}
+                                    label={i18n.t('Attachment')}
                                     checked={this.state.resource.attachment}
                                     onChange={this.onChangeAttachment}
                                 />
@@ -414,12 +413,8 @@ export default class AddEditResource extends PureComponent {
                                         fullWidth
                                         floatingLabelFixed
                                         name={'fileName'}
-                                        hintText={i18n.t(
-                                            i18nKeys.resource.noFileChosen
-                                        )}
-                                        floatingLabelText={i18n.t(
-                                            i18nKeys.resource.fileLabel
-                                        )}
+                                        hintText={i18n.t('No file chosen')}
+                                        floatingLabelText={i18n.t('File')}
                                         value={this.getFileNameToDisplay()}
                                         // eslint-disable-next-line
                                         onClick={() => this.fileInput.click()}
@@ -431,7 +426,7 @@ export default class AddEditResource extends PureComponent {
                                 style={this.displayUrl()}
                                 fullWidth
                                 name="resourceUrl"
-                                label={i18n.t(i18nKeys.resource.urlLabel)}
+                                label={i18n.t('Url')}
                                 value={this.state.resource.url || ''}
                                 onChange={this.onChangeUrl}
                             />

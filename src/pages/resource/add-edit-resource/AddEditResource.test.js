@@ -1,7 +1,6 @@
 /* eslint-disable */
 import React from 'react'
 import { mount, shallow } from 'enzyme'
-import { i18nKeys } from '../../../utils/i18n/i18nKeys'
 import { options, types } from '../../../utils/resource/constants'
 
 import AddEditResource from './AddEditResource'
@@ -86,9 +85,7 @@ describe('Test <AddEditResource /> rendering:', () => {
     })
 
     it('Should render correct title when "Editing" a resource.', () => {
-        expect(dialog.props().title).toBe(
-            `${i18nKeys.resource.editResourceTitle}`
-        )
+        expect(dialog.props().title).toBe(`${'Edit resource'}`)
     })
 
     /* name */
