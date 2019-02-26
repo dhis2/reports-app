@@ -11,7 +11,7 @@ const rowIndexesToRead = [
     8,
 ]
 
-export default function parseTableData(state) {
+export default function getTranformedTableData(state) {
     const sourceData = state.reportData.content
 
     if (isEmpty(sourceData)) {
