@@ -198,6 +198,7 @@ export default class AddEditResource extends PureComponent {
             if (api) {
                 const formData = new FormData()
                 formData.append('file', this.state.selectedFileToUpload)
+                formData.append('domain', 'DOCUMENT')
                 this.setState({ loading: true })
                 api.post(FILE_RESOURCES_ENDPOINT, formData)
                     .then(response => {
@@ -219,11 +220,8 @@ export default class AddEditResource extends PureComponent {
     addDocument = fileResource => {
         const api = this.props.d2.Api.getApi()
         const documentData = JSON.parse(JSON.stringify(this.state.resource))
-        if (
-            this.state.resource.type === types.UPLOAD_FILE &&
-            fileResource.name
-        ) {
-            documentData.url = fileResource.name
+        if (this.state.resource.type === types.UPLOAD_FILE && fileResource.id) {
+            documentData.url = fileResource.id
         } else if (
             this.state.resource.type === types.EXTERNAL_URL &&
             !this.state.resource.url.startsWith('http://') &&
@@ -231,6 +229,7 @@ export default class AddEditResource extends PureComponent {
         ) {
             documentData.url = `http://${documentData.url}`
         }
+
         if (api) {
             if (this.state.resource.id) {
                 this.updateDocument(api, documentData)
@@ -265,7 +264,7 @@ export default class AddEditResource extends PureComponent {
         if (!this.state.loading) {
             this.setState({ loading: true })
         }
-        api.post(RESOURCE_ENDPOINT, documentData)
+        api.post(`${RESOURCE_ENDPOINT}`, documentData)
             .then(response => {
                 if (response) {
                     this.close(true)
