@@ -13,6 +13,7 @@ const rowIndexesToRead = [
 
 export default function parseTableData(state) {
     const sourceData = state.reportData.content
+
     if (isEmpty(sourceData)) {
         return sourceData
     }
@@ -43,10 +44,14 @@ export function parseHeaders(data) {
 }
 
 export function parseRows(rowsWithAllFields) {
-    return rowsWithAllFields.map(row =>
-        rowIndexesToRead.reduce((acc, rowIndex) => {
-            acc.push(row[rowIndex])
-            return acc
-        }, [])
-    )
+    return rowsWithAllFields
+        .map(row =>
+            rowIndexesToRead.reduce((acc, rowIndex) => {
+                acc.push(row[rowIndex])
+                return acc
+            }, [])
+        )
+        .sort(
+            (a, b) => parseFloat(b[b.length - 1]) - parseFloat(a[a.length - 1])
+        )
 }

@@ -149,18 +149,18 @@ export const getReportingRateSummaryReport = async (
         suffix => `${dataSetId}.${suffix}`
     )
     const req = new d2.analytics.request()
-        .withDesc(dataDimensions[dataDimensions.length - 1])
         .addDataDimension(dataDimensions)
         .addOrgUnitDimension(orgUnitIds)
         .addPeriodFilter(period)
         .withColumns('dx')
         .withRows('ou')
         .withTableLayout()
+        .withHideEmptyRows()
         .withDisplayProperty('SHORTNAME')
 
     for (let key in orgUnitOptions) {
         if (orgUnitOptions[key]) {
-            req.addDimension(key, orgUnitOptions[key])
+            req.addFilter(key, orgUnitOptions[key])
         }
     }
 
