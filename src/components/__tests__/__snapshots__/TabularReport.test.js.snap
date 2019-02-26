@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TabularReport/> Renders a loader when loading is true 1`] = `
+<div
+  className="tabular-report__loader"
+>
+  <CircularProgress
+    large={false}
+    small={false}
+    style={Object {}}
+  />
+</div>
+`;
+
+exports[`<TabularReport/> Renders a table when loading is false and there is content to display 1`] = `
+<div
+  className="tabular-report"
+>
+  <Component
+    fileUrls={
+      Array [
+        Object {
+          "extension": "xls",
+          "url": "xls_url",
+        },
+        Object {
+          "extension": "csv",
+          "url": "csv_url",
+        },
+      ]
+    }
+  />
+  <ReportTable
+    content={
+      Object {
+        "headers": Array [
+          "Name",
+          "Child Health Actual reports",
+          "Child Health Expected reports",
+          "Child Health Reporting rate",
+          "Child Health Actual reports on time",
+          "Child Health Reporting rate on time",
+        ],
+        "rows": Array [
+          Array [
+            "Bo",
+            "290.0",
+            "378.0",
+            "76.7",
+            "290.0",
+            "76.7",
+          ],
+          Array [
+            "Gbo",
+            "3.0",
+            "6.0",
+            "50.0",
+            "3.0",
+            "50.0",
+          ],
+        ],
+        "title": "Bo - Child Health - Jan to Mar 2019",
+      }
+    }
+  />
+</div>
+`;

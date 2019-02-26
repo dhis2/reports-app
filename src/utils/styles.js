@@ -100,6 +100,7 @@ const styles = {
         color: '#757575',
         fontSize: 12,
         textTransform: 'uppercase',
+        marginLeft: 8,
     },
     actionButton: {
         marginRight: 16,

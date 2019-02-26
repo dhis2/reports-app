@@ -1,6 +1,6 @@
 import { getReportingRateSummaryReport } from '../../utils/api'
 import {
-    loadingReportDataStartWithFeedback,
+    loadingReportDataStart,
     loadingReportDataSuccessWithFeedback,
     loadingReportDataErrorWithFeedback,
 } from './reportData'
@@ -9,7 +9,7 @@ import {
  * @returns {Function} redux thunk
  */
 export const loadReportData = () => (dispatch, getState) => {
-    dispatch(loadingReportDataStartWithFeedback())
+    dispatch(loadingReportDataStart())
 
     const { organisationUnits, dataSet, reportPeriod } = getState()
 

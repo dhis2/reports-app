@@ -20,7 +20,7 @@ describe('Reducer - reportData', () => {
             }
             const postState = reportData(preState, action)
             const expected = expect.objectContaining({
-                content: '',
+                content: {},
                 loading: true,
             })
 
@@ -62,7 +62,7 @@ describe('Reducer - reportData', () => {
             const preState = { ...defaultState, content: 'html string' }
             const postState = reportData(preState, action)
             const expected = expect.objectContaining({
-                content: '',
+                content: {},
             })
 
             expect(postState).toEqual(expected)

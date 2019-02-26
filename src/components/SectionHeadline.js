@@ -25,8 +25,13 @@ export const SectionHeadline = props => (
 
 SectionHeadline.propTypes = {
     label: PropTypes.string.isRequired,
-    showBackButton: PropTypes.bool.isRequired,
+    showBackButton: PropTypes.bool,
     sectionKey: PropTypes.string.isRequired,
     systemVersion: PropTypes.object.isRequired,
-    onBackClick: PropTypes.func.isRequired,
+    onBackClick: PropTypes.func,
+}
+
+SectionHeadline.defaultProps = {
+    showBackButton: false,
+    onBackClick: () => undefined,
 }

@@ -3,7 +3,7 @@ import { actionTypes } from '../actions/reportData'
 
 export const defaultState = {
     loading: false,
-    content: '',
+    content: {},
     comment: '',
 }
 
@@ -13,7 +13,7 @@ export const reportData = (state = defaultState, { type, payload } = {}) => {
             return {
                 ...state,
                 loading: true,
-                content: '',
+                content: {},
             }
 
         case actionTypes.LOADING_REPORT_DATA_SUCCESS:
@@ -29,10 +29,12 @@ export const reportData = (state = defaultState, { type, payload } = {}) => {
                 loading: false,
             }
 
+        // @TODO: not sure this is needed.
+        // Not required for reporting-rate-summary
         case actionTypes.UNSET_REPORT_DATA:
             return {
                 ...state,
-                content: '',
+                content: {},
             }
 
         case actionTypes.SET_DATA_SET_REPORT_COMMENT:

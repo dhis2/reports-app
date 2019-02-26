@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { DownloadOptions } from './TabularReport/DownloadOptions'
 import { ReportComment } from './TabularReport/ReportComment'
-import Report from './Report'
+import ReportTable from './TabularReport/ReportTable'
 
 export const TabularReportCommentable = props => {
     if (!props.shouldRender) return null
@@ -15,7 +15,7 @@ export const TabularReportCommentable = props => {
                 shareDataSetReportComment={props.shareDataSetReportComment}
                 setDataSetReportComment={props.setDataSetReportComment}
             />
-            <Report reportHtml={props.reportHtml} />
+            <ReportTable reportHtml={props.reportHtml} />
         </div>
     )
 }
@@ -23,7 +23,7 @@ export const TabularReportCommentable = props => {
 TabularReportCommentable.propTypes = {
     shouldRender: PropTypes.bool.isRequired,
     onDownloadXlsClick: DownloadOptions.propTypes.onDownloadXlsClick,
-    reportHtml: Report.propTypes.reportHtml,
+    reportHtml: ReportTable.propTypes.reportHtml,
     reportComment: ReportComment.propTypes.comment,
     shareDataSetReportComment:
         ReportComment.propTypes.shareDataSetReportComment,
