@@ -23,7 +23,6 @@ export default class ReportingRateSummary extends React.Component {
                 />
                 <Paper style={styles.container}>
                     <Form
-                        showForm={true}
                         loadReportData={props.loadReportData}
                         isActionEnabled={props.isActionEnabled}
                     />
