@@ -108,7 +108,7 @@
   "husky": {
     "hooks": {
       "commit-msg": "yarn d2-style commit",
-      "pre-commit": "yarn code-style && yarn lint && yarn refresh-translations-template && yarn test"
+      "pre-commit": "yarn code-style && yarn lint && yarn refresh-translations-template"
     }
   },
   "manifest.webapp": {
@@ -151,7 +151,7 @@
       "^(?!.*\\.(js|jsx|mjs|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
     },
     "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
+      "/node_modules/(?!(@dhis2/ui|@babel/runtime-corejs2|isomorphic-fetch|material-design-icons-iconfont)/)"
     ],
     "moduleNameMapper": {
       "^react-native$": "react-native-web"
