@@ -13,9 +13,13 @@ const ReportTable = ({ content: { title, headers, rows } }) => (
         <h1>{title}</h1>
         <table>
             <thead>
-                <tr>{headers.map(Header)}</tr>
+                <tr className="tabular-report__header-row">
+                    {headers.map(Header)}
+                </tr>
             </thead>
-            <tbody>{rows.map(Row)}</tbody>
+            <tbody className={'tabular-report__table-body'}>
+                {rows.map(Row)}
+            </tbody>
         </table>
     </Fragment>
 )

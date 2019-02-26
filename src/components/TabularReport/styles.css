@@ -2,11 +2,11 @@
     border-collapse: collapse;
 }
 
-.tabular-report table thead tr {
+.tabular-report__header-row {
     border-bottom: 2px solid #e0e0e0;
 }
 
-.tabular-report table tbody tr {
+.tabular-report__table-body tr {
     border-bottom: 1px solid #e0e0e0;
 }
 
