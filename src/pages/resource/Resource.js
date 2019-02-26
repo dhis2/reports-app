@@ -8,8 +8,8 @@ import SharingDialog from '@dhis2/d2-ui-sharing-dialog'
 import { Button, Pagination, SvgIcon, InputField } from '@dhis2/d2-ui-core'
 
 /* d2-ui styles */
-import '@dhis2/d2-ui-core/build/css/Table.css'
-import '@dhis2/d2-ui-core/build/css/Pagination.css'
+// import '@dhis2/d2-ui-core/build/css/Table.css'
+// import '@dhis2/d2-ui-core/build/css/Pagination.css'
 
 /* Redux */
 import { connect } from 'react-redux'

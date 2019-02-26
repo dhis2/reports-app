@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import parsePeriod from 'd2/lib/period/parser'
+import parsePeriod from 'd2/period/parser'
 
 /* d2-ui components */
 import { PeriodPicker } from '@dhis2/d2-ui-core'
