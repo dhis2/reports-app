@@ -1,6 +1,6 @@
 # DHIS2 Reports App
 
-[![Build Status](https://travis-ci.org/dhis2/reports-app.svg?branch=master)](https://travis-ci.org/dhis2/reports-app)
+[![Build Status](https://travis-ci.com/dhis2/reports-app.svg?branch=master)](https://travis-ci.com/dhis2/reports-app)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdhis2%2Freports-app.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fdhis2%2Freports-app?ref=badge_shield)
 
 ### Contributing
