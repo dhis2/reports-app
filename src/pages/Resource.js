@@ -54,39 +54,41 @@ export default class Resource extends React.Component {
                 />
                 <div id="resource-content">
                     <Pagination
-                        total={this.props.pager.total}
+                        total={props.pager.total}
                         hasNextPage={hasNextPage}
                         hasPreviousPage={hasPreviousPage}
-                        onNextPageClick={this.props.goToNextPage}
-                        onPreviousPageClick={this.props.goToPrevPage}
+                        onNextPageClick={props.goToNextPage}
+                        onPreviousPageClick={props.goToPrevPage}
                         currentlyShown={paginationCurrentlyShown}
                     />
                     <div id={'search-box-id'} style={styles.searchContainer}>
                         <InputField
-                            value={this.props.search}
+                            value={props.search}
                             type="text"
                             hintText={i18n.t(i18nKeys.resource.search)}
                             // eslint-disable-next-line
-                            onChange={this.props.setSearch}
+                            onChange={props.setSearch}
                         />
                     </div>
                     <Table
                         columns={['displayName']}
-                        rows={this.props.resources}
+                        rows={props.resources}
                         contextMenuActions={contextMenuOptions}
                         contextMenuIcons={contextMenuIcons}
-                        isContextActionAllowed={showContextAction}
+                        isContextActionAllowed={showContextAction(
+                            props.deleteResource
+                        )}
                     />
                     {props.resources.length && props.loadingResources && (
                         <NoResultsMessage />
                     )}
                     <div id={'footer-pagination-id'}>
                         <Pagination
-                            total={this.props.pager.total}
+                            total={props.pager.total}
                             hasNextPage={hasNextPage}
                             hasPreviousPage={hasPreviousPage}
-                            onNextPageClick={this.props.goToNextPage}
-                            onPreviousPageClick={this.props.goToPrevPage}
+                            onNextPageClick={props.goToNextPage}
+                            onPreviousPageClick={props.goToPrevPage}
                             currentlyShown={paginationCurrentlyShown}
                         />
                     </div>
