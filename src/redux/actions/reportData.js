@@ -45,6 +45,7 @@ export const loadingReportDataError = () => ({
  * @returns {Function}
  */
 export const loadingReportDataStartWithFeedback = () => dispatch => {
+    dispatch(showLoader())
     dispatch(loadingReportDataStart())
 }
 
