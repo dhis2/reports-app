@@ -7,7 +7,7 @@ import { Button } from '@dhis2/d2-ui-core'
 import OrganisationUnitDistributionReport from './OrganisationUnitDistributionReport'
 import OrganisationUnitsTree from '../../components/AvailableOrganisationUnitsTree'
 import GroupSets from '../../components/GroupSetsDropdown'
-import Report from '../../components/Report'
+import ReportTable from '../../components/TabularReport/ReportTable'
 
 import fakerData from '../../utils/fakerTests'
 
@@ -122,7 +122,7 @@ describe('Test <OrganisationUnitDistributionReport /> rendering:', () => {
         })
         const reportContainer = wrapper.find('#report-container')
         expect(reportContainer.find('span')).toHaveLength(1) // Download button
-        expect(reportContainer.find(Report)).toHaveLength(1)
+        expect(reportContainer.find(ReportTable)).toHaveLength(1)
     })
 })
 

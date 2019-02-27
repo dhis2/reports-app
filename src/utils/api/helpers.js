@@ -77,10 +77,10 @@ export const parseFileUrls = (req, extensions) => {
     const jsonUrl = `${getApi().baseUrl}/${req.buildUrl()}${suffix}`
 
     return extensions.reduce((fileUrls, extension) => {
-        fileUrls[extension] = jsonUrl.replace(
-            'analytics.json?',
-            `analytics.${extension}?`
-        )
+        fileUrls.push({
+            extension,
+            url: jsonUrl.replace('analytics.json?', `analytics.${extension}?`),
+        })
         return fileUrls
-    }, {})
+    }, [])
 }

@@ -3,19 +3,26 @@ import PropTypes from 'prop-types'
 import i18n from '../../utils/i18n/locales'
 import styles from '../../utils/styles'
 
-export const DownloadOptions = props => (
+const prefix = i18n.t('Download as')
+
+export const DownloadOption = ({ url, extension }, key) => (
+    <a style={styles.downloadButton} href={url} download tabIndex="0" key={key}>
+        {prefix} {extension}
+    </a>
+)
+
+DownloadOption.propTypes = {
+    url: PropTypes.string.isRequired,
+    extension: PropTypes.string.isRequired,
+    key: PropTypes.number.isRequired,
+}
+
+export const DownloadOptions = ({ fileUrls }) => (
     <div id="download-options-container" style={styles.downloadContainer}>
-        <span
-            style={styles.downloadButton}
-            role="button"
-            tabIndex="0"
-            onClick={props.onDownloadXlsClick}
-        >
-            {i18n.t('download as xls')}
-        </span>
+        {fileUrls.map(DownloadOption)}
     </div>
 )
 
 DownloadOptions.propTypes = {
-    onDownloadXlsClick: PropTypes.func.isRequired,
+    fileUrls: PropTypes.array.isRequired,
 }

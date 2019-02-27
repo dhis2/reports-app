@@ -24,7 +24,7 @@ import Page from '../Page'
 import PageHelper from '../../components/PageHelper'
 import OrganisationUnitsTree from '../../components/AvailableOrganisationUnitsTree'
 import GroupSets from '../../components/GroupSetsDropdown'
-import Report from '../../components/Report'
+import ReportTable from '../../components/TabularReport/ReportTable'
 
 /* utils */
 import { getDocsUrl } from '../../utils/getDocsUrl'
@@ -256,7 +256,9 @@ export default class OrganisationUnitDistributionReport extends Page {
                                 </div>
                             )}
                             {this.state.reportHtml && (
-                                <Report reportHtml={this.state.reportHtml} />
+                                <ReportTable
+                                    reportHtml={this.state.reportHtml}
+                                />
                             )}
                             {this.state.imageUrl && (
                                 <img

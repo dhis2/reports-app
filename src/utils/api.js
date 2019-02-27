@@ -153,17 +153,21 @@ export const getReportingRateSummaryReport = async (
         .addDataDimension(dataDimensions)
         .addOrgUnitDimension(orgUnitIds)
         .addPeriodFilter(period)
+        .withColumns('dx')
+        .withRows('ou')
+        .withTableLayout()
+        .withHideEmptyRows()
         .withDisplayProperty('SHORTNAME')
 
     for (let key in orgUnitOptions) {
         if (orgUnitOptions[key]) {
-            req.addDimension(key, orgUnitOptions[key])
+            req.addFilter(key, orgUnitOptions[key])
         }
     }
 
     const fileUrls = parseFileUrls(req, ['xls', 'csv'])
 
-    return d2.analytics.aggregate.get(req).then(data => ({ data, fileUrls }))
+    return d2.analytics.aggregate.get(req).then(data => ({ ...data, fileUrls }))
 }
 
 /**
