@@ -32,7 +32,6 @@ export const resource = (state = defaultState, { type, payload } = {}) => {
             }
 
         case actionTypes.SET_RESEARCH_SEARCH:
-            console.log('SET_SEARCH', payload)
             return {
                 ...state,
                 search: payload,

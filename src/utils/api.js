@@ -206,7 +206,6 @@ export const getResources = (page, pageSize, search) => {
                   filter: `displayName:ilike:${search}`,
               }),
     }
-    console.log('getResources requestData', requestData)
 
     return api.get(RESOURCE_ENDPOINT, requestData)
 }
