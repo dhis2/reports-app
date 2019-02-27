@@ -11,7 +11,7 @@ export const getChartImageUrl = state => {
 
     const { baseUrl } = getApi()
     const orgUnitId = state.organisationUnits.selected.id
-    const orgUnitGroupSetsId = state.orgUnitGroupSets.selected.id
+    const orgUnitGroupSetsId = state.orgUnitGroupSets.selected
     const currentTime = new Date().getTime()
 
     const imageUrl = `${baseUrl}/organisationUnits/${orgUnitId}/distributionChart.png`

@@ -13,6 +13,7 @@ import {
     DATA_SET_DIMENSIONS_ENDPOINT,
     DATA_DIMENSION_SUFFIXES,
     postDataSetReportCommentUrl,
+    getOrgUnitDistReportUrl,
 } from './api/constants'
 
 let d2
@@ -194,3 +195,11 @@ export const getOrgUnitGroupSets = () =>
         paging: false,
         fields: 'id,displayName',
     })
+
+/**
+ * @param {string} orgUnitId
+ * @param {string} groupSetId
+ * @returns {Promise}
+ */
+export const getOrgUnitDistReport = (orgUnitId, groupSetId) =>
+    api.get(getOrgUnitDistReportUrl(orgUnitId), { groupSetId })

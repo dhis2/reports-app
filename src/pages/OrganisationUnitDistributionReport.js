@@ -1,232 +1,76 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Paper } from 'material-ui'
-import { Button } from '@dhis2/d2-ui-core'
-import XLSX from 'xlsx'
-import { updateFeedbackState } from '../redux/actions/feedback'
 import i18n from '../utils/i18n/locales'
-import { i18nKeys } from '../utils/i18n/i18nKeys'
 import manageError from '../utils/pageEnhancers/manageError.HOC'
-import PageHelper from '../components/PageHelper'
-import OrganisationUnitsTree from '../components/AvailableOrganisationUnitsTree'
-import GroupSets from '../components/GroupSetsDropdown'
-import ReportTable from '../components/TabularReport/ReportTable'
-import { getDocsUrl } from '../utils/getDocsUrl'
-import { LOADING, SUCCESS } from '../utils/feedbackTypes.js'
 import styles from '../utils/styles'
+import TabularReport from '../components/TabularReport'
+import { Snackbar } from '../components/feedback/Snackbar'
 import { connectOrganisationUnitDistributionReport } from './organisation-unit-distribution-report/connectOrganisationUnitDistributionReport'
+import { SectionHeadline } from '../components/SectionHeadline'
+import { Form } from './organisation-unit-distribution-report/Form'
 
 export default class OrganisationUnitDistributionReport extends React.Component {
-    static propTypes = {
-        d2: PropTypes.object.isRequired,
-    }
-
-    constructor() {
-        super()
-
-        this.state = {
-            showForm: true,
-            reportHtml: null,
-            selectedGroupSet: null,
-            selectedOrgUnit: null,
-            loading: false,
+    componentDidMount() {
+        if (!this.props.groupSetsReady) {
+            this.props.loadGroupSetOptions()
         }
-    }
-
-    goToForm = () => {
-        this.setState({
-            showForm: true,
-        })
-    }
-
-    exportReportToXls = () => {
-        const reportTables = document.querySelectorAll(
-            '#report-container table'
-        )
-        const workbook = XLSX.utils.book_new()
-        for (let i = 0; i < reportTables.length; i++) {
-            const worksheet = XLSX.utils.table_to_sheet(reportTables[i])
-            XLSX.utils.book_append_sheet(workbook, worksheet, `Worksheet ${i}`)
-        }
-        XLSX.writeFile(workbook, 'report.xlsx')
-    }
-
-    getReport = () => {
-        this.setState({ loading: true })
-        this.props.updateFeedbackState(true, { type: LOADING })
-        // eslint-disable-next-line
-        const url = `organisationUnits/${
-            this.state.selectedOrgUnit
-        }/distributionReport?groupSetId=${this.state.selectedGroupSet}`
-        const api = this.props.d2.Api.getApi()
-
-        api.get(url)
-            .then(response => {
-                this.setState({
-                    reportHtml: response,
-                    showForm: false,
-                    loading: false,
-                })
-                this.props.updateFeedbackState(true, {
-                    type: SUCCESS,
-                    message: i18n.t(i18nKeys.messages.reportGenerated),
-                })
-            })
-            .catch(error => {
-                this.manageError(error)
-            })
-    }
-
-    handleOrganisationUnitChange = selectedOrgUnit => {
-        this.setState({
-            selectedOrgUnit,
-        })
-    }
-
-    handleGroupSetChange = selectedGroupSet => {
-        this.setState({
-            selectedGroupSet,
-        })
-    }
-
-    isFormValid() {
-        return this.state.selectedOrgUnit && this.state.selectedGroupSet
-    }
-
-    isActionEnabled() {
-        return this.isFormValid() && !this.state.loading
     }
 
     render() {
         return (
             <div>
-                <h1>
-                    {!this.state.showForm && (
-                        <span
-                            id="back-button"
-                            style={styles.backButton}
-                            className="material-icons"
-                            role="button"
-                            tabIndex="0"
-                            onClick={this.goToForm}
-                        >
-                            arrow_back
-                        </span>
-                    )}
-                    {i18n.t(i18nKeys.organisationUnitDistributionReport.header)}
-                    <PageHelper
-                        url={getDocsUrl(
-                            this.props.d2.system.version,
-                            this.props.sectionKey
-                        )}
-                    />
-                </h1>
+                <SectionHeadline
+                    label={i18n.t('Organisation Unit Distribution Report')}
+                    systemVersion={this.props.d2.system.version}
+                    sectionKey={this.props.sectionKey}
+                />
                 <Paper style={styles.container}>
-                    <div
-                        id="org-unit-dist-report-form"
-                        style={{
-                            display: this.state.showForm ? 'block' : 'none',
-                        }}
-                    >
-                        <div className="row">
-                            <div className="col-xs-12 col-md-6">
-                                <div style={styles.formLabel}>
-                                    {i18n.t(
-                                        i18nKeys
-                                            .organisationUnitDistributionReport
-                                            .organisationUnitLabel
-                                    )}
-                                </div>
-                                <OrganisationUnitsTree
-                                    onChange={this.handleOrganisationUnitChange}
-                                />
-                            </div>
-                            <div className="col-xs-12 col-md-6">
-                                <div id="group-sets-selection">
-                                    <GroupSets
-                                        onChange={this.handleGroupSetChange}
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                        <div id="actions" style={styles.actionsContainer}>
-                            <Button
-                                style={styles.actionButton}
-                                raised
-                                color="primary"
-                                onClick={this.getReport}
-                                disabled={!this.isActionEnabled()}
-                            >
-                                {i18n.t(
-                                    i18nKeys.organisationUnitDistributionReport
-                                        .getReportAction
-                                )}
-                            </Button>
-                            <Button
-                                style={styles.actionButton}
-                                raised
-                                color="accent"
-                                onClick={this.getChart}
-                                disabled={!this.isActionEnabled()}
-                            >
-                                {i18n.t(
-                                    i18nKeys.organisationUnitDistributionReport
-                                        .getChartAction
-                                )}
-                            </Button>
-                        </div>
+                    <Form
+                        isActionEnabled={this.props.isActionEnabled}
+                        onGetReportClick={this.props.loadReport}
+                        onGetChartClick={this.props.loadChart}
+                    />
+                    <div id="report-container">
+                        {!this.props.displayImage && (
+                            <TabularReport
+                                content={this.props.reportContent}
+                                isLoading={this.props.loading}
+                                fileUrls={this.props.fileUrls}
+                            />
+                        )}
+                        {this.props.displayImage && (
+                            <img
+                                onLoad={this.props.handleChartLoaded}
+                                onError={this.props.handleChartLoadingError}
+                                alt={''}
+                                src={this.props.imageUrl}
+                            />
+                        )}
                     </div>
-                    {!this.state.showForm && (
-                        <div
-                            id="report-container"
-                            style={{
-                                display: !this.state.showForm
-                                    ? 'block'
-                                    : 'none',
-                            }}
-                        >
-                            {this.state.reportHtml && (
-                                <div
-                                    id="download-options-container"
-                                    style={styles.downloadContainer}
-                                >
-                                    <span
-                                        style={styles.downloadButton}
-                                        role="button"
-                                        tabIndex="0"
-                                        onClick={this.exportReportToXls}
-                                    >
-                                        {i18n.t(
-                                            i18nKeys
-                                                .organisationUnitDistributionReport
-                                                .exportReport
-                                        )}
-                                    </span>
-                                </div>
-                            )}
-                            {this.state.reportHtml && (
-                                <ReportTable
-                                    reportHtml={this.state.reportHtml}
-                                />
-                            )}
-                            {this.props.displayImage && (
-                                <img
-                                    onLoad={this.handleChartLoaded}
-                                    onError={this.handleChartLoadingError}
-                                    alt={i18n.t(
-                                        i18nKeys
-                                            .organisationUnitDistributionReport
-                                            .getChartAction
-                                    )}
-                                    src={this.state.imageUrl}
-                                />
-                            )}
-                        </div>
-                    )}
                 </Paper>
+                <Snackbar />
             </div>
         )
     }
+}
+
+OrganisationUnitDistributionReport.propTypes = {
+    d2: PropTypes.object.isRequired,
+    sectionKey: PropTypes.string.isRequired,
+
+    imageUrl: PropTypes.string.isRequired,
+    isActionEnabled: PropTypes.bool.isRequired,
+    displayImage: PropTypes.bool.isRequired,
+    loading: PropTypes.bool.isRequired,
+    groupSetsReady: PropTypes.bool.isRequired,
+    fileUrls: PropTypes.array.isRequired,
+    reportContent: PropTypes.object.isRequired,
+    loadReport: PropTypes.func.isRequired,
+    loadChart: PropTypes.func.isRequired,
+    loadGroupSetOptions: PropTypes.func.isRequired,
+    handleChartLoaded: PropTypes.func.isRequired,
+    handleChartLoadingError: PropTypes.func.isRequired,
 }
 
 export const ConnectedOrganisationUnitDistributionReport = connectOrganisationUnitDistributionReport(

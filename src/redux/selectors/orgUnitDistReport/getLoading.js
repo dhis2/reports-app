@@ -1,2 +1,2 @@
 export const getLoading = state =>
-    state.reportData.loading || state.orgUnitDistReport.chartImageUrlLoading
+    state.reportData.loading || state.orgUnitDistReport.chartImageLoading
