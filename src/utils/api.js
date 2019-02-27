@@ -204,11 +204,10 @@ export const getResources = (page, pageSize, search) => {
         page,
         pageSize,
         fields: 'displayName,id,url,external,access',
-        ...(!search
-            ? {}
-            : {
-                  filter: `displayName:ilike:${search}`,
-              }),
+    }
+
+    if (search) {
+        requestData.filter = `displayName:ilike:${search}`
     }
 
     return api.get(RESOURCE_ENDPOINT, requestData)

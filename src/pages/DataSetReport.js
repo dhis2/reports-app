@@ -13,41 +13,42 @@ import styles from '../utils/styles'
 
 class DataSetReport extends React.Component {
     render() {
-        const { props } = this
-        const formStyle = { display: !props.reportHtml ? 'block' : 'none' }
+        const formStyle = { display: !this.props.hasReport ? 'block' : 'none' }
 
         return (
             <div>
                 <SectionHeadline
                     label={i18n.t('Data Set Report')}
-                    showBackButton={!!props.reportHtml}
-                    onBackClick={props.showDataSetReportForm}
-                    systemVersion={props.d2.system.version}
-                    sectionKey={props.sectionKey}
+                    showBackButton={this.props.hasReport}
+                    onBackClick={this.props.showDataSetReportForm}
+                    systemVersion={this.props.d2.system.version}
+                    sectionKey={this.props.sectionKey}
                 />
                 <Paper style={styles.container}>
                     <div id="data-set-report-form" style={formStyle}>
                         <DataInputs
-                            selectedUnitOnly={props.selectedUnitOnly}
-                            onDataSetChange={props.selectDataSet}
+                            selectedUnitOnly={this.props.selectedUnitOnly}
+                            onDataSetChange={this.props.selectDataSet}
                             onSelectedUnitOnlyChange={
-                                props.toggleSelectedUnitOnly
+                                this.props.toggleSelectedUnitOnly
                             }
                         />
                         <FormActions
-                            onGetReportClick={props.loadReportData}
-                            isGetReportDisabled={!props.isActionEnabled}
+                            onGetReportClick={this.props.loadReportData}
+                            isGetReportDisabled={!this.props.isActionEnabled}
                         />
                     </div>
                     <TabularReportCommentable
-                        shouldRender={!!props.reportHtml}
-                        reportHtml={props.reportHtml}
-                        reportComment={props.reportComment}
-                        onDownloadXlsClick={props.exportReportToXls}
+                        content={this.props.reportContent}
+                        isLoading={this.props.isReportLoading}
+                        fileUrls={this.props.fileUrls}
+                        reportComment={this.props.reportComment}
                         shareDataSetReportComment={
-                            props.shareDataSetReportComment
+                            this.props.shareDataSetReportComment
                         }
-                        setDataSetReportComment={props.setDataSetReportComment}
+                        setDataSetReportComment={
+                            this.props.setDataSetReportComment
+                        }
                     />
                 </Paper>
                 <Snackbar />
@@ -58,8 +59,12 @@ class DataSetReport extends React.Component {
 
 DataSetReport.propTypes = {
     d2: PropTypes.object.isRequired,
-    reportHtml: PropTypes.string.isRequired,
+    sectionKey: PropTypes.string.isRequired,
+    fileUrls: PropTypes.array.isRequired,
+    reportContent: PropTypes.object.isRequired,
     reportComment: PropTypes.string.isRequired,
+    hasReport: PropTypes.bool.isRequired,
+    isReportLoading: PropTypes.bool.isRequired,
     isActionEnabled: PropTypes.bool.isRequired,
     selectedUnitOnly: PropTypes.bool.isRequired,
     selectedOrgUnit: PropTypes.object.isRequired,

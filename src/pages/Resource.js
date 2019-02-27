@@ -15,6 +15,7 @@ import {
     hasPreviousPageCreator,
     calculatePageValue,
 } from '../utils/pagination/helper'
+import { Snackbar } from '../components/feedback/Snackbar'
 import { SectionHeadline } from '../components/SectionHeadline'
 import { NoResultsMessage } from '../components/NoResultsMessage'
 import { Action } from './resource/Action'
@@ -37,57 +38,56 @@ export default class Resource extends React.Component {
     }
 
     render() {
-        const { props } = this
-        const { pager } = props
+        const { pager } = this.props
         const hasNextPage = hasNextPageCreator(pager.page, pager.pageCount)
         const hasPreviousPage = hasPreviousPageCreator(pager.page)
         const paginationCurrentlyShown = calculatePageValue(pager)
-        const contextMenuOptions = createContextMenuOptions(props)
+        const contextMenuOptions = createContextMenuOptions(this.props)
 
         return (
             <div>
                 <SectionHeadline
                     label={i18n.t('Resource')}
-                    systemVersion={props.d2.system.version}
-                    sectionKey={props.sectionKey}
+                    systemVersion={this.props.d2.system.version}
+                    sectionKey={this.props.sectionKey}
                 />
                 <div id="resource-content">
                     <Pagination
-                        total={props.pager.total}
+                        total={this.props.pager.total}
                         hasNextPage={hasNextPage}
                         hasPreviousPage={hasPreviousPage}
-                        onNextPageClick={props.goToNextPage}
-                        onPreviousPageClick={props.goToPrevPage}
+                        onNextPageClick={this.props.goToNextPage}
+                        onPreviousPageClick={this.props.goToPrevPage}
                         currentlyShown={paginationCurrentlyShown}
                     />
                     <div id={'search-box-id'} style={styles.searchContainer}>
                         <InputField
-                            value={props.search}
+                            value={this.props.search}
                             type="text"
                             hintText={i18n.t('Search')}
                             // eslint-disable-next-line
-                            onChange={props.setSearch}
+                            onChange={this.props.setSearch}
                         />
                     </div>
                     <Table
                         columns={['displayName']}
-                        rows={props.resources}
+                        rows={this.props.resources}
                         contextMenuActions={contextMenuOptions}
                         contextMenuIcons={contextMenuIcons}
                         isContextActionAllowed={showContextAction(
-                            props.deleteResource
+                            this.props.deleteResource
                         )}
+                        primaryAction={contextMenuOptions[resourceActions.VIEW]}
                     />
-                    {props.resources.length && props.loadingResources && (
-                        <NoResultsMessage />
-                    )}
+                    {!this.props.resources.length &&
+                        !this.props.loadingResources && <NoResultsMessage />}
                     <div id={'footer-pagination-id'}>
                         <Pagination
-                            total={props.pager.total}
+                            total={this.props.pager.total}
                             hasNextPage={hasNextPage}
                             hasPreviousPage={hasPreviousPage}
-                            onNextPageClick={props.goToNextPage}
-                            onPreviousPageClick={props.goToPrevPage}
+                            onNextPageClick={this.props.goToNextPage}
+                            onPreviousPageClick={this.props.goToPrevPage}
                             currentlyShown={paginationCurrentlyShown}
                         />
                     </div>
@@ -95,20 +95,21 @@ export default class Resource extends React.Component {
                         <Button
                             id={'add-resource-btn-id'}
                             fab
-                            onClick={props.addResource}
+                            onClick={this.props.addResource}
                             style={appStyles.addButton}
                         >
                             <SvgIcon icon={'Add'} />
                         </Button>
                     </div>
                     <Action
-                        d2={props.d2}
-                        open={props.open}
-                        selectedAction={props.selectedAction}
-                        selectedResource={props.selectedResource}
-                        handleClose={props.closeContextMenu}
+                        d2={this.props.d2}
+                        open={this.props.open}
+                        selectedAction={this.props.selectedAction}
+                        selectedResource={this.props.selectedResource}
+                        handleClose={this.props.closeContextMenu}
                         handleError={this.manageError}
                     />
+                    <Snackbar />
                 </div>
             </div>
         )
@@ -117,13 +118,25 @@ export default class Resource extends React.Component {
 
 Resource.propTypes = {
     d2: PropTypes.object.isRequired,
-    pager: PropTypes.object.isRequired,
+    sectionKey: PropTypes.string.isRequired,
+
+    open: PropTypes.bool.isRequired,
+    loadingResources: PropTypes.bool.isRequired,
     search: PropTypes.string.isRequired,
+    selectedAction: PropTypes.string.isRequired,
     resources: PropTypes.array.isRequired,
+    pager: PropTypes.object.isRequired,
+    selectedResource: PropTypes.object.isRequired,
     goToNextPage: PropTypes.func.isRequired,
     goToPrevPage: PropTypes.func.isRequired,
     loadResources: PropTypes.func.isRequired,
     deleteResource: PropTypes.func.isRequired,
+    setSearch: PropTypes.func.isRequired,
+    addResource: PropTypes.func.isRequired,
+    viewResource: PropTypes.func.isRequired,
+    editResource: PropTypes.func.isRequired,
+    showSharingSettings: PropTypes.func.isRequired,
+    closeContextMenu: PropTypes.func.isRequired,
 }
 
 Resource.childContextTypes = {

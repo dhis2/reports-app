@@ -126,7 +126,7 @@ export const viewResource = resource => {
     const { id } = resource
     const baseUrl = getApi().baseUrl
     const resourceUrl = `${baseUrl}/${RESOURCE_ENDPOINT}/${id}/data`
-    window.open(resourceUrl, '_blank')
+    window.open(resourceUrl)
 
     return {
         type: actionTypes.VIEW_RESOURCE,

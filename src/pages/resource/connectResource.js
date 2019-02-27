@@ -14,7 +14,6 @@ import {
 
 const mapStateToProps = state => ({
     open: state.resource.open,
-    loading: state.resource.loading,
     resources: state.resource.collection,
     selectedAction: state.resource.selectedAction,
     selectedResource: state.resource.selectedResource,
@@ -23,18 +22,18 @@ const mapStateToProps = state => ({
     pager: state.pagination,
 })
 
-const mapDispatchToProps = dispatch => ({
-    loadResources: () => dispatch(loadResources()),
-    goToNextPage: () => dispatch(goToNextPage()),
-    goToPrevPage: () => dispatch(goToPrevPage()),
-    setSearch: value => dispatch(setSearch(value)),
-    addResource: () => dispatch(addResource()),
-    viewResource: resource => dispatch(viewResource(resource)),
-    editResource: resource => dispatch(editResource(resource)),
-    showSharingSettings: resource => dispatch(showSharingSettings(resource)),
-    deleteResource: resource => dispatch(deleteResource(resource)),
-    closeContextMenu: refreshList => dispatch(closeContextMenu(refreshList)),
-})
+const mapDispatchToProps = {
+    goToNextPage,
+    goToPrevPage,
+    loadResources,
+    deleteResource,
+    setSearch,
+    addResource,
+    viewResource,
+    editResource,
+    showSharingSettings,
+    closeContextMenu,
+}
 
 export const connectResource = connect(
     mapStateToProps,
