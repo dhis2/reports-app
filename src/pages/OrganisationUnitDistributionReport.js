@@ -1,37 +1,27 @@
-/* React */
 import React from 'react'
 import PropTypes from 'prop-types'
-
-/* Material UI */
 import { Paper } from 'material-ui'
-
-/* d2-ui components */
 import { Button } from '@dhis2/d2-ui-core'
-
-/* js-xlsx */
 import XLSX from 'xlsx'
-
-/* Redux */
 import { connect } from 'react-redux'
-import { updateFeedbackState } from '../../redux/actions/feedback'
-
-/* i18n */
-import i18n from '../../utils/i18n/locales'
-import { i18nKeys } from '../../utils/i18n/i18nKeys'
-
-/* App components */
-import Page from '../Page'
-import PageHelper from '../../components/PageHelper'
-import OrganisationUnitsTree from '../../components/AvailableOrganisationUnitsTree'
-import GroupSets from '../../components/GroupSetsDropdown'
-import ReportTable from '../../components/TabularReport/ReportTable'
-
-/* utils */
-import { getDocsUrl } from '../../utils/getDocsUrl'
-import { LOADING, SUCCESS } from '../../utils/feedbackTypes.js'
-
-/* styles */
-import styles from '../../utils/styles'
+import { updateFeedbackState } from '../redux/actions/feedback'
+import i18n from '../utils/i18n/locales'
+import { i18nKeys } from '../utils/i18n/i18nKeys'
+import Page from './Page'
+import PageHelper from '../components/PageHelper'
+import OrganisationUnitsTree from '../components/AvailableOrganisationUnitsTree'
+import GroupSets from '../components/GroupSetsDropdown'
+import ReportTable from '../components/TabularReport/ReportTable'
+import { getDocsUrl } from '../utils/getDocsUrl'
+import { LOADING, SUCCESS } from '../utils/feedbackTypes.js'
+import styles from '../utils/styles'
+import {
+    loadingChartImageUrlStart,
+    loadingChartImageUrlSuccessWithFeedback,
+    loadingChartImageUrlErrorWithFeedback,
+} from '../redux/actions/orgUnitDistReport'
+import { getChartImageUrl } from '../redux/selectors/orgUnitDistReport/getChartImageUrl'
+import { getLoading } from '../redux/selectors/orgUnitDistReport/getLoading'
 
 export default class OrganisationUnitDistributionReport extends Page {
     static propTypes = {
@@ -47,7 +37,6 @@ export default class OrganisationUnitDistributionReport extends Page {
             selectedGroupSet: null,
             selectedOrgUnit: null,
             loading: false,
-            imageUrl: null,
         }
     }
 
@@ -55,18 +44,6 @@ export default class OrganisationUnitDistributionReport extends Page {
         this.setState({
             showForm: true,
         })
-    }
-
-    handleChartLoaded = () => {
-        this.setState({ loading: false })
-        this.props.updateFeedbackState(true, {
-            type: SUCCESS,
-            message: i18n.t(i18nKeys.messages.chartGenerated),
-        })
-    }
-
-    handleChartLoadingError = () => {
-        this.manageError()
     }
 
     exportReportToXls = () => {
@@ -94,7 +71,6 @@ export default class OrganisationUnitDistributionReport extends Page {
             .then(response => {
                 this.setState({
                     reportHtml: response,
-                    imageUrl: null,
                     showForm: false,
                     loading: false,
                 })
@@ -106,26 +82,6 @@ export default class OrganisationUnitDistributionReport extends Page {
             .catch(error => {
                 this.manageError(error)
             })
-    }
-
-    getChart = () => {
-        const api = this.props.d2.Api.getApi()
-        const timestamp = new Date().getTime()
-
-        // eslint-disable-next-line
-        const imageUrl = `${api.baseUrl}/organisationUnits/${
-            this.state.selectedOrgUnit
-        }/distributionChart.png?groupSetId=${
-            this.state.selectedGroupSet
-        }&t=${timestamp}`
-
-        this.setState({
-            reportHtml: null,
-            imageUrl,
-            showForm: false,
-            loading: true,
-        })
-        this.props.updateFeedbackState(true, { type: LOADING })
     }
 
     handleOrganisationUnitChange = selectedOrgUnit => {
@@ -260,7 +216,7 @@ export default class OrganisationUnitDistributionReport extends Page {
                                     reportHtml={this.state.reportHtml}
                                 />
                             )}
-                            {this.state.imageUrl && (
+                            {this.props.displayImage && (
                                 <img
                                     onLoad={this.handleChartLoaded}
                                     onError={this.handleChartLoadingError}
@@ -280,11 +236,21 @@ export default class OrganisationUnitDistributionReport extends Page {
     }
 }
 
+const mapStateToProps = state => ({
+    imageUrl: getChartImageUrl(state),
+    displayImage: state.orgUnitDistReport.displayImage,
+    loading: getLoading(state),
+})
+
 const mapDispatchToProps = dispatch => ({
-    updateFeedbackState: updateFeedbackState(dispatch),
+    loadImage: () => dispatch(loadingChartImageUrlStart()),
+    handleChartLoaded: () =>
+        dispatch(loadingChartImageUrlSuccessWithFeedback()),
+    handleChartLoadingError: () =>
+        dispatch(loadingChartImageUrlErrorWithFeedback()),
 })
 
 export const ConnectedOrganisationUnitDistributionReport = connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
 )(OrganisationUnitDistributionReport)
