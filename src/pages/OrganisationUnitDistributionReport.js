@@ -3,11 +3,10 @@ import PropTypes from 'prop-types'
 import { Paper } from 'material-ui'
 import { Button } from '@dhis2/d2-ui-core'
 import XLSX from 'xlsx'
-import { connect } from 'react-redux'
 import { updateFeedbackState } from '../redux/actions/feedback'
 import i18n from '../utils/i18n/locales'
 import { i18nKeys } from '../utils/i18n/i18nKeys'
-import Page from './Page'
+import manageError from '../utils/pageEnhancers/manageError.HOC'
 import PageHelper from '../components/PageHelper'
 import OrganisationUnitsTree from '../components/AvailableOrganisationUnitsTree'
 import GroupSets from '../components/GroupSetsDropdown'
@@ -15,15 +14,9 @@ import ReportTable from '../components/TabularReport/ReportTable'
 import { getDocsUrl } from '../utils/getDocsUrl'
 import { LOADING, SUCCESS } from '../utils/feedbackTypes.js'
 import styles from '../utils/styles'
-import {
-    loadingChartImageUrlStart,
-    loadingChartImageUrlSuccessWithFeedback,
-    loadingChartImageUrlErrorWithFeedback,
-} from '../redux/actions/orgUnitDistReport'
-import { getChartImageUrl } from '../redux/selectors/orgUnitDistReport/getChartImageUrl'
-import { getLoading } from '../redux/selectors/orgUnitDistReport/getLoading'
+import { connectOrganisationUnitDistributionReport } from './organisation-unit-distribution-report/connectOrganisationUnitDistributionReport'
 
-export default class OrganisationUnitDistributionReport extends Page {
+export default class OrganisationUnitDistributionReport extends React.Component {
     static propTypes = {
         d2: PropTypes.object.isRequired,
     }
@@ -236,21 +229,6 @@ export default class OrganisationUnitDistributionReport extends Page {
     }
 }
 
-const mapStateToProps = state => ({
-    imageUrl: getChartImageUrl(state),
-    displayImage: state.orgUnitDistReport.displayImage,
-    loading: getLoading(state),
-})
-
-const mapDispatchToProps = dispatch => ({
-    loadImage: () => dispatch(loadingChartImageUrlStart()),
-    handleChartLoaded: () =>
-        dispatch(loadingChartImageUrlSuccessWithFeedback()),
-    handleChartLoadingError: () =>
-        dispatch(loadingChartImageUrlErrorWithFeedback()),
-})
-
-export const ConnectedOrganisationUnitDistributionReport = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(OrganisationUnitDistributionReport)
+export const ConnectedOrganisationUnitDistributionReport = connectOrganisationUnitDistributionReport(
+    manageError(OrganisationUnitDistributionReport)
+)
