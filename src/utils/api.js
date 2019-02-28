@@ -13,6 +13,7 @@ import {
     DATA_SET_DIMENSIONS_ENDPOINT,
     RESOURCE_ENDPOINT,
     DATA_DIMENSION_SUFFIXES,
+    ORG_UNIT_DISTRIBUTION_REPORT_ENDPOINT,
     postDataSetReportCommentUrl,
 } from './api/constants'
 
@@ -194,6 +195,17 @@ export const getOrgUnitGroupSets = () =>
     d2.models.organisationUnitGroupSet.list({
         paging: false,
         fields: 'id,displayName',
+    })
+
+/**
+ * @param {string} orgUnitId
+ * @param {string} groupSetId
+ * @returns {Promise}
+ */
+export const getOrgUnitDistReport = (orgUnitId, groupSetId) =>
+    api.get(ORG_UNIT_DISTRIBUTION_REPORT_ENDPOINT, {
+        ou: orgUnitId,
+        ougs: groupSetId,
     })
 
 /**
