@@ -773,7 +773,7 @@ assert@^1.1.1:
   dependencies:
     util "0.10.3"
 
-assertion-error-formatter@^2.0.0, assertion-error-formatter@^2.0.1:
+assertion-error-formatter@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/assertion-error-formatter/-/assertion-error-formatter-2.0.1.tgz#6bbdffaec8e2fa9e2b0eb158bfe353132d7c0a9b"
   integrity sha512-cjC3jUCh9spkroKue5PDSKH5RFQ/KNuZJhk3GwHYmB/8qqETxLOmMdLH+ohi/VukNzxDlMvIe7zScvLoOdhb6Q==
@@ -1493,14 +1493,6 @@ babel-register@^6.26.0:
     lodash "^4.17.4"
     mkdirp "^0.5.1"
     source-map-support "^0.4.15"
-
-babel-runtime@6.25.0, babel-runtime@~6.25.0:
-  version "6.25.0"
-  resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.25.0.tgz#33b98eaa5d482bb01a8d1aa6b437ad2b01aec41c"
-  integrity sha1-M7mOql1IK7AajRqmtDetKwGuxBw=
-  dependencies:
-    core-js "^2.4.0"
-    regenerator-runtime "^0.10.0"
 
 babel-runtime@6.26.0, babel-runtime@^6.11.6, babel-runtime@^6.18.0, babel-runtime@^6.22.0, babel-runtime@^6.23.0, babel-runtime@^6.26.0, babel-runtime@~6.26.0:
   version "6.26.0"
@@ -2932,19 +2924,14 @@ csstype@^2.5.2:
   version "2.5.7"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.5.7.tgz#bf9235d5872141eccfb2d16d82993c6b149179ff"
 
-cucumber-expressions@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/cucumber-expressions/-/cucumber-expressions-3.0.0.tgz#4cf424813dae396cc9dab714b8104b459befc32c"
-  integrity sha1-TPQkgT2uOWzJ2rcUuBBLRZvvwyw=
-
-cucumber-expressions@^5.0.7:
+cucumber-expressions@^5.0.13, cucumber-expressions@^5.0.7:
   version "5.0.18"
   resolved "https://registry.yarnpkg.com/cucumber-expressions/-/cucumber-expressions-5.0.18.tgz#6c70779efd3aebc5e9e7853938b1110322429596"
   integrity sha1-bHB3nv0668Xp54U5OLERAyJClZY=
   dependencies:
     becke-ch--regex--s0-0-v1--base--pl--lib "^1.2.0"
 
-cucumber-tag-expressions@^1.0.0, cucumber-tag-expressions@^1.1.1:
+cucumber-tag-expressions@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/cucumber-tag-expressions/-/cucumber-tag-expressions-1.1.1.tgz#7f5c7b70009bc2b666591bfe64854578bedee85a"
   integrity sha1-f1x7cACbwrZmWRv+ZIVFeL7e6Fo=
@@ -2981,34 +2968,37 @@ cucumber@^3.2.0:
     util-arity "^1.0.2"
     verror "^1.9.0"
 
-cucumber@~2.3.1:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/cucumber/-/cucumber-2.3.1.tgz#3791a51ffd0c61462ad57fdb8ed111d55b51cde3"
-  integrity sha1-N5GlH/0MYUYq1X/bjtER1VtRzeM=
+cucumber@^4.1.0:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/cucumber/-/cucumber-4.2.1.tgz#64cfff6150bbe6b5e94b173470057353d6206719"
+  integrity sha512-3gQ0Vv4kSHsvXEFC6b1c+TfLRDzWD1/kU7e5vm8Kh8j35b95k6favan9/4ixcBNqd7UsU1T6FYcawC87+DlNKw==
   dependencies:
-    assertion-error-formatter "^2.0.0"
+    assertion-error-formatter "^2.0.1"
     babel-runtime "^6.11.6"
     bluebird "^3.4.1"
     cli-table "^0.3.1"
     colors "^1.1.2"
     commander "^2.9.0"
-    cucumber-expressions "^3.0.0"
-    cucumber-tag-expressions "^1.0.0"
+    cucumber-expressions "^5.0.13"
+    cucumber-tag-expressions "^1.1.1"
     duration "^0.2.0"
+    escape-string-regexp "^1.0.5"
     figures "2.0.0"
-    gherkin "^4.1.0"
+    gherkin "^5.0.0"
     glob "^7.0.0"
     indent-string "^3.1.0"
     is-generator "^1.0.2"
     is-stream "^1.1.0"
-    lodash "^4.0.0"
+    knuth-shuffle-seeded "^1.0.6"
+    lodash "^4.17.4"
     mz "^2.4.0"
     progress "^2.0.0"
     resolve "^1.3.3"
-    stack-chain "^1.3.5"
+    serialize-error "^2.1.0"
+    stack-chain "^2.0.0"
     stacktrace-js "^2.0.0"
     string-argv "0.0.2"
-    upper-case-first "^1.1.2"
+    title-case "^2.1.1"
     util-arity "^1.0.2"
     verror "^1.9.0"
 
@@ -3287,7 +3277,7 @@ detect-indent@~5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/detect-indent/-/detect-indent-5.0.0.tgz#3871cc0a6a002e8c3e5b3cf7f336264675f06b9d"
 
-detect-libc@^1.0.2:
+detect-libc@^1.0.2, detect-libc@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/detect-libc/-/detect-libc-1.0.3.tgz#fa137c4bd698edf55cd5cd02ac559f91a4c4ba9b"
 
@@ -4233,10 +4223,12 @@ fd-slicer@~1.1.0:
   dependencies:
     pend "~1.2.0"
 
-fibers@~2.0.0:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/fibers/-/fibers-2.0.2.tgz#36db63ea61c543174e2264675fea8c2783371366"
-  integrity sha512-HfVRxhYG7C8Jl9FqtrlElMR2z/8YiLQVDKf67MLY25Ic+ILx3ecmklfT1v3u+7P5/4vEFjuxaAFXhr2/Afwk5g==
+fibers@^3.0.0:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/fibers/-/fibers-3.1.1.tgz#0238902ca938347bd779523692fbeefdf4f688ab"
+  integrity sha512-dl3Ukt08rHVQfY8xGD0ODwyjwrRALtaghuqGH2jByYX1wpY+nAnRQjJ6Dbqq0DnVgNVQ9yibObzbF4IlPyiwPw==
+  dependencies:
+    detect-libc "^1.0.3"
 
 figgy-pudding@^3.0.0, figgy-pudding@^3.1.0:
   version "3.1.0"
@@ -4641,11 +4633,6 @@ gettext-parser@^1.3.1:
   dependencies:
     encoding "^0.1.12"
     safe-buffer "^5.1.1"
-
-gherkin@^4.1.0:
-  version "4.1.3"
-  resolved "https://registry.yarnpkg.com/gherkin/-/gherkin-4.1.3.tgz#11687db93976df97633125a6b2228a1a4bfdfa24"
-  integrity sha1-EWh9uTl235djMSWmsiKKGkv9+iQ=
 
 gherkin@^5.0.0:
   version "5.1.0"
@@ -6357,6 +6344,13 @@ klaw@~2.0.0:
   resolved "https://registry.yarnpkg.com/klaw/-/klaw-2.0.0.tgz#59c128e0dc5ce410201151194eeb9cbf858650f6"
   dependencies:
     graceful-fs "^4.1.9"
+
+knuth-shuffle-seeded@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/knuth-shuffle-seeded/-/knuth-shuffle-seeded-1.0.6.tgz#01f1b65733aa7540ee08d8b0174164d22081e4e1"
+  integrity sha1-AfG2VzOqdUDuCNiwF0Fk0iCB5OE=
+  dependencies:
+    seed-random "~2.2.0"
 
 latest-version@^3.0.0:
   version "3.1.0"
@@ -9640,11 +9634,6 @@ regenerate@^1.2.1:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/regenerate/-/regenerate-1.4.0.tgz#4a856ec4b56e4077c557589cae85e7a4c8869a11"
 
-regenerator-runtime@^0.10.0:
-  version "0.10.5"
-  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.10.5.tgz#336c3efc1220adcedda2c9fab67b5a7955a33658"
-  integrity sha1-M2w+/BIgrc7dosn6tntaeVWjNlg=
-
 regenerator-runtime@^0.11.0, regenerator-runtime@^0.11.1:
   version "0.11.1"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
@@ -10081,6 +10070,11 @@ seamless-immutable@^7.1.3:
   resolved "https://registry.yarnpkg.com/seamless-immutable/-/seamless-immutable-7.1.4.tgz#6e9536def083ddc4dea0207d722e0e80d0f372f8"
   integrity sha512-XiUO1QP4ki4E2PHegiGAlu6r82o5A+6tRh7IkGGTVg/h+UoeX4nFBeCGPOhb4CYjvkqsfm/TUtvOMYC1xmV30A==
 
+seed-random@~2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/seed-random/-/seed-random-2.2.0.tgz#2a9b19e250a817099231a5b99a4daf80b7fbed54"
+  integrity sha1-KpsZ4lCoFwmSMaW5mk2vgLf77VQ=
+
 select-hose@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/select-hose/-/select-hose-2.0.0.tgz#625d8658f865af43ec962bfc376a37359a4994ca"
@@ -10151,6 +10145,11 @@ send@0.16.2:
     on-finished "~2.3.0"
     range-parser "~1.2.0"
     statuses "~1.4.0"
+
+serialize-error@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/serialize-error/-/serialize-error-2.1.0.tgz#50b679d5635cdf84667bdc8e59af4e5b81d5f60a"
+  integrity sha1-ULZ51WNc34Rme9yOWa9OW4HV9go=
 
 serve-index@^1.7.2:
   version "1.9.1"
@@ -10518,11 +10517,6 @@ ssri@^5.2.4:
 ssri@^6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/ssri/-/ssri-6.0.0.tgz#fc21bfc90e03275ac3e23d5a42e38b8a1cbc130d"
-
-stack-chain@^1.3.5:
-  version "1.3.7"
-  resolved "https://registry.yarnpkg.com/stack-chain/-/stack-chain-1.3.7.tgz#d192c9ff4ea6a22c94c4dd459171e3f00cea1285"
-  integrity sha1-0ZLJ/06moiyUxN1FkXHj8AzqEoU=
 
 stack-chain@^2.0.0:
   version "2.0.0"
@@ -11254,13 +11248,6 @@ update-notifier@^2.3.0, update-notifier@^2.5.0:
     semver-diff "^2.0.0"
     xdg-basedir "^3.0.0"
 
-upper-case-first@^1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/upper-case-first/-/upper-case-first-1.1.2.tgz#5d79bedcff14419518fd2edb0a0507c9b6859115"
-  integrity sha1-XXm+3P8UQZUY/S7bCgUHybaFkRU=
-  dependencies:
-    upper-case "^1.1.1"
-
 upper-case@^1.0.3, upper-case@^1.1.1:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/upper-case/-/upper-case-1.1.3.tgz#f6b4501c2ec4cdd26ba78be7222961de77621598"
@@ -11452,17 +11439,17 @@ wdio-allure-reporter@^0.6.2:
     allure-js-commons "^1.3.1"
     babel-runtime "^6.26.0"
 
-wdio-cucumber-framework@^1.0.2:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/wdio-cucumber-framework/-/wdio-cucumber-framework-1.1.1.tgz#4ad899e145714fa2b86254ec0a300eecf3a898d0"
-  integrity sha512-iauI+eGcPTLKyLXw9Aer+lowkcnSpD0hmWL6TNug9mJ5wUi8B6TVZewzquI9m3oACfU2vdCXp1hWBKtnz7Fg/w==
+wdio-cucumber-framework@^2.2.8:
+  version "2.2.8"
+  resolved "https://registry.yarnpkg.com/wdio-cucumber-framework/-/wdio-cucumber-framework-2.2.8.tgz#41a1a27ec0d676639c044ca1676b9d30f76debc8"
+  integrity sha512-4ZCJ9REiz0Ulj7hjlHq6gm00NSfOSpn2sdclbyVEsmpj5zOeKxWaOonviYikl7J1PDYNKV1VTlLEIk5v/TwZiQ==
   dependencies:
-    babel-runtime "~6.25.0"
-    cucumber "~2.3.1"
+    babel-runtime "^6.26.0"
+    cucumber "^4.1.0"
     glob "^7.1.2"
     is-glob "^4.0.0"
     mockery "~2.1.0"
-    wdio-sync "0.7.0"
+    wdio-sync "0.7.3"
 
 wdio-dot-reporter@~0.0.8:
   version "0.0.10"
@@ -11486,13 +11473,13 @@ wdio-spec-reporter@^0.1.4:
     chalk "^2.3.0"
     humanize-duration "~3.15.0"
 
-wdio-sync@0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/wdio-sync/-/wdio-sync-0.7.0.tgz#2fb07d250121dc81f5635316542c3c49a1220168"
-  integrity sha1-L7B9JQEh3IH1Y1MWVCw8SaEiAWg=
+wdio-sync@0.7.3:
+  version "0.7.3"
+  resolved "https://registry.yarnpkg.com/wdio-sync/-/wdio-sync-0.7.3.tgz#858c7439c18c0dbdcd2e25e29db8a0ea2f34bc04"
+  integrity sha512-ukASSHOQmOxaz5HTILR0jykqlHBtAPsBpMtwhpiG0aW9uc7SO7PF+E5LhVvTG4ypAh+UGmY3rTjohOsqDr39jw==
   dependencies:
-    babel-runtime "6.25.0"
-    fibers "~2.0.0"
+    babel-runtime "^6.26.0"
+    fibers "^3.0.0"
     object.assign "^4.0.3"
 
 webdriverio@^4.12.0:

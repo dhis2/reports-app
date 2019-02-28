@@ -11,35 +11,32 @@ import { connectReportingRateSummary } from './reporting-rate-summary/connectRep
 import { Form } from './reporting-rate-summary/Form'
 
 export default class ReportingRateSummary extends React.Component {
-    render() {
-        const { props } = this
-
-        return (
-            <div>
-                <SectionHeadline
-                    label={i18n.t('Reporting rate summary')}
-                    systemVersion={props.d2.system.version}
-                    sectionKey={props.sectionKey}
+    render = () => (
+        <div>
+            <SectionHeadline
+                label={i18n.t('Reporting rate summary')}
+                systemVersion={this.props.d2.system.version}
+                sectionKey={this.props.sectionKey}
+            />
+            <Paper style={styles.container}>
+                <Form
+                    loadReportData={this.props.loadReportData}
+                    isActionEnabled={this.props.isActionEnabled}
                 />
-                <Paper style={styles.container}>
-                    <Form
-                        loadReportData={props.loadReportData}
-                        isActionEnabled={props.isActionEnabled}
-                    />
-                    <TabularReport
-                        content={props.reportContent}
-                        isLoading={props.isReportLoading}
-                        fileUrls={props.fileUrls}
-                    />
-                </Paper>
-                <Snackbar />
-            </div>
-        )
-    }
+                <TabularReport
+                    content={this.props.reportContent}
+                    isLoading={this.props.isReportLoading}
+                    fileUrls={this.props.fileUrls}
+                />
+            </Paper>
+            <Snackbar />
+        </div>
+    )
 }
 
 ReportingRateSummary.propTypes = {
     d2: PropTypes.object.isRequired,
+    sectionKey: PropTypes.string.isRequired,
     isActionEnabled: PropTypes.bool.isRequired,
     loadReportData: PropTypes.func.isRequired,
     reportContent: PropTypes.object.isRequired,

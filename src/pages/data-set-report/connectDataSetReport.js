@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import { isEmpty } from 'lodash'
 import {
     loadReportData,
     selectDataSet,
@@ -6,14 +7,17 @@ import {
     shareDataSetReportComment,
 } from '../../redux/actions/dataSetReport'
 import {
-    exportReportToXls,
     setReportComment,
     unsetReportData,
 } from '../../redux/actions/reportData'
 import { isActionEnabled } from '../../redux/selectors/dataSetReport/isActionEnabled'
+import getTranformedTableData from '../../redux/selectors/reportingRateSummary/getTranformedTableData.js'
 
 const mapStateToProps = state => ({
-    reportHtml: state.reportData.content,
+    hasReport: !isEmpty(state.reportData.content),
+    reportContent: getTranformedTableData(state),
+    fileUrls: state.reportData.content.fileUrls || [],
+    isReportLoading: state.reportData.loading,
     reportComment: state.reportData.comment,
     selectedUnitOnly: state.dataSetReport.selectedUnitOnly,
     selectedOrgUnit: state.organisationUnits.selected,
@@ -22,12 +26,6 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    exportReportToXls: () =>
-        dispatch(
-            exportReportToXls(
-                document.querySelectorAll('#report-container table')
-            )
-        ),
     loadReportData: () => dispatch(loadReportData()),
     showDataSetReportForm: () => dispatch(unsetReportData()),
     selectDataSet: e => dispatch(selectDataSet(e.target.value)),
