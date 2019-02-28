@@ -8,6 +8,7 @@ export const REPORTING_RATE_SUMMARY_ENDPOINT =
     'organisationUnits/%orgUnitId%/rateSummary'
 export const getOrgUnitDistReportUrl = orgUnitId =>
     `organisationUnits/${orgUnitId}/distributionReport`
+export const RESOURCE_ENDPOINT = 'documents'
 
 // Url creaters
 export const postDataSetReportCommentUrl = (dataSetId, orgUnitId, period) =>

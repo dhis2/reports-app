@@ -11,6 +11,7 @@ import {
     STANDARD_REPORTS_ENDPOINT,
     DATA_SET_REPORTS_ENDPOINT,
     DATA_SET_DIMENSIONS_ENDPOINT,
+    RESOURCE_ENDPOINT,
     DATA_DIMENSION_SUFFIXES,
     postDataSetReportCommentUrl,
     getOrgUnitDistReportUrl,
@@ -203,3 +204,26 @@ export const getOrgUnitGroupSets = () =>
  */
 export const getOrgUnitDistReport = (orgUnitId, groupSetId) =>
     api.get(getOrgUnitDistReportUrl(orgUnitId), { groupSetId })
+
+/**
+ * @returns {Promise}
+ */
+export const getResources = (page, pageSize, search) => {
+    const requestData = {
+        page,
+        pageSize,
+        fields: 'displayName,id,url,external,access',
+    }
+
+    if (search) {
+        requestData.filter = `displayName:ilike:${search}`
+    }
+
+    return api.get(RESOURCE_ENDPOINT, requestData)
+}
+
+/**
+ * @returns {Promise}
+ */
+export const deleteResource = resourceId =>
+    api.delete(`${RESOURCE_ENDPOINT}/${resourceId}`)

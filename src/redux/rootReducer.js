@@ -13,6 +13,7 @@ import { dataSetReport } from './reducers/dataSetReport'
 import { reportData } from './reducers/reportData'
 import { pagination } from './reducers/pagination'
 import { orgUnitDistReport } from './reducers/orgUnitDistReport'
+import { resource } from './reducers/resource'
 
 export default combineReducers({
     router: connectRouter(history),
@@ -27,4 +28,5 @@ export default combineReducers({
     reportData,
     pagination,
     orgUnitDistReport,
+    resource,
 })

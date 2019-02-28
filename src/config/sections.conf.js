@@ -2,8 +2,8 @@
 import { ConnectedStandardReport } from '../pages/StandardReport'
 import { ConnectedDataSetReport } from '../pages/DataSetReport'
 import { ConnectedReportingRateSummary } from '../pages/ReportingRateSummary'
-import { ConnectedResource } from '../pages/resource/Resource'
 import { ConnectedOrganisationUnitDistributionReport } from '../pages/OrganisationUnitDistributionReport'
+import { ConnectedResource } from '../pages/Resource'
 
 /* i18n */
 import { i18nKeys } from '../utils/i18n/i18nKeys'

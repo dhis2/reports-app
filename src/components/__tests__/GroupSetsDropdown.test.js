@@ -17,13 +17,14 @@ jest.mock('@dhis2/d2-ui-core', () => ({
     DropDown: 'DropDown',
 }))
 
+const onChange = jest.fn()
 const ownShallow = () => {
-    const onChange = jest.fn()
     return shallow(
-        <GroupSetsDropdown d2={fakerData.d2} onChange={onChange} />,
-        {
-            disableLifecycleMethods: true,
-        }
+        <GroupSetsDropdown
+            collection={[]}
+            selected=""
+            selectGroupSet={onChange}
+        />
     )
 }
 
