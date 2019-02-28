@@ -109,7 +109,7 @@
   "husky": {
     "hooks": {
       "commit-msg": "yarn d2-style commit",
-      "pre-commit": "yarn code-style && yarn lint && yarn refresh-translations-template && yarn test"
+      "pre-commit": "yarn code-style"
     }
   },
   "manifest.webapp": {
