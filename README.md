@@ -64,4 +64,4 @@ You must have the dev server running on port 3000, as explained previously.
 
 ## License
 
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdhis2%2Freports-app.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fdhis2%2Freports-app?ref=badge_large)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdhis2%2Freports-app.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fdhis2%2Freports-app?ref=badge_large) [![Greenkeeper badge](https://badges.greenkeeper.io/dhis2/reports-app.svg)](https://greenkeeper.io/)
