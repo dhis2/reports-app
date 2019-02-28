@@ -2,6 +2,7 @@ export const actionTypes = {
     GO_TO_NEXT_PAGE: 'GO_TO_NEXT_PAGE',
     GO_TO_PREV_PAGE: 'GO_TO_PREV_PAGE',
     SET_PAGINATION: 'SET_PAGINATION',
+    RESET_PAGINATION: 'RESET_PAGINATION',
 }
 
 /**
@@ -25,4 +26,11 @@ export const goToPrevPage = () => ({
 export const setPagination = pagination => ({
     type: actionTypes.SET_PAGINATION,
     payload: pagination,
+})
+
+/**
+ * returns {Object}
+ */
+export const resetPagination = () => ({
+    type: actionTypes.RESET_PAGINATION,
 })

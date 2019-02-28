@@ -30,6 +30,7 @@ export const pagination = (state = defaultState, { type, payload } = {}) => {
         case allActionTypes.SET_PAGINATION:
             return payload
 
+        case actionTypes.RESET_PAGINATION:
         case allActionTypes.LOCATION_CHANGE:
             return defaultState
 
