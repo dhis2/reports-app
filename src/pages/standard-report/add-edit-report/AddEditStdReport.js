@@ -639,9 +639,9 @@ export default class AddEditStdReport extends PureComponent {
     }
 }
 
-const mapDispatchToProps = dispatch => ({
-    updateFeedbackState: updateFeedbackState(dispatch),
-})
+const mapDispatchToProps = {
+    updateFeedbackState,
+}
 
 export const ConnectedAddEditStdReport = connect(
     null,

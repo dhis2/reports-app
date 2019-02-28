@@ -1,10 +1,7 @@
-/* i18n */
 import i18n from '../../utils/i18n/locales'
-import { i18nKeys } from '../../utils/i18n/i18nKeys'
 
 export const REPORTS_ENDPOINT = 'reports'
 export const REPORT_TABLES_ENDPOINT = 'reportTables'
-
 export const ADD_NEW_REPORT_ACTION = 'ADD_NEW_REPORT_ACTION'
 
 export const CONTEXT_MENU_ACTION = {
@@ -23,7 +20,7 @@ export const CONTEXT_MENU_ICONS = {
 
 export const NONE = {
     id: 'none',
-    name: i18n.t(i18nKeys.standardReport.none),
+    name: i18n.t('[ None ]'),
 }
 
 export const TYPES = {
@@ -46,223 +43,223 @@ export const GET_REPORT_AS_ENDPOINT = {
 export const REPORT_TYPES = [
     {
         id: TYPES.JASPER_REPORT_TABLE,
-        name: i18n.t(i18nKeys.standardReport.jasperReportTable),
+        name: i18n.t('Jasper report with report table data source'),
     },
     {
         id: TYPES.JASPER_JDBC,
-        name: i18n.t(i18nKeys.standardReport.jasperJDBCReportType),
+        name: i18n.t('Jasper report with JDBC data source'),
     },
     {
         id: TYPES.HTML,
-        name: i18n.t(i18nKeys.standardReport.reportDataType),
+        name: i18n.t('HTML report'),
     },
 ]
 
 export const CACHE_STRATEGIES = [
     {
         id: 'NO_CACHE',
-        name: i18n.t(i18nKeys.standardReport.noCache),
+        name: i18n.t('No cache'),
     },
     {
         id: 'RESPECT_SYSTEM_SETTING',
-        name: i18n.t(i18nKeys.standardReport.respectSystemSettings),
+        name: i18n.t('Respect system setting'),
     },
     {
         id: 'CACHE_1_HOUR',
-        name: i18n.t(i18nKeys.standardReport.cacheForOneHour),
+        name: i18n.t('Cache for one hour'),
     },
     {
         id: 'CACHE_6AM_TOMORROW',
-        name: i18n.t(i18nKeys.standardReport.cache6AmTomorrow),
+        name: i18n.t('Cache until 6 AM tomorrow'),
     },
     {
         id: 'CACHE_TWO_WEEKS',
-        name: i18n.t(i18nKeys.standardReport.cacheFour2Weeks),
+        name: i18n.t('Cache for two weeks'),
     },
 ]
 
 export const relativePeriods = [
     // Days
     {
-        label: i18n.t(i18nKeys.relativePeriods.days),
+        label: i18n.t('Days'),
         periods: [
             {
                 id: 'thisDay',
-                name: i18n.t(i18nKeys.relativePeriods.thisDay),
+                name: i18n.t('Reporting day'),
             },
             {
                 id: 'yesterday',
-                name: i18n.t(i18nKeys.relativePeriods.yesterday),
+                name: i18n.t('Yesterday'),
             },
             {
                 id: 'last3Days',
-                name: i18n.t(i18nKeys.relativePeriods.last3Days),
+                name: i18n.t('Last 3 days'),
             },
             {
                 id: 'last7Days',
-                name: i18n.t(i18nKeys.relativePeriods.last7Days),
+                name: i18n.t('Last 7 days'),
             },
             {
                 id: 'last14Days',
-                name: i18n.t(i18nKeys.relativePeriods.last14Days),
+                name: i18n.t('Last 14 days'),
             },
         ],
     },
     // Weeks
     {
-        label: i18n.t(i18nKeys.relativePeriods.weeks),
+        label: i18n.t('Weeks'),
         periods: [
             {
                 id: 'thisWeek',
-                name: i18n.t(i18nKeys.relativePeriods.thisWeek),
+                name: i18n.t('Reporting week'),
             },
             {
                 id: 'lastWeek',
-                name: i18n.t(i18nKeys.relativePeriods.lastWeek),
+                name: i18n.t('Last Week'),
             },
             {
                 id: 'last4Weeks',
-                name: i18n.t(i18nKeys.relativePeriods.last4Weeks),
+                name: i18n.t('Last 2 weeks'),
             },
             {
                 id: 'last12Weeks',
-                name: i18n.t(i18nKeys.relativePeriods.last12Weeks),
+                name: i18n.t('Last 12 weeks'),
             },
             {
                 id: 'last52Weeks',
-                name: i18n.t(i18nKeys.relativePeriods.last52Weeks),
+                name: i18n.t('Last 52 weeks'),
             },
             {
                 id: 'weeksThisYear',
-                name: i18n.t(i18nKeys.relativePeriods.weeksThisYear),
+                name: i18n.t('Weeks this year'),
             },
         ],
     },
     // Months
     {
-        label: i18n.t(i18nKeys.relativePeriods.months),
+        label: i18n.t('Months'),
         periods: [
             {
                 id: 'thisMonth',
-                name: i18n.t(i18nKeys.relativePeriods.thisMonth),
+                name: i18n.t('Reporting month'),
             },
             {
                 id: 'lastMonth',
-                name: i18n.t(i18nKeys.relativePeriods.lastMonth),
+                name: i18n.t('Last month'),
             },
             {
                 id: 'last3Months',
-                name: i18n.t(i18nKeys.relativePeriods.last3Months),
+                name: i18n.t('Last 3 months'),
             },
             {
                 id: 'last6Months',
-                name: i18n.t(i18nKeys.relativePeriods.last6Months),
+                name: i18n.t('Last 6 months'),
             },
             {
                 id: 'last12Months',
-                name: i18n.t(i18nKeys.relativePeriods.last12Months),
+                name: i18n.t('Last 12 months'),
             },
             {
                 id: 'monthsThisYear',
-                name: i18n.t(i18nKeys.relativePeriods.monthsThisYear),
+                name: i18n.t('Months this year'),
             },
         ],
     },
     // Bi-months
     {
-        label: i18n.t(i18nKeys.relativePeriods.biMonths),
+        label: i18n.t('Bi-months'),
         periods: [
             {
                 id: 'thisBimonth',
-                name: i18n.t(i18nKeys.relativePeriods.thisBimonth),
+                name: i18n.t('Reporting bi-month'),
             },
             {
                 id: 'lastBimonth',
-                name: i18n.t(i18nKeys.relativePeriods.lastBimonth),
+                name: i18n.t('Last bi-month'),
             },
             {
                 id: 'last6BiMonths',
-                name: i18n.t(i18nKeys.relativePeriods.last6BiMonths),
+                name: i18n.t('Last 6 bi-month'),
             },
             {
                 id: 'biMonthsThisYear',
-                name: i18n.t(i18nKeys.relativePeriods.biMonthsThisYear),
+                name: i18n.t('Bi-months this year'),
             },
         ],
     },
     // Quarters
     {
-        label: i18n.t(i18nKeys.relativePeriods.quarters),
+        label: i18n.t('Quarters'),
         periods: [
             {
                 id: 'thisQuarter',
-                name: i18n.t(i18nKeys.relativePeriods.thisQuarter),
+                name: i18n.t('Reporting quarter'),
             },
             {
                 id: 'lastQuarter',
-                name: i18n.t(i18nKeys.relativePeriods.lastQuarter),
+                name: i18n.t('Last quarter'),
             },
             {
                 id: 'last4Quarters',
-                name: i18n.t(i18nKeys.relativePeriods.last4Quarters),
+                name: i18n.t('Last 4 quarters'),
             },
             {
                 id: 'quartersThisYear',
-                name: i18n.t(i18nKeys.relativePeriods.quartersThisYear),
+                name: i18n.t('Quarters of reporting year'),
             },
         ],
     },
     // Six-Months
     {
-        label: i18n.t(i18nKeys.relativePeriods.sixMonths),
+        label: i18n.t('Six-Months'),
         periods: [
             {
                 id: 'thisSixMonth',
-                name: i18n.t(i18nKeys.relativePeriods.thisSixMonth),
+                name: i18n.t('Reporting six-month'),
             },
             {
                 id: 'lastSixMonth',
-                name: i18n.t(i18nKeys.relativePeriods.lastSixMonth),
+                name: i18n.t('Last six-month'),
             },
             {
                 id: 'last2SixMonths',
-                name: i18n.t(i18nKeys.relativePeriods.last2SixMonths),
+                name: i18n.t('Last 2 six-months'),
             },
         ],
     },
     // Financial years
     {
-        label: i18n.t(i18nKeys.relativePeriods.financialYears),
+        label: i18n.t('Financial Years'),
         periods: [
             {
                 id: 'thisFinancialYear',
-                name: i18n.t(i18nKeys.relativePeriods.thisFinancialYear),
+                name: i18n.t('Reporting financial year'),
             },
             {
                 id: 'lastFinancialYear',
-                name: i18n.t(i18nKeys.relativePeriods.lastFinancialYear),
+                name: i18n.t('Last financial year'),
             },
             {
                 id: 'last5FinancialYears',
-                name: i18n.t(i18nKeys.relativePeriods.last5FinancialYears),
+                name: i18n.t('Last 5 financial years'),
             },
         ],
     },
     // years
     {
-        label: i18n.t(i18nKeys.relativePeriods.years),
+        label: i18n.t('Years'),
         periods: [
             {
                 id: 'thisYear',
-                name: i18n.t(i18nKeys.relativePeriods.thisYear),
+                name: i18n.t('Reporting year'),
             },
             {
                 id: 'lastYear',
-                name: i18n.t(i18nKeys.relativePeriods.lastYear),
+                name: i18n.t('Last year'),
             },
             {
                 id: 'last5Years',
-                name: i18n.t(i18nKeys.relativePeriods.last5Years),
+                name: i18n.t('Last 5 years'),
             },
         ],
     },
