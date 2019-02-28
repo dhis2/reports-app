@@ -1,5 +1,4 @@
 import i18n from '../i18n/locales'
-import { i18nKeys } from '../i18n/i18nKeys'
 
 export const types = {
     UPLOAD_FILE: 'UPLOAD_FILE',
@@ -9,12 +8,12 @@ export const types = {
 export const options = [
     {
         id: types.UPLOAD_FILE,
-        name: i18n.t(i18nKeys.resource.uploadResourceType),
+        name: i18n.t('Upload File'),
         external: false,
     },
     {
         id: types.EXTERNAL_URL,
-        name: i18n.t(i18nKeys.resource.externalResourceType),
+        name: i18n.t('External URL'),
         external: true,
     },
 ]
