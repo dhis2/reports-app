@@ -1,12 +1,6 @@
-/* React */
 import { Component } from 'react'
 import PropTypes from 'prop-types'
-
-/* i18n */
 import i18n from '../utils/i18n/locales'
-import { i18nKeys } from '../utils/i18n/i18nKeys'
-
-/* Feedback Snackbar */
 import { ERROR } from '../utils/feedbackTypes.js'
 
 class Page extends Component {
@@ -34,7 +28,7 @@ class Page extends Component {
             const messageError =
                 error && error.message
                     ? error.message
-                    : i18n.t(i18nKeys.messages.unexpectedError)
+                    : i18n.t('Unexpected Error')
 
             this.props.updateFeedbackState(true, {
                 type: ERROR,
