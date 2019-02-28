@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { InputField } from '@dhis2/d2-ui-core'
 import i18n from '../../utils/i18n/locales'
-import { i18nKeys } from '../../utils/i18n/i18nKeys'
 import styles from './StandardReport.style'
 
 const SearchBox = ({ value, onChange }) => (
@@ -11,7 +10,7 @@ const SearchBox = ({ value, onChange }) => (
             id="search-std-report-id"
             value={value}
             type="text"
-            hintText={i18n.t(i18nKeys.standardReport.search)}
+            hintText={i18n.t('Search')}
             onChange={onChange}
         />
     </div>
