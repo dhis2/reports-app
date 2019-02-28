@@ -68,6 +68,8 @@ export const loadingReportDataErrorWithFeedback = error => dispatch => {
     dispatch(loadingReportDataError())
 }
 
+// @TODO: not sure this is needed.
+// Not required for reporting-rate-summary
 export const unsetReportData = () => ({
     type: actionTypes.UNSET_REPORT_DATA,
 })

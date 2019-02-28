@@ -11,6 +11,7 @@ import {
     STANDARD_REPORTS_ENDPOINT,
     DATA_SET_REPORTS_ENDPOINT,
     DATA_SET_DIMENSIONS_ENDPOINT,
+    RESOURCE_ENDPOINT,
     DATA_DIMENSION_SUFFIXES,
     postDataSetReportCommentUrl,
 } from './api/constants'
@@ -152,17 +153,21 @@ export const getReportingRateSummaryReport = async (
         .addDataDimension(dataDimensions)
         .addOrgUnitDimension(orgUnitIds)
         .addPeriodFilter(period)
+        .withColumns('dx')
+        .withRows('ou')
+        .withTableLayout()
+        .withHideEmptyRows()
         .withDisplayProperty('SHORTNAME')
 
     for (let key in orgUnitOptions) {
         if (orgUnitOptions[key]) {
-            req.addDimension(key, orgUnitOptions[key])
+            req.addFilter(key, orgUnitOptions[key])
         }
     }
 
     const fileUrls = parseFileUrls(req, ['xls', 'csv'])
 
-    return d2.analytics.aggregate.get(req).then(data => ({ data, fileUrls }))
+    return d2.analytics.aggregate.get(req).then(data => ({ ...data, fileUrls }))
 }
 
 /**
@@ -190,3 +195,26 @@ export const getOrgUnitGroupSets = () =>
         paging: false,
         fields: 'id,displayName',
     })
+
+/**
+ * @returns {Promise}
+ */
+export const getResources = (page, pageSize, search) => {
+    const requestData = {
+        page,
+        pageSize,
+        fields: 'displayName,id,url,external,access',
+    }
+
+    if (search) {
+        requestData.filter = `displayName:ilike:${search}`
+    }
+
+    return api.get(RESOURCE_ENDPOINT, requestData)
+}
+
+/**
+ * @returns {Promise}
+ */
+export const deleteResource = resourceId =>
+    api.delete(`${RESOURCE_ENDPOINT}/${resourceId}`)

@@ -1,31 +1,28 @@
 import { connect } from 'react-redux'
 import { loadReportData } from '../../redux/actions/reportingRateSummary'
-import {
-    exportReportToXls,
-    unsetReportData,
-} from '../../redux/actions/reportData'
 import { isActionEnabled } from '../../redux/selectors/reportingRateSummary/isActionEnabled'
-import parseTableData from '../../redux/selectors/reportingRateSummary/parseTableData'
+import getTranformedTableData from '../../redux/selectors/reportingRateSummary/getTranformedTableData.js'
 
 const mapStateToProps = state => ({
-    reportHtml: parseTableData(state),
-    selectedOrgUnit: state.organisationUnits,
+    reportContent: getTranformedTableData(state),
+    fileUrls: state.reportData.content.fileUrls || [],
+    isReportLoading: state.reportData.loading,
     isActionEnabled: isActionEnabled(state),
 })
 
 const mapDispatchToProps = dispatch => ({
-    unsetReportData: () => dispatch(unsetReportData()),
     loadReportData: () => dispatch(loadReportData()),
-    exportReportToXls: () =>
-        dispatch(
-            exportReportToXls(
-                document.querySelectorAll('#report-container table')
-            )
-        ),
 })
+
+const areStatesEqual = (next, prev) =>
+    isActionEnabled(next) === isActionEnabled(prev) &&
+    next.organisationUnits === prev.organisationUnits &&
+    next.reportData === prev.reportData
 
 export const connectReportingRateSummary = component =>
     connect(
         mapStateToProps,
-        mapDispatchToProps
+        mapDispatchToProps,
+        null,
+        { areStatesEqual }
     )(component)
