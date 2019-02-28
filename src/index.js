@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { init, getManifest, getUserSettings } from 'd2/lib/d2'
+import { init, getManifest, getUserSettings } from 'd2'
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
 import store from './redux/store'

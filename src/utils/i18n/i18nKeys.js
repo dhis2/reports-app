@@ -243,6 +243,8 @@ export const i18nKeys = {
             'This object will be created with public edit and view rights',
         confirmDelete: 'Confirm delete',
     },
+    // These are the only key based translations that need to remain
+    // all others should gradually be removed
     d2UiComponents: {
         settings: 'Settings',
         app_search_placeholder: 'Search apps',
@@ -320,5 +322,7 @@ export const i18nKeys = {
         'jul-dec': 'jul-dec',
         'apr-sep': 'apr-sep',
         'oct-mar': 'oct-mar',
+        biWeek: 'Bi-Week',
+        bi_week: 'Bi-Week',
     },
 }

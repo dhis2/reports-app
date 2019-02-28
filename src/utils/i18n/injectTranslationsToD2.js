@@ -72,6 +72,8 @@ const d2UiTranslations = {
     'jul-dec': i18n.t('jul-dec'),
     'apr-sep': i18n.t('apr-sep'),
     'oct-mar': i18n.t('oct-mar'),
+    biWeek: i18n.t('Bi-Week'),
+    bi_week: i18n.t('Bi-Week'),
 }
 
 const injectTranslationsToD2 = d2 => {

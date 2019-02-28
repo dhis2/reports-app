@@ -692,6 +692,9 @@ msgstr ""
 msgid "oct-mar"
 msgstr ""
 
+msgid "Bi-Week"
+msgstr ""
+
 msgctxt "level"
 msgid "approved_at_a_higher"
 msgstr ""

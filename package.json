@@ -4,13 +4,13 @@
   "private": true,
   "dependencies": {
     "@dhis2/d2-i18n": "^1.0.4",
-    "@dhis2/d2-ui-app": "^1.0.5",
-    "@dhis2/d2-ui-core": "^1.3.2",
-    "@dhis2/d2-ui-forms": "^1.0.7",
-    "@dhis2/d2-ui-header-bar": "^1.1.4",
-    "@dhis2/d2-ui-org-unit-tree": "^1.0.10",
-    "@dhis2/d2-ui-sharing-dialog": "^2.0.2",
-    "@dhis2/d2-ui-table": "^1.0.12",
+    "@dhis2/d2-ui-app": "^2.0.0",
+    "@dhis2/d2-ui-core": "^5.2.6",
+    "@dhis2/d2-ui-forms": "^5.2.6",
+    "@dhis2/d2-ui-header-bar": "^5.2.6",
+    "@dhis2/d2-ui-org-unit-tree": "^5.2.6",
+    "@dhis2/d2-ui-sharing-dialog": "^5.2.6",
+    "@dhis2/d2-ui-table": "^5.2.6",
     "autoprefixer": "7.1.6",
     "babel-core": "6.26.0",
     "babel-eslint": "7.2.3",
@@ -23,7 +23,7 @@
     "classnames": "^2.2.6",
     "connected-react-router": "^6.2.2",
     "css-loader": "0.28.7",
-    "d2": "^30.0.2",
+    "d2": "^31.4.0",
     "d2-manifest": "^1.0.0",
     "d3-color": "^1.2.0",
     "dotenv": "4.0.0",
@@ -109,7 +109,7 @@
   "husky": {
     "hooks": {
       "commit-msg": "yarn d2-style commit",
-      "pre-commit": "yarn code-style && yarn lint && yarn refresh-translations-template && yarn test"
+      "pre-commit": "yarn code-style"
     }
   },
   "manifest.webapp": {
