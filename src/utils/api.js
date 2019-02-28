@@ -11,6 +11,7 @@ import {
     STANDARD_REPORTS_ENDPOINT,
     DATA_SET_REPORTS_ENDPOINT,
     DATA_SET_DIMENSIONS_ENDPOINT,
+    RESOURCE_ENDPOINT,
     DATA_DIMENSION_SUFFIXES,
     postDataSetReportCommentUrl,
 } from './api/constants'
@@ -194,3 +195,26 @@ export const getOrgUnitGroupSets = () =>
         paging: false,
         fields: 'id,displayName',
     })
+
+/**
+ * @returns {Promise}
+ */
+export const getResources = (page, pageSize, search) => {
+    const requestData = {
+        page,
+        pageSize,
+        fields: 'displayName,id,url,external,access',
+    }
+
+    if (search) {
+        requestData.filter = `displayName:ilike:${search}`
+    }
+
+    return api.get(RESOURCE_ENDPOINT, requestData)
+}
+
+/**
+ * @returns {Promise}
+ */
+export const deleteResource = resourceId =>
+    api.delete(`${RESOURCE_ENDPOINT}/${resourceId}`)

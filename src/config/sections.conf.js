@@ -2,7 +2,7 @@
 import { ConnectedStandardReport } from '../pages/StandardReport'
 import { ConnectedDataSetReport } from '../pages/DataSetReport'
 import { ConnectedReportingRateSummary } from '../pages/ReportingRateSummary'
-import { ConnectedResource } from '../pages/resource/Resource'
+import { ConnectedResource } from '../pages/Resource'
 import { ConnectedOrganisationUnitDistributionReport } from '../pages/organisation-unit-distribution-report/OrganisationUnitDistributionReport'
 
 /* i18n */

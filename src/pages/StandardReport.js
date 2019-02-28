@@ -3,48 +3,29 @@ import PropTypes from 'prop-types'
 import Table from '@dhis2/d2-ui-table'
 import '@dhis2/d2-ui-core/build/css/Table.css'
 import '@dhis2/d2-ui-core/build/css/Pagination.css'
+import { Pagination } from '@dhis2/d2-ui-core'
 import manageError from '../utils/pageEnhancers/manageError.HOC'
 import { Snackbar } from '../components/feedback/Snackbar'
 import { SectionHeadline } from '../components/SectionHeadline'
 import SearchBox from './standard-report/SearchBox'
-import NoResultsMessage from './standard-report/NoResultsMessage'
+import { NoResultsMessage } from '../components/NoResultsMessage'
 import AddReportButton from './standard-report/AddReportButton'
-import StandardReportPagination from './standard-report/StandardReportPagination'
 import ActionComponent from './standard-report/ActionComponent'
 import StyledHtmlReport from './standard-report/StyledHtmlReport'
 import {
     CONTEXT_MENU_ACTION,
     CONTEXT_MENU_ICONS,
 } from './standard-report/standard.report.conf'
+import { displayNoResults, showContextAction } from './standard-report/helper'
 import {
     hasNextPageCreator,
     hasPreviousPageCreator,
-    displayNoResults,
-    showContextAction,
-} from './standard-report/helper'
+    calculatePageValue,
+} from '../utils/pagination/helper'
 import connectStandardReport from './standard-report/connectStandardReport'
 import i18n from '../utils/i18n/locales'
 
 export default class StandardReport extends React.Component {
-    static propTypes = {
-        d2: PropTypes.object.isRequired,
-        showFeedback: PropTypes.bool.isRequired,
-        feedbackConf: PropTypes.object.isRequired,
-        pager: PropTypes.object.isRequired,
-        reports: PropTypes.array.isRequired,
-        selectedReport: PropTypes.object.isRequired,
-        selectedAction: PropTypes.string.isRequired,
-        search: PropTypes.string.isRequired,
-        open: PropTypes.bool.isRequired,
-        reportData: PropTypes.string.isRequired,
-        loadStandardReports: PropTypes.func.isRequired,
-        createReport: PropTypes.func.isRequired,
-        editReport: PropTypes.func.isRequired,
-        deleteStandardReport: PropTypes.func.isRequired,
-        sharingSettings: PropTypes.func.isRequired,
-        requestDeleteStandardReport: PropTypes.func.isRequired,
-    }
-
     getChildContext() {
         return { d2: this.props.d2 }
     }
@@ -54,78 +35,114 @@ export default class StandardReport extends React.Component {
     }
 
     render() {
-        const { props } = this
-        const { pager } = props
+        const { pager } = this.props
         const hasNextPage = hasNextPageCreator(pager.page, pager.pageCount)
         const hasPreviousPage = hasPreviousPageCreator(pager.page)
+        const paginationCurrentlyShown = calculatePageValue(pager)
         const contextMenuOptions = {
-            [CONTEXT_MENU_ACTION.CREATE]: props.createReport,
-            [CONTEXT_MENU_ACTION.EDIT]: props.editReport,
-            [CONTEXT_MENU_ACTION.SHARING_SETTINGS]: props.sharingSettings,
-            [CONTEXT_MENU_ACTION.DELETE]: props.requestDeleteStandardReport,
+            [CONTEXT_MENU_ACTION.CREATE]: this.props.createReport,
+            [CONTEXT_MENU_ACTION.EDIT]: this.props.editReport,
+            [CONTEXT_MENU_ACTION.SHARING_SETTINGS]: this.props.sharingSettings,
+            [CONTEXT_MENU_ACTION.DELETE]: this.props
+                .requestDeleteStandardReport,
         }
 
         return (
             <div>
                 <SectionHeadline
                     label={i18n.t('Standard Report')}
-                    showBackButton={!!props.reportData}
-                    onBackClick={props.hideReportData}
-                    systemVersion={props.d2.system.version}
-                    sectionKey={props.sectionKey}
+                    showBackButton={!!this.props.reportData}
+                    onBackClick={this.props.hideReportData}
+                    systemVersion={this.props.d2.system.version}
+                    sectionKey={this.props.sectionKey}
                 />
                 <div
                     id="std-report-content"
-                    style={{ display: props.reportData ? 'none' : 'block' }}
+                    style={{
+                        display: this.props.reportData ? 'none' : 'block',
+                    }}
                 >
-                    <StandardReportPagination
-                        total={props.pager.total}
+                    <Pagination
+                        total={this.props.pager.total}
                         hasNextPage={hasNextPage}
                         hasPreviousPage={hasPreviousPage}
-                        onNextPageClick={props.goToNextPage}
-                        onPreviousPageClick={props.goToPrevPage}
-                        pager={props.pager}
+                        onNextPageClick={this.props.goToNextPage}
+                        onPreviousPageClick={this.props.goToPrevPage}
+                        currentlyShown={paginationCurrentlyShown}
                     />
                     <SearchBox
-                        value={props.search}
-                        onChange={props.setSearch}
+                        value={this.props.search}
+                        onChange={this.props.setSearch}
                     />
                     <Table
                         columns={['displayName', 'reportTable', 'id']}
-                        rows={props.reports}
+                        rows={this.props.reports}
                         contextMenuActions={contextMenuOptions}
                         contextMenuIcons={CONTEXT_MENU_ICONS}
                         isContextActionAllowed={showContextAction}
                     />
                     <NoResultsMessage
-                        styles={displayNoResults(props.reports, props.loading)}
+                        styles={displayNoResults(
+                            this.props.reports,
+                            this.props.loading
+                        )}
                     />
-                    <StandardReportPagination
-                        total={props.pager.total}
-                        hasNextPage={hasNextPage}
-                        hasPreviousPage={hasPreviousPage}
-                        onNextPageClick={props.goToNextPage}
-                        onPreviousPageClick={props.goToPrevPage}
-                        pager={props.pager}
-                    />
-                    <AddReportButton onClick={props.addReportFormShow} />
+                    <div id="footer-pagination-id">
+                        <Pagination
+                            total={this.props.pager.total}
+                            hasNextPage={hasNextPage}
+                            hasPreviousPage={hasPreviousPage}
+                            onNextPageClick={this.props.goToNextPage}
+                            onPreviousPageClick={this.props.goToPrevPage}
+                            currentlyShown={paginationCurrentlyShown}
+                        />
+                    </div>
+                    <AddReportButton onClick={this.props.addReportFormShow} />
                     <ActionComponent
-                        d2={props.d2}
-                        open={props.open}
-                        selectedAction={props.selectedAction}
-                        selectedReport={props.selectedReport}
-                        handleClose={props.closeContextMenu}
+                        d2={this.props.d2}
+                        open={this.props.open}
+                        selectedAction={this.props.selectedAction}
+                        selectedReport={this.props.selectedReport}
+                        handleClose={this.props.closeContextMenu}
                         handleError={this.manageError}
-                        handleDisplayReportData={props.showReportData}
+                        handleDisplayReportData={this.props.showReportData}
                     />
                 </div>
-                {props.reportData && (
-                    <StyledHtmlReport reportData={props.reportData} />
+                {this.props.reportData && (
+                    <StyledHtmlReport reportData={this.props.reportData} />
                 )}
-                <Snackbar onActionClick={props.deleteStandardReport} />
+                <Snackbar onActionClick={this.props.deleteStandardReport} />
             </div>
         )
     }
+}
+
+StandardReport.propTypes = {
+    d2: PropTypes.object.isRequired,
+    sectionKey: PropTypes.string.isRequired,
+    loading: PropTypes.bool.isRequired,
+    showFeedback: PropTypes.bool.isRequired,
+    feedbackConf: PropTypes.object.isRequired,
+    pager: PropTypes.object.isRequired,
+    reports: PropTypes.array.isRequired,
+    selectedReport: PropTypes.object.isRequired,
+    selectedAction: PropTypes.string.isRequired,
+    search: PropTypes.string.isRequired,
+    open: PropTypes.bool.isRequired,
+    reportData: PropTypes.string.isRequired,
+    loadStandardReports: PropTypes.func.isRequired,
+    createReport: PropTypes.func.isRequired,
+    editReport: PropTypes.func.isRequired,
+    deleteStandardReport: PropTypes.func.isRequired,
+    sharingSettings: PropTypes.func.isRequired,
+    requestDeleteStandardReport: PropTypes.func.isRequired,
+    goToNextPage: PropTypes.func.isRequired,
+    goToPrevPage: PropTypes.func.isRequired,
+    setSearch: PropTypes.func.isRequired,
+    showReportData: PropTypes.func.isRequired,
+    hideReportData: PropTypes.func.isRequired,
+    closeContextMenu: PropTypes.func.isRequired,
+    addReportFormShow: PropTypes.func.isRequired,
 }
 
 StandardReport.childContextTypes = {
