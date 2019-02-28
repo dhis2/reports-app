@@ -23,7 +23,6 @@ import {
     REPORTS_ENDPOINT,
     TYPES,
 } from '../standard.report.conf'
-import { LOADING } from '../../../utils/feedbackTypes.js'
 import i18n from '../../../utils/i18n/locales'
 
 const initialState = {
