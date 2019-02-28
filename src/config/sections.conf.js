@@ -1,13 +1,9 @@
-/* Page Components */
+import i18n from '../utils/i18n/locales'
 import { ConnectedStandardReport } from '../pages/StandardReport'
 import { ConnectedDataSetReport } from '../pages/DataSetReport'
 import { ConnectedReportingRateSummary } from '../pages/ReportingRateSummary'
 import { ConnectedResource } from '../pages/resource/Resource'
 import { ConnectedOrganisationUnitDistributionReport } from '../pages/organisation-unit-distribution-report/OrganisationUnitDistributionReport'
-
-/* i18n */
-import { i18nKeys } from '../utils/i18n/i18nKeys'
-
 export const STANDARD_REPORT_SECTION_KEY = 'standard-report'
 export const DATA_SET_REPORT_SECTION_KEY = 'data-set-report'
 export const REPORTING_RATE_SUMMARY_SECTION_KEY = 'reporting-rate-summary'
@@ -24,10 +20,12 @@ export const sections = [
         path: '/standard-report',
         component: ConnectedStandardReport,
         info: {
-            label: i18nKeys.standardReport.homeLabel,
-            icon: 'bar_chart',
-            description: i18nKeys.standardReport.description,
-            actionText: i18nKeys.standardReport.homeAction,
+            label: i18n.t('Standard Report'),
+            icon: i18n.t('bar_chart'),
+            description: i18n.t(
+                'View and add reports based on the JasperReports library. These can be based on report tables and can be designed in iReport.'
+            ),
+            actionText: i18n.t('View Reports'),
             docs: 'using_reporting_standard_reports',
         },
     },
@@ -36,10 +34,12 @@ export const sections = [
         path: '/data-set-report',
         component: ConnectedDataSetReport,
         info: {
-            label: i18nKeys.dataSetReport.homeLabel,
+            label: i18n.t('Data Set Report'),
             icon: 'assignment',
-            description: i18nKeys.dataSetReport.description,
-            actionText: i18nKeys.dataSetReport.homeAction,
+            description: i18n.t(
+                'View data set reports. These reports are based on data entry screens and will produce a report with aggregated data.'
+            ),
+            actionText: i18n.t('Get Report'),
             docs: 'using_reporting_dataset_reports',
         },
     },
@@ -48,10 +48,12 @@ export const sections = [
         path: '/reporting-rate-summary',
         component: ConnectedReportingRateSummary,
         info: {
-            label: i18nKeys.reportingRateSummary.homeLabel,
+            label: i18n.t('Reporting Rate Summary'),
+            description: i18n.t(
+                'Browse the reporting rates of data sets by organisation unit and period based on various criteria for submission.'
+            ),
+            actionText: i18n.t('Get Report'),
             icon: 'format_list_bulleted',
-            description: i18nKeys.reportingRateSummary.description,
-            actionText: i18nKeys.reportingRateSummary.homeAction,
             docs: 'using_reporting_reporting_rate_summary',
         },
     },
@@ -60,10 +62,12 @@ export const sections = [
         path: '/resource',
         component: ConnectedResource,
         info: {
-            label: i18nKeys.resource.homeLabel,
+            label: i18n.t('Resource'),
+            description: i18n.t(
+                'View and add resources. These resources can be uploaded documents or URLs on the web.'
+            ),
+            actionText: i18n.t('View Resources'),
             icon: 'cloud_upload',
-            description: i18nKeys.resource.description,
-            actionText: i18nKeys.resource.homeAction,
             docs: 'using_reporting_resources',
         },
     },
@@ -72,11 +76,12 @@ export const sections = [
         path: '/organisation-unit-distribution-report',
         component: ConnectedOrganisationUnitDistributionReport,
         info: {
-            label: i18nKeys.organisationUnitDistributionReport.homeLabel,
+            label: i18n.t('Organisation Unit Distribution Report'),
+            description: i18n.t(
+                'Browse the organisation unit distribution report based on the organisation unit group sets and its groups.'
+            ),
+            actionText: i18n.t('Get Report'),
             icon: 'device_hub',
-            description:
-                i18nKeys.organisationUnitDistributionReport.description,
-            actionText: i18nKeys.organisationUnitDistributionReport.homeAction,
             docs: 'using_reporting_orgunit_distribution_reports',
         },
     },
