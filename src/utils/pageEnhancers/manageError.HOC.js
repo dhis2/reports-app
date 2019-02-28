@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 import i18n from '../i18n/locales'
-import { i18nKeys } from '../i18n/i18nKeys'
 import { ERROR } from '../feedbackTypes'
 import getDisplayName from '../react/getDisplayName'
 
@@ -41,7 +40,7 @@ const manageError = component => {
                 const messageError =
                     error && error.message
                         ? error.message
-                        : i18n.t(i18nKeys.messages.unexpectedError)
+                        : i18n.t('Unexpected Error')
 
                 this.props.updateFeedbackState(true, {
                     type: ERROR,
