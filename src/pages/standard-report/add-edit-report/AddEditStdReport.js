@@ -12,7 +12,6 @@ import {
     InputField,
 } from '@dhis2/d2-ui-core'
 import { connect } from 'react-redux'
-import { updateFeedbackState } from '../../../redux/actions/feedback'
 import appStyles from '../../../utils/styles'
 import styles from './AddEditStdReport.style'
 import {
@@ -98,7 +97,6 @@ export default class AddEditStdReport extends PureComponent {
         open: PropTypes.bool.isRequired,
         selectedReport: PropTypes.object,
         onError: PropTypes.func.isRequired,
-        updateFeedbackState: PropTypes.func.isRequired,
     }
 
     static defaultProps = {
@@ -305,12 +303,10 @@ export default class AddEditStdReport extends PureComponent {
     }
 
     startLoading = () => {
-        this.props.updateFeedbackState(true, { type: LOADING })
         this.setState({ loading: true })
     }
 
     stopLoading = () => {
-        this.props.updateFeedbackState(false)
         this.setState({ loading: false })
     }
 
@@ -639,11 +635,7 @@ export default class AddEditStdReport extends PureComponent {
     }
 }
 
-const mapDispatchToProps = {
-    updateFeedbackState,
-}
-
 export const ConnectedAddEditStdReport = connect(
     null,
-    mapDispatchToProps
+    null
 )(AddEditStdReport)
