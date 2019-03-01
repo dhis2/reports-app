@@ -1,4 +1,4 @@
-import i18n from '../i18n/locales'
+import i18n from '@dhis2/d2-i18n'
 
 export const types = {
     UPLOAD_FILE: 'UPLOAD_FILE',

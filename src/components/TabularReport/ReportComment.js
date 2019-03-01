@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { InputField, Button } from '@dhis2/d2-ui-core'
-import i18n from '../../utils/i18n/locales'
+import i18n from '@dhis2/d2-i18n'
 
 const isCommentingActionEnabled = comment => comment.trim()
 const actionButtonPlaceholder = i18n.t('Share')

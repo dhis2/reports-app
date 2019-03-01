@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Paper } from 'material-ui'
-import i18n from '../utils/i18n/locales'
+import i18n from '@dhis2/d2-i18n'
 import styles from '../utils/styles'
 import manageError from '../utils/pageEnhancers/manageError.HOC'
 import { Snackbar } from '../components/feedback/Snackbar'

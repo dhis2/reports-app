@@ -9,7 +9,7 @@ import { DropDown } from '@dhis2/d2-ui-core'
 import AppContext from '../pages/AppContext'
 
 /* i18n */
-import i18n from '../utils/i18n/locales'
+import i18n from '@dhis2/d2-i18n'
 
 /* styles */
 import styles from '../utils/styles'

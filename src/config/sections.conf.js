@@ -1,4 +1,4 @@
-import i18n from '../utils/i18n/locales'
+import i18n from '@dhis2/d2-i18n'
 import { ConnectedStandardReport } from '../pages/StandardReport'
 import { ConnectedDataSetReport } from '../pages/DataSetReport'
 import { ConnectedReportingRateSummary } from '../pages/ReportingRateSummary'

@@ -18,7 +18,7 @@ import { options, types } from '../../../utils/resource/constants'
 import { RESOURCE_ENDPOINT } from '../../../utils/api/constants'
 
 /* i18n */
-import i18n from '../../../utils/i18n/locales'
+import i18n from '@dhis2/d2-i18n'
 
 const FILE_RESOURCES_ENDPOINT = 'fileResources'
 const initialState = {

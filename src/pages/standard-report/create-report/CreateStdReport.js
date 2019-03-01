@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Dialog } from 'material-ui'
 import { Button, SelectField } from '@dhis2/d2-ui-core'
 import OrganisationUnitsTree from '../../../components/AvailableOrganisationUnitsTree'
-import i18n from '../../../utils/i18n/locales'
+import i18n from '@dhis2/d2-i18n'
 import appStyles from '../../../utils/styles'
 
 import {

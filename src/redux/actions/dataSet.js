@@ -1,6 +1,6 @@
 import { getD2 } from '../../utils/api'
 import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
-import i18n from '../../utils/i18n/locales'
+import i18n from '@dhis2/d2-i18n'
 import { showErrorSnackBar } from './feedback'
 
 export const actionTypes = {

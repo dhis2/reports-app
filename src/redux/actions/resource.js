@@ -6,7 +6,7 @@ import {
     deleteResource as sendDeleteResourceRequest,
 } from '../../utils/api'
 import { RESOURCE_ENDPOINT } from '../../utils/api/constants'
-import i18n from '../../utils/i18n/locales'
+import i18n from '@dhis2/d2-i18n'
 import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
 import { showSuccessSnackBar, showErrorSnackBar } from './feedback'
 import {

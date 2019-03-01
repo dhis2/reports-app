@@ -23,7 +23,7 @@ import {
     REPORTS_ENDPOINT,
     TYPES,
 } from '../standard.report.conf'
-import i18n from '../../../utils/i18n/locales'
+import i18n from '@dhis2/d2-i18n'
 
 const initialState = {
     report: {

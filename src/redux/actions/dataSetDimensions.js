@@ -1,5 +1,5 @@
 import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
-import i18n from '../../utils/i18n/locales'
+import i18n from '@dhis2/d2-i18n'
 import { showWarningSnackBar } from './feedback'
 import { getDimensions } from '../../utils/api'
 

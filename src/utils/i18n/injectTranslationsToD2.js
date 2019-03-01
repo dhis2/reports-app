@@ -1,4 +1,4 @@
-import i18n from './locales'
+import i18n from '@dhis2/d2-i18n'
 
 const d2UiTranslations = {
     settings: i18n.t('Settings'),

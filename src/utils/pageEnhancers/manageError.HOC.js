@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import i18n from '../i18n/locales'
+import i18n from '@dhis2/d2-i18n'
 import { ERROR } from '../feedbackTypes'
 import getDisplayName from '../react/getDisplayName'
 

@@ -23,7 +23,7 @@ import {
     calculatePageValue,
 } from '../utils/pagination/helper'
 import connectStandardReport from './standard-report/connectStandardReport'
-import i18n from '../utils/i18n/locales'
+import i18n from '@dhis2/d2-i18n'
 
 export default class StandardReport extends React.Component {
     getChildContext() {

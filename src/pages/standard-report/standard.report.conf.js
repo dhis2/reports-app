@@ -1,4 +1,4 @@
-import i18n from '../../utils/i18n/locales'
+import i18n from '@dhis2/d2-i18n'
 
 export const REPORTS_ENDPOINT = 'reports'
 export const REPORT_TABLES_ENDPOINT = 'reportTables'

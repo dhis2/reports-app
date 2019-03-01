@@ -8,7 +8,7 @@ import styles from './resource/Resource.style'
 import appStyles from '../utils/styles'
 import manageError from '../utils/pageEnhancers/manageError.HOC'
 import { resourceActions, contextMenuIcons } from '../utils/resource/constants'
-import i18n from '../utils/i18n/locales'
+import i18n from '@dhis2/d2-i18n'
 import { connectResource } from './resource/connectResource'
 import {
     hasNextPageCreator,
