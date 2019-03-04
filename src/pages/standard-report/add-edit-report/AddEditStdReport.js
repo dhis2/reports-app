@@ -16,6 +16,9 @@ import appStyles from '../../../utils/styles'
 import styles from './AddEditStdReport.style'
 import {
     relativePeriods,
+    reportTypes,
+    reportTypeOptions,
+    cacheStrategies,
     NONE,
     CACHE_STRATEGIES,
     REPORT_TABLES_ENDPOINT,
@@ -24,6 +27,61 @@ import {
     TYPES,
 } from '../standard.report.conf'
 import i18n from '@dhis2/d2-i18n'
+
+import { Form } from 'react-final-form'
+import { Input } from '../../../components/form/Input'
+import { Select } from '../../../components/form/Select'
+import { File } from '../../../components/form/File'
+
+export const Component = props => (
+    <Form
+        onSubmit={props.onSubmit}
+        render={({ handleSubmit, values }) => (
+            <form onSubmit={handleSubmit}>
+                <section>
+                    <h2>Details</h2>
+                    <Input name="name" placeholder={i18n.t('Name')} />
+                    <Select
+                        name="type"
+                        placeholder={i18n.t('Type')}
+                        options={reportTypeOptions}
+                    />
+                    <File
+                        name="design-file"
+                        placeholder={i18n.t('Design File')}
+                    />
+                    {values.reportType === reportTypes.JASPER_REPORT_TABLE && (
+                        <Select
+                            name="report-table"
+                            placeholder={i18n.t('Report Table')}
+                            options={props.reportTypes}
+                        />
+                    )}
+                </section>
+                {values.reportType === reportTypes.JASPER_JDBC && (
+                    <section>
+                        <h2>Relative Periods</h2>
+
+                        <h2>Report parameters</h2>
+                    </section>
+                )}
+                <section>
+                    <h2>Settings</h2>
+                    <Select
+                        name="cache_strategies"
+                        placeholder={i18n.t('Cache Strategies')}
+                        options={cacheStrategies}
+                    />
+                </section>
+            </form>
+        )}
+    />
+)
+
+Component.propTypes = {
+    reportTables: Select.propTypes.options,
+    onSubmit: PropTypes.func.isRequired,
+}
 
 const initialState = {
     report: {
