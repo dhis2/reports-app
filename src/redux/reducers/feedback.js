@@ -1,4 +1,4 @@
-import { actionTypes as TYPES } from '../actions/feedback'
+import { actionTypes as types } from '../actions/feedback'
 
 export const initialState = {
     showSnackbar: false,
@@ -9,16 +9,16 @@ export const initialState = {
 
 const feedback = (state = initialState, { type, payload }) => {
     switch (type) {
-        case TYPES.FEEDBACK_CLEAR:
+        case types.FEEDBACK_CLEAR:
             return initialState
 
-        case TYPES.FEEDBACK_SHOW_LOADER:
+        case types.FEEDBACK_SHOW_LOADER:
             return {
                 ...state,
                 showLoader: true,
             }
 
-        case TYPES.FEEDBACK_SHOW_SNACKBAR:
+        case types.FEEDBACK_SHOW_SNACKBAR:
             return {
                 ...state,
                 ...payload,
