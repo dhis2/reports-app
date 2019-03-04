@@ -1,10 +1,10 @@
 import { connect } from 'react-redux'
 import { loadReportData } from '../../redux/actions/reportingRateSummary'
 import { isActionEnabled } from '../../redux/selectors/reportingRateSummary/isActionEnabled'
-import getTranformedTableData from '../../redux/selectors/reportingRateSummary/getTranformedTableData.js'
+import getTransformedTableData from '../../redux/selectors/reportingRateSummary/getTransformedTableData.js'
 
 const mapStateToProps = state => ({
-    reportContent: getTranformedTableData(state),
+    reportContent: getTransformedTableData(state),
     fileUrls: state.reportData.content.fileUrls || [],
     isReportLoading: state.reportData.loading,
     isActionEnabled: isActionEnabled(state),
