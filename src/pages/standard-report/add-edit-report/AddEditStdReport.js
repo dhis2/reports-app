@@ -1,13 +1,8 @@
-/* React */
 import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
-
-/* material-ui */
 import { Dialog } from 'material-ui'
 import SelectFieldMui from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
-
-/* d2-ui */
 import {
     Button,
     TextField,
@@ -16,16 +11,9 @@ import {
     SvgIcon,
     InputField,
 } from '@dhis2/d2-ui-core'
-
-/* Redux */
 import { connect } from 'react-redux'
-import { updateFeedbackState } from '../../../redux/actions/feedback'
-
-/* styles */
 import appStyles from '../../../utils/styles'
 import styles from './AddEditStdReport.style'
-
-/* app conf */
 import {
     relativePeriods,
     NONE,
@@ -35,13 +23,7 @@ import {
     REPORTS_ENDPOINT,
     TYPES,
 } from '../standard.report.conf'
-
-/* utils */
-import { LOADING } from '../../../utils/feedbackTypes.js'
-
-/* i18n */
-import i18n from '../../../utils/i18n/locales'
-import { i18nKeys } from '../../../utils/i18n/i18nKeys'
+import i18n from '@dhis2/d2-i18n'
 
 const initialState = {
     report: {
@@ -114,7 +96,6 @@ export default class AddEditStdReport extends PureComponent {
         open: PropTypes.bool.isRequired,
         selectedReport: PropTypes.object,
         onError: PropTypes.func.isRequired,
-        updateFeedbackState: PropTypes.func.isRequired,
     }
 
     static defaultProps = {
@@ -242,15 +223,15 @@ export default class AddEditStdReport extends PureComponent {
         let label
         // if editing
         if (this.state.report.id) {
-            label = i18n.t(i18nKeys.standardReport.getCurrentDesign)
+            label = i18n.t('Get current design')
             url = `${api.baseUrl}/${REPORTS_ENDPOINT}/${
                 this.state.report.id
             }/design`
         } else {
             label =
                 this.state.report.type === TYPES.HTML
-                    ? i18n.t(i18nKeys.standardReport.getHTMLTemplate)
-                    : i18n.t(i18nKeys.standardReport.getJasperTemplate)
+                    ? i18n.t('Get HTML Report Template')
+                    : i18n.t('Get Jasper Report Template')
             url = `${api.baseUrl}/${REPORTS_ENDPOINT}/templates/${type}`
         }
         return (
@@ -262,13 +243,13 @@ export default class AddEditStdReport extends PureComponent {
 
     getTitle = () =>
         this.props.selectedReport
-            ? i18n.t(i18nKeys.standardReport.editReportTitle)
-            : i18n.t(i18nKeys.standardReport.addNewReportTitle)
+            ? i18n.t('Edit Report')
+            : i18n.t('Add New Report')
 
     getTypeDropdownComponent = () =>
         this.state.report.id ? (
             <SelectFieldMui
-                floatingLabelText={i18n.t(i18nKeys.standardReport.typeLabel)}
+                floatingLabelText={i18n.t('Type')}
                 value={this.state.report.type}
                 name={'reportType'}
                 onChange={this.onChangeType}
@@ -284,7 +265,7 @@ export default class AddEditStdReport extends PureComponent {
             <SelectField
                 style={styles.width100}
                 name={'reportType'}
-                label={i18n.t(i18nKeys.standardReport.typeLabel)}
+                label={i18n.t('Type')}
                 items={REPORT_TYPES}
                 value={this.state.report.type}
                 onChange={this.onChangeType}
@@ -321,12 +302,10 @@ export default class AddEditStdReport extends PureComponent {
     }
 
     startLoading = () => {
-        this.props.updateFeedbackState(true, { type: LOADING })
         this.setState({ loading: true })
     }
 
     stopLoading = () => {
-        this.props.updateFeedbackState(false)
         this.setState({ loading: false })
     }
 
@@ -425,7 +404,7 @@ export default class AddEditStdReport extends PureComponent {
                     onClick={this.close}
                     disabled={this.state.loading}
                 >
-                    {i18n.t(i18nKeys.buttons.cancel)}
+                    {i18n.t('Cancel')}
                 </Button>
             </span>,
             <span id="save-action-btn-id" key="save-action-btn-id">
@@ -437,7 +416,7 @@ export default class AddEditStdReport extends PureComponent {
                     disabled={!this.ifFormValid()}
                     onClick={this.addReport}
                 >
-                    {i18n.t(i18nKeys.buttons.save)}
+                    {i18n.t('Save')}
                 </Button>
             </span>,
         ]
@@ -461,7 +440,9 @@ export default class AddEditStdReport extends PureComponent {
                         className={'row'}
                         style={styles.rightsMessage}
                     >
-                        {i18n.t(i18nKeys.messages.rightsMessage)}
+                        {i18n.t(
+                            'This object will be created with public edit and view rights'
+                        )}
                     </span>
                     {/* details */}
                     <div className={'row'} style={styles.sectionBox}>
@@ -469,7 +450,7 @@ export default class AddEditStdReport extends PureComponent {
                             className={'col-xs-12'}
                             style={styles.sectionTitle}
                         >
-                            {i18n.t(i18nKeys.standardReport.details)}
+                            {i18n.t('Details')}
                         </div>
                         <div
                             className={'col-xs-12'}
@@ -479,9 +460,7 @@ export default class AddEditStdReport extends PureComponent {
                             <InputField
                                 fullWidth
                                 name="name"
-                                label={i18n.t(
-                                    i18nKeys.standardReport.nameLabel
-                                )}
+                                label={i18n.t('Name')}
                                 value={this.state.report.name || ''}
                                 onChange={this.onChangeName}
                             />
@@ -509,12 +488,8 @@ export default class AddEditStdReport extends PureComponent {
                                     fullWidth
                                     floatingLabelFixed
                                     name={'fileName'}
-                                    hintText={i18n.t(
-                                        i18nKeys.standardReport.noFileChosen
-                                    )}
-                                    floatingLabelText={i18n.t(
-                                        i18nKeys.standardReport.designFileLabel
-                                    )}
+                                    hintText={i18n.t('No File Chosen')}
+                                    floatingLabelText={i18n.t('Design File')}
                                     value={
                                         this.state.selectedFileToUpload
                                             ? this.state.selectedFileToUpload
@@ -539,9 +514,7 @@ export default class AddEditStdReport extends PureComponent {
                                         ? { display: 'none' }
                                         : ''),
                                 }}
-                                label={i18n.t(
-                                    i18nKeys.standardReport.reportTableLabel
-                                )}
+                                label={i18n.t('Report table')}
                                 items={this.state.reportTables}
                                 value={
                                     this.state.report.reportTable
@@ -562,7 +535,7 @@ export default class AddEditStdReport extends PureComponent {
                             className={'col-xs-12'}
                             style={styles.sectionTitle}
                         >
-                            {i18n.t(i18nKeys.standardReport.relativePeriods)}
+                            {i18n.t('Relative periods')}
                         </div>
                         <div
                             id={'relative-periods-row-id'}
@@ -601,7 +574,7 @@ export default class AddEditStdReport extends PureComponent {
                             className={'col-xs-12'}
                             style={styles.sectionTitle}
                         >
-                            {i18n.t(i18nKeys.standardReport.reportParameters)}
+                            {i18n.t('Report parameters')}
                         </div>
                         <div
                             className={'col-xs-4'}
@@ -609,9 +582,7 @@ export default class AddEditStdReport extends PureComponent {
                         >
                             <CheckBox
                                 id={'reportingPeriodCB'}
-                                label={i18n.t(
-                                    i18nKeys.standardReport.reportingPeriod
-                                )}
+                                label={i18n.t('Reporting Period')}
                                 checked={
                                     this.state.report.reportParams
                                         .paramReportingPeriod
@@ -625,10 +596,7 @@ export default class AddEditStdReport extends PureComponent {
                         >
                             <CheckBox
                                 id={'paramOrganisationUnitCB'}
-                                label={i18n.t(
-                                    i18nKeys.standardReport
-                                        .reportingOrganisationUnit
-                                )}
+                                label={i18n.t('Organization Unit')}
                                 checked={
                                     this.state.report.reportParams
                                         .paramOrganisationUnit
@@ -643,7 +611,7 @@ export default class AddEditStdReport extends PureComponent {
                             className={'col-xs-12'}
                             style={styles.sectionTitle}
                         >
-                            {i18n.t(i18nKeys.standardReport.settings)}
+                            {i18n.t('Settings')}
                         </div>
                         {/* cache strategy */}
                         <div
@@ -653,9 +621,7 @@ export default class AddEditStdReport extends PureComponent {
                         >
                             <SelectField
                                 style={styles.width100}
-                                label={i18n.t(
-                                    i18nKeys.standardReport.cacheStrategy
-                                )}
+                                label={i18n.t('Cache Strategy')}
                                 items={CACHE_STRATEGIES}
                                 value={this.state.report.cacheStrategy}
                                 onChange={this.onChangeCacheStrategy}
@@ -668,11 +634,7 @@ export default class AddEditStdReport extends PureComponent {
     }
 }
 
-const mapDispatchToProps = dispatch => ({
-    updateFeedbackState: updateFeedbackState(dispatch),
-})
-
 export const ConnectedAddEditStdReport = connect(
     null,
-    mapDispatchToProps
+    null
 )(AddEditStdReport)

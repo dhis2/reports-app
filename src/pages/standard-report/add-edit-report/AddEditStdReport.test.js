@@ -1,22 +1,14 @@
-/* eslint-disable */
 import React from 'react'
 import { mount, shallow } from 'enzyme'
-import { i18nKeys } from '../../../utils/i18n/i18nKeys'
-
 import {
     relativePeriods,
     NONE,
     TYPES,
     CACHE_STRATEGIES,
 } from '../standard.report.conf'
-
 import AddEditStdReport from './AddEditStdReport'
-
-/* material-ui */
 import { Dialog } from 'material-ui'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-
-/* d2-ui */
 import { Button, SelectField, SvgIcon, CheckBox } from '@dhis2/d2-ui-core'
 
 jest.mock('@dhis2/d2-ui-org-unit-tree', () => ({
@@ -115,16 +107,14 @@ describe('Test <AddEditStdReport /> rendering EDIT:', () => {
     })
 
     it('Should render correct title when "Editing" a standard report.', () => {
-        expect(dialog.props().title).toBe(
-            `${i18nKeys.standardReport.editReportTitle}`
-        )
+        expect(dialog.props().title).toBe('Edit Report')
     })
 
     /* rights message */
     it('Should display object creation rights information message.', () => {
         expect(dialog.find('#display-right-message-id')).toHaveLength(1)
         expect(dialog.find('#display-right-message-id').text()).toBe(
-            `${i18nKeys.messages.rightsMessage}`
+            'This object will be created with public edit and view rights'
         )
     })
 
@@ -151,9 +141,7 @@ describe('Test <AddEditStdReport /> rendering EDIT:', () => {
     /* current design */
     it('Should display "Get Current Design" link.', () => {
         expect(dialog.find('a')).toHaveLength(1)
-        expect(dialog.find('a').text()).toBe(
-            `${i18nKeys.standardReport.getCurrentDesign}`
-        )
+        expect(dialog.find('a').text()).toBe('Get current design')
     })
 
     /* reportTable */
@@ -203,13 +191,13 @@ describe('Test <AddEditStdReport /> rendering EDIT:', () => {
                 .find(Button)
                 .at(0)
                 .text()
-        ).toBe(`${i18nKeys.buttons.cancel}`)
+        ).toBe('Cancel')
         expect(
             actions
                 .find(Button)
                 .at(1)
                 .text()
-        ).toBe(`${i18nKeys.buttons.save}`)
+        ).toBe('Save')
     })
 })
 
@@ -226,16 +214,14 @@ describe('Test <AddEditStdReport /> rendering ADD:', () => {
     })
 
     it('Should render correct title when "Adding" a standard report.', () => {
-        expect(dialog.props().title).toBe(
-            `${i18nKeys.standardReport.addNewReportTitle}`
-        )
+        expect(dialog.props().title).toBe('Add New Report')
     })
 
     /* rights message */
     it('Should display object creation rights information message.', () => {
         expect(dialog.find('#display-right-message-id')).toHaveLength(1)
         expect(dialog.find('#display-right-message-id').text()).toBe(
-            `${i18nKeys.messages.rightsMessage}`
+            'This object will be created with public edit and view rights'
         )
     })
 
@@ -262,9 +248,7 @@ describe('Test <AddEditStdReport /> rendering ADD:', () => {
     /* get jasper template */
     it('Should display correct "Get Jasper Template" message when type !== HTML.', () => {
         expect(dialog.find('a')).toHaveLength(1)
-        expect(dialog.find('a').text()).toBe(
-            `${i18nKeys.standardReport.getJasperTemplate}`
-        )
+        expect(dialog.find('a').text()).toBe('Get Jasper Report Template')
     })
 
     /* get html template */
@@ -274,9 +258,7 @@ describe('Test <AddEditStdReport /> rendering ADD:', () => {
         })
         dialog = wrapper.find(Dialog)
         expect(dialog.find('a')).toHaveLength(1)
-        expect(dialog.find('a').text()).toBe(
-            `${i18nKeys.standardReport.getHTMLTemplate}`
-        )
+        expect(dialog.find('a').text()).toBe('Get HTML Report Template')
     })
 
     /* reportTable */
@@ -372,13 +354,13 @@ describe('Test <AddEditStdReport /> rendering ADD:', () => {
                 .find(Button)
                 .at(0)
                 .text()
-        ).toBe(`${i18nKeys.buttons.cancel}`)
+        ).toBe('Cancel')
         expect(
             actions
                 .find(Button)
                 .at(1)
                 .text()
-        ).toBe(`${i18nKeys.buttons.save}`)
+        ).toBe('Save')
     })
 })
 

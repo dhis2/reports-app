@@ -1,24 +1,13 @@
-/* eslint-disable */
 import React from 'react'
 import { mount, shallow } from 'enzyme'
-import { i18nKeys } from '../../../utils/i18n/i18nKeys'
-
 import CreateStdReport from './CreateStdReport'
-
-/* app components */
 import OrganisationUnitsTree from '../../../components/AvailableOrganisationUnitsTree'
-
-/* material-ui */
 import { Dialog } from 'material-ui'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-
-/* d2-ui */
 import { Button, SelectField } from '@dhis2/d2-ui-core'
-
 import fakerData from '../../../utils/fakerTests'
 import { TYPES } from '../standard.report.conf'
 
-/* Mocks */
 jest.mock('@dhis2/d2-ui-org-unit-tree', () => ({
     OrgUnitTree: 'OrgUnitTree',
 }))
@@ -88,9 +77,7 @@ describe('Test <CreateStdReport /> rendering:', () => {
     })
 
     it('Should have correct title.', () => {
-        expect(dialog.props().title).toBe(
-            `${i18nKeys.standardReport.createReportTitle}`
-        )
+        expect(dialog.props().title).toBe('Create Report Table')
     })
 
     it('Should allow to select "Reporting Period".', () => {
@@ -114,19 +101,19 @@ describe('Test <CreateStdReport /> rendering:', () => {
                 .find(Button)
                 .at(0)
                 .text()
-        ).toBe(`${i18nKeys.buttons.cancel}`)
+        ).toBe('Cancel')
         expect(
             actions
                 .find(Button)
                 .at(1)
                 .text()
-        ).toBe(`${i18nKeys.buttons.downloadAsExcel}`)
+        ).toBe('Download as excel')
         expect(
             actions
                 .find(Button)
                 .at(2)
                 .text()
-        ).toBe(`${i18nKeys.buttons.getReport}`)
+        ).toBe('Get Report')
     })
 })
 

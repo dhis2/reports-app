@@ -4,7 +4,7 @@ import {
     deleteStandardReport as deleteStandardReportRequest,
 } from '../../utils/api'
 import { DEBOUNCE_DELAY } from '../../config/search.config'
-import i18n from '../../utils/i18n/locales'
+import i18n from '@dhis2/d2-i18n'
 import {
     goToNextPage as goToNextPageOrig,
     goToPrevPage as goToPrevPageOrig,

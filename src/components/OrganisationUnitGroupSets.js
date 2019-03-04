@@ -9,8 +9,7 @@ import { DropDown } from '@dhis2/d2-ui-core'
 import AppContext from '../pages/AppContext'
 
 /* i18n */
-import i18n from '../utils/i18n/locales'
-import { i18nKeys } from '../utils/i18n/i18nKeys'
+import i18n from '@dhis2/d2-i18n'
 
 /* styles */
 import styles from '../utils/styles'
@@ -74,12 +73,8 @@ export class OrganisationUnitGroupSets extends PureComponent {
                 )}
                 menuItems={organisationUnitGroupSet.organisationUnitGroups}
                 includeEmpty
-                emptyLabel={i18n.t(
-                    i18nKeys.organisationUnitGroupSetDropdown.hintText
-                )}
-                hintText={i18n.t(
-                    i18nKeys.organisationUnitGroupSetDropdown.hintText
-                )}
+                emptyLabel={i18n.t('Select Option')}
+                hintText={i18n.t('Select Option')}
             />
         </div>
     )
