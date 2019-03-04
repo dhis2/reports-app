@@ -1,6 +1,6 @@
 import { mockStore } from '../../../utils/test-helpers/mockStore'
 import {
-    ACTION_TYPES as TYPES,
+    actionTypes as TYPES,
     fallbackErrorMessage,
     loadPeriodTypes,
     selectPeriod,

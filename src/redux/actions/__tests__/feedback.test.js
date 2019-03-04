@@ -1,6 +1,6 @@
 import * as FEEDBACK_TYPES from '../../../utils/feedbackTypes'
 import {
-    ACTION_TYPES as ACTIONS,
+    actionTypes as ACTIONS,
     clearFeedback,
     showLoader,
     showSnackbar,

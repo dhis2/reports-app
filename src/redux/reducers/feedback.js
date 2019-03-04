@@ -1,4 +1,4 @@
-import { ACTION_TYPES as TYPES } from '../actions/feedback'
+import { actionTypes as TYPES } from '../actions/feedback'
 
 export const initialState = {
     showSnackbar: false,

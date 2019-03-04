@@ -1,7 +1,7 @@
 import { LOCATION_CHANGE } from 'connected-react-router'
-import { ACTION_TYPES } from '../actions/organisationUnits'
+import { actionTypes } from '../actions/organisationUnits'
 
-export const ACTIONS = { LOCATION_CHANGE, ...ACTION_TYPES }
+export const ACTIONS = { LOCATION_CHANGE, ...actionTypes }
 export const initialState = {
     loading: true,
     collection: [],

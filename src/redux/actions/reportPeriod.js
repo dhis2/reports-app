@@ -3,7 +3,7 @@ import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
 import { showErrorSnackBar } from './feedback'
 import { getPeriodTypes } from '../../utils/api'
 
-export const ACTION_TYPES = {
+export const actionTypes = {
     REPORT_PERIOD_TYPES_LOADING_START: 'REPORT_PERIOD_TYPES_LOADING_START',
     REPORT_PERIOD_TYPES_RECEIVED: 'REPORT_PERIOD_TYPES_RECEIVED',
     REPORT_PERIOD_TYPES_ERRORED: 'REPORT_PERIOD_TYPES_ERRORED',
@@ -16,7 +16,7 @@ export const ACTION_TYPES = {
  * @returns {Object}
  */
 export const loadPeriodTypesSuccess = periodTypes => ({
-    type: ACTION_TYPES.REPORT_PERIOD_TYPES_RECEIVED,
+    type: actionTypes.REPORT_PERIOD_TYPES_RECEIVED,
     payload: periodTypes,
 })
 
@@ -24,7 +24,7 @@ export const loadPeriodTypesSuccess = periodTypes => ({
  * @returns {Object}
  */
 export const loadPeriodTypesError = () => ({
-    type: ACTION_TYPES.REPORT_PERIOD_TYPES_ERRORED,
+    type: actionTypes.REPORT_PERIOD_TYPES_ERRORED,
 })
 
 /**
@@ -52,11 +52,11 @@ export const loadPeriodTypes = () => dispatch =>
         })
 
 export const selectPeriodType = event => ({
-    type: ACTION_TYPES.REPORT_PERIOD_TYPE_SELECTED,
+    type: actionTypes.REPORT_PERIOD_TYPE_SELECTED,
     payload: event.target.value,
 })
 
 export const selectPeriod = period => ({
-    type: ACTION_TYPES.REPORT_PERIOD_SELECTED,
+    type: actionTypes.REPORT_PERIOD_SELECTED,
     payload: period,
 })

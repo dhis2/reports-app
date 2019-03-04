@@ -1,5 +1,5 @@
 import reducer, { initialState } from '../feedback'
-import { ACTION_TYPES as ACTIONS } from '../../actions/feedback'
+import { actionTypes as ACTIONS } from '../../actions/feedback'
 import * as FEEDBACK_TYPES from '../../../utils/feedbackTypes'
 
 describe('Reducer - feedback', () => {

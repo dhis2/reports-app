@@ -1,6 +1,6 @@
 import { mockStore } from '../../../utils/test-helpers/mockStore'
 import {
-    ACTION_TYPES as TYPES,
+    actionTypes as TYPES,
     fallbackErrorMessage,
     loadOrganisationUnits,
     loadOrganisationUnitsErrorDefaultMessage,
@@ -12,7 +12,7 @@ import {
 import { showErrorSnackBar } from '../feedback'
 import { getOrganisationUnits } from '../../../utils/api'
 import * as feedbackTypes from '../../../utils/feedbackTypes'
-import { ACTION_TYPES as feedbackActionTypes } from '../feedback'
+import { actionTypes as feedbackActionTypes } from '../feedback'
 
 jest.mock('../../../utils/api', () => ({
     getOrganisationUnits: jest.fn(),
