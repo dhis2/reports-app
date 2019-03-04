@@ -8,7 +8,7 @@ import { TabularReportCommentable } from '../components/TabularReportCommentable
 import { DataInputs } from './data-set-report/DataInputs'
 import { FormActions } from './data-set-report/FormActions'
 import { connectDataSetReport } from './data-set-report/connectDataSetReport'
-import i18n from '../utils/i18n/locales'
+import i18n from '@dhis2/d2-i18n'
 import styles from '../utils/styles'
 
 class DataSetReport extends React.Component {

@@ -1,21 +1,9 @@
-/* React */
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-
-/* material-ui */
 import { Dialog } from 'material-ui'
-
-/* d2-ui */
 import { Button, SelectField } from '@dhis2/d2-ui-core'
-
-/* app components */
 import OrganisationUnitsTree from '../../../components/AvailableOrganisationUnitsTree'
-
-/* i18n */
-import { i18nKeys } from '../../../utils/i18n/i18nKeys'
-import i18n from '../../../utils/i18n/locales'
-
-/* styles */
+import i18n from '@dhis2/d2-i18n'
 import appStyles from '../../../utils/styles'
 
 import {
@@ -175,7 +163,7 @@ class CreateStdReport extends PureComponent {
             return (
                 <SelectField
                     selector={'periods'}
-                    label={i18n.t(i18nKeys.standardReport.reportingPeriod)}
+                    label={i18n.t('Reporting Period')}
                     items={this.state.periods}
                     value={
                         this.state.selectedPeriod
@@ -226,7 +214,7 @@ class CreateStdReport extends PureComponent {
                     style={appStyles.dialogBtn}
                     onClick={this.props.onRequestClose}
                 >
-                    {i18n.t(i18nKeys.buttons.cancel)}
+                    {i18n.t('Cancel')}
                 </Button>
             </span>,
             <span
@@ -239,7 +227,7 @@ class CreateStdReport extends PureComponent {
                     disabled={!this.validate()}
                     onClick={this.getExcelReport}
                 >
-                    {i18n.t(i18nKeys.buttons.downloadAsExcel)}
+                    {i18n.t('Download as excel')}
                 </Button>
             </span>,
             <span
@@ -254,7 +242,7 @@ class CreateStdReport extends PureComponent {
                     disabled={!this.validate()}
                     onClick={this.getReport}
                 >
-                    {i18n.t(i18nKeys.buttons.getReport)}
+                    {i18n.t('Get Report')}
                 </Button>
             </span>,
         ]
@@ -264,7 +252,7 @@ class CreateStdReport extends PureComponent {
                 <Dialog
                     autoScrollBodyContent
                     autoDetectWindowHeight
-                    title={i18n.t(i18nKeys.standardReport.createReportTitle)}
+                    title={i18n.t('Create Report Table')}
                     actions={actions}
                     modal
                     open={this.props.open}

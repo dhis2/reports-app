@@ -2,8 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { DropDown } from '@dhis2/d2-ui-core'
-import i18n from '../utils/i18n/locales'
-import { i18nKeys } from '../utils/i18n/i18nKeys'
+import i18n from '@dhis2/d2-i18n'
 import styles from '../utils/styles'
 import { selectDimensionOption } from '../redux/actions/dataSetDimensions'
 
@@ -20,8 +19,8 @@ const DimensionDropdown = props => (
             onChange={props.onChange}
             menuItems={props.dimension.items}
             includeEmpty
-            emptyLabel={i18n.t(i18nKeys.dimensionsDropdown.hintText)}
-            hintText={i18n.t(i18nKeys.dimensionsDropdown.hintText)}
+            emptyLabel={i18n.t('Select Option')}
+            hintText={i18n.t('Select Option')}
         />
     </div>
 )

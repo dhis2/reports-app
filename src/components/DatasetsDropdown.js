@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { DropDown } from '@dhis2/d2-ui-core'
-import i18n from '../utils/i18n/locales'
+import i18n from '@dhis2/d2-i18n'
 import styles from '../utils/styles'
 import { selectDataSet } from '../redux/actions/dataSet'
 

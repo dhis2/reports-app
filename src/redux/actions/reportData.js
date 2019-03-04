@@ -1,7 +1,7 @@
 import XLSX from 'xlsx'
 import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
 import { showLoader, showSuccessSnackBar, showErrorSnackBar } from './feedback'
-import i18n from '../../utils/i18n/locales'
+import i18n from '@dhis2/d2-i18n'
 
 export const actionTypes = {
     LOADING_REPORT_DATA_START: 'LOADING_REPORT_DATA_START',
