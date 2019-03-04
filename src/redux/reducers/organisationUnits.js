@@ -10,10 +10,7 @@ export const initialState = {
     showOptions: false,
 }
 
-export default function organisationUnits(
-    state = initialState,
-    { type, payload }
-) {
+export function organisationUnits(state = initialState, { type, payload }) {
     switch (type) {
         case ACTIONS.ORGANISATION_UNITS_RECEIVED:
             return {

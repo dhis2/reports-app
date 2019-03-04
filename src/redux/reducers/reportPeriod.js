@@ -9,7 +9,7 @@ export const initialState = {
     selectedPeriod: '',
 }
 
-export default function reportPeriod(state = initialState, { type, payload }) {
+export function reportPeriod(state = initialState, { type, payload }) {
     switch (type) {
         case ACTIONS.REPORT_PERIOD_TYPES_RECEIVED:
             return {

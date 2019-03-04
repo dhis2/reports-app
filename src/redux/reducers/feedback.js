@@ -7,7 +7,7 @@ export const initialState = {
     type: '',
 }
 
-const feedback = (state = initialState, { type, payload }) => {
+export const feedback = (state = initialState, { type, payload }) => {
     switch (type) {
         case types.FEEDBACK_CLEAR:
             return initialState
@@ -30,5 +30,3 @@ const feedback = (state = initialState, { type, payload }) => {
             return state
     }
 }
-
-export default feedback

@@ -4,7 +4,7 @@ import {
     CONTEXT_MENU_ACTION,
 } from '../../pages/standard-report/standard.report.conf'
 
-const defaultState = {
+export const defaultState = {
     reports: [],
     selectedReport: {},
     selectedAction: '',
@@ -17,7 +17,7 @@ const defaultState = {
 }
 
 // eslint-disable-next-line complexity
-const standardReport = (state = defaultState, action = {}) => {
+export const standardReport = (state = defaultState, action = {}) => {
     const { type, payload } = action
 
     switch (type) {
@@ -123,6 +123,3 @@ const standardReport = (state = defaultState, action = {}) => {
             return state
     }
 }
-
-export default standardReport
-export { defaultState }
