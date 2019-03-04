@@ -75,7 +75,7 @@ export default class StandardReport extends React.Component {
                         onChange={this.props.setSearch}
                     />
                     <Table
-                        columns={['displayName', 'reportTable', 'id']}
+                        columns={['displayName']}
                         rows={this.props.reports}
                         contextMenuActions={contextMenuOptions}
                         contextMenuIcons={CONTEXT_MENU_ICONS}
