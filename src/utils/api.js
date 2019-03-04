@@ -202,12 +202,13 @@ export const getOrgUnitGroupSets = () =>
  * @param {string} groupSetId
  * @returns {Promise}
  */
-export const getOrgUnitDistReport = (orgUnitId, groupSetId) =>
+export const getOrgUnitDistReport = async (orgUnit, groupSetId) => {
+    const orgUnitIds = await getOrgUnitAndChildrenIds(orgUnit)
     api.get(ORG_UNIT_DISTRIBUTION_REPORT_ENDPOINT, {
-        ou: orgUnitId,
+        ou: orgUnitIds.join(';'),
         ougs: groupSetId,
     })
-
+}
 /**
  * @returns {Promise}
  */
