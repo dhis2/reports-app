@@ -14,15 +14,8 @@ const mapDispatchToProps = dispatch => ({
     loadReportData: () => dispatch(loadReportData()),
 })
 
-const areStatesEqual = (next, prev) =>
-    isActionEnabled(next) === isActionEnabled(prev) &&
-    next.organisationUnits === prev.organisationUnits &&
-    next.reportData === prev.reportData
-
 export const connectReportingRateSummary = component =>
     connect(
         mapStateToProps,
-        mapDispatchToProps,
-        null,
-        { areStatesEqual }
+        mapDispatchToProps
     )(component)

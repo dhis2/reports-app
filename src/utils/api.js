@@ -176,6 +176,7 @@ export const getReportingRateSummaryReport = async (
  * @returns {Promise} - Array of IDs of the orgUnit and its direct descendants
  */
 export const getOrgUnitAndChildrenIds = orgUnit => {
+    console.log(orgUnit)
     const children = orgUnit.children.size
         ? Promise.resolve(orgUnit.children)
         : d2.models.organisationUnits
@@ -204,10 +205,12 @@ export const getOrgUnitGroupSets = () =>
  */
 export const getOrgUnitDistReport = async (orgUnit, groupSetId) => {
     const orgUnitIds = await getOrgUnitAndChildrenIds(orgUnit)
-    api.get(ORG_UNIT_DISTRIBUTION_REPORT_ENDPOINT, {
-        ou: orgUnitIds.join(';'),
-        ougs: groupSetId,
-    })
+    return api
+        .get(ORG_UNIT_DISTRIBUTION_REPORT_ENDPOINT, {
+            ou: orgUnitIds.join(';'),
+            ougs: groupSetId,
+        })
+        .then(response => ({ ...response, orgUnitIds }))
 }
 /**
  * @returns {Promise}

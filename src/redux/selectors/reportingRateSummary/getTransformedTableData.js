@@ -1,6 +1,8 @@
 import i18n from '@dhis2/d2-i18n'
 import isEmpty from 'lodash.isempty'
+import createDataTransformCache from '../../../utils/dataTransformCache'
 
+const cache = createDataTransformCache()
 const nameColumnDisplayName = i18n.t('Name')
 const rowIndexesToRead = [
     1, // Org unit name
@@ -12,17 +14,24 @@ const rowIndexesToRead = [
 ]
 
 export default function getTransformedTableData(state) {
-    const sourceData = state.reportData.content
+    const data = state.reportData.content
 
-    if (isEmpty(sourceData)) {
-        return sourceData
+    if (isEmpty(data)) {
+        return data
     }
 
-    return {
+    if (cache.hasValidCacheFor(data)) {
+        return cache.getCachedResult()
+    }
+
+    const tableData = {
         title: parseTitle(state),
-        headers: parseHeaders(sourceData),
-        rows: parseRows(sourceData.rows),
+        headers: parseHeaders(data),
+        rows: parseRows(data.rows),
     }
+
+    cache.setCachedResult(data, tableData)
+    return tableData
 }
 
 export function parseTitle(state) {
