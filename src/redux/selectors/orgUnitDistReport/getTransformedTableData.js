@@ -10,7 +10,6 @@ export const cache = createDataTransformCache()
  * @returns {Object} - Transformed table data that can be consumed by TabularReport
  */
 export default function getTransformedTableData(state) {
-    console.log(state)
     const data = state.reportData.content
 
     if (isEmpty(data)) {
@@ -29,7 +28,6 @@ export default function getTransformedTableData(state) {
     }
 
     cache.setCachedResult(data, tableData)
-    console.log(data, tableData)
     return tableData
 }
 
