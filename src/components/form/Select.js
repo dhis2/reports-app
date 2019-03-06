@@ -17,7 +17,7 @@ export const Select = withStyles(styles)(props => (
                     <MUISelect native {...input}>
                         {props.showEmptyOption && <option value="" />}
                         {props.options.map(option => (
-                            <option key={option.label} value={option.value}>
+                            <option key={option.value} value={option.value}>
                                 {option.label}
                             </option>
                         ))}

@@ -6,15 +6,20 @@ import FormHelperText from '@material-ui/core/FormHelperText'
 
 export const CheckBoxes = props => (
     <FormControl>
-        <FormHelperText>{props.label}</FormHelperText>
+        {props.label && <FormHelperText>{props.label}</FormHelperText>}
+        {props.showError && (
+            <Field name={props.name} type="checkbox">
+                {({ meta }) => (meta.error && meta.touched ? meta.error : '')}
+            </Field>
+        )}
         {props.options.map(option => (
             <div key={option.label}>
                 <Field
-                    name={props.name}
                     type="checkbox"
-                    value={option.value}
                     component="input"
-                />{' '}
+                    value={option.value}
+                    name={props.name}
+                />
                 {option.label}
             </div>
         ))}
@@ -23,6 +28,12 @@ export const CheckBoxes = props => (
 
 CheckBoxes.propTypes = {
     name: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
     options: PropTypes.arrayOf(PropTypes.object).isRequired,
+    label: PropTypes.string,
+    showError: PropTypes.bool,
+}
+
+CheckBoxes.defaultProps = {
+    label: '',
+    showError: true,
 }

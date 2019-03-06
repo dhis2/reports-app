@@ -9,6 +9,7 @@ import {
 } from './api/helpers'
 import {
     STANDARD_REPORTS_ENDPOINT,
+    REPORT_TABLES_ENDPOINT,
     DATA_SET_REPORTS_ENDPOINT,
     DATA_SET_DIMENSIONS_ENDPOINT,
     RESOURCE_ENDPOINT,
@@ -230,3 +231,9 @@ export const getResources = (page, pageSize, search) => {
  */
 export const deleteResource = resourceId =>
     api.delete(`${RESOURCE_ENDPOINT}/${resourceId}`)
+
+/**
+ * @returns {Promise}
+ */
+export const getStandardReportTables = () =>
+    api.get(REPORT_TABLES_ENDPOINT, { paging: false, fields: 'id,name' })

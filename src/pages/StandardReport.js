@@ -31,7 +31,7 @@ export default class StandardReport extends React.Component {
     }
 
     componentDidMount() {
-        this.props.loadStandardReports()
+        this.props.loadStandardReports(true)
     }
 
     render() {

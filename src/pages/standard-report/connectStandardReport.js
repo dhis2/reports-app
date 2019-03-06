@@ -21,7 +21,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    loadStandardReports: () => dispatch(loadStandardReports()),
+    loadStandardReports: fetchReportTables =>
+        dispatch(loadStandardReports(fetchReportTables)),
     addReportFormShow: report => dispatch(addReportFormShow(report)),
     createReport: report => dispatch(createReportShow(report)),
     editReport: report => dispatch(editReportFormShow(report)),

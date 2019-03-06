@@ -1,5 +1,5 @@
-// endpoint urls
-export const STANDARD_REPORTS_ENDPOINT = 'reports' // eslint-disable-line import/prefer-default-export
+export const STANDARD_REPORTS_ENDPOINT = 'reports'
+export const REPORT_TABLES_ENDPOINT = 'reportTables'
 export const DATA_SET_REPORTS_ENDPOINT = 'dataSetReport'
 export const DATA_SET_DIMENSIONS_ENDPOINT = 'dimensions/dataSet'
 export const DATA_SET_REPORT_INTERPOLATION_ENDPOINT =

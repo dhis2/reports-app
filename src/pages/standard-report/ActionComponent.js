@@ -6,7 +6,7 @@ import {
     CONTEXT_MENU_ACTION,
 } from './standard.report.conf'
 import CreateStdReport from './create-report/CreateStdReport'
-import { ConnectedAddEditStdReport } from './add-edit-report/AddEditStdReport'
+import { ConnectedAddEditStdReport } from './AddEditStdReport'
 
 const ActionComponent = ({
     d2,
@@ -45,10 +45,10 @@ const ActionComponent = ({
     if (selectedAction === CONTEXT_MENU_ACTION.EDIT) {
         return (
             <ConnectedAddEditStdReport
-                selectedReport={selectedReport}
-                open={open}
-                onRequestClose={handleClose}
                 d2={d2}
+                open={open}
+                selectedReport={selectedReport}
+                onRequestClose={handleClose}
                 onError={handleError}
             />
         )

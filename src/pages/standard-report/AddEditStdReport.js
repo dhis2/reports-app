@@ -12,8 +12,7 @@ import {
     InputField,
 } from '@dhis2/d2-ui-core'
 import { connect } from 'react-redux'
-import appStyles from '../../../utils/styles'
-import styles from './AddEditStdReport.style'
+import styles from './add-edit-report/AddEditStdReport.style'
 import {
     reportTypes,
     reportTypeOptions,
@@ -24,15 +23,18 @@ import {
     REPORT_TYPES,
     REPORTS_ENDPOINT,
     TYPES,
-} from '../standard.report.conf'
-import i18n from '@dhis2/d2-i18n'
+} from './standard.report.conf'
 
-import { Form, Field } from 'react-final-form'
-import { Input } from '../../../components/form/Input'
-import { Select } from '../../../components/form/Select'
-import { File } from '../../../components/form/File'
-import { CheckBoxGroups } from '../../../components/form/CheckBoxGroups'
-import { relativePeriods } from '../../../utils/periods/relativePeriods'
+import i18n from '@dhis2/d2-i18n'
+import appStyles from '../../utils/styles'
+import { Form } from 'react-final-form'
+import { Input } from '../../components/form/Input'
+import { Select } from '../../components/form/Select'
+import { File } from '../../components/form/File'
+import { CheckBoxGroups } from '../../components/form/CheckBoxGroups'
+import { CheckBoxes } from '../../components/form/CheckBoxes'
+import { relativePeriods } from '../../utils/periods/relativePeriods'
+import { DesignFileDownloadButton } from './add-edit-report/DesignFileDownloadButton'
 
 const validate = values => {
     const errors = {}
@@ -67,7 +69,7 @@ export const Component = props => (
     <Dialog
         autoDetectWindowHeight
         autoScrollBodyContent
-        title={'Test'}
+        title={props.selectedReport ? 'Edit report' : 'Add report'}
         modal
         contentStyle={styles.dialog}
         open={props.open}
@@ -81,55 +83,84 @@ export const Component = props => (
                 <form onSubmit={handleSubmit}>
                     <section>
                         <h2>Details</h2>
-                        <Input name="name" placeholder={i18n.t('Name')} />
+                        <Input name="name" placeholder={i18n.t('Name*')} />
                         <Select
                             showEmptyOption={false}
                             name="reportType"
-                            placeholder={i18n.t('Report Type')}
+                            placeholder={i18n.t('Report Type*')}
                             options={reportTypeOptions}
                         />
-                        {/**
                         <File
                             name="design-file"
-                            placeholder={i18n.t('Design File')}
+                            placeholder={i18n.t('Design File*')}
                         />
-                        **/}
+                        <DesignFileDownloadButton
+                            isEditing={!!props.selectedReport}
+                            reportType={values.reportType}
+                            reportId={
+                                props.selectedReport
+                                    ? props.selectedReport.id
+                                    : ''
+                            }
+                        />
                         {values.reportType ===
                             reportTypes.JASPER_REPORT_TABLE && (
                             <Select
                                 name="reportTable"
-                                placeholder={i18n.t('Report Table')}
+                                placeholder={i18n.t('Report Table*')}
                                 options={props.reportTables || []}
                             />
                         )}
                     </section>
                     {values.reportType !== reportTypes.JASPER_REPORT_TABLE && (
                         <section>
-                            <h2>Relative Periods</h2>
+                            <h2>Relative Periods*</h2>
                             <CheckBoxGroups
-                                name="relative_periods"
+                                name="relativePeriod"
                                 groups={relativePeriods}
                             />
 
                             <h2>Report parameters</h2>
+                            <CheckBoxes
+                                name="reportParams"
+                                options={[
+                                    {
+                                        value: 'reportingPeriod',
+                                        label: 'Reporting Period',
+                                    },
+                                    {
+                                        value: 'organisationUnit',
+                                        label: 'Organisation Unit',
+                                    },
+                                ]}
+                            />
                         </section>
                     )}
                     <section>
                         <h2>Settings</h2>
                         <Select
                             name="cacheStrategy"
-                            placeholder={i18n.t('Cache Strategy')}
+                            placeholder={i18n.t('Cache Strategy*')}
                             options={cacheStrategies}
                         />
                     </section>
                     <section>
                         <Button
-                            variant="contained"
+                            raised
                             color="primary"
                             type="submit"
                             onClick={handleSubmit}
+                            style={appStyles.dialogBtn}
                         >
                             Submit
+                        </Button>
+                        <Button
+                            raised
+                            type="submit"
+                            onClick={() => props.onRequestClose(false)}
+                            style={appStyles.dialogBtn}
+                        >
+                            Cancel
                         </Button>
                     </section>
                 </form>
@@ -142,11 +173,17 @@ Component.propTypes = {
     open: PropTypes.bool.isRequired,
     reportTables: Select.propTypes.options,
     onSubmit: PropTypes.func.isRequired,
+    onRequestClose: PropTypes.func.isRequired,
+    selectedReport: PropTypes.object,
+}
+
+Component.defaultProps = {
+    selectedReport: null,
 }
 
 const ConnectedComponent = connect(
-    () => ({ reportTables: [] }),
-    () => ({ onSubmit: (...args) => console.log(...args) })
+    state => ({ reportTables: state.standardReportTables.collection }),
+    () => ({ onSubmit: (...args) => console.log('Submit report', ...args) })
 )(Component)
 
 export { ConnectedComponent as ConnectedAddEditStdReport }

@@ -4,6 +4,7 @@ import history from '../utils/history'
 
 import { feedback } from './reducers/feedback'
 import { standardReport } from './reducers/standardReport'
+import { standardReportTables } from './reducers/standardReportTables'
 import { reportPeriod } from './reducers/reportPeriod'
 import { organisationUnits } from './reducers/organisationUnits'
 import { orgUnitGroupSets } from './reducers/orgUnitGroupSets'
@@ -19,6 +20,7 @@ export default combineReducers({
     router: connectRouter(history),
     feedback,
     standardReport,
+    standardReportTables,
     dataSetReport,
     reportPeriod,
     organisationUnits,

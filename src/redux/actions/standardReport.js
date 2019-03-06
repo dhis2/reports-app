@@ -11,6 +11,7 @@ import {
 } from './pagination'
 import { setPagination } from './pagination'
 import { showErrorSnackBar } from './feedback'
+import { loadStandardReportTables } from './standardReportTables'
 import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
 
 export const actionTypes = {
@@ -210,7 +211,7 @@ export const deleteStandardReportError = () => ({
  */
 export const deleteStandardReportSuccessWithFeedback = () => dispatch => {
     dispatch(deleteStandardReportSuccess())
-    dispatch(loadStandardReports('Successfully deleted the report'))
+    dispatch(loadStandardReports())
 }
 
 /**
@@ -256,7 +257,10 @@ export const hideReportData = () => ({
 /**
  * @return {Function} Redux thunk
  */
-export const loadStandardReports = () => (dispatch, getState) => {
+export const loadStandardReports = (postLoadStandartReportTables = false) => (
+    dispatch,
+    getState
+) => {
     const { standardReport, pagination } = getState()
     const { page, pageSize } = pagination
     const { search } = standardReport
@@ -266,6 +270,10 @@ export const loadStandardReports = () => (dispatch, getState) => {
         .then(response => {
             dispatch(loadingStandardReportsSuccess(response.reports))
             dispatch(setPagination(response.pager))
+
+            if (postLoadStandartReportTables) {
+                dispatch(loadStandardReportTables())
+            }
         })
         .catch(error =>
             dispatch(loadingStandardReportsErrorWithFeedback(error))

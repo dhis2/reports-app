@@ -6,6 +6,16 @@ import FormHelperText from '@material-ui/core/FormHelperText'
 
 export const CheckBoxGroups = props => (
     <div className="row">
+        <div className="col-xs-12">
+            <Field type="checkbox" name={props.name}>
+                {({ meta }) => (
+                    <FormHelperText>
+                        {meta.error && meta.touched ? meta.error : ''}
+                    </FormHelperText>
+                )}
+            </Field>
+        </div>
+
         {props.groups.map(group => (
             <div
                 key={group.label}
@@ -15,16 +25,8 @@ export const CheckBoxGroups = props => (
                     name={props.name}
                     label={group.label}
                     options={group.options}
+                    showError={false}
                 />
-
-                <FormHelperText>
-                    <Field name={props.name}>
-                        {({ meta }) =>
-                            console.log('CheckBoxGroups meta', meta) ||
-                            (props.error && meta.touched ? meta.error : '')
-                        }
-                    </Field>
-                </FormHelperText>
             </div>
         ))}
     </div>
