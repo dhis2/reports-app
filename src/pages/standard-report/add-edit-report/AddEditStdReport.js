@@ -15,7 +15,6 @@ import { connect } from 'react-redux'
 import appStyles from '../../../utils/styles'
 import styles from './AddEditStdReport.style'
 import {
-    relativePeriods,
     reportTypes,
     reportTypeOptions,
     cacheStrategies,
@@ -28,60 +27,129 @@ import {
 } from '../standard.report.conf'
 import i18n from '@dhis2/d2-i18n'
 
-import { Form } from 'react-final-form'
+import { Form, Field } from 'react-final-form'
 import { Input } from '../../../components/form/Input'
 import { Select } from '../../../components/form/Select'
 import { File } from '../../../components/form/File'
+import { CheckBoxGroups } from '../../../components/form/CheckBoxGroups'
+import { relativePeriods } from '../../../utils/periods/relativePeriods'
+
+const validate = values => {
+    const errors = {}
+
+    if (!values.name) {
+        errors.name = 'Required'
+    }
+    if (
+        values.reportType === reportTypes.JASPER_REPORT_TABLE &&
+        !values.reportTable
+    ) {
+        errors.reportTable = 'Required'
+    }
+    if (
+        values.reportType !== reportTypes.JASPER_REPORT_TABLE &&
+        (!values.relativePeriod || !values.relativePeriod.length)
+    ) {
+        errors.relativePeriod = 'Required'
+    }
+    if (!values.cacheStrategy) {
+        errors.cacheStrategy = 'Required'
+    }
+
+    return errors
+}
+
+const initialValues = {
+    reportType: reportTypes.JASPER_REPORT_TABLE,
+}
 
 export const Component = props => (
-    <Form
-        onSubmit={props.onSubmit}
-        render={({ handleSubmit, values }) => (
-            <form onSubmit={handleSubmit}>
-                <section>
-                    <h2>Details</h2>
-                    <Input name="name" placeholder={i18n.t('Name')} />
-                    <Select
-                        name="type"
-                        placeholder={i18n.t('Type')}
-                        options={reportTypeOptions}
-                    />
-                    <File
-                        name="design-file"
-                        placeholder={i18n.t('Design File')}
-                    />
-                    {values.reportType === reportTypes.JASPER_REPORT_TABLE && (
-                        <Select
-                            name="report-table"
-                            placeholder={i18n.t('Report Table')}
-                            options={props.reportTypes}
-                        />
-                    )}
-                </section>
-                {values.reportType === reportTypes.JASPER_JDBC && (
+    <Dialog
+        autoDetectWindowHeight
+        autoScrollBodyContent
+        title={'Test'}
+        modal
+        contentStyle={styles.dialog}
+        open={props.open}
+    >
+        <Form
+            onSubmit={props.onSubmit}
+            validate={validate}
+            initialValues={initialValues}
+        >
+            {({ handleSubmit, values }) => (
+                <form onSubmit={handleSubmit}>
                     <section>
-                        <h2>Relative Periods</h2>
-
-                        <h2>Report parameters</h2>
+                        <h2>Details</h2>
+                        <Input name="name" placeholder={i18n.t('Name')} />
+                        <Select
+                            showEmptyOption={false}
+                            name="reportType"
+                            placeholder={i18n.t('Report Type')}
+                            options={reportTypeOptions}
+                        />
+                        {/**
+                        <File
+                            name="design-file"
+                            placeholder={i18n.t('Design File')}
+                        />
+                        **/}
+                        {values.reportType ===
+                            reportTypes.JASPER_REPORT_TABLE && (
+                            <Select
+                                name="reportTable"
+                                placeholder={i18n.t('Report Table')}
+                                options={props.reportTables || []}
+                            />
+                        )}
                     </section>
-                )}
-                <section>
-                    <h2>Settings</h2>
-                    <Select
-                        name="cache_strategies"
-                        placeholder={i18n.t('Cache Strategies')}
-                        options={cacheStrategies}
-                    />
-                </section>
-            </form>
-        )}
-    />
+                    {values.reportType !== reportTypes.JASPER_REPORT_TABLE && (
+                        <section>
+                            <h2>Relative Periods</h2>
+                            <CheckBoxGroups
+                                name="relative_periods"
+                                groups={relativePeriods}
+                            />
+
+                            <h2>Report parameters</h2>
+                        </section>
+                    )}
+                    <section>
+                        <h2>Settings</h2>
+                        <Select
+                            name="cacheStrategy"
+                            placeholder={i18n.t('Cache Strategy')}
+                            options={cacheStrategies}
+                        />
+                    </section>
+                    <section>
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            type="submit"
+                            onClick={handleSubmit}
+                        >
+                            Submit
+                        </Button>
+                    </section>
+                </form>
+            )}
+        </Form>
+    </Dialog>
 )
 
 Component.propTypes = {
+    open: PropTypes.bool.isRequired,
     reportTables: Select.propTypes.options,
     onSubmit: PropTypes.func.isRequired,
 }
+
+const ConnectedComponent = connect(
+    () => ({ reportTables: [] }),
+    () => ({ onSubmit: (...args) => console.log(...args) })
+)(Component)
+
+export { ConnectedComponent as ConnectedAddEditStdReport }
 
 const initialState = {
     report: {
@@ -147,7 +215,7 @@ const initialState = {
     loading: false,
 }
 
-export default class AddEditStdReport extends PureComponent {
+export class AddEditStdReport extends PureComponent {
     static propTypes = {
         d2: PropTypes.object.isRequired,
         onRequestClose: PropTypes.func.isRequired,
@@ -692,7 +760,7 @@ export default class AddEditStdReport extends PureComponent {
     }
 }
 
-export const ConnectedAddEditStdReport = connect(
+export const ConnectedAddEditStdReportBak = connect(
     null,
     null
 )(AddEditStdReport)
