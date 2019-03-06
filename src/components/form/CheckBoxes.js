@@ -8,7 +8,7 @@ export const CheckBoxes = props => (
     <FormControl>
         <FormHelperText>{props.label}</FormHelperText>
         {props.options.map(option => (
-            <div>
+            <div key={option.label}>
                 <Field
                     name={props.name}
                     type="checkbox"
@@ -24,5 +24,5 @@ export const CheckBoxes = props => (
 CheckBoxes.propTypes = {
     name: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
-    options: PropTypes.arrayOf(PropTypes.string).isRequired,
+    options: PropTypes.arrayOf(PropTypes.object).isRequired,
 }
