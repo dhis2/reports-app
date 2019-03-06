@@ -3,7 +3,7 @@ import i18n from '@dhis2/d2-i18n'
 export const relativePeriods = [
     {
         label: i18n.t('Days'),
-        periods: [
+        options: [
             {
                 value: 'thisDay',
                 label: i18n.t('Reporting day'),
@@ -28,7 +28,7 @@ export const relativePeriods = [
     },
     {
         label: i18n.t('Weeks'),
-        periods: [
+        options: [
             {
                 value: 'thisWeek',
                 label: i18n.t('Reporting week'),
@@ -57,7 +57,7 @@ export const relativePeriods = [
     },
     {
         label: i18n.t('Months'),
-        periods: [
+        options: [
             {
                 value: 'thisMonth',
                 label: i18n.t('Reporting month'),
@@ -86,7 +86,7 @@ export const relativePeriods = [
     },
     {
         label: i18n.t('Bi-months'),
-        periods: [
+        options: [
             {
                 value: 'thisBimonth',
                 label: i18n.t('Reporting bi-month'),
@@ -107,7 +107,7 @@ export const relativePeriods = [
     },
     {
         label: i18n.t('Quarters'),
-        periods: [
+        options: [
             {
                 value: 'thisQuarter',
                 label: i18n.t('Reporting quarter'),
@@ -128,7 +128,7 @@ export const relativePeriods = [
     },
     {
         label: i18n.t('Six-Months'),
-        periods: [
+        options: [
             {
                 value: 'thisSixMonth',
                 label: i18n.t('Reporting six-month'),
@@ -145,7 +145,7 @@ export const relativePeriods = [
     },
     {
         label: i18n.t('Financial Years'),
-        periods: [
+        options: [
             {
                 value: 'thisFinancialYear',
                 label: i18n.t('Reporting financial year'),
@@ -162,7 +162,7 @@ export const relativePeriods = [
     },
     {
         label: i18n.t('Years'),
-        periods: [
+        options: [
             {
                 value: 'thisYear',
                 label: i18n.t('Reporting year'),
