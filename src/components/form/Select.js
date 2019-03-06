@@ -2,29 +2,34 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Field } from 'react-final-form'
 import FormControl from '@material-ui/core/FormControl'
-import MenuItem from '@material-ui/core/MenuItem'
 import InputLabel from '@material-ui/core/InputLabel'
 import FormHelperText from '@material-ui/core/FormHelperText'
+import { default as MUISelect } from '@material-ui/core/Select'
+import { withStyles } from '@material-ui/core/styles'
+import { styles } from './styles'
 
-export const Select = props => (
-    <Field placeholder={props.placeholder}>
-        {({ input, meta, placeholder }) => (
-            <FormControl>
-                <InputLabel htmlFor={input.name}>{placeholder}</InputLabel>
-                <Select {...input}>
-                    {props.options.map(option => (
-                        <MenuItem key={option} value={option}>
-                            {option}
-                        </MenuItem>
-                    ))}
-                </Select>
-                <FormHelperText>
-                    {meta.error && meta.touched ? meta.error : ''}
-                </FormHelperText>
-            </FormControl>
-        )}
-    </Field>
-)
+export const Select = withStyles(styles)(props => (
+    <div className={props.classes.container}>
+        <Field name={props.name} placeholder={props.placeholder}>
+            {({ input, meta, placeholder }) => (
+                <FormControl className={props.classes.formControl}>
+                    <InputLabel htmlFor={input.name}>{placeholder}</InputLabel>
+                    <MUISelect native {...input}>
+                        {props.showEmptyOption && <option value="" />}
+                        {props.options.map(option => (
+                            <option key={option.label} value={option.value}>
+                                {option.label}
+                            </option>
+                        ))}
+                    </MUISelect>
+                    <FormHelperText>
+                        {meta.error && meta.touched ? meta.error : ''}
+                    </FormHelperText>
+                </FormControl>
+            )}
+        </Field>
+    </div>
+))
 
 Select.propTypes = {
     name: PropTypes.string.isRequired,
@@ -35,4 +40,9 @@ Select.propTypes = {
         })
     ).isRequired,
     placeholder: PropTypes.string.isRequired,
+    showEmptyOption: PropTypes.bool,
+}
+
+Select.defaultProps = {
+    showEmptyOption: true,
 }
