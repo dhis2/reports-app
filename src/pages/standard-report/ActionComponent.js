@@ -16,6 +16,8 @@ const ActionComponent = ({
     handleClose,
     handleError,
     handleDisplayReportData,
+    updateStandardReport,
+    addStandardReport,
 }) => {
     if (selectedAction === CONTEXT_MENU_ACTION.CREATE) {
         return (
@@ -47,7 +49,8 @@ const ActionComponent = ({
             <ConnectedAddEditStdReport
                 d2={d2}
                 open={open}
-                selectedReport={selectedReport}
+                edit={true}
+                onSubmit={updateStandardReport}
                 onRequestClose={handleClose}
                 onError={handleError}
             />
@@ -57,9 +60,11 @@ const ActionComponent = ({
     if (selectedAction === ADD_NEW_REPORT_ACTION) {
         return (
             <ConnectedAddEditStdReport
-                open={open}
-                onRequestClose={handleClose}
                 d2={d2}
+                open={open}
+                edit={false}
+                onSubmit={addStandardReport}
+                onRequestClose={handleClose}
                 onError={handleError}
             />
         )
@@ -76,6 +81,8 @@ ActionComponent.propTypes = {
     handleClose: PropTypes.func.isRequired,
     handleError: PropTypes.func.isRequired,
     handleDisplayReportData: PropTypes.func.isRequired,
+    updateStandardReport: PropTypes.func.isRequired,
+    addStandardReport: PropTypes.func.isRequired,
 }
 
 export default ActionComponent

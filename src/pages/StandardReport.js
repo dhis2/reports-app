@@ -106,6 +106,8 @@ export default class StandardReport extends React.Component {
                         handleClose={this.props.closeContextMenu}
                         handleError={this.manageError}
                         handleDisplayReportData={this.props.showReportData}
+                        updateStandardReport={this.props.updateStandardReport}
+                        addStandardReport={this.props.addStandardReport}
                     />
                 </div>
                 {this.props.reportData && (
@@ -143,6 +145,8 @@ StandardReport.propTypes = {
     hideReportData: PropTypes.func.isRequired,
     closeContextMenu: PropTypes.func.isRequired,
     addReportFormShow: PropTypes.func.isRequired,
+    updateStandardReport: PropTypes.func.isRequired,
+    addStandardReport: PropTypes.func.isRequired,
 }
 
 StandardReport.childContextTypes = {

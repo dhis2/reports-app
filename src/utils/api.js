@@ -81,11 +81,27 @@ export const getFilteredStandardReports = (page, pageSize, nameFilter) =>
 
 /**
  * @param {string} id
+ * @returns {Promise}
+ */
+export const getStandardReportDetails = id =>
+    api.get(`${STANDARD_REPORTS_ENDPOINT}/${id}`)
+
+/**
+ * @param {string} id
  * @return {Promise}
  */
 export const deleteStandardReport = id =>
     api.delete(`${STANDARD_REPORTS_ENDPOINT}/${id}`)
 
+/**
+ * @param {Array} dataSetOptions
+ * @param {Array} orgUnitGroupsOptions
+ * @param {string} dataSetId
+ * @param {string} orgUnit
+ * @param {string} period
+ * @param {bool} selectedUnitOnly
+ * @returns {Promise}
+ */
 export const getDataSetReports = (
     dataSetOptions,
     orgUnitGroupsOptions,
@@ -237,3 +253,17 @@ export const deleteResource = resourceId =>
  */
 export const getStandardReportTables = () =>
     api.get(REPORT_TABLES_ENDPOINT, { paging: false, fields: 'id,name' })
+
+/**
+ * @param {Object} report
+ * @returns {Promise}
+ */
+export const postStandardReport = report =>
+    api.post(STANDARD_REPORTS_ENDPOINT, report)
+
+/**
+ * @param {Object} report
+ * @returns {Promise}
+ */
+export const updateStandardReport = report =>
+    api.update(`${STANDARD_REPORTS_ENDPOINT}/${report.id}`, report)

@@ -44,5 +44,5 @@ Select.propTypes = {
 }
 
 Select.defaultProps = {
-    showEmptyOption: true,
+    showEmptyOption: false,
 }
