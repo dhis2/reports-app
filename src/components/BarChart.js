@@ -1,28 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { CircularProgress } from '@dhis2/d2-ui-core'
-import isEmpty from 'lodash.isempty'
 import { Bar } from 'react-chartjs-2'
+import ReportLoader from './ReportLoader'
 
-const BarChart = ({ content, isLoading }) => {
-    if (isLoading) {
-        return (
-            <div className="tabular-report__loader">
-                <CircularProgress />
-            </div>
-        )
-    }
-
-    if (isEmpty(content)) {
-        return null
-    }
-
-    return (
+const BarChart = ({ content, isLoading }) => (
+    <ReportLoader content={content} isLoading={isLoading}>
         <div className="chart">
             <Bar data={content.data} options={content.options} />
         </div>
-    )
-}
+    </ReportLoader>
+)
 
 BarChart.propTypes = {
     content: PropTypes.object.isRequired,

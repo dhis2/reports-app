@@ -26,8 +26,3 @@
 .tabular-report table th:not(:first-child) {
     text-align: center;
 }
-
-.tabular-report__loader {
-    margin: 48px 0;
-    text-align: center;
-}
