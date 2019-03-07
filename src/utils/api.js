@@ -159,6 +159,7 @@ export const getReportingRateSummaryReport = async (
         .withTableLayout()
         .withHideEmptyRows()
         .withDisplayProperty('SHORTNAME')
+        .withIncludeNumDen(false)
 
     for (let key in orgUnitOptions) {
         if (orgUnitOptions[key]) {
@@ -166,9 +167,11 @@ export const getReportingRateSummaryReport = async (
         }
     }
 
-    const fileUrls = parseFileUrls(req, ['xls', 'csv'])
-
-    return d2.analytics.aggregate.get(req).then(data => ({ ...data, fileUrls }))
+    // Instead of calling `d2.analytics.aggregate.get(req)`, which spawn two parallel requests,
+    // we just building the .json url from the request instance and call the regular `api.get(url)`,
+    // which only spawns a single request
+    const [{ url }, ...fileUrls] = parseFileUrls(req, ['json', 'xls', 'csv'])
+    return api.get(url).then(data => ({ ...data, fileUrls }))
 }
 
 /**
