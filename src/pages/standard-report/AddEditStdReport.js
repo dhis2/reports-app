@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import i18n from '@dhis2/d2-i18n'
+import FormHelperText from '@material-ui/core/FormHelperText'
 import { Dialog } from 'material-ui'
 import { Button } from '@dhis2/d2-ui-core'
 import { connect } from 'react-redux'
@@ -41,45 +42,65 @@ export const Component = props => (
         >
             {({ handleSubmit, values }) => (
                 <form onSubmit={handleSubmit}>
-                    <section>
-                        <h2>Details</h2>
+                    <section style={styles.section}>
+                        <div style={styles.sectionTitle}>Details</div>
                         <Input name="name" placeholder={i18n.t('Name*')} />
                         <Select
                             name="type"
                             placeholder={i18n.t('Report Type*')}
                             options={reportTypeOptions}
-                        />
-                        <File
-                            name="designContent"
-                            placeholder={i18n.t('Design File*')}
-                        />
-                        <DesignFileDownloadButton
-                            isEditing={!!props.selectedReport}
-                            reportType={values.type}
-                            reportId={
-                                props.edit
-                                    ? console.log(props.selectedReport) ||
-                                      props.selectedReport.id
-                                    : ''
-                            }
+                            showErrorText={false}
                         />
                         {values.type === reportTypes.JASPER_REPORT_TABLE && (
                             <Select
                                 name="reportTable"
                                 placeholder={i18n.t('Report Table*')}
-                                options={props.reportTables || []}
+                                options={props.reportTables}
+                                showErrorText={false}
                             />
                         )}
+                        <div className="row">
+                            <div className="col-xs-6">
+                                <File
+                                    name="designContent"
+                                    placeholder={
+                                        props.edit
+                                            ? i18n.t('Design File')
+                                            : i18n.t('Design File*')
+                                    }
+                                />
+                            </div>
+                            <div className="col-xs-6">
+                                <FormHelperText />
+                                <DesignFileDownloadButton
+                                    isEditing={!!props.selectedReport}
+                                    reportType={values.type}
+                                    reportId={
+                                        props.edit
+                                            ? props.selectedReport.id
+                                            : ''
+                                    }
+                                />
+                            </div>
+                        </div>
                     </section>
                     {values.type !== reportTypes.JASPER_REPORT_TABLE && (
-                        <section>
-                            <h2>Relative Periods*</h2>
+                        <section style={styles.section}>
+                            <div style={styles.sectionTitle}>
+                                Relative Periods
+                            </div>
                             <CheckBoxGroups
                                 name="relativePeriod"
                                 groups={relativePeriods}
+                                displayError={false}
                             />
-
-                            <h2>Report parameters</h2>
+                        </section>
+                    )}
+                    {values.type !== reportTypes.JASPER_REPORT_TABLE && (
+                        <section style={styles.section}>
+                            <div style={styles.sectionTitle}>
+                                Report parameters
+                            </div>
                             <CheckBoxes
                                 name="reportParams"
                                 options={[
@@ -95,15 +116,15 @@ export const Component = props => (
                             />
                         </section>
                     )}
-                    <section>
-                        <h2>Settings</h2>
+                    <section style={styles.section}>
+                        <div style={styles.sectionTitle}>Settings</div>
                         <Select
                             name="cacheStrategy"
                             placeholder={i18n.t('Cache Strategy*')}
                             options={cacheStrategies}
                         />
                     </section>
-                    <section>
+                    <section style={styles.section}>
                         <Button
                             raised
                             color="primary"

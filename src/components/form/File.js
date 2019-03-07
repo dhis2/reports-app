@@ -10,6 +10,9 @@ export const File = props => (
         <Field name={props.name} type="file" placeholder={props.placeholder}>
             {({ input, meta, placeholder }) => (
                 <FormControl>
+                    <FormHelperText>
+                        {meta.error && meta.touched ? meta.error : ''}
+                    </FormHelperText>
                     <FormHelperText>{placeholder}</FormHelperText>
                     <FormHelperText>
                         <label htmlFor={input.name}>
@@ -26,9 +29,6 @@ export const File = props => (
                     />
                     <FormHelperText>
                         {input.value.replace('C:\\fakepath\\', '')}
-                    </FormHelperText>
-                    <FormHelperText>
-                        {meta.error && meta.touched ? meta.error : ''}
                     </FormHelperText>
                 </FormControl>
             )}

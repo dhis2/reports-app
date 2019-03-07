@@ -5,8 +5,18 @@ import FormControl from '@material-ui/core/FormControl'
 import FormHelperText from '@material-ui/core/FormHelperText'
 
 export const CheckBoxes = props => (
-    <FormControl>
-        {props.label && <FormHelperText>{props.label}</FormHelperText>}
+    <FormControl style={{ margin: '0 0 20px' }}>
+        {props.label && (
+            <FormHelperText
+                style={{
+                    margin: '0 0 10px',
+                    fontSize: '1rem',
+                    color: 'black',
+                }}
+            >
+                {props.label}
+            </FormHelperText>
+        )}
         {props.showError && (
             <Field name={props.name} type="checkbox">
                 {({ meta }) => (meta.error && meta.touched ? meta.error : '')}

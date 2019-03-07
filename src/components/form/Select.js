@@ -22,9 +22,11 @@ export const Select = withStyles(styles)(props => (
                             </option>
                         ))}
                     </MUISelect>
-                    <FormHelperText>
-                        {meta.error && meta.touched ? meta.error : ''}
-                    </FormHelperText>
+                    {props.showErrorText && (
+                        <FormHelperText>
+                            {meta.error && meta.touched ? meta.error : ''}
+                        </FormHelperText>
+                    )}
                 </FormControl>
             )}
         </Field>
@@ -41,8 +43,10 @@ Select.propTypes = {
     ).isRequired,
     placeholder: PropTypes.string.isRequired,
     showEmptyOption: PropTypes.bool,
+    showErrorText: PropTypes.bool,
 }
 
 Select.defaultProps = {
     showEmptyOption: false,
+    showErrorText: false,
 }
