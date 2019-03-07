@@ -30,5 +30,8 @@ export const showErrorSnackBar = message =>
 export const showWarningSnackBar = message =>
     showSnackbar(message, FEEDBACK_TYPES.WARNING)
 
+export const showConfirmationSnackBar = message =>
+    showSnackbar(message, FEEDBACK_TYPES.ACTION_MESSAGE)
+
 // TODO: remove this
 export const updateFeedbackState = () => ({})

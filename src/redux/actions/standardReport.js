@@ -14,7 +14,12 @@ import {
     goToPrevPage as goToPrevPageOrig,
 } from './pagination'
 import { setPagination } from './pagination'
-import { showSuccessSnackBar, showErrorSnackBar } from './feedback'
+import {
+    clearFeedback,
+    showSuccessSnackBar,
+    showErrorSnackBar,
+    showConfirmationSnackBar,
+} from './feedback'
 import { loadStandardReportTables } from './standardReportTables'
 import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
 import { reportTypes } from '../../pages/standard-report/standard.report.conf'
@@ -198,10 +203,15 @@ export const sharingSettingsHide = report => ({
  * Used to get a confirmation from the user
  * @return {Object}
  */
-export const requestDeleteStandardReport = report => ({
-    type: actionTypes.REQUEST_DELETE_STANDARD_REPORT,
-    payload: report,
-})
+export const requestDeleteStandardReport = report => dispatch => {
+    dispatch({
+        type: actionTypes.REQUEST_DELETE_STANDARD_REPORT,
+        payload: report,
+    })
+    dispatch(
+        showConfirmationSnackBar('Do you really want to delete this report?')
+    )
+}
 
 /**
  * @return {Object}
@@ -230,6 +240,7 @@ export const deleteStandardReportError = () => ({
 export const deleteStandardReportSuccessWithFeedback = () => dispatch => {
     dispatch(deleteStandardReportSuccess())
     dispatch(loadStandardReports())
+    dispatch(clearFeedback())
 }
 
 /**

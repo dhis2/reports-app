@@ -113,7 +113,10 @@ export default class StandardReport extends React.Component {
                 {this.props.reportData && (
                     <StyledHtmlReport reportData={this.props.reportData} />
                 )}
-                <Snackbar onActionClick={this.props.deleteStandardReport} />
+                <Snackbar
+                    action={i18n.t('CONFIRM')}
+                    onActionClick={this.props.deleteStandardReport}
+                />
             </div>
         )
     }
