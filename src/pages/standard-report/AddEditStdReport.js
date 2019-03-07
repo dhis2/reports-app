@@ -62,6 +62,7 @@ export const Component = props => (
                         <div className="row">
                             <div className="col-xs-6">
                                 <File
+                                    fileAsBlob={true}
                                     name="designContent"
                                     placeholder={
                                         props.edit

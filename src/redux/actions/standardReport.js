@@ -18,6 +18,7 @@ import { showSuccessSnackBar, showErrorSnackBar } from './feedback'
 import { loadStandardReportTables } from './standardReportTables'
 import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
 import { reportTypes } from '../../pages/standard-report/standard.report.conf'
+import { fileToText } from '../../utils/fileToText'
 
 export const actionTypes = {
     LOAD_STANDARD_REPORTS: 'LOAD_STANDARD_REPORTS',
@@ -387,6 +388,7 @@ export const loadingSendStandardReportError = () => ({
 export const sendStandardReport = (report, isEdit) => dispatch => {
     dispatch(loadingSendStandardReportStart())
 
+    console.log('report', report)
     const formattedReport = {
         ...report,
         relativePeriods: (report.relativePeriods || []).reduce(
@@ -402,15 +404,22 @@ export const sendStandardReport = (report, isEdit) => dispatch => {
         report.type !== reportTypes.JASPER_REPORT_TABLE
             ? omit(formattedReport, ['reportTable'])
             : formattedReport
-    const request = isEdit
-        ? updateStandardReport(cleanedReport)
-        : postStandardReport(cleanedReport)
+    const doRequest = isEdit
+        ? report => updateStandardReport(report)
+        : report => postStandardReport(report)
     const successMessage = isEdit
         ? i18n.t('The report has been updated successfully')
         : i18n.t('The report has been added successfully')
     const errorMessage = isEdit
         ? i18n.t('An error occurred while updating the report!')
         : i18n.t('An error occurred while adding the report!')
+
+    const request = !cleanedReport.designContent
+        ? doRequest(cleanedReport)
+        : fileToText(cleanedReport.designContent.file)
+              .then(file => ({ ...cleanedReport, designContent: file }))
+              .then(doRequest)
+              .catch(error => console.log('file error', error))
 
     return request
         .then(() => {
