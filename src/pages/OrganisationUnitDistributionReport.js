@@ -9,6 +9,7 @@ import { Snackbar } from '../components/feedback/Snackbar'
 import { connectOrganisationUnitDistributionReport } from './organisation-unit-distribution-report/connectOrganisationUnitDistributionReport'
 import { SectionHeadline } from '../components/SectionHeadline'
 import { Form } from './organisation-unit-distribution-report/Form'
+import BarChart from '../components/BarChart'
 
 export default class OrganisationUnitDistributionReport extends React.Component {
     componentDidMount() {
@@ -28,24 +29,19 @@ export default class OrganisationUnitDistributionReport extends React.Component 
                 <Paper style={styles.container}>
                     <Form
                         isActionEnabled={this.props.isActionEnabled}
-                        onGetReportClick={this.props.loadReport}
+                        onGetReportClick={this.props.loadTable}
                         onGetChartClick={this.props.loadChart}
                     />
                     <div id="report-container">
-                        {!this.props.displayImage && (
+                        {!this.props.shouldShowChart && (
                             <TabularReport
                                 content={this.props.reportContent}
                                 isLoading={this.props.loading}
                                 fileUrls={this.props.fileUrls}
                             />
                         )}
-                        {this.props.displayImage && (
-                            <img
-                                onLoad={this.props.handleChartLoaded}
-                                onError={this.props.handleChartLoadingError}
-                                alt={''}
-                                src={this.props.imageUrl}
-                            />
+                        {this.props.shouldShowChart && (
+                            <BarChart data={this.props.reportContent} />
                         )}
                     </div>
                 </Paper>
@@ -58,19 +54,15 @@ export default class OrganisationUnitDistributionReport extends React.Component 
 OrganisationUnitDistributionReport.propTypes = {
     d2: PropTypes.object.isRequired,
     sectionKey: PropTypes.string.isRequired,
-
-    imageUrl: PropTypes.string.isRequired,
     isActionEnabled: PropTypes.bool.isRequired,
-    displayImage: PropTypes.bool.isRequired,
+    shouldShowChart: PropTypes.bool.isRequired,
     loading: PropTypes.bool.isRequired,
     groupSetsReady: PropTypes.bool.isRequired,
     fileUrls: PropTypes.array.isRequired,
     reportContent: PropTypes.object.isRequired,
-    loadReport: PropTypes.func.isRequired,
+    loadTable: PropTypes.func.isRequired,
     loadChart: PropTypes.func.isRequired,
     loadGroupSetOptions: PropTypes.func.isRequired,
-    handleChartLoaded: PropTypes.func.isRequired,
-    handleChartLoadingError: PropTypes.func.isRequired,
 }
 
 export const ConnectedOrganisationUnitDistributionReport = connectOrganisationUnitDistributionReport(

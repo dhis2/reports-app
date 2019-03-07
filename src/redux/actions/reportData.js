@@ -53,8 +53,14 @@ export const loadingReportDataStartWithFeedback = () => dispatch => {
  * @param {string} reportData
  * @return {Object}
  */
-export const loadingReportDataSuccessWithFeedback = reportData => dispatch => {
-    dispatch(showSuccessSnackBar(i18n.t('Successfully loaded the report')))
+export const loadingReportDataSuccessWithFeedback = (
+    reportData,
+    shouldShowChart
+) => dispatch => {
+    const successMsg = i18n.t('Successfully loaded the {{ outputType }}', {
+        outputType: shouldShowChart ? i18n.t('chart') : i18n.t('table'),
+    })
+    dispatch(showSuccessSnackBar(i18n.t(successMsg)))
     dispatch(loadingReportDataSuccess(reportData))
 }
 
