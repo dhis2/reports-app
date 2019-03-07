@@ -9,13 +9,13 @@ import { loadReport } from '../../redux/actions/orgUnitDistReport'
 import { getChartImageUrl } from '../../redux/selectors/orgUnitDistReport/getChartImageUrl'
 import { getLoading } from '../../redux/selectors/orgUnitDistReport/getLoading'
 import { getIsActionEnabled } from '../../redux/selectors/orgUnitDistReport/getIsActionEnabled'
-import getTranformedTableData from '../../redux/selectors/reportingRateSummary/getTranformedTableData.js'
+import getTransformedTableData from '../../redux/selectors/orgUnitDistReport/getTransformedTableData'
 
 const mapStateToProps = state => ({
     imageUrl: getChartImageUrl(state),
     displayImage: state.orgUnitDistReport.displayImage,
     loading: getLoading(state),
-    reportContent: getTranformedTableData(state),
+    reportContent: getTransformedTableData(state),
     fileUrls: state.reportData.content.fileUrls || [],
     isActionEnabled: getIsActionEnabled(state),
     groupSetsReady: !!state.orgUnitGroupSets.collection.length,

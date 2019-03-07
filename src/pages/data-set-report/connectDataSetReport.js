@@ -11,11 +11,11 @@ import {
     unsetReportData,
 } from '../../redux/actions/reportData'
 import { isActionEnabled } from '../../redux/selectors/dataSetReport/isActionEnabled'
-import getTranformedTableData from '../../redux/selectors/reportingRateSummary/getTranformedTableData.js'
+import getTransformedTableData from '../../redux/selectors/reportingRateSummary/getTransformedTableData.js'
 
 const mapStateToProps = state => ({
     hasReport: !isEmpty(state.reportData.content),
-    reportContent: getTranformedTableData(state),
+    reportContent: getTransformedTableData(state),
     fileUrls: state.reportData.content.fileUrls || [],
     isReportLoading: state.reportData.loading,
     reportComment: state.reportData.comment,
