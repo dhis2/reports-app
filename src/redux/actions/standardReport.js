@@ -388,7 +388,6 @@ export const loadingSendStandardReportError = () => ({
 export const sendStandardReport = (report, isEdit) => dispatch => {
     dispatch(loadingSendStandardReportStart())
 
-    console.log('report', report)
     const formattedReport = {
         ...report,
         relativePeriods: (report.relativePeriods || []).reduce(
@@ -399,6 +398,7 @@ export const sendStandardReport = (report, isEdit) => dispatch => {
             (acc, cur) => ({ ...acc, [cur]: true }),
             {}
         ),
+        reportTable: report.reportTable ? { id: report.reportTable } : '',
     }
     const cleanedReport =
         report.type !== reportTypes.JASPER_REPORT_TABLE
@@ -419,7 +419,6 @@ export const sendStandardReport = (report, isEdit) => dispatch => {
         : fileToText(cleanedReport.designContent.file)
               .then(file => ({ ...cleanedReport, designContent: file }))
               .then(doRequest)
-              .catch(error => console.log('file error', error))
 
     return request
         .then(() => {
