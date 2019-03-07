@@ -90,7 +90,7 @@ export const Component = props => (
                                 Relative Periods
                             </div>
                             <CheckBoxGroups
-                                name="relativePeriod"
+                                name="relativePeriods"
                                 groups={relativePeriods}
                                 displayError={false}
                             />

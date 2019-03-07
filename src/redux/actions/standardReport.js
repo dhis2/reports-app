@@ -387,10 +387,21 @@ export const loadingSendStandardReportError = () => ({
 export const sendStandardReport = (report, isEdit) => dispatch => {
     dispatch(loadingSendStandardReportStart())
 
+    const formattedReport = {
+        ...report,
+        relativePeriods: (report.relativePeriods || []).reduce(
+            (acc, cur) => ({ ...acc, [cur]: true }),
+            {}
+        ),
+        reportParams: (report.reportParams || []).reduce(
+            (acc, cur) => ({ ...acc, [cur]: true }),
+            {}
+        ),
+    }
     const cleanedReport =
         report.type !== reportTypes.JASPER_REPORT_TABLE
-            ? omit(report, ['reportTable'])
-            : report
+            ? omit(formattedReport, ['reportTable'])
+            : formattedReport
     const request = isEdit
         ? updateStandardReport(cleanedReport)
         : postStandardReport(cleanedReport)
