@@ -14,6 +14,7 @@ import { CheckBoxGroups } from '../../components/form/CheckBoxGroups'
 import { CheckBoxes } from '../../components/form/CheckBoxes'
 import { relativePeriods } from '../../utils/periods/relativePeriods'
 import { getEditFormInitialValues } from '../../redux/selectors/standardReport/getEditFormInitialValues'
+import { CONTEXT_MENU_ACTION } from '../../pages/standard-report/standard.report.conf'
 import {
     reportTypes,
     reportTypeOptions,
@@ -161,7 +162,10 @@ Component.propTypes = {
 
 const mapStateToProps = state => ({
     reportTables: state.standardReportTables.collection,
-    selectedReport: getEditFormInitialValues(state),
+    selectedReport: getEditFormInitialValues(
+        state,
+        state.standardReport.selectedAction === CONTEXT_MENU_ACTION.EDIT
+    ),
 })
 
 const ConnectedComponent = connect(mapStateToProps)(Component)

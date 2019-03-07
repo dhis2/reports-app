@@ -4,10 +4,12 @@ import {
 } from '../../../pages/standard-report/standard.report.conf'
 import { identity } from '../../../utils/boolean/identity'
 
-export const getEditFormInitialValues = state => {
+export const getEditFormInitialValues = (state, isEdit) => {
     const { standardReport } = state
 
-    if (standardReport.selectedReport.cacheStrategy) {
+    // make sure to build initial form state value only when report details have been loaded
+    // cacheStrategy is such a detail
+    if (isEdit && standardReport.selectedReport.cacheStrategy) {
         const { selectedReport } = standardReport
         return {
             id: selectedReport.id,
