@@ -2,7 +2,7 @@ import { LOCATION_CHANGE } from 'connected-react-router'
 import { actionTypes } from '../actions/organisationUnits'
 
 export const ACTIONS = { LOCATION_CHANGE, ...actionTypes }
-export const initialState = {
+export const defaultState = {
     loading: true,
     collection: [],
     selected: null,
@@ -10,7 +10,7 @@ export const initialState = {
     showOptions: false,
 }
 
-export function organisationUnits(state = initialState, { type, payload }) {
+export function organisationUnits(state = defaultState, { type, payload }) {
     switch (type) {
         case ACTIONS.ORGANISATION_UNITS_RECEIVED:
             return {
@@ -48,7 +48,7 @@ export function organisationUnits(state = initialState, { type, payload }) {
 
         case ACTIONS.LOCATION_CHANGE:
             return {
-                ...initialState,
+                ...defaultState,
                 loading: false,
                 collection: state.collection,
             }

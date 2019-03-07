@@ -1,5 +1,5 @@
 import { LOCATION_CHANGE } from 'connected-react-router'
-import reducer, { ACTIONS, initialState } from '../organisationUnits'
+import reducer, { ACTIONS, defaultState } from '../organisationUnits'
 
 describe('Reducer - organisationUnits', () => {
     const errorStr = 'Oops'
@@ -10,7 +10,7 @@ describe('Reducer - organisationUnits', () => {
     ]
 
     it('should return the default state', () => {
-        expect(reducer(undefined, {})).toEqual(initialState)
+        expect(reducer(undefined, {})).toEqual(defaultState)
     })
 
     describe('handling receiving org unigs', () => {
@@ -20,7 +20,7 @@ describe('Reducer - organisationUnits', () => {
                 payload: mockCollection,
             }
             const expectedState = {
-                ...initialState,
+                ...defaultState,
                 collection: mockCollection,
                 loading: false,
             }
@@ -33,7 +33,7 @@ describe('Reducer - organisationUnits', () => {
                 payload: errorStr,
             }
             const expectedState = {
-                ...initialState,
+                ...defaultState,
                 loading: false,
             }
             expect(reducer(undefined, action)).toEqual(expectedState)
@@ -42,7 +42,7 @@ describe('Reducer - organisationUnits', () => {
 
     describe('handling org unit selection', () => {
         const stateWithSelected = {
-            ...initialState,
+            ...defaultState,
             loading: false,
             collection: mockCollection,
             selected: mockCollection[0],

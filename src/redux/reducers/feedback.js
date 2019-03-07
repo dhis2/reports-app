@@ -1,16 +1,16 @@
 import { actionTypes as types } from '../actions/feedback'
 
-export const initialState = {
+export const defaultState = {
     showSnackbar: false,
     showLoader: false,
     message: '',
     type: '',
 }
 
-export const feedback = (state = initialState, { type, payload }) => {
+export const feedback = (state = defaultState, { type, payload }) => {
     switch (type) {
         case types.FEEDBACK_CLEAR:
-            return initialState
+            return defaultState
 
         case types.FEEDBACK_SHOW_LOADER:
             return {

@@ -1,4 +1,4 @@
-import reducer, { ACTIONS, initialState } from '../reportPeriod'
+import reducer, { ACTIONS, defaultState } from '../reportPeriod'
 
 describe('Reducer - reportPeriod', () => {
     const mockCollection = [
@@ -8,7 +8,7 @@ describe('Reducer - reportPeriod', () => {
     ]
     const errorStr = 'Oops'
     const stateWithPeriodTypeSelected = {
-        ...initialState,
+        ...defaultState,
         loading: false,
         collection: mockCollection,
         selectedPeriodType: mockCollection[0],
@@ -19,7 +19,7 @@ describe('Reducer - reportPeriod', () => {
     }
 
     it('should return the default state', () => {
-        expect(reducer(undefined, {})).toEqual(initialState)
+        expect(reducer(undefined, {})).toEqual(defaultState)
     })
     it('should handle REPORT_PERIOD_TYPES_RECEIVED correctly', () => {
         const action = {
@@ -27,7 +27,7 @@ describe('Reducer - reportPeriod', () => {
             payload: mockCollection,
         }
         const expectedState = {
-            ...initialState,
+            ...defaultState,
             collection: mockCollection,
             loading: false,
         }
@@ -39,7 +39,7 @@ describe('Reducer - reportPeriod', () => {
             payload: errorStr,
         }
         const expectedState = {
-            ...initialState,
+            ...defaultState,
             loading: false,
         }
         expect(reducer(undefined, action)).toEqual(expectedState)

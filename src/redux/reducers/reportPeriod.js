@@ -2,14 +2,14 @@ import { LOCATION_CHANGE } from 'connected-react-router'
 import { actionTypes } from '../actions/reportPeriod'
 
 export const ACTIONS = { LOCATION_CHANGE, ...actionTypes }
-export const initialState = {
+export const defaultState = {
     loading: true,
     collection: [],
     selectedPeriodType: '',
     selectedPeriod: '',
 }
 
-export function reportPeriod(state = initialState, { type, payload }) {
+export function reportPeriod(state = defaultState, { type, payload }) {
     switch (type) {
         case ACTIONS.REPORT_PERIOD_TYPES_RECEIVED:
             return {
@@ -39,7 +39,7 @@ export function reportPeriod(state = initialState, { type, payload }) {
 
         case ACTIONS.LOCATION_CHANGE:
             return {
-                ...initialState,
+                ...defaultState,
                 loading: state.loading,
                 collection: state.collection,
             }

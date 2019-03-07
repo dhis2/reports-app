@@ -1,13 +1,13 @@
 import { LOCATION_CHANGE } from 'connected-react-router'
 import { actionTypes } from '../actions/orgUnitGroupSets'
 
-export const initialState = {
+export const defaultState = {
     loading: false,
     collection: [],
     selected: '',
 }
 
-export function orgUnitGroupSets(state = initialState, { type, payload } = {}) {
+export function orgUnitGroupSets(state = defaultState, { type, payload } = {}) {
     switch (type) {
         case actionTypes.LOADING_GROUP_SETS_START:
             return {
@@ -37,7 +37,7 @@ export function orgUnitGroupSets(state = initialState, { type, payload } = {}) {
 
         case LOCATION_CHANGE:
             return {
-                ...initialState,
+                ...defaultState,
                 collection: state.collection,
             }
 
