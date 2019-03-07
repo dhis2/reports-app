@@ -53,10 +53,6 @@ h1 {
     padding: 0 !important;
 }
 
-#report-container table, th, td {
-    border: 1px solid black;
-}
-
 #report-container table {
     width: 100% !important;
 }
