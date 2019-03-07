@@ -1,4 +1,4 @@
-import reducer, { ACTIONS, defaultState } from '../reportPeriod'
+import { reportPeriod, ACTIONS, defaultState } from '../reportPeriod'
 
 describe('Reducer - reportPeriod', () => {
     const mockCollection = [
@@ -19,7 +19,7 @@ describe('Reducer - reportPeriod', () => {
     }
 
     it('should return the default state', () => {
-        expect(reducer(undefined, {})).toEqual(defaultState)
+        expect(reportPeriod(undefined, {})).toEqual(defaultState)
     })
     it('should handle REPORT_PERIOD_TYPES_RECEIVED correctly', () => {
         const action = {
@@ -31,7 +31,7 @@ describe('Reducer - reportPeriod', () => {
             collection: mockCollection,
             loading: false,
         }
-        expect(reducer(undefined, action)).toEqual(expectedState)
+        expect(reportPeriod(undefined, action)).toEqual(expectedState)
     })
     it('should handle REPORT_PERIOD_TYPES_ERRORED correctly', () => {
         const action = {
@@ -42,7 +42,7 @@ describe('Reducer - reportPeriod', () => {
             ...defaultState,
             loading: false,
         }
-        expect(reducer(undefined, action)).toEqual(expectedState)
+        expect(reportPeriod(undefined, action)).toEqual(expectedState)
     })
     it('should handle REPORT_PERIOD_TYPE_SELECTED correctly', () => {
         const action = {
@@ -53,7 +53,7 @@ describe('Reducer - reportPeriod', () => {
             ...stateWithPeriodTypeSelected,
             selectedPeriodType: mockCollection[1],
         }
-        expect(reducer(stateWithPeriodTypeSelected, action)).toEqual(
+        expect(reportPeriod(stateWithPeriodTypeSelected, action)).toEqual(
             expectedState
         )
     })
@@ -67,7 +67,7 @@ describe('Reducer - reportPeriod', () => {
             ...stateWithPeriodTypeSelected,
             selectedPeriod: mockPeriod,
         }
-        expect(reducer(stateWithPeriodTypeSelected, action)).toEqual(
+        expect(reportPeriod(stateWithPeriodTypeSelected, action)).toEqual(
             expectedState
         )
     })
@@ -78,7 +78,7 @@ describe('Reducer - reportPeriod', () => {
             selectedPeriodType: '',
             selectedPeriod: '',
         }
-        expect(reducer(stateWithPeriodTypeSelected, action)).toEqual(
+        expect(reportPeriod(stateWithPeriodTypeSelected, action)).toEqual(
             expectedState
         )
     })
