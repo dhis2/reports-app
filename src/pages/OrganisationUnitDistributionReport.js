@@ -41,7 +41,10 @@ export default class OrganisationUnitDistributionReport extends React.Component 
                             />
                         )}
                         {this.props.shouldShowChart && (
-                            <BarChart data={this.props.reportContent} />
+                            <BarChart
+                                content={this.props.reportContent}
+                                isLoading={this.props.loading}
+                            />
                         )}
                     </div>
                 </Paper>
