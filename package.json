@@ -23,7 +23,7 @@
     "classnames": "^2.2.6",
     "connected-react-router": "^6.2.2",
     "css-loader": "0.28.7",
-    "d2": "^31.4.0",
+    "d2": "^31.5.0",
     "d2-manifest": "^1.0.0",
     "d3-color": "^1.2.0",
     "dotenv": "4.0.0",
@@ -123,7 +123,7 @@
       "name": "DHIS2"
     },
     "dhis2": {
-      "apiVersion": "31"
+      "apiVersion": "32"
     },
     "activities": {
       "dhis": {

@@ -3019,7 +3019,14 @@ d2@31.1.1, d2@~31.1:
     jsdoc "^3.5.5"
     whatwg-fetch "^2.0.3"
 
-d2@^31.4.0, d2@~31.4:
+d2@^31.5.0:
+  version "31.5.0"
+  resolved "https://registry.yarnpkg.com/d2/-/d2-31.5.0.tgz#e562f856e372128d2a67273adc9579b88537d6dc"
+  integrity sha512-5ohhu9YypOZCcxMGVtdzC8KUhElpQ917mVw+o53rvwzLt4SzQBFqq6iq06Oq5UCzqlif6OhO2A46DgK3ywuyyQ==
+  dependencies:
+    isomorphic-fetch "^2.2.1"
+
+d2@~31.4:
   version "31.4.0"
   resolved "https://registry.yarnpkg.com/d2/-/d2-31.4.0.tgz#761e297d0f6a5b4b1d6043de176d887ee5faa09b"
   integrity sha512-8Bw4W4XVc6jDlZ/+g2TJW6iuxcLAi8ii8Iv0tRBe1M+WjH+x6UWfQuMKxXL/hZtOaa0TNiRouyp50pVBuXawIw==
@@ -5499,7 +5506,7 @@ isobject@^3.0.0, isobject@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/isobject/-/isobject-3.0.1.tgz#4e431e92b11a9731636aa1f9c8d1ccbcfdab78df"
 
-isomorphic-fetch@^2.1.1:
+isomorphic-fetch@^2.1.1, isomorphic-fetch@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz#611ae1acf14f5e81f729507472819fe9733558a9"
   dependencies:
