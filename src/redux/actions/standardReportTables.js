@@ -46,7 +46,7 @@ export const loadingStandardReportTablesErrorWithFeedback = error => dispatch =>
     const displayMessage = humanReadableErrorMessage(error, defaultMessage)
 
     dispatch(showErrorSnackBar(displayMessage))
-    dispatch(loadingStandardReportTablesStart())
+    dispatch(loadingStandardReportTablesError())
 }
 
 /**
@@ -55,7 +55,7 @@ export const loadingStandardReportTablesErrorWithFeedback = error => dispatch =>
 export const loadStandardReportTables = () => dispatch => {
     dispatch(loadingStandardReportTablesStart())
 
-    getStandardReportTables()
+    return getStandardReportTables()
         .then(({ reportTables }) => {
             const formattedReportTables = reportTables.map(({ id, name }) => ({
                 value: id,
@@ -63,7 +63,7 @@ export const loadStandardReportTables = () => dispatch => {
             }))
             dispatch(loadingStandardReportTablesSuccess(formattedReportTables))
         })
-        .catch(error =>
+        .catch(error => {
             dispatch(loadingStandardReportTablesErrorWithFeedback(error))
-        )
+        })
 }
