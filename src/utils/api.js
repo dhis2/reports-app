@@ -267,3 +267,11 @@ export const postStandardReport = report =>
  */
 export const updateStandardReport = report =>
     api.update(`${STANDARD_REPORTS_ENDPOINT}/${report.id}`, report)
+
+/**
+ * @returns {Promise}
+ */
+export const getDataSetOptions = () =>
+    d2.models.dataSet
+        .list({ paging: false, fields: 'id,displayName' })
+        .then(response => response.toArray())
