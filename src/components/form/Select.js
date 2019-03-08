@@ -17,6 +17,7 @@ export const Select = withStyles(styles)(props => (
                     placeholder={placeholder}
                     input={input}
                     showEmptyOption={props.showEmptyOption}
+                    showErrorText={props.showErrorText}
                     options={props.options}
                     error={meta.error || ''}
                     touched={meta.touched}
@@ -63,6 +64,7 @@ StyledSelect.propTypes = {
     placeholder: PropTypes.string.isRequired,
     input: formInput.isRequired,
     showEmptyOption: PropTypes.bool.isRequired,
+    showErrorText: PropTypes.bool.isRequired,
     options: formOptions.isRequired,
     error: PropTypes.string.isRequired,
     touched: PropTypes.bool.isRequired,

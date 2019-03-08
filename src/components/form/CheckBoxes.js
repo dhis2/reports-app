@@ -1,19 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Field } from 'react-final-form'
+import { withStyles } from '@material-ui/core/styles'
 import FormControl from '@material-ui/core/FormControl'
 import FormHelperText from '@material-ui/core/FormHelperText'
 
-export const CheckBoxes = props => (
-    <FormControl style={{ margin: '0 0 20px' }}>
+const styles = {
+    container: {
+        margin: '0 0 20px',
+    },
+    label: {
+        margin: '0 0 10px',
+        fontSize: '1rem',
+        color: 'black',
+    },
+}
+
+export const CheckBoxes = withStyles(styles)(props => (
+    <FormControl className={props.classes.container}>
         {props.label && (
-            <FormHelperText
-                style={{
-                    margin: '0 0 10px',
-                    fontSize: '1rem',
-                    color: 'black',
-                }}
-            >
+            <FormHelperText className={props.classes.label}>
                 {props.label}
             </FormHelperText>
         )}
@@ -34,7 +40,7 @@ export const CheckBoxes = props => (
             </div>
         ))}
     </FormControl>
-)
+))
 
 CheckBoxes.propTypes = {
     name: PropTypes.string.isRequired,
