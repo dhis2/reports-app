@@ -38,7 +38,7 @@ export const getEditFormInitialValues = (state, isEdit) => {
 
     return {
         type: reportTypes.JASPER_REPORT_TABLE,
-        cacheStrategy: cacheStrategies[0].value,
+        cacheStrategy: cacheStrategies[1].value,
         reportTable: state.standardReportTables.collection.length
             ? state.standardReportTables.collection[0].value
             : '',
