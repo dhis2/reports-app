@@ -19,3 +19,13 @@ export const formOption = PropTypes.shape({
 })
 
 export const formOptions = PropTypes.arrayOf(formOption)
+
+/**
+ *
+ * React children
+ *
+ */
+export const children = PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+])

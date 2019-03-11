@@ -10,22 +10,20 @@ import { styles } from './styles'
 import { ErrorText } from './buildingBlocks/ErrorText'
 
 export const Select = withStyles(styles)(props => (
-    <div className={props.classes.container}>
-        <Field name={props.name} placeholder={props.placeholder}>
-            {({ input, meta, placeholder }) => (
-                <StyledSelect
-                    placeholder={placeholder}
-                    input={input}
-                    showEmptyOption={props.showEmptyOption}
-                    showErrorText={props.showErrorText}
-                    options={props.options}
-                    error={meta.error || ''}
-                    touched={meta.touched}
-                    classes={props.classes}
-                />
-            )}
-        </Field>
-    </div>
+    <Field name={props.name} placeholder={props.placeholder}>
+        {({ input, meta, placeholder }) => (
+            <StyledSelect
+                placeholder={placeholder}
+                input={input}
+                showEmptyOption={props.showEmptyOption}
+                showErrorText={props.showErrorText}
+                options={props.options}
+                error={meta.error || ''}
+                touched={meta.touched}
+                classes={props.classes}
+            />
+        )}
+    </Field>
 ))
 
 Select.propTypes = {
