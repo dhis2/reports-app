@@ -106,14 +106,23 @@ export const goToPrevPage = () => dispatch => {
 
 /**
  * @param {string} searchTerm
+ * @returns {Object}
+ */
+export const setSearch = searchTerm => ({
+    type: actionTypes.SET_RESEARCH_SEARCH,
+    payload: searchTerm,
+})
+
+/**
+ * @param {string} searchTerm
  * @return {Function} Redux thunk
  */
 const debouncedLoadResources = debounce(
     dispatch => dispatch(loadResources()),
     DEBOUNCE_DELAY
 )
-export const setSearch = searchTerm => dispatch => {
-    dispatch({ type: actionTypes.SET_RESEARCH_SEARCH, payload: searchTerm })
+export const setSearchAndLoadResources = searchTerm => dispatch => {
+    dispatch(setSearch(searchTerm))
     debouncedLoadResources(dispatch)
 }
 

@@ -1,13 +1,14 @@
 import { actionTypes } from '../actions/resource'
 import { resourceActions } from '../../utils/resource/constants'
 
+export const defaultSelectedResource = { id: '', displayName: '' }
 export const defaultState = {
     open: false,
     loading: false,
     search: '',
     collection: [],
     selectedAction: '',
-    selectedResource: { id: '', displayName: '' },
+    selectedResource: defaultSelectedResource,
 }
 
 export const resource = (state = defaultState, { type, payload } = {}) => {
@@ -78,7 +79,7 @@ export const resource = (state = defaultState, { type, payload } = {}) => {
                 ...state,
                 open: false,
                 selectedAction: '',
-                selectedResource: {},
+                selectedResource: defaultSelectedResource,
             }
 
         default:
