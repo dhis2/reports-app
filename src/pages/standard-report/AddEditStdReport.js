@@ -5,10 +5,11 @@ import FormHelperText from '@material-ui/core/FormHelperText'
 import { Dialog } from 'material-ui'
 import { Button } from '@dhis2/d2-ui-core'
 import { connect } from 'react-redux'
-import { Form } from 'react-final-form'
+import { Form, Field } from 'react-final-form'
 import appStyles from '../../utils/styles'
 import { Input } from '../../components/form/Input'
-import { Select } from '../../components/form/Select'
+import Select from '../../components/form/Select'
+import { formOptions } from '../../utils/react/propTypes'
 import { File } from '../../components/form/File'
 import { CheckBoxGroups } from '../../components/form/CheckBoxGroups'
 import { CheckBoxes } from '../../components/form/CheckBoxes'
@@ -46,18 +47,20 @@ export const Component = props => (
                     <section style={styles.section}>
                         <div style={styles.sectionTitle}>Details</div>
                         <Input name="name" placeholder={i18n.t('Name*')} />
-                        <Select
+                        <Field
                             name="type"
                             placeholder={i18n.t('Report Type*')}
                             options={reportTypeOptions}
                             showErrorText={false}
+                            component={Select}
                         />
                         {values.type === reportTypes.JASPER_REPORT_TABLE && (
-                            <Select
+                            <Field
                                 name="reportTable"
                                 placeholder={i18n.t('Report Table*')}
                                 options={props.reportTables}
                                 showErrorText={false}
+                                component={Select}
                             />
                         )}
                         <div className="row">
@@ -120,10 +123,11 @@ export const Component = props => (
                     )}
                     <section style={styles.section}>
                         <div style={styles.sectionTitle}>Settings</div>
-                        <Select
+                        <Field
                             name="cacheStrategy"
                             placeholder={i18n.t('Cache Strategy*')}
                             options={cacheStrategies}
+                            component={Select}
                         />
                     </section>
                     <section style={styles.section}>
@@ -155,7 +159,7 @@ Component.propTypes = {
     open: PropTypes.bool.isRequired,
     edit: PropTypes.bool.isRequired,
     selectedReport: PropTypes.object.isRequired,
-    reportTables: Select.propTypes.options,
+    reportTables: formOptions.isRequired,
     onSubmit: PropTypes.func.isRequired,
     onRequestClose: PropTypes.func.isRequired,
 }
