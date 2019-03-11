@@ -51,7 +51,9 @@ export const Component = props => (
                 <form onSubmit={handleSubmit}>
                     <section style={styles.section}>
                         <div style={styles.sectionTitle}>Details</div>
-                        <Input name="name" placeholder={i18n.t('Name*')} />
+                        <FormRow>
+                            <Input name="name" placeholder={i18n.t('Name*')} />
+                        </FormRow>
 
                         <FormRow>
                             <Select

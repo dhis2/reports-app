@@ -9,20 +9,15 @@ import { styles } from './styles'
 import { ErrorText } from './buildingBlocks/ErrorText'
 
 export const Input = withStyles(styles)(props => (
-    <div className={props.classes.container}>
-        <Field name={props.name} placeholder={props.placeholder}>
-            {({ input, meta, placeholder }) => (
-                <FormControl className={props.classes.formControl}>
-                    <InputLabel htmlFor={input.name}>{placeholder}</InputLabel>
-                    <MUIInput {...input} label={placeholder} />
-                    <ErrorText
-                        error={meta.error || ''}
-                        touched={meta.touched}
-                    />
-                </FormControl>
-            )}
-        </Field>
-    </div>
+    <Field name={props.name} placeholder={props.placeholder}>
+        {({ input, meta, placeholder }) => (
+            <FormControl className={props.classes.formControl}>
+                <InputLabel htmlFor={input.name}>{placeholder}</InputLabel>
+                <MUIInput {...input} label={placeholder} />
+                <ErrorText error={meta.error || ''} touched={meta.touched} />
+            </FormControl>
+        )}
+    </Field>
 ))
 
 Input.propTypes = {
