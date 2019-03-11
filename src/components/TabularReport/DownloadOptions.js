@@ -6,7 +6,14 @@ import styles from '../../utils/styles'
 const prefix = i18n.t('Download as')
 
 export const DownloadOption = ({ url, extension }, key) => (
-    <a style={styles.downloadButton} href={url} download tabIndex="0" key={key}>
+    <a
+        style={styles.downloadButton}
+        href={url}
+        download
+        tabIndex="0"
+        key={key}
+        target={extension === 'pdf' ? '_blank' : '_self'}
+    >
         {prefix} {extension}
     </a>
 )
