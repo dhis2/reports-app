@@ -63,7 +63,7 @@ export const loadReport = () => (dispatch, getState) => {
     const orgUnitId = organisationUnits.selected.id
     const groupSetId = orgUnitGroupSets.selected
 
-    getOrgUnitDistReport(orgUnitId, groupSetId)
+    return getOrgUnitDistReport(orgUnitId, groupSetId)
         .then(response =>
             dispatch(loadingReportDataSuccessWithFeedback(response))
         )
