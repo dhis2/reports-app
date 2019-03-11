@@ -1,23 +1,23 @@
 import * as FEEDBACK_TYPES from '../../utils/feedbackTypes'
-export const ACTION_TYPES = {
+export const actionTypes = {
     FEEDBACK_CLEAR: 'FEEDBACK_CLEAR',
     FEEDBACK_SHOW_LOADER: 'FEEDBACK_SHOW_LOADER',
     FEEDBACK_SHOW_SNACKBAR: 'FEEDBACK_SHOW_SNACKBAR',
 }
 
 export const clearFeedback = () => ({
-    type: ACTION_TYPES.FEEDBACK_CLEAR,
+    type: actionTypes.FEEDBACK_CLEAR,
 })
 
 export const showLoader = () => ({
-    type: ACTION_TYPES.FEEDBACK_SHOW_LOADER,
+    type: actionTypes.FEEDBACK_SHOW_LOADER,
 })
 
 export const showSnackbar = (
     message,
     type = FEEDBACK_TYPES.ACTION_MESSAGE
 ) => ({
-    type: ACTION_TYPES.FEEDBACK_SHOW_SNACKBAR,
+    type: actionTypes.FEEDBACK_SHOW_SNACKBAR,
     payload: { message, type },
 })
 
@@ -29,6 +29,9 @@ export const showErrorSnackBar = message =>
 
 export const showWarningSnackBar = message =>
     showSnackbar(message, FEEDBACK_TYPES.WARNING)
+
+export const showConfirmationSnackBar = message =>
+    showSnackbar(message, FEEDBACK_TYPES.ACTION_MESSAGE)
 
 // TODO: remove this
 export const updateFeedbackState = () => ({})

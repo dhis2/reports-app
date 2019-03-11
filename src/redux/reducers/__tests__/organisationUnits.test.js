@@ -1,5 +1,5 @@
 import { LOCATION_CHANGE } from 'connected-react-router'
-import reducer, { ACTIONS, initialState } from '../organisationUnits'
+import { organisationUnits, ACTIONS, defaultState } from '../organisationUnits'
 
 describe('Reducer - organisationUnits', () => {
     const errorStr = 'Oops'
@@ -10,7 +10,7 @@ describe('Reducer - organisationUnits', () => {
     ]
 
     it('should return the default state', () => {
-        expect(reducer(undefined, {})).toEqual(initialState)
+        expect(organisationUnits(undefined, {})).toEqual(defaultState)
     })
 
     describe('handling receiving org unigs', () => {
@@ -20,11 +20,11 @@ describe('Reducer - organisationUnits', () => {
                 payload: mockCollection,
             }
             const expectedState = {
-                ...initialState,
+                ...defaultState,
                 collection: mockCollection,
                 loading: false,
             }
-            expect(reducer(undefined, action)).toEqual(expectedState)
+            expect(organisationUnits(undefined, action)).toEqual(expectedState)
         })
 
         it('should set the error message when an error has occured', () => {
@@ -33,16 +33,16 @@ describe('Reducer - organisationUnits', () => {
                 payload: errorStr,
             }
             const expectedState = {
-                ...initialState,
+                ...defaultState,
                 loading: false,
             }
-            expect(reducer(undefined, action)).toEqual(expectedState)
+            expect(organisationUnits(undefined, action)).toEqual(expectedState)
         })
     })
 
     describe('handling org unit selection', () => {
         const stateWithSelected = {
-            ...initialState,
+            ...defaultState,
             loading: false,
             collection: mockCollection,
             selected: mockCollection[0],
@@ -57,7 +57,9 @@ describe('Reducer - organisationUnits', () => {
                 ...stateWithSelected,
                 selected: mockCollection[1],
             }
-            expect(reducer(stateWithSelected, action)).toEqual(expectedState)
+            expect(organisationUnits(stateWithSelected, action)).toEqual(
+                expectedState
+            )
         })
 
         it('should return the current state when the action contains the currently selected OrgUnit', () => {
@@ -65,7 +67,7 @@ describe('Reducer - organisationUnits', () => {
                 type: ACTIONS.ORGANISATION_UNIT_SELECTED,
                 payload: mockCollection[0],
             }
-            expect(reducer(stateWithSelected, action)).toEqual(
+            expect(organisationUnits(stateWithSelected, action)).toEqual(
                 stateWithSelected
             )
         })
@@ -77,7 +79,9 @@ describe('Reducer - organisationUnits', () => {
                 loading: false,
             })
 
-            expect(reducer(stateWithSelected, action)).toEqual(expectedState)
+            expect(organisationUnits(stateWithSelected, action)).toEqual(
+                expectedState
+            )
         })
 
         it('should reset the selected org unit on location change', () => {
@@ -86,7 +90,9 @@ describe('Reducer - organisationUnits', () => {
                 selected: null,
             })
 
-            expect(reducer(stateWithSelected, action)).toEqual(expectedState)
+            expect(organisationUnits(stateWithSelected, action)).toEqual(
+                expectedState
+            )
         })
     })
 })

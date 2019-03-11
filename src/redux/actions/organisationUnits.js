@@ -3,7 +3,7 @@ import { getOrganisationUnits } from '../../utils/api'
 import { showErrorSnackBar } from './feedback'
 import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
 
-export const ACTION_TYPES = {
+export const actionTypes = {
     ORGANISATION_UNITS_LOADING_START: 'ORGANISATION_UNITS_LOADING_START',
     ORGANISATION_UNITS_RECEIVED: 'ORGANISATION_UNITS_RECEIVED',
     ORGANISATION_UNITS_ERRORED: 'ORGANISATION_UNITS_ERRORED',
@@ -18,14 +18,14 @@ export const fallbackErrorMessage = i18n.t('Could not load organisation units')
  * @returns {Object}
  */
 export const loadOrganisationUnitsStart = () => ({
-    type: ACTION_TYPES.ORGANISATION_UNITS_LOADING_START,
+    type: actionTypes.ORGANISATION_UNITS_LOADING_START,
 })
 /**
  * @param {Object} periodTypes
  * @returns {Object}
  */
 export const loadOrganisationUnitsSuccess = organisationUnits => ({
-    type: ACTION_TYPES.ORGANISATION_UNITS_RECEIVED,
+    type: actionTypes.ORGANISATION_UNITS_RECEIVED,
     payload: organisationUnits,
 })
 
@@ -33,7 +33,7 @@ export const loadOrganisationUnitsSuccess = organisationUnits => ({
  * @returns {Object}
  */
 export const loadOrganisationUnitsError = () => ({
-    type: ACTION_TYPES.ORGANISATION_UNITS_ERRORED,
+    type: actionTypes.ORGANISATION_UNITS_ERRORED,
 })
 
 /**
@@ -68,15 +68,15 @@ export const selectOrganisationUnit = (
     _event,
     { id, path, displayName, children }
 ) => ({
-    type: ACTION_TYPES.ORGANISATION_UNIT_SELECTED,
+    type: actionTypes.ORGANISATION_UNIT_SELECTED,
     payload: { id, path, displayName, children },
 })
 
 export const selectOrgUnitOption = (id, value) => ({
-    type: ACTION_TYPES.ORGANISATION_UNITS_OPTION_SELECTED,
+    type: actionTypes.ORGANISATION_UNITS_OPTION_SELECTED,
     payload: { id, value },
 })
 
 export const toggleShowOptions = () => ({
-    type: ACTION_TYPES.TOGGLE_SHOW_OPTIONS,
+    type: actionTypes.TOGGLE_SHOW_OPTIONS,
 })

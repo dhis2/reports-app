@@ -13,6 +13,7 @@ import {
     showReportData,
     hideReportData,
     closeContextMenu,
+    sendStandardReport,
 } from '../../redux/actions/standardReport'
 
 const mapStateToProps = state => ({
@@ -21,7 +22,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    loadStandardReports: () => dispatch(loadStandardReports()),
+    loadStandardReports: fetchReportTables =>
+        dispatch(loadStandardReports(fetchReportTables)),
     addReportFormShow: report => dispatch(addReportFormShow(report)),
     createReport: report => dispatch(createReportShow(report)),
     editReport: report => dispatch(editReportFormShow(report)),
@@ -35,6 +37,8 @@ const mapDispatchToProps = dispatch => ({
     showReportData: reportData => dispatch(showReportData(reportData)),
     hideReportData: reportData => dispatch(hideReportData(reportData)),
     closeContextMenu: refreshList => dispatch(closeContextMenu(refreshList)),
+    updateStandardReport: report => dispatch(sendStandardReport(report, true)),
+    addStandardReport: report => dispatch(sendStandardReport(report, false)),
 })
 
 const connectStandardReport = StandardReport =>

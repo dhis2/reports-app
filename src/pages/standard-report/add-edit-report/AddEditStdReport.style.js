@@ -12,15 +12,20 @@ const AddEditStdReportStyle = {
         alignItems: 'center',
         padding: 5,
     },
+    section: {
+        margin: '0 0 10px',
+    },
     sectionBox: {
         border: '1px solid #f1f1f1',
         color: '#000000',
         marginTop: 10,
     },
     sectionTitle: {
-        lineHeight: 2,
-        backgroundColor: '#f1f1f1',
+        margin: '0 0 10px',
         fontWeight: 'bold',
+        fontSize: '1.3em',
+        lineHeight: 2,
+        color: 'black',
     },
     sectionContent: {
         paddingLeft: 5,

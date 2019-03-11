@@ -6,7 +6,7 @@ import {
 } from '../orgUnitGroupSets'
 import { getOrgUnitGroupSets } from '../../../utils/api'
 import * as feedbackTypes from '../../../utils/feedbackTypes'
-import { ACTION_TYPES as feedbackActionTypes } from '../feedback'
+import { actionTypes as feedbackActionTypes } from '../feedback'
 
 jest.mock('../../../utils/api', () => ({
     getOrgUnitGroupSets: jest.fn(),

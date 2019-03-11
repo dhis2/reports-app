@@ -4,7 +4,7 @@ import {
     CONTEXT_MENU_ACTION,
 } from '../../pages/standard-report/standard.report.conf'
 
-const defaultState = {
+export const defaultState = {
     reports: [],
     selectedReport: {},
     selectedAction: '',
@@ -14,10 +14,12 @@ const defaultState = {
     loading: false,
     loadingError: '',
     requestDelete: false,
+    loadingDetails: false,
+    loadingSendReport: false,
 }
 
 // eslint-disable-next-line complexity
-const standardReport = (state = defaultState, action = {}) => {
+export const standardReport = (state = defaultState, action = {}) => {
     const { type, payload } = action
 
     switch (type) {
@@ -57,7 +59,6 @@ const standardReport = (state = defaultState, action = {}) => {
         case actionTypes.EDIT_REPORT_FORM_SHOW:
             return {
                 ...state,
-                open: true,
                 selectedReport: payload,
                 selectedAction: CONTEXT_MENU_ACTION.EDIT,
             }
@@ -119,10 +120,40 @@ const standardReport = (state = defaultState, action = {}) => {
                 loading: false,
             }
 
+        case actionTypes.LOADING_STANDARD_REPORTS_DETAILS_START:
+            return {
+                ...state,
+                loadingDetails: true,
+            }
+
+        case actionTypes.LOADING_STANDARD_REPORTS_DETAILS_SUCCESS:
+            return {
+                ...state,
+                open: true,
+                loadingDetails: false,
+                selectedReport: payload,
+            }
+
+        case actionTypes.LOADING_STANDARD_REPORTS_DETAILS_ERROR:
+            return {
+                ...state,
+                loadingDetails: false,
+            }
+
+        case actionTypes.STANDARD_REPORT_SEND_START:
+            return {
+                ...state,
+                loadingSendReport: true,
+            }
+
+        case actionTypes.STANDARD_REPORT_SEND_SUCCESS:
+        case actionTypes.STANDARD_REPORT_SEND_ERROR:
+            return {
+                ...state,
+                loadingSendReport: false,
+            }
+
         default:
             return state
     }
 }
-
-export default standardReport
-export { defaultState }
