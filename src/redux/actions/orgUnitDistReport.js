@@ -60,10 +60,10 @@ export const loadReport = () => (dispatch, getState) => {
     dispatch(loadingReportDataStart())
 
     const { organisationUnits, orgUnitGroupSets } = getState()
-    const orgUnitId = organisationUnits.selected.id
+    const orgUnit = organisationUnits.selected
     const groupSetId = orgUnitGroupSets.selected
 
-    return getOrgUnitDistReport(orgUnitId, groupSetId)
+    return getOrgUnitDistReport(orgUnit, groupSetId)
         .then(response =>
             dispatch(loadingReportDataSuccessWithFeedback(response))
         )

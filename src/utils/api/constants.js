@@ -7,7 +7,7 @@ export const DATA_SET_REPORT_INTERPOLATION_ENDPOINT =
 export const REPORTING_RATE_SUMMARY_ENDPOINT =
     'organisationUnits/%orgUnitId%/rateSummary'
 export const RESOURCE_ENDPOINT = 'documents'
-export const ORG_UNIT_DISTRIBUTION_REPORT_ENDPOINT = 'orgUnitDistribution.json'
+export const ORG_UNIT_DISTRIBUTION_REPORT_ENDPOINT = 'orgUnitAnalytics'
 
 // Url creaters
 export const postDataSetReportCommentUrl = (dataSetId, orgUnitId, period) =>

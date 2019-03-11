@@ -176,6 +176,7 @@ export const getReportingRateSummaryReport = async (
         .withTableLayout()
         .withHideEmptyRows()
         .withDisplayProperty('SHORTNAME')
+        .withIncludeNumDen(false)
 
     for (let key in orgUnitOptions) {
         if (orgUnitOptions[key]) {
@@ -183,9 +184,11 @@ export const getReportingRateSummaryReport = async (
         }
     }
 
-    const fileUrls = parseFileUrls(req, ['xls', 'csv'])
-
-    return d2.analytics.aggregate.get(req).then(data => ({ ...data, fileUrls }))
+    // Instead of calling `d2.analytics.aggregate.get(req)`, which spawn two parallel requests,
+    // we just building the .json url from the request instance and call the regular `api.get(url)`,
+    // which only spawns a single request
+    const [{ url }, ...fileUrls] = parseFileUrls(req, ['json', 'xls', 'csv'])
+    return api.get(url).then(data => ({ ...data, fileUrls }))
 }
 
 /**
@@ -193,6 +196,7 @@ export const getReportingRateSummaryReport = async (
  * @returns {Promise} - Array of IDs of the orgUnit and its direct descendants
  */
 export const getOrgUnitAndChildrenIds = orgUnit => {
+    console.log(orgUnit)
     const children = orgUnit.children.size
         ? Promise.resolve(orgUnit.children)
         : d2.models.organisationUnits
@@ -219,12 +223,15 @@ export const getOrgUnitGroupSets = () =>
  * @param {string} groupSetId
  * @returns {Promise}
  */
-export const getOrgUnitDistReport = (orgUnitId, groupSetId) =>
-    api.get(ORG_UNIT_DISTRIBUTION_REPORT_ENDPOINT, {
-        ou: orgUnitId,
-        ougs: groupSetId,
-    })
-
+export const getOrgUnitDistReport = async (orgUnit, groupSetId) => {
+    const orgUnitIds = await getOrgUnitAndChildrenIds(orgUnit)
+    return api
+        .get(ORG_UNIT_DISTRIBUTION_REPORT_ENDPOINT, {
+            ou: orgUnitIds.join(';'),
+            ougs: groupSetId,
+        })
+        .then(response => ({ ...response, orgUnitIds }))
+}
 /**
  * @returns {Promise}
  */
