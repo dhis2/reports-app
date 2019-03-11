@@ -1,5 +1,5 @@
 import { Button } from '@dhis2/d2-ui-core'
-import { Form } from 'react-final-form'
+import { Form, Field } from 'react-final-form'
 import { connect } from 'react-redux'
 import FormHelperText from '@material-ui/core/FormHelperText'
 import PropTypes from 'prop-types'
@@ -8,30 +8,28 @@ import i18n from '@dhis2/d2-i18n'
 
 import { Dialog } from 'material-ui'
 
-import { CONTEXT_MENU_ACTION } from '../../pages/standard-report/standard.report.conf'
+import {
+    CONTEXT_MENU_ACTION,
+    cacheStrategies,
+    reportTypeOptions,
+    reportTypes,
+} from './standard.report.conf'
 import { CheckBoxGroups } from '../../components/form/CheckBoxGroups'
 import { CheckBoxes } from '../../components/form/CheckBoxes'
 import { DesignFileDownloadButton } from './add-edit-report/DesignFileDownloadButton'
 import { File } from '../../components/form/File'
 import { FormRow } from '../../components/form/FormRow'
 import { Input } from '../../components/form/Input'
-import { Select } from '../../components/form/Select'
+import { formOptions } from '../../utils/react/propTypes'
 import { getEditFormInitialValues } from '../../redux/selectors/standardReport/getEditFormInitialValues'
 import { relativePeriods } from '../../utils/periods/relativePeriods'
-import {
-    reportTypes,
-    reportTypeOptions,
-    cacheStrategies,
-} from './standard.report.conf'
 import {
     validateNewReport,
     validateReportUpdate,
 } from './add-edit-report/validate'
+import Select from '../../components/form/Select'
 import appStyles from '../../utils/styles'
 import styles from './add-edit-report/AddEditStdReport.style'
-
-const titleAdd = i18n.t('Add new report')
-const titleEdit = i18n.t('Edit report')
 
 export const Component = props => (
     <Dialog
@@ -39,7 +37,7 @@ export const Component = props => (
         autoDetectWindowHeight
         autoScrollBodyContent
         open={props.open}
-        title={props.edit ? titleEdit : titleAdd}
+        title={props.edit ? 'Edit report' : 'Add report'}
         contentStyle={styles.dialog}
     >
         <Form
@@ -51,26 +49,29 @@ export const Component = props => (
                 <form onSubmit={handleSubmit}>
                     <section style={styles.section}>
                         <div style={styles.sectionTitle}>Details</div>
+
                         <FormRow>
                             <Input name="name" placeholder={i18n.t('Name*')} />
                         </FormRow>
 
                         <FormRow>
-                            <Select
+                            <Field
                                 name="type"
                                 placeholder={i18n.t('Report Type*')}
                                 options={reportTypeOptions}
                                 showErrorText={false}
+                                component={Select}
                             />
                         </FormRow>
 
                         {values.type === reportTypes.JASPER_REPORT_TABLE && (
                             <FormRow>
-                                <Select
+                                <Field
                                     name="reportTable"
                                     placeholder={i18n.t('Report Table*')}
                                     options={props.reportTables}
                                     showErrorText={false}
+                                    component={Select}
                                 />
                             </FormRow>
                         )}
@@ -135,12 +136,12 @@ export const Component = props => (
                     )}
                     <section style={styles.section}>
                         <div style={styles.sectionTitle}>Settings</div>
-
                         <FormRow>
-                            <Select
+                            <Field
                                 name="cacheStrategy"
                                 placeholder={i18n.t('Cache Strategy*')}
                                 options={cacheStrategies}
+                                component={Select}
                             />
                         </FormRow>
                     </section>
@@ -173,7 +174,7 @@ Component.propTypes = {
     open: PropTypes.bool.isRequired,
     edit: PropTypes.bool.isRequired,
     selectedReport: PropTypes.object.isRequired,
-    reportTables: Select.propTypes.options,
+    reportTables: formOptions.isRequired,
     onSubmit: PropTypes.func.isRequired,
     onRequestClose: PropTypes.func.isRequired,
 }
