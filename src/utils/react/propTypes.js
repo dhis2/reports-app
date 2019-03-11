@@ -13,6 +13,11 @@ export const formInput = PropTypes.shape({
     onChange: PropTypes.func.isRequired,
 })
 
+export const formInputMeta = PropTypes.shape({
+    error: PropTypes.string, // is undefined when no error..
+    touched: PropTypes.bool.isRequired,
+})
+
 export const formOption = PropTypes.shape({
     value: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,

@@ -3,9 +3,12 @@ import PropTypes from 'prop-types'
 import FormControl from '@material-ui/core/FormControl'
 import InputLabel from '@material-ui/core/InputLabel'
 import { default as MUISelect } from '@material-ui/core/Select'
-import { withStyles } from '@material-ui/core/styles'
-import { formInput, formOptions } from '../../utils/react/propTypes'
-import { styles } from './styles'
+import {
+    formInput,
+    formInputMeta,
+    formOptions,
+} from '../../utils/react/propTypes'
+import { inputWrapper } from './styles'
 import { ErrorText } from './buildingBlocks/ErrorText'
 
 export const SelectField = props => (
@@ -25,8 +28,9 @@ SelectField.propTypes = {
     options: formOptions.isRequired,
 }
 
+const { className, styles } = inputWrapper
 export const Select = props => (
-    <FormControl className={props.classes.formControl}>
+    <FormControl className={className}>
         <InputLabel htmlFor={props.input.name}>{props.placeholder}</InputLabel>
         <SelectField
             input={props.input}
@@ -35,29 +39,24 @@ export const Select = props => (
         />
         <ErrorText
             showErrorText={props.showErrorText}
-            error={props.error}
-            touched={props.touched}
+            error={props.meta.error || ''}
+            touched={props.meta.touched}
         />
+        {styles}
     </FormControl>
 )
 
 Select.propTypes = {
-    classes: PropTypes.shape({
-        formControl: PropTypes.string.isRequired,
-        container: PropTypes.string.isRequired,
-    }).isRequired,
-    placeholder: PropTypes.string.isRequired,
     input: formInput.isRequired,
+    meta: formInputMeta.isRequired,
+
+    placeholder: PropTypes.string.isRequired,
     showEmptyOption: PropTypes.bool.isRequired,
     showErrorText: PropTypes.bool.isRequired,
     options: formOptions.isRequired,
-    error: PropTypes.string.isRequired,
-    touched: PropTypes.bool.isRequired,
 }
 
 Select.defaultProps = {
     showEmptyOption: false,
     showErrorText: false,
 }
-
-export default withStyles(styles)(Select)

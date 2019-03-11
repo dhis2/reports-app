@@ -27,7 +27,7 @@ import {
     validateNewReport,
     validateReportUpdate,
 } from './add-edit-report/validate'
-import Select from '../../components/form/Select'
+import { Select } from '../../components/form/Select'
 import appStyles from '../../utils/styles'
 import styles from './add-edit-report/AddEditStdReport.style'
 
@@ -51,7 +51,11 @@ export const Component = props => (
                         <div style={styles.sectionTitle}>Details</div>
 
                         <FormRow>
-                            <Input name="name" placeholder={i18n.t('Name*')} />
+                            <Field
+                                name="name"
+                                placeholder={i18n.t('Name*')}
+                                component={Input}
+                            />
                         </FormRow>
 
                         <FormRow>

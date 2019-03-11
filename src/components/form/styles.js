@@ -1,11 +1,16 @@
-export const styles = () => ({
-    container: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        marginBottom: '20px',
-    },
-    formControl: {
-        margin: '0',
-        width: '100%',
-    },
-})
+// eslint-disable-next-line no-unused-vars
+import React from 'react'
+import css from 'styled-jsx/css'
+
+export const container = `
+    div {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+    }
+`
+
+export const inputWrapper = css.resolve`
+    margin: 0;
+    width: 100%;
+`
