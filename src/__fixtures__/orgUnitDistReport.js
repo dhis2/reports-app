@@ -46,9 +46,13 @@ export const responseData = {
             npWGUj37qDe: { name: 'Valunia' },
         },
     },
-    height: 34,
     width: 3,
     rows: [
+        ['O6uvpzGd5pu', 'oRVt7g429ZO', '95'],
+        ['O6uvpzGd5pu', 'PVLOW4bCshG', '3'],
+        ['O6uvpzGd5pu', '', '26'],
+        ['O6uvpzGd5pu', 'MAs88nJc9nL', '11'],
+        ['O6uvpzGd5pu', 'w0gFTTmsUcF', '6'],
         ['vWbkYPRmKyS', '', '2'],
         ['BGGmAwx33dj', 'oRVt7g429ZO', '9'],
         ['ARZ4y5i4reU', 'oRVt7g429ZO', '3'],
@@ -84,6 +88,7 @@ export const responseData = {
         ['kU8vhUkAGaT', 'oRVt7g429ZO', '9'],
         ['YmmeuGbqOwR', '', '2'],
     ],
+    height: 39,
     orgUnitIds: [
         'O6uvpzGd5pu',
         'YmmeuGbqOwR',
@@ -101,6 +106,18 @@ export const responseData = {
         'U6Kr7Gtpidn',
         'KctpIIucige',
         'zFDYIgyGmXG',
+    ],
+    fileUrls: [
+        {
+            extension: 'xls',
+            url:
+                'http://localhost:8080/dhis/api/32/orgUnitAnalytics.xls?ou=O6uvpzGd5pu;YmmeuGbqOwR;JdhagCUEMbj;ARZ4y5i4reU;sxRd2XOzFbz;vWbkYPRmKyS;YuQRtpLP10I;I4jWcnFmgEC;daJPPxtIrQn;npWGUj37qDe;kU8vhUkAGaT;BGGmAwx33dj;dGheVylzol6;U6Kr7Gtpidn;KctpIIucige;zFDYIgyGmXG&ougs=Bpx0589u8y0',
+        },
+        {
+            extension: 'pdf',
+            url:
+                'http://localhost:8080/dhis/api/32/orgUnitAnalytics.pdf?ou=O6uvpzGd5pu;YmmeuGbqOwR;JdhagCUEMbj;ARZ4y5i4reU;sxRd2XOzFbz;vWbkYPRmKyS;YuQRtpLP10I;I4jWcnFmgEC;daJPPxtIrQn;npWGUj37qDe;kU8vhUkAGaT;BGGmAwx33dj;dGheVylzol6;U6Kr7Gtpidn;KctpIIucige;zFDYIgyGmXG&ougs=Bpx0589u8y0',
+        },
     ],
 }
 
@@ -130,7 +147,7 @@ export const transformedTableData = {
         ['Tikonko', '0', '0', '0', '6', '6'],
         ['Valunia', '0', '0', '0', '7', '7'],
         ['Wonde', '0', '0', '0', '3', '3'],
-        ['Bo', '0', '0', '0', '0', '0'],
+        ['Bo', '6', '3', '11', '95', '115'],
     ],
 }
 
@@ -144,7 +161,7 @@ export const transformedChartData = {
                 borderColor: 'rgb(39, 102, 150)',
                 borderWidth: 1,
                 hoverBackgroundColor: 'rgba(39, 102, 150, 0.8)',
-                data: ['06', '03', '011', '095'],
+                data: [6, 3, 11, 95],
             },
         ],
     },

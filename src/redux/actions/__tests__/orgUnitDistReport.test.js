@@ -1,11 +1,18 @@
 import { mockStore } from '../../../utils/test-helpers/mockStore'
-import { getOrgUnitDistReport } from '../../../utils/api'
 import {
+    setOutputToChart,
+    setOutputToTabular,
+    loadChart,
+    loadTable,
+    loadReport,
+} from '../orgUnitDistReport'
+import {
+    actionTypes as reportDataActions,
     loadingReportDataStart,
-    loadingReportDataSuccess,
-    loadingReportDataError,
+    loadingReportDataSuccessWithFeedback,
+    loadingReportDataErrorWithFeedback,
 } from '../reportData'
-import { loadReport } from '../orgUnitDistReport'
+import { getOrgUnitDistReport } from '../../../utils/api'
 
 jest.mock('../../../utils/api', () => ({
     getOrgUnitDistReport: jest.fn(() => Promise.resolve()),
@@ -13,55 +20,63 @@ jest.mock('../../../utils/api', () => ({
 
 describe('Actions - orgUnitDistReport', () => {
     const store = mockStore({
-        organisationUnits: { selected: {} },
-        orgUnitGroupSets: {},
+        organisationUnits: {
+            selected: {
+                id: '1',
+                displayName: 'Selected org unit',
+            },
+        },
+        orgUnitGroupSets: { selected: '2' },
+        orgUnitDistReport: { shouldShowChart: false },
     })
 
-    beforeEach(() => {
-        store.clearActions()
-    })
+    describe('loading the report', () => {
+        afterEach(() => {
+            store.clearActions()
+            getOrgUnitDistReport.mockClear()
+        })
 
-    afterEach(() => {
-        getOrgUnitDistReport.mockClear()
-    })
+        it('Should displatch start and success actions if request is successful', () => {
+            const expectedActions = [
+                loadingReportDataStart(),
+                loadingReportDataSuccessWithFeedback(),
+            ]
+            store.dispatch(loadReport()).then(() => {
+                expect(store.getActions()).toEqual(expectedActions)
+            })
+        })
 
-    it('should dispatch a loading start action when loading data set options', done => {
-        const expectedActions = expect.arrayContaining([
-            loadingReportDataStart(),
-        ])
-
-        store.dispatch(loadReport()).then(() => {
-            expect(store.getActions()).toEqual(expectedActions)
-            done()
+        it('Should displatch start and error actions if request fails', () => {
+            const expectedActions = [
+                loadingReportDataStart(),
+                loadingReportDataErrorWithFeedback(),
+            ]
+            getOrgUnitDistReport.mockImplementationOnce(() =>
+                Promise.reject({})
+            )
+            store.dispatch(loadReport()).then(() => {
+                expect(store.getActions()).toEqual(expectedActions)
+            })
         })
     })
 
-    it('should dispatch a success action with the options when loading data set options succesfully', done => {
-        const report = 'Report'
-        const expectedActions = expect.arrayContaining([
-            loadingReportDataSuccess(report),
-        ])
-
-        getOrgUnitDistReport.mockImplementationOnce(() =>
-            Promise.resolve(report)
-        )
-
-        store.dispatch(loadReport()).then(() => {
+    describe('toggling between table and chart output', () => {
+        it('loadTable should set output to table and start loading the report', () => {
+            const expectedActions = expect.arrayContaining([
+                setOutputToTabular(),
+                { type: reportDataActions.LOADING_REPORT_DATA_START },
+            ])
+            store.dispatch(loadTable())
             expect(store.getActions()).toEqual(expectedActions)
-            done()
         })
-    })
 
-    it('should dispatch an error action when loading the data set options unsuccessfully', done => {
-        const expectedActions = expect.arrayContaining([
-            loadingReportDataError(),
-        ])
-
-        getOrgUnitDistReport.mockImplementationOnce(() => Promise.reject())
-
-        store.dispatch(loadReport()).then(() => {
+        it('loadChart should set output to chart and start loading the report', () => {
+            const expectedActions = expect.arrayContaining([
+                setOutputToChart(),
+                { type: reportDataActions.LOADING_REPORT_DATA_START },
+            ])
+            store.dispatch(loadChart())
             expect(store.getActions()).toEqual(expectedActions)
-            done()
         })
     })
 })

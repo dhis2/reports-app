@@ -84,6 +84,7 @@ export const unsetReportData = () => ({
  * @param {DOMElement[]} tableNodes
  * @return {Object}
  */
+// @TODO: not sure this is needed. I think this can be removed
 export const exportReportToXls = tableNodes => {
     const workbook = XLSX.utils.book_new()
 

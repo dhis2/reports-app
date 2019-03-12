@@ -2,7 +2,7 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 
-const Row = ({ cells }) => (
+export const Row = ({ cells }) => (
     <tr>
         {cells.map((cell, index) => (
             <td key={`c-${cell}-${index}`}>{cell}</td>

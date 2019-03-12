@@ -11,10 +11,10 @@ exports[`<BarChart/> Should match the snapshot 1`] = `
             "borderColor": "rgb(39, 102, 150)",
             "borderWidth": 1,
             "data": Array [
-              "06",
-              "03",
-              "011",
-              "095",
+              6,
+              3,
+              11,
+              95,
             ],
             "hoverBackgroundColor": "rgba(39, 102, 150, 0.8)",
             "label": "Count",
@@ -44,6 +44,7 @@ exports[`<BarChart/> Should match the snapshot 1`] = `
       },
     }
   }
+  isLoading={false}
 >
   <div
     className="chart"
@@ -57,10 +58,10 @@ exports[`<BarChart/> Should match the snapshot 1`] = `
               "borderColor": "rgb(39, 102, 150)",
               "borderWidth": 1,
               "data": Array [
-                "06",
-                "03",
-                "011",
-                "095",
+                6,
+                3,
+                11,
+                95,
               ],
               "hoverBackgroundColor": "rgba(39, 102, 150, 0.8)",
               "label": "Count",

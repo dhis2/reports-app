@@ -26,7 +26,6 @@ export default function getTransformedChartData(state) {
     const chartData = getChartData(labels, dataPoints, title)
 
     cache.setCachedResult(data, chartData)
-    console.log(JSON.stringify(chartData, null, 4))
     return chartData
 }
 
@@ -39,7 +38,7 @@ function getDataPoints(state, columns) {
     const lookup = state.reportData.content.rows.reduce((acc, row) => {
         const [orgUnitId, columnId, value] = row
         if (orgUnitId === selectedOrgUnitID) {
-            acc[columnId] += value
+            acc[columnId] += parseInt(value, 10)
         }
         return acc
     }, accumulator)

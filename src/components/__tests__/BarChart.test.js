@@ -5,7 +5,9 @@ import { transformedChartData } from '../../__fixtures__/orgUnitDistReport'
 
 describe('<BarChart/>', () => {
     it('Should match the snapshot', () => {
-        const wrapper = shallow(<BarChart content={transformedChartData} />)
+        const wrapper = shallow(
+            <BarChart content={transformedChartData} isLoading={false} />
+        )
         expect(wrapper).toMatchSnapshot()
     })
 })

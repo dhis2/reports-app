@@ -1,10 +1,10 @@
-import getTransformedTableData, { cache } from '../getTransformedTableData'
+import getTransformedChartData, { cache } from '../getTransformedChartData'
 import {
     responseData,
-    transformedTableData,
+    transformedChartData,
 } from '../../../../__fixtures__/orgUnitDistReport'
 
-describe('getTransformedTableData', () => {
+describe('getTransformedChartData', () => {
     const state = {
         reportData: {
             content: responseData,
@@ -12,17 +12,18 @@ describe('getTransformedTableData', () => {
         organisationUnits: {
             selected: {
                 displayName: 'Bo',
+                id: 'O6uvpzGd5pu',
             },
         },
     }
-    const expectedResult = transformedTableData
+    const expectedResult = transformedChartData
 
     it('transforms correctly', () => {
-        expect(getTransformedTableData(state)).toEqual(expectedResult)
+        expect(getTransformedChartData(state)).toEqual(expectedResult)
     })
     it('will return the cached result if called for a second time with same input', () => {
         const getCachedResultSpy = jest.spyOn(cache, 'getCachedResult')
-        getTransformedTableData(state)
+        getTransformedChartData(state)
         expect(getCachedResultSpy).toHaveBeenCalledTimes(1)
     })
 
