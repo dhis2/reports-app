@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ReportLoader/> Renders a loader when isLoading is true 1`] = `
+<div
+  className="report-loader"
+>
+  <CircularProgress
+    large={false}
+    small={false}
+    style={Object {}}
+  />
+</div>
+`;
+
+exports[`<ReportLoader/> Renders its children when isLoading is false and content is non-empty 1`] = `"<div>Hello world</div>"`;

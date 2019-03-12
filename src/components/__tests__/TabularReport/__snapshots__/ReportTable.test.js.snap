@@ -1,0 +1,259 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
+<Fragment>
+  <h1>
+    Facility Ownership - Bo
+  </h1>
+  <table>
+    <thead>
+      <tr
+        className="tabular-report__header-row"
+      >
+        <th
+          key="h-Organisation unit-0"
+        >
+          Organisation unit
+        </th>
+        <th
+          key="h-Mission-1"
+        >
+          Mission
+        </th>
+        <th
+          key="h-NGO-2"
+        >
+          NGO
+        </th>
+        <th
+          key="h-Private Clinic-3"
+        >
+          Private Clinic
+        </th>
+        <th
+          key="h-Public facilities-4"
+        >
+          Public facilities
+        </th>
+        <th
+          key="h-Total-5"
+        >
+          Total
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      className="tabular-report__table-body"
+    >
+      <Row
+        cells={
+          Array [
+            "Badjia",
+            "0",
+            "0",
+            "0",
+            "2",
+            "2",
+          ]
+        }
+        key="r-Badjia-0"
+      />
+      <Row
+        cells={
+          Array [
+            "Baoma",
+            "0",
+            "0",
+            "0",
+            "13",
+            "13",
+          ]
+        }
+        key="r-Baoma-1"
+      />
+      <Row
+        cells={
+          Array [
+            "Bargbe",
+            "0",
+            "0",
+            "0",
+            "5",
+            "5",
+          ]
+        }
+        key="r-Bargbe-2"
+      />
+      <Row
+        cells={
+          Array [
+            "Bargbo",
+            "0",
+            "0",
+            "0",
+            "7",
+            "7",
+          ]
+        }
+        key="r-Bargbo-3"
+      />
+      <Row
+        cells={
+          Array [
+            "Bumpe Ngao",
+            "1",
+            "0",
+            "0",
+            "9",
+            "10",
+          ]
+        }
+        key="r-Bumpe Ngao-4"
+      />
+      <Row
+        cells={
+          Array [
+            "Gbo",
+            "0",
+            "0",
+            "0",
+            "1",
+            "1",
+          ]
+        }
+        key="r-Gbo-5"
+      />
+      <Row
+        cells={
+          Array [
+            "Jaiama Bongor",
+            "0",
+            "0",
+            "0",
+            "6",
+            "6",
+          ]
+        }
+        key="r-Jaiama Bongor-6"
+      />
+      <Row
+        cells={
+          Array [
+            "Kakua",
+            "5",
+            "3",
+            "11",
+            "19",
+            "38",
+          ]
+        }
+        key="r-Kakua-7"
+      />
+      <Row
+        cells={
+          Array [
+            "Komboya",
+            "0",
+            "0",
+            "0",
+            "3",
+            "3",
+          ]
+        }
+        key="r-Komboya-8"
+      />
+      <Row
+        cells={
+          Array [
+            "Lugbu",
+            "0",
+            "0",
+            "0",
+            "9",
+            "9",
+          ]
+        }
+        key="r-Lugbu-9"
+      />
+      <Row
+        cells={
+          Array [
+            "Niawa Lenga",
+            "0",
+            "0",
+            "0",
+            "3",
+            "3",
+          ]
+        }
+        key="r-Niawa Lenga-10"
+      />
+      <Row
+        cells={
+          Array [
+            "Selenga",
+            "0",
+            "0",
+            "0",
+            "2",
+            "2",
+          ]
+        }
+        key="r-Selenga-11"
+      />
+      <Row
+        cells={
+          Array [
+            "Tikonko",
+            "0",
+            "0",
+            "0",
+            "6",
+            "6",
+          ]
+        }
+        key="r-Tikonko-12"
+      />
+      <Row
+        cells={
+          Array [
+            "Valunia",
+            "0",
+            "0",
+            "0",
+            "7",
+            "7",
+          ]
+        }
+        key="r-Valunia-13"
+      />
+      <Row
+        cells={
+          Array [
+            "Wonde",
+            "0",
+            "0",
+            "0",
+            "3",
+            "3",
+          ]
+        }
+        key="r-Wonde-14"
+      />
+      <Row
+        cells={
+          Array [
+            "Bo",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+          ]
+        }
+        key="r-Bo-15"
+      />
+    </tbody>
+  </table>
+</Fragment>
+`;
