@@ -25,18 +25,17 @@ describe('Actions - reportingRateSummary - async thunks', () => {
             getReportingRateSummaryReport.mockClear()
         })
 
-        it('should dispatch a start loading action when loading the report data', done => {
+        it('should dispatch a start loading action when loading the report data', () => {
             const expectedActions = expect.arrayContaining([
                 loadingReportDataStart(),
             ])
 
             store.dispatch(loadReportData()).then(() => {
                 expect(store.getActions()).toEqual(expectedActions)
-                done()
             })
         })
 
-        it('should dispatch a success action when the report data loaded successfully', done => {
+        it('should dispatch a success action when the report data loaded successfully', () => {
             const report = 'Html Report'
             const expectedActions = expect.arrayContaining([
                 loadingReportDataSuccess(report),
@@ -47,11 +46,10 @@ describe('Actions - reportingRateSummary - async thunks', () => {
 
             store.dispatch(loadReportData()).then(() => {
                 expect(store.getActions()).toEqual(expectedActions)
-                done()
             })
         })
 
-        it('should dispatch an error action when loading the report data fails', done => {
+        it('should dispatch an error action when loading the report data fails', () => {
             const expectedActions = expect.arrayContaining([
                 loadingReportDataError(),
             ])
@@ -61,7 +59,6 @@ describe('Actions - reportingRateSummary - async thunks', () => {
 
             store.dispatch(loadReportData()).then(() => {
                 expect(store.getActions()).toEqual(expectedActions)
-                done()
             })
         })
     })

@@ -31,14 +31,13 @@ describe('Actions - reportPeriod', () => {
             )
         })
 
-        it('creates REPORT_PERIOD_TYPES_RECEIVED when it resolves', done => {
+        it('creates REPORT_PERIOD_TYPES_RECEIVED when it resolves', () => {
             const expectedActions = expect.arrayContaining([
                 loadPeriodTypesSuccess(periodTypes),
             ])
 
             store.dispatch(loadPeriodTypes()).then(() => {
                 expect(store.getActions()).toEqual(expectedActions)
-                done()
             })
         })
     })
@@ -54,21 +53,19 @@ describe('Actions - reportPeriod', () => {
             console.error.mockClear()
         })
 
-        it('creates REPORT_PERIOD_TYPES_ERRORED when it is rejected', done => {
+        it('creates REPORT_PERIOD_TYPES_ERRORED when it is rejected', () => {
             const expectedActions = expect.arrayContaining([
                 loadPeriodTypesError(),
             ])
 
             store.dispatch(loadPeriodTypes()).then(() => {
                 expect(store.getActions()).toEqual(expectedActions)
-                done()
             })
         })
 
-        it('prints the error on the console when rejected', done => {
+        it('prints the error on the console when rejected', () => {
             store.dispatch(loadPeriodTypes()).then(() => {
                 expect(console.error).toHaveBeenCalledTimes(1)
-                done()
             })
         })
     })
