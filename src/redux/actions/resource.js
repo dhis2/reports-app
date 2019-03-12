@@ -222,3 +222,63 @@ export const closeContextMenu = refreshList => dispatch => {
         dispatch(loadResources())
     }
 }
+
+/**
+ *
+ * Adding a resource
+ *
+ */
+
+/**
+ * @returns {Object}
+ */
+export const loadingAddResourceStart = () => ({
+    type: actionTypes.RESOURCE_ADD_LOADING_START,
+})
+
+/**
+ * @returns {Object}
+ */
+export const loadingAddResourceSuccess = () => ({
+    type: actionTypes.RESOURCE_ADD_LOADING_SUCCESS,
+})
+
+/**
+ * @returns {Object}
+ */
+export const loadingAddResourceError = () => ({
+    type: actionTypes.RESOURCE_ADD_LOADING_ERROR,
+})
+
+/**
+ * @param {Error} error
+ * @returns {Function}
+ */
+export const loadingAddResourceErrorWithFeedback = error => dispatch => {
+    const defaultAddResourceErrorMessage = i18n.t(
+        'An error occurred while adding the resource!'
+    )
+    const displayMessage = humanReadableErrorMessage(
+        error,
+        defaultAddResourceErrorMessage
+    )
+    dispatch(showErrorSnackBar(displayMessage))
+    dispatch(loadingAddResourceError())
+}
+
+/**
+ * @param {Object} values
+ * @returns {Function}
+ */
+export const addNewResource = values => dispatch => {
+    dispatch(loadingAddResourceStart())
+
+    //postResource()
+    //    .then(() => {
+    //        dispatch(loadingAddResourceSuccess())
+    //        dispatch(loadResources())
+    //    })
+    //    .catch(error => {
+    //        dispatch(loadingAddResourceErrorWithFeedback(error))
+    //    })
+}

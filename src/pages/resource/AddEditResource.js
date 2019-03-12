@@ -13,8 +13,10 @@ import { FormRow } from '../../components/form/FormRow'
 import { FormSection } from '../../components/form/FormSection'
 import { FormSectionTitle } from '../../components/form/FormSectionTitle'
 import { Input } from '../../components/form/Input'
+import { RadioButtons } from '../../components/form/RadioButtons'
 import { Select } from '../../components/form/Select'
 import {
+    resourceActions,
     resourceTypeOptions,
     resourceTypes,
 } from '../../utils/resource/constants'
@@ -92,24 +94,24 @@ const AddEditResource = props => (
                                     </FormSectionTitle>
 
                                     <FormRow>
-                                        <p>
+                                        <p style={{ marginTop: 0 }}>
                                             Do you want to use this file as an
                                             attachment?
                                         </p>
-                                        <Field
+                                        <RadioButtons
                                             name="attachment"
-                                            value="yes"
-                                            type="radio"
-                                            component="input"
-                                        />{' '}
-                                        Yes
-                                        <Field
-                                            name="attachment"
-                                            value="no"
-                                            type="radio"
-                                            component="input"
-                                        />{' '}
-                                        No
+                                            options={[
+                                                {
+                                                    value: 'yes',
+                                                    label: i18n.t('Yes'),
+                                                },
+                                                {
+                                                    value: 'no',
+                                                    label: i18n.t('No'),
+                                                },
+                                            ]}
+                                            showError={false}
+                                        />
                                     </FormRow>
 
                                     <FormRow>
@@ -144,15 +146,16 @@ const AddEditResource = props => (
 
 AddEditResource.propTypes = {
     open: PropTypes.bool.isRequired,
+    onRequestClose: PropTypes.func.isRequired,
+
     edit: PropTypes.bool.isRequired,
     initialValues: PropTypes.object.isRequired,
     onSubmit: PropTypes.func.isRequired,
-    onRequestClose: PropTypes.func.isRequired,
 }
 
 export const ConnectedAddEditResource = connect(
-    () => ({
-        edit: false,
+    state => ({
+        edit: state.resource.selectedAction === resourceActions.EDIT,
         initialValues: {
             type: resourceTypeOptions[1].value,
             attachment: 'no',
