@@ -34,20 +34,7 @@ const fileUrls = [
 ]
 
 describe('<TabularReport/>', () => {
-    it('Renders a loader when loading is true', () => {
-        const wrapper = shallow(
-            <TabularReport content={{}} isLoading={true} fileUrls={[]} />
-        )
-        expect(wrapper).toMatchSnapshot()
-    })
-
-    it('Renders nothing when content is an empty object and loading is false', () => {
-        const wrapper = shallow(
-            <TabularReport content={{}} isLoading={false} fileUrls={[]} />
-        )
-        expect(wrapper.html()).toBeNull()
-    })
-    it('Renders a table when loading is false and there is content to display', () => {
+    it('Renders DownloadOptions and a ReportTable in a ReportLoader', () => {
         const wrapper = shallow(
             <TabularReport
                 content={content}
