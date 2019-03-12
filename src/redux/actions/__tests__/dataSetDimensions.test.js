@@ -38,9 +38,7 @@ describe('Actions - dataSetDimensions - asyncThunks', () => {
             loadingDimensionsSuccess(dimensions),
         ])
 
-        getDimensions.mockImplementationOnce(() =>
-            Promise.resolve({ dimensions })
-        )
+        getDimensions.mockImplementationOnce(() => Promise.resolve(dimensions))
         store.dispatch(loadDimensions()).then(() => {
             expect(store.getActions()).toEqual(expectedActions)
         })

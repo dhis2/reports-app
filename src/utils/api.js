@@ -123,12 +123,22 @@ export const getDataSetReports = (
         ),
     })
 
+// TODO: API should start returning empty arrays for datasets without dimensions
+// current solution is just a hack to get the right behavior
+const MAGIC_STRING = 'Data set does not have a category combination: '
 export const getDimensions = dataSetId =>
-    api.get(`${DATA_SET_DIMENSIONS_ENDPOINT}/${dataSetId}`, {
-        fields: ['id', 'displayName', 'items[id,displayName]'].join(','),
-        order: 'name:asc',
-        paging: false,
-    })
+    api
+        .get(`${DATA_SET_DIMENSIONS_ENDPOINT}/${dataSetId}`, {
+            fields: ['id', 'displayName', 'items[id,displayName]'].join(','),
+            order: 'name:asc',
+            paging: false,
+        })
+        .then(({ dimensions }) => dimensions)
+        .catch(error =>
+            error.httpStatusCode === 409 && error.message.includes(MAGIC_STRING)
+                ? Promise.resolve([])
+                : Promise.reject(error)
+        )
 
 /**
  * @param {string} dataSetId

@@ -33,25 +33,63 @@ DimensionDropdown.propTypes = {
     onChange: PropTypes.func.isRequired,
 }
 
-const DataSetDimensions = props => (
-    <React.Fragment>
-        {props.options.map(dimension => (
-            <DimensionDropdown
-                key={dimension.id}
-                dimension={dimension}
-                dropdownStyle={props.dropdownStyle}
-                fullWidth={props.fullWidth}
-                values={props.selected}
-                onChange={createDimensionChangeHandler(
-                    props.onChange,
-                    dimension.id
-                )}
-            />
-        ))}
-    </React.Fragment>
-)
+const headerStyle = {
+    color: '#757575',
+    fontSize: '14px',
+    marginBottom: 5,
+    marginTop: 0,
+    textAlign: 'left',
+    fontWeight: 'normal',
+}
+
+const boxStyle = {
+    border: '1px solid #bcbcbc',
+    padding: 4,
+    marginBottom: 16,
+}
+
+const noResultsStyle = {
+    marginBottom: 16,
+    fontStyle: 'italic',
+    fontSize: 13,
+    color: '#757575',
+}
+
+const DataSetDimensions = props => {
+    if (props.hide) {
+        return null
+    }
+
+    return (
+        <React.Fragment>
+            <h6 style={headerStyle}>{i18n.t('Data set dimensions')}</h6>
+            {props.options.length ? (
+                <div style={boxStyle}>
+                    {props.options.map(dimension => (
+                        <DimensionDropdown
+                            key={dimension.id}
+                            dimension={dimension}
+                            dropdownStyle={props.dropdownStyle}
+                            fullWidth={props.fullWidth}
+                            values={props.selected}
+                            onChange={createDimensionChangeHandler(
+                                props.onChange,
+                                dimension.id
+                            )}
+                        />
+                    ))}
+                </div>
+            ) : (
+                <div style={noResultsStyle}>
+                    {i18n.t('No dimensions connected to the current data set')}
+                </div>
+            )}
+        </React.Fragment>
+    )
+}
 
 DataSetDimensions.propTypes = {
+    hide: PropTypes.bool.isRequired,
     options: PropTypes.array.isRequired,
     selected: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
@@ -66,9 +104,10 @@ DataSetDimensions.defaultProps = {
     },
 }
 
-const mapStateToProps = ({ dataSetDimensions }) => ({
-    options: dataSetDimensions.options,
-    selected: dataSetDimensions.selected,
+const mapStateToProps = state => ({
+    hide: !state.dataSet.selected.id,
+    options: state.dataSetDimensions.options,
+    selected: state.dataSetDimensions.selected,
 })
 
 const mapDispatchToProps = dispatch => ({
