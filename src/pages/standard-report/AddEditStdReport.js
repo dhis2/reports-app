@@ -1,12 +1,10 @@
-import { Button } from '@dhis2/d2-ui-core'
 import { Form, Field } from 'react-final-form'
 import { connect } from 'react-redux'
+import { Dialog } from 'material-ui'
 import FormHelperText from '@material-ui/core/FormHelperText'
 import PropTypes from 'prop-types'
 import React from 'react'
 import i18n from '@dhis2/d2-i18n'
-
-import { Dialog } from 'material-ui'
 
 import {
     CONTEXT_MENU_ACTION,
@@ -17,9 +15,14 @@ import {
 import { CheckBoxGroups } from '../../components/form/CheckBoxGroups'
 import { CheckBoxes } from '../../components/form/CheckBoxes'
 import { DesignFileDownloadButton } from './add-edit-report/DesignFileDownloadButton'
+import { Button } from '../../components/form/Button'
 import { File } from '../../components/form/File'
 import { FormRow } from '../../components/form/FormRow'
+import { FormSection } from '../../components/form/FormSection'
+import { FormSectionTitle } from '../../components/form/FormSectionTitle'
 import { Input } from '../../components/form/Input'
+import { Select } from '../../components/form/Select'
+import { reportParameterOptions } from '../../config/standardReport'
 import { formOptions } from '../../utils/react/propTypes'
 import { getEditFormInitialValues } from '../../redux/selectors/standardReport/getEditFormInitialValues'
 import { relativePeriods } from '../../utils/periods/relativePeriods'
@@ -27,8 +30,6 @@ import {
     validateNewReport,
     validateReportUpdate,
 } from './add-edit-report/validate'
-import { Select } from '../../components/form/Select'
-import appStyles from '../../utils/styles'
 import styles from './add-edit-report/AddEditStdReport.style'
 
 export const Component = props => (
@@ -47,8 +48,8 @@ export const Component = props => (
         >
             {({ handleSubmit, values }) => (
                 <form onSubmit={handleSubmit}>
-                    <section style={styles.section}>
-                        <div style={styles.sectionTitle}>Details</div>
+                    <FormSection>
+                        <FormSectionTitle>{i18n.t('Details')}</FormSectionTitle>
 
                         <FormRow>
                             <Field
@@ -92,6 +93,7 @@ export const Component = props => (
                                     }
                                 />
                             </div>
+
                             <div className="col-xs-6">
                                 <FormHelperText />
                                 <DesignFileDownloadButton
@@ -105,41 +107,46 @@ export const Component = props => (
                                 />
                             </div>
                         </div>
-                    </section>
-                    {values.type !== reportTypes.JASPER_REPORT_TABLE && (
-                        <section style={styles.section}>
-                            <div style={styles.sectionTitle}>
-                                Relative Periods
-                            </div>
-                            <CheckBoxGroups
-                                name="relativePeriods"
-                                groups={relativePeriods}
-                                displayError={false}
-                            />
-                        </section>
-                    )}
-                    {values.type !== reportTypes.JASPER_REPORT_TABLE && (
-                        <section style={styles.section}>
-                            <div style={styles.sectionTitle}>
-                                Report parameters
-                            </div>
-                            <CheckBoxes
-                                name="reportParams"
-                                options={[
-                                    {
-                                        value: 'paramReportingPeriod',
-                                        label: 'Reporting Period',
-                                    },
-                                    {
-                                        value: 'paramOrganisationUnit',
-                                        label: 'Organisation Unit',
-                                    },
-                                ]}
-                            />
-                        </section>
-                    )}
-                    <section style={styles.section}>
-                        <div style={styles.sectionTitle}>Settings</div>
+                    </FormSection>
+
+                    <FormSection
+                        show={values.type !== reportTypes.JASPER_REPORT_TABLE}
+                        render={() => (
+                            <React.Fragment>
+                                <FormSectionTitle>
+                                    {i18n.t('Relative periods')}
+                                </FormSectionTitle>
+
+                                <CheckBoxGroups
+                                    name="relativePeriods"
+                                    groups={relativePeriods}
+                                    displayError={false}
+                                />
+                            </React.Fragment>
+                        )}
+                    />
+
+                    <FormSection
+                        show={values.type !== reportTypes.JASPER_REPORT_TABLE}
+                        render={() => (
+                            <React.Fragment>
+                                <FormSectionTitle>
+                                    {i18n.t('Report parameters')}
+                                </FormSectionTitle>
+
+                                <CheckBoxes
+                                    name="reportParams"
+                                    options={reportParameterOptions}
+                                />
+                            </React.Fragment>
+                        )}
+                    />
+
+                    <FormSection>
+                        <FormSectionTitle>
+                            {i18n.t('Settings')}
+                        </FormSectionTitle>
+
                         <FormRow>
                             <Field
                                 name="cacheStrategy"
@@ -148,26 +155,20 @@ export const Component = props => (
                                 component={Select}
                             />
                         </FormRow>
-                    </section>
-                    <section style={styles.section}>
+                    </FormSection>
+
+                    <FormSection>
                         <Button
-                            raised
-                            color="primary"
-                            type="submit"
+                            label={i18n.t('Submit')}
+                            isPrimary={true}
                             onClick={handleSubmit}
-                            style={appStyles.dialogBtn}
-                        >
-                            Submit
-                        </Button>
+                        />
+
                         <Button
-                            raised
-                            type="submit"
+                            label={i18n.t('Cancel')}
                             onClick={() => props.onRequestClose(false)}
-                            style={appStyles.dialogBtn}
-                        >
-                            Cancel
-                        </Button>
-                    </section>
+                        />
+                    </FormSection>
                 </form>
             )}
         </Form>

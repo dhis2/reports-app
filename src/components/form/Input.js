@@ -1,4 +1,3 @@
-import { Field } from 'react-final-form'
 import { default as MUIInput } from '@material-ui/core/Input'
 import FormControl from '@material-ui/core/FormControl'
 import InputLabel from '@material-ui/core/InputLabel'
