@@ -12,7 +12,7 @@ jest.mock('../../../utils/api', () => ({
 }))
 
 describe('Actions - reportingRateSummary - async thunks', () => {
-    describe('loading the html report', () => {
+    describe('loading the report data', () => {
         const store = mockStore({
             organisationUnits: { selected: {} },
             dataSet: { selected: {} },
@@ -25,7 +25,7 @@ describe('Actions - reportingRateSummary - async thunks', () => {
             getReportingRateSummaryReport.mockClear()
         })
 
-        it('should dispatch a start loading action when loading the html report', done => {
+        it('should dispatch a start loading action when loading the report data', done => {
             const expectedActions = expect.arrayContaining([
                 loadingReportDataStart(),
             ])
@@ -36,7 +36,7 @@ describe('Actions - reportingRateSummary - async thunks', () => {
             })
         })
 
-        it('should dispatch a success action when loading the report successfully', done => {
+        it('should dispatch a success action when the report data loaded successfully', done => {
             const report = 'Html Report'
             const expectedActions = expect.arrayContaining([
                 loadingReportDataSuccess(report),
@@ -51,7 +51,7 @@ describe('Actions - reportingRateSummary - async thunks', () => {
             })
         })
 
-        it('should dispatch an error action when loading the html report fails', done => {
+        it('should dispatch an error action when loading the report data fails', done => {
             const expectedActions = expect.arrayContaining([
                 loadingReportDataError(),
             ])

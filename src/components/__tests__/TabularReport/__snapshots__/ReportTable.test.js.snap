@@ -45,7 +45,7 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
     <tbody
       className="tabular-report__table-body"
     >
-      <Row
+      <Component
         cells={
           Array [
             "Badjia",
@@ -58,7 +58,7 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         }
         key="r-Badjia-0"
       />
-      <Row
+      <Component
         cells={
           Array [
             "Baoma",
@@ -71,7 +71,7 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         }
         key="r-Baoma-1"
       />
-      <Row
+      <Component
         cells={
           Array [
             "Bargbe",
@@ -84,7 +84,7 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         }
         key="r-Bargbe-2"
       />
-      <Row
+      <Component
         cells={
           Array [
             "Bargbo",
@@ -97,7 +97,7 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         }
         key="r-Bargbo-3"
       />
-      <Row
+      <Component
         cells={
           Array [
             "Bumpe Ngao",
@@ -110,7 +110,7 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         }
         key="r-Bumpe Ngao-4"
       />
-      <Row
+      <Component
         cells={
           Array [
             "Gbo",
@@ -123,7 +123,7 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         }
         key="r-Gbo-5"
       />
-      <Row
+      <Component
         cells={
           Array [
             "Jaiama Bongor",
@@ -136,7 +136,7 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         }
         key="r-Jaiama Bongor-6"
       />
-      <Row
+      <Component
         cells={
           Array [
             "Kakua",
@@ -149,7 +149,7 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         }
         key="r-Kakua-7"
       />
-      <Row
+      <Component
         cells={
           Array [
             "Komboya",
@@ -162,7 +162,7 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         }
         key="r-Komboya-8"
       />
-      <Row
+      <Component
         cells={
           Array [
             "Lugbu",
@@ -175,7 +175,7 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         }
         key="r-Lugbu-9"
       />
-      <Row
+      <Component
         cells={
           Array [
             "Niawa Lenga",
@@ -188,7 +188,7 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         }
         key="r-Niawa Lenga-10"
       />
-      <Row
+      <Component
         cells={
           Array [
             "Selenga",
@@ -201,7 +201,7 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         }
         key="r-Selenga-11"
       />
-      <Row
+      <Component
         cells={
           Array [
             "Tikonko",
@@ -214,7 +214,7 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         }
         key="r-Tikonko-12"
       />
-      <Row
+      <Component
         cells={
           Array [
             "Valunia",
@@ -227,7 +227,7 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         }
         key="r-Valunia-13"
       />
-      <Row
+      <Component
         cells={
           Array [
             "Wonde",
@@ -240,15 +240,15 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         }
         key="r-Wonde-14"
       />
-      <Row
+      <Component
         cells={
           Array [
             "Bo",
-            "0",
-            "0",
-            "0",
-            "0",
-            "0",
+            "6",
+            "3",
+            "11",
+            "95",
+            "115",
           ]
         }
         key="r-Bo-15"
@@ -256,4 +256,29 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
     </tbody>
   </table>
 </Fragment>
+`;
+
+exports[`<Row/> produces tr and td elements 1`] = `
+<tr>
+  <td
+    key="c-a-0"
+  >
+    a
+  </td>
+  <td
+    key="c-b-1"
+  >
+    b
+  </td>
+  <td
+    key="c-c-2"
+  >
+    c
+  </td>
+  <td
+    key="c-d-3"
+  >
+    d
+  </td>
+</tr>
 `;
