@@ -1,4 +1,6 @@
+import { FILE_RESOURCES_ENDPOINT, RESOURCE_ENDPOINT } from './constants'
 import { getApi } from '../api'
+
 /**
  * @param {Object} d2 object retrieved by the list() method
  * @return {Array}
@@ -84,3 +86,32 @@ export const parseFileUrls = (req, extensions) => {
         return fileUrls
     }, [])
 }
+
+/**
+ * @param {Object} api
+ * @param {File} file
+ * @returns {Promise}
+ */
+export const uploadFile = (api, file) => {
+    const formData = new FormData()
+    formData.append('file', file)
+    formData.append('domain', 'DOCUMENT')
+
+    return api.post(FILE_RESOURCES_ENDPOINT, formData)
+}
+
+/**
+ * @param {Object} api
+ * @param {Object} resource
+ * @returns {Promise}
+ */
+export const postDocument = (api, resource) =>
+    api.post(RESOURCE_ENDPOINT, resource)
+
+/**
+ * @param {Object} api
+ * @param {Object} resource
+ * @returns {Promise}
+ */
+export const putDocument = (api, resource) =>
+    api.update(`${RESOURCE_ENDPOINT}/${resource.id}`, resource)

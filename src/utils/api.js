@@ -1,12 +1,3 @@
-import { isDevelopment } from './env/isDevelopment'
-import {
-    standardReportsFields,
-    addFilterForName,
-    formatStandardReportsResponse,
-    mapCollectionToDimensionQueryString,
-    mapResponseToArrayOfIds,
-    parseFileUrls,
-} from './api/helpers'
 import {
     STANDARD_REPORTS_ENDPOINT,
     REPORT_TABLES_ENDPOINT,
@@ -17,6 +8,18 @@ import {
     ORG_UNIT_DISTRIBUTION_REPORT_ENDPOINT,
     postDataSetReportCommentUrl,
 } from './api/constants'
+import {
+    addFilterForName,
+    formatStandardReportsResponse,
+    mapCollectionToDimensionQueryString,
+    mapResponseToArrayOfIds,
+    parseFileUrls,
+    postDocument,
+    putDocument,
+    standardReportsFields,
+    uploadFile,
+} from './api/helpers'
+import { isDevelopment } from './env/isDevelopment'
 
 let d2
 let api
@@ -282,3 +285,33 @@ export const getDataSetOptions = () =>
     d2.models.dataSet
         .list({ paging: false, fields: 'id,displayName' })
         .then(response => response.toArray())
+
+/**
+ * @param {Object} resource
+ * @param {File} [file] - an optional file
+ * @returns {Promise}
+ */
+export const postResource = (resource, file = null) =>
+    file
+        ? uploadFile(api, file)
+              .then(({ response }) => ({
+                  ...resource,
+                  url: response.fileResource.id || resource.url,
+              }))
+              .then(resource => postDocument(api, resource))
+        : postDocument(api, resource)
+
+/**
+ * @param {Object} resource
+ * @param {File} [file] - an optional file
+ * @returns {Promise}
+ */
+export const updateResource = (resource, file = null) =>
+    file
+        ? uploadFile(api, file)
+              .then(({ response }) => ({
+                  ...resource,
+                  url: response.fileResource.id || resource.url,
+              }))
+              .then(resource => putDocument(api, resource))
+        : putDocument(api, resource)
