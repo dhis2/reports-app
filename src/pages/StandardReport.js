@@ -31,7 +31,7 @@ export default class StandardReport extends React.Component {
     }
 
     componentDidMount() {
-        this.props.loadStandardReports()
+        this.props.loadStandardReports(true)
     }
 
     render() {
@@ -106,12 +106,17 @@ export default class StandardReport extends React.Component {
                         handleClose={this.props.closeContextMenu}
                         handleError={this.manageError}
                         handleDisplayReportData={this.props.showReportData}
+                        updateStandardReport={this.props.updateStandardReport}
+                        addStandardReport={this.props.addStandardReport}
                     />
                 </div>
                 {this.props.reportData && (
                     <StyledHtmlReport reportData={this.props.reportData} />
                 )}
-                <Snackbar onActionClick={this.props.deleteStandardReport} />
+                <Snackbar
+                    action={i18n.t('CONFIRM')}
+                    onActionClick={this.props.deleteStandardReport}
+                />
             </div>
         )
     }
@@ -143,6 +148,8 @@ StandardReport.propTypes = {
     hideReportData: PropTypes.func.isRequired,
     closeContextMenu: PropTypes.func.isRequired,
     addReportFormShow: PropTypes.func.isRequired,
+    updateStandardReport: PropTypes.func.isRequired,
+    addStandardReport: PropTypes.func.isRequired,
 }
 
 StandardReport.childContextTypes = {

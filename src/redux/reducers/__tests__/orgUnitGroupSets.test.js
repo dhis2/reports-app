@@ -1,6 +1,6 @@
 import { LOCATION_CHANGE } from 'connected-react-router'
 import { actionTypes } from '../../actions/orgUnitGroupSets'
-import { orgUnitGroupSets, initialState } from '../orgUnitGroupSets'
+import { orgUnitGroupSets, defaultState } from '../orgUnitGroupSets'
 
 describe('Reducer - orgUnitGroupSets', () => {
     const errorStr = 'Oops'
@@ -11,7 +11,7 @@ describe('Reducer - orgUnitGroupSets', () => {
     ]
 
     it('should return the default state', () => {
-        expect(orgUnitGroupSets()).toEqual(initialState)
+        expect(orgUnitGroupSets()).toEqual(defaultState)
     })
 
     const collection = [
@@ -23,12 +23,12 @@ describe('Reducer - orgUnitGroupSets', () => {
     it('should indicate that the group sets are being loaded', () => {
         const action = { type: actionTypes.LOADING_GROUP_SETS_START }
         const preState = {
-            ...initialState,
+            ...defaultState,
             loading: false,
         }
         const postState = orgUnitGroupSets(preState, action)
         const expected = {
-            ...initialState,
+            ...defaultState,
             loading: true,
         }
 
@@ -40,9 +40,9 @@ describe('Reducer - orgUnitGroupSets', () => {
             type: actionTypes.LOADING_GROUP_SETS_SUCCESS,
             payload: collection,
         }
-        const preState = { ...initialState, collection: [], loading: true }
+        const preState = { ...defaultState, collection: [], loading: true }
         const postState = orgUnitGroupSets(preState, action)
-        const expected = { ...initialState, collection, loading: false }
+        const expected = { ...defaultState, collection, loading: false }
 
         expect(postState).toEqual(expected)
     })
@@ -53,12 +53,12 @@ describe('Reducer - orgUnitGroupSets', () => {
             payload: 'foo',
         }
         const preState = {
-            ...initialState,
+            ...defaultState,
             loading: true,
         }
         const postState = orgUnitGroupSets(preState, action)
         const expected = {
-            ...initialState,
+            ...defaultState,
             loading: false,
         }
 
@@ -68,16 +68,16 @@ describe('Reducer - orgUnitGroupSets', () => {
     it('should set the provided groupSet as selected', () => {
         const groupSetId = 'bar'
         const action = { type: actionTypes.SET_GROUP_SET, payload: groupSetId }
-        const preState = { ...initialState, selected: '' }
+        const preState = { ...defaultState, selected: '' }
         const postState = orgUnitGroupSets(preState, action)
-        const expected = { ...initialState, selected: groupSetId }
+        const expected = { ...defaultState, selected: groupSetId }
 
         expect(postState).toEqual(expected)
     })
 
     it('should keep the groupSet options on location change', () => {
         const action = { type: LOCATION_CHANGE }
-        const preState = { ...initialState, collection }
+        const preState = { ...defaultState, collection }
         const postState = orgUnitGroupSets(preState, action)
         const expected = expect.objectContaining({ collection })
 
@@ -87,7 +87,7 @@ describe('Reducer - orgUnitGroupSets', () => {
     it('should reset the selected group set on location change', () => {
         const action = { type: LOCATION_CHANGE }
         const preState = {
-            ...initialState,
+            ...defaultState,
             selected: collection[0].id,
         }
         const postState = orgUnitGroupSets(preState, action)

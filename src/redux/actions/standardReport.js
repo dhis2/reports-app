@@ -1,7 +1,11 @@
 import debounce from 'lodash.debounce'
+import omit from 'lodash.omit'
 import {
     getFilteredStandardReports,
     deleteStandardReport as deleteStandardReportRequest,
+    getStandardReportDetails,
+    postStandardReport,
+    updateStandardReport,
 } from '../../utils/api'
 import { DEBOUNCE_DELAY } from '../../config/search.config'
 import i18n from '@dhis2/d2-i18n'
@@ -10,14 +14,28 @@ import {
     goToPrevPage as goToPrevPageOrig,
 } from './pagination'
 import { setPagination } from './pagination'
-import { showErrorSnackBar } from './feedback'
+import {
+    clearFeedback,
+    showSuccessSnackBar,
+    showErrorSnackBar,
+    showConfirmationSnackBar,
+} from './feedback'
+import { loadStandardReportTables } from './standardReportTables'
 import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
+import { reportTypes } from '../../pages/standard-report/standard.report.conf'
+import { fileToText } from '../../utils/fileToText'
 
 export const actionTypes = {
     LOAD_STANDARD_REPORTS: 'LOAD_STANDARD_REPORTS',
     LOADING_STANDARD_REPORTS_START: 'LOADING_STANDARD_REPORTS_START',
     LOADING_STANDARD_REPORTS_SUCCESS: 'LOADING_STANDARD_REPORTS_SUCCESS',
     LOADING_STANDARD_REPORTS_ERROR: 'LOADING_STANDARD_REPORTS_ERROR',
+    LOADING_STANDARD_REPORTS_DETAILS_START:
+        'LOADING_STANDARD_REPORTS_DETAILS_START',
+    LOADING_STANDARD_REPORTS_DETAILS_SUCCESS:
+        'LOADING_STANDARD_REPORTS_DETAILS_SUCCESS',
+    LOADING_STANDARD_REPORTS_DETAILS_ERROR:
+        'LOADING_STANDARD_REPORTS_DETAILS_ERROR',
     SET_SEARCH: 'SET_SEARCH',
     ADD_REPORT_FORM_SHOW: 'ADD_REPORT_FORM_SHOW',
     ADD_REPORT_FORM_HIDE: 'ADD_REPORT_FORM_HIDE',
@@ -34,6 +52,9 @@ export const actionTypes = {
     HTML_REPORT_SHOW: 'HTML_REPORT_SHOW',
     HTML_REPORT_HIDE: 'HTML_REPORT_HIDE',
     CLOSE_CONTEXT_MENU: 'CLOSE_CONTEXT_MENU',
+    STANDARD_REPORT_SEND_START: 'STANDARD_REPORT_SEND_START',
+    STANDARD_REPORT_SEND_SUCCESS: 'STANDARD_REPORT_SEND_SUCCESS',
+    STANDARD_REPORT_SEND_ERROR: 'STANDARD_REPORT_SEND_ERROR',
 }
 
 /**
@@ -125,10 +146,13 @@ export const addReportFormHide = report => ({
  * @param {Object} report A d2 report model
  * @return {Object}
  */
-export const editReportFormShow = report => ({
-    type: actionTypes.EDIT_REPORT_FORM_SHOW,
-    payload: report,
-})
+export const editReportFormShow = report => dispatch => {
+    dispatch({
+        type: actionTypes.EDIT_REPORT_FORM_SHOW,
+        payload: report,
+    })
+    dispatch(loadStandardReportDetails(report.id))
+}
 
 /**
  * @param {Object} report A d2 report model
@@ -179,10 +203,15 @@ export const sharingSettingsHide = report => ({
  * Used to get a confirmation from the user
  * @return {Object}
  */
-export const requestDeleteStandardReport = report => ({
-    type: actionTypes.REQUEST_DELETE_STANDARD_REPORT,
-    payload: report,
-})
+export const requestDeleteStandardReport = report => dispatch => {
+    dispatch({
+        type: actionTypes.REQUEST_DELETE_STANDARD_REPORT,
+        payload: report,
+    })
+    dispatch(
+        showConfirmationSnackBar('Do you really want to delete this report?')
+    )
+}
 
 /**
  * @return {Object}
@@ -210,7 +239,8 @@ export const deleteStandardReportError = () => ({
  */
 export const deleteStandardReportSuccessWithFeedback = () => dispatch => {
     dispatch(deleteStandardReportSuccess())
-    dispatch(loadStandardReports('Successfully deleted the report'))
+    dispatch(loadStandardReports())
+    dispatch(clearFeedback())
 }
 
 /**
@@ -256,7 +286,10 @@ export const hideReportData = () => ({
 /**
  * @return {Function} Redux thunk
  */
-export const loadStandardReports = () => (dispatch, getState) => {
+export const loadStandardReports = (postLoadStandartReportTables = false) => (
+    dispatch,
+    getState
+) => {
     const { standardReport, pagination } = getState()
     const { page, pageSize } = pagination
     const { search } = standardReport
@@ -266,6 +299,10 @@ export const loadStandardReports = () => (dispatch, getState) => {
         .then(response => {
             dispatch(loadingStandardReportsSuccess(response.reports))
             dispatch(setPagination(response.pager))
+
+            if (postLoadStandartReportTables) {
+                dispatch(loadStandardReportTables())
+            }
         })
         .catch(error =>
             dispatch(loadingStandardReportsErrorWithFeedback(error))
@@ -283,4 +320,129 @@ export const deleteStandardReport = () => (dispatch, getState) => {
     return deleteStandardReportRequest(selectedReport.id)
         .then(() => dispatch(deleteStandardReportSuccessWithFeedback()))
         .catch(error => dispatch(deleteStandardReportErrorWithFeedback(error)))
+}
+
+/**
+ * @returns {Object}
+ */
+export const loadingStandardReportsDetailsStart = () => ({
+    type: actionTypes.LOADING_STANDARD_REPORTS_DETAILS_START,
+})
+
+/**
+ * @param {Array} reports
+ * @returns {Object}
+ */
+export const loadingStandardReportsDetailsSuccess = reports => ({
+    type: actionTypes.LOADING_STANDARD_REPORTS_DETAILS_SUCCESS,
+    payload: reports,
+})
+
+/**
+ * @returns {Object}
+ */
+export const loadingStandardReportsDetailsError = () => ({
+    type: actionTypes.LOADING_STANDARD_REPORTS_DETAILS_ERROR,
+})
+
+/**
+ * @param {Error} error
+ * @returns {Function}
+ */
+export const loadingStandardReportsDetailsErrorWithFeedback = error => dispatch => {
+    const defaultMessage = i18n.t(
+        'An error occurred while loading the standard report details'
+    )
+    const displayMessage = humanReadableErrorMessage(error, defaultMessage)
+    dispatch(showErrorSnackBar(displayMessage))
+    dispatch(loadingStandardReportsDetailsError())
+}
+
+/**
+ * @param {string} id
+ * @returns {Function}
+ */
+export const loadStandardReportDetails = id => dispatch => {
+    dispatch(loadingStandardReportsDetailsStart())
+
+    getStandardReportDetails(id)
+        .then(report => dispatch(loadingStandardReportsDetailsSuccess(report)))
+        .catch(error => dispatch(loadingStandardReportsDetailsError(error)))
+}
+
+/**
+ * @returns {Object}
+ */
+export const loadingSendStandardReportStart = () => ({
+    type: actionTypes.STANDARD_REPORT_SEND_START,
+})
+
+/**
+ * @returns {Object}
+ */
+export const loadingSendStandardReportSuccess = () => ({
+    type: actionTypes.STANDARD_REPORT_SEND_SUCCESS,
+})
+
+/**
+ * @returns {Object}
+ */
+export const loadingSendStandardReportError = () => ({
+    type: actionTypes.STANDARD_REPORT_SEND_ERROR,
+})
+
+/**
+ * @param {Object} report
+ * @param {bool} isEdit - When false, add new report
+ * @returns {Promise}
+ */
+export const sendStandardReport = (report, isEdit) => dispatch => {
+    dispatch(loadingSendStandardReportStart())
+
+    const formattedReport = {
+        ...report,
+        relativePeriods: (report.relativePeriods || []).reduce(
+            (acc, cur) => ({ ...acc, [cur]: true }),
+            {}
+        ),
+        reportParams: (report.reportParams || []).reduce(
+            (acc, cur) => ({ ...acc, [cur]: true }),
+            {}
+        ),
+        reportTable: report.reportTable ? { id: report.reportTable } : '',
+    }
+    const cleanedReport =
+        report.type !== reportTypes.JASPER_REPORT_TABLE
+            ? omit(formattedReport, ['reportTable'])
+            : formattedReport
+    const doRequest = isEdit
+        ? report => updateStandardReport(report)
+        : report => postStandardReport(report)
+    const successMessage = isEdit
+        ? i18n.t('The report has been updated successfully')
+        : i18n.t('The report has been added successfully')
+    const errorMessage = isEdit
+        ? i18n.t('An error occurred while updating the report!')
+        : i18n.t('An error occurred while adding the report!')
+
+    const request = !cleanedReport.designContent
+        ? doRequest(cleanedReport)
+        : fileToText(cleanedReport.designContent.file)
+              .then(file => ({ ...cleanedReport, designContent: file }))
+              .then(doRequest)
+
+    return request
+        .then(() => {
+            dispatch(showSuccessSnackBar(successMessage))
+            dispatch(loadingSendStandardReportSuccess())
+            dispatch(loadStandardReports())
+        })
+        .catch(error => {
+            const displayMessage = humanReadableErrorMessage(
+                error,
+                errorMessage
+            )
+            dispatch(showErrorSnackBar(displayMessage))
+            dispatch(loadingSendStandardReportError())
+        })
 }

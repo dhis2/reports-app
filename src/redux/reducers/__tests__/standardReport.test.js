@@ -1,6 +1,5 @@
 import { actionTypes } from '../../actions/standardReport'
-import standardReport from '../standardReport'
-import { defaultState } from '../standardReport'
+import { standardReport, defaultState } from '../standardReport'
 import {
     ADD_NEW_REPORT_ACTION,
     CONTEXT_MENU_ACTION,
@@ -113,7 +112,6 @@ describe('Reducer - standardReport', function() {
         it('should show the edit report form', function() {
             const expected = {
                 ...defaultState,
-                open: true,
                 selectedReport: report,
                 selectedAction: CONTEXT_MENU_ACTION.EDIT,
             }
