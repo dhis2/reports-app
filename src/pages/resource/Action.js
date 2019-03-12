@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import SharingDialog from '@dhis2/d2-ui-sharing-dialog'
-import { ConnectedAddEditResource } from './add-edit-resource/AddEditResource'
+//import { ConnectedAddEditResource } from './add-edit-resource/AddEditResource'
+import { ConnectedAddEditResource } from './AddEditResource'
 import { resourceActions } from '../../utils/resource/constants'
 
 export const Action = props => {

@@ -4,7 +4,7 @@ import { Field } from 'react-final-form'
 import FormControl from '@material-ui/core/FormControl'
 import FormHelperText from '@material-ui/core/FormHelperText'
 import Button from '@material-ui/core/Button'
-import { identity } from '../../utils/boolean/identity'
+import i18n from '@dhis2/d2-i18n'
 
 const useFileBlobAsValue = input => event => {
     event.persist()
@@ -14,15 +14,15 @@ const useFileBlobAsValue = input => event => {
     })
 }
 
+const formatBlobToString = data => (data ? data.value : '')
+
 export const File = props => (
     <div>
         <Field
             name={props.name}
             type="file"
             placeholder={props.placeholder}
-            format={
-                props.fileAsBlob ? data => (data ? data.value : '') : identity
-            }
+            format={formatBlobToString}
         >
             {({ input, meta, placeholder }) => (
                 <FormControl>
@@ -40,17 +40,14 @@ export const File = props => (
                     <input
                         name={input.name}
                         value={input.value}
-                        onChange={
-                            props.fileAsBlob
-                                ? useFileBlobAsValue(input)
-                                : input.onChange
-                        }
+                        onChange={useFileBlobAsValue(input)}
                         id={input.name}
                         type="file"
                         style={{ display: 'none' }}
                     />
                     <FormHelperText>
-                        {input.value.replace('C:\\fakepath\\', '')}
+                        {input.value.replace('C:\\fakepath\\', '') ||
+                            i18n.t('No file chosen')}
                     </FormHelperText>
                 </FormControl>
             )}
@@ -61,9 +58,4 @@ export const File = props => (
 File.propTypes = {
     name: PropTypes.string.isRequired,
     placeholder: PropTypes.string.isRequired,
-    fileAsBlob: PropTypes.bool,
-}
-
-File.defaultProps = {
-    fileAsBlob: false,
 }
