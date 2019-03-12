@@ -35,7 +35,7 @@ describe('Actions - Standard Reports - Async Thunks', () => {
             getFilteredStandardReports.mockClear()
         })
 
-        it('should dispatch astart loading action when loading the standard reports', done => {
+        it('should dispatch astart loading action when loading the standard reports', () => {
             const expectedActions = expect.arrayContaining([
                 startLoadingStandardReports(),
             ])
@@ -45,11 +45,10 @@ describe('Actions - Standard Reports - Async Thunks', () => {
 
             store.dispatch(loadStandardReports()).then(() => {
                 expect(store.getActions()).toEqual(expectedActions)
-                done()
             })
         })
 
-        it('should dispatch a success and set pager action when retrieval was successful', done => {
+        it('should dispatch a success and set pager action when retrieval was successful', () => {
             const responseSuccess = Promise.resolve({ reports, pager })
             const expectedActions = expect.arrayContaining([
                 loadingStandardReportsSuccess(reports),
@@ -61,11 +60,10 @@ describe('Actions - Standard Reports - Async Thunks', () => {
 
             store.dispatch(loadStandardReports()).then(() => {
                 expect(store.getActions()).toEqual(expectedActions)
-                done()
             })
         })
 
-        it('should dispatch the error action when retrieval failure', done => {
+        it('should dispatch the error action when retrieval failure', () => {
             const expectedActions = expect.arrayContaining([
                 loadingStandardReportsError(),
             ])
@@ -75,7 +73,6 @@ describe('Actions - Standard Reports - Async Thunks', () => {
 
             store.dispatch(loadStandardReports()).then(() => {
                 expect(store.getActions()).toEqual(expectedActions)
-                done()
             })
         })
     })
@@ -90,7 +87,7 @@ describe('Actions - Standard Reports - Async Thunks', () => {
             deleteStandardReportRequest.mockClear()
         })
 
-        it('should dispatch a loading start action when requesting the deletion', done => {
+        it('should dispatch a loading start action when requesting the deletion', () => {
             const expectedActions = expect.arrayContaining([
                 deleteStandardReportStart(),
             ])
@@ -100,11 +97,10 @@ describe('Actions - Standard Reports - Async Thunks', () => {
 
             store.dispatch(deleteStandardReport()).then(() => {
                 expect(store.getActions()).toEqual(expectedActions)
-                done()
             })
         })
 
-        it('should dispatch a success action when deleting successfully', done => {
+        it('should dispatch a success action when deleting successfully', () => {
             const expectedActions = expect.arrayContaining([
                 deleteStandardReportSuccess(),
             ])
@@ -114,11 +110,10 @@ describe('Actions - Standard Reports - Async Thunks', () => {
 
             store.dispatch(deleteStandardReport()).then(() => {
                 expect(store.getActions()).toEqual(expectedActions)
-                done()
             })
         })
 
-        it('should dispatch a error action when deleting unsuccessfully', done => {
+        it('should dispatch a error action when deleting unsuccessfully', () => {
             const expectedActions = expect.arrayContaining([
                 deleteStandardReportError(),
             ])
@@ -128,7 +123,6 @@ describe('Actions - Standard Reports - Async Thunks', () => {
 
             store.dispatch(deleteStandardReport()).then(() => {
                 expect(store.getActions()).toEqual(expectedActions)
-                done()
             })
         })
     })

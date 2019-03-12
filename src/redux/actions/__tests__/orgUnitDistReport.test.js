@@ -9,8 +9,8 @@ import {
 import {
     actionTypes as reportDataActions,
     loadingReportDataStart,
-    loadingReportDataSuccessWithFeedback,
-    loadingReportDataErrorWithFeedback,
+    loadingReportDataSuccess,
+    loadingReportDataError,
 } from '../reportData'
 import { getOrgUnitDistReport } from '../../../utils/api'
 
@@ -37,20 +37,20 @@ describe('Actions - orgUnitDistReport', () => {
         })
 
         it('Should displatch start and success actions if request is successful', () => {
-            const expectedActions = [
+            const expectedActions = expect.arrayContaining([
                 loadingReportDataStart(),
-                loadingReportDataSuccessWithFeedback(),
-            ]
+                loadingReportDataSuccess(),
+            ])
             store.dispatch(loadReport()).then(() => {
                 expect(store.getActions()).toEqual(expectedActions)
             })
         })
 
         it('Should displatch start and error actions if request fails', () => {
-            const expectedActions = [
+            const expectedActions = expect.arrayContaining([
                 loadingReportDataStart(),
-                loadingReportDataErrorWithFeedback(),
-            ]
+                loadingReportDataError(),
+            ])
             getOrgUnitDistReport.mockImplementationOnce(() =>
                 Promise.reject({})
             )

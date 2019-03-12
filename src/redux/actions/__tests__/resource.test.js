@@ -34,18 +34,17 @@ describe('Actions - resource', () => {
     })
 
     describe('loading resources', () => {
-        it('should dispatch a loading start action when loading resources', done => {
+        it('should dispatch a loading start action when loading resources', () => {
             const expectedActions = expect.arrayContaining([
                 loadingResourcesStart(),
             ])
 
             store.dispatch(loadResources()).then(() => {
                 expect(store.getActions()).toEqual(expectedActions)
-                done()
             })
         })
 
-        it('should dispatch a success action with the options when loading resources succesfully', done => {
+        it('should dispatch a success action with the options when loading resources succesfully', () => {
             const documents = [1, 2, 3, 4]
             const expectedActions = expect.arrayContaining([
                 loadingResourcesSuccess(documents),
@@ -57,11 +56,10 @@ describe('Actions - resource', () => {
 
             store.dispatch(loadResources()).then(() => {
                 expect(store.getActions()).toEqual(expectedActions)
-                done()
             })
         })
 
-        it('should dispatch an error action when loading the resources unsuccessfully', done => {
+        it('should dispatch an error action when loading the resources unsuccessfully', () => {
             const expectedActions = expect.arrayContaining([
                 loadingResourcesError(),
             ])
@@ -70,7 +68,6 @@ describe('Actions - resource', () => {
 
             store.dispatch(loadResources()).then(() => {
                 expect(store.getActions()).toEqual(expectedActions)
-                done()
             })
         })
     })
@@ -78,18 +75,17 @@ describe('Actions - resource', () => {
     describe('deleting resources', () => {
         const resource = { id: '1337' }
 
-        it('should dispatch a loading start action when deleting resources', done => {
+        it('should dispatch a loading start action when deleting resources', () => {
             const expectedActions = expect.arrayContaining([
                 deleteResourceStart(),
             ])
 
             store.dispatch(deleteResource(resource)).then(() => {
                 expect(store.getActions()).toEqual(expectedActions)
-                done()
             })
         })
 
-        it('should dispatch a success action with the options when deleting resources succesfully', done => {
+        it('should dispatch a success action with the options when deleting resources succesfully', () => {
             const expectedActions = expect.arrayContaining([
                 deleteResourceSuccess(),
             ])
@@ -100,11 +96,10 @@ describe('Actions - resource', () => {
 
             store.dispatch(deleteResource(resource)).then(() => {
                 expect(store.getActions()).toEqual(expectedActions)
-                done()
             })
         })
 
-        it('should dispatch an error action when deleting resources unsuccessfully', done => {
+        it('should dispatch an error action when deleting resources unsuccessfully', () => {
             const expectedActions = expect.arrayContaining([
                 deleteResourceError(),
             ])
@@ -115,7 +110,6 @@ describe('Actions - resource', () => {
 
             store.dispatch(deleteResource(resource)).then(() => {
                 expect(store.getActions()).toEqual(expectedActions)
-                done()
             })
         })
     })

@@ -34,7 +34,7 @@ describe('Actions - organisationUnits', () => {
             Promise.resolve(mockResp)
         )
 
-        it('should dispatch a loading start and success action', done => {
+        it('should dispatch a loading start and success action', () => {
             const expectedActions = expect.arrayContaining([
                 loadOrganisationUnitsStart(),
                 loadOrganisationUnitsSuccess(mockResp),
@@ -42,7 +42,6 @@ describe('Actions - organisationUnits', () => {
 
             store.dispatch(loadOrganisationUnits()).then(() => {
                 expect(store.getActions()).toEqual(expectedActions)
-                done()
             })
         })
     })
@@ -58,7 +57,7 @@ describe('Actions - organisationUnits', () => {
             console.error.mockClear()
         })
 
-        it('should dispatch a loading start and error action', done => {
+        it('should dispatch a loading start and error action', () => {
             const expectedActions = expect.arrayContaining([
                 loadOrganisationUnitsStart(),
                 loadOrganisationUnitsError(
@@ -68,25 +67,22 @@ describe('Actions - organisationUnits', () => {
 
             store.dispatch(loadOrganisationUnits()).then(() => {
                 expect(store.getActions()).toEqual(expectedActions)
-                done()
             })
         })
 
-        it('should dispatch a show feedback action', done => {
+        it('should dispatch a show feedback action', () => {
             const expectedActions = expect.arrayContaining([
                 showErrorSnackBar(loadOrganisationUnitsErrorDefaultMessage),
             ])
 
             store.dispatch(loadOrganisationUnits()).then(() => {
                 expect(store.getActions()).toEqual(expectedActions)
-                done()
             })
         })
 
-        it('prints the error in the console when rejected', done => {
+        it('prints the error in the console when rejected', () => {
             store.dispatch(loadOrganisationUnits()).then(() => {
                 expect(console.error).toHaveBeenCalledTimes(1)
-                done()
             })
         })
     })

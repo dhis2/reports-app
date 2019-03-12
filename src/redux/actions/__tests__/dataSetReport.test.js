@@ -42,7 +42,7 @@ describe('Actions - dataSetReport - Async thunks', () => {
             expect(store.getActions()).toEqual(expectedActions)
         })
 
-        it('should dispatch a success action when loading the report successfully', done => {
+        it('should dispatch a success action when loading the report successfully', () => {
             const report = 'Html Report'
             const expectedActions = expect.arrayContaining([
                 loadingReportDataSuccess(report),
@@ -53,11 +53,10 @@ describe('Actions - dataSetReport - Async thunks', () => {
 
             store.dispatch(loadReportData()).then(() => {
                 expect(store.getActions()).toEqual(expectedActions)
-                done()
             })
         })
 
-        it('should dispatch an error action when loading the html report fails', done => {
+        it('should dispatch an error action when loading the html report fails', () => {
             const expectedActions = expect.arrayContaining([
                 loadingReportDataError(),
             ])
@@ -65,7 +64,6 @@ describe('Actions - dataSetReport - Async thunks', () => {
 
             store.dispatch(loadReportData()).then(() => {
                 expect(store.getActions()).toEqual(expectedActions)
-                done()
             })
         })
     })
@@ -82,29 +80,27 @@ describe('Actions - dataSetReport - Async thunks', () => {
             postDataSetReportComment.mockClear()
         })
 
-        it('should dispatch a start loading action when sending the comment', done => {
+        it('should dispatch a start loading action when sending the comment', () => {
             const expectedActions = expect.arrayContaining([
                 sharingReportCommentStart(),
             ])
 
             store.dispatch(shareDataSetReportComment()).then(() => {
                 expect(store.getActions()).toEqual(expectedActions)
-                done()
             })
         })
 
-        it('should dispatch a success action when sharing a comment successfully', done => {
+        it('should dispatch a success action when sharing a comment successfully', () => {
             const expectedActions = expect.arrayContaining([
                 sharingReportCommentSuccess(),
             ])
 
             store.dispatch(shareDataSetReportComment()).then(() => {
                 expect(store.getActions()).toEqual(expectedActions)
-                done()
             })
         })
 
-        it('should dispatch an error action when sharing a comment failed', done => {
+        it('should dispatch an error action when sharing a comment failed', () => {
             postDataSetReportComment.mockImplementationOnce(() =>
                 Promise.reject()
             )
@@ -114,7 +110,6 @@ describe('Actions - dataSetReport - Async thunks', () => {
 
             store.dispatch(shareDataSetReportComment()).then(() => {
                 expect(store.getActions()).toEqual(expectedActions)
-                done()
             })
         })
     })

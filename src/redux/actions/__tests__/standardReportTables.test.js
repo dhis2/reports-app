@@ -22,18 +22,17 @@ describe('Actions - standardReportTables', () => {
         getStandardReportTables.mockClear()
     })
 
-    it('should dispatch a loading start action when loading standard report tables', done => {
+    it('should dispatch a loading start action when loading standard report tables', () => {
         const expectedActions = expect.arrayContaining([
             loadingStandardReportTablesStart(),
         ])
 
         store.dispatch(loadStandardReportTables()).then(() => {
             expect(store.getActions()).toEqual(expectedActions)
-            done()
         })
     })
 
-    it('should dispatch a success action with the options when loading standard report tables succesfully', done => {
+    it('should dispatch a success action with the options when loading standard report tables succesfully', () => {
         const expectedActions = expect.arrayContaining([
             loadingStandardReportTablesSuccess([
                 { value: '1337', label: 'foobar' },
@@ -46,11 +45,10 @@ describe('Actions - standardReportTables', () => {
 
         store.dispatch(loadStandardReportTables()).then(() => {
             expect(store.getActions()).toEqual(expectedActions)
-            done()
         })
     })
 
-    it('should dispatch an error action when loading standard report tables unsuccessfully', done => {
+    it('should dispatch an error action when loading standard report tables unsuccessfully', () => {
         const expectedActions = expect.arrayContaining([
             loadingStandardReportTablesError(),
         ])
@@ -59,7 +57,6 @@ describe('Actions - standardReportTables', () => {
 
         store.dispatch(loadStandardReportTables()).then(() => {
             expect(store.getActions()).toEqual(expectedActions)
-            done()
         })
     })
 })
