@@ -1,10 +1,12 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import { Field } from 'react-final-form'
+import Button from '@material-ui/core/Button'
 import FormControl from '@material-ui/core/FormControl'
 import FormHelperText from '@material-ui/core/FormHelperText'
-import Button from '@material-ui/core/Button'
+import PropTypes from 'prop-types'
+import React from 'react'
 import i18n from '@dhis2/d2-i18n'
+
+import { ErrorText } from './buildingBlocks/ErrorText'
 
 const useFileBlobAsValue = input => event => {
     event.persist()
@@ -23,12 +25,14 @@ export const File = props => (
             type="file"
             placeholder={props.placeholder}
             format={formatBlobToString}
+            {...props.fieldProps}
         >
             {({ input, meta, placeholder }) => (
                 <FormControl>
-                    <FormHelperText>
-                        {meta.error && meta.touched ? meta.error : ''}
-                    </FormHelperText>
+                    <ErrorText
+                        error={meta.error || ''}
+                        touched={meta.touched}
+                    />
                     <FormHelperText>{placeholder}</FormHelperText>
                     <FormHelperText>
                         <label htmlFor={input.name}>
@@ -58,4 +62,9 @@ export const File = props => (
 File.propTypes = {
     name: PropTypes.string.isRequired,
     placeholder: PropTypes.string.isRequired,
+    fieldProps: PropTypes.object,
+}
+
+File.defaultProps = {
+    fieldProps: {},
 }
