@@ -107,9 +107,6 @@ export default class Resource extends React.Component {
                         selectedAction={this.props.selectedAction}
                         selectedResource={this.props.selectedResource}
                         handleClose={this.props.closeContextMenu}
-                        handleError={this.manageError}
-                        addNewResource={this.props.addNewResource}
-                        updateResource={this.props.updateResource}
                     />
                     <Snackbar />
                 </div>

@@ -11,20 +11,14 @@ export const Action = props => {
     if (!props.selectedAction) return null
 
     if (props.selectedAction === resourceActions.NEW) {
-        return (
-            <ConnectedAddResource
-                d2={props.d2}
-                open={props.open}
-                onRequestClose={props.handleClose}
-                onError={props.handleError}
-                onSubmit={props.addNewResource}
-            />
-        )
+        return <ConnectedAddResource />
+    }
+
+    if (selectedAction === resourceActions.EDIT) {
+        return <ConnectedEditResource />
     }
 
     if (selectedAction === resourceActions.SHARING_SETTINGS) {
-        if (!props.selectedResource) return null
-
         return (
             <SharingDialog
                 open={props.open}
@@ -32,19 +26,6 @@ export const Action = props => {
                 type="document"
                 onRequestClose={props.handleClose}
                 d2={props.d2}
-            />
-        )
-    }
-
-    if (selectedAction === resourceActions.EDIT) {
-        return (
-            <ConnectedEditResource
-                selectedResource={props.selectedResource}
-                open={props.open}
-                onRequestClose={props.handleClose}
-                d2={props.d2}
-                onError={props.handleError}
-                onSubmit={props.updateResource}
             />
         )
     }
@@ -58,7 +39,4 @@ Action.propTypes = {
     selectedAction: PropTypes.string.isRequired,
     selectedResource: PropTypes.object.isRequired,
     handleClose: PropTypes.func.isRequired,
-    handleError: PropTypes.func.isRequired,
-    addNewResource: PropTypes.func.isRequired,
-    updateResource: PropTypes.func.isRequired,
 }

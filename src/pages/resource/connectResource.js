@@ -1,7 +1,6 @@
 import { connect } from 'react-redux'
 
 import {
-    addNewResource,
     addResource,
     closeContextMenu,
     deleteResource,
@@ -11,10 +10,8 @@ import {
     loadResources,
     setSearchAndLoadResources,
     showSharingSettings,
-    updateResource,
     viewResource,
 } from '../../redux/actions/resource'
-import { extractFileAndFormattedResource } from './helper'
 
 const mapStateToProps = state => ({
     open: state.resource.open,
@@ -26,27 +23,18 @@ const mapStateToProps = state => ({
     pager: state.pagination,
 })
 
-const mapDispatchToProps = dispatch => ({
-    goToNextPage: () => dispatch(goToNextPage()),
-    goToPrevPage: () => dispatch(goToPrevPage()),
-    loadResources: () => dispatch(loadResources()),
-    deleteResource: () => dispatch(deleteResource()),
-    setSearch: term => dispatch(setSearchAndLoadResources(term)),
-    addResource: (...values) => dispatch(addResource(...values)),
-    viewResource: (...values) => dispatch(viewResource(...values)),
-    editResource: (...values) => dispatch(editResource(...values)),
-    showSharingSettings: (...values) =>
-        dispatch(showSharingSettings(...values)),
-    closeContextMenu: () => dispatch(closeContextMenu()),
-    addNewResource: values => {
-        const { file, resource } = extractFileAndFormattedResource(values)
-        dispatch(addNewResource(resource, file))
-    },
-    updateResource: values => {
-        const { file, resource } = extractFileAndFormattedResource(values)
-        dispatch(updateResource(resource, file))
-    },
-})
+const mapDispatchToProps = {
+    goToNextPage,
+    goToPrevPage,
+    loadResources,
+    deleteResource,
+    setSearch: setSearchAndLoadResources,
+    addResource,
+    viewResource,
+    editResource,
+    showSharingSettings,
+    closeContextMenu,
+}
 
 export const connectResource = connect(
     mapStateToProps,
