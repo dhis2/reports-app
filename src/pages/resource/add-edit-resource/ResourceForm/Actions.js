@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import DialogActions from '@material-ui/core/DialogActions'
 import i18n from '@dhis2/d2-i18n'
-import { Button } from '../../../components/form/Button'
+import { Button } from '../../../../components/form/Button'
 
 export const Actions = props => (
     <DialogActions>

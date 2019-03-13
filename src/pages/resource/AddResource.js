@@ -5,7 +5,6 @@ import i18n from '@dhis2/d2-i18n'
 
 import { getInitialAddEditFormState } from '../../redux/selectors/resource/getInitialAddEditFormState'
 import { resourceActions } from '../../utils/resource/constants'
-import { isRequriedWhenTypeUploadFile } from './helper'
 import { ResourceForm } from './add-edit-resource/ResourceForm'
 
 const AddResource = props => (

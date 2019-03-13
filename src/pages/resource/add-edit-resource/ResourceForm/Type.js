@@ -3,9 +3,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import i18n from '@dhis2/d2-i18n'
 
-import { FormRow } from '../../../components/form/FormRow'
-import { Select } from '../../../components/form/Select'
-import { resourceTypeOptions } from '../../../utils/resource/constants'
+import { FormRow } from '../../../../components/form/FormRow'
+import { Select } from '../../../../components/form/Select'
+import { resourceTypeOptions } from '../../../../utils/resource/constants'
 
 export const Type = props => (
     <FormRow>
