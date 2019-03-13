@@ -109,6 +109,16 @@ export const postDocument = (api, resource) =>
     api.post(RESOURCE_ENDPOINT, resource)
 
 /**
+ * @param {Object} resource
+ * @param {File} file
+ * @returns {Object}
+ */
+export const addFileResourceUrlToResource = (resource, file) => ({
+    ...resource,
+    url: file.id || resource.url,
+})
+
+/**
  * @param {Object} api
  * @param {Object} resource
  * @returns {Promise}

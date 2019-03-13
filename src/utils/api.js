@@ -9,6 +9,7 @@ import {
     postDataSetReportCommentUrl,
 } from './api/constants'
 import {
+    addFileResourceUrlToResource,
     addFilterForName,
     formatStandardReportsResponse,
     mapCollectionToDimensionQueryString,
@@ -294,10 +295,9 @@ export const getDataSetOptions = () =>
 export const postResource = (resource, file = null) =>
     file
         ? uploadFile(api, file)
-              .then(({ response }) => ({
-                  ...resource,
-                  url: response.fileResource.id || resource.url,
-              }))
+              .then(({ response }) =>
+                  addFileResourceUrlToResource(response.fileResource, resource)
+              )
               .then(resource => postDocument(api, resource))
         : postDocument(api, resource)
 
@@ -306,12 +306,11 @@ export const postResource = (resource, file = null) =>
  * @param {File} [file] - an optional file
  * @returns {Promise}
  */
-export const updateResource = (resource, file = null) =>
+export const putResource = (resource, file = null) =>
     file
         ? uploadFile(api, file)
-              .then(({ response }) => ({
-                  ...resource,
-                  url: response.fileResource.id || resource.url,
-              }))
+              .then(({ response }) =>
+                  addFileResourceUrlToResource(response.fileResource, resource)
+              )
               .then(resource => putDocument(api, resource))
         : putDocument(api, resource)
