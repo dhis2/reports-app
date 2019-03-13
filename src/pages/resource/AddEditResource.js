@@ -15,6 +15,8 @@ import { FormSectionTitle } from '../../components/form/FormSectionTitle'
 import { Input } from '../../components/form/Input'
 import { RadioButtons } from '../../components/form/RadioButtons'
 import { Select } from '../../components/form/Select'
+import { getInitialAddEditFormState } from '../../redux/selectors/resource/getInitialAddEditFormState'
+import { isRequired, isRequiredWhen } from '../../utils/form/validators'
 import {
     resourceActions,
     resourceTypeOptions,
@@ -24,9 +26,10 @@ import {
 const titleAdd = i18n.t('Add resource')
 const titleEdit = i18n.t('Edit resource')
 
-const onSubmit = values => console.log('SUBMIT!!!', values)
-const validateResourceUpdate = () => false
-const validateNewResource = () => false
+const isTypeExternalUrl = values => values.type === resourceTypes.EXTERNAL_URL
+const isTypeUploadFile = values => values.type === resourceTypes.UPLOAD_FILE
+const isRequriedWhenTypeExternalUrl = isRequiredWhen(isTypeExternalUrl)
+const isRequriedWhenTypeUploadFile = isRequiredWhen(isTypeUploadFile)
 
 const AddEditResource = props => (
     <FormDialog
@@ -34,11 +37,7 @@ const AddEditResource = props => (
         open={props.open}
         onClose={() => props.onRequestClose(false)}
     >
-        <Form
-            onSubmit={props.onSubmit}
-            validate={props.edit ? validateResourceUpdate : validateNewResource}
-            initialValues={props.initialValues}
-        >
+        <Form onSubmit={props.onSubmit} initialValues={props.initialValues}>
             {({ handleSubmit, values }) => (
                 <form onSubmit={handleSubmit}>
                     <DialogContent>
@@ -52,6 +51,7 @@ const AddEditResource = props => (
                                     name="name"
                                     placeholder={i18n.t('Name*')}
                                     component={Input}
+                                    validate={isRequired}
                                 />
                             </FormRow>
 
@@ -79,6 +79,9 @@ const AddEditResource = props => (
                                             name="resourceUrl"
                                             placeholder={i18n.t('Url*')}
                                             component={Input}
+                                            validate={
+                                                isRequriedWhenTypeExternalUrl
+                                            }
                                         />
                                     </FormRow>
                                 </Fragment>
@@ -116,8 +119,11 @@ const AddEditResource = props => (
 
                                     <FormRow>
                                         <File
-                                            name="fileName"
+                                            name="file"
                                             placeholder={i18n.t('File')}
+                                            fieldProps={{
+                                                validate: isRequriedWhenTypeUploadFile,
+                                            }}
                                         />
                                     </FormRow>
                                 </Fragment>
@@ -153,13 +159,7 @@ AddEditResource.propTypes = {
     onSubmit: PropTypes.func.isRequired,
 }
 
-export const ConnectedAddEditResource = connect(
-    state => ({
-        edit: state.resource.selectedAction === resourceActions.EDIT,
-        initialValues: {
-            type: resourceTypeOptions[1].value,
-            attachment: 'no',
-        },
-    }),
-    () => ({ onSubmit })
-)(AddEditResource)
+export const ConnectedAddEditResource = connect(state => ({
+    edit: state.resource.selectedAction === resourceActions.EDIT,
+    initialValues: getInitialAddEditFormState(state),
+}))(AddEditResource)

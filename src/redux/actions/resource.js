@@ -1,20 +1,23 @@
 import debounce from 'lodash.debounce'
+import i18n from '@dhis2/d2-i18n'
+
 import { DEBOUNCE_DELAY } from '../../config/search.config'
+import { RESOURCE_ENDPOINT } from '../../utils/api/constants'
 import {
     getApi,
     getResources,
+    postResource,
+    putResource,
     deleteResource as sendDeleteResourceRequest,
 } from '../../utils/api'
-import { RESOURCE_ENDPOINT } from '../../utils/api/constants'
-import i18n from '@dhis2/d2-i18n'
-import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
-import { showSuccessSnackBar, showErrorSnackBar } from './feedback'
 import {
     goToNextPage as goToNextPageOrig,
     goToPrevPage as goToPrevPageOrig,
     resetPagination,
     setPagination,
 } from './pagination'
+import { showSuccessSnackBar, showErrorSnackBar } from './feedback'
+import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
 
 export const actionTypes = {
     LOADING_RESOURCES_START: 'LOADING_RESOURCES_START',
@@ -267,18 +270,37 @@ export const loadingAddResourceErrorWithFeedback = error => dispatch => {
 }
 
 /**
- * @param {Object} values
+ * @param {Object} resource
+ * @param {File} [file]
  * @returns {Function}
  */
-export const addNewResource = values => dispatch => {
+export const addNewResource = (resource, file) => dispatch => {
     dispatch(loadingAddResourceStart())
 
-    //postResource()
-    //    .then(() => {
-    //        dispatch(loadingAddResourceSuccess())
-    //        dispatch(loadResources())
-    //    })
-    //    .catch(error => {
-    //        dispatch(loadingAddResourceErrorWithFeedback(error))
-    //    })
+    postResource(resource, file)
+        .then(() => {
+            dispatch(loadingAddResourceSuccess())
+            dispatch(loadResources())
+        })
+        .catch(error => {
+            dispatch(loadingAddResourceErrorWithFeedback(error))
+        })
+}
+
+/**
+ * @param {Object} resource
+ * @param {File} [file]
+ * @returns {Function}
+ */
+export const updateResource = (resource, file) => dispatch => {
+    dispatch(loadingAddResourceStart())
+
+    putResource(resource, file)
+        .then(() => {
+            dispatch(loadingAddResourceSuccess())
+            dispatch(loadResources())
+        })
+        .catch(error => {
+            dispatch(loadingAddResourceErrorWithFeedback(error))
+        })
 }

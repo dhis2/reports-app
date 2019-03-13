@@ -108,6 +108,8 @@ export default class Resource extends React.Component {
                         selectedResource={this.props.selectedResource}
                         handleClose={this.props.closeContextMenu}
                         handleError={this.manageError}
+                        addNewResource={this.props.addNewResource}
+                        updateResource={this.props.updateResource}
                     />
                     <Snackbar />
                 </div>
@@ -137,6 +139,8 @@ Resource.propTypes = {
     editResource: PropTypes.func.isRequired,
     showSharingSettings: PropTypes.func.isRequired,
     closeContextMenu: PropTypes.func.isRequired,
+    addNewResource: PropTypes.func.isRequired,
+    updateResource: PropTypes.func.isRequired,
 }
 
 Resource.childContextTypes = {
