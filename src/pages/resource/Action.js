@@ -1,7 +1,9 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import React from 'react'
 import SharingDialog from '@dhis2/d2-ui-sharing-dialog'
-import { ConnectedAddEditResource } from './AddEditResource'
+
+import { ConnectedAddResource } from './AddResource'
+import { ConnectedEditResource } from './EditResource'
 import { resourceActions } from '../../utils/resource/constants'
 
 export const Action = props => {
@@ -10,7 +12,7 @@ export const Action = props => {
 
     if (props.selectedAction === resourceActions.NEW) {
         return (
-            <ConnectedAddEditResource
+            <ConnectedAddResource
                 d2={props.d2}
                 open={props.open}
                 onRequestClose={props.handleClose}
@@ -36,7 +38,7 @@ export const Action = props => {
 
     if (selectedAction === resourceActions.EDIT) {
         return (
-            <ConnectedAddEditResource
+            <ConnectedEditResource
                 selectedResource={props.selectedResource}
                 open={props.open}
                 onRequestClose={props.handleClose}

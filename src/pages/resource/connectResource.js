@@ -37,7 +37,7 @@ const mapDispatchToProps = dispatch => ({
     editResource: (...values) => dispatch(editResource(...values)),
     showSharingSettings: (...values) =>
         dispatch(showSharingSettings(...values)),
-    closeContextMenu: (...values) => dispatch(closeContextMenu(...values)),
+    closeContextMenu: () => dispatch(closeContextMenu()),
     addNewResource: values => {
         const { file, resource } = extractFileAndFormattedResource(values)
         dispatch(addNewResource(resource, file))

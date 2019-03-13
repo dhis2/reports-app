@@ -7,7 +7,14 @@ export const getInitialAddEditFormState = state => {
     const isEdit = state.resource.selectedAction === resourceActions.EDIT
 
     if (isEdit) {
-        return {}
+        const { selectedResource: resource } = state.resource
+
+        return {
+            name: resource.displayName,
+            type: resourceTypeOptions[resource.external ? 0 : 1].value,
+            attachment: resource.attachment ? 'yes' : 'no',
+            url: resource.url,
+        }
     } else {
         return {
             name: '',

@@ -12,7 +12,7 @@ import { inputWrapper } from './styles'
 import { ErrorText } from './buildingBlocks/ErrorText'
 
 export const SelectField = props => (
-    <MUISelect native {...props.input}>
+    <MUISelect native {...props.input} disabled={props.disabled}>
         {props.showEmptyOption && <option value="" />}
         {props.options.map(option => (
             <option key={option.value} value={option.value}>
@@ -25,6 +25,7 @@ export const SelectField = props => (
 SelectField.propTypes = {
     input: formInput.isRequired,
     showEmptyOption: PropTypes.bool.isRequired,
+    disabled: PropTypes.bool.isRequired,
     options: formOptions.isRequired,
 }
 
@@ -36,6 +37,7 @@ export const Select = props => (
             input={props.input}
             showEmptyOption={props.showEmptyOption}
             options={props.options}
+            disabled={props.disabled}
         />
         <ErrorText
             showErrorText={props.showErrorText}
@@ -49,14 +51,16 @@ export const Select = props => (
 Select.propTypes = {
     input: formInput.isRequired,
     meta: formInputMeta.isRequired,
-
     placeholder: PropTypes.string.isRequired,
-    showEmptyOption: PropTypes.bool.isRequired,
-    showErrorText: PropTypes.bool.isRequired,
     options: formOptions.isRequired,
+
+    showEmptyOption: PropTypes.bool,
+    showErrorText: PropTypes.bool,
+    disabled: PropTypes.bool,
 }
 
 Select.defaultProps = {
     showEmptyOption: false,
     showErrorText: false,
+    disabled: false,
 }

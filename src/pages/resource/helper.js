@@ -1,4 +1,6 @@
 import omit from 'lodash.omit'
+
+import { isRequiredWhen } from '../../utils/form/validators'
 import { resourceActions, resourceTypes } from '../../utils/resource/constants'
 
 export const showContextAction = deleteResource => (document, action) => {
@@ -29,3 +31,18 @@ export const extractFileAndFormattedResource = values => {
         resource: formattedResource,
     }
 }
+
+/**
+ *
+ * Validation
+ *
+ */
+export const isTypeExternalUrl = values =>
+    values.type === resourceTypes.EXTERNAL_URL
+
+export const isTypeUploadFile = values =>
+    values.type === resourceTypes.UPLOAD_FILE
+
+export const isRequriedWhenTypeExternalUrl = isRequiredWhen(isTypeExternalUrl)
+
+export const isRequriedWhenTypeUploadFile = isRequiredWhen(isTypeUploadFile)

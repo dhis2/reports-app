@@ -16,7 +16,7 @@ const useFileBlobAsValue = input => event => {
     })
 }
 
-const formatBlobToString = data => (data ? data.value : '')
+const formatBlobToString = data => data.value || ''
 
 export const File = props => (
     <div>
@@ -37,7 +37,7 @@ export const File = props => (
                     <FormHelperText>
                         <label htmlFor={input.name}>
                             <Button variant="contained" component="span">
-                                Upload
+                                {i18n.t('Select file')}
                             </Button>
                         </label>
                     </FormHelperText>
