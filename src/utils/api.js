@@ -311,7 +311,7 @@ export const postResource = (resource, file = null) =>
  * @param {File} [file] - an optional file
  * @returns {Promise}
  */
-export const putResource = (resource, file = null) =>
+export const putResource = (resourceId, resource, file = null) =>
     file
         ? uploadFile(api, file)
               .then(({ response }) =>
@@ -322,5 +322,5 @@ export const putResource = (resource, file = null) =>
                       )
                   )
               )
-              .then(resource => putDocument(api, resource))
-        : putDocument(api, resource)
+              .then(resource => putDocument(api, resourceId, resource))
+        : putDocument(api, resourceId, resource)

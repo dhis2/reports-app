@@ -3,17 +3,17 @@ import DialogContent from '@material-ui/core/DialogContent'
 import PropTypes from 'prop-types'
 import React, { Fragment } from 'react'
 
-import { File } from '../../../components/form/File'
+import { Actions } from './Actions'
+import { Attachment } from './Attachment'
+import { File } from './File'
 import { FormDialog } from '../../../components/form/FormDialog'
 import { FormSection } from '../../../components/form/FormSection'
-import { Type } from '../../../utils/i18n/locales/en/translations.json'
-import { resourceTypes } from '../../../utils/resource/constants'
-import { TitleResource } from './TitleResource'
-import { TitleDetails } from './TitleDetails'
-import { Attachment } from './Attachment'
-import { Actions } from './Actions'
 import { Name } from './Name'
+import { TitleDetails } from './TitleDetails'
+import { TitleResource } from './TitleResource'
+import { Type } from './Type'
 import { Url } from './Url'
+import { resourceTypes } from '../../../utils/resource/constants'
 
 export const ResourceForm = props => (
     <FormDialog title={props.title} open={props.open} onClose={props.onCancel}>
@@ -43,7 +43,7 @@ export const ResourceForm = props => (
                                 <Fragment>
                                     <TitleResource />
                                     <Attachment />
-                                    <File validate={props.validateFile} />
+                                    <File isRequired={props.isFileRequired} />
                                 </Fragment>
                             )}
                         />
@@ -60,11 +60,11 @@ export const ResourceForm = props => (
 )
 
 ResourceForm.propTypes = {
+    isFileRequired: PropTypes.bool.isRequired,
     open: PropTypes.bool.isRequired,
     title: PropTypes.string.isRequired,
     onSubmitLabel: PropTypes.string.isRequired,
     initialValues: PropTypes.object.isRequired,
-    validateFile: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
 }

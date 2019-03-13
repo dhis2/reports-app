@@ -9,7 +9,7 @@ import { isRequired } from '../../../utils/form/validators'
 export const Url = () => (
     <FormRow>
         <Field
-            name="resourceUrl"
+            name="url"
             placeholder={i18n.t('Url*')}
             component={Input}
             validate={isRequired}

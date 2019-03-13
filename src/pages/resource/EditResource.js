@@ -11,9 +11,9 @@ const EditResource = props => (
     <ResourceForm
         open={props.open}
         title={i18n.t('Edit resource')}
+        isFileRequired={false}
         onSubmitLabel={i18n.t('Save resource')}
         initialValues={props.initialValues}
-        validateFile={() => undefined}
         onSubmit={props.onSubmit}
         onCancel={props.onRequestClose}
     />

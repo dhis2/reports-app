@@ -16,7 +16,7 @@ const useFileBlobAsValue = input => event => {
     })
 }
 
-const formatBlobToString = data => data.value || ''
+const formatBlobToString = data => (data ? data.value : '')
 
 export const File = props => (
     <div>

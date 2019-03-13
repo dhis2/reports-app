@@ -12,9 +12,9 @@ const AddResource = props => (
     <ResourceForm
         open={props.open}
         title={i18n.t('Add resource')}
+        isFileRequired={true}
         onSubmitLabel={i18n.t('Add resource')}
         initialValues={props.initialValues}
-        validateFile={isRequriedWhenTypeUploadFile}
         onSubmit={props.onSubmit}
         onCancel={props.onRequestClose}
     />

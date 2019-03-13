@@ -1,10 +1,13 @@
+import { Field } from 'react-final-form'
 import React from 'react'
+import PropTypes from 'prop-types'
 import i18n from '@dhis2/d2-i18n'
+
+import { FormRow } from '../../../components/form/FormRow'
 import { Select } from '../../../components/form/Select'
-import { isRequired } from '../../../utils/form/validators'
 import { resourceTypeOptions } from '../../../utils/resource/constants'
 
-export const Type = () => (
+export const Type = props => (
     <FormRow>
         <Field
             name="type"
@@ -12,7 +15,7 @@ export const Type = () => (
             options={resourceTypeOptions}
             showErrorText={false}
             component={Select}
-            disabled={disabled}
+            disabled={props.disabled}
         />
     </FormRow>
 )

@@ -43,9 +43,8 @@ const mapDispatchToProps = dispatch => ({
         dispatch(addNewResource(resource, file))
     },
     updateResource: values => {
-        console.log('update', values)
         const { file, resource } = extractFileAndFormattedResource(values)
-        //dispatch(updateResource(resource, file))
+        dispatch(updateResource(resource, file))
     },
 })
 

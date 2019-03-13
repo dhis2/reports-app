@@ -295,10 +295,11 @@ export const addNewResource = (resource, file) => dispatch => {
  * @param {File} [file]
  * @returns {Function}
  */
-export const updateResource = (resource, file) => dispatch => {
+export const updateResource = (resource, file) => (dispatch, getState) => {
     dispatch(loadingAddResourceStart())
 
-    putResource(resource, file)
+    const resourceId = getState().resource.selectedResource.id
+    putResource(resourceId, resource, file)
         .then(() => {
             dispatch(loadingAddResourceSuccess())
             dispatch(loadResources())

@@ -120,8 +120,9 @@ export const addFileResourceUrlToResource = (resource, file) => ({
 
 /**
  * @param {Object} api
+ * @param {string} resourceId
  * @param {Object} resource
  * @returns {Promise}
  */
-export const putDocument = (api, resource) =>
-    api.update(`${RESOURCE_ENDPOINT}/${resource.id}`, resource)
+export const putDocument = (api, resourceId, resource) =>
+    api.update(`${RESOURCE_ENDPOINT}/${resourceId}`, resource)

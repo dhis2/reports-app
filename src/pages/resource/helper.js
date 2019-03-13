@@ -17,7 +17,9 @@ export const showContextAction = deleteResource => (document, action) => {
 
 export const extractFileAndFormattedResource = values => {
     const file =
-        values.type === resourceTypes.UPLOAD_FILE ? values.file.file : null
+        values.type === resourceTypes.UPLOAD_FILE && values.file
+            ? values.file.file
+            : null
 
     const resource = omit(values, 'file')
     const formattedResource = {
