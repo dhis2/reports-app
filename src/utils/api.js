@@ -296,7 +296,12 @@ export const postResource = (resource, file = null) =>
     file
         ? uploadFile(api, file)
               .then(({ response }) =>
-                  addFileResourceUrlToResource(response.fileResource, resource)
+                  Promise.resolve(
+                      addFileResourceUrlToResource(
+                          resource,
+                          response.fileResource
+                      )
+                  )
               )
               .then(resource => postDocument(api, resource))
         : postDocument(api, resource)
@@ -310,7 +315,12 @@ export const putResource = (resource, file = null) =>
     file
         ? uploadFile(api, file)
               .then(({ response }) =>
-                  addFileResourceUrlToResource(response.fileResource, resource)
+                  Promise.resolve(
+                      addFileResourceUrlToResource(
+                          resource,
+                          response.fileResource
+                      )
+                  )
               )
               .then(resource => putDocument(api, resource))
         : putDocument(api, resource)

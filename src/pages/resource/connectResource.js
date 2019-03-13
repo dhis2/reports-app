@@ -40,8 +40,7 @@ const mapDispatchToProps = dispatch => ({
     closeContextMenu: (...values) => dispatch(closeContextMenu(...values)),
     addNewResource: values => {
         const { file, resource } = extractFileAndFormattedResource(values)
-        console.log('add new', file, resource)
-        //dispatch(addNewResource(resource, file))
+        dispatch(addNewResource(resource, file))
     },
     updateResource: values => {
         console.log('update', values)

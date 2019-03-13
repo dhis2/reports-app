@@ -16,10 +16,16 @@ export const showContextAction = deleteResource => (document, action) => {
 export const extractFileAndFormattedResource = values => {
     const file =
         values.type === resourceTypes.UPLOAD_FILE ? values.file.file : null
-    const resource =
-        values.type === resourceTypes.UPLOAD_FILE
-            ? omit(values, ['file', 'url'])
-            : omit(values, ['file', 'attachment'])
 
-    return { file, resource }
+    const resource = omit(values, 'file')
+    const formattedResource = {
+        ...resource,
+        attachment: values.attachment === 'yes' ? true : false,
+        external: values.type === resourceTypes.EXTERNAL_URL,
+    }
+
+    return {
+        file,
+        resource: formattedResource,
+    }
 }
