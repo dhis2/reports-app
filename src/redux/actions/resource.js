@@ -35,6 +35,9 @@ export const actionTypes = {
     RESOURCE_ADD_LOADING_START: 'RESOURCE_ADD_LOADING_START',
     RESOURCE_ADD_LOADING_SUCCESS: 'RESOURCE_ADD_LOADING_SUCCESS',
     RESOURCE_ADD_LOADING_ERROR: 'RESOURCE_ADD_LOADING_ERROR',
+    RESOURCE_EDIT_LOADING_START: 'RESOURCE_EDIT_LOADING_START',
+    RESOURCE_EDIT_LOADING_SUCCESS: 'RESOURCE_EDIT_LOADING_SUCCESS',
+    RESOURCE_EDIT_LOADING_ERROR: 'RESOURCE_EDIT_LOADING_ERROR',
 }
 
 /**
@@ -291,20 +294,63 @@ export const addNewResource = (resource, file) => dispatch => {
 }
 
 /**
+ *
+ * Editing a resource
+ *
+ */
+
+/**
+ * @returns {Object}
+ */
+export const loadingEditResourceStart = () => ({
+    type: actionTypes.RESOURCE_EDIT_LOADING_START,
+})
+
+/**
+ * @returns {Object}
+ */
+export const loadingEditResourceSuccess = () => ({
+    type: actionTypes.RESOURCE_EDIT_LOADING_SUCCESS,
+})
+
+/**
+ * @returns {Object}
+ */
+export const loadingEditResourceError = () => ({
+    type: actionTypes.RESOURCE_EDIT_LOADING_ERROR,
+})
+
+/**
+ * @param {Error} error
+ * @returns {Function}
+ */
+export const loadingEditResourceErrorWithFeedback = error => dispatch => {
+    const defaultAddResourceErrorMessage = i18n.t(
+        'An error occurred while saving the modifications!'
+    )
+    const displayMessage = humanReadableErrorMessage(
+        error,
+        defaultAddResourceErrorMessage
+    )
+    dispatch(showErrorSnackBar(displayMessage))
+    dispatch(loadingAddResourceError())
+}
+
+/**
  * @param {Object} resource
  * @param {File} [file]
  * @returns {Function}
  */
 export const updateResource = (resource, file) => (dispatch, getState) => {
-    dispatch(loadingAddResourceStart())
+    dispatch(loadingEditResourceStart())
 
     const resourceId = getState().resource.selectedResource.id
     putResource(resourceId, resource, file)
         .then(() => {
-            dispatch(loadingAddResourceSuccess())
+            dispatch(loadingEditResourceSuccess())
             dispatch(loadResources())
         })
         .catch(error => {
-            dispatch(loadingAddResourceErrorWithFeedback(error))
+            dispatch(loadingEditResourceErrorWithFeedback(error))
         })
 }

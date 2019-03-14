@@ -103,6 +103,27 @@ export const resource = (state = defaultState, { type, payload } = {}) => {
                 loading: false,
             }
 
+        case actionTypes.RESOURCE_EDIT_LOADING_START:
+            return {
+                ...state,
+                loading: true,
+            }
+
+        case actionTypes.RESOURCE_EDIT_LOADING_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                open: false,
+                selectedAction: '',
+                selectedResource: defaultSelectedResource,
+            }
+
+        case actionTypes.RESOURCE_EDIT_LOADING_ERROR:
+            return {
+                ...state,
+                loading: false,
+            }
+
         default:
             return state
     }
