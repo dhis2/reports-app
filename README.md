@@ -6,7 +6,7 @@
 ### Contributing
 
 If you want to contribute to this code base, there is documentation in the docs directory.
-You can start by reading the [general docs](./docs/general.md)
+You can start by reading the [general docs](./docs/README.md)
 
 ### Pre-requisites
 

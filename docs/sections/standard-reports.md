@@ -15,8 +15,7 @@ live inside the `src/actions/standardReport.js` file.
 ## Behavior
 
 The standard reports section will show a list of the available reports.
-These can be filtered by name, edited, deleted. New reports can be added
-and reports with data can be created.
+New reports can be added, existing reports can be filtered by name, edited, deleted.
 
 ### Loading reports from the DB
 
