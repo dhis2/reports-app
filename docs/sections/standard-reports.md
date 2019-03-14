@@ -1,6 +1,6 @@
 # Standard Reports
 
-If you want to know what standard reports are, please refer to the end-user manual
+For documentation about standard reports, please refer to the end-user manual
 found on our [docs page](https://docs.dhis2.org).
 
 ## Behavior
@@ -18,3 +18,13 @@ editing or deleting reports.
 
 In order to prevent the user from accidentally deleting a report when clicking
 on delete, we request a confirmation by the user.
+
+### Editing a standard report
+
+The report's details are not being loaded when the section loads the reports
+in the componentDidMount. When the user clicks on the edit action in the
+context menu, in contrast to the other actions, the `open` state is
+not immediately set to true. The action creator dispatched when clicking on
+the edit action is a thunk and itself dispatches an action to load the details
+of the selected report. Only when the api responds with the details,
+the `open` state is set to true.
