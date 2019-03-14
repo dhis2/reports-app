@@ -8,6 +8,7 @@ If you need info on a specific section, please refer to the section's docs:
 Other topics that might be interesting:
 
 -   [Form handling](./forms.md)
+-   [State management with redux](./redux.md)
 
 ## Loading the initial data for each section
 

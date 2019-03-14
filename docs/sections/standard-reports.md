@@ -1,16 +1,7 @@
 # Standard Reports
 
-This document will describe how the internals of the app work and where to adjust
-things if you want to contribute.
 If you want to know what standard reports are, please refer to the end-user manual
 found on our [docs page](https://docs.dhis2.org).
-
-## State management
-
-The state is mostly handled by redux, no big surprises here.
-Some of the UI components have internal state like the sharing dialog.
-Side-effects are handled with redux-thunk so pretty much everything should
-live inside the `src/actions/standardReport.js` file.
 
 ## Behavior
 

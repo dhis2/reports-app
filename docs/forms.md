@@ -19,4 +19,13 @@ As these forms are more complex, we've introduced react-final-form for form hand
 In order to have unified styling across forms, there are some helper components in
 the [form components](../src/components/form) directory.
 
-Components for individual inputs (like `input`, `select`, `checkbox`, etc)
+Components for individual inputs (like `input`, `select`, `checkbox`, etc) must be
+implemented without react-final-form's `Field` component but must be compatible
+with react-final-form in a way that you can pass the input component to `Field`'s
+render prop (See existing input components for working configuration).
+
+#### Exceptions
+
+Components that render multiple input fields while each input needs a separate
+`Field` wrapper can make use of the Field component, but need to provide
+the report app's custom input component to ensure uniform style across the app.
