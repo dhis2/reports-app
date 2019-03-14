@@ -172,14 +172,6 @@
       "mjs"
     ]
   },
-  "babel": {
-    "presets": [
-      "react-app"
-    ],
-    "plugins": [
-      "styled-jsx/babel"
-    ]
-  },
   "eslintConfig": {
     "extends": "react-app"
   }

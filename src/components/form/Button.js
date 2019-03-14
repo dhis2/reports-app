@@ -1,14 +1,6 @@
 import { Button as ButtonOrig } from '@dhis2/d2-ui-core'
 import React from 'react'
 import PropTypes from 'prop-types'
-import css from 'styled-jsx/css'
-
-const style = css`
-    span {
-        display: inline-block;
-        margin-right: 10px;
-    }
-`
 
 export const Button = props => (
     <span>
@@ -20,7 +12,13 @@ export const Button = props => (
         >
             {props.label}
         </ButtonOrig>
-        <style jsx>{style}</style>
+
+        <style jsx>{`
+            span {
+                display: inline-block;
+                margin-right: 10px;
+            }
+        `}</style>
     </span>
 )
 
