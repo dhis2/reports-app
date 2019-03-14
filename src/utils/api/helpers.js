@@ -1,4 +1,4 @@
-import { FILE_RESOURCES_ENDPOINT, RESOURCE_ENDPOINT } from './constants'
+import { FILE_RESOURCES_ENDPOINT } from './constants'
 import { getApi } from '../api'
 
 /**
@@ -101,14 +101,6 @@ export const uploadFile = (api, file) => {
 }
 
 /**
- * @param {Object} api
- * @param {Object} resource
- * @returns {Promise}
- */
-export const postDocument = (api, resource) =>
-    api.post(RESOURCE_ENDPOINT, resource)
-
-/**
  * @param {Object} resource
  * @param {File} file
  * @returns {Object}
@@ -117,12 +109,3 @@ export const addFileResourceUrlToResource = (resource, file) => ({
     ...resource,
     url: file.id || resource.url,
 })
-
-/**
- * @param {Object} api
- * @param {string} resourceId
- * @param {Object} resource
- * @returns {Promise}
- */
-export const putDocument = (api, resourceId, resource) =>
-    api.update(`${RESOURCE_ENDPOINT}/${resourceId}`, resource)

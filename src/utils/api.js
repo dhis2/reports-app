@@ -15,8 +15,6 @@ import {
     mapCollectionToDimensionQueryString,
     mapResponseToArrayOfIds,
     parseFileUrls,
-    postDocument,
-    putDocument,
     standardReportsFields,
     uploadFile,
 } from './api/helpers'
@@ -286,6 +284,23 @@ export const getDataSetOptions = () =>
     d2.models.dataSet
         .list({ paging: false, fields: 'id,displayName' })
         .then(response => response.toArray())
+
+/**
+ * @param {Object} api
+ * @param {Object} resource
+ * @returns {Promise}
+ */
+export const postDocument = (api, resource) =>
+    api.post(RESOURCE_ENDPOINT, resource)
+
+/**
+ * @param {Object} api
+ * @param {string} resourceId
+ * @param {Object} resource
+ * @returns {Promise}
+ */
+export const putDocument = (api, resourceId, resource) =>
+    api.update(`${RESOURCE_ENDPOINT}/${resourceId}`, resource)
 
 /**
  * @param {Object} resource

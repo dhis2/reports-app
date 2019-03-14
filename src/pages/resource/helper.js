@@ -24,7 +24,7 @@ export const extractFileAndFormattedResource = values => {
     const resource = omit(values, 'file')
     const formattedResource = {
         ...resource,
-        attachment: values.attachment === 'yes' ? true : false,
+        attachment: values.attachment === 'yes',
         external: values.type === resourceTypes.EXTERNAL_URL,
     }
 
