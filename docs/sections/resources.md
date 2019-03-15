@@ -5,9 +5,13 @@
 The resources section will show a list of the existing resources.
 New reports can be added, existing reports can be filtered by name, edited, deleted.
 
-#### Currently known bug
+#### Currently known bugs
 
 Resources with a file can not be modified, the respective endpoint throws an error.
+Here is the JIRA issues:
+
+-   [TECH-150](https://jira.dhis2.org/browse/TECH-150).
+-   [DHIS2-6131](https://jira.dhis2.org/browse/DHIS2-6131)
 
 ### Loading resources from the DB
 
