@@ -1,8 +1,5 @@
 # Resources
 
-For documentation about resource, please refer to the end-user manual
-found on our [docs page](https://docs.dhis2.org).
-
 ## Behavior
 
 The resources section will show a list of the existing resources.

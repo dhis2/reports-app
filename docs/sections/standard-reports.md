@@ -1,8 +1,5 @@
 # Standard Reports
 
-For documentation about standard reports, please refer to the end-user manual
-found on our [docs page](https://docs.dhis2.org).
-
 ## Behavior
 
 The standard reports section will show a list of the available reports.

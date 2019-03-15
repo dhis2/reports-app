@@ -3,12 +3,17 @@
 This are general information on how this app works internally.
 If you need info on a specific section, please refer to the section's docs:
 
--   [Standard reports](./sections/standard-reports.md)
+-   [Standard report](./sections/standard-reports.md)
+-   [Data set report](./sections/data-set-report.md)
+-   [Reporting summary rate](./sections/reporting-rate-summary.md)
+-   [Resource](./sections/resources.md)
+-   [Organisation unit distribution report](./sections/organisation-unit-distribution-report.md)
 
 Other topics that might be interesting:
 
--   [Form handling](./forms.md)
 -   [State management with redux](./redux.md)
+-   [Code architecture](./architecture.md)
+-   [Form handling](./forms.md)
 
 ## Loading the initial data for each section
 
