@@ -11,7 +11,7 @@ import { loadDataSetOptions } from './redux/actions/dataSet'
 import AppRouter from './components/AppRouter'
 import { Loader } from './components/feedback/Loader'
 import AppContext from './pages/AppContext'
-import { sections } from './config/sections.conf'
+import { sections } from './config/sections.config'
 import styles from './utils/styles'
 
 class App extends PureComponent {
