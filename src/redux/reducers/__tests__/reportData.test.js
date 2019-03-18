@@ -10,7 +10,7 @@ describe('Reducer - reportData', () => {
         })
     })
 
-    describe('Loading the html report', () => {
+    describe('Loading the report data', () => {
         it('should unset the content when loading a new report', () => {
             const action = { type: actionTypes.LOADING_REPORT_DATA_START }
             const preState = {

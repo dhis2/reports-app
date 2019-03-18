@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BarChart/> Should match the snapshot 1`] = `
+<ReportLoader
+  content={
+    Object {
+      "data": Object {
+        "datasets": Array [
+          Object {
+            "backgroundColor": "rgba(39, 102, 150, 0.6)",
+            "borderColor": "rgb(39, 102, 150)",
+            "borderWidth": 1,
+            "data": Array [
+              6,
+              3,
+              11,
+              95,
+            ],
+            "hoverBackgroundColor": "rgba(39, 102, 150, 0.8)",
+            "label": "Count",
+          },
+        ],
+        "labels": Array [
+          "Mission",
+          "NGO",
+          "Private Clinic",
+          "Public facilities",
+        ],
+      },
+      "options": Object {
+        "animation": Object {
+          "duration": 180,
+        },
+        "legend": Object {
+          "fontFamily": "'Roboto', sans-serif",
+          "position": "bottom",
+        },
+        "title": Object {
+          "display": true,
+          "fontFamily": "'Roboto', sans-serif",
+          "fontSize": "16",
+          "text": "Facility Ownership - Bo",
+        },
+      },
+    }
+  }
+  isLoading={false}
+>
+  <div
+    className="chart"
+  >
+    <Bar
+      data={
+        Object {
+          "datasets": Array [
+            Object {
+              "backgroundColor": "rgba(39, 102, 150, 0.6)",
+              "borderColor": "rgb(39, 102, 150)",
+              "borderWidth": 1,
+              "data": Array [
+                6,
+                3,
+                11,
+                95,
+              ],
+              "hoverBackgroundColor": "rgba(39, 102, 150, 0.8)",
+              "label": "Count",
+            },
+          ],
+          "labels": Array [
+            "Mission",
+            "NGO",
+            "Private Clinic",
+            "Public facilities",
+          ],
+        }
+      }
+      options={
+        Object {
+          "animation": Object {
+            "duration": 180,
+          },
+          "legend": Object {
+            "fontFamily": "'Roboto', sans-serif",
+            "position": "bottom",
+          },
+          "title": Object {
+            "display": true,
+            "fontFamily": "'Roboto', sans-serif",
+            "fontSize": "16",
+            "text": "Facility Ownership - Bo",
+          },
+        }
+      }
+    />
+  </div>
+</ReportLoader>
+`;

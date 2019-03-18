@@ -22,18 +22,17 @@ describe('Actions - dataSet', () => {
         getDataSetOptions.mockClear()
     })
 
-    it('should dispatch a loading start action when loading data set options', done => {
+    it('should dispatch a loading start action when loading data set options', () => {
         const expectedActions = expect.arrayContaining([
             loadingDataSetOptionsStart(),
         ])
 
         store.dispatch(loadDataSetOptions()).then(() => {
             expect(store.getActions()).toEqual(expectedActions)
-            done()
         })
     })
 
-    it('should dispatch a success action with the options when loading data set options succesfully', done => {
+    it('should dispatch a success action with the options when loading data set options succesfully', () => {
         const dataSetOptions = [1, 2, 3, 4]
         const expectedActions = expect.arrayContaining([
             loadingDataSetOptionsSuccess(dataSetOptions),
@@ -45,11 +44,10 @@ describe('Actions - dataSet', () => {
 
         store.dispatch(loadDataSetOptions()).then(() => {
             expect(store.getActions()).toEqual(expectedActions)
-            done()
         })
     })
 
-    it('should dispatch an error action when loading the data set options unsuccessfully', done => {
+    it('should dispatch an error action when loading the data set options unsuccessfully', () => {
         const expectedActions = expect.arrayContaining([
             loadingDataSetOptionsError(),
         ])
@@ -58,7 +56,6 @@ describe('Actions - dataSet', () => {
 
         store.dispatch(loadDataSetOptions()).then(() => {
             expect(store.getActions()).toEqual(expectedActions)
-            done()
         })
     })
 })

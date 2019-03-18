@@ -5,7 +5,9 @@ import {
     formatStandardReportsResponse,
     mapCollectionToDimensionQueryString,
     mapResponseToArrayOfIds,
-    parseFileUrls,
+    getAnalyticsFileUrls,
+    buildQueryString,
+    getFileUrls,
 } from './api/helpers'
 import {
     STANDARD_REPORTS_ENDPOINT,
@@ -187,7 +189,8 @@ export const getReportingRateSummaryReport = async (
     // Instead of calling `d2.analytics.aggregate.get(req)`, which spawn two parallel requests,
     // we just building the .json url from the request instance and call the regular `api.get(url)`,
     // which only spawns a single request
-    const [{ url }, ...fileUrls] = parseFileUrls(req, ['json', 'xls', 'csv'])
+    const extensions = ['json', 'xls', 'csv']
+    const [{ url }, ...fileUrls] = getAnalyticsFileUrls(req, extensions)
     return api.get(url).then(data => ({ ...data, fileUrls }))
 }
 
@@ -196,7 +199,6 @@ export const getReportingRateSummaryReport = async (
  * @returns {Promise} - Array of IDs of the orgUnit and its direct descendants
  */
 export const getOrgUnitAndChildrenIds = orgUnit => {
-    console.log(orgUnit)
     const children = orgUnit.children.size
         ? Promise.resolve(orgUnit.children)
         : d2.models.organisationUnits
@@ -219,19 +221,23 @@ export const getOrgUnitGroupSets = () =>
     })
 
 /**
- * @param {string} orgUnitId
+ * @param {Object} orgUnit
  * @param {string} groupSetId
  * @returns {Promise}
  */
 export const getOrgUnitDistReport = async (orgUnit, groupSetId) => {
     const orgUnitIds = await getOrgUnitAndChildrenIds(orgUnit)
+
+    const endPoint = ORG_UNIT_DISTRIBUTION_REPORT_ENDPOINT
+    const queryString = buildQueryString({ ou: orgUnitIds, ougs: groupSetId })
+    const relativeUrl = `${endPoint}?${queryString}`
+    const fileUrls = getFileUrls(endPoint, queryString, ['xls', 'pdf'])
+
     return api
-        .get(ORG_UNIT_DISTRIBUTION_REPORT_ENDPOINT, {
-            ou: orgUnitIds.join(';'),
-            ougs: groupSetId,
-        })
-        .then(response => ({ ...response, orgUnitIds }))
+        .get(relativeUrl)
+        .then(response => ({ ...response, orgUnitIds, fileUrls }))
 }
+
 /**
  * @returns {Promise}
  */

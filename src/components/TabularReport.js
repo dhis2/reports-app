@@ -2,30 +2,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { DownloadOptions } from './TabularReport/DownloadOptions'
 import ReportTable from './TabularReport/ReportTable'
-import { CircularProgress } from '@dhis2/d2-ui-core'
-import isEmpty from 'lodash.isempty'
+import ReportLoader from './ReportLoader'
 import './TabularReport/styles.css'
 
-const TabularReport = ({ content, isLoading, fileUrls }) => {
-    if (isLoading) {
-        return (
-            <div className="tabular-report__loader">
-                <CircularProgress />
-            </div>
-        )
-    }
-
-    if (isEmpty(content)) {
-        return null
-    }
-
-    return (
+const TabularReport = ({ content, isLoading, fileUrls }) => (
+    <ReportLoader content={content} isLoading={isLoading}>
         <div className="tabular-report">
             <DownloadOptions fileUrls={fileUrls} />
             <ReportTable content={content} />
         </div>
-    )
-}
+    </ReportLoader>
+)
 
 TabularReport.propTypes = {
     content: PropTypes.object.isRequired,

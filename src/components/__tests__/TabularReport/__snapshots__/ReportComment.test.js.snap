@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ReportComment/> Matches the snapshot 1`] = `
+<div
+  id="share-component"
+>
+  <div>
+    <TextField
+      fullWidth={true}
+      multiline={true}
+      onChange={[Function]}
+      placeholder="Write a comment, question or interpretation of this report"
+      type="text"
+      value="I want to comment on this"
+    />
+    <Button
+      color="primary"
+      disabled={false}
+      onClick={[Function]}
+      raised={true}
+    >
+      Share
+    </Button>
+  </div>
+</div>
+`;
