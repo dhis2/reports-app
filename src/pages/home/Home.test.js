@@ -5,7 +5,7 @@ import { shallow } from 'enzyme'
 import Home from './Home'
 import MenuElement from '../../components/MenuElement'
 
-import { sections } from '../../config/sections.conf'
+import { sections } from '../../config/sections.config'
 
 jest.mock('@dhis2/d2-ui-org-unit-tree', () => ({
     OrgUnitTree: 'OrgUnitTree',

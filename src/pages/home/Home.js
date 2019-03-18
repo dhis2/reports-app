@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import MenuElement from '../../components/MenuElement'
 
-import { sections } from '../../config/sections.conf'
+import { sections } from '../../config/sections.config'
 import styles from './Home.style'
 
 const Home = () => {
