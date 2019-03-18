@@ -123,9 +123,10 @@ export const getDataSetReports = (
         ),
     })
 
-// TODO: API should start returning empty arrays for datasets without dimensions
-// current solution is just a hack to get the right behavior
-const MAGIC_STRING = 'Data set does not have a category combination: '
+/**
+ * @param {string} dataSetId
+ * @returns {Promise<array>} The dimensions for a given dataset
+ */
 export const getDimensions = dataSetId =>
     api
         .get(`${DATA_SET_DIMENSIONS_ENDPOINT}/${dataSetId}`, {
@@ -134,11 +135,6 @@ export const getDimensions = dataSetId =>
             paging: false,
         })
         .then(({ dimensions }) => dimensions)
-        .catch(error =>
-            error.httpStatusCode === 409 && error.message.includes(MAGIC_STRING)
-                ? Promise.resolve([])
-                : Promise.reject(error)
-        )
 
 /**
  * @param {string} dataSetId
@@ -235,17 +231,25 @@ export const getOrgUnitGroupSets = () =>
  * @param {string} groupSetId
  * @returns {Promise}
  */
-export const getOrgUnitDistReport = async (orgUnit, groupSetId) => {
-    const orgUnitIds = await getOrgUnitAndChildrenIds(orgUnit)
+export const getOrgUnitDistReport = async (
+    orgUnit,
+    groupSetId,
+    shouldShowChart
+) => {
+    const orgUnitIds = shouldShowChart
+        ? orgUnit.id
+        : await getOrgUnitAndChildrenIds(orgUnit)
 
     const endPoint = ORG_UNIT_DISTRIBUTION_REPORT_ENDPOINT
-    const queryString = buildQueryString({ ou: orgUnitIds, ougs: groupSetId })
+    const queryString = buildQueryString({
+        ou: orgUnitIds,
+        ougs: groupSetId,
+        columns: groupSetId,
+    })
     const relativeUrl = `${endPoint}?${queryString}`
     const fileUrls = getFileUrls(endPoint, queryString, ['xls', 'pdf'])
 
-    return api
-        .get(relativeUrl)
-        .then(response => ({ ...response, orgUnitIds, fileUrls }))
+    return api.get(relativeUrl).then(response => ({ ...response, fileUrls }))
 }
 
 /**
