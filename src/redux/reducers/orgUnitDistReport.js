@@ -1,10 +1,10 @@
 import { actionTypes } from '../actions/orgUnitDistReport'
 
-export const initialState = {
+export const defaultState = {
     shouldShowChart: false,
 }
 
-export const orgUnitDistReport = (state = initialState, { type } = {}) => {
+export const orgUnitDistReport = (state = defaultState, { type } = {}) => {
     switch (type) {
         case actionTypes.SET_TABULAR_OUTPUT:
             return { shouldShowChart: false }

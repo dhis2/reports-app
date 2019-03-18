@@ -1,9 +1,9 @@
 import { actionTypes } from '../../actions/orgUnitDistReport'
-import { orgUnitDistReport, initialState } from '../orgUnitDistReport'
+import { orgUnitDistReport, defaultState } from '../orgUnitDistReport'
 
 describe('Reducer - orgUnitDistReport', () => {
     it('should return the default state', () => {
-        expect(orgUnitDistReport()).toEqual(initialState)
+        expect(orgUnitDistReport()).toEqual(defaultState)
     })
 
     it('should toggle should show start to true', () => {
