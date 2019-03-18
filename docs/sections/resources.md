@@ -8,7 +8,7 @@ New reports can be added, existing reports can be filtered by name, edited, dele
 #### Currently known bugs
 
 Resources with a file can not be modified, the respective endpoint throws an error.
-Here is the JIRA issues:
+Here are the JIRA issues:
 
 -   [TECH-150](https://jira.dhis2.org/browse/TECH-150).
 -   [DHIS2-6131](https://jira.dhis2.org/browse/DHIS2-6131)
