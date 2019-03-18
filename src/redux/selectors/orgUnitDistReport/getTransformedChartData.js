@@ -2,9 +2,7 @@ import isEmpty from 'lodash.isempty'
 import i18n from '@dhis2/d2-i18n'
 import { getTitle, createGrid } from '../../../utils/dataTransformHelpers'
 import createDataTransformCache from '../../../utils/dataTransformCache'
-
-const FONT_FAMILY = "'Roboto', sans-serif"
-const BASE_COLOR = '39, 102, 150' // DHIS2 blue
+import { FONT_FAMILY, BASE_COLOR } from '../../../config/style.config'
 
 export const cache = createDataTransformCache()
 
