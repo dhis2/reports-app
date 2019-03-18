@@ -1,3 +1,4 @@
+import isEmpty from 'lodash.isempty'
 import { connect } from 'react-redux'
 import {
     loadStandardReports,
@@ -18,6 +19,9 @@ import {
 
 const mapStateToProps = state => ({
     ...state.standardReport,
+    reportData: isEmpty(state.reportData.content)
+        ? undefined
+        : state.reportData.content,
     pager: state.pagination,
 })
 

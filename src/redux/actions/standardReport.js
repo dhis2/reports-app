@@ -1,5 +1,15 @@
 import debounce from 'lodash.debounce'
+import i18n from '@dhis2/d2-i18n'
 import omit from 'lodash.omit'
+
+import { DEBOUNCE_DELAY } from '../../config/search.config'
+import {
+    clearFeedback,
+    showSuccessSnackBar,
+    showErrorSnackBar,
+    showConfirmationSnackBar,
+} from './feedback'
+import { fileToText } from '../../utils/fileToText'
 import {
     getFilteredStandardReports,
     deleteStandardReport as deleteStandardReportRequest,
@@ -7,23 +17,15 @@ import {
     postStandardReport,
     updateStandardReport,
 } from '../../utils/api'
-import { DEBOUNCE_DELAY } from '../../config/search.config'
-import i18n from '@dhis2/d2-i18n'
 import {
     goToNextPage as goToNextPageOrig,
     goToPrevPage as goToPrevPageOrig,
+    setPagination,
 } from './pagination'
-import { setPagination } from './pagination'
-import {
-    clearFeedback,
-    showSuccessSnackBar,
-    showErrorSnackBar,
-    showConfirmationSnackBar,
-} from './feedback'
 import { loadStandardReportTables } from './standardReportTables'
-import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
+import { loadingReportDataSuccess } from './reportData'
 import { reportTypes } from '../../pages/standard-report/standard.report.conf'
-import { fileToText } from '../../utils/fileToText'
+import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
 
 export const actionTypes = {
     LOAD_STANDARD_REPORTS: 'LOAD_STANDARD_REPORTS',
@@ -272,7 +274,7 @@ export const closeContextMenu = refreshList => dispatch => {
  * @returns {Object}
  */
 export const showReportData = reportData => dispatch => {
-    dispatch({ type: actionTypes.HTML_REPORT_SHOW, payload: reportData })
+    dispatch(loadingReportDataSuccess(reportData))
     dispatch(closeContextMenu())
 }
 
