@@ -8,17 +8,19 @@ import {
     getAnalyticsFileUrls,
     buildQueryString,
     getFileUrls,
-} from './api/helpers'
-import {
-    STANDARD_REPORTS_ENDPOINT,
-    REPORT_TABLES_ENDPOINT,
-    DATA_SET_DIMENSIONS_ENDPOINT,
-    RESOURCE_ENDPOINT,
-    DATA_DIMENSION_SUFFIXES,
-    ORG_UNIT_DISTRIBUTION_REPORT_ENDPOINT,
     postDataSetReportCommentUrl,
     getDataSetReportUrl,
-} from './api/constants'
+} from './api/helpers'
+
+export const RESOURCE_ENDPOINT = 'documents'
+const DATA_DIMENSION_SUFFIXES = [
+    'ACTUAL_REPORTS',
+    'EXPECTED_REPORTS',
+    'REPORTING_RATE',
+    'ACTUAL_REPORTS_ON_TIME',
+    'REPORTING_RATE_ON_TIME',
+]
+const STANDARD_REPORTS_ENDPOINT = 'reports'
 
 let d2
 let api
@@ -129,7 +131,7 @@ export const getDataSetReport = ({
  */
 export const getDimensions = dataSetId =>
     api
-        .get(`${DATA_SET_DIMENSIONS_ENDPOINT}/${dataSetId}`, {
+        .get(`dimensions/dataSet/${dataSetId}`, {
             fields: ['id', 'displayName', 'items[id,displayName]'].join(','),
             order: 'name:asc',
             paging: false,
@@ -240,7 +242,7 @@ export const getOrgUnitDistReport = async (
         ? orgUnit.id
         : await getOrgUnitAndChildrenIds(orgUnit)
 
-    const endPoint = ORG_UNIT_DISTRIBUTION_REPORT_ENDPOINT
+    const endPoint = 'orgUnitAnalytics'
     const queryString = buildQueryString({
         ou: orgUnitIds,
         ougs: groupSetId,
@@ -279,7 +281,7 @@ export const deleteResource = resourceId =>
  * @returns {Promise}
  */
 export const getStandardReportTables = () =>
-    api.get(REPORT_TABLES_ENDPOINT, { paging: false, fields: 'id,name' })
+    api.get('reportTables', { paging: false, fields: 'id,name' })
 
 /**
  * @param {Object} report

@@ -15,7 +15,7 @@ import { connect } from 'react-redux'
 import appStyles from '../../../utils/styles'
 import styles from './AddEditResource.style'
 import { options, types } from '../../../utils/resource/constants'
-import { RESOURCE_ENDPOINT } from '../../../utils/api/constants'
+import { RESOURCE_ENDPOINT } from '../../../utils/api'
 
 /* i18n */
 import i18n from '@dhis2/d2-i18n'

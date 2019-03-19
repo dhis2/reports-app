@@ -1,4 +1,5 @@
 import { getApi } from '../api'
+import { isCustomFormType } from '../../utils/dataSetReport/isCustomFormType'
 /**
  * @param {Object} d2 object retrieved by the list() method
  * @return {Array}
@@ -115,3 +116,13 @@ export const buildQueryString = o => {
         }, [])
         .join('&')
 }
+
+// Url creaters
+export const postDataSetReportCommentUrl = (dataSetId, orgUnitId, period) =>
+    `interpretations/dataSetReport/${dataSetId}?pe=${period}&ou=${orgUnitId}`
+
+const DATA_SET_REPORT_ENDPOINT = 'dataSetReport'
+export const getDataSetReportUrl = ({ formType }) =>
+    isCustomFormType(formType)
+        ? DATA_SET_REPORT_ENDPOINT
+        : `${DATA_SET_REPORT_ENDPOINT}/custom`
