@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 /**
  * Do this stuff inside an iframe...
@@ -6,27 +7,26 @@ import React, { Component } from 'react'
  */
 
 class HtmlReport extends Component {
-    reportContainer = null
-
     state = {
         ready: false,
+        report: '',
     }
 
     // TODO: Fix urls/paths to scripts or find a better way to do this
     componentDidMount() {
         const jqueryScript = document.createElement('script')
         jqueryScript.type = 'text/javascript'
-        jqueryScript.src =
-            '../dhis-web-commons/javascripts/jQuery/jquery.min.js'
+        jqueryScript.src = '/dhis-web-commons/javascripts/jQuery/jquery.min.js'
 
         const jQueryPromise = new Promise(resolve => {
             jqueryScript.onload = resolve
         })
 
         jQueryPromise.then(this.loadDHIS2Script).then(() => {
-            this.setState({ ready: true }, () =>
-                this.renderReport(this.props.html)
-            )
+            this.setState({
+                ready: true,
+                report: this.props.html,
+            })
         })
 
         document.head.appendChild(jqueryScript)
@@ -34,20 +34,14 @@ class HtmlReport extends Component {
 
     componentWillReceiveProps(newProps) {
         if (newProps.html && this.state.ready) {
-            this.renderReport(newProps.html)
+            this.setState({ report: newProps.html })
         }
-    }
-
-    renderReport(report) {
-        const domFrag = document.createRange().createContextualFragment(report)
-        this.reportContainer.innerHTML = ''
-        this.reportContainer.appendChild(domFrag)
     }
 
     loadDHIS2Script = () => {
         const dhis2Script = document.createElement('script')
         dhis2Script.type = 'text/javascript'
-        dhis2Script.src = '../dhis-web-commons/javascripts/dhis2/dhis2.util.js'
+        dhis2Script.src = '/dhis-web-commons/javascripts/dhis2/dhis2.util.js'
         document.head.appendChild(dhis2Script)
 
         return new Promise(resolve => {
@@ -58,11 +52,17 @@ class HtmlReport extends Component {
     render() {
         return (
             <div
-                ref={ref => (this.reportContainer = ref)}
                 id="html-report-id"
+                dangerouslySetInnerHTML={{
+                    __html: this.state.report,
+                }}
             />
         )
     }
+}
+
+HtmlReport.propTypes = {
+    html: PropTypes.string.isRequired,
 }
 
 export default HtmlReport

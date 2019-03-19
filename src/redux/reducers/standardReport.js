@@ -16,6 +16,10 @@ export const defaultState = {
     requestDelete: false,
     loadingDetails: false,
     loadingSendReport: false,
+
+    reportParams: {},
+    reportParamsErrors: [],
+    showReportParams: false,
 }
 
 // eslint-disable-next-line complexity
@@ -23,6 +27,12 @@ export const standardReport = (state = defaultState, action = {}) => {
     const { type, payload } = action
 
     switch (type) {
+        case actionTypes.SET_SELECTED_REPORT:
+            return {
+                ...state,
+                selectedReport: payload,
+            }
+
         case actionTypes.LOADING_STANDARD_REPORTS_START:
             return {
                 ...state,
@@ -151,6 +161,28 @@ export const standardReport = (state = defaultState, action = {}) => {
             return {
                 ...state,
                 loadingSendReport: false,
+            }
+
+        case actionTypes.DEFINE_REQUIRED_PARAMS:
+            return {
+                ...state,
+                reportParams: payload,
+                showReportParams: true,
+            }
+
+        case actionTypes.REQUIRED_PARAMS_ERROR:
+            return {
+                ...state,
+                reportParamsErrors: payload,
+            }
+
+        case actionTypes.GENERATE_PDF_REPORT:
+        case actionTypes.CANCEL_GENERATING_PDF_REPORT:
+            return {
+                ...state,
+                reportParams: {},
+                reportParamsErrors: [],
+                showReportParams: false,
             }
 
         default:

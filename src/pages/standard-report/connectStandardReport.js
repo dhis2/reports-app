@@ -1,21 +1,24 @@
-import isEmpty from 'lodash.isempty'
 import { connect } from 'react-redux'
+import isEmpty from 'lodash.isempty'
+
 import {
-    loadStandardReports,
-    createReportShow,
     addReportFormShow,
-    editReportFormShow,
+    closeContextMenu,
     deleteStandardReport,
-    sharingSettingsShow,
+    editReportFormShow,
+    generateHtmlReport,
     goToNextPage,
     goToPrevPage,
-    requestDeleteStandardReport,
-    setSearch,
-    showReportData,
     hideReportData,
-    closeContextMenu,
+    loadStandardReports,
+    requestDeleteStandardReport,
     sendStandardReport,
+    setSearch,
+    sharingSettingsShow,
+    showReportData,
+    showReportParams,
 } from '../../redux/actions/standardReport'
+import { reportTypes } from './standard.report.conf'
 
 const mapStateToProps = state => ({
     ...state.standardReport,
@@ -29,7 +32,10 @@ const mapDispatchToProps = dispatch => ({
     loadStandardReports: fetchReportTables =>
         dispatch(loadStandardReports(fetchReportTables)),
     addReportFormShow: report => dispatch(addReportFormShow(report)),
-    createReport: report => dispatch(createReportShow(report)),
+    createReport: report =>
+        report.type === reportTypes.HTML
+            ? dispatch(generateHtmlReport(report.id))
+            : dispatch(showReportParams(report)),
     editReport: report => dispatch(editReportFormShow(report)),
     deleteStandardReport: report => dispatch(deleteStandardReport(report)),
     sharingSettings: report => dispatch(sharingSettingsShow(report)),

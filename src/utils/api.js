@@ -69,40 +69,6 @@ export const getOrganisationUnits = () =>
         .then(modelCollection => modelCollection.toArray())
 
 /**
- * @param {number} page
- * @param {number} pageSize
- * @param {string} nameFilter
- * @return {Promise}
- */
-export const getFilteredStandardReports = (page, pageSize, nameFilter) =>
-    addFilterForName(nameFilter, d2.models.report)
-        .list({ page, pageSize, fields: standardReportsFields })
-        .then(formatStandardReportsResponse)
-
-/**
- * @param {string} id
- * @returns {Promise}
- */
-export const getStandardReportDetails = id =>
-    api.get(`${STANDARD_REPORTS_ENDPOINT}/${id}`)
-
-/**
- * @param {string} id
- * @return {Promise}
- */
-export const deleteStandardReport = id =>
-    api.delete(`${STANDARD_REPORTS_ENDPOINT}/${id}`)
-
-/**
- * @param {string} id
- * @returns {Promise}
- */
-export const getStandardReportHtmlReport = id =>
-    api.get(`${STANDARD_REPORTS_ENDPOINT}/${id}/data.html`, {
-        t: new Date().getTime(),
-    })
-
-/**
  * @param {Array} dataSetOptions
  * @param {Array} orgUnitGroupsOptions
  * @param {string} dataSetId
@@ -274,7 +240,7 @@ export const getStandardReportTables = () =>
  * returns {Promise}
  */
 export const getStandardReportTable = (id, queryParams = {}) =>
-    api.get(`${REPORT_TABLES_ENDPOINT}/${id}.json`, queryParams)
+    api.get(`${REPORT_TABLES_ENDPOINT}/${id}`, queryParams)
 
 /**
  * @param {Object} report
@@ -297,3 +263,41 @@ export const getDataSetOptions = () =>
     d2.models.dataSet
         .list({ paging: false, fields: 'id,displayName' })
         .then(response => response.toArray())
+
+/**
+ * =================================
+ * Standard report
+ * =================================
+ */
+
+/**
+ * @param {number} page
+ * @param {number} pageSize
+ * @param {string} nameFilter
+ * @return {Promise}
+ */
+export const getFilteredStandardReports = (page, pageSize, nameFilter) =>
+    addFilterForName(nameFilter, d2.models.report)
+        .list({ page, pageSize, fields: standardReportsFields })
+        .then(formatStandardReportsResponse)
+
+/**
+ * @param {string} id
+ * @returns {Promise}
+ */
+export const getStandardReportDetails = id =>
+    api.get(`${STANDARD_REPORTS_ENDPOINT}/${id}`)
+
+/**
+ * @param {string} id
+ * @return {Promise}
+ */
+export const deleteStandardReport = id =>
+    api.delete(`${STANDARD_REPORTS_ENDPOINT}/${id}`)
+
+/**
+ * @param {string} id
+ * @returns {Promise}
+ */
+export const getStandardReportHtmlReport = id =>
+    api.get(`reports/${id}/data.html`, { t: new Date().getTime() })

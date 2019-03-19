@@ -1,33 +1,44 @@
 import debounce from 'lodash.debounce'
 import i18n from '@dhis2/d2-i18n'
 import omit from 'lodash.omit'
+import size from 'lodash.size'
 
 import { DEBOUNCE_DELAY } from '../../config/search.config'
+import {
+    getApi,
+    deleteStandardReport as deleteStandardReportRequest,
+    getFilteredStandardReports,
+    getStandardReportDetails,
+    getStandardReportHtmlReport,
+    getStandardReportTable,
+    postStandardReport,
+    updateStandardReport,
+} from '../../utils/api'
 import {
     clearFeedback,
     showSuccessSnackBar,
     showErrorSnackBar,
     showConfirmationSnackBar,
 } from './feedback'
+import { extractRequiredReportParams } from '../../utils/standardReport/extractRequiredReportParams'
 import { fileToText } from '../../utils/fileToText'
-import {
-    getFilteredStandardReports,
-    deleteStandardReport as deleteStandardReportRequest,
-    getStandardReportDetails,
-    postStandardReport,
-    updateStandardReport,
-} from '../../utils/api'
 import {
     goToNextPage as goToNextPageOrig,
     goToPrevPage as goToPrevPageOrig,
     setPagination,
 } from './pagination'
 import { loadStandardReportTables } from './standardReportTables'
-import { loadingReportDataSuccess } from './reportData'
+import {
+    loadingReportDataStart,
+    loadingReportDataSuccess,
+    loadingReportDataError,
+} from './reportData'
 import { reportTypes } from '../../pages/standard-report/standard.report.conf'
+import { validateRequiredParams } from '../../utils/standardReport/validateRequiredParams'
 import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
 
 export const actionTypes = {
+    SET_SELECTED_REPORT: 'SET_SELECTED_REPORT',
     LOAD_STANDARD_REPORTS: 'LOAD_STANDARD_REPORTS',
     LOADING_STANDARD_REPORTS_START: 'LOADING_STANDARD_REPORTS_START',
     LOADING_STANDARD_REPORTS_SUCCESS: 'LOADING_STANDARD_REPORTS_SUCCESS',
@@ -57,7 +68,19 @@ export const actionTypes = {
     STANDARD_REPORT_SEND_START: 'STANDARD_REPORT_SEND_START',
     STANDARD_REPORT_SEND_SUCCESS: 'STANDARD_REPORT_SEND_SUCCESS',
     STANDARD_REPORT_SEND_ERROR: 'STANDARD_REPORT_SEND_ERROR',
+    DEFINE_REQUIRED_PARAMS: 'DEFINE_REQUIRED_PARAMS',
+    REQUIRED_PARAMS_ERROR: 'REQUIRED_PARAMS_ERROR',
+    GENERATE_PDF_REPORT: 'GENERATE_PDF_REPORT',
+    CANCEL_GENERATING_PDF_REPORT: 'CANCEL_GENERATING_PDF_REPORT',
 }
+
+/**
+ * @returns {Object}
+ */
+export const setSelectedReport = report => ({
+    type: actionTypes.SET_SELECTED_REPORT,
+    payload: report,
+})
 
 /**
  * @returns {Object}
@@ -447,4 +470,111 @@ export const sendStandardReport = (report, isEdit) => dispatch => {
             dispatch(showErrorSnackBar(displayMessage))
             dispatch(loadingSendStandardReportError())
         })
+}
+
+/**
+ * =============================================
+ * Generate HTML report
+ * =============================================
+ */
+
+/**
+ * @param {Error} error
+ * @returns {Function}
+ */
+export const generatingHtmlReportErrorWithFeedback = error => dispatch => {
+    const generatingHtmlReportErrorDefaultMessage = i18n.t(
+        'An error occurred while generating the html report'
+    )
+    const displayMessage = humanReadableErrorMessage(
+        error,
+        generatingHtmlReportErrorDefaultMessage
+    )
+    dispatch(showErrorSnackBar(displayMessage))
+    dispatch(loadingReportDataError())
+}
+
+/**
+ * @param {string} id
+ * @returns {Function}
+ */
+export const generateHtmlReport = id => dispatch => {
+    dispatch(loadingReportDataStart())
+
+    return getStandardReportHtmlReport(id)
+        .then(report => dispatch(loadingReportDataSuccess(report)))
+        .catch(error => dispatch(generatingHtmlReportErrorWithFeedback(error)))
+}
+
+/**
+ * =============================================
+ * Generate PDF report
+ * =============================================
+ */
+
+export const defineRequiredReportParams = requiredParams => ({
+    type: actionTypes.DEFINE_REQUIRED_PARAMS,
+    payload: requiredParams,
+})
+
+export const requiredReportParamsError = errors => ({
+    type: actionTypes.REQUIRED_PARAMS_ERROR,
+    payload: errors,
+})
+
+export const cancelGeneratingPdfReport = () => ({
+    type: actionTypes.CANCEL_GENERATING_PDF_REPORT,
+})
+
+export const submitRequiredReportParams = () => (dispatch, getState) => {
+    const state = getState()
+    const { reportParams } = state.standardReport
+    const errors = validateRequiredParams(state, reportParams)
+
+    if (size(errors)) {
+        dispatch(requiredReportParamsError(errors))
+    } else {
+        dispatch(generatePdfReport())
+    }
+}
+
+/**
+ * @param {string} reportId
+ * @returns {Function}
+ */
+export const showReportParams = report => dispatch => {
+    dispatch(setSelectedReport(report))
+    return getStandardReportTable(report.reportTable.id)
+        .then(({ reportParams }) => {
+            const requiredParams = extractRequiredReportParams(reportParams)
+
+            if (!size(requiredParams)) {
+                dispatch(generatePdfReport())
+            } else {
+                dispatch(defineRequiredReportParams(requiredParams))
+            }
+        })
+        .catch(error => {
+            throw error
+        })
+}
+
+export const generatePdfReport = () => (dispatch, getState) => {
+    let reportQueryString = `t=${new Date().getTime()}`
+    const api = getApi()
+    const { standardReport, organisationUnits, reportPeriod } = getState()
+    const { reportParams } = standardReport
+    const { id } = standardReport.selectedReport
+    const reportPath = `reports/${id}/data.pdf`
+
+    if (reportParams.organisationUnit) {
+        reportQueryString += `&ou=${organisationUnits.selected.id}`
+    }
+
+    if (reportParams.reportPeriod) {
+        reportQueryString += `&p=${reportPeriod.selectedPeriod}`
+    }
+
+    window.open(`${api.baseUrl}/${reportPath}?${reportQueryString}`)
+    dispatch({ type: actionTypes.GENERATE_PDF_REPORT })
 }
