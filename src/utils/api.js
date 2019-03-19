@@ -94,6 +94,15 @@ export const deleteStandardReport = id =>
     api.delete(`${STANDARD_REPORTS_ENDPOINT}/${id}`)
 
 /**
+ * @param {string} id
+ * @returns {Promise}
+ */
+export const getStandardReportHtmlReport = id =>
+    api.get(`${STANDARD_REPORTS_ENDPOINT}/${id}/data.html`, {
+        t: new Date().getTime(),
+    })
+
+/**
  * @param {Array} dataSetOptions
  * @param {Array} orgUnitGroupsOptions
  * @param {string} dataSetId
@@ -260,6 +269,12 @@ export const deleteResource = resourceId =>
  */
 export const getStandardReportTables = () =>
     api.get(REPORT_TABLES_ENDPOINT, { paging: false, fields: 'id,name' })
+
+/**
+ * returns {Promise}
+ */
+export const getStandardReportTable = (id, queryParams = {}) =>
+    api.get(`${REPORT_TABLES_ENDPOINT}/${id}.json`, queryParams)
 
 /**
  * @param {Object} report
