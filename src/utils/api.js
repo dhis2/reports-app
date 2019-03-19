@@ -114,7 +114,7 @@ export const getDataSetReport = ({
     period,
     selectedUnitOnly,
 }) =>
-    api.get(getDataSetReportUrl(dataSet.formType), {
+    api.get(getDataSetReportUrl(dataSet), {
         ds: dataSet.id,
         pe: period,
         ou: orgUnit,
