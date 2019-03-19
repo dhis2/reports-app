@@ -12,12 +12,12 @@ import {
 import {
     STANDARD_REPORTS_ENDPOINT,
     REPORT_TABLES_ENDPOINT,
-    DATA_SET_REPORTS_ENDPOINT,
     DATA_SET_DIMENSIONS_ENDPOINT,
     RESOURCE_ENDPOINT,
     DATA_DIMENSION_SUFFIXES,
     ORG_UNIT_DISTRIBUTION_REPORT_ENDPOINT,
     postDataSetReportCommentUrl,
+    getDataSetReportUrl,
 } from './api/constants'
 
 let d2
@@ -104,21 +104,21 @@ export const deleteStandardReport = id =>
  * @param {bool} selectedUnitOnly
  * @returns {Promise}
  */
-export const getDataSetReports = (
-    dataSetOptions,
+export const getDataSetReport = ({
+    dataSet,
+    dataSetDimensions,
     orgUnitGroupsOptions,
-    dataSetId,
     orgUnit,
     period,
-    selectedUnitOnly
-) =>
-    api.get(DATA_SET_REPORTS_ENDPOINT, {
-        ds: dataSetId,
+    selectedUnitOnly,
+}) =>
+    api.get(getDataSetReportUrl(dataSet.formType), {
+        ds: dataSet.id,
         pe: period,
         ou: orgUnit,
         selectedUnitOnly,
-        dimensions: mapCollectionToDimensionQueryString(
-            dataSetOptions,
+        filter: mapCollectionToDimensionQueryString(
+            dataSetDimensions,
             orgUnitGroupsOptions
         ),
     })
@@ -192,8 +192,8 @@ export const getReportingRateSummaryReport = async (
         }
     }
 
-    // Instead of calling `d2.analytics.aggregate.get(req)`, which spawn two parallel requests,
-    // we just building the .json url from the request instance and call the regular `api.get(url)`,
+    // Instead of calling `d2.analytics.aggregate.get(req)`, which spawns two parallel requests,
+    // we're just building the .json url from the request instance and call the regular `api.get(url)`,
     // which only spawns a single request
     const extensions = ['json', 'xls', 'csv']
     const [{ url }, ...fileUrls] = getAnalyticsFileUrls(req, extensions)
@@ -300,5 +300,5 @@ export const updateStandardReport = report =>
  */
 export const getDataSetOptions = () =>
     d2.models.dataSet
-        .list({ paging: false, fields: 'id,displayName' })
+        .list({ paging: false, fields: 'id,displayName,formType' })
         .then(response => response.toArray())

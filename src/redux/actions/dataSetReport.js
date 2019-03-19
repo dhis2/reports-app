@@ -1,6 +1,6 @@
 import { selectDataSet as selectDataSetOriginal } from './dataSet'
 import { loadDimensions } from './dataSetDimensions'
-import { getDataSetReports, postDataSetReportComment } from '../../utils/api'
+import { getDataSetReport, postDataSetReportComment } from '../../utils/api'
 import {
     loadingReportDataStartWithFeedback,
     loadingReportDataSuccessWithFeedback,
@@ -38,14 +38,14 @@ export const loadReportData = () => (dispatch, getState) => {
         reportPeriod,
     } = getState()
 
-    return getDataSetReports(
-        dataSetDimensions.selected,
-        organisationUnits.selectedOptions,
-        dataSet.selected.id,
-        organisationUnits.selected.id,
-        reportPeriod.selectedPeriod,
-        dataSetReport.selectedUnitOnly
-    )
+    return getDataSetReport({
+        dataSet: dataSet.selected,
+        dataSetDimensions: dataSetDimensions.selected,
+        orgUnitGroupsOptions: organisationUnits.selectedOptions,
+        orgUnit: organisationUnits.selected.id,
+        period: reportPeriod.selectedPeriod,
+        selectedUnitOnly: dataSetReport.selectedUnitOnly,
+    })
         .then(response =>
             dispatch(loadingReportDataSuccessWithFeedback(response))
         )
