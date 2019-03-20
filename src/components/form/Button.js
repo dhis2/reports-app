@@ -1,17 +1,17 @@
-import { Button as ButtonOrig } from '@dhis2/d2-ui-core'
+import { Button as D2UIButton } from '@dhis2/d2-ui-core'
 import React from 'react'
 import PropTypes from 'prop-types'
 
 export const Button = props => (
     <span>
-        <ButtonOrig
+        <D2UIButton
             raised
             type={props.type}
             onClick={props.onClick}
             color={props.isPrimary ? 'primary' : 'default'}
         >
             {props.label}
-        </ButtonOrig>
+        </D2UIButton>
 
         <style jsx>{`
             span {

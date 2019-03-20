@@ -1,14 +1,26 @@
-import React from 'react'
+import { Checkbox } from '@material-ui/core'
+import css from 'styled-jsx/css'
 import PropTypes from 'prop-types'
+import React from 'react'
+
 import { formInput } from '../../utils/react/propTypes'
+
+const checkboxStyle = css.resolve`
+    span {
+        width: 20px;
+        height: 20px;
+        padding: 0;
+    }
+`
 
 export const CheckBox = props => (
     <div className="form-checkbox">
         <div className="input-container">
-            <input
+            <Checkbox
                 id={props.input.name + props.input.value}
                 {...props.input}
                 type="checkbox"
+                className={checkboxStyle.className}
             />
         </div>
 
@@ -21,14 +33,15 @@ export const CheckBox = props => (
 
         <style jsx>{`
             .form-checkbox {
-                align-items: center;
+                align-items: flex-start;
                 display: flex;
-                height: 30px;
+                min-height: 30px;
                 width: 100%;
             }
 
             .input-container {
-                width: 20px;
+                width: 25px;
+                flex-shrink: 0;
             }
 
             input {
@@ -39,8 +52,10 @@ export const CheckBox = props => (
             label {
                 display: block;
                 flex-grow: 1;
+                padding: 2px 0 5px;
             }
         `}</style>
+        <style>{checkboxStyle.styles}</style>
     </div>
 )
 
