@@ -1,29 +1,32 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Table from '@dhis2/d2-ui-table'
-import { Pagination } from '@dhis2/d2-ui-core'
-import '@dhis2/d2-ui-core/css/Table.css'
 import '@dhis2/d2-ui-core/css/Pagination.css'
-import manageError from '../utils/pageEnhancers/manageError.HOC'
-import { Snackbar } from '../components/feedback/Snackbar'
-import { SectionHeadline } from '../components/SectionHeadline'
-import SearchBox from './standard-report/SearchBox'
-import { NoResultsMessage } from '../components/NoResultsMessage'
-import AddReportButton from './standard-report/AddReportButton'
-import ActionComponent from './standard-report/ActionComponent'
-import StyledHtmlReport from './standard-report/StyledHtmlReport'
+import '@dhis2/d2-ui-core/css/Table.css'
+
+import { Pagination } from '@dhis2/d2-ui-core'
+import PropTypes from 'prop-types'
+import React from 'react'
+import Table from '@dhis2/d2-ui-table'
+import i18n from '@dhis2/d2-i18n'
+
 import {
     CONTEXT_MENU_ACTION,
     CONTEXT_MENU_ICONS,
 } from './standard-report/standard.report.conf'
+import { ConnectedReportParams } from './standard-report/ReportParams'
+import { NoResultsMessage } from '../components/NoResultsMessage'
+import { SectionHeadline } from '../components/SectionHeadline'
+import { Snackbar } from '../components/feedback/Snackbar'
 import { displayNoResults, showContextAction } from './standard-report/helper'
 import {
     hasNextPageCreator,
     hasPreviousPageCreator,
     calculatePageValue,
 } from '../utils/pagination/helper'
+import ActionComponent from './standard-report/ActionComponent'
+import AddReportButton from './standard-report/AddReportButton'
+import SearchBox from './standard-report/SearchBox'
+import StyledHtmlReport from './standard-report/StyledHtmlReport'
 import connectStandardReport from './standard-report/connectStandardReport'
-import i18n from '@dhis2/d2-i18n'
+import manageError from '../utils/pageEnhancers/manageError.HOC'
 
 export default class StandardReport extends React.Component {
     getChildContext() {
@@ -111,8 +114,12 @@ export default class StandardReport extends React.Component {
                     />
                 </div>
                 {this.props.reportData && (
-                    <StyledHtmlReport reportData={this.props.reportData} />
+                    <StyledHtmlReport
+                        reportData={this.props.reportData}
+                        onReportCloseClick={this.props.closeReport}
+                    />
                 )}
+                <ConnectedReportParams />
                 <Snackbar
                     action={i18n.t('CONFIRM')}
                     onActionClick={this.props.deleteStandardReport}
@@ -150,6 +157,7 @@ StandardReport.propTypes = {
     addReportFormShow: PropTypes.func.isRequired,
     updateStandardReport: PropTypes.func.isRequired,
     addStandardReport: PropTypes.func.isRequired,
+    closeReport: PropTypes.func.isRequired,
 }
 
 StandardReport.childContextTypes = {

@@ -32,7 +32,7 @@ describe('Actions - dataSetDimensions - asyncThunks', () => {
         expect(store.getActions()).toEqual(expectedActions)
     })
 
-    it('should dispatch a success action with the dimensions when loading dimensions successfully', done => {
+    it('should dispatch a success action with the dimensions when loading dimensions successfully', () => {
         const dimensions = [1, 2, 3, 4]
         const expectedActions = expect.arrayContaining([
             loadingDimensionsSuccess(dimensions),
@@ -43,11 +43,10 @@ describe('Actions - dataSetDimensions - asyncThunks', () => {
         )
         store.dispatch(loadDimensions()).then(() => {
             expect(store.getActions()).toEqual(expectedActions)
-            done()
         })
     })
 
-    it('should dispatch an error action with the error when loading dimensions unsuccessfully', done => {
+    it('should dispatch an error action with the error when loading dimensions unsuccessfully', () => {
         const expectedActions = expect.arrayContaining([
             loadingDimensionsError(),
         ])
@@ -55,7 +54,6 @@ describe('Actions - dataSetDimensions - asyncThunks', () => {
         getDimensions.mockImplementationOnce(() => Promise.reject())
         store.dispatch(loadDimensions()).then(() => {
             expect(store.getActions()).toEqual(expectedActions)
-            done()
         })
     })
 })

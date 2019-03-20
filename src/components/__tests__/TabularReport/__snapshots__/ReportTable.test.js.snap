@@ -1,0 +1,284 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
+<Fragment>
+  <h1>
+    Facility Ownership - Bo
+  </h1>
+  <table>
+    <thead>
+      <tr
+        className="tabular-report__header-row"
+      >
+        <th
+          key="h-Organisation unit-0"
+        >
+          Organisation unit
+        </th>
+        <th
+          key="h-Mission-1"
+        >
+          Mission
+        </th>
+        <th
+          key="h-NGO-2"
+        >
+          NGO
+        </th>
+        <th
+          key="h-Private Clinic-3"
+        >
+          Private Clinic
+        </th>
+        <th
+          key="h-Public facilities-4"
+        >
+          Public facilities
+        </th>
+        <th
+          key="h-Total-5"
+        >
+          Total
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      className="tabular-report__table-body"
+    >
+      <Component
+        cells={
+          Array [
+            "Badjia",
+            "0",
+            "0",
+            "0",
+            "2",
+            "2",
+          ]
+        }
+        key="r-Badjia-0"
+      />
+      <Component
+        cells={
+          Array [
+            "Baoma",
+            "0",
+            "0",
+            "0",
+            "13",
+            "13",
+          ]
+        }
+        key="r-Baoma-1"
+      />
+      <Component
+        cells={
+          Array [
+            "Bargbe",
+            "0",
+            "0",
+            "0",
+            "5",
+            "5",
+          ]
+        }
+        key="r-Bargbe-2"
+      />
+      <Component
+        cells={
+          Array [
+            "Bargbo",
+            "0",
+            "0",
+            "0",
+            "7",
+            "7",
+          ]
+        }
+        key="r-Bargbo-3"
+      />
+      <Component
+        cells={
+          Array [
+            "Bumpe Ngao",
+            "1",
+            "0",
+            "0",
+            "9",
+            "10",
+          ]
+        }
+        key="r-Bumpe Ngao-4"
+      />
+      <Component
+        cells={
+          Array [
+            "Gbo",
+            "0",
+            "0",
+            "0",
+            "1",
+            "1",
+          ]
+        }
+        key="r-Gbo-5"
+      />
+      <Component
+        cells={
+          Array [
+            "Jaiama Bongor",
+            "0",
+            "0",
+            "0",
+            "6",
+            "6",
+          ]
+        }
+        key="r-Jaiama Bongor-6"
+      />
+      <Component
+        cells={
+          Array [
+            "Kakua",
+            "5",
+            "3",
+            "11",
+            "19",
+            "38",
+          ]
+        }
+        key="r-Kakua-7"
+      />
+      <Component
+        cells={
+          Array [
+            "Komboya",
+            "0",
+            "0",
+            "0",
+            "3",
+            "3",
+          ]
+        }
+        key="r-Komboya-8"
+      />
+      <Component
+        cells={
+          Array [
+            "Lugbu",
+            "0",
+            "0",
+            "0",
+            "9",
+            "9",
+          ]
+        }
+        key="r-Lugbu-9"
+      />
+      <Component
+        cells={
+          Array [
+            "Niawa Lenga",
+            "0",
+            "0",
+            "0",
+            "3",
+            "3",
+          ]
+        }
+        key="r-Niawa Lenga-10"
+      />
+      <Component
+        cells={
+          Array [
+            "Selenga",
+            "0",
+            "0",
+            "0",
+            "2",
+            "2",
+          ]
+        }
+        key="r-Selenga-11"
+      />
+      <Component
+        cells={
+          Array [
+            "Tikonko",
+            "0",
+            "0",
+            "0",
+            "6",
+            "6",
+          ]
+        }
+        key="r-Tikonko-12"
+      />
+      <Component
+        cells={
+          Array [
+            "Valunia",
+            "0",
+            "0",
+            "0",
+            "7",
+            "7",
+          ]
+        }
+        key="r-Valunia-13"
+      />
+      <Component
+        cells={
+          Array [
+            "Wonde",
+            "0",
+            "0",
+            "0",
+            "3",
+            "3",
+          ]
+        }
+        key="r-Wonde-14"
+      />
+      <Component
+        cells={
+          Array [
+            "Bo",
+            "6",
+            "3",
+            "11",
+            "95",
+            "115",
+          ]
+        }
+        key="r-Bo-15"
+      />
+    </tbody>
+  </table>
+</Fragment>
+`;
+
+exports[`<Row/> produces tr and td elements 1`] = `
+<tr>
+  <td
+    key="c-a-0"
+  >
+    a
+  </td>
+  <td
+    key="c-b-1"
+  >
+    b
+  </td>
+  <td
+    key="c-c-2"
+  >
+    c
+  </td>
+  <td
+    key="c-d-3"
+  >
+    d
+  </td>
+</tr>
+`;

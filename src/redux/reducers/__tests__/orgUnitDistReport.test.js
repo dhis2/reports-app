@@ -1,80 +1,26 @@
-import { defaultState, orgUnitDistReport } from '../orgUnitDistReport'
-import {
-    loadingChartImageUrlError,
-    loadingChartImageUrlStart,
-    loadingChartImageUrlSuccess,
-} from '../../actions/orgUnitDistReport'
-import {
-    loadingReportDataStart,
-    actionTypes as reportDataActionTypes,
-} from '../../actions/reportData'
+import { actionTypes } from '../../actions/orgUnitDistReport'
+import { orgUnitDistReport, defaultState } from '../orgUnitDistReport'
 
 describe('Reducer - orgUnitDistReport', () => {
     it('should return the default state', () => {
         expect(orgUnitDistReport()).toEqual(defaultState)
     })
 
-    it('should start loading and display image when loading chart image', () => {
-        const action = loadingChartImageUrlStart()
-        const preState = {
-            ...defaultState,
-            displayImage: false,
-            chartImageLoading: false,
-        }
+    it('should toggle should show start to true', () => {
+        const action = { type: actionTypes.SET_CHART_OUTPUT }
+        const preState = { shouldShowChart: false }
         const postState = orgUnitDistReport(preState, action)
-        const expectedState = {
-            ...preState,
-            displayImage: true,
-            chartImageLoading: true,
-        }
+        const expected = { shouldShowChart: true }
 
-        expect(postState).toEqual(expectedState)
+        expect(postState).toEqual(expected)
     })
 
-    it('should stop loading when the chart image has loaded successfully', () => {
-        const action = loadingChartImageUrlSuccess()
-        const preState = {
-            ...defaultState,
-            chartImageLoading: true,
-        }
+    it('should toggle should show start to false', () => {
+        const action = { type: actionTypes.SET_TABULAR_OUTPUT }
+        const preState = { shouldShowChart: true }
         const postState = orgUnitDistReport(preState, action)
-        const expectedState = {
-            ...preState,
-            chartImageLoading: false,
-        }
+        const expected = { shouldShowChart: false }
 
-        expect(postState).toEqual(expectedState)
-    })
-
-    it('should stop loading and hide image when chart image did not load successfully', () => {
-        const action = loadingChartImageUrlError()
-        const preState = {
-            ...defaultState,
-            displayImage: true,
-            chartImageLoading: true,
-        }
-        const postState = orgUnitDistReport(preState, action)
-        const expectedState = {
-            ...preState,
-            displayImage: false,
-            chartImageLoading: false,
-        }
-
-        expect(postState).toEqual(expectedState)
-    })
-
-    it('should hide the image when loading the html report', () => {
-        const action = loadingReportDataStart()
-        const preState = {
-            ...defaultState,
-            displayImage: true,
-        }
-        const postState = orgUnitDistReport(preState, action)
-        const expectedState = {
-            ...preState,
-            displayImage: false,
-        }
-
-        expect(postState).toEqual(expectedState)
+        expect(postState).toEqual(expected)
     })
 })

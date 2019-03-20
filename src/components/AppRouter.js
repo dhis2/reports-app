@@ -12,7 +12,7 @@ import NoMatch from './NoMatch'
 import AppContext from '../pages/AppContext'
 
 /* App configs */
-import { sections } from '../conf../../config/sections.conf'
+import { sections } from '../conf../../config/sections.config'
 
 const AppRouter = () => {
     const routes = sections.map(section => {

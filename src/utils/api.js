@@ -1,3 +1,4 @@
+import { isDevelopment } from './env/isDevelopment'
 import {
     STANDARD_REPORTS_ENDPOINT,
     REPORT_TABLES_ENDPOINT,
@@ -14,11 +15,12 @@ import {
     formatStandardReportsResponse,
     mapCollectionToDimensionQueryString,
     mapResponseToArrayOfIds,
-    parseFileUrls,
     standardReportsFields,
     uploadFile,
+    getAnalyticsFileUrls,
+    buildQueryString,
+    getFileUrls,
 } from './api/helpers'
-import { isDevelopment } from './env/isDevelopment'
 
 let d2
 let api
@@ -69,31 +71,6 @@ export const getOrganisationUnits = () =>
             ],
         })
         .then(modelCollection => modelCollection.toArray())
-
-/**
- * @param {number} page
- * @param {number} pageSize
- * @param {string} nameFilter
- * @return {Promise}
- */
-export const getFilteredStandardReports = (page, pageSize, nameFilter) =>
-    addFilterForName(nameFilter, d2.models.report)
-        .list({ page, pageSize, fields: standardReportsFields })
-        .then(formatStandardReportsResponse)
-
-/**
- * @param {string} id
- * @returns {Promise}
- */
-export const getStandardReportDetails = id =>
-    api.get(`${STANDARD_REPORTS_ENDPOINT}/${id}`)
-
-/**
- * @param {string} id
- * @return {Promise}
- */
-export const deleteStandardReport = id =>
-    api.delete(`${STANDARD_REPORTS_ENDPOINT}/${id}`)
 
 /**
  * @param {Array} dataSetOptions
@@ -189,7 +166,8 @@ export const getReportingRateSummaryReport = async (
     // Instead of calling `d2.analytics.aggregate.get(req)`, which spawn two parallel requests,
     // we just building the .json url from the request instance and call the regular `api.get(url)`,
     // which only spawns a single request
-    const [{ url }, ...fileUrls] = parseFileUrls(req, ['json', 'xls', 'csv'])
+    const extensions = ['json', 'xls', 'csv']
+    const [{ url }, ...fileUrls] = getAnalyticsFileUrls(req, extensions)
     return api.get(url).then(data => ({ ...data, fileUrls }))
 }
 
@@ -198,7 +176,6 @@ export const getReportingRateSummaryReport = async (
  * @returns {Promise} - Array of IDs of the orgUnit and its direct descendants
  */
 export const getOrgUnitAndChildrenIds = orgUnit => {
-    console.log(orgUnit)
     const children = orgUnit.children.size
         ? Promise.resolve(orgUnit.children)
         : d2.models.organisationUnits
@@ -221,19 +198,23 @@ export const getOrgUnitGroupSets = () =>
     })
 
 /**
- * @param {string} orgUnitId
+ * @param {Object} orgUnit
  * @param {string} groupSetId
  * @returns {Promise}
  */
 export const getOrgUnitDistReport = async (orgUnit, groupSetId) => {
     const orgUnitIds = await getOrgUnitAndChildrenIds(orgUnit)
+
+    const endPoint = ORG_UNIT_DISTRIBUTION_REPORT_ENDPOINT
+    const queryString = buildQueryString({ ou: orgUnitIds, ougs: groupSetId })
+    const relativeUrl = `${endPoint}?${queryString}`
+    const fileUrls = getFileUrls(endPoint, queryString, ['xls', 'pdf'])
+
     return api
-        .get(ORG_UNIT_DISTRIBUTION_REPORT_ENDPOINT, {
-            ou: orgUnitIds.join(';'),
-            ougs: groupSetId,
-        })
-        .then(response => ({ ...response, orgUnitIds }))
+        .get(relativeUrl)
+        .then(response => ({ ...response, orgUnitIds, fileUrls }))
 }
+
 /**
  * @returns {Promise}
  */
@@ -262,6 +243,12 @@ export const deleteResource = resourceId =>
  */
 export const getStandardReportTables = () =>
     api.get(REPORT_TABLES_ENDPOINT, { paging: false, fields: 'id,name' })
+
+/**
+ * returns {Promise}
+ */
+export const getStandardReportTable = (id, queryParams = {}) =>
+    api.get(`${REPORT_TABLES_ENDPOINT}/${id}`, queryParams)
 
 /**
  * @param {Object} report
@@ -339,3 +326,44 @@ export const putResource = (resourceId, resource, file = null) =>
               )
               .then(resource => putDocument(api, resourceId, resource))
         : putDocument(api, resourceId, resource)
+
+/**
+ * =================================
+ * Standard report
+ * =================================
+ */
+
+/**
+ * @param {number} page
+ * @param {number} pageSize
+ * @param {string} nameFilter
+ * @return {Promise}
+ */
+export const getFilteredStandardReports = (page, pageSize, nameFilter) =>
+    addFilterForName(nameFilter, d2.models.report)
+        .list({ page, pageSize, fields: standardReportsFields })
+        .then(formatStandardReportsResponse)
+
+/**
+ * @param {string} id
+ * @returns {Promise}
+ */
+export const getStandardReportDetails = id =>
+    api.get(`${STANDARD_REPORTS_ENDPOINT}/${id}`)
+
+/**
+ * @param {string} id
+ * @return {Promise}
+ */
+export const deleteStandardReport = id =>
+    api.delete(`${STANDARD_REPORTS_ENDPOINT}/${id}`)
+
+/**
+ * @param {string} id
+ * @returns {Promise}
+ */
+export const getStandardReportHtmlReport = (id, requestBody) =>
+    api.get(`reports/${id}/data.html`, {
+        t: new Date().getTime(),
+        ...requestBody,
+    })

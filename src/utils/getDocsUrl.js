@@ -1,4 +1,4 @@
-import { getDocsKeyForSection } from '../config/sections.conf'
+import { getDocsKeyForSection } from '../config/sections.config'
 
 export const DOCS_LINK = 'https://ci.dhis2.org/docs'
 export const DEFAULT_DOC_LANGUAGE = 'en'
