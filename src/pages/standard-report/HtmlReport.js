@@ -1,40 +1,46 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
+import { loadScript } from '../../utils/dom/loadScript'
+
+/**
+ * Do this stuff inside an iframe...
+ * https://stackoverflow.com/questions/10418644/creating-an-iframe-with-given-html-dynamically
+ */
 
 class HtmlReport extends Component {
-    // TODO: Fix urls/paths to scripts or find a better way to do this
+    state = {
+        ready: false,
+        report: '',
+    }
+
     componentDidMount() {
-        const jqueryScript = document.createElement('script')
-        jqueryScript.type = 'text/javascript'
-        // jqueryScript.src = 'http://localhost:8080/dhis-web-commons/javascripts/jQuery/jquery.min.js';
-        jqueryScript.src =
-            '../dhis-web-commons/javascripts/jQuery/jquery.min.js'
-        jqueryScript.onload = () => {
-            this.loadDHIS2Script()
-        }
-        document.head.appendChild(jqueryScript)
+        loadScript('/dhis-web-commons/javascripts/jQuery/jquery.min.js')
+            .then(() =>
+                loadScript('/dhis-web-commons/javascripts/dhis2/dhis2.util.js')
+            )
+            .then(() => this.setState({ ready: true, report: this.props.html }))
     }
 
     componentWillReceiveProps(newProps) {
-        if (newProps.html) {
-            const domFrag = document
-                .createRange()
-                .createContextualFragment(newProps.html)
-            document.getElementById('html-report-id').innerHTML = ''
-            document.getElementById('html-report-id').appendChild(domFrag)
+        if (newProps.html && this.state.ready) {
+            this.setState({ report: newProps.html })
         }
     }
 
-    loadDHIS2Script = () => {
-        const dhis2Script = document.createElement('script')
-        dhis2Script.type = 'text/javascript'
-        // dhis2Script.src = 'http://localhost:8080/dhis-web-commons/javascripts/dhis2/dhis2.util.js';
-        dhis2Script.src = '../dhis-web-commons/javascripts/dhis2/dhis2.util.js'
-        document.head.appendChild(dhis2Script)
-    }
-
     render() {
-        return <div id={'html-report-id'} />
+        return (
+            <div
+                id="html-report-id"
+                dangerouslySetInnerHTML={{
+                    __html: this.state.report,
+                }}
+            />
+        )
     }
+}
+
+HtmlReport.propTypes = {
+    html: PropTypes.string.isRequired,
 }
 
 export default HtmlReport

@@ -1,23 +1,29 @@
 import { connect } from 'react-redux'
+import isEmpty from 'lodash.isempty'
+
 import {
-    loadStandardReports,
-    createReportShow,
     addReportFormShow,
-    editReportFormShow,
+    closeContextMenu,
     deleteStandardReport,
-    sharingSettingsShow,
+    editReportFormShow,
     goToNextPage,
     goToPrevPage,
-    requestDeleteStandardReport,
-    setSearch,
-    showReportData,
     hideReportData,
-    closeContextMenu,
+    loadStandardReports,
+    requestDeleteStandardReport,
     sendStandardReport,
+    setSearch,
+    sharingSettingsShow,
+    showReportData,
+    showReportParams,
 } from '../../redux/actions/standardReport'
+import { unsetReportData } from '../../redux/actions/reportData'
 
 const mapStateToProps = state => ({
     ...state.standardReport,
+    reportData: isEmpty(state.reportData.content)
+        ? undefined
+        : state.reportData.content,
     pager: state.pagination,
 })
 
@@ -25,7 +31,7 @@ const mapDispatchToProps = dispatch => ({
     loadStandardReports: fetchReportTables =>
         dispatch(loadStandardReports(fetchReportTables)),
     addReportFormShow: report => dispatch(addReportFormShow(report)),
-    createReport: report => dispatch(createReportShow(report)),
+    createReport: report => dispatch(showReportParams(report)),
     editReport: report => dispatch(editReportFormShow(report)),
     deleteStandardReport: report => dispatch(deleteStandardReport(report)),
     sharingSettings: report => dispatch(sharingSettingsShow(report)),
@@ -39,6 +45,7 @@ const mapDispatchToProps = dispatch => ({
     closeContextMenu: refreshList => dispatch(closeContextMenu(refreshList)),
     updateStandardReport: report => dispatch(sendStandardReport(report, true)),
     addStandardReport: report => dispatch(sendStandardReport(report, false)),
+    closeReport: () => dispatch(unsetReportData()),
 })
 
 const connectStandardReport = StandardReport =>
