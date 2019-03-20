@@ -57,7 +57,7 @@ DataSetReport.propTypes = {
     sectionKey: PropTypes.string.isRequired,
     fileUrls: PropTypes.array.isRequired,
     isHtmlReport: PropTypes.bool.isRequired,
-    reportContent: reportContent,
+    reportContent: reportContent.isRequired,
     reportComment: PropTypes.string.isRequired,
     isReportLoading: PropTypes.bool.isRequired,
     isActionEnabled: PropTypes.bool.isRequired,

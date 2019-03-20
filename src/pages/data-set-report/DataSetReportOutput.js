@@ -33,7 +33,7 @@ const DataSetReportOutput = props => (
 
 DataSetReportOutput.propTypes = {
     isHtmlReport: PropTypes.bool.isRequired,
-    content: reportContent,
+    content: reportContent.isRequired,
     isLoading: PropTypes.bool.isRequired,
     fileUrls: PropTypes.array.isRequired,
     reportComment: ReportComment.propTypes.comment,

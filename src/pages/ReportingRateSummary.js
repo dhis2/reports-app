@@ -9,6 +9,7 @@ import TabularReport from '../components/TabularReport'
 import { SectionHeadline } from '../components/SectionHeadline'
 import { connectReportingRateSummary } from './reporting-rate-summary/connectReportingRateSummary'
 import { Form } from './reporting-rate-summary/Form'
+import { reportContent } from '../utils/react/propTypes'
 
 export default class ReportingRateSummary extends React.Component {
     render = () => (
@@ -39,7 +40,7 @@ ReportingRateSummary.propTypes = {
     sectionKey: PropTypes.string.isRequired,
     isActionEnabled: PropTypes.bool.isRequired,
     loadReportData: PropTypes.func.isRequired,
-    reportContent: PropTypes.object.isRequired,
+    reportContent: reportContent.isRequired,
     fileUrls: PropTypes.array.isRequired,
     isReportLoading: PropTypes.bool.isRequired,
 }
