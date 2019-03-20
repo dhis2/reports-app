@@ -299,5 +299,8 @@ export const deleteStandardReport = id =>
  * @param {string} id
  * @returns {Promise}
  */
-export const getStandardReportHtmlReport = id =>
-    api.get(`reports/${id}/data.html`, { t: new Date().getTime() })
+export const getStandardReportHtmlReport = (id, requestBody) =>
+    api.get(`reports/${id}/data.html`, {
+        t: new Date().getTime(),
+        ...requestBody,
+    })

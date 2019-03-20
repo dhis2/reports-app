@@ -6,7 +6,6 @@ import {
     closeContextMenu,
     deleteStandardReport,
     editReportFormShow,
-    generateHtmlReport,
     goToNextPage,
     goToPrevPage,
     hideReportData,
@@ -18,7 +17,6 @@ import {
     showReportData,
     showReportParams,
 } from '../../redux/actions/standardReport'
-import { reportTypes } from './standard.report.conf'
 import { unsetReportData } from '../../redux/actions/reportData'
 
 const mapStateToProps = state => ({
@@ -33,10 +31,7 @@ const mapDispatchToProps = dispatch => ({
     loadStandardReports: fetchReportTables =>
         dispatch(loadStandardReports(fetchReportTables)),
     addReportFormShow: report => dispatch(addReportFormShow(report)),
-    createReport: report =>
-        report.type === reportTypes.HTML
-            ? dispatch(generateHtmlReport(report.id))
-            : dispatch(showReportParams(report)),
+    createReport: report => dispatch(showReportParams(report)),
     editReport: report => dispatch(editReportFormShow(report)),
     deleteStandardReport: report => dispatch(deleteStandardReport(report)),
     sharingSettings: report => dispatch(sharingSettingsShow(report)),

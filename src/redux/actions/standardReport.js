@@ -474,7 +474,7 @@ export const sendStandardReport = (report, isEdit) => dispatch => {
 
 /**
  * =============================================
- * Generate HTML report
+ * Generate report
  * =============================================
  */
 
@@ -498,19 +498,25 @@ export const generatingHtmlReportErrorWithFeedback = error => dispatch => {
  * @param {string} id
  * @returns {Function}
  */
-export const generateHtmlReport = id => dispatch => {
+export const generateHtmlReport = () => (dispatch, getState) => {
     dispatch(loadingReportDataStart())
+    const { standardReport, organisationUnits, reportPeriod } = getState()
+    const { reportParams } = standardReport
+    const { id } = standardReport.selectedReport
 
-    return getStandardReportHtmlReport(id)
+    const reportRequestBody = {}
+    if (reportParams.organisationUnit) {
+        reportRequestBody.ou = organisationUnits.selected.id
+    }
+
+    if (reportParams.reportPeriod) {
+        reportRequestBody.pe = reportPeriod.selectedPeriod
+    }
+
+    return getStandardReportHtmlReport(id, reportRequestBody)
         .then(report => dispatch(loadingReportDataSuccess(report)))
         .catch(error => dispatch(generatingHtmlReportErrorWithFeedback(error)))
 }
-
-/**
- * =============================================
- * Generate PDF report
- * =============================================
- */
 
 export const defineRequiredReportParams = requiredParams => ({
     type: actionTypes.DEFINE_REQUIRED_PARAMS,
@@ -528,15 +534,25 @@ export const cancelGeneratingPdfReport = () => ({
 
 export const submitRequiredReportParams = () => (dispatch, getState) => {
     const state = getState()
-    const { reportParams } = state.standardReport
+    const { standardReport } = state
+    const { selectedReport, reportParams } = standardReport
     const errors = validateRequiredParams(state, reportParams)
 
     if (size(errors)) {
         dispatch(requiredReportParamsError(errors))
     } else {
-        dispatch(generatePdfReport())
+        if (selectedReport.type === reportTypes.HTML) {
+            dispatch(generateHtmlReport())
+        } else {
+            dispatch(generatePdfReport())
+        }
     }
 }
+
+export const getStandardReportTableRequiredParams = report =>
+    report.reportTable
+        ? getStandardReportTable(report.reportTable.id)
+        : Promise.resolve({ reportParams: {} })
 
 /**
  * @param {string} reportId
@@ -544,12 +560,16 @@ export const submitRequiredReportParams = () => (dispatch, getState) => {
  */
 export const showReportParams = report => dispatch => {
     dispatch(setSelectedReport(report))
-    return getStandardReportTable(report.reportTable.id)
+    return getStandardReportTableRequiredParams(report)
         .then(({ reportParams }) => {
             const requiredParams = extractRequiredReportParams(reportParams)
 
             if (!size(requiredParams)) {
-                dispatch(generatePdfReport())
+                if (report.type === reportTypes.HTML) {
+                    dispatch(generateHtmlReport())
+                } else {
+                    dispatch(generatePdfReport())
+                }
             } else {
                 dispatch(defineRequiredReportParams(requiredParams))
             }
