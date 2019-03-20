@@ -2,7 +2,7 @@ import { selectDataSet as selectDataSetOriginal } from './dataSet'
 import { loadDimensions } from './dataSetDimensions'
 import { getDataSetReport, postDataSetReportComment } from '../../utils/api'
 import {
-    loadingReportDataStartWithFeedback,
+    loadingReportDataStart,
     loadingReportDataSuccessWithFeedback,
     loadingReportDataErrorWithFeedback,
     sharingReportCommentStartWithFeedback,
@@ -28,7 +28,7 @@ export const toggleSelectedUnitOnly = selectedUnitOnly => ({
 })
 
 export const loadReportData = () => (dispatch, getState) => {
-    dispatch(loadingReportDataStartWithFeedback())
+    dispatch(loadingReportDataStart())
 
     const {
         dataSet,

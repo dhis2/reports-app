@@ -9,8 +9,9 @@ import {
     buildQueryString,
     getFileUrls,
     postDataSetReportCommentUrl,
-    getDataSetReportUrl,
+    getDataSetReportFileUrls,
 } from './api/helpers'
+import { isCustomFormType } from './dataSetReport/isCustomFormType'
 
 export const RESOURCE_ENDPOINT = 'documents'
 const DATA_DIMENSION_SUFFIXES = [
@@ -106,24 +107,30 @@ export const deleteStandardReport = id =>
  * @param {bool} selectedUnitOnly
  * @returns {Promise}
  */
-export const getDataSetReport = ({
-    dataSet,
-    dataSetDimensions,
-    orgUnitGroupsOptions,
-    orgUnit,
-    period,
-    selectedUnitOnly,
-}) =>
-    api.get(getDataSetReportUrl(dataSet), {
-        ds: dataSet.id,
-        pe: period,
-        ou: orgUnit,
-        selectedUnitOnly,
+export const getDataSetReport = options => {
+    const endPoint = 'dataSetReport'
+    const url = isCustomFormType(options.dataSet.formType)
+        ? `${endPoint}/custom`
+        : endPoint
+    const data = {
+        ds: options.dataSet.id,
+        pe: options.period,
+        ou: options.orgUnit,
+        selectedUnitOnly: options.selectedUnitOnly,
         filter: mapCollectionToDimensionQueryString(
-            dataSetDimensions,
-            orgUnitGroupsOptions
+            options.dataSetDimensions,
+            options.orgUnitGroupsOptions
         ),
-    })
+    }
+    const requestOptions = isCustomFormType(options.dataSet.formType)
+        ? { headers: { Accept: 'text/html' } }
+        : {}
+    const fileUrls = getDataSetReportFileUrls(endPoint, options)
+
+    return api
+        .get(url, data, requestOptions)
+        .then(response => ({ data: response, fileUrls }))
+}
 
 /**
  * @param {string} dataSetId
@@ -156,7 +163,7 @@ export const postDataSetReportComment = (
         orgUnitId,
         period
     )
-    const requestHeaders = { headers: { 'content-type': 'text/plain' } }
+    const requestHeaders = { headers: { 'Content-Type': 'text/plain' } }
     return api.post(endpointUrl, comment, requestHeaders)
 }
 

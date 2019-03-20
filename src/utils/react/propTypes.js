@@ -19,3 +19,9 @@ export const formOption = PropTypes.shape({
 })
 
 export const formOptions = PropTypes.arrayOf(formOption)
+
+export const reportContent = PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.array,
+    PropTypes.object,
+]).isRequired
