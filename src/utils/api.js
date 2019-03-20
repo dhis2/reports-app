@@ -269,7 +269,7 @@ export const getStandardReportTables = () =>
  * returns {Promise}
  */
 export const getStandardReportTable = (id, queryParams = {}) =>
-    api.get(`${REPORT_TABLES_ENDPOINT}/${id}`, queryParams)
+    api.get(`reportTables/${id}`, queryParams)
 
 /**
  * @param {Object} report
