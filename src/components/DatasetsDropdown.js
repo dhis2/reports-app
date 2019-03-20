@@ -6,7 +6,6 @@ import i18n from '@dhis2/d2-i18n'
 import styles from '../utils/styles'
 import { selectDataSet } from '../redux/actions/dataSet'
 
-const emptyLabel = i18n.t('Select Data Set')
 const hintTextLoading = i18n.t('Loading options...')
 const hintTextDefault = i18n.t('Select Data Set')
 
@@ -14,12 +13,10 @@ export const DatasetsDropdown = props => (
     <div>
         <span style={styles.formLabel}>{props.label}</span>
         <DropDown
-            includeEmpty
             fullWidth={props.fullWidth}
             value={props.selected.id}
             onChange={props.onChange ? props.onChange : props.selectDataSet}
             menuItems={props.options}
-            emptyLabel={emptyLabel}
             hintText={props.loading ? hintTextLoading : hintTextDefault}
             disabled={props.loading}
         />

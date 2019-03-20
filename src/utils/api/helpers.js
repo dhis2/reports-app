@@ -85,6 +85,27 @@ export const getAnalyticsFileUrls = (req, extensions) => {
     }, [])
 }
 
+export const getDataSetReportFileUrls = (resourceUrl, options) => {
+    const mergedFilters = {
+        ...options.dataSetDimensions,
+        ...options.orgUnitGroupsOptions,
+    }
+    const baseQueryStr = buildQueryString({
+        ds: options.dataSet.id,
+        pe: options.period,
+        ou: options.orgUnit,
+        selectedUnitOnly: options.selectedUnitOnly,
+    })
+    const filterQueryStr = Object.keys(mergedFilters)
+        .map(key => `filter=${key}:${mergedFilters[key]}`)
+        .join('&')
+    const fullQueryStr = filterQueryStr
+        ? `${baseQueryStr}&${filterQueryStr}`
+        : baseQueryStr
+
+    return getFileUrls(resourceUrl, fullQueryStr, ['xls', 'pdf'])
+}
+
 /**
  * @param {String} endpoint
  * @param {string} queryString
@@ -115,3 +136,7 @@ export const buildQueryString = o => {
         }, [])
         .join('&')
 }
+
+// Url creaters
+export const postDataSetReportCommentUrl = (dataSetId, orgUnitId, period) =>
+    `interpretations/dataSetReport/${dataSetId}?pe=${period}&ou=${orgUnitId}`

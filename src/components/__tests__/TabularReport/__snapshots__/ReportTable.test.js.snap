@@ -3,7 +3,7 @@
 exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
 <Fragment>
   <h1>
-    Facility Ownership - Bo
+    CHP - Bo
   </h1>
   <table>
     <thead>
@@ -11,32 +11,37 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         className="tabular-report__header-row"
       >
         <th
-          key="h-Organisation unit-0"
+          key="h-Organisation Unit-0"
         >
-          Organisation unit
+          Organisation Unit
         </th>
         <th
-          key="h-Mission-1"
+          key="h-CHP-1"
         >
-          Mission
+          CHP
         </th>
         <th
-          key="h-NGO-2"
+          key="h-CHC-2"
         >
-          NGO
+          CHC
         </th>
         <th
-          key="h-Private Clinic-3"
+          key="h-MCHP-3"
         >
-          Private Clinic
+          MCHP
         </th>
         <th
-          key="h-Public facilities-4"
+          key="h-Clinic-4"
         >
-          Public facilities
+          Clinic
         </th>
         <th
-          key="h-Total-5"
+          key="h-Hospital-5"
+        >
+          Hospital
+        </th>
+        <th
+          key="h-Total-6"
         >
           Total
         </th>
@@ -49,11 +54,12 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         cells={
           Array [
             "Badjia",
-            "0",
-            "0",
-            "0",
-            "2",
-            "2",
+            0,
+            1,
+            1,
+            0,
+            0,
+            2,
           ]
         }
         key="r-Badjia-0"
@@ -62,11 +68,12 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         cells={
           Array [
             "Baoma",
-            "0",
-            "0",
-            "0",
-            "13",
-            "13",
+            3,
+            3,
+            7,
+            0,
+            0,
+            13,
           ]
         }
         key="r-Baoma-1"
@@ -75,11 +82,12 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         cells={
           Array [
             "Bargbe",
-            "0",
-            "0",
-            "0",
-            "5",
-            "5",
+            0,
+            1,
+            4,
+            0,
+            0,
+            5,
           ]
         }
         key="r-Bargbe-2"
@@ -88,11 +96,12 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         cells={
           Array [
             "Bargbo",
-            "0",
-            "0",
-            "0",
-            "7",
-            "7",
+            1,
+            1,
+            5,
+            0,
+            0,
+            7,
           ]
         }
         key="r-Bargbo-3"
@@ -101,11 +110,12 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         cells={
           Array [
             "Bumpe Ngao",
-            "1",
-            "0",
-            "0",
-            "9",
-            "10",
+            3,
+            1,
+            4,
+            0,
+            1,
+            9,
           ]
         }
         key="r-Bumpe Ngao-4"
@@ -114,11 +124,12 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         cells={
           Array [
             "Gbo",
-            "0",
-            "0",
-            "0",
-            "1",
-            "1",
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
           ]
         }
         key="r-Gbo-5"
@@ -127,11 +138,12 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         cells={
           Array [
             "Jaiama Bongor",
-            "0",
-            "0",
-            "0",
-            "6",
-            "6",
+            3,
+            1,
+            2,
+            0,
+            0,
+            6,
           ]
         }
         key="r-Jaiama Bongor-6"
@@ -140,11 +152,12 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         cells={
           Array [
             "Kakua",
-            "5",
-            "3",
-            "11",
-            "19",
-            "38",
+            3,
+            7,
+            17,
+            7,
+            3,
+            37,
           ]
         }
         key="r-Kakua-7"
@@ -153,11 +166,12 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         cells={
           Array [
             "Komboya",
-            "0",
-            "0",
-            "0",
-            "3",
-            "3",
+            0,
+            1,
+            2,
+            0,
+            0,
+            3,
           ]
         }
         key="r-Komboya-8"
@@ -166,11 +180,12 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         cells={
           Array [
             "Lugbu",
-            "0",
-            "0",
-            "0",
-            "9",
-            "9",
+            2,
+            1,
+            6,
+            0,
+            0,
+            9,
           ]
         }
         key="r-Lugbu-9"
@@ -179,11 +194,12 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         cells={
           Array [
             "Niawa Lenga",
-            "0",
-            "0",
-            "0",
-            "3",
-            "3",
+            0,
+            2,
+            1,
+            0,
+            0,
+            3,
           ]
         }
         key="r-Niawa Lenga-10"
@@ -192,11 +208,12 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         cells={
           Array [
             "Selenga",
-            "0",
-            "0",
-            "0",
-            "2",
-            "2",
+            0,
+            1,
+            1,
+            0,
+            0,
+            2,
           ]
         }
         key="r-Selenga-11"
@@ -205,11 +222,12 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         cells={
           Array [
             "Tikonko",
-            "0",
-            "0",
-            "0",
-            "6",
-            "6",
+            1,
+            2,
+            3,
+            0,
+            0,
+            6,
           ]
         }
         key="r-Tikonko-12"
@@ -218,11 +236,12 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         cells={
           Array [
             "Valunia",
-            "0",
-            "0",
-            "0",
-            "7",
-            "7",
+            2,
+            2,
+            3,
+            0,
+            0,
+            7,
           ]
         }
         key="r-Valunia-13"
@@ -231,11 +250,12 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         cells={
           Array [
             "Wonde",
-            "0",
-            "0",
-            "0",
-            "3",
-            "3",
+            0,
+            1,
+            2,
+            0,
+            0,
+            3,
           ]
         }
         key="r-Wonde-14"
@@ -244,11 +264,12 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         cells={
           Array [
             "Bo",
-            "6",
-            "3",
-            "11",
-            "95",
-            "115",
+            18,
+            26,
+            58,
+            7,
+            4,
+            113,
           ]
         }
         key="r-Bo-15"

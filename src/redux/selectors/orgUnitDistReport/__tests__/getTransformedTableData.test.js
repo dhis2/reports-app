@@ -1,13 +1,13 @@
 import getTransformedTableData, { cache } from '../getTransformedTableData'
 import {
-    responseData,
+    reportResponseData,
     transformedTableData,
 } from '../../../../__fixtures__/orgUnitDistReport'
 
 describe('getTransformedTableData', () => {
     const state = {
         reportData: {
-            content: responseData,
+            content: reportResponseData,
         },
         organisationUnits: {
             selected: {

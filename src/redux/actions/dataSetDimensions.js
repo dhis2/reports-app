@@ -61,11 +61,6 @@ export const loadDimensions = () => (dispatch, getState) => {
 
     const { dataSet } = getState()
     return getDimensions(dataSet.selected.id)
-        .then(response =>
-            response.error
-                ? Promise.reject(response.error)
-                : Promise.resolve(response.dimensions)
-        )
         .then(dimensions => dispatch(loadingDimensionsSuccess(dimensions)))
         .catch(error => dispatch(loadingDimensionsErrorWithFeedback(error)))
 }

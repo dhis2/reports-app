@@ -8,17 +8,20 @@ import {
     getAnalyticsFileUrls,
     buildQueryString,
     getFileUrls,
-} from './api/helpers'
-import {
-    STANDARD_REPORTS_ENDPOINT,
-    REPORT_TABLES_ENDPOINT,
-    DATA_SET_REPORTS_ENDPOINT,
-    DATA_SET_DIMENSIONS_ENDPOINT,
-    RESOURCE_ENDPOINT,
-    DATA_DIMENSION_SUFFIXES,
-    ORG_UNIT_DISTRIBUTION_REPORT_ENDPOINT,
     postDataSetReportCommentUrl,
-} from './api/constants'
+    getDataSetReportFileUrls,
+} from './api/helpers'
+import { isCustomFormType } from './dataSetReport/isCustomFormType'
+
+export const RESOURCE_ENDPOINT = 'documents'
+const DATA_DIMENSION_SUFFIXES = [
+    'ACTUAL_REPORTS',
+    'EXPECTED_REPORTS',
+    'REPORTING_RATE',
+    'ACTUAL_REPORTS_ON_TIME',
+    'REPORTING_RATE_ON_TIME',
+]
+const STANDARD_REPORTS_ENDPOINT = 'reports'
 
 let d2
 let api
@@ -79,31 +82,43 @@ export const getOrganisationUnits = () =>
  * @param {bool} selectedUnitOnly
  * @returns {Promise}
  */
-export const getDataSetReports = (
-    dataSetOptions,
-    orgUnitGroupsOptions,
-    dataSetId,
-    orgUnit,
-    period,
-    selectedUnitOnly
-) =>
-    api.get(DATA_SET_REPORTS_ENDPOINT, {
-        ds: dataSetId,
-        pe: period,
-        ou: orgUnit,
-        selectedUnitOnly,
-        dimensions: mapCollectionToDimensionQueryString(
-            dataSetOptions,
-            orgUnitGroupsOptions
+export const getDataSetReport = options => {
+    const endPoint = 'dataSetReport'
+    const url = isCustomFormType(options.dataSet.formType)
+        ? `${endPoint}/custom`
+        : endPoint
+    const data = {
+        ds: options.dataSet.id,
+        pe: options.period,
+        ou: options.orgUnit,
+        selectedUnitOnly: options.selectedUnitOnly,
+        filter: mapCollectionToDimensionQueryString(
+            options.dataSetDimensions,
+            options.orgUnitGroupsOptions
         ),
-    })
+    }
+    const requestOptions = isCustomFormType(options.dataSet.formType)
+        ? { headers: { Accept: 'text/html' } }
+        : {}
+    const fileUrls = getDataSetReportFileUrls(endPoint, options)
 
+    return api
+        .get(url, data, requestOptions)
+        .then(response => ({ data: response, fileUrls }))
+}
+
+/**
+ * @param {string} dataSetId
+ * @returns {Promise<array>} The dimensions for a given dataset
+ */
 export const getDimensions = dataSetId =>
-    api.get(`${DATA_SET_DIMENSIONS_ENDPOINT}/${dataSetId}`, {
-        fields: ['id', 'displayName', 'items[id,displayName]'].join(','),
-        order: 'name:asc',
-        paging: false,
-    })
+    api
+        .get(`dimensions/dataSet/${dataSetId}`, {
+            fields: ['id', 'displayName', 'items[id,displayName]'].join(','),
+            order: 'name:asc',
+            paging: false,
+        })
+        .then(({ dimensions }) => dimensions)
 
 /**
  * @param {string} dataSetId
@@ -123,7 +138,7 @@ export const postDataSetReportComment = (
         orgUnitId,
         period
     )
-    const requestHeaders = { headers: { 'content-type': 'text/plain' } }
+    const requestHeaders = { headers: { 'Content-Type': 'text/plain' } }
     return api.post(endpointUrl, comment, requestHeaders)
 }
 
@@ -161,8 +176,8 @@ export const getReportingRateSummaryReport = async (
         }
     }
 
-    // Instead of calling `d2.analytics.aggregate.get(req)`, which spawn two parallel requests,
-    // we just building the .json url from the request instance and call the regular `api.get(url)`,
+    // Instead of calling `d2.analytics.aggregate.get(req)`, which spawns two parallel requests,
+    // we're just building the .json url from the request instance and call the regular `api.get(url)`,
     // which only spawns a single request
     const extensions = ['json', 'xls', 'csv']
     const [{ url }, ...fileUrls] = getAnalyticsFileUrls(req, extensions)
@@ -200,17 +215,25 @@ export const getOrgUnitGroupSets = () =>
  * @param {string} groupSetId
  * @returns {Promise}
  */
-export const getOrgUnitDistReport = async (orgUnit, groupSetId) => {
-    const orgUnitIds = await getOrgUnitAndChildrenIds(orgUnit)
+export const getOrgUnitDistReport = async (
+    orgUnit,
+    groupSetId,
+    shouldShowChart
+) => {
+    const orgUnitIds = shouldShowChart
+        ? orgUnit.id
+        : await getOrgUnitAndChildrenIds(orgUnit)
 
-    const endPoint = ORG_UNIT_DISTRIBUTION_REPORT_ENDPOINT
-    const queryString = buildQueryString({ ou: orgUnitIds, ougs: groupSetId })
+    const endPoint = 'orgUnitAnalytics'
+    const queryString = buildQueryString({
+        ou: orgUnitIds,
+        ougs: groupSetId,
+        columns: groupSetId,
+    })
     const relativeUrl = `${endPoint}?${queryString}`
     const fileUrls = getFileUrls(endPoint, queryString, ['xls', 'pdf'])
 
-    return api
-        .get(relativeUrl)
-        .then(response => ({ ...response, orgUnitIds, fileUrls }))
+    return api.get(relativeUrl).then(response => ({ ...response, fileUrls }))
 }
 
 /**
@@ -240,7 +263,7 @@ export const deleteResource = resourceId =>
  * @returns {Promise}
  */
 export const getStandardReportTables = () =>
-    api.get(REPORT_TABLES_ENDPOINT, { paging: false, fields: 'id,name' })
+    api.get('reportTables', { paging: false, fields: 'id,name' })
 
 /**
  * returns {Promise}
@@ -267,7 +290,7 @@ export const updateStandardReport = report =>
  */
 export const getDataSetOptions = () =>
     d2.models.dataSet
-        .list({ paging: false, fields: 'id,displayName' })
+        .list({ paging: false, fields: 'id,displayName,formType' })
         .then(response => response.toArray())
 
 /**

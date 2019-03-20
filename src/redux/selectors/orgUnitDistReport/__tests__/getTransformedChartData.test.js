@@ -1,13 +1,13 @@
 import getTransformedChartData, { cache } from '../getTransformedChartData'
 import {
-    responseData,
+    chartResponseData,
     transformedChartData,
 } from '../../../../__fixtures__/orgUnitDistReport'
 
 describe('getTransformedChartData', () => {
     const state = {
         reportData: {
-            content: responseData,
+            content: chartResponseData,
         },
         organisationUnits: {
             selected: {

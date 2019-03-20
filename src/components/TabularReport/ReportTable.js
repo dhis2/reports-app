@@ -11,7 +11,9 @@ export const Row = ({ cells }) => (
 )
 
 Row.propTypes = {
-    cells: PropTypes.arrayOf(PropTypes.string).isRequired,
+    cells: PropTypes.arrayOf(
+        PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    ).isRequired,
 }
 
 const ReportTable = ({ content: { title, headers, rows } }) => (
