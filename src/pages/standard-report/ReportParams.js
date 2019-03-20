@@ -46,12 +46,14 @@ export const ReportParams = props => (
         <DialogTitle>{title}</DialogTitle>
 
         <DialogContent>
-            {props.reportParams.organisationUnit && <OrganisationUnitTree />}
+            <div className="inputs">
+                {props.reportParams.organisationUnit && (
+                    <OrganisationUnitTree />
+                )}
 
-            {props.reportParams.period && <PeriodPicker label="" />}
-        </DialogContent>
+                {props.reportParams.period && <PeriodPicker label="" />}
+            </div>
 
-        <DialogContent>
             {!!props.reportParamsErrors.length && (
                 <div className="errors">
                     <p>
@@ -92,6 +94,9 @@ export const ReportParams = props => (
             </div>
 
             <style jsx>{`
+                .inputs {
+                    margin-bottom: 30px;
+                }
                 .errors {
                     margin-bottom: 10px;
                 }
@@ -122,9 +127,8 @@ export const ConnectedReportParams = connect(
         reportParamsErrors: state.standardReport.reportParamsErrors,
         showReportParams: state.standardReport.showReportParams,
     }),
-    dispatch => ({
-        cancelGeneratingPdfReport: () => dispatch(cancelGeneratingPdfReport()),
-        submitRequiredReportParams: () =>
-            dispatch(submitRequiredReportParams()),
-    })
+    {
+        cancelGeneratingPdfReport,
+        submitRequiredReportParams,
+    }
 )(ReportParams)

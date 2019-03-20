@@ -1,4 +1,5 @@
 import { actionTypes } from '../actions/standardReport'
+import { actionTypes as reportDataActionTypes } from '../actions/reportData'
 import {
     ADD_NEW_REPORT_ACTION,
     CONTEXT_MENU_ACTION,
@@ -178,6 +179,7 @@ export const standardReport = (state = defaultState, action = {}) => {
 
         case actionTypes.GENERATE_PDF_REPORT:
         case actionTypes.CANCEL_GENERATING_PDF_REPORT:
+        case reportDataActionTypes.LOADING_REPORT_DATA_SUCCESS:
             return {
                 ...state,
                 reportParams: {},
