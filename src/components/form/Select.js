@@ -1,77 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Field } from 'react-final-form'
 import FormControl from '@material-ui/core/FormControl'
 import InputLabel from '@material-ui/core/InputLabel'
-import { default as MUISelect } from '@material-ui/core/Select'
-import { withStyles } from '@material-ui/core/styles'
-import { formInput, formOptions } from '../../utils/react/propTypes'
-import { styles } from './styles'
+import MUISelect from '@material-ui/core/Select'
+import {
+    formInput,
+    formInputMeta,
+    formOptions,
+} from '../../utils/react/propTypes'
+import { inputWrapper } from './styles'
 import { ErrorText } from './buildingBlocks/ErrorText'
 
-export const Select = withStyles(styles)(props => (
-    <div className={props.classes.container}>
-        <Field name={props.name} placeholder={props.placeholder}>
-            {({ input, meta, placeholder }) => (
-                <StyledSelect
-                    placeholder={placeholder}
-                    input={input}
-                    showEmptyOption={props.showEmptyOption}
-                    showErrorText={props.showErrorText}
-                    options={props.options}
-                    error={meta.error || ''}
-                    touched={meta.touched}
-                    classes={props.classes}
-                />
-            )}
-        </Field>
-    </div>
-))
-
-Select.propTypes = {
-    name: PropTypes.string.isRequired,
-    options: formOptions.isRequired,
-    placeholder: PropTypes.string.isRequired,
-    showEmptyOption: PropTypes.bool,
-    showErrorText: PropTypes.bool,
-}
-
-Select.defaultProps = {
-    showEmptyOption: false,
-    showErrorText: false,
-}
-
-const StyledSelect = props => (
-    <FormControl className={props.classes.formControl}>
-        <InputLabel htmlFor={props.input.name}>{props.placeholder}</InputLabel>
-        <SelectField
-            input={props.input}
-            showEmptyOption={props.showEmptyOption}
-            options={props.options}
-        />
-        <ErrorText
-            showErrorText={props.showErrorText}
-            error={props.error}
-            touched={props.touched}
-        />
-    </FormControl>
-)
-
-StyledSelect.propTypes = {
-    classes: PropTypes.shape({
-        formControl: PropTypes.string.isRequired,
-    }).isRequired,
-    placeholder: PropTypes.string.isRequired,
-    input: formInput.isRequired,
-    showEmptyOption: PropTypes.bool.isRequired,
-    showErrorText: PropTypes.bool.isRequired,
-    options: formOptions.isRequired,
-    error: PropTypes.string.isRequired,
-    touched: PropTypes.bool.isRequired,
-}
-
-const SelectField = props => (
-    <MUISelect native {...props.input}>
+export const SelectField = props => (
+    <MUISelect native {...props.input} disabled={props.disabled}>
         {props.showEmptyOption && <option value="" />}
         {props.options.map(option => (
             <option key={option.value} value={option.value}>
@@ -84,5 +25,42 @@ const SelectField = props => (
 SelectField.propTypes = {
     input: formInput.isRequired,
     showEmptyOption: PropTypes.bool.isRequired,
+    disabled: PropTypes.bool.isRequired,
     options: formOptions.isRequired,
+}
+
+const { className, styles } = inputWrapper
+export const Select = props => (
+    <FormControl className={className}>
+        <InputLabel htmlFor={props.input.name}>{props.placeholder}</InputLabel>
+        <SelectField
+            input={props.input}
+            showEmptyOption={props.showEmptyOption}
+            options={props.options}
+            disabled={props.disabled}
+        />
+        <ErrorText
+            showErrorText={props.showErrorText}
+            error={props.meta.error || ''}
+            touched={props.meta.touched}
+        />
+        {styles}
+    </FormControl>
+)
+
+Select.propTypes = {
+    input: formInput.isRequired,
+    meta: formInputMeta.isRequired,
+    placeholder: PropTypes.string.isRequired,
+    options: formOptions.isRequired,
+
+    showEmptyOption: PropTypes.bool,
+    showErrorText: PropTypes.bool,
+    disabled: PropTypes.bool,
+}
+
+Select.defaultProps = {
+    showEmptyOption: false,
+    showErrorText: false,
+    disabled: false,
 }

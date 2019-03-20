@@ -1,15 +1,16 @@
 import { connect } from 'react-redux'
+
 import {
-    loadResources,
+    addResource,
+    closeContextMenu,
+    deleteResource,
+    editResource,
     goToNextPage,
     goToPrevPage,
+    loadResources,
     setSearchAndLoadResources,
-    addResource,
-    viewResource,
-    editResource,
     showSharingSettings,
-    deleteResource,
-    closeContextMenu,
+    viewResource,
 } from '../../redux/actions/resource'
 
 const mapStateToProps = state => ({

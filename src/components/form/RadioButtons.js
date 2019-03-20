@@ -5,11 +5,11 @@ import FormHelperText from '@material-ui/core/FormHelperText'
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { CheckBox } from './CheckBox'
+import { RadioButton } from './RadioButton'
 
 const styles = {
     container: {
-        margin: '0 0 20px',
+        margin: '0',
     },
     label: {
         margin: '0 0 10px',
@@ -18,7 +18,7 @@ const styles = {
     },
 }
 
-export const CheckBoxes = withStyles(styles)(props => (
+export const RadioButtons = withStyles(styles)(props => (
     <FormControl className={props.classes.container}>
         {props.label && (
             <FormHelperText className={props.classes.label}>
@@ -33,10 +33,10 @@ export const CheckBoxes = withStyles(styles)(props => (
         {props.options.map(option => (
             <div key={option.label}>
                 <Field
-                    type="checkbox"
+                    type="radio"
                     value={option.value}
                     label={option.label}
-                    component={CheckBox}
+                    component={RadioButton}
                     name={props.name}
                 />
             </div>
@@ -44,14 +44,14 @@ export const CheckBoxes = withStyles(styles)(props => (
     </FormControl>
 ))
 
-CheckBoxes.propTypes = {
+RadioButtons.propTypes = {
     name: PropTypes.string.isRequired,
     options: PropTypes.arrayOf(PropTypes.object).isRequired,
     label: PropTypes.string,
     showError: PropTypes.bool,
 }
 
-CheckBoxes.defaultProps = {
+RadioButtons.defaultProps = {
     label: '',
     showError: true,
 }

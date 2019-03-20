@@ -1,7 +1,9 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import React from 'react'
 import SharingDialog from '@dhis2/d2-ui-sharing-dialog'
-import { ConnectedAddEditResource } from './add-edit-resource/AddEditResource'
+
+import { ConnectedAddResource } from './AddResource'
+import { ConnectedEditResource } from './EditResource'
 import { resourceActions } from '../../utils/resource/constants'
 
 export const Action = props => {
@@ -9,19 +11,14 @@ export const Action = props => {
     if (!props.selectedAction) return null
 
     if (props.selectedAction === resourceActions.NEW) {
-        return (
-            <ConnectedAddEditResource
-                d2={props.d2}
-                open={props.open}
-                onRequestClose={props.handleClose}
-                onError={props.handleError}
-            />
-        )
+        return <ConnectedAddResource />
+    }
+
+    if (selectedAction === resourceActions.EDIT) {
+        return <ConnectedEditResource />
     }
 
     if (selectedAction === resourceActions.SHARING_SETTINGS) {
-        if (!props.selectedResource) return null
-
         return (
             <SharingDialog
                 open={props.open}
@@ -29,18 +26,6 @@ export const Action = props => {
                 type="document"
                 onRequestClose={props.handleClose}
                 d2={props.d2}
-            />
-        )
-    }
-
-    if (selectedAction === resourceActions.EDIT) {
-        return (
-            <ConnectedAddEditResource
-                selectedResource={props.selectedResource}
-                open={props.open}
-                onRequestClose={props.handleClose}
-                d2={props.d2}
-                onError={props.handleError}
             />
         )
     }
@@ -54,5 +39,4 @@ Action.propTypes = {
     selectedAction: PropTypes.string.isRequired,
     selectedResource: PropTypes.object.isRequired,
     handleClose: PropTypes.func.isRequired,
-    handleError: PropTypes.func.isRequired,
 }

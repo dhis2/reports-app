@@ -107,7 +107,6 @@ export default class Resource extends React.Component {
                         selectedAction={this.props.selectedAction}
                         selectedResource={this.props.selectedResource}
                         handleClose={this.props.closeContextMenu}
-                        handleError={this.manageError}
                     />
                     <Snackbar />
                 </div>
@@ -119,7 +118,6 @@ export default class Resource extends React.Component {
 Resource.propTypes = {
     d2: PropTypes.object.isRequired,
     sectionKey: PropTypes.string.isRequired,
-
     open: PropTypes.bool.isRequired,
     loadingResources: PropTypes.bool.isRequired,
     search: PropTypes.string.isRequired,
@@ -127,6 +125,7 @@ Resource.propTypes = {
     resources: PropTypes.array.isRequired,
     pager: PropTypes.object.isRequired,
     selectedResource: PropTypes.object.isRequired,
+
     goToNextPage: PropTypes.func.isRequired,
     goToPrevPage: PropTypes.func.isRequired,
     loadResources: PropTypes.func.isRequired,

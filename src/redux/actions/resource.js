@@ -1,20 +1,23 @@
 import debounce from 'lodash.debounce'
+import i18n from '@dhis2/d2-i18n'
+
 import { DEBOUNCE_DELAY } from '../../config/search.config'
+import { RESOURCE_ENDPOINT } from '../../utils/api'
 import {
     getApi,
     getResources,
+    postResource,
+    putResource,
     deleteResource as sendDeleteResourceRequest,
 } from '../../utils/api'
-import { RESOURCE_ENDPOINT } from '../../utils/api'
-import i18n from '@dhis2/d2-i18n'
-import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
-import { showSuccessSnackBar, showErrorSnackBar } from './feedback'
 import {
     goToNextPage as goToNextPageOrig,
     goToPrevPage as goToPrevPageOrig,
     resetPagination,
     setPagination,
 } from './pagination'
+import { showSuccessSnackBar, showErrorSnackBar } from './feedback'
+import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
 
 export const actionTypes = {
     LOADING_RESOURCES_START: 'LOADING_RESOURCES_START',
@@ -29,6 +32,12 @@ export const actionTypes = {
     DELETE_RESOURCE_SUCCESS: 'DELETE_RESOURCE_SUCCESS',
     DELETE_RESOURCE_ERROR: 'DELETE_RESOURCE_ERROR',
     RESET_CONTEXT_MENU: 'RESET_CONTEXT_MENU',
+    RESOURCE_ADD_LOADING_START: 'RESOURCE_ADD_LOADING_START',
+    RESOURCE_ADD_LOADING_SUCCESS: 'RESOURCE_ADD_LOADING_SUCCESS',
+    RESOURCE_ADD_LOADING_ERROR: 'RESOURCE_ADD_LOADING_ERROR',
+    RESOURCE_EDIT_LOADING_START: 'RESOURCE_EDIT_LOADING_START',
+    RESOURCE_EDIT_LOADING_SUCCESS: 'RESOURCE_EDIT_LOADING_SUCCESS',
+    RESOURCE_EDIT_LOADING_ERROR: 'RESOURCE_EDIT_LOADING_ERROR',
 }
 
 /**
@@ -221,4 +230,127 @@ export const closeContextMenu = refreshList => dispatch => {
         dispatch(resetPagination())
         dispatch(loadResources())
     }
+}
+
+/**
+ *
+ * Adding a resource
+ *
+ */
+
+/**
+ * @returns {Object}
+ */
+export const loadingAddResourceStart = () => ({
+    type: actionTypes.RESOURCE_ADD_LOADING_START,
+})
+
+/**
+ * @returns {Object}
+ */
+export const loadingAddResourceSuccess = () => ({
+    type: actionTypes.RESOURCE_ADD_LOADING_SUCCESS,
+})
+
+/**
+ * @returns {Object}
+ */
+export const loadingAddResourceError = () => ({
+    type: actionTypes.RESOURCE_ADD_LOADING_ERROR,
+})
+
+/**
+ * @param {Error} error
+ * @returns {Function}
+ */
+export const loadingAddResourceErrorWithFeedback = error => dispatch => {
+    const defaultAddResourceErrorMessage = i18n.t(
+        'An error occurred while adding the resource!'
+    )
+    const displayMessage = humanReadableErrorMessage(
+        error,
+        defaultAddResourceErrorMessage
+    )
+    dispatch(showErrorSnackBar(displayMessage))
+    dispatch(loadingAddResourceError())
+}
+
+/**
+ * @param {Object} resource
+ * @param {File} [file]
+ * @returns {Function}
+ */
+export const addNewResource = (resource, file) => dispatch => {
+    dispatch(loadingAddResourceStart())
+
+    postResource(resource, file)
+        .then(() => {
+            dispatch(loadingAddResourceSuccess())
+            dispatch(loadResources())
+        })
+        .catch(error => {
+            dispatch(loadingAddResourceErrorWithFeedback(error))
+        })
+}
+
+/**
+ *
+ * Editing a resource
+ *
+ */
+
+/**
+ * @returns {Object}
+ */
+export const loadingEditResourceStart = () => ({
+    type: actionTypes.RESOURCE_EDIT_LOADING_START,
+})
+
+/**
+ * @returns {Object}
+ */
+export const loadingEditResourceSuccess = () => ({
+    type: actionTypes.RESOURCE_EDIT_LOADING_SUCCESS,
+})
+
+/**
+ * @returns {Object}
+ */
+export const loadingEditResourceError = () => ({
+    type: actionTypes.RESOURCE_EDIT_LOADING_ERROR,
+})
+
+/**
+ * @param {Error} error
+ * @returns {Function}
+ */
+export const loadingEditResourceErrorWithFeedback = error => dispatch => {
+    const defaultAddResourceErrorMessage = i18n.t(
+        'An error occurred while saving the modifications!'
+    )
+    const displayMessage = humanReadableErrorMessage(
+        error,
+        defaultAddResourceErrorMessage
+    )
+    dispatch(showErrorSnackBar(displayMessage))
+    dispatch(loadingAddResourceError())
+}
+
+/**
+ * @param {Object} resource
+ * @param {File} [file]
+ * @returns {Function}
+ */
+export const updateResource = (resource, file) => (dispatch, getState) => {
+    dispatch(loadingEditResourceStart())
+
+    const resourceId = getState().resource.selectedResource.id
+    putResource(resourceId, resource, file)
+        .then(() => {
+            dispatch(loadingEditResourceSuccess())
+            dispatch(loadResources())
+        })
+        .catch(error => {
+            dispatch(loadingEditResourceErrorWithFeedback(error))
+        })
 }

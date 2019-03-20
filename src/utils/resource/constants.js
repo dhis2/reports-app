@@ -1,21 +1,13 @@
 import i18n from '@dhis2/d2-i18n'
 
-export const types = {
+export const resourceTypes = {
     UPLOAD_FILE: 'UPLOAD_FILE',
     EXTERNAL_URL: 'EXTERNAL_URL',
 }
 
-export const options = [
-    {
-        id: types.UPLOAD_FILE,
-        name: i18n.t('Upload File'),
-        external: false,
-    },
-    {
-        id: types.EXTERNAL_URL,
-        name: i18n.t('External URL'),
-        external: true,
-    },
+export const resourceTypeOptions = [
+    { value: resourceTypes.EXTERNAL_URL, label: i18n.t('External url') },
+    { value: resourceTypes.UPLOAD_FILE, label: i18n.t('Upload file') },
 ]
 
 export const resourceActions = {

@@ -82,6 +82,48 @@ export const resource = (state = defaultState, { type, payload } = {}) => {
                 selectedResource: defaultSelectedResource,
             }
 
+        case actionTypes.RESOURCE_ADD_LOADING_START:
+            return {
+                ...state,
+                loading: true,
+            }
+
+        case actionTypes.RESOURCE_ADD_LOADING_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                open: false,
+                selectedAction: '',
+                selectedResource: defaultSelectedResource,
+            }
+
+        case actionTypes.RESOURCE_ADD_LOADING_ERROR:
+            return {
+                ...state,
+                loading: false,
+            }
+
+        case actionTypes.RESOURCE_EDIT_LOADING_START:
+            return {
+                ...state,
+                loading: true,
+            }
+
+        case actionTypes.RESOURCE_EDIT_LOADING_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                open: false,
+                selectedAction: '',
+                selectedResource: defaultSelectedResource,
+            }
+
+        case actionTypes.RESOURCE_EDIT_LOADING_ERROR:
+            return {
+                ...state,
+                loading: false,
+            }
+
         default:
             return state
     }

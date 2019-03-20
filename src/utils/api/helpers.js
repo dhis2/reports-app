@@ -1,4 +1,6 @@
+import { FILE_RESOURCES_ENDPOINT } from './constants'
 import { getApi } from '../api'
+
 /**
  * @param {Object} d2 object retrieved by the list() method
  * @return {Array}
@@ -105,6 +107,29 @@ export const getDataSetReportFileUrls = (resourceUrl, options) => {
 
     return getFileUrls(resourceUrl, fullQueryStr, ['xls', 'pdf'])
 }
+
+/**
+ * @param {Object} api
+ * @param {File} file
+ * @returns {Promise}
+ */
+export const uploadFile = (api, file) => {
+    const formData = new FormData()
+    formData.append('file', file)
+    formData.append('domain', 'DOCUMENT')
+
+    return api.post(FILE_RESOURCES_ENDPOINT, formData)
+}
+
+/**
+ * @param {Object} resource
+ * @param {File} file
+ * @returns {Object}
+ */
+export const addFileResourceUrlToResource = (resource, file) => ({
+    ...resource,
+    url: file.id || resource.url,
+})
 
 /**
  * @param {String} endpoint

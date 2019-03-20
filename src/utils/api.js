@@ -1,5 +1,7 @@
 import { isDevelopment } from './env/isDevelopment'
 import {
+    addFileResourceUrlToResource,
+    uploadFile,
     standardReportsFields,
     addFilterForName,
     formatStandardReportsResponse,
@@ -297,6 +299,61 @@ export const getDataSetOptions = () =>
     d2.models.dataSet
         .list({ paging: false, fields: 'id,displayName,formType' })
         .then(response => response.toArray())
+
+/**
+ * @param {Object} api
+ * @param {Object} resource
+ * @returns {Promise}
+ */
+export const postDocument = (api, resource) =>
+    api.post(RESOURCE_ENDPOINT, resource)
+
+/**
+ * @param {Object} api
+ * @param {string} resourceId
+ * @param {Object} resource
+ * @returns {Promise}
+ */
+export const putDocument = (api, resourceId, resource) =>
+    api.update(`${RESOURCE_ENDPOINT}/${resourceId}`, resource)
+
+/**
+ * @param {Object} resource
+ * @param {File} [file] - an optional file
+ * @returns {Promise}
+ */
+export const postResource = (resource, file = null) =>
+    file
+        ? uploadFile(api, file)
+              .then(({ response }) =>
+                  Promise.resolve(
+                      addFileResourceUrlToResource(
+                          resource,
+                          response.fileResource
+                      )
+                  )
+              )
+              .then(resource => postDocument(api, resource))
+        : postDocument(api, resource)
+
+/**
+ * @param {Object} resource
+ * @param {File} [file] - an optional file
+ * @returns {Promise}
+ */
+export const putResource = (resourceId, resource, file = null) =>
+    file
+        ? uploadFile(api, file)
+              .then(({ response }) =>
+                  Promise.resolve(
+                      addFileResourceUrlToResource(
+                          resource,
+                          response.fileResource
+                      )
+                  )
+              )
+              .then(resource => putDocument(api, resourceId, resource))
+        : putDocument(api, resourceId, resource)
 
 /**
  * =================================
