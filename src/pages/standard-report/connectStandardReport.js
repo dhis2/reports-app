@@ -19,6 +19,7 @@ import {
     showReportParams,
 } from '../../redux/actions/standardReport'
 import { reportTypes } from './standard.report.conf'
+import { unsetReportData } from '../../redux/actions/reportData'
 
 const mapStateToProps = state => ({
     ...state.standardReport,
@@ -49,6 +50,7 @@ const mapDispatchToProps = dispatch => ({
     closeContextMenu: refreshList => dispatch(closeContextMenu(refreshList)),
     updateStandardReport: report => dispatch(sendStandardReport(report, true)),
     addStandardReport: report => dispatch(sendStandardReport(report, false)),
+    closeReport: () => dispatch(unsetReportData()),
 })
 
 const connectStandardReport = StandardReport =>

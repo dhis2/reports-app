@@ -8,6 +8,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import i18n from '@dhis2/d2-i18n'
 import red from '@material-ui/core/colors/red'
+import theme from '@dhis2/d2-ui-core/theme/theme'
 
 import {
     cancelGeneratingPdfReport,
@@ -23,6 +24,17 @@ const colorError = red[500]
 
 const buttonStyles = css.resolve`
     width: 100%;
+`
+
+const primaryButtonStyle = css.resolve`
+    button {
+        color: white;
+        background-color: ${theme.palette.primary2Color}
+    }
+
+    button:hover {
+        background-color: ${theme.palette.primary1Color}
+    }
 `
 
 export const ReportParams = props => (
@@ -59,8 +71,11 @@ export const ReportParams = props => (
                 <Button
                     onClick={props.submitRequiredReportParams}
                     variant="contained"
-                    color="primary"
-                    classes={{ root: buttonStyles.className }}
+                    className={
+                        buttonStyles.className +
+                        ' ' +
+                        primaryButtonStyle.className
+                    }
                 >
                     {labelSubmit}
                 </Button>
@@ -70,8 +85,7 @@ export const ReportParams = props => (
                 <Button
                     onClick={props.cancelGeneratingPdfReport}
                     variant="contained"
-                    color="secondary"
-                    classes={{ root: buttonStyles.className }}
+                    className={buttonStyles.className}
                 >
                     {labelCancel}
                 </Button>
@@ -89,6 +103,7 @@ export const ReportParams = props => (
                 }
             `}</style>
             <style>{buttonStyles.styles}</style>
+            <style>{primaryButtonStyle.styles}</style>
         </DialogContent>
     </Dialog>
 )

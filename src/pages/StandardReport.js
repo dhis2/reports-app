@@ -114,7 +114,10 @@ export default class StandardReport extends React.Component {
                     />
                 </div>
                 {this.props.reportData && (
-                    <StyledHtmlReport reportData={this.props.reportData} />
+                    <StyledHtmlReport
+                        reportData={this.props.reportData}
+                        onReportCloseClick={this.props.closeReport}
+                    />
                 )}
                 <ConnectedReportParams />
                 <Snackbar
@@ -154,6 +157,7 @@ StandardReport.propTypes = {
     addReportFormShow: PropTypes.func.isRequired,
     updateStandardReport: PropTypes.func.isRequired,
     addStandardReport: PropTypes.func.isRequired,
+    closeReport: PropTypes.func.isRequired,
 }
 
 StandardReport.childContextTypes = {
