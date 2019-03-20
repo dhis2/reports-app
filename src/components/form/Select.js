@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import FormControl from '@material-ui/core/FormControl'
 import InputLabel from '@material-ui/core/InputLabel'
-import { default as MUISelect } from '@material-ui/core/Select'
+import MUISelect from '@material-ui/core/Select'
 import {
     formInput,
     formInputMeta,
