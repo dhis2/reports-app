@@ -4,8 +4,8 @@ import { DownloadOptions } from '../../components/TabularReport/DownloadOptions'
 import ReportTable from '../../components/TabularReport/ReportTable'
 import { ReportComment } from '../../components/TabularReport/ReportComment'
 import ReportLoader from '../../components/ReportLoader'
-import '../../components/TabularReport/styles.css'
 import { reportContent } from '../../utils/react/propTypes'
+import '../../components/TabularReport/styles.css'
 
 const DataSetReportOutput = props => (
     <ReportLoader content={props.content} isLoading={props.isLoading}>
@@ -22,7 +22,7 @@ const DataSetReportOutput = props => (
                     dangerouslySetInnerHTML={{ __html: props.content.data }}
                 />
             ) : (
-                props.content.length &&
+                !!props.content.length &&
                 props.content.map(table => (
                     <ReportTable key={table.title} content={table} />
                 ))
