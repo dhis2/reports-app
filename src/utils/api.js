@@ -50,6 +50,11 @@ export const getD2 = () => d2
 export const getApi = () => api
 
 /**
+ * @returns {string} context path
+ */
+export const getContextPath = () => d2.system.systemInfo.contextPath
+
+/**
  * @return {Promise} Period types
  */
 export const getPeriodTypes = () =>
