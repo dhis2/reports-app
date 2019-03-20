@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import React, { Component } from 'react'
+import { loadScript } from '../../utils/dom/loadScript'
 
 /**
  * Do this stuff inside an iframe...
@@ -12,41 +13,18 @@ class HtmlReport extends Component {
         report: '',
     }
 
-    // TODO: Fix urls/paths to scripts or find a better way to do this
     componentDidMount() {
-        const jqueryScript = document.createElement('script')
-        jqueryScript.type = 'text/javascript'
-        jqueryScript.src = '/dhis-web-commons/javascripts/jQuery/jquery.min.js'
-
-        const jQueryPromise = new Promise(resolve => {
-            jqueryScript.onload = resolve
-        })
-
-        jQueryPromise.then(this.loadDHIS2Script).then(() => {
-            this.setState({
-                ready: true,
-                report: this.props.html,
-            })
-        })
-
-        document.head.appendChild(jqueryScript)
+        loadScript('/dhis-web-commons/javascripts/jQuery/jquery.min.js')
+            .then(() =>
+                loadScript('/dhis-web-commons/javascripts/dhis2/dhis2.util.js')
+            )
+            .then(() => this.setState({ ready: true, report: this.props.html }))
     }
 
     componentWillReceiveProps(newProps) {
         if (newProps.html && this.state.ready) {
             this.setState({ report: newProps.html })
         }
-    }
-
-    loadDHIS2Script = () => {
-        const dhis2Script = document.createElement('script')
-        dhis2Script.type = 'text/javascript'
-        dhis2Script.src = '/dhis-web-commons/javascripts/dhis2/dhis2.util.js'
-        document.head.appendChild(dhis2Script)
-
-        return new Promise(resolve => {
-            dhis2Script.onload = resolve
-        })
     }
 
     render() {
