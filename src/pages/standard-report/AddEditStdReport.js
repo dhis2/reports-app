@@ -37,7 +37,7 @@ export const Component = props => (
     <FormDialog
         open={props.open}
         title={props.edit ? 'Edit report' : 'Add report'}
-        onClose={() => props.onRequestClose(false)}
+        onClose={props.onRequestClose}
     >
         <Form
             onSubmit={props.onSubmit}
@@ -171,7 +171,7 @@ export const Component = props => (
 
                         <Button
                             label={i18n.t('Cancel')}
-                            onClick={() => props.onRequestClose(false)}
+                            onClick={props.onRequestClose}
                         />
                     </DialogActions>
                 </form>
