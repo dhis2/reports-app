@@ -1,11 +1,15 @@
 import isEmpty from 'lodash.isempty'
 import i18n from '@dhis2/d2-i18n'
-import { getTitle, createGrid } from '../../../utils/dataTransformHelpers'
+import { getTitle } from '../../../utils/dataTransformHelpers'
 import createDataTransformCache from '../../../utils/dataTransformCache'
 import { FONT_FAMILY, BASE_COLOR } from '../../../config/style.config'
 
 export const cache = createDataTransformCache()
 
+/**
+ * @param {Object} state - App state
+ * @returns {Object} - Transformed table data that can be consumed by BarChart
+ */
 export default function getTransformedChartData(state) {
     const data = state.reportData.content
 
@@ -17,31 +21,32 @@ export default function getTransformedChartData(state) {
         return cache.getCachedResult()
     }
 
-    const { columns } = createGrid(data)
-    const labels = columns.map(column => column.name)
-    const dataPoints = getDataPoints(state, columns)
-    const title = getTitle(state)
-    const chartData = getChartData(labels, dataPoints, title)
+    const chartData = getChartData(
+        getLabels(data.headers),
+        getDataPoints(data.rows[0]),
+        getTitle(state)
+    )
 
     cache.setCachedResult(data, chartData)
     return chartData
 }
 
-function getDataPoints(state, columns) {
-    const selectedOrgUnitID = state.organisationUnits.selected.id
-    const accumulator = columns.reduce((acc, column) => {
-        acc[column.id] = 0
-        return acc
-    }, {})
-    const lookup = state.reportData.content.rows.reduce((acc, row) => {
-        const [orgUnitId, columnId, value] = row
-        if (orgUnitId === selectedOrgUnitID) {
-            acc[columnId] += parseInt(value, 10)
+function getLabels(headers) {
+    return headers.reduce((acc, header, index) => {
+        if (index > 0) {
+            acc.push(header.column)
         }
         return acc
-    }, accumulator)
+    }, [])
+}
 
-    return columns.map(column => lookup[column.id])
+function getDataPoints(cells) {
+    return cells.reduce((acc, cell, index) => {
+        if (index > 0) {
+            acc.push(parseInt(cell, 10))
+        }
+        return acc
+    }, [])
 }
 
 function getChartData(labels, data, title) {

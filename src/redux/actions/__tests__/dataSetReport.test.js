@@ -8,10 +8,10 @@ import {
     sharingReportCommentError,
 } from '../reportData'
 import { loadReportData, shareDataSetReportComment } from '../dataSetReport'
-import { getDataSetReports, postDataSetReportComment } from '../../../utils/api'
+import { getDataSetReport, postDataSetReportComment } from '../../../utils/api'
 
 jest.mock('../../../utils/api', () => ({
-    getDataSetReports: jest.fn(() => Promise.resolve()),
+    getDataSetReport: jest.fn(() => Promise.resolve()),
     postDataSetReportComment: jest.fn(() => Promise.resolve()),
 }))
 
@@ -29,14 +29,14 @@ describe('Actions - dataSetReport - Async thunks', () => {
 
         afterEach(() => {
             store.clearActions()
-            getDataSetReports.mockClear()
+            getDataSetReport.mockClear()
         })
 
         it('should dispatch a start loading action when loading the html report', () => {
             const expectedActions = expect.arrayContaining([
                 loadingReportDataStart(),
             ])
-            getDataSetReports.mockImplementationOnce(() => Promise.resolve())
+            getDataSetReport.mockImplementationOnce(() => Promise.resolve())
 
             store.dispatch(loadReportData())
             expect(store.getActions()).toEqual(expectedActions)
@@ -47,7 +47,7 @@ describe('Actions - dataSetReport - Async thunks', () => {
             const expectedActions = expect.arrayContaining([
                 loadingReportDataSuccess(report),
             ])
-            getDataSetReports.mockImplementationOnce(() =>
+            getDataSetReport.mockImplementationOnce(() =>
                 Promise.resolve(report)
             )
 
@@ -60,7 +60,7 @@ describe('Actions - dataSetReport - Async thunks', () => {
             const expectedActions = expect.arrayContaining([
                 loadingReportDataError(),
             ])
-            getDataSetReports.mockImplementationOnce(() => Promise.reject())
+            getDataSetReport.mockImplementationOnce(() => Promise.reject())
 
             store.dispatch(loadReportData()).then(() => {
                 expect(store.getActions()).toEqual(expectedActions)

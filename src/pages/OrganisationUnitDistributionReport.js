@@ -10,6 +10,7 @@ import { connectOrganisationUnitDistributionReport } from './organisation-unit-d
 import { SectionHeadline } from '../components/SectionHeadline'
 import { Form } from './organisation-unit-distribution-report/Form'
 import BarChart from '../components/BarChart'
+import { reportContent } from '../utils/react/propTypes'
 
 export default class OrganisationUnitDistributionReport extends React.Component {
     componentDidMount() {
@@ -62,7 +63,7 @@ OrganisationUnitDistributionReport.propTypes = {
     loading: PropTypes.bool.isRequired,
     groupSetsReady: PropTypes.bool.isRequired,
     fileUrls: PropTypes.array.isRequired,
-    reportContent: PropTypes.object.isRequired,
+    reportContent: reportContent.isRequired,
     loadTable: PropTypes.func.isRequired,
     loadChart: PropTypes.func.isRequired,
     loadGroupSetOptions: PropTypes.func.isRequired,

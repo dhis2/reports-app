@@ -1,8 +1,9 @@
 import i18n from '@dhis2/d2-i18n'
 import isEmpty from 'lodash.isempty'
 import createDataTransformCache from '../../../utils/dataTransformCache'
-import { getTitle, createGrid } from '../../../utils/dataTransformHelpers'
+import { getTitle } from '../../../utils/dataTransformHelpers'
 
+const orgUnitColumnDisplayName = i18n.t('Organisation Unit')
 const totalColumnDisplayName = i18n.t('Total')
 export const cache = createDataTransformCache()
 
@@ -21,11 +22,10 @@ export default function getTransformedTableData(state) {
         return cache.getCachedResult()
     }
 
-    const grid = createGrid(data)
     const tableData = {
         title: getTitle(state),
-        headers: getHeaders(data.headers, grid.columns),
-        rows: getRows(state, grid),
+        headers: getHeaders(data.headers),
+        rows: getRows(state),
     }
 
     cache.setCachedResult(data, tableData)
@@ -33,76 +33,58 @@ export default function getTransformedTableData(state) {
 }
 
 /**
- * @param {Array} headers - The headers object from the response data structure
- * @param {Array} columns - The grid columns
+ * @param {Array} headers - The headers array from the response data structure
  * @returns {Array<String>} - table header names
  */
-function getHeaders(headers, columns) {
+function getHeaders(headers) {
     return [
-        headers[0].column,
-        ...columns.map(column => column.name),
+        ...headers.map(header =>
+            header.name === 'ou' ? orgUnitColumnDisplayName : header.column
+        ),
         totalColumnDisplayName,
     ]
 }
 
 /**
  * @param {Object} state - app state
- * @param {Object} grid - grid object with rows and columns arrays
  * @returns {Array} - a nested array containing values for each column
  */
-function getRows(state, grid) {
-    const valueLookup = createValueLookup(state.reportData.content.rows)
+function getRows(state) {
+    const { rows } = state.reportData.content
     const selectedOrgUnitName = state.organisationUnits.selected.displayName
-    return grid.rows
-        .map(row => getColumns(row, grid.columns, valueLookup))
-        .sort((rowA, rowB) => rowCompare(rowA, rowB, selectedOrgUnitName))
+    return rows
+        .map(toNumericWithTotal)
+        .sort((rowA, rowB) =>
+            ascByNameWithParentBelow(rowA, rowB, selectedOrgUnitName)
+        )
 }
 
-/**
- * @param {Array} rows - Two-dimensional array, each item contains [0]orgUnitId, [1]columnId and [2]value
- * @returns {Object} - Nested object with this shape: { OrgUnitId_1: { columnId_1: value } }
- */
-function createValueLookup(rows) {
-    return rows.reduce((acc, row) => {
-        const [orgUnitId, columnId, value] = row
-        if (!acc[orgUnitId]) {
-            acc[orgUnitId] = {}
-        }
-        if (columnId) {
-            acc[orgUnitId][columnId] = value
-        }
-        return acc
-    }, {})
-}
-
-/**
- * @param {Object} row - grid row item containing name and ID
- * @param {Array} gridColumns - grid columns
- * @param {Object} lookup - value lookup
- * @returns {Array<String>} - all values for a row, starting with orgUnitName, ending with total
- */
-function getColumns(row, gridColumns, lookup) {
-    const { columns, total } = gridColumns.reduce(
-        (acc, column) => {
-            const value = (lookup[row.id] && lookup[row.id][column.id]) || '0'
-            acc.columns.push(value)
-            acc.total += parseInt(value, 10)
+function toNumericWithTotal(cells) {
+    const cellsWithTotals = cells.reduce(
+        (acc, cellStr, index) => {
+            if (index === 0) {
+                acc.cells.push(cellStr)
+            } else {
+                const cellVal = cellStr ? parseInt(cellStr, 10) : 0
+                acc.cells.push(cellVal)
+                acc.total += cellVal
+            }
             return acc
         },
-        { columns: [], total: 0 }
+        { cells: [], total: 0 }
     )
-    return [row.name, ...columns, total.toString()]
+    return [...cellsWithTotals.cells, cellsWithTotals.total]
 }
 
 /**
- * This function is used to sort the rows, which needs to be done ASC
+ * This function is used to sort the rows, which needs to be done ASC by name
  * with the exception of the parent orgUnit, which should be the last item
  * @param {Array} a - current row, with org unit name at index 0
  * @param {Array} b - next row
  * @param {String} selectedOrgUnitName - name of the org unit parent
  * @returns {Number} - values 1 || -1 || 0 for sorting
  */
-function rowCompare(a, b, selectedOrgUnitName) {
+function ascByNameWithParentBelow(a, b, selectedOrgUnitName) {
     const nameA = a[0].toUpperCase()
     const nameB = b[0].toUpperCase()
     const upperOrgUnitName = selectedOrgUnitName.toUpperCase()

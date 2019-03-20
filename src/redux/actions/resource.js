@@ -2,7 +2,7 @@ import debounce from 'lodash.debounce'
 import i18n from '@dhis2/d2-i18n'
 
 import { DEBOUNCE_DELAY } from '../../config/search.config'
-import { RESOURCE_ENDPOINT } from '../../utils/api/constants'
+import { RESOURCE_ENDPOINT } from '../../utils/api'
 import {
     getApi,
     getResources,

@@ -1,5 +1,16 @@
 import PropTypes from 'prop-types'
 
+export const children = PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+])
+
+export const reportContent = PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.array,
+    PropTypes.object,
+])
+
 /**
  *
  * Form prop types
@@ -24,13 +35,3 @@ export const formOption = PropTypes.shape({
 })
 
 export const formOptions = PropTypes.arrayOf(formOption)
-
-/**
- *
- * React children
- *
- */
-export const children = PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-])
