@@ -21,10 +21,8 @@ const translations = {
     FinancialOct: i18n.t('Financial-Oct'),
 }
 
-const periodTypes = state =>
+export const getTranslatedPeriodTypes = state =>
     state.reportPeriod.collection.map(periodType => ({
         id: periodType.name,
         displayName: translations[periodType.name],
     }))
-
-export default periodTypes

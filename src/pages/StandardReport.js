@@ -26,9 +26,8 @@ import AddReportButton from './standard-report/AddReportButton'
 import SearchBox from './standard-report/SearchBox'
 import StyledHtmlReport from './standard-report/StyledHtmlReport'
 import connectStandardReport from './standard-report/connectStandardReport'
-import manageError from '../utils/pageEnhancers/manageError.HOC'
 
-export default class StandardReport extends React.Component {
+class StandardReport extends React.Component {
     getChildContext() {
         return { d2: this.props.d2 }
     }
@@ -107,7 +106,7 @@ export default class StandardReport extends React.Component {
                         selectedAction={this.props.selectedAction}
                         selectedReport={this.props.selectedReport}
                         handleClose={this.props.closeContextMenu}
-                        handleError={this.manageError}
+                        handleError={console.error}
                         handleDisplayReportData={this.props.showReportData}
                         updateStandardReport={this.props.updateStandardReport}
                         addStandardReport={this.props.addStandardReport}
@@ -133,8 +132,6 @@ StandardReport.propTypes = {
     d2: PropTypes.object.isRequired,
     sectionKey: PropTypes.string.isRequired,
     loading: PropTypes.bool.isRequired,
-    showFeedback: PropTypes.bool.isRequired,
-    feedbackConf: PropTypes.object.isRequired,
     pager: PropTypes.object.isRequired,
     reports: PropTypes.array.isRequired,
     selectedReport: PropTypes.object.isRequired,
@@ -164,6 +161,6 @@ StandardReport.childContextTypes = {
     d2: PropTypes.object,
 }
 
-export const ConnectedStandardReport = connectStandardReport(
-    manageError(StandardReport)
-)
+const ConnectedStandardReport = connectStandardReport(StandardReport)
+
+export { ConnectedStandardReport as StandardReport }

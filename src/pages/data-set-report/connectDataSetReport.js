@@ -6,7 +6,7 @@ import {
     shareDataSetReportComment,
 } from '../../redux/actions/dataSetReport'
 import { setReportComment } from '../../redux/actions/reportData'
-import { isActionEnabled } from '../../redux/selectors/dataSetReport/isActionEnabled'
+import { getIsActionEnabled } from '../../redux/selectors/dataSetReport/getIsActionEnabled'
 import getTransformedTableData from '../../redux/selectors/dataSetReport/getTransformedTableData'
 import { isHtmlReport } from '../../utils/dataSetReport/isHtmlReport'
 
@@ -17,7 +17,7 @@ const mapStateToProps = state => ({
     isReportLoading: state.reportData.loading,
     reportComment: state.reportData.comment,
     selectedUnitOnly: state.dataSetReport.selectedUnitOnly,
-    isActionEnabled: isActionEnabled(state),
+    isActionEnabled: getIsActionEnabled(state),
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -30,8 +30,7 @@ const mapDispatchToProps = dispatch => ({
     setDataSetReportComment: comment => dispatch(setReportComment(comment)),
 })
 
-export const connectDataSetReport = component =>
-    connect(
-        mapStateToProps,
-        mapDispatchToProps
-    )(component)
+export const connectDataSetReport = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)

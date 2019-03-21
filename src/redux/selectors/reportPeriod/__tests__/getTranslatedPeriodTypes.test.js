@@ -1,6 +1,6 @@
-import pluckPeriodTypes from '../periodTypes'
+import { getTranslatedPeriodTypes } from '../getTranslatedPeriodTypes'
 
-describe('pluckPeriodTypes', () => {
+describe('getTranslatedPeriodTypes', () => {
     const periodTypes = [{ name: 'Daily' }, { name: 'WeeklyWednesday' }]
     const state = {
         reportPeriod: {
@@ -14,6 +14,6 @@ describe('pluckPeriodTypes', () => {
     ]
 
     it('transforms the input array correctly', () => {
-        expect(pluckPeriodTypes(state)).toEqual(expectedOutput)
+        expect(getTranslatedPeriodTypes(state)).toEqual(expectedOutput)
     })
 })

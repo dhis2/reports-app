@@ -22,7 +22,7 @@ import { unsetReportData } from '../../redux/actions/reportData'
 const mapStateToProps = state => ({
     ...state.standardReport,
     reportData: isEmpty(state.reportData.content)
-        ? undefined
+        ? ''
         : state.reportData.content,
     pager: state.pagination,
 })
@@ -48,10 +48,9 @@ const mapDispatchToProps = dispatch => ({
     closeReport: () => dispatch(unsetReportData()),
 })
 
-const connectStandardReport = StandardReport =>
-    connect(
-        mapStateToProps,
-        mapDispatchToProps
-    )(StandardReport)
+const connectStandardReport = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)
 
 export default connectStandardReport

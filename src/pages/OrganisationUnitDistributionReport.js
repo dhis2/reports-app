@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Paper } from 'material-ui'
 import i18n from '@dhis2/d2-i18n'
-import manageError from '../utils/pageEnhancers/manageError.HOC'
 import styles from '../utils/styles'
 import TabularReport from '../components/TabularReport'
 import { Snackbar } from '../components/feedback/Snackbar'
@@ -12,7 +11,7 @@ import { Form } from './organisation-unit-distribution-report/Form'
 import BarChart from '../components/BarChart'
 import { reportContent } from '../utils/react/propTypes'
 
-export default class OrganisationUnitDistributionReport extends React.Component {
+class OrganisationUnitDistributionReport extends React.Component {
     componentDidMount() {
         if (!this.props.groupSetsReady) {
             this.props.loadGroupSetOptions()
@@ -69,6 +68,10 @@ OrganisationUnitDistributionReport.propTypes = {
     loadGroupSetOptions: PropTypes.func.isRequired,
 }
 
-export const ConnectedOrganisationUnitDistributionReport = connectOrganisationUnitDistributionReport(
-    manageError(OrganisationUnitDistributionReport)
+const ConnectedOrganisationUnitDistributionReport = connectOrganisationUnitDistributionReport(
+    OrganisationUnitDistributionReport
 )
+
+export {
+    ConnectedOrganisationUnitDistributionReport as OrganisationUnitDistributionReport,
+}

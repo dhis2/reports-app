@@ -1,9 +1,10 @@
 import i18n from '@dhis2/d2-i18n'
-import { ConnectedStandardReport } from '../pages/StandardReport'
-import { ConnectedDataSetReport } from '../pages/DataSetReport'
-import { ConnectedReportingRateSummary } from '../pages/ReportingRateSummary'
-import { ConnectedOrganisationUnitDistributionReport } from '../pages/OrganisationUnitDistributionReport'
-import { ConnectedResource } from '../pages/Resource'
+import { StandardReport } from '../pages/StandardReport'
+import { DataSetReport } from '../pages/DataSetReport'
+import { ReportingRateSummary } from '../pages/ReportingRateSummary'
+import { OrganisationUnitDistributionReport } from '../pages/OrganisationUnitDistributionReport'
+import { Resource } from '../pages/Resource'
+
 export const STANDARD_REPORT_SECTION_KEY = 'standard-report'
 export const DATA_SET_REPORT_SECTION_KEY = 'data-set-report'
 export const REPORTING_RATE_SUMMARY_SECTION_KEY = 'reporting-rate-summary'
@@ -18,7 +19,7 @@ export const sections = [
     {
         key: STANDARD_REPORT_SECTION_KEY,
         path: '/standard-report',
-        component: ConnectedStandardReport,
+        component: StandardReport,
         info: {
             label: i18n.t('Standard Report'),
             icon: i18n.t('bar_chart'),
@@ -32,7 +33,7 @@ export const sections = [
     {
         key: DATA_SET_REPORT_SECTION_KEY,
         path: '/data-set-report',
-        component: ConnectedDataSetReport,
+        component: DataSetReport,
         info: {
             label: i18n.t('Data Set Report'),
             icon: 'assignment',
@@ -46,7 +47,7 @@ export const sections = [
     {
         key: REPORTING_RATE_SUMMARY_SECTION_KEY,
         path: '/reporting-rate-summary',
-        component: ConnectedReportingRateSummary,
+        component: ReportingRateSummary,
         info: {
             label: i18n.t('Reporting Rate Summary'),
             description: i18n.t(
@@ -60,7 +61,7 @@ export const sections = [
     {
         key: RESOURCE_SECTION_KEY,
         path: '/resource',
-        component: ConnectedResource,
+        component: Resource,
         info: {
             label: i18n.t('Resource'),
             description: i18n.t(
@@ -74,7 +75,7 @@ export const sections = [
     {
         key: ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_KEY,
         path: '/organisation-unit-distribution-report',
-        component: ConnectedOrganisationUnitDistributionReport,
+        component: OrganisationUnitDistributionReport,
         info: {
             label: i18n.t('Organisation Unit Distribution Report'),
             description: i18n.t(

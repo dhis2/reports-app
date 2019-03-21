@@ -6,7 +6,6 @@ import '@dhis2/d2-ui-core/css/Table.css'
 import '@dhis2/d2-ui-core/css/Pagination.css'
 import styles from './resource/Resource.style'
 import appStyles from '../utils/styles'
-import manageError from '../utils/pageEnhancers/manageError.HOC'
 import { resourceActions, contextMenuIcons } from '../utils/resource/constants'
 import i18n from '@dhis2/d2-i18n'
 import { connectResource } from './resource/connectResource'
@@ -28,7 +27,7 @@ const createContextMenuOptions = props => ({
     [resourceActions.DELETE]: props.deleteResource,
 })
 
-export default class Resource extends React.Component {
+class Resource extends React.Component {
     getChildContext() {
         return { d2: this.props.d2 }
     }
@@ -142,4 +141,6 @@ Resource.childContextTypes = {
     d2: PropTypes.object,
 }
 
-export const ConnectedResource = connectResource(manageError(Resource))
+const ConnectedResource = connectResource(Resource)
+
+export { ConnectedResource as Resource }

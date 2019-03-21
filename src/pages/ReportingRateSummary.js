@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { Paper } from 'material-ui'
 import i18n from '@dhis2/d2-i18n'
 import styles from '../utils/styles'
-import manageError from '../utils/pageEnhancers/manageError.HOC'
 import { Snackbar } from '../components/feedback/Snackbar'
 import TabularReport from '../components/TabularReport'
 import { SectionHeadline } from '../components/SectionHeadline'
@@ -11,29 +10,27 @@ import { connectReportingRateSummary } from './reporting-rate-summary/connectRep
 import { Form } from './reporting-rate-summary/Form'
 import { reportContent } from '../utils/react/propTypes'
 
-export default class ReportingRateSummary extends React.Component {
-    render = () => (
-        <div>
-            <SectionHeadline
-                label={i18n.t('Reporting rate summary')}
-                systemVersion={this.props.d2.system.version}
-                sectionKey={this.props.sectionKey}
+const ReportingRateSummary = props => (
+    <div>
+        <SectionHeadline
+            label={i18n.t('Reporting rate summary')}
+            systemVersion={props.d2.system.version}
+            sectionKey={props.sectionKey}
+        />
+        <Paper style={styles.container}>
+            <Form
+                loadReportData={props.loadReportData}
+                isActionEnabled={props.isActionEnabled}
             />
-            <Paper style={styles.container}>
-                <Form
-                    loadReportData={this.props.loadReportData}
-                    isActionEnabled={this.props.isActionEnabled}
-                />
-                <TabularReport
-                    content={this.props.reportContent}
-                    isLoading={this.props.isReportLoading}
-                    fileUrls={this.props.fileUrls}
-                />
-            </Paper>
-            <Snackbar />
-        </div>
-    )
-}
+            <TabularReport
+                content={props.reportContent}
+                isLoading={props.isReportLoading}
+                fileUrls={props.fileUrls}
+            />
+        </Paper>
+        <Snackbar />
+    </div>
+)
 
 ReportingRateSummary.propTypes = {
     d2: PropTypes.object.isRequired,
@@ -45,6 +42,8 @@ ReportingRateSummary.propTypes = {
     isReportLoading: PropTypes.bool.isRequired,
 }
 
-export const ConnectedReportingRateSummary = connectReportingRateSummary(
-    manageError(ReportingRateSummary)
+const ConnectedReportingRateSummary = connectReportingRateSummary(
+    ReportingRateSummary
 )
+
+export { ConnectedReportingRateSummary as ReportingRateSummary }
