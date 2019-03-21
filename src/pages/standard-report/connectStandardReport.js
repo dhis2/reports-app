@@ -22,7 +22,7 @@ import { unsetReportData } from '../../redux/actions/reportData'
 const mapStateToProps = state => ({
     ...state.standardReport,
     reportData: isEmpty(state.reportData.content)
-        ? undefined
+        ? ''
         : state.reportData.content,
     pager: state.pagination,
 })
