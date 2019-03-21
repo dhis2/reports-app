@@ -113,7 +113,8 @@
     "validate": "yarn list",
     "extract-pot": "node scripts/pot-extractor.js",
     "refresh-translations-template": "yarn extract-pot -- -o en.pot && git add ./i18n/en.pot",
-    "coverage": "yarn test -- --coverage"
+    "coverage": "yarn test -- --coverage",
+    "sort-imports": "importjs rewrite --overwrite"
   },
   "husky": {
     "hooks": {
