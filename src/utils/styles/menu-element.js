@@ -1,5 +1,6 @@
 const menuGrid = {
     section: {
+        boxSizing: 'border-box',
         display: 'inline-block',
         position: 'relative',
         minWidth: '200px',

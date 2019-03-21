@@ -2,8 +2,8 @@ import React from 'react'
 import { mount, shallow } from 'enzyme'
 import CreateStdReport from './CreateStdReport'
 import OrganisationUnitsTree from '../../../components/AvailableOrganisationUnitsTree'
-import { Dialog } from 'material-ui'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import Dialog from '@material-ui/core/Dialog'
+import DialogTitle from '@material-ui/core/DialogTitle'
 import { Button, SelectField } from '@dhis2/d2-ui-core'
 import fakerData from '../../../utils/fakerTests'
 import { TYPES } from '../standard.report.conf'
@@ -77,7 +77,8 @@ describe('Test <CreateStdReport /> rendering:', () => {
     })
 
     it('Should have correct title.', () => {
-        expect(dialog.props().title).toBe('Create Report Table')
+        const titleHtml = wrapper.find(DialogTitle).html()
+        expect(titleHtml.includes('Create Report Table')).toBeTruthy()
     })
 
     it('Should allow to select "Reporting Period".', () => {
@@ -90,11 +91,7 @@ describe('Test <CreateStdReport /> rendering:', () => {
     })
 
     it.skip('Should display "Cancel", "Download as Excel" and "Get Report" actions.', () => {
-        const actions = mount(
-            <MuiThemeProvider>
-                <span>{dialog.props().actions}</span>
-            </MuiThemeProvider>
-        )
+        const actions = mount(<span>{dialog.props().actions}</span>)
         expect(actions.find(Button)).toHaveLength(3)
         expect(
             actions
@@ -172,9 +169,7 @@ describe('Test <CreateStdReport /> actions:', () => {
             selectedOrgUnitId: 'OrgUnit',
         })
         const actions = mount(
-            <MuiThemeProvider>
-                <span>{wrapper.find(Dialog).props().actions}</span>
-            </MuiThemeProvider>
+            <span>{wrapper.find(Dialog).props().actions}</span>
         )
         actions
             .find(Button)
@@ -193,9 +188,7 @@ describe('Test <CreateStdReport /> actions:', () => {
             selectedOrgUnitId: 'OrgUnit',
         })
         const actions = mount(
-            <MuiThemeProvider>
-                <span>{wrapper.find(Dialog).props().actions}</span>
-            </MuiThemeProvider>
+            <span>{wrapper.find(Dialog).props().actions}</span>
         )
         actions
             .find(Button)

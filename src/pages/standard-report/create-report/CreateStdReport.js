@@ -1,6 +1,9 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { Dialog } from 'material-ui'
+import Dialog from '@material-ui/core/Dialog'
+import DialogActions from '@material-ui/core/DialogActions'
+import DialogContent from '@material-ui/core/DialogContent'
+import DialogTitle from '@material-ui/core/DialogTitle'
 import { Button, SelectField } from '@dhis2/d2-ui-core'
 import OrganisationUnitsTree from '../../../components/AvailableOrganisationUnitsTree'
 import i18n from '@dhis2/d2-i18n'
@@ -204,63 +207,63 @@ class CreateStdReport extends PureComponent {
     }
 
     render() {
-        const actions = [
-            <span
-                id="create-std-report-cancel-action-id"
-                key="create-std-report-cancel-action-id"
-            >
-                <Button
-                    key={'cancel-btn-key'}
-                    style={appStyles.dialogBtn}
-                    onClick={this.props.onRequestClose}
-                >
-                    {i18n.t('Cancel')}
-                </Button>
-            </span>,
-            <span
-                id="create-std-report-export-action-id"
-                key="create-std-report-export-action-id"
-            >
-                <Button
-                    key={'export-excel-btn-key'}
-                    style={appStyles.dialogBtn}
-                    disabled={!this.validate()}
-                    onClick={this.getExcelReport}
-                >
-                    {i18n.t('Download as excel')}
-                </Button>
-            </span>,
-            <span
-                id="create-std-report-get-action-id"
-                key="create-std-report-get-action-id"
-            >
-                <Button
-                    key={'get-report-key'}
-                    raised
-                    color={'primary'}
-                    style={appStyles.dialogBtn}
-                    disabled={!this.validate()}
-                    onClick={this.getReport}
-                >
-                    {i18n.t('Get Report')}
-                </Button>
-            </span>,
-        ]
-
         if (this.isSet()) {
             return (
                 <Dialog
                     autoScrollBodyContent
                     autoDetectWindowHeight
-                    title={i18n.t('Create Report Table')}
-                    actions={actions}
                     modal
                     open={this.props.open}
                 >
-                    <div id={'create-std-report-form-id'}>
-                        {this.displayPeriods()}
-                        {this.displayOrgUnitTree()}
-                    </div>
+                    <DialogTitle>{i18n.t('Create Report Table')}</DialogTitle>
+                    <DialogContent>
+                        <div id={'create-std-report-form-id'}>
+                            {this.displayPeriods()}
+                            {this.displayOrgUnitTree()}
+                        </div>
+                    </DialogContent>
+                    <DialogActions>
+                        <span
+                            id="create-std-report-cancel-action-id"
+                            key="create-std-report-cancel-action-id"
+                        >
+                            <Button
+                                key={'cancel-btn-key'}
+                                style={appStyles.dialogBtn}
+                                onClick={this.props.onRequestClose}
+                            >
+                                {i18n.t('Cancel')}
+                            </Button>
+                        </span>
+                        <span
+                            id="create-std-report-export-action-id"
+                            key="create-std-report-export-action-id"
+                        >
+                            <Button
+                                key={'export-excel-btn-key'}
+                                style={appStyles.dialogBtn}
+                                disabled={!this.validate()}
+                                onClick={this.getExcelReport}
+                            >
+                                {i18n.t('Download as excel')}
+                            </Button>
+                        </span>
+                        <span
+                            id="create-std-report-get-action-id"
+                            key="create-std-report-get-action-id"
+                        >
+                            <Button
+                                key={'get-report-key'}
+                                raised
+                                color={'primary'}
+                                style={appStyles.dialogBtn}
+                                disabled={!this.validate()}
+                                onClick={this.getReport}
+                            >
+                                {i18n.t('Get Report')}
+                            </Button>
+                        </span>
+                    </DialogActions>
                 </Dialog>
             )
         }

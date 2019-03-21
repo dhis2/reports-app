@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Paper } from 'material-ui'
+import Paper from '@material-ui/core/Paper'
 import { Snackbar } from '../components/feedback/Snackbar'
 import { SectionHeadline } from '../components/SectionHeadline'
 import DataSetReportOutput from './data-set-report/DataSetReportOutput'
