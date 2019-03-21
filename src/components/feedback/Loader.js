@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { CircularProgress } from '@dhis2/d2-ui-core'
 import styles from '../../utils/styles'
-import { feedbackShowLoading } from '../../redux/selectors/feedbackShowLoading'
+import { getShowLoading } from '../../redux/selectors/feedback/getShowLoading'
 
 const Loader = props =>
     props.show ? (
@@ -19,7 +19,7 @@ Loader.propTypes = {
 }
 
 const mapStateToProps = state => ({
-    show: feedbackShowLoading(state),
+    show: getShowLoading(state),
 })
 
 const connectedLoader = connect(mapStateToProps)(Loader)

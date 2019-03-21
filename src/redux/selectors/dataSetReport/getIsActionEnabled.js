@@ -1,4 +1,4 @@
-export const isActionEnabled = state =>
+export const getIsActionEnabled = state =>
     !(
         !state.organisationUnits.selected ||
         !state.dataSet.selected.id ||

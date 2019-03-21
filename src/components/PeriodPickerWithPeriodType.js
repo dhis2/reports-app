@@ -12,7 +12,7 @@ import PeriodTypeDropDown from './PeriodTypeDropDown'
 
 /* Actions */
 import { selectPeriodType, selectPeriod } from '../redux/actions/reportPeriod'
-import periodTypes from '../redux/selectors/periodTypes'
+import { getTranslatedPeriodTypes } from '../redux/selectors/reportPeriod/getTranslatedPeriodTypes'
 
 /* styles */
 import styles from '../utils/styles'
@@ -64,7 +64,7 @@ PeriodPickerWithPeriodType.propTypes = {
 
 const mapStateToProps = state => ({
     ...state.reportPeriod,
-    collection: periodTypes(state),
+    collection: getTranslatedPeriodTypes(state),
 })
 
 export default connect(
