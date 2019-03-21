@@ -3113,10 +3113,10 @@ d2@31.1.1, d2@~31.1:
     jsdoc "^3.5.5"
     whatwg-fetch "^2.0.3"
 
-d2@^31.5.0:
-  version "31.5.0"
-  resolved "https://registry.yarnpkg.com/d2/-/d2-31.5.0.tgz#e562f856e372128d2a67273adc9579b88537d6dc"
-  integrity sha512-5ohhu9YypOZCcxMGVtdzC8KUhElpQ917mVw+o53rvwzLt4SzQBFqq6iq06Oq5UCzqlif6OhO2A46DgK3ywuyyQ==
+d2@31.6.0:
+  version "31.6.0"
+  resolved "https://registry.yarnpkg.com/d2/-/d2-31.6.0.tgz#de30c97764db9efd973e67f4c118d23d3c5c8836"
+  integrity sha512-ztT7+n8qRflXnAuwQoT0YyX08E/CtF5LD8kcrMZBMu03jteTsOpsmwWUeqrFsfphPugESOCx/MBP7pkrejXQOA==
   dependencies:
     isomorphic-fetch "^2.2.1"
 

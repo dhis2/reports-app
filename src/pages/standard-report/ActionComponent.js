@@ -5,7 +5,6 @@ import {
     ADD_NEW_REPORT_ACTION,
     CONTEXT_MENU_ACTION,
 } from './standard.report.conf'
-import CreateStdReport from './create-report/CreateStdReport'
 import { ConnectedAddEditStdReport } from './AddEditStdReport'
 
 const ActionComponent = ({
@@ -15,23 +14,9 @@ const ActionComponent = ({
     selectedReport,
     handleClose,
     handleError,
-    handleDisplayReportData,
     updateStandardReport,
     addStandardReport,
 }) => {
-    if (selectedAction === CONTEXT_MENU_ACTION.CREATE) {
-        return (
-            <CreateStdReport
-                d2={d2}
-                open={open}
-                selectedReport={selectedReport}
-                onRequestClose={handleClose}
-                onGetReportData={handleDisplayReportData}
-                onError={handleError}
-            />
-        )
-    }
-
     if (selectedAction === CONTEXT_MENU_ACTION.SHARING_SETTINGS) {
         return (
             <SharingDialog

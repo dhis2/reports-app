@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 /* Material UI */
-import { Paper } from 'material-ui'
+import Paper from '@material-ui/core/Paper'
 
 import styles from '../utils/styles'
 

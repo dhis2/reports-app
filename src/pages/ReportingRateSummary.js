@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Paper } from 'material-ui'
+import Paper from '@material-ui/core/Paper'
 import i18n from '@dhis2/d2-i18n'
 import styles from '../utils/styles'
 import { Snackbar } from '../components/feedback/Snackbar'

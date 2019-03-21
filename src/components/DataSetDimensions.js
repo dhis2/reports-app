@@ -5,7 +5,7 @@ import { DropDown } from '@dhis2/d2-ui-core'
 import i18n from '@dhis2/d2-i18n'
 import styles from '../utils/styles'
 import { selectDimensionOption } from '../redux/actions/dataSetDimensions'
-import { CircularProgress } from 'material-ui'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 const loaderStyle = {
     marginBottom: 16,
