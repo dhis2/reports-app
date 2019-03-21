@@ -48,10 +48,9 @@ const mapDispatchToProps = dispatch => ({
     closeReport: () => dispatch(unsetReportData()),
 })
 
-const connectStandardReport = StandardReport =>
-    connect(
-        mapStateToProps,
-        mapDispatchToProps
-    )(StandardReport)
+const connectStandardReport = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)
 
 export default connectStandardReport

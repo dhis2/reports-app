@@ -14,8 +14,7 @@ const mapDispatchToProps = dispatch => ({
     loadReportData: () => dispatch(loadReportData()),
 })
 
-export const connectReportingRateSummary = component =>
-    connect(
-        mapStateToProps,
-        mapDispatchToProps
-    )(component)
+export const connectReportingRateSummary = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)
