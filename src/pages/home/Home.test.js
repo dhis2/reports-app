@@ -7,6 +7,9 @@ import MenuElement from '../../components/MenuElement'
 
 import { sections } from '../../config/sections.config'
 
+const css = jest.genMockFromModule('styled-jsx/css')
+css.resolve = jest.fn(() => '')
+
 jest.mock('@dhis2/d2-ui-org-unit-tree', () => ({
     OrgUnitTree: 'OrgUnitTree',
 }))
