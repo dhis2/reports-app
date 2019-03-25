@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import D2UIApp from '@dhis2/d2-ui-app'
 import HeaderBar from '@dhis2/d2-ui-header-bar'
-import { Sidebar } from '@dhis2/d2-ui-core'
+import { Sidebar, mui3theme } from '@dhis2/d2-ui-core'
 import { connect } from 'react-redux'
 import { loadPeriodTypes } from './redux/actions/reportPeriod'
 import { loadOrganisationUnits } from './redux/actions/organisationUnits'
@@ -13,6 +13,12 @@ import { Loader } from './components/feedback/Loader'
 import AppContext from './pages/AppContext'
 import { sections } from './config/sections.config'
 import styles from './utils/styles'
+import {
+    MuiThemeProvider as Mui3ThemeProvider,
+    createMuiTheme as createMui3Theme,
+} from '@material-ui/core/styles'
+
+const MUI3Theme = createMui3Theme(mui3theme)
 
 class App extends PureComponent {
     constructor(props) {
@@ -55,18 +61,20 @@ class App extends PureComponent {
         return (
             <AppContext.Provider value={this.getContext()}>
                 <D2UIApp>
-                    <HeaderBar d2={this.props.d2} />
-                    <Sidebar
-                        sections={sidebarSections}
-                        onChangeSection={nonOnChangeSection}
-                        currentSection={this.props.currentSection}
-                    />
-                    <div style={styles.contentWrapper}>
-                        <div style={styles.contentArea}>
-                            <AppRouter />
+                    <Mui3ThemeProvider theme={MUI3Theme}>
+                        <HeaderBar d2={this.props.d2} />
+                        <Sidebar
+                            sections={sidebarSections}
+                            onChangeSection={nonOnChangeSection}
+                            currentSection={this.props.currentSection}
+                        />
+                        <div style={styles.contentWrapper}>
+                            <div style={styles.contentArea}>
+                                <AppRouter />
+                            </div>
                         </div>
-                    </div>
-                    <Loader />
+                        <Loader />
+                    </Mui3ThemeProvider>
                 </D2UIApp>
             </AppContext.Provider>
         )
