@@ -28,7 +28,7 @@ const mapDispatchToProps = {
     goToPrevPage,
     loadResources,
     deleteResource,
-    setSearch: setSearchAndLoadResources,
+    setSearch: event => setSearchAndLoadResources(event.target.value),
     addResource,
     viewResource,
     editResource,

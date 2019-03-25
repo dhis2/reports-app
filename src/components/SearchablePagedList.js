@@ -1,26 +1,17 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Table from '@dhis2/d2-ui-table'
-import { Button, InputField, Pagination, SvgIcon } from '@dhis2/d2-ui-core'
-import { connect } from 'react-redux'
 import i18n from '@dhis2/d2-i18n'
-import css from 'styled-jsx/css'
+import { Button, Pagination, SvgIcon } from '@dhis2/d2-ui-core'
+import '@dhis2/d2-ui-core/css/Pagination.css'
+import '@dhis2/d2-ui-core/css/Table.css'
+import Table from '@dhis2/d2-ui-table'
 import CircularProgress from '@material-ui/core/CircularProgress'
+import TextField from '@material-ui/core/TextField'
+import PropTypes from 'prop-types'
+import React from 'react'
+import { connect } from 'react-redux'
+import css from 'styled-jsx/css'
 import getPagerCurrentlyShown from '../redux/selectors/pagination/getPagerCurrentlyShown'
 
 const searchText = i18n.t('Search')
-
-const rowStyle = {
-    position: 'relative',
-    height: '50px',
-    lineHeight: '50px',
-    backgroundColor: '#ffffff',
-    textAlign: 'center',
-    fontStyle: 'italic',
-    color: '#757575',
-    boxShadow:
-        '0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24)',
-}
 
 const SearchablePagedList = props => {
     const pagination = (
@@ -37,10 +28,10 @@ const SearchablePagedList = props => {
     return (
         <div>
             {pagination}
-            <InputField
+            <TextField
+                className="search-input"
                 value={props.searchInputValue}
                 type="search"
-                hintText={searchText}
                 label={searchText}
                 onChange={props.searchInputChangeHandler}
             />
@@ -53,12 +44,12 @@ const SearchablePagedList = props => {
                 isContextActionAllowed={props.isContextActionAllowed}
             />
             {props.isLoading && (
-                <div className="row">
+                <div className="data-table-fake-row">
                     <CircularProgress size={32} className="loader" />
                 </div>
             )}
             {props.rows.length === 0 && !props.isLoading && (
-                <div style={rowStyle} className="row">
+                <div className="data-table-fake-row">
                     {i18n.t('No results have been found')}
                 </div>
             )}
@@ -76,14 +67,22 @@ const SearchablePagedList = props => {
 }
 
 const styles = css`
-    ${'' /* div > :global(.d2-ui-textfield input) {
+    div > :global(.search-input input) {
         -webkit-appearance: textfield;
-    } */}
-    ${'' /* div > :global(.data-table-pager) {
+    }
+    div > :global(.search-input) {
+        width: 400px;
+    }
+    div > :global(.data-table-pager) {
         float: right;
-        padding-top: 24px;
-    } */}
-    .row {
+        padding-top: 8px;
+    }
+    div > :global(.d2-ui-button) {
+        position: fixed;
+        bottom: 1.5rem;
+        right: 1.5rem;
+    }
+    .data-table-fake-row {
         position: relative;
         height: 50px;
         line-height: 50px;
@@ -94,14 +93,9 @@ const styles = css`
         box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12),
             0 1px 2px 0 rgba(0, 0, 0, 0.24);
     }
-    ${'' /* .loader: {
+    .data-table-fake-row :global(.loader) {
         margin-top: 8px;
-    } */}
-    ${'' /* div > :global(.d2-ui-button) {
-        position: fixed;
-        bottom: 1.5rem;
-        right: 1.5rem;
-    } */}
+    }
 `
 
 SearchablePagedList.propTypes = {

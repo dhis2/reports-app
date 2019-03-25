@@ -6,7 +6,7 @@ import { ConnectedAddResource } from './AddResource'
 import { ConnectedEditResource } from './EditResource'
 import { resourceActions } from '../../utils/resource/constants'
 
-export const Action = props => {
+const ResourceActions = props => {
     const { selectedAction } = props
     if (!props.selectedAction) return null
 
@@ -33,10 +33,12 @@ export const Action = props => {
     return null
 }
 
-Action.propTypes = {
+ResourceActions.propTypes = {
     d2: PropTypes.object.isRequired,
     open: PropTypes.bool.isRequired,
     selectedAction: PropTypes.string.isRequired,
     selectedResource: PropTypes.object.isRequired,
     handleClose: PropTypes.func.isRequired,
 }
+
+export default ResourceActions

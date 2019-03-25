@@ -1,15 +1,13 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import '@dhis2/d2-ui-core/css/Table.css'
-import '@dhis2/d2-ui-core/css/Pagination.css'
-import { resourceActions, contextMenuIcons } from '../utils/resource/constants'
 import i18n from '@dhis2/d2-i18n'
-import { connectResource } from './resource/connectResource'
+import PropTypes from 'prop-types'
+import React from 'react'
 import { Snackbar } from '../components/feedback/Snackbar'
-import { SectionHeadline } from '../components/SectionHeadline'
-import { Action } from './resource/Action'
-import { showContextAction } from './resource/helper'
 import SearchablePagedList from '../components/SearchablePagedList'
+import { SectionHeadline } from '../components/SectionHeadline'
+import { contextMenuIcons, resourceActions } from '../utils/resource/constants'
+import { connectResource } from './resource/connectResource'
+import { showContextAction } from './resource/helper'
+import ResourceActions from './resource/ResourceActions'
 
 const createContextMenuOptions = props => ({
     [resourceActions.VIEW]: props.viewResource,
@@ -21,7 +19,7 @@ const createContextMenuOptions = props => ({
 class Resource extends React.Component {
     constructor(props) {
         super(props)
-        this.contextMenuOptions = createContextMenuOptions(this.props)
+        this.contextMenuOptions = createContextMenuOptions(props)
     }
 
     getChildContext() {
@@ -59,7 +57,7 @@ class Resource extends React.Component {
                         goToNextPage={this.props.goToNextPage}
                         goToPrevPage={this.props.goToPrevPage}
                     />
-                    <Action
+                    <ResourceActions
                         d2={this.props.d2}
                         open={this.props.open}
                         selectedAction={this.props.selectedAction}
