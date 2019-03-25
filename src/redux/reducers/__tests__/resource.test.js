@@ -21,11 +21,15 @@ describe('Reducer - resource', () => {
         expect(resource()).toEqual(defaultState)
     })
 
-    it('should set loading to true when loading resources', () => {
+    it('should set loading to true and clear the collection when loading resources', () => {
         const action = loadingResourcesStart()
-        const preState = { ...defaultState, loading: false }
+        const preState = {
+            ...defaultState,
+            collection: [1, 2, 3],
+            loading: false,
+        }
         const postState = resource(preState, action)
-        const expectedState = { ...preState, loading: true }
+        const expectedState = { ...preState, collection: [], loading: true }
 
         expect(postState).toEqual(expectedState)
     })
