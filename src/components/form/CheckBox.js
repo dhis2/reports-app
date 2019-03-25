@@ -1,4 +1,4 @@
-import { Checkbox } from '@material-ui/core'
+import Checkbox from '@material-ui/core/Checkbox'
 import css from 'styled-jsx/css'
 import PropTypes from 'prop-types'
 import React from 'react'
