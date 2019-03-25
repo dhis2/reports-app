@@ -1,4 +1,4 @@
-import css from 'styled-jsx/css'
+import { resolve } from 'styled-jsx/css'
 import React from 'react'
 import PropTypes from 'prop-types'
 import Button from '@material-ui/core/Button'
@@ -12,17 +12,17 @@ import HtmlReport from './HtmlReport'
 const title = i18n.t('HTML Report')
 const labelClose = i18n.t('Close')
 
-const containerStyle = css.resolve`
+const containerStyle = resolve`
     div {
         z-index: 1500;
     }
 `
-const titleStyle = css.resolve`
+const titleStyle = resolve`
     div {
         border-bottom: 1px solid grey;
     }
 `
-const contentStyle = css.resolve`
+const contentStyle = resolve`
     div {
         padding-top: 20px;
     }

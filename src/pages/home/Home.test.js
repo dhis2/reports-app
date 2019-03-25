@@ -2,13 +2,12 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
+import * as cssContainer from 'styled-jsx/css'
+import css from 'styled-jsx/css'
 import Home from './Home'
 import MenuElement from '../../components/MenuElement'
 
 import { sections } from '../../config/sections.config'
-
-const css = jest.genMockFromModule('styled-jsx/css')
-css.resolve = jest.fn(() => '')
 
 jest.mock('@dhis2/d2-ui-org-unit-tree', () => ({
     OrgUnitTree: 'OrgUnitTree',
@@ -20,11 +19,13 @@ const ownShallow = () => {
     })
 }
 
-/* Mocks */
+////[> Mocks <]
 jest.mock('@dhis2/d2-ui-org-unit-tree', () => 'OrgUnitTree')
 
 describe('Test <Home /> rendering:', () => {
     let wrapper
+
+    ////let wrapper
     beforeEach(() => {
         wrapper = ownShallow()
     })

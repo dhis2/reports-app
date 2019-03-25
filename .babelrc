@@ -9,7 +9,6 @@
         },
         "test": {
             "plugins": [
-                "styled-jsx/babel",
                 "styled-jsx/babel-test"
             ]
         }

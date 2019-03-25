@@ -142,9 +142,6 @@
   },
   "homepage": ".",
   "jest": {
-    "roots": [
-      "src"
-    ],
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,mjs}"
     ],
@@ -167,8 +164,7 @@
       "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
     ],
     "moduleNameMapper": {
-      "^react-native$": "react-native-web",
-      "styled-jsx/css": "<rootDir>/src/__mocks__/styled-css/css"
+      "^react-native$": "react-native-web"
     },
     "moduleFileExtensions": [
       "web.js",
