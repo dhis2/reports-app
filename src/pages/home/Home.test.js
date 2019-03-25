@@ -1,9 +1,6 @@
 /* eslint-disable */
 import React from 'react'
 import { shallow } from 'enzyme'
-
-import * as cssContainer from 'styled-jsx/css'
-import css from 'styled-jsx/css'
 import Home from './Home'
 import MenuElement from '../../components/MenuElement'
 
@@ -25,7 +22,6 @@ jest.mock('@dhis2/d2-ui-org-unit-tree', () => 'OrgUnitTree')
 describe('Test <Home /> rendering:', () => {
     let wrapper
 
-    ////let wrapper
     beforeEach(() => {
         wrapper = ownShallow()
     })
