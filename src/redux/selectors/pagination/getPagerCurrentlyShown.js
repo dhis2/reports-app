@@ -1,9 +1,8 @@
 export default function getPagerCurrentlyShown(state) {
-    const { pageSize, total, pageCount, page } = state.pagination
-    const pageCalculationValue =
-        total - (total - (pageCount - (pageCount - page)) * pageSize)
-    const startItem = pageCalculationValue - pageSize + 1
-    const endItem = pageCalculationValue
+    const { pageSize, total, page } = state.pagination
+    const projectedEnd = page * pageSize
+    const start = projectedEnd - pageSize + 1
+    const end = projectedEnd > total ? total : projectedEnd
 
-    return `${startItem} - ${endItem > total ? total : endItem}`
+    return `${start} - ${end}`
 }
