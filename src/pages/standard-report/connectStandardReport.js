@@ -39,7 +39,7 @@ const mapDispatchToProps = dispatch => ({
     goToPrevPage: () => dispatch(goToPrevPage()),
     requestDeleteStandardReport: report =>
         dispatch(requestDeleteStandardReport(report)),
-    setSearch: term => dispatch(setSearch(term)),
+    setSearch: event => dispatch(setSearch(event.target.value)),
     showReportData: reportData => dispatch(showReportData(reportData)),
     hideReportData: reportData => dispatch(hideReportData(reportData)),
     closeContextMenu: refreshList => dispatch(closeContextMenu(refreshList)),

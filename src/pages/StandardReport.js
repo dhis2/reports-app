@@ -1,33 +1,32 @@
-import '@dhis2/d2-ui-core/css/Pagination.css'
-import '@dhis2/d2-ui-core/css/Table.css'
-
-import { Pagination } from '@dhis2/d2-ui-core'
+import i18n from '@dhis2/d2-i18n'
 import PropTypes from 'prop-types'
 import React from 'react'
-import Table from '@dhis2/d2-ui-table'
-import i18n from '@dhis2/d2-i18n'
-
+import { Snackbar } from '../components/feedback/Snackbar'
+import SearchablePagedList from '../components/SearchablePagedList'
+import { SectionHeadline } from '../components/SectionHeadline'
+import connectStandardReport from './standard-report/connectStandardReport'
+import { showContextAction } from './standard-report/helper'
+import { ConnectedReportParams } from './standard-report/ReportParams'
 import {
     CONTEXT_MENU_ACTION,
     CONTEXT_MENU_ICONS,
 } from './standard-report/standard.report.conf'
-import { ConnectedReportParams } from './standard-report/ReportParams'
-import { NoResultsMessage } from '../components/NoResultsMessage'
-import { SectionHeadline } from '../components/SectionHeadline'
-import { Snackbar } from '../components/feedback/Snackbar'
-import { displayNoResults, showContextAction } from './standard-report/helper'
-import {
-    hasNextPageCreator,
-    hasPreviousPageCreator,
-    calculatePageValue,
-} from '../utils/pagination/helper'
-import ActionComponent from './standard-report/ActionComponent'
-import AddReportButton from './standard-report/AddReportButton'
-import SearchBox from './standard-report/SearchBox'
+import StandardReportActions from './standard-report/StandardReportActions'
 import StyledHtmlReport from './standard-report/StyledHtmlReport'
-import connectStandardReport from './standard-report/connectStandardReport'
+
+const createContextMenuOptions = props => ({
+    [CONTEXT_MENU_ACTION.CREATE]: props.createReport,
+    [CONTEXT_MENU_ACTION.EDIT]: props.editReport,
+    [CONTEXT_MENU_ACTION.SHARING_SETTINGS]: props.sharingSettings,
+    [CONTEXT_MENU_ACTION.DELETE]: props.requestDeleteStandardReport,
+})
 
 class StandardReport extends React.Component {
+    constructor(props) {
+        super(props)
+        this.contextMenuOptions = createContextMenuOptions(props)
+    }
+
     getChildContext() {
         return { d2: this.props.d2 }
     }
@@ -37,18 +36,6 @@ class StandardReport extends React.Component {
     }
 
     render() {
-        const { pager } = this.props
-        const hasNextPage = hasNextPageCreator(pager.page, pager.pageCount)
-        const hasPreviousPage = hasPreviousPageCreator(pager.page)
-        const paginationCurrentlyShown = calculatePageValue(pager)
-        const contextMenuOptions = {
-            [CONTEXT_MENU_ACTION.CREATE]: this.props.createReport,
-            [CONTEXT_MENU_ACTION.EDIT]: this.props.editReport,
-            [CONTEXT_MENU_ACTION.SHARING_SETTINGS]: this.props.sharingSettings,
-            [CONTEXT_MENU_ACTION.DELETE]: this.props
-                .requestDeleteStandardReport,
-        }
-
         return (
             <div>
                 <SectionHeadline
@@ -64,43 +51,25 @@ class StandardReport extends React.Component {
                         display: this.props.reportData ? 'none' : 'block',
                     }}
                 >
-                    <Pagination
-                        total={this.props.pager.total}
-                        hasNextPage={hasNextPage}
-                        hasPreviousPage={hasPreviousPage}
-                        onNextPageClick={this.props.goToNextPage}
-                        onPreviousPageClick={this.props.goToPrevPage}
-                        currentlyShown={paginationCurrentlyShown}
-                    />
-                    <SearchBox
-                        value={this.props.search}
-                        onChange={this.props.setSearch}
-                    />
-                    <Table
+                    <SearchablePagedList
                         columns={['displayName']}
                         rows={this.props.reports}
-                        contextMenuActions={contextMenuOptions}
+                        isLoading={this.props.loading}
+                        contextMenuActions={this.contextMenuOptions}
+                        primaryAction={
+                            this.contextMenuOptions[
+                                [CONTEXT_MENU_ACTION.CREATE]
+                            ]
+                        }
                         contextMenuIcons={CONTEXT_MENU_ICONS}
                         isContextActionAllowed={showContextAction}
+                        searchInputValue={this.props.search}
+                        searchInputChangeHandler={this.props.setSearch}
+                        addButtonClickHandler={this.props.addReportFormShow}
+                        goToNextPage={this.props.goToNextPage}
+                        goToPrevPage={this.props.goToPrevPage}
                     />
-                    <NoResultsMessage
-                        styles={displayNoResults(
-                            this.props.reports,
-                            this.props.loading
-                        )}
-                    />
-                    <div id="footer-pagination-id">
-                        <Pagination
-                            total={this.props.pager.total}
-                            hasNextPage={hasNextPage}
-                            hasPreviousPage={hasPreviousPage}
-                            onNextPageClick={this.props.goToNextPage}
-                            onPreviousPageClick={this.props.goToPrevPage}
-                            currentlyShown={paginationCurrentlyShown}
-                        />
-                    </div>
-                    <AddReportButton onClick={this.props.addReportFormShow} />
-                    <ActionComponent
+                    <StandardReportActions
                         d2={this.props.d2}
                         open={this.props.open}
                         selectedAction={this.props.selectedAction}

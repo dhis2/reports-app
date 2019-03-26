@@ -7,7 +7,7 @@ import {
 } from './standard.report.conf'
 import { ConnectedAddEditStdReport } from './AddEditStdReport'
 
-const ActionComponent = ({
+const StandardReportActions = ({
     d2,
     open,
     selectedAction,
@@ -58,7 +58,7 @@ const ActionComponent = ({
     return null
 }
 
-ActionComponent.propTypes = {
+StandardReportActions.propTypes = {
     d2: PropTypes.object.isRequired,
     open: PropTypes.bool.isRequired,
     selectedAction: PropTypes.string.isRequired,
@@ -70,4 +70,4 @@ ActionComponent.propTypes = {
     addStandardReport: PropTypes.func.isRequired,
 }
 
-export default ActionComponent
+export default StandardReportActions

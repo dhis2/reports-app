@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { css } from 'styled-jsx/css'
+import { resolve } from 'styled-jsx/css'
 import Button from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog'
 import DialogContent from '@material-ui/core/DialogContent'
@@ -22,11 +22,11 @@ const labelSubmit = i18n.t('Generate report')
 const title = i18n.t('Report parameters')
 const colorError = red[500]
 
-const buttonStyles = css.resolve`
+const buttonStyles = resolve`
     width: 100%;
 `
 
-const primaryButtonStyle = css.resolve`
+const primaryButtonStyle = resolve`
     button {
         color: white;
         background-color: ${theme.palette.primary2Color}

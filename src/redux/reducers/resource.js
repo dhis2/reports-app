@@ -16,6 +16,7 @@ export const resource = (state = defaultState, { type, payload } = {}) => {
         case actionTypes.LOADING_RESOURCES_START:
             return {
                 ...state,
+                collection: [],
                 loading: true,
             }
 
