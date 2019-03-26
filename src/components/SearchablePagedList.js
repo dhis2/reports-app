@@ -59,7 +59,7 @@ const SearchablePagedList = props => {
                 fab
                 onClick={props.addButtonClickHandler}
             >
-                <SvgIcon icon={'Add'} />
+                <SvgIcon icon="Add" />
             </Button>
             <style jsx>{styles}</style>
         </div>
