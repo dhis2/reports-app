@@ -1,10 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test <OrganisationUnitGroupSets /> rendering: Should render OrgUnitTree when ready 1`] = `
+exports[`Test <AvailableOrganisationUnitsTree /> rendering: Should render OrgUnitTree when ready 1`] = `
 <div
   style={
     Object {
       "border": "solid 1px #bcbcbc",
+      "boxSizing": "border-box",
       "overflow": "auto",
       "width": "100%",
     }
@@ -20,7 +21,7 @@ exports[`Test <OrganisationUnitGroupSets /> rendering: Should render OrgUnitTree
 </div>
 `;
 
-exports[`Test <OrganisationUnitGroupSets /> rendering: Should render a loading message when not ready 1`] = `
+exports[`Test <AvailableOrganisationUnitsTree /> rendering: Should render a loading message when not ready 1`] = `
 <span>
   Updating Organisation Units Tree...
 </span>
