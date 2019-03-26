@@ -7,7 +7,7 @@ jest.mock('@dhis2/d2-ui-org-unit-tree', () => ({
     OrgUnitTreeMultipleRoots: 'OrgUnitTreeMultipleRoots',
 }))
 
-describe('Test <OrganisationUnitGroupSets /> rendering:', () => {
+describe('Test <AvailableOrganisationUnitsTree /> rendering:', () => {
     const selectMock = jest.fn()
 
     const defaultProps = {

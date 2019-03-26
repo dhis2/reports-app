@@ -42,6 +42,7 @@ export const ReportParams = props => (
         open={props.showReportParams}
         onClose={props.cancelGeneratingPdfReport}
         fullWidth={true}
+        maxWidth="md"
     >
         <DialogTitle>{title}</DialogTitle>
 

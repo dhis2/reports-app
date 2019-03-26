@@ -33,6 +33,7 @@ const StyledReportData = ({ onReportCloseClick, reportData }) => (
         open={true}
         onClose={onReportCloseClick}
         fullScreen={true}
+        maxWidth={false}
         className={containerStyle.className}
     >
         <DialogTitle className={titleStyle.className}>{title}</DialogTitle>
