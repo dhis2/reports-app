@@ -11,6 +11,7 @@ export const FormSection = ({ show, render, children }) => {
             <style jsx>{`
                 section {
                     margin: 0 0 10px;
+                    padding: 0 2px;
                 }
             `}</style>
         </section>
