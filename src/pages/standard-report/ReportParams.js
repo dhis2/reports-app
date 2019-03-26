@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { css, resolve } from 'styled-jsx/css'
+import { resolve } from 'styled-jsx/css'
 import Button from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog'
 import DialogContent from '@material-ui/core/DialogContent'
