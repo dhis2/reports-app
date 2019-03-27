@@ -12,7 +12,6 @@ import AppRouter from './components/AppRouter'
 import { Loader } from './components/feedback/Loader'
 import AppContext from './pages/AppContext'
 import { sections } from './config/sections.config'
-import styles from './utils/styles'
 import {
     MuiThemeProvider as Mui3ThemeProvider,
     createMuiTheme as createMui3Theme,
@@ -68,14 +67,23 @@ class App extends PureComponent {
                             onChangeSection={nonOnChangeSection}
                             currentSection={this.props.currentSection}
                         />
-                        <div style={styles.contentWrapper}>
-                            <div style={styles.contentArea}>
+                        <div className="content-wrapper">
+                            <div className="content-area">
                                 <AppRouter />
                             </div>
                         </div>
                         <Loader />
                     </Mui3ThemeProvider>
                 </D2UIApp>
+                <style jsx>{`
+                    .content-wrapper {
+                        margin-left: 295px;
+                        max-width: 1400px;
+                    }
+                    .content-area {
+                        padding: 4rem 20px 20px;
+                    }
+                `}</style>
             </AppContext.Provider>
         )
     }

@@ -2,28 +2,30 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import i18n from '@dhis2/d2-i18n'
-import styles from '../utils/styles'
 import OrganisationUnitsTree from './AvailableOrganisationUnitsTree'
 import OrganisationUnitGroupOptions from './OrganisationUnitGroupSets'
 import {
     toggleShowOptions,
     selectOrgUnitOption,
 } from '../redux/actions/organisationUnits'
+import { formLabel } from '../utils/shared-styles'
 
 const getExtraOptionsLabel = showOptions =>
-    i18n.t(!showOptions ? 'Show more options' : 'Show few options')
+    !showOptions ? i18n.t('Show more options') : i18n.t('Show fewer options')
 
-const getExtraOptionsStyle = showOptions =>
-    showOptions ? styles.showOptions : styles.hideOptions
+const getExtraOptionsClassName = showOptions =>
+    showOptions ? 'show-options' : 'hide-options'
 
 export const OrgUnitsTreeWithExtraOptions = props => (
     <React.Fragment>
-        <div style={styles.formLabel}>{i18n.t('Report organisation unit')}</div>
+        <div className={formLabel.className}>
+            {i18n.t('Report organisation unit')}
+        </div>
         <OrganisationUnitsTree />
         <div>
             <span
                 id="extra-options-action"
-                style={styles.showMoreOptionsButton}
+                className="show-more-options-button"
                 role="button"
                 tabIndex="0"
                 onClick={props.toggleShowOptions}
@@ -32,7 +34,7 @@ export const OrgUnitsTreeWithExtraOptions = props => (
             </span>
             <div
                 id="extra-options"
-                style={getExtraOptionsStyle(props.showOptions)}
+                className={getExtraOptionsClassName(props.showOptions)}
             >
                 <OrganisationUnitGroupOptions
                     values={props.selectedOrgUnitOptions}
@@ -40,6 +42,23 @@ export const OrgUnitsTreeWithExtraOptions = props => (
                 />
             </div>
         </div>
+        <style>{formLabel.styles}</style>
+        <style jsx>{`
+            .hide-options {
+                display: none;
+            }
+            .show-options {
+                display: block;
+            }
+            .show-more-options-button {
+                display: block;
+                cursor: pointer;
+                color: #004ba0;
+                margin-top: 5;
+                margin-bottom: 5;
+                outline: none;
+            }
+        `}</style>
     </React.Fragment>
 )
 

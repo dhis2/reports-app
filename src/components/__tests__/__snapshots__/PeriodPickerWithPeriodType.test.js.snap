@@ -5,11 +5,7 @@ exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render a <Peri
   <span
     style={
       Object {
-        "color": "#757575",
         "display": "block",
-        "fontSize": "14px",
-        "marginBottom": 5,
-        "textAlign": "left",
       }
     }
   >
@@ -44,11 +40,7 @@ exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render a <Peri
   <span
     style={
       Object {
-        "color": "#757575",
         "display": "block",
-        "fontSize": "14px",
-        "marginBottom": 5,
-        "textAlign": "left",
       }
     }
   >
@@ -79,11 +71,7 @@ exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render the par
   <span
     style={
       Object {
-        "color": "#757575",
         "display": "block",
-        "fontSize": "14px",
-        "marginBottom": 5,
-        "textAlign": "left",
       }
     }
   >

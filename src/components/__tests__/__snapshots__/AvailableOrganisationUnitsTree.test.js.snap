@@ -2,14 +2,7 @@
 
 exports[`Test <AvailableOrganisationUnitsTree /> rendering: Should render OrgUnitTree when ready 1`] = `
 <div
-  style={
-    Object {
-      "border": "solid 1px #bcbcbc",
-      "boxSizing": "border-box",
-      "overflow": "auto",
-      "width": "100%",
-    }
-  }
+  className="org-unit-tree-wrapper"
 >
   <OrgUnitTreeMultipleRoots
     hideMemberCount={true}
@@ -18,6 +11,16 @@ exports[`Test <AvailableOrganisationUnitsTree /> rendering: Should render OrgUni
     roots={Array []}
     selected={Array []}
   />
+  <style>
+    
+                    .org-unit-tree-wrapper {
+                        border: 1px solid #bcbcbc;
+                        overflow: auto;
+                        width: 100%;
+                        box-sizing: border-box;
+                    }
+                
+  </style>
 </div>
 `;
 

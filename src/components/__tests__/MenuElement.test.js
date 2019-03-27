@@ -34,7 +34,7 @@ describe('Test <MenuElement /> rendering:', () => {
     })
 
     it('Renders correct section title.', () => {
-        expect(wrapper.find('.section-title')).toHaveLength(1)
+        expect(wrapper.find('.section-title-bar')).toHaveLength(1)
     })
 
     it('Renders correct section description.', () => {

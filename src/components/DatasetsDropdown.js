@@ -3,15 +3,15 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { DropDown } from '@dhis2/d2-ui-core'
 import i18n from '@dhis2/d2-i18n'
-import styles from '../utils/styles'
 import { selectDataSet } from '../redux/actions/dataSet'
+import { formLabel } from '../utils/shared-styles'
 
 const hintTextLoading = i18n.t('Loading options...')
 const hintTextDefault = i18n.t('Select Data Set')
 
 export const DatasetsDropdown = props => (
     <div>
-        <span style={styles.formLabel}>{props.label}</span>
+        <span className={formLabel.className}>{props.label}</span>
         <DropDown
             fullWidth={props.fullWidth}
             value={props.selected.id}
@@ -20,6 +20,7 @@ export const DatasetsDropdown = props => (
             hintText={props.loading ? hintTextLoading : hintTextDefault}
             disabled={props.loading}
         />
+        <style>{formLabel.styles}</style>
     </div>
 )
 

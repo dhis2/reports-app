@@ -47,7 +47,6 @@ export const File = props => (
                         onChange={useFileBlobAsValue(input)}
                         id={input.name}
                         type="file"
-                        style={{ display: 'none' }}
                     />
                     <FormHelperText>
                         {input.value.replace('C:\\fakepath\\', '') ||
@@ -56,6 +55,11 @@ export const File = props => (
                 </FormControl>
             )}
         </Field>
+        <style jsx>{`
+            input {
+                display: none;
+            }
+        `}</style>
     </div>
 )
 

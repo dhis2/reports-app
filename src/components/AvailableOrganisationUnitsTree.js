@@ -5,18 +5,8 @@ import i18n from '@dhis2/d2-i18n'
 import { OrgUnitTreeMultipleRoots } from '@dhis2/d2-ui-org-unit-tree'
 import { selectOrganisationUnit } from '../redux/actions/organisationUnits'
 
-const defaultStyles = {
-    tree: {
-        border: 'solid 1px #bcbcbc',
-        overflow: 'auto',
-        width: '100%',
-        boxSizing: 'border-box',
-    },
-}
-
 export function AvailableOrganisationUnitsTree({
     selectOrganisationUnit,
-    style,
     loading,
     collection,
     selected,
@@ -26,7 +16,7 @@ export function AvailableOrganisationUnitsTree({
     }
 
     return (
-        <div style={style.tree}>
+        <div className="org-unit-tree-wrapper">
             <OrgUnitTreeMultipleRoots
                 hideMemberCount
                 roots={collection}
@@ -34,20 +24,23 @@ export function AvailableOrganisationUnitsTree({
                 initiallyExpanded={collection.map(unit => `/${unit.id}`)}
                 onSelectClick={selectOrganisationUnit}
             />
+            <style jsx>{`
+                .org-unit-tree-wrapper {
+                    border: 1px solid #bcbcbc;
+                    overflow: auto;
+                    width: 100%;
+                    box-sizing: border-box;
+                }
+            `}</style>
         </div>
     )
 }
 
 AvailableOrganisationUnitsTree.propTypes = {
     selectOrganisationUnit: PropTypes.func.isRequired,
-    style: PropTypes.object,
     loading: PropTypes.bool.isRequired,
     collection: PropTypes.array.isRequired,
     selected: PropTypes.object,
-}
-
-AvailableOrganisationUnitsTree.defaultProps = {
-    style: defaultStyles,
 }
 
 const mapStateToProps = ({ organisationUnits }) => ({

@@ -2,15 +2,31 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { CircularProgress } from '@dhis2/d2-ui-core'
-import styles from '../../utils/styles'
 import { getShowLoading } from '../../redux/selectors/feedback/getShowLoading'
 
 const Loader = props =>
     props.show ? (
-        <div style={styles.loadingContainer}>
-            <div style={styles.feedbackSnackBar}>
+        <div className="loading-container">
+            <div className="progress-wrap">
                 <CircularProgress />
             </div>
+            <style jsx>{`
+                .loading-container {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    width: 100%;
+                    background: rgba(0, 0, 0, 0.4);
+                    z-index: 3000;
+                }
+                .progress-wrap {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: 'translate(-50%, -50%)';
+                }
+            `}</style>
         </div>
     ) : null
 

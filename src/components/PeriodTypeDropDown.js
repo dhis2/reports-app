@@ -11,8 +11,13 @@ const labelText = i18n.t('Select Period Type')
 function PeriodTypeDropDown({ loading, ...props }) {
     if (loading) {
         return (
-            <span style={styles.error}>
+            <span>
                 {i18n.t('Loading period types dropdown')}
+                <style jsx>{`
+                    span {
+                        color: #f44336;
+                    }
+                `}</style>
             </span>
         )
     }

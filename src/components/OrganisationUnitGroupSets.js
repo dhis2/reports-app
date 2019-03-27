@@ -1,33 +1,24 @@
 /* React */
-import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
-
-/* d2-ui components */
-import { DropDown } from '@dhis2/d2-ui-core'
-
-/* App context */
-import AppContext from '../pages/AppContext'
-
 /* i18n */
 import i18n from '@dhis2/d2-i18n'
-
-/* styles */
-import styles from '../utils/styles'
+/* d2-ui components */
+import { DropDown } from '@dhis2/d2-ui-core'
+import PropTypes from 'prop-types'
+import React, { PureComponent } from 'react'
+/* App context */
+import AppContext from '../pages/AppContext'
+import { formLabel } from '../utils/shared-styles'
 
 export class OrganisationUnitGroupSets extends PureComponent {
     static propTypes = {
         d2: PropTypes.object.isRequired,
         onChange: PropTypes.func.isRequired,
         values: PropTypes.object.isRequired,
-        dropdownStyle: PropTypes.object,
         fullWidth: PropTypes.bool,
     }
 
     static defaultProps = {
         fullWidth: true,
-        dropdownStyle: {
-            display: 'block',
-        },
     }
 
     constructor() {
@@ -61,11 +52,10 @@ export class OrganisationUnitGroupSets extends PureComponent {
 
     renderOrganisationUnitGroupSetDropdown = organisationUnitGroupSet => (
         <div key={organisationUnitGroupSet.id}>
-            <span style={styles.formLabel}>
+            <span className={formLabel.className}>
                 {organisationUnitGroupSet.displayName}
             </span>
             <DropDown
-                style={this.props.dropdownStyle}
                 fullWidth={this.props.fullWidth}
                 value={this.props.values[organisationUnitGroupSet.id]}
                 onChange={this.handleOrganisationUnitGroupSetChange(
@@ -76,6 +66,7 @@ export class OrganisationUnitGroupSets extends PureComponent {
                 emptyLabel={i18n.t('Select Option')}
                 hintText={i18n.t('Select Option')}
             />
+            <style>{formLabel.styles}</style>
         </div>
     )
 

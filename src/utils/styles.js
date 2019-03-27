@@ -40,29 +40,9 @@ const styles = {
         paddingLeft: CONTENT_AREA_PADDING,
         paddingRight: CONTENT_AREA_PADDING,
     },
-    loadingContainer: {
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        height: '100%',
-        width: '100%',
-        background: 'rgba(0,0,0,0.4)',
-        zIndex: 3000, // over dialog
-    },
-    feedbackSnackBar: {
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-    },
+
     marginForAddButton: {
         marginBottom: PAGING_BOTTOM_MARGIN,
-    },
-    formLabel: {
-        textAlign: 'left',
-        color: '#757575',
-        marginBottom: 5,
-        fontSize: '14px',
     },
     actionsContainer: {
         display: 'block',

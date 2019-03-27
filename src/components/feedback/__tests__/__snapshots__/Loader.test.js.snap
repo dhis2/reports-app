@@ -4,29 +4,31 @@ exports[`<Loader /> should not render the loader when show is false 1`] = `""`;
 
 exports[`<Loader /> should render loader when show is true 1`] = `
 <div
-  style={
-    Object {
-      "background": "rgba(0,0,0,0.4)",
-      "height": "100%",
-      "left": 0,
-      "position": "fixed",
-      "top": 0,
-      "width": "100%",
-      "zIndex": 3000,
-    }
-  }
+  className="loading-container"
 >
   <div
-    style={
-      Object {
-        "left": "50%",
-        "position": "absolute",
-        "top": "50%",
-        "transform": "translate(-50%, -50%)",
-      }
-    }
+    className="progress-wrap"
   >
     <CircularProgress />
   </div>
+  <style>
+    
+                    .loading-container {
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        height: 100%;
+                        width: 100%;
+                        background: rgba(0, 0, 0, 0.4);
+                        z-index: 3000;
+                    }
+                    .progress-wrap {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: 'translate(-50%, -50%)';
+                    }
+                
+  </style>
 </div>
 `;
