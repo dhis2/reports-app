@@ -4,7 +4,7 @@ import { DropDown } from '@dhis2/d2-ui-core'
 import { connect } from 'react-redux'
 import i18n from '@dhis2/d2-i18n'
 import { setGroupSet } from '../redux/actions/orgUnitGroupSets'
-import { formLabel } from '../utils/shared-styles'
+import { formLabel } from '../utils/styles/shared.js'
 
 const label = i18n.t('Group Set')
 const hintText = i18n.t('Select Group Set')

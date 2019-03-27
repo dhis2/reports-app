@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { DropDown } from '@dhis2/d2-ui-core'
 import i18n from '@dhis2/d2-i18n'
 import { selectDataSet } from '../redux/actions/dataSet'
-import { formLabel } from '../utils/shared-styles'
+import { formLabel } from '../utils/styles/shared.js'
 
 const hintTextLoading = i18n.t('Loading options...')
 const hintTextDefault = i18n.t('Select Data Set')

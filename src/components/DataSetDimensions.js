@@ -5,7 +5,7 @@ import { DropDown } from '@dhis2/d2-ui-core'
 import i18n from '@dhis2/d2-i18n'
 import { selectDimensionOption } from '../redux/actions/dataSetDimensions'
 import CircularProgress from '@material-ui/core/CircularProgress'
-import { formLabel } from '../utils/shared-styles'
+import { formLabel } from '../utils/styles/shared.js'
 
 const createDimensionChangeHandler = (onChange, dimensionId) => element =>
     onChange(dimensionId, element)

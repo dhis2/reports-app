@@ -8,7 +8,7 @@ import Form from './data-set-report/Form'
 import { connectDataSetReport } from './data-set-report/connectDataSetReport'
 import i18n from '@dhis2/d2-i18n'
 import { reportContent } from '../utils/react/propTypes'
-import { container } from '../utils/shared-styles'
+import { container } from '../utils/styles/shared.js'
 
 const DataSetReport = props => (
     <div>

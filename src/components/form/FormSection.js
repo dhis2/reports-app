@@ -12,6 +12,7 @@ export const FormSection = ({ show, render, children }) => {
                 section {
                     margin: 0 0 10px;
                     padding: 0 2px;
+                    overflow: hidden;
                 }
             `}</style>
         </section>

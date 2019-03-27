@@ -3,24 +3,21 @@
 exports[`<DownloadOptions/> Renders an empty container when fileUrls is an empty array 1`] = `
 <div
   id="download-options-container"
-  style={
-    Object {
-      "display": "flex",
-      "justifyContent": "flex-end",
-    }
-  }
-/>
+>
+  <style>
+    
+                div {
+                    display: flex;
+                    justify-content: flex-end;
+                }
+            
+  </style>
+</div>
 `;
 
 exports[`<DownloadOptions/> Renders an empty container when fileUrls is an empty array 2`] = `
 <div
   id="download-options-container"
-  style={
-    Object {
-      "display": "flex",
-      "justifyContent": "flex-end",
-    }
-  }
 >
   <Component
     file={
@@ -40,5 +37,13 @@ exports[`<DownloadOptions/> Renders an empty container when fileUrls is an empty
     }
     key="1"
   />
+  <style>
+    
+                div {
+                    display: flex;
+                    justify-content: flex-end;
+                }
+            
+  </style>
 </div>
 `;

@@ -3,9 +3,10 @@ import PropTypes from 'prop-types'
 
 /* Material UI */
 import Paper from '@material-ui/core/Paper'
+import { card } from '../utils/styles/shared.js'
 
 const MenuElement = ({ entry }) => (
-    <Paper className="section">
+    <Paper className={card.className}>
         <div className="section-title-bar">
             <div className="section-name">{entry.label}</div>
             <span className="material-icons icon section-icon">
@@ -14,23 +15,8 @@ const MenuElement = ({ entry }) => (
         </div>
         <div className="section-description">{entry.description}</div>
         <div className="section-action-text">{entry.actionText}</div>
+        <style>{card.styles}</style>
         <style jsx>{`
-            .section {
-                box-sizing: border-box;
-                display: inline-block;
-                position: relative;
-                min-width: 200px;
-                min-height: 218px;
-                height: 100%;
-                padding-left: 30px;
-                padding-right: 30px;
-                padding-bottom: 20px;
-                background-color: #ffffff;
-                box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px,
-                    rgba(0, 0, 0, 0.12) 0px 1px 4px;
-                border-radius: 5px;
-                width: 100%;
-            }
             .section-title-bar {
                 margin-top: 28px;
                 min-height: 42px;

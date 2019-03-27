@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { DownloadOptions } from './TabularReport/DownloadOptions'
 import ReportTable from './TabularReport/ReportTable'
 import ReportLoader from './ReportLoader'
-import './TabularReport/styles.css'
 
 const TabularReport = ({ content, isLoading, fileUrls }) => (
     <ReportLoader content={content} isLoading={isLoading}>

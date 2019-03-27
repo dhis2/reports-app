@@ -32,19 +32,18 @@ export const DesignFileDownloadButton = ({
             <FormHelperText>{label}</FormHelperText>
             <FormHelperText>
                 <Button variant="contained" component="span">
-                    <a
-                        href={url}
-                        target="_blank"
-                        style={{
-                            color: 'inherit',
-                            textDecoration: 'none',
-                        }}
-                    >
+                    <a href={url} target="_blank" download>
                         Download
                     </a>
                 </Button>
             </FormHelperText>
             <FormHelperText />
+            <style jsx>{`
+                a {
+                    color: inherit;
+                    text-decoration: none;
+                }
+            `}</style>
         </div>
     )
 }

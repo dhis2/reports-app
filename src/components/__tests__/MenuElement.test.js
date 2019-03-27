@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react'
 import { shallow } from 'enzyme'
-
+import Paper from '@material-ui/core/Paper'
 import MenuElement from '../MenuElement'
 
 import { sections } from '../../config/sections.config'
@@ -29,8 +29,8 @@ describe('Test <MenuElement /> rendering:', () => {
         ownShallow()
     })
 
-    it('Renders a section.', () => {
-        expect(wrapper.find('.section')).toHaveLength(1)
+    it('Renders a section on Paper.', () => {
+        expect(wrapper.find(Paper)).toHaveLength(1)
     })
 
     it('Renders correct section title.', () => {

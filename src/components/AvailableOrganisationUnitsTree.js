@@ -25,11 +25,12 @@ export function AvailableOrganisationUnitsTree({
                 onSelectClick={selectOrganisationUnit}
             />
             <style jsx>{`
-                .org-unit-tree-wrapper {
+                div {
                     border: 1px solid #bcbcbc;
                     overflow: auto;
                     width: 100%;
                     box-sizing: border-box;
+                    font-weight: 300;
                 }
             `}</style>
         </div>

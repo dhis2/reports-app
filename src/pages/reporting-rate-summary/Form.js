@@ -2,20 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Button } from '@dhis2/d2-ui-core'
 import i18n from '@dhis2/d2-i18n'
-import styles from '../../utils/styles'
 import DataSets from '../../components/DatasetsDropdown'
 import OrgUnitsTreeWithExtraOptions from '../../components/OrgUnitsTreeWithExtraOptions'
 import PeriodPickerComponent from '../../components/PeriodPickerWithPeriodType'
-
-const getSummaryFormStyles = showForm => ({
-    display: showForm ? 'block' : 'none',
-})
+import { actionsContainer } from '../../utils/styles/shared.js'
 
 export const Form = props => (
-    <div
-        id="report-rate-summary-form"
-        style={getSummaryFormStyles(props.showForm)}
-    >
+    <div id="report-rate-summary-form">
         <div className="row">
             <div className="col-xs-12 col-md-6">
                 <OrgUnitsTreeWithExtraOptions />
@@ -29,7 +22,7 @@ export const Form = props => (
                 </div>
             </div>
         </div>
-        <div id="main-action-button" style={styles.actionsContainer}>
+        <div id="main-action-button" className={actionsContainer.className}>
             <Button
                 raised
                 color="primary"
@@ -39,6 +32,7 @@ export const Form = props => (
                 {i18n.t('Get Report')}
             </Button>
         </div>
+        <style>{actionsContainer.styles}</style>
     </div>
 )
 

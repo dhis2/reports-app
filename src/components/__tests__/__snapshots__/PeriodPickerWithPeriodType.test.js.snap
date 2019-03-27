@@ -2,13 +2,7 @@
 
 exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render a <PeriodTypeDropDown/> and <PeriodPicker/> when selectedPeriodType is truthy 1`] = `
 <div>
-  <span
-    style={
-      Object {
-        "display": "block",
-      }
-    }
-  >
+  <span>
     This is my label
   </span>
   <PeriodTypeDropDown
@@ -32,18 +26,20 @@ exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render a <Peri
     onPickPeriod={[Function]}
     periodType="Quarterly"
   />
+  <style>
+    
+                    .parsed-period {
+                        margin-bottom: 16px;
+                    }
+                
+  </style>
+  <style />
 </div>
 `;
 
 exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render a <PeriodTypeDropDown/> when selectedPeriodType is falsy 1`] = `
 <div>
-  <span
-    style={
-      Object {
-        "display": "block",
-      }
-    }
-  >
+  <span>
     This is my label
   </span>
   <PeriodTypeDropDown
@@ -63,18 +59,20 @@ exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render a <Peri
     onChange={[Function]}
     value=""
   />
+  <style>
+    
+                    .parsed-period {
+                        margin-bottom: 16px;
+                    }
+                
+  </style>
+  <style />
 </div>
 `;
 
 exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render the parsed period when a period has been selected 1`] = `
 <div>
-  <span
-    style={
-      Object {
-        "display": "block",
-      }
-    }
-  >
+  <span>
     This is my label
   </span>
   <PeriodTypeDropDown
@@ -99,13 +97,17 @@ exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render the par
     periodType="Daily"
   />
   <div
-    style={
-      Object {
-        "marginBottom": "16px",
-      }
-    }
+    className="parsed-period"
   >
     January 1, 2018
   </div>
+  <style>
+    
+                    .parsed-period {
+                        margin-bottom: 16px;
+                    }
+                
+  </style>
+  <style />
 </div>
 `;

@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Paper from '@material-ui/core/Paper'
 import i18n from '@dhis2/d2-i18n'
-import styles from '../utils/styles'
 import TabularReport from '../components/TabularReport'
 import { Snackbar } from '../components/feedback/Snackbar'
 import { connectOrganisationUnitDistributionReport } from './organisation-unit-distribution-report/connectOrganisationUnitDistributionReport'
@@ -10,6 +9,7 @@ import { SectionHeadline } from '../components/SectionHeadline'
 import { Form } from './organisation-unit-distribution-report/Form'
 import BarChart from '../components/BarChart'
 import { reportContent } from '../utils/react/propTypes'
+import { container } from '../utils/styles/shared.js'
 
 class OrganisationUnitDistributionReport extends React.Component {
     componentDidMount() {
@@ -26,7 +26,7 @@ class OrganisationUnitDistributionReport extends React.Component {
                     systemVersion={this.props.d2.system.version}
                     sectionKey={this.props.sectionKey}
                 />
-                <Paper style={styles.container}>
+                <Paper className={container.className}>
                     <Form
                         isActionEnabled={this.props.isActionEnabled}
                         onGetReportClick={this.props.loadTable}
@@ -49,6 +49,7 @@ class OrganisationUnitDistributionReport extends React.Component {
                     </div>
                 </Paper>
                 <Snackbar />
+                <style>{container.styles}</style>
             </div>
         )
     }

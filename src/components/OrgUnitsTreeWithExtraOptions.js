@@ -8,7 +8,7 @@ import {
     toggleShowOptions,
     selectOrgUnitOption,
 } from '../redux/actions/organisationUnits'
-import { formLabel } from '../utils/shared-styles'
+import { formLabel } from '../utils/styles/shared.js'
 
 const getExtraOptionsLabel = showOptions =>
     !showOptions ? i18n.t('Show more options') : i18n.t('Show fewer options')

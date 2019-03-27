@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
 /* App context */
 import AppContext from '../pages/AppContext'
-import { formLabel } from '../utils/shared-styles'
+import { formLabel } from '../utils/styles/shared.js'
 
 export class OrganisationUnitGroupSets extends PureComponent {
     static propTypes = {

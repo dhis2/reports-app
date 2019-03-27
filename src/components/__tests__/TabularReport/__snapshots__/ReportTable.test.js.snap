@@ -7,9 +7,7 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
   </h1>
   <table>
     <thead>
-      <tr
-        className="tabular-report__header-row"
-      >
+      <tr>
         <th
           key="h-Organisation Unit-0"
         >
@@ -47,9 +45,7 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         </th>
       </tr>
     </thead>
-    <tbody
-      className="tabular-report__table-body"
-    >
+    <tbody>
       <Component
         cells={
           Array [
@@ -276,6 +272,33 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
       />
     </tbody>
   </table>
+  <style>
+    
+                table {
+                    border-collapse: collapse;
+                }
+                thead tr {
+                    border-bottom: 2px solid #e0e0e0;
+                }
+                tbody :global(tr) {
+                    border-bottom: 1px solid #e0e0e0;
+                }
+                th,
+                tbody :global(td) {
+                    border: none;
+                    font-size: 14px;
+                    padding: 16px 16px;
+                }
+                table th {
+                    text-align: left;
+                    font-weight: bold;
+                }
+                tbody :global(td):not(:first-child),
+                thead :global(th):not(:first-child) {
+                    text-align: center;
+                }
+            
+  </style>
 </Fragment>
 `;
 

@@ -13,7 +13,7 @@ import PeriodTypeDropDown from './PeriodTypeDropDown'
 /* Actions */
 import { selectPeriodType, selectPeriod } from '../redux/actions/reportPeriod'
 import { getTranslatedPeriodTypes } from '../redux/selectors/reportPeriod/getTranslatedPeriodTypes'
-import { formLabel } from '../utils/shared-styles'
+import { formLabel } from '../utils/styles/shared.js'
 
 export function PeriodPickerWithPeriodType({
     selectPeriodType,

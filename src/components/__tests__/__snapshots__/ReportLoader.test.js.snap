@@ -9,6 +9,14 @@ exports[`<ReportLoader/> Renders a loader when isLoading is true 1`] = `
     small={false}
     style={Object {}}
   />
+  <style>
+    
+                        div {
+                            margin: 48px 0;
+                            text-align: center;
+                        }
+                    
+  </style>
 </div>
 `;
 
