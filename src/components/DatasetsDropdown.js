@@ -20,7 +20,7 @@ export const DatasetsDropdown = props => (
             hintText={props.loading ? hintTextLoading : hintTextDefault}
             disabled={props.loading}
         />
-        <style>{formLabel.styles}</style>
+        {formLabel.styles}
     </div>
 )
 

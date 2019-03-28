@@ -49,7 +49,7 @@ class OrganisationUnitDistributionReport extends React.Component {
                     </div>
                 </Paper>
                 <Snackbar />
-                <style>{container.styles}</style>
+                {container.styles}
             </div>
         )
     }

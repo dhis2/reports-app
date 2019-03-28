@@ -29,7 +29,7 @@ const ReportingRateSummary = props => (
             />
         </Paper>
         <Snackbar />
-        <style>{container.styles}</style>
+        {container.styles}
     </div>
 )
 

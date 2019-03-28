@@ -24,7 +24,7 @@ const DimensionDropdown = props => (
             emptyLabel={i18n.t('Select Option')}
             hintText={i18n.t('Select Option')}
         />
-        <style>{formLabel.styles}</style>
+        {formLabel.styles}
     </div>
 )
 

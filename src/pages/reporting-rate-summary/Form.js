@@ -32,7 +32,7 @@ export const Form = props => (
                 {i18n.t('Get Report')}
             </Button>
         </div>
-        <style>{actionsContainer.styles}</style>
+        {actionsContainer.styles}
     </div>
 )
 

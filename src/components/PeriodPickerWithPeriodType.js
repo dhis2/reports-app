@@ -49,7 +49,7 @@ export function PeriodPickerWithPeriodType({
                     margin-bottom: 16px;
                 }
             `}</style>
-            <style>{formLabel.styles}</style>
+            {formLabel.styles}
         </div>
     )
 }

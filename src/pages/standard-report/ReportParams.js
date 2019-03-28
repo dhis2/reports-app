@@ -108,8 +108,8 @@ export const ReportParams = props => (
                     margin-bottom: 10px;
                 }
             `}</style>
-            <style>{buttonStyles.styles}</style>
-            <style>{primaryButtonStyle.styles}</style>
+            {buttonStyles.styles}
+            {primaryButtonStyle.styles}
         </DialogContent>
     </Dialog>
 )

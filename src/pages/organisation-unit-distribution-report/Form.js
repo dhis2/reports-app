@@ -39,8 +39,8 @@ export const Form = props => (
                 {i18n.t('Get Chart')}
             </Button>
         </div>
-        <style>{formLabel.styles}</style>
-        <style>{actionsContainer.styles}</style>
+        {formLabel.styles}
+        {actionsContainer.styles}
         <style jsx>{`
             div #actions :global(.d2-ui-button):first-child {
                 margin-right: 16px;

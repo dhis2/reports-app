@@ -36,7 +36,7 @@ const DataSetReport = props => (
                 shareDataSetReportComment={props.shareDataSetReportComment}
                 setDataSetReportComment={props.setDataSetReportComment}
             />
-            <style>{container.styles}</style>
+            {container.styles}
         </Paper>
         <Snackbar />
     </div>

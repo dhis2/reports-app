@@ -42,7 +42,7 @@ export const OrgUnitsTreeWithExtraOptions = props => (
                 />
             </div>
         </div>
-        <style>{formLabel.styles}</style>
+        {formLabel.styles}
         <style jsx>{`
             .hide-options {
                 display: none;

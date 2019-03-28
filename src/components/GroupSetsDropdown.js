@@ -34,7 +34,7 @@ export class GroupSetsDropdown extends PureComponent {
                     emptyLabel={hintText}
                     hintText={hintText}
                 />
-                <style>{formLabel.styles}</style>
+                {formLabel.styles}
             </div>
         )
     }

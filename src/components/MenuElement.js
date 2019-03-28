@@ -15,7 +15,7 @@ const MenuElement = ({ entry }) => (
         </div>
         <div className="section-description">{entry.description}</div>
         <div className="section-action-text">{entry.actionText}</div>
-        <style>{card.styles}</style>
+        {card.styles}
         <style jsx>{`
             .section-title-bar {
                 margin-top: 28px;
