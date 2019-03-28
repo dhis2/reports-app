@@ -37,7 +37,7 @@ const ReportTable = ({ content: { title, headers, rows } }) => (
             table {
                 border-collapse: collapse;
             }
-            thead tr {
+            tr {
                 border-bottom: 2px solid #e0e0e0;
             }
             tbody :global(tr) {
@@ -49,7 +49,7 @@ const ReportTable = ({ content: { title, headers, rows } }) => (
                 font-size: 14px;
                 padding: 16px 16px;
             }
-            table th {
+            th {
                 text-align: left;
                 font-weight: bold;
             }
