@@ -7,7 +7,6 @@ import DataSets from '../../components/DatasetsDropdown'
 import { DataSetDimensions } from '../../components/DataSetDimensions'
 import PeriodPickerComponent from '../../components/PeriodPickerWithPeriodType'
 import OrgUnitsTreeWithExtraOptions from '../../components/OrgUnitsTreeWithExtraOptions'
-import styles from '../../utils/styles'
 
 const Form = props => (
     <div id="data-set-report-form">
@@ -33,7 +32,7 @@ const Form = props => (
                 />
             </div>
         </div>
-        <div id="main-action-button" style={styles.actionsContainer}>
+        <div id="main-action-button">
             <Button
                 id="main-action-button"
                 raised
@@ -43,6 +42,13 @@ const Form = props => (
             >
                 {i18n.t('Get Report')}
             </Button>
+            <style jsx>{`
+                div {
+                    display: block;
+                    margin-top: 48px;
+                    margin-bottom: 16px;
+                }
+            `}</style>
         </div>
     </div>
 )

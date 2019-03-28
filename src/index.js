@@ -10,7 +10,6 @@ import injectTranslationsToD2 from './utils/i18n/injectTranslationsToD2'
 import { initApi, getD2 } from './utils/api'
 import App from './App'
 import registerServiceWorker from './registerServiceWorker'
-import './index.css'
 
 getManifest('manifest.webapp').then(manifest => {
     const baseUrl =

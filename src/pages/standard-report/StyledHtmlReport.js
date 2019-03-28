@@ -48,9 +48,9 @@ const StyledReportData = ({ onReportCloseClick, reportData }) => (
             <HtmlReport html={reportData} />
         </DialogContent>
 
-        <style>{containerStyle.styles}</style>
-        <style>{titleStyle.styles}</style>
-        <style>{contentStyle.styles}</style>
+        {containerStyle.styles}
+        {titleStyle.styles}
+        {contentStyle.styles}
     </Dialog>
 )
 

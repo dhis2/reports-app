@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import { DropDown } from '@dhis2/d2-ui-core'
 import { connect } from 'react-redux'
 import i18n from '@dhis2/d2-i18n'
-import styles from '../utils/styles'
 import { setGroupSet } from '../redux/actions/orgUnitGroupSets'
+import { formLabel } from '../utils/styles/shared.js'
 
 const label = i18n.t('Group Set')
 const hintText = i18n.t('Select Group Set')
@@ -24,7 +24,7 @@ export class GroupSetsDropdown extends PureComponent {
     render() {
         return (
             <div>
-                <span style={styles.formLabel}>{label}</span>
+                <span className={formLabel.className}>{label}</span>
                 <DropDown
                     fullWidth={this.props.fullWidth}
                     value={this.props.selected}
@@ -34,6 +34,7 @@ export class GroupSetsDropdown extends PureComponent {
                     emptyLabel={hintText}
                     hintText={hintText}
                 />
+                {formLabel.styles}
             </div>
         )
     }

@@ -3,44 +3,19 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { DropDown } from '@dhis2/d2-ui-core'
 import i18n from '@dhis2/d2-i18n'
-import styles from '../utils/styles'
 import { selectDimensionOption } from '../redux/actions/dataSetDimensions'
 import CircularProgress from '@material-ui/core/CircularProgress'
-
-const loaderStyle = {
-    marginBottom: 16,
-}
-
-const headerStyle = {
-    color: '#757575',
-    fontSize: '14px',
-    marginBottom: 5,
-    marginTop: 0,
-    textAlign: 'left',
-    fontWeight: 'normal',
-}
-
-const boxStyle = {
-    border: '1px solid #bcbcbc',
-    padding: 4,
-    marginBottom: 16,
-}
-
-const noResultsStyle = {
-    marginBottom: 16,
-    fontStyle: 'italic',
-    fontSize: 13,
-    color: '#757575',
-}
+import { formLabel } from '../utils/styles/shared.js'
 
 const createDimensionChangeHandler = (onChange, dimensionId) => element =>
     onChange(dimensionId, element)
 
 const DimensionDropdown = props => (
     <div key={props.dimension.id} className="data-set-dimension">
-        <span style={styles.formLabel}>{props.dimension.displayName}</span>
+        <span className={formLabel.className}>
+            {props.dimension.displayName}
+        </span>
         <DropDown
-            style={props.dropdownStyle}
             fullWidth={props.fullWidth}
             value={props.values[props.dimension.id]}
             onChange={props.onChange}
@@ -49,12 +24,12 @@ const DimensionDropdown = props => (
             emptyLabel={i18n.t('Select Option')}
             hintText={i18n.t('Select Option')}
         />
+        {formLabel.styles}
     </div>
 )
 
 DimensionDropdown.propTypes = {
     dimension: PropTypes.object.isRequired,
-    dropdownStyle: PropTypes.object.isRequired,
     fullWidth: PropTypes.bool.isRequired,
     values: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
@@ -63,27 +38,39 @@ DimensionDropdown.propTypes = {
 const DataDimensionsContent = props => {
     if (props.isLoading) {
         return (
-            <div style={loaderStyle}>
+            <div className="loader">
                 <CircularProgress size={16} thickness={2} />
+                <style jsx>{`
+                    div {
+                        margin-bottom: 16px;
+                    }
+                `}</style>
             </div>
         )
     }
 
     if (props.options.length === 0) {
         return (
-            <div style={noResultsStyle}>
+            <div className="no-results">
                 {i18n.t('No dimensions connected to the current data set')}
+                <style jsx>{`
+                    div {
+                        margin-bottom: 16px;
+                        font-style: italic;
+                        font-size: 13;
+                        color: #757575;
+                    }
+                `}</style>
             </div>
         )
     }
 
     return (
-        <div style={boxStyle}>
+        <div className="box">
             {props.options.map(dimension => (
                 <DimensionDropdown
                     key={dimension.id}
                     dimension={dimension}
-                    dropdownStyle={props.dropdownStyle}
                     fullWidth={props.fullWidth}
                     values={props.selected}
                     onChange={createDimensionChangeHandler(
@@ -92,6 +79,13 @@ const DataDimensionsContent = props => {
                     )}
                 />
             ))}
+            <style jsx>{`
+                div {
+                    border: 1px solid #bcbcbc;
+                    padding: 4px;
+                    margin-bottom: 16px;
+                }
+            `}</style>
         </div>
     )
 }
@@ -100,7 +94,6 @@ DataDimensionsContent.propTypes = {
     isLoading: PropTypes.bool.isRequired,
     fullWidth: PropTypes.bool.isRequired,
     options: PropTypes.array.isRequired,
-    dropdownStyle: PropTypes.object.isRequired,
     selected: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
 }
@@ -112,8 +105,18 @@ const DataSetDimensions = ({ hide, ...contentProps }) => {
 
     return (
         <React.Fragment>
-            <h6 style={headerStyle}>{i18n.t('Data set dimensions')}</h6>
+            <h6 className="header">{i18n.t('Data set dimensions')}</h6>
             <DataDimensionsContent {...contentProps} />
+            <style jsx>{`
+                h6 {
+                    color: #757575;
+                    font-size: 14px;
+                    margin-bottom: 5px;
+                    margin-top: 0;
+                    text-align: left;
+                    font-weight: normal;
+                }
+            `}</style>
         </React.Fragment>
     )
 }
@@ -124,9 +127,6 @@ DataSetDimensions.propTypes = {
 
 DataSetDimensions.defaultProps = {
     fullWidth: true,
-    dropdownStyle: {
-        display: 'block',
-    },
 }
 
 const mapStateToProps = state => ({

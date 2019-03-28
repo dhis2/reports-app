@@ -9,13 +9,14 @@ exports[`Test <PeriodTypeDropDown /> rendering: It should render a <DropDown /> 
 `;
 
 exports[`Test <PeriodTypeDropDown /> rendering: It should render a loading message when not ready 1`] = `
-<span
-  style={
-    Object {
-      "color": "#f44336",
-    }
-  }
->
+<span>
   Loading period types dropdown
+  <style>
+    
+                        span {
+                            color: #f44336;
+                        }
+                    
+  </style>
 </span>
 `;

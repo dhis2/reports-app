@@ -7,8 +7,8 @@ import DataSetReportOutput from './data-set-report/DataSetReportOutput'
 import Form from './data-set-report/Form'
 import { connectDataSetReport } from './data-set-report/connectDataSetReport'
 import i18n from '@dhis2/d2-i18n'
-import styles from '../utils/styles'
 import { reportContent } from '../utils/react/propTypes'
+import { container } from '../utils/styles/shared.js'
 
 const DataSetReport = props => (
     <div>
@@ -17,7 +17,7 @@ const DataSetReport = props => (
             systemVersion={props.d2.system.version}
             sectionKey={props.sectionKey}
         />
-        <Paper style={styles.container}>
+        <Paper className={container.className}>
             <div id="data-set-report-form">
                 <Form
                     selectedUnitOnly={props.selectedUnitOnly}
@@ -36,6 +36,7 @@ const DataSetReport = props => (
                 shareDataSetReportComment={props.shareDataSetReportComment}
                 setDataSetReportComment={props.setDataSetReportComment}
             />
+            {container.styles}
         </Paper>
         <Snackbar />
     </div>

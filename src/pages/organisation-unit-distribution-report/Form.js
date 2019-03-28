@@ -2,15 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Button } from '@dhis2/d2-ui-core'
 import i18n from '@dhis2/d2-i18n'
-import styles from '../../utils/styles'
 import OrganisationUnitsTree from '../../components/AvailableOrganisationUnitsTree'
 import GroupSets from '../../components/GroupSetsDropdown'
+import { formLabel, actionsContainer } from '../../utils/styles/shared.js'
 
 export const Form = props => (
     <div id="org-unit-dist-report-form">
         <div className="row">
             <div className="col-xs-12 col-md-6">
-                <div style={styles.formLabel}>
+                <div className={formLabel.className}>
                     {i18n.t('Report organisation unit')}
                 </div>
                 <OrganisationUnitsTree />
@@ -21,9 +21,8 @@ export const Form = props => (
                 </div>
             </div>
         </div>
-        <div id="actions" style={styles.actionsContainer}>
+        <div id="actions" className={actionsContainer.className}>
             <Button
-                style={styles.actionButton}
                 raised
                 color="primary"
                 onClick={props.onGetReportClick}
@@ -32,7 +31,6 @@ export const Form = props => (
                 {i18n.t('Get Report')}
             </Button>
             <Button
-                style={styles.actionButton}
                 raised
                 color="accent"
                 onClick={props.onGetChartClick}
@@ -41,6 +39,13 @@ export const Form = props => (
                 {i18n.t('Get Chart')}
             </Button>
         </div>
+        {formLabel.styles}
+        {actionsContainer.styles}
+        <style jsx>{`
+            div #actions :global(.d2-ui-button):first-child {
+                margin-right: 16px;
+            }
+        `}</style>
     </div>
 )
 

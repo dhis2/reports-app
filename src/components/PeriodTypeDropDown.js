@@ -3,16 +3,18 @@ import PropTypes from 'prop-types'
 import { DropDown } from '@dhis2/d2-ui-core'
 import i18n from '@dhis2/d2-i18n'
 
-/* styles */
-import styles from '../utils/styles'
-
 const labelText = i18n.t('Select Period Type')
 
 function PeriodTypeDropDown({ loading, ...props }) {
     if (loading) {
         return (
-            <span style={styles.error}>
+            <span>
                 {i18n.t('Loading period types dropdown')}
+                <style jsx>{`
+                    span {
+                        color: #f44336;
+                    }
+                `}</style>
             </span>
         )
     }

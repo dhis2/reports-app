@@ -5,7 +5,6 @@ import ReportTable from '../../components/TabularReport/ReportTable'
 import { ReportComment } from '../../components/TabularReport/ReportComment'
 import ReportLoader from '../../components/ReportLoader'
 import { reportContent } from '../../utils/react/propTypes'
-import '../../components/TabularReport/styles.css'
 
 const DataSetReportOutput = props => (
     <ReportLoader content={props.content} isLoading={props.isLoading}>

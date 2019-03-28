@@ -45,12 +45,7 @@ class StandardReport extends React.Component {
                     systemVersion={this.props.d2.system.version}
                     sectionKey={this.props.sectionKey}
                 />
-                <div
-                    id="std-report-content"
-                    style={{
-                        display: this.props.reportData ? 'none' : 'block',
-                    }}
-                >
+                <div id="std-report-content">
                     <SearchablePagedList
                         columns={['displayName']}
                         rows={this.props.reports}

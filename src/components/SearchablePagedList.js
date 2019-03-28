@@ -67,7 +67,7 @@ const SearchablePagedList = props => {
 }
 
 const styles = css`
-    div > :global(.search-input input) {
+    div > :global(.search-input) input {
         -webkit-appearance: textfield;
     }
     div > :global(.search-input) {

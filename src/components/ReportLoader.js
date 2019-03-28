@@ -3,13 +3,18 @@ import isEmpty from 'lodash.isempty'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { reportContent } from '../utils/react/propTypes'
-import './ReportLoader/styles.css'
 
 const ReportLoader = ({ isLoading, content, children }) => {
     if (isLoading) {
         return (
             <div className="report-loader">
                 <CircularProgress />
+                <style jsx>{`
+                    div {
+                        margin: 48px 0;
+                        text-align: center;
+                    }
+                `}</style>
             </div>
         )
     }

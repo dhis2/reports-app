@@ -55,7 +55,7 @@ export const CheckBox = props => (
                 padding: 2px 0 5px;
             }
         `}</style>
-        <style>{checkboxStyle.styles}</style>
+        {checkboxStyle.styles}
     </div>
 )
 

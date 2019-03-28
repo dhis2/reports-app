@@ -6,9 +6,7 @@ import { RadioButtons } from '../../../../components/form/RadioButtons'
 
 export const Attachment = () => (
     <FormRow>
-        <p style={{ marginTop: 0 }}>
-            {i18n.t('Do you want to use this file as an attachment?')}
-        </p>
+        <p>{i18n.t('Do you want to use this file as an attachment?')}</p>
         <RadioButtons
             name="attachment"
             options={[
@@ -17,5 +15,10 @@ export const Attachment = () => (
             ]}
             showError={false}
         />
+        <style jsx>{`
+            p {
+                margin-top: 0;
+            }
+        `}</style>
     </FormRow>
 )

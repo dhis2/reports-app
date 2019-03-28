@@ -2,13 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Paper from '@material-ui/core/Paper'
 import i18n from '@dhis2/d2-i18n'
-import styles from '../utils/styles'
 import { Snackbar } from '../components/feedback/Snackbar'
 import TabularReport from '../components/TabularReport'
 import { SectionHeadline } from '../components/SectionHeadline'
 import { connectReportingRateSummary } from './reporting-rate-summary/connectReportingRateSummary'
 import { Form } from './reporting-rate-summary/Form'
 import { reportContent } from '../utils/react/propTypes'
+import { container } from '../utils/styles/shared.js'
 
 const ReportingRateSummary = props => (
     <div>
@@ -17,7 +17,7 @@ const ReportingRateSummary = props => (
             systemVersion={props.d2.system.version}
             sectionKey={props.sectionKey}
         />
-        <Paper style={styles.container}>
+        <Paper className={container.className}>
             <Form
                 loadReportData={props.loadReportData}
                 isActionEnabled={props.isActionEnabled}
@@ -29,6 +29,7 @@ const ReportingRateSummary = props => (
             />
         </Paper>
         <Snackbar />
+        {container.styles}
     </div>
 )
 

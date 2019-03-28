@@ -12,7 +12,6 @@ import AppRouter from './components/AppRouter'
 import { Loader } from './components/feedback/Loader'
 import AppContext from './pages/AppContext'
 import { sections } from './config/sections.config'
-import styles from './utils/styles'
 import {
     MuiThemeProvider as Mui3ThemeProvider,
     createMuiTheme as createMui3Theme,
@@ -68,14 +67,80 @@ class App extends PureComponent {
                             onChangeSection={nonOnChangeSection}
                             currentSection={this.props.currentSection}
                         />
-                        <div style={styles.contentWrapper}>
-                            <div style={styles.contentArea}>
+                        <div className="content-wrapper">
+                            <div className="content-area">
                                 <AppRouter />
                             </div>
                         </div>
                         <Loader />
                     </Mui3ThemeProvider>
                 </D2UIApp>
+                <style jsx>{`
+                    .content-wrapper {
+                        margin-left: 295px;
+                        max-width: 1400px;
+                    }
+                    .content-area {
+                        padding: 4rem 20px 20px;
+                    }
+                `}</style>
+                <style jsx global>{`
+                    body {
+                        margin: 0;
+                        padding: 0;
+                    }
+
+                    html {
+                        background: #f3f3f3;
+                        font-family: 'Roboto', sans-serif;
+                    }
+
+                    h1 {
+                        font-size: 24px;
+                        font-weight: 300;
+                        letter-spacing: 1.2px;
+                        color: rgba(0, 0, 0, 0.87);
+                        display: flex;
+                        align-items: center;
+                        height: 48px;
+                    }
+
+                    .left-bar {
+                        width: 295px;
+                        position: fixed;
+                        bottom: 0;
+                        top: 0;
+                        left: 0;
+                        padding-top: 3rem;
+                    }
+
+                    .d2-ui-table {
+                        margin-bottom: 0 !important;
+                        margin-top: 0 !important;
+                    }
+
+                    .d2-ui-table__rows__row {
+                        font-size: 14px;
+                    }
+
+                    .data-table-pager--page-info {
+                        padding: 0 !important;
+                    }
+
+                    .data-table-pager--buttons {
+                        margin-top: 10px !important;
+                        margin-bottom: 10px !important;
+                    }
+
+                    .data-table-pager--buttons .material-icons {
+                        margin: 0 !important;
+                        padding: 0 !important;
+                    }
+
+                    #report-container table {
+                        width: 100% !important;
+                    }
+                `}</style>
             </AppContext.Provider>
         )
     }

@@ -13,9 +13,7 @@ import PeriodTypeDropDown from './PeriodTypeDropDown'
 /* Actions */
 import { selectPeriodType, selectPeriod } from '../redux/actions/reportPeriod'
 import { getTranslatedPeriodTypes } from '../redux/selectors/reportPeriod/getTranslatedPeriodTypes'
-
-/* styles */
-import styles from '../utils/styles'
+import { formLabel } from '../utils/styles/shared.js'
 
 export function PeriodPickerWithPeriodType({
     selectPeriodType,
@@ -28,9 +26,7 @@ export function PeriodPickerWithPeriodType({
 }) {
     return (
         <div>
-            <span style={{ ...styles.formLabel, display: 'block' }}>
-                {label}
-            </span>
+            <span className={formLabel.className}>{label}</span>
             <PeriodTypeDropDown
                 loading={loading}
                 menuItems={collection}
@@ -44,10 +40,16 @@ export function PeriodPickerWithPeriodType({
                 />
             )}
             {selectedPeriod && (
-                <div style={styles.parsedPeriod}>
+                <div className="parsed-period">
                     {parsePeriod(selectedPeriod).name}
                 </div>
             )}
+            <style jsx>{`
+                .parsed-period {
+                    margin-bottom: 16px;
+                }
+            `}</style>
+            {formLabel.styles}
         </div>
     )
 }
