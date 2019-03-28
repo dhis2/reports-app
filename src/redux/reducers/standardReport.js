@@ -37,7 +37,6 @@ export const standardReport = (state = defaultState, action = {}) => {
         case actionTypes.LOADING_STANDARD_REPORTS_START:
             return {
                 ...state,
-                reports: [],
                 loading: true,
             }
 

@@ -13,7 +13,7 @@ const createContextMenuOptions = props => ({
     [resourceActions.VIEW]: props.viewResource,
     [resourceActions.EDIT]: props.editResource,
     [resourceActions.SHARING_SETTINGS]: props.showSharingSettings,
-    [resourceActions.DELETE]: props.deleteResource,
+    [resourceActions.DELETE]: props.requestDeleteResource,
 })
 
 class Resource extends React.Component {
@@ -27,7 +27,9 @@ class Resource extends React.Component {
     }
 
     componentDidMount() {
-        this.props.loadResources()
+        if (this.props.resources.length === 0) {
+            this.props.loadResources()
+        }
     }
 
     render() {
@@ -64,7 +66,10 @@ class Resource extends React.Component {
                         selectedResource={this.props.selectedResource}
                         handleClose={this.props.closeContextMenu}
                     />
-                    <Snackbar />
+                    <Snackbar
+                        action={i18n.t('CONFIRM')}
+                        onActionClick={this.props.deleteResource}
+                    />
                 </div>
             </div>
         )
@@ -85,6 +90,7 @@ Resource.propTypes = {
     goToNextPage: PropTypes.func.isRequired,
     goToPrevPage: PropTypes.func.isRequired,
     loadResources: PropTypes.func.isRequired,
+    requestDeleteResource: PropTypes.func.isRequired,
     deleteResource: PropTypes.func.isRequired,
     setSearch: PropTypes.func.isRequired,
     addResource: PropTypes.func.isRequired,

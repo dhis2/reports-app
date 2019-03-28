@@ -16,7 +16,11 @@ import {
     resetPagination,
     setPagination,
 } from './pagination'
-import { showSuccessSnackBar, showErrorSnackBar } from './feedback'
+import {
+    showSuccessSnackBar,
+    showErrorSnackBar,
+    showConfirmationSnackBar,
+} from './feedback'
 import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
 
 export const actionTypes = {
@@ -28,6 +32,7 @@ export const actionTypes = {
     SHOW_SHARING_SETTINGS: 'SHOW_SHARING_SETTINGS',
     EDIT_RESOURCE: 'EDIT_RESOURCE',
     ADD_RESOURCE: 'ADD_RESOURCE',
+    REQUEST_DELETE_RESOURCE: 'REQUEST_DELETE_RESOURCE',
     DELETE_RESOURCE_START: 'DELETE_RESOURCE_START',
     DELETE_RESOURCE_SUCCESS: 'DELETE_RESOURCE_SUCCESS',
     DELETE_RESOURCE_ERROR: 'DELETE_RESOURCE_ERROR',
@@ -178,6 +183,20 @@ export const addResource = resource => ({
     payload: resource,
 })
 
+/**
+ * Used to get a confirmation from the user
+ * @return {Object}
+ */
+export const requestDeleteResource = resource => dispatch => {
+    dispatch({
+        type: actionTypes.REQUEST_DELETE_RESOURCE,
+        payload: resource,
+    })
+    dispatch(
+        showConfirmationSnackBar('Do you really want to delete this resource?')
+    )
+}
+
 export const deleteResourceStart = () => ({
     type: actionTypes.DELETE_RESOURCE_START,
 })
@@ -208,10 +227,12 @@ export const deleteResourceErrorWithFeedback = error => dispatch => {
     dispatch(deleteResourceError())
 }
 
-export const deleteResource = resource => dispatch => {
+export const deleteResource = () => (dispatch, getState) => {
     dispatch(deleteResourceStart())
-
-    return sendDeleteResourceRequest(resource.id)
+    const {
+        resource: { selectedResource },
+    } = getState()
+    return sendDeleteResourceRequest(selectedResource.id)
         .then(() => {
             dispatch(deleteResourceSuccessWithFeedback())
             dispatch(loadResources())

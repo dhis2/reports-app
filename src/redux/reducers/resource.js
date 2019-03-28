@@ -13,10 +13,14 @@ export const defaultState = {
 
 export const resource = (state = defaultState, { type, payload } = {}) => {
     switch (type) {
+        case actionTypes.REQUEST_DELETE_RESOURCE:
+            return {
+                ...state,
+                selectedResource: payload,
+            }
         case actionTypes.LOADING_RESOURCES_START:
             return {
                 ...state,
-                collection: [],
                 loading: true,
             }
 

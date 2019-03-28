@@ -36,7 +36,7 @@ const SearchablePagedList = props => {
                 onChange={props.searchInputChangeHandler}
             />
             <Table
-                rows={props.rows}
+                rows={props.isLoading ? [] : props.rows}
                 columns={props.columns}
                 contextMenuActions={props.contextMenuActions}
                 primaryAction={props.primaryAction}
