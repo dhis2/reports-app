@@ -214,7 +214,7 @@ export const getOrgUnitAndChildrenIds = orgUnit => {
 export const getOrgUnitGroupSets = () =>
     d2.models.organisationUnitGroupSet.list({
         paging: false,
-        fields: 'id,displayName',
+        fields: 'id,displayName,organisationUnitGroups[id,displayName]',
     })
 
 /**

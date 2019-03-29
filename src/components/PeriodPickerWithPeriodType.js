@@ -1,34 +1,30 @@
-/* React */
-import React from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import i18n from '@dhis2/d2-i18n'
+import { DropDown, PeriodPicker } from '@dhis2/d2-ui-core'
 import parsePeriod from 'd2/period/parser'
-
-/* d2-ui components */
-import { PeriodPicker } from '@dhis2/d2-ui-core'
-
-/* Children */
-import PeriodTypeDropDown from './PeriodTypeDropDown'
-
-/* Actions */
-import { selectPeriodType, selectPeriod } from '../redux/actions/reportPeriod'
+import PropTypes from 'prop-types'
+import React from 'react'
+import { connect } from 'react-redux'
+import { selectPeriod, selectPeriodType } from '../redux/actions/reportPeriod'
 import { getTranslatedPeriodTypes } from '../redux/selectors/reportPeriod/getTranslatedPeriodTypes'
 import { formLabel } from '../utils/styles/shared.js'
+
+const periodTypeLabelText = i18n.t('Select Period Type')
 
 export function PeriodPickerWithPeriodType({
     selectPeriodType,
     selectPeriod,
     label,
     collection,
-    loading,
     selectedPeriodType,
     selectedPeriod,
 }) {
     return (
         <div>
             <span className={formLabel.className}>{label}</span>
-            <PeriodTypeDropDown
-                loading={loading}
+            <DropDown
+                fullWidth
+                emptyLabel={periodTypeLabelText}
+                hintText={periodTypeLabelText}
                 menuItems={collection}
                 onChange={selectPeriodType}
                 value={selectedPeriodType}
@@ -59,7 +55,6 @@ PeriodPickerWithPeriodType.propTypes = {
     selectPeriod: PropTypes.func.isRequired,
     label: PropTypes.string.isRequired,
     collection: PropTypes.array.isRequired,
-    loading: PropTypes.bool.isRequired,
     selectedPeriodType: PropTypes.string,
     selectedPeriod: PropTypes.string,
 }

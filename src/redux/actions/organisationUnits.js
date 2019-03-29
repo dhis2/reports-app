@@ -2,6 +2,7 @@ import i18n from '@dhis2/d2-i18n'
 import { getOrganisationUnits } from '../../utils/api'
 import { showErrorSnackBar } from './feedback'
 import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
+import { loadGroupSetOptions } from './orgUnitGroupSets'
 
 export const actionTypes = {
     ORGANISATION_UNITS_LOADING_START: 'ORGANISATION_UNITS_LOADING_START',
@@ -77,6 +78,12 @@ export const selectOrgUnitOption = (id, value) => ({
     payload: { id, value },
 })
 
-export const toggleShowOptions = () => ({
-    type: actionTypes.TOGGLE_SHOW_OPTIONS,
-})
+export const toggleShowOptions = () => (dispatch, getState) => {
+    const { orgUnitGroupSets } = getState()
+
+    dispatch({ type: actionTypes.TOGGLE_SHOW_OPTIONS })
+
+    if (orgUnitGroupSets.collection.length === 0) {
+        dispatch(loadGroupSetOptions())
+    }
+}

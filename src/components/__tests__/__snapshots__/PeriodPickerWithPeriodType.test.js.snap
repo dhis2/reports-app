@@ -5,8 +5,10 @@ exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render a <Peri
   <span>
     This is my label
   </span>
-  <PeriodTypeDropDown
-    loading={false}
+  <DropDown
+    emptyLabel="Select Period Type"
+    fullWidth={true}
+    hintText="Select Period Type"
     menuItems={
       Array [
         Object {
@@ -41,8 +43,10 @@ exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render a <Peri
   <span>
     This is my label
   </span>
-  <PeriodTypeDropDown
-    loading={false}
+  <DropDown
+    emptyLabel="Select Period Type"
+    fullWidth={true}
+    hintText="Select Period Type"
     menuItems={
       Array [
         Object {
@@ -73,8 +77,10 @@ exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render the par
   <span>
     This is my label
   </span>
-  <PeriodTypeDropDown
-    loading={false}
+  <DropDown
+    emptyLabel="Select Period Type"
+    fullWidth={true}
+    hintText="Select Period Type"
     menuItems={
       Array [
         Object {

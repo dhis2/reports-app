@@ -38,11 +38,12 @@ DimensionDropdown.propTypes = {
 const DataDimensionsContent = props => {
     if (props.isLoading) {
         return (
-            <div className="loader">
-                <CircularProgress size={16} thickness={2} />
+            <div>
+                <CircularProgress size={24} thickness={3} />
                 <style jsx>{`
                     div {
                         margin-bottom: 16px;
+                        text-align: center;
                     }
                 `}</style>
             </div>
@@ -57,7 +58,7 @@ const DataDimensionsContent = props => {
                     div {
                         margin-bottom: 16px;
                         font-style: italic;
-                        font-size: 13;
+                        font-size: 13px;
                         color: #757575;
                     }
                 `}</style>

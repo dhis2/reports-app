@@ -23,15 +23,17 @@ export const OrgUnitsTreeWithExtraOptions = props => (
         </div>
         <OrganisationUnitsTree />
         <div>
-            <span
-                id="extra-options-action"
-                className="show-more-options-button"
-                role="button"
-                tabIndex="0"
-                onClick={props.toggleShowOptions}
-            >
-                {getExtraOptionsLabel(props.showOptions)}
-            </span>
+            {!props.isLoadingOptions && (
+                <span
+                    id="extra-options-action"
+                    className="show-more-options-button"
+                    role="button"
+                    tabIndex="0"
+                    onClick={props.toggleShowOptions}
+                >
+                    {getExtraOptionsLabel(props.showOptions)}
+                </span>
+            )}
             <div
                 id="extra-options"
                 className={getExtraOptionsClassName(props.showOptions)}
@@ -64,6 +66,7 @@ export const OrgUnitsTreeWithExtraOptions = props => (
 
 OrgUnitsTreeWithExtraOptions.propTypes = {
     showOptions: PropTypes.bool.isRequired,
+    isLoadingOptions: PropTypes.bool.isRequired,
     selectedOrgUnitOptions: PropTypes.object.isRequired,
     toggleShowOptions: PropTypes.func.isRequired,
     onOrganisationUnitGroupSetChange: PropTypes.func.isRequired,
@@ -71,6 +74,7 @@ OrgUnitsTreeWithExtraOptions.propTypes = {
 
 const mapStateToProps = state => ({
     showOptions: state.organisationUnits.showOptions,
+    isLoadingOptions: state.orgUnitGroupSets.loading,
     selectedOrgUnitOptions: state.organisationUnits.selectedOptions,
 })
 
