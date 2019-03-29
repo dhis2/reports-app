@@ -187,14 +187,15 @@ export const addResource = resource => ({
  * Used to get a confirmation from the user
  * @return {Object}
  */
+const confirmationMessage = i18n.t(
+    'Do you really want to delete this resource?'
+)
 export const requestDeleteResource = resource => dispatch => {
     dispatch({
         type: actionTypes.REQUEST_DELETE_RESOURCE,
         payload: resource,
     })
-    dispatch(
-        showConfirmationSnackBar('Do you really want to delete this resource?')
-    )
+    dispatch(showConfirmationSnackBar(confirmationMessage))
 }
 
 export const deleteResourceStart = () => ({
