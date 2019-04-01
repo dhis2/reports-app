@@ -27,16 +27,14 @@ describe('Reducer - standardReport', function() {
             LOADING_STANDARD_REPORTS_ERROR,
         } = actionTypes
 
-        it('should start loading and clear the reports collection', function() {
+        it('should start loading', function() {
             const action = { type: LOADING_STANDARD_REPORTS_START }
             const preState = {
                 ...defaultState,
-                reports: [1, 2, 3],
                 loading: false,
             }
             const expected = {
                 ...defaultState,
-                reports: [],
                 loading: true,
             }
             const actual = standardReport(preState, action)

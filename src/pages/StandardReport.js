@@ -32,7 +32,9 @@ class StandardReport extends React.Component {
     }
 
     componentDidMount() {
-        this.props.loadStandardReports(true)
+        if (this.props.reports.length === 0) {
+            this.props.loadStandardReports(true)
+        }
     }
 
     render() {

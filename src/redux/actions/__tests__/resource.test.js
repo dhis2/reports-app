@@ -74,13 +74,19 @@ describe('Actions - resource', () => {
 
     describe('deleting resources', () => {
         const resource = { id: '1337' }
+        const store = mockStore({
+            pagination: {},
+            resource: {
+                selectedResource: resource,
+            },
+        })
 
         it('should dispatch a loading start action when deleting resources', () => {
             const expectedActions = expect.arrayContaining([
                 deleteResourceStart(),
             ])
 
-            store.dispatch(deleteResource(resource)).then(() => {
+            store.dispatch(deleteResource()).then(() => {
                 expect(store.getActions()).toEqual(expectedActions)
             })
         })
@@ -94,7 +100,7 @@ describe('Actions - resource', () => {
                 Promise.resolve()
             )
 
-            store.dispatch(deleteResource(resource)).then(() => {
+            store.dispatch(deleteResource()).then(() => {
                 expect(store.getActions()).toEqual(expectedActions)
             })
         })
@@ -108,7 +114,7 @@ describe('Actions - resource', () => {
                 Promise.reject()
             )
 
-            store.dispatch(deleteResource(resource)).then(() => {
+            store.dispatch(deleteResource()).then(() => {
                 expect(store.getActions()).toEqual(expectedActions)
             })
         })
