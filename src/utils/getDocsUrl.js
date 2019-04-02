@@ -1,4 +1,5 @@
 import { sections } from '../config/sections.config'
+import { getSystemVersion } from './api'
 
 export const DOCS_LINK = 'https://ci.dhis2.org/docs'
 export const DEFAULT_DOC_LANGUAGE = 'en'
@@ -12,18 +13,18 @@ export const DEFAULT_DOC_LANGUAGE = 'en'
  *
  * @returns {string} `master` for a snapshot branch. `25` for 2.25 etc.
  */
-const getDocsVersion = ({ major, minor, snapshot }) => {
+const getDocsVersion = () => {
+    console.log(getSystemVersion())
+    const { major, minor, snapshot } = getSystemVersion()
     if (snapshot) {
         return 'master'
     }
     return `${major}.${minor}`
 }
 
-export const getDocsUrl = (systemVersion, sectionKey, lng) => {
-    const docLng = lng || DEFAULT_DOC_LANGUAGE
-    return `${DOCS_LINK}/${getDocsVersion(systemVersion)}/${docLng}/user/html/${
-        sections[sectionKey].info.docs
-    }.html`
+export const getDocsUrl = (sectionKey, lng = DEFAULT_DOC_LANGUAGE) => {
+    const baseUrl = `${DOCS_LINK}/${getDocsVersion()}/${lng}/user/html/`
+    return `${baseUrl}${sections[sectionKey].info.docs}.html`
 }
 
 export default getDocsUrl

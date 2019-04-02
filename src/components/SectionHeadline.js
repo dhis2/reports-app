@@ -2,7 +2,6 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 import { getDocsUrl } from '../utils/getDocsUrl'
-import AppContext from '../pages/AppContext'
 import PageHelper from '../components/PageHelper'
 
 export const SectionHeadline = props => (
@@ -19,13 +18,7 @@ export const SectionHeadline = props => (
             </span>
         )}
         {props.label}
-        <AppContext.Consumer>
-            {({ d2 }) => (
-                <PageHelper
-                    url={getDocsUrl(d2.system.version, props.sectionKey)}
-                />
-            )}
-        </AppContext.Consumer>
+        <PageHelper url={getDocsUrl(props.sectionKey)} />
         <style jsx>{`
             .back-button {
                 cursor: pointer;

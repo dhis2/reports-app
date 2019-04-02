@@ -57,6 +57,18 @@ export const getApi = () => api
 export const getContextPath = () => d2.system.systemInfo.contextPath
 
 /**
+ * @typedef {Object} Version
+ * @property {number} major The major version
+ * @property {number} minor The minor version
+ * @property {boolean} snapshot Flag to indicate if build is a snapshot
+ */
+
+/**
+ * @returns {Version} The dhis2-core instance version
+ */
+export const getSystemVersion = () => d2.system.version
+
+/**
  * @return {Promise} Period types
  */
 export const getPeriodTypes = () =>
