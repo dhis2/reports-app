@@ -16,24 +16,21 @@ You can start by reading the [general docs](./docs/README.md)
 
 ### Running the dev server
 
--   Do a copy of file .env.template;
--   Rename it .env.development.local;
--   Update configurations at the new file according to your DHIS2 installation. For example:
+-   Make a copy of file `.env.template`
+-   Rename it to `.env.development.local`
+-   Update the base url in this file if your DHIS2 installation is not available at `http://localhost:8080`. For example, if your DHIS2 installation is available at `http://localhost:5000`:
     ```
-    REACT_APP_DHIS2_BASE_URL=http://localhost:8080
-    REACT_APP_DHIS2_API_VERSION=29
+    REACT_APP_DHIS2_BASE_URL=http://localhost:5000
     ```
--   add `http://localhost:3000` url to your DHIS2 CORS whitelist. (This can be done in the settings app);
-
+-   Update your api version if your DHIS2 api version does not match the api version in `package.json` at `manifest.webapp.dhis2.apiVersion`
+-   Add `http://localhost:3000` url to your DHIS2 CORS whitelist. (This can be done in the settings app)
 -   Execute the following commands:
-
     ```sh
     yarn install
     yarn start
     ```
-
--   On the browser you are using login on DHIS2 instance you are using;
--   Open your browser at `http://localhost:3000`;
+-   Login to your DHIS2 instance in your browser
+-   Open your browser at `http://localhost:3000`
 
 ### Building the project
 
