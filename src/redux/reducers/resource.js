@@ -5,6 +5,7 @@ export const defaultSelectedResource = { id: '', displayName: '' }
 export const defaultState = {
     open: false,
     loading: false,
+    addEditLoading: false,
     search: '',
     collection: [],
     selectedAction: '',
@@ -37,7 +38,7 @@ export const resource = (state = defaultState, { type, payload } = {}) => {
                 loading: false,
             }
 
-        case actionTypes.SET_RESEARCH_SEARCH:
+        case actionTypes.SET_RESOURCE_SEARCH:
             return {
                 ...state,
                 search: payload,
@@ -88,45 +89,27 @@ export const resource = (state = defaultState, { type, payload } = {}) => {
             }
 
         case actionTypes.RESOURCE_ADD_LOADING_START:
+        case actionTypes.RESOURCE_EDIT_LOADING_START:
             return {
                 ...state,
-                loading: true,
+                addEditLoading: true,
             }
 
         case actionTypes.RESOURCE_ADD_LOADING_SUCCESS:
+        case actionTypes.RESOURCE_EDIT_LOADING_SUCCESS:
             return {
                 ...state,
-                loading: false,
+                addEditLoading: false,
                 open: false,
                 selectedAction: '',
                 selectedResource: defaultSelectedResource,
             }
 
         case actionTypes.RESOURCE_ADD_LOADING_ERROR:
-            return {
-                ...state,
-                loading: false,
-            }
-
-        case actionTypes.RESOURCE_EDIT_LOADING_START:
-            return {
-                ...state,
-                loading: true,
-            }
-
-        case actionTypes.RESOURCE_EDIT_LOADING_SUCCESS:
-            return {
-                ...state,
-                loading: false,
-                open: false,
-                selectedAction: '',
-                selectedResource: defaultSelectedResource,
-            }
-
         case actionTypes.RESOURCE_EDIT_LOADING_ERROR:
             return {
                 ...state,
-                loading: false,
+                addEditLoading: false,
             }
 
         default:

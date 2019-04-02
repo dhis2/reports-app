@@ -161,6 +161,7 @@ export const standardReport = (state = defaultState, action = {}) => {
         case actionTypes.STANDARD_REPORT_SEND_ERROR:
             return {
                 ...state,
+                open: false,
                 loadingSendReport: false,
             }
 
