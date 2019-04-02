@@ -1,15 +1,19 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import Paper from '@material-ui/core/Paper'
-import i18n from '@dhis2/d2-i18n'
-import TabularReport from '../components/TabularReport'
+import PropTypes from 'prop-types'
+import React from 'react'
+
+import { Form } from './organisation-unit-distribution-report/Form'
+import {
+    ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_KEY,
+    sections,
+} from '../config/sections.config'
+import { SectionHeadline } from '../components/SectionHeadline'
 import { Snackbar } from '../components/feedback/Snackbar'
 import { connectOrganisationUnitDistributionReport } from './organisation-unit-distribution-report/connectOrganisationUnitDistributionReport'
-import { SectionHeadline } from '../components/SectionHeadline'
-import { Form } from './organisation-unit-distribution-report/Form'
-import BarChart from '../components/BarChart'
-import { reportContent } from '../utils/react/propTypes'
 import { container } from '../utils/styles/shared.js'
+import { reportContent } from '../utils/react/propTypes'
+import BarChart from '../components/BarChart'
+import TabularReport from '../components/TabularReport'
 
 class OrganisationUnitDistributionReport extends React.Component {
     componentDidMount() {
@@ -22,9 +26,14 @@ class OrganisationUnitDistributionReport extends React.Component {
         return (
             <div>
                 <SectionHeadline
-                    label={i18n.t('Organisation Unit Distribution Report')}
-                    systemVersion={this.props.d2.system.version}
-                    sectionKey={this.props.sectionKey}
+                    label={
+                        sections[
+                            ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_KEY
+                        ].info.label
+                    }
+                    sectionKey={
+                        ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_KEY
+                    }
                 />
                 <Paper className={container.className}>
                     <Form
@@ -56,8 +65,6 @@ class OrganisationUnitDistributionReport extends React.Component {
 }
 
 OrganisationUnitDistributionReport.propTypes = {
-    d2: PropTypes.object.isRequired,
-    sectionKey: PropTypes.string.isRequired,
     isActionEnabled: PropTypes.bool.isRequired,
     shouldShowChart: PropTypes.bool.isRequired,
     loading: PropTypes.bool.isRequired,

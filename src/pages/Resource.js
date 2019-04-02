@@ -1,13 +1,15 @@
-import i18n from '@dhis2/d2-i18n'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { Snackbar } from '../components/feedback/Snackbar'
-import SearchablePagedList from '../components/SearchablePagedList'
+import i18n from '@dhis2/d2-i18n'
+
+import { RESOURCE_SECTION_KEY, sections } from '../config/sections.config'
 import { SectionHeadline } from '../components/SectionHeadline'
-import { contextMenuIcons, resourceActions } from '../utils/resource/constants'
+import { Snackbar } from '../components/feedback/Snackbar'
 import { connectResource } from './resource/connectResource'
+import { contextMenuIcons, resourceActions } from '../utils/resource/constants'
 import { showContextAction } from './resource/helper'
 import ResourceActions from './resource/ResourceActions'
+import SearchablePagedList from '../components/SearchablePagedList'
 
 const createContextMenuOptions = props => ({
     [resourceActions.VIEW]: props.viewResource,
@@ -36,9 +38,8 @@ class Resource extends React.Component {
         return (
             <div>
                 <SectionHeadline
-                    label={i18n.t('Resource')}
-                    systemVersion={this.props.d2.system.version}
-                    sectionKey={this.props.sectionKey}
+                    label={sections[RESOURCE_SECTION_KEY].info.label}
+                    sectionKey={RESOURCE_SECTION_KEY}
                 />
                 <div id="resource-content">
                     <SearchablePagedList
@@ -78,7 +79,6 @@ class Resource extends React.Component {
 
 Resource.propTypes = {
     d2: PropTypes.object.isRequired,
-    sectionKey: PropTypes.string.isRequired,
     open: PropTypes.bool.isRequired,
     loadingResources: PropTypes.bool.isRequired,
     search: PropTypes.string.isRequired,

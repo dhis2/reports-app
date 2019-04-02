@@ -1,18 +1,23 @@
-import i18n from '@dhis2/d2-i18n'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { Snackbar } from '../components/feedback/Snackbar'
-import SearchablePagedList from '../components/SearchablePagedList'
-import { SectionHeadline } from '../components/SectionHeadline'
-import connectStandardReport from './standard-report/connectStandardReport'
-import { showContextAction } from './standard-report/helper'
-import { ConnectedReportParams } from './standard-report/ReportParams'
+import i18n from '@dhis2/d2-i18n'
+
 import {
     CONTEXT_MENU_ACTION,
     CONTEXT_MENU_ICONS,
 } from './standard-report/standard.report.conf'
+import { ConnectedReportParams } from './standard-report/ReportParams'
+import {
+    STANDARD_REPORT_SECTION_KEY,
+    sections,
+} from '../config/sections.config'
+import { SectionHeadline } from '../components/SectionHeadline'
+import { Snackbar } from '../components/feedback/Snackbar'
+import { showContextAction } from './standard-report/helper'
+import SearchablePagedList from '../components/SearchablePagedList'
 import StandardReportActions from './standard-report/StandardReportActions'
 import StyledHtmlReport from './standard-report/StyledHtmlReport'
+import connectStandardReport from './standard-report/connectStandardReport'
 
 const createContextMenuOptions = props => ({
     [CONTEXT_MENU_ACTION.CREATE]: props.createReport,
@@ -41,11 +46,10 @@ class StandardReport extends React.Component {
         return (
             <div>
                 <SectionHeadline
-                    label={i18n.t('Standard Report')}
+                    label={sections[STANDARD_REPORT_SECTION_KEY].info.label}
                     showBackButton={!!this.props.reportData}
                     onBackClick={this.props.hideReportData}
-                    systemVersion={this.props.d2.system.version}
-                    sectionKey={this.props.sectionKey}
+                    sectionKey={STANDARD_REPORT_SECTION_KEY}
                 />
                 <div id="std-report-content">
                     <SearchablePagedList
@@ -96,7 +100,6 @@ class StandardReport extends React.Component {
 
 StandardReport.propTypes = {
     d2: PropTypes.object.isRequired,
-    sectionKey: PropTypes.string.isRequired,
     loading: PropTypes.bool.isRequired,
     pager: PropTypes.object.isRequired,
     reports: PropTypes.array.isRequired,
