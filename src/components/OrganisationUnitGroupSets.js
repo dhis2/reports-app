@@ -4,84 +4,89 @@ import i18n from '@dhis2/d2-i18n'
 /* d2-ui components */
 import { DropDown } from '@dhis2/d2-ui-core'
 import PropTypes from 'prop-types'
-import React, { PureComponent } from 'react'
+import React from 'react'
 /* App context */
-import AppContext from '../pages/AppContext'
 import { formLabel } from '../utils/styles/shared.js'
+import { connect } from 'react-redux'
+import { selectOrgUnitOption } from '../redux/actions/organisationUnits'
+import { CircularProgress } from '@material-ui/core'
 
-export class OrganisationUnitGroupSets extends PureComponent {
-    static propTypes = {
-        d2: PropTypes.object.isRequired,
-        onChange: PropTypes.func.isRequired,
-        values: PropTypes.object.isRequired,
-        fullWidth: PropTypes.bool,
-    }
-
-    static defaultProps = {
-        fullWidth: true,
-    }
-
-    constructor() {
-        super()
-
-        this.state = {
-            organisationUnitGroupSets: [],
-        }
-    }
-
-    componentDidMount() {
-        const d2 = this.props.d2
-        d2.models.organisationUnitGroupSet
-            .list({
-                paging: false,
-                fields: 'id,displayName,organisationUnitGroups[id,displayName]',
-            })
-            .then(organisationUnitGroupSetsResponse => {
-                this.setState({
-                    organisationUnitGroupSets: organisationUnitGroupSetsResponse.toArray(),
-                })
-            })
-            .catch(() => {
-                // TODO Manage error
-            })
-    }
-
-    handleOrganisationUnitGroupSetChange = organisationUnitGroupSetId => element => {
-        this.props.onChange(organisationUnitGroupSetId, element)
-    }
-
-    renderOrganisationUnitGroupSetDropdown = organisationUnitGroupSet => (
-        <div key={organisationUnitGroupSet.id}>
-            <span className={formLabel.className}>
-                {organisationUnitGroupSet.displayName}
-            </span>
-            <DropDown
-                fullWidth={this.props.fullWidth}
-                value={this.props.values[organisationUnitGroupSet.id]}
-                onChange={this.handleOrganisationUnitGroupSetChange(
-                    organisationUnitGroupSet.id
-                )}
-                menuItems={organisationUnitGroupSet.organisationUnitGroups}
-                includeEmpty
-                emptyLabel={i18n.t('Select Option')}
-                hintText={i18n.t('Select Option')}
-            />
-            {formLabel.styles}
-        </div>
-    )
-
-    render = () =>
-        this.state.organisationUnitGroupSets.map(organisationUnitGroupSet =>
-            this.renderOrganisationUnitGroupSetDropdown(
-                organisationUnitGroupSet
-            )
-        )
+const createGroupSetOnChange = (groupSetId, onChange) => groupId => {
+    onChange(groupSetId, groupId)
 }
 
-export default props => (
-    <AppContext.Consumer>
-        {appContext => (
-            <OrganisationUnitGroupSets d2={appContext.d2} {...props} />
-        )}
-    </AppContext.Consumer>
+const labelText = i18n.t('Select Option')
+
+const OrganisationUnitGroupSetDropdown = ({
+    groupSet,
+    fullWidth,
+    values,
+    onChange,
+}) => (
+    <div key={groupSet.id}>
+        <span className={formLabel.className}>{groupSet.displayName}</span>
+        <DropDown
+            fullWidth={fullWidth}
+            value={values[groupSet.id]}
+            onChange={onChange}
+            menuItems={groupSet.organisationUnitGroups}
+            includeEmpty
+            emptyLabel={labelText}
+            hintText={labelText}
+        />
+        {formLabel.styles}
+    </div>
 )
+
+OrganisationUnitGroupSetDropdown.propTypes = {
+    groupSet: PropTypes.object.isRequired,
+    values: PropTypes.object.isRequired,
+    onChange: PropTypes.func.isRequired,
+    fullWidth: PropTypes.bool,
+}
+
+OrganisationUnitGroupSetDropdown.defaultProps = {
+    fullWidth: true,
+}
+
+export const OrganisationUnitGroupSets = ({
+    groupSets,
+    selectGroupSet,
+    isLoading,
+    ...rest
+}) =>
+    isLoading ? (
+        <div>
+            <CircularProgress size={24} thickness={3} />
+            <style jsx>{`
+                div {
+                    padding-top: 16px;
+                    text-align: center;
+                }
+            `}</style>
+        </div>
+    ) : (
+        groupSets.map(groupSet => (
+            <OrganisationUnitGroupSetDropdown
+                groupSet={groupSet}
+                onChange={createGroupSetOnChange(groupSet.id, selectGroupSet)}
+                {...rest}
+            />
+        ))
+    )
+
+OrganisationUnitGroupSets.propTypes = {
+    groupSets: PropTypes.array.isRequired,
+    isLoading: PropTypes.bool.isRequired,
+    selectGroupSet: PropTypes.func.isRequired,
+}
+
+const mapStateToProps = state => ({
+    isLoading: state.orgUnitGroupSets.loading,
+    groupSets: state.orgUnitGroupSets.collection,
+})
+
+export default connect(
+    mapStateToProps,
+    { selectGroupSet: selectOrgUnitOption }
+)(OrganisationUnitGroupSets)

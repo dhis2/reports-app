@@ -1,20 +1,16 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
-class NoMatch extends PureComponent {
-    static propTypes = {
-        location: PropTypes.object.isRequired,
-    }
+const NoMatch = props => (
+    <div>
+        <h3>
+            No match for <code>{props.location.pathname}</code>
+        </h3>
+    </div>
+)
 
-    render() {
-        return (
-            <div>
-                <h3>
-                    No match for <code>{this.props.location.pathname}</code>
-                </h3>
-            </div>
-        )
-    }
+NoMatch.propTypes = {
+    location: PropTypes.object.isRequired,
 }
 
 export default NoMatch

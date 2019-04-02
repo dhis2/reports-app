@@ -1,17 +1,7 @@
-/* eslint-disable */
-/* React */
-import React from 'react'
-
-/* unit testing tools */
-import { shallow } from 'enzyme'
-
-/* d2-ui components */
 import { DropDown } from '@dhis2/d2-ui-core'
-
+import { shallow } from 'enzyme'
+import React from 'react'
 import { GroupSetsDropdown } from '../GroupSetsDropdown'
-
-/* fake data */
-import fakerData from '../../utils/fakerTests'
 
 jest.mock('@dhis2/d2-ui-core', () => ({
     DropDown: 'DropDown',
