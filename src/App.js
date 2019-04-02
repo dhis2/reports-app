@@ -1,21 +1,22 @@
-import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import D2UIApp from '@dhis2/d2-ui-app'
-import HeaderBar from '@dhis2/d2-ui-header-bar'
-import { Sidebar, mui3theme } from '@dhis2/d2-ui-core'
-import { connect } from 'react-redux'
-import { loadPeriodTypes } from './redux/actions/reportPeriod'
-import { loadOrganisationUnits } from './redux/actions/organisationUnits'
-import { loadDataSetOptions } from './redux/actions/dataSet'
-import AppRouter from './components/AppRouter'
-import { Loader } from './components/feedback/Loader'
-import AppContext from './pages/AppContext'
-import { sections } from './config/sections.config'
 import {
     MuiThemeProvider as Mui3ThemeProvider,
     createMuiTheme as createMui3Theme,
 } from '@material-ui/core/styles'
+import { Sidebar, mui3theme } from '@dhis2/d2-ui-core'
+import { connect } from 'react-redux'
+import D2UIApp from '@dhis2/d2-ui-app'
+import HeaderBar from '@dhis2/d2-ui-header-bar'
+import PropTypes from 'prop-types'
+import React, { PureComponent } from 'react'
+
+import { Loader } from './components/feedback/Loader'
+import { loadDataSetOptions } from './redux/actions/dataSet'
+import { loadOrganisationUnits } from './redux/actions/organisationUnits'
+import { loadPeriodTypes } from './redux/actions/reportPeriod'
+import { sectionOrder, sections } from './config/sections.config'
+import AppContext from './pages/AppContext'
+import AppRouter from './components/AppRouter'
 
 const MUI3Theme = createMui3Theme(mui3theme)
 
@@ -49,13 +50,15 @@ class App extends PureComponent {
     render() {
         // is not "marked" as required but it's used by Sidebar
         const nonOnChangeSection = () => null
-        const sidebarSections = sections.map(section =>
-            Object.assign(section, {
+        const sidebarSections = sectionOrder.map(sectionKey => {
+            const section = sections[sectionKey]
+            return {
+                ...section,
                 icon: section.info.icon,
                 label: section.info.label,
                 containerElement: <Link to={section.path} />,
-            })
-        )
+            }
+        })
 
         return (
             <AppContext.Provider value={this.getContext()}>

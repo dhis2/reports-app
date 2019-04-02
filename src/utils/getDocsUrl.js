@@ -1,4 +1,4 @@
-import { getDocsKeyForSection } from '../config/sections.config'
+import { sections } from '../config/sections.config'
 
 export const DOCS_LINK = 'https://ci.dhis2.org/docs'
 export const DEFAULT_DOC_LANGUAGE = 'en'
@@ -21,9 +21,9 @@ const getDocsVersion = ({ major, minor, snapshot }) => {
 
 export const getDocsUrl = (systemVersion, sectionKey, lng) => {
     const docLng = lng || DEFAULT_DOC_LANGUAGE
-    return `${DOCS_LINK}/${getDocsVersion(
-        systemVersion
-    )}/${docLng}/user/html/${getDocsKeyForSection(sectionKey)}.html`
+    return `${DOCS_LINK}/${getDocsVersion(systemVersion)}/${docLng}/user/html/${
+        sections[sectionKey].info.docs
+    }.html`
 }
 
 export default getDocsUrl

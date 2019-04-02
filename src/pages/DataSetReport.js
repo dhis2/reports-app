@@ -1,21 +1,24 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import Paper from '@material-ui/core/Paper'
-import { Snackbar } from '../components/feedback/Snackbar'
+import PropTypes from 'prop-types'
+import React from 'react'
+
+import {
+    DATA_SET_REPORT_SECTION_KEY,
+    sections,
+} from '../config/sections.config'
 import { SectionHeadline } from '../components/SectionHeadline'
+import { Snackbar } from '../components/feedback/Snackbar'
+import { connectDataSetReport } from './data-set-report/connectDataSetReport'
+import { container } from '../utils/styles/shared.js'
+import { reportContent } from '../utils/react/propTypes'
 import DataSetReportOutput from './data-set-report/DataSetReportOutput'
 import Form from './data-set-report/Form'
-import { connectDataSetReport } from './data-set-report/connectDataSetReport'
-import i18n from '@dhis2/d2-i18n'
-import { reportContent } from '../utils/react/propTypes'
-import { container } from '../utils/styles/shared.js'
 
 const DataSetReport = props => (
     <div>
         <SectionHeadline
-            label={i18n.t('Data Set Report')}
-            systemVersion={props.d2.system.version}
-            sectionKey={props.sectionKey}
+            label={sections[DATA_SET_REPORT_SECTION_KEY].info.label}
+            sectionKey={DATA_SET_REPORT_SECTION_KEY}
         />
         <Paper className={container.className}>
             <div id="data-set-report-form">
@@ -43,8 +46,6 @@ const DataSetReport = props => (
 )
 
 DataSetReport.propTypes = {
-    d2: PropTypes.object.isRequired,
-    sectionKey: PropTypes.string.isRequired,
     fileUrls: PropTypes.array.isRequired,
     isHtmlReport: PropTypes.bool.isRequired,
     reportContent: reportContent.isRequired,
