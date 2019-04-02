@@ -14,7 +14,6 @@ export const DEFAULT_DOC_LANGUAGE = 'en'
  * @returns {string} `master` for a snapshot branch. `25` for 2.25 etc.
  */
 const getDocsVersion = () => {
-    console.log(getSystemVersion())
     const { major, minor, snapshot } = getSystemVersion()
     if (snapshot) {
         return 'master'
