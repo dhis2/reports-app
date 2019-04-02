@@ -16,6 +16,7 @@ Array [
             ],
           }
     }
+    key="organisationUnitGroupSet1"
     onChange={[Function]}
     values={Object {}}
 />,
@@ -33,6 +34,7 @@ Array [
             ],
           }
     }
+    key="organisationUnitGroupSet2"
     onChange={[Function]}
     values={Object {}}
 />,
