@@ -23,12 +23,7 @@ const AppRouter = () => (
         {({ d2 }) => (
             <main>
                 <Switch>
-                    <Route
-                        key="home"
-                        exact
-                        path="/"
-                        render={() => <Home sectionKey="home" />}
-                    />
+                    <Route key="home" exact path="/" component={Home} />
                     <Route
                         exact
                         key={STANDARD_REPORT_SECTION_KEY}
@@ -69,46 +64,5 @@ const AppRouter = () => (
         )}
     </AppContext.Consumer>
 )
-
-//const _AppRouter = () => {
-//const routes = sections.map(section => {
-//const routeRender = () => {
-//const Page = section.component
-//return (
-//<AppContext.Consumer>
-//{appContext => (
-//<Page
-//d2={appContext.d2}
-//sectionKey={section.key}
-//{...appContext.pageState}
-///>
-//)}
-//</AppContext.Consumer>
-//)
-//}
-//return (
-//<Route
-//key={section.key}
-//exact
-//path={section.path}
-//render={routeRender}
-///>
-//)
-//})
-
-//[> Home route <]
-//const homeRouteRender = () => <Home sectionKey="home" />
-
-//routes.push(<Route key="home" exact path="/" render={homeRouteRender} />)
-
-//[> No Match Route <]
-//routes.push(<Route key="no-match-route" component={NoMatch} />)
-
-//return (
-//<main>
-//<Switch>{routes}</Switch>
-//</main>
-//)
-//}
 
 export default AppRouter
