@@ -1,19 +1,26 @@
 /* eslint-disable */
-import React from 'react'
-import { shallow } from 'enzyme'
 import Paper from '@material-ui/core/Paper'
-import MenuElement from '../MenuElement'
+import React from 'react'
 
-import { sections } from '../../config/sections.config'
+import { shallow } from 'enzyme'
+
+import {
+    STANDARD_REPORT_SECTION_KEY,
+    sections,
+} from '../../config/sections.config'
+import MenuElement from '../MenuElement'
 
 jest.mock('@dhis2/d2-ui-org-unit-tree', () => ({
     OrgUnitTree: 'OrgUnitTree',
 }))
 
 const ownShallow = () => {
-    return shallow(<MenuElement entry={sections[0].info} />, {
-        disableLifecycleMethods: true,
-    })
+    return shallow(
+        <MenuElement entry={sections[STANDARD_REPORT_SECTION_KEY].info} />,
+        {
+            disableLifecycleMethods: true,
+        }
+    )
 }
 
 /* Mocks */
