@@ -11,8 +11,8 @@ import { connect } from 'react-redux'
 import { selectOrgUnitOption } from '../redux/actions/organisationUnits'
 import { CircularProgress } from '@material-ui/core'
 
-const createGroupSetOnChange = (groupSetId, onChange) => groupId => {
-    onChange(groupSetId, groupId)
+const createGroupSetOnChange = (groupSetId, onChange) => event => {
+    onChange(groupSetId, event.target.value)
 }
 
 const labelText = i18n.t('Select Option')
@@ -20,14 +20,14 @@ const labelText = i18n.t('Select Option')
 const OrganisationUnitGroupSetDropdown = ({
     groupSet,
     fullWidth,
-    values,
+    value,
     onChange,
 }) => (
     <div key={groupSet.id}>
         <span className={formLabel.className}>{groupSet.displayName}</span>
         <DropDown
             fullWidth={fullWidth}
-            value={values[groupSet.id]}
+            value={value}
             onChange={onChange}
             menuItems={groupSet.organisationUnitGroups}
             includeEmpty
@@ -40,20 +40,21 @@ const OrganisationUnitGroupSetDropdown = ({
 
 OrganisationUnitGroupSetDropdown.propTypes = {
     groupSet: PropTypes.object.isRequired,
-    values: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
-    fullWidth: PropTypes.bool,
+    fullWidth: PropTypes.bool.isRequired,
+    value: PropTypes.string,
 }
 
 OrganisationUnitGroupSetDropdown.defaultProps = {
-    fullWidth: true,
+    value: '',
 }
 
 export const OrganisationUnitGroupSets = ({
     groupSets,
-    selectGroupSet,
     isLoading,
-    ...rest
+    selectGroupSet,
+    values,
+    fullWidth,
 }) =>
     isLoading ? (
         <div>
@@ -71,7 +72,8 @@ export const OrganisationUnitGroupSets = ({
                 groupSet={groupSet}
                 key={groupSet.id}
                 onChange={createGroupSetOnChange(groupSet.id, selectGroupSet)}
-                {...rest}
+                value={values[groupSet.id]}
+                fullWidth={fullWidth}
             />
         ))
     )
@@ -80,11 +82,18 @@ OrganisationUnitGroupSets.propTypes = {
     groupSets: PropTypes.array.isRequired,
     isLoading: PropTypes.bool.isRequired,
     selectGroupSet: PropTypes.func.isRequired,
+    values: PropTypes.object.isRequired,
+    fullWidth: PropTypes.bool,
+}
+
+OrganisationUnitGroupSets.defaultProps = {
+    fullWidth: true,
 }
 
 const mapStateToProps = state => ({
     isLoading: state.orgUnitGroupSets.loading,
     groupSets: state.orgUnitGroupSets.collection,
+    values: state.organisationUnits.selectedOptions,
 })
 
 export default connect(

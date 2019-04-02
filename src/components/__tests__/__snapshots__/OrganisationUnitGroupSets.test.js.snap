@@ -18,7 +18,7 @@ Array [
     }
     key="organisationUnitGroupSet1"
     onChange={[Function]}
-    values={Object {}}
+    value=""
 />,
   <OrganisationUnitGroupSetDropdown
     fullWidth={true}
@@ -36,7 +36,7 @@ Array [
     }
     key="organisationUnitGroupSet2"
     onChange={[Function]}
-    values={Object {}}
+    value=""
 />,
 ]
 `;
