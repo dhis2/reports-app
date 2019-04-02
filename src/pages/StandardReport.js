@@ -32,10 +32,6 @@ class StandardReport extends React.Component {
         this.contextMenuOptions = createContextMenuOptions(props)
     }
 
-    getChildContext() {
-        return { d2: this.props.d2 }
-    }
-
     componentDidMount() {
         if (this.props.reports.length === 0) {
             this.props.loadStandardReports(true)
@@ -71,7 +67,6 @@ class StandardReport extends React.Component {
                         goToPrevPage={this.props.goToPrevPage}
                     />
                     <StandardReportActions
-                        d2={this.props.d2}
                         open={this.props.open}
                         selectedAction={this.props.selectedAction}
                         selectedReport={this.props.selectedReport}
@@ -99,7 +94,6 @@ class StandardReport extends React.Component {
 }
 
 StandardReport.propTypes = {
-    d2: PropTypes.object.isRequired,
     loading: PropTypes.bool.isRequired,
     pager: PropTypes.object.isRequired,
     reports: PropTypes.array.isRequired,
@@ -124,10 +118,6 @@ StandardReport.propTypes = {
     updateStandardReport: PropTypes.func.isRequired,
     addStandardReport: PropTypes.func.isRequired,
     closeReport: PropTypes.func.isRequired,
-}
-
-StandardReport.childContextTypes = {
-    d2: PropTypes.object,
 }
 
 const ConnectedStandardReport = connectStandardReport(StandardReport)

@@ -4,10 +4,9 @@ export const STANDARD_REPORT_SECTION_KEY = 'standard-report'
 export const DATA_SET_REPORT_SECTION_KEY = 'data-set-report'
 export const REPORTING_RATE_SUMMARY_SECTION_KEY = 'reporting-rate-summary'
 export const RESOURCE_SECTION_KEY = 'resource'
-export const ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_KEY =
+export const ORG_UNIT_DIST_REPORT_SECTION_KEY =
     'organisation-unit-distribution-report'
-export const ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_PATH =
-    '/organisation-unit-distribution-report'
+export const ORG_UNIT_DIST_REPORT_SECTION_PATH = `/${ORG_UNIT_DIST_REPORT_SECTION_KEY}`
 export const DATA_APPROVAL_SECTION_KEY = 'data-approval'
 
 export const sectionOrder = [
@@ -15,7 +14,7 @@ export const sectionOrder = [
     DATA_SET_REPORT_SECTION_KEY,
     REPORTING_RATE_SUMMARY_SECTION_KEY,
     RESOURCE_SECTION_KEY,
-    ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_KEY,
+    ORG_UNIT_DIST_REPORT_SECTION_KEY,
 ]
 
 export const sections = {
@@ -71,9 +70,9 @@ export const sections = {
             docs: 'using_reporting_resources',
         },
     },
-    [ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_KEY]: {
-        key: ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_KEY,
-        path: `/${ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_KEY}`,
+    [ORG_UNIT_DIST_REPORT_SECTION_KEY]: {
+        key: ORG_UNIT_DIST_REPORT_SECTION_KEY,
+        path: `/${ORG_UNIT_DIST_REPORT_SECTION_KEY}`,
         info: {
             label: i18n.t('Organisation Unit Distribution Report'),
             description: i18n.t(

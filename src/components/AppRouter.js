@@ -1,10 +1,10 @@
 import { Route, Switch } from 'react-router-dom'
 import React from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 
 import {
     DATA_SET_REPORT_SECTION_KEY,
-    ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_KEY,
+    ORG_UNIT_DIST_REPORT_SECTION_KEY,
     REPORTING_RATE_SUMMARY_SECTION_KEY,
     RESOURCE_SECTION_KEY,
     STANDARD_REPORT_SECTION_KEY,
@@ -15,11 +15,10 @@ import { ReportingRateSummary } from '../pages/ReportingRateSummary'
 import { Resource } from '../pages/Resource'
 import { StandardReport } from '../pages/StandardReport'
 import { sections } from '../conf../../config/sections.config'
-import AppContext from '../pages/AppContext'
 import Home from '../pages/home/Home'
 import NoMatch from './NoMatch'
 
-const AppRouter = ({ d2 }) => (
+const AppRouter = () => (
     <main>
         <Switch>
             <Route key="home" exact path="/" component={Home} />
@@ -27,7 +26,7 @@ const AppRouter = ({ d2 }) => (
                 exact
                 key={STANDARD_REPORT_SECTION_KEY}
                 path={sections[STANDARD_REPORT_SECTION_KEY].path}
-                render={() => <StandardReport d2={d2} />}
+                component={StandardReport}
             />
             <Route
                 exact
@@ -45,15 +44,12 @@ const AppRouter = ({ d2 }) => (
                 exact
                 key={RESOURCE_SECTION_KEY}
                 path={sections[RESOURCE_SECTION_KEY].path}
-                render={() => <Resource d2={d2} />}
+                component={Resource}
             />
             <Route
                 exact
-                key={ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_KEY}
-                path={
-                    sections[ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_KEY]
-                        .path
-                }
+                key={ORG_UNIT_DIST_REPORT_SECTION_KEY}
+                path={sections[ORG_UNIT_DIST_REPORT_SECTION_KEY].path}
                 component={OrganisationUnitDistributionReport}
             />
             <Route key="no-match-route" component={NoMatch} />
@@ -61,15 +57,4 @@ const AppRouter = ({ d2 }) => (
     </main>
 )
 
-AppRouter.propTypes = {
-    d2: PropTypes.object.isRequired,
-}
-
-const AppRouterWithD2 = () => (
-    <AppContext.Consumer>
-        {({ d2 }) => <AppRouter d2={d2} />}
-    </AppContext.Consumer>
-)
-
-export default AppRouterWithD2
-export { AppRouter as AppRouterComponent }
+export default AppRouter

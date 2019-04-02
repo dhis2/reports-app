@@ -8,28 +8,18 @@ import { connect } from 'react-redux'
 import D2UIApp from '@dhis2/d2-ui-app'
 import HeaderBar from '@dhis2/d2-ui-header-bar'
 import PropTypes from 'prop-types'
-import React, { PureComponent } from 'react'
+import React, { Component } from 'react'
 
 import { Loader } from './components/feedback/Loader'
 import { loadDataSetOptions } from './redux/actions/dataSet'
 import { loadOrganisationUnits } from './redux/actions/organisationUnits'
 import { loadPeriodTypes } from './redux/actions/reportPeriod'
 import { sectionOrder, sections } from './config/sections.config'
-import AppContext from './pages/AppContext'
 import AppRouter from './components/AppRouter'
 
 const MUI3Theme = createMui3Theme(mui3theme)
 
-class App extends PureComponent {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            d2: props.d2,
-            pageState: {},
-        }
-    }
-
+class App extends Component {
     getChildContext() {
         return { d2: this.props.d2 }
     }
@@ -38,13 +28,6 @@ class App extends PureComponent {
         this.props.loadOrganisationUnits()
         this.props.loadPeriodTypes()
         this.props.loadDataSetOptions()
-    }
-
-    getContext() {
-        return {
-            d2: this.props.d2,
-            pageState: this.state.pageState,
-        }
     }
 
     render() {
@@ -61,23 +44,21 @@ class App extends PureComponent {
         })
 
         return (
-            <AppContext.Provider value={this.getContext()}>
-                <D2UIApp>
-                    <Mui3ThemeProvider theme={MUI3Theme}>
-                        <HeaderBar d2={this.props.d2} />
-                        <Sidebar
-                            sections={sidebarSections}
-                            onChangeSection={nonOnChangeSection}
-                            currentSection={this.props.currentSection}
-                        />
-                        <div className="content-wrapper">
-                            <div className="content-area">
-                                <AppRouter />
-                            </div>
+            <D2UIApp>
+                <Mui3ThemeProvider theme={MUI3Theme}>
+                    <HeaderBar d2={this.props.d2} />
+                    <Sidebar
+                        sections={sidebarSections}
+                        onChangeSection={nonOnChangeSection}
+                        currentSection={this.props.currentSection}
+                    />
+                    <div className="content-wrapper">
+                        <div className="content-area">
+                            <AppRouter />
                         </div>
-                        <Loader />
-                    </Mui3ThemeProvider>
-                </D2UIApp>
+                    </div>
+                    <Loader />
+                </Mui3ThemeProvider>
                 <style jsx>{`
                     .content-wrapper {
                         margin-left: 295px;
@@ -144,7 +125,7 @@ class App extends PureComponent {
                         width: 100% !important;
                     }
                 `}</style>
-            </AppContext.Provider>
+            </D2UIApp>
         )
     }
 }
