@@ -6,7 +6,6 @@ export const REPORTING_RATE_SUMMARY_SECTION_KEY = 'reporting-rate-summary'
 export const RESOURCE_SECTION_KEY = 'resource'
 export const ORG_UNIT_DIST_REPORT_SECTION_KEY =
     'organisation-unit-distribution-report'
-export const ORG_UNIT_DIST_REPORT_SECTION_PATH = `/${ORG_UNIT_DIST_REPORT_SECTION_KEY}`
 export const DATA_APPROVAL_SECTION_KEY = 'data-approval'
 
 export const sectionOrder = [
