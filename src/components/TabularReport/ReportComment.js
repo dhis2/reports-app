@@ -29,6 +29,11 @@ export const ReportComment = props => (
                 {actionButtonPlaceholder}
             </Button>
         </div>
+        <style jsx>{`
+            div > div {
+                margin: 16px 0;
+            }
+        `}</style>
     </div>
 )
 

@@ -22,5 +22,12 @@ exports[`<ReportComment/> Matches the snapshot 1`] = `
       Share
     </Button>
   </div>
+  <style>
+    
+                div &gt; div {
+                    margin: 16px 0;
+                }
+            
+  </style>
 </div>
 `;

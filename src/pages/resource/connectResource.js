@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import {
     addResource,
     closeContextMenu,
+    requestDeleteResource,
     deleteResource,
     editResource,
     goToNextPage,
@@ -27,6 +28,7 @@ const mapDispatchToProps = {
     goToNextPage,
     goToPrevPage,
     loadResources,
+    requestDeleteResource,
     deleteResource,
     setSearch: event => setSearchAndLoadResources(event.target.value),
     addResource,

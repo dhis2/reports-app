@@ -1,9 +1,4 @@
 import i18n from '@dhis2/d2-i18n'
-import { StandardReport } from '../pages/StandardReport'
-import { DataSetReport } from '../pages/DataSetReport'
-import { ReportingRateSummary } from '../pages/ReportingRateSummary'
-import { OrganisationUnitDistributionReport } from '../pages/OrganisationUnitDistributionReport'
-import { Resource } from '../pages/Resource'
 
 export const STANDARD_REPORT_SECTION_KEY = 'standard-report'
 export const DATA_SET_REPORT_SECTION_KEY = 'data-set-report'
@@ -15,13 +10,18 @@ export const ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_PATH =
     '/organisation-unit-distribution-report'
 export const DATA_APPROVAL_SECTION_KEY = 'data-approval'
 
-export const DEBOUNCE_DELAY = 500
+export const sectionOrder = [
+    STANDARD_REPORT_SECTION_KEY,
+    DATA_SET_REPORT_SECTION_KEY,
+    REPORTING_RATE_SUMMARY_SECTION_KEY,
+    RESOURCE_SECTION_KEY,
+    ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_KEY,
+]
 
-export const sections = [
-    {
+export const sections = {
+    [STANDARD_REPORT_SECTION_KEY]: {
         key: STANDARD_REPORT_SECTION_KEY,
-        path: '/standard-report',
-        component: StandardReport,
+        path: `/${STANDARD_REPORT_SECTION_KEY}`,
         info: {
             label: i18n.t('Standard Report'),
             icon: i18n.t('bar_chart'),
@@ -32,10 +32,9 @@ export const sections = [
             docs: 'using_reporting_standard_reports',
         },
     },
-    {
+    [DATA_SET_REPORT_SECTION_KEY]: {
         key: DATA_SET_REPORT_SECTION_KEY,
-        path: '/data-set-report',
-        component: DataSetReport,
+        path: `/${DATA_SET_REPORT_SECTION_KEY}`,
         info: {
             label: i18n.t('Data Set Report'),
             icon: 'assignment',
@@ -46,10 +45,9 @@ export const sections = [
             docs: 'using_reporting_dataset_reports',
         },
     },
-    {
+    [REPORTING_RATE_SUMMARY_SECTION_KEY]: {
         key: REPORTING_RATE_SUMMARY_SECTION_KEY,
-        path: '/reporting-rate-summary',
-        component: ReportingRateSummary,
+        path: `/${REPORTING_RATE_SUMMARY_SECTION_KEY}`,
         info: {
             label: i18n.t('Reporting Rate Summary'),
             description: i18n.t(
@@ -60,10 +58,9 @@ export const sections = [
             docs: 'using_reporting_reporting_rate_summary',
         },
     },
-    {
+    [RESOURCE_SECTION_KEY]: {
         key: RESOURCE_SECTION_KEY,
-        path: '/resource',
-        component: Resource,
+        path: `/${RESOURCE_SECTION_KEY}`,
         info: {
             label: i18n.t('Resource'),
             description: i18n.t(
@@ -74,10 +71,9 @@ export const sections = [
             docs: 'using_reporting_resources',
         },
     },
-    {
+    [ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_KEY]: {
         key: ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_KEY,
-        path: ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_PATH,
-        component: OrganisationUnitDistributionReport,
+        path: `/${ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_KEY}`,
         info: {
             label: i18n.t('Organisation Unit Distribution Report'),
             description: i18n.t(
@@ -88,15 +84,4 @@ export const sections = [
             docs: 'using_reporting_orgunit_distribution_reports',
         },
     },
-]
-
-export const getDocsKeyForSection = sectionKey => {
-    for (let i = 0; i < sections.length; i++) {
-        const section = sections[i]
-        if (section.key === sectionKey) {
-            return section.info.docs
-        }
-    }
-
-    return ''
 }

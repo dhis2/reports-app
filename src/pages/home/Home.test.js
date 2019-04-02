@@ -4,7 +4,7 @@ import { shallow } from 'enzyme'
 import Home from './Home'
 import MenuElement from '../../components/MenuElement'
 
-import { sections } from '../../config/sections.config'
+import { sectionOrder } from '../../config/sections.config'
 
 jest.mock('@dhis2/d2-ui-org-unit-tree', () => ({
     OrgUnitTree: 'OrgUnitTree',
@@ -31,6 +31,6 @@ describe('Test <Home /> rendering:', () => {
     })
 
     it('Renders the correct number of elements.', () => {
-        expect(wrapper.find(MenuElement)).toHaveLength(sections.length)
+        expect(wrapper.find(MenuElement)).toHaveLength(sectionOrder.length)
     })
 })

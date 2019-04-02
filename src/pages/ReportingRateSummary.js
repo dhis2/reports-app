@@ -1,21 +1,24 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import Paper from '@material-ui/core/Paper'
-import i18n from '@dhis2/d2-i18n'
-import { Snackbar } from '../components/feedback/Snackbar'
-import TabularReport from '../components/TabularReport'
-import { SectionHeadline } from '../components/SectionHeadline'
-import { connectReportingRateSummary } from './reporting-rate-summary/connectReportingRateSummary'
+import PropTypes from 'prop-types'
+import React from 'react'
+
 import { Form } from './reporting-rate-summary/Form'
-import { reportContent } from '../utils/react/propTypes'
+import {
+    REPORTING_RATE_SUMMARY_SECTION_KEY,
+    sections,
+} from '../config/sections.config'
+import { SectionHeadline } from '../components/SectionHeadline'
+import { Snackbar } from '../components/feedback/Snackbar'
+import { connectReportingRateSummary } from './reporting-rate-summary/connectReportingRateSummary'
 import { container } from '../utils/styles/shared.js'
+import { reportContent } from '../utils/react/propTypes'
+import TabularReport from '../components/TabularReport'
 
 const ReportingRateSummary = props => (
     <div>
         <SectionHeadline
-            label={i18n.t('Reporting rate summary')}
-            systemVersion={props.d2.system.version}
-            sectionKey={props.sectionKey}
+            label={sections[REPORTING_RATE_SUMMARY_SECTION_KEY].info.label}
+            sectionKey={REPORTING_RATE_SUMMARY_SECTION_KEY}
         />
         <Paper className={container.className}>
             <Form
@@ -34,8 +37,6 @@ const ReportingRateSummary = props => (
 )
 
 ReportingRateSummary.propTypes = {
-    d2: PropTypes.object.isRequired,
-    sectionKey: PropTypes.string.isRequired,
     isActionEnabled: PropTypes.bool.isRequired,
     loadReportData: PropTypes.func.isRequired,
     reportContent: reportContent.isRequired,

@@ -27,6 +27,17 @@ const DataSetReportOutput = props => (
                 ))
             )}
         </div>
+        <style jsx>{`
+            .dataset-html-report :global(table) {
+                margin-top: 16px;
+                border-collapse: collapse;
+            }
+            .dataset-html-report :global(table) :global(td),
+            .dataset-html-report :global(table) :global(th) {
+                border: 1px solid #bcbcbc;
+                padding: 4px;
+            }
+        `}</style>
     </ReportLoader>
 )
 
