@@ -3,11 +3,8 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import i18n from '@dhis2/d2-i18n'
 import OrganisationUnitsTree from './AvailableOrganisationUnitsTree'
-import OrganisationUnitGroupOptions from './OrganisationUnitGroupSets'
-import {
-    toggleShowOptions,
-    selectOrgUnitOption,
-} from '../redux/actions/organisationUnits'
+import OrganisationUnitGroupSets from './OrganisationUnitGroupSets'
+import { toggleShowOptions } from '../redux/actions/organisationUnits'
 import { formLabel } from '../utils/styles/shared.js'
 
 const getExtraOptionsLabel = showOptions =>
@@ -38,10 +35,7 @@ export const OrgUnitsTreeWithExtraOptions = props => (
                 id="extra-options"
                 className={getExtraOptionsClassName(props.showOptions)}
             >
-                <OrganisationUnitGroupOptions
-                    values={props.selectedOrgUnitOptions}
-                    onChange={props.onOrganisationUnitGroupSetChange}
-                />
+                <OrganisationUnitGroupSets />
             </div>
         </div>
         {formLabel.styles}
@@ -67,24 +61,17 @@ export const OrgUnitsTreeWithExtraOptions = props => (
 OrgUnitsTreeWithExtraOptions.propTypes = {
     showOptions: PropTypes.bool.isRequired,
     isLoadingOptions: PropTypes.bool.isRequired,
-    selectedOrgUnitOptions: PropTypes.object.isRequired,
     toggleShowOptions: PropTypes.func.isRequired,
-    onOrganisationUnitGroupSetChange: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
     showOptions: state.organisationUnits.showOptions,
     isLoadingOptions: state.orgUnitGroupSets.loading,
-    selectedOrgUnitOptions: state.organisationUnits.selectedOptions,
-})
-
-const mapDispatchToProps = dispatch => ({
-    toggleShowOptions: () => dispatch(toggleShowOptions()),
-    onOrganisationUnitGroupSetChange: (id, event) =>
-        dispatch(selectOrgUnitOption(id, event.target.value)),
 })
 
 export default connect(
     mapStateToProps,
-    mapDispatchToProps
+    {
+        toggleShowOptions,
+    }
 )(OrgUnitsTreeWithExtraOptions)
