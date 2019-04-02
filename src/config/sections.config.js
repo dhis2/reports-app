@@ -19,7 +19,7 @@ export const sectionOrder = [
 export const sections = {
     [STANDARD_REPORT_SECTION_KEY]: {
         key: STANDARD_REPORT_SECTION_KEY,
-        path: '/standard-report',
+        path: `/${STANDARD_REPORT_SECTION_KEY}`,
         info: {
             label: i18n.t('Standard Report'),
             icon: i18n.t('bar_chart'),
@@ -32,7 +32,7 @@ export const sections = {
     },
     [DATA_SET_REPORT_SECTION_KEY]: {
         key: DATA_SET_REPORT_SECTION_KEY,
-        path: '/data-set-report',
+        path: `/${DATA_SET_REPORT_SECTION_KEY}`,
         info: {
             label: i18n.t('Data Set Report'),
             icon: 'assignment',
@@ -45,7 +45,7 @@ export const sections = {
     },
     [REPORTING_RATE_SUMMARY_SECTION_KEY]: {
         key: REPORTING_RATE_SUMMARY_SECTION_KEY,
-        path: '/reporting-rate-summary',
+        path: `/${REPORTING_RATE_SUMMARY_SECTION_KEY}`,
         info: {
             label: i18n.t('Reporting Rate Summary'),
             description: i18n.t(
@@ -58,7 +58,7 @@ export const sections = {
     },
     [RESOURCE_SECTION_KEY]: {
         key: RESOURCE_SECTION_KEY,
-        path: '/resource',
+        path: `/${RESOURCE_SECTION_KEY}`,
         info: {
             label: i18n.t('Resource'),
             description: i18n.t(
@@ -71,7 +71,7 @@ export const sections = {
     },
     [ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_KEY]: {
         key: ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_KEY,
-        path: '/organisation-unit-distribution-report',
+        path: `/${ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_KEY}`,
         info: {
             label: i18n.t('Organisation Unit Distribution Report'),
             description: i18n.t(
