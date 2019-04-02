@@ -8,7 +8,7 @@ import { connect } from 'react-redux'
 import D2UIApp from '@dhis2/d2-ui-app'
 import HeaderBar from '@dhis2/d2-ui-header-bar'
 import PropTypes from 'prop-types'
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 
 import { Loader } from './components/feedback/Loader'
 import { loadDataSetOptions } from './redux/actions/dataSet'
@@ -19,7 +19,7 @@ import AppRouter from './components/AppRouter'
 
 const MUI3Theme = createMui3Theme(mui3theme)
 
-class App extends Component {
+class App extends PureComponent {
     getChildContext() {
         return { d2: this.props.d2 }
     }
