@@ -122,10 +122,12 @@
     }
   },
   "manifest.webapp": {
-    "name": "DHIS2 Reports App",
-    "description": "DHIS2 reports App",
+    "name": "Reports App",
+    "version": "1.0.0",
+    "short_name": "Reports App",
+    "description": "Generate various types of reports",
     "icons": {
-      "48": "icon.png"
+      "48": "favicon-48x48.png"
     },
     "developer": {
       "url": "https://dhis2.github.io",
@@ -138,7 +140,10 @@
       "dhis": {
         "href": ".."
       }
-    }
+    },
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
+    "display": "standalone"
   },
   "homepage": ".",
   "jest": {
