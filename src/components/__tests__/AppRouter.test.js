@@ -3,14 +3,14 @@ import React from 'react'
 
 import { shallow } from 'enzyme'
 
-import { AppRouterComponent as AppRouter } from '../AppRouter'
+import AppRouter from '../AppRouter'
 import { sectionOrder } from '../../config/sections.config'
 
 jest.mock('@dhis2/d2-ui-org-unit-tree', () => ({ OrgUnitTree: 'OrgUnitTree' }))
 
 jest.mock('@dhis2/d2-ui-org-unit-tree', () => 'OrgUnitTree')
 
-const ownShallow = () => shallow(<AppRouter d2={{}} />)
+const ownShallow = () => shallow(<AppRouter />)
 
 it('AppRouter renders without crashing', () => {
     ownShallow()

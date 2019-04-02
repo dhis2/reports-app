@@ -24,10 +24,6 @@ class Resource extends React.Component {
         this.contextMenuOptions = createContextMenuOptions(props)
     }
 
-    getChildContext() {
-        return { d2: this.props.d2 }
-    }
-
     componentDidMount() {
         if (this.props.resources.length === 0) {
             this.props.loadResources()
@@ -61,7 +57,6 @@ class Resource extends React.Component {
                         goToPrevPage={this.props.goToPrevPage}
                     />
                     <ResourceActions
-                        d2={this.props.d2}
                         open={this.props.open}
                         selectedAction={this.props.selectedAction}
                         selectedResource={this.props.selectedResource}
@@ -78,7 +73,6 @@ class Resource extends React.Component {
 }
 
 Resource.propTypes = {
-    d2: PropTypes.object.isRequired,
     open: PropTypes.bool.isRequired,
     loadingResources: PropTypes.bool.isRequired,
     search: PropTypes.string.isRequired,
@@ -86,7 +80,6 @@ Resource.propTypes = {
     resources: PropTypes.array.isRequired,
     pager: PropTypes.object.isRequired,
     selectedResource: PropTypes.object.isRequired,
-
     goToNextPage: PropTypes.func.isRequired,
     goToPrevPage: PropTypes.func.isRequired,
     loadResources: PropTypes.func.isRequired,
@@ -98,10 +91,6 @@ Resource.propTypes = {
     editResource: PropTypes.func.isRequired,
     showSharingSettings: PropTypes.func.isRequired,
     closeContextMenu: PropTypes.func.isRequired,
-}
-
-Resource.childContextTypes = {
-    d2: PropTypes.object,
 }
 
 const ConnectedResource = connectResource(Resource)

@@ -69,6 +69,7 @@ export const OrganisationUnitGroupSets = ({
         groupSets.map(groupSet => (
             <OrganisationUnitGroupSetDropdown
                 groupSet={groupSet}
+                key={groupSet.id}
                 onChange={createGroupSetOnChange(groupSet.id, selectGroupSet)}
                 {...rest}
             />

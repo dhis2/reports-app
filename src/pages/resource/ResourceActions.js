@@ -1,10 +1,10 @@
+import SharingDialog from '@dhis2/d2-ui-sharing-dialog'
 import PropTypes from 'prop-types'
 import React from 'react'
-import SharingDialog from '@dhis2/d2-ui-sharing-dialog'
-
+import { getD2 } from '../../utils/api'
+import { resourceActions } from '../../utils/resource/constants'
 import { ConnectedAddResource } from './AddResource'
 import { ConnectedEditResource } from './EditResource'
-import { resourceActions } from '../../utils/resource/constants'
 
 const ResourceActions = props => {
     const { selectedAction } = props
@@ -25,7 +25,7 @@ const ResourceActions = props => {
                 id={props.selectedResource.id}
                 type="document"
                 onRequestClose={props.handleClose}
-                d2={props.d2}
+                d2={getD2()}
             />
         )
     }
@@ -34,7 +34,6 @@ const ResourceActions = props => {
 }
 
 ResourceActions.propTypes = {
-    d2: PropTypes.object.isRequired,
     open: PropTypes.bool.isRequired,
     selectedAction: PropTypes.string.isRequired,
     selectedResource: PropTypes.object.isRequired,

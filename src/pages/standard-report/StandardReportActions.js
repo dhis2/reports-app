@@ -6,9 +6,9 @@ import {
     CONTEXT_MENU_ACTION,
 } from './standard.report.conf'
 import { ConnectedAddEditStdReport } from './AddEditStdReport'
+import { getD2 } from '../../utils/api'
 
 const StandardReportActions = ({
-    d2,
     open,
     selectedAction,
     selectedReport,
@@ -21,7 +21,7 @@ const StandardReportActions = ({
         return (
             <SharingDialog
                 id={selectedReport.id}
-                d2={d2}
+                d2={getD2()}
                 open={open}
                 type="report"
                 onRequestClose={handleClose}
@@ -32,7 +32,6 @@ const StandardReportActions = ({
     if (selectedAction === CONTEXT_MENU_ACTION.EDIT) {
         return (
             <ConnectedAddEditStdReport
-                d2={d2}
                 open={open}
                 edit={true}
                 onSubmit={updateStandardReport}
@@ -45,7 +44,6 @@ const StandardReportActions = ({
     if (selectedAction === ADD_NEW_REPORT_ACTION) {
         return (
             <ConnectedAddEditStdReport
-                d2={d2}
                 open={open}
                 edit={false}
                 onSubmit={addStandardReport}
@@ -59,7 +57,6 @@ const StandardReportActions = ({
 }
 
 StandardReportActions.propTypes = {
-    d2: PropTypes.object.isRequired,
     open: PropTypes.bool.isRequired,
     selectedAction: PropTypes.string.isRequired,
     selectedReport: PropTypes.object.isRequired,

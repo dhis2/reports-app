@@ -4,7 +4,7 @@ import React from 'react'
 
 import { Form } from './organisation-unit-distribution-report/Form'
 import {
-    ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_KEY,
+    ORG_UNIT_DIST_REPORT_SECTION_KEY,
     sections,
 } from '../config/sections.config'
 import { SectionHeadline } from '../components/SectionHeadline'
@@ -27,13 +27,9 @@ class OrganisationUnitDistributionReport extends React.Component {
             <div>
                 <SectionHeadline
                     label={
-                        sections[
-                            ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_KEY
-                        ].info.label
+                        sections[ORG_UNIT_DIST_REPORT_SECTION_KEY].info.label
                     }
-                    sectionKey={
-                        ORGANISATION_UNIT_DISTRIBUTION_REPORT_SECTION_KEY
-                    }
+                    sectionKey={ORG_UNIT_DIST_REPORT_SECTION_KEY}
                 />
                 <Paper className={container.className}>
                     <Form
