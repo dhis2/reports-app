@@ -7,6 +7,8 @@ export const getIsUiBlocked = state =>
     state.organisationUnits.loading ||
     state.reportPeriod.loading ||
     state.dataSet.loading ||
+    state.standardReport.loadingSendReport ||
+    state.resource.addEditLoading ||
     (atOrgUnitDistReportSection(state) && state.orgUnitGroupSets.loading)
 
 const atOrgUnitDistReportSection = ({ router }) =>

@@ -27,7 +27,7 @@ export const actionTypes = {
     LOADING_RESOURCES_START: 'LOADING_RESOURCES_START',
     LOADING_RESOURCES_SUCCESS: 'LOADING_RESOURCES_SUCCESS',
     LOADING_RESOURCES_ERROR: 'LOADING_RESOURCES_ERROR',
-    SET_RESEARCH_SEARCH: 'SET_RESEARCH_SEARCH',
+    SET_RESOURCE_SEARCH: 'SET_RESOURCE_SEARCH',
     VIEW_RESOURCE: 'VIEW_RESOURCE',
     SHOW_SHARING_SETTINGS: 'SHOW_SHARING_SETTINGS',
     EDIT_RESOURCE: 'EDIT_RESOURCE',
@@ -123,7 +123,7 @@ export const goToPrevPage = () => dispatch => {
  * @returns {Object}
  */
 export const setSearch = searchTerm => ({
-    type: actionTypes.SET_RESEARCH_SEARCH,
+    type: actionTypes.SET_RESOURCE_SEARCH,
     payload: searchTerm,
 })
 
