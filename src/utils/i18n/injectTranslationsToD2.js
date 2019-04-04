@@ -62,6 +62,8 @@ const d2UiTranslations = {
     'jul-aug': i18n.t('jul-aug'),
     'sep-oct': i18n.t('sep-oct'),
     'nov-dec': i18n.t('nov-dec'),
+    'nov-apr': i18n.t('nov-apr'),
+    'may-oct': i18n.t('may-oct'),
     quarter: i18n.t('quarter'),
     Q1: i18n.t('Q1'),
     Q2: i18n.t('Q2'),
