@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@dhis2/d2-i18n": "^1.0.4",
+    "@dhis2/d2-i18n-extract": "^1.0.7",
     "@dhis2/d2-ui-app": "^2.0.0",
     "@dhis2/d2-ui-core": "^5.3.0",
     "@dhis2/d2-ui-forms": "^5.3.0",
@@ -103,14 +104,13 @@
     "build": "yarn manifest && yarn localize && node scripts/build.js && cp ./package.json ./build/package.json",
     "code-style": "yarn d2-style js",
     "format-all": "yarn prettier --write 'src/**/*.js'",
-    "localize": "d2-i18n-generate -n reports-app -p ./i18n/ -o ./src/utils/i18n/locales/",
+    "extract-pot": "d2-i18n-extract -p src/ -o i18n/",
+    "localize": "yarn extract-pot && d2-i18n-generate -n reports-app -p ./i18n/ -o ./src/utils/i18n/locales/",
     "test": "node scripts/test.js --env=jsdom --coverage",
     "test-watch": "node scripts/test.js --env=jsdom",
     "test-e2e": "wdio ./e2e/config/wdio.conf.js",
     "lint": "yarn localize && eslint src/",
     "validate": "yarn list",
-    "extract-pot": "node scripts/pot-extractor.js",
-    "refresh-translations-template": "yarn extract-pot -- -o en.pot && git add ./i18n/en.pot",
     "coverage": "yarn test -- --coverage"
   },
   "husky": {
