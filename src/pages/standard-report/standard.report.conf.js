@@ -2,6 +2,8 @@ import i18n from '@dhis2/d2-i18n'
 
 export const REPORTS_ENDPOINT = 'reports'
 export const REPORT_TABLES_ENDPOINT = 'reportTables'
+export const REPORT_TEMPLATES_ENDPOINT =
+    'dhis-web-reporting/getReportTemplate.action'
 export const ADD_NEW_REPORT_ACTION = 'ADD_NEW_REPORT_ACTION'
 
 export const CONTEXT_MENU_ACTION = {
