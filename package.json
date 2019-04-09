@@ -3,6 +3,7 @@
   "version": "1.0.0-beta.1",
   "private": true,
   "dependencies": {
+    "@babel/polyfill": "^7.4.3",
     "@dhis2/d2-i18n": "^1.0.4",
     "@dhis2/d2-i18n-extract": "^1.0.7",
     "@dhis2/d2-ui-app": "^2.0.0",
@@ -50,6 +51,7 @@
     "lodash.omit": "^4.5.0",
     "lodash.omitby": "^4.6.0",
     "lodash.size": "^4.2.0",
+    "material-design-icons-iconfont": "^4.0.5",
     "moment": "^2.24.0",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
@@ -71,6 +73,7 @@
     "style-loader": "0.19.0",
     "styled-jsx": "^3.2.1",
     "sw-precache-webpack-plugin": "0.11.4",
+    "typeface-roboto": "^0.0.54",
     "url-loader": "0.6.2",
     "webpack": "3.8.1",
     "webpack-dev-server": "2.9.4",
