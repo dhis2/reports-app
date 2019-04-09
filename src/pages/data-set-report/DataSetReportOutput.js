@@ -5,6 +5,7 @@ import ReportTable from '../../components/TabularReport/ReportTable'
 import { ReportComment } from '../../components/TabularReport/ReportComment'
 import ReportLoader from '../../components/ReportLoader'
 import { reportContent } from '../../utils/react/propTypes'
+import IframeReport from '../../components/IframeReport'
 
 const DataSetReportOutput = props => (
     <ReportLoader content={props.content} isLoading={props.isLoading}>
@@ -16,9 +17,10 @@ const DataSetReportOutput = props => (
             />
             <DownloadOptions fileUrls={props.fileUrls} />
             {props.isHtmlReport ? (
-                <div
-                    className="dataset-html-report"
-                    dangerouslySetInnerHTML={{ __html: props.content.data }}
+                <IframeReport
+                    content={props.content.data}
+                    title="dataset-report"
+                    withStyle={true}
                 />
             ) : (
                 !!props.content.length &&
@@ -27,17 +29,6 @@ const DataSetReportOutput = props => (
                 ))
             )}
         </div>
-        <style jsx>{`
-            .dataset-html-report :global(table) {
-                margin-top: 16px;
-                border-collapse: collapse;
-            }
-            .dataset-html-report :global(table) :global(td),
-            .dataset-html-report :global(table) :global(th) {
-                border: 1px solid #bcbcbc;
-                padding: 4px;
-            }
-        `}</style>
     </ReportLoader>
 )
 

@@ -7,7 +7,7 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 import DialogContent from '@material-ui/core/DialogContent'
 import i18n from '@dhis2/d2-i18n'
 
-import HtmlReport from './HtmlReport'
+import IframeReport from '../../components/IframeReport'
 
 const title = i18n.t('HTML Report')
 const labelClose = i18n.t('Close')
@@ -28,6 +28,11 @@ const contentStyle = resolve`
     }
 `
 
+const scriptsToLoad = [
+    '/dhis-web-commons/javascripts/jQuery/jquery.min.js',
+    '/dhis-web-commons/javascripts/dhis2/dhis2.util.js',
+]
+
 const StyledReportData = ({ onReportCloseClick, reportData }) => (
     <Dialog
         open={true}
@@ -45,7 +50,11 @@ const StyledReportData = ({ onReportCloseClick, reportData }) => (
             >
                 {labelClose}
             </Button>
-            <HtmlReport html={reportData} />
+            <IframeReport
+                content={reportData}
+                title="standard-report"
+                scripts={scriptsToLoad}
+            />
         </DialogContent>
 
         {containerStyle.styles}

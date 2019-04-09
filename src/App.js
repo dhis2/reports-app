@@ -124,6 +124,10 @@ class App extends PureComponent {
                     #report-container table {
                         width: 100% !important;
                     }
+                    iframe {
+                        border: none;
+                        margin-top: 16px;
+                    }
                 `}</style>
             </D2UIApp>
         )

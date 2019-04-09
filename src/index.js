@@ -1,3 +1,5 @@
+import 'react-app-polyfill/ie11'
+import 'core-js/es/symbol'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { init, getManifest, getUserSettings } from 'd2'
