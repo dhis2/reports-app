@@ -1,15 +1,18 @@
+import '@babel/polyfill'
+import { ConnectedRouter } from 'connected-react-router'
+import { getManifest, getUserSettings, init } from 'd2'
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { init, getManifest, getUserSettings } from 'd2'
 import { Provider } from 'react-redux'
-import { ConnectedRouter } from 'connected-react-router'
+import 'typeface-roboto'
+import App from './App'
 import store from './redux/store'
+import registerServiceWorker from './registerServiceWorker'
+import { getD2, initApi } from './utils/api'
 import history from './utils/history'
 import { configI18n } from './utils/i18n/configI18n'
 import injectTranslationsToD2 from './utils/i18n/injectTranslationsToD2'
-import { initApi, getD2 } from './utils/api'
-import App from './App'
-import registerServiceWorker from './registerServiceWorker'
 
 getManifest('manifest.webapp').then(manifest => {
     const baseUrl =
