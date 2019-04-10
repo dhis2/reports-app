@@ -41,7 +41,6 @@ class IframeReport extends React.PureComponent {
         <html>
             <head>
             <meta charset="utf-8">
-            <link rel="stylesheet" href="./css/roboto.css">
             ${scripts.map(this.createScriptTag).join('\n')}
             ${withStyle ? styleTag : ''}
             </head>
@@ -72,7 +71,7 @@ class IframeReport extends React.PureComponent {
                 height={this.state.height}
                 width="100%"
                 seamless={true}
-                sandbox="allow-same-origin"
+                sandbox="allow-same-origin allow-scripts"
                 srcDoc={this.iframeHtml}
                 src={`data:text/html,${encodeURIComponent(this.iframeHtml)}`}
             />
