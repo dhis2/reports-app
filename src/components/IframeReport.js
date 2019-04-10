@@ -2,22 +2,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { getContextPath } from '../utils/api'
 
-const styleTag = `
-<style>
-    html {
-        overflow-y: hidden;
-    }
-    body {
-        font-family: 'Roboto', sans-serif;
-    }
-    table {
-        border-collapse: collapse;
-    }
-    th, td {
-        border: 1px solid #bcbcbc;
-        padding: 4px;
-    }
-</style>
+const LOADING_DONE = 'DHIS2_REPORTS_APP_IFRAME_CONTENT_LOADING_DONE'
+const ADDITIONAL_STYLE_RULES = `
+body {
+    font-family: 'Roboto', sans-serif;
+}
+table {
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid #bcbcbc;
+    padding: 4px;
+}
 `
 
 class IframeReport extends React.PureComponent {
@@ -27,39 +23,76 @@ class IframeReport extends React.PureComponent {
             height: 0,
         }
         this.iframeRef = React.createRef()
-        this.contextPath = getContextPath()
-        this.iframeHtml = this.createIframeHtml()
+        this.onIframeContentLoaded = this.onIframeContentLoaded.bind(this)
+        this.createScriptTag = this.createScriptTag.bind(this)
     }
 
     componentDidMount() {
-        this.iframeRef.current.onload = this.setHeight
+        this.initIframe()
+        window.addEventListener('message', this.onIframeContentLoaded)
     }
 
-    createIframeHtml() {
-        const { content, withStyle, scripts } = this.props
+    componentWillUnmount() {
+        window.removeEventListener('message', this.onIframeContentLoaded)
+    }
+
+    initIframe = () => {
+        const iframeDoc = this.iframeRef.current.contentWindow.document
+        iframeDoc.head.innerHTML = this.createHeadHtml()
+        iframeDoc.body.innerHTML = this.createBodyHtml()
+    }
+
+    onIframeContentLoaded(event) {
+        if (event.data === LOADING_DONE) {
+            this.setHeight()
+        }
+    }
+
+    createHeadHtml() {
         return `
-        <html>
-            <head>
             <meta charset="utf-8">
-            ${scripts.map(this.createScriptTag).join('\n')}
-            ${withStyle ? styleTag : ''}
-            </head>
-            <body>
-                ${content}
-            </body>
-        </html>
+            ${this.props.scripts.map(this.createScriptTag).join('\n')}
+            ${this.createStyleTag()}
         `
     }
 
-    setHeight = () => {
+    createScriptTag(script) {
+        const src = getContextPath() + script
+        return `<script src="${src}" type="text/javascript"></script>`
+    }
+
+    createStyleTag() {
+        return `
+        <style>
+            html {
+                overflow-y: hidden;
+            }
+            ${this.props.withStyle ? ADDITIONAL_STYLE_RULES : ''}
+        </style>
+        `
+    }
+
+    createBodyHtml() {
+        const { content } = this.props
+        /*
+         * This is where the magic happens: this image is the last
+         * child of the body, so in theory it should load last.
+         * When it does, it will post a message to the top window to
+         * let that know all content has loaded. At that point setHeight
+         * is called and this should now get the correct content height value.
+         */
+        return `
+            ${content}
+            <img
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                onload="window.top.postMessage('${LOADING_DONE}', '*');this.parentNode.removeChild(this);">
+        `
+    }
+
+    setHeight() {
         const iframe = this.iframeRef.current
         const height = iframe.contentWindow.document.body.offsetHeight
         this.setState({ height })
-    }
-
-    createScriptTag = script => {
-        const src = this.contextPath + script
-        return `<script src="${src}" type="text/javascript"></script>`
     }
 
     render() {
@@ -72,8 +105,6 @@ class IframeReport extends React.PureComponent {
                 width="100%"
                 seamless={true}
                 sandbox="allow-same-origin allow-scripts"
-                srcDoc={this.iframeHtml}
-                src={`data:text/html,${encodeURIComponent(this.iframeHtml)}`}
             />
         )
     }
