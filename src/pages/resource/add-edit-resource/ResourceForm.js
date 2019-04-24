@@ -18,7 +18,7 @@ import { Url } from './ResourceForm/Url'
 export const ResourceForm = props => (
     <FormDialog title={props.title} open={props.open} onClose={props.onCancel}>
         <Form onSubmit={props.onSubmit} initialValues={props.initialValues}>
-            {({ handleSubmit, values }) => (
+            {({ handleSubmit, values, valid }) => (
                 <form onSubmit={handleSubmit}>
                     <DialogContent>
                         <FormSection>
@@ -52,6 +52,7 @@ export const ResourceForm = props => (
                         onSubmitLabel={props.onSubmitLabel}
                         onSubmit={handleSubmit}
                         onCancel={props.onCancel}
+                        submitDisabled={!valid}
                     />
                 </form>
             )}

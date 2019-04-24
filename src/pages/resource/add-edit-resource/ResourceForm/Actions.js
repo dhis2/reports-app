@@ -10,6 +10,7 @@ export const Actions = props => (
             label={props.onSubmitLabel}
             isPrimary={true}
             onClick={props.onSubmit}
+            disabled={props.submitDisabled}
         />
 
         <Button label={props.onCancelLabel} onClick={props.onCancel} />
@@ -21,6 +22,7 @@ Actions.propTypes = {
     onCancelLabel: PropTypes.string.isRequired,
     onSubmit: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
+    submitDisabled: PropTypes.bool.isRequired,
 }
 
 Actions.defaultProps = {
