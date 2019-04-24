@@ -9,6 +9,7 @@ export const Button = props => (
             type={props.type}
             onClick={props.onClick}
             color={props.isPrimary ? 'primary' : 'default'}
+            disabled={props.disabled}
         >
             {props.label}
         </D2UIButton>
@@ -27,6 +28,7 @@ Button.propTypes = {
     onClick: PropTypes.func.isRequired,
     isPrimary: PropTypes.bool,
     type: PropTypes.string,
+    disabled: PropTypes.bool,
 }
 
 Button.defaultProps = {
