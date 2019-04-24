@@ -98,7 +98,7 @@ export const Component = props => (
                                 <div className="col-xs-6">
                                     <FormHelperText />
                                     <DesignFileDownloadButton
-                                        isEditing={!!props.selectedReport}
+                                        isEditing={props.edit}
                                         reportType={values.type}
                                         reportId={
                                             props.edit

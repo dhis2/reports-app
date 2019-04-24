@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import FormHelperText from '@material-ui/core/FormHelperText'
 import Button from '@material-ui/core/Button'
 import i18n from '@dhis2/d2-i18n'
-import { getApi, getContextPath } from '../../../utils/api'
+import { getApi } from '../../../utils/api'
 import {
     reportTypes,
     REPORTS_ENDPOINT,
@@ -18,8 +18,7 @@ export const DesignFileDownloadButton = ({
     let url
     let label
     const api = getApi()
-    const contextPath = getContextPath()
-    const type = reportType === reportTypes.HTML ? 'html' : 'jasper'
+    const type = reportType === reportTypes.HTML ? 'html' : 'xml'
 
     if (isEditing) {
         label = i18n.t('Get current design')
@@ -29,7 +28,7 @@ export const DesignFileDownloadButton = ({
             reportType === reportTypes.HTML
                 ? i18n.t('Get HTML Report Template')
                 : i18n.t('Get Jasper Report Template')
-        url = `${contextPath}/${REPORT_TEMPLATES_ENDPOINT}?type=${type}`
+        url = `${api.baseUrl}/${REPORT_TEMPLATES_ENDPOINT}.${type}`
     }
 
     return (
