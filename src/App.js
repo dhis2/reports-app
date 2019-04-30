@@ -1,3 +1,4 @@
+import i18n from '@dhis2/d2-i18n'
 import { Link } from 'react-router-dom'
 import {
     MuiThemeProvider as Mui3ThemeProvider,
@@ -6,7 +7,7 @@ import {
 import { Sidebar, mui3theme } from '@dhis2/d2-ui-core'
 import { connect } from 'react-redux'
 import D2UIApp from '@dhis2/d2-ui-app'
-import HeaderBar from '@dhis2/d2-ui-header-bar'
+import HeaderBar from '@dhis2/ui/widgets/HeaderBar'
 import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
 
@@ -46,7 +47,7 @@ class App extends PureComponent {
         return (
             <D2UIApp>
                 <Mui3ThemeProvider theme={MUI3Theme}>
-                    <HeaderBar d2={this.props.d2} />
+                    <HeaderBar appName={i18n.t('Reports')} />
                     <Sidebar
                         sections={sidebarSections}
                         onChangeSection={nonOnChangeSection}
@@ -65,7 +66,7 @@ class App extends PureComponent {
                         max-width: 1400px;
                     }
                     .content-area {
-                        padding: 4rem 20px 20px;
+                        padding: 1rem 20px 20px;
                     }
                 `}</style>
                 <style jsx global>{`
@@ -95,7 +96,7 @@ class App extends PureComponent {
                         bottom: 0;
                         top: 0;
                         left: 0;
-                        padding-top: 3rem;
+                        margin-top: 3rem;
                     }
 
                     .d2-ui-table {
