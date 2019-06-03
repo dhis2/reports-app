@@ -1,22 +1,63 @@
 {
   "name": "reports-app",
-  "version": "0.1.0",
+  "version": "1.0.0-beta.1",
   "private": true,
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint:style": "d2-style js check --all"
+    "lint:style": "d2-style js check --all",
+    "prestart": "npm run localize",
+    "pretest": "npm run localize",
+    "prebuild": "npm run localize",
+    "extract-pot": "d2-i18n-extract -p src/ -o i18n/",
+    "localize": "npm run extract-pot && d2-i18n-generate -n reports-app -p ./i18n/ -o ./src/utils/i18n/locales/"
   },
   "dependencies": {
-    "react": "^16.8.6",
+    "@dhis2/d2-i18n-extract": "^1.0.7",
+    "@dhis2/d2-i18n": "^1.0.4",
+    "@dhis2/d2-ui-app": "^2.0.0",
+    "@dhis2/d2-ui-core": "^5.3.0",
+    "@dhis2/d2-ui-org-unit-tree": "^5.3.0",
+    "@dhis2/d2-ui-sharing-dialog": "^5.3.0",
+    "@dhis2/d2-ui-table": "^5.3.0",
+    "@dhis2/ui": "1.0.0-beta.14",
+    "chart.js": "^2.7.3",
+    "connected-react-router": "^6.2.2",
+    "d2": "^31.7.0",
+    "d3-color": "^1.2.0",
+    "final-form": "^4.11.1",
+    "history": "^4.7.2",
+    "lodash.debounce": "^4.0.8",
+    "lodash.isempty": "^4.4.0",
+    "lodash.omit": "^4.5.0",
+    "lodash.omitby": "^4.6.0",
+    "lodash.size": "^4.2.0",
+    "material-design-icons-iconfont": "^4.0.5",
+    "prop-types": "^15.6.1",
+    "react-chartjs-2": "^2.7.4",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1"
+    "react-final-form": "^4.0.2",
+    "react-redux": "^6.0.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "3.0.1",
+    "react": "^16.8.6",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
+    "redux": "^4.0.1",
+    "styled-jsx": "^3.2.1",
+    "typeface-roboto": "^0.0.54",
+    "xlsx": "^0.13.0"
   },
   "devDependencies": {
     "@dhis2/cli-style": "^3.2.2",
-    "husky": "^2.3.0"
+    "@dhis2/d2-i18n-generate": "^1.0.19",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme": "^3.3.0",
+    "husky": "^2.3.0",
+    "jest-enzyme": "^4.0.2",
+    "redux-mock-store": "^1.5.3"
   },
   "husky": {
     "hooks": {
