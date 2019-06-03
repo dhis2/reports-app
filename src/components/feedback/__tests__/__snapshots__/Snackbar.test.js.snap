@@ -13,7 +13,7 @@ exports[`<Snackbar /> can render a default snackbar message 1`] = `
         "type": "",
       }
     }
-    onClose={[Function]}
+    onClose={[MockFunction]}
     show={true}
   />
 </span>
@@ -32,7 +32,7 @@ exports[`<Snackbar /> can render a success snackbar message 1`] = `
         "type": "SUCCESS",
       }
     }
-    onClose={[Function]}
+    onClose={[MockFunction]}
     show={true}
   />
 </span>
@@ -51,7 +51,7 @@ exports[`<Snackbar /> can render a warning snackbar message 1`] = `
         "type": "WARNING",
       }
     }
-    onClose={[Function]}
+    onClose={[MockFunction]}
     show={true}
   />
 </span>
@@ -70,7 +70,7 @@ exports[`<Snackbar /> can render an error snackbar message 1`] = `
         "type": "ERROR",
       }
     }
-    onClose={[Function]}
+    onClose={[MockFunction]}
     show={true}
   />
 </span>

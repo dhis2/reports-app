@@ -8,7 +8,7 @@ exports[`<ReportComment/> Matches the snapshot 1`] = `
     <TextField
       fullWidth={true}
       multiline={true}
-      onChange={[Function]}
+      onChange={[MockFunction]}
       placeholder="Write a comment, question or interpretation of this report"
       type="text"
       value="I want to comment on this"
@@ -16,18 +16,20 @@ exports[`<ReportComment/> Matches the snapshot 1`] = `
     <Button
       color="primary"
       disabled={false}
-      onClick={[Function]}
+      onClick={[MockFunction]}
       raised={true}
     >
       Share
     </Button>
   </div>
-  <style>
+  <style
+    jsx={true}
+  >
     
-                div &gt; div {
-                    margin: 16px 0;
-                }
-            
+            div &gt; div {
+                margin: 16px 0;
+            }
+        
   </style>
 </div>
 `;

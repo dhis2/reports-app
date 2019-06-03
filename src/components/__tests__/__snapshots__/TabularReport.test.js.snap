@@ -38,7 +38,7 @@ exports[`<TabularReport/> Renders DownloadOptions and a ReportTable in a ReportL
   <div
     className="tabular-report"
   >
-    <Component
+    <DownloadOptions
       fileUrls={
         Array [
           Object {

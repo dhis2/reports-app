@@ -4,13 +4,15 @@ exports[`<DownloadOptions/> Renders an empty container when fileUrls is an empty
 <div
   id="download-options-container"
 >
-  <style>
+  <style
+    jsx={true}
+  >
     
-                div {
-                    display: flex;
-                    justify-content: flex-end;
-                }
-            
+            div {
+                display: flex;
+                justify-content: flex-end;
+            }
+        
   </style>
 </div>
 `;
@@ -19,7 +21,7 @@ exports[`<DownloadOptions/> Renders an empty container when fileUrls is an empty
 <div
   id="download-options-container"
 >
-  <Component
+  <DownloadOption
     file={
       Object {
         "extension": "pdf",
@@ -28,7 +30,7 @@ exports[`<DownloadOptions/> Renders an empty container when fileUrls is an empty
     }
     key="0"
   />
-  <Component
+  <DownloadOption
     file={
       Object {
         "extension": "xls",
@@ -37,13 +39,15 @@ exports[`<DownloadOptions/> Renders an empty container when fileUrls is an empty
     }
     key="1"
   />
-  <style>
+  <style
+    jsx={true}
+  >
     
-                div {
-                    display: flex;
-                    justify-content: flex-end;
-                }
-            
+            div {
+                display: flex;
+                justify-content: flex-end;
+            }
+        
   </style>
 </div>
 `;

@@ -2,7 +2,9 @@
 
 exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render a <PeriodTypeDropDown/> and <PeriodPicker/> when selectedPeriodType is truthy 1`] = `
 <div>
-  <span>
+  <span
+    className="jsx-4279021995"
+  >
     This is my label
   </span>
   <DropDown
@@ -21,26 +23,35 @@ exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render a <Peri
         },
       ]
     }
-    onChange={[Function]}
+    onChange={[MockFunction]}
     value="Quarterly"
   />
   <PeriodPicker
-    onPickPeriod={[Function]}
+    onPickPeriod={[MockFunction]}
     periodType="Quarterly"
   />
-  <style>
+  <style
+    jsx={true}
+  >
     
-                    .parsed-period {
-                        margin-bottom: 16px;
-                    }
-                
+                .parsed-period {
+                    margin-bottom: 16px;
+                }
+            
   </style>
+  <JSXStyle
+    id="4279021995"
+  >
+    .jsx-4279021995{text-align:left;color:#757575;margin-bottom:5px;font-size:14px;}
+  </JSXStyle>
 </div>
 `;
 
 exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render a <PeriodTypeDropDown/> when selectedPeriodType is falsy 1`] = `
 <div>
-  <span>
+  <span
+    className="jsx-4279021995"
+  >
     This is my label
   </span>
   <DropDown
@@ -59,22 +70,31 @@ exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render a <Peri
         },
       ]
     }
-    onChange={[Function]}
+    onChange={[MockFunction]}
     value=""
   />
-  <style>
+  <style
+    jsx={true}
+  >
     
-                    .parsed-period {
-                        margin-bottom: 16px;
-                    }
-                
+                .parsed-period {
+                    margin-bottom: 16px;
+                }
+            
   </style>
+  <JSXStyle
+    id="4279021995"
+  >
+    .jsx-4279021995{text-align:left;color:#757575;margin-bottom:5px;font-size:14px;}
+  </JSXStyle>
 </div>
 `;
 
 exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render the parsed period when a period has been selected 1`] = `
 <div>
-  <span>
+  <span
+    className="jsx-4279021995"
+  >
     This is my label
   </span>
   <DropDown
@@ -93,11 +113,11 @@ exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render the par
         },
       ]
     }
-    onChange={[Function]}
+    onChange={[MockFunction]}
     value="Daily"
   />
   <PeriodPicker
-    onPickPeriod={[Function]}
+    onPickPeriod={[MockFunction]}
     periodType="Daily"
   />
   <div
@@ -105,12 +125,19 @@ exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render the par
   >
     January 1, 2018
   </div>
-  <style>
+  <style
+    jsx={true}
+  >
     
-                    .parsed-period {
-                        margin-bottom: 16px;
-                    }
-                
+                .parsed-period {
+                    margin-bottom: 16px;
+                }
+            
   </style>
+  <JSXStyle
+    id="4279021995"
+  >
+    .jsx-4279021995{text-align:left;color:#757575;margin-bottom:5px;font-size:14px;}
+  </JSXStyle>
 </div>
 `;
