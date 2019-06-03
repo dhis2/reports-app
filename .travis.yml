@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+  - lts/*
+env:
+  global:
+  - secure: l+2dk8abhbO3wgL62OHJ/BVnABxlS2IlsXDSxKUAhilhS2Z7QJdTPOX68ZVz4AjlnMK3/bQildRgKxUdQI4Xfqmrk6N4AtXg1pJyjBg/xR5my94XZIi0Y7XL7ZDEfOVxiXWJ1VCgDocn8eYGknYTTqlVFEjSzImlmQP773XgKWQN5uAAm7rxaBJxgpmRNoGfNApTcNZTsAnLyZUFO8ZMiqSATvDJ8AVUyT83tK4rVeMkqBygvM0aOQtdWeH3ErpmpEBrHSlYbuYdPZlSIbG50RO+nNlBUxLKFxbX0GjC7xQB7iaYd+Cn+rhmqDbdC9zqnBZF6SLmvx9KiUBTgYGsDBtRSQe0pY1knVOPZujTXe+qIw4A1ndS71ReLYJQWNJJy3z5sclfv6OIaxN+uOdxnnOnHSjiXRsKZaeJpE09WvMFfMcrQgrC/6ypo+gwxsWYmTEGYjg/rArJH+P65gSvp+trIJZXTlBDl+Rq9N0DLek1lxI3oOvqPTGhPj086A+bkfDlTJx49lPQ51Co0M+v4/S57OkHkF2PSL6i8kEbeOeleROuGkCt6zarpnsKG+p/NatdRhqnIxmmI4mJveRSTeyyzvti9i4FQW9J3Fts/v+CBNt0neDUI37Dz5OGPE/12LueYCkwYolr3tURyscDDZZDPrTNEPQtJM7gyzEwjC0=
+  - secure: p6oWxRBlYvJL29/5z59nYj8o8mCIxeItylzEroxflxTBDoG6S94l2aJfvNUpFuecItKyDGC6XfkFRH6WjkxnkkfcOjfwQgBRc0tg45TH7jLikuptc5eUTOHGEikXF1PzelUtCj58npuZ02NBsBYzWiSinYUtFY1gM/2u2/16322RmPFEPWS6qJ+83v0gSf7OvIY/z7vvqgSWPWo3W9DB9BfQy2iZiatDd1t03EGxUYOYCoEbyvo4ViGYsLLwq/PIcMXJOnt+l1NDHgc22U5jSAPe8L1NKqxRchn+RnqOrTzJR1CiAcCpyAavTkamHPMvoj4DDXmEVD6PB2Y15crWv7KmkKBaDCn5sOQQ2BuTCdDgbRve5dJsGgtpKQ/Ai62KMxeJhyIIgcfC11HAKZrHdgRz9lAOon1JbvJApAcLJ5lteMSufmpXrH7ktqRzVidcHLqKHpmXet95mIWuzcTJLB2MILZHvUnxHTZ5lOO4U9cRBzW1WNWDO1kvAPydm0Vb39pmmRmCQ88BV2TaVZsMYtr1FcDjTBgh7DXX5YZcFU4yPL9/Ws4L7ftNGPknOOyMJ5NPwJBhbr0lyL6Xacid0FVowaDgN8rnectAAD+f83GPak5vewf+BHlFSdUXLu/1X4k0ASTRnrIc+dQOJkfCGdRTGm2emBl70PSfpF4WA0o=
+script:
+  - npm run lint:style
+  - npm run test
+  - npm run build
+deploy:
+  - provider: script
+    script: npx --package @dhis2/deploy-build deploy-build
+    skip_cleanup: true
+    on:
+        tags: false
+        all_branches: true
