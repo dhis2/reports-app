@@ -8,7 +8,7 @@ import TextField from '@material-ui/core/TextField'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
-import css from 'styled-jsx/css'
+import css from 'styled-jsx/macro'
 import getPagerCurrentlyShown from '../redux/selectors/pagination/getPagerCurrentlyShown'
 
 const searchText = i18n.t('Search')
@@ -66,7 +66,7 @@ const SearchablePagedList = props => {
     )
 }
 
-const styles = css`
+const styles = css.resolve`
     div > :global(.search-input) input {
         -webkit-appearance: textfield;
     }

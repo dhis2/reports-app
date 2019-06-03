@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
-import { resolve } from 'styled-jsx/css'
+import { resolve } from 'styled-jsx/macro'
 
 export const formLabel = resolve`
     text-align: left;
