@@ -12,7 +12,7 @@
     "pretest": "npm run localize",
     "prebuild": "npm run localize",
     "extract-pot": "d2-i18n-extract -p src/ -o i18n/",
-    "localize": "npm run extract-pot && d2-i18n-generate -n reports-app -p ./i18n/ -o ./src/utils/i18n/locales/"
+    "localize": "d2-i18n-generate -n reports-app -p ./i18n/ -o ./src/utils/i18n/locales/"
   },
   "dependencies": {
     "@dhis2/d2-i18n-extract": "^1.0.7",
