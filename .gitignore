@@ -1,15 +1,15 @@
-# See https://help.github.com/ignore-files/ for more about ignoring files.
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
 /node_modules
-package-lock.json
+/.pnp
+.pnp.js
 
 # testing
 /coverage
 
 # production
 /build
-/target
 
 # misc
 .DS_Store
@@ -17,22 +17,7 @@ package-lock.json
 .env.development.local
 .env.test.local
 .env.production.local
-.idea
-*.iml
 
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# d2 manifest
-public/manifest.webapp
-
-# e2e tests
-allure-results
-e2e/results
-chrome
-chromeDownloads
-
-# i18n files
-/src/utils/i18n/locales
-/.vscode

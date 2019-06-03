@@ -1,64 +1,68 @@
-# DHIS2 Reports App
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-[![Build Status](https://travis-ci.com/dhis2/reports-app.svg?branch=master)](https://travis-ci.com/dhis2/reports-app)
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdhis2%2Freports-app.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fdhis2%2Freports-app?ref=badge_shield)
+## Available Scripts
 
-### Contributing
+In the project directory, you can run:
 
-If you want to contribute to this code base, there is documentation in the docs directory.
-You can start by reading the [general docs](./docs/README.md)
+### `npm start`
 
-### Pre-requisites
+Runs the app in the development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
--   DHIS2 instance;
--   node v9.3.0+;
--   yarn v1.3.2+;
+The page will reload if you make edits.<br>
+You will also see any lint errors in the console.
 
-### Running the dev server
+### `npm test`
 
--   Make a copy of file `.env.template`
--   Rename it to `.env.development.local`
--   Update the base url in this file if your DHIS2 installation is not available at `http://localhost:8080`. For example, if your DHIS2 installation is available at `http://localhost:5000`:
-    ```
-    REACT_APP_DHIS2_BASE_URL=http://localhost:5000
-    ```
--   Update your api version if your DHIS2 api version does not match the api version in `package.json` at `manifest.webapp.dhis2.apiVersion`
--   Add `http://localhost:3000` url to your DHIS2 CORS whitelist. (This can be done in the settings app)
--   Execute the following commands:
-    ```sh
-    yarn install
-    yarn start
-    ```
--   Login to your DHIS2 instance in your browser
--   Open your browser at `http://localhost:3000`
+Launches the test runner in the interactive watch mode.<br>
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### Building the project
+### `npm run build`
 
-To build a production version of the application run the following command:
+Builds the app for production to the `build` folder.<br>
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-```sh
-yarn build
-```
+The build is minified and the filenames include the hashes.<br>
+Your app is ready to be deployed!
 
-### Unit testing
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-To execute unit tests run the following command:
+### `npm run eject`
 
-```sh
-yarn test
-```
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-### E2e testing
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-To execute end to end tests run the following command:
+Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-```sh
-export DHIS2_BASE_URL=http://your_dhis2_instance.com/
-yarn test-e2e
-```
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-You must have the dev server running on port 3000, as explained previously.
+## Learn More
 
-## License
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdhis2%2Freports-app.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fdhis2%2Freports-app?ref=badge_large)
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+
+### Analyzing the Bundle Size
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+
+### Making a Progressive Web App
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+
+### Advanced Configuration
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+
+### Deployment
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+
+### `npm run build` fails to minify
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
