@@ -8,7 +8,7 @@ import i18n from '@dhis2/d2-i18n'
 
 import { ErrorText } from './buildingBlocks/ErrorText'
 
-const useFileBlobAsValue = input => event => {
+const fileBlobAsValue = input => event => {
     event.persist()
     input.onChange({
         file: event.target.files[0],
@@ -44,7 +44,7 @@ export const File = props => (
                     <input
                         name={input.name}
                         value={input.value}
-                        onChange={useFileBlobAsValue(input)}
+                        onChange={fileBlobAsValue(input)}
                         id={input.name}
                         type="file"
                     />
