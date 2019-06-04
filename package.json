@@ -149,7 +149,10 @@
   "homepage": ".",
   "jest": {
     "collectCoverageFrom": [
-      "src/**/*.{js,jsx,mjs}"
+      "src/**/*.{js,jsx,mjs}",
+      "!src/**/*.d.ts",
+      "!src/registerServiceWorker.js",
+      "!src/index.js"
     ],
     "setupFiles": [
       "<rootDir>/config/polyfills.js"

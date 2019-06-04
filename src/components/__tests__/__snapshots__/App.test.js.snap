@@ -1,0 +1,1090 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App/> Matches the snapshot 1`] = `
+<D2UIApp
+  muiTheme={
+    Object {
+      "appBar": Object {
+        "color": "#004ba0",
+        "height": 64,
+        "padding": 24,
+        "textColor": "#ffffff",
+        "titleFontWeight": 400,
+      },
+      "avatar": Object {
+        "backgroundColor": "rgb(188, 188, 188)",
+        "color": "#ffffff",
+      },
+      "badge": Object {
+        "color": "#ffffff",
+        "fontWeight": 500,
+        "primaryColor": "#004ba0",
+        "primaryTextColor": "#ffffff",
+        "secondaryColor": "#ff9800",
+        "secondaryTextColor": "#ffffff",
+        "textColor": "rgba(0, 0, 0, 0.87)",
+      },
+      "baseTheme": Object {
+        "fontFamily": "Roboto, sans-serif",
+        "palette": Object {
+          "accent1Color": "#ff9800",
+          "accent2Color": "#f5f5f5",
+          "accent3Color": "#ffab40",
+          "alternateTextColor": "#ffffff",
+          "borderColor": "#bdbdbd",
+          "canvasColor": "#ffffff",
+          "clockCircleColor": "rgba(0, 0, 0, 0.07)",
+          "disabledColor": "rgba(0, 0, 0, 0.3)",
+          "pickerHeaderColor": "#00bcd4",
+          "primary1Color": "#004ba0",
+          "primary2Color": "#1976d2",
+          "primary3Color": "#bbdefb",
+          "secondaryTextColor": "rgba(0, 0, 0, 0.54)",
+          "shadowColor": "rgba(0, 0, 0, 1)",
+          "textColor": "rgba(0, 0, 0, 0.87)",
+        },
+        "spacing": Object {
+          "desktopDrawerMenuItemHeight": 48,
+          "desktopDropDownMenuFontSize": 15,
+          "desktopDropDownMenuItemHeight": 32,
+          "desktopGutter": 24,
+          "desktopGutterLess": 16,
+          "desktopGutterMini": 8,
+          "desktopGutterMore": 32,
+          "desktopKeylineIncrement": 64,
+          "desktopSubheaderHeight": 48,
+          "desktopToolbarHeight": 56,
+          "iconSize": 24,
+        },
+      },
+      "borderRadius": 2,
+      "bottomNavigation": Object {
+        "backgroundColor": "#ffffff",
+        "height": 56,
+        "selectedColor": "#004ba0",
+        "selectedFontSize": 14,
+        "unselectedColor": "rgba(0, 0, 0, 0.54)",
+        "unselectedFontSize": 12,
+      },
+      "button": Object {
+        "height": 36,
+        "iconButtonSize": 48,
+        "minWidth": 88,
+      },
+      "card": Object {
+        "fontWeight": 500,
+        "subtitleColor": "rgba(0, 0, 0, 0.54)",
+        "titleColor": "rgba(0, 0, 0, 0.87)",
+      },
+      "cardMedia": Object {
+        "color": "rgba(255, 255, 255, 0.87)",
+        "overlayContentBackground": "rgba(0, 0, 0, 0.54)",
+        "subtitleColor": "rgba(255, 255, 255, 0.54)",
+        "titleColor": "rgba(255, 255, 255, 0.87)",
+      },
+      "cardText": Object {
+        "textColor": "rgba(0, 0, 0, 0.87)",
+      },
+      "checkbox": Object {
+        "boxColor": "rgba(0, 0, 0, 0.87)",
+        "checkedColor": "#004ba0",
+        "disabledColor": "rgba(0, 0, 0, 0.3)",
+        "labelColor": "rgba(0, 0, 0, 0.87)",
+        "labelDisabledColor": "rgba(0, 0, 0, 0.3)",
+        "requiredColor": "#004ba0",
+      },
+      "chip": Object {
+        "backgroundColor": "rgb(224, 224, 224)",
+        "deleteIconColor": "rgba(0, 0, 0, 0.26)",
+        "fontSize": 14,
+        "fontWeight": 400,
+        "shadow": "0 1px 6px rgba(0, 0, 0, 0.12),
+            0 1px 4px rgba(0, 0, 0, 0.12)",
+        "textColor": "rgba(0, 0, 0, 0.87)",
+      },
+      "datePicker": Object {
+        "calendarTextColor": "rgba(0, 0, 0, 0.87)",
+        "calendarYearBackgroundColor": "#ffffff",
+        "color": "#004ba0",
+        "headerColor": "#00bcd4",
+        "selectColor": "#1976d2",
+        "selectTextColor": "#ffffff",
+        "textColor": "#ffffff",
+      },
+      "dialog": Object {
+        "bodyColor": "rgba(0, 0, 0, 0.6)",
+        "bodyFontSize": 16,
+        "titleFontSize": 22,
+      },
+      "drawer": Object {
+        "color": "#ffffff",
+        "width": 256,
+      },
+      "dropDownMenu": Object {
+        "accentColor": "#bdbdbd",
+      },
+      "enhancedButton": Object {
+        "tapHighlightColor": "rgba(0, 0, 0, 0)",
+      },
+      "flatButton": Object {
+        "buttonFilterColor": "#999999",
+        "color": "rgba(0, 0, 0, 0)",
+        "disabledTextColor": "rgba(0, 0, 0, 0.3)",
+        "fontSize": 14,
+        "fontWeight": 500,
+        "primaryTextColor": "#004ba0",
+        "secondaryTextColor": "#ff9800",
+        "textColor": "rgba(0, 0, 0, 0.87)",
+      },
+      "floatingActionButton": Object {
+        "buttonSize": 56,
+        "color": "#004ba0",
+        "disabledColor": "rgb(224, 224, 224)",
+        "disabledTextColor": "rgba(0, 0, 0, 0.3)",
+        "iconColor": "#ffffff",
+        "miniSize": 40,
+        "secondaryColor": "#ff9800",
+        "secondaryIconColor": "#ffffff",
+      },
+      "fontFamily": "Roboto, sans-serif",
+      "gridTile": Object {
+        "textColor": "#ffffff",
+      },
+      "icon": Object {
+        "backgroundColor": "#004ba0",
+        "color": "#ffffff",
+      },
+      "inkBar": Object {
+        "backgroundColor": "#ff9800",
+      },
+      "isRtl": false,
+      "listItem": Object {
+        "leftIconColor": "#757575",
+        "nestedLevelDepth": 18,
+        "rightIconColor": "#757575",
+        "secondaryTextColor": "rgba(0, 0, 0, 0.54)",
+      },
+      "menu": Object {
+        "backgroundColor": "#ffffff",
+        "containerBackgroundColor": "#ffffff",
+      },
+      "menuItem": Object {
+        "dataHeight": 32,
+        "height": 48,
+        "hoverColor": "rgba(0, 0, 0, 0.1)",
+        "padding": 24,
+        "rightIconDesktopFill": "#757575",
+        "selectedTextColor": "#ff9800",
+      },
+      "menuSubheader": Object {
+        "borderColor": "#bdbdbd",
+        "padding": 24,
+        "textColor": "#004ba0",
+      },
+      "overlay": Object {
+        "backgroundColor": "rgba(0, 0, 0, 0.54)",
+      },
+      "palette": Object {
+        "accent1Color": "#ff9800",
+        "accent2Color": "#f5f5f5",
+        "accent3Color": "#ffab40",
+        "alternateTextColor": "#ffffff",
+        "borderColor": "#bdbdbd",
+        "canvasColor": "#ffffff",
+        "clockCircleColor": "rgba(0, 0, 0, 0.07)",
+        "disabledColor": "rgba(0, 0, 0, 0.3)",
+        "pickerHeaderColor": "#00bcd4",
+        "primary1Color": "#004ba0",
+        "primary2Color": "#1976d2",
+        "primary3Color": "#bbdefb",
+        "secondaryTextColor": "rgba(0, 0, 0, 0.54)",
+        "shadowColor": "rgba(0, 0, 0, 1)",
+        "textColor": "rgba(0, 0, 0, 0.87)",
+      },
+      "paper": Object {
+        "backgroundColor": "#ffffff",
+        "color": "rgba(0, 0, 0, 0.87)",
+        "zDepthShadows": Array [
+          "0 1px 6px rgba(0, 0, 0, 0.12),
+             0 1px 4px rgba(0, 0, 0, 0.12)",
+          "0 3px 10px rgba(0, 0, 0, 0.16),
+             0 3px 10px rgba(0, 0, 0, 0.23)",
+          "0 10px 30px rgba(0, 0, 0, 0.19),
+             0 6px 10px rgba(0, 0, 0, 0.23)",
+          "0 14px 45px rgba(0, 0, 0, 0.25),
+             0 10px 18px rgba(0, 0, 0, 0.22)",
+          "0 19px 60px rgba(0, 0, 0, 0.3),
+             0 15px 20px rgba(0, 0, 0, 0.22)",
+        ],
+      },
+      "prepareStyles": [Function],
+      "radioButton": Object {
+        "backgroundColor": "#ffffff",
+        "borderColor": "rgba(0, 0, 0, 0.87)",
+        "checkedColor": "#004ba0",
+        "disabledColor": "rgba(0, 0, 0, 0.3)",
+        "labelColor": "rgba(0, 0, 0, 0.87)",
+        "labelDisabledColor": "rgba(0, 0, 0, 0.3)",
+        "requiredColor": "#004ba0",
+        "size": 24,
+      },
+      "raisedButton": Object {
+        "color": "#ffffff",
+        "disabledColor": "rgb(229, 229, 229)",
+        "disabledTextColor": "rgba(0, 0, 0, 0.3)",
+        "fontSize": 14,
+        "fontWeight": 500,
+        "primaryColor": "#004ba0",
+        "primaryTextColor": "#ffffff",
+        "secondaryColor": "#ff9800",
+        "secondaryTextColor": "#ffffff",
+        "textColor": "rgba(0, 0, 0, 0.87)",
+      },
+      "rawTheme": Object {
+        "fontFamily": "Roboto, sans-serif",
+        "palette": Object {
+          "accent1Color": "#ff9800",
+          "accent2Color": "#f5f5f5",
+          "accent3Color": "#ffab40",
+          "alternateTextColor": "#ffffff",
+          "borderColor": "#bdbdbd",
+          "canvasColor": "#ffffff",
+          "clockCircleColor": "rgba(0, 0, 0, 0.07)",
+          "disabledColor": "rgba(0, 0, 0, 0.3)",
+          "pickerHeaderColor": "#00bcd4",
+          "primary1Color": "#004ba0",
+          "primary2Color": "#1976d2",
+          "primary3Color": "#bbdefb",
+          "secondaryTextColor": "rgba(0, 0, 0, 0.54)",
+          "shadowColor": "rgba(0, 0, 0, 1)",
+          "textColor": "rgba(0, 0, 0, 0.87)",
+        },
+        "spacing": Object {
+          "desktopDrawerMenuItemHeight": 48,
+          "desktopDropDownMenuFontSize": 15,
+          "desktopDropDownMenuItemHeight": 32,
+          "desktopGutter": 24,
+          "desktopGutterLess": 16,
+          "desktopGutterMini": 8,
+          "desktopGutterMore": 32,
+          "desktopKeylineIncrement": 64,
+          "desktopSubheaderHeight": 48,
+          "desktopToolbarHeight": 56,
+          "iconSize": 24,
+        },
+      },
+      "refreshIndicator": Object {
+        "loadingStrokeColor": "#004ba0",
+        "strokeColor": "#bdbdbd",
+      },
+      "ripple": Object {
+        "color": "rgba(0, 0, 0, 0.87)",
+      },
+      "slider": Object {
+        "handleColorZero": "#bbdefb",
+        "handleFillColor": "#ffffff",
+        "handleSize": 12,
+        "handleSizeActive": 18,
+        "handleSizeDisabled": 8,
+        "rippleColor": "#004ba0",
+        "selectionColor": "#004ba0",
+        "trackColor": "#bbdefb",
+        "trackColorSelected": "#ffab40",
+        "trackSize": 2,
+      },
+      "snackbar": Object {
+        "actionColor": "#ff9800",
+        "backgroundColor": "rgba(0, 0, 0, 0.87)",
+        "textColor": "#ffffff",
+      },
+      "spacing": Object {
+        "desktopDrawerMenuItemHeight": 48,
+        "desktopDropDownMenuFontSize": 15,
+        "desktopDropDownMenuItemHeight": 32,
+        "desktopGutter": 24,
+        "desktopGutterLess": 16,
+        "desktopGutterMini": 8,
+        "desktopGutterMore": 32,
+        "desktopKeylineIncrement": 64,
+        "desktopSubheaderHeight": 48,
+        "desktopToolbarHeight": 56,
+        "iconSize": 24,
+      },
+      "stepper": Object {
+        "backgroundColor": "transparent",
+        "connectorLineColor": "#bdbdbd",
+        "disabledTextColor": "rgba(0, 0, 0, 0.26)",
+        "hoverBackgroundColor": "rgba(0, 0, 0, 0.06)",
+        "hoveredIconColor": "#616161",
+        "iconColor": "#004ba0",
+        "inactiveIconColor": "#9e9e9e",
+        "textColor": "rgba(0, 0, 0, 0.87)",
+      },
+      "subheader": Object {
+        "color": "rgba(0, 0, 0, 0.54)",
+        "fontWeight": 500,
+      },
+      "svgIcon": Object {
+        "color": "rgba(0, 0, 0, 0.87)",
+      },
+      "table": Object {
+        "backgroundColor": "#ffffff",
+      },
+      "tableFooter": Object {
+        "borderColor": "#bdbdbd",
+        "textColor": "#ffab40",
+      },
+      "tableHeader": Object {
+        "borderColor": "#bdbdbd",
+      },
+      "tableHeaderColumn": Object {
+        "height": 56,
+        "spacing": 24,
+        "textColor": "#ffab40",
+      },
+      "tableRow": Object {
+        "borderColor": "#bdbdbd",
+        "height": 48,
+        "hoverColor": "#f5f5f5",
+        "selectedColor": "#bdbdbd",
+        "stripeColor": "rgba(127, 165, 207, 0.4)",
+        "textColor": "rgba(0, 0, 0, 0.87)",
+      },
+      "tableRowColumn": Object {
+        "height": 48,
+        "spacing": 24,
+      },
+      "tabs": Object {
+        "backgroundColor": "#004ba0",
+        "selectedTextColor": "#ffffff",
+        "textColor": "rgba(255, 255, 255, 0.7)",
+      },
+      "textField": Object {
+        "backgroundColor": "transparent",
+        "borderColor": "#bdbdbd",
+        "disabledTextColor": "rgba(0, 0, 0, 0.3)",
+        "errorColor": "#f44336",
+        "floatingLabelColor": "rgba(0, 0, 0, 0.3)",
+        "focusColor": "#004ba0",
+        "hintColor": "rgba(0, 0, 0, 0.3)",
+        "textColor": "rgba(0, 0, 0, 0.87)",
+      },
+      "timePicker": Object {
+        "accentColor": "#004ba0",
+        "clockCircleColor": "rgba(0, 0, 0, 0.07)",
+        "clockColor": "rgba(0, 0, 0, 0.87)",
+        "color": "#ffffff",
+        "headerColor": "#00bcd4",
+        "selectColor": "#1976d2",
+        "selectTextColor": "#ffffff",
+        "textColor": "#ffffff",
+      },
+      "toggle": Object {
+        "labelColor": "rgba(0, 0, 0, 0.87)",
+        "labelDisabledColor": "rgba(0, 0, 0, 0.3)",
+        "thumbDisabledColor": "#bdbdbd",
+        "thumbOffColor": "#f5f5f5",
+        "thumbOnColor": "#004ba0",
+        "thumbRequiredColor": "#004ba0",
+        "trackDisabledColor": "#bbdefb",
+        "trackOffColor": "#bbdefb",
+        "trackOnColor": "rgba(0, 75, 160, 0.5)",
+        "trackRequiredColor": "rgba(0, 75, 160, 0.5)",
+      },
+      "toolbar": Object {
+        "backgroundColor": "rgb(232, 232, 232)",
+        "color": "rgba(0, 0, 0, 0.54)",
+        "height": 56,
+        "hoverColor": "rgba(0, 0, 0, 0.87)",
+        "iconColor": "rgba(0, 0, 0, 0.4)",
+        "menuHoverColor": "rgba(0, 0, 0, 0.1)",
+        "separatorColor": "rgba(0, 0, 0, 0.175)",
+        "titleFontSize": 20,
+      },
+      "tooltip": Object {
+        "color": "#ffffff",
+        "opacity": 0.9,
+        "rippleBackgroundColor": "#616161",
+      },
+      "userAgent": undefined,
+      "zIndex": Object {
+        "appBar": 1100,
+        "dialog": 1500,
+        "dialogOverlay": 1400,
+        "drawer": 1300,
+        "drawerOverlay": 1200,
+        "layer": 2000,
+        "menu": 1000,
+        "popover": 2100,
+        "snackbar": 2900,
+        "tooltip": 3000,
+      },
+    }
+  }
+>
+  <MuiThemeProviderOld
+    theme={
+      Object {
+        "breakpoints": Object {
+          "between": [Function],
+          "down": [Function],
+          "keys": Array [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl",
+          ],
+          "only": [Function],
+          "up": [Function],
+          "values": Object {
+            "lg": 1280,
+            "md": 960,
+            "sm": 600,
+            "xl": 1920,
+            "xs": 0,
+          },
+          "width": [Function],
+        },
+        "colors": Object {
+          "accentPrimary": "#1976d2",
+          "accentPrimaryDark": "#004BA0",
+          "accentPrimaryLight": "#63A4FF",
+          "accentPrimaryLightest": "#EAF4FF",
+          "accentSecondary": "#00796B",
+          "accentSecondaryBackground": "#D9ECEB",
+          "accentSecondaryDark": "#004C40",
+          "accentSecondaryLight": "#48A999",
+          "accentSecondaryLightest": "#B2DFDB",
+          "black": "#000000",
+          "blueGrey": "#ECEFF1",
+          "grey": "#9E9E9E",
+          "greyBlack": "#494949",
+          "greyLight": "#E0E0E0",
+          "info": "#EAF4FF",
+          "negative": "#E53935",
+          "positive": "#3D9305",
+          "snow": "#F4F6F8",
+          "warning": "#F19C02",
+          "white": "#FFFFFF",
+        },
+        "direction": "ltr",
+        "mixins": Object {
+          "gutters": [Function],
+          "toolbar": Object {
+            "@media (min-width:0px) and (orientation: landscape)": Object {
+              "minHeight": 48,
+            },
+            "@media (min-width:600px)": Object {
+              "minHeight": 64,
+            },
+            "minHeight": 56,
+          },
+        },
+        "overrides": Object {
+          "MuiDialog": Object {
+            "paperWidthLg": Object {
+              "flex": "0 1 800px",
+              "maxWidth": "800px",
+              "width": "800px",
+            },
+            "paperWidthMd": Object {
+              "flex": "0 1 600px",
+              "maxWidth": "600px",
+              "width": "600px",
+            },
+            "paperWidthSm": Object {
+              "flex": "0 1 400px",
+              "maxWidth": "400px",
+              "width": "400px",
+            },
+          },
+          "MuiDialogActions": Object {
+            "root": Object {
+              "&> *:last-child": Object {
+                "marginRight": 0,
+              },
+              "borderTop": "1px solid #E0E0E0",
+              "margin": 0,
+              "padding": "12px 24px",
+            },
+          },
+          "MuiDialogContent": Object {
+            "root": Object {
+              "&:first-child": Object {
+                "paddingTop": 0,
+              },
+              "margin": 24,
+              "padding": 0,
+            },
+          },
+          "MuiDialogTitle": Object {
+            "root": Object {
+              "&>h6": Object {
+                "fontSize": "1em",
+                "fontWeight": "inherit",
+                "lineHeight": "inherit",
+              },
+              "fontSize": 16,
+              "fontWeight": "bold",
+              "padding": "20px 24px 4px",
+            },
+          },
+          "MuiDivider": Object {
+            "light": Object {
+              "backgroundColor": "#E0E0E0",
+            },
+          },
+          "MuiInput": Object {
+            "underline": Object {
+              "&:after": Object {
+                "borderBottom": "1px solid #aaa",
+              },
+              "&:before": Object {
+                "borderBottom": "1px solid #E0E0E0",
+              },
+              "&:hover:not($disabled):not($focused):not($error):before": Object {
+                "borderBottom": "1px solid #E0E0E0",
+              },
+            },
+          },
+          "MuiListItem": Object {
+            "button": Object {
+              "transitionDuration": "0s",
+            },
+          },
+          "MuiMenuItem": Object {
+            "root": Object {
+              "& span[class^=\\"MuiTypography\\"], & span[class*=\\" MuiTypography\\"]": Object {
+                "fontSize": "inherit",
+              },
+              "&$selected": Object {
+                "backgroundColor": "#D9ECEB",
+              },
+              "&:hover": Object {
+                "backgroundColor": "#FAFAFA",
+              },
+              "fontSize": "15px",
+              "paddingBottom": 8,
+              "paddingTop": 8,
+            },
+          },
+          "MuiSelect": Object {
+            "select": Object {
+              "&:focus": Object {
+                "background": "$labelcolor",
+              },
+            },
+          },
+        },
+        "palette": Object {
+          "action": Object {
+            "active": "#494949",
+            "disabled": "#E0E0E0",
+            "disabledBackground": "rgba(0, 0, 0, 0.12)",
+            "hover": "rgba(0, 0, 0, 0.08)",
+            "hoverOpacity": 0.08,
+            "selected": "rgba(0, 0, 0, 0.14)",
+          },
+          "augmentColor": [Function],
+          "background": Object {
+            "default": "#F4F6F8",
+            "grey": "#FCFCFC",
+            "hover": "#E0E0E0",
+            "paper": "#FFFFFF",
+          },
+          "common": Object {
+            "black": "#000000",
+            "white": "#FFFFFF",
+          },
+          "contrastThreshold": 3,
+          "divider": "#E0E0E0",
+          "error": Object {
+            "contrastText": "#fff",
+            "dark": "rgb(160, 39, 37)",
+            "light": "rgb(234, 96, 93)",
+            "main": "#E53935",
+          },
+          "getContrastText": [Function],
+          "grey": Object {
+            "100": "#f5f5f5",
+            "200": "#eeeeee",
+            "300": "#e0e0e0",
+            "400": "#bdbdbd",
+            "50": "#fafafa",
+            "500": "#9e9e9e",
+            "600": "#757575",
+            "700": "#616161",
+            "800": "#424242",
+            "900": "#212121",
+            "A100": "#d5d5d5",
+            "A200": "#aaaaaa",
+            "A400": "#303030",
+            "A700": "#616161",
+          },
+          "primary": Object {
+            "contrastText": "#fff",
+            "dark": "#004BA0",
+            "light": "#63A4FF",
+            "lightest": "#EAF4FF",
+            "main": "#1976d2",
+          },
+          "secondary": Object {
+            "contrastText": "#fff",
+            "dark": "#004C40",
+            "light": "#48A999",
+            "lightest": "#B2DFDB",
+            "main": "#00796B",
+          },
+          "shadow": "#9E9E9E",
+          "status": Object {
+            "info": "#EAF4FF",
+            "negative": "#E53935",
+            "positive": "#3D9305",
+            "warning": "#F19C02",
+          },
+          "text": Object {
+            "disabled": "#9E9E9E",
+            "hint": "#9E9E9E",
+            "primary": "#000000",
+            "secondary": "#494949",
+          },
+          "tonalOffset": 0.2,
+          "type": "light",
+        },
+        "props": Object {},
+        "shadows": Array [
+          "none",
+          "0px 1px 3px 0px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 2px 1px -1px rgba(0,0,0,0.12)",
+          "0px 1px 5px 0px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 3px 1px -2px rgba(0,0,0,0.12)",
+          "0px 1px 8px 0px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 3px 3px -2px rgba(0,0,0,0.12)",
+          "0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12)",
+          "0px 3px 5px -1px rgba(0,0,0,0.2),0px 5px 8px 0px rgba(0,0,0,0.14),0px 1px 14px 0px rgba(0,0,0,0.12)",
+          "0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12)",
+          "0px 4px 5px -2px rgba(0,0,0,0.2),0px 7px 10px 1px rgba(0,0,0,0.14),0px 2px 16px 1px rgba(0,0,0,0.12)",
+          "0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12)",
+          "0px 5px 6px -3px rgba(0,0,0,0.2),0px 9px 12px 1px rgba(0,0,0,0.14),0px 3px 16px 2px rgba(0,0,0,0.12)",
+          "0px 6px 6px -3px rgba(0,0,0,0.2),0px 10px 14px 1px rgba(0,0,0,0.14),0px 4px 18px 3px rgba(0,0,0,0.12)",
+          "0px 6px 7px -4px rgba(0,0,0,0.2),0px 11px 15px 1px rgba(0,0,0,0.14),0px 4px 20px 3px rgba(0,0,0,0.12)",
+          "0px 7px 8px -4px rgba(0,0,0,0.2),0px 12px 17px 2px rgba(0,0,0,0.14),0px 5px 22px 4px rgba(0,0,0,0.12)",
+          "0px 7px 8px -4px rgba(0,0,0,0.2),0px 13px 19px 2px rgba(0,0,0,0.14),0px 5px 24px 4px rgba(0,0,0,0.12)",
+          "0px 7px 9px -4px rgba(0,0,0,0.2),0px 14px 21px 2px rgba(0,0,0,0.14),0px 5px 26px 4px rgba(0,0,0,0.12)",
+          "0px 8px 9px -5px rgba(0,0,0,0.2),0px 15px 22px 2px rgba(0,0,0,0.14),0px 6px 28px 5px rgba(0,0,0,0.12)",
+          "0px 8px 10px -5px rgba(0,0,0,0.2),0px 16px 24px 2px rgba(0,0,0,0.14),0px 6px 30px 5px rgba(0,0,0,0.12)",
+          "0px 8px 11px -5px rgba(0,0,0,0.2),0px 17px 26px 2px rgba(0,0,0,0.14),0px 6px 32px 5px rgba(0,0,0,0.12)",
+          "0px 9px 11px -5px rgba(0,0,0,0.2),0px 18px 28px 2px rgba(0,0,0,0.14),0px 7px 34px 6px rgba(0,0,0,0.12)",
+          "0px 9px 12px -6px rgba(0,0,0,0.2),0px 19px 29px 2px rgba(0,0,0,0.14),0px 7px 36px 6px rgba(0,0,0,0.12)",
+          "0px 10px 13px -6px rgba(0,0,0,0.2),0px 20px 31px 3px rgba(0,0,0,0.14),0px 8px 38px 7px rgba(0,0,0,0.12)",
+          "0px 10px 13px -6px rgba(0,0,0,0.2),0px 21px 33px 3px rgba(0,0,0,0.14),0px 8px 40px 7px rgba(0,0,0,0.12)",
+          "0px 10px 14px -6px rgba(0,0,0,0.2),0px 22px 35px 3px rgba(0,0,0,0.14),0px 8px 42px 7px rgba(0,0,0,0.12)",
+          "0px 11px 14px -7px rgba(0,0,0,0.2),0px 23px 36px 3px rgba(0,0,0,0.14),0px 9px 44px 8px rgba(0,0,0,0.12)",
+          "0px 11px 15px -7px rgba(0,0,0,0.2),0px 24px 38px 3px rgba(0,0,0,0.14),0px 9px 46px 8px rgba(0,0,0,0.12)",
+        ],
+        "shape": Object {
+          "borderRadius": 4,
+        },
+        "spacing": Object {
+          "unit": 8,
+        },
+        "transitions": Object {
+          "create": [Function],
+          "duration": Object {
+            "complex": 375,
+            "enteringScreen": 225,
+            "leavingScreen": 195,
+            "short": 250,
+            "shorter": 200,
+            "shortest": 150,
+            "standard": 300,
+          },
+          "easing": Object {
+            "easeIn": "cubic-bezier(0.4, 0, 1, 1)",
+            "easeInOut": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "easeOut": "cubic-bezier(0.0, 0, 0.2, 1)",
+            "sharp": "cubic-bezier(0.4, 0, 0.6, 1)",
+          },
+          "getAutoHeightDuration": [Function],
+        },
+        "typography": Object {
+          "body1": Object {
+            "color": "#000000",
+            "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
+            "fontSize": "1rem",
+            "fontWeight": 400,
+            "lineHeight": 1.5,
+          },
+          "body1Next": Object {
+            "color": "#000000",
+            "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
+            "fontSize": "1rem",
+            "fontWeight": 400,
+            "lineHeight": 1.5,
+          },
+          "body2": Object {
+            "color": "#000000",
+            "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
+            "fontSize": "0.875rem",
+            "fontWeight": 400,
+            "lineHeight": 1.5,
+          },
+          "body2Next": Object {
+            "color": "#000000",
+            "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
+            "fontSize": "0.875rem",
+            "fontWeight": 400,
+            "lineHeight": 1.5,
+          },
+          "button": Object {
+            "color": "#000000",
+            "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
+            "fontSize": "0.875rem",
+            "fontWeight": 500,
+            "lineHeight": 1.75,
+            "textTransform": "uppercase",
+          },
+          "buttonNext": Object {
+            "color": "#000000",
+            "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
+            "fontSize": "0.875rem",
+            "fontWeight": 500,
+            "lineHeight": 1.75,
+            "textTransform": "uppercase",
+          },
+          "caption": Object {
+            "color": "#000000",
+            "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
+            "fontSize": "0.75rem",
+            "fontWeight": 400,
+            "lineHeight": 1.66,
+          },
+          "captionNext": Object {
+            "color": "#000000",
+            "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
+            "fontSize": "0.75rem",
+            "fontWeight": 400,
+            "lineHeight": 1.66,
+          },
+          "display1": Object {
+            "color": "#494949",
+            "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
+            "fontSize": "2.125rem",
+            "fontWeight": 400,
+            "lineHeight": "1.20588em",
+          },
+          "display2": Object {
+            "color": "#494949",
+            "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
+            "fontSize": "2.8125rem",
+            "fontWeight": 400,
+            "lineHeight": "1.13333em",
+            "marginLeft": "-.02em",
+          },
+          "display3": Object {
+            "color": "#494949",
+            "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
+            "fontSize": "3.5rem",
+            "fontWeight": 400,
+            "letterSpacing": "-.02em",
+            "lineHeight": "1.30357em",
+            "marginLeft": "-.02em",
+          },
+          "display4": Object {
+            "color": "#494949",
+            "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
+            "fontSize": "7rem",
+            "fontWeight": 300,
+            "letterSpacing": "-.04em",
+            "lineHeight": "1.14286em",
+            "marginLeft": "-.04em",
+          },
+          "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
+          "fontSize": 14,
+          "fontWeightLight": 300,
+          "fontWeightMedium": 500,
+          "fontWeightRegular": 400,
+          "h1": Object {
+            "color": "#000000",
+            "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
+            "fontSize": "6rem",
+            "fontWeight": 300,
+            "lineHeight": 1,
+          },
+          "h2": Object {
+            "color": "#000000",
+            "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
+            "fontSize": "3.75rem",
+            "fontWeight": 300,
+            "lineHeight": 1,
+          },
+          "h3": Object {
+            "color": "#000000",
+            "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
+            "fontSize": "3rem",
+            "fontWeight": 400,
+            "lineHeight": 1.04,
+          },
+          "h4": Object {
+            "color": "#000000",
+            "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
+            "fontSize": "2.125rem",
+            "fontWeight": 400,
+            "lineHeight": 1.17,
+          },
+          "h5": Object {
+            "color": "#000000",
+            "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
+            "fontSize": "1.5rem",
+            "fontWeight": 400,
+            "lineHeight": 1.33,
+          },
+          "h6": Object {
+            "color": "#000000",
+            "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
+            "fontSize": "1.25rem",
+            "fontWeight": 500,
+            "lineHeight": 1.6,
+          },
+          "headline": Object {
+            "color": "#000000",
+            "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
+            "fontSize": "1.5rem",
+            "fontWeight": 400,
+            "lineHeight": "1.35417em",
+          },
+          "overline": Object {
+            "color": "#000000",
+            "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
+            "fontSize": "0.75rem",
+            "fontWeight": 400,
+            "lineHeight": 2.66,
+            "textTransform": "uppercase",
+          },
+          "pxToRem": [Function],
+          "round": [Function],
+          "subheading": Object {
+            "color": "#000000",
+            "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
+            "fontSize": "1rem",
+            "fontWeight": 400,
+            "lineHeight": "1.5em",
+          },
+          "subtitle1": Object {
+            "color": "#000000",
+            "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
+            "fontSize": "1rem",
+            "fontWeight": 400,
+            "lineHeight": 1.75,
+          },
+          "subtitle2": Object {
+            "color": "#000000",
+            "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
+            "fontSize": "0.875rem",
+            "fontWeight": 500,
+            "lineHeight": 1.57,
+          },
+          "title": Object {
+            "color": "#000000",
+            "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
+            "fontSize": "1.3125rem",
+            "fontWeight": 500,
+            "lineHeight": "1.16667em",
+          },
+          "useNextVariants": true,
+        },
+        "zIndex": Object {
+          "appBar": 1100,
+          "drawer": 1200,
+          "mobileStepper": 1000,
+          "modal": 1300,
+          "snackbar": 1400,
+          "tooltip": 1500,
+        },
+      }
+    }
+  >
+    <HeaderBar
+      appName="Reports"
+    />
+    <Sidebar
+      currentSection="test"
+      onChangeSection={[Function]}
+      onSectionClick={[Function]}
+      sections={
+        Array [
+          Object {
+            "containerElement": <Link
+              replace={false}
+              to="/standard-report"
+        />,
+            "icon": "bar_chart",
+            "info": Object {
+              "actionText": "View Reports",
+              "description": "View and add reports based on the JasperReports library. These can be based on report tables and can be designed in iReport.",
+              "docs": "using_reporting_standard_reports",
+              "icon": "bar_chart",
+              "label": "Standard Report",
+            },
+            "key": "standard-report",
+            "label": "Standard Report",
+            "path": "/standard-report",
+          },
+          Object {
+            "containerElement": <Link
+              replace={false}
+              to="/data-set-report"
+        />,
+            "icon": "assignment",
+            "info": Object {
+              "actionText": "Get Report",
+              "description": "View data set reports. These reports are based on data entry screens and will produce a report with aggregated data.",
+              "docs": "using_reporting_dataset_reports",
+              "icon": "assignment",
+              "label": "Data Set Report",
+            },
+            "key": "data-set-report",
+            "label": "Data Set Report",
+            "path": "/data-set-report",
+          },
+          Object {
+            "containerElement": <Link
+              replace={false}
+              to="/reporting-rate-summary"
+        />,
+            "icon": "format_list_bulleted",
+            "info": Object {
+              "actionText": "Get Report",
+              "description": "Browse the reporting rates of data sets by organisation unit and period based on various criteria for submission.",
+              "docs": "using_reporting_reporting_rate_summary",
+              "icon": "format_list_bulleted",
+              "label": "Reporting Rate Summary",
+            },
+            "key": "reporting-rate-summary",
+            "label": "Reporting Rate Summary",
+            "path": "/reporting-rate-summary",
+          },
+          Object {
+            "containerElement": <Link
+              replace={false}
+              to="/resource"
+        />,
+            "icon": "cloud_upload",
+            "info": Object {
+              "actionText": "View Resources",
+              "description": "View and add resources. These resources can be uploaded documents or URLs on the web.",
+              "docs": "using_reporting_resources",
+              "icon": "cloud_upload",
+              "label": "Resource",
+            },
+            "key": "resource",
+            "label": "Resource",
+            "path": "/resource",
+          },
+          Object {
+            "containerElement": <Link
+              replace={false}
+              to="/organisation-unit-distribution-report"
+        />,
+            "icon": "device_hub",
+            "info": Object {
+              "actionText": "Get Report",
+              "description": "Browse the organisation unit distribution report based on the organisation unit group sets and its groups.",
+              "docs": "using_reporting_orgunit_distribution_reports",
+              "icon": "device_hub",
+              "label": "Organisation Unit Distribution Report",
+            },
+            "key": "organisation-unit-distribution-report",
+            "label": "Organisation Unit Distribution Report",
+            "path": "/organisation-unit-distribution-report",
+          },
+        ]
+      }
+      showSearchField={false}
+      styles={
+        Object {
+          "leftBar": Object {},
+        }
+      }
+    />
+    <div
+      className="content-wrapper"
+    >
+      <div
+        className="content-area"
+      >
+        <AppRouter />
+      </div>
+    </div>
+    <Connect(Loader) />
+  </MuiThemeProviderOld>
+  <style>
+    
+                        .content-wrapper {
+                            margin-left: 295px;
+                            max-width: 1400px;
+                        }
+                        .content-area {
+                            padding: 1rem 20px 20px;
+                        }
+                    
+  </style>
+  <style>
+    
+                        body {
+                            margin: 0;
+                            padding: 0;
+                        }
+    
+                        html {
+                            background: #f3f3f3;
+                            font-family: 'Roboto', sans-serif;
+                        }
+    
+                        h1 {
+                            font-size: 24px;
+                            font-weight: 300;
+                            letter-spacing: 1.2px;
+                            color: rgba(0, 0, 0, 0.87);
+                            display: flex;
+                            align-items: center;
+                            height: 48px;
+                        }
+    
+                        .left-bar {
+                            width: 295px;
+                            position: fixed;
+                            bottom: 0;
+                            top: 0;
+                            left: 0;
+                            margin-top: 3rem;
+                        }
+    
+                        .d2-ui-table {
+                            margin-bottom: 0 !important;
+                            margin-top: 0 !important;
+                        }
+    
+                        .d2-ui-table__rows__row {
+                            font-size: 14px;
+                        }
+    
+                        .data-table-pager--page-info {
+                            padding: 0 !important;
+                        }
+    
+                        .data-table-pager--buttons {
+                            margin-top: 10px !important;
+                            margin-bottom: 10px !important;
+                        }
+    
+                        .data-table-pager--buttons .material-icons {
+                            margin: 0 !important;
+                            padding: 0 !important;
+                        }
+    
+                        #report-container table {
+                            width: 100% !important;
+                        }
+                    
+  </style>
+</D2UIApp>
+`;

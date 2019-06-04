@@ -20,7 +20,7 @@ import AppRouter from './components/AppRouter'
 
 const MUI3Theme = createMui3Theme(mui3theme)
 
-class App extends PureComponent {
+export class App extends PureComponent {
     getChildContext() {
         return { d2: this.props.d2 }
     }
