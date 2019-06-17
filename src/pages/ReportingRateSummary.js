@@ -25,12 +25,12 @@ const ReportingRateSummary = props => (
                 loadReportData={props.loadReportData}
                 isActionEnabled={props.isActionEnabled}
             />
-            <TabularReport
-                content={props.reportContent}
-                isLoading={props.isReportLoading}
-                fileUrls={props.fileUrls}
-            />
         </Paper>
+        <TabularReport
+            content={props.reportContent}
+            isLoading={props.isReportLoading}
+            fileUrls={props.fileUrls}
+        />
         <Snackbar />
         {container.styles}
     </div>
