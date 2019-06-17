@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2019-04-30T08:06:59.795Z\n"
-"PO-Revision-Date: 2019-04-30T08:06:59.795Z\n"
+"POT-Creation-Date: 2019-06-17T14:51:20.002Z\n"
+"PO-Revision-Date: 2019-06-17T14:51:20.002Z\n"
 
 msgid "Reports"
 msgstr ""
@@ -636,64 +636,64 @@ msgstr ""
 msgid "day"
 msgstr ""
 
-msgid "jan"
+msgid "January"
 msgstr ""
 
-msgid "feb"
+msgid "February"
 msgstr ""
 
-msgid "mar"
+msgid "March"
 msgstr ""
 
-msgid "apr"
+msgid "April"
 msgstr ""
 
-msgid "may"
+msgid "May"
 msgstr ""
 
-msgid "jun"
+msgid "June"
 msgstr ""
 
-msgid "jul"
+msgid "July"
 msgstr ""
 
-msgid "aug"
+msgid "August"
 msgstr ""
 
-msgid "sep"
+msgid "September"
 msgstr ""
 
-msgid "oct"
+msgid "October"
 msgstr ""
 
-msgid "nov"
+msgid "November"
 msgstr ""
 
-msgid "dec"
+msgid "December"
 msgstr ""
 
-msgid "jan-feb"
+msgid "January-February"
 msgstr ""
 
-msgid "mar-apr"
+msgid "March-April"
 msgstr ""
 
-msgid "may-jun"
+msgid "May-June"
 msgstr ""
 
-msgid "jul-aug"
+msgid "July-August"
 msgstr ""
 
-msgid "sep-oct"
+msgid "September-October"
 msgstr ""
 
-msgid "nov-dec"
+msgid "November-December"
 msgstr ""
 
-msgid "nov-apr"
+msgid "November-April"
 msgstr ""
 
-msgid "may-oct"
+msgid "May-October"
 msgstr ""
 
 msgid "quarter"
@@ -714,16 +714,16 @@ msgstr ""
 msgid "six monthly"
 msgstr ""
 
-msgid "jan-jun"
+msgid "January-June"
 msgstr ""
 
-msgid "jul-dec"
+msgid "July-December"
 msgstr ""
 
-msgid "apr-sep"
+msgid "April-September"
 msgstr ""
 
-msgid "oct-mar"
+msgid "October-March"
 msgstr ""
 
 msgid "Bi-Week"
