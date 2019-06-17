@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DimensionDropdown/> Matches the snapshot 1`] = `
+<div
+  className="data-set-dimension"
+  key="test"
+>
+  <span>
+    Test
+  </span>
+  <DropDown
+    disabled={false}
+    emptyLabel="Select Option"
+    fullWidth={true}
+    hintText="Select Option"
+    includeEmpty={true}
+    menuItems={
+      Array [
+        1,
+        2,
+        3,
+      ]
+    }
+    noOptionsLabel="-"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    value="Test"
+  />
+</div>
+`;

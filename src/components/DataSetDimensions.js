@@ -10,7 +10,7 @@ import { formLabel } from '../utils/styles/shared.js'
 const createDimensionChangeHandler = (onChange, dimensionId) => element =>
     onChange(dimensionId, element)
 
-const DimensionDropdown = props => (
+export const DimensionDropdown = props => (
     <div key={props.dimension.id} className="data-set-dimension">
         <span className={formLabel.className}>
             {props.dimension.displayName}
@@ -35,7 +35,7 @@ DimensionDropdown.propTypes = {
     onChange: PropTypes.func.isRequired,
 }
 
-const DataDimensionsContent = props => {
+export const DataDimensionsContent = props => {
     if (props.isLoading) {
         return (
             <div>
