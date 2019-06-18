@@ -10,7 +10,6 @@ import {
     getFilteredStandardReports,
     getStandardReportDetails,
     getStandardReportHtmlReport,
-    getStandardReportTable,
     postStandardReport,
     updateStandardReport,
 } from '../../utils/api'
