@@ -280,10 +280,10 @@ export const deleteResource = resourceId =>
     api.delete(`${RESOURCE_ENDPOINT}/${resourceId}`)
 
 /**
- * returns {Promise}
+ * @returns {Promise}
  */
-export const getStandardReportTable = (id, queryParams = {}) =>
-    api.get(`reportTables/${id}`, queryParams)
+export const getStandardReportTables = () =>
+    api.get('reportTables', { paging: false, fields: 'id,name' })
 
 /**
  * @param {Object} report
