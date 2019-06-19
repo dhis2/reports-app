@@ -37,6 +37,7 @@ export function reportPeriod(state = defaultState, { type, payload }) {
                 selectedPeriod: payload,
             }
 
+        case ACTIONS.REPORT_PERIOD_CLEAR_ALL:
         case ACTIONS.LOCATION_CHANGE:
             return {
                 ...defaultState,

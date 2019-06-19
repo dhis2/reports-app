@@ -2,6 +2,7 @@ import debounce from 'lodash.debounce'
 import i18n from '@dhis2/d2-i18n'
 import omit from 'lodash.omit'
 import size from 'lodash.size'
+import { push } from 'connected-react-router'
 
 import { DEBOUNCE_DELAY } from '../../config/search.config'
 import {
@@ -19,7 +20,13 @@ import {
     showErrorSnackBar,
     showConfirmationSnackBar,
 } from './feedback'
-import { extractRequiredReportParams } from '../../utils/standardReport/extractRequiredReportParams'
+import {
+    extractRequiredReportParams,
+    isHtmlReport,
+    getReportParams,
+    appendOrgUnitsAndReportPeriodToQueryString,
+    validateRequiredParams,
+} from '../../utils/standardReport'
 import { fileToText } from '../../utils/fileToText'
 import {
     goToNextPage as goToNextPageOrig,
@@ -33,8 +40,9 @@ import {
     loadingReportDataError,
 } from './reportData'
 import { reportTypes } from '../../pages/standard-report/standard.report.conf'
-import { validateRequiredParams } from '../../utils/standardReport/validateRequiredParams'
 import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
+import { clearSelectedReportPeriod } from './reportPeriod'
+import { clearSelectedOrgUnit } from './organisationUnits'
 
 export const actionTypes = {
     SET_SELECTED_REPORT: 'SET_SELECTED_REPORT',
@@ -527,9 +535,11 @@ export const requiredReportParamsError = errors => ({
     payload: errors,
 })
 
-export const cancelGeneratingPdfReport = () => ({
-    type: actionTypes.CANCEL_GENERATING_PDF_REPORT,
-})
+export const cancelGeneratingPdfReport = () => dispatch => {
+    dispatch(clearSelectedReportPeriod())
+    dispatch(clearSelectedOrgUnit())
+    dispatch({ type: actionTypes.CANCEL_GENERATING_PDF_REPORT })
+}
 
 export const submitRequiredReportParams = () => (dispatch, getState) => {
     const state = getState()
@@ -541,7 +551,7 @@ export const submitRequiredReportParams = () => (dispatch, getState) => {
         dispatch(requiredReportParamsError(errors))
     } else {
         if (selectedReport.type === reportTypes.HTML) {
-            dispatch(generateHtmlReport())
+            dispatch(navigateToHtmlReportView())
         } else {
             dispatch(generatePdfReport())
         }
@@ -555,16 +565,12 @@ export const submitRequiredReportParams = () => (dispatch, getState) => {
 export const showReportParams = report => dispatch => {
     dispatch(setSelectedReport(report))
 
-    const isHtmlReport = report.type === reportTypes.HTML
-    const reportParams = isHtmlReport
-        ? report.reportParams
-        : report.reportTable.reportParams
-
+    const reportParams = getReportParams(report)
     const requiredParams = extractRequiredReportParams(reportParams)
 
     if (!size(requiredParams)) {
-        if (isHtmlReport) {
-            dispatch(generateHtmlReport())
+        if (isHtmlReport(report)) {
+            dispatch(navigateToHtmlReportView())
         } else {
             dispatch(generatePdfReport())
         }
@@ -573,22 +579,28 @@ export const showReportParams = report => dispatch => {
     }
 }
 
+export const navigateToHtmlReportView = () => (dispatch, getState) => {
+    const state = getState()
+    const reportId = state.standardReport.selectedReport.id
+    const reportQueryString = appendOrgUnitsAndReportPeriodToQueryString(state)
+    const url = `standard-report/${reportId}${reportQueryString}`
+    console.log(url)
+    dispatch(push(url))
+}
+
 export const generatePdfReport = () => (dispatch, getState) => {
-    let reportQueryString = `t=${new Date().getTime()}`
     const api = getApi()
-    const { standardReport, organisationUnits, reportPeriod } = getState()
-    const { reportParams } = standardReport
-    const { id } = standardReport.selectedReport
+    const state = getState()
+
+    const { id } = state.standardReport.selectedReport
     const reportPath = `reports/${id}/data.pdf`
+    const reportQueryString = appendOrgUnitsAndReportPeriodToQueryString(
+        state,
+        `t=${new Date().getTime()}`
+    )
 
-    if (reportParams.organisationUnit) {
-        reportQueryString += `&ou=${organisationUnits.selected.id}`
-    }
-
-    if (reportParams.reportPeriod) {
-        reportQueryString += `&p=${reportPeriod.selectedPeriod}`
-    }
-
-    window.open(`${api.baseUrl}/${reportPath}?${reportQueryString}`)
+    window.open(`${api.baseUrl}/${reportPath}${reportQueryString}`)
     dispatch({ type: actionTypes.GENERATE_PDF_REPORT })
+    dispatch(clearSelectedReportPeriod())
+    dispatch(clearSelectedOrgUnit())
 }

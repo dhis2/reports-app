@@ -9,6 +9,7 @@ export const actionTypes = {
     ORGANISATION_UNITS_RECEIVED: 'ORGANISATION_UNITS_RECEIVED',
     ORGANISATION_UNITS_ERRORED: 'ORGANISATION_UNITS_ERRORED',
     ORGANISATION_UNIT_SELECTED: 'ORGANISATION_UNIT_SELECTED',
+    ORGANISATION_UNIT_CLEARED: 'ORGANISATION_UNIT_CLEARED',
     ORGANISATION_UNITS_OPTION_SELECTED: 'ORGANISATION_UNITS_OPTION_SELECTED',
     TOGGLE_SHOW_OPTIONS: 'TOGGLE_SHOW_OPTIONS',
 }
@@ -87,3 +88,7 @@ export const toggleShowOptions = () => (dispatch, getState) => {
         dispatch(loadGroupSetOptions())
     }
 }
+
+export const clearSelectedOrgUnit = () => ({
+    type: actionTypes.ORGANISATION_UNIT_CLEARED,
+})
