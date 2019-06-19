@@ -17,8 +17,21 @@ import { loadOrganisationUnits } from './redux/actions/organisationUnits'
 import { loadPeriodTypes } from './redux/actions/reportPeriod'
 import { sectionOrder, sections } from './config/sections.config'
 import AppRouter from './components/AppRouter'
+import { getCurrentSection, getShowSidebar } from './redux/selectors/sidebar'
 
 const MUI3Theme = createMui3Theme(mui3theme)
+
+// is not "marked" as required but it's used by Sidebar
+const nonOnChangeSection = () => null
+const sidebarSections = sectionOrder.map(sectionKey => {
+    const section = sections[sectionKey]
+    return {
+        ...section,
+        icon: section.info.icon,
+        label: section.info.label,
+        containerElement: <Link to={section.path} />,
+    }
+})
 
 class App extends PureComponent {
     getChildContext() {
@@ -32,27 +45,17 @@ class App extends PureComponent {
     }
 
     render() {
-        // is not "marked" as required but it's used by Sidebar
-        const nonOnChangeSection = () => null
-        const sidebarSections = sectionOrder.map(sectionKey => {
-            const section = sections[sectionKey]
-            return {
-                ...section,
-                icon: section.info.icon,
-                label: section.info.label,
-                containerElement: <Link to={section.path} />,
-            }
-        })
-
         return (
             <D2UIApp>
                 <Mui3ThemeProvider theme={MUI3Theme}>
                     <HeaderBar appName={i18n.t('Reports')} />
-                    <Sidebar
-                        sections={sidebarSections}
-                        onChangeSection={nonOnChangeSection}
-                        currentSection={this.props.currentSection}
-                    />
+                    {this.props.showSidebar && (
+                        <Sidebar
+                            sections={sidebarSections}
+                            onChangeSection={nonOnChangeSection}
+                            currentSection={this.props.currentSection}
+                        />
+                    )}
                     <div className="content-wrapper">
                         <div className="content-area">
                             <AppRouter />
@@ -62,7 +65,7 @@ class App extends PureComponent {
                 </Mui3ThemeProvider>
                 <style jsx>{`
                     .content-wrapper {
-                        margin-left: 295px;
+                        margin-left: ${this.props.showSidebar ? '295px' : '0'};
                         max-width: 1400px;
                     }
                     .content-area {
@@ -133,6 +136,7 @@ class App extends PureComponent {
 
 App.propTypes = {
     currentSection: PropTypes.string.isRequired,
+    showSidebar: PropTypes.bool.isRequired,
     d2: PropTypes.object.isRequired,
     loadPeriodTypes: PropTypes.func.isRequired,
     loadDataSetOptions: PropTypes.func.isRequired,
@@ -144,7 +148,8 @@ App.childContextTypes = {
 }
 
 const mapStateToProps = state => ({
-    currentSection: state.router.location.pathname.substring(1),
+    currentSection: getCurrentSection(state),
+    showSidebar: getShowSidebar(state),
 })
 
 export default connect(
