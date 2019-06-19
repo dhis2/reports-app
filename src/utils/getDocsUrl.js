@@ -1,7 +1,7 @@
 import { sections } from '../config/sections.config'
 import { getSystemVersion } from './api'
 
-export const DOCS_LINK = 'https://ci.dhis2.org/docs'
+export const DOCS_LINK = 'https://docs.dhis2.org'
 export const DEFAULT_DOC_LANGUAGE = 'en'
 
 /**
