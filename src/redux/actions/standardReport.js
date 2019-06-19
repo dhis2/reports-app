@@ -1,48 +1,47 @@
-import debounce from 'lodash.debounce'
 import i18n from '@dhis2/d2-i18n'
+import { push } from 'connected-react-router'
+import debounce from 'lodash.debounce'
 import omit from 'lodash.omit'
 import size from 'lodash.size'
-import { push } from 'connected-react-router'
-
 import { DEBOUNCE_DELAY } from '../../config/search.config'
+import { reportTypes } from '../../pages/standard-report/standard.report.conf'
 import {
-    getApi,
     deleteStandardReport as deleteStandardReportRequest,
+    getApi,
     getFilteredStandardReports,
     getStandardReportDetails,
     getStandardReportHtmlReport,
     postStandardReport,
     updateStandardReport,
 } from '../../utils/api'
+import { fileToText } from '../../utils/fileToText'
+import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
 import {
-    clearFeedback,
-    showSuccessSnackBar,
-    showErrorSnackBar,
-    showConfirmationSnackBar,
-} from './feedback'
-import {
-    extractRequiredReportParams,
-    isHtmlReport,
-    getReportParams,
     appendOrgUnitsAndReportPeriodToQueryString,
+    extractRequiredReportParams,
+    getReportParams,
+    isHtmlReport,
     validateRequiredParams,
 } from '../../utils/standardReport'
-import { fileToText } from '../../utils/fileToText'
+import {
+    clearFeedback,
+    showConfirmationSnackBar,
+    showErrorSnackBar,
+    showSuccessSnackBar,
+} from './feedback'
+import { clearSelectedOrgUnit } from './organisationUnits'
 import {
     goToNextPage as goToNextPageOrig,
     goToPrevPage as goToPrevPageOrig,
     setPagination,
 } from './pagination'
-import { loadStandardReportTables } from './standardReportTables'
 import {
+    loadingReportDataError,
     loadingReportDataStart,
     loadingReportDataSuccess,
-    loadingReportDataError,
 } from './reportData'
-import { reportTypes } from '../../pages/standard-report/standard.report.conf'
-import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
 import { clearSelectedReportPeriod } from './reportPeriod'
-import { clearSelectedOrgUnit } from './organisationUnits'
+import { loadStandardReportTables } from './standardReportTables'
 
 export const actionTypes = {
     SET_SELECTED_REPORT: 'SET_SELECTED_REPORT',
@@ -505,19 +504,20 @@ export const generatingHtmlReportErrorWithFeedback = error => dispatch => {
  * @param {string} id
  * @returns {Function}
  */
-export const generateHtmlReport = () => (dispatch, getState) => {
+export const generateHtmlReport = ({
+    id,
+    orgUnitId,
+    reportPeriod,
+}) => dispatch => {
     dispatch(loadingReportDataStart())
-    const { standardReport, organisationUnits, reportPeriod } = getState()
-    const { reportParams } = standardReport
-    const { id } = standardReport.selectedReport
 
     const reportRequestBody = {}
-    if (reportParams.organisationUnit) {
-        reportRequestBody.ou = organisationUnits.selected.id
+    if (orgUnitId) {
+        reportRequestBody.ou = orgUnitId
     }
 
-    if (reportParams.reportPeriod) {
-        reportRequestBody.pe = reportPeriod.selectedPeriod
+    if (reportPeriod) {
+        reportRequestBody.pe = reportPeriod
     }
 
     return getStandardReportHtmlReport(id, reportRequestBody)
@@ -583,9 +583,8 @@ export const navigateToHtmlReportView = () => (dispatch, getState) => {
     const state = getState()
     const reportId = state.standardReport.selectedReport.id
     const reportQueryString = appendOrgUnitsAndReportPeriodToQueryString(state)
-    const url = `standard-report/${reportId}${reportQueryString}`
-    console.log(url)
-    dispatch(push(url))
+
+    dispatch(push(`standard-report/${reportId}${reportQueryString}`))
 }
 
 export const generatePdfReport = () => (dispatch, getState) => {
@@ -599,8 +598,9 @@ export const generatePdfReport = () => (dispatch, getState) => {
         `t=${new Date().getTime()}`
     )
 
-    window.open(`${api.baseUrl}/${reportPath}${reportQueryString}`)
     dispatch({ type: actionTypes.GENERATE_PDF_REPORT })
     dispatch(clearSelectedReportPeriod())
     dispatch(clearSelectedOrgUnit())
+
+    window.open(`${api.baseUrl}/${reportPath}${reportQueryString}`)
 }
