@@ -14,7 +14,8 @@ import { OrganisationUnitDistributionReport } from '../pages/OrganisationUnitDis
 import { ReportingRateSummary } from '../pages/ReportingRateSummary'
 import { Resource } from '../pages/Resource'
 import { StandardReport } from '../pages/StandardReport'
-import { sections } from '../conf../../config/sections.config'
+import StyledHtmlReport from '../pages/standard-report/StyledHtmlReport'
+import { sections } from '../config/sections.config'
 import Home from '../pages/home/Home'
 import NoMatch from './NoMatch'
 
@@ -27,6 +28,12 @@ const AppRouter = () => (
                 key={STANDARD_REPORT_SECTION_KEY}
                 path={sections[STANDARD_REPORT_SECTION_KEY].path}
                 component={StandardReport}
+            />
+            <Route
+                exact
+                key={`${STANDARD_REPORT_SECTION_KEY}-viewHTMLReport`}
+                path={`${sections[STANDARD_REPORT_SECTION_KEY].path}/:id`}
+                component={StyledHtmlReport}
             />
             <Route
                 exact
