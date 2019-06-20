@@ -584,7 +584,7 @@ export const navigateToHtmlReportView = () => (dispatch, getState) => {
     const reportId = state.standardReport.selectedReport.id
     const reportQueryString = appendOrgUnitsAndReportPeriodToQueryString(state)
 
-    dispatch(push(`standard-report/${reportId}${reportQueryString}`))
+    dispatch(push(`standard-report/view/${reportId}${reportQueryString}`))
 }
 
 export const generatePdfReport = () => (dispatch, getState) => {

@@ -18,6 +18,9 @@ import StyledHtmlReport from '../pages/standard-report/StyledHtmlReport'
 import { sections } from '../config/sections.config'
 import Home from '../pages/home/Home'
 import NoMatch from './NoMatch'
+import { ConnectedAddEditStdReport } from '../pages/standard-report/AddEditStdReport'
+
+const standardReportPath = sections[STANDARD_REPORT_SECTION_KEY].path
 
 const AppRouter = () => (
     <main>
@@ -26,14 +29,21 @@ const AppRouter = () => (
             <Route
                 exact
                 key={STANDARD_REPORT_SECTION_KEY}
-                path={sections[STANDARD_REPORT_SECTION_KEY].path}
+                path={standardReportPath}
                 component={StandardReport}
             />
             <Route
                 exact
                 key={`${STANDARD_REPORT_SECTION_KEY}-viewHTMLReport`}
-                path={`${sections[STANDARD_REPORT_SECTION_KEY].path}/:id`}
+                path={`${standardReportPath}/view/:id`}
                 component={StyledHtmlReport}
+            />
+            <Route
+                exact
+                key={`${STANDARD_REPORT_SECTION_KEY}-addEdit`}
+                // /edit/id or /new
+                path={`${standardReportPath}/:mode/:id?`}
+                component={ConnectedAddEditStdReport}
             />
             <Route
                 exact

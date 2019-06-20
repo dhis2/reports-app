@@ -16,7 +16,6 @@ import { Snackbar } from '../components/feedback/Snackbar'
 import { showContextAction } from './standard-report/helper'
 import SearchablePagedList from '../components/SearchablePagedList'
 import StandardReportActions from './standard-report/StandardReportActions'
-import StyledHtmlReport from './standard-report/StyledHtmlReport'
 import connectStandardReport from './standard-report/connectStandardReport'
 
 const createContextMenuOptions = props => ({
@@ -77,12 +76,6 @@ class StandardReport extends React.Component {
                         addStandardReport={this.props.addStandardReport}
                     />
                 </div>
-                {this.props.reportData && (
-                    <StyledHtmlReport
-                        reportData={this.props.reportData}
-                        onReportCloseClick={this.props.closeReport}
-                    />
-                )}
                 <ConnectedReportParams />
                 <Snackbar
                     action={i18n.t('CONFIRM')}
