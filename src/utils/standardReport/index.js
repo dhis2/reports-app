@@ -19,7 +19,7 @@ export const extractRequiredReportParams = reportParams =>
 export const isHtmlReport = report => report.type === reportTypes.HTML
 
 export const getReportParams = report =>
-    isHtmlReport(report) ? report.reportParams : report.reportTable.reportParams
+    report.reportTable ? report.reportTable.reportParams : report.reportParams
 
 export const appendOrgUnitsAndReportPeriodToQueryString = (
     state,

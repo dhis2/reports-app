@@ -17,7 +17,7 @@ import {
     showReportData,
     showReportParams,
 } from '../../redux/actions/standardReport'
-import { unsetReportData } from '../../redux/actions/reportData'
+// import { unsetReportData } from '../../redux/actions/reportData'
 
 const mapStateToProps = state => ({
     ...state.standardReport,
@@ -28,24 +28,23 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    loadStandardReports: fetchReportTables =>
-        dispatch(loadStandardReports(fetchReportTables)),
     addReportFormShow: report => dispatch(addReportFormShow(report)),
+    addStandardReport: report => dispatch(sendStandardReport(report, false)),
+    closeContextMenu: refreshList => dispatch(closeContextMenu(refreshList)),
     createReport: report => dispatch(showReportParams(report)),
-    editReport: report => dispatch(editReportFormShow(report)),
     deleteStandardReport: report => dispatch(deleteStandardReport(report)),
-    sharingSettings: report => dispatch(sharingSettingsShow(report)),
+    editReport: report => dispatch(editReportFormShow(report)),
     goToNextPage: () => dispatch(goToNextPage()),
     goToPrevPage: () => dispatch(goToPrevPage()),
+    hideReportData: reportData => dispatch(hideReportData(reportData)),
+    loadStandardReports: fetchReportTables =>
+        dispatch(loadStandardReports(fetchReportTables)),
     requestDeleteStandardReport: report =>
         dispatch(requestDeleteStandardReport(report)),
     setSearch: event => dispatch(setSearch(event.target.value)),
+    sharingSettings: report => dispatch(sharingSettingsShow(report)),
     showReportData: reportData => dispatch(showReportData(reportData)),
-    hideReportData: reportData => dispatch(hideReportData(reportData)),
-    closeContextMenu: refreshList => dispatch(closeContextMenu(refreshList)),
     updateStandardReport: report => dispatch(sendStandardReport(report, true)),
-    addStandardReport: report => dispatch(sendStandardReport(report, false)),
-    closeReport: () => dispatch(unsetReportData()),
 })
 
 const connectStandardReport = connect(

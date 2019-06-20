@@ -4,6 +4,7 @@ import debounce from 'lodash.debounce'
 import omit from 'lodash.omit'
 import size from 'lodash.size'
 import { DEBOUNCE_DELAY } from '../../config/search.config'
+import { STANDARD_REPORT_SECTION_KEY } from '../../config/sections.config'
 import { reportTypes } from '../../pages/standard-report/standard.report.conf'
 import {
     deleteStandardReport as deleteStandardReportRequest,
@@ -159,58 +160,17 @@ export const goToPrevPage = () => dispatch => {
  * @param {Object} report A d2 report model
  * @return {Object}
  */
-export const addReportFormShow = report => ({
-    type: actionTypes.ADD_REPORT_FORM_SHOW,
-    payload: report,
-})
-
-/**
- * @param {Object} report A d2 report model
- * @return {Object}
- */
-export const addReportFormHide = report => ({
-    type: actionTypes.ADD_REPORT_FORM_HIDE,
-    payload: report,
-})
-
-/**
- * @param {Object} report A d2 report model
- * @return {Object}
- */
-export const editReportFormShow = report => dispatch => {
-    dispatch({
-        type: actionTypes.EDIT_REPORT_FORM_SHOW,
-        payload: report,
-    })
-    dispatch(loadStandardReportDetails(report.id))
+export const addReportFormShow = () => dispatch => {
+    dispatch(push(`${STANDARD_REPORT_SECTION_KEY}/new`))
 }
 
 /**
  * @param {Object} report A d2 report model
  * @return {Object}
  */
-export const editReportFormHide = report => ({
-    type: actionTypes.EDIT_REPORT_FORM_HIDE,
-    payload: report,
-})
-
-/**
- * @param {Object} report A d2 report model
- * @return {Object}
- */
-export const createReportShow = report => ({
-    type: actionTypes.CREATE_REPORT_SHOW,
-    payload: report,
-})
-
-/**
- * @param {Object} report A d2 report model
- * @return {Object}
- */
-export const createReportHide = report => ({
-    type: actionTypes.CREATE_REPORT_HIDE,
-    payload: report,
-})
+export const editReportFormShow = report => dispatch => {
+    dispatch(push(`${STANDARD_REPORT_SECTION_KEY}/edit/${report.id}`))
+}
 
 /**
  * @param {Object} report A d2 report model
@@ -218,15 +178,6 @@ export const createReportHide = report => ({
  */
 export const sharingSettingsShow = report => ({
     type: actionTypes.SHARING_SETTINGS_SHOW,
-    payload: report,
-})
-
-/**
- * @param {Object} report A d2 report model
- * @return {Object}
- */
-export const sharingSettingsHide = report => ({
-    type: actionTypes.SHARIING_SETTINGS_HIDE,
     payload: report,
 })
 
@@ -584,7 +535,11 @@ export const navigateToHtmlReportView = () => (dispatch, getState) => {
     const reportId = state.standardReport.selectedReport.id
     const reportQueryString = appendOrgUnitsAndReportPeriodToQueryString(state)
 
-    dispatch(push(`standard-report/view/${reportId}${reportQueryString}`))
+    dispatch(
+        push(
+            `${STANDARD_REPORT_SECTION_KEY}/view/${reportId}${reportQueryString}`
+        )
+    )
 }
 
 export const generatePdfReport = () => (dispatch, getState) => {

@@ -70,10 +70,10 @@ class StandardReport extends React.Component {
                         selectedAction={this.props.selectedAction}
                         selectedReport={this.props.selectedReport}
                         handleClose={this.props.closeContextMenu}
-                        handleError={console.error}
+                        // handleError={console.error}
                         handleDisplayReportData={this.props.showReportData}
-                        updateStandardReport={this.props.updateStandardReport}
-                        addStandardReport={this.props.addStandardReport}
+                        // updateStandardReport={this.props.updateStandardReport}
+                        // addStandardReport={this.props.addStandardReport}
                     />
                 </div>
                 <ConnectedReportParams />
@@ -87,30 +87,28 @@ class StandardReport extends React.Component {
 }
 
 StandardReport.propTypes = {
-    loading: PropTypes.bool.isRequired,
-    pager: PropTypes.object.isRequired,
-    reports: PropTypes.array.isRequired,
-    selectedReport: PropTypes.object.isRequired,
-    selectedAction: PropTypes.string.isRequired,
-    search: PropTypes.string.isRequired,
-    open: PropTypes.bool.isRequired,
-    reportData: PropTypes.string.isRequired,
-    loadStandardReports: PropTypes.func.isRequired,
+    addReportFormShow: PropTypes.func.isRequired,
+    addStandardReport: PropTypes.func.isRequired,
+    closeContextMenu: PropTypes.func.isRequired,
     createReport: PropTypes.func.isRequired,
-    editReport: PropTypes.func.isRequired,
     deleteStandardReport: PropTypes.func.isRequired,
-    sharingSettings: PropTypes.func.isRequired,
-    requestDeleteStandardReport: PropTypes.func.isRequired,
+    editReport: PropTypes.func.isRequired,
     goToNextPage: PropTypes.func.isRequired,
     goToPrevPage: PropTypes.func.isRequired,
-    setSearch: PropTypes.func.isRequired,
-    showReportData: PropTypes.func.isRequired,
     hideReportData: PropTypes.func.isRequired,
-    closeContextMenu: PropTypes.func.isRequired,
-    addReportFormShow: PropTypes.func.isRequired,
+    loading: PropTypes.bool.isRequired,
+    loadStandardReports: PropTypes.func.isRequired,
+    open: PropTypes.bool.isRequired,
+    reportData: PropTypes.string.isRequired,
+    reports: PropTypes.array.isRequired,
+    requestDeleteStandardReport: PropTypes.func.isRequired,
+    search: PropTypes.string.isRequired,
+    selectedAction: PropTypes.string.isRequired,
+    selectedReport: PropTypes.object.isRequired,
+    setSearch: PropTypes.func.isRequired,
+    sharingSettings: PropTypes.func.isRequired,
+    showReportData: PropTypes.func.isRequired,
     updateStandardReport: PropTypes.func.isRequired,
-    addStandardReport: PropTypes.func.isRequired,
-    closeReport: PropTypes.func.isRequired,
 }
 
 const ConnectedStandardReport = connectStandardReport(StandardReport)
