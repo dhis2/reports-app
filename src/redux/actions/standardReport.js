@@ -1,5 +1,5 @@
 import i18n from '@dhis2/d2-i18n'
-import { push, replace, go } from 'connected-react-router'
+import { push } from 'connected-react-router'
 import debounce from 'lodash.debounce'
 import omit from 'lodash.omit'
 import size from 'lodash.size'
@@ -421,7 +421,7 @@ export const sendStandardReport = (report, isEdit) => dispatch => {
             dispatch(loadStandardReports())
             console.log('navigate to ', STANDARD_REPORTS_ENDPOINT)
             // dispatch(push(`/${STANDARD_REPORT_SECTION_KEY}`))
-            dispatch(replace('/standard-report'))
+            dispatch(push('/standard-report'))
         })
         .catch(error => {
             const displayMessage = humanReadableErrorMessage(
