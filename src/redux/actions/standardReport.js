@@ -1,5 +1,5 @@
 import i18n from '@dhis2/d2-i18n'
-import { push } from 'connected-react-router'
+import { push, replace, go } from 'connected-react-router'
 import debounce from 'lodash.debounce'
 import omit from 'lodash.omit'
 import size from 'lodash.size'
@@ -43,6 +43,7 @@ import {
 } from './reportData'
 import { clearSelectedReportPeriod } from './reportPeriod'
 import { loadStandardReportTables } from './standardReportTables'
+import { STANDARD_REPORTS_ENDPOINT } from '../../utils/api/constants'
 
 export const actionTypes = {
     SET_SELECTED_REPORT: 'SET_SELECTED_REPORT',
@@ -418,6 +419,9 @@ export const sendStandardReport = (report, isEdit) => dispatch => {
             dispatch(showSuccessSnackBar(successMessage))
             dispatch(loadingSendStandardReportSuccess())
             dispatch(loadStandardReports())
+            console.log('navigate to ', STANDARD_REPORTS_ENDPOINT)
+            // dispatch(push(`/${STANDARD_REPORT_SECTION_KEY}`))
+            dispatch(replace('/standard-report'))
         })
         .catch(error => {
             const displayMessage = humanReadableErrorMessage(
@@ -559,3 +563,5 @@ export const generatePdfReport = () => (dispatch, getState) => {
 
     window.open(`${api.baseUrl}/${reportPath}${reportQueryString}`)
 }
+
+export const navigateToStandardReportList = () => dispatch => {}

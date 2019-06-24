@@ -1,15 +1,14 @@
 import { Form, Field } from 'react-final-form'
 import { connect } from 'react-redux'
-import DialogActions from '@material-ui/core/DialogActions'
-import DialogContent from '@material-ui/core/DialogContent'
+import Card from '@material-ui/core/Card'
 import FormHelperText from '@material-ui/core/FormHelperText'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import i18n from '@dhis2/d2-i18n'
+import { Link } from 'react-router-dom'
 
 import { Button } from '../../components/form/Button'
 import {
-    CONTEXT_MENU_ACTION,
     cacheStrategies,
     reportTypeOptions,
     reportTypes,
@@ -31,46 +30,62 @@ import {
     validateNewReport,
     validateReportUpdate,
 } from './add-edit-report/validate'
-import { loadStandardReportDetails } from '../../redux/actions/standardReport'
+import {
+    loadStandardReportDetails,
+    sendStandardReport,
+} from '../../redux/actions/standardReport'
 import { loadStandardReportTables } from '../../redux/actions/standardReportTables'
 import isEmpty from 'lodash.isempty'
 
 export class AddEditStandardReport extends Component {
     componentDidMount() {
-        if (this.isEditForm()) {
-            this.props.loadStandardReportDetails(this.props.match.params.id)
+        const {
+            edit,
+            loadStandardReportDetails,
+            match,
+            reportTables,
+            loadStandardReportTables,
+        } = this.props
+
+        if (edit) {
+            loadStandardReportDetails(match.params.id)
         }
-        if (this.props.reportTables.length === 0) {
-            this.props.loadStandardReportTables()
+        if (reportTables.length === 0) {
+            loadStandardReportTables()
         }
     }
 
-    isEditForm() {
-        return this.props.match.params.mode === 'edit'
+    onSubmit = values => {
+        const { sendStandardReport, edit } = this.props
+        sendStandardReport(values, edit)
+    }
+
+    backToList = () => {
+        // push('/standard-report')
     }
 
     render() {
-        console.log(this.props.report)
         if (
             isEmpty(this.props.report) ||
             this.props.reportTables.length === 0
         ) {
             return <h1>Loading</h1>
         }
-        console.log('HENDRIK report', this.props.report)
+
         return (
-            <Form
-                onSubmit={this.props.onSubmit}
-                validate={
-                    this.isEditForm() ? validateReportUpdate : validateNewReport
-                }
-                initialValues={this.props.report}
-            >
-                {({ handleSubmit, values }) => {
-                    console.log('HENDRIK: values', values)
-                    return (
-                        <form onSubmit={handleSubmit}>
-                            <DialogContent>
+            <Card>
+                <Form
+                    onSubmit={this.onSubmit}
+                    validate={
+                        this.props.edit
+                            ? validateReportUpdate
+                            : validateNewReport
+                    }
+                    initialValues={this.props.report}
+                >
+                    {({ handleSubmit, values }) => {
+                        return (
+                            <form onSubmit={handleSubmit}>
                                 <FormSection>
                                     <FormSectionTitle>
                                         {i18n.t('Details')}
@@ -193,8 +208,6 @@ export class AddEditStandardReport extends Component {
                                         />
                                     </FormRow>
                                 </FormSection>
-                            </DialogContent>
-                            <DialogActions>
                                 <Button
                                     label={i18n.t('Submit')}
                                     isPrimary={true}
@@ -203,13 +216,14 @@ export class AddEditStandardReport extends Component {
 
                                 <Button
                                     label={i18n.t('Cancel')}
-                                    onClick={this.props.onRequestClose}
+                                    onClick={this.backToList}
                                 />
-                            </DialogActions>
-                        </form>
-                    )
-                }}
-            </Form>
+                                <Link to="/standard-report">List</Link>
+                            </form>
+                        )
+                    }}
+                </Form>
+            </Card>
         )
     }
 }
@@ -225,14 +239,17 @@ AddEditStandardReport.propTypes = {
     loadStandardReportTables: PropTypes.func.isRequired,
     report: PropTypes.object.isRequired,
     reportTables: formOptions.isRequired,
-    onSubmit: PropTypes.func.isRequired,
+    edit: PropTypes.bool.isRequired,
+    sendStandardReport: PropTypes.func.isRequired,
     onRequestClose: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state, { match }) => {
+    const isEdit = match.params.mode === 'edit'
     return {
         reportTables: state.standardReportTables.collection,
-        report: getEditFormInitialValues(state, match.params.mode === 'edit'),
+        report: getEditFormInitialValues(state, isEdit),
+        edit: isEdit,
     }
 }
 
@@ -241,6 +258,7 @@ const ConnectedComponent = connect(
     {
         loadStandardReportDetails,
         loadStandardReportTables,
+        sendStandardReport,
     }
 )(AddEditStandardReport)
 
