@@ -30,17 +30,17 @@ const DataSetReport = props => (
                     isGetReportDisabled={!props.isActionEnabled}
                 />
             </div>
-            <DataSetReportOutput
-                isHtmlReport={props.isHtmlReport}
-                content={props.reportContent}
-                isLoading={props.isReportLoading}
-                fileUrls={props.fileUrls}
-                reportComment={props.reportComment}
-                shareDataSetReportComment={props.shareDataSetReportComment}
-                setDataSetReportComment={props.setDataSetReportComment}
-            />
-            {container.styles}
         </Paper>
+        <DataSetReportOutput
+            isHtmlReport={props.isHtmlReport}
+            content={props.reportContent}
+            isLoading={props.isReportLoading}
+            fileUrls={props.fileUrls}
+            reportComment={props.reportComment}
+            shareDataSetReportComment={props.shareDataSetReportComment}
+            setDataSetReportComment={props.setDataSetReportComment}
+        />
+        {container.styles}
         <Snackbar />
     </div>
 )

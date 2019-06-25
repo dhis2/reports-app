@@ -10,6 +10,7 @@ export const formLabel = resolve`
 `
 export const container = resolve`
     padding: 16px;
+    margin-top: 16px;
 `
 
 export const card = resolve`

@@ -1,23 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ReportLoader/> Renders a loader when isLoading is true 1`] = `
-<div
-  className="report-loader"
->
-  <CircularProgress
-    large={false}
-    small={false}
-    style={Object {}}
-  />
-  <style>
-    
-                        div {
-                            margin: 48px 0;
-                            text-align: center;
-                        }
-                    
-  </style>
-</div>
+<WithStyles(Paper)>
+  <div
+    className="report-loader"
+  >
+    <CircularProgress
+      large={false}
+      small={false}
+      style={Object {}}
+    />
+    <style>
+      
+                      div {
+                          margin: 48px 0;
+                          text-align: center;
+                      }
+                  
+    </style>
+  </div>
+</WithStyles(Paper)>
 `;
 
-exports[`<ReportLoader/> Renders its children when isLoading is false and content is non-empty 1`] = `"<div>Hello world</div>"`;
+exports[`<ReportLoader/> Renders its children when isLoading is false and content is non-empty 1`] = `"<div class=\\"MuiPaper-root-1 MuiPaper-elevation2-5 MuiPaper-rounded-2\\"><div>Hello world</div></div>"`;
