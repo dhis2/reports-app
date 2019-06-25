@@ -58,21 +58,31 @@ if (process.env.HOST) {
     console.log()
 }
 
-if (!process.env.DHIS2_HOME) {
-    console.error('Environment variable DHIS2_HOME is not set')
-    process.exit(1)
+let baseUrl
+if (process.env.REACT_APP_DHIS2_BASE_URL) {
+    console.log('Reading baseUrl from process.env.REACT_APP_DHIS2_BASE_URL')
+    baseUrl = process.env.REACT_APP_DHIS2_BASE_URL
+} else if (process.env.DHIS2_HOME) {
+    console.log('Found process.env.DHIS2_HOME')
+    const configPath = `${process.env.DHIS2_HOME}/config.json`
+
+    if (fs.existsSync(configPath)) {
+        console.log(`Reading baseUrl from ${configPath}`)
+        const dhis2Config = fs.readFileSync(configPath, 'utf8')
+        baseUrl = JSON.parse(dhis2Config).baseUrl
+    } else {
+        console.error(`${configPath} does not exist`)
+        process.exit(1)
+    }
+} else {
+    const fallback = 'http://localhost:8080'
+    console.log(`No baseUrl configuration found, using default ${fallback}`)
+    baseUrl = fallback
 }
 
-const configPath = `${process.env.DHIS2_HOME}/config.json`
-if (!fs.existsSync(configPath)) {
-    console.error(`${configPath} does not exist`)
-    process.exit(1)
-}
-
-const dhis2Config = fs.readFileSync(configPath, 'utf8')
 const proxyConfig = {
     context: '/dhis-web-commons',
-    target: JSON.parse(dhis2Config).baseUrl,
+    target: baseUrl,
     changeOrigin: true,
     secure: false,
 }
