@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2019-06-20T12:34:00.566Z\n"
-"PO-Revision-Date: 2019-06-20T12:34:00.566Z\n"
+"POT-Creation-Date: 2019-07-01T09:00:05.890Z\n"
+"PO-Revision-Date: 2019-07-01T09:00:05.890Z\n"
 
 msgid "Reports"
 msgstr ""
@@ -166,6 +166,12 @@ msgid "Resource Type"
 msgstr ""
 
 msgid "Url*"
+msgstr ""
+
+msgid "Edit standard report"
+msgstr ""
+
+msgid "Create standard report"
 msgstr ""
 
 msgid "Report Type*"

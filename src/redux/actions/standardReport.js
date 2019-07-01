@@ -419,9 +419,7 @@ export const sendStandardReport = (report, isEdit) => dispatch => {
             dispatch(showSuccessSnackBar(successMessage))
             dispatch(loadingSendStandardReportSuccess())
             dispatch(loadStandardReports())
-            console.log('navigate to ', STANDARD_REPORTS_ENDPOINT)
-            // dispatch(push(`/${STANDARD_REPORT_SECTION_KEY}`))
-            dispatch(push('/standard-report'))
+            dispatch(navigateToList())
         })
         .catch(error => {
             const displayMessage = humanReadableErrorMessage(
@@ -431,6 +429,10 @@ export const sendStandardReport = (report, isEdit) => dispatch => {
             dispatch(showErrorSnackBar(displayMessage))
             dispatch(loadingSendStandardReportError())
         })
+}
+
+export const navigateToList = () => dispatch => {
+    dispatch(push(`/${STANDARD_REPORT_SECTION_KEY}`))
 }
 
 /**
@@ -563,5 +565,3 @@ export const generatePdfReport = () => (dispatch, getState) => {
 
     window.open(`${api.baseUrl}/${reportPath}${reportQueryString}`)
 }
-
-export const navigateToStandardReportList = () => dispatch => {}
