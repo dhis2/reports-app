@@ -80,7 +80,7 @@ export const resource = (state = defaultState, { type, payload } = {}) => {
                 loading: false,
             }
 
-        case actionTypes.RESET_CONTEXT_MENU:
+        case actionTypes.CLEAR_SELECTED_RESOURCE:
             return {
                 ...state,
                 open: false,

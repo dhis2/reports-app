@@ -1,6 +1,5 @@
 import i18n from '@dhis2/d2-i18n'
-import CircularProgress from '@dhis2/d2-ui-core/circular-progress/CircularProgress'
-import Card from '@material-ui/core/Card'
+import { Card, CircularProgress } from '@material-ui/core'
 import isEmpty from 'lodash.isempty'
 import isEqual from 'lodash.isequal'
 import PropTypes from 'prop-types'

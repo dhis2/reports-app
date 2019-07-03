@@ -62,7 +62,7 @@ describe('Reducer - resource', () => {
     })
 
     it('should set the edit resource action', () => {
-        const action = editResource(selectedResource)
+        const action = editResource({ resource: selectedResource })
         const preState = {
             ...defaultState,
             open: false,

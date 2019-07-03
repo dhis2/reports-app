@@ -276,6 +276,13 @@ export const getResources = (page, pageSize, search) => {
 /**
  * @returns {Promise}
  */
+export const getResourceById = id => {
+    return api.get(`${RESOURCE_ENDPOINT}/${id}`)
+}
+
+/**
+ * @returns {Promise}
+ */
 export const deleteResource = resourceId =>
     api.delete(`${RESOURCE_ENDPOINT}/${resourceId}`)
 

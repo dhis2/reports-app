@@ -6,6 +6,7 @@ import { RESOURCE_ENDPOINT } from '../../utils/api'
 import {
     getApi,
     getResources,
+    getResourceById,
     postResource,
     putResource,
     deleteResource as sendDeleteResourceRequest,
@@ -22,6 +23,7 @@ import {
     showConfirmationSnackBar,
 } from './feedback'
 import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
+import { push } from 'connected-react-router'
 
 export const actionTypes = {
     LOADING_RESOURCES_START: 'LOADING_RESOURCES_START',
@@ -36,7 +38,7 @@ export const actionTypes = {
     DELETE_RESOURCE_START: 'DELETE_RESOURCE_START',
     DELETE_RESOURCE_SUCCESS: 'DELETE_RESOURCE_SUCCESS',
     DELETE_RESOURCE_ERROR: 'DELETE_RESOURCE_ERROR',
-    RESET_CONTEXT_MENU: 'RESET_CONTEXT_MENU',
+    CLEAR_SELECTED_RESOURCE: 'CLEAR_SELECTED_RESOURCE',
     RESOURCE_ADD_LOADING_START: 'RESOURCE_ADD_LOADING_START',
     RESOURCE_ADD_LOADING_SUCCESS: 'RESOURCE_ADD_LOADING_SUCCESS',
     RESOURCE_ADD_LOADING_ERROR: 'RESOURCE_ADD_LOADING_ERROR',
@@ -167,19 +169,46 @@ export const showSharingSettings = resource => ({
 })
 
 /**
+ * @returns {Object}
+ */
+export const addResource = resource => dispatch => {
+    dispatch(setResource(resource))
+    dispatch(toResourceForm())
+}
+
+/**
  * @param {Object} resource
  * @returns {Object}
  */
-export const editResource = resource => ({
-    type: actionTypes.EDIT_RESOURCE,
-    payload: resource,
-})
+export const editResource = resource => dispatch => {
+    dispatch(setResource(resource))
+    dispatch(toResourceForm(resource.id))
+}
 
 /**
+ * @param {String} id
  * @returns {Object}
  */
-export const addResource = resource => ({
-    type: actionTypes.ADD_RESOURCE,
+export const toResourceForm = id => dispatch => {
+    const path = id ? `/resource/edit/${id}` : '/resource/new'
+    return dispatch(push(path))
+}
+
+/**
+ * @param {String} id
+ * @returns {Object}
+ */
+export const loadResource = id => async dispatch => {
+    const resource = await getResourceById(id)
+    return dispatch(setResource(resource))
+}
+
+/**
+ * @param {Object} resource
+ * @returns {Object}
+ */
+export const setResource = resource => ({
+    type: actionTypes.EDIT_RESOURCE,
     payload: resource,
 })
 
@@ -241,12 +270,18 @@ export const deleteResource = () => (dispatch, getState) => {
         .catch(error => dispatch(deleteResourceErrorWithFeedback(error)))
 }
 
-export const resetContextMenu = () => ({
-    type: actionTypes.RESET_CONTEXT_MENU,
+export const clearSelectedResource = () => ({
+    type: actionTypes.CLEAR_SELECTED_RESOURCE,
 })
 
+export const backToList = () => dispatch => {
+    dispatch(clearSelectedResource())
+    dispatch(push('/resource'))
+}
+
 export const closeContextMenu = refreshList => dispatch => {
-    dispatch(resetContextMenu())
+    console.log('closeContextMenu')
+    dispatch(clearSelectedResource())
 
     if (refreshList) {
         dispatch(resetPagination())

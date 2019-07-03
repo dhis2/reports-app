@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2019-07-01T09:00:05.890Z\n"
-"PO-Revision-Date: 2019-07-01T09:00:05.890Z\n"
+"POT-Creation-Date: 2019-07-03T07:31:16.168Z\n"
+"PO-Revision-Date: 2019-07-03T07:31:16.168Z\n"
 
 msgid "Reports"
 msgstr ""
@@ -174,34 +174,10 @@ msgstr ""
 msgid "Create standard report"
 msgstr ""
 
-msgid "Report Type*"
-msgstr ""
-
-msgid "Report Table*"
-msgstr ""
-
-msgid "Design File"
-msgstr ""
-
-msgid "Design File*"
-msgstr ""
-
-msgid "Relative periods"
+msgid "Generate report"
 msgstr ""
 
 msgid "Report parameters"
-msgstr ""
-
-msgid "Settings"
-msgstr ""
-
-msgid "Cache Strategy*"
-msgstr ""
-
-msgid "Submit"
-msgstr ""
-
-msgid "Generate report"
 msgstr ""
 
 msgid "There are some errors you have to fix first!"
@@ -217,6 +193,30 @@ msgid "Get HTML Report Template"
 msgstr ""
 
 msgid "Get Jasper Report Template"
+msgstr ""
+
+msgid "Report Type*"
+msgstr ""
+
+msgid "Report Table*"
+msgstr ""
+
+msgid "Design File"
+msgstr ""
+
+msgid "Design File*"
+msgstr ""
+
+msgid "Relative periods"
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+msgid "Cache Strategy*"
+msgstr ""
+
+msgid "Submit"
 msgstr ""
 
 msgid "[ None ]"

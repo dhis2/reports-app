@@ -19,8 +19,10 @@ import { sections } from '../config/sections.config'
 import Home from '../pages/home/Home'
 import NoMatch from './NoMatch'
 import { ConnectedAddEditStdReport } from '../pages/standard-report/AddEditStdReport'
+import { AddEditResource } from '../pages/resource/AddEditResource'
 
 const standardReportPath = sections[STANDARD_REPORT_SECTION_KEY].path
+const resourcePath = sections[RESOURCE_SECTION_KEY].path
 
 const AppRouter = () => (
     <main>
@@ -60,8 +62,15 @@ const AppRouter = () => (
             <Route
                 exact
                 key={RESOURCE_SECTION_KEY}
-                path={sections[RESOURCE_SECTION_KEY].path}
+                path={resourcePath}
                 component={Resource}
+            />
+            <Route
+                exact
+                key={`${RESOURCE_SECTION_KEY}-addEdit`}
+                // /edit/id or /new
+                path={`${resourcePath}/:mode/:id?`}
+                component={AddEditResource}
             />
             <Route
                 exact
