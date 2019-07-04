@@ -28,13 +28,6 @@ exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render a <Peri
     onPickPeriod={[Function]}
     periodType="Quarterly"
   />
-  <style>
-    
-                    .parsed-period {
-                        margin-bottom: 16px;
-                    }
-                
-  </style>
 </div>
 `;
 
@@ -62,13 +55,6 @@ exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render a <Peri
     onChange={[Function]}
     value=""
   />
-  <style>
-    
-                    .parsed-period {
-                        margin-bottom: 16px;
-                    }
-                
-  </style>
 </div>
 `;
 
@@ -100,17 +86,5 @@ exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render the par
     onPickPeriod={[Function]}
     periodType="Daily"
   />
-  <div
-    className="parsed-period"
-  >
-    January 1, 2018
-  </div>
-  <style>
-    
-                    .parsed-period {
-                        margin-bottom: 16px;
-                    }
-                
-  </style>
 </div>
 `;
