@@ -27,7 +27,7 @@ export const appendOrgUnitsAndReportPeriodToQueryString = (
 ) => {
     const { standardReport, organisationUnits, reportPeriod } = state
     const { reportParams } = standardReport
-    console.log(reportParams, organisationUnits, reportPeriod)
+
     if (reportParams.organisationUnit) {
         baseStr += `&ou=${organisationUnits.selected.id}`
     }

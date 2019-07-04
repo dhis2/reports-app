@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2019-07-03T07:31:16.168Z\n"
-"PO-Revision-Date: 2019-07-03T07:31:16.168Z\n"
+"POT-Creation-Date: 2019-07-03T15:14:59.214Z\n"
+"PO-Revision-Date: 2019-07-03T15:14:59.214Z\n"
 
 msgid "Reports"
 msgstr ""
@@ -132,16 +132,13 @@ msgstr ""
 msgid "Get Chart"
 msgstr ""
 
-msgid "Add resource"
-msgstr ""
-
 msgid "Edit resource"
 msgstr ""
 
 msgid "Save resource"
 msgstr ""
 
-msgid "Cancel"
+msgid "Add resource"
 msgstr ""
 
 msgid "Do you want to use this file as an attachment?"
@@ -166,6 +163,12 @@ msgid "Resource Type"
 msgstr ""
 
 msgid "Url*"
+msgstr ""
+
+msgid "File resources can not be edited, only created"
+msgstr ""
+
+msgid "Cancel"
 msgstr ""
 
 msgid "Edit standard report"

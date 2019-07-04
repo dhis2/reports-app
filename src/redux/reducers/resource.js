@@ -44,12 +44,11 @@ export const resource = (state = defaultState, { type, payload } = {}) => {
                 search: payload,
             }
 
-        case actionTypes.EDIT_RESOURCE:
+        case actionTypes.SET_RESOURCE:
             return {
                 ...state,
                 open: true,
                 selectedResource: payload,
-                selectedAction: resourceActions.EDIT,
             }
 
         case actionTypes.SHOW_SHARING_SETTINGS:
@@ -58,13 +57,6 @@ export const resource = (state = defaultState, { type, payload } = {}) => {
                 open: true,
                 selectedResource: payload,
                 selectedAction: resourceActions.SHARING_SETTINGS,
-            }
-
-        case actionTypes.ADD_RESOURCE:
-            return {
-                ...state,
-                open: true,
-                selectedAction: resourceActions.NEW,
             }
 
         case actionTypes.DELETE_RESOURCE_START:

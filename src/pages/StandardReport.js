@@ -70,10 +70,7 @@ class StandardReport extends React.Component {
                         selectedAction={this.props.selectedAction}
                         selectedReport={this.props.selectedReport}
                         handleClose={this.props.closeContextMenu}
-                        // handleError={console.error}
                         handleDisplayReportData={this.props.showReportData}
-                        // updateStandardReport={this.props.updateStandardReport}
-                        // addStandardReport={this.props.addStandardReport}
                     />
                 </div>
                 <ConnectedReportParams />

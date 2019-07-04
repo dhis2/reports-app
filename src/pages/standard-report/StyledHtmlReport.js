@@ -55,7 +55,6 @@ class StyledHtmlReport extends React.Component {
         const orgUnitId = searchParams.get('ou')
         const reportPeriod = searchParams.get('p')
 
-        console.log(id, orgUnitId, reportPeriod)
         return (
             <Fragment>
                 <Button

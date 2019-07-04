@@ -80,8 +80,6 @@ class AddEditResource extends Component {
         const isEdit = this.isEdit()
         const { title, submitLabel } = this.getFormTexts(isEdit)
 
-        // console.log(this.props.resource)
-
         return (
             <Fragment>
                 <SectionHeadline

@@ -32,8 +32,7 @@ export const actionTypes = {
     SET_RESOURCE_SEARCH: 'SET_RESOURCE_SEARCH',
     VIEW_RESOURCE: 'VIEW_RESOURCE',
     SHOW_SHARING_SETTINGS: 'SHOW_SHARING_SETTINGS',
-    EDIT_RESOURCE: 'EDIT_RESOURCE',
-    ADD_RESOURCE: 'ADD_RESOURCE',
+    SET_RESOURCE: 'SET_RESOURCE',
     REQUEST_DELETE_RESOURCE: 'REQUEST_DELETE_RESOURCE',
     DELETE_RESOURCE_START: 'DELETE_RESOURCE_START',
     DELETE_RESOURCE_SUCCESS: 'DELETE_RESOURCE_SUCCESS',
@@ -171,8 +170,7 @@ export const showSharingSettings = resource => ({
 /**
  * @returns {Object}
  */
-export const addResource = resource => dispatch => {
-    dispatch(setResource(resource))
+export const addResource = () => dispatch => {
     dispatch(toResourceForm())
 }
 
@@ -208,7 +206,7 @@ export const loadResource = id => async dispatch => {
  * @returns {Object}
  */
 export const setResource = resource => ({
-    type: actionTypes.EDIT_RESOURCE,
+    type: actionTypes.SET_RESOURCE,
     payload: resource,
 })
 
@@ -280,7 +278,6 @@ export const backToList = () => dispatch => {
 }
 
 export const closeContextMenu = refreshList => dispatch => {
-    console.log('closeContextMenu')
     dispatch(clearSelectedResource())
 
     if (refreshList) {
