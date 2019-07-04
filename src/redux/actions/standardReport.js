@@ -160,17 +160,15 @@ export const goToPrevPage = () => dispatch => {
  * @param {Object} report A d2 report model
  * @return {Object}
  */
-export const addReportFormShow = () => dispatch => {
-    dispatch(push(`${STANDARD_REPORT_SECTION_KEY}/new`))
-}
+export const addReportFormShow = () =>
+    push(`${STANDARD_REPORT_SECTION_KEY}/new`)
 
 /**
  * @param {Object} report A d2 report model
  * @return {Object}
  */
-export const editReportFormShow = report => dispatch => {
-    dispatch(push(`${STANDARD_REPORT_SECTION_KEY}/edit/${report.id}`))
-}
+export const editReportFormShow = report =>
+    push(`${STANDARD_REPORT_SECTION_KEY}/edit/${report.id}`)
 
 /**
  * @param {Object} report A d2 report model
@@ -430,9 +428,7 @@ export const sendStandardReport = (report, isEdit) => dispatch => {
         })
 }
 
-export const navigateToList = () => dispatch => {
-    dispatch(push(`/${STANDARD_REPORT_SECTION_KEY}`))
-}
+export const navigateToList = () => push(`/${STANDARD_REPORT_SECTION_KEY}`)
 
 /**
  * =============================================

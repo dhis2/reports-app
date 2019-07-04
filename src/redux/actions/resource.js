@@ -187,9 +187,9 @@ export const editResource = resource => dispatch => {
  * @param {String} id
  * @returns {Object}
  */
-export const toResourceForm = id => dispatch => {
+export const toResourceForm = id => {
     const path = id ? `/resource/edit/${id}` : '/resource/new'
-    return dispatch(push(path))
+    return push(path)
 }
 
 /**
