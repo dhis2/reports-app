@@ -43,7 +43,6 @@ import {
 } from './reportData'
 import { clearSelectedReportPeriod } from './reportPeriod'
 import { loadStandardReportTables } from './standardReportTables'
-import { STANDARD_REPORTS_ENDPOINT } from '../../utils/api/constants'
 
 export const actionTypes = {
     SET_SELECTED_REPORT: 'SET_SELECTED_REPORT',

@@ -44,17 +44,6 @@ class StyledHtmlReport extends React.Component {
         generateHtmlReport({ id, orgUnitId, reportPeriod })
     }
     render() {
-        const {
-            reportData,
-            match: {
-                params: { id },
-            },
-            location: { search },
-        } = this.props
-        const searchParams = new URLSearchParams(search)
-        const orgUnitId = searchParams.get('ou')
-        const reportPeriod = searchParams.get('p')
-
         return (
             <Fragment>
                 <Button
@@ -65,7 +54,7 @@ class StyledHtmlReport extends React.Component {
                     {i18n.t('Back to standard reports list')}
                 </Button>
                 <Card className={reportCard.className}>
-                    <HtmlReport html={reportData} />
+                    <HtmlReport html={this.props.reportData} />
                 </Card>
                 {reportCard.styles}
             </Fragment>
