@@ -23,6 +23,7 @@ export const SectionHeadline = props => (
             .back-button {
                 cursor: pointer;
                 outline: none;
+                padding: 12px;
             }
         `}</style>
     </h1>
