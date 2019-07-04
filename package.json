@@ -48,7 +48,6 @@
     "jest": "20.0.4",
     "lodash.debounce": "^4.0.8",
     "lodash.isempty": "^4.4.0",
-    "lodash.isequal": "^4.5.0",
     "lodash.omit": "^4.5.0",
     "lodash.omitby": "^4.6.0",
     "lodash.size": "^4.2.0",

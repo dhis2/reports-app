@@ -1,14 +1,10 @@
 import i18n from '@dhis2/d2-i18n'
 import { Card, CircularProgress } from '@material-ui/core'
 import isEmpty from 'lodash.isempty'
-import isEqual from 'lodash.isequal'
 import PropTypes from 'prop-types'
-import React, { Component, Fragment } from 'react'
+import React, { Fragment, PureComponent } from 'react'
 import { connect } from 'react-redux'
-// import { createSelector } from 'reselect'
-
 import { SectionHeadline } from '../../components/SectionHeadline'
-import { ReportForm } from './add-edit-report/ReportForm'
 import { STANDARD_REPORT_SECTION_KEY } from '../../config/sections.config'
 import {
     loadStandardReportDetails,
@@ -16,10 +12,14 @@ import {
     sendStandardReport,
 } from '../../redux/actions/standardReport'
 import { loadStandardReportTables } from '../../redux/actions/standardReportTables'
-import { getEditFormInitialValues } from '../../redux/selectors/standardReport/getEditFormInitialValues'
+import {
+    getEditFormInitialValues,
+    getIsEdit,
+} from '../../redux/selectors/standardReport/getEditFormInitialValues'
 import { formCard, formLoader } from '../../utils/styles/shared'
+import { ReportForm } from './add-edit-report/ReportForm'
 
-export class AddEditStandardReport extends Component {
+export class AddEditStandardReport extends PureComponent {
     componentDidMount() {
         const {
             edit,
@@ -35,19 +35,6 @@ export class AddEditStandardReport extends Component {
         if (reportTables.length === 0) {
             loadStandardReportTables()
         }
-    }
-
-    shouldComponentUpdate(nextProps) {
-        // TODO:
-        // Instead of this we should make sure the report is memoized
-        // once this is done we can also remove the `lodash.isEqual` dependency
-        const currProps = this.props
-        const otherPropsEqual = Object.keys(nextProps).every(
-            key => key === 'report' || nextProps[key] === currProps[key]
-        )
-        const reportEqual = isEqual(this.props.report, nextProps.report)
-
-        return !(reportEqual && otherPropsEqual)
     }
 
     onSubmit = values => {
@@ -103,22 +90,14 @@ AddEditStandardReport.propTypes = {
     reportTables: ReportForm.propTypes.reportTables,
     edit: ReportForm.propTypes.edit,
     sendStandardReport: PropTypes.func.isRequired,
-    onRequestClose: PropTypes.func.isRequired,
     navigateToList: PropTypes.func.isRequired,
 }
 
-// // TODO: This is not memoizing properly
-// const getReport = createSelector(
-//     [getEditFormInitialValues],
-//     report => report
-// )
-
-const mapStateToProps = (state, props) => {
-    const isEdit = props.match.params.mode === 'edit'
+const mapStateToProps = state => {
     return {
         reportTables: state.standardReportTables.collection,
-        report: getEditFormInitialValues(state, isEdit),
-        edit: isEdit,
+        report: getEditFormInitialValues(state),
+        edit: getIsEdit(state),
     }
 }
 
