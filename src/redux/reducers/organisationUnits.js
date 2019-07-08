@@ -46,6 +46,7 @@ export function organisationUnits(state = defaultState, { type, payload }) {
                 showOptions: !state.showOptions,
             }
 
+        case ACTIONS.ORGANISATION_UNIT_CLEARED:
         case ACTIONS.LOCATION_CHANGE:
             return {
                 ...defaultState,

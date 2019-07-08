@@ -30,6 +30,15 @@ export const card = resolve`
     width: 100%;
 `
 
+export const formCard = resolve`
+    padding: 2rem 5rem 4rem;
+`
+
+export const formLoader = resolve`
+    padding-top: 2rem;
+    text-align: center;
+`
+
 export const actionsContainer = resolve`
     display: block;
     margin-top: 48px;

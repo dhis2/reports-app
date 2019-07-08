@@ -1,13 +1,12 @@
 import {
-    addResource,
     deleteResourceError,
     deleteResourceStart,
     deleteResourceSuccess,
-    editResource,
+    setResource,
     loadingResourcesError,
     loadingResourcesStart,
     loadingResourcesSuccess,
-    resetContextMenu,
+    clearSelectedResource,
     setSearch,
     showSharingSettings,
 } from '../../actions/resource'
@@ -61,19 +60,17 @@ describe('Reducer - resource', () => {
         expect(postState).toEqual(expectedState)
     })
 
-    it('should set the edit resource action', () => {
-        const action = editResource(selectedResource)
+    it('should set the selected resource', () => {
+        const action = setResource(selectedResource)
         const preState = {
             ...defaultState,
-            open: false,
+            open: true,
             selectedResource: { id: 'bar', displayName: 'baz' },
             selectedAction: '',
         }
         const postState = resource(preState, action)
         const expectedState = {
             ...preState,
-            open: true,
-            selectedAction: resourceActions.EDIT,
             selectedResource,
         }
 
@@ -100,7 +97,7 @@ describe('Reducer - resource', () => {
     })
 
     it('should set the show sharing settings action', () => {
-        const action = addResource()
+        const action = showSharingSettings(selectedResource)
         const preState = {
             ...defaultState,
             open: false,
@@ -110,7 +107,8 @@ describe('Reducer - resource', () => {
         const expectedState = {
             ...preState,
             open: true,
-            selectedAction: resourceActions.NEW,
+            selectedAction: resourceActions.SHARING_SETTINGS,
+            selectedResource,
         }
 
         expect(postState).toEqual(expectedState)
@@ -161,8 +159,8 @@ describe('Reducer - resource', () => {
         expect(postState).toEqual(expectedState)
     })
 
-    it('should reset the context menu', () => {
-        const action = resetContextMenu()
+    it('should clear the selected resource', () => {
+        const action = clearSelectedResource()
         const preState = {
             ...defaultState,
             open: true,

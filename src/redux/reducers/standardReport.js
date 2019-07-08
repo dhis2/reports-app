@@ -1,9 +1,6 @@
 import { actionTypes } from '../actions/standardReport'
 import { actionTypes as reportDataActionTypes } from '../actions/reportData'
-import {
-    ADD_NEW_REPORT_ACTION,
-    CONTEXT_MENU_ACTION,
-} from '../../pages/standard-report/standard.report.conf'
+import { CONTEXT_MENU_ACTION } from '../../pages/standard-report/standard.report.conf'
 
 export const defaultState = {
     reports: [],
@@ -59,29 +56,6 @@ export const standardReport = (state = defaultState, action = {}) => {
                 search: payload,
             }
 
-        case actionTypes.ADD_REPORT_FORM_SHOW:
-            return {
-                ...state,
-                open: true,
-                selectedReport: payload,
-                selectedAction: ADD_NEW_REPORT_ACTION,
-            }
-
-        case actionTypes.EDIT_REPORT_FORM_SHOW:
-            return {
-                ...state,
-                selectedReport: payload,
-                selectedAction: CONTEXT_MENU_ACTION.EDIT,
-            }
-
-        case actionTypes.CREATE_REPORT_SHOW:
-            return {
-                ...state,
-                open: true,
-                selectedReport: payload,
-                selectedAction: CONTEXT_MENU_ACTION.CREATE,
-            }
-
         case actionTypes.SHARING_SETTINGS_SHOW:
             return {
                 ...state,
@@ -90,10 +64,6 @@ export const standardReport = (state = defaultState, action = {}) => {
                 selectedAction: CONTEXT_MENU_ACTION.SHARING_SETTINGS,
             }
 
-        case actionTypes.ADD_REPORT_FORM_HIDE:
-        case actionTypes.EDIT_REPORT_FORM_HIDE:
-        case actionTypes.CREATE_REPORT_HIDE:
-        case actionTypes.SHARIING_SETTINGS_HIDE:
         case actionTypes.CLOSE_CONTEXT_MENU:
             return {
                 ...state,

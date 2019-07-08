@@ -1,202 +1,114 @@
-import { Form, Field } from 'react-final-form'
-import { connect } from 'react-redux'
-import DialogActions from '@material-ui/core/DialogActions'
-import DialogContent from '@material-ui/core/DialogContent'
-import FormHelperText from '@material-ui/core/FormHelperText'
-import PropTypes from 'prop-types'
-import React from 'react'
 import i18n from '@dhis2/d2-i18n'
-
-import { Button } from '../../components/form/Button'
+import { Card, CircularProgress } from '@material-ui/core'
+import isEmpty from 'lodash.isempty'
+import PropTypes from 'prop-types'
+import React, { Fragment, PureComponent } from 'react'
+import { connect } from 'react-redux'
+import { SectionHeadline } from '../../components/SectionHeadline'
+import { STANDARD_REPORT_SECTION_KEY } from '../../config/sections.config'
 import {
-    CONTEXT_MENU_ACTION,
-    cacheStrategies,
-    reportTypeOptions,
-    reportTypes,
-} from './standard.report.conf'
-import { CheckBoxGroups } from '../../components/form/CheckBoxGroups'
-import { CheckBoxes } from '../../components/form/CheckBoxes'
-import { DesignFileDownloadButton } from './add-edit-report/DesignFileDownloadButton'
-import { File } from '../../components/form/File'
-import { FormDialog } from '../../components/form/FormDialog'
-import { FormRow } from '../../components/form/FormRow'
-import { FormSection } from '../../components/form/FormSection'
-import { FormSectionTitle } from '../../components/form/FormSectionTitle'
-import { Input } from '../../components/form/Input'
-import { Select } from '../../components/form/Select'
-import { formOptions } from '../../utils/react/propTypes'
-import { getEditFormInitialValues } from '../../redux/selectors/standardReport/getEditFormInitialValues'
-import { relativePeriods } from '../../utils/periods/relativePeriods'
-import { reportParameterOptions } from '../../config/standardReport'
+    loadStandardReportDetails,
+    navigateToList,
+    sendStandardReport,
+} from '../../redux/actions/standardReport'
+import { loadStandardReportTables } from '../../redux/actions/standardReportTables'
 import {
-    validateNewReport,
-    validateReportUpdate,
-} from './add-edit-report/validate'
+    getEditFormInitialValues,
+    getIsEdit,
+} from '../../redux/selectors/standardReport/getEditFormInitialValues'
+import { formCard, formLoader } from '../../utils/styles/shared'
+import { ReportForm } from './add-edit-report/ReportForm'
 
-export const Component = props => (
-    <FormDialog
-        open={props.open}
-        title={props.edit ? 'Edit report' : 'Add report'}
-        onClose={props.onRequestClose}
-    >
-        <Form
-            onSubmit={props.onSubmit}
-            validate={props.edit ? validateReportUpdate : validateNewReport}
-            initialValues={props.selectedReport}
-        >
-            {({ handleSubmit, values }) => (
-                <form onSubmit={handleSubmit}>
-                    <DialogContent>
-                        <FormSection>
-                            <FormSectionTitle>
-                                {i18n.t('Details')}
-                            </FormSectionTitle>
+export class AddEditStandardReport extends PureComponent {
+    componentDidMount() {
+        const {
+            edit,
+            loadStandardReportDetails,
+            match,
+            reportTables,
+            loadStandardReportTables,
+        } = this.props
 
-                            <FormRow>
-                                <Field
-                                    name="name"
-                                    placeholder={i18n.t('Name*')}
-                                    component={Input}
-                                />
-                            </FormRow>
+        if (edit) {
+            loadStandardReportDetails(match.params.id)
+        }
+        if (reportTables.length === 0) {
+            loadStandardReportTables()
+        }
+    }
 
-                            <FormRow>
-                                <Field
-                                    name="type"
-                                    placeholder={i18n.t('Report Type*')}
-                                    options={reportTypeOptions}
-                                    showErrorText={false}
-                                    component={Select}
-                                />
-                            </FormRow>
+    onSubmit = values => {
+        const { sendStandardReport, edit } = this.props
+        sendStandardReport(values, edit)
+    }
 
-                            {values.type ===
-                                reportTypes.JASPER_REPORT_TABLE && (
-                                <FormRow>
-                                    <Field
-                                        name="reportTable"
-                                        placeholder={i18n.t('Report Table*')}
-                                        options={props.reportTables}
-                                        showErrorText={false}
-                                        component={Select}
-                                    />
-                                </FormRow>
-                            )}
+    render() {
+        const isLoading =
+            isEmpty(this.props.report) || this.props.reportTables.length === 0
+        const headlineText = this.props.edit
+            ? i18n.t('Edit standard report')
+            : i18n.t('Create standard report')
 
-                            <div className="row">
-                                <div className="col-xs-6">
-                                    <File
-                                        name="designContent"
-                                        placeholder={
-                                            props.edit
-                                                ? i18n.t('Design File')
-                                                : i18n.t('Design File*')
-                                        }
-                                    />
-                                </div>
-
-                                <div className="col-xs-6">
-                                    <FormHelperText />
-                                    <DesignFileDownloadButton
-                                        isEditing={props.edit}
-                                        reportType={values.type}
-                                        reportId={
-                                            props.edit
-                                                ? props.selectedReport.id
-                                                : ''
-                                        }
-                                    />
-                                </div>
-                            </div>
-                        </FormSection>
-
-                        <FormSection
-                            show={
-                                values.type !== reportTypes.JASPER_REPORT_TABLE
-                            }
-                            render={() => (
-                                <React.Fragment>
-                                    <FormSectionTitle>
-                                        {i18n.t('Relative periods')}
-                                    </FormSectionTitle>
-
-                                    <CheckBoxGroups
-                                        name="relativePeriods"
-                                        groups={relativePeriods}
-                                        displayError={false}
-                                    />
-                                </React.Fragment>
-                            )}
+        return (
+            <Fragment>
+                <SectionHeadline
+                    label={headlineText}
+                    showBackButton={true}
+                    onBackClick={this.props.navigateToList}
+                    sectionKey={STANDARD_REPORT_SECTION_KEY}
+                />
+                <Card className={formCard.className}>
+                    {isLoading ? (
+                        <div className={formLoader.className}>
+                            <CircularProgress />
+                        </div>
+                    ) : (
+                        <ReportForm
+                            {...this.props}
+                            backToList={this.props.navigateToList}
+                            onSubmit={this.onSubmit}
                         />
-
-                        <FormSection
-                            show={
-                                values.type !== reportTypes.JASPER_REPORT_TABLE
-                            }
-                            render={() => (
-                                <React.Fragment>
-                                    <FormSectionTitle>
-                                        {i18n.t('Report parameters')}
-                                    </FormSectionTitle>
-
-                                    <CheckBoxes
-                                        name="reportParams"
-                                        options={reportParameterOptions}
-                                    />
-                                </React.Fragment>
-                            )}
-                        />
-
-                        <FormSection>
-                            <FormSectionTitle>
-                                {i18n.t('Settings')}
-                            </FormSectionTitle>
-
-                            <FormRow>
-                                <Field
-                                    name="cacheStrategy"
-                                    placeholder={i18n.t('Cache Strategy*')}
-                                    options={cacheStrategies}
-                                    component={Select}
-                                />
-                            </FormRow>
-                        </FormSection>
-                    </DialogContent>
-                    <DialogActions>
-                        <Button
-                            label={i18n.t('Submit')}
-                            isPrimary={true}
-                            onClick={handleSubmit}
-                        />
-
-                        <Button
-                            label={i18n.t('Cancel')}
-                            onClick={props.onRequestClose}
-                        />
-                    </DialogActions>
-                </form>
-            )}
-        </Form>
-    </FormDialog>
-)
-
-Component.propTypes = {
-    open: PropTypes.bool.isRequired,
-    edit: PropTypes.bool.isRequired,
-    selectedReport: PropTypes.object.isRequired,
-    reportTables: formOptions.isRequired,
-    onSubmit: PropTypes.func.isRequired,
-    onRequestClose: PropTypes.func.isRequired,
+                    )}
+                </Card>
+                {formCard.styles}
+                {formLoader.styles}
+            </Fragment>
+        )
+    }
 }
 
-const mapStateToProps = state => ({
-    reportTables: state.standardReportTables.collection,
-    selectedReport: getEditFormInitialValues(
-        state,
-        state.standardReport.selectedAction === CONTEXT_MENU_ACTION.EDIT
-    ),
-})
+AddEditStandardReport.propTypes = {
+    match: PropTypes.shape({
+        params: PropTypes.shape({
+            mode: PropTypes.oneOf(['new', 'edit']),
+            id: PropTypes.string,
+        }),
+    }).isRequired,
+    loadStandardReportDetails: PropTypes.func.isRequired,
+    loadStandardReportTables: PropTypes.func.isRequired,
+    report: ReportForm.propTypes.report,
+    reportTables: ReportForm.propTypes.reportTables,
+    edit: ReportForm.propTypes.edit,
+    sendStandardReport: PropTypes.func.isRequired,
+    navigateToList: PropTypes.func.isRequired,
+}
 
-const ConnectedComponent = connect(mapStateToProps)(Component)
+const mapStateToProps = state => {
+    return {
+        reportTables: state.standardReportTables.collection,
+        report: getEditFormInitialValues(state),
+        edit: getIsEdit(state),
+    }
+}
+
+const ConnectedComponent = connect(
+    mapStateToProps,
+    {
+        loadStandardReportDetails,
+        loadStandardReportTables,
+        sendStandardReport,
+        navigateToList,
+    }
+)(AddEditStandardReport)
 
 export { ConnectedComponent as ConnectedAddEditStdReport }

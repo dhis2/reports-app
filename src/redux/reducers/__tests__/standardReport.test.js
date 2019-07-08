@@ -95,47 +95,6 @@ describe('Reducer - standardReport', function() {
             }
         })
 
-        it('should show the add report form', function() {
-            const expected = {
-                ...defaultState,
-                open: true,
-                selectedReport: report,
-                selectedAction: ADD_NEW_REPORT_ACTION,
-            }
-            const actual = standardReport(preState, {
-                type: ADD_REPORT_FORM_SHOW,
-                payload: report,
-            })
-            expect(actual).toEqual(expected)
-        })
-
-        it('should show the edit report form', function() {
-            const expected = {
-                ...defaultState,
-                selectedReport: report,
-                selectedAction: CONTEXT_MENU_ACTION.EDIT,
-            }
-            const actual = standardReport(preState, {
-                type: EDIT_REPORT_FORM_SHOW,
-                payload: report,
-            })
-            expect(actual).toEqual(expected)
-        })
-
-        it('should show the create report', function() {
-            const expected = {
-                ...defaultState,
-                open: true,
-                selectedReport: report,
-                selectedAction: CONTEXT_MENU_ACTION.CREATE,
-            }
-            const actual = standardReport(preState, {
-                type: CREATE_REPORT_SHOW,
-                payload: report,
-            })
-            expect(actual).toEqual(expected)
-        })
-
         it('should show the sharing settings', function() {
             const expected = {
                 ...defaultState,
@@ -173,44 +132,6 @@ describe('Reducer - standardReport', function() {
                 open: true,
                 selectedReport: mockReport(),
             }
-        })
-
-        it('should hide the add report form', function() {
-            preState = { ...preState, selectedAction: ADD_NEW_REPORT_ACTION }
-            const actual = standardReport(preState, {
-                type: ADD_REPORT_FORM_HIDE,
-            })
-            expect(actual).toEqual(expected)
-        })
-
-        it('should hide the edit report form', function() {
-            preState = { ...preState, selectedAction: CONTEXT_MENU_ACTION.EDIT }
-            const actual = standardReport(preState, {
-                type: EDIT_REPORT_FORM_HIDE,
-            })
-            expect(actual).toEqual(expected)
-        })
-
-        it('should hide the created report', function() {
-            preState = {
-                ...preState,
-                selectedAction: CONTEXT_MENU_ACTION.CREATE,
-            }
-            const actual = standardReport(preState, {
-                type: CREATE_REPORT_HIDE,
-            })
-            expect(actual).toEqual(expected)
-        })
-
-        it('should hide the sharing settings', function() {
-            preState = {
-                ...preState,
-                selectedAction: CONTEXT_MENU_ACTION.SHARING_SETTINGS,
-            }
-            const actual = standardReport(preState, {
-                type: SHARIING_SETTINGS_HIDE,
-            })
-            expect(actual).toEqual(expected)
         })
 
         it('should close the context menu', function() {

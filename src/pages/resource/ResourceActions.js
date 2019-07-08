@@ -3,20 +3,10 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { getD2 } from '../../utils/api'
 import { resourceActions } from '../../utils/resource/constants'
-import { ConnectedAddResource } from './AddResource'
-import { ConnectedEditResource } from './EditResource'
 
 const ResourceActions = props => {
     const { selectedAction } = props
     if (!props.selectedAction) return null
-
-    if (props.selectedAction === resourceActions.NEW) {
-        return <ConnectedAddResource />
-    }
-
-    if (selectedAction === resourceActions.EDIT) {
-        return <ConnectedEditResource />
-    }
 
     if (selectedAction === resourceActions.SHARING_SETTINGS) {
         return (
