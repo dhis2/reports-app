@@ -25,8 +25,7 @@ const mapDispatchToProps = dispatch => ({
     selectDataSet: e => dispatch(selectDataSet(e.target.value)),
     toggleSelectedUnitOnly: (e, selectedUnitOnly) =>
         dispatch(toggleSelectedUnitOnly(selectedUnitOnly)),
-    shareDataSetReportComment: comment =>
-        dispatch(shareDataSetReportComment(comment)),
+    shareDataSetReportComment: () => dispatch(shareDataSetReportComment()),
     setDataSetReportComment: comment => dispatch(setReportComment(comment)),
 })
 
