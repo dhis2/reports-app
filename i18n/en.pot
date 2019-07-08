@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2019-06-17T14:51:20.002Z\n"
-"PO-Revision-Date: 2019-06-17T14:51:20.002Z\n"
+"POT-Creation-Date: 2019-07-08T12:00:25.880Z\n"
+"PO-Revision-Date: 2019-07-08T12:00:25.880Z\n"
 
 msgid "Reports"
 msgstr ""
@@ -132,16 +132,13 @@ msgstr ""
 msgid "Get Chart"
 msgstr ""
 
-msgid "Add resource"
-msgstr ""
-
 msgid "Edit resource"
 msgstr ""
 
 msgid "Save resource"
 msgstr ""
 
-msgid "Cancel"
+msgid "Add resource"
 msgstr ""
 
 msgid "Do you want to use this file as an attachment?"
@@ -168,6 +165,39 @@ msgstr ""
 msgid "Url*"
 msgstr ""
 
+msgid "File resources can not be edited, only created"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Edit standard report"
+msgstr ""
+
+msgid "Create standard report"
+msgstr ""
+
+msgid "Generate report"
+msgstr ""
+
+msgid "Report parameters"
+msgstr ""
+
+msgid "There are some errors you have to fix first!"
+msgstr ""
+
+msgid "Back to standard reports list"
+msgstr ""
+
+msgid "Get current design"
+msgstr ""
+
+msgid "Get HTML Report Template"
+msgstr ""
+
+msgid "Get Jasper Report Template"
+msgstr ""
+
 msgid "Report Type*"
 msgstr ""
 
@@ -183,9 +213,6 @@ msgstr ""
 msgid "Relative periods"
 msgstr ""
 
-msgid "Report parameters"
-msgstr ""
-
 msgid "Settings"
 msgstr ""
 
@@ -193,27 +220,6 @@ msgid "Cache Strategy*"
 msgstr ""
 
 msgid "Submit"
-msgstr ""
-
-msgid "Generate report"
-msgstr ""
-
-msgid "There are some errors you have to fix first!"
-msgstr ""
-
-msgid "HTML Report"
-msgstr ""
-
-msgid "Close"
-msgstr ""
-
-msgid "Get current design"
-msgstr ""
-
-msgid "Get HTML Report Template"
-msgstr ""
-
-msgid "Get Jasper Report Template"
 msgstr ""
 
 msgid "[ None ]"
@@ -619,6 +625,9 @@ msgid "Public can find, view and edit"
 msgstr ""
 
 msgid "Public can find and view"
+msgstr ""
+
+msgid "Close"
 msgstr ""
 
 msgid "week"
