@@ -66,7 +66,6 @@ class App extends PureComponent {
                 <style jsx>{`
                     .content-wrapper {
                         margin-left: ${this.props.showSidebar ? '295px' : '0'};
-                        max-width: 1400px;
                     }
                     .content-area {
                         padding: 1rem 20px 20px;
