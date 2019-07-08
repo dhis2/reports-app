@@ -73,7 +73,7 @@ export const sections = {
         key: ORG_UNIT_DIST_REPORT_SECTION_KEY,
         path: `/${ORG_UNIT_DIST_REPORT_SECTION_KEY}`,
         info: {
-            label: i18n.t('Organisation Unit Distribution Report'),
+            label: i18n.t('Org unit distribution report'),
             description: i18n.t(
                 'Browse the organisation unit distribution report based on the organisation unit group sets and its groups.'
             ),
