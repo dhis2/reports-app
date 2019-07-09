@@ -31,6 +31,8 @@ export function AvailableOrganisationUnitsTree({
                     width: 100%;
                     box-sizing: border-box;
                     font-weight: 300;
+                    max-height: 400px;
+                    padding: 10px 5px;
                 }
             `}</style>
         </div>
