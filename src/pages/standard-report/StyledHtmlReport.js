@@ -63,8 +63,7 @@ class StyledHtmlReport extends React.Component {
 }
 
 StyledHtmlReport.propTypes = {
-    reportData: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
-        .isRequired,
+    reportData: PropTypes.string.isRequired,
     generateHtmlReport: PropTypes.func.isRequired,
     match: PropTypes.shape({
         params: PropTypes.shape({ id: PropTypes.string }),
@@ -73,7 +72,10 @@ StyledHtmlReport.propTypes = {
 }
 
 export default connect(
-    state => ({ reportData: state.reportData.content }),
+    ({ reportData }) => ({
+        reportData:
+            typeof reportData.content === 'string' ? reportData.content : '',
+    }),
     {
         generateHtmlReport,
     }

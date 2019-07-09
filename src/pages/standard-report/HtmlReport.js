@@ -40,7 +40,7 @@ class HtmlReport extends Component {
 }
 
 HtmlReport.propTypes = {
-    html: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
+    html: PropTypes.string.isRequired,
 }
 
 export default HtmlReport
