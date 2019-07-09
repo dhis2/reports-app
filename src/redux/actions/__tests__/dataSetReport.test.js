@@ -73,6 +73,9 @@ describe('Actions - dataSetReport - Async thunks', () => {
             dataSet: { selected: {} },
             organisationUnits: { selected: {} },
             reportPeriod: {},
+            reportData: {
+                comment: 'Test comment',
+            },
         })
 
         afterEach(() => {
