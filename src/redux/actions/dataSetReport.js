@@ -52,12 +52,11 @@ export const loadReportData = () => (dispatch, getState) => {
         .catch(error => dispatch(loadingReportDataErrorWithFeedback(error)))
 }
 
-export const shareDataSetReportComment = () => (dispatch, getState) => {
-    const { reportData, dataSet, organisationUnits, reportPeriod } = getState()
+export const shareDataSetReportComment = comment => (dispatch, getState) => {
+    const { dataSet, organisationUnits, reportPeriod } = getState()
     const dataSetId = dataSet.selected.id
     const orgUnitId = organisationUnits.selected.id
     const period = reportPeriod.selectedPeriod
-    const { comment } = reportData
 
     dispatch(sharingReportCommentStartWithFeedback())
     return postDataSetReportComment(dataSetId, orgUnitId, period, comment)
