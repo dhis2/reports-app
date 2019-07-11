@@ -304,7 +304,7 @@ export const postStandardReport = report =>
  * @returns {Promise}
  */
 export const updateStandardReport = report =>
-    api.update(`${STANDARD_REPORTS_ENDPOINT}/${report.id}`, report)
+    api.patch(`${STANDARD_REPORTS_ENDPOINT}/${report.id}`, report)
 
 /**
  * @returns {Promise}
