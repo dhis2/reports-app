@@ -191,6 +191,16 @@
     i18next-conv "^6.0.0"
     i18next-scanner "^2.4.4"
 
+"@dhis2/d2-i18n-generate@^1.0.18":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@dhis2/d2-i18n-generate/-/d2-i18n-generate-1.1.1.tgz#e800fa39e85a71c23040b6378de1c9439f69fef7"
+  dependencies:
+    argparse "^1.0.10"
+    handlebars "^4.0.11"
+    i18next-conv "^6.0.0"
+    moment "^2.22.1"
+    rimraf "^2.6.2"
+
 "@dhis2/d2-i18n-generate@^1.0.19":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@dhis2/d2-i18n-generate/-/d2-i18n-generate-1.1.0.tgz#d31ef228d0ffc234e5f38a48db817fa3f1769153"
@@ -200,6 +210,13 @@
     i18next-conv "^6.0.0"
     moment "^2.22.1"
     rimraf "^2.6.2"
+
+"@dhis2/d2-i18n@^1.0.3":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@dhis2/d2-i18n/-/d2-i18n-1.0.5.tgz#9148af1bc95e9442bcae66136b8f80146406a43f"
+  dependencies:
+    i18next "^10.3"
+    moment "^2.24.0"
 
 "@dhis2/d2-i18n@^1.0.4":
   version "1.0.4"
@@ -219,6 +236,15 @@
 "@dhis2/d2-ui-core@5.3.0", "@dhis2/d2-ui-core@^5.3.0":
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/@dhis2/d2-ui-core/-/d2-ui-core-5.3.0.tgz#8a13d90dbdc8ae8bb877b06c433b2c110774195b"
+  dependencies:
+    babel-runtime "^6.26.0"
+    d2 "~31.7"
+    lodash "^4.17.10"
+    material-ui "^0.20.0"
+
+"@dhis2/d2-ui-core@6.1.1":
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/@dhis2/d2-ui-core/-/d2-ui-core-6.1.1.tgz#c0ef84ff3267e4645989cf538ca3e4a8ab4a4c0e"
   dependencies:
     babel-runtime "^6.26.0"
     d2 "~31.7"
@@ -247,6 +273,34 @@
     material-ui "^0.20.0"
     rxjs "^5.5.7"
 
+"@dhis2/d2-ui-interpretations@^6.1.1":
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/@dhis2/d2-ui-interpretations/-/d2-ui-interpretations-6.1.1.tgz#f06a91941c21e5a0afb7e0a21333c7a97d70975b"
+  dependencies:
+    "@dhis2/d2-i18n" "^1.0.3"
+    "@dhis2/d2-i18n-extract" "^1.0.7"
+    "@dhis2/d2-i18n-generate" "^1.0.18"
+    "@dhis2/d2-ui-mentions-wrapper" "6.1.1"
+    "@dhis2/d2-ui-rich-text" "6.1.1"
+    "@dhis2/d2-ui-sharing-dialog" "6.1.1"
+    "@material-ui/core" "^3.3.1"
+    "@material-ui/icons" "^3.0.1"
+    babel-runtime "^6.26.0"
+    classnames "^2.2.6"
+    husky "^1.0.0-rc.8"
+    postcss-rtl "^1.3.0"
+    prop-types "^15.5.10"
+    react-portal "^4.1.5"
+
+"@dhis2/d2-ui-mentions-wrapper@6.1.1":
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/@dhis2/d2-ui-mentions-wrapper/-/d2-ui-mentions-wrapper-6.1.1.tgz#fae6f69b6b1880ce9bc6413f4118f16db4eff13f"
+  dependencies:
+    "@dhis2/d2-i18n" "^1.0.3"
+    "@material-ui/core" "^3.3.1"
+    lodash "^4.17.10"
+    prop-types "^15.6.2"
+
 "@dhis2/d2-ui-org-unit-tree@^5.3.0":
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/@dhis2/d2-ui-org-unit-tree/-/d2-ui-org-unit-tree-5.3.0.tgz#fef54e154b4d05a50e972b4e7e625342f9039994"
@@ -254,6 +308,27 @@
     "@dhis2/d2-ui-core" "5.3.0"
     "@material-ui/core" "^3.3.1"
     babel-runtime "^6.26.0"
+    prop-types "^15.5.10"
+    recompose "^0.26.0"
+    rxjs "^5.5.7"
+
+"@dhis2/d2-ui-rich-text@6.1.1":
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/@dhis2/d2-ui-rich-text/-/d2-ui-rich-text-6.1.1.tgz#02fb5ab688eac05486aa626a409f2a67cacd82f1"
+  dependencies:
+    babel-runtime "^6.26.0"
+    markdown-it "^8.4.2"
+    prop-types "^15.6.2"
+
+"@dhis2/d2-ui-sharing-dialog@6.1.1":
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/@dhis2/d2-ui-sharing-dialog/-/d2-ui-sharing-dialog-6.1.1.tgz#20614f2ba93217f4afb6698a2ce59057fe35a66c"
+  dependencies:
+    "@dhis2/d2-ui-core" "6.1.1"
+    "@material-ui/core" "^3.3.1"
+    "@material-ui/icons" "^3.0.1"
+    babel-runtime "^6.26.0"
+    downshift "^2.2.2"
     prop-types "^15.5.10"
     recompose "^0.26.0"
     rxjs "^5.5.7"
@@ -5032,7 +5107,7 @@ humanize-duration@~3.15.0:
   version "3.15.3"
   resolved "https://registry.yarnpkg.com/humanize-duration/-/humanize-duration-3.15.3.tgz#600a939bd9d9a16b696e907b3fc08d1a4f15e8c9"
 
-husky@^1.3.1:
+husky@^1.0.0-rc.8, husky@^1.3.1:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/husky/-/husky-1.3.1.tgz#26823e399300388ca2afff11cfa8a86b0033fae0"
   dependencies:
@@ -6302,6 +6377,12 @@ levn@^0.3.0, levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
+linkify-it@^2.0.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/linkify-it/-/linkify-it-2.1.0.tgz#c4caf38a6cd7ac2212ef3c7d2bde30a91561f9db"
+  dependencies:
+    uc.micro "^1.0.1"
+
 load-json-file@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/load-json-file/-/load-json-file-1.1.0.tgz#956905708d58b4bab4c2261b04f59f31c99374c0"
@@ -6622,6 +6703,16 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
+markdown-it@^8.4.2:
+  version "8.4.2"
+  resolved "https://registry.yarnpkg.com/markdown-it/-/markdown-it-8.4.2.tgz#386f98998dc15a37722aa7722084f4020bdd9b54"
+  dependencies:
+    argparse "^1.0.7"
+    entities "~1.1.1"
+    linkify-it "^2.0.0"
+    mdurl "^1.0.1"
+    uc.micro "^1.0.5"
+
 marked@~0.3.6:
   version "0.3.19"
   resolved "https://registry.yarnpkg.com/marked/-/marked-0.3.19.tgz#5d47f709c4c9fc3c216b6d46127280f40b39d790"
@@ -6660,6 +6751,10 @@ md5.js@^1.3.4:
   dependencies:
     hash-base "^3.0.0"
     inherits "^2.0.1"
+
+mdurl@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/mdurl/-/mdurl-1.0.1.tgz#fe85b2ec75a59037f2adfec100fd6c601761152e"
 
 media-typer@0.3.0:
   version "0.3.0"
@@ -8143,7 +8238,7 @@ postcss-replace-overflow-wrap@^3.0.0:
   dependencies:
     postcss "^7.0.2"
 
-postcss-rtl@^1.2.3:
+postcss-rtl@^1.2.3, postcss-rtl@^1.3.0:
   version "1.3.3"
   resolved "https://registry.yarnpkg.com/postcss-rtl/-/postcss-rtl-1.3.3.tgz#9ded22ba783cce5516640072f3cee0d28b746eaf"
   dependencies:
@@ -8603,6 +8698,12 @@ react-jss@^8.4.0:
 react-lifecycles-compat@^3.0.2:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
+
+react-portal@^4.1.5:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/react-portal/-/react-portal-4.2.0.tgz#5400831cdb0ae64dccb8128121cf076089ab1afd"
+  dependencies:
+    prop-types "^15.5.8"
 
 react-redux@^6.0.0:
   version "6.0.0"
@@ -10254,6 +10355,10 @@ ua-parser-js@^0.7.18:
 ua-parser-js@^0.7.9:
   version "0.7.18"
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.18.tgz#a7bfd92f56edfb117083b69e31d2aa8882d4b1ed"
+
+uc.micro@^1.0.1, uc.micro@^1.0.5:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/uc.micro/-/uc.micro-1.0.6.tgz#9c411a802a409a91fc6cf74081baba34b24499ac"
 
 uglify-js@3.3.x:
   version "3.3.28"

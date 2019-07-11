@@ -32,6 +32,7 @@ getManifest('manifest.webapp').then(manifest => {
             'organisationUnitGroupSet',
             'report',
             'reportTable',
+            'userGroup',
         ],
     })
         .then(initApi)
