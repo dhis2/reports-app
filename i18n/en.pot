@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2019-07-08T14:11:14.852Z\n"
-"PO-Revision-Date: 2019-07-08T14:11:14.852Z\n"
+"POT-Creation-Date: 2019-07-15T11:26:02.697Z\n"
+"PO-Revision-Date: 2019-07-15T11:26:02.697Z\n"
 
 msgid "Reports"
 msgstr ""
@@ -15,9 +15,6 @@ msgid "Updating Organisation Units Tree..."
 msgstr ""
 
 msgid "Select Option"
-msgstr ""
-
-msgid "No dimensions connected to the current data set"
 msgstr ""
 
 msgid "Data set dimensions"

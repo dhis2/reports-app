@@ -1,43 +1,62 @@
 import PropTypes from 'prop-types'
-import React, { Component } from 'react'
-import { loadScript } from '../../utils/dom/loadScript'
+import React from 'react'
+import { getContextPath } from '../../utils/api'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
-/**
- * Do this stuff inside an iframe...
- * https://stackoverflow.com/questions/10418644/creating-an-iframe-with-given-html-dynamically
- */
+const SCRIPTS = [
+    '/dhis-web-commons/javascripts/jQuery/jquery.min.js',
+    '/dhis-web-commons/javascripts/dhis2/dhis2.util.js',
+]
 
-class HtmlReport extends Component {
-    state = {
-        ready: false,
-        report: '',
-    }
-
-    componentDidMount() {
-        loadScript('/dhis-web-commons/javascripts/jQuery/jquery.min.js')
-            .then(() =>
-                loadScript('/dhis-web-commons/javascripts/dhis2/dhis2.util.js')
-            )
-            .then(() => this.setState({ ready: true, report: this.props.html }))
-    }
-
-    componentWillReceiveProps(newProps) {
-        if (newProps.html && this.state.ready) {
-            this.setState({ report: newProps.html })
-        }
-    }
-
-    render() {
-        return (
-            <div
-                id="html-report-id"
-                dangerouslySetInnerHTML={{
-                    __html: this.state.report,
-                }}
-            />
-        )
-    }
+const wrapHtmlInTemplate = html => `
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="utf-8">
+            ${SCRIPTS.map(createScriptTag).join('\n')}
+        </head>
+        <body>
+            ${html}
+        </body>
+    </html>
+`
+const createScriptTag = script => {
+    const src = getContextPath() + script
+    return `<script src="${src}" type="text/javascript"></script>`
 }
+
+const Loader = () => (
+    <div>
+        <CircularProgress />
+        <style jsx>{`
+            div {
+                text-align: center;
+                margin: 16px;
+            }
+        `}</style>
+    </div>
+)
+
+const HtmlReport = ({ html }) =>
+    html ? (
+        <iframe
+            id="html-report-id"
+            srcDoc={wrapHtmlInTemplate(html)}
+            title="html-report-content"
+            width="100%"
+            seamless={true}
+            sandbox="allow-same-origin allow-scripts allow-modals"
+        >
+            <style jsx>{`
+                iframe {
+                    border: none;
+                    height: 900px;
+                }
+            `}</style>
+        </iframe>
+    ) : (
+        <Loader />
+    )
 
 HtmlReport.propTypes = {
     html: PropTypes.string.isRequired,
