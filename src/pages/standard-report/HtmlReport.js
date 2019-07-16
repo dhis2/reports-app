@@ -50,7 +50,7 @@ const HtmlReport = ({ html }) =>
             <style jsx>{`
                 iframe {
                     border: none;
-                    height: 900px;
+                    flex-grow: 1;
                 }
             `}</style>
         </iframe>

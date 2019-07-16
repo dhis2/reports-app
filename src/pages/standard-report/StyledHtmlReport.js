@@ -17,6 +17,10 @@ const reportCard = resolve`
      {
         margin-top: 16px;
         padding: 16px;
+        flex-grow: 1;
+        position: relative;
+        display: flex;
+        flex-direction: column;
     }
 `
 
@@ -45,19 +49,28 @@ class StyledHtmlReport extends React.Component {
     }
     render() {
         return (
-            <Fragment>
-                <Button
-                    variant="contained"
-                    color="primary"
-                    component={LinkToListWithRef}
-                >
-                    {i18n.t('Back to standard reports list')}
-                </Button>
+            <div className="container">
+                <div className="button-row">
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        component={LinkToListWithRef}
+                    >
+                        {i18n.t('Back to standard reports list')}
+                    </Button>
+                </div>
                 <Card className={reportCard.className}>
                     <HtmlReport html={this.props.reportData} />
                 </Card>
+                <style jsx>{`
+                    .container {
+                        min-height: calc(100vh - 84px);
+                        display: flex;
+                        flex-direction: column;
+                    }
+                `}</style>
                 {reportCard.styles}
-            </Fragment>
+            </div>
         )
     }
 }
