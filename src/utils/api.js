@@ -276,6 +276,13 @@ export const getResources = (page, pageSize, search) => {
 /**
  * @returns {Promise}
  */
+export const getResourceById = id => {
+    return api.get(`${RESOURCE_ENDPOINT}/${id}`)
+}
+
+/**
+ * @returns {Promise}
+ */
 export const deleteResource = resourceId =>
     api.delete(`${RESOURCE_ENDPOINT}/${resourceId}`)
 
@@ -284,12 +291,6 @@ export const deleteResource = resourceId =>
  */
 export const getStandardReportTables = () =>
     api.get('reportTables', { paging: false, fields: 'id,name' })
-
-/**
- * returns {Promise}
- */
-export const getStandardReportTable = (id, queryParams = {}) =>
-    api.get(`reportTables/${id}`, queryParams)
 
 /**
  * @param {Object} report
@@ -303,7 +304,7 @@ export const postStandardReport = report =>
  * @returns {Promise}
  */
 export const updateStandardReport = report =>
-    api.update(`${STANDARD_REPORTS_ENDPOINT}/${report.id}`, report)
+    api.patch(`${STANDARD_REPORTS_ENDPOINT}/${report.id}`, report)
 
 /**
  * @returns {Promise}

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import FormControl from '@material-ui/core/FormControl'
 import InputLabel from '@material-ui/core/InputLabel'
 import MUISelect from '@material-ui/core/Select'
+import MenuItem from '@material-ui/core/MenuItem'
 import {
     formInput,
     formInputMeta,
@@ -12,12 +13,12 @@ import { inputWrapper } from './styles'
 import { ErrorText } from './buildingBlocks/ErrorText'
 
 export const SelectField = props => (
-    <MUISelect native {...props.input} disabled={props.disabled}>
-        {props.showEmptyOption && <option value="" />}
+    <MUISelect {...props.input} disabled={props.disabled}>
+        {props.showEmptyOption && <MenuItem value="" />}
         {props.options.map(option => (
-            <option key={option.value} value={option.value}>
+            <MenuItem key={option.value} value={option.value}>
                 {option.label}
-            </option>
+            </MenuItem>
         ))}
     </MUISelect>
 )

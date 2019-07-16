@@ -28,6 +28,18 @@ export const DimensionDropdown = props => (
     </div>
 )
 
+const Loader = () => (
+    <div>
+        <CircularProgress size={24} thickness={3} />
+        <style jsx>{`
+            div {
+                margin-bottom: 16px;
+                text-align: center;
+            }
+        `}</style>
+    </div>
+)
+
 DimensionDropdown.propTypes = {
     dimension: PropTypes.object.isRequired,
     fullWidth: PropTypes.bool.isRequired,
@@ -35,79 +47,39 @@ DimensionDropdown.propTypes = {
     onChange: PropTypes.func.isRequired,
 }
 
-export const DataDimensionsContent = props => {
-    if (props.isLoading) {
-        return (
-            <div>
-                <CircularProgress size={24} thickness={3} />
-                <style jsx>{`
-                    div {
-                        margin-bottom: 16px;
-                        text-align: center;
-                    }
-                `}</style>
-            </div>
-        )
+const DataSetDimensions = ({
+    hide,
+    isLoading,
+    fullWidth,
+    options,
+    selected,
+    onChange,
+}) => {
+    if (isLoading) {
+        return <Loader />
     }
 
-    if (props.options.length === 0) {
-        return (
-            <div className="no-results">
-                {i18n.t('No dimensions connected to the current data set')}
-                <style jsx>{`
-                    div {
-                        margin-bottom: 16px;
-                        font-style: italic;
-                        font-size: 13px;
-                        color: #757575;
-                    }
-                `}</style>
-            </div>
-        )
-    }
-
-    return (
-        <div className="box">
-            {props.options.map(dimension => (
-                <DimensionDropdown
-                    key={dimension.id}
-                    dimension={dimension}
-                    fullWidth={props.fullWidth}
-                    values={props.selected}
-                    onChange={createDimensionChangeHandler(
-                        props.onChange,
-                        dimension.id
-                    )}
-                />
-            ))}
-            <style jsx>{`
-                div {
-                    border: 1px solid #bcbcbc;
-                    padding: 4px;
-                    margin-bottom: 16px;
-                }
-            `}</style>
-        </div>
-    )
-}
-
-DataDimensionsContent.propTypes = {
-    isLoading: PropTypes.bool.isRequired,
-    fullWidth: PropTypes.bool.isRequired,
-    options: PropTypes.array.isRequired,
-    selected: PropTypes.object.isRequired,
-    onChange: PropTypes.func.isRequired,
-}
-
-const DataSetDimensions = ({ hide, ...contentProps }) => {
-    if (hide) {
+    if (hide || options.length === 0) {
         return null
     }
 
     return (
         <React.Fragment>
             <h6 className="header">{i18n.t('Data set dimensions')}</h6>
-            <DataDimensionsContent {...contentProps} />
+            <div className="box">
+                {options.map(dimension => (
+                    <DimensionDropdown
+                        key={dimension.id}
+                        dimension={dimension}
+                        fullWidth={fullWidth}
+                        values={selected}
+                        onChange={createDimensionChangeHandler(
+                            onChange,
+                            dimension.id
+                        )}
+                    />
+                ))}
+            </div>
             <style jsx>{`
                 h6 {
                     color: #757575;
@@ -117,6 +89,11 @@ const DataSetDimensions = ({ hide, ...contentProps }) => {
                     text-align: left;
                     font-weight: normal;
                 }
+                div {
+                    border: 1px solid #bcbcbc;
+                    padding: 4px;
+                    margin-bottom: 16px;
+                }
             `}</style>
         </React.Fragment>
     )
@@ -124,6 +101,11 @@ const DataSetDimensions = ({ hide, ...contentProps }) => {
 
 DataSetDimensions.propTypes = {
     hide: PropTypes.bool.isRequired,
+    isLoading: PropTypes.bool.isRequired,
+    fullWidth: PropTypes.bool.isRequired,
+    options: PropTypes.array.isRequired,
+    selected: PropTypes.object.isRequired,
+    onChange: PropTypes.func.isRequired,
 }
 
 DataSetDimensions.defaultProps = {

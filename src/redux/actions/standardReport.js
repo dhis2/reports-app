@@ -1,41 +1,48 @@
-import debounce from 'lodash.debounce'
 import i18n from '@dhis2/d2-i18n'
+import { push } from 'connected-react-router'
+import debounce from 'lodash.debounce'
 import omit from 'lodash.omit'
 import size from 'lodash.size'
-
 import { DEBOUNCE_DELAY } from '../../config/search.config'
+import { STANDARD_REPORT_SECTION_KEY } from '../../config/sections.config'
+import { reportTypes } from '../../pages/standard-report/standard.report.conf'
 import {
-    getApi,
     deleteStandardReport as deleteStandardReportRequest,
+    getApi,
     getFilteredStandardReports,
     getStandardReportDetails,
     getStandardReportHtmlReport,
-    getStandardReportTable,
     postStandardReport,
     updateStandardReport,
 } from '../../utils/api'
+import { fileToText } from '../../utils/fileToText'
+import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
+import {
+    appendOrgUnitsAndReportPeriodToQueryString,
+    extractRequiredReportParams,
+    getReportParams,
+    isHtmlReport,
+    validateRequiredParams,
+} from '../../utils/standardReport'
 import {
     clearFeedback,
-    showSuccessSnackBar,
-    showErrorSnackBar,
     showConfirmationSnackBar,
+    showErrorSnackBar,
+    showSuccessSnackBar,
 } from './feedback'
-import { extractRequiredReportParams } from '../../utils/standardReport/extractRequiredReportParams'
-import { fileToText } from '../../utils/fileToText'
+import { clearSelectedOrgUnit } from './organisationUnits'
 import {
     goToNextPage as goToNextPageOrig,
     goToPrevPage as goToPrevPageOrig,
     setPagination,
 } from './pagination'
-import { loadStandardReportTables } from './standardReportTables'
 import {
+    loadingReportDataError,
     loadingReportDataStart,
     loadingReportDataSuccess,
-    loadingReportDataError,
 } from './reportData'
-import { reportTypes } from '../../pages/standard-report/standard.report.conf'
-import { validateRequiredParams } from '../../utils/standardReport/validateRequiredParams'
-import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
+import { clearSelectedReportPeriod } from './reportPeriod'
+import { loadStandardReportTables } from './standardReportTables'
 
 export const actionTypes = {
     SET_SELECTED_REPORT: 'SET_SELECTED_REPORT',
@@ -153,58 +160,15 @@ export const goToPrevPage = () => dispatch => {
  * @param {Object} report A d2 report model
  * @return {Object}
  */
-export const addReportFormShow = report => ({
-    type: actionTypes.ADD_REPORT_FORM_SHOW,
-    payload: report,
-})
+export const addReportFormShow = () =>
+    push(`${STANDARD_REPORT_SECTION_KEY}/new`)
 
 /**
  * @param {Object} report A d2 report model
  * @return {Object}
  */
-export const addReportFormHide = report => ({
-    type: actionTypes.ADD_REPORT_FORM_HIDE,
-    payload: report,
-})
-
-/**
- * @param {Object} report A d2 report model
- * @return {Object}
- */
-export const editReportFormShow = report => dispatch => {
-    dispatch({
-        type: actionTypes.EDIT_REPORT_FORM_SHOW,
-        payload: report,
-    })
-    dispatch(loadStandardReportDetails(report.id))
-}
-
-/**
- * @param {Object} report A d2 report model
- * @return {Object}
- */
-export const editReportFormHide = report => ({
-    type: actionTypes.EDIT_REPORT_FORM_HIDE,
-    payload: report,
-})
-
-/**
- * @param {Object} report A d2 report model
- * @return {Object}
- */
-export const createReportShow = report => ({
-    type: actionTypes.CREATE_REPORT_SHOW,
-    payload: report,
-})
-
-/**
- * @param {Object} report A d2 report model
- * @return {Object}
- */
-export const createReportHide = report => ({
-    type: actionTypes.CREATE_REPORT_HIDE,
-    payload: report,
-})
+export const editReportFormShow = report =>
+    push(`${STANDARD_REPORT_SECTION_KEY}/edit/${report.id}`)
 
 /**
  * @param {Object} report A d2 report model
@@ -212,15 +176,6 @@ export const createReportHide = report => ({
  */
 export const sharingSettingsShow = report => ({
     type: actionTypes.SHARING_SETTINGS_SHOW,
-    payload: report,
-})
-
-/**
- * @param {Object} report A d2 report model
- * @return {Object}
- */
-export const sharingSettingsHide = report => ({
-    type: actionTypes.SHARIING_SETTINGS_HIDE,
     payload: report,
 })
 
@@ -461,6 +416,7 @@ export const sendStandardReport = (report, isEdit) => dispatch => {
             dispatch(showSuccessSnackBar(successMessage))
             dispatch(loadingSendStandardReportSuccess())
             dispatch(loadStandardReports())
+            dispatch(navigateToList())
         })
         .catch(error => {
             const displayMessage = humanReadableErrorMessage(
@@ -471,6 +427,8 @@ export const sendStandardReport = (report, isEdit) => dispatch => {
             dispatch(loadingSendStandardReportError())
         })
 }
+
+export const navigateToList = () => push(`/${STANDARD_REPORT_SECTION_KEY}`)
 
 /**
  * =============================================
@@ -498,19 +456,20 @@ export const generatingHtmlReportErrorWithFeedback = error => dispatch => {
  * @param {string} id
  * @returns {Function}
  */
-export const generateHtmlReport = () => (dispatch, getState) => {
+export const generateHtmlReport = ({
+    id,
+    orgUnitId,
+    reportPeriod,
+}) => dispatch => {
     dispatch(loadingReportDataStart())
-    const { standardReport, organisationUnits, reportPeriod } = getState()
-    const { reportParams } = standardReport
-    const { id } = standardReport.selectedReport
 
     const reportRequestBody = {}
-    if (reportParams.organisationUnit) {
-        reportRequestBody.ou = organisationUnits.selected.id
+    if (orgUnitId) {
+        reportRequestBody.ou = orgUnitId
     }
 
-    if (reportParams.reportPeriod) {
-        reportRequestBody.pe = reportPeriod.selectedPeriod
+    if (reportPeriod) {
+        reportRequestBody.pe = reportPeriod
     }
 
     return getStandardReportHtmlReport(id, reportRequestBody)
@@ -528,9 +487,11 @@ export const requiredReportParamsError = errors => ({
     payload: errors,
 })
 
-export const cancelGeneratingPdfReport = () => ({
-    type: actionTypes.CANCEL_GENERATING_PDF_REPORT,
-})
+export const cancelGeneratingPdfReport = () => dispatch => {
+    dispatch(clearSelectedReportPeriod())
+    dispatch(clearSelectedOrgUnit())
+    dispatch({ type: actionTypes.CANCEL_GENERATING_PDF_REPORT })
+}
 
 export const submitRequiredReportParams = () => (dispatch, getState) => {
     const state = getState()
@@ -542,17 +503,12 @@ export const submitRequiredReportParams = () => (dispatch, getState) => {
         dispatch(requiredReportParamsError(errors))
     } else {
         if (selectedReport.type === reportTypes.HTML) {
-            dispatch(generateHtmlReport())
+            dispatch(navigateToHtmlReportView())
         } else {
             dispatch(generatePdfReport())
         }
     }
 }
-
-export const getStandardReportTableRequiredParams = report =>
-    report.reportTable
-        ? getStandardReportTable(report.reportTable.id)
-        : Promise.resolve({ reportParams: {} })
 
 /**
  * @param {string} reportId
@@ -560,41 +516,47 @@ export const getStandardReportTableRequiredParams = report =>
  */
 export const showReportParams = report => dispatch => {
     dispatch(setSelectedReport(report))
-    return getStandardReportTableRequiredParams(report)
-        .then(({ reportParams }) => {
-            const requiredParams = extractRequiredReportParams(reportParams)
 
-            if (!size(requiredParams)) {
-                if (report.type === reportTypes.HTML) {
-                    dispatch(generateHtmlReport())
-                } else {
-                    dispatch(generatePdfReport())
-                }
-            } else {
-                dispatch(defineRequiredReportParams(requiredParams))
-            }
-        })
-        .catch(error => {
-            throw error
-        })
+    const reportParams = getReportParams(report)
+    const requiredParams = extractRequiredReportParams(reportParams)
+
+    if (!size(requiredParams)) {
+        if (isHtmlReport(report)) {
+            dispatch(navigateToHtmlReportView())
+        } else {
+            dispatch(generatePdfReport())
+        }
+    } else {
+        dispatch(defineRequiredReportParams(requiredParams))
+    }
+}
+
+export const navigateToHtmlReportView = () => (dispatch, getState) => {
+    const state = getState()
+    const reportId = state.standardReport.selectedReport.id
+    const reportQueryString = appendOrgUnitsAndReportPeriodToQueryString(state)
+
+    dispatch(
+        push(
+            `${STANDARD_REPORT_SECTION_KEY}/view/${reportId}${reportQueryString}`
+        )
+    )
 }
 
 export const generatePdfReport = () => (dispatch, getState) => {
-    let reportQueryString = `t=${new Date().getTime()}`
     const api = getApi()
-    const { standardReport, organisationUnits, reportPeriod } = getState()
-    const { reportParams } = standardReport
-    const { id } = standardReport.selectedReport
+    const state = getState()
+
+    const { id } = state.standardReport.selectedReport
     const reportPath = `reports/${id}/data.pdf`
+    const reportQueryString = appendOrgUnitsAndReportPeriodToQueryString(
+        state,
+        `t=${new Date().getTime()}`
+    )
 
-    if (reportParams.organisationUnit) {
-        reportQueryString += `&ou=${organisationUnits.selected.id}`
-    }
-
-    if (reportParams.reportPeriod) {
-        reportQueryString += `&p=${reportPeriod.selectedPeriod}`
-    }
-
-    window.open(`${api.baseUrl}/${reportPath}?${reportQueryString}`)
     dispatch({ type: actionTypes.GENERATE_PDF_REPORT })
+    dispatch(clearSelectedReportPeriod())
+    dispatch(clearSelectedOrgUnit())
+
+    window.open(`${api.baseUrl}/${reportPath}${reportQueryString}`)
 }

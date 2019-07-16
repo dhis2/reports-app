@@ -9,6 +9,7 @@ export const actionTypes = {
     REPORT_PERIOD_TYPES_ERRORED: 'REPORT_PERIOD_TYPES_ERRORED',
     REPORT_PERIOD_TYPE_SELECTED: 'REPORT_PERIOD_TYPE_SELECTED',
     REPORT_PERIOD_SELECTED: 'REPORT_PERIOD_SELECTED',
+    REPORT_PERIOD_CLEAR_ALL: 'REPORT_PERIOD_CLEAR_ALL',
 }
 
 /**
@@ -59,4 +60,8 @@ export const selectPeriodType = event => ({
 export const selectPeriod = period => ({
     type: actionTypes.REPORT_PERIOD_SELECTED,
     payload: period,
+})
+
+export const clearSelectedReportPeriod = () => ({
+    type: actionTypes.REPORT_PERIOD_CLEAR_ALL,
 })

@@ -1,6 +1,5 @@
 import i18n from '@dhis2/d2-i18n'
 import { DropDown, PeriodPicker } from '@dhis2/d2-ui-core'
-import parsePeriod from 'd2/period/parser'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
@@ -16,7 +15,6 @@ export function PeriodPickerWithPeriodType({
     label,
     collection,
     selectedPeriodType,
-    selectedPeriod,
 }) {
     return (
         <div>
@@ -35,16 +33,6 @@ export function PeriodPickerWithPeriodType({
                     onPickPeriod={selectPeriod}
                 />
             )}
-            {selectedPeriod && (
-                <div className="parsed-period">
-                    {parsePeriod(selectedPeriod).name}
-                </div>
-            )}
-            <style jsx>{`
-                .parsed-period {
-                    margin-bottom: 16px;
-                }
-            `}</style>
             {formLabel.styles}
         </div>
     )
@@ -56,7 +44,6 @@ PeriodPickerWithPeriodType.propTypes = {
     label: PropTypes.string.isRequired,
     collection: PropTypes.array.isRequired,
     selectedPeriodType: PropTypes.string,
-    selectedPeriod: PropTypes.string,
 }
 
 const mapStateToProps = state => ({

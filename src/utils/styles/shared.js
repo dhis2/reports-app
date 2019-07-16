@@ -10,6 +10,7 @@ export const formLabel = resolve`
 `
 export const container = resolve`
     padding: 16px;
+    margin-top: 16px;
 `
 
 export const card = resolve`
@@ -27,6 +28,15 @@ export const card = resolve`
         rgba(0, 0, 0, 0.12) 0px 1px 4px;
     border-radius: 5px;
     width: 100%;
+`
+
+export const formCard = resolve`
+    padding: 2rem 5rem 4rem;
+`
+
+export const formLoader = resolve`
+    padding-top: 2rem;
+    text-align: center;
 `
 
 export const actionsContainer = resolve`

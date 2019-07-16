@@ -20,9 +20,13 @@ export const SectionHeadline = props => (
         {props.label}
         <PageHelper url={getDocsUrl(props.sectionKey)} />
         <style jsx>{`
+            h1 {
+                margin-bottom: 0;
+            }
             .back-button {
                 cursor: pointer;
                 outline: none;
+                padding: 12px;
             }
         `}</style>
     </h1>

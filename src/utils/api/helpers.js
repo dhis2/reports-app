@@ -2,13 +2,6 @@ import { FILE_RESOURCES_ENDPOINT } from './constants'
 import { getApi } from '../api'
 
 /**
- * @param {Object} d2 object retrieved by the list() method
- * @return {Array}
- */
-const mapResponseToJSArray = model =>
-    model.toArray().map(report => report.toJSON())
-
-/**
  * @param {Object} d2 ModelCollection instance
  * @return {Array<string>}
  */
@@ -35,7 +28,9 @@ export const standardReportsFields = [
     'displayName',
     'type',
     'id',
-    'reportTable[id,displayName]',
+    'reportTable[id,displayName,reportParams,relativePeriods]',
+    'reportParams',
+    'relativePeriods',
     'access',
 ]
 
@@ -43,13 +38,18 @@ export const standardReportsFields = [
  * @param {Promise} request
  * @returns {Object}
  */
-export const formatStandardReportsResponse = model => ({
-    reports: mapResponseToJSArray(model),
+export const formatStandardReportsResponse = reportsCollection => ({
+    reports: reportsCollection.toArray().map(reportModel => ({
+        ...reportModel.toJSON(),
+        // The JSON representation of a reportModel is missing
+        // some of the reportTable properties such as reportParams
+        reportTable: reportModel.reportTable,
+    })),
     pager: {
-        pageSize: model.pager.query.pageSize,
-        page: model.pager.page,
-        pageCount: model.pager.pageCount,
-        total: model.pager.total,
+        pageSize: reportsCollection.pager.query.pageSize,
+        page: reportsCollection.pager.page,
+        pageCount: reportsCollection.pager.pageCount,
+        total: reportsCollection.pager.total,
     },
 })
 

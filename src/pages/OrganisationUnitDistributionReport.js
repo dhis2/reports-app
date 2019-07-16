@@ -37,22 +37,22 @@ class OrganisationUnitDistributionReport extends React.Component {
                         onGetReportClick={this.props.loadTable}
                         onGetChartClick={this.props.loadChart}
                     />
-                    <div id="report-container">
-                        {!this.props.shouldShowChart && (
-                            <TabularReport
-                                content={this.props.reportContent}
-                                isLoading={this.props.loading}
-                                fileUrls={this.props.fileUrls}
-                            />
-                        )}
-                        {this.props.shouldShowChart && (
-                            <BarChart
-                                content={this.props.reportContent}
-                                isLoading={this.props.loading}
-                            />
-                        )}
-                    </div>
                 </Paper>
+                <div id="report-container">
+                    {!this.props.shouldShowChart && (
+                        <TabularReport
+                            content={this.props.reportContent}
+                            isLoading={this.props.loading}
+                            fileUrls={this.props.fileUrls}
+                        />
+                    )}
+                    {this.props.shouldShowChart && (
+                        <BarChart
+                            content={this.props.reportContent}
+                            isLoading={this.props.loading}
+                        />
+                    )}
+                </div>
                 <Snackbar />
                 {container.styles}
             </div>

@@ -16,9 +16,6 @@ it('AppRouter renders without crashing', () => {
     ownShallow()
 })
 
-it('AppRouter renders the correct number of Route', () => {
-    const wrapper = ownShallow()
-
-    // Pages plus home and no match route
-    expect(wrapper.find(Route)).toHaveLength(sectionOrder.length + 2)
+it('Matches the snapshot', () => {
+    expect(ownShallow()).toMatchSnapshot()
 })
