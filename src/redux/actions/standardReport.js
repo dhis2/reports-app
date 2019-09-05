@@ -3,6 +3,8 @@ import { push } from 'connected-react-router'
 import debounce from 'lodash.debounce'
 import omit from 'lodash.omit'
 import size from 'lodash.size'
+import parsePeriod from 'd2/period/parser'
+
 import { DEBOUNCE_DELAY } from '../../config/search.config'
 import { STANDARD_REPORT_SECTION_KEY } from '../../config/sections.config'
 import { reportTypes } from '../../pages/standard-report/standard.report.conf'
@@ -470,6 +472,13 @@ export const generateHtmlReport = ({
 
     if (reportPeriod) {
         reportRequestBody.pe = reportPeriod
+
+        try {
+            const period = parsePeriod(reportPeriod)
+            reportRequestBody.date = period.startDate
+        } catch (error) {
+            // ignore
+        }
     }
 
     return getStandardReportHtmlReport(id, reportRequestBody)
