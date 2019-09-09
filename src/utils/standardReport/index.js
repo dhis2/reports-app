@@ -1,4 +1,5 @@
 import omitBy from 'lodash.omitby'
+import parsePeriod from 'd2/period/parser'
 import { isFalsy } from '../boolean/isFalsy'
 import { reportTypes } from '../../pages/standard-report/standard.report.conf'
 import { getSelectedOrgUnit } from '../../redux/selectors/organisationUnit/getSelectedOrgUnit'
@@ -33,7 +34,13 @@ export const appendOrgUnitsAndReportPeriodToQueryString = (
     }
 
     if (reportParams.period) {
-        baseStr += `&p=${reportPeriod.selectedPeriod}`
+        baseStr += `&pe=${reportPeriod.selectedPeriod}`
+        try {
+            const period = parsePeriod(reportPeriod.selectedPeriod)
+            baseStr += `&date=${period.startDate}`
+        } catch (error) {
+            // ignore
+        }
     }
 
     return baseStr ? `?${baseStr}` : baseStr

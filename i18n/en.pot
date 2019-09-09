@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2019-07-15T11:26:02.697Z\n"
-"PO-Revision-Date: 2019-07-15T11:26:02.697Z\n"
+"POT-Creation-Date: 2019-09-05T14:59:54.533Z\n"
+"PO-Revision-Date: 2019-09-05T14:59:54.533Z\n"
 
 msgid "Reports"
 msgstr ""
@@ -558,7 +558,7 @@ msgstr ""
 msgid "Create"
 msgstr ""
 
-msgid "Edit Report"
+msgid "Edit"
 msgstr ""
 
 msgid "Actions"
@@ -567,7 +567,7 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-msgid "Sharing Settings"
+msgid "Sharing settings"
 msgstr ""
 
 msgid "View Resource"
@@ -580,9 +580,6 @@ msgid "Add users and user groups"
 msgstr ""
 
 msgid "Enter names"
-msgstr ""
-
-msgid "Sharing settings"
 msgstr ""
 
 msgid "Permissions"
