@@ -43,7 +43,7 @@ class StyledHtmlReport extends React.Component {
         } = this.props
         const searchParams = new URLSearchParams(search)
         const orgUnitId = searchParams.get('ou')
-        const reportPeriod = searchParams.get('p')
+        const reportPeriod = searchParams.get('pe')
 
         generateHtmlReport({ id, orgUnitId, reportPeriod })
     }
