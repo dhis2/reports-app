@@ -25,6 +25,7 @@ import {
     getReportParams,
     isHtmlReport,
     validateRequiredParams,
+    processCheckboxValues,
 } from '../../utils/standardReport'
 import {
     clearFeedback,
@@ -378,18 +379,22 @@ export const loadingSendStandardReportError = () => ({
  * @param {bool} isEdit - When false, add new report
  * @returns {Promise}
  */
-export const sendStandardReport = (report, isEdit) => dispatch => {
+export const sendStandardReport = (report, isEdit) => (dispatch, getState) => {
     dispatch(loadingSendStandardReportStart())
+
+    const {
+        standardReport: { selectedReport },
+    } = getState()
 
     const formattedReport = {
         ...report,
-        relativePeriods: (report.relativePeriods || []).reduce(
-            (acc, cur) => ({ ...acc, [cur]: true }),
-            {}
+        relativePeriods: processCheckboxValues(
+            report.relativePeriods,
+            selectedReport.relativePeriods
         ),
-        reportParams: (report.reportParams || []).reduce(
-            (acc, cur) => ({ ...acc, [cur]: true }),
-            {}
+        reportParams: processCheckboxValues(
+            report.reportParams,
+            selectedReport.reportParams
         ),
         reportTable: report.reportTable ? { id: report.reportTable } : '',
     }
