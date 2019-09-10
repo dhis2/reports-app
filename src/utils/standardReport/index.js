@@ -62,8 +62,14 @@ export const validateRequiredParams = (state, requiredParams) => {
 
 export const processCheckboxValues = (formSelectedKeys, stateValues) => {
     const selectedKeys = new Set(formSelectedKeys)
+
     return Object.keys(stateValues).reduce((acc, key) => {
-        acc[key] = selectedKeys.has(key)
+        const formValue = selectedKeys.has(key)
+        const stateValue = stateValues[key]
+
+        if (formValue !== stateValue) {
+            acc[key] = formValue
+        }
         return acc
     }, {})
 }
