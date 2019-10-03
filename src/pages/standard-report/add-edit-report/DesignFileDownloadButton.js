@@ -36,6 +36,11 @@ export const DesignFileDownloadButton = ({
             <FormHelperText>{label}</FormHelperText>
             <FormHelperText>
                 <Button variant="contained" component="span">
+                    {/* 
+                    Having an anchor to a HTML file with a download attribute 
+                    causes unexpected behavior in Chrome, see:
+                    https://dhis2.slack.com/archives/G451J9KGR/p1570090946063500
+                    */}
                     <a href={url} target="_blank" download={type !== 'html'}>
                         Download
                     </a>
