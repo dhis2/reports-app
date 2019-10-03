@@ -36,7 +36,7 @@ export const DesignFileDownloadButton = ({
             <FormHelperText>{label}</FormHelperText>
             <FormHelperText>
                 <Button variant="contained" component="span">
-                    <a href={url} target="_blank" download>
+                    <a href={url} target="_blank" download={type !== 'html'}>
                         Download
                     </a>
                 </Button>
