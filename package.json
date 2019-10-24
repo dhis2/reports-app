@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@babel/polyfill": "^7.4.3",
-    "@dhis2/d2-i18n": "^1.0.4",
+    "@dhis2/d2-i18n": "^1.0.6",
     "@dhis2/d2-i18n-extract": "^1.0.7",
     "@dhis2/d2-ui-app": "^2.0.0",
     "@dhis2/d2-ui-core": "^5.3.0",
@@ -84,7 +84,7 @@
   },
   "devDependencies": {
     "@dhis2/cli-style": "^0.10.1",
-    "@dhis2/d2-i18n-generate": "^1.0.19",
+    "@dhis2/d2-i18n-generate": "^1.1.1",
     "chai": "^4.1.2",
     "cucumber": "^3.2.0",
     "enzyme": "^3.3.0",
