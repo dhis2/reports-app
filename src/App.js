@@ -7,7 +7,7 @@ import {
 import { Sidebar, mui3theme } from '@dhis2/d2-ui-core'
 import { connect } from 'react-redux'
 import D2UIApp from '@dhis2/d2-ui-app'
-import HeaderBar from '@dhis2/ui/widgets/HeaderBar'
+import { HeaderBar } from '@dhis2/ui-widgets'
 import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
 
