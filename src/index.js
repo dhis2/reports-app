@@ -27,8 +27,7 @@ getManifest('manifest.webapp').then(manifest => {
             ? manifest.getBaseUrl()
             : process.env.REACT_APP_DHIS2_BASE_URL
 
-    const apiVersion = manifest.dhis2.apiVersion
-    const apiUrl = `${baseUrl}/api/${apiVersion}`
+    const apiUrl = `${baseUrl}/api`
 
     // init d2 with configs
     init({
@@ -52,7 +51,7 @@ getManifest('manifest.webapp').then(manifest => {
                 <RuntimeProvider
                     config={{
                         baseUrl,
-                        apiVersion,
+                        apiVersion: '',
                     }}
                 >
                     <Provider store={store}>
