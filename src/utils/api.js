@@ -12,7 +12,6 @@ import {
     getFileUrls,
     postDataSetReportCommentUrl,
     getDataSetReportFileUrls,
-    sanitizeApiUrl,
 } from './api/helpers'
 import { isCustomFormType } from './dataSetReport/isCustomFormType'
 
@@ -201,7 +200,7 @@ export const getReportingRateSummaryReport = async (
     // which only spawns a single request
     const extensions = ['json', 'xls', 'csv']
     const [{ url }, ...fileUrls] = getAnalyticsFileUrls(req, extensions)
-    return api.get(sanitizeApiUrl(url)).then(data => ({ ...data, fileUrls }))
+    return api.get(url).then(data => ({ ...data, fileUrls }))
 }
 
 /**

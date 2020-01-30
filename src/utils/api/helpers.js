@@ -87,13 +87,6 @@ export const getAnalyticsFileUrls = (req, extensions) => {
     }, [])
 }
 
-export const sanitizeApiUrl = url => {
-    // Because dev envs use an absolute path, but deployed instances a relative one
-    // And because `d2.get` will prepend "/api" for relative paths, we need to remove
-    // "api/" from the string for relative paths
-    return url.includes('../api') ? url.replace('../api', '..') : url
-}
-
 export const getDataSetReportFileUrls = (resourceUrl, options) => {
     const mergedFilters = {
         ...options.dataSetDimensions,
