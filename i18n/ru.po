@@ -1,0 +1,764 @@
+# 
+# Translators:
+# phil_dhis2, 2020
+# Viktor Varland <viktor@dhis2.org>, 2020
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"POT-Creation-Date: 2019-12-12T07:35:49.121Z\n"
+"PO-Revision-Date: 2020-04-28 22:12+0000\n"
+"Last-Translator: Viktor Varland <viktor@dhis2.org>, 2020\n"
+"Language-Team: Russian (https://www.transifex.com/hisp-uio/teams/100509/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+msgid "Reports"
+msgstr "Отчеты"
+
+msgid "Updating Organisation Units Tree..."
+msgstr "Обновление дерева организационных единиц ..."
+
+msgid "Select Option"
+msgstr ""
+
+msgid "Data set dimensions"
+msgstr ""
+
+msgid "Loading options..."
+msgstr ""
+
+msgid "Select Data Set"
+msgstr ""
+
+msgid "Data set"
+msgstr "Набор данных"
+
+msgid "Group Set"
+msgstr ""
+
+msgid "Select Group Set"
+msgstr ""
+
+msgid "Show more options"
+msgstr "Показать больше опций"
+
+msgid "Show fewer options"
+msgstr "Показать меньше опций"
+
+msgid "Report organisation unit"
+msgstr "Отчет организации/отдела"
+
+msgid "Select Period Type"
+msgstr "Выбрать тип периода"
+
+msgid "Search"
+msgstr "Поиск"
+
+msgid "No results have been found"
+msgstr ""
+
+msgid "Download as"
+msgstr "Скачать как"
+
+msgid "Share"
+msgstr "Поделиться"
+
+msgid "Write a comment, question or interpretation of this report"
+msgstr "Написать комментарий, вопрос или интерпретацию данного отчета"
+
+msgid "Select file"
+msgstr ""
+
+msgid "No file chosen"
+msgstr ""
+
+msgid "Standard Report"
+msgstr "Стандартный отчет"
+
+msgid ""
+"View and add reports based on the JasperReports library. These can be based "
+"on report tables and can be designed in iReport."
+msgstr ""
+"Смотреть и добавить отчет на основе библиотеки Отчетов Jasper. Он основан на"
+" отчетных таблицах и может быть включен в И.отчет"
+
+msgid "View Reports"
+msgstr ""
+
+msgid "Data Set Report"
+msgstr "Отчет набора данных"
+
+msgid ""
+"View data set reports. These reports are based on data entry screens and "
+"will produce a report with aggregated data."
+msgstr ""
+"Смотреть отчет по набору данные. Эти отчеты основаны на экраны ввода данных "
+"и производят отчет с агрегированными данными."
+
+msgid "Get Report"
+msgstr ""
+
+msgid "Reporting Rate Summary"
+msgstr "Суммарный отчетный показатель"
+
+msgid ""
+"Browse the reporting rates of data sets by organisation unit and period "
+"based on various criteria for submission."
+msgstr ""
+"Просмотреть отчетные показатели набора данных по организациям и периоды на "
+"основе различных критериев для представления."
+
+msgid "Resource"
+msgstr "Ресурсы"
+
+msgid ""
+"View and add resources. These resources can be uploaded documents or URLs on"
+" the web."
+msgstr ""
+"Смотреть и добавить ресурсы. Эти ресурсы могут быть как загруженные "
+"документы или URL на вебсайте"
+
+msgid "View Resources"
+msgstr ""
+
+msgid "Org unit distribution report"
+msgstr ""
+
+msgid ""
+"Browse the organisation unit distribution report based on the organisation "
+"unit group sets and its groups."
+msgstr ""
+"Просмотреть отчет о распределении организации на основе наборов групп "
+"организаций и ихгрупп."
+
+msgid "CONFIRM"
+msgstr ""
+
+msgid "Report period"
+msgstr "Отчет за период"
+
+msgid "Use data for selected unit only"
+msgstr "использовать данные только по выбранным ячейкам"
+
+msgid "Get Chart"
+msgstr ""
+
+msgid "Edit resource"
+msgstr ""
+
+msgid "Save resource"
+msgstr ""
+
+msgid "Add resource"
+msgstr ""
+
+msgid "Do you want to use this file as an attachment?"
+msgstr ""
+
+msgid "Yes"
+msgstr "Да"
+
+msgid "No"
+msgstr "Нет"
+
+msgid "File"
+msgstr "Файл"
+
+msgid "Name*"
+msgstr ""
+
+msgid "Details"
+msgstr "Детали"
+
+msgid "Resource Type"
+msgstr ""
+
+msgid "Url*"
+msgstr ""
+
+msgid "File resources can not be edited, only created"
+msgstr ""
+
+msgid "Cancel"
+msgstr "Отмена"
+
+msgid "Edit standard report"
+msgstr ""
+
+msgid "Create standard report"
+msgstr ""
+
+msgid "Generate report"
+msgstr ""
+
+msgid "Report parameters"
+msgstr "Параметры отчета"
+
+msgid "There are some errors you have to fix first!"
+msgstr ""
+
+msgid "Back to standard reports list"
+msgstr ""
+
+msgid "Get current design"
+msgstr "Получить текущий дизайн"
+
+msgid "Get HTML Report Template"
+msgstr ""
+
+msgid "Get Jasper Report Template"
+msgstr ""
+
+msgid "Report Type*"
+msgstr ""
+
+msgid "Report Table*"
+msgstr ""
+
+msgid "Design File"
+msgstr ""
+
+msgid "Design File*"
+msgstr ""
+
+msgid "Relative periods"
+msgstr "Соответствующие периоды"
+
+msgid "Settings"
+msgstr "Настройки"
+
+msgid "Cache Strategy*"
+msgstr ""
+
+msgid "Submit"
+msgstr "Представить"
+
+msgid "[ None ]"
+msgstr ""
+
+msgid "Jasper report with report table data source"
+msgstr "Jasper отчет с источником данных отчетной таблицы"
+
+msgid "Jasper report with JDBC data source"
+msgstr "Jasper отчеи с источником данных JDBC"
+
+msgid "HTML report"
+msgstr "HTML отчет"
+
+msgid "No cache"
+msgstr "Не кешировать"
+
+msgid "Respect system setting"
+msgstr "Соблюдать настройки системы"
+
+msgid "Cache for one hour"
+msgstr "Кешировать на 1 час"
+
+msgid "Cache until 6 AM tomorrow"
+msgstr "Поместить в кэш до завтра до 6 утра"
+
+msgid "Cache for two weeks"
+msgstr "Кешировать на 2 недели"
+
+msgid "Days"
+msgstr "Дни"
+
+msgid "Reporting day"
+msgstr ""
+
+msgid "Yesterday"
+msgstr "Вчера"
+
+msgid "Last 3 days"
+msgstr "Последние 3 дня"
+
+msgid "Last 7 days"
+msgstr "Последние 7 дней"
+
+msgid "Last 14 days"
+msgstr "Последние 14 дней"
+
+msgid "Weeks"
+msgstr "Недели"
+
+msgid "Reporting week"
+msgstr ""
+
+msgid "Last Week"
+msgstr ""
+
+msgid "Last 2 weeks"
+msgstr ""
+
+msgid "Last 12 weeks"
+msgstr "Прошлые 12 недель"
+
+msgid "Last 52 weeks"
+msgstr "Последние 52 недели"
+
+msgid "Weeks this year"
+msgstr "Недели этого года"
+
+msgid "Months"
+msgstr "Месяцы"
+
+msgid "Reporting month"
+msgstr "Отчетный месяц"
+
+msgid "Last month"
+msgstr "Последний месяц"
+
+msgid "Last 3 months"
+msgstr "Прошлые 3 месяца"
+
+msgid "Last 6 months"
+msgstr "Последние 6 месяцев"
+
+msgid "Last 12 months"
+msgstr "Прошлые 12 месяцев"
+
+msgid "Months this year"
+msgstr "Месяцы этого года"
+
+msgid "Bi-months"
+msgstr "Двухмесячный период"
+
+msgid "Reporting bi-month"
+msgstr "Отчетный  двухмесячный период"
+
+msgid "Last bi-month"
+msgstr "Прошлый двухмесячный период"
+
+msgid "Last 6 bi-month"
+msgstr ""
+
+msgid "Bi-months this year"
+msgstr "Би-месяцы этого года"
+
+msgid "Quarters"
+msgstr "Кварталы"
+
+msgid "Reporting quarter"
+msgstr "Отчетный квартал"
+
+msgid "Last quarter"
+msgstr "Последний квартал"
+
+msgid "Last 4 quarters"
+msgstr "Прошлые 4 квартала"
+
+msgid "Quarters of reporting year"
+msgstr ""
+
+msgid "Six-Months"
+msgstr ""
+
+msgid "Reporting six-month"
+msgstr "Отчет полугодовой"
+
+msgid "Last six-month"
+msgstr "Прошлое полугодие"
+
+msgid "Last 2 six-months"
+msgstr "Последние два полугодия"
+
+msgid "Financial Years"
+msgstr ""
+
+msgid "Reporting financial year"
+msgstr ""
+
+msgid "Last financial year"
+msgstr "Прошлый финансовый год"
+
+msgid "Last 5 financial years"
+msgstr "Прошлые 5 финансовых лет"
+
+msgid "Years"
+msgstr "Годы"
+
+msgid "Reporting year"
+msgstr ""
+
+msgid "Last year"
+msgstr "Прошлый год"
+
+msgid "Last 5 years"
+msgstr "Прошлые 5 лет"
+
+msgid "An error occurred whole loading the data set options"
+msgstr ""
+
+msgid "An error occurred while loading the data set dimensions"
+msgstr ""
+
+msgid "An error occurred while loading the group sets!"
+msgstr ""
+
+msgid "Could not load organisation units"
+msgstr ""
+
+msgid "An error occurred while loading the organisation units!"
+msgstr ""
+
+msgid "Successfully loaded the {{ outputType }}"
+msgstr ""
+
+msgid "chart"
+msgstr ""
+
+msgid "table"
+msgstr ""
+
+msgid "An error occurred while loading the report!"
+msgstr ""
+
+msgid "Successfully added comment"
+msgstr ""
+
+msgid "An error occurred while submitting your comment!"
+msgstr ""
+
+msgid "Could not load period types"
+msgstr ""
+
+msgid "An error occurred while loading the resources!"
+msgstr ""
+
+msgid "Do you really want to delete this resource?"
+msgstr ""
+
+msgid "The resource has been deleted successfully"
+msgstr ""
+
+msgid "An error occurred when deleting the resource!"
+msgstr ""
+
+msgid "An error occurred while adding the resource!"
+msgstr ""
+
+msgid "An error occurred while saving the modifications!"
+msgstr ""
+
+msgid "An error occurred while loading the standard reports"
+msgstr ""
+
+msgid "An error occurred while trying to delete the standard report"
+msgstr ""
+
+msgid "An error occurred while loading the standard report details"
+msgstr ""
+
+msgid "The report has been updated successfully"
+msgstr ""
+
+msgid "The report has been added successfully"
+msgstr ""
+
+msgid "An error occurred while updating the report!"
+msgstr ""
+
+msgid "An error occurred while adding the report!"
+msgstr ""
+
+msgid "An error occurred while generating the html report"
+msgstr ""
+
+msgid "An error occurred while loading the report table options"
+msgstr ""
+
+msgid "Count"
+msgstr "Количество"
+
+msgid "Organisation Unit"
+msgstr "Организация"
+
+msgid "Total"
+msgstr "Итог"
+
+msgid "Daily"
+msgstr "Ежедневно"
+
+msgid "Weekly"
+msgstr "Еженедельно"
+
+msgid "Weekly Wednesday"
+msgstr "Еженедельно по средам"
+
+msgid "Weekly Thursday"
+msgstr "Еженедельно по четвергам"
+
+msgid "Weekly Saturday"
+msgstr "Еженедельно по субботам"
+
+msgid "Weekly Sunday"
+msgstr "Еженедельно по воскресеньям"
+
+msgid "Bi-Weekly"
+msgstr ""
+
+msgid "Monthly"
+msgstr "Ежемесячно"
+
+msgid "Bi-Monthly"
+msgstr ""
+
+msgid "Quarterly"
+msgstr "Ежеквартально"
+
+msgid "Six-Monthly"
+msgstr ""
+
+msgid "Six-Monthly April"
+msgstr ""
+
+msgid "Six-Monthly November"
+msgstr ""
+
+msgid "Yearly"
+msgstr "Ежегодно"
+
+msgid "Financial-April"
+msgstr "Финансовый-апрель"
+
+msgid "Financial-July"
+msgstr "Финансовый-июль"
+
+msgid "Financial-Oct"
+msgstr "Финансовый - октябрь"
+
+msgid "Name"
+msgstr "Название"
+
+msgid "Something went wrong when processing your request."
+msgstr ""
+
+msgid "Search apps"
+msgstr "Поиск приложений"
+
+msgid "Profile"
+msgstr "Профиль"
+
+msgid "Account"
+msgstr "Учетная запись"
+
+msgid "Help"
+msgstr "Помощь"
+
+msgid "Log out"
+msgstr "Выйти"
+
+msgid "About DHIS 2"
+msgstr "О DHIS 2"
+
+msgid "Manage my apps"
+msgstr "Управление моими приложениями"
+
+msgid "No results found"
+msgstr "Результаты не найдены"
+
+msgid "Interpretations"
+msgstr "Interpretations"
+
+msgid "Messages"
+msgstr "Сообщения"
+
+msgid "Report Table"
+msgstr "Отчетные таблицы"
+
+msgid "ID"
+msgstr "Ид"
+
+msgid "Create"
+msgstr "Создать"
+
+msgid "Edit"
+msgstr "Редактировать"
+
+msgid "Actions"
+msgstr "Действия"
+
+msgid "Delete"
+msgstr "Удалить"
+
+msgid "Sharing settings"
+msgstr "Настройки совместного пользования"
+
+msgid "View Resource"
+msgstr ""
+
+msgid "Edit Resource"
+msgstr ""
+
+msgid "Add users and user groups"
+msgstr "Добавить пользователей и группы пользователей"
+
+msgid "Enter names"
+msgstr "Введите имена (названия)"
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Created By"
+msgstr ""
+
+msgid "Who has access"
+msgstr "Кто имеет доступ"
+
+msgid "External access (without login)"
+msgstr "Внешний доступ (без входа в систему)"
+
+msgid "Can edit and view"
+msgstr "Можно редактировать и просматривать"
+
+msgid "Can view"
+msgstr "Можно просматривать"
+
+msgid "Can view only"
+msgstr "Только для просмотра"
+
+msgid "No access"
+msgstr "Нет доступа"
+
+msgid "Public access (with login)"
+msgstr "Общий доступ"
+
+msgid "Public can edit"
+msgstr ""
+
+msgid "Public can view"
+msgstr ""
+
+msgid "Public can find, view and edit"
+msgstr ""
+
+msgid "Public can find and view"
+msgstr ""
+
+msgid "Close"
+msgstr "Закрыть"
+
+msgid "week"
+msgstr ""
+
+msgid "month"
+msgstr ""
+
+msgid "year"
+msgstr ""
+
+msgid "bi monthly"
+msgstr ""
+
+msgid "day"
+msgstr ""
+
+msgid "January"
+msgstr "Январь"
+
+msgid "February"
+msgstr "Февраль"
+
+msgid "March"
+msgstr "Март"
+
+msgid "April"
+msgstr "Апрель"
+
+msgid "May"
+msgstr "Май"
+
+msgid "June"
+msgstr "Июнь"
+
+msgid "July"
+msgstr "Июль"
+
+msgid "August"
+msgstr "Август"
+
+msgid "September"
+msgstr "Сентябрь"
+
+msgid "October"
+msgstr "Октябрь"
+
+msgid "November"
+msgstr "Ноябрь"
+
+msgid "December"
+msgstr "Декабрь"
+
+msgid "January-February"
+msgstr "Январь-Февраль"
+
+msgid "March-April"
+msgstr "Март-Апрель"
+
+msgid "May-June"
+msgstr "Май-Июнь"
+
+msgid "July-August"
+msgstr "Июль-Август"
+
+msgid "September-October"
+msgstr "Сентябрь-Октябрь"
+
+msgid "November-December"
+msgstr "Ноябрь-Декабрь"
+
+msgid "November-April"
+msgstr ""
+
+msgid "May-October"
+msgstr ""
+
+msgid "quarter"
+msgstr ""
+
+msgid "Q1"
+msgstr ""
+
+msgid "Q2"
+msgstr ""
+
+msgid "Q3"
+msgstr ""
+
+msgid "Q4"
+msgstr ""
+
+msgid "six monthly"
+msgstr ""
+
+msgid "January-June"
+msgstr "Январь-Июнь"
+
+msgid "July-December"
+msgstr "Июль-Декабрь"
+
+msgid "April-September"
+msgstr "Апрель-Сентябрь"
+
+msgid "October-March"
+msgstr "Октябрь-Март"
+
+msgid "Bi-Week"
+msgstr ""
+
+msgid "External url"
+msgstr ""
+
+msgid "Upload file"
+msgstr "Загрузить файл"
+
+msgid "Confirm delete"
+msgstr ""
+
+msgctxt "chart"
+msgid "bar"
+msgstr ""

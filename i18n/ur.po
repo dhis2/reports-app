@@ -1,0 +1,754 @@
+# 
+# Translators:
+# phil_dhis2, 2020
+# Viktor Varland <viktor@dhis2.org>, 2020
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"POT-Creation-Date: 2019-12-12T07:35:49.121Z\n"
+"PO-Revision-Date: 2020-04-28 22:12+0000\n"
+"Last-Translator: Viktor Varland <viktor@dhis2.org>, 2020\n"
+"Language-Team: Urdu (https://www.transifex.com/hisp-uio/teams/100509/ur/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ur\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Reports"
+msgstr "رپورٹس"
+
+msgid "Updating Organisation Units Tree..."
+msgstr ""
+
+msgid "Select Option"
+msgstr ""
+
+msgid "Data set dimensions"
+msgstr ""
+
+msgid "Loading options..."
+msgstr ""
+
+msgid "Select Data Set"
+msgstr ""
+
+msgid "Data set"
+msgstr "ڈیٹا سیٹ"
+
+msgid "Group Set"
+msgstr ""
+
+msgid "Select Group Set"
+msgstr ""
+
+msgid "Show more options"
+msgstr "مزید اختیارات دکھائیں"
+
+msgid "Show fewer options"
+msgstr "کم اختیارات دکھائیں"
+
+msgid "Report organisation unit"
+msgstr ""
+
+msgid "Select Period Type"
+msgstr "دورانیہ کی قسم منتخب کریں"
+
+msgid "Search"
+msgstr "تلاش کریں"
+
+msgid "No results have been found"
+msgstr ""
+
+msgid "Download as"
+msgstr "کے طور پر ڈاؤن لوڈ کریں"
+
+msgid "Share"
+msgstr "بانٹیں"
+
+msgid "Write a comment, question or interpretation of this report"
+msgstr ""
+
+msgid "Select file"
+msgstr ""
+
+msgid "No file chosen"
+msgstr ""
+
+msgid "Standard Report"
+msgstr ""
+
+msgid ""
+"View and add reports based on the JasperReports library. These can be based "
+"on report tables and can be designed in iReport."
+msgstr ""
+
+msgid "View Reports"
+msgstr ""
+
+msgid "Data Set Report"
+msgstr ""
+
+msgid ""
+"View data set reports. These reports are based on data entry screens and "
+"will produce a report with aggregated data."
+msgstr ""
+
+msgid "Get Report"
+msgstr ""
+
+msgid "Reporting Rate Summary"
+msgstr ""
+
+msgid ""
+"Browse the reporting rates of data sets by organisation unit and period "
+"based on various criteria for submission."
+msgstr ""
+
+msgid "Resource"
+msgstr ""
+
+msgid ""
+"View and add resources. These resources can be uploaded documents or URLs on"
+" the web."
+msgstr ""
+
+msgid "View Resources"
+msgstr ""
+
+msgid "Org unit distribution report"
+msgstr ""
+
+msgid ""
+"Browse the organisation unit distribution report based on the organisation "
+"unit group sets and its groups."
+msgstr ""
+
+msgid "CONFIRM"
+msgstr ""
+
+msgid "Report period"
+msgstr ""
+
+msgid "Use data for selected unit only"
+msgstr ""
+
+msgid "Get Chart"
+msgstr ""
+
+msgid "Edit resource"
+msgstr ""
+
+msgid "Save resource"
+msgstr ""
+
+msgid "Add resource"
+msgstr ""
+
+msgid "Do you want to use this file as an attachment?"
+msgstr ""
+
+msgid "Yes"
+msgstr "Ø¬Û ÛØ§Úº"
+
+msgid "No"
+msgstr "ÙÛÛÚº"
+
+msgid "File"
+msgstr "فائل"
+
+msgid "Name*"
+msgstr ""
+
+msgid "Details"
+msgstr "تفصیلات"
+
+msgid "Resource Type"
+msgstr ""
+
+msgid "Url*"
+msgstr ""
+
+msgid "File resources can not be edited, only created"
+msgstr ""
+
+msgid "Cancel"
+msgstr "منسوخ"
+
+msgid "Edit standard report"
+msgstr ""
+
+msgid "Create standard report"
+msgstr ""
+
+msgid "Generate report"
+msgstr ""
+
+msgid "Report parameters"
+msgstr ""
+
+msgid "There are some errors you have to fix first!"
+msgstr ""
+
+msgid "Back to standard reports list"
+msgstr ""
+
+msgid "Get current design"
+msgstr ""
+
+msgid "Get HTML Report Template"
+msgstr ""
+
+msgid "Get Jasper Report Template"
+msgstr ""
+
+msgid "Report Type*"
+msgstr ""
+
+msgid "Report Table*"
+msgstr ""
+
+msgid "Design File"
+msgstr ""
+
+msgid "Design File*"
+msgstr ""
+
+msgid "Relative periods"
+msgstr "رشتہ دار دور"
+
+msgid "Settings"
+msgstr "ØªØ±ØªÛØ¨Ø§Øª"
+
+msgid "Cache Strategy*"
+msgstr ""
+
+msgid "Submit"
+msgstr ""
+
+msgid "[ None ]"
+msgstr ""
+
+msgid "Jasper report with report table data source"
+msgstr ""
+
+msgid "Jasper report with JDBC data source"
+msgstr ""
+
+msgid "HTML report"
+msgstr ""
+
+msgid "No cache"
+msgstr "کوئی کیش نہیں"
+
+msgid "Respect system setting"
+msgstr "احترام نظام کی ترتیب"
+
+msgid "Cache for one hour"
+msgstr "ایک گھنٹے کے لئے کیش"
+
+msgid "Cache until 6 AM tomorrow"
+msgstr "کل 6 بجے تک کیش"
+
+msgid "Cache for two weeks"
+msgstr "دو ہفتوں کے لئے کیش"
+
+msgid "Days"
+msgstr "دن"
+
+msgid "Reporting day"
+msgstr ""
+
+msgid "Yesterday"
+msgstr "کل"
+
+msgid "Last 3 days"
+msgstr "آخری 3 دن"
+
+msgid "Last 7 days"
+msgstr "آخری 7 دن"
+
+msgid "Last 14 days"
+msgstr "آخری 14 دن"
+
+msgid "Weeks"
+msgstr "ہفتوں"
+
+msgid "Reporting week"
+msgstr ""
+
+msgid "Last Week"
+msgstr ""
+
+msgid "Last 2 weeks"
+msgstr ""
+
+msgid "Last 12 weeks"
+msgstr "آخری ۱۲ ہفتے"
+
+msgid "Last 52 weeks"
+msgstr "آخری ۵۲ ہفتے"
+
+msgid "Weeks this year"
+msgstr "اس سال ہفتہ"
+
+msgid "Months"
+msgstr "مہینے"
+
+msgid "Reporting month"
+msgstr ""
+
+msgid "Last month"
+msgstr "آخری ماہ"
+
+msgid "Last 3 months"
+msgstr "آخری ۳ ماہ"
+
+msgid "Last 6 months"
+msgstr "آخری ۶ ماہ"
+
+msgid "Last 12 months"
+msgstr "آخری ۱۲ ماہ"
+
+msgid "Months this year"
+msgstr "ماہ اس سال"
+
+msgid "Bi-months"
+msgstr "دو ماہ"
+
+msgid "Reporting bi-month"
+msgstr ""
+
+msgid "Last bi-month"
+msgstr "آخری دو ماہ"
+
+msgid "Last 6 bi-month"
+msgstr ""
+
+msgid "Bi-months this year"
+msgstr "اس مہینے میں مہینے"
+
+msgid "Quarters"
+msgstr "چوتھائی"
+
+msgid "Reporting quarter"
+msgstr ""
+
+msgid "Last quarter"
+msgstr "آخری سہ ماہ"
+
+msgid "Last 4 quarters"
+msgstr "آخری ۴ سہ ماہی"
+
+msgid "Quarters of reporting year"
+msgstr ""
+
+msgid "Six-Months"
+msgstr ""
+
+msgid "Reporting six-month"
+msgstr ""
+
+msgid "Last six-month"
+msgstr "آخری ۶ ماہ"
+
+msgid "Last 2 six-months"
+msgstr "آخری ۲ چھ ماہ"
+
+msgid "Financial Years"
+msgstr ""
+
+msgid "Reporting financial year"
+msgstr ""
+
+msgid "Last financial year"
+msgstr "آخری مالیاتی سال"
+
+msgid "Last 5 financial years"
+msgstr "آخری ۵ مالیاتی سال"
+
+msgid "Years"
+msgstr "سال"
+
+msgid "Reporting year"
+msgstr ""
+
+msgid "Last year"
+msgstr "آخری سال"
+
+msgid "Last 5 years"
+msgstr "آخری ۵ سال"
+
+msgid "An error occurred whole loading the data set options"
+msgstr ""
+
+msgid "An error occurred while loading the data set dimensions"
+msgstr ""
+
+msgid "An error occurred while loading the group sets!"
+msgstr ""
+
+msgid "Could not load organisation units"
+msgstr ""
+
+msgid "An error occurred while loading the organisation units!"
+msgstr ""
+
+msgid "Successfully loaded the {{ outputType }}"
+msgstr ""
+
+msgid "chart"
+msgstr ""
+
+msgid "table"
+msgstr ""
+
+msgid "An error occurred while loading the report!"
+msgstr ""
+
+msgid "Successfully added comment"
+msgstr ""
+
+msgid "An error occurred while submitting your comment!"
+msgstr ""
+
+msgid "Could not load period types"
+msgstr ""
+
+msgid "An error occurred while loading the resources!"
+msgstr ""
+
+msgid "Do you really want to delete this resource?"
+msgstr ""
+
+msgid "The resource has been deleted successfully"
+msgstr ""
+
+msgid "An error occurred when deleting the resource!"
+msgstr ""
+
+msgid "An error occurred while adding the resource!"
+msgstr ""
+
+msgid "An error occurred while saving the modifications!"
+msgstr ""
+
+msgid "An error occurred while loading the standard reports"
+msgstr ""
+
+msgid "An error occurred while trying to delete the standard report"
+msgstr ""
+
+msgid "An error occurred while loading the standard report details"
+msgstr ""
+
+msgid "The report has been updated successfully"
+msgstr ""
+
+msgid "The report has been added successfully"
+msgstr ""
+
+msgid "An error occurred while updating the report!"
+msgstr ""
+
+msgid "An error occurred while adding the report!"
+msgstr ""
+
+msgid "An error occurred while generating the html report"
+msgstr ""
+
+msgid "An error occurred while loading the report table options"
+msgstr ""
+
+msgid "Count"
+msgstr "شمار"
+
+msgid "Organisation Unit"
+msgstr ""
+
+msgid "Total"
+msgstr "کُل"
+
+msgid "Daily"
+msgstr "روزانہ"
+
+msgid "Weekly"
+msgstr "ہفتہ وار"
+
+msgid "Weekly Wednesday"
+msgstr "ہفتہ وار بدھ"
+
+msgid "Weekly Thursday"
+msgstr "ہفتہ وار جمعرات"
+
+msgid "Weekly Saturday"
+msgstr "ہفتہ وار ہفتہ"
+
+msgid "Weekly Sunday"
+msgstr "ہفتہ وار اتوار"
+
+msgid "Bi-Weekly"
+msgstr ""
+
+msgid "Monthly"
+msgstr "ماہانہ"
+
+msgid "Bi-Monthly"
+msgstr ""
+
+msgid "Quarterly"
+msgstr "سہ ماہی"
+
+msgid "Six-Monthly"
+msgstr ""
+
+msgid "Six-Monthly April"
+msgstr ""
+
+msgid "Six-Monthly November"
+msgstr ""
+
+msgid "Yearly"
+msgstr "سالانہ"
+
+msgid "Financial-April"
+msgstr "مالیاتی۔اپریل"
+
+msgid "Financial-July"
+msgstr "مالیاتی۔جولائی"
+
+msgid "Financial-Oct"
+msgstr "مالیاتی۔اکتوبر"
+
+msgid "Name"
+msgstr "ÙØ§Ù"
+
+msgid "Something went wrong when processing your request."
+msgstr ""
+
+msgid "Search apps"
+msgstr "ایپس تلاش کریں"
+
+msgid "Profile"
+msgstr "پرفائل"
+
+msgid "Account"
+msgstr "اکاؤنٹ"
+
+msgid "Help"
+msgstr "مدد"
+
+msgid "Log out"
+msgstr "لاگ آؤٹ"
+
+msgid "About DHIS 2"
+msgstr "ڈی.آئی.ایچ.ایس کے متعلق"
+
+msgid "Manage my apps"
+msgstr "ایپ کی میجنمنٹ"
+
+msgid "No results found"
+msgstr "کوئی نتیجہ نہیں ملا"
+
+msgid "Interpretations"
+msgstr "تشریحات"
+
+msgid "Messages"
+msgstr "پیغامات"
+
+msgid "Report Table"
+msgstr ""
+
+msgid "ID"
+msgstr "شناخت"
+
+msgid "Create"
+msgstr "تخلیق"
+
+msgid "Edit"
+msgstr "ترمیم"
+
+msgid "Actions"
+msgstr "ایکشنز"
+
+msgid "Delete"
+msgstr "حذف"
+
+msgid "Sharing settings"
+msgstr "شیئر سیٹنگ"
+
+msgid "View Resource"
+msgstr ""
+
+msgid "Edit Resource"
+msgstr ""
+
+msgid "Add users and user groups"
+msgstr "صارف اور صارف گروپ شامل کریں"
+
+msgid "Enter names"
+msgstr "نام درج کریں"
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Created By"
+msgstr ""
+
+msgid "Who has access"
+msgstr "کون تک رسائی حاصل ہے"
+
+msgid "External access (without login)"
+msgstr "بئرونی رسائی بغیر لاگ اِن کے"
+
+msgid "Can edit and view"
+msgstr "ایڈیٹ اور ویو کی رسارئی"
+
+msgid "Can view"
+msgstr "صرف ویو"
+
+msgid "Can view only"
+msgstr "صرف دیکھ سکتے ہیں"
+
+msgid "No access"
+msgstr "داخلہ ممنوع ہے"
+
+msgid "Public access (with login)"
+msgstr "عوامی رسائی لاگ اِن کے ساتھ"
+
+msgid "Public can edit"
+msgstr ""
+
+msgid "Public can view"
+msgstr ""
+
+msgid "Public can find, view and edit"
+msgstr ""
+
+msgid "Public can find and view"
+msgstr ""
+
+msgid "Close"
+msgstr "بند"
+
+msgid "week"
+msgstr ""
+
+msgid "month"
+msgstr ""
+
+msgid "year"
+msgstr ""
+
+msgid "bi monthly"
+msgstr ""
+
+msgid "day"
+msgstr ""
+
+msgid "January"
+msgstr "جنوری"
+
+msgid "February"
+msgstr "فروری"
+
+msgid "March"
+msgstr "مارچ"
+
+msgid "April"
+msgstr "اپریل"
+
+msgid "May"
+msgstr "مئی"
+
+msgid "June"
+msgstr "جون"
+
+msgid "July"
+msgstr "جولائی"
+
+msgid "August"
+msgstr "اگست"
+
+msgid "September"
+msgstr "ستمبر"
+
+msgid "October"
+msgstr "اکتوبر"
+
+msgid "November"
+msgstr "نومبر"
+
+msgid "December"
+msgstr "دسمبر"
+
+msgid "January-February"
+msgstr "جنوری فروری"
+
+msgid "March-April"
+msgstr "مارچ اپریل"
+
+msgid "May-June"
+msgstr "مئی جون"
+
+msgid "July-August"
+msgstr "جولائی- اگست"
+
+msgid "September-October"
+msgstr "ستمبر - اکتوبر"
+
+msgid "November-December"
+msgstr "نومبر دسمبر"
+
+msgid "November-April"
+msgstr ""
+
+msgid "May-October"
+msgstr ""
+
+msgid "quarter"
+msgstr ""
+
+msgid "Q1"
+msgstr ""
+
+msgid "Q2"
+msgstr ""
+
+msgid "Q3"
+msgstr ""
+
+msgid "Q4"
+msgstr ""
+
+msgid "six monthly"
+msgstr ""
+
+msgid "January-June"
+msgstr "جنوری - جون"
+
+msgid "July-December"
+msgstr "جولائی - دسمبر"
+
+msgid "April-September"
+msgstr "اپریل - ستمبر"
+
+msgid "October-March"
+msgstr "اکتوبر - مارچ"
+
+msgid "Bi-Week"
+msgstr ""
+
+msgid "External url"
+msgstr ""
+
+msgid "Upload file"
+msgstr ""
+
+msgid "Confirm delete"
+msgstr ""
+
+msgctxt "chart"
+msgid "bar"
+msgstr ""

@@ -1,0 +1,764 @@
+# 
+# Translators:
+# phil_dhis2, 2020
+# Viktor Varland <viktor@dhis2.org>, 2020
+# Hamza Assada <7amza.it@gmail.com>, 2020
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"POT-Creation-Date: 2019-12-12T07:35:49.121Z\n"
+"PO-Revision-Date: 2020-04-28 22:12+0000\n"
+"Last-Translator: Hamza Assada <7amza.it@gmail.com>, 2020\n"
+"Language-Team: Arabic (https://www.transifex.com/hisp-uio/teams/100509/ar/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+msgid "Reports"
+msgstr "التقارير"
+
+msgid "Updating Organisation Units Tree..."
+msgstr "جار تحديث شجرة الوحدات التنظيمية..."
+
+msgid "Select Option"
+msgstr "حدد الخيار"
+
+msgid "Data set dimensions"
+msgstr "أبعاد حزمة البيانات"
+
+msgid "Loading options..."
+msgstr "تحميل الخيارات..."
+
+msgid "Select Data Set"
+msgstr "حدد حزمة بيانات"
+
+msgid "Data set"
+msgstr "حزمة البيانات"
+
+msgid "Group Set"
+msgstr ""
+
+msgid "Select Group Set"
+msgstr ""
+
+msgid "Show more options"
+msgstr "إظهار المزيد من الخيارات"
+
+msgid "Show fewer options"
+msgstr "إظهار خيارات أقل"
+
+msgid "Report organisation unit"
+msgstr "إعداد تقرير للوحدة التنظيمية"
+
+msgid "Select Period Type"
+msgstr "تحديد نوع الفترة الزمنية"
+
+msgid "Search"
+msgstr "البحث"
+
+msgid "No results have been found"
+msgstr "لم يتم العثور على نتائج"
+
+msgid "Download as"
+msgstr "تنزيل كـ"
+
+msgid "Share"
+msgstr "مشاركة"
+
+msgid "Write a comment, question or interpretation of this report"
+msgstr "كتابة تعليق، أو سؤال، أو تفسير لهذا التقرير"
+
+msgid "Select file"
+msgstr "اختيار ملف"
+
+msgid "No file chosen"
+msgstr "لم يتم إختيار ملف"
+
+msgid "Standard Report"
+msgstr "التقرير القياسي"
+
+msgid ""
+"View and add reports based on the JasperReports library. These can be based "
+"on report tables and can be designed in iReport."
+msgstr ""
+"عرض وإضافة تقارير اعتماداً على مكتبة تقارير Jasper. يمكن أن تعتمد هذه على "
+"جداول التقارير ويمكن تصميمها في iReport."
+
+msgid "View Reports"
+msgstr "عرض التقارير"
+
+msgid "Data Set Report"
+msgstr "تقرير حزمة البيانات"
+
+msgid ""
+"View data set reports. These reports are based on data entry screens and "
+"will produce a report with aggregated data."
+msgstr ""
+"عرض تقارير حزمة البيانات. تعتمد هذه التقارير على شاشات إدخال البيانات وستصدر"
+" تقريرا يتضمن بيانات مجمعة."
+
+msgid "Get Report"
+msgstr ""
+
+msgid "Reporting Rate Summary"
+msgstr "ملخص معدل إعداد التقارير"
+
+msgid ""
+"Browse the reporting rates of data sets by organisation unit and period "
+"based on various criteria for submission."
+msgstr ""
+"استعراض معدلات إعداد التقارير لحزمة البيانات حسب الوحدة التنظيمية والفترة "
+"اعتماداً على معايير مختلفة لتقديمها."
+
+msgid "Resource"
+msgstr "المصدر"
+
+msgid ""
+"View and add resources. These resources can be uploaded documents or URLs on"
+" the web."
+msgstr ""
+"عرض وإضافة المصادر. يمكن تحميل هذه المصادر كمستندات أو عناوين URL على الويب."
+
+msgid "View Resources"
+msgstr "عرض الموارد"
+
+msgid "Org unit distribution report"
+msgstr "تقرير توزيع الوحدات التنظيمية"
+
+msgid ""
+"Browse the organisation unit distribution report based on the organisation "
+"unit group sets and its groups."
+msgstr ""
+"استعراض تقرير توزيع الوحدة التنظيمية اعتماداً على حزم مجموعات الوحدات "
+"التنظيمية ومجموعاتها."
+
+msgid "CONFIRM"
+msgstr "تأكيد"
+
+msgid "Report period"
+msgstr "الفترة الزمنية للتقرير"
+
+msgid "Use data for selected unit only"
+msgstr "استخدام البيانات للوحدة التنظيمية المحددة فقط"
+
+msgid "Get Chart"
+msgstr ""
+
+msgid "Edit resource"
+msgstr "تعديل المورد"
+
+msgid "Save resource"
+msgstr "حفظ المورد"
+
+msgid "Add resource"
+msgstr "إضافة مورد"
+
+msgid "Do you want to use this file as an attachment?"
+msgstr "هل تريد استخدام هذا الملف كمرفق؟"
+
+msgid "Yes"
+msgstr "نعم"
+
+msgid "No"
+msgstr "لا"
+
+msgid "File"
+msgstr "ملف"
+
+msgid "Name*"
+msgstr "الإسم*"
+
+msgid "Details"
+msgstr "التفاصيل"
+
+msgid "Resource Type"
+msgstr "نوع المورد"
+
+msgid "Url*"
+msgstr ""
+
+msgid "File resources can not be edited, only created"
+msgstr ""
+
+msgid "Cancel"
+msgstr "إلغاء"
+
+msgid "Edit standard report"
+msgstr "تعديل تقرير قياسي"
+
+msgid "Create standard report"
+msgstr "إنشاء تقرير قياسي"
+
+msgid "Generate report"
+msgstr "توليد التقرير"
+
+msgid "Report parameters"
+msgstr "معاملات التقرير"
+
+msgid "There are some errors you have to fix first!"
+msgstr "هناك بعض الأخطاء التي يجب إصلاحها أولاً!"
+
+msgid "Back to standard reports list"
+msgstr "العودة إلى قائمة التقارير القياسية"
+
+msgid "Get current design"
+msgstr "الحصول على التصميم الحالي"
+
+msgid "Get HTML Report Template"
+msgstr "الحصول على قالب تقرير HTML"
+
+msgid "Get Jasper Report Template"
+msgstr "الحصول على قالب تقرير Jasper"
+
+msgid "Report Type*"
+msgstr "نوع التقرير"
+
+msgid "Report Table*"
+msgstr "جدول التقرير*"
+
+msgid "Design File"
+msgstr "ملف التصميم"
+
+msgid "Design File*"
+msgstr "ملف التصميم *"
+
+msgid "Relative periods"
+msgstr "الفترات الزمنية النسبية"
+
+msgid "Settings"
+msgstr "الإعدادات"
+
+msgid "Cache Strategy*"
+msgstr "استراتيجية ذاكرة التخزين المؤقت *"
+
+msgid "Submit"
+msgstr "إرسال"
+
+msgid "[ None ]"
+msgstr "[ لاشيء ]"
+
+msgid "Jasper report with report table data source"
+msgstr "تقرير Jasper مع مصدر بيانات جدول التقرير"
+
+msgid "Jasper report with JDBC data source"
+msgstr "تقرير Jasper مع مصدر بيانات JDBC"
+
+msgid "HTML report"
+msgstr "تقرير HTML"
+
+msgid "No cache"
+msgstr "لا توجد ذاكرة تخزين مؤقت"
+
+msgid "Respect system setting"
+msgstr "مراعاة إعدادات النظام"
+
+msgid "Cache for one hour"
+msgstr "ذاكرة التخزين المؤقت لمدة ساعة واحدة"
+
+msgid "Cache until 6 AM tomorrow"
+msgstr "ذاكرة التخزين المؤقت حتى الساعة 6 من صباح الغد"
+
+msgid "Cache for two weeks"
+msgstr "ذاكرة التخزين المؤقت لمدة أسبوعين"
+
+msgid "Days"
+msgstr "‏‏الأيام"
+
+msgid "Reporting day"
+msgstr "إعداد التقرير عن يوم"
+
+msgid "Yesterday"
+msgstr "الأمس"
+
+msgid "Last 3 days"
+msgstr "آخر 3 أيام"
+
+msgid "Last 7 days"
+msgstr "آخر 7 أيام"
+
+msgid "Last 14 days"
+msgstr "آخر 14 يوم"
+
+msgid "Weeks"
+msgstr "الأسابيع"
+
+msgid "Reporting week"
+msgstr "إعداد التقرير عن أسبوع"
+
+msgid "Last Week"
+msgstr "الأسبوع الماضي"
+
+msgid "Last 2 weeks"
+msgstr "آخر 2 اسابيع"
+
+msgid "Last 12 weeks"
+msgstr "آخر 12 أسبوع"
+
+msgid "Last 52 weeks"
+msgstr "آخر 52 أسبوع"
+
+msgid "Weeks this year"
+msgstr "أسابيع السنة الحالية"
+
+msgid "Months"
+msgstr "الأشهر"
+
+msgid "Reporting month"
+msgstr "إعداد التقرير عن شهر"
+
+msgid "Last month"
+msgstr "الشهر الماضي"
+
+msgid "Last 3 months"
+msgstr "آخر 3 أشهر"
+
+msgid "Last 6 months"
+msgstr "آخر 6 أشهر"
+
+msgid "Last 12 months"
+msgstr "آخر 12 شهر"
+
+msgid "Months this year"
+msgstr "أشهر السنة الحالية"
+
+msgid "Bi-months"
+msgstr "الأشهر المزدوجة"
+
+msgid "Reporting bi-month"
+msgstr "إعداد التقرير عن شهرين مزدوجين"
+
+msgid "Last bi-month"
+msgstr "آخر شهرين مزدوجين"
+
+msgid "Last 6 bi-month"
+msgstr "آخر 6 أزواج شهور"
+
+msgid "Bi-months this year"
+msgstr "الأشهر المزدوجة في السنة الحالية"
+
+msgid "Quarters"
+msgstr "أرباع السنة"
+
+msgid "Reporting quarter"
+msgstr "إعداد التقرير ‏‏عن ربع السنة"
+
+msgid "Last quarter"
+msgstr "ربع السنة الماضي"
+
+msgid "Last 4 quarters"
+msgstr "آخر 4 أرباع السنة"
+
+msgid "Quarters of reporting year"
+msgstr "أرباع سنة التقرير"
+
+msgid "Six-Months"
+msgstr "سنة أشهر"
+
+msgid "Reporting six-month"
+msgstr "إعداد التقرير عن نصف السنة (فترة من ستة أشهر)"
+
+msgid "Last six-month"
+msgstr "آخر نصف السنة (فترة من ستة أشهر)"
+
+msgid "Last 2 six-months"
+msgstr "آخر نصفي السنة (كل فترة ستة أشهر)"
+
+msgid "Financial Years"
+msgstr "السنوات المالية"
+
+msgid "Reporting financial year"
+msgstr "إعداد التقرير عن سنة مالية"
+
+msgid "Last financial year"
+msgstr "السنة المالية الماضية"
+
+msgid "Last 5 financial years"
+msgstr "آخر 5 سنوات مالية"
+
+msgid "Years"
+msgstr "السنوات"
+
+msgid "Reporting year"
+msgstr "إعداد التقرير عن سنة"
+
+msgid "Last year"
+msgstr "السنة الماضية"
+
+msgid "Last 5 years"
+msgstr "آخر 5 سنوات"
+
+msgid "An error occurred whole loading the data set options"
+msgstr "حدث خطأ أثناء تحميل خيارات حزمة البيانات"
+
+msgid "An error occurred while loading the data set dimensions"
+msgstr "حدث خطأ أثناء تحميل أبعاد حزمة البيانات"
+
+msgid "An error occurred while loading the group sets!"
+msgstr ""
+
+msgid "Could not load organisation units"
+msgstr "تعذر تحميل الوحدات التنظيمية"
+
+msgid "An error occurred while loading the organisation units!"
+msgstr "حدث خطأ أثناء تحميل الوحدات التنظيمية!"
+
+msgid "Successfully loaded the {{ outputType }}"
+msgstr "تم تحميل {{ outputType }} بنجاح"
+
+msgid "chart"
+msgstr "مخطط بياني"
+
+msgid "table"
+msgstr "جدول"
+
+msgid "An error occurred while loading the report!"
+msgstr "حدث خطأ أثناء تحميل التقرير!"
+
+msgid "Successfully added comment"
+msgstr "نجاح إضافة التعليق"
+
+msgid "An error occurred while submitting your comment!"
+msgstr "حدث خطأ أثناء إرسال تعليقك!"
+
+msgid "Could not load period types"
+msgstr "تعذر تحميل أنواع الفترات"
+
+msgid "An error occurred while loading the resources!"
+msgstr "حدث خطأ أثناء تحميل الموارد!"
+
+msgid "Do you really want to delete this resource?"
+msgstr "هل تريد حقًا حذف هذا المورد؟"
+
+msgid "The resource has been deleted successfully"
+msgstr "تم حذف المورد بنجاح"
+
+msgid "An error occurred when deleting the resource!"
+msgstr "حدث خطأ عند حذف المورد!"
+
+msgid "An error occurred while adding the resource!"
+msgstr "حدث خطأ اثناء إضافة المورد!"
+
+msgid "An error occurred while saving the modifications!"
+msgstr "حدث خطأ اثناء حفظ التعديلات!"
+
+msgid "An error occurred while loading the standard reports"
+msgstr "حدث خطأ أثناء تحميل التقارير القياسية"
+
+msgid "An error occurred while trying to delete the standard report"
+msgstr "حدث خطأ أثناء محاولة حذف التقرير القياسي"
+
+msgid "An error occurred while loading the standard report details"
+msgstr "حدث خطأ أثناء تحميل تفاصيل التقرير القياسية"
+
+msgid "The report has been updated successfully"
+msgstr "تم تحديث التقرير بنجاح"
+
+msgid "The report has been added successfully"
+msgstr "تم إضافة التقرير بنجاح"
+
+msgid "An error occurred while updating the report!"
+msgstr "حدث خطأ أثناء تحديث التقرير!"
+
+msgid "An error occurred while adding the report!"
+msgstr "حدث خطأ أثناء إضافة التقرير!"
+
+msgid "An error occurred while generating the html report"
+msgstr "حدث خطأ أثناء إنشاء تقرير HTML"
+
+msgid "An error occurred while loading the report table options"
+msgstr "حدث خطأ أثناء تحميل خيارات جدول التقرير"
+
+msgid "Count"
+msgstr "العدد"
+
+msgid "Organisation Unit"
+msgstr "الوحدة التنظيمية"
+
+msgid "Total"
+msgstr "الإجمالي"
+
+msgid "Daily"
+msgstr "يومي"
+
+msgid "Weekly"
+msgstr "أسبوعي"
+
+msgid "Weekly Wednesday"
+msgstr "أسبوعياً الأربعاء"
+
+msgid "Weekly Thursday"
+msgstr "أسبوعياً الخميس"
+
+msgid "Weekly Saturday"
+msgstr "أسبوعياً السبت"
+
+msgid "Weekly Sunday"
+msgstr "أسبوعياً الأحد"
+
+msgid "Bi-Weekly"
+msgstr "كل اسبوعين"
+
+msgid "Monthly"
+msgstr "شهري"
+
+msgid "Bi-Monthly"
+msgstr "كل شهرين"
+
+msgid "Quarterly"
+msgstr "ربعي"
+
+msgid "Six-Monthly"
+msgstr "كل ستة أشهر"
+
+msgid "Six-Monthly April"
+msgstr "ستة أشهر ابريل"
+
+msgid "Six-Monthly November"
+msgstr "ستة أشهر نوفمبر"
+
+msgid "Yearly"
+msgstr "سنوي"
+
+msgid "Financial-April"
+msgstr "الأمور المالية-نيسان"
+
+msgid "Financial-July"
+msgstr "الأمور المالية-تموز"
+
+msgid "Financial-Oct"
+msgstr "الأمور المالية-تشرين الأول"
+
+msgid "Name"
+msgstr "الإسم"
+
+msgid "Something went wrong when processing your request."
+msgstr "حدث خطأ ما أثناء معالجة طلبك."
+
+msgid "Search apps"
+msgstr "البحث في التطبيقات"
+
+msgid "Profile"
+msgstr "ملف التعريف"
+
+msgid "Account"
+msgstr "الحساب"
+
+msgid "Help"
+msgstr "مساعدة"
+
+msgid "Log out"
+msgstr "تسجيل الخروج"
+
+msgid "About DHIS 2"
+msgstr "حول DHIS 2"
+
+msgid "Manage my apps"
+msgstr "إدارة تطبيقاتي"
+
+msgid "No results found"
+msgstr "لم يتم العثور على أي نتائج"
+
+msgid "Interpretations"
+msgstr "التفسيرات"
+
+msgid "Messages"
+msgstr "الرسائل"
+
+msgid "Report Table"
+msgstr "جدول التقرير"
+
+msgid "ID"
+msgstr "المعرف"
+
+msgid "Create"
+msgstr "إنشاء"
+
+msgid "Edit"
+msgstr "تعديل"
+
+msgid "Actions"
+msgstr "الإجراءات"
+
+msgid "Delete"
+msgstr "حذف"
+
+msgid "Sharing settings"
+msgstr "إعدادات المشاركة"
+
+msgid "View Resource"
+msgstr "عرض المورد"
+
+msgid "Edit Resource"
+msgstr "تعديل المورد"
+
+msgid "Add users and user groups"
+msgstr "إضافة المستخدمين ومجموعات المستخدمين"
+
+msgid "Enter names"
+msgstr "ادخل الأسماء"
+
+msgid "Permissions"
+msgstr "الأذونات"
+
+msgid "Created By"
+msgstr "تم إنشاءه من قبل"
+
+msgid "Who has access"
+msgstr "من لديه حق الوصول"
+
+msgid "External access (without login)"
+msgstr "صلاحية الوصول الخارجي (بدون تسجيل الدخول)"
+
+msgid "Can edit and view"
+msgstr "إمكانية التعديل والاستعراض"
+
+msgid "Can view"
+msgstr "إمكانية الاستعراض"
+
+msgid "Can view only"
+msgstr "يستطيع الإستعراض فقط"
+
+msgid "No access"
+msgstr "ممنوع الدخول"
+
+msgid "Public access (with login)"
+msgstr "صلاحية الوصول للعموم (مع تسجيل الدخول)"
+
+msgid "Public can edit"
+msgstr "يمكن للعامة تعديله"
+
+msgid "Public can view"
+msgstr "يمكن للعامة إستعراضه"
+
+msgid "Public can find, view and edit"
+msgstr "يمكن للعامة العثور عليه، عرضه وتعديله"
+
+msgid "Public can find and view"
+msgstr "يمكن للعامة العثور عليه وعرضه"
+
+msgid "Close"
+msgstr "إغلاق"
+
+msgid "week"
+msgstr "اسبوع"
+
+msgid "month"
+msgstr "شهر"
+
+msgid "year"
+msgstr "سنة"
+
+msgid "bi monthly"
+msgstr "كل شهرين"
+
+msgid "day"
+msgstr "يوم"
+
+msgid "January"
+msgstr "يناير"
+
+msgid "February"
+msgstr "فبراير"
+
+msgid "March"
+msgstr "مارس"
+
+msgid "April"
+msgstr "ابريل"
+
+msgid "May"
+msgstr "مايو"
+
+msgid "June"
+msgstr "يونيو"
+
+msgid "July"
+msgstr "يوليو"
+
+msgid "August"
+msgstr "اغسطس"
+
+msgid "September"
+msgstr "سبتمبر"
+
+msgid "October"
+msgstr "اكتوبر"
+
+msgid "November"
+msgstr "نوفمبر"
+
+msgid "December"
+msgstr "ديسمبر"
+
+msgid "January-February"
+msgstr "يناير-فبراير"
+
+msgid "March-April"
+msgstr "مارس-ابريل"
+
+msgid "May-June"
+msgstr "مايو-يونيو"
+
+msgid "July-August"
+msgstr "يوليو-اغسطس"
+
+msgid "September-October"
+msgstr "سبتمبر-اكتوبر"
+
+msgid "November-December"
+msgstr "نوفمبر-ديسمبر"
+
+msgid "November-April"
+msgstr "نوفمبر-ابريل"
+
+msgid "May-October"
+msgstr "مايو-اكتوبر"
+
+msgid "quarter"
+msgstr "ربع"
+
+msgid "Q1"
+msgstr "الربع1"
+
+msgid "Q2"
+msgstr "الربع2"
+
+msgid "Q3"
+msgstr "الربع3"
+
+msgid "Q4"
+msgstr "الربع4"
+
+msgid "six monthly"
+msgstr "كل ستة أشهر"
+
+msgid "January-June"
+msgstr "يناير-يونيو"
+
+msgid "July-December"
+msgstr "يوليو-ديسمبر"
+
+msgid "April-September"
+msgstr "ابريل-سبتمبر"
+
+msgid "October-March"
+msgstr "اكتوبر-مارس"
+
+msgid "Bi-Week"
+msgstr ""
+
+msgid "External url"
+msgstr "عنوان URL خارجي"
+
+msgid "Upload file"
+msgstr "تحميل الملف"
+
+msgid "Confirm delete"
+msgstr "تأكيد الحذف"
+
+msgctxt "chart"
+msgid "bar"
+msgstr ""

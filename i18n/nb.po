@@ -1,0 +1,754 @@
+# 
+# Translators:
+# Karoline Tufte Lien <karoline@dhis2.org>, 2020
+# Caroline Hesthagen Holen <carolinehholen@gmail.com>, 2020
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"POT-Creation-Date: 2019-12-12T07:35:49.121Z\n"
+"PO-Revision-Date: 2020-04-28 22:12+0000\n"
+"Last-Translator: Caroline Hesthagen Holen <carolinehholen@gmail.com>, 2020\n"
+"Language-Team: Norwegian Bokmål (https://www.transifex.com/hisp-uio/teams/100509/nb/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: nb\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Reports"
+msgstr "Rapporter"
+
+msgid "Updating Organisation Units Tree..."
+msgstr "Oppdaterer Organisasjonsenhettreet..."
+
+msgid "Select Option"
+msgstr ""
+
+msgid "Data set dimensions"
+msgstr ""
+
+msgid "Loading options..."
+msgstr ""
+
+msgid "Select Data Set"
+msgstr ""
+
+msgid "Data set"
+msgstr "Datasett"
+
+msgid "Group Set"
+msgstr ""
+
+msgid "Select Group Set"
+msgstr ""
+
+msgid "Show more options"
+msgstr "Vis flere alternativer"
+
+msgid "Show fewer options"
+msgstr "Vis færre alternativ"
+
+msgid "Report organisation unit"
+msgstr ""
+
+msgid "Select Period Type"
+msgstr "Velg periodetype"
+
+msgid "Search"
+msgstr "Søk"
+
+msgid "No results have been found"
+msgstr ""
+
+msgid "Download as"
+msgstr "Last ned som"
+
+msgid "Share"
+msgstr "Del"
+
+msgid "Write a comment, question or interpretation of this report"
+msgstr ""
+
+msgid "Select file"
+msgstr "Velg fil"
+
+msgid "No file chosen"
+msgstr ""
+
+msgid "Standard Report"
+msgstr ""
+
+msgid ""
+"View and add reports based on the JasperReports library. These can be based "
+"on report tables and can be designed in iReport."
+msgstr ""
+
+msgid "View Reports"
+msgstr ""
+
+msgid "Data Set Report"
+msgstr "Datasettrapport"
+
+msgid ""
+"View data set reports. These reports are based on data entry screens and "
+"will produce a report with aggregated data."
+msgstr ""
+
+msgid "Get Report"
+msgstr ""
+
+msgid "Reporting Rate Summary"
+msgstr ""
+
+msgid ""
+"Browse the reporting rates of data sets by organisation unit and period "
+"based on various criteria for submission."
+msgstr ""
+
+msgid "Resource"
+msgstr ""
+
+msgid ""
+"View and add resources. These resources can be uploaded documents or URLs on"
+" the web."
+msgstr ""
+
+msgid "View Resources"
+msgstr ""
+
+msgid "Org unit distribution report"
+msgstr ""
+
+msgid ""
+"Browse the organisation unit distribution report based on the organisation "
+"unit group sets and its groups."
+msgstr ""
+
+msgid "CONFIRM"
+msgstr ""
+
+msgid "Report period"
+msgstr ""
+
+msgid "Use data for selected unit only"
+msgstr ""
+
+msgid "Get Chart"
+msgstr ""
+
+msgid "Edit resource"
+msgstr ""
+
+msgid "Save resource"
+msgstr ""
+
+msgid "Add resource"
+msgstr ""
+
+msgid "Do you want to use this file as an attachment?"
+msgstr ""
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "No"
+msgstr "Nei"
+
+msgid "File"
+msgstr "Fil"
+
+msgid "Name*"
+msgstr ""
+
+msgid "Details"
+msgstr "Detaljer"
+
+msgid "Resource Type"
+msgstr ""
+
+msgid "Url*"
+msgstr ""
+
+msgid "File resources can not be edited, only created"
+msgstr ""
+
+msgid "Cancel"
+msgstr "Avbryt"
+
+msgid "Edit standard report"
+msgstr ""
+
+msgid "Create standard report"
+msgstr ""
+
+msgid "Generate report"
+msgstr ""
+
+msgid "Report parameters"
+msgstr ""
+
+msgid "There are some errors you have to fix first!"
+msgstr ""
+
+msgid "Back to standard reports list"
+msgstr ""
+
+msgid "Get current design"
+msgstr ""
+
+msgid "Get HTML Report Template"
+msgstr ""
+
+msgid "Get Jasper Report Template"
+msgstr ""
+
+msgid "Report Type*"
+msgstr ""
+
+msgid "Report Table*"
+msgstr ""
+
+msgid "Design File"
+msgstr ""
+
+msgid "Design File*"
+msgstr ""
+
+msgid "Relative periods"
+msgstr "Relative perioder"
+
+msgid "Settings"
+msgstr "Innstillinger"
+
+msgid "Cache Strategy*"
+msgstr ""
+
+msgid "Submit"
+msgstr "Send inn"
+
+msgid "[ None ]"
+msgstr ""
+
+msgid "Jasper report with report table data source"
+msgstr ""
+
+msgid "Jasper report with JDBC data source"
+msgstr ""
+
+msgid "HTML report"
+msgstr ""
+
+msgid "No cache"
+msgstr "Ingen buffer"
+
+msgid "Respect system setting"
+msgstr "Respekter systeminnstilling"
+
+msgid "Cache for one hour"
+msgstr "Buffer i en time"
+
+msgid "Cache until 6 AM tomorrow"
+msgstr "Buffer til klokka 06.00 i morgen"
+
+msgid "Cache for two weeks"
+msgstr "Buffer for to uker"
+
+msgid "Days"
+msgstr "Dager"
+
+msgid "Reporting day"
+msgstr ""
+
+msgid "Yesterday"
+msgstr "I går"
+
+msgid "Last 3 days"
+msgstr "Siste 3 dager"
+
+msgid "Last 7 days"
+msgstr "Siste 7 dager"
+
+msgid "Last 14 days"
+msgstr "Siste 14 dager"
+
+msgid "Weeks"
+msgstr "Uker"
+
+msgid "Reporting week"
+msgstr ""
+
+msgid "Last Week"
+msgstr ""
+
+msgid "Last 2 weeks"
+msgstr ""
+
+msgid "Last 12 weeks"
+msgstr "Siste 12 uker"
+
+msgid "Last 52 weeks"
+msgstr "Siste 52 uker"
+
+msgid "Weeks this year"
+msgstr "Uker inneværende år"
+
+msgid "Months"
+msgstr "Måneder"
+
+msgid "Reporting month"
+msgstr ""
+
+msgid "Last month"
+msgstr "Forrige måned"
+
+msgid "Last 3 months"
+msgstr "Siste 3 måneder"
+
+msgid "Last 6 months"
+msgstr "Siste 6 måneder"
+
+msgid "Last 12 months"
+msgstr "Siste 12 måneder"
+
+msgid "Months this year"
+msgstr "Måneder inneværende år"
+
+msgid "Bi-months"
+msgstr "Tomåneder"
+
+msgid "Reporting bi-month"
+msgstr ""
+
+msgid "Last bi-month"
+msgstr "Siste tomåned"
+
+msgid "Last 6 bi-month"
+msgstr ""
+
+msgid "Bi-months this year"
+msgstr "Tomåneder i år"
+
+msgid "Quarters"
+msgstr "Kvartaler"
+
+msgid "Reporting quarter"
+msgstr ""
+
+msgid "Last quarter"
+msgstr "Siste kvartal"
+
+msgid "Last 4 quarters"
+msgstr "Siste 4 kvartaler"
+
+msgid "Quarters of reporting year"
+msgstr ""
+
+msgid "Six-Months"
+msgstr ""
+
+msgid "Reporting six-month"
+msgstr ""
+
+msgid "Last six-month"
+msgstr "Siste halvår"
+
+msgid "Last 2 six-months"
+msgstr "Siste 2 halvår"
+
+msgid "Financial Years"
+msgstr ""
+
+msgid "Reporting financial year"
+msgstr ""
+
+msgid "Last financial year"
+msgstr "Siste regnskapsår"
+
+msgid "Last 5 financial years"
+msgstr "Siste 5 regnskapsår"
+
+msgid "Years"
+msgstr "År"
+
+msgid "Reporting year"
+msgstr ""
+
+msgid "Last year"
+msgstr "Forrige år"
+
+msgid "Last 5 years"
+msgstr "Siste 5 år"
+
+msgid "An error occurred whole loading the data set options"
+msgstr ""
+
+msgid "An error occurred while loading the data set dimensions"
+msgstr ""
+
+msgid "An error occurred while loading the group sets!"
+msgstr ""
+
+msgid "Could not load organisation units"
+msgstr ""
+
+msgid "An error occurred while loading the organisation units!"
+msgstr ""
+
+msgid "Successfully loaded the {{ outputType }}"
+msgstr ""
+
+msgid "chart"
+msgstr "diagram"
+
+msgid "table"
+msgstr ""
+
+msgid "An error occurred while loading the report!"
+msgstr ""
+
+msgid "Successfully added comment"
+msgstr ""
+
+msgid "An error occurred while submitting your comment!"
+msgstr ""
+
+msgid "Could not load period types"
+msgstr ""
+
+msgid "An error occurred while loading the resources!"
+msgstr ""
+
+msgid "Do you really want to delete this resource?"
+msgstr ""
+
+msgid "The resource has been deleted successfully"
+msgstr ""
+
+msgid "An error occurred when deleting the resource!"
+msgstr ""
+
+msgid "An error occurred while adding the resource!"
+msgstr ""
+
+msgid "An error occurred while saving the modifications!"
+msgstr ""
+
+msgid "An error occurred while loading the standard reports"
+msgstr ""
+
+msgid "An error occurred while trying to delete the standard report"
+msgstr ""
+
+msgid "An error occurred while loading the standard report details"
+msgstr ""
+
+msgid "The report has been updated successfully"
+msgstr ""
+
+msgid "The report has been added successfully"
+msgstr ""
+
+msgid "An error occurred while updating the report!"
+msgstr ""
+
+msgid "An error occurred while adding the report!"
+msgstr ""
+
+msgid "An error occurred while generating the html report"
+msgstr ""
+
+msgid "An error occurred while loading the report table options"
+msgstr ""
+
+msgid "Count"
+msgstr "Antall"
+
+msgid "Organisation Unit"
+msgstr "Organisasjonsenhet"
+
+msgid "Total"
+msgstr "Totalt"
+
+msgid "Daily"
+msgstr "Daglig"
+
+msgid "Weekly"
+msgstr "Ukentlig"
+
+msgid "Weekly Wednesday"
+msgstr "Ukentlig Onsdag"
+
+msgid "Weekly Thursday"
+msgstr "Ukentlig Torsdag"
+
+msgid "Weekly Saturday"
+msgstr "Ukentlig Lørdag"
+
+msgid "Weekly Sunday"
+msgstr "Ukentlig Søndag"
+
+msgid "Bi-Weekly"
+msgstr ""
+
+msgid "Monthly"
+msgstr "Månedlig"
+
+msgid "Bi-Monthly"
+msgstr ""
+
+msgid "Quarterly"
+msgstr "Kvartalsvis"
+
+msgid "Six-Monthly"
+msgstr ""
+
+msgid "Six-Monthly April"
+msgstr ""
+
+msgid "Six-Monthly November"
+msgstr ""
+
+msgid "Yearly"
+msgstr "Årlig"
+
+msgid "Financial-April"
+msgstr "Regnskap-April"
+
+msgid "Financial-July"
+msgstr "Regnskap-Juli"
+
+msgid "Financial-Oct"
+msgstr "Regnskap-Okt"
+
+msgid "Name"
+msgstr "Navn"
+
+msgid "Something went wrong when processing your request."
+msgstr "Noe gikk galt ved behandling av forespørselen"
+
+msgid "Search apps"
+msgstr "Søk etter apper"
+
+msgid "Profile"
+msgstr "Profil"
+
+msgid "Account"
+msgstr "Brukerkonto"
+
+msgid "Help"
+msgstr "Hjelp"
+
+msgid "Log out"
+msgstr "Logg ut"
+
+msgid "About DHIS 2"
+msgstr "Om DHIS 2"
+
+msgid "Manage my apps"
+msgstr "Administrer applikasjonene mine"
+
+msgid "No results found"
+msgstr "Ingen resultater funnet"
+
+msgid "Interpretations"
+msgstr "Tolkninger"
+
+msgid "Messages"
+msgstr "Meldinger"
+
+msgid "Report Table"
+msgstr "Rapporttabell"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "Create"
+msgstr "Opprett"
+
+msgid "Edit"
+msgstr "Rediger"
+
+msgid "Actions"
+msgstr "Handlinger"
+
+msgid "Delete"
+msgstr "Slett"
+
+msgid "Sharing settings"
+msgstr "Deleinnstillinger"
+
+msgid "View Resource"
+msgstr ""
+
+msgid "Edit Resource"
+msgstr ""
+
+msgid "Add users and user groups"
+msgstr "Legg til brukere og brukergrupper"
+
+msgid "Enter names"
+msgstr "Tast inn navn"
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Created By"
+msgstr ""
+
+msgid "Who has access"
+msgstr "Hvem har tilgang"
+
+msgid "External access (without login)"
+msgstr "Ekstern tilgang (uten innlogging)"
+
+msgid "Can edit and view"
+msgstr "Kan redigere og se"
+
+msgid "Can view"
+msgstr "Kan se"
+
+msgid "Can view only"
+msgstr "Kunn visning"
+
+msgid "No access"
+msgstr "Ingen tilgang"
+
+msgid "Public access (with login)"
+msgstr "Offentlig tilgang (med innlogging)"
+
+msgid "Public can edit"
+msgstr ""
+
+msgid "Public can view"
+msgstr ""
+
+msgid "Public can find, view and edit"
+msgstr ""
+
+msgid "Public can find and view"
+msgstr ""
+
+msgid "Close"
+msgstr "Lukk"
+
+msgid "week"
+msgstr ""
+
+msgid "month"
+msgstr "Måned"
+
+msgid "year"
+msgstr ""
+
+msgid "bi monthly"
+msgstr ""
+
+msgid "day"
+msgstr ""
+
+msgid "January"
+msgstr "Januar"
+
+msgid "February"
+msgstr "Februar"
+
+msgid "March"
+msgstr "Mars"
+
+msgid "April"
+msgstr "April"
+
+msgid "May"
+msgstr "Mai"
+
+msgid "June"
+msgstr "Juni"
+
+msgid "July"
+msgstr "Juli"
+
+msgid "August"
+msgstr "August"
+
+msgid "September"
+msgstr "September"
+
+msgid "October"
+msgstr "Oktober"
+
+msgid "November"
+msgstr "November"
+
+msgid "December"
+msgstr "Desember"
+
+msgid "January-February"
+msgstr "Januar-Februar"
+
+msgid "March-April"
+msgstr "Mars-April"
+
+msgid "May-June"
+msgstr "Mai-Juni"
+
+msgid "July-August"
+msgstr "Juli-August"
+
+msgid "September-October"
+msgstr "September-Oktober"
+
+msgid "November-December"
+msgstr "November-Desember"
+
+msgid "November-April"
+msgstr ""
+
+msgid "May-October"
+msgstr ""
+
+msgid "quarter"
+msgstr ""
+
+msgid "Q1"
+msgstr ""
+
+msgid "Q2"
+msgstr ""
+
+msgid "Q3"
+msgstr ""
+
+msgid "Q4"
+msgstr ""
+
+msgid "six monthly"
+msgstr ""
+
+msgid "January-June"
+msgstr "Januar-Juni"
+
+msgid "July-December"
+msgstr "Juli-Desember"
+
+msgid "April-September"
+msgstr "April-September"
+
+msgid "October-March"
+msgstr "Oktober-Mars"
+
+msgid "Bi-Week"
+msgstr ""
+
+msgid "External url"
+msgstr ""
+
+msgid "Upload file"
+msgstr ""
+
+msgid "Confirm delete"
+msgstr ""
+
+msgctxt "chart"
+msgid "bar"
+msgstr ""

@@ -1,0 +1,763 @@
+# 
+# Translators:
+# phil_dhis2, 2020
+# Viktor Varland <viktor@dhis2.org>, 2020
+# Mai Nguyen <thanhmai.jica@gmail.com>, 2020
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"POT-Creation-Date: 2019-12-12T07:35:49.121Z\n"
+"PO-Revision-Date: 2020-04-28 22:12+0000\n"
+"Last-Translator: Mai Nguyen <thanhmai.jica@gmail.com>, 2020\n"
+"Language-Team: Vietnamese (https://www.transifex.com/hisp-uio/teams/100509/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Reports"
+msgstr "Báo cáo tổng hợp"
+
+msgid "Updating Organisation Units Tree..."
+msgstr "Cập nhật cây đơn vị"
+
+msgid "Select Option"
+msgstr "Chọn tùy chọn"
+
+msgid "Data set dimensions"
+msgstr "Các chiều tập dữ liệu"
+
+msgid "Loading options..."
+msgstr "Đang tải tùy chọn ..."
+
+msgid "Select Data Set"
+msgstr "Chọn tập dữ liệu"
+
+msgid "Data set"
+msgstr "Tập dữ liệu"
+
+msgid "Group Set"
+msgstr "Tập hợp nhóm"
+
+msgid "Select Group Set"
+msgstr "Chọn tập hợp nhóm"
+
+msgid "Show more options"
+msgstr "Hiển thi thêm tùy chọn"
+
+msgid "Show fewer options"
+msgstr "Ẩn bớt tùy chọn"
+
+msgid "Report organisation unit"
+msgstr "Đơn vị báo cáo"
+
+msgid "Select Period Type"
+msgstr "Chọn Loại Thời Điểm"
+
+msgid "Search"
+msgstr "Tìm kiếm"
+
+msgid "No results have been found"
+msgstr "Không tìm thấy kết quả"
+
+msgid "Download as"
+msgstr "Tải về"
+
+msgid "Share"
+msgstr "Chia sẻ"
+
+msgid "Write a comment, question or interpretation of this report"
+msgstr "Viết một chú thích, câu hỏi hoặc lời diễn giải cho báo cáo"
+
+msgid "Select file"
+msgstr "Chọn tập tin"
+
+msgid "No file chosen"
+msgstr "Chưa chọn file"
+
+msgid "Standard Report"
+msgstr "Báo cáo chuẩn"
+
+msgid ""
+"View and add reports based on the JasperReports library. These can be based "
+"on report tables and can be designed in iReport."
+msgstr ""
+"Xem và thêm các báo cáo cơ bản. Các báo cáo này dùng dữ liệu là các bảng báo"
+" cáo đã được thiết kế với trình thiết kế BIRT hay là JasperReport"
+
+msgid "View Reports"
+msgstr "Xem báo cáo"
+
+msgid "Data Set Report"
+msgstr "Báo cáo theo tập hợp dữ liệu có sẵn"
+
+msgid ""
+"View data set reports. These reports are based on data entry screens and "
+"will produce a report with aggregated data."
+msgstr ""
+"Xem báo cáo theo tập dữ liệu. Các báo cáo này dựa vào các mẫu nhập dữ liệu "
+"và sẽ tạo ra một báo cáo với dữ liệu tổng hợp."
+
+msgid "Get Report"
+msgstr "Nhận báo cáo"
+
+msgid "Reporting Rate Summary"
+msgstr "Tóm lượt tỷ lệ báo cáo"
+
+msgid ""
+"Browse the reporting rates of data sets by organisation unit and period "
+"based on various criteria for submission."
+msgstr ""
+"Duyệt xem tỷ lệ báo cáo của các biểu nhập liệu theo đơn vị và thời điểm dựa "
+"vào các tiêu chuẩn khác nhau để trình lên"
+
+msgid "Resource"
+msgstr "Tài nguyên"
+
+msgid ""
+"View and add resources. These resources can be uploaded documents or URLs on"
+" the web."
+msgstr ""
+"Hiển thị và thêm nguồn tài nguyên. Các nguồn tài nguyên có thể được tải lên "
+"là những tài liệu hoặc các đường dẫn Url"
+
+msgid "View Resources"
+msgstr "Xem tài nguyên"
+
+msgid "Org unit distribution report"
+msgstr "Báo cáo theo đơn vị"
+
+msgid ""
+"Browse the organisation unit distribution report based on the organisation "
+"unit group sets and its groups."
+msgstr "Duyệt xem các báo cáo mở rộng theo đơn vị"
+
+msgid "CONFIRM"
+msgstr "Xác nhận"
+
+msgid "Report period"
+msgstr "Thời điểm báo cáo"
+
+msgid "Use data for selected unit only"
+msgstr "Dùng dữ liệu chỉ cho đơn vị được chọn"
+
+msgid "Get Chart"
+msgstr "Nhận biểu đồ"
+
+msgid "Edit resource"
+msgstr "Chỉnh sửa tài nguyên"
+
+msgid "Save resource"
+msgstr "Lưu tài nguyên"
+
+msgid "Add resource"
+msgstr "Thêm tài nguyên"
+
+msgid "Do you want to use this file as an attachment?"
+msgstr "Bạn có muốn sử dụng tập tin này như một tập tin đính kèm?"
+
+msgid "Yes"
+msgstr "Có"
+
+msgid "No"
+msgstr "Không"
+
+msgid "File"
+msgstr "Tập tin"
+
+msgid "Name*"
+msgstr "Tên"
+
+msgid "Details"
+msgstr "Chi tiết"
+
+msgid "Resource Type"
+msgstr "Loại tài nguyên"
+
+msgid "Url*"
+msgstr "Url*"
+
+msgid "File resources can not be edited, only created"
+msgstr "Tài nguyên dạng tệp không thể được chỉnh sửa, chỉ được tạo"
+
+msgid "Cancel"
+msgstr "Hủy"
+
+msgid "Edit standard report"
+msgstr "Chỉnh sửa báo cáo chuẩn"
+
+msgid "Create standard report"
+msgstr "Tạo báo cáo chuẩn"
+
+msgid "Generate report"
+msgstr "Tạo báo cáo"
+
+msgid "Report parameters"
+msgstr "Tham số báo cáo"
+
+msgid "There are some errors you have to fix first!"
+msgstr "Có một số lỗi bạn phải sửa trước!"
+
+msgid "Back to standard reports list"
+msgstr "Quay lại danh sách báo cáo chuẩn"
+
+msgid "Get current design"
+msgstr "Lấy thiết kế đang dùng"
+
+msgid "Get HTML Report Template"
+msgstr "Lấy mẫu báo cáo HTML"
+
+msgid "Get Jasper Report Template"
+msgstr "Lấy mẫu báo cáo Jasper"
+
+msgid "Report Type*"
+msgstr "Loại báo cáo*"
+
+msgid "Report Table*"
+msgstr "Bảng báo cáo"
+
+msgid "Design File"
+msgstr "Tập tin thiết kế"
+
+msgid "Design File*"
+msgstr "Tập tin thiết kế *"
+
+msgid "Relative periods"
+msgstr "Thời điểm tương đối"
+
+msgid "Settings"
+msgstr "Cài đặt"
+
+msgid "Cache Strategy*"
+msgstr ""
+
+msgid "Submit"
+msgstr "Nộp"
+
+msgid "[ None ]"
+msgstr ""
+
+msgid "Jasper report with report table data source"
+msgstr "Báo cáo Jasper với nguồn dữ liệu bảng báo cáo "
+
+msgid "Jasper report with JDBC data source"
+msgstr "Báo cáo Jasper với nguồn dữ liệu JDBC"
+
+msgid "HTML report"
+msgstr "Báo cáo chuẩn HTML"
+
+msgid "No cache"
+msgstr "Không lưu cache"
+
+msgid "Respect system setting"
+msgstr "Thiết lập hệ thống tương quan"
+
+msgid "Cache for one hour"
+msgstr "Lưu cache trong 1 giờ"
+
+msgid "Cache until 6 AM tomorrow"
+msgstr "Lưu cache đến 6 giờ sáng ngày mai"
+
+msgid "Cache for two weeks"
+msgstr "Lưu cache trong 2 tuần"
+
+msgid "Days"
+msgstr "Ngày"
+
+msgid "Reporting day"
+msgstr "Ngày báo cáo"
+
+msgid "Yesterday"
+msgstr "Hôm Qua"
+
+msgid "Last 3 days"
+msgstr "3 ngày trước"
+
+msgid "Last 7 days"
+msgstr "7 ngày trước"
+
+msgid "Last 14 days"
+msgstr "14 ngày trước"
+
+msgid "Weeks"
+msgstr "Tuần"
+
+msgid "Reporting week"
+msgstr "Tuần báo cáo"
+
+msgid "Last Week"
+msgstr "Tuần trước"
+
+msgid "Last 2 weeks"
+msgstr "2 tuần trước"
+
+msgid "Last 12 weeks"
+msgstr "12 tuần trước"
+
+msgid "Last 52 weeks"
+msgstr "52 tuần trước"
+
+msgid "Weeks this year"
+msgstr "Các tuần trong năm nay"
+
+msgid "Months"
+msgstr "Tháng"
+
+msgid "Reporting month"
+msgstr "Báo cáo hàng tháng"
+
+msgid "Last month"
+msgstr "Tháng trước"
+
+msgid "Last 3 months"
+msgstr "3 tháng trước"
+
+msgid "Last 6 months"
+msgstr "6 tháng trước"
+
+msgid "Last 12 months"
+msgstr "Trong 12 tháng trước"
+
+msgid "Months this year"
+msgstr "Tháng năm nay"
+
+msgid "Bi-months"
+msgstr "Các kỳ, 1 kỳ = 2 tháng"
+
+msgid "Reporting bi-month"
+msgstr "Báo cáo theo kỳ 2 tháng"
+
+msgid "Last bi-month"
+msgstr "Kỳ trước, 1 kỳ = 2 tháng"
+
+msgid "Last 6 bi-month"
+msgstr "6 kỳ trước, 1 kỳ = 2 tháng"
+
+msgid "Bi-months this year"
+msgstr "Các kỳ trong năm nay, 1 kỳ = 2 tháng"
+
+msgid "Quarters"
+msgstr "Quý"
+
+msgid "Reporting quarter"
+msgstr "Báo cáo theo quý"
+
+msgid "Last quarter"
+msgstr "Quý trước"
+
+msgid "Last 4 quarters"
+msgstr "4 quý trước"
+
+msgid "Quarters of reporting year"
+msgstr "Các quý trong năm báo cáo"
+
+msgid "Six-Months"
+msgstr "6 tháng"
+
+msgid "Reporting six-month"
+msgstr "Báo cáo 6 tháng"
+
+msgid "Last six-month"
+msgstr "6 tháng trước"
+
+msgid "Last 2 six-months"
+msgstr "2 lần sáu-tháng trước"
+
+msgid "Financial Years"
+msgstr "Năm tài chính"
+
+msgid "Reporting financial year"
+msgstr "Báo cáo năm tài chính"
+
+msgid "Last financial year"
+msgstr "Năm tài chính trước"
+
+msgid "Last 5 financial years"
+msgstr "5 năm tài chính trước"
+
+msgid "Years"
+msgstr "Năm"
+
+msgid "Reporting year"
+msgstr "Năm báo cáo"
+
+msgid "Last year"
+msgstr "Năm ngoái"
+
+msgid "Last 5 years"
+msgstr "Trong 5 năm vừa qua"
+
+msgid "An error occurred whole loading the data set options"
+msgstr "Xảy ra lỗi trong khi tải các tùy chọn tập dữ liệu"
+
+msgid "An error occurred while loading the data set dimensions"
+msgstr "Xảy ra lỗi khi tải các chiều tập dữ liệu"
+
+msgid "An error occurred while loading the group sets!"
+msgstr "Xảy ra lỗi khi tải tập nhóm"
+
+msgid "Could not load organisation units"
+msgstr "Không thể tải cây đơn vị"
+
+msgid "An error occurred while loading the organisation units!"
+msgstr "Xảy ra lỗi khi tải cây đơn vị "
+
+msgid "Successfully loaded the {{ outputType }}"
+msgstr ""
+
+msgid "chart"
+msgstr "Biểu đồ"
+
+msgid "table"
+msgstr "Bảng"
+
+msgid "An error occurred while loading the report!"
+msgstr "Xảy ra lỗi trong khi tải báo cáo"
+
+msgid "Successfully added comment"
+msgstr "Thêm bình luận thành công "
+
+msgid "An error occurred while submitting your comment!"
+msgstr "Xảy ra lỗi khi gửi bình luận của bạn!"
+
+msgid "Could not load period types"
+msgstr "Không thể tải các loại thời điểm"
+
+msgid "An error occurred while loading the resources!"
+msgstr "Xảy ra lỗi trong khi tải tài nguyên!"
+
+msgid "Do you really want to delete this resource?"
+msgstr "Bạn có thực sự muốn xóa tài nguyên này?"
+
+msgid "The resource has been deleted successfully"
+msgstr "Tài nguyên được xóa thành công"
+
+msgid "An error occurred when deleting the resource!"
+msgstr "Xảy ra lỗi khi xóa tài nguyên!"
+
+msgid "An error occurred while adding the resource!"
+msgstr "Xảy ra lỗi khi thêm tài nguyên!"
+
+msgid "An error occurred while saving the modifications!"
+msgstr "Xảy ra lỗi khi lưu các thay đổi!"
+
+msgid "An error occurred while loading the standard reports"
+msgstr "Xảy ra lỗi khi tải báo cáo chuẩn"
+
+msgid "An error occurred while trying to delete the standard report"
+msgstr "Xảy ra lỗi khi xóa báo cáo chuẩn"
+
+msgid "An error occurred while loading the standard report details"
+msgstr "Xảy ra lỗi trong khi tải chi tiết báo cáo chuẩn"
+
+msgid "The report has been updated successfully"
+msgstr "Báo cáo đã được cập nhật thành công"
+
+msgid "The report has been added successfully"
+msgstr "Báo cáo đã được thêm thành công"
+
+msgid "An error occurred while updating the report!"
+msgstr "Xảy ra lỗi khi cập nhật báo cáo!"
+
+msgid "An error occurred while adding the report!"
+msgstr "Xảy ra lỗi trong khi thêm báo cáo!"
+
+msgid "An error occurred while generating the html report"
+msgstr "Xảy ra lỗi khi tạo báo cáo html"
+
+msgid "An error occurred while loading the report table options"
+msgstr "Xảy ra lỗi khi tải các tùy chọn bảng báo cáo"
+
+msgid "Count"
+msgstr "Đếm"
+
+msgid "Organisation Unit"
+msgstr "Đơn vị"
+
+msgid "Total"
+msgstr "Tổng số"
+
+msgid "Daily"
+msgstr "Hàng ngày"
+
+msgid "Weekly"
+msgstr "Hàng tuần"
+
+msgid "Weekly Wednesday"
+msgstr "Thứ tư hàng tuần"
+
+msgid "Weekly Thursday"
+msgstr "Thứ năm hàng tuần"
+
+msgid "Weekly Saturday"
+msgstr "Thứ bảy hàng tuần"
+
+msgid "Weekly Sunday"
+msgstr "Chủ nhật hàng tuần"
+
+msgid "Bi-Weekly"
+msgstr "Kỳ này, 1 kỳ = 2 tuần"
+
+msgid "Monthly"
+msgstr "Hàng tháng"
+
+msgid "Bi-Monthly"
+msgstr "Kỳ này, 1 kỳ = 2 tuần"
+
+msgid "Quarterly"
+msgstr "Hàng quý"
+
+msgid "Six-Monthly"
+msgstr "6 tháng"
+
+msgid "Six-Monthly April"
+msgstr ""
+
+msgid "Six-Monthly November"
+msgstr ""
+
+msgid "Yearly"
+msgstr "Một năm"
+
+msgid "Financial-April"
+msgstr "Năm tài chính - tháng 4"
+
+msgid "Financial-July"
+msgstr "Năm tài chính - tháng 7"
+
+msgid "Financial-Oct"
+msgstr "Năm tài chính - tháng 10"
+
+msgid "Name"
+msgstr "Tên"
+
+msgid "Something went wrong when processing your request."
+msgstr "Xảy ra lỗi khi xử lý yêu cầu của bạn."
+
+msgid "Search apps"
+msgstr "Tìm kiếm ứng dụng"
+
+msgid "Profile"
+msgstr "Hồ sơ"
+
+msgid "Account"
+msgstr "Tài khoản"
+
+msgid "Help"
+msgstr "Giúp đỡ"
+
+msgid "Log out"
+msgstr "Đăng xuất"
+
+msgid "About DHIS 2"
+msgstr "Giới thiệu về DHIS 2"
+
+msgid "Manage my apps"
+msgstr "Quản lý ứng dụng của tôi"
+
+msgid "No results found"
+msgstr "Không tìm thấy kết quả nào"
+
+msgid "Interpretations"
+msgstr "Diễn giải báo cáo"
+
+msgid "Messages"
+msgstr "Tin nhắn"
+
+msgid "Report Table"
+msgstr "Bảng báo cáo"
+
+msgid "ID"
+msgstr "Định danh"
+
+msgid "Create"
+msgstr "Tạo mới"
+
+msgid "Edit"
+msgstr "Chỉnh sửa"
+
+msgid "Actions"
+msgstr "Hành động"
+
+msgid "Delete"
+msgstr "Xóa"
+
+msgid "Sharing settings"
+msgstr "Cài đặt chia sẻ"
+
+msgid "View Resource"
+msgstr "Xem tài nguyên"
+
+msgid "Edit Resource"
+msgstr "Sửa tài nguyên"
+
+msgid "Add users and user groups"
+msgstr "Thêm người dùng và nhóm người dùng"
+
+msgid "Enter names"
+msgstr "Nhập tên"
+
+msgid "Permissions"
+msgstr "Các quyền"
+
+msgid "Created By"
+msgstr "Tạo bởi"
+
+msgid "Who has access"
+msgstr "Ai có quyền truy cập"
+
+msgid "External access (without login)"
+msgstr "Truy cập từ bên ngoài (không cần đăng nhập)"
+
+msgid "Can edit and view"
+msgstr "Có thể xem và chỉnh sửa"
+
+msgid "Can view"
+msgstr "Có thể xem"
+
+msgid "Can view only"
+msgstr "Chỉ có thể xem"
+
+msgid "No access"
+msgstr "Không truy cập"
+
+msgid "Public access (with login)"
+msgstr "Truy cập công cộng (có đăng nhập)"
+
+msgid "Public can edit"
+msgstr "Mọi người có thể chỉnh sửa"
+
+msgid "Public can view"
+msgstr "Mọi người có thể xem"
+
+msgid "Public can find, view and edit"
+msgstr "Mọi người có thể tìm, xem và chỉnh sửa"
+
+msgid "Public can find and view"
+msgstr "Mọi người có thể tìm và xem"
+
+msgid "Close"
+msgstr "Đóng lại"
+
+msgid "week"
+msgstr "Tuần"
+
+msgid "month"
+msgstr "Tháng"
+
+msgid "year"
+msgstr "Năm"
+
+msgid "bi monthly"
+msgstr "Kỳ này, 1 kỳ = 2 tháng"
+
+msgid "day"
+msgstr "Ngày"
+
+msgid "January"
+msgstr "Tháng một"
+
+msgid "February"
+msgstr "Tháng hai"
+
+msgid "March"
+msgstr "Tháng ba"
+
+msgid "April"
+msgstr "Tháng tư"
+
+msgid "May"
+msgstr "Tháng năm"
+
+msgid "June"
+msgstr "Tháng sáu"
+
+msgid "July"
+msgstr "Tháng bảy"
+
+msgid "August"
+msgstr "Tháng tám"
+
+msgid "September"
+msgstr "Tháng chín"
+
+msgid "October"
+msgstr "Tháng mười"
+
+msgid "November"
+msgstr "Tháng mười một"
+
+msgid "December"
+msgstr "Tháng mười hai"
+
+msgid "January-February"
+msgstr "Tháng Một - Tháng Hai"
+
+msgid "March-April"
+msgstr "Tháng Ba - Tháng Tư"
+
+msgid "May-June"
+msgstr "Tháng Năm - Tháng Sáu"
+
+msgid "July-August"
+msgstr "Tháng Bảy - Tháng Tám"
+
+msgid "September-October"
+msgstr "Tháng Chín - Tháng Mười"
+
+msgid "November-December"
+msgstr "Tháng Mười Một - Tháng Mười Hai"
+
+msgid "November-April"
+msgstr "Tháng mười một - tháng tư"
+
+msgid "May-October"
+msgstr "Tháng năm - tháng mười"
+
+msgid "quarter"
+msgstr "Quý"
+
+msgid "Q1"
+msgstr "Q1"
+
+msgid "Q2"
+msgstr "Q2"
+
+msgid "Q3"
+msgstr "Q3"
+
+msgid "Q4"
+msgstr "Q4"
+
+msgid "six monthly"
+msgstr "6 tháng"
+
+msgid "January-June"
+msgstr "Tháng Một - Tháng Sáu"
+
+msgid "July-December"
+msgstr "Tháng Bảy - Tháng Mười Hai"
+
+msgid "April-September"
+msgstr "Tháng Tư - Tháng Chín"
+
+msgid "October-March"
+msgstr "Tháng Mười - Tháng Ba"
+
+msgid "Bi-Week"
+msgstr "Kỳ này, 1 kỳ = 2 tuần"
+
+msgid "External url"
+msgstr "Url ngoài"
+
+msgid "Upload file"
+msgstr "Tải một tập tin"
+
+msgid "Confirm delete"
+msgstr "Xác nhận xóa"
+
+msgctxt "chart"
+msgid "bar"
+msgstr "Thanh"
