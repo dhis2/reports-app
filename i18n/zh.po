@@ -1,0 +1,756 @@
+# 
+# Translators:
+# easylin <lin_xd@126.com>, 2020
+# phil_dhis2, 2020
+# Viktor Varland <viktor@dhis2.org>, 2020
+# 晓东 林 <13981924470@126.com>, 2020
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"POT-Creation-Date: 2019-12-12T07:35:49.121Z\n"
+"PO-Revision-Date: 2020-04-28 22:12+0000\n"
+"Last-Translator: 晓东 林 <13981924470@126.com>, 2020\n"
+"Language-Team: Chinese (https://www.transifex.com/hisp-uio/teams/100509/zh/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Reports"
+msgstr "报表"
+
+msgid "Updating Organisation Units Tree..."
+msgstr "更新机构树"
+
+msgid "Select Option"
+msgstr ""
+
+msgid "Data set dimensions"
+msgstr ""
+
+msgid "Loading options..."
+msgstr "载入选项中。。。"
+
+msgid "Select Data Set"
+msgstr ""
+
+msgid "Data set"
+msgstr "数据集"
+
+msgid "Group Set"
+msgstr ""
+
+msgid "Select Group Set"
+msgstr ""
+
+msgid "Show more options"
+msgstr "Show more options"
+
+msgid "Show fewer options"
+msgstr "Show fewer options"
+
+msgid "Report organisation unit"
+msgstr "报表组织机构"
+
+msgid "Select Period Type"
+msgstr "选择周期类型"
+
+msgid "Search"
+msgstr "搜索"
+
+msgid "No results have been found"
+msgstr ""
+
+msgid "Download as"
+msgstr "下载为"
+
+msgid "Share"
+msgstr "分享"
+
+msgid "Write a comment, question or interpretation of this report"
+msgstr "Write a comment, question or interpretation of this report"
+
+msgid "Select file"
+msgstr "选择文件"
+
+msgid "No file chosen"
+msgstr ""
+
+msgid "Standard Report"
+msgstr "标准报表"
+
+msgid ""
+"View and add reports based on the JasperReports library. These can be based "
+"on report tables and can be designed in iReport."
+msgstr "浏览、添加标准报表，这些报表是基于报表表并且能够在BIRT 或者JasperReports里被设计"
+
+msgid "View Reports"
+msgstr ""
+
+msgid "Data Set Report"
+msgstr "数据集报表"
+
+msgid ""
+"View data set reports. These reports are based on data entry screens and "
+"will produce a report with aggregated data."
+msgstr "浏览数据集报表，这些报表是基于数据录入屏幕并且产生一个汇总数据的报表。"
+
+msgid "Get Report"
+msgstr ""
+
+msgid "Reporting Rate Summary"
+msgstr "报表率汇总"
+
+msgid ""
+"Browse the reporting rates of data sets by organisation unit and period "
+"based on various criteria for submission."
+msgstr "浏览按机构和周期基于各种提交标准的数据集的报告率"
+
+msgid "Resource"
+msgstr "资源"
+
+msgid ""
+"View and add resources. These resources can be uploaded documents or URLs on"
+" the web."
+msgstr "查看和添加资源，资源可能是上传的文档，互联网上的URL"
+
+msgid "View Resources"
+msgstr ""
+
+msgid "Org unit distribution report"
+msgstr ""
+
+msgid ""
+"Browse the organisation unit distribution report based on the organisation "
+"unit group sets and its groups."
+msgstr "基于组织机构组和组集浏览组织机构分布报表"
+
+msgid "CONFIRM"
+msgstr "确认"
+
+msgid "Report period"
+msgstr "报表周期"
+
+msgid "Use data for selected unit only"
+msgstr "仅已选的组织能使用数据"
+
+msgid "Get Chart"
+msgstr ""
+
+msgid "Edit resource"
+msgstr ""
+
+msgid "Save resource"
+msgstr ""
+
+msgid "Add resource"
+msgstr ""
+
+msgid "Do you want to use this file as an attachment?"
+msgstr ""
+
+msgid "Yes"
+msgstr "Yes"
+
+msgid "No"
+msgstr "No"
+
+msgid "File"
+msgstr "文件"
+
+msgid "Name*"
+msgstr ""
+
+msgid "Details"
+msgstr "详情"
+
+msgid "Resource Type"
+msgstr ""
+
+msgid "Url*"
+msgstr ""
+
+msgid "File resources can not be edited, only created"
+msgstr ""
+
+msgid "Cancel"
+msgstr "取消"
+
+msgid "Edit standard report"
+msgstr ""
+
+msgid "Create standard report"
+msgstr ""
+
+msgid "Generate report"
+msgstr ""
+
+msgid "Report parameters"
+msgstr "报表参数"
+
+msgid "There are some errors you have to fix first!"
+msgstr ""
+
+msgid "Back to standard reports list"
+msgstr ""
+
+msgid "Get current design"
+msgstr "获取当前设计"
+
+msgid "Get HTML Report Template"
+msgstr ""
+
+msgid "Get Jasper Report Template"
+msgstr ""
+
+msgid "Report Type*"
+msgstr ""
+
+msgid "Report Table*"
+msgstr ""
+
+msgid "Design File"
+msgstr ""
+
+msgid "Design File*"
+msgstr ""
+
+msgid "Relative periods"
+msgstr "相关周期"
+
+msgid "Settings"
+msgstr "设置"
+
+msgid "Cache Strategy*"
+msgstr ""
+
+msgid "Submit"
+msgstr "提交"
+
+msgid "[ None ]"
+msgstr ""
+
+msgid "Jasper report with report table data source"
+msgstr "Jasper report with report table data source"
+
+msgid "Jasper report with JDBC data source"
+msgstr "Jasper report with JDBC data source"
+
+msgid "HTML report"
+msgstr "HTML report"
+
+msgid "No cache"
+msgstr "无缓冲"
+
+msgid "Respect system setting"
+msgstr "各自系统设置"
+
+msgid "Cache for one hour"
+msgstr "缓存一小时"
+
+msgid "Cache until 6 AM tomorrow"
+msgstr "缓冲至明天早上六点"
+
+msgid "Cache for two weeks"
+msgstr "缓冲两周"
+
+msgid "Days"
+msgstr "天数"
+
+msgid "Reporting day"
+msgstr "Reporting day"
+
+msgid "Yesterday"
+msgstr "昨天"
+
+msgid "Last 3 days"
+msgstr "Last 3 days"
+
+msgid "Last 7 days"
+msgstr "最近7天"
+
+msgid "Last 14 days"
+msgstr "Last 14 days"
+
+msgid "Weeks"
+msgstr "星期"
+
+msgid "Reporting week"
+msgstr "Reporting week"
+
+msgid "Last Week"
+msgstr ""
+
+msgid "Last 2 weeks"
+msgstr ""
+
+msgid "Last 12 weeks"
+msgstr "最近12周"
+
+msgid "Last 52 weeks"
+msgstr "Last 52 weeks"
+
+msgid "Weeks this year"
+msgstr "Weeks this year"
+
+msgid "Months"
+msgstr "月"
+
+msgid "Reporting month"
+msgstr "月报表"
+
+msgid "Last month"
+msgstr "上月"
+
+msgid "Last 3 months"
+msgstr "最近3个月"
+
+msgid "Last 6 months"
+msgstr "Last 6 months"
+
+msgid "Last 12 months"
+msgstr "最近12月"
+
+msgid "Months this year"
+msgstr "今年的月份"
+
+msgid "Bi-months"
+msgstr "Bi-months"
+
+msgid "Reporting bi-month"
+msgstr "双月报表"
+
+msgid "Last bi-month"
+msgstr "Last bi-month"
+
+msgid "Last 6 bi-month"
+msgstr ""
+
+msgid "Bi-months this year"
+msgstr "Bi-months this year"
+
+msgid "Quarters"
+msgstr "四分之一"
+
+msgid "Reporting quarter"
+msgstr "报表季度"
+
+msgid "Last quarter"
+msgstr "最近一季"
+
+msgid "Last 4 quarters"
+msgstr "最近四个季度"
+
+msgid "Quarters of reporting year"
+msgstr ""
+
+msgid "Six-Months"
+msgstr ""
+
+msgid "Reporting six-month"
+msgstr "半年报表"
+
+msgid "Last six-month"
+msgstr "最近六个月"
+
+msgid "Last 2 six-months"
+msgstr "最近两个半年"
+
+msgid "Financial Years"
+msgstr "Financial Years"
+
+msgid "Reporting financial year"
+msgstr "Reporting financial year"
+
+msgid "Last financial year"
+msgstr "上一财政年"
+
+msgid "Last 5 financial years"
+msgstr "最近五个财政年"
+
+msgid "Years"
+msgstr "年"
+
+msgid "Reporting year"
+msgstr "Reporting year"
+
+msgid "Last year"
+msgstr "去年"
+
+msgid "Last 5 years"
+msgstr "最近5年"
+
+msgid "An error occurred whole loading the data set options"
+msgstr ""
+
+msgid "An error occurred while loading the data set dimensions"
+msgstr ""
+
+msgid "An error occurred while loading the group sets!"
+msgstr ""
+
+msgid "Could not load organisation units"
+msgstr ""
+
+msgid "An error occurred while loading the organisation units!"
+msgstr ""
+
+msgid "Successfully loaded the {{ outputType }}"
+msgstr ""
+
+msgid "chart"
+msgstr "图表"
+
+msgid "table"
+msgstr ""
+
+msgid "An error occurred while loading the report!"
+msgstr ""
+
+msgid "Successfully added comment"
+msgstr ""
+
+msgid "An error occurred while submitting your comment!"
+msgstr ""
+
+msgid "Could not load period types"
+msgstr ""
+
+msgid "An error occurred while loading the resources!"
+msgstr ""
+
+msgid "Do you really want to delete this resource?"
+msgstr ""
+
+msgid "The resource has been deleted successfully"
+msgstr ""
+
+msgid "An error occurred when deleting the resource!"
+msgstr ""
+
+msgid "An error occurred while adding the resource!"
+msgstr ""
+
+msgid "An error occurred while saving the modifications!"
+msgstr ""
+
+msgid "An error occurred while loading the standard reports"
+msgstr ""
+
+msgid "An error occurred while trying to delete the standard report"
+msgstr ""
+
+msgid "An error occurred while loading the standard report details"
+msgstr ""
+
+msgid "The report has been updated successfully"
+msgstr ""
+
+msgid "The report has been added successfully"
+msgstr ""
+
+msgid "An error occurred while updating the report!"
+msgstr ""
+
+msgid "An error occurred while adding the report!"
+msgstr ""
+
+msgid "An error occurred while generating the html report"
+msgstr ""
+
+msgid "An error occurred while loading the report table options"
+msgstr ""
+
+msgid "Count"
+msgstr "计数"
+
+msgid "Organisation Unit"
+msgstr "组织机构"
+
+msgid "Total"
+msgstr "总共"
+
+msgid "Daily"
+msgstr "每日"
+
+msgid "Weekly"
+msgstr "每周"
+
+msgid "Weekly Wednesday"
+msgstr "每周三"
+
+msgid "Weekly Thursday"
+msgstr "每周四"
+
+msgid "Weekly Saturday"
+msgstr "每周六"
+
+msgid "Weekly Sunday"
+msgstr "每周日"
+
+msgid "Bi-Weekly"
+msgstr ""
+
+msgid "Monthly"
+msgstr "每月"
+
+msgid "Bi-Monthly"
+msgstr ""
+
+msgid "Quarterly"
+msgstr "季度"
+
+msgid "Six-Monthly"
+msgstr ""
+
+msgid "Six-Monthly April"
+msgstr ""
+
+msgid "Six-Monthly November"
+msgstr ""
+
+msgid "Yearly"
+msgstr "每年"
+
+msgid "Financial-April"
+msgstr "财务-四月"
+
+msgid "Financial-July"
+msgstr "财务七月"
+
+msgid "Financial-Oct"
+msgstr "财务十月"
+
+msgid "Name"
+msgstr "名称"
+
+msgid "Something went wrong when processing your request."
+msgstr "处理你的请求发生错误"
+
+msgid "Search apps"
+msgstr "搜索 apps"
+
+msgid "Profile"
+msgstr "基本信息"
+
+msgid "Account"
+msgstr "账号"
+
+msgid "Help"
+msgstr "帮助"
+
+msgid "Log out"
+msgstr "退出"
+
+msgid "About DHIS 2"
+msgstr "关于DHIS2"
+
+msgid "Manage my apps"
+msgstr "管理我的小应用"
+
+msgid "No results found"
+msgstr "没有结果"
+
+msgid "Interpretations"
+msgstr "解释"
+
+msgid "Messages"
+msgstr "消息"
+
+msgid "Report Table"
+msgstr "报表表"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "Create"
+msgstr "创建"
+
+msgid "Edit"
+msgstr "编辑<br>"
+
+msgid "Actions"
+msgstr "行动"
+
+msgid "Delete"
+msgstr "删除"
+
+msgid "Sharing settings"
+msgstr "共享设置"
+
+msgid "View Resource"
+msgstr ""
+
+msgid "Edit Resource"
+msgstr ""
+
+msgid "Add users and user groups"
+msgstr "添加用户和用户组"
+
+msgid "Enter names"
+msgstr "输入名称"
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Created By"
+msgstr ""
+
+msgid "Who has access"
+msgstr "谁访问过"
+
+msgid "External access (without login)"
+msgstr "外部访问（无登录）"
+
+msgid "Can edit and view"
+msgstr "可编辑和查看"
+
+msgid "Can view"
+msgstr "可查看"
+
+msgid "Can view only"
+msgstr "仅查看"
+
+msgid "No access"
+msgstr "不能访问"
+
+msgid "Public access (with login)"
+msgstr "公共访问（需登录）"
+
+msgid "Public can edit"
+msgstr ""
+
+msgid "Public can view"
+msgstr ""
+
+msgid "Public can find, view and edit"
+msgstr ""
+
+msgid "Public can find and view"
+msgstr ""
+
+msgid "Close"
+msgstr "关闭"
+
+msgid "week"
+msgstr "周"
+
+msgid "month"
+msgstr "月"
+
+msgid "year"
+msgstr "年"
+
+msgid "bi monthly"
+msgstr "两月"
+
+msgid "day"
+msgstr "天"
+
+msgid "January"
+msgstr "1月"
+
+msgid "February"
+msgstr "2月"
+
+msgid "March"
+msgstr "3月"
+
+msgid "April"
+msgstr "4月"
+
+msgid "May"
+msgstr "5月"
+
+msgid "June"
+msgstr "6月"
+
+msgid "July"
+msgstr "7月"
+
+msgid "August"
+msgstr "8月"
+
+msgid "September"
+msgstr "9月"
+
+msgid "October"
+msgstr "10月"
+
+msgid "November"
+msgstr "11月"
+
+msgid "December"
+msgstr "12月"
+
+msgid "January-February"
+msgstr "一二月"
+
+msgid "March-April"
+msgstr "三四月"
+
+msgid "May-June"
+msgstr "五六月"
+
+msgid "July-August"
+msgstr "七八月"
+
+msgid "September-October"
+msgstr "九十月"
+
+msgid "November-December"
+msgstr "十一十二月"
+
+msgid "November-April"
+msgstr ""
+
+msgid "May-October"
+msgstr ""
+
+msgid "quarter"
+msgstr "季度"
+
+msgid "Q1"
+msgstr "春季"
+
+msgid "Q2"
+msgstr "夏季"
+
+msgid "Q3"
+msgstr "秋季"
+
+msgid "Q4"
+msgstr "冬季"
+
+msgid "six monthly"
+msgstr "每六个月"
+
+msgid "January-June"
+msgstr "1-6月"
+
+msgid "July-December"
+msgstr "7-12月"
+
+msgid "April-September"
+msgstr "4-9月"
+
+msgid "October-March"
+msgstr "10-3月"
+
+msgid "Bi-Week"
+msgstr ""
+
+msgid "External url"
+msgstr ""
+
+msgid "Upload file"
+msgstr "上传文件"
+
+msgid "Confirm delete"
+msgstr ""
+
+msgctxt "chart"
+msgid "bar"
+msgstr ""
