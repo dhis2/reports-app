@@ -324,19 +324,19 @@ msgid "Months this year"
 msgstr "Tháng năm nay"
 
 msgid "Bi-months"
-msgstr "Các kỳ, 1 kỳ = 2 tháng"
+msgstr "Các kỳ 2 tháng"
 
 msgid "Reporting bi-month"
 msgstr "Báo cáo theo kỳ 2 tháng"
 
 msgid "Last bi-month"
-msgstr "Kỳ trước, 1 kỳ = 2 tháng"
+msgstr "Kỳ 2 tháng trước"
 
 msgid "Last 6 bi-month"
-msgstr "6 kỳ trước, 1 kỳ = 2 tháng"
+msgstr "6 kỳ 2 tháng trước"
 
 msgid "Bi-months this year"
-msgstr "Các kỳ trong năm nay, 1 kỳ = 2 tháng"
+msgstr "Các kỳ 2 tháng năm nay"
 
 msgid "Quarters"
 msgstr "Quý"
@@ -498,13 +498,13 @@ msgid "Weekly Sunday"
 msgstr "Chủ nhật hàng tuần"
 
 msgid "Bi-Weekly"
-msgstr "Kỳ này, 1 kỳ = 2 tuần"
+msgstr "Kỳ 2 tuần"
 
 msgid "Monthly"
 msgstr "Hàng tháng"
 
 msgid "Bi-Monthly"
-msgstr "Kỳ này, 1 kỳ = 2 tuần"
+msgstr "Kỳ 2 tháng"
 
 msgid "Quarterly"
 msgstr "Hàng quý"
@@ -651,7 +651,7 @@ msgid "year"
 msgstr "Năm"
 
 msgid "bi monthly"
-msgstr "Kỳ này, 1 kỳ = 2 tháng"
+msgstr "Kỳ 2 tháng này"
 
 msgid "day"
 msgstr "Ngày"
@@ -747,7 +747,7 @@ msgid "October-March"
 msgstr "Tháng Mười - Tháng Ba"
 
 msgid "Bi-Week"
-msgstr "Kỳ này, 1 kỳ = 2 tuần"
+msgstr "Kỳ 2 tuần này"
 
 msgid "External url"
 msgstr "Url ngoài"

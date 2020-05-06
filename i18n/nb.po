@@ -129,7 +129,7 @@ msgid "CONFIRM"
 msgstr ""
 
 msgid "Report period"
-msgstr ""
+msgstr "Rapportperiode"
 
 msgid "Use data for selected unit only"
 msgstr ""
