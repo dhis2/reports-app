@@ -5,13 +5,14 @@
 # Marta Vila <marta@dhis2.org>, 2020
 # ericbp <ericbarredap@gmail.com>, 2020
 # Gabriela Rodriguez <grodriguezcoronado@gmail.com>, 2020
+# William Aviles <waviles@clintonhealthaccess.org>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2019-12-12T07:35:49.121Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
-"Last-Translator: Gabriela Rodriguez <grodriguezcoronado@gmail.com>, 2020\n"
+"Last-Translator: William Aviles <waviles@clintonhealthaccess.org>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/hisp-uio/teams/100509/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -601,7 +602,7 @@ msgid "Add users and user groups"
 msgstr "Añadir usuarios y grupos de usuarios"
 
 msgid "Enter names"
-msgstr ""
+msgstr "Ingresar nombres"
 
 msgid "Permissions"
 msgstr ""
@@ -622,10 +623,10 @@ msgid "Can view"
 msgstr "Puede ver"
 
 msgid "Can view only"
-msgstr ""
+msgstr "Solo lectura"
 
 msgid "No access"
-msgstr ""
+msgstr "Sin acceso"
 
 msgid "Public access (with login)"
 msgstr "Acceso público"
