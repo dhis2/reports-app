@@ -23,25 +23,25 @@ msgid "Updating Organisation Units Tree..."
 msgstr "Oppdaterer Organisasjonsenhettreet..."
 
 msgid "Select Option"
-msgstr ""
+msgstr "Velg alternativ"
 
 msgid "Data set dimensions"
-msgstr ""
+msgstr "Datasettdimensjoner"
 
 msgid "Loading options..."
-msgstr ""
+msgstr "Laster alternativer..."
 
 msgid "Select Data Set"
-msgstr ""
+msgstr "Velg datasett"
 
 msgid "Data set"
 msgstr "Datasett"
 
 msgid "Group Set"
-msgstr ""
+msgstr "Gruppesett"
 
 msgid "Select Group Set"
-msgstr ""
+msgstr "Velg gruppesett"
 
 msgid "Show more options"
 msgstr "Vis flere alternativer"
@@ -50,7 +50,7 @@ msgid "Show fewer options"
 msgstr "Vis færre alternativ"
 
 msgid "Report organisation unit"
-msgstr ""
+msgstr "Rapport organisasjonsenhet"
 
 msgid "Select Period Type"
 msgstr "Velg periodetype"
@@ -59,7 +59,7 @@ msgid "Search"
 msgstr "Søk"
 
 msgid "No results have been found"
-msgstr ""
+msgstr "Ingen resultater ble funnet"
 
 msgid "Download as"
 msgstr "Last ned som"
@@ -68,16 +68,16 @@ msgid "Share"
 msgstr "Del"
 
 msgid "Write a comment, question or interpretation of this report"
-msgstr ""
+msgstr "Skriv en kommentar, spørsmål eller tolkning av denne rapporten"
 
 msgid "Select file"
 msgstr "Velg fil"
 
 msgid "No file chosen"
-msgstr ""
+msgstr "Ingen fil valgt"
 
 msgid "Standard Report"
-msgstr ""
+msgstr "Standardrapport"
 
 msgid ""
 "View and add reports based on the JasperReports library. These can be based "
@@ -85,7 +85,7 @@ msgid ""
 msgstr ""
 
 msgid "View Reports"
-msgstr ""
+msgstr "Vis rapporter"
 
 msgid "Data Set Report"
 msgstr "Datasettrapport"
@@ -94,60 +94,68 @@ msgid ""
 "View data set reports. These reports are based on data entry screens and "
 "will produce a report with aggregated data."
 msgstr ""
+"Vis datasettrapporter. Disse rapportene er basert på "
+"dataregistreringsskjermbilder og vil produsere en rapport med samlede data."
 
 msgid "Get Report"
-msgstr ""
+msgstr "Hent rapport"
 
 msgid "Reporting Rate Summary"
-msgstr ""
+msgstr "Rapporteringsfrekvensoppsummering"
 
 msgid ""
 "Browse the reporting rates of data sets by organisation unit and period "
 "based on various criteria for submission."
 msgstr ""
+"Bla gjennom rapporteringshastigheten for datasett etter organisasjonsenhet "
+"og periode basert på forskjellige kriterier for innsending."
 
 msgid "Resource"
-msgstr ""
+msgstr "Ressurs"
 
 msgid ""
 "View and add resources. These resources can be uploaded documents or URLs on"
 " the web."
 msgstr ""
+"Vis og legg til ressurser. Disse ressursene kan være opplastede dokumenter "
+"eller nettadresser på nettet."
 
 msgid "View Resources"
-msgstr ""
+msgstr "Vis ressurser"
 
 msgid "Org unit distribution report"
-msgstr ""
+msgstr "Org enhet distribusjonsrapport"
 
 msgid ""
 "Browse the organisation unit distribution report based on the organisation "
 "unit group sets and its groups."
 msgstr ""
+"Bla gjennom organisasjonsenhetsdistribusjonsrapporten basert på "
+"organisasjonsenhetsgruppesettet og dens grupper."
 
 msgid "CONFIRM"
-msgstr ""
+msgstr "BEKREFT"
 
 msgid "Report period"
 msgstr "Rapportperiode"
 
 msgid "Use data for selected unit only"
-msgstr ""
+msgstr "Bruk data kun for valgt enhet"
 
 msgid "Get Chart"
-msgstr ""
+msgstr "Hent diagram"
 
 msgid "Edit resource"
-msgstr ""
+msgstr "Rediger ressurs"
 
 msgid "Save resource"
-msgstr ""
+msgstr "Lagre ressurs"
 
 msgid "Add resource"
-msgstr ""
+msgstr "Legg til ressurs"
 
 msgid "Do you want to use this file as an attachment?"
-msgstr ""
+msgstr "Vil du bruke denne filen som vedlegg"
 
 msgid "Yes"
 msgstr "Ja"
@@ -159,61 +167,61 @@ msgid "File"
 msgstr "Fil"
 
 msgid "Name*"
-msgstr ""
+msgstr "Navn*"
 
 msgid "Details"
 msgstr "Detaljer"
 
 msgid "Resource Type"
-msgstr ""
+msgstr "Ressurstype"
 
 msgid "Url*"
-msgstr ""
+msgstr "Url*"
 
 msgid "File resources can not be edited, only created"
-msgstr ""
+msgstr "Filressurser kan ikke redigeres, bare opprettes"
 
 msgid "Cancel"
 msgstr "Avbryt"
 
 msgid "Edit standard report"
-msgstr ""
+msgstr "Rediger standardrapport"
 
 msgid "Create standard report"
-msgstr ""
+msgstr "Opprett standardrapport"
 
 msgid "Generate report"
-msgstr ""
+msgstr "Generer rapport"
 
 msgid "Report parameters"
-msgstr ""
+msgstr "Rapporter parametere"
 
 msgid "There are some errors you have to fix first!"
-msgstr ""
+msgstr "Det er noen feil som må rettes først!"
 
 msgid "Back to standard reports list"
-msgstr ""
+msgstr "Tilbake til standardrapportliste"
 
 msgid "Get current design"
-msgstr ""
+msgstr "Hent gjeldende design"
 
 msgid "Get HTML Report Template"
-msgstr ""
+msgstr "Få HTML-rapportmal"
 
 msgid "Get Jasper Report Template"
 msgstr ""
 
 msgid "Report Type*"
-msgstr ""
+msgstr "Rapporttype*"
 
 msgid "Report Table*"
-msgstr ""
+msgstr "Rapporttabell*"
 
 msgid "Design File"
-msgstr ""
+msgstr "Design fil"
 
 msgid "Design File*"
-msgstr ""
+msgstr "Design fil*"
 
 msgid "Relative periods"
 msgstr "Relative perioder"
@@ -222,13 +230,13 @@ msgid "Settings"
 msgstr "Innstillinger"
 
 msgid "Cache Strategy*"
-msgstr ""
+msgstr "Bufferstrategi*"
 
 msgid "Submit"
 msgstr "Send inn"
 
 msgid "[ None ]"
-msgstr ""
+msgstr "[ None ]"
 
 msgid "Jasper report with report table data source"
 msgstr ""
@@ -237,7 +245,7 @@ msgid "Jasper report with JDBC data source"
 msgstr ""
 
 msgid "HTML report"
-msgstr ""
+msgstr "HTML rapport"
 
 msgid "No cache"
 msgstr "Ingen buffer"
@@ -258,7 +266,7 @@ msgid "Days"
 msgstr "Dager"
 
 msgid "Reporting day"
-msgstr ""
+msgstr "Rapporteringsdag"
 
 msgid "Yesterday"
 msgstr "I går"
@@ -276,13 +284,13 @@ msgid "Weeks"
 msgstr "Uker"
 
 msgid "Reporting week"
-msgstr ""
+msgstr "Rapporteringsuke"
 
 msgid "Last Week"
-msgstr ""
+msgstr "Forrige uke"
 
 msgid "Last 2 weeks"
-msgstr ""
+msgstr "Siste 2 uker"
 
 msgid "Last 12 weeks"
 msgstr "Siste 12 uker"
@@ -297,7 +305,7 @@ msgid "Months"
 msgstr "Måneder"
 
 msgid "Reporting month"
-msgstr ""
+msgstr "Rapporteringsmåned"
 
 msgid "Last month"
 msgstr "Forrige måned"
@@ -318,13 +326,13 @@ msgid "Bi-months"
 msgstr "Tomåneder"
 
 msgid "Reporting bi-month"
-msgstr ""
+msgstr "Rapportering to-månedlig"
 
 msgid "Last bi-month"
 msgstr "Siste tomåned"
 
 msgid "Last 6 bi-month"
-msgstr ""
+msgstr "Siste 6 tomåned"
 
 msgid "Bi-months this year"
 msgstr "Tomåneder i år"
@@ -333,7 +341,7 @@ msgid "Quarters"
 msgstr "Kvartaler"
 
 msgid "Reporting quarter"
-msgstr ""
+msgstr "Rapporterende kvartal"
 
 msgid "Last quarter"
 msgstr "Siste kvartal"
@@ -342,13 +350,13 @@ msgid "Last 4 quarters"
 msgstr "Siste 4 kvartaler"
 
 msgid "Quarters of reporting year"
-msgstr ""
+msgstr "Kvartaler av rapporterende år"
 
 msgid "Six-Months"
-msgstr ""
+msgstr "Halvår"
 
 msgid "Reporting six-month"
-msgstr ""
+msgstr "Rapporterende halvår"
 
 msgid "Last six-month"
 msgstr "Siste halvår"
@@ -372,7 +380,7 @@ msgid "Years"
 msgstr "År"
 
 msgid "Reporting year"
-msgstr ""
+msgstr "Rapporteringsår"
 
 msgid "Last year"
 msgstr "Forrige år"
@@ -381,85 +389,85 @@ msgid "Last 5 years"
 msgstr "Siste 5 år"
 
 msgid "An error occurred whole loading the data set options"
-msgstr ""
+msgstr "En feil oppsto under lasting av datasettalternativer"
 
 msgid "An error occurred while loading the data set dimensions"
-msgstr ""
+msgstr "En feil oppsto under lasting av datasettdimensjoner"
 
 msgid "An error occurred while loading the group sets!"
-msgstr ""
+msgstr "En feil oppsto under lasting av gruppesettene!"
 
 msgid "Could not load organisation units"
-msgstr ""
+msgstr "Kunne ikke laste organisasjonsenheter"
 
 msgid "An error occurred while loading the organisation units!"
-msgstr ""
+msgstr "En feil oppsto under lasting av organisasjonsenheter!"
 
 msgid "Successfully loaded the {{ outputType }}"
-msgstr ""
+msgstr "Vellykket lasting av {{ outputType }}"
 
 msgid "chart"
 msgstr "diagram"
 
 msgid "table"
-msgstr ""
+msgstr "Tabell"
 
 msgid "An error occurred while loading the report!"
-msgstr ""
+msgstr "En feil oppsto under lasting av rapporten!"
 
 msgid "Successfully added comment"
-msgstr ""
+msgstr "Kommentaren ble lagt til"
 
 msgid "An error occurred while submitting your comment!"
-msgstr ""
+msgstr "En feil oppsto under innsending av kommentaren din!"
 
 msgid "Could not load period types"
-msgstr ""
+msgstr "Kunne ikke laste periodetyper"
 
 msgid "An error occurred while loading the resources!"
-msgstr ""
+msgstr "En feil oppsto under lasting av ressursene!"
 
 msgid "Do you really want to delete this resource?"
-msgstr ""
+msgstr "Vil du virkelig slette denne ressursen?"
 
 msgid "The resource has been deleted successfully"
-msgstr ""
+msgstr "Ressursen har blitt slettet"
 
 msgid "An error occurred when deleting the resource!"
-msgstr ""
+msgstr "En feil oppsto ved sletting av ressursen"
 
 msgid "An error occurred while adding the resource!"
-msgstr ""
+msgstr "En feil oppsto når ressursen ble forsøkt lagt inn!"
 
 msgid "An error occurred while saving the modifications!"
-msgstr ""
+msgstr "En feil oppsto ved lagring av modifikasjonene!"
 
 msgid "An error occurred while loading the standard reports"
-msgstr ""
+msgstr "En feil oppsto ved lasting av standardrapporter"
 
 msgid "An error occurred while trying to delete the standard report"
-msgstr ""
+msgstr "En feil oppsto ved forsøk på sletting av standardrapport"
 
 msgid "An error occurred while loading the standard report details"
-msgstr ""
+msgstr "En feil oppsto ved lasting av standardrapport detaljene"
 
 msgid "The report has been updated successfully"
-msgstr ""
+msgstr "Rapporten har blitt oppdatert"
 
 msgid "The report has been added successfully"
-msgstr ""
+msgstr "Rapporten ble lagt til"
 
 msgid "An error occurred while updating the report!"
-msgstr ""
+msgstr "En feil oppsto ved oppdatering av rapporten!"
 
 msgid "An error occurred while adding the report!"
-msgstr ""
+msgstr "En feil oppsto når rapporten skulle legges til!"
 
 msgid "An error occurred while generating the html report"
-msgstr ""
+msgstr "En feil oppsto ved generering av HTML rapporten"
 
 msgid "An error occurred while loading the report table options"
-msgstr ""
+msgstr "En feil oppsto ved lasting av rapporttabell alternativene"
 
 msgid "Count"
 msgstr "Antall"
@@ -489,25 +497,25 @@ msgid "Weekly Sunday"
 msgstr "Ukentlig Søndag"
 
 msgid "Bi-Weekly"
-msgstr ""
+msgstr "Toukentlig"
 
 msgid "Monthly"
 msgstr "Månedlig"
 
 msgid "Bi-Monthly"
-msgstr ""
+msgstr "To-månedlig"
 
 msgid "Quarterly"
 msgstr "Kvartalsvis"
 
 msgid "Six-Monthly"
-msgstr ""
+msgstr "Halvårlig"
 
 msgid "Six-Monthly April"
-msgstr ""
+msgstr "Halvårig April"
 
 msgid "Six-Monthly November"
-msgstr ""
+msgstr "Halvårig November"
 
 msgid "Yearly"
 msgstr "Årlig"
@@ -579,10 +587,10 @@ msgid "Sharing settings"
 msgstr "Deleinnstillinger"
 
 msgid "View Resource"
-msgstr ""
+msgstr "Vis ressurs"
 
 msgid "Edit Resource"
-msgstr ""
+msgstr "Rediger ressurs"
 
 msgid "Add users and user groups"
 msgstr "Legg til brukere og brukergrupper"
@@ -591,10 +599,10 @@ msgid "Enter names"
 msgstr "Tast inn navn"
 
 msgid "Permissions"
-msgstr ""
+msgstr "Tillatelser"
 
 msgid "Created By"
-msgstr ""
+msgstr "Opprettet av"
 
 msgid "Who has access"
 msgstr "Hvem har tilgang"
@@ -618,34 +626,34 @@ msgid "Public access (with login)"
 msgstr "Offentlig tilgang (med innlogging)"
 
 msgid "Public can edit"
-msgstr ""
+msgstr "Offentlig, kan redigeres"
 
 msgid "Public can view"
-msgstr ""
+msgstr "Offentlig, kan vises"
 
 msgid "Public can find, view and edit"
-msgstr ""
+msgstr "Offentlig, kan finne, vise og redigere"
 
 msgid "Public can find and view"
-msgstr ""
+msgstr "Offentlig, kan finne og vise"
 
 msgid "Close"
 msgstr "Lukk"
 
 msgid "week"
-msgstr ""
+msgstr "uke"
 
 msgid "month"
 msgstr "Måned"
 
 msgid "year"
-msgstr ""
+msgstr "år"
 
 msgid "bi monthly"
-msgstr ""
+msgstr "Tomånedlig"
 
 msgid "day"
-msgstr ""
+msgstr "dag"
 
 msgid "January"
 msgstr "Januar"
@@ -702,28 +710,28 @@ msgid "November-December"
 msgstr "November-Desember"
 
 msgid "November-April"
-msgstr ""
+msgstr "November-April"
 
 msgid "May-October"
-msgstr ""
+msgstr "Mai-Oktober"
 
 msgid "quarter"
-msgstr ""
+msgstr "kvartal"
 
 msgid "Q1"
-msgstr ""
+msgstr "S1"
 
 msgid "Q2"
-msgstr ""
+msgstr "S2"
 
 msgid "Q3"
-msgstr ""
+msgstr "S3"
 
 msgid "Q4"
-msgstr ""
+msgstr "S4"
 
 msgid "six monthly"
-msgstr ""
+msgstr "Halvårlig"
 
 msgid "January-June"
 msgstr "Januar-Juni"
@@ -738,17 +746,17 @@ msgid "October-March"
 msgstr "Oktober-Mars"
 
 msgid "Bi-Week"
-msgstr ""
+msgstr "Toukentlig"
 
 msgid "External url"
-msgstr ""
+msgstr "Ekstern URL"
 
 msgid "Upload file"
-msgstr ""
+msgstr "Last opp fil"
 
 msgid "Confirm delete"
-msgstr ""
+msgstr "Bekreft sletting"
 
 msgctxt "chart"
 msgid "bar"
-msgstr ""
+msgstr "Stolpe"
