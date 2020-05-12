@@ -1,14 +1,14 @@
 # 
 # Translators:
+# Caroline Hesthagen Holen <caroline@devotta.no>, 2020
 # Karoline Tufte Lien <karoline@dhis2.org>, 2020
-# Caroline Hesthagen Holen <carolinehholen@gmail.com>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2019-12-12T07:35:49.121Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
-"Last-Translator: Caroline Hesthagen Holen <carolinehholen@gmail.com>, 2020\n"
+"Last-Translator: Karoline Tufte Lien <karoline@dhis2.org>, 2020\n"
 "Language-Team: Norwegian Bokmål (https://www.transifex.com/hisp-uio/teams/100509/nb/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -83,6 +83,8 @@ msgid ""
 "View and add reports based on the JasperReports library. These can be based "
 "on report tables and can be designed in iReport."
 msgstr ""
+"Vis og legg til rapporter basert på Jasper Rapportbiblioteket. Disse kan "
+"være basert på rapporttabeller og kan bli utformet i iRapport."
 
 msgid "View Reports"
 msgstr "Vis rapporter"
@@ -209,7 +211,7 @@ msgid "Get HTML Report Template"
 msgstr "Få HTML-rapportmal"
 
 msgid "Get Jasper Report Template"
-msgstr ""
+msgstr "Hent Jasper Rapportmal"
 
 msgid "Report Type*"
 msgstr "Rapporttype*"
@@ -239,10 +241,10 @@ msgid "[ None ]"
 msgstr "[ None ]"
 
 msgid "Jasper report with report table data source"
-msgstr ""
+msgstr "Jasper rapport med rapporttabell datakilde"
 
 msgid "Jasper report with JDBC data source"
-msgstr ""
+msgstr "Jasper rapport med JDBC datakilde"
 
 msgid "HTML report"
 msgstr "HTML rapport"
@@ -365,10 +367,10 @@ msgid "Last 2 six-months"
 msgstr "Siste 2 halvår"
 
 msgid "Financial Years"
-msgstr ""
+msgstr "Regnskapsår"
 
 msgid "Reporting financial year"
-msgstr ""
+msgstr "Rapporterer regenskapsår"
 
 msgid "Last financial year"
 msgstr "Siste regnskapsår"
@@ -617,7 +619,7 @@ msgid "Can view"
 msgstr "Kan se"
 
 msgid "Can view only"
-msgstr "Kunn visning"
+msgstr "Kan bare se"
 
 msgid "No access"
 msgstr "Ingen tilgang"
