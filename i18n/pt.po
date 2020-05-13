@@ -3,13 +3,14 @@
 # phil_dhis2, 2020
 # Viktor Varland <viktor@dhis2.org>, 2020
 # Gabriela Rodriguez <grodriguezcoronado@gmail.com>, 2020
+# Sheila André <sandre@saudigitus.org>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2019-12-12T07:35:49.121Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
-"Last-Translator: Gabriela Rodriguez <grodriguezcoronado@gmail.com>, 2020\n"
+"Last-Translator: Sheila André <sandre@saudigitus.org>, 2020\n"
 "Language-Team: Portuguese (https://www.transifex.com/hisp-uio/teams/100509/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -597,10 +598,10 @@ msgid "Edit Resource"
 msgstr ""
 
 msgid "Add users and user groups"
-msgstr ""
+msgstr "Adicionar usuários e grupos de usuários"
 
 msgid "Enter names"
-msgstr ""
+msgstr "Digite nomes"
 
 msgid "Permissions"
 msgstr ""
@@ -609,7 +610,7 @@ msgid "Created By"
 msgstr ""
 
 msgid "Who has access"
-msgstr ""
+msgstr "Quem tem acesso"
 
 msgid "External access (without login)"
 msgstr "Acesso externo (não é necessária autenticação)"
@@ -621,10 +622,10 @@ msgid "Can view"
 msgstr "Consegue ver"
 
 msgid "Can view only"
-msgstr ""
+msgstr "Só pode ver"
 
 msgid "No access"
-msgstr ""
+msgstr "Sem acesso"
 
 msgid "Public access (with login)"
 msgstr "Acesso Publico"
