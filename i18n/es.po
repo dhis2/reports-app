@@ -650,7 +650,7 @@ msgid "week"
 msgstr ""
 
 msgid "month"
-msgstr ""
+msgstr "mes"
 
 msgid "year"
 msgstr ""
