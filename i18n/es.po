@@ -539,7 +539,7 @@ msgid "Name"
 msgstr "Nombre"
 
 msgid "Something went wrong when processing your request."
-msgstr ""
+msgstr "Algo salió mal al procesar su solicitud."
 
 msgid "Search apps"
 msgstr "Buscar aplicaciones"
@@ -611,7 +611,7 @@ msgid "Created By"
 msgstr ""
 
 msgid "Who has access"
-msgstr ""
+msgstr "Quien tiene acceso"
 
 msgid "External access (without login)"
 msgstr "Acceso externo (sin identificación)"
