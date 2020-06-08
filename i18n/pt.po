@@ -260,7 +260,7 @@ msgid "Respect system setting"
 msgstr ""
 
 msgid "Cache for one hour"
-msgstr ""
+msgstr "Cache por uma hora"
 
 msgid "Cache until 6 AM tomorrow"
 msgstr "Cache até seis horas de amanhã"
@@ -560,10 +560,10 @@ msgid "About DHIS 2"
 msgstr "Acerca de DHIS2"
 
 msgid "Manage my apps"
-msgstr ""
+msgstr "Gerenciar meus aplicativos"
 
 msgid "No results found"
-msgstr ""
+msgstr "Nenhum resultado encontrado"
 
 msgid "Interpretations"
 msgstr "Interpretações"
