@@ -491,16 +491,16 @@ msgid "Weekly"
 msgstr "Semanal"
 
 msgid "Weekly Wednesday"
-msgstr ""
+msgstr "Quarta-feira semanal"
 
 msgid "Weekly Thursday"
-msgstr ""
+msgstr "Quinta-feira semanal"
 
 msgid "Weekly Saturday"
-msgstr ""
+msgstr "Sábado semanal"
 
 msgid "Weekly Sunday"
-msgstr ""
+msgstr "Domingo semanal"
 
 msgid "Bi-Weekly"
 msgstr ""
