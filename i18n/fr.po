@@ -585,7 +585,7 @@ msgid "Edit"
 msgstr "Modifier"
 
 msgid "Actions"
-msgstr ""
+msgstr "Actions"
 
 msgid "Delete"
 msgstr "Supprimer"
@@ -600,10 +600,10 @@ msgid "Edit Resource"
 msgstr ""
 
 msgid "Add users and user groups"
-msgstr ""
+msgstr "Ajouter des utilisateurs et groupes d'utilisateurs"
 
 msgid "Enter names"
-msgstr ""
+msgstr "Enter names"
 
 msgid "Permissions"
 msgstr ""
@@ -612,7 +612,7 @@ msgid "Created By"
 msgstr ""
 
 msgid "Who has access"
-msgstr ""
+msgstr "Qui a accès"
 
 msgid "External access (without login)"
 msgstr "Accès externe (sans connexion)"
@@ -624,7 +624,7 @@ msgid "Can view"
 msgstr "Peut afficher"
 
 msgid "Can view only"
-msgstr ""
+msgstr "Peut afficher uniquement"
 
 msgid "No access"
 msgstr "Pas d'accès"
