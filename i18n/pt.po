@@ -23,28 +23,28 @@ msgid "Reports"
 msgstr "Relatórios"
 
 msgid "Updating Organisation Units Tree..."
-msgstr ""
+msgstr "Atualizando a árvore das unidades da organizacionais..."
 
 msgid "Select Option"
-msgstr ""
+msgstr "Selecione a opção"
 
 msgid "Data set dimensions"
-msgstr ""
+msgstr "Dimensões do conjunto de dados"
 
 msgid "Loading options..."
-msgstr ""
+msgstr "Carregando opções ..."
 
 msgid "Select Data Set"
-msgstr ""
+msgstr "Selecionar conjunto de dados"
 
 msgid "Data set"
 msgstr "Ficha"
 
 msgid "Group Set"
-msgstr ""
+msgstr "Conjunto de grupo"
 
 msgid "Select Group Set"
-msgstr ""
+msgstr "Selecionar conjunto de grupos"
 
 msgid "Show more options"
 msgstr "Mostrar mais opções"
@@ -62,7 +62,7 @@ msgid "Search"
 msgstr "Pesquisar"
 
 msgid "No results have been found"
-msgstr ""
+msgstr "Nenhum resultado foi encontrado"
 
 msgid "Download as"
 msgstr "Descarregar como"
@@ -75,10 +75,10 @@ msgstr ""
 "Escreva um comentário pergunta, ou interpretação do presente relatório"
 
 msgid "Select file"
-msgstr ""
+msgstr "Selecionar o ficheiro"
 
 msgid "No file chosen"
-msgstr ""
+msgstr "Nenhum arquivo selecionado"
 
 msgid "Standard Report"
 msgstr "Relatório padrão"
@@ -91,7 +91,7 @@ msgstr ""
 " tabelas de relatórios e podem ser concebidos de BIRT ou JasperReports."
 
 msgid "View Reports"
-msgstr ""
+msgstr "Exibir relatórios"
 
 msgid "Data Set Report"
 msgstr "Relatório de ficha"
@@ -104,7 +104,7 @@ msgstr ""
 " de entrada de dados e irão produzir um relatório com dados agregados."
 
 msgid "Get Report"
-msgstr ""
+msgstr "Obter relatório"
 
 msgid "Reporting Rate Summary"
 msgstr "Resumo de taxa de reportagem"
@@ -127,10 +127,10 @@ msgstr ""
 "ou URLs na web."
 
 msgid "View Resources"
-msgstr ""
+msgstr "Ver Recursos"
 
 msgid "Org unit distribution report"
-msgstr ""
+msgstr "Relatório de distribuição da unidade organizacional"
 
 msgid ""
 "Browse the organisation unit distribution report based on the organisation "
@@ -140,7 +140,7 @@ msgstr ""
 "conjuntos de grupo da unidade organizacional e dos seus grupos."
 
 msgid "CONFIRM"
-msgstr ""
+msgstr "Confirmar "
 
 msgid "Report period"
 msgstr "Período de relatório"
@@ -149,19 +149,19 @@ msgid "Use data for selected unit only"
 msgstr "Use os dados apenas para a unidade seleccionada"
 
 msgid "Get Chart"
-msgstr ""
+msgstr "Obter gráfico"
 
 msgid "Edit resource"
-msgstr ""
+msgstr "Editar recursos"
 
 msgid "Save resource"
-msgstr ""
+msgstr "Gravar recurso "
 
 msgid "Add resource"
-msgstr ""
+msgstr "Adicionar recurso "
 
 msgid "Do you want to use this file as an attachment?"
-msgstr ""
+msgstr "Deseja usar este arquivo como um anexo?"
 
 msgid "Yes"
 msgstr "Sim"
@@ -173,61 +173,61 @@ msgid "File"
 msgstr "Arquivo"
 
 msgid "Name*"
-msgstr ""
+msgstr "Nome"
 
 msgid "Details"
 msgstr "Detalhes"
 
 msgid "Resource Type"
-msgstr ""
+msgstr "Tipo de recurso"
 
 msgid "Url*"
-msgstr ""
+msgstr "Url*"
 
 msgid "File resources can not be edited, only created"
-msgstr ""
+msgstr "Os recursos do arquivo não podem ser editados, apenas criados"
 
 msgid "Cancel"
 msgstr "Cancelar"
 
 msgid "Edit standard report"
-msgstr ""
+msgstr "Editar relatório padrão"
 
 msgid "Create standard report"
-msgstr ""
+msgstr "Criar relatório padrão"
 
 msgid "Generate report"
-msgstr ""
+msgstr "Gerar relatório"
 
 msgid "Report parameters"
 msgstr "Os parâmetros de relatório"
 
 msgid "There are some errors you have to fix first!"
-msgstr ""
+msgstr "Existem alguns erros que você precisa corrigir primeiro!"
 
 msgid "Back to standard reports list"
-msgstr ""
+msgstr "Voltar à lista de relatórios padrão"
 
 msgid "Get current design"
 msgstr "Obter o projecto actual"
 
 msgid "Get HTML Report Template"
-msgstr ""
+msgstr "Obter modelo de relatório em HTML"
 
 msgid "Get Jasper Report Template"
-msgstr ""
+msgstr "Obter modelo de relatório Jasper"
 
 msgid "Report Type*"
-msgstr ""
+msgstr "Tipo de relatório*"
 
 msgid "Report Table*"
-msgstr ""
+msgstr "Tabela de relatórios *"
 
 msgid "Design File"
-msgstr ""
+msgstr "Arquivo de Desenho"
 
 msgid "Design File*"
-msgstr ""
+msgstr "Arquivo de desenho*"
 
 msgid "Relative periods"
 msgstr "Períodos relativos"
@@ -236,13 +236,13 @@ msgid "Settings"
 msgstr "Configuração"
 
 msgid "Cache Strategy*"
-msgstr ""
+msgstr "Estratégia de cache *"
 
 msgid "Submit"
 msgstr "Submeter"
 
 msgid "[ None ]"
-msgstr ""
+msgstr "[ Nenhum ]"
 
 msgid "Jasper report with report table data source"
 msgstr "Jasper report com dados provenientes de tabelas"
@@ -257,7 +257,7 @@ msgid "No cache"
 msgstr "Sem cache"
 
 msgid "Respect system setting"
-msgstr ""
+msgstr "Respeitar a configuração do sistema"
 
 msgid "Cache for one hour"
 msgstr "Cache por uma hora"
@@ -272,31 +272,31 @@ msgid "Days"
 msgstr "Dias"
 
 msgid "Reporting day"
-msgstr ""
+msgstr "Dia do relatório"
 
 msgid "Yesterday"
 msgstr "Ontém"
 
 msgid "Last 3 days"
-msgstr ""
+msgstr "Últimos 3 dias"
 
 msgid "Last 7 days"
 msgstr "Últimos 7 dias"
 
 msgid "Last 14 days"
-msgstr ""
+msgstr "Últimos 14  dias"
 
 msgid "Weeks"
 msgstr "Semanas"
 
 msgid "Reporting week"
-msgstr ""
+msgstr "Relario semanal "
 
 msgid "Last Week"
-msgstr ""
+msgstr "Semana Anterior"
 
 msgid "Last 2 weeks"
-msgstr ""
+msgstr "Últimas 2 semanas"
 
 msgid "Last 12 weeks"
 msgstr "Últimas doze semanas"
@@ -305,7 +305,7 @@ msgid "Last 52 weeks"
 msgstr "Últimas 52 semanas"
 
 msgid "Weeks this year"
-msgstr ""
+msgstr "Semanas deste ano "
 
 msgid "Months"
 msgstr "Meses"
@@ -338,10 +338,10 @@ msgid "Last bi-month"
 msgstr "Último bimestre"
 
 msgid "Last 6 bi-month"
-msgstr ""
+msgstr "Últimos 6 meses bimensais"
 
 msgid "Bi-months this year"
-msgstr ""
+msgstr "Bimensais este ano"
 
 msgid "Quarters"
 msgstr "Trimestres"
@@ -356,10 +356,10 @@ msgid "Last 4 quarters"
 msgstr "Últimos quatro trimestres"
 
 msgid "Quarters of reporting year"
-msgstr ""
+msgstr "Trimestres do ano de referência"
 
 msgid "Six-Months"
-msgstr ""
+msgstr "Seis meses"
 
 msgid "Reporting six-month"
 msgstr "Relatando os seis meses"
@@ -371,10 +371,10 @@ msgid "Last 2 six-months"
 msgstr "Dois últimos seis-meses"
 
 msgid "Financial Years"
-msgstr ""
+msgstr "Ano financeiro "
 
 msgid "Reporting financial year"
-msgstr ""
+msgstr "Exercício financeiro de referência"
 
 msgid "Last financial year"
 msgstr "Último ano fiscal"
@@ -386,7 +386,7 @@ msgid "Years"
 msgstr "Anos"
 
 msgid "Reporting year"
-msgstr ""
+msgstr "Relatorio anual "
 
 msgid "Last year"
 msgstr "Último ano"
@@ -395,85 +395,85 @@ msgid "Last 5 years"
 msgstr "Últimos cinco anos"
 
 msgid "An error occurred whole loading the data set options"
-msgstr ""
+msgstr "Ocorreu um erro ao carregar as opções do conjunto de dados"
 
 msgid "An error occurred while loading the data set dimensions"
-msgstr ""
+msgstr "Ocorreu um erro ao carregar as dimensões do conjunto de dados"
 
 msgid "An error occurred while loading the group sets!"
-msgstr ""
+msgstr "Ocorreu um erro ao carregar os conjuntos de grupos!"
 
 msgid "Could not load organisation units"
-msgstr ""
+msgstr "Não foi possível carregar as unidades  organizacionais"
 
 msgid "An error occurred while loading the organisation units!"
-msgstr ""
+msgstr "Ocorreu um erro ao carregar as unidades organizacionais"
 
 msgid "Successfully loaded the {{ outputType }}"
-msgstr ""
+msgstr "Carregado com sucesso o {{tipo de saída }}"
 
 msgid "chart"
 msgstr "gráfico"
 
 msgid "table"
-msgstr ""
+msgstr "Tabela"
 
 msgid "An error occurred while loading the report!"
-msgstr ""
+msgstr "Ocorreu um erro ao carregar o relatório!"
 
 msgid "Successfully added comment"
-msgstr ""
+msgstr "Comentário adicionado com sucesso"
 
 msgid "An error occurred while submitting your comment!"
-msgstr ""
+msgstr "Ocorreu um erro ao enviar seu comentário!"
 
 msgid "Could not load period types"
-msgstr ""
+msgstr "Não foi possível carregar os tipos de período"
 
 msgid "An error occurred while loading the resources!"
-msgstr ""
+msgstr "Ocorreu um erro ao carregar os recursos!"
 
 msgid "Do you really want to delete this resource?"
-msgstr ""
+msgstr "Deseja realmente excluir este recurso?"
 
 msgid "The resource has been deleted successfully"
-msgstr ""
+msgstr "O recurso foi excluído com sucesso"
 
 msgid "An error occurred when deleting the resource!"
-msgstr ""
+msgstr "Ocorreu um erro ao excluir o recurso!"
 
 msgid "An error occurred while adding the resource!"
-msgstr ""
+msgstr "Ocorreu um erro ao adicionar o recurso!"
 
 msgid "An error occurred while saving the modifications!"
-msgstr ""
+msgstr "Ocorreu um erro ao salvar as modificações!"
 
 msgid "An error occurred while loading the standard reports"
-msgstr ""
+msgstr "Ocorreu um erro ao carregar os relatórios padrão"
 
 msgid "An error occurred while trying to delete the standard report"
-msgstr ""
+msgstr "Ocorreu um erro ao tentar excluir o relatório padrão"
 
 msgid "An error occurred while loading the standard report details"
-msgstr ""
+msgstr "Ocorreu um erro ao carregar os detalhes do relatório padrão"
 
 msgid "The report has been updated successfully"
-msgstr ""
+msgstr "O relatório foi actualizado com sucesso"
 
 msgid "The report has been added successfully"
-msgstr ""
+msgstr "O relatório foi adicionado com sucesso"
 
 msgid "An error occurred while updating the report!"
-msgstr ""
+msgstr "Ocorreu um erro ao atualizar o relatório!"
 
 msgid "An error occurred while adding the report!"
-msgstr ""
+msgstr "Ocorreu um erro ao adicionar o relatório!"
 
 msgid "An error occurred while generating the html report"
-msgstr ""
+msgstr "Ocorreu um erro ao gerar o relatório html"
 
 msgid "An error occurred while loading the report table options"
-msgstr ""
+msgstr "Ocorreu um erro ao carregar as opções da tabela de relatórios"
 
 msgid "Count"
 msgstr "Contagem"
@@ -503,25 +503,25 @@ msgid "Weekly Sunday"
 msgstr "Domingo semanal"
 
 msgid "Bi-Weekly"
-msgstr ""
+msgstr "Quinzenal"
 
 msgid "Monthly"
 msgstr "Mensal"
 
 msgid "Bi-Monthly"
-msgstr ""
+msgstr "Bimensalmente"
 
 msgid "Quarterly"
 msgstr "Trimestral"
 
 msgid "Six-Monthly"
-msgstr ""
+msgstr "Seis meses "
 
 msgid "Six-Monthly April"
-msgstr ""
+msgstr "Abril semestral"
 
 msgid "Six-Monthly November"
-msgstr ""
+msgstr "Novembro semestral"
 
 msgid "Yearly"
 msgstr "Anualmente"
@@ -593,10 +593,10 @@ msgid "Sharing settings"
 msgstr "Definições de partilha"
 
 msgid "View Resource"
-msgstr ""
+msgstr "Exibir recursos "
 
 msgid "Edit Resource"
-msgstr ""
+msgstr "Editar recursos "
 
 msgid "Add users and user groups"
 msgstr "Adicionar usuários e grupos de usuários"
@@ -605,10 +605,10 @@ msgid "Enter names"
 msgstr "Digite nomes"
 
 msgid "Permissions"
-msgstr ""
+msgstr "Permissões"
 
 msgid "Created By"
-msgstr ""
+msgstr "Criado por"
 
 msgid "Who has access"
 msgstr "Quem tem acesso"
@@ -632,34 +632,34 @@ msgid "Public access (with login)"
 msgstr "Acesso Publico"
 
 msgid "Public can edit"
-msgstr ""
+msgstr "O público pode editar"
 
 msgid "Public can view"
-msgstr ""
+msgstr "O público pode visualizar"
 
 msgid "Public can find, view and edit"
-msgstr ""
+msgstr "O público pode encontrar, visualizar e editar"
 
 msgid "Public can find and view"
-msgstr ""
+msgstr "O público pode encontrar e visualizar"
 
 msgid "Close"
 msgstr "Fechar"
 
 msgid "week"
-msgstr ""
+msgstr "Semana"
 
 msgid "month"
 msgstr "mês"
 
 msgid "year"
-msgstr ""
+msgstr "Ano"
 
 msgid "bi monthly"
-msgstr ""
+msgstr "Bimensal "
 
 msgid "day"
-msgstr ""
+msgstr "Dia"
 
 msgid "January"
 msgstr "Janeiro"
@@ -698,71 +698,71 @@ msgid "December"
 msgstr "Dezembro"
 
 msgid "January-February"
-msgstr ""
+msgstr "Janeiro - Fevereiro"
 
 msgid "March-April"
-msgstr ""
+msgstr "Março - abril"
 
 msgid "May-June"
-msgstr ""
+msgstr "Maio - Junho"
 
 msgid "July-August"
-msgstr ""
+msgstr "Julho - Augusto"
 
 msgid "September-October"
-msgstr ""
+msgstr "Setembro - Outubro "
 
 msgid "November-December"
-msgstr ""
+msgstr "Novembro - Dezembro"
 
 msgid "November-April"
-msgstr ""
+msgstr "Novembro - Abril"
 
 msgid "May-October"
-msgstr ""
+msgstr "Maio - Outubro"
 
 msgid "quarter"
-msgstr ""
+msgstr "Trimestre"
 
 msgid "Q1"
-msgstr ""
+msgstr "Q1"
 
 msgid "Q2"
-msgstr ""
+msgstr "Q2"
 
 msgid "Q3"
-msgstr ""
+msgstr "Q3"
 
 msgid "Q4"
-msgstr ""
+msgstr "Q4"
 
 msgid "six monthly"
-msgstr ""
+msgstr "Seis meses"
 
 msgid "January-June"
-msgstr ""
+msgstr "Janeiro - Junho"
 
 msgid "July-December"
-msgstr ""
+msgstr "Julho - Dezembro"
 
 msgid "April-September"
-msgstr ""
+msgstr "Abril - Setembro"
 
 msgid "October-March"
-msgstr ""
+msgstr "Outubro-Março"
 
 msgid "Bi-Week"
-msgstr ""
+msgstr "Bimensal"
 
 msgid "External url"
-msgstr ""
+msgstr "Url  externo"
 
 msgid "Upload file"
 msgstr "Carregar arquivo"
 
 msgid "Confirm delete"
-msgstr ""
+msgstr "Confirmar exclusão"
 
 msgctxt "chart"
 msgid "bar"
-msgstr ""
+msgstr "Barra"
