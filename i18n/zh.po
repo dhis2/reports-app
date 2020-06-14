@@ -25,25 +25,25 @@ msgid "Updating Organisation Units Tree..."
 msgstr "更新机构树"
 
 msgid "Select Option"
-msgstr ""
+msgstr "选择选项"
 
 msgid "Data set dimensions"
-msgstr ""
+msgstr "数据集维度"
 
 msgid "Loading options..."
 msgstr "载入选项中。。。"
 
 msgid "Select Data Set"
-msgstr ""
+msgstr "选择数据集"
 
 msgid "Data set"
 msgstr "数据集"
 
 msgid "Group Set"
-msgstr ""
+msgstr "组集"
 
 msgid "Select Group Set"
-msgstr ""
+msgstr "选择组集"
 
 msgid "Show more options"
 msgstr "Show more options"
@@ -61,7 +61,7 @@ msgid "Search"
 msgstr "搜索"
 
 msgid "No results have been found"
-msgstr ""
+msgstr "没有结果"
 
 msgid "Download as"
 msgstr "下载为"
@@ -76,7 +76,7 @@ msgid "Select file"
 msgstr "选择文件"
 
 msgid "No file chosen"
-msgstr ""
+msgstr "没有选择文件"
 
 msgid "Standard Report"
 msgstr "标准报表"
@@ -87,7 +87,7 @@ msgid ""
 msgstr "浏览、添加标准报表，这些报表是基于报表表并且能够在BIRT 或者JasperReports里被设计"
 
 msgid "View Reports"
-msgstr ""
+msgstr "查看报表"
 
 msgid "Data Set Report"
 msgstr "数据集报表"
@@ -98,7 +98,7 @@ msgid ""
 msgstr "浏览数据集报表，这些报表是基于数据录入屏幕并且产生一个汇总数据的报表。"
 
 msgid "Get Report"
-msgstr ""
+msgstr "获取报表"
 
 msgid "Reporting Rate Summary"
 msgstr "报表率汇总"
@@ -117,10 +117,10 @@ msgid ""
 msgstr "查看和添加资源，资源可能是上传的文档，互联网上的URL"
 
 msgid "View Resources"
-msgstr ""
+msgstr "查看资源"
 
 msgid "Org unit distribution report"
-msgstr ""
+msgstr "组织机构发布报表"
 
 msgid ""
 "Browse the organisation unit distribution report based on the organisation "
@@ -137,19 +137,19 @@ msgid "Use data for selected unit only"
 msgstr "仅已选的组织能使用数据"
 
 msgid "Get Chart"
-msgstr ""
+msgstr "获取图表"
 
 msgid "Edit resource"
-msgstr ""
+msgstr "编辑资源"
 
 msgid "Save resource"
-msgstr ""
+msgstr "保存资源"
 
 msgid "Add resource"
-msgstr ""
+msgstr "添加资源"
 
 msgid "Do you want to use this file as an attachment?"
-msgstr ""
+msgstr "你要使用该文件作为附件？"
 
 msgid "Yes"
 msgstr "Yes"
@@ -161,61 +161,61 @@ msgid "File"
 msgstr "文件"
 
 msgid "Name*"
-msgstr ""
+msgstr "名称"
 
 msgid "Details"
 msgstr "详情"
 
 msgid "Resource Type"
-msgstr ""
+msgstr "资源类型"
 
 msgid "Url*"
-msgstr ""
+msgstr "Url*"
 
 msgid "File resources can not be edited, only created"
-msgstr ""
+msgstr "文件资源不能编辑，仅仅能创建"
 
 msgid "Cancel"
 msgstr "取消"
 
 msgid "Edit standard report"
-msgstr ""
+msgstr "编辑标准报表"
 
 msgid "Create standard report"
-msgstr ""
+msgstr "创建标准报表"
 
 msgid "Generate report"
-msgstr ""
+msgstr "生成报表"
 
 msgid "Report parameters"
 msgstr "报表参数"
 
 msgid "There are some errors you have to fix first!"
-msgstr ""
+msgstr "有些错误，请先修正"
 
 msgid "Back to standard reports list"
-msgstr ""
+msgstr "回到标准报表列表"
 
 msgid "Get current design"
 msgstr "获取当前设计"
 
 msgid "Get HTML Report Template"
-msgstr ""
+msgstr "获取HTML报表模板"
 
 msgid "Get Jasper Report Template"
-msgstr ""
+msgstr "获得Jasper报表模板"
 
 msgid "Report Type*"
-msgstr ""
+msgstr "报表类型"
 
 msgid "Report Table*"
-msgstr ""
+msgstr "报表表"
 
 msgid "Design File"
-msgstr ""
+msgstr "设计文件"
 
 msgid "Design File*"
-msgstr ""
+msgstr "设计文件"
 
 msgid "Relative periods"
 msgstr "相关周期"
@@ -224,13 +224,13 @@ msgid "Settings"
 msgstr "设置"
 
 msgid "Cache Strategy*"
-msgstr ""
+msgstr "缓冲策略"
 
 msgid "Submit"
 msgstr "提交"
 
 msgid "[ None ]"
-msgstr ""
+msgstr "【无】"
 
 msgid "Jasper report with report table data source"
 msgstr "Jasper report with report table data source"
@@ -281,10 +281,10 @@ msgid "Reporting week"
 msgstr "Reporting week"
 
 msgid "Last Week"
-msgstr ""
+msgstr "上周"
 
 msgid "Last 2 weeks"
-msgstr ""
+msgstr "最近两周"
 
 msgid "Last 12 weeks"
 msgstr "最近12周"
@@ -326,7 +326,7 @@ msgid "Last bi-month"
 msgstr "Last bi-month"
 
 msgid "Last 6 bi-month"
-msgstr ""
+msgstr "最近6个两月"
 
 msgid "Bi-months this year"
 msgstr "Bi-months this year"
@@ -344,10 +344,10 @@ msgid "Last 4 quarters"
 msgstr "最近四个季度"
 
 msgid "Quarters of reporting year"
-msgstr ""
+msgstr "报表年的季度"
 
 msgid "Six-Months"
-msgstr ""
+msgstr "六个月"
 
 msgid "Reporting six-month"
 msgstr "半年报表"
@@ -383,85 +383,85 @@ msgid "Last 5 years"
 msgstr "最近5年"
 
 msgid "An error occurred whole loading the data set options"
-msgstr ""
+msgstr "载入整个数据集选项发生错误"
 
 msgid "An error occurred while loading the data set dimensions"
-msgstr ""
+msgstr "载入数据集维度发生错误"
 
 msgid "An error occurred while loading the group sets!"
-msgstr ""
+msgstr "载入组集发生错误"
 
 msgid "Could not load organisation units"
-msgstr ""
+msgstr "不能载入机构"
 
 msgid "An error occurred while loading the organisation units!"
-msgstr ""
+msgstr "载入机构发生错误"
 
 msgid "Successfully loaded the {{ outputType }}"
-msgstr ""
+msgstr "成功载入 {{ outputType }}"
 
 msgid "chart"
 msgstr "图表"
 
 msgid "table"
-msgstr ""
+msgstr "表"
 
 msgid "An error occurred while loading the report!"
-msgstr ""
+msgstr "载入报表发生错误"
 
 msgid "Successfully added comment"
-msgstr ""
+msgstr "成功添加备注"
 
 msgid "An error occurred while submitting your comment!"
-msgstr ""
+msgstr "提交备注发生错误"
 
 msgid "Could not load period types"
-msgstr ""
+msgstr "不能载入期间类型"
 
 msgid "An error occurred while loading the resources!"
-msgstr ""
+msgstr "载入资源发生错误"
 
 msgid "Do you really want to delete this resource?"
-msgstr ""
+msgstr "你要删除该资源"
 
 msgid "The resource has been deleted successfully"
-msgstr ""
+msgstr "资源成功删除"
 
 msgid "An error occurred when deleting the resource!"
-msgstr ""
+msgstr "删除资源发生错误"
 
 msgid "An error occurred while adding the resource!"
-msgstr ""
+msgstr "添加资源发生错误"
 
 msgid "An error occurred while saving the modifications!"
-msgstr ""
+msgstr "保存修改发生错误"
 
 msgid "An error occurred while loading the standard reports"
-msgstr ""
+msgstr "载入标准报表发生错误"
 
 msgid "An error occurred while trying to delete the standard report"
-msgstr ""
+msgstr "删除标准报表发生错误"
 
 msgid "An error occurred while loading the standard report details"
-msgstr ""
+msgstr "载入标准报表详情发生错误"
 
 msgid "The report has been updated successfully"
-msgstr ""
+msgstr "报表被成功更新"
 
 msgid "The report has been added successfully"
-msgstr ""
+msgstr "报表被成功添加"
 
 msgid "An error occurred while updating the report!"
-msgstr ""
+msgstr "更新报表发生错误"
 
 msgid "An error occurred while adding the report!"
-msgstr ""
+msgstr "添加报表发生错误"
 
 msgid "An error occurred while generating the html report"
-msgstr ""
+msgstr "生成HTML报表发生错误"
 
 msgid "An error occurred while loading the report table options"
-msgstr ""
+msgstr "载入报表选项发生错误"
 
 msgid "Count"
 msgstr "计数"
@@ -491,25 +491,25 @@ msgid "Weekly Sunday"
 msgstr "每周日"
 
 msgid "Bi-Weekly"
-msgstr ""
+msgstr "每两周"
 
 msgid "Monthly"
 msgstr "每月"
 
 msgid "Bi-Monthly"
-msgstr ""
+msgstr "每两个月"
 
 msgid "Quarterly"
 msgstr "季度"
 
 msgid "Six-Monthly"
-msgstr ""
+msgstr "每六个月"
 
 msgid "Six-Monthly April"
-msgstr ""
+msgstr "每六个月的四月"
 
 msgid "Six-Monthly November"
-msgstr ""
+msgstr "每六个月的十一月"
 
 msgid "Yearly"
 msgstr "每年"
@@ -581,10 +581,10 @@ msgid "Sharing settings"
 msgstr "共享设置"
 
 msgid "View Resource"
-msgstr ""
+msgstr "查看资源"
 
 msgid "Edit Resource"
-msgstr ""
+msgstr "编辑资源"
 
 msgid "Add users and user groups"
 msgstr "添加用户和用户组"
@@ -593,10 +593,10 @@ msgid "Enter names"
 msgstr "输入名称"
 
 msgid "Permissions"
-msgstr ""
+msgstr "权限"
 
 msgid "Created By"
-msgstr ""
+msgstr "创建者"
 
 msgid "Who has access"
 msgstr "谁访问过"
@@ -620,16 +620,16 @@ msgid "Public access (with login)"
 msgstr "公共访问（需登录）"
 
 msgid "Public can edit"
-msgstr ""
+msgstr "公众可编辑"
 
 msgid "Public can view"
-msgstr ""
+msgstr "公众可查看"
 
 msgid "Public can find, view and edit"
-msgstr ""
+msgstr "公众可查找、查看和编辑"
 
 msgid "Public can find and view"
-msgstr ""
+msgstr "公众可查找和查看"
 
 msgid "Close"
 msgstr "关闭"
@@ -704,10 +704,10 @@ msgid "November-December"
 msgstr "十一十二月"
 
 msgid "November-April"
-msgstr ""
+msgstr "十一至四月"
 
 msgid "May-October"
-msgstr ""
+msgstr "五至十月"
 
 msgid "quarter"
 msgstr "季度"
@@ -740,17 +740,17 @@ msgid "October-March"
 msgstr "10-3月"
 
 msgid "Bi-Week"
-msgstr ""
+msgstr "两周"
 
 msgid "External url"
-msgstr ""
+msgstr "外部URL"
 
 msgid "Upload file"
 msgstr "上传文件"
 
 msgid "Confirm delete"
-msgstr ""
+msgstr "确认删除"
 
 msgctxt "chart"
 msgid "bar"
-msgstr ""
+msgstr "柱状图"
