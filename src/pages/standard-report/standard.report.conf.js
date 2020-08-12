@@ -1,7 +1,6 @@
 import i18n from '@dhis2/d2-i18n'
 
 export const REPORTS_ENDPOINT = 'reports'
-export const REPORT_TABLES_ENDPOINT = 'reportTables'
 export const REPORT_TEMPLATES_ENDPOINT = 'reportTemplate'
 
 export const CONTEXT_MENU_ACTION = {
