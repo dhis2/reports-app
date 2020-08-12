@@ -13,6 +13,7 @@ import {
     postDataSetReportCommentUrl,
     getDataSetReportFileUrls,
 } from './api/helpers'
+import { getDataTablesResourceNameForSystemVersion } from './backwardCompatability.js'
 import { isCustomFormType } from './dataSetReport/isCustomFormType'
 
 export const RESOURCE_ENDPOINT = 'documents'
@@ -27,6 +28,7 @@ const STANDARD_REPORTS_ENDPOINT = 'reports'
 
 let d2
 let api
+let systemVersion
 
 /**
  * Sets d2 and the api
@@ -34,6 +36,7 @@ let api
 export const initApi = d2Instance => {
     d2 = d2Instance
     api = d2.Api.getApi()
+    systemVersion = d2.system.version.minor
 
     if (isDevelopment()) {
         window.d2 = d2
@@ -288,8 +291,18 @@ export const deleteResource = resourceId =>
 /**
  * @returns {Promise}
  */
-export const getStandardReportTables = () =>
-    api.get('reportTables', { paging: false, fields: 'id,name' })
+export const getStandardReportTables = () => {
+    const resourceName = getDataTablesResourceNameForSystemVersion(
+        systemVersion
+    )
+
+    return api
+        .get(resourceName, {
+            paging: false,
+            fields: 'id,name',
+        })
+        .then(response => response[resourceName])
+}
 
 /**
  * @param {Object} report

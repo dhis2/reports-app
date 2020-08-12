@@ -56,7 +56,7 @@ export const loadStandardReportTables = () => dispatch => {
     dispatch(loadingStandardReportTablesStart())
 
     return getStandardReportTables()
-        .then(({ reportTables }) => {
+        .then(reportTables => {
             const formattedReportTables = reportTables.map(({ id, name }) => ({
                 value: id,
                 label: name,
