@@ -32,13 +32,14 @@ export const formatStandardReportsResponse = reportsCollection => {
         .map(reportModel =>
             formatStandardReportResponseForSystemVersion(reportModel)
         )
+
     const pager = {
         pageSize: reportsCollection.pager.query.pageSize,
         page: reportsCollection.pager.page,
         pageCount: reportsCollection.pager.pageCount,
         total: reportsCollection.pager.total,
     }
-    console.log(reports)
+
     return { reports, pager }
 }
 
