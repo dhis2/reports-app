@@ -17,6 +17,7 @@ describe('Test <PeriodPickerWithPeriodType /> rendering:', () => {
     const defaultProps = {
         selectPeriodType: selectPeriodTypeMock,
         selectPeriod: selectPeriodMock,
+        selectedPeriodIsFixed: true,
         label: 'This is my label',
         collection: collectionMock,
         loading: false,

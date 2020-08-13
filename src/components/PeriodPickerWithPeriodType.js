@@ -4,7 +4,10 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
 import { selectPeriod, selectPeriodType } from '../redux/actions/reportPeriod'
-import { getTranslatedPeriodTypes } from '../redux/selectors/reportPeriod/getTranslatedPeriodTypes'
+import {
+    getFilteredPeriodTypes,
+    isSelectedPeriodFixed,
+} from '../redux/selectors/reportPeriod/periodTypes'
 import { formLabel } from '../utils/styles/shared.js'
 
 const periodTypeLabelText = i18n.t('Select Period Type')
@@ -14,8 +17,18 @@ export function PeriodPickerWithPeriodType({
     selectPeriod,
     label,
     collection,
+    selectedPeriodIsFixed,
     selectedPeriodType,
 }) {
+    const onDropDownChange = event => {
+        selectPeriodType(event)
+
+        // relative periods can be selected from the first dropdown
+        if (!selectedPeriodIsFixed) {
+            selectPeriod(event.target.value)
+        }
+    }
+
     return (
         <div>
             <span className={formLabel.className}>{label}</span>
@@ -24,10 +37,10 @@ export function PeriodPickerWithPeriodType({
                 emptyLabel={periodTypeLabelText}
                 hintText={periodTypeLabelText}
                 menuItems={collection}
-                onChange={selectPeriodType}
+                onChange={onDropDownChange}
                 value={selectedPeriodType}
             />
-            {selectedPeriodType && (
+            {selectedPeriodType && selectedPeriodIsFixed && (
                 <PeriodPicker
                     periodType={selectedPeriodType}
                     onPickPeriod={selectPeriod}
@@ -43,12 +56,14 @@ PeriodPickerWithPeriodType.propTypes = {
     selectPeriod: PropTypes.func.isRequired,
     label: PropTypes.string.isRequired,
     collection: PropTypes.array.isRequired,
+    selectedPeriodIsFixed: PropTypes.bool.isRequired,
     selectedPeriodType: PropTypes.string,
 }
 
 const mapStateToProps = state => ({
     ...state.reportPeriod,
-    collection: getTranslatedPeriodTypes(state),
+    collection: getFilteredPeriodTypes(state),
+    selectedPeriodIsFixed: isSelectedPeriodFixed(state),
 })
 
 export default connect(

@@ -307,3 +307,13 @@ export const relativePeriods = [
         ],
     },
 ]
+
+export const flattenedRelativePeriods = relativePeriods.reduce((acc, group) => {
+    group.periods.forEach(period => {
+        acc[period.id] = {
+            id: period.id,
+            displayName: period.name,
+        }
+    })
+    return acc
+}, {})
