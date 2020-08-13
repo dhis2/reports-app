@@ -86,7 +86,7 @@ export const formatStandardReportResponseForSystemVersion = reportModel => {
     const reportJson = reportModel.toJSON ? reportModel.toJSON() : reportModel
     // <2.34 reportModel.reportTable, >=2.34 reportmodel.visualization
     const reportTable = reportModel[getReportTableNameForSystemVersion()]
-    // <2.34 reportModel.reportTable.reportParams, =2.34 reportmodel.visualization.reportingParams
+    // <2.34 reportModel.reportTable.reportParams, >=2.34 reportmodel.visualization.reportingParams
     const reportTableReportParams =
         reportTable && reportTable[getReportParamsFieldName()]
 
