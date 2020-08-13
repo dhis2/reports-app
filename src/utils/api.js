@@ -30,7 +30,6 @@ const STANDARD_REPORTS_ENDPOINT = 'reports'
 
 let d2
 let api
-let systemVersion
 
 /**
  * Sets d2 and the api
@@ -38,7 +37,6 @@ let systemVersion
 export const initApi = d2Instance => {
     d2 = d2Instance
     api = d2.Api.getApi()
-    systemVersion = d2.system.version.minor
 
     if (isDevelopment()) {
         window.d2 = d2
@@ -72,6 +70,11 @@ export const getContextPath = () => d2.system.systemInfo.contextPath
  * @returns {Version} The dhis2-core instance version
  */
 export const getSystemVersion = () => d2.system.version
+
+/**
+ * @returns {Number} The dhis2-core instance minor version
+ */
+export const getSystemMinorVersion = () => d2.system.version.minor
 
 /**
  * @return {Promise} Period types
@@ -294,9 +297,7 @@ export const deleteResource = resourceId =>
  * @returns {Promise}
  */
 export const getStandardReportTables = () => {
-    const resourceName = getReportTablesResourceNameForSystemVersion(
-        systemVersion
-    )
+    const resourceName = getReportTablesResourceNameForSystemVersion()
 
     return api
         .get(resourceName, {
@@ -400,10 +401,10 @@ export const getFilteredStandardReports = (page, pageSize, nameFilter) =>
         .list({
             page,
             pageSize,
-            fields: getStandardReportsFieldsForSystemVersion(systemVersion),
+            fields: getStandardReportsFieldsForSystemVersion(),
         })
         .then(reportsCollection =>
-            formatStandardReportsResponse(reportsCollection, systemVersion)
+            formatStandardReportsResponse(reportsCollection)
         )
 
 /**

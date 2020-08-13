@@ -46,6 +46,7 @@ import {
 } from './reportData'
 import { clearSelectedReportPeriod } from './reportPeriod'
 import { loadStandardReportTables } from './standardReportTables'
+import { formatStandardReportPayloadForSystemVersion } from '../../utils/backwardCompatability'
 
 export const actionTypes = {
     SET_SELECTED_REPORT: 'SET_SELECTED_REPORT',
@@ -402,20 +403,27 @@ export const sendStandardReport = (report, isEdit) => (dispatch, getState) => {
         report.type !== reportTypes.JASPER_REPORT_TABLE
             ? omit(formattedReport, ['reportTable'])
             : formattedReport
+
+    const versionAdjustedReport = formatStandardReportPayloadForSystemVersion(
+        cleanedReport
+    )
+
     const doRequest = isEdit
         ? report => updateStandardReport(report)
         : report => postStandardReport(report)
+
     const successMessage = isEdit
         ? i18n.t('The report has been updated successfully')
         : i18n.t('The report has been added successfully')
+
     const errorMessage = isEdit
         ? i18n.t('An error occurred while updating the report!')
         : i18n.t('An error occurred while adding the report!')
 
-    const request = !cleanedReport.designContent
-        ? doRequest(cleanedReport)
-        : fileToText(cleanedReport.designContent.file)
-              .then(file => ({ ...cleanedReport, designContent: file }))
+    const request = !versionAdjustedReport.designContent
+        ? doRequest(versionAdjustedReport)
+        : fileToText(versionAdjustedReport.designContent.file)
+              .then(file => ({ ...versionAdjustedReport, designContent: file }))
               .then(doRequest)
 
     return request

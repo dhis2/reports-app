@@ -1,6 +1,6 @@
 import { FILE_RESOURCES_ENDPOINT } from './constants'
 import { getApi } from '../api'
-import { formatStandardReportForSystemVersion } from '../backwardCompatability'
+import { formatStandardReportResponseForSystemVersion } from '../backwardCompatability'
 
 /**
  * @param {Object} d2 ModelCollection instance
@@ -26,14 +26,11 @@ export const addFilterForName = (name, model) =>
  * @param {Promise} request
  * @returns {Object}
  */
-export const formatStandardReportsResponse = (
-    reportsCollection,
-    systemVersion
-) => {
+export const formatStandardReportsResponse = reportsCollection => {
     const reports = reportsCollection
         .toArray()
         .map(reportModel =>
-            formatStandardReportForSystemVersion(reportModel, systemVersion)
+            formatStandardReportResponseForSystemVersion(reportModel)
         )
     const pager = {
         pageSize: reportsCollection.pager.query.pageSize,

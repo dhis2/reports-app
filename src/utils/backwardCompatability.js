@@ -1,3 +1,5 @@
+import { getSystemMinorVersion } from './api'
+
 /*
 The following API changes were introduced in v2.34:
 
@@ -30,22 +32,29 @@ The functions in this module are there to deal with these discrepancies. To avoi
 2. `reportParams` in favour of `reportingParams`
 3. don't prefix reportParams properties with `param`, 
    i.e. `reportingPeriod` in favour of `paramReportingPeriod`
+
+
+When we drop support for version v2.33 these helpers can be removed and replaced
+with much more simple and sane logic
 */
-const getReportTableNameForSystemVersion = version =>
-    version < 34 ? 'reportTable' : 'visualization'
 
-const getReportParamsFieldName = version =>
-    version < 34 ? 'reportParams' : 'reportingParams'
+const isBelowVersion34 = () => getSystemMinorVersion() < 34
 
-export const getReportTablesResourceNameForSystemVersion = version =>
-    `${getReportTableNameForSystemVersion(version)}s`
+const getReportTableNameForSystemVersion = () =>
+    isBelowVersion34() ? 'reportTable' : 'visualization'
+
+const getReportParamsFieldName = () =>
+    isBelowVersion34() ? 'reportParams' : 'reportingParams'
+
+export const getReportTablesResourceNameForSystemVersion = () =>
+    `${getReportTableNameForSystemVersion()}s`
 
 /**
  * Required fields for displaying the standard reports
  */
-export const getStandardReportsFieldsForSystemVersion = version => {
-    const reportTableFieldName = getReportTableNameForSystemVersion(version)
-    const reportParamsFieldName = getReportParamsFieldName(version)
+export const getStandardReportsFieldsForSystemVersion = () => {
+    const reportTableFieldName = getReportTableNameForSystemVersion()
+    const reportParamsFieldName = getReportParamsFieldName()
 
     return [
         'displayName',
@@ -58,8 +67,8 @@ export const getStandardReportsFieldsForSystemVersion = version => {
     ]
 }
 
-const getReportParamsPropertiesForSystemVersion = (reportParams, version) => {
-    if (version >= 34) {
+const getReportParamsPropertiesForSystemVersion = reportParams => {
+    if (!isBelowVersion34()) {
         return reportParams
     }
 
@@ -72,28 +81,43 @@ const getReportParamsPropertiesForSystemVersion = (reportParams, version) => {
     }
 }
 
-export const formatStandardReportForSystemVersion = (reportModel, version) => {
+export const formatStandardReportResponseForSystemVersion = reportModel => {
     // The JSON representation of a reportModel is missing
     // some of the reportTable properties such as reportParams
     const reportJson = reportModel.toJSON()
     // <2.34 reportModel.reportTable, >=2.34 reportmodel.visualization
-    const reportTable = reportModel[getReportTableNameForSystemVersion(version)]
+    const reportTable = reportModel[getReportTableNameForSystemVersion()]
     // <2.34 reportModel.reportTable.reportParams, =2.34 reportmodel.visualization.reportingParams
     const reportTableReportParams =
-        reportTable && reportTable[getReportParamsFieldName(version)]
+        reportTable && reportTable[getReportParamsFieldName()]
 
     return {
         ...reportJson,
         reportParams: getReportParamsPropertiesForSystemVersion(
-            reportJson.reportParams,
-            version
+            reportJson.reportParams
         ),
         reportTable: {
             ...reportTable,
             reportParams: getReportParamsPropertiesForSystemVersion(
-                reportTableReportParams,
-                version
+                reportTableReportParams
             ),
+        },
+    }
+}
+
+export const formatStandardReportPayloadForSystemVersion = report => {
+    if (!isBelowVersion34()) {
+        return report
+    }
+
+    return {
+        ...report,
+        reportParams: {
+            paramGrandParentOrganisationUnit:
+                report.grandParentOrganisationUnit,
+            paramOrganisationUnit: report.organisationUnit,
+            paramParentOrganisationUnit: report.parentOrganisationUnit,
+            paramReportingPeriod: report.reportingPeriod,
         },
     }
 }
