@@ -68,7 +68,7 @@ export const getStandardReportsFieldsForSystemVersion = () => {
 }
 
 const getReportParamsPropertiesForSystemVersion = reportParams => {
-    if (!isBelowVersion34()) {
+    if (!isBelowVersion34() || !reportParams) {
         return reportParams
     }
 
@@ -82,9 +82,8 @@ const getReportParamsPropertiesForSystemVersion = reportParams => {
 }
 
 export const formatStandardReportResponseForSystemVersion = reportModel => {
-    // The JSON representation of a reportModel is missing
-    // some of the reportTable properties such as reportParams
-    const reportJson = reportModel.toJSON()
+    // handle both d2 model instances and plain objects
+    const reportJson = reportModel.toJSON ? reportModel.toJSON() : reportModel
     // <2.34 reportModel.reportTable, >=2.34 reportmodel.visualization
     const reportTable = reportModel[getReportTableNameForSystemVersion()]
     // <2.34 reportModel.reportTable.reportParams, =2.34 reportmodel.visualization.reportingParams
@@ -97,6 +96,8 @@ export const formatStandardReportResponseForSystemVersion = reportModel => {
             reportJson.reportParams
         ),
         reportTable: {
+            // The JSON representation of a d2 reportModel is missing
+            // some of the reportTable properties such as reportParams
             ...reportTable,
             reportParams: getReportParamsPropertiesForSystemVersion(
                 reportTableReportParams

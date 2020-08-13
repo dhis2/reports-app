@@ -15,6 +15,7 @@ import {
 import {
     getReportTablesResourceNameForSystemVersion,
     getStandardReportsFieldsForSystemVersion,
+    formatStandardReportResponseForSystemVersion,
 } from './backwardCompatability.js'
 import { isCustomFormType } from './dataSetReport/isCustomFormType'
 
@@ -412,7 +413,9 @@ export const getFilteredStandardReports = (page, pageSize, nameFilter) =>
  * @returns {Promise}
  */
 export const getStandardReportDetails = id =>
-    api.get(`${STANDARD_REPORTS_ENDPOINT}/${id}`)
+    api
+        .get(`${STANDARD_REPORTS_ENDPOINT}/${id}`)
+        .then(formatStandardReportResponseForSystemVersion)
 
 /**
  * @param {string} id
