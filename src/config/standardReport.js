@@ -1,10 +1,10 @@
 export const reportParameterOptions = [
     {
-        value: 'paramReportingPeriod',
+        value: 'reportingPeriod',
         label: 'Reporting Period',
     },
     {
-        value: 'paramOrganisationUnit',
+        value: 'organisationUnit',
         label: 'Organisation Unit',
     },
 ]

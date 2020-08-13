@@ -2,7 +2,6 @@ import { isDevelopment } from './env/isDevelopment'
 import {
     addFileResourceUrlToResource,
     uploadFile,
-    standardReportsFields,
     addFilterForName,
     formatStandardReportsResponse,
     mapCollectionToDimensionQueryString,
@@ -13,7 +12,10 @@ import {
     postDataSetReportCommentUrl,
     getDataSetReportFileUrls,
 } from './api/helpers'
-import { getDataTablesResourceNameForSystemVersion } from './backwardCompatability.js'
+import {
+    getReportTablesResourceNameForSystemVersion,
+    getStandardReportsFieldsForSystemVersion,
+} from './backwardCompatability.js'
 import { isCustomFormType } from './dataSetReport/isCustomFormType'
 
 export const RESOURCE_ENDPOINT = 'documents'
@@ -292,7 +294,7 @@ export const deleteResource = resourceId =>
  * @returns {Promise}
  */
 export const getStandardReportTables = () => {
-    const resourceName = getDataTablesResourceNameForSystemVersion(
+    const resourceName = getReportTablesResourceNameForSystemVersion(
         systemVersion
     )
 
@@ -395,8 +397,14 @@ export const putResource = (resourceId, resource, file = null) =>
  */
 export const getFilteredStandardReports = (page, pageSize, nameFilter) =>
     addFilterForName(nameFilter, d2.models.report)
-        .list({ page, pageSize, fields: standardReportsFields })
-        .then(formatStandardReportsResponse)
+        .list({
+            page,
+            pageSize,
+            fields: getStandardReportsFieldsForSystemVersion(systemVersion),
+        })
+        .then(reportsCollection =>
+            formatStandardReportsResponse(reportsCollection, systemVersion)
+        )
 
 /**
  * @param {string} id

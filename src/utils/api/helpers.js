@@ -1,5 +1,6 @@
 import { FILE_RESOURCES_ENDPOINT } from './constants'
 import { getApi } from '../api'
+import { formatStandardReportForSystemVersion } from '../backwardCompatability'
 
 /**
  * @param {Object} d2 ModelCollection instance
@@ -22,36 +23,27 @@ export const addFilterForName = (name, model) =>
               .ilike(name)
 
 /**
- * Required fields for displaying the standard reports
- */
-export const standardReportsFields = [
-    'displayName',
-    'type',
-    'id',
-    'reportTable[id,displayName,reportParams,relativePeriods]',
-    'reportParams',
-    'relativePeriods',
-    'access',
-]
-
-/**
  * @param {Promise} request
  * @returns {Object}
  */
-export const formatStandardReportsResponse = reportsCollection => ({
-    reports: reportsCollection.toArray().map(reportModel => ({
-        ...reportModel.toJSON(),
-        // The JSON representation of a reportModel is missing
-        // some of the reportTable properties such as reportParams
-        reportTable: reportModel.reportTable,
-    })),
-    pager: {
+export const formatStandardReportsResponse = (
+    reportsCollection,
+    systemVersion
+) => {
+    const reports = reportsCollection
+        .toArray()
+        .map(reportModel =>
+            formatStandardReportForSystemVersion(reportModel, systemVersion)
+        )
+    const pager = {
         pageSize: reportsCollection.pager.query.pageSize,
         page: reportsCollection.pager.page,
         pageCount: reportsCollection.pager.pageCount,
         total: reportsCollection.pager.total,
-    },
-})
+    }
+    console.log(reports)
+    return { reports, pager }
+}
 
 /**
  * @param {...Object} collections

@@ -42,11 +42,11 @@ export const getEditFormInitialValues = createSelector(
                         []
                     ),
                     reportParams: [
-                        selectedReport.reportParams.paramReportingPeriod
-                            ? 'paramReportingPeriod'
+                        selectedReport.reportParams.reportingPeriod
+                            ? 'reportingPeriod'
                             : '',
-                        selectedReport.reportParams.paramOrganisationUnit
-                            ? 'paramOrganisationUnit'
+                        selectedReport.reportParams.organisationUnit
+                            ? 'organisationUnit'
                             : '',
                     ].filter(identity),
                     cacheStrategy: selectedReport.cacheStrategy,
