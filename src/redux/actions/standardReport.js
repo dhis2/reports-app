@@ -46,7 +46,7 @@ import {
 } from './reportData'
 import { clearSelectedReportPeriod } from './reportPeriod'
 import { loadStandardReportTables } from './standardReportTables'
-import { formatStandardReportPayloadForSystemVersion } from '../../utils/backwardCompatability'
+import { formatStandardReportPayloadBySystemVersion } from '../../utils/backwardCompatability'
 
 export const actionTypes = {
     SET_SELECTED_REPORT: 'SET_SELECTED_REPORT',
@@ -399,13 +399,13 @@ export const sendStandardReport = (report, isEdit) => (dispatch, getState) => {
         ),
         reportTable: report.reportTable ? { id: report.reportTable } : '',
     }
-    const cleanedReport =
+    const cleanedFormattedReportReport =
         report.type !== reportTypes.JASPER_REPORT_TABLE
             ? omit(formattedReport, ['reportTable'])
             : formattedReport
 
-    const versionAdjustedReport = formatStandardReportPayloadForSystemVersion(
-        cleanedReport
+    const dhis2CoreVersionFormattedReport = formatStandardReportPayloadBySystemVersion(
+        cleanedFormattedReportReport
     )
 
     const doRequest = isEdit
@@ -420,10 +420,13 @@ export const sendStandardReport = (report, isEdit) => (dispatch, getState) => {
         ? i18n.t('An error occurred while updating the report!')
         : i18n.t('An error occurred while adding the report!')
 
-    const request = !versionAdjustedReport.designContent
-        ? doRequest(versionAdjustedReport)
-        : fileToText(versionAdjustedReport.designContent.file)
-              .then(file => ({ ...versionAdjustedReport, designContent: file }))
+    const request = !dhis2CoreVersionFormattedReport.designContent
+        ? doRequest(dhis2CoreVersionFormattedReport)
+        : fileToText(dhis2CoreVersionFormattedReport.designContent.file)
+              .then(file => ({
+                  ...dhis2CoreVersionFormattedReport,
+                  designContent: file,
+              }))
               .then(doRequest)
 
     return request

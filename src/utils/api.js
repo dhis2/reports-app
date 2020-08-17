@@ -13,9 +13,9 @@ import {
     getDataSetReportFileUrls,
 } from './api/helpers'
 import {
-    getReportTablesResourceNameForSystemVersion,
-    getStandardReportsFieldsForSystemVersion,
-    formatStandardReportResponseForSystemVersion,
+    getReportTablesResourceNameBySystemVersion,
+    getStandardReportsFieldsBySystemVersion,
+    formatStandardReportResponseBySystemVersion,
 } from './backwardCompatability.js'
 import { isCustomFormType } from './dataSetReport/isCustomFormType'
 
@@ -298,7 +298,7 @@ export const deleteResource = resourceId =>
  * @returns {Promise}
  */
 export const getStandardReportTables = () => {
-    const resourceName = getReportTablesResourceNameForSystemVersion()
+    const resourceName = getReportTablesResourceNameBySystemVersion()
 
     return api
         .get(resourceName, {
@@ -402,11 +402,9 @@ export const getFilteredStandardReports = (page, pageSize, nameFilter) =>
         .list({
             page,
             pageSize,
-            fields: getStandardReportsFieldsForSystemVersion(),
+            fields: getStandardReportsFieldsBySystemVersion(),
         })
-        .then(reportsCollection =>
-            formatStandardReportsResponse(reportsCollection)
-        )
+        .then(formatStandardReportsResponse)
 
 /**
  * @param {string} id
@@ -415,7 +413,7 @@ export const getFilteredStandardReports = (page, pageSize, nameFilter) =>
 export const getStandardReportDetails = id =>
     api
         .get(`${STANDARD_REPORTS_ENDPOINT}/${id}`)
-        .then(formatStandardReportResponseForSystemVersion)
+        .then(formatStandardReportResponseBySystemVersion)
 
 /**
  * @param {string} id
