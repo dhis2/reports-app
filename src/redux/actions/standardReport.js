@@ -26,6 +26,7 @@ import {
     isHtmlReport,
     validateRequiredParams,
     processCheckboxValues,
+    isJasperReportTableReport,
 } from '../../utils/standardReport'
 import {
     clearFeedback,
@@ -399,10 +400,9 @@ export const sendStandardReport = (report, isEdit) => (dispatch, getState) => {
         ),
         reportTable: report.reportTable ? { id: report.reportTable } : '',
     }
-    const cleanedFormattedReportReport =
-        report.type !== reportTypes.JASPER_REPORT_TABLE
-            ? omit(formattedReport, ['reportTable'])
-            : formattedReport
+    const cleanedFormattedReportReport = isJasperReportTableReport(report)
+        ? omit(formattedReport, ['reportTable'])
+        : formattedReport
 
     const dhis2CoreVersionFormattedReport = formatStandardReportPayloadBySystemVersion(
         cleanedFormattedReportReport
