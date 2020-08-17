@@ -1,10 +1,13 @@
-import { getTranslatedPeriodTypes } from '../getTranslatedPeriodTypes'
+import { getFilteredPeriodTypes } from '../periodTypes'
 
-describe('getTranslatedPeriodTypes', () => {
+describe('getFilteredPeriodTypes', () => {
     const periodTypes = [{ name: 'Daily' }, { name: 'WeeklyWednesday' }]
     const state = {
         reportPeriod: {
             collection: periodTypes,
+        },
+        standardReport: {
+            showReportParams: false,
         },
     }
 
@@ -14,6 +17,6 @@ describe('getTranslatedPeriodTypes', () => {
     ]
 
     it('transforms the input array correctly', () => {
-        expect(getTranslatedPeriodTypes(state)).toEqual(expectedOutput)
+        expect(getFilteredPeriodTypes(state)).toEqual(expectedOutput)
     })
 })
