@@ -2,7 +2,6 @@ import { isDevelopment } from './env/isDevelopment'
 import {
     addFileResourceUrlToResource,
     uploadFile,
-    standardReportsFields,
     addFilterForName,
     formatStandardReportsResponse,
     mapCollectionToDimensionQueryString,
@@ -13,6 +12,11 @@ import {
     postDataSetReportCommentUrl,
     getDataSetReportFileUrls,
 } from './api/helpers'
+import {
+    getReportTablesResourceNameBySystemVersion,
+    getStandardReportsFieldsBySystemVersion,
+    formatStandardReportResponseBySystemVersion,
+} from './backwardCompatability.js'
 import { isCustomFormType } from './dataSetReport/isCustomFormType'
 
 export const RESOURCE_ENDPOINT = 'documents'
@@ -67,6 +71,11 @@ export const getContextPath = () => d2.system.systemInfo.contextPath
  * @returns {Version} The dhis2-core instance version
  */
 export const getSystemVersion = () => d2.system.version
+
+/**
+ * @returns {Number} The dhis2-core instance minor version
+ */
+export const getSystemMinorVersion = () => d2.system.version.minor
 
 /**
  * @return {Promise} Period types
@@ -288,8 +297,16 @@ export const deleteResource = resourceId =>
 /**
  * @returns {Promise}
  */
-export const getStandardReportTables = () =>
-    api.get('reportTables', { paging: false, fields: 'id,name' })
+export const getStandardReportTables = () => {
+    const resourceName = getReportTablesResourceNameBySystemVersion()
+
+    return api
+        .get(resourceName, {
+            paging: false,
+            fields: 'id,name',
+        })
+        .then(response => response[resourceName])
+}
 
 /**
  * @param {Object} report
@@ -382,7 +399,11 @@ export const putResource = (resourceId, resource, file = null) =>
  */
 export const getFilteredStandardReports = (page, pageSize, nameFilter) =>
     addFilterForName(nameFilter, d2.models.report)
-        .list({ page, pageSize, fields: standardReportsFields })
+        .list({
+            page,
+            pageSize,
+            fields: getStandardReportsFieldsBySystemVersion(),
+        })
         .then(formatStandardReportsResponse)
 
 /**
@@ -390,7 +411,9 @@ export const getFilteredStandardReports = (page, pageSize, nameFilter) =>
  * @returns {Promise}
  */
 export const getStandardReportDetails = id =>
-    api.get(`${STANDARD_REPORTS_ENDPOINT}/${id}`)
+    api
+        .get(`${STANDARD_REPORTS_ENDPOINT}/${id}`)
+        .then(formatStandardReportResponseBySystemVersion)
 
 /**
  * @param {string} id

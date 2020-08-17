@@ -8,19 +8,23 @@ import { getSelectedReportPeriod } from '../../redux/selectors/reportPeriod/getS
 export const extractRequiredReportParams = reportParams =>
     omitBy(
         {
-            period: reportParams.paramReportingPeriod,
+            period: reportParams.reportingPeriod,
             organisationUnit:
-                reportParams.paramOrganisationUnit ||
-                reportParams.paramParentOrganisationUnit ||
-                reportParams.paramGrandParentOrganisationUnit,
+                reportParams.organisationUnit ||
+                reportParams.parentOrganisationUnit ||
+                reportParams.grandParentOrganisationUnit,
         },
         isFalsy
     )
 
 export const isHtmlReport = report => report.type === reportTypes.HTML
+export const isJasperReportTableReport = report =>
+    report.type === reportTypes.JASPER_REPORT_TABLE
 
 export const getReportParams = report =>
-    report.reportTable ? report.reportTable.reportParams : report.reportParams
+    isJasperReportTableReport(report)
+        ? report.reportTable.reportParams
+        : report.reportParams
 
 export const appendOrgUnitsAndReportPeriodToQueryString = (
     state,

@@ -26,6 +26,7 @@ import {
     isHtmlReport,
     validateRequiredParams,
     processCheckboxValues,
+    isJasperReportTableReport,
 } from '../../utils/standardReport'
 import {
     clearFeedback,
@@ -46,6 +47,7 @@ import {
 } from './reportData'
 import { clearSelectedReportPeriod } from './reportPeriod'
 import { loadStandardReportTables } from './standardReportTables'
+import { formatStandardReportPayloadBySystemVersion } from '../../utils/backwardCompatability'
 
 export const actionTypes = {
     SET_SELECTED_REPORT: 'SET_SELECTED_REPORT',
@@ -398,24 +400,33 @@ export const sendStandardReport = (report, isEdit) => (dispatch, getState) => {
         ),
         reportTable: report.reportTable ? { id: report.reportTable } : '',
     }
-    const cleanedReport =
-        report.type !== reportTypes.JASPER_REPORT_TABLE
-            ? omit(formattedReport, ['reportTable'])
-            : formattedReport
+    const cleanedFormattedReportReport = isJasperReportTableReport(report)
+        ? omit(formattedReport, ['reportTable'])
+        : formattedReport
+
+    const dhis2CoreVersionFormattedReport = formatStandardReportPayloadBySystemVersion(
+        cleanedFormattedReportReport
+    )
+
     const doRequest = isEdit
         ? report => updateStandardReport(report)
         : report => postStandardReport(report)
+
     const successMessage = isEdit
         ? i18n.t('The report has been updated successfully')
         : i18n.t('The report has been added successfully')
+
     const errorMessage = isEdit
         ? i18n.t('An error occurred while updating the report!')
         : i18n.t('An error occurred while adding the report!')
 
-    const request = !cleanedReport.designContent
-        ? doRequest(cleanedReport)
-        : fileToText(cleanedReport.designContent.file)
-              .then(file => ({ ...cleanedReport, designContent: file }))
+    const request = !dhis2CoreVersionFormattedReport.designContent
+        ? doRequest(dhis2CoreVersionFormattedReport)
+        : fileToText(dhis2CoreVersionFormattedReport.designContent.file)
+              .then(file => ({
+                  ...dhis2CoreVersionFormattedReport,
+                  designContent: file,
+              }))
               .then(doRequest)
 
     return request
