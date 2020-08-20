@@ -1,11 +1,12 @@
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import React from 'react'
 import { getContextPath } from '../../utils/api'
 import CircularProgress from '@material-ui/core/CircularProgress'
 
 const SCRIPTS = [
     '/dhis-web-commons/javascripts/jQuery/jquery.min.js',
     '/dhis-web-commons/javascripts/dhis2/dhis2.util.js',
+    '/dhis-web-commons/oust/oust.js',
 ]
 
 const wrapHtmlInTemplate = html => `
@@ -37,26 +38,63 @@ const Loader = () => (
     </div>
 )
 
-const HtmlReport = ({ html }) =>
-    html ? (
-        <iframe
-            id="html-report-id"
-            srcDoc={wrapHtmlInTemplate(html)}
-            title="html-report-content"
-            width="100%"
-            seamless={true}
-            sandbox="allow-same-origin allow-scripts allow-modals"
-        >
-            <style jsx>{`
-                iframe {
-                    border: none;
-                    flex-grow: 1;
-                }
-            `}</style>
-        </iframe>
-    ) : (
-        <Loader />
-    )
+class HtmlReport extends Component {
+    state = { heigth: 'auto' }
+    heightObserver = null
+
+    onIframeLoad = event => {
+        const iframeHtml = event.target.contentWindow.document.documentElement
+        const iframeBody = event.target.contentWindow.document.body
+
+        this.heightObserver = new window.ResizeObserver(this.onContentResize)
+        this.heightObserver.observe(iframeHtml)
+        this.heightObserver.observe(iframeBody)
+
+        this.adjustHeight(
+            iframeHtml.getBoundingClientRect(),
+            iframeBody.getBoundingClientRect()
+        )
+    }
+
+    onContentResize = entries => {
+        this.adjustHeight(...entries.map(entry => entry.contentRect))
+    }
+
+    adjustHeight = (iframeHtmlRect, iframeBodyRect) => {
+        const height = Math.max(iframeHtmlRect.height, iframeBodyRect.height)
+
+        // Add 20px as a "safety margin" in case we get a horizontal scroll bar
+        this.setState({ height: Math.ceil(height) + 20 })
+    }
+
+    componentWillUnmount() {
+        this.heightObserver && this.heightObserver.disconnect()
+    }
+
+    render() {
+        return this.props.html ? (
+            <iframe
+                id="html-report-id"
+                srcDoc={wrapHtmlInTemplate(this.props.html)}
+                title="html-report-content"
+                width="100%"
+                height={this.state.height}
+                seamless={true}
+                sandbox="allow-same-origin allow-scripts allow-modals"
+                onLoad={this.onIframeLoad}
+            >
+                <style jsx>{`
+                    iframe {
+                        border: none;
+                        flex-grow: 1;
+                    }
+                `}</style>
+            </iframe>
+        ) : (
+            <Loader />
+        )
+    }
+}
 
 HtmlReport.propTypes = {
     html: PropTypes.string.isRequired,
