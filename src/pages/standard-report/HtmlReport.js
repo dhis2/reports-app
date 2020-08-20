@@ -40,39 +40,35 @@ const Loader = () => (
 
 class HtmlReport extends Component {
     state = { heigth: 'auto' }
-    iframeHtml = null
-    iframeBody = null
     heightObserver = null
 
     onIframeLoad = event => {
-        const iframe = event.target
+        const iframeHtml = event.target.contentWindow.document.documentElement
+        const iframeBody = event.target.contentWindow.document.body
 
-        this.iframeHtml = iframe.contentWindow.document.documentElement
-        this.iframeBody = iframe.contentWindow.document.body
-        this.heightObserver = new window.ResizeObserver(this.adjustHeight)
+        this.heightObserver = new window.ResizeObserver(this.onContentResize)
+        this.heightObserver.observe(iframeHtml)
+        this.heightObserver.observe(iframeBody)
 
-        this.heightObserver.observe(this.iframeHtml)
-        this.heightObserver.observe(this.iframeBody)
-        this.adjustHeight()
+        this.adjustHeight(
+            iframeHtml.getBoundingClientRect(),
+            iframeBody.getBoundingClientRect()
+        )
     }
 
-    adjustHeight = () => {
-        const height = Math.max(
-            this.iframeBody.clientHeight,
-            this.iframeBody.scrollHeight,
-            this.iframeBody.offsetHeight,
-            this.iframeHtml.clientHeight,
-            this.iframeHtml.scrollHeight,
-            this.iframeHtml.offsetHeight
-        )
+    onContentResize = entries => {
+        this.adjustHeight(...entries.map(entry => entry.contentRect))
+    }
+
+    adjustHeight = (iframeHtmlRect, iframeBodyRect) => {
+        const height = Math.max(iframeHtmlRect.height, iframeBodyRect.height)
 
         // Add 20px as a "safety margin" in case we get a horizontal scroll bar
-        this.setState({ height: height + 20 })
+        this.setState({ height: Math.ceil(height) + 20 })
     }
 
     componentWillUnmount() {
-        this.heightObserver && this.heightObserver.unobserve(this.iframeHtml)
-        this.heightObserver && this.heightObserver.unobserve(this.iframeBody)
+        this.heightObserver && this.heightObserver.disconnect()
     }
 
     render() {
