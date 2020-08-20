@@ -5,6 +5,7 @@ import ReportTable from '../../components/TabularReport/ReportTable'
 import { ReportComment } from '../../components/TabularReport/ReportComment'
 import ReportLoader from '../../components/ReportLoader'
 import { reportContent } from '../../utils/react/propTypes'
+import HtmlReport from '../standard-report/HtmlReport'
 
 const DataSetReportOutput = props => (
     <ReportLoader content={props.content} isLoading={props.isLoading}>
@@ -16,10 +17,7 @@ const DataSetReportOutput = props => (
             />
             <DownloadOptions fileUrls={props.fileUrls} />
             {props.isHtmlReport ? (
-                <div
-                    className="dataset-html-report"
-                    dangerouslySetInnerHTML={{ __html: props.content.data }}
-                />
+                <HtmlReport html={props.content.data} />
             ) : (
                 !!props.content.length &&
                 props.content.map(table => (
