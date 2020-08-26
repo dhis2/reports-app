@@ -2,19 +2,15 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { getContextPath } from '../../utils/api'
 import CircularProgress from '@material-ui/core/CircularProgress'
-
-const SCRIPTS = [
-    '/dhis-web-commons/javascripts/jQuery/jquery.min.js',
-    '/dhis-web-commons/javascripts/dhis2/dhis2.util.js',
-    '/dhis-web-commons/oust/oust.js',
-]
+import { CSS_FILES, SCRIPT_FILES } from './HtmlReportAssets'
 
 const wrapHtmlInTemplate = html => `
     <!DOCTYPE html>
     <html lang="en">
         <head>
             <meta charset="utf-8">
-            ${SCRIPTS.map(createScriptTag).join('\n')}
+            ${CSS_FILES.map(createLinkTag).join('\n')}
+            ${SCRIPT_FILES.map(createScriptTag).join('\n')}
         </head>
         <body>
             ${html}
@@ -24,6 +20,11 @@ const wrapHtmlInTemplate = html => `
 const createScriptTag = script => {
     const src = getContextPath() + script
     return `<script src="${src}" type="text/javascript"></script>`
+}
+
+const createLinkTag = ({ media, styleSheet }) => {
+    const href = getContextPath() + styleSheet
+    return `<link type="text/css" rel="stylesheet" media="${media}" href="${href}" >`
 }
 
 const Loader = () => (
