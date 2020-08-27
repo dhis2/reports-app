@@ -112,14 +112,15 @@ export const formatStandardReportPayloadBySystemVersion = report => {
         return report
     }
 
+    const rp = report.reportParams
+
     return {
         ...report,
         reportParams: {
-            paramGrandParentOrganisationUnit:
-                report.grandParentOrganisationUnit,
-            paramOrganisationUnit: report.organisationUnit,
-            paramParentOrganisationUnit: report.parentOrganisationUnit,
-            paramReportingPeriod: report.reportingPeriod,
+            paramGrandParentOrganisationUnit: rp.grandParentOrganisationUnit,
+            paramOrganisationUnit: rp.organisationUnit,
+            paramParentOrganisationUnit: rp.parentOrganisationUnit,
+            paramReportingPeriod: rp.reportingPeriod,
         },
     }
 }
