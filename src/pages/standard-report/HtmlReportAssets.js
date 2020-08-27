@@ -1,39 +1,12 @@
 export const CSS_FILES = [
     {
         media: 'screen',
-        styleSheet: '/dhis-web-commons/font-awesome/css/font-awesome.min.css',
-    },
-    {
-        media: 'screen',
         styleSheet:
             '/dhis-web-commons/javascripts/jQuery/ui/css/redmond/jquery-ui.css',
     },
     {
-        media: 'screen,print',
-        styleSheet: '/dhis-web-commons/css/light_blue/light_blue.css',
-    },
-    {
-        media: 'screen,print',
-        styleSheet: '/dhis-web-commons/css/widgets.css',
-    },
-    {
         media: 'print',
         styleSheet: '/dhis-web-commons/css/print.css',
-    },
-    {
-        media: 'screen',
-        styleSheet:
-            '/dhis-web-commons/javascripts/jQuery/calendars/css/jquery.calendars.picker.css',
-    },
-    {
-        media: 'screen',
-        styleSheet: '/dhis-web-commons/select2/select2.css',
-    },
-    { media: 'screen', styleSheet: '/dhis-web-commons/fonts/roboto.css' },
-    {
-        media: 'screen',
-        styleSheet:
-            '/dhis-web-commons/material-design-icons/material-icons.css',
     },
     {
         media: 'screen,print',
@@ -42,54 +15,14 @@ export const CSS_FILES = [
 ]
 
 export const SCRIPT_FILES = [
-    '/dhis-web-commons/javascripts/ext/ext-all.js',
     '/dhis-web-commons/javascripts/jQuery/jquery.min.js',
     '/dhis-web-commons/javascripts/jQuery/jquery.utils.js',
-    '/dhis-web-commons/javascripts/jQuery/jquery.ext.js',
-    '/dhis-web-commons/javascripts/jQuery/jquery.metadata.js',
-    '/dhis-web-commons/javascripts/jQuery/jquery.tablesorter.min.js',
-    '/dhis-web-commons/javascripts/jQuery/jquery.upload-1.0.2.min.js',
-    '/dhis-web-commons/javascripts/jQuery/jquery.dhisAjaxSelect.js',
     '/dhis-web-commons/javascripts/jQuery/ui/jquery-ui.min.js',
-    '/dhis-web-commons/javascripts/jQuery/ui/jquery.blockUI.js',
-    '/dhis-web-commons/javascripts/jQuery/jquery.validate.js',
-    '/dhis-web-commons/javascripts/jQuery/jquery.validate.ext.js',
-    '/dhis-web-commons/javascripts/jQuery/jquery.cookie.js',
-    '/dhis-web-commons/javascripts/jQuery/jquery.glob.js',
-    '/dhis-web-commons/javascripts/jQuery/jquery.date.js',
-    '/dhis-web-commons/javascripts/jQuery/jquery.tmpl.js',
-    '/dhis-web-commons/javascripts/jQuery/jquery.autogrow.js',
-    '/dhis-web-commons/javascripts/jQuery/jquery.fileupload.min.js',
-    '/dhis-web-commons/javascripts/underscore.min.js',
-    '/dhis-web-commons/javascripts/filesize.min.js',
     '/dhis-web-commons/javascripts/dhis2/dhis2.util.js',
     '/dhis-web-commons/javascripts/commons.js',
     '/dhis-web-commons/javascripts/commons.ajax.js',
     '/dhis-web-commons/javascripts/lists.js',
     '/dhis-web-commons/javascripts/periodType.js',
     '/dhis-web-commons/javascripts/date.js',
-    '/dhis-web-commons/javascripts/json2.js',
-    '/dhis-web-commons/javascripts/validationRules.js',
-    '/dhis-web-commons/javascripts/dhis2/dhis2.array.js',
-    '/dhis-web-commons/javascripts/dhis2/dhis2.select.js',
-    '/dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.min.js',
-    '/dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.plus.min.js',
-    '/dhis-web-commons/javascripts/moment/moment-with-langs.min.js',
-    '/dhis-web-commons/select2/select2.min.js',
-    '/dhis-web-commons/javascripts/dhis2/dhis2.period.js',
-    '/dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.picker.min.js',
-    '/dhis-web-commons/javascripts/dhis2/dhis2.selected.js',
-    '/dhis-web-commons/javascripts/dhis2/dhis2.comparator.js',
-    '/dhis-web-commons/javascripts/dhis2/dhis2.availability.js',
-    '/dhis-web-commons/javascripts/dhis2/dhis2.trigger.js',
-    '/dhis-web-commons/javascripts/dhis2/dhis2.sharing.js',
-    '/dhis-web-commons/javascripts/dhis2/dhis2.validation.js',
-    '/dhis-web-commons/javascripts/dhis2/dhis2.storage.ss.js',
-    '/dhis-web-commons/javascripts/dhis2/dhis2.storage.ls.js',
-    '/dhis-web-commons/javascripts/dhis2/dhis2.storage.idb.js',
-    '/dhis-web-commons/javascripts/dhis2/dhis2.storage.memory.js',
-    '/dhis-web-commons/javascripts/dhis2/dhis2.storage.js',
-    '/dhis-web-commons/javascripts/dhis2/dhis2.contextmenu.js',
-    '/dhis-web-commons/javascripts/dhis2/dhis2.appcache.js',
-    '/dhis-web-commons/javascripts/dhis2/dhis2.translate.js',
+    '/dhis-web-commons/oust/oust.js',
 ]
