@@ -1,5 +1,6 @@
 import 'typeface-roboto'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
+import 'flexboxgrid/css/flexboxgrid.css'
 
 import React from 'react'
 import { Provider } from 'react-redux'
