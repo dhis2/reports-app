@@ -58,10 +58,10 @@ const MenuElement = ({ entry }) => (
 
 MenuElement.propTypes = {
     entry: PropTypes.shape({
-        label: PropTypes.string,
+        actionText: PropTypes.string,
         description: PropTypes.string,
         icon: PropTypes.string,
-        actionText: PropTypes.string,
+        label: PropTypes.string,
     }).isRequired,
 }
 

@@ -1,4 +1,4 @@
-import i18n from '@dhis2/d2-i18n'
+import i18n from '../locales'
 
 export const STANDARD_REPORT_SECTION_KEY = 'standard-report'
 export const DATA_SET_REPORT_SECTION_KEY = 'data-set-report'
@@ -22,7 +22,7 @@ export const sections = {
         path: `/${STANDARD_REPORT_SECTION_KEY}`,
         info: {
             label: i18n.t('Standard Report'),
-            icon: i18n.t('bar_chart'),
+            icon: 'bar_chart',
             description: i18n.t(
                 'View and add reports based on the JasperReports library. These can be based on report tables and can be designed in iReport.'
             ),

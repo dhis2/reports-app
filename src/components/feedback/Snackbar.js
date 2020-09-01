@@ -25,8 +25,8 @@ const Snackbar = ({
 }
 
 Snackbar.propTypes = {
-    showSnackbar: PropTypes.bool.isRequired,
     message: PropTypes.string.isRequired,
+    showSnackbar: PropTypes.bool.isRequired,
     type: PropTypes.string.isRequired,
     onClose: PropTypes.func.isRequired,
     action: PropTypes.string,
@@ -48,9 +48,6 @@ const mapDispatchToProps = {
     onClose: clearFeedback,
 }
 
-const connectedSnackbar = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Snackbar)
+const connectedSnackbar = connect(mapStateToProps, mapDispatchToProps)(Snackbar)
 
 export { connectedSnackbar as Snackbar, Snackbar as SnackbarOriginal }

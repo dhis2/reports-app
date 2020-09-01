@@ -73,24 +73,19 @@ class Resource extends React.Component {
 }
 
 Resource.propTypes = {
-    open: PropTypes.bool.isRequired,
-    loadingResources: PropTypes.bool.isRequired,
-    search: PropTypes.string.isRequired,
-    selectedAction: PropTypes.string.isRequired,
-    resources: PropTypes.array.isRequired,
-    pager: PropTypes.object.isRequired,
-    selectedResource: PropTypes.object.isRequired,
+    addResource: PropTypes.func.isRequired,
+    closeContextMenu: PropTypes.func.isRequired,
+    deleteResource: PropTypes.func.isRequired,
     goToNextPage: PropTypes.func.isRequired,
     goToPrevPage: PropTypes.func.isRequired,
     loadResources: PropTypes.func.isRequired,
-    requestDeleteResource: PropTypes.func.isRequired,
-    deleteResource: PropTypes.func.isRequired,
+    loadingResources: PropTypes.bool.isRequired,
+    open: PropTypes.bool.isRequired,
+    resources: PropTypes.array.isRequired,
+    search: PropTypes.string.isRequired,
+    selectedAction: PropTypes.string.isRequired,
+    selectedResource: PropTypes.object.isRequired,
     setSearch: PropTypes.func.isRequired,
-    addResource: PropTypes.func.isRequired,
-    viewResource: PropTypes.func.isRequired,
-    editResource: PropTypes.func.isRequired,
-    showSharingSettings: PropTypes.func.isRequired,
-    closeContextMenu: PropTypes.func.isRequired,
 }
 
 const ConnectedResource = connectResource(Resource)

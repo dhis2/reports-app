@@ -85,27 +85,21 @@ class StandardReport extends React.Component {
 
 StandardReport.propTypes = {
     addReportFormShow: PropTypes.func.isRequired,
-    addStandardReport: PropTypes.func.isRequired,
     closeContextMenu: PropTypes.func.isRequired,
-    createReport: PropTypes.func.isRequired,
     deleteStandardReport: PropTypes.func.isRequired,
-    editReport: PropTypes.func.isRequired,
     goToNextPage: PropTypes.func.isRequired,
     goToPrevPage: PropTypes.func.isRequired,
     hideReportData: PropTypes.func.isRequired,
-    loading: PropTypes.bool.isRequired,
     loadStandardReports: PropTypes.func.isRequired,
+    loading: PropTypes.bool.isRequired,
     open: PropTypes.bool.isRequired,
     reportData: PropTypes.string.isRequired,
     reports: PropTypes.array.isRequired,
-    requestDeleteStandardReport: PropTypes.func.isRequired,
     search: PropTypes.string.isRequired,
     selectedAction: PropTypes.string.isRequired,
     selectedReport: PropTypes.object.isRequired,
     setSearch: PropTypes.func.isRequired,
-    sharingSettings: PropTypes.func.isRequired,
     showReportData: PropTypes.func.isRequired,
-    updateStandardReport: PropTypes.func.isRequired,
 }
 
 const ConnectedStandardReport = connectStandardReport(StandardReport)

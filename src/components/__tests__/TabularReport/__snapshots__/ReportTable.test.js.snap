@@ -46,7 +46,7 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
       </tr>
     </thead>
     <tbody>
-      <Component
+      <Row
         cells={
           Array [
             "Badjia",
@@ -60,7 +60,7 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         }
         key="r-Badjia-0"
       />
-      <Component
+      <Row
         cells={
           Array [
             "Baoma",
@@ -74,7 +74,7 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         }
         key="r-Baoma-1"
       />
-      <Component
+      <Row
         cells={
           Array [
             "Bargbe",
@@ -88,7 +88,7 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         }
         key="r-Bargbe-2"
       />
-      <Component
+      <Row
         cells={
           Array [
             "Bargbo",
@@ -102,7 +102,7 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         }
         key="r-Bargbo-3"
       />
-      <Component
+      <Row
         cells={
           Array [
             "Bumpe Ngao",
@@ -116,7 +116,7 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         }
         key="r-Bumpe Ngao-4"
       />
-      <Component
+      <Row
         cells={
           Array [
             "Gbo",
@@ -130,7 +130,7 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         }
         key="r-Gbo-5"
       />
-      <Component
+      <Row
         cells={
           Array [
             "Jaiama Bongor",
@@ -144,7 +144,7 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         }
         key="r-Jaiama Bongor-6"
       />
-      <Component
+      <Row
         cells={
           Array [
             "Kakua",
@@ -158,7 +158,7 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         }
         key="r-Kakua-7"
       />
-      <Component
+      <Row
         cells={
           Array [
             "Komboya",
@@ -172,7 +172,7 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         }
         key="r-Komboya-8"
       />
-      <Component
+      <Row
         cells={
           Array [
             "Lugbu",
@@ -186,7 +186,7 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         }
         key="r-Lugbu-9"
       />
-      <Component
+      <Row
         cells={
           Array [
             "Niawa Lenga",
@@ -200,7 +200,7 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         }
         key="r-Niawa Lenga-10"
       />
-      <Component
+      <Row
         cells={
           Array [
             "Selenga",
@@ -214,7 +214,7 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         }
         key="r-Selenga-11"
       />
-      <Component
+      <Row
         cells={
           Array [
             "Tikonko",
@@ -228,7 +228,7 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         }
         key="r-Tikonko-12"
       />
-      <Component
+      <Row
         cells={
           Array [
             "Valunia",
@@ -242,7 +242,7 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         }
         key="r-Valunia-13"
       />
-      <Component
+      <Row
         cells={
           Array [
             "Wonde",
@@ -256,7 +256,7 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
         }
         key="r-Wonde-14"
       />
-      <Component
+      <Row
         cells={
           Array [
             "Bo",
@@ -274,30 +274,30 @@ exports[`<ReportTable/> matches the snapshot for a given input 1`] = `
   </table>
   <style>
     
-                table {
-                    border-collapse: collapse;
-                }
-                tr {
-                    border-bottom: 2px solid #e0e0e0;
-                }
-                tbody :global(tr) {
-                    border-bottom: 1px solid #e0e0e0;
-                }
-                th,
-                tbody :global(td) {
-                    border: none;
-                    font-size: 14px;
-                    padding: 16px 16px;
-                }
-                th {
-                    text-align: left;
-                    font-weight: bold;
-                }
-                tbody :global(td):not(:first-child),
-                thead :global(th):not(:first-child) {
-                    text-align: center;
-                }
-            
+            table {
+                border-collapse: collapse;
+            }
+            tr {
+                border-bottom: 2px solid #e0e0e0;
+            }
+            tbody :global(tr) {
+                border-bottom: 1px solid #e0e0e0;
+            }
+            th,
+            tbody :global(td) {
+                border: none;
+                font-size: 14px;
+                padding: 16px 16px;
+            }
+            th {
+                text-align: left;
+                font-weight: bold;
+            }
+            tbody :global(td):not(:first-child),
+            thead :global(th):not(:first-child) {
+                text-align: center;
+            }
+        
   </style>
 </Fragment>
 `;

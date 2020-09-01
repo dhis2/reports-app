@@ -2,8 +2,6 @@ import { defaultState, pagination } from '../pagination'
 import { actionTypes } from '../../actions/pagination'
 
 describe('Reducer - pagination', function() {
-    const { GO_TO_NEXT_PAGE, GO_TO_PREV_PAGE } = actionTypes
-
     it('should increase the current page num by 1', function() {
         const { GO_TO_NEXT_PAGE } = actionTypes
         const preState = {

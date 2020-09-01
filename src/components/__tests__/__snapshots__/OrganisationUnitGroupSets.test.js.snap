@@ -5,39 +5,39 @@ Array [
   <OrganisationUnitGroupSetDropdown
     fullWidth={true}
     groupSet={
-        Object {
-            "displayName": "organisationUnitGroupSet1",
-            "id": "organisationUnitGroupSet1",
-            "organisationUnitGroups": Array [
-              Object {
-                "displayName": "item1",
-                "id": "item1",
-              },
-            ],
-          }
+      Object {
+        "displayName": "organisationUnitGroupSet1",
+        "id": "organisationUnitGroupSet1",
+        "organisationUnitGroups": Array [
+          Object {
+            "displayName": "item1",
+            "id": "item1",
+          },
+        ],
+      }
     }
     key="organisationUnitGroupSet1"
     onChange={[Function]}
     value=""
-/>,
+  />,
   <OrganisationUnitGroupSetDropdown
     fullWidth={true}
     groupSet={
-        Object {
-            "displayName": "organisationUnitGroupSet2",
-            "id": "organisationUnitGroupSet2",
-            "organisationUnitGroups": Array [
-              Object {
-                "displayName": "item1",
-                "id": "item1",
-              },
-            ],
-          }
+      Object {
+        "displayName": "organisationUnitGroupSet2",
+        "id": "organisationUnitGroupSet2",
+        "organisationUnitGroups": Array [
+          Object {
+            "displayName": "item1",
+            "id": "item1",
+          },
+        ],
+      }
     }
     key="organisationUnitGroupSet2"
     onChange={[Function]}
     value=""
-/>,
+  />,
 ]
 `;
 
@@ -49,11 +49,11 @@ exports[`Test <OrganisationUnitGroupSets /> rendering: Should render a loader wh
   />
   <style>
     
-                    div {
-                        padding-top: 16px;
-                        text-align: center;
-                    }
-                
+                div {
+                    padding-top: 16px;
+                    text-align: center;
+                }
+            
   </style>
 </div>
 `;

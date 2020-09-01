@@ -37,7 +37,6 @@ export const Form = props => (
 )
 
 Form.propTypes = {
-    showForm: PropTypes.bool,
     isActionEnabled: PropTypes.bool.isRequired,
     loadReportData: PropTypes.func.isRequired,
 }

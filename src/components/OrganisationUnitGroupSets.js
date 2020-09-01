@@ -39,9 +39,9 @@ const OrganisationUnitGroupSetDropdown = ({
 )
 
 OrganisationUnitGroupSetDropdown.propTypes = {
+    fullWidth: PropTypes.bool.isRequired,
     groupSet: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
-    fullWidth: PropTypes.bool.isRequired,
     value: PropTypes.string,
 }
 
@@ -96,7 +96,6 @@ const mapStateToProps = state => ({
     values: state.organisationUnits.selectedOptions,
 })
 
-export default connect(
-    mapStateToProps,
-    { selectGroupSet: selectOrgUnitOption }
-)(OrganisationUnitGroupSets)
+export default connect(mapStateToProps, {
+    selectGroupSet: selectOrgUnitOption,
+})(OrganisationUnitGroupSets)

@@ -54,11 +54,11 @@ const Form = props => (
 )
 
 Form.propTypes = {
+    isGetReportDisabled: PropTypes.bool.isRequired,
     selectedUnitOnly: PropTypes.bool.isRequired,
     onDataSetChange: PropTypes.func.isRequired,
-    onSelectedUnitOnlyChange: PropTypes.func.isRequired,
-    isGetReportDisabled: PropTypes.bool.isRequired,
     onGetReportClick: PropTypes.func.isRequired,
+    onSelectedUnitOnlyChange: PropTypes.func.isRequired,
 }
 
 export default Form

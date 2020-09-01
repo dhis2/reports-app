@@ -27,10 +27,10 @@ const StandardReportActions = ({
 }
 
 StandardReportActions.propTypes = {
+    handleClose: PropTypes.func.isRequired,
     open: PropTypes.bool.isRequired,
     selectedAction: PropTypes.string.isRequired,
     selectedReport: PropTypes.object.isRequired,
-    handleClose: PropTypes.func.isRequired,
 }
 
 export default StandardReportActions

@@ -45,6 +45,6 @@ export const RadioButton = props => (
 )
 
 RadioButton.propTypes = {
-    label: PropTypes.string.isRequired,
     input: formInput.isRequired,
+    label: PropTypes.string.isRequired,
 }

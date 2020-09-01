@@ -30,7 +30,4 @@ const mapDispatchToProps = dispatch => ({
     setDataSetReportComment: comment => dispatch(setReportComment(comment)),
 })
 
-export const connectDataSetReport = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)
+export const connectDataSetReport = connect(mapStateToProps, mapDispatchToProps)

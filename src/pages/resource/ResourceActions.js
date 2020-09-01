@@ -24,10 +24,10 @@ const ResourceActions = props => {
 }
 
 ResourceActions.propTypes = {
+    handleClose: PropTypes.func.isRequired,
     open: PropTypes.bool.isRequired,
     selectedAction: PropTypes.string.isRequired,
     selectedResource: PropTypes.object.isRequired,
-    handleClose: PropTypes.func.isRequired,
 }
 
 export default ResourceActions

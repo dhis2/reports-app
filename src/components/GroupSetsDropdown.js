@@ -27,8 +27,8 @@ export const GroupSetsDropdown = props => (
 
 GroupSetsDropdown.propTypes = {
     collection: PropTypes.array.isRequired,
-    selected: PropTypes.string.isRequired,
     selectGroupSet: PropTypes.func.isRequired,
+    selected: PropTypes.string.isRequired,
     fullWidth: PropTypes.bool,
 }
 
@@ -45,7 +45,4 @@ const mapDispatchToProps = dispatch => ({
     selectGroupSet: e => dispatch(setGroupSet(e.target.value)),
 })
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(GroupSetsDropdown)
+export default connect(mapStateToProps, mapDispatchToProps)(GroupSetsDropdown)

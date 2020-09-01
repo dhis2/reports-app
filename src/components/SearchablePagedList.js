@@ -99,22 +99,22 @@ const styles = css`
 `
 
 SearchablePagedList.propTypes = {
-    rows: PropTypes.array.isRequired,
-    columns: PropTypes.arrayOf(PropTypes.string).isRequired,
-    isLoading: PropTypes.bool.isRequired,
-    contextMenuActions: PropTypes.object.isRequired,
-    primaryAction: PropTypes.func.isRequired,
-    contextMenuIcons: PropTypes.object.isRequired,
-    isContextActionAllowed: PropTypes.func.isRequired,
-    searchInputValue: PropTypes.string.isRequired,
-    searchInputChangeHandler: PropTypes.func.isRequired,
     addButtonClickHandler: PropTypes.func.isRequired,
-    pagerTotal: PropTypes.number.isRequired,
-    pagerHasNextPage: PropTypes.func.isRequired,
-    pagerHasPreviousPage: PropTypes.func.isRequired,
-    pagerCurrentlyShown: PropTypes.string.isRequired,
+    columns: PropTypes.arrayOf(PropTypes.string).isRequired,
+    contextMenuActions: PropTypes.object.isRequired,
+    contextMenuIcons: PropTypes.object.isRequired,
     goToNextPage: PropTypes.func.isRequired,
     goToPrevPage: PropTypes.func.isRequired,
+    isContextActionAllowed: PropTypes.func.isRequired,
+    isLoading: PropTypes.bool.isRequired,
+    pagerCurrentlyShown: PropTypes.string.isRequired,
+    pagerHasNextPage: PropTypes.func.isRequired,
+    pagerHasPreviousPage: PropTypes.func.isRequired,
+    pagerTotal: PropTypes.number.isRequired,
+    primaryAction: PropTypes.func.isRequired,
+    rows: PropTypes.array.isRequired,
+    searchInputChangeHandler: PropTypes.func.isRequired,
+    searchInputValue: PropTypes.string.isRequired,
 }
 
 const mapStateToProps = state => ({

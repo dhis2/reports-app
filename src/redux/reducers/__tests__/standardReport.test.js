@@ -1,15 +1,6 @@
 import { actionTypes } from '../../actions/standardReport'
 import { standardReport, defaultState } from '../standardReport'
-import {
-    ADD_NEW_REPORT_ACTION,
-    CONTEXT_MENU_ACTION,
-} from '../../../pages/standard-report/standard.report.conf'
-import {
-    ACTION_MESSAGE,
-    ERROR,
-    LOADING,
-    SUCCESS,
-} from '../../../utils/feedbackTypes'
+import { CONTEXT_MENU_ACTION } from '../../../pages/standard-report/standard.report.conf'
 
 describe('Reducer - standardReport', function() {
     const mockReport = () => ({ displayName: 'foobar' })
@@ -23,7 +14,6 @@ describe('Reducer - standardReport', function() {
     describe('loading reports', function() {
         const {
             LOADING_STANDARD_REPORTS_START,
-            LOADING_STANDARD_REPORTS_SUCCESS,
             LOADING_STANDARD_REPORTS_ERROR,
         } = actionTypes
 
@@ -78,12 +68,7 @@ describe('Reducer - standardReport', function() {
     describe('Using context menu actions', function() {
         let report
         let preState
-        const {
-            ADD_REPORT_FORM_SHOW,
-            EDIT_REPORT_FORM_SHOW,
-            CREATE_REPORT_SHOW,
-            SHARING_SETTINGS_SHOW,
-        } = actionTypes
+        const { SHARING_SETTINGS_SHOW } = actionTypes
 
         beforeEach(function() {
             report = mockReport()
@@ -112,13 +97,7 @@ describe('Reducer - standardReport', function() {
 
     describe('Hiding context actions', function() {
         let preState
-        const {
-            ADD_REPORT_FORM_HIDE,
-            EDIT_REPORT_FORM_HIDE,
-            CREATE_REPORT_HIDE,
-            SHARIING_SETTINGS_HIDE,
-            CLOSE_CONTEXT_MENU,
-        } = actionTypes
+        const { CLOSE_CONTEXT_MENU } = actionTypes
         const expected = {
             ...defaultState,
             open: false,

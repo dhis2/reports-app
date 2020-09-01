@@ -5,11 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2020-08-20T07:11:10.268Z\n"
-"PO-Revision-Date: 2020-08-20T07:11:10.268Z\n"
-
-msgid "Reports"
-msgstr ""
+"POT-Creation-Date: 2020-09-01T13:00:50.443Z\n"
+"PO-Revision-Date: 2020-09-01T13:00:50.443Z\n"
 
 msgid "Updating Organisation Units Tree..."
 msgstr ""
@@ -115,6 +112,12 @@ msgstr ""
 msgid ""
 "Browse the organisation unit distribution report based on the organisation "
 "unit group sets and its groups."
+msgstr ""
+
+msgid "Reporting Period"
+msgstr ""
+
+msgid "Organisation Unit"
 msgstr ""
 
 msgid "CONFIRM"
@@ -456,9 +459,6 @@ msgstr ""
 msgid "Count"
 msgstr ""
 
-msgid "Organisation Unit"
-msgstr ""
-
 msgid "Total"
 msgstr ""
 
@@ -739,8 +739,4 @@ msgid "Upload file"
 msgstr ""
 
 msgid "Confirm delete"
-msgstr ""
-
-msgctxt "chart"
-msgid "bar"
 msgstr ""

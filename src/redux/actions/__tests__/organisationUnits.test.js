@@ -1,18 +1,13 @@
 import { mockStore } from '../../../utils/test-helpers/mockStore'
 import {
-    actionTypes as types,
-    fallbackErrorMessage,
     loadOrganisationUnits,
     loadOrganisationUnitsErrorDefaultMessage,
-    selectOrganisationUnit,
     loadOrganisationUnitsStart,
     loadOrganisationUnitsSuccess,
     loadOrganisationUnitsError,
 } from '../organisationUnits'
 import { showErrorSnackBar } from '../feedback'
 import { getOrganisationUnits } from '../../../utils/api'
-import * as feedbackTypes from '../../../utils/feedbackTypes'
-import { actionTypes as feedbackActionTypes } from '../feedback'
 
 jest.mock('../../../utils/api', () => ({
     getOrganisationUnits: jest.fn(),

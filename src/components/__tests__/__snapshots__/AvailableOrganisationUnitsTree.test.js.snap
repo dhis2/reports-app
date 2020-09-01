@@ -7,22 +7,22 @@ exports[`Test <AvailableOrganisationUnitsTree /> rendering: Should render OrgUni
   <OrgUnitTreeMultipleRoots
     hideMemberCount={true}
     initiallyExpanded={Array []}
-    onSelectClick={[Function]}
+    onSelectClick={[MockFunction]}
     roots={Array []}
     selected={Array []}
   />
   <style>
     
-                    div {
-                        border: 1px solid #bcbcbc;
-                        overflow: auto;
-                        width: 100%;
-                        box-sizing: border-box;
-                        font-weight: 300;
-                        max-height: 400px;
-                        padding: 10px 5px;
-                    }
-                
+                div {
+                    border: 1px solid #bcbcbc;
+                    overflow: auto;
+                    width: 100%;
+                    box-sizing: border-box;
+                    font-weight: 300;
+                    max-height: 400px;
+                    padding: 10px 5px;
+                }
+            
   </style>
 </div>
 `;

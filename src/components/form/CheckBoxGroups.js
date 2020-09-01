@@ -35,8 +35,8 @@ export const CheckBoxGroups = props => (
 )
 
 CheckBoxGroups.propTypes = {
-    name: PropTypes.string.isRequired,
     groups: PropTypes.array.isRequired,
+    name: PropTypes.string.isRequired,
     displayError: PropTypes.bool,
 }
 

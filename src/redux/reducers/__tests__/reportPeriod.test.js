@@ -13,10 +13,6 @@ describe('Reducer - reportPeriod', () => {
         collection: mockCollection,
         selectedPeriodType: mockCollection[0],
     }
-    const stateWithBothSelected = {
-        ...stateWithPeriodTypeSelected,
-        selectedPeriod: 'dummyValue',
-    }
 
     it('should return the default state', () => {
         expect(reportPeriod(undefined, {})).toEqual(defaultState)

@@ -19,11 +19,6 @@ const ownShallow = () => {
 }
 
 describe('Test <GroupSetsDropdown /> rendering:', () => {
-    let wrapper
-    beforeEach(() => {
-        wrapper = ownShallow()
-    })
-
     it('Should render without crashing', () => {
         ownShallow()
     })

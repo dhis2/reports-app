@@ -51,6 +51,6 @@ export const Form = props => (
 
 Form.propTypes = {
     isActionEnabled: PropTypes.bool.isRequired,
-    onGetReportClick: PropTypes.func.isRequired,
     onGetChartClick: PropTypes.func.isRequired,
+    onGetReportClick: PropTypes.func.isRequired,
 }

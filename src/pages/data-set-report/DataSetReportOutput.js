@@ -40,14 +40,14 @@ const DataSetReportOutput = props => (
 )
 
 DataSetReportOutput.propTypes = {
-    isHtmlReport: PropTypes.bool.isRequired,
     content: reportContent.isRequired,
-    isLoading: PropTypes.bool.isRequired,
     fileUrls: PropTypes.array.isRequired,
+    isHtmlReport: PropTypes.bool.isRequired,
+    isLoading: PropTypes.bool.isRequired,
     reportComment: ReportComment.propTypes.comment,
+    setDataSetReportComment: ReportComment.propTypes.setDataSetReportComment,
     shareDataSetReportComment:
         ReportComment.propTypes.shareDataSetReportComment,
-    setDataSetReportComment: ReportComment.propTypes.setDataSetReportComment,
 }
 
 export default DataSetReportOutput

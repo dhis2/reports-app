@@ -61,21 +61,19 @@ class OrganisationUnitDistributionReport extends React.Component {
 }
 
 OrganisationUnitDistributionReport.propTypes = {
-    isActionEnabled: PropTypes.bool.isRequired,
-    shouldShowChart: PropTypes.bool.isRequired,
-    loading: PropTypes.bool.isRequired,
-    groupSetsReady: PropTypes.bool.isRequired,
     fileUrls: PropTypes.array.isRequired,
-    reportContent: reportContent.isRequired,
-    loadTable: PropTypes.func.isRequired,
+    groupSetsReady: PropTypes.bool.isRequired,
+    isActionEnabled: PropTypes.bool.isRequired,
     loadChart: PropTypes.func.isRequired,
     loadGroupSetOptions: PropTypes.func.isRequired,
+    loadTable: PropTypes.func.isRequired,
+    loading: PropTypes.bool.isRequired,
+    reportContent: reportContent.isRequired,
+    shouldShowChart: PropTypes.bool.isRequired,
 }
 
 const ConnectedOrganisationUnitDistributionReport = connectOrganisationUnitDistributionReport(
     OrganisationUnitDistributionReport
 )
 
-export {
-    ConnectedOrganisationUnitDistributionReport as OrganisationUnitDistributionReport,
-}
+export { ConnectedOrganisationUnitDistributionReport as OrganisationUnitDistributionReport }

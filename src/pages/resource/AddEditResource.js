@@ -114,17 +114,17 @@ class AddEditResource extends Component {
 }
 
 AddEditResource.propTypes = {
-    match: PropTypes.shape({
-        params: PropTypes.shape({
-            id: PropTypes.string,
-            mode: PropTypes.oneOf(['new', 'edit']).isRequired,
-        }).isRequired,
-    }).isRequired,
     addNewResource: PropTypes.func.isRequired,
-    updateResource: PropTypes.func.isRequired,
     backToList: PropTypes.func.isRequired,
     loadResource: PropTypes.func.isRequired,
+    match: PropTypes.shape({
+        params: PropTypes.shape({
+            mode: PropTypes.oneOf(['new', 'edit']).isRequired,
+            id: PropTypes.string,
+        }).isRequired,
+    }).isRequired,
     resource: PropTypes.object.isRequired,
+    updateResource: PropTypes.func.isRequired,
 }
 
 const ConnectedAddEditResource = connect(

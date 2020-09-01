@@ -100,9 +100,9 @@ const DataSetDimensions = ({
 }
 
 DataSetDimensions.propTypes = {
+    fullWidth: PropTypes.bool.isRequired,
     hide: PropTypes.bool.isRequired,
     isLoading: PropTypes.bool.isRequired,
-    fullWidth: PropTypes.bool.isRequired,
     options: PropTypes.array.isRequired,
     selected: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,

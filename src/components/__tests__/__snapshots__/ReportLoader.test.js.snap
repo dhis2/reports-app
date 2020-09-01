@@ -12,11 +12,11 @@ exports[`<ReportLoader/> Renders a loader when isLoading is true 1`] = `
     />
     <style>
       
-                      div {
-                          margin: 48px 0;
-                          text-align: center;
-                      }
-                  
+                div {
+                    margin: 48px 0;
+                    text-align: center;
+                }
+            
     </style>
   </div>
 </WithStyles(Paper)>

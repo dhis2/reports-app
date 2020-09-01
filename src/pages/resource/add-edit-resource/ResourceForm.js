@@ -2,7 +2,6 @@ import i18n from '@dhis2/d2-i18n'
 import PropTypes from 'prop-types'
 import React, { Fragment } from 'react'
 import { Form } from 'react-final-form'
-
 import { Button } from '../../../components/form/Button'
 import { FormSection } from '../../../components/form/FormSection'
 import { resourceTypes } from '../../../utils/resource/constants'
@@ -91,12 +90,10 @@ export const ResourceForm = props => (
 )
 
 ResourceForm.propTypes = {
-    isFileRequired: PropTypes.bool.isRequired,
-    open: PropTypes.bool.isRequired,
-    isEditingFileResource: PropTypes.bool.isRequired,
-    title: PropTypes.string.isRequired,
-    onSubmitLabel: PropTypes.string.isRequired,
     initialValues: PropTypes.object.isRequired,
-    onSubmit: PropTypes.func.isRequired,
+    isEditingFileResource: PropTypes.bool.isRequired,
+    isFileRequired: PropTypes.bool.isRequired,
     onCancel: PropTypes.func.isRequired,
+    onSubmit: PropTypes.func.isRequired,
+    onSubmitLabel: PropTypes.string.isRequired,
 }

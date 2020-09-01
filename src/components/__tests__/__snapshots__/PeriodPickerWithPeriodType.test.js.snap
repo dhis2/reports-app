@@ -25,7 +25,7 @@ exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render a <Peri
     value="Quarterly"
   />
   <PeriodPicker
-    onPickPeriod={[Function]}
+    onPickPeriod={[MockFunction]}
     periodType="Quarterly"
   />
 </div>
@@ -83,7 +83,7 @@ exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render the par
     value="Daily"
   />
   <PeriodPicker
-    onPickPeriod={[Function]}
+    onPickPeriod={[MockFunction]}
     periodType="Daily"
   />
 </div>

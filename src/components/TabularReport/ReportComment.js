@@ -39,6 +39,6 @@ export const ReportComment = props => (
 
 ReportComment.propTypes = {
     comment: PropTypes.string.isRequired,
-    shareDataSetReportComment: PropTypes.func.isRequired,
     setDataSetReportComment: PropTypes.func.isRequired,
+    shareDataSetReportComment: PropTypes.func.isRequired,
 }

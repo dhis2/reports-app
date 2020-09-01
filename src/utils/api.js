@@ -198,7 +198,7 @@ export const getReportingRateSummaryReport = async (
         .withDisplayProperty('SHORTNAME')
         .withIncludeNumDen(false)
 
-    for (let key in orgUnitOptions) {
+    for (const key in orgUnitOptions) {
         if (orgUnitOptions[key]) {
             req.addFilter(key, orgUnitOptions[key])
         }

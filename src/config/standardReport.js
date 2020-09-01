@@ -1,10 +1,12 @@
+import i18n from '../locales'
+
 export const reportParameterOptions = [
     {
         value: 'reportingPeriod',
-        label: 'Reporting Period',
+        label: i18n.t('Reporting Period'),
     },
     {
         value: 'organisationUnit',
-        label: 'Organisation Unit',
+        label: i18n.t('Organisation Unit'),
     },
 ]

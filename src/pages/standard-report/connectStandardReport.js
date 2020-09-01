@@ -47,9 +47,6 @@ const mapDispatchToProps = dispatch => ({
     updateStandardReport: report => dispatch(sendStandardReport(report, true)),
 })
 
-const connectStandardReport = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)
+const connectStandardReport = connect(mapStateToProps, mapDispatchToProps)
 
 export default connectStandardReport

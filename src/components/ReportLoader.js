@@ -29,9 +29,9 @@ const ReportLoader = ({ isLoading, content, children }) => {
 }
 
 ReportLoader.propTypes = {
-    isLoading: PropTypes.bool.isRequired,
-    content: reportContent.isRequired,
     children: PropTypes.node.isRequired,
+    content: reportContent.isRequired,
+    isLoading: PropTypes.bool.isRequired,
 }
 
 export default ReportLoader

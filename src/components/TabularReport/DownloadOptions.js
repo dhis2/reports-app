@@ -28,8 +28,8 @@ export const DownloadOption = ({ file }) => (
 
 DownloadOption.propTypes = {
     file: PropTypes.shape({
-        url: PropTypes.string.isRequired,
         extension: PropTypes.string.isRequired,
+        url: PropTypes.string.isRequired,
     }),
 }
 

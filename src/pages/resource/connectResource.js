@@ -38,7 +38,4 @@ const mapDispatchToProps = {
     closeContextMenu,
 }
 
-export const connectResource = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)
+export const connectResource = connect(mapStateToProps, mapDispatchToProps)
