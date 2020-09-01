@@ -62,7 +62,6 @@
         "redux": "^4.0.1",
         "redux-thunk": "^2.3.0",
         "reselect": "^4.0.0",
-        "typeface-roboto": "^0.0.75",
         "whatwg-fetch": "2.0.3",
         "xlsx": "^0.13.0"
     },
