@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-08-20T07:11:10.268Z\n"
+"POT-Creation-Date: 2020-09-01T13:00:50.443Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
 "Last-Translator: Karoline Tufte Lien <karoline@dhis2.org>, 2020\n"
 "Language-Team: Norwegian Bokmål (https://www.transifex.com/hisp-uio/teams/100509/nb/)\n"
@@ -15,9 +15,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: nb\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-msgid "Reports"
-msgstr "Rapporter"
 
 msgid "Updating Organisation Units Tree..."
 msgstr "Oppdaterer Organisasjonsenhettreet..."
@@ -134,6 +131,12 @@ msgid ""
 msgstr ""
 "Bla gjennom organisasjonsenhetsdistribusjonsrapporten basert på "
 "organisasjonsenhetsgruppesettet og dens grupper."
+
+msgid "Reporting Period"
+msgstr ""
+
+msgid "Organisation Unit"
+msgstr "Organisasjonsenhet"
 
 msgid "CONFIRM"
 msgstr "BEKREFT"
@@ -474,9 +477,6 @@ msgstr "En feil oppsto ved lasting av rapporttabell alternativene"
 msgid "Count"
 msgstr "Antall"
 
-msgid "Organisation Unit"
-msgstr "Organisasjonsenhet"
-
 msgid "Total"
 msgstr "Totalt"
 
@@ -758,7 +758,3 @@ msgstr "Last opp fil"
 
 msgid "Confirm delete"
 msgstr "Bekreft sletting"
-
-msgctxt "chart"
-msgid "bar"
-msgstr "Stolpe"

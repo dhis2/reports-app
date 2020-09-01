@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-08-20T07:11:10.268Z\n"
+"POT-Creation-Date: 2020-09-01T13:00:50.443Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
 "Last-Translator: Aung Kyi Min <AungKyi.Min@savethechildren.org>, 2020\n"
 "Language-Team: Burmese (https://www.transifex.com/hisp-uio/teams/100509/my/)\n"
@@ -17,9 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: my\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-
-msgid "Reports"
-msgstr "အစီရင်ခံစာများ"
 
 msgid "Updating Organisation Units Tree..."
 msgstr ""
@@ -128,6 +125,12 @@ msgid ""
 "Browse the organisation unit distribution report based on the organisation "
 "unit group sets and its groups."
 msgstr ""
+
+msgid "Reporting Period"
+msgstr ""
+
+msgid "Organisation Unit"
+msgstr "အဖွဲ့အစည်းယူနစ်"
 
 msgid "CONFIRM"
 msgstr ""
@@ -468,9 +471,6 @@ msgstr ""
 msgid "Count"
 msgstr "အရေအတွက်"
 
-msgid "Organisation Unit"
-msgstr "အဖွဲ့အစည်းယူနစ်"
-
 msgid "Total"
 msgstr ""
 
@@ -751,8 +751,4 @@ msgid "Upload file"
 msgstr ""
 
 msgid "Confirm delete"
-msgstr ""
-
-msgctxt "chart"
-msgid "bar"
 msgstr ""

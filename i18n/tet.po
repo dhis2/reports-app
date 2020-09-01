@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-08-20T07:11:10.268Z\n"
+"POT-Creation-Date: 2020-09-01T13:00:50.443Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
 "Last-Translator: Viktor Varland <viktor@dhis2.org>, 2020\n"
 "Language-Team: Tetum (Tetun) (https://www.transifex.com/hisp-uio/teams/100509/tet/)\n"
@@ -15,9 +15,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: tet\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-
-msgid "Reports"
-msgstr "Relatórius"
 
 msgid "Updating Organisation Units Tree..."
 msgstr ""
@@ -124,6 +121,12 @@ msgid ""
 "Browse the organisation unit distribution report based on the organisation "
 "unit group sets and its groups."
 msgstr ""
+
+msgid "Reporting Period"
+msgstr ""
+
+msgid "Organisation Unit"
+msgstr "Unidade Organizasaun"
 
 msgid "CONFIRM"
 msgstr ""
@@ -464,9 +467,6 @@ msgstr ""
 msgid "Count"
 msgstr "Konta"
 
-msgid "Organisation Unit"
-msgstr "Unidade Organizasaun"
-
 msgid "Total"
 msgstr ""
 
@@ -747,8 +747,4 @@ msgid "Upload file"
 msgstr ""
 
 msgid "Confirm delete"
-msgstr ""
-
-msgctxt "chart"
-msgid "bar"
 msgstr ""

@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-08-20T07:11:10.268Z\n"
+"POT-Creation-Date: 2020-09-01T13:00:50.443Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
 "Last-Translator: Gabriela Rodriguez <grodriguezcoronado@gmail.com>, 2020\n"
 "Language-Team: French (https://www.transifex.com/hisp-uio/teams/100509/fr/)\n"
@@ -19,9 +19,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-
-msgid "Reports"
-msgstr "Rapports"
 
 msgid "Updating Organisation Units Tree..."
 msgstr ""
@@ -139,6 +136,12 @@ msgid ""
 msgstr ""
 "Parcourir le rapport de distribution des unités d'organisation basé sur les "
 "ensembles de groupes d'unités d'organisation et leurs groupes."
+
+msgid "Reporting Period"
+msgstr ""
+
+msgid "Organisation Unit"
+msgstr "Unité d'organisation"
 
 msgid "CONFIRM"
 msgstr ""
@@ -479,9 +482,6 @@ msgstr ""
 msgid "Count"
 msgstr "Décompte"
 
-msgid "Organisation Unit"
-msgstr "Unité d'organisation"
-
 msgid "Total"
 msgstr "Total"
 
@@ -762,8 +762,4 @@ msgid "Upload file"
 msgstr "Charger fichier"
 
 msgid "Confirm delete"
-msgstr ""
-
-msgctxt "chart"
-msgid "bar"
 msgstr ""

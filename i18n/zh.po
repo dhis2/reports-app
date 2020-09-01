@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-08-20T07:11:10.268Z\n"
+"POT-Creation-Date: 2020-09-01T13:00:50.443Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
 "Last-Translator: 晓东 林 <13981924470@126.com>, 2020\n"
 "Language-Team: Chinese (https://www.transifex.com/hisp-uio/teams/100509/zh/)\n"
@@ -17,9 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: zh\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-
-msgid "Reports"
-msgstr "报表"
 
 msgid "Updating Organisation Units Tree..."
 msgstr "更新机构树"
@@ -126,6 +123,12 @@ msgid ""
 "Browse the organisation unit distribution report based on the organisation "
 "unit group sets and its groups."
 msgstr "基于组织机构组和组集浏览组织机构分布报表"
+
+msgid "Reporting Period"
+msgstr ""
+
+msgid "Organisation Unit"
+msgstr "组织机构"
 
 msgid "CONFIRM"
 msgstr "确认"
@@ -466,9 +469,6 @@ msgstr "载入报表选项发生错误"
 msgid "Count"
 msgstr "计数"
 
-msgid "Organisation Unit"
-msgstr "组织机构"
-
 msgid "Total"
 msgstr "总共"
 
@@ -750,7 +750,3 @@ msgstr "上传文件"
 
 msgid "Confirm delete"
 msgstr "确认删除"
-
-msgctxt "chart"
-msgid "bar"
-msgstr "柱状图"
