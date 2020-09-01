@@ -1,7 +1,90 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render a <PeriodTypeDropDown/> and <PeriodPicker/> when selectedPeriodType is truthy 1`] = `ShallowWrapper {}`;
+exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render a <PeriodTypeDropDown/> and <PeriodPicker/> when selectedPeriodType is truthy 1`] = `
+<div>
+  <span>
+    This is my label
+  </span>
+  <DropDown
+    emptyLabel="Select Period Type"
+    fullWidth={true}
+    hintText="Select Period Type"
+    menuItems={
+      Array [
+        Object {
+          "displayName": "Yes",
+          "id": "1",
+        },
+        Object {
+          "displayName": "No",
+          "id": "2",
+        },
+      ]
+    }
+    onChange={[Function]}
+    value="Quarterly"
+  />
+  <PeriodPicker
+    onPickPeriod={[MockFunction]}
+    periodType="Quarterly"
+  />
+</div>
+`;
 
-exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render a <PeriodTypeDropDown/> when selectedPeriodType is falsy 1`] = `ShallowWrapper {}`;
+exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render a <PeriodTypeDropDown/> when selectedPeriodType is falsy 1`] = `
+<div>
+  <span>
+    This is my label
+  </span>
+  <DropDown
+    emptyLabel="Select Period Type"
+    fullWidth={true}
+    hintText="Select Period Type"
+    menuItems={
+      Array [
+        Object {
+          "displayName": "Yes",
+          "id": "1",
+        },
+        Object {
+          "displayName": "No",
+          "id": "2",
+        },
+      ]
+    }
+    onChange={[Function]}
+    value=""
+  />
+</div>
+`;
 
-exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render the parsed period when a period has been selected 1`] = `ShallowWrapper {}`;
+exports[`Test <PeriodPickerWithPeriodType /> rendering: It should render the parsed period when a period has been selected 1`] = `
+<div>
+  <span>
+    This is my label
+  </span>
+  <DropDown
+    emptyLabel="Select Period Type"
+    fullWidth={true}
+    hintText="Select Period Type"
+    menuItems={
+      Array [
+        Object {
+          "displayName": "Yes",
+          "id": "1",
+        },
+        Object {
+          "displayName": "No",
+          "id": "2",
+        },
+      ]
+    }
+    onChange={[Function]}
+    value="Daily"
+  />
+  <PeriodPicker
+    onPickPeriod={[MockFunction]}
+    periodType="Daily"
+  />
+</div>
+`;

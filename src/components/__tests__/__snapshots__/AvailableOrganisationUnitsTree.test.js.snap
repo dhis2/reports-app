@@ -1,5 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test <AvailableOrganisationUnitsTree /> rendering: Should render OrgUnitTree when ready 1`] = `ShallowWrapper {}`;
+exports[`Test <AvailableOrganisationUnitsTree /> rendering: Should render OrgUnitTree when ready 1`] = `
+<div
+  className="org-unit-tree-wrapper"
+>
+  <OrgUnitTreeMultipleRoots
+    hideMemberCount={true}
+    initiallyExpanded={Array []}
+    onSelectClick={[MockFunction]}
+    roots={Array []}
+    selected={Array []}
+  />
+  <style>
+    
+                div {
+                    border: 1px solid #bcbcbc;
+                    overflow: auto;
+                    width: 100%;
+                    box-sizing: border-box;
+                    font-weight: 300;
+                    max-height: 400px;
+                    padding: 10px 5px;
+                }
+            
+  </style>
+</div>
+`;
 
-exports[`Test <AvailableOrganisationUnitsTree /> rendering: Should render a loading message when not ready 1`] = `ShallowWrapper {}`;
+exports[`Test <AvailableOrganisationUnitsTree /> rendering: Should render a loading message when not ready 1`] = `
+<span>
+  Updating Organisation Units Tree...
+</span>
+`;

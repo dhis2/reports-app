@@ -1,5 +1,59 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test <OrganisationUnitGroupSets /> rendering: It should match the snapshot 1`] = `ShallowWrapper {}`;
+exports[`Test <OrganisationUnitGroupSets /> rendering: It should match the snapshot 1`] = `
+Array [
+  <OrganisationUnitGroupSetDropdown
+    fullWidth={true}
+    groupSet={
+      Object {
+        "displayName": "organisationUnitGroupSet1",
+        "id": "organisationUnitGroupSet1",
+        "organisationUnitGroups": Array [
+          Object {
+            "displayName": "item1",
+            "id": "item1",
+          },
+        ],
+      }
+    }
+    key="organisationUnitGroupSet1"
+    onChange={[Function]}
+    value=""
+  />,
+  <OrganisationUnitGroupSetDropdown
+    fullWidth={true}
+    groupSet={
+      Object {
+        "displayName": "organisationUnitGroupSet2",
+        "id": "organisationUnitGroupSet2",
+        "organisationUnitGroups": Array [
+          Object {
+            "displayName": "item1",
+            "id": "item1",
+          },
+        ],
+      }
+    }
+    key="organisationUnitGroupSet2"
+    onChange={[Function]}
+    value=""
+  />,
+]
+`;
 
-exports[`Test <OrganisationUnitGroupSets /> rendering: Should render a loader when not ready 1`] = `ShallowWrapper {}`;
+exports[`Test <OrganisationUnitGroupSets /> rendering: Should render a loader when not ready 1`] = `
+<div>
+  <WithStyles(CircularProgress)
+    size={24}
+    thickness={3}
+  />
+  <style>
+    
+                div {
+                    padding-top: 16px;
+                    text-align: center;
+                }
+            
+  </style>
+</div>
+`;
