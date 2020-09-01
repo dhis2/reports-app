@@ -30,6 +30,8 @@ See the section about [building](https://platform.dhis2.nu/#/scripts/build) for 
 
 ## Learn More
 
+You can learn more about this particular app [in the docs](./docs/README.md)
+
 You can learn more about the platform in the [DHIS2 Application Platform Documentation](https://platform.dhis2.nu/).
 
 You can learn more about the runtime in the [DHIS2 Application Runtime Documentation](https://runtime.dhis2.nu/).
