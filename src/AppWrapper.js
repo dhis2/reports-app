@@ -10,7 +10,6 @@ import {
     createMuiTheme as createMui3Theme,
 } from '@material-ui/core/styles'
 
-import { useConfig } from '@dhis2/app-runtime'
 import { useD2 } from '@dhis2/app-runtime-adapter-d2'
 import { mui3theme } from '@dhis2/d2-ui-core'
 import D2UIApp from '@dhis2/d2-ui-app'
@@ -26,7 +25,6 @@ import App from './App'
 const MUI3Theme = createMui3Theme(mui3theme)
 
 const AppWrapper = () => {
-    const { baseUrl } = useConfig()
     const { d2 } = useD2({
         d2Config: {
             schemas: [
