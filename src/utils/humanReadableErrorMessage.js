@@ -17,7 +17,8 @@ export default function humanReadableErrorMessage(
     errorInstance = {},
     fallbackMsg = fallBackDefault
 ) {
-    let { message, messages, httpStatusCode } = errorInstance
+    const { messages, httpStatusCode } = errorInstance
+    let { message } = errorInstance
     const useMessage =
         (httpStatusCode && httpStatusCode >= 400 && httpStatusCode < 500) ||
         (!httpStatusCode && messages && messages.length > 0)

@@ -15,8 +15,8 @@ const TabularReport = ({ content, isLoading, fileUrls }) => (
 
 TabularReport.propTypes = {
     content: PropTypes.object.isRequired,
-    isLoading: PropTypes.bool.isRequired,
     fileUrls: PropTypes.array.isRequired,
+    isLoading: PropTypes.bool.isRequired,
 }
 
 export default TabularReport

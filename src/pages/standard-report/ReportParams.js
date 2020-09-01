@@ -115,10 +115,10 @@ export const ReportParams = props => (
 )
 
 ReportParams.propTypes = {
-    showReportParams: PropTypes.bool.isRequired,
+    cancelGeneratingPdfReport: PropTypes.func.isRequired,
     reportParams: PropTypes.object.isRequired,
     reportParamsErrors: PropTypes.arrayOf(PropTypes.string).isRequired,
-    cancelGeneratingPdfReport: PropTypes.func.isRequired,
+    showReportParams: PropTypes.bool.isRequired,
     submitRequiredReportParams: PropTypes.func.isRequired,
 }
 

@@ -1,77 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Snackbar /> can render a default snackbar message 1`] = `
-<span
-  id="feedbackSnackbarId"
->
-  <Component
-    conf={
-      Object {
-        "action": "",
-        "message": "Message body",
-        "onActionClick": [Function],
-        "type": "",
-      }
-    }
-    onClose={[Function]}
-    show={true}
-  />
-</span>
-`;
+exports[`<Snackbar /> can render a default snackbar message 1`] = `ShallowWrapper {}`;
 
-exports[`<Snackbar /> can render a success snackbar message 1`] = `
-<span
-  id="feedbackSnackbarId"
->
-  <Component
-    conf={
-      Object {
-        "action": "",
-        "message": "Message body",
-        "onActionClick": [Function],
-        "type": "SUCCESS",
-      }
-    }
-    onClose={[Function]}
-    show={true}
-  />
-</span>
-`;
+exports[`<Snackbar /> can render a success snackbar message 1`] = `ShallowWrapper {}`;
 
-exports[`<Snackbar /> can render a warning snackbar message 1`] = `
-<span
-  id="feedbackSnackbarId"
->
-  <Component
-    conf={
-      Object {
-        "action": "",
-        "message": "Message body",
-        "onActionClick": [Function],
-        "type": "WARNING",
-      }
-    }
-    onClose={[Function]}
-    show={true}
-  />
-</span>
-`;
+exports[`<Snackbar /> can render a warning snackbar message 1`] = `ShallowWrapper {}`;
 
-exports[`<Snackbar /> can render an error snackbar message 1`] = `
-<span
-  id="feedbackSnackbarId"
->
-  <Component
-    conf={
-      Object {
-        "action": "",
-        "message": "Message body",
-        "onActionClick": [Function],
-        "type": "ERROR",
-      }
-    }
-    onClose={[Function]}
-    show={true}
-  />
-</span>
-`;
+exports[`<Snackbar /> can render an error snackbar message 1`] = `ShallowWrapper {}`;

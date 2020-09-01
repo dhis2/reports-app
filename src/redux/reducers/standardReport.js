@@ -20,7 +20,6 @@ export const defaultState = {
     showReportParams: false,
 }
 
-// eslint-disable-next-line complexity
 export const standardReport = (state = defaultState, action = {}) => {
     const { type, payload } = action
 

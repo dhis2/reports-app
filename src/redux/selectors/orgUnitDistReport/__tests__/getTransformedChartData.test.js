@@ -17,12 +17,12 @@ describe('getTransformedChartData', () => {
         },
     }
     const expectedResult = transformedChartData
+    const getCachedResultSpy = jest.spyOn(cache, 'getCachedResult')
 
     it('transforms correctly', () => {
         expect(getTransformedChartData(state)).toEqual(expectedResult)
     })
     it('will return the cached result if called for a second time with same input', () => {
-        const getCachedResultSpy = jest.spyOn(cache, 'getCachedResult')
         getTransformedChartData(state)
         expect(getCachedResultSpy).toHaveBeenCalledTimes(1)
     })

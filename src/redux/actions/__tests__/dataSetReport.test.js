@@ -16,8 +16,6 @@ jest.mock('../../../utils/api', () => ({
 }))
 
 describe('Actions - dataSetReport - Async thunks', () => {
-    const dispatch = jest.fn()
-
     describe('loading the html report', () => {
         const store = mockStore({
             dataSet: { selected: {} },

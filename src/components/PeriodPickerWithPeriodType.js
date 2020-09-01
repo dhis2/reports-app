@@ -52,10 +52,10 @@ export function PeriodPickerWithPeriodType({
 }
 
 PeriodPickerWithPeriodType.propTypes = {
-    selectPeriodType: PropTypes.func.isRequired,
-    selectPeriod: PropTypes.func.isRequired,
-    label: PropTypes.string.isRequired,
     collection: PropTypes.array.isRequired,
+    label: PropTypes.string.isRequired,
+    selectPeriod: PropTypes.func.isRequired,
+    selectPeriodType: PropTypes.func.isRequired,
     selectedPeriodIsFixed: PropTypes.bool.isRequired,
     selectedPeriodType: PropTypes.string,
 }
@@ -66,10 +66,7 @@ const mapStateToProps = state => ({
     selectedPeriodIsFixed: isSelectedPeriodFixed(state),
 })
 
-export default connect(
-    mapStateToProps,
-    {
-        selectPeriodType,
-        selectPeriod,
-    }
-)(PeriodPickerWithPeriodType)
+export default connect(mapStateToProps, {
+    selectPeriodType,
+    selectPeriod,
+})(PeriodPickerWithPeriodType)

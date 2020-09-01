@@ -78,19 +78,19 @@ export class AddEditStandardReport extends PureComponent {
 }
 
 AddEditStandardReport.propTypes = {
-    match: PropTypes.shape({
-        params: PropTypes.shape({
-            mode: PropTypes.oneOf(['new', 'edit']),
-            id: PropTypes.string,
-        }),
-    }).isRequired,
     loadStandardReportDetails: PropTypes.func.isRequired,
     loadStandardReportTables: PropTypes.func.isRequired,
+    match: PropTypes.shape({
+        params: PropTypes.shape({
+            id: PropTypes.string,
+            mode: PropTypes.oneOf(['new', 'edit']),
+        }),
+    }).isRequired,
+    navigateToList: PropTypes.func.isRequired,
+    sendStandardReport: PropTypes.func.isRequired,
+    edit: ReportForm.propTypes.edit,
     report: ReportForm.propTypes.report,
     reportTables: ReportForm.propTypes.reportTables,
-    edit: ReportForm.propTypes.edit,
-    sendStandardReport: PropTypes.func.isRequired,
-    navigateToList: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => {
@@ -101,14 +101,11 @@ const mapStateToProps = state => {
     }
 }
 
-const ConnectedComponent = connect(
-    mapStateToProps,
-    {
-        loadStandardReportDetails,
-        loadStandardReportTables,
-        sendStandardReport,
-        navigateToList,
-    }
-)(AddEditStandardReport)
+const ConnectedComponent = connect(mapStateToProps, {
+    loadStandardReportDetails,
+    loadStandardReportTables,
+    sendStandardReport,
+    navigateToList,
+})(AddEditStandardReport)
 
 export { ConnectedComponent as ConnectedAddEditStdReport }

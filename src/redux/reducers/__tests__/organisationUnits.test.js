@@ -1,4 +1,3 @@
-import { LOCATION_CHANGE } from 'connected-react-router'
 import { organisationUnits, ACTIONS, defaultState } from '../organisationUnits'
 
 describe('Reducer - organisationUnits', () => {

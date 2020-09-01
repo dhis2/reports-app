@@ -25,14 +25,13 @@ export const DatasetsDropdown = props => (
 )
 
 DatasetsDropdown.propTypes = {
-    selected: PropTypes.object.isRequired,
     loading: PropTypes.bool.isRequired,
     options: PropTypes.array.isRequired,
     selectDataSet: PropTypes.func.isRequired,
-    onChange: PropTypes.func,
-    label: PropTypes.string,
+    selected: PropTypes.object.isRequired,
     fullWidth: PropTypes.bool,
-    filter: PropTypes.func,
+    label: PropTypes.string,
+    onChange: PropTypes.func,
 }
 
 DatasetsDropdown.defaultProps = {
@@ -52,7 +51,4 @@ const mapDispatchToProps = dispatch => ({
     selectDataSet: event => dispatch(selectDataSet(event.target.value)),
 })
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(DatasetsDropdown)
+export default connect(mapStateToProps, mapDispatchToProps)(DatasetsDropdown)

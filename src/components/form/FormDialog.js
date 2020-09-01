@@ -34,10 +34,10 @@ export const FormDialog = props => (
 )
 
 FormDialog.propTypes = {
+    children: children.isRequired,
     open: PropTypes.bool.isRequired,
     title: PropTypes.string.isRequired,
     onClose: PropTypes.func.isRequired,
-    children: children.isRequired,
     maxWidth: PropTypes.number,
 }
 

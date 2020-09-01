@@ -1,16 +1,3 @@
-# See https://help.github.com/ignore-files/ for more about ignoring files.
-
-# dependencies
-/node_modules
-package-lock.json
-
-# testing
-/coverage
-
-# production
-/build
-/target
-
 # misc
 .DS_Store
 .env.local
@@ -24,15 +11,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# d2 manifest
-public/manifest.webapp
 
-# e2e tests
-allure-results
-e2e/results
-chrome
-chromeDownloads
-
-# i18n files
-/src/utils/i18n/locales
-/.vscode
+# DHIS2 Platform
+node_modules
+.d2
+src/locales
+build

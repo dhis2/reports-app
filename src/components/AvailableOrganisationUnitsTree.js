@@ -40,9 +40,9 @@ export function AvailableOrganisationUnitsTree({
 }
 
 AvailableOrganisationUnitsTree.propTypes = {
-    selectOrganisationUnit: PropTypes.func.isRequired,
-    loading: PropTypes.bool.isRequired,
     collection: PropTypes.array.isRequired,
+    loading: PropTypes.bool.isRequired,
+    selectOrganisationUnit: PropTypes.func.isRequired,
     selected: PropTypes.object,
 }
 
@@ -52,7 +52,6 @@ const mapStateToProps = ({ organisationUnits }) => ({
     selected: organisationUnits.selected,
 })
 
-export default connect(
-    mapStateToProps,
-    { selectOrganisationUnit }
-)(AvailableOrganisationUnitsTree)
+export default connect(mapStateToProps, { selectOrganisationUnit })(
+    AvailableOrganisationUnitsTree
+)

@@ -47,17 +47,17 @@ const DataSetReport = props => (
 
 DataSetReport.propTypes = {
     fileUrls: PropTypes.array.isRequired,
-    isHtmlReport: PropTypes.bool.isRequired,
-    reportContent: reportContent.isRequired,
-    reportComment: PropTypes.string.isRequired,
-    isReportLoading: PropTypes.bool.isRequired,
     isActionEnabled: PropTypes.bool.isRequired,
-    selectedUnitOnly: PropTypes.bool.isRequired,
+    isHtmlReport: PropTypes.bool.isRequired,
+    isReportLoading: PropTypes.bool.isRequired,
     loadReportData: PropTypes.func.isRequired,
+    reportComment: PropTypes.string.isRequired,
+    reportContent: reportContent.isRequired,
     selectDataSet: PropTypes.func.isRequired,
-    toggleSelectedUnitOnly: PropTypes.func.isRequired,
-    shareDataSetReportComment: PropTypes.func.isRequired,
+    selectedUnitOnly: PropTypes.bool.isRequired,
     setDataSetReportComment: PropTypes.func.isRequired,
+    shareDataSetReportComment: PropTypes.func.isRequired,
+    toggleSelectedUnitOnly: PropTypes.func.isRequired,
 }
 
 const ConnectedDataSetReport = connectDataSetReport(DataSetReport)

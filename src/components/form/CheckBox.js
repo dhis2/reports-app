@@ -60,6 +60,6 @@ export const CheckBox = props => (
 )
 
 CheckBox.propTypes = {
-    label: PropTypes.string.isRequired,
     input: formInput.isRequired,
+    label: PropTypes.string.isRequired,
 }

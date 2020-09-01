@@ -2,7 +2,6 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { DropDown } from '@dhis2/d2-ui-core'
 import { DatasetsDropdown } from '../DatasetsDropdown'
-import fakerData from '../../utils/fakerTests'
 
 jest.mock('@dhis2/d2-ui-core', () => ({ DropDown: 'DropDown' }))
 
@@ -18,11 +17,6 @@ const ownShallow = () => {
 }
 
 describe('Test <DatasetsDropdown /> rendering:', () => {
-    let wrapper
-    beforeEach(() => {
-        wrapper = ownShallow()
-    })
-
     it('Should render without crashing', () => {
         ownShallow()
     })

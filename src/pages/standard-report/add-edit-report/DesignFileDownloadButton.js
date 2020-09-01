@@ -41,6 +41,7 @@ export const DesignFileDownloadButton = ({
                     causes unexpected behavior in Chrome, see:
                     https://dhis2.slack.com/archives/G451J9KGR/p1570090946063500
                     */}
+                    {/* eslint-disable-next-line react/jsx-no-target-blank */}
                     <a href={url} target="_blank" download={type !== 'html'}>
                         Download
                     </a>
@@ -59,6 +60,6 @@ export const DesignFileDownloadButton = ({
 
 DesignFileDownloadButton.propTypes = {
     isEditing: PropTypes.bool.isRequired,
-    reportType: PropTypes.string.isRequired,
     reportId: PropTypes.string.isRequired,
+    reportType: PropTypes.string.isRequired,
 }

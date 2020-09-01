@@ -16,12 +16,12 @@ describe('getTransformedTableData', () => {
         },
     }
     const expectedResult = transformedTableData
+    const getCachedResultSpy = jest.spyOn(cache, 'getCachedResult')
 
     it('transforms correctly', () => {
         expect(getTransformedTableData(state)).toEqual(expectedResult)
     })
     it('will return the cached result if called for a second time with same input', () => {
-        const getCachedResultSpy = jest.spyOn(cache, 'getCachedResult')
         getTransformedTableData(state)
         expect(getCachedResultSpy).toHaveBeenCalledTimes(1)
     })

@@ -1,5 +1,4 @@
 import { actionTypes } from '../../actions/dataSetReport'
-import { actionTypes as reportHtmlActionTypes } from '../../actions/reportData'
 import { dataSetReport, defaultState } from '../dataSetReport'
 
 describe('Reducer - dataSetReport', () => {

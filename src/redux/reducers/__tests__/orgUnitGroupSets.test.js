@@ -3,13 +3,6 @@ import { actionTypes } from '../../actions/orgUnitGroupSets'
 import { orgUnitGroupSets, defaultState } from '../orgUnitGroupSets'
 
 describe('Reducer - orgUnitGroupSets', () => {
-    const errorStr = 'Oops'
-    const mockCollection = [
-        { id: '1', displayName: '1' },
-        { id: '2', displayName: '2' },
-        { id: '3', displayName: '3' },
-    ]
-
     it('should return the default state', () => {
         expect(orgUnitGroupSets()).toEqual(defaultState)
     })

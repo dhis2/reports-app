@@ -24,10 +24,10 @@ export const SelectField = props => (
 )
 
 SelectField.propTypes = {
-    input: formInput.isRequired,
-    showEmptyOption: PropTypes.bool.isRequired,
     disabled: PropTypes.bool.isRequired,
+    input: formInput.isRequired,
     options: formOptions.isRequired,
+    showEmptyOption: PropTypes.bool.isRequired,
 }
 
 const { className, styles } = inputWrapper
@@ -52,12 +52,12 @@ export const Select = props => (
 Select.propTypes = {
     input: formInput.isRequired,
     meta: formInputMeta.isRequired,
-    placeholder: PropTypes.string.isRequired,
     options: formOptions.isRequired,
+    placeholder: PropTypes.string.isRequired,
 
+    disabled: PropTypes.bool,
     showEmptyOption: PropTypes.bool,
     showErrorText: PropTypes.bool,
-    disabled: PropTypes.bool,
 }
 
 Select.defaultProps = {

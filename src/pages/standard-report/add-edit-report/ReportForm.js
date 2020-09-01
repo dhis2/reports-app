@@ -154,11 +154,11 @@ const ReportForm = props => (
 )
 
 ReportForm.propTypes = {
+    backToList: PropTypes.func.isRequired,
+    edit: PropTypes.bool.isRequired,
     report: PropTypes.object.isRequired,
     reportTables: formOptions.isRequired,
-    edit: PropTypes.bool.isRequired,
     onSubmit: PropTypes.func.isRequired,
-    backToList: PropTypes.func.isRequired,
 }
 
 export { ReportForm }

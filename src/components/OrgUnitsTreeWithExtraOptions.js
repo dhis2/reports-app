@@ -59,8 +59,8 @@ export const OrgUnitsTreeWithExtraOptions = props => (
 )
 
 OrgUnitsTreeWithExtraOptions.propTypes = {
-    showOptions: PropTypes.bool.isRequired,
     isLoadingOptions: PropTypes.bool.isRequired,
+    showOptions: PropTypes.bool.isRequired,
     toggleShowOptions: PropTypes.func.isRequired,
 }
 
@@ -69,9 +69,6 @@ const mapStateToProps = state => ({
     isLoadingOptions: state.orgUnitGroupSets.loading,
 })
 
-export default connect(
-    mapStateToProps,
-    {
-        toggleShowOptions,
-    }
-)(OrgUnitsTreeWithExtraOptions)
+export default connect(mapStateToProps, {
+    toggleShowOptions,
+})(OrgUnitsTreeWithExtraOptions)

@@ -37,11 +37,11 @@ const ReportingRateSummary = props => (
 )
 
 ReportingRateSummary.propTypes = {
+    fileUrls: PropTypes.array.isRequired,
     isActionEnabled: PropTypes.bool.isRequired,
+    isReportLoading: PropTypes.bool.isRequired,
     loadReportData: PropTypes.func.isRequired,
     reportContent: reportContent.isRequired,
-    fileUrls: PropTypes.array.isRequired,
-    isReportLoading: PropTypes.bool.isRequired,
 }
 
 const ConnectedReportingRateSummary = connectReportingRateSummary(

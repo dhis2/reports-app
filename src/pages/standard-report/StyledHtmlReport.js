@@ -32,6 +32,8 @@ const LinkToListWithRef = React.forwardRef((props, ref) => (
     />
 ))
 
+LinkToListWithRef.displayName = 'LinkToListWithRef'
+
 class StyledHtmlReport extends React.Component {
     componentDidMount() {
         const {
@@ -76,12 +78,12 @@ class StyledHtmlReport extends React.Component {
 }
 
 StyledHtmlReport.propTypes = {
-    reportData: PropTypes.string.isRequired,
     generateHtmlReport: PropTypes.func.isRequired,
+    reportData: PropTypes.string.isRequired,
+    location: PropTypes.shape({ search: PropTypes.string }),
     match: PropTypes.shape({
         params: PropTypes.shape({ id: PropTypes.string }),
     }),
-    location: PropTypes.shape({ search: PropTypes.string }),
 }
 
 export default connect(
