@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-08-20T07:11:10.268Z\n"
+"POT-Creation-Date: 2020-09-01T13:00:50.443Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
 "Last-Translator: phil_dhis2, 2020\n"
 "Language-Team: Persian (Afghanistan) (https://www.transifex.com/hisp-uio/teams/100509/fa_AF/)\n"
@@ -14,9 +14,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fa_AF\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-
-msgid "Reports"
-msgstr "گزارش ها"
 
 msgid "Updating Organisation Units Tree..."
 msgstr ""
@@ -133,6 +130,12 @@ msgid ""
 msgstr ""
 "جستجوی گزارش توزیع واحد سازمان به اساس مجموعه های گروپ واحد سازمان و گروپ "
 "های آن"
+
+msgid "Reporting Period"
+msgstr ""
+
+msgid "Organisation Unit"
+msgstr "واحد سازمان"
 
 msgid "CONFIRM"
 msgstr ""
@@ -473,9 +476,6 @@ msgstr ""
 msgid "Count"
 msgstr "تعداد"
 
-msgid "Organisation Unit"
-msgstr "واحد سازمان"
-
 msgid "Total"
 msgstr "مجموع"
 
@@ -756,8 +756,4 @@ msgid "Upload file"
 msgstr "بارگیری فایل"
 
 msgid "Confirm delete"
-msgstr ""
-
-msgctxt "chart"
-msgid "bar"
 msgstr ""

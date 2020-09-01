@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-08-20T07:11:10.268Z\n"
+"POT-Creation-Date: 2020-09-01T13:00:50.443Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
 "Last-Translator: Viktor Varland <viktor@dhis2.org>, 2020\n"
 "Language-Team: Tajik (https://www.transifex.com/hisp-uio/teams/100509/tg/)\n"
@@ -15,9 +15,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: tg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-msgid "Reports"
-msgstr "Ҳисоботҳо"
 
 msgid "Updating Organisation Units Tree..."
 msgstr ""
@@ -136,6 +133,12 @@ msgid ""
 msgstr ""
 "Паймоиши ҳисоботи паҳнкунии воҳиди сохторӣ  дар асоси маҷмӯъҳои гурӯҳи "
 "воҳидҳои сохторӣ  ва гурӯҳҳои онҳо."
+
+msgid "Reporting Period"
+msgstr ""
+
+msgid "Organisation Unit"
+msgstr "Воҳиди сохторӣ"
 
 msgid "CONFIRM"
 msgstr ""
@@ -476,9 +479,6 @@ msgstr ""
 msgid "Count"
 msgstr "Шумора"
 
-msgid "Organisation Unit"
-msgstr "Воҳиди сохторӣ"
-
 msgid "Total"
 msgstr ""
 
@@ -759,8 +759,4 @@ msgid "Upload file"
 msgstr "Боркунии файл"
 
 msgid "Confirm delete"
-msgstr ""
-
-msgctxt "chart"
-msgid "bar"
 msgstr ""

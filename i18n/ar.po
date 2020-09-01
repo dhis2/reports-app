@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-08-20T07:11:10.268Z\n"
+"POT-Creation-Date: 2020-09-01T13:00:50.443Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
 "Last-Translator: Hamza Assada <7amza.it@gmail.com>, 2020\n"
 "Language-Team: Arabic (https://www.transifex.com/hisp-uio/teams/100509/ar/)\n"
@@ -16,9 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
-
-msgid "Reports"
-msgstr "التقارير"
 
 msgid "Updating Organisation Units Tree..."
 msgstr "جار تحديث شجرة الوحدات التنظيمية..."
@@ -134,6 +131,12 @@ msgid ""
 msgstr ""
 "استعراض تقرير توزيع الوحدة التنظيمية اعتماداً على حزم مجموعات الوحدات "
 "التنظيمية ومجموعاتها."
+
+msgid "Reporting Period"
+msgstr ""
+
+msgid "Organisation Unit"
+msgstr "الوحدة التنظيمية"
 
 msgid "CONFIRM"
 msgstr "تأكيد"
@@ -474,9 +477,6 @@ msgstr "حدث خطأ أثناء تحميل خيارات جدول التقرير
 msgid "Count"
 msgstr "العدد"
 
-msgid "Organisation Unit"
-msgstr "الوحدة التنظيمية"
-
 msgid "Total"
 msgstr "الإجمالي"
 
@@ -758,7 +758,3 @@ msgstr "تحميل الملف"
 
 msgid "Confirm delete"
 msgstr "تأكيد الحذف"
-
-msgctxt "chart"
-msgid "bar"
-msgstr ""

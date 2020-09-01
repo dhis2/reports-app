@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-08-20T07:11:10.268Z\n"
+"POT-Creation-Date: 2020-09-01T13:00:50.443Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
 "Last-Translator: Mai Nguyen <thanhmai.jica@gmail.com>, 2020\n"
 "Language-Team: Vietnamese (https://www.transifex.com/hisp-uio/teams/100509/vi/)\n"
@@ -16,9 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: vi\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-
-msgid "Reports"
-msgstr "Báo cáo tổng hợp"
 
 msgid "Updating Organisation Units Tree..."
 msgstr "Cập nhật cây đơn vị"
@@ -133,6 +130,12 @@ msgid ""
 "Browse the organisation unit distribution report based on the organisation "
 "unit group sets and its groups."
 msgstr "Duyệt xem các báo cáo mở rộng theo đơn vị"
+
+msgid "Reporting Period"
+msgstr ""
+
+msgid "Organisation Unit"
+msgstr "Đơn vị"
 
 msgid "CONFIRM"
 msgstr "Xác nhận"
@@ -473,9 +476,6 @@ msgstr "Xảy ra lỗi khi tải các tùy chọn bảng báo cáo"
 msgid "Count"
 msgstr "Đếm"
 
-msgid "Organisation Unit"
-msgstr "Đơn vị"
-
 msgid "Total"
 msgstr "Tổng số"
 
@@ -757,7 +757,3 @@ msgstr "Tải một tập tin"
 
 msgid "Confirm delete"
 msgstr "Xác nhận xóa"
-
-msgctxt "chart"
-msgid "bar"
-msgstr "Thanh"

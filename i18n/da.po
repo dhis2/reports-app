@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-08-20T07:11:10.268Z\n"
+"POT-Creation-Date: 2020-09-01T13:00:50.443Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
 "Last-Translator: phil_dhis2, 2020\n"
 "Language-Team: Danish (https://www.transifex.com/hisp-uio/teams/100509/da/)\n"
@@ -14,9 +14,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-msgid "Reports"
-msgstr "NRHM Reports"
 
 msgid "Updating Organisation Units Tree..."
 msgstr ""
@@ -122,6 +119,12 @@ msgstr ""
 msgid ""
 "Browse the organisation unit distribution report based on the organisation "
 "unit group sets and its groups."
+msgstr ""
+
+msgid "Reporting Period"
+msgstr ""
+
+msgid "Organisation Unit"
 msgstr ""
 
 msgid "CONFIRM"
@@ -463,9 +466,6 @@ msgstr ""
 msgid "Count"
 msgstr ""
 
-msgid "Organisation Unit"
-msgstr ""
-
 msgid "Total"
 msgstr ""
 
@@ -746,8 +746,4 @@ msgid "Upload file"
 msgstr ""
 
 msgid "Confirm delete"
-msgstr ""
-
-msgctxt "chart"
-msgid "bar"
 msgstr ""

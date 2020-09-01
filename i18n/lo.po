@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-08-20T07:11:10.268Z\n"
+"POT-Creation-Date: 2020-09-01T13:00:50.443Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
 "Last-Translator: Viktor Varland <viktor@dhis2.org>, 2020\n"
 "Language-Team: Lao (https://www.transifex.com/hisp-uio/teams/100509/lo/)\n"
@@ -15,9 +15,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: lo\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-
-msgid "Reports"
-msgstr "ລາຍ​ງານ​"
 
 msgid "Updating Organisation Units Tree..."
 msgstr ""
@@ -135,6 +132,12 @@ msgid ""
 msgstr ""
 "​ເບີ່ງ​​ບົດ​ລາຍ​ງານ​ການ​ແຈກ​ຢາຍຫົວ​ໜ່ວຍ​ການ​ຈັດ​ຕັ້ງ​ອີງ​ໃສ່​​ກຸ່ມ​ຂອງຫົວ​ໜ່ວຍ​ການ​ຈັດ​ຕັ້ງ"
 " ແລະ ກຸມ​ຂອງ​ມັນ"
+
+msgid "Reporting Period"
+msgstr ""
+
+msgid "Organisation Unit"
+msgstr "ຫົວໜ່ວຍ ການຈັດຕັ້ງ"
 
 msgid "CONFIRM"
 msgstr ""
@@ -475,9 +478,6 @@ msgstr ""
 msgid "Count"
 msgstr "ນັບ"
 
-msgid "Organisation Unit"
-msgstr "ຫົວໜ່ວຍ ການຈັດຕັ້ງ"
-
 msgid "Total"
 msgstr "ລວມ"
 
@@ -758,8 +758,4 @@ msgid "Upload file"
 msgstr "ໂຫຼດເອກະສານ"
 
 msgid "Confirm delete"
-msgstr ""
-
-msgctxt "chart"
-msgid "bar"
 msgstr ""

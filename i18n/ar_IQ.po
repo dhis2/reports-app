@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-08-20T07:11:10.268Z\n"
+"POT-Creation-Date: 2020-09-01T13:00:50.443Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
 "Last-Translator: KRG HIS <antonia.bezenchek@informa.pro>, 2020\n"
 "Language-Team: Arabic (Iraq) (https://www.transifex.com/hisp-uio/teams/100509/ar_IQ/)\n"
@@ -14,9 +14,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ar_IQ\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
-
-msgid "Reports"
-msgstr "التقارير"
 
 msgid "Updating Organisation Units Tree..."
 msgstr ""
@@ -123,6 +120,12 @@ msgid ""
 "Browse the organisation unit distribution report based on the organisation "
 "unit group sets and its groups."
 msgstr ""
+
+msgid "Reporting Period"
+msgstr ""
+
+msgid "Organisation Unit"
+msgstr "الوحدة التنظيمية"
 
 msgid "CONFIRM"
 msgstr ""
@@ -463,9 +466,6 @@ msgstr ""
 msgid "Count"
 msgstr "العدد"
 
-msgid "Organisation Unit"
-msgstr "الوحدة التنظيمية"
-
 msgid "Total"
 msgstr ""
 
@@ -746,8 +746,4 @@ msgid "Upload file"
 msgstr ""
 
 msgid "Confirm delete"
-msgstr ""
-
-msgctxt "chart"
-msgid "bar"
 msgstr ""
