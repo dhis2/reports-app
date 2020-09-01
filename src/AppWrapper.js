@@ -14,7 +14,6 @@ import { useConfig } from '@dhis2/app-runtime'
 import { useD2 } from '@dhis2/app-runtime-adapter-d2'
 import { mui3theme } from '@dhis2/d2-ui-core'
 import D2UIApp from '@dhis2/d2-ui-app'
-import { CssReset } from '@dhis2/ui-core'
 
 import { initApi } from './utils/api'
 import history from './utils/history'
@@ -55,7 +54,6 @@ const AppWrapper = () => {
             <Mui3ThemeProvider theme={MUI3Theme}>
                 <Provider store={store}>
                     <ConnectedRouter history={history}>
-                        <CssReset />
                         <App d2={d2} />
                     </ConnectedRouter>
                 </Provider>
