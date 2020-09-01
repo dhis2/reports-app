@@ -29,7 +29,6 @@ const AppWrapper = () => {
     const { baseUrl } = useConfig()
     const { d2 } = useD2({
         d2Config: {
-            baseUrl: baseUrl + '/api',
             schemas: [
                 'dataApprovalLevel',
                 'dataSet',
