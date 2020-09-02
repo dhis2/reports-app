@@ -58,7 +58,7 @@
         "react-chartjs-2": "^2.7.4",
         "react-final-form": "^4.0.2",
         "react-redux": "^6.0.0",
-        "react-router-dom": "^v4.4.0-beta.8",
+        "react-router-dom": "^v5.2.0",
         "redux": "^4.0.1",
         "redux-thunk": "^2.3.0",
         "reselect": "^4.0.0",
