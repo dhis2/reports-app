@@ -10,49 +10,113 @@ exports[`Matches the snapshot 1`] = `
       path="/"
     />
     <Route
-      component={[Function]}
+      component={
+        Object {
+          "$$typeof": Symbol(react.memo),
+          "WrappedComponent": [Function],
+          "compare": null,
+          "displayName": "Connect(StandardReport)",
+          "type": [Function],
+        }
+      }
       exact={true}
       key="standard-report"
       path="/standard-report"
     />
     <Route
-      component={[Function]}
+      component={
+        Object {
+          "$$typeof": Symbol(react.memo),
+          "WrappedComponent": [Function],
+          "compare": null,
+          "displayName": "Connect(StyledHtmlReport)",
+          "type": [Function],
+        }
+      }
       exact={true}
       key="standard-report-viewHTMLReport"
       path="/standard-report/view/:id"
     />
     <Route
-      component={[Function]}
+      component={
+        Object {
+          "$$typeof": Symbol(react.memo),
+          "WrappedComponent": [Function],
+          "compare": null,
+          "displayName": "Connect(AddEditStandardReport)",
+          "type": [Function],
+        }
+      }
       exact={true}
       key="standard-report-addEdit"
       path="/standard-report/:mode/:id?"
     />
     <Route
-      component={[Function]}
+      component={
+        Object {
+          "$$typeof": Symbol(react.memo),
+          "WrappedComponent": [Function],
+          "compare": null,
+          "displayName": "Connect(DataSetReport)",
+          "type": [Function],
+        }
+      }
       exact={true}
       key="data-set-report"
       path="/data-set-report"
     />
     <Route
-      component={[Function]}
+      component={
+        Object {
+          "$$typeof": Symbol(react.memo),
+          "WrappedComponent": [Function],
+          "compare": null,
+          "displayName": "Connect(ReportingRateSummary)",
+          "type": [Function],
+        }
+      }
       exact={true}
       key="reporting-rate-summary"
       path="/reporting-rate-summary"
     />
     <Route
-      component={[Function]}
+      component={
+        Object {
+          "$$typeof": Symbol(react.memo),
+          "WrappedComponent": [Function],
+          "compare": null,
+          "displayName": "Connect(Resource)",
+          "type": [Function],
+        }
+      }
       exact={true}
       key="resource"
       path="/resource"
     />
     <Route
-      component={[Function]}
+      component={
+        Object {
+          "$$typeof": Symbol(react.memo),
+          "WrappedComponent": [Function],
+          "compare": null,
+          "displayName": "Connect(AddEditResource)",
+          "type": [Function],
+        }
+      }
       exact={true}
       key="resource-addEdit"
       path="/resource/:mode/:id?"
     />
     <Route
-      component={[Function]}
+      component={
+        Object {
+          "$$typeof": Symbol(react.memo),
+          "WrappedComponent": [Function],
+          "compare": null,
+          "displayName": "Connect(OrganisationUnitDistributionReport)",
+          "type": [Function],
+        }
+      }
       exact={true}
       key="organisation-unit-distribution-report"
       path="/organisation-unit-distribution-report"
