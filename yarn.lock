@@ -10479,10 +10479,10 @@ marked@^0.8.2:
   resolved "https://registry.yarnpkg.com/marked/-/marked-0.8.2.tgz#4faad28d26ede351a7a1aaa5fec67915c869e355"
   integrity sha512-EGwzEeCcLniFX51DhTpmTom+dSA/MG/OBUDjnWtHbEnjAH180VzUeAw+oE4+Zv+CoYBWyRlYOTR0N8SO9R1PVw==
 
-material-design-icons-iconfont@^4.0.5:
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/material-design-icons-iconfont/-/material-design-icons-iconfont-4.0.5.tgz#4107ba3b8a9d688a3d9325fc7363af51b17d3aee"
-  integrity sha512-ByJJ1yz8+RfCx2uNiC5WjVCR7K3UWRb8ytWV3RMaoFRzQLNr/J5x7+Wg1+3OlIZahNXrId9Hu+BfXfQIo01v7g==
+material-design-icons-iconfont@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/material-design-icons-iconfont/-/material-design-icons-iconfont-6.0.1.tgz#e5834ad566105013c68e1348bec7615481645434"
+  integrity sha512-NDC8gQD0ORRum5dkwwF8hiDzW+y4cROyu213HJa1c7ediok9lsi8TMmmSvbA51WApYbgcdE9X5u0TzgL8n4zTw==
 
 material-ui@^0.20.0:
   version "0.20.2"
