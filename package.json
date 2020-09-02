@@ -63,7 +63,7 @@
         "redux-thunk": "^2.3.0",
         "reselect": "^4.0.0",
         "whatwg-fetch": "3.4.0",
-        "xlsx": "^0.13.0"
+        "xlsx": "^0.16.6"
     },
     "jest": {
         "setupFilesAfterEnv": [
