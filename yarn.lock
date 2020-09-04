@@ -10475,10 +10475,10 @@ marked@^0.8.2:
   resolved "https://registry.yarnpkg.com/marked/-/marked-0.8.2.tgz#4faad28d26ede351a7a1aaa5fec67915c869e355"
   integrity sha512-EGwzEeCcLniFX51DhTpmTom+dSA/MG/OBUDjnWtHbEnjAH180VzUeAw+oE4+Zv+CoYBWyRlYOTR0N8SO9R1PVw==
 
-material-design-icons-iconfont@^6.0.1:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/material-design-icons-iconfont/-/material-design-icons-iconfont-6.0.1.tgz#e5834ad566105013c68e1348bec7615481645434"
-  integrity sha512-NDC8gQD0ORRum5dkwwF8hiDzW+y4cROyu213HJa1c7ediok9lsi8TMmmSvbA51WApYbgcdE9X5u0TzgL8n4zTw==
+material-design-icons-iconfont@^6.0.2:
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/material-design-icons-iconfont/-/material-design-icons-iconfont-6.0.2.tgz#33186024b7ae940be4931c7b4cd958923134825e"
+  integrity sha512-ks9SbeJL5sG/su3AGzd1OuYbtaAY5KTwYvhWchcNUjdbQiddD3A+Vqi9nag1Ag0Rv9zGs34kyWWYTAUF3ynpyA==
 
 material-ui@^0.20.0:
   version "0.20.2"
