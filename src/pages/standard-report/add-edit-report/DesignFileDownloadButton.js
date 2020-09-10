@@ -43,7 +43,7 @@ export const DesignFileDownloadButton = ({
                     */}
                     {/* eslint-disable-next-line react/jsx-no-target-blank */}
                     <a href={url} target="_blank" download={type !== 'html'}>
-                        Download
+                        {i18n.t('Download')}
                     </a>
                 </Button>
             </FormHelperText>
