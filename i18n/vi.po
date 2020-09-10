@@ -1,15 +1,15 @@
 # 
 # Translators:
 # phil_dhis2, 2020
-# Viktor Varland <viktor@dhis2.org>, 2020
 # Mai Nguyen <thanhmai.jica@gmail.com>, 2020
+# Viktor Varland <viktor@dhis2.org>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-09-01T13:00:50.443Z\n"
+"POT-Creation-Date: 2020-09-10T09:10:58.679Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
-"Last-Translator: Mai Nguyen <thanhmai.jica@gmail.com>, 2020\n"
+"Last-Translator: Viktor Varland <viktor@dhis2.org>, 2020\n"
 "Language-Team: Vietnamese (https://www.transifex.com/hisp-uio/teams/100509/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -214,6 +214,9 @@ msgstr "Lấy mẫu báo cáo HTML"
 
 msgid "Get Jasper Report Template"
 msgstr "Lấy mẫu báo cáo Jasper"
+
+msgid "Download"
+msgstr ""
 
 msgid "Report Type*"
 msgstr "Loại báo cáo*"
