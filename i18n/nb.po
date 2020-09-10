@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-09-01T13:00:50.443Z\n"
+"POT-Creation-Date: 2020-09-10T09:10:58.679Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
 "Last-Translator: Karoline Tufte Lien <karoline@dhis2.org>, 2020\n"
 "Language-Team: Norwegian Bokmål (https://www.transifex.com/hisp-uio/teams/100509/nb/)\n"
@@ -215,6 +215,9 @@ msgstr "Få HTML-rapportmal"
 
 msgid "Get Jasper Report Template"
 msgstr "Hent Jasper Rapportmal"
+
+msgid "Download"
+msgstr "Last ned"
 
 msgid "Report Type*"
 msgstr "Rapporttype*"

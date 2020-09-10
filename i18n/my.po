@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-09-01T13:00:50.443Z\n"
+"POT-Creation-Date: 2020-09-10T09:10:58.679Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
 "Last-Translator: Aung Kyi Min <AungKyi.Min@savethechildren.org>, 2020\n"
 "Language-Team: Burmese (https://www.transifex.com/hisp-uio/teams/100509/my/)\n"
@@ -208,6 +208,9 @@ msgid "Get HTML Report Template"
 msgstr ""
 
 msgid "Get Jasper Report Template"
+msgstr ""
+
+msgid "Download"
 msgstr ""
 
 msgid "Report Type*"
