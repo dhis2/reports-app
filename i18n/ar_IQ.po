@@ -206,7 +206,7 @@ msgid "Get Jasper Report Template"
 msgstr ""
 
 msgid "Download"
-msgstr ""
+msgstr "تنزيل"
 
 msgid "Report Type*"
 msgstr ""

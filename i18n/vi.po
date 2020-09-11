@@ -216,7 +216,7 @@ msgid "Get Jasper Report Template"
 msgstr "Lấy mẫu báo cáo Jasper"
 
 msgid "Download"
-msgstr ""
+msgstr "Tải về"
 
 msgid "Report Type*"
 msgstr "Loại báo cáo*"
