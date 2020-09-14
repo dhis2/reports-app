@@ -1735,12 +1735,12 @@
     lodash "^4.17.10"
     material-ui "^0.20.0"
 
-"@dhis2/d2-ui-forms@^7.0.5":
-  version "7.0.5"
-  resolved "https://registry.yarnpkg.com/@dhis2/d2-ui-forms/-/d2-ui-forms-7.0.5.tgz#2a9eb5d761e3892a7a251461da4abb213e5cb009"
-  integrity sha512-PVYOWgiDrKH7yjr2rlGLs0yEbN+WskEIqY5zjGMa66Xj+gO6qdbknE2Qe31hQbM9NQNV/JMmejsr2EwA105lLw==
+"@dhis2/d2-ui-forms@^7.0.7":
+  version "7.0.7"
+  resolved "https://registry.yarnpkg.com/@dhis2/d2-ui-forms/-/d2-ui-forms-7.0.7.tgz#a1553c11283d4fe7f2bdd67b9f7f435ec078430f"
+  integrity sha512-V2pebLx6FJyWwy4JNueDd6Xs+w/H/LVjztewVIfxepKsCdUriXOEv3YTpViH2qhbZjI4XJBS+9DsLxooCz5KNg==
   dependencies:
-    "@dhis2/d2-ui-core" "7.0.5"
+    "@dhis2/d2-ui-core" "7.0.7"
     babel-runtime "^6.26.0"
     classnames "^2.2.5"
     d2 "~31.1"
