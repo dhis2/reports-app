@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2020-09-01T13:00:50.443Z\n"
-"PO-Revision-Date: 2020-09-01T13:00:50.443Z\n"
+"POT-Creation-Date: 2020-09-10T09:10:58.679Z\n"
+"PO-Revision-Date: 2020-09-10T09:10:58.679Z\n"
 
 msgid "Updating Organisation Units Tree..."
 msgstr ""
@@ -196,6 +196,9 @@ msgid "Get HTML Report Template"
 msgstr ""
 
 msgid "Get Jasper Report Template"
+msgstr ""
+
+msgid "Download"
 msgstr ""
 
 msgid "Report Type*"
