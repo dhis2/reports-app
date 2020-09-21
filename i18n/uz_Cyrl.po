@@ -1,0 +1,763 @@
+# 
+# Translators:
+# Ibatov <ibatovk@who.int>, 2020
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"POT-Creation-Date: 2020-09-10T09:10:58.679Z\n"
+"PO-Revision-Date: 2020-04-28 22:12+0000\n"
+"Last-Translator: Ibatov <ibatovk@who.int>, 2020\n"
+"Language-Team: Uzbek (Cyrillic) (https://www.transifex.com/hisp-uio/teams/100509/uz@Cyrl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: uz@Cyrl\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Updating Organisation Units Tree..."
+msgstr "Муассасалар дарахти (кетма-кетлиги) янгиланмоқда..."
+
+msgid "Select Option"
+msgstr "Вариантни танланг"
+
+msgid "Data set dimensions"
+msgstr "Маълумотлар тўпламининг ўлчамлари"
+
+msgid "Loading options..."
+msgstr "Вариантлар юкланмоқда"
+
+msgid "Select Data Set"
+msgstr "Маълумотлар тўпламини танланг"
+
+msgid "Data set"
+msgstr "Маълумотлар тўплами"
+
+msgid "Group Set"
+msgstr "Гуруҳлар тўплами"
+
+msgid "Select Group Set"
+msgstr "Гуруҳлар тўпламини танланг"
+
+msgid "Show more options"
+msgstr "Кўпроқ вариантларни кўрсатиш"
+
+msgid "Show fewer options"
+msgstr "Камроқ вариантларни кўрсатиш"
+
+msgid "Report organisation unit"
+msgstr "Ташкилий бўлим ҳисоботи"
+
+msgid "Select Period Type"
+msgstr "Даврийлик турини танланг"
+
+msgid "Search"
+msgstr "Излаш"
+
+msgid "No results have been found"
+msgstr "Натижа топилмади"
+
+msgid "Download as"
+msgstr "Юклаш, қайсидир сифатда"
+
+msgid "Share"
+msgstr "Баҳам кўриш"
+
+msgid "Write a comment, question or interpretation of this report"
+msgstr "Ушбу ҳисоботга шарҳ, савол ёки интерпретация ёзиш"
+
+msgid "Select file"
+msgstr "Файлни танлаш"
+
+msgid "No file chosen"
+msgstr "Файл танланмаган"
+
+msgid "Standard Report"
+msgstr "Стандарт ҳисобот"
+
+msgid ""
+"View and add reports based on the JasperReports library. These can be based "
+"on report tables and can be designed in iReport."
+msgstr ""
+"Ушбу ҳисоботларни Jasper Report кутубхонаси маълумотлар тизими асосида кўриш"
+" ва қўшиш. Бу ҳисоботлар жадвалига асосланган ва  iReport тизимида "
+"шакллантирилган бўлиши мумкин."
+
+msgid "View Reports"
+msgstr "Ҳисоботларни кўриб чиқиш"
+
+msgid "Data Set Report"
+msgstr "Маълумотлар тўплами ҳисоботи"
+
+msgid ""
+"View data set reports. These reports are based on data entry screens and "
+"will produce a report with aggregated data."
+msgstr ""
+"Маълумотлар тўплами ҳисоботларини кўриб чиқиш. Ушбу ҳисоботлар киритилган "
+"маълумотларга асосланган ва киритилган маълумотлар асосида тузилган."
+
+msgid "Get Report"
+msgstr "Ҳисоботни олиш"
+
+msgid "Reporting Rate Summary"
+msgstr "Ҳисобот кўрсатгичлари қисқача маълумоти"
+
+msgid ""
+"Browse the reporting rates of data sets by organisation unit and period "
+"based on various criteria for submission."
+msgstr ""
+"Тақдим этиладиган ҳисобот кўрсатгичлари маълумотларини ташкилий бирлик ва "
+"турли критерийдаги даврийлик асосида кўриб чиқинг."
+
+msgid "Resource"
+msgstr "Манба"
+
+msgid ""
+"View and add resources. These resources can be uploaded documents or URLs on"
+" the web."
+msgstr ""
+"Манбаларни кўриб чиқиш ва қўшиш. Ушбу манбалар Интернетдан ҳужжатлар ёки URL"
+" манзилларини юклаши мумкин."
+
+msgid "View Resources"
+msgstr "Манбаларни кўриб чиқиш"
+
+msgid "Org unit distribution report"
+msgstr "Ташкилий бўлимлар тақсимоти ҳақида ҳисобот"
+
+msgid ""
+"Browse the organisation unit distribution report based on the organisation "
+"unit group sets and its groups."
+msgstr ""
+"Ташкилот бирлигидаги гуруҳлар тўпламлари ва ташкилот бўлинмаларининг "
+"гуруҳлар асосида тақсимланиш ҳисоботини кўриб чиқиш"
+
+msgid "Reporting Period"
+msgstr "Ҳисобот даври"
+
+msgid "Organisation Unit"
+msgstr "Ташкилий бирлик"
+
+msgid "CONFIRM"
+msgstr "ТАСДИҚЛАНГ"
+
+msgid "Report period"
+msgstr "Ҳисобот даври"
+
+msgid "Use data for selected unit only"
+msgstr "Фақатгина танланган бирлик маълумотларидан фойдаланинг"
+
+msgid "Get Chart"
+msgstr "Диаграммани олиш"
+
+msgid "Edit resource"
+msgstr "Манбани таҳрирлаш "
+
+msgid "Save resource"
+msgstr "Манбани сақлаш"
+
+msgid "Add resource"
+msgstr "Манба киритиш"
+
+msgid "Do you want to use this file as an attachment?"
+msgstr "Сиз ушбу файлни бириктирма сифатида ишлатмоқчимисиз?"
+
+msgid "Yes"
+msgstr "Ҳа"
+
+msgid "No"
+msgstr "Йўқ"
+
+msgid "File"
+msgstr "Файл"
+
+msgid "Name*"
+msgstr "Исми*"
+
+msgid "Details"
+msgstr "Тафсилотлари"
+
+msgid "Resource Type"
+msgstr "Манба тури"
+
+msgid "Url*"
+msgstr "Url*"
+
+msgid "File resources can not be edited, only created"
+msgstr "Файл манбаларини ўзгартириб бўлмайди, фақатгина яратиш мумкин"
+
+msgid "Cancel"
+msgstr "Бекор қилиш"
+
+msgid "Edit standard report"
+msgstr "Стандарт ҳисоботни таҳрирлаш"
+
+msgid "Create standard report"
+msgstr "Стандарт ҳисоботни яратиш"
+
+msgid "Generate report"
+msgstr "Ҳисобот яратиш"
+
+msgid "Report parameters"
+msgstr "Ҳисобот параметрлари"
+
+msgid "There are some errors you have to fix first!"
+msgstr "Аввало тузатиш лозим бўлган баъзи хатолар мавжуд!"
+
+msgid "Back to standard reports list"
+msgstr "Стандарт ҳисоботлар рўйхатига қайтиш"
+
+msgid "Get current design"
+msgstr "Ҳозирги дизайнни танлаш"
+
+msgid "Get HTML Report Template"
+msgstr "HTML ҳисобот шаблонини олиш"
+
+msgid "Get Jasper Report Template"
+msgstr "Jasper Report ҳисобот шаблонини олиш"
+
+msgid "Download"
+msgstr "Юклаш"
+
+msgid "Report Type*"
+msgstr "Ҳисобот тури*"
+
+msgid "Report Table*"
+msgstr "Ҳисобот жадвали*"
+
+msgid "Design File"
+msgstr "Ташкилий файл"
+
+msgid "Design File*"
+msgstr "Ташкилий файл*"
+
+msgid "Relative periods"
+msgstr "Нисбий даврлар"
+
+msgid "Settings"
+msgstr "Созламалар"
+
+msgid "Cache Strategy*"
+msgstr "Кеш стратегияси*"
+
+msgid "Submit"
+msgstr "Юбориш"
+
+msgid "[ None ]"
+msgstr "[ Йўқ ]"
+
+msgid "Jasper report with report table data source"
+msgstr "Jasper ҳисоботи, ҳисоботлар жадвалининг маълумоти манбаи билан"
+
+msgid "Jasper report with JDBC data source"
+msgstr "Jasper ҳисоботи, JDBC маълумот манбаи билан"
+
+msgid "HTML report"
+msgstr "HTML ҳисоботи"
+
+msgid "No cache"
+msgstr "Кеш йўқ"
+
+msgid "Respect system setting"
+msgstr "Тизим созламаларига эътибор қилинг"
+
+msgid "Cache for one hour"
+msgstr "Бир соат давомида кешлаш"
+
+msgid "Cache until 6 AM tomorrow"
+msgstr "Эрталабки соат 6 гача кешлаш"
+
+msgid "Cache for two weeks"
+msgstr "Икки ҳафтага кешлаш"
+
+msgid "Days"
+msgstr "Кунлар"
+
+msgid "Reporting day"
+msgstr "Ҳисобот куни"
+
+msgid "Yesterday"
+msgstr "Кеча"
+
+msgid "Last 3 days"
+msgstr "Охирги 3 кун"
+
+msgid "Last 7 days"
+msgstr "Охирги 7 кун"
+
+msgid "Last 14 days"
+msgstr "Охирги 14 кун"
+
+msgid "Weeks"
+msgstr "Ҳафталар"
+
+msgid "Reporting week"
+msgstr "Ҳисобот ҳафтаси"
+
+msgid "Last Week"
+msgstr "Охирги ҳафта"
+
+msgid "Last 2 weeks"
+msgstr "Охирги 2 ҳафта"
+
+msgid "Last 12 weeks"
+msgstr "Охирги 12 ҳафта"
+
+msgid "Last 52 weeks"
+msgstr "Охирги 52 ҳафта"
+
+msgid "Weeks this year"
+msgstr "Ҳафталар айни йилда "
+
+msgid "Months"
+msgstr "Ойлар"
+
+msgid "Reporting month"
+msgstr "Ҳисобот ойи"
+
+msgid "Last month"
+msgstr "Охирги ой"
+
+msgid "Last 3 months"
+msgstr "Охирги 3 ой"
+
+msgid "Last 6 months"
+msgstr "Охирги 6 ой"
+
+msgid "Last 12 months"
+msgstr "Охирги 12 ой"
+
+msgid "Months this year"
+msgstr "Ойлар айни йилда"
+
+msgid "Bi-months"
+msgstr "Жуфт ой"
+
+msgid "Reporting bi-month"
+msgstr "Жуфт ойлик ҳисобот"
+
+msgid "Last bi-month"
+msgstr "Охирги жуфт ой"
+
+msgid "Last 6 bi-month"
+msgstr "Охирги 6 жуфт ой"
+
+msgid "Bi-months this year"
+msgstr "Айни йилдаги жуфт ойлар"
+
+msgid "Quarters"
+msgstr "Квартал"
+
+msgid "Reporting quarter"
+msgstr "Квартал ҳисоботи"
+
+msgid "Last quarter"
+msgstr "Охирги квартал"
+
+msgid "Last 4 quarters"
+msgstr "Охирги 4 квартал"
+
+msgid "Quarters of reporting year"
+msgstr "Ҳисобот йилидаги кварталлар"
+
+msgid "Six-Months"
+msgstr "6 ой"
+
+msgid "Reporting six-month"
+msgstr "6 ойлик ҳисобот"
+
+msgid "Last six-month"
+msgstr "Охирги 6 ой"
+
+msgid "Last 2 six-months"
+msgstr "Охирги 2 та 6 ойлик"
+
+msgid "Financial Years"
+msgstr "Молиявий йиллар"
+
+msgid "Reporting financial year"
+msgstr "Молиявий йиллардаги ҳисобот"
+
+msgid "Last financial year"
+msgstr "Охирги молиявий йил"
+
+msgid "Last 5 financial years"
+msgstr "Охирги 5 молиявий йиллар"
+
+msgid "Years"
+msgstr "Йиллар"
+
+msgid "Reporting year"
+msgstr "Ҳисобот йили"
+
+msgid "Last year"
+msgstr "Охирги йил"
+
+msgid "Last 5 years"
+msgstr "Охирги 5 йил"
+
+msgid "An error occurred whole loading the data set options"
+msgstr "Маълумотлар тўплами вариантларини юклашда хатолик юз берди"
+
+msgid "An error occurred while loading the data set dimensions"
+msgstr "Маълумотлар тўплами ўлчамларини юклашда хатолик юз берди"
+
+msgid "An error occurred while loading the group sets!"
+msgstr "Маълумотлар тўпламини юклашда хатолик юз берди!"
+
+msgid "Could not load organisation units"
+msgstr "Ташкилий бўлимлар юкланмади"
+
+msgid "An error occurred while loading the organisation units!"
+msgstr "Ташкилий бўлимлар юкланишида хатолик юз берди!"
+
+msgid "Successfully loaded the {{ outputType }}"
+msgstr "{{ Чиқариш тури }} Муваффақиятли юкланди"
+
+msgid "chart"
+msgstr "Диаграмма"
+
+msgid "table"
+msgstr "Жадвал"
+
+msgid "An error occurred while loading the report!"
+msgstr "Ҳисоботни юкланишда хатолик юз берди!"
+
+msgid "Successfully added comment"
+msgstr "Изоҳ муваффақиятли қўшилди"
+
+msgid "An error occurred while submitting your comment!"
+msgstr "Изоҳ юборилишида хатолик юз берди!"
+
+msgid "Could not load period types"
+msgstr "Даврийлик тури юкланмади"
+
+msgid "An error occurred while loading the resources!"
+msgstr "Манба юкланишида хатолик юз берди!"
+
+msgid "Do you really want to delete this resource?"
+msgstr "Ҳақиқатдан ҳам ушбу манбани ўчирилишини хохлайсизми?"
+
+msgid "The resource has been deleted successfully"
+msgstr "Манба муваффақиятли ўчирилди"
+
+msgid "An error occurred when deleting the resource!"
+msgstr "Манбани ўчиришда хатолик юз берди!"
+
+msgid "An error occurred while adding the resource!"
+msgstr "Манбани қўшишда хатолик юз берди!"
+
+msgid "An error occurred while saving the modifications!"
+msgstr "Ўзгартиришларни сақлашда хатолик юз берди!"
+
+msgid "An error occurred while loading the standard reports"
+msgstr "Стандарт ҳисоботларни юклашда хатолик юз берди"
+
+msgid "An error occurred while trying to delete the standard report"
+msgstr "Стандарт ҳисоботни ўчиришда хатолик юз берди"
+
+msgid "An error occurred while loading the standard report details"
+msgstr "Стандарт ҳисобот маълумотларини юклашда хатолик юз берди"
+
+msgid "The report has been updated successfully"
+msgstr "Ҳисобот муваффақиятли янгиланди"
+
+msgid "The report has been added successfully"
+msgstr "Ҳисобот муваффақиятли қўшилди"
+
+msgid "An error occurred while updating the report!"
+msgstr "Ҳисобот янгиланишида хатолик юз берди!"
+
+msgid "An error occurred while adding the report!"
+msgstr "Ҳисоботни қўшишда хатолик юз берди!"
+
+msgid "An error occurred while generating the html report"
+msgstr "HTML ҳисобот яратишда хатолик юз берди"
+
+msgid "An error occurred while loading the report table options"
+msgstr "Ҳисобот жадвал вариантларини юклашда хатолик юз берди"
+
+msgid "Count"
+msgstr "Ҳисоблаш"
+
+msgid "Total"
+msgstr "Жами"
+
+msgid "Daily"
+msgstr "Кунлик"
+
+msgid "Weekly"
+msgstr "Ҳафталик"
+
+msgid "Weekly Wednesday"
+msgstr "Ҳар Чоршанба"
+
+msgid "Weekly Thursday"
+msgstr "Ҳар Пайшанба"
+
+msgid "Weekly Saturday"
+msgstr "Ҳар Шанба"
+
+msgid "Weekly Sunday"
+msgstr "Ҳар Якшанба"
+
+msgid "Bi-Weekly"
+msgstr "Жуфт ҳафта"
+
+msgid "Monthly"
+msgstr "Ойлик"
+
+msgid "Bi-Monthly"
+msgstr "Жуфт ойлик"
+
+msgid "Quarterly"
+msgstr "Ҳар квартал"
+
+msgid "Six-Monthly"
+msgstr "Ҳар ярим йиллик"
+
+msgid "Six-Monthly April"
+msgstr "Ҳар ярим йиллик, Апрель"
+
+msgid "Six-Monthly November"
+msgstr "Ҳар ярим йиллик, Ноябрь"
+
+msgid "Yearly"
+msgstr "Йиллик"
+
+msgid "Financial-April"
+msgstr "Молиявий-Апрель"
+
+msgid "Financial-July"
+msgstr "Молиявий-Июль"
+
+msgid "Financial-Oct"
+msgstr "Молиявий-Октябрь"
+
+msgid "Name"
+msgstr "Исми"
+
+msgid "Something went wrong when processing your request."
+msgstr "Сўровингиз кўриб чиқилишида хатолик юз берди."
+
+msgid "Search apps"
+msgstr "Иловаларни қидириш"
+
+msgid "Profile"
+msgstr "Профил"
+
+msgid "Account"
+msgstr "Рақами"
+
+msgid "Help"
+msgstr "Ёрдам"
+
+msgid "Log out"
+msgstr "Чиқиш"
+
+msgid "About DHIS 2"
+msgstr "DHIS2 ҳақида"
+
+msgid "Manage my apps"
+msgstr "Иловаларимни бошқариш"
+
+msgid "No results found"
+msgstr "Ҳеч қандай натижа топилмади"
+
+msgid "Interpretations"
+msgstr "Шарҳлар"
+
+msgid "Messages"
+msgstr "Хабарлар"
+
+msgid "Report Table"
+msgstr "Ҳисобот жадвали"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "Create"
+msgstr "Яратиш"
+
+msgid "Edit"
+msgstr "Таҳрирлаш"
+
+msgid "Actions"
+msgstr "Амаллар"
+
+msgid "Delete"
+msgstr "Ўчириш"
+
+msgid "Sharing settings"
+msgstr "Созламаларни улашиш"
+
+msgid "View Resource"
+msgstr "Манбани кўздан кечириш"
+
+msgid "Edit Resource"
+msgstr "Манбани таҳрирлаш"
+
+msgid "Add users and user groups"
+msgstr "Фойдаланувчи ва фойдаланувчи гуруҳини қўшиш"
+
+msgid "Enter names"
+msgstr "Исмларни киритинг"
+
+msgid "Permissions"
+msgstr "Рухсатлар"
+
+msgid "Created By"
+msgstr "Томонидан яратилган"
+
+msgid "Who has access"
+msgstr "Кимда кириш ҳуқуқи мавжуд"
+
+msgid "External access (without login)"
+msgstr "Ташқаридан кириш (рўйхатдан ўтмаган)"
+
+msgid "Can edit and view"
+msgstr "Таҳрирлаш ва кўриш мумкин"
+
+msgid "Can view"
+msgstr "Кўриш мумкин"
+
+msgid "Can view only"
+msgstr "Фақат кўриб чиқиш мумкин"
+
+msgid "No access"
+msgstr "Кириш таъқиқланган"
+
+msgid "Public access (with login)"
+msgstr "Оммавий кириш (рўйхатдан ўтган)"
+
+msgid "Public can edit"
+msgstr "Оммавий таҳрирлаш мумкин"
+
+msgid "Public can view"
+msgstr "Оммавий кўриш мумкин"
+
+msgid "Public can find, view and edit"
+msgstr "Оммавий топиш, кўриш ва таҳрирлаш мумкин"
+
+msgid "Public can find and view"
+msgstr "Оммавий топиш ва кўриш мумкин"
+
+msgid "Close"
+msgstr "Ёпиқ"
+
+msgid "week"
+msgstr "ҳафта"
+
+msgid "month"
+msgstr "ой"
+
+msgid "year"
+msgstr "йил"
+
+msgid "bi monthly"
+msgstr "жуфт ой"
+
+msgid "day"
+msgstr "кун"
+
+msgid "January"
+msgstr "Январь"
+
+msgid "February"
+msgstr "Февраль"
+
+msgid "March"
+msgstr "Март"
+
+msgid "April"
+msgstr "Апрель"
+
+msgid "May"
+msgstr "Май"
+
+msgid "June"
+msgstr "Июнь"
+
+msgid "July"
+msgstr "Июль"
+
+msgid "August"
+msgstr "Август"
+
+msgid "September"
+msgstr "Сентябрь"
+
+msgid "October"
+msgstr "Октябрь"
+
+msgid "November"
+msgstr "Ноябрь"
+
+msgid "December"
+msgstr "Декабрь"
+
+msgid "January-February"
+msgstr "Январь-Февраль"
+
+msgid "March-April"
+msgstr "Март-Апрель"
+
+msgid "May-June"
+msgstr "Май-Июнь"
+
+msgid "July-August"
+msgstr "Июль-Август"
+
+msgid "September-October"
+msgstr "Сентябрь-Октябрь"
+
+msgid "November-December"
+msgstr "Ноябрь-Декабрь"
+
+msgid "November-April"
+msgstr "Ноябрь-Апрель"
+
+msgid "May-October"
+msgstr "Май-Октябрь"
+
+msgid "quarter"
+msgstr "квартал"
+
+msgid "Q1"
+msgstr "Q1"
+
+msgid "Q2"
+msgstr "Q2"
+
+msgid "Q3"
+msgstr "Q3"
+
+msgid "Q4"
+msgstr "Q4"
+
+msgid "six monthly"
+msgstr "6 ойлик"
+
+msgid "January-June"
+msgstr "Январь-Июнь"
+
+msgid "July-December"
+msgstr "Июль-Декабрь"
+
+msgid "April-September"
+msgstr "Апрель-Сентябрь"
+
+msgid "October-March"
+msgstr "Октябрь-Март"
+
+msgid "Bi-Week"
+msgstr "Жуфт-Ҳафта"
+
+msgid "External url"
+msgstr "Ташқи url"
+
+msgid "Upload file"
+msgstr "Файлни юклаш"
+
+msgid "Confirm delete"
+msgstr "Ўчиришни тасдиқлаш"
