@@ -81,7 +81,7 @@ class HtmlReport extends Component {
                 width="100%"
                 height={this.state.height}
                 seamless={true}
-                sandbox="allow-same-origin allow-scripts allow-modals"
+                sandbox="allow-same-origin allow-scripts allow-modals allow-downloads"
                 onLoad={this.onIframeLoad}
             >
                 <style jsx>{`
