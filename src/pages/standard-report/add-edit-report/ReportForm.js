@@ -14,7 +14,7 @@ import { FormSectionTitle } from '../../../components/form/FormSectionTitle'
 import { Input } from '../../../components/form/Input'
 import { Select } from '../../../components/form/Select'
 import { reportParameterOptions } from '../../../config/standardReport'
-import { relativePeriods } from '../../../utils/periods/relativePeriods'
+import { RELATIVE_PERIODS } from '../../../utils/periods/relativePeriods'
 import { DesignFileDownloadButton } from './DesignFileDownloadButton'
 import { formOptions } from '../../../utils/react/propTypes'
 import { validateNewReport, validateReportUpdate } from './validate'
@@ -100,7 +100,7 @@ const ReportForm = props => (
 
                                 <CheckBoxGroups
                                     name="relativePeriods"
-                                    groups={relativePeriods}
+                                    groups={RELATIVE_PERIODS}
                                     displayError={false}
                                 />
                             </React.Fragment>

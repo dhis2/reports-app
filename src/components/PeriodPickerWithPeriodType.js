@@ -4,11 +4,9 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
 import { selectPeriod, selectPeriodType } from '../redux/actions/reportPeriod'
-import {
-    getFilteredPeriodTypes,
-    isFixedPeriodType,
-} from '../redux/selectors/reportPeriod/periodTypes'
+import { getFilteredPeriodTypes } from '../redux/selectors/reportPeriod/periodTypes'
 import { formLabel } from '../utils/styles/shared.js'
+import { isFixedPeriodType } from '../utils/periods/periodTypes'
 
 const periodTypeLabelText = i18n.t('Select Period Type')
 
