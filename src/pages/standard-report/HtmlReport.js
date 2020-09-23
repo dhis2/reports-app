@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { getContextPath } from '../../utils/api'
 import CircularProgress from '@material-ui/core/CircularProgress'
-import { CSS_FILES, SCRIPT_FILES } from './HtmlReportAssets'
+import { CSS_FILES, SCRIPT_FILES, PAGE_STYLES } from './HtmlReportAssets'
 
 const wrapHtmlInTemplate = html => `
     <!DOCTYPE html>
@@ -11,6 +11,9 @@ const wrapHtmlInTemplate = html => `
             <meta charset="utf-8">
             ${CSS_FILES.map(createLinkTag).join('\n')}
             ${SCRIPT_FILES.map(createScriptTag).join('\n')}
+            <style type="text/css">
+                ${PAGE_STYLES}
+            </style>
         </head>
         <body>
             ${html}
