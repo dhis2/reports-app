@@ -90,5 +90,5 @@ export const getFilteredPeriodTypes = state => {
     }, [])
 }
 
-export const isSelectedPeriodFixed = state =>
-    !!fixedPeriodTranslations[state.reportPeriod.selectedPeriodType]
+export const isFixedPeriodType = periodType =>
+    !!fixedPeriodTranslations[periodType]
