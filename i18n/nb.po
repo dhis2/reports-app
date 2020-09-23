@@ -133,7 +133,7 @@ msgstr ""
 "organisasjonsenhetsgruppesettet og dens grupper."
 
 msgid "Reporting Period"
-msgstr ""
+msgstr "Rapporteringsperiode"
 
 msgid "Organisation Unit"
 msgstr "Organisasjonsenhet"
