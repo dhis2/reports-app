@@ -27,3 +27,23 @@ export const SCRIPT_FILES = [
     '/dhis-web-commons/javascripts/date.js',
     '/dhis-web-commons/oust/oust.js',
 ]
+
+export const PAGE_STYLES = `
+    html {
+        line-height: 1.15;
+        text-size-adjust: 100%;
+    }
+    body {
+        font-family: Roboto, sans-serif;
+        box-sizing: inherit;
+    }
+    table {
+        margin-top: 16px;
+        border-collapse: collapse;
+    }
+    table td,
+    table th {
+        border: 1px solid #bcbcbc;
+        padding: 4px;
+    }
+`
