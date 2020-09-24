@@ -1,6 +1,7 @@
 import i18n from '@dhis2/d2-i18n'
+import { fixedPeriodTranslations } from './fixedPeriods'
 
-export const relativePeriods = [
+export const RELATIVE_PERIODS = [
     {
         label: i18n.t('Days'),
         options: [
@@ -178,3 +179,19 @@ export const relativePeriods = [
         ],
     },
 ]
+
+export const flattenedRelativePeriods = RELATIVE_PERIODS.reduce(
+    (acc, group) => {
+        group.options.forEach(period => {
+            acc[period.value] = {
+                id: period.value,
+                displayName: period.label,
+            }
+        })
+        return acc
+    },
+    {}
+)
+
+export const isFixedPeriodType = periodType =>
+    !!fixedPeriodTranslations[periodType]

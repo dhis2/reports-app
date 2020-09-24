@@ -4,11 +4,9 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
 import { selectPeriod, selectPeriodType } from '../redux/actions/reportPeriod'
-import {
-    getFilteredPeriodTypes,
-    isSelectedPeriodFixed,
-} from '../redux/selectors/reportPeriod/periodTypes'
+import { getFilteredPeriodTypes } from '../redux/selectors/reportPeriod/periodTypes'
 import { formLabel } from '../utils/styles/shared.js'
+import { isFixedPeriodType } from '../utils/periods/periodTypes'
 
 const periodTypeLabelText = i18n.t('Select Period Type')
 
@@ -17,14 +15,13 @@ export function PeriodPickerWithPeriodType({
     selectPeriod,
     label,
     collection,
-    selectedPeriodIsFixed,
     selectedPeriodType,
 }) {
     const onDropDownChange = event => {
         selectPeriodType(event)
 
         // relative periods can be selected from the first dropdown
-        if (!selectedPeriodIsFixed) {
+        if (!isFixedPeriodType(event.target.value)) {
             selectPeriod(event.target.value)
         }
     }
@@ -40,7 +37,7 @@ export function PeriodPickerWithPeriodType({
                 onChange={onDropDownChange}
                 value={selectedPeriodType}
             />
-            {selectedPeriodType && selectedPeriodIsFixed && (
+            {selectedPeriodType && isFixedPeriodType(selectedPeriodType) && (
                 <PeriodPicker
                     periodType={selectedPeriodType}
                     onPickPeriod={selectPeriod}
@@ -56,14 +53,12 @@ PeriodPickerWithPeriodType.propTypes = {
     label: PropTypes.string.isRequired,
     selectPeriod: PropTypes.func.isRequired,
     selectPeriodType: PropTypes.func.isRequired,
-    selectedPeriodIsFixed: PropTypes.bool.isRequired,
     selectedPeriodType: PropTypes.string,
 }
 
 const mapStateToProps = state => ({
     ...state.reportPeriod,
     collection: getFilteredPeriodTypes(state),
-    selectedPeriodIsFixed: isSelectedPeriodFixed(state),
 })
 
 export default connect(mapStateToProps, {
