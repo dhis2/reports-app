@@ -21,7 +21,7 @@
         "cypress:run": "yarn d2-utils-cypress run"
     },
     "devDependencies": {
-        "@dhis2/cli-app-scripts": "^5.2.0",
+        "@dhis2/cli-app-scripts": "^5.2.1",
         "@dhis2/cli-style": "^7.0.0",
         "@dhis2/cli-utils-cypress": "^2.2.1",
         "enzyme": "^3.11.0",
