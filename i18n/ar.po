@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-09-10T09:10:58.679Z\n"
+"POT-Creation-Date: 2020-09-23T12:16:43.780Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
 "Last-Translator: Hamza Assada <7amza.it@gmail.com>, 2020\n"
 "Language-Team: Arabic (https://www.transifex.com/hisp-uio/teams/100509/ar/)\n"
@@ -270,132 +270,6 @@ msgstr "ذاكرة التخزين المؤقت حتى الساعة 6 من صبا
 msgid "Cache for two weeks"
 msgstr "ذاكرة التخزين المؤقت لمدة أسبوعين"
 
-msgid "Days"
-msgstr "‏‏الأيام"
-
-msgid "Reporting day"
-msgstr "إعداد التقرير عن يوم"
-
-msgid "Yesterday"
-msgstr "الأمس"
-
-msgid "Last 3 days"
-msgstr "آخر 3 أيام"
-
-msgid "Last 7 days"
-msgstr "آخر 7 أيام"
-
-msgid "Last 14 days"
-msgstr "آخر 14 يوم"
-
-msgid "Weeks"
-msgstr "الأسابيع"
-
-msgid "Reporting week"
-msgstr "إعداد التقرير عن أسبوع"
-
-msgid "Last Week"
-msgstr "الأسبوع الماضي"
-
-msgid "Last 2 weeks"
-msgstr "آخر 2 اسابيع"
-
-msgid "Last 12 weeks"
-msgstr "آخر 12 أسبوع"
-
-msgid "Last 52 weeks"
-msgstr "آخر 52 أسبوع"
-
-msgid "Weeks this year"
-msgstr "أسابيع السنة الحالية"
-
-msgid "Months"
-msgstr "الأشهر"
-
-msgid "Reporting month"
-msgstr "إعداد التقرير عن شهر"
-
-msgid "Last month"
-msgstr "الشهر الماضي"
-
-msgid "Last 3 months"
-msgstr "آخر 3 أشهر"
-
-msgid "Last 6 months"
-msgstr "آخر 6 أشهر"
-
-msgid "Last 12 months"
-msgstr "آخر 12 شهر"
-
-msgid "Months this year"
-msgstr "أشهر السنة الحالية"
-
-msgid "Bi-months"
-msgstr "الأشهر المزدوجة"
-
-msgid "Reporting bi-month"
-msgstr "إعداد التقرير عن شهرين مزدوجين"
-
-msgid "Last bi-month"
-msgstr "آخر شهرين مزدوجين"
-
-msgid "Last 6 bi-month"
-msgstr "آخر 6 أزواج شهور"
-
-msgid "Bi-months this year"
-msgstr "الأشهر المزدوجة في السنة الحالية"
-
-msgid "Quarters"
-msgstr "أرباع السنة"
-
-msgid "Reporting quarter"
-msgstr "إعداد التقرير ‏‏عن ربع السنة"
-
-msgid "Last quarter"
-msgstr "ربع السنة الماضي"
-
-msgid "Last 4 quarters"
-msgstr "آخر 4 أرباع السنة"
-
-msgid "Quarters of reporting year"
-msgstr "أرباع سنة التقرير"
-
-msgid "Six-Months"
-msgstr "سنة أشهر"
-
-msgid "Reporting six-month"
-msgstr "إعداد التقرير عن نصف السنة (فترة من ستة أشهر)"
-
-msgid "Last six-month"
-msgstr "آخر نصف السنة (فترة من ستة أشهر)"
-
-msgid "Last 2 six-months"
-msgstr "آخر نصفي السنة (كل فترة ستة أشهر)"
-
-msgid "Financial Years"
-msgstr "السنوات المالية"
-
-msgid "Reporting financial year"
-msgstr "إعداد التقرير عن سنة مالية"
-
-msgid "Last financial year"
-msgstr "السنة المالية الماضية"
-
-msgid "Last 5 financial years"
-msgstr "آخر 5 سنوات مالية"
-
-msgid "Years"
-msgstr "السنوات"
-
-msgid "Reporting year"
-msgstr "إعداد التقرير عن سنة"
-
-msgid "Last year"
-msgstr "السنة الماضية"
-
-msgid "Last 5 years"
-msgstr "آخر 5 سنوات"
-
 msgid "An error occurred whole loading the data set options"
 msgstr "حدث خطأ أثناء تحميل خيارات حزمة البيانات"
 
@@ -482,57 +356,6 @@ msgstr "العدد"
 
 msgid "Total"
 msgstr "الإجمالي"
-
-msgid "Daily"
-msgstr "يومي"
-
-msgid "Weekly"
-msgstr "أسبوعي"
-
-msgid "Weekly Wednesday"
-msgstr "أسبوعياً الأربعاء"
-
-msgid "Weekly Thursday"
-msgstr "أسبوعياً الخميس"
-
-msgid "Weekly Saturday"
-msgstr "أسبوعياً السبت"
-
-msgid "Weekly Sunday"
-msgstr "أسبوعياً الأحد"
-
-msgid "Bi-Weekly"
-msgstr "كل اسبوعين"
-
-msgid "Monthly"
-msgstr "شهري"
-
-msgid "Bi-Monthly"
-msgstr "كل شهرين"
-
-msgid "Quarterly"
-msgstr "ربعي"
-
-msgid "Six-Monthly"
-msgstr "كل ستة أشهر"
-
-msgid "Six-Monthly April"
-msgstr "ستة أشهر ابريل"
-
-msgid "Six-Monthly November"
-msgstr "ستة أشهر نوفمبر"
-
-msgid "Yearly"
-msgstr "سنوي"
-
-msgid "Financial-April"
-msgstr "الأمور المالية-نيسان"
-
-msgid "Financial-July"
-msgstr "الأمور المالية-تموز"
-
-msgid "Financial-Oct"
-msgstr "الأمور المالية-تشرين الأول"
 
 msgid "Name"
 msgstr "الإسم"
@@ -752,6 +575,183 @@ msgstr "اكتوبر-مارس"
 
 msgid "Bi-Week"
 msgstr ""
+
+msgid "Daily"
+msgstr "يومي"
+
+msgid "Weekly"
+msgstr "أسبوعي"
+
+msgid "Weekly Wednesday"
+msgstr "أسبوعياً الأربعاء"
+
+msgid "Weekly Thursday"
+msgstr "أسبوعياً الخميس"
+
+msgid "Weekly Saturday"
+msgstr "أسبوعياً السبت"
+
+msgid "Weekly Sunday"
+msgstr "أسبوعياً الأحد"
+
+msgid "Bi-Weekly"
+msgstr "كل اسبوعين"
+
+msgid "Monthly"
+msgstr "شهري"
+
+msgid "Bi-Monthly"
+msgstr "كل شهرين"
+
+msgid "Quarterly"
+msgstr "ربعي"
+
+msgid "Six-Monthly"
+msgstr "كل ستة أشهر"
+
+msgid "Six-Monthly April"
+msgstr "ستة أشهر ابريل"
+
+msgid "Six-Monthly November"
+msgstr "ستة أشهر نوفمبر"
+
+msgid "Yearly"
+msgstr "سنوي"
+
+msgid "Financial-April"
+msgstr "الأمور المالية-نيسان"
+
+msgid "Financial-July"
+msgstr "الأمور المالية-تموز"
+
+msgid "Financial-Oct"
+msgstr "الأمور المالية-تشرين الأول"
+
+msgid "Days"
+msgstr "‏‏الأيام"
+
+msgid "Reporting day"
+msgstr "إعداد التقرير عن يوم"
+
+msgid "Yesterday"
+msgstr "الأمس"
+
+msgid "Last 3 days"
+msgstr "آخر 3 أيام"
+
+msgid "Last 7 days"
+msgstr "آخر 7 أيام"
+
+msgid "Last 14 days"
+msgstr "آخر 14 يوم"
+
+msgid "Weeks"
+msgstr "الأسابيع"
+
+msgid "Reporting week"
+msgstr "إعداد التقرير عن أسبوع"
+
+msgid "Last Week"
+msgstr "الأسبوع الماضي"
+
+msgid "Last 2 weeks"
+msgstr "آخر 2 اسابيع"
+
+msgid "Last 12 weeks"
+msgstr "آخر 12 أسبوع"
+
+msgid "Last 52 weeks"
+msgstr "آخر 52 أسبوع"
+
+msgid "Weeks this year"
+msgstr "أسابيع السنة الحالية"
+
+msgid "Months"
+msgstr "الأشهر"
+
+msgid "Reporting month"
+msgstr "إعداد التقرير عن شهر"
+
+msgid "Last month"
+msgstr "الشهر الماضي"
+
+msgid "Last 3 months"
+msgstr "آخر 3 أشهر"
+
+msgid "Last 6 months"
+msgstr "آخر 6 أشهر"
+
+msgid "Last 12 months"
+msgstr "آخر 12 شهر"
+
+msgid "Months this year"
+msgstr "أشهر السنة الحالية"
+
+msgid "Bi-months"
+msgstr "الأشهر المزدوجة"
+
+msgid "Reporting bi-month"
+msgstr "إعداد التقرير عن شهرين مزدوجين"
+
+msgid "Last bi-month"
+msgstr "آخر شهرين مزدوجين"
+
+msgid "Last 6 bi-month"
+msgstr "آخر 6 أزواج شهور"
+
+msgid "Bi-months this year"
+msgstr "الأشهر المزدوجة في السنة الحالية"
+
+msgid "Quarters"
+msgstr "أرباع السنة"
+
+msgid "Reporting quarter"
+msgstr "إعداد التقرير ‏‏عن ربع السنة"
+
+msgid "Last quarter"
+msgstr "ربع السنة الماضي"
+
+msgid "Last 4 quarters"
+msgstr "آخر 4 أرباع السنة"
+
+msgid "Quarters of reporting year"
+msgstr "أرباع سنة التقرير"
+
+msgid "Six-Months"
+msgstr "سنة أشهر"
+
+msgid "Reporting six-month"
+msgstr "إعداد التقرير عن نصف السنة (فترة من ستة أشهر)"
+
+msgid "Last six-month"
+msgstr "آخر نصف السنة (فترة من ستة أشهر)"
+
+msgid "Last 2 six-months"
+msgstr "آخر نصفي السنة (كل فترة ستة أشهر)"
+
+msgid "Financial Years"
+msgstr "السنوات المالية"
+
+msgid "Reporting financial year"
+msgstr "إعداد التقرير عن سنة مالية"
+
+msgid "Last financial year"
+msgstr "السنة المالية الماضية"
+
+msgid "Last 5 financial years"
+msgstr "آخر 5 سنوات مالية"
+
+msgid "Years"
+msgstr "السنوات"
+
+msgid "Reporting year"
+msgstr "إعداد التقرير عن سنة"
+
+msgid "Last year"
+msgstr "السنة الماضية"
+
+msgid "Last 5 years"
+msgstr "آخر 5 سنوات"
 
 msgid "External url"
 msgstr "عنوان URL خارجي"

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-09-10T09:10:58.679Z\n"
+"POT-Creation-Date: 2020-09-23T12:16:43.780Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
 "Last-Translator: Viktor Varland <viktor@dhis2.org>, 2020\n"
 "Language-Team: Tetum (Tetun) (https://www.transifex.com/hisp-uio/teams/100509/tet/)\n"
@@ -260,132 +260,6 @@ msgstr ""
 msgid "Cache for two weeks"
 msgstr ""
 
-msgid "Days"
-msgstr ""
-
-msgid "Reporting day"
-msgstr ""
-
-msgid "Yesterday"
-msgstr ""
-
-msgid "Last 3 days"
-msgstr ""
-
-msgid "Last 7 days"
-msgstr ""
-
-msgid "Last 14 days"
-msgstr ""
-
-msgid "Weeks"
-msgstr "Semanas"
-
-msgid "Reporting week"
-msgstr ""
-
-msgid "Last Week"
-msgstr ""
-
-msgid "Last 2 weeks"
-msgstr ""
-
-msgid "Last 12 weeks"
-msgstr "Semana 12 ikus"
-
-msgid "Last 52 weeks"
-msgstr "Semana 52 ikus"
-
-msgid "Weeks this year"
-msgstr ""
-
-msgid "Months"
-msgstr "Fulan"
-
-msgid "Reporting month"
-msgstr ""
-
-msgid "Last month"
-msgstr "Fulan kotuk"
-
-msgid "Last 3 months"
-msgstr "Fulan 3 ikus"
-
-msgid "Last 6 months"
-msgstr "Fulan 6 ikus"
-
-msgid "Last 12 months"
-msgstr "Fulan 12 ikus"
-
-msgid "Months this year"
-msgstr "Fulan sira tinan ida ne'e"
-
-msgid "Bi-months"
-msgstr "Bimensal"
-
-msgid "Reporting bi-month"
-msgstr ""
-
-msgid "Last bi-month"
-msgstr "Bimensal kotuk"
-
-msgid "Last 6 bi-month"
-msgstr ""
-
-msgid "Bi-months this year"
-msgstr ""
-
-msgid "Quarters"
-msgstr "Trimestres"
-
-msgid "Reporting quarter"
-msgstr ""
-
-msgid "Last quarter"
-msgstr "Trimestre kotuk"
-
-msgid "Last 4 quarters"
-msgstr "Trimestre 4 ikus liu"
-
-msgid "Quarters of reporting year"
-msgstr ""
-
-msgid "Six-Months"
-msgstr ""
-
-msgid "Reporting six-month"
-msgstr ""
-
-msgid "Last six-month"
-msgstr "Fulan-nén ikus"
-
-msgid "Last 2 six-months"
-msgstr "Fulan-nén 2 ikus"
-
-msgid "Financial Years"
-msgstr ""
-
-msgid "Reporting financial year"
-msgstr ""
-
-msgid "Last financial year"
-msgstr "Tinan finanseiru kotuk"
-
-msgid "Last 5 financial years"
-msgstr "Tinan finanseiru 5 ikus"
-
-msgid "Years"
-msgstr "Tinan"
-
-msgid "Reporting year"
-msgstr ""
-
-msgid "Last year"
-msgstr "Tinan kotuk"
-
-msgid "Last 5 years"
-msgstr "Tinan 5 kotuk"
-
 msgid "An error occurred whole loading the data set options"
 msgstr ""
 
@@ -472,57 +346,6 @@ msgstr "Konta"
 
 msgid "Total"
 msgstr ""
-
-msgid "Daily"
-msgstr "Diáriu"
-
-msgid "Weekly"
-msgstr "Semanal"
-
-msgid "Weekly Wednesday"
-msgstr ""
-
-msgid "Weekly Thursday"
-msgstr ""
-
-msgid "Weekly Saturday"
-msgstr ""
-
-msgid "Weekly Sunday"
-msgstr ""
-
-msgid "Bi-Weekly"
-msgstr ""
-
-msgid "Monthly"
-msgstr "Mensal"
-
-msgid "Bi-Monthly"
-msgstr ""
-
-msgid "Quarterly"
-msgstr "Trimestral"
-
-msgid "Six-Monthly"
-msgstr ""
-
-msgid "Six-Monthly April"
-msgstr ""
-
-msgid "Six-Monthly November"
-msgstr ""
-
-msgid "Yearly"
-msgstr "Anual"
-
-msgid "Financial-April"
-msgstr "Abril-Finanseiru"
-
-msgid "Financial-July"
-msgstr "Jullu-Finanseiru"
-
-msgid "Financial-Oct"
-msgstr "Out-Finanseiru"
 
 msgid "Name"
 msgstr "Naran"
@@ -742,6 +565,183 @@ msgstr ""
 
 msgid "Bi-Week"
 msgstr ""
+
+msgid "Daily"
+msgstr "Diáriu"
+
+msgid "Weekly"
+msgstr "Semanal"
+
+msgid "Weekly Wednesday"
+msgstr ""
+
+msgid "Weekly Thursday"
+msgstr ""
+
+msgid "Weekly Saturday"
+msgstr ""
+
+msgid "Weekly Sunday"
+msgstr ""
+
+msgid "Bi-Weekly"
+msgstr ""
+
+msgid "Monthly"
+msgstr "Mensal"
+
+msgid "Bi-Monthly"
+msgstr ""
+
+msgid "Quarterly"
+msgstr "Trimestral"
+
+msgid "Six-Monthly"
+msgstr ""
+
+msgid "Six-Monthly April"
+msgstr ""
+
+msgid "Six-Monthly November"
+msgstr ""
+
+msgid "Yearly"
+msgstr "Anual"
+
+msgid "Financial-April"
+msgstr "Abril-Finanseiru"
+
+msgid "Financial-July"
+msgstr "Jullu-Finanseiru"
+
+msgid "Financial-Oct"
+msgstr "Out-Finanseiru"
+
+msgid "Days"
+msgstr ""
+
+msgid "Reporting day"
+msgstr ""
+
+msgid "Yesterday"
+msgstr ""
+
+msgid "Last 3 days"
+msgstr ""
+
+msgid "Last 7 days"
+msgstr ""
+
+msgid "Last 14 days"
+msgstr ""
+
+msgid "Weeks"
+msgstr "Semanas"
+
+msgid "Reporting week"
+msgstr ""
+
+msgid "Last Week"
+msgstr ""
+
+msgid "Last 2 weeks"
+msgstr ""
+
+msgid "Last 12 weeks"
+msgstr "Semana 12 ikus"
+
+msgid "Last 52 weeks"
+msgstr "Semana 52 ikus"
+
+msgid "Weeks this year"
+msgstr ""
+
+msgid "Months"
+msgstr "Fulan"
+
+msgid "Reporting month"
+msgstr ""
+
+msgid "Last month"
+msgstr "Fulan kotuk"
+
+msgid "Last 3 months"
+msgstr "Fulan 3 ikus"
+
+msgid "Last 6 months"
+msgstr "Fulan 6 ikus"
+
+msgid "Last 12 months"
+msgstr "Fulan 12 ikus"
+
+msgid "Months this year"
+msgstr "Fulan sira tinan ida ne'e"
+
+msgid "Bi-months"
+msgstr "Bimensal"
+
+msgid "Reporting bi-month"
+msgstr ""
+
+msgid "Last bi-month"
+msgstr "Bimensal kotuk"
+
+msgid "Last 6 bi-month"
+msgstr ""
+
+msgid "Bi-months this year"
+msgstr ""
+
+msgid "Quarters"
+msgstr "Trimestres"
+
+msgid "Reporting quarter"
+msgstr ""
+
+msgid "Last quarter"
+msgstr "Trimestre kotuk"
+
+msgid "Last 4 quarters"
+msgstr "Trimestre 4 ikus liu"
+
+msgid "Quarters of reporting year"
+msgstr ""
+
+msgid "Six-Months"
+msgstr ""
+
+msgid "Reporting six-month"
+msgstr ""
+
+msgid "Last six-month"
+msgstr "Fulan-nén ikus"
+
+msgid "Last 2 six-months"
+msgstr "Fulan-nén 2 ikus"
+
+msgid "Financial Years"
+msgstr ""
+
+msgid "Reporting financial year"
+msgstr ""
+
+msgid "Last financial year"
+msgstr "Tinan finanseiru kotuk"
+
+msgid "Last 5 financial years"
+msgstr "Tinan finanseiru 5 ikus"
+
+msgid "Years"
+msgstr "Tinan"
+
+msgid "Reporting year"
+msgstr ""
+
+msgid "Last year"
+msgstr "Tinan kotuk"
+
+msgid "Last 5 years"
+msgstr "Tinan 5 kotuk"
 
 msgid "External url"
 msgstr ""

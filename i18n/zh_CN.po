@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-09-10T09:10:58.679Z\n"
+"POT-Creation-Date: 2020-09-23T12:16:43.780Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
 "Last-Translator: 晓东 林 <13981924470@126.com>, 2020\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/hisp-uio/teams/100509/zh_CN/)\n"
@@ -260,132 +260,6 @@ msgstr "缓冲至明天早上六点"
 msgid "Cache for two weeks"
 msgstr "缓冲两周"
 
-msgid "Days"
-msgstr "天数"
-
-msgid "Reporting day"
-msgstr ""
-
-msgid "Yesterday"
-msgstr "昨天"
-
-msgid "Last 3 days"
-msgstr "最近3天"
-
-msgid "Last 7 days"
-msgstr "最近7天"
-
-msgid "Last 14 days"
-msgstr "最近14天"
-
-msgid "Weeks"
-msgstr "周"
-
-msgid "Reporting week"
-msgstr ""
-
-msgid "Last Week"
-msgstr ""
-
-msgid "Last 2 weeks"
-msgstr ""
-
-msgid "Last 12 weeks"
-msgstr "最近12周"
-
-msgid "Last 52 weeks"
-msgstr "最近52周"
-
-msgid "Weeks this year"
-msgstr "今年的星期"
-
-msgid "Months"
-msgstr "月"
-
-msgid "Reporting month"
-msgstr ""
-
-msgid "Last month"
-msgstr "上月"
-
-msgid "Last 3 months"
-msgstr "最近3个月"
-
-msgid "Last 6 months"
-msgstr "最近六个月<br>"
-
-msgid "Last 12 months"
-msgstr "最近12月"
-
-msgid "Months this year"
-msgstr "今年的月份"
-
-msgid "Bi-months"
-msgstr ""
-
-msgid "Reporting bi-month"
-msgstr ""
-
-msgid "Last bi-month"
-msgstr ""
-
-msgid "Last 6 bi-month"
-msgstr ""
-
-msgid "Bi-months this year"
-msgstr ""
-
-msgid "Quarters"
-msgstr ""
-
-msgid "Reporting quarter"
-msgstr ""
-
-msgid "Last quarter"
-msgstr "最近一季"
-
-msgid "Last 4 quarters"
-msgstr "最近四个季度"
-
-msgid "Quarters of reporting year"
-msgstr ""
-
-msgid "Six-Months"
-msgstr ""
-
-msgid "Reporting six-month"
-msgstr ""
-
-msgid "Last six-month"
-msgstr "最近六个月"
-
-msgid "Last 2 six-months"
-msgstr "最近两个半年"
-
-msgid "Financial Years"
-msgstr ""
-
-msgid "Reporting financial year"
-msgstr ""
-
-msgid "Last financial year"
-msgstr "上一财政年"
-
-msgid "Last 5 financial years"
-msgstr "最近五个财政年"
-
-msgid "Years"
-msgstr "年"
-
-msgid "Reporting year"
-msgstr ""
-
-msgid "Last year"
-msgstr "去年"
-
-msgid "Last 5 years"
-msgstr "最近5年"
-
 msgid "An error occurred whole loading the data set options"
 msgstr ""
 
@@ -472,57 +346,6 @@ msgstr "计数"
 
 msgid "Total"
 msgstr "总共"
-
-msgid "Daily"
-msgstr "每日"
-
-msgid "Weekly"
-msgstr "每周"
-
-msgid "Weekly Wednesday"
-msgstr ""
-
-msgid "Weekly Thursday"
-msgstr ""
-
-msgid "Weekly Saturday"
-msgstr ""
-
-msgid "Weekly Sunday"
-msgstr ""
-
-msgid "Bi-Weekly"
-msgstr ""
-
-msgid "Monthly"
-msgstr "每月"
-
-msgid "Bi-Monthly"
-msgstr ""
-
-msgid "Quarterly"
-msgstr "季度"
-
-msgid "Six-Monthly"
-msgstr ""
-
-msgid "Six-Monthly April"
-msgstr ""
-
-msgid "Six-Monthly November"
-msgstr ""
-
-msgid "Yearly"
-msgstr "每年"
-
-msgid "Financial-April"
-msgstr ""
-
-msgid "Financial-July"
-msgstr ""
-
-msgid "Financial-Oct"
-msgstr ""
 
 msgid "Name"
 msgstr "名称"
@@ -742,6 +565,183 @@ msgstr "10-3月"
 
 msgid "Bi-Week"
 msgstr ""
+
+msgid "Daily"
+msgstr "每日"
+
+msgid "Weekly"
+msgstr "每周"
+
+msgid "Weekly Wednesday"
+msgstr ""
+
+msgid "Weekly Thursday"
+msgstr ""
+
+msgid "Weekly Saturday"
+msgstr ""
+
+msgid "Weekly Sunday"
+msgstr ""
+
+msgid "Bi-Weekly"
+msgstr ""
+
+msgid "Monthly"
+msgstr "每月"
+
+msgid "Bi-Monthly"
+msgstr ""
+
+msgid "Quarterly"
+msgstr "季度"
+
+msgid "Six-Monthly"
+msgstr ""
+
+msgid "Six-Monthly April"
+msgstr ""
+
+msgid "Six-Monthly November"
+msgstr ""
+
+msgid "Yearly"
+msgstr "每年"
+
+msgid "Financial-April"
+msgstr ""
+
+msgid "Financial-July"
+msgstr ""
+
+msgid "Financial-Oct"
+msgstr ""
+
+msgid "Days"
+msgstr "天数"
+
+msgid "Reporting day"
+msgstr ""
+
+msgid "Yesterday"
+msgstr "昨天"
+
+msgid "Last 3 days"
+msgstr "最近3天"
+
+msgid "Last 7 days"
+msgstr "最近7天"
+
+msgid "Last 14 days"
+msgstr "最近14天"
+
+msgid "Weeks"
+msgstr "周"
+
+msgid "Reporting week"
+msgstr ""
+
+msgid "Last Week"
+msgstr ""
+
+msgid "Last 2 weeks"
+msgstr ""
+
+msgid "Last 12 weeks"
+msgstr "最近12周"
+
+msgid "Last 52 weeks"
+msgstr "最近52周"
+
+msgid "Weeks this year"
+msgstr "今年的星期"
+
+msgid "Months"
+msgstr "月"
+
+msgid "Reporting month"
+msgstr ""
+
+msgid "Last month"
+msgstr "上月"
+
+msgid "Last 3 months"
+msgstr "最近3个月"
+
+msgid "Last 6 months"
+msgstr "最近六个月<br>"
+
+msgid "Last 12 months"
+msgstr "最近12月"
+
+msgid "Months this year"
+msgstr "今年的月份"
+
+msgid "Bi-months"
+msgstr ""
+
+msgid "Reporting bi-month"
+msgstr ""
+
+msgid "Last bi-month"
+msgstr ""
+
+msgid "Last 6 bi-month"
+msgstr ""
+
+msgid "Bi-months this year"
+msgstr ""
+
+msgid "Quarters"
+msgstr ""
+
+msgid "Reporting quarter"
+msgstr ""
+
+msgid "Last quarter"
+msgstr "最近一季"
+
+msgid "Last 4 quarters"
+msgstr "最近四个季度"
+
+msgid "Quarters of reporting year"
+msgstr ""
+
+msgid "Six-Months"
+msgstr ""
+
+msgid "Reporting six-month"
+msgstr ""
+
+msgid "Last six-month"
+msgstr "最近六个月"
+
+msgid "Last 2 six-months"
+msgstr "最近两个半年"
+
+msgid "Financial Years"
+msgstr ""
+
+msgid "Reporting financial year"
+msgstr ""
+
+msgid "Last financial year"
+msgstr "上一财政年"
+
+msgid "Last 5 financial years"
+msgstr "最近五个财政年"
+
+msgid "Years"
+msgstr "年"
+
+msgid "Reporting year"
+msgstr ""
+
+msgid "Last year"
+msgstr "去年"
+
+msgid "Last 5 years"
+msgstr "最近5年"
 
 msgid "External url"
 msgstr ""

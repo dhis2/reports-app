@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-09-10T09:10:58.679Z\n"
+"POT-Creation-Date: 2020-09-23T12:16:43.780Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
 "Last-Translator: Ibatov <ibatovk@who.int>, 2020\n"
 "Language-Team: Uzbek (Cyrillic) (https://www.transifex.com/hisp-uio/teams/100509/uz@Cyrl/)\n"
@@ -270,132 +270,6 @@ msgstr "Эрталабки соат 6 гача кешлаш"
 msgid "Cache for two weeks"
 msgstr "Икки ҳафтага кешлаш"
 
-msgid "Days"
-msgstr "Кунлар"
-
-msgid "Reporting day"
-msgstr "Ҳисобот куни"
-
-msgid "Yesterday"
-msgstr "Кеча"
-
-msgid "Last 3 days"
-msgstr "Охирги 3 кун"
-
-msgid "Last 7 days"
-msgstr "Охирги 7 кун"
-
-msgid "Last 14 days"
-msgstr "Охирги 14 кун"
-
-msgid "Weeks"
-msgstr "Ҳафталар"
-
-msgid "Reporting week"
-msgstr "Ҳисобот ҳафтаси"
-
-msgid "Last Week"
-msgstr "Охирги ҳафта"
-
-msgid "Last 2 weeks"
-msgstr "Охирги 2 ҳафта"
-
-msgid "Last 12 weeks"
-msgstr "Охирги 12 ҳафта"
-
-msgid "Last 52 weeks"
-msgstr "Охирги 52 ҳафта"
-
-msgid "Weeks this year"
-msgstr "Ҳафталар айни йилда "
-
-msgid "Months"
-msgstr "Ойлар"
-
-msgid "Reporting month"
-msgstr "Ҳисобот ойи"
-
-msgid "Last month"
-msgstr "Охирги ой"
-
-msgid "Last 3 months"
-msgstr "Охирги 3 ой"
-
-msgid "Last 6 months"
-msgstr "Охирги 6 ой"
-
-msgid "Last 12 months"
-msgstr "Охирги 12 ой"
-
-msgid "Months this year"
-msgstr "Ойлар айни йилда"
-
-msgid "Bi-months"
-msgstr "Жуфт ой"
-
-msgid "Reporting bi-month"
-msgstr "Жуфт ойлик ҳисобот"
-
-msgid "Last bi-month"
-msgstr "Охирги жуфт ой"
-
-msgid "Last 6 bi-month"
-msgstr "Охирги 6 жуфт ой"
-
-msgid "Bi-months this year"
-msgstr "Айни йилдаги жуфт ойлар"
-
-msgid "Quarters"
-msgstr "Квартал"
-
-msgid "Reporting quarter"
-msgstr "Квартал ҳисоботи"
-
-msgid "Last quarter"
-msgstr "Охирги квартал"
-
-msgid "Last 4 quarters"
-msgstr "Охирги 4 квартал"
-
-msgid "Quarters of reporting year"
-msgstr "Ҳисобот йилидаги кварталлар"
-
-msgid "Six-Months"
-msgstr "6 ой"
-
-msgid "Reporting six-month"
-msgstr "6 ойлик ҳисобот"
-
-msgid "Last six-month"
-msgstr "Охирги 6 ой"
-
-msgid "Last 2 six-months"
-msgstr "Охирги 2 та 6 ойлик"
-
-msgid "Financial Years"
-msgstr "Молиявий йиллар"
-
-msgid "Reporting financial year"
-msgstr "Молиявий йиллардаги ҳисобот"
-
-msgid "Last financial year"
-msgstr "Охирги молиявий йил"
-
-msgid "Last 5 financial years"
-msgstr "Охирги 5 молиявий йиллар"
-
-msgid "Years"
-msgstr "Йиллар"
-
-msgid "Reporting year"
-msgstr "Ҳисобот йили"
-
-msgid "Last year"
-msgstr "Охирги йил"
-
-msgid "Last 5 years"
-msgstr "Охирги 5 йил"
-
 msgid "An error occurred whole loading the data set options"
 msgstr "Маълумотлар тўплами вариантларини юклашда хатолик юз берди"
 
@@ -482,57 +356,6 @@ msgstr "Ҳисоблаш"
 
 msgid "Total"
 msgstr "Жами"
-
-msgid "Daily"
-msgstr "Кунлик"
-
-msgid "Weekly"
-msgstr "Ҳафталик"
-
-msgid "Weekly Wednesday"
-msgstr "Ҳар Чоршанба"
-
-msgid "Weekly Thursday"
-msgstr "Ҳар Пайшанба"
-
-msgid "Weekly Saturday"
-msgstr "Ҳар Шанба"
-
-msgid "Weekly Sunday"
-msgstr "Ҳар Якшанба"
-
-msgid "Bi-Weekly"
-msgstr "Жуфт ҳафта"
-
-msgid "Monthly"
-msgstr "Ойлик"
-
-msgid "Bi-Monthly"
-msgstr "Жуфт ойлик"
-
-msgid "Quarterly"
-msgstr "Ҳар квартал"
-
-msgid "Six-Monthly"
-msgstr "Ҳар ярим йиллик"
-
-msgid "Six-Monthly April"
-msgstr "Ҳар ярим йиллик, Апрель"
-
-msgid "Six-Monthly November"
-msgstr "Ҳар ярим йиллик, Ноябрь"
-
-msgid "Yearly"
-msgstr "Йиллик"
-
-msgid "Financial-April"
-msgstr "Молиявий-Апрель"
-
-msgid "Financial-July"
-msgstr "Молиявий-Июль"
-
-msgid "Financial-Oct"
-msgstr "Молиявий-Октябрь"
 
 msgid "Name"
 msgstr "Исми"
@@ -752,6 +575,183 @@ msgstr "Октябрь-Март"
 
 msgid "Bi-Week"
 msgstr "Жуфт-Ҳафта"
+
+msgid "Daily"
+msgstr "Кунлик"
+
+msgid "Weekly"
+msgstr "Ҳафталик"
+
+msgid "Weekly Wednesday"
+msgstr "Ҳар Чоршанба"
+
+msgid "Weekly Thursday"
+msgstr "Ҳар Пайшанба"
+
+msgid "Weekly Saturday"
+msgstr "Ҳар Шанба"
+
+msgid "Weekly Sunday"
+msgstr "Ҳар Якшанба"
+
+msgid "Bi-Weekly"
+msgstr "Жуфт ҳафта"
+
+msgid "Monthly"
+msgstr "Ойлик"
+
+msgid "Bi-Monthly"
+msgstr "Жуфт ойлик"
+
+msgid "Quarterly"
+msgstr "Ҳар квартал"
+
+msgid "Six-Monthly"
+msgstr "Ҳар ярим йиллик"
+
+msgid "Six-Monthly April"
+msgstr "Ҳар ярим йиллик, Апрель"
+
+msgid "Six-Monthly November"
+msgstr "Ҳар ярим йиллик, Ноябрь"
+
+msgid "Yearly"
+msgstr "Йиллик"
+
+msgid "Financial-April"
+msgstr "Молиявий-Апрель"
+
+msgid "Financial-July"
+msgstr "Молиявий-Июль"
+
+msgid "Financial-Oct"
+msgstr "Молиявий-Октябрь"
+
+msgid "Days"
+msgstr "Кунлар"
+
+msgid "Reporting day"
+msgstr "Ҳисобот куни"
+
+msgid "Yesterday"
+msgstr "Кеча"
+
+msgid "Last 3 days"
+msgstr "Охирги 3 кун"
+
+msgid "Last 7 days"
+msgstr "Охирги 7 кун"
+
+msgid "Last 14 days"
+msgstr "Охирги 14 кун"
+
+msgid "Weeks"
+msgstr "Ҳафталар"
+
+msgid "Reporting week"
+msgstr "Ҳисобот ҳафтаси"
+
+msgid "Last Week"
+msgstr "Охирги ҳафта"
+
+msgid "Last 2 weeks"
+msgstr "Охирги 2 ҳафта"
+
+msgid "Last 12 weeks"
+msgstr "Охирги 12 ҳафта"
+
+msgid "Last 52 weeks"
+msgstr "Охирги 52 ҳафта"
+
+msgid "Weeks this year"
+msgstr "Ҳафталар айни йилда "
+
+msgid "Months"
+msgstr "Ойлар"
+
+msgid "Reporting month"
+msgstr "Ҳисобот ойи"
+
+msgid "Last month"
+msgstr "Охирги ой"
+
+msgid "Last 3 months"
+msgstr "Охирги 3 ой"
+
+msgid "Last 6 months"
+msgstr "Охирги 6 ой"
+
+msgid "Last 12 months"
+msgstr "Охирги 12 ой"
+
+msgid "Months this year"
+msgstr "Ойлар айни йилда"
+
+msgid "Bi-months"
+msgstr "Жуфт ой"
+
+msgid "Reporting bi-month"
+msgstr "Жуфт ойлик ҳисобот"
+
+msgid "Last bi-month"
+msgstr "Охирги жуфт ой"
+
+msgid "Last 6 bi-month"
+msgstr "Охирги 6 жуфт ой"
+
+msgid "Bi-months this year"
+msgstr "Айни йилдаги жуфт ойлар"
+
+msgid "Quarters"
+msgstr "Квартал"
+
+msgid "Reporting quarter"
+msgstr "Квартал ҳисоботи"
+
+msgid "Last quarter"
+msgstr "Охирги квартал"
+
+msgid "Last 4 quarters"
+msgstr "Охирги 4 квартал"
+
+msgid "Quarters of reporting year"
+msgstr "Ҳисобот йилидаги кварталлар"
+
+msgid "Six-Months"
+msgstr "6 ой"
+
+msgid "Reporting six-month"
+msgstr "6 ойлик ҳисобот"
+
+msgid "Last six-month"
+msgstr "Охирги 6 ой"
+
+msgid "Last 2 six-months"
+msgstr "Охирги 2 та 6 ойлик"
+
+msgid "Financial Years"
+msgstr "Молиявий йиллар"
+
+msgid "Reporting financial year"
+msgstr "Молиявий йиллардаги ҳисобот"
+
+msgid "Last financial year"
+msgstr "Охирги молиявий йил"
+
+msgid "Last 5 financial years"
+msgstr "Охирги 5 молиявий йиллар"
+
+msgid "Years"
+msgstr "Йиллар"
+
+msgid "Reporting year"
+msgstr "Ҳисобот йили"
+
+msgid "Last year"
+msgstr "Охирги йил"
+
+msgid "Last 5 years"
+msgstr "Охирги 5 йил"
 
 msgid "External url"
 msgstr "Ташқи url"

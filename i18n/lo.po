@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-09-10T09:10:58.679Z\n"
+"POT-Creation-Date: 2020-09-23T12:16:43.780Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
 "Last-Translator: Viktor Varland <viktor@dhis2.org>, 2020\n"
 "Language-Team: Lao (https://www.transifex.com/hisp-uio/teams/100509/lo/)\n"
@@ -271,132 +271,6 @@ msgstr ""
 msgid "Cache for two weeks"
 msgstr "Cache for two weeks"
 
-msgid "Days"
-msgstr "ມື້"
-
-msgid "Reporting day"
-msgstr ""
-
-msgid "Yesterday"
-msgstr "ມື້ວານນີ"
-
-msgid "Last 3 days"
-msgstr "3 ມື້ກ່ອນ"
-
-msgid "Last 7 days"
-msgstr "7 ມື້ກ່ອນ"
-
-msgid "Last 14 days"
-msgstr "14 ມື້ກ່ອນ"
-
-msgid "Weeks"
-msgstr "ອາທິດ"
-
-msgid "Reporting week"
-msgstr ""
-
-msgid "Last Week"
-msgstr ""
-
-msgid "Last 2 weeks"
-msgstr ""
-
-msgid "Last 12 weeks"
-msgstr "12 ອາທິດຍ້ອນຫຼັງ"
-
-msgid "Last 52 weeks"
-msgstr "52 ອາທິດຜ່ານມາ"
-
-msgid "Weeks this year"
-msgstr "ອາທິດ ຂອງປີນີ້"
-
-msgid "Months"
-msgstr "ເດືອນ"
-
-msgid "Reporting month"
-msgstr "​ເດືອນ​ຂອງ​ການ​ລາຍ​ງານ"
-
-msgid "Last month"
-msgstr "ເດືອນຜ່ານມາ"
-
-msgid "Last 3 months"
-msgstr "3 ເດືອນຍ້ອນຫຼັງ"
-
-msgid "Last 6 months"
-msgstr "6 ເດືອນຜ່ານມາ"
-
-msgid "Last 12 months"
-msgstr "12 ເດືອນຍ້ອນຫຼັງ"
-
-msgid "Months this year"
-msgstr "​ເດືອນ​ໃນ​ປີ"
-
-msgid "Bi-months"
-msgstr "2ເດືອນ"
-
-msgid "Reporting bi-month"
-msgstr "​ບົດ​ລາຍ​ງານ​ລວມ ສອງ​ເດືອນ"
-
-msgid "Last bi-month"
-msgstr "ສອງເດືອນກ່ອນທ້າຍປີ"
-
-msgid "Last 6 bi-month"
-msgstr ""
-
-msgid "Bi-months this year"
-msgstr "ສອງເດືອນ ຂອງປີນີ້"
-
-msgid "Quarters"
-msgstr "ໄຕມາດ"
-
-msgid "Reporting quarter"
-msgstr "ລາຍງານໄຕມາດ"
-
-msgid "Last quarter"
-msgstr "ໄຕມາດຜ່ານມາ"
-
-msgid "Last 4 quarters"
-msgstr "4 ໄຕມາດຍ້ອນຫຼັງ"
-
-msgid "Quarters of reporting year"
-msgstr ""
-
-msgid "Six-Months"
-msgstr ""
-
-msgid "Reporting six-month"
-msgstr "ລາຍງານເປັນ 6 ເດືອນ"
-
-msgid "Last six-month"
-msgstr "6 ເດືອນຜ່ານມາ"
-
-msgid "Last 2 six-months"
-msgstr "ລວມ 6 ເດືອນ 2 ຄັ້ງທີ່ຜ່ານມາ"
-
-msgid "Financial Years"
-msgstr ""
-
-msgid "Reporting financial year"
-msgstr ""
-
-msgid "Last financial year"
-msgstr "​ສົກ​ປີ​ງົບ​ປະ​ມານ​ປີ​ກາຍ"
-
-msgid "Last 5 financial years"
-msgstr "​ສົກ​ປິ​ງົບ​ປະ​ມານ 5ປີ​ຜ່ານ​ມາ"
-
-msgid "Years"
-msgstr "ປີ"
-
-msgid "Reporting year"
-msgstr ""
-
-msgid "Last year"
-msgstr "ປີກາຍ"
-
-msgid "Last 5 years"
-msgstr "5 ປີຍ້ອນຫຼັງ"
-
 msgid "An error occurred whole loading the data set options"
 msgstr ""
 
@@ -483,57 +357,6 @@ msgstr "ນັບ"
 
 msgid "Total"
 msgstr "ລວມ"
-
-msgid "Daily"
-msgstr "ທຸກໆມື້"
-
-msgid "Weekly"
-msgstr "ເປັນອາທິດ"
-
-msgid "Weekly Wednesday"
-msgstr ""
-
-msgid "Weekly Thursday"
-msgstr ""
-
-msgid "Weekly Saturday"
-msgstr ""
-
-msgid "Weekly Sunday"
-msgstr ""
-
-msgid "Bi-Weekly"
-msgstr ""
-
-msgid "Monthly"
-msgstr "ລາຍເດືອນ"
-
-msgid "Bi-Monthly"
-msgstr ""
-
-msgid "Quarterly"
-msgstr "ໄຕມາດ"
-
-msgid "Six-Monthly"
-msgstr ""
-
-msgid "Six-Monthly April"
-msgstr ""
-
-msgid "Six-Monthly November"
-msgstr ""
-
-msgid "Yearly"
-msgstr "ລາຍປີ"
-
-msgid "Financial-April"
-msgstr ""
-
-msgid "Financial-July"
-msgstr "ສົກປີງົບປະມານ ແຕ່ ເດືອນ 7"
-
-msgid "Financial-Oct"
-msgstr ""
 
 msgid "Name"
 msgstr "ຊື່"
@@ -753,6 +576,183 @@ msgstr ""
 
 msgid "Bi-Week"
 msgstr ""
+
+msgid "Daily"
+msgstr "ທຸກໆມື້"
+
+msgid "Weekly"
+msgstr "ເປັນອາທິດ"
+
+msgid "Weekly Wednesday"
+msgstr ""
+
+msgid "Weekly Thursday"
+msgstr ""
+
+msgid "Weekly Saturday"
+msgstr ""
+
+msgid "Weekly Sunday"
+msgstr ""
+
+msgid "Bi-Weekly"
+msgstr ""
+
+msgid "Monthly"
+msgstr "ລາຍເດືອນ"
+
+msgid "Bi-Monthly"
+msgstr ""
+
+msgid "Quarterly"
+msgstr "ໄຕມາດ"
+
+msgid "Six-Monthly"
+msgstr ""
+
+msgid "Six-Monthly April"
+msgstr ""
+
+msgid "Six-Monthly November"
+msgstr ""
+
+msgid "Yearly"
+msgstr "ລາຍປີ"
+
+msgid "Financial-April"
+msgstr ""
+
+msgid "Financial-July"
+msgstr "ສົກປີງົບປະມານ ແຕ່ ເດືອນ 7"
+
+msgid "Financial-Oct"
+msgstr ""
+
+msgid "Days"
+msgstr "ມື້"
+
+msgid "Reporting day"
+msgstr ""
+
+msgid "Yesterday"
+msgstr "ມື້ວານນີ"
+
+msgid "Last 3 days"
+msgstr "3 ມື້ກ່ອນ"
+
+msgid "Last 7 days"
+msgstr "7 ມື້ກ່ອນ"
+
+msgid "Last 14 days"
+msgstr "14 ມື້ກ່ອນ"
+
+msgid "Weeks"
+msgstr "ອາທິດ"
+
+msgid "Reporting week"
+msgstr ""
+
+msgid "Last Week"
+msgstr ""
+
+msgid "Last 2 weeks"
+msgstr ""
+
+msgid "Last 12 weeks"
+msgstr "12 ອາທິດຍ້ອນຫຼັງ"
+
+msgid "Last 52 weeks"
+msgstr "52 ອາທິດຜ່ານມາ"
+
+msgid "Weeks this year"
+msgstr "ອາທິດ ຂອງປີນີ້"
+
+msgid "Months"
+msgstr "ເດືອນ"
+
+msgid "Reporting month"
+msgstr "​ເດືອນ​ຂອງ​ການ​ລາຍ​ງານ"
+
+msgid "Last month"
+msgstr "ເດືອນຜ່ານມາ"
+
+msgid "Last 3 months"
+msgstr "3 ເດືອນຍ້ອນຫຼັງ"
+
+msgid "Last 6 months"
+msgstr "6 ເດືອນຜ່ານມາ"
+
+msgid "Last 12 months"
+msgstr "12 ເດືອນຍ້ອນຫຼັງ"
+
+msgid "Months this year"
+msgstr "​ເດືອນ​ໃນ​ປີ"
+
+msgid "Bi-months"
+msgstr "2ເດືອນ"
+
+msgid "Reporting bi-month"
+msgstr "​ບົດ​ລາຍ​ງານ​ລວມ ສອງ​ເດືອນ"
+
+msgid "Last bi-month"
+msgstr "ສອງເດືອນກ່ອນທ້າຍປີ"
+
+msgid "Last 6 bi-month"
+msgstr ""
+
+msgid "Bi-months this year"
+msgstr "ສອງເດືອນ ຂອງປີນີ້"
+
+msgid "Quarters"
+msgstr "ໄຕມາດ"
+
+msgid "Reporting quarter"
+msgstr "ລາຍງານໄຕມາດ"
+
+msgid "Last quarter"
+msgstr "ໄຕມາດຜ່ານມາ"
+
+msgid "Last 4 quarters"
+msgstr "4 ໄຕມາດຍ້ອນຫຼັງ"
+
+msgid "Quarters of reporting year"
+msgstr ""
+
+msgid "Six-Months"
+msgstr ""
+
+msgid "Reporting six-month"
+msgstr "ລາຍງານເປັນ 6 ເດືອນ"
+
+msgid "Last six-month"
+msgstr "6 ເດືອນຜ່ານມາ"
+
+msgid "Last 2 six-months"
+msgstr "ລວມ 6 ເດືອນ 2 ຄັ້ງທີ່ຜ່ານມາ"
+
+msgid "Financial Years"
+msgstr ""
+
+msgid "Reporting financial year"
+msgstr ""
+
+msgid "Last financial year"
+msgstr "​ສົກ​ປີ​ງົບ​ປະ​ມານ​ປີ​ກາຍ"
+
+msgid "Last 5 financial years"
+msgstr "​ສົກ​ປິ​ງົບ​ປະ​ມານ 5ປີ​ຜ່ານ​ມາ"
+
+msgid "Years"
+msgstr "ປີ"
+
+msgid "Reporting year"
+msgstr ""
+
+msgid "Last year"
+msgstr "ປີກາຍ"
+
+msgid "Last 5 years"
+msgstr "5 ປີຍ້ອນຫຼັງ"
 
 msgid "External url"
 msgstr ""

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-09-10T09:10:58.679Z\n"
+"POT-Creation-Date: 2020-09-23T12:16:43.780Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
 "Last-Translator: phil_dhis2, 2020\n"
 "Language-Team: Russian (https://www.transifex.com/hisp-uio/teams/100509/ru/)\n"
@@ -270,132 +270,6 @@ msgstr "Поместить в кэш до завтра до 6 утра"
 msgid "Cache for two weeks"
 msgstr "Кешировать на 2 недели"
 
-msgid "Days"
-msgstr "Дни"
-
-msgid "Reporting day"
-msgstr ""
-
-msgid "Yesterday"
-msgstr "Вчера"
-
-msgid "Last 3 days"
-msgstr "Последние 3 дня"
-
-msgid "Last 7 days"
-msgstr "Последние 7 дней"
-
-msgid "Last 14 days"
-msgstr "Последние 14 дней"
-
-msgid "Weeks"
-msgstr "Недели"
-
-msgid "Reporting week"
-msgstr ""
-
-msgid "Last Week"
-msgstr ""
-
-msgid "Last 2 weeks"
-msgstr ""
-
-msgid "Last 12 weeks"
-msgstr "Прошлые 12 недель"
-
-msgid "Last 52 weeks"
-msgstr "Последние 52 недели"
-
-msgid "Weeks this year"
-msgstr "Недели этого года"
-
-msgid "Months"
-msgstr "Месяцы"
-
-msgid "Reporting month"
-msgstr "Отчетный месяц"
-
-msgid "Last month"
-msgstr "Последний месяц"
-
-msgid "Last 3 months"
-msgstr "Прошлые 3 месяца"
-
-msgid "Last 6 months"
-msgstr "Последние 6 месяцев"
-
-msgid "Last 12 months"
-msgstr "Прошлые 12 месяцев"
-
-msgid "Months this year"
-msgstr "Месяцы этого года"
-
-msgid "Bi-months"
-msgstr "Двухмесячный период"
-
-msgid "Reporting bi-month"
-msgstr "Отчетный  двухмесячный период"
-
-msgid "Last bi-month"
-msgstr "Прошлый двухмесячный период"
-
-msgid "Last 6 bi-month"
-msgstr ""
-
-msgid "Bi-months this year"
-msgstr "Би-месяцы этого года"
-
-msgid "Quarters"
-msgstr "Кварталы"
-
-msgid "Reporting quarter"
-msgstr "Отчетный квартал"
-
-msgid "Last quarter"
-msgstr "Последний квартал"
-
-msgid "Last 4 quarters"
-msgstr "Прошлые 4 квартала"
-
-msgid "Quarters of reporting year"
-msgstr ""
-
-msgid "Six-Months"
-msgstr ""
-
-msgid "Reporting six-month"
-msgstr "Отчет полугодовой"
-
-msgid "Last six-month"
-msgstr "Прошлое полугодие"
-
-msgid "Last 2 six-months"
-msgstr "Последние два полугодия"
-
-msgid "Financial Years"
-msgstr ""
-
-msgid "Reporting financial year"
-msgstr ""
-
-msgid "Last financial year"
-msgstr "Прошлый финансовый год"
-
-msgid "Last 5 financial years"
-msgstr "Прошлые 5 финансовых лет"
-
-msgid "Years"
-msgstr "Годы"
-
-msgid "Reporting year"
-msgstr ""
-
-msgid "Last year"
-msgstr "Прошлый год"
-
-msgid "Last 5 years"
-msgstr "Прошлые 5 лет"
-
 msgid "An error occurred whole loading the data set options"
 msgstr ""
 
@@ -482,57 +356,6 @@ msgstr "Количество"
 
 msgid "Total"
 msgstr "Итог"
-
-msgid "Daily"
-msgstr "Ежедневно"
-
-msgid "Weekly"
-msgstr "Еженедельно"
-
-msgid "Weekly Wednesday"
-msgstr "Еженедельно по средам"
-
-msgid "Weekly Thursday"
-msgstr "Еженедельно по четвергам"
-
-msgid "Weekly Saturday"
-msgstr "Еженедельно по субботам"
-
-msgid "Weekly Sunday"
-msgstr "Еженедельно по воскресеньям"
-
-msgid "Bi-Weekly"
-msgstr ""
-
-msgid "Monthly"
-msgstr "Ежемесячно"
-
-msgid "Bi-Monthly"
-msgstr ""
-
-msgid "Quarterly"
-msgstr "Ежеквартально"
-
-msgid "Six-Monthly"
-msgstr ""
-
-msgid "Six-Monthly April"
-msgstr ""
-
-msgid "Six-Monthly November"
-msgstr ""
-
-msgid "Yearly"
-msgstr "Ежегодно"
-
-msgid "Financial-April"
-msgstr "Финансовый-апрель"
-
-msgid "Financial-July"
-msgstr "Финансовый-июль"
-
-msgid "Financial-Oct"
-msgstr "Финансовый - октябрь"
 
 msgid "Name"
 msgstr "Название"
@@ -752,6 +575,183 @@ msgstr "Октябрь-Март"
 
 msgid "Bi-Week"
 msgstr ""
+
+msgid "Daily"
+msgstr "Ежедневно"
+
+msgid "Weekly"
+msgstr "Еженедельно"
+
+msgid "Weekly Wednesday"
+msgstr "Еженедельно по средам"
+
+msgid "Weekly Thursday"
+msgstr "Еженедельно по четвергам"
+
+msgid "Weekly Saturday"
+msgstr "Еженедельно по субботам"
+
+msgid "Weekly Sunday"
+msgstr "Еженедельно по воскресеньям"
+
+msgid "Bi-Weekly"
+msgstr ""
+
+msgid "Monthly"
+msgstr "Ежемесячно"
+
+msgid "Bi-Monthly"
+msgstr ""
+
+msgid "Quarterly"
+msgstr "Ежеквартально"
+
+msgid "Six-Monthly"
+msgstr ""
+
+msgid "Six-Monthly April"
+msgstr ""
+
+msgid "Six-Monthly November"
+msgstr ""
+
+msgid "Yearly"
+msgstr "Ежегодно"
+
+msgid "Financial-April"
+msgstr "Финансовый-апрель"
+
+msgid "Financial-July"
+msgstr "Финансовый-июль"
+
+msgid "Financial-Oct"
+msgstr "Финансовый - октябрь"
+
+msgid "Days"
+msgstr "Дни"
+
+msgid "Reporting day"
+msgstr ""
+
+msgid "Yesterday"
+msgstr "Вчера"
+
+msgid "Last 3 days"
+msgstr "Последние 3 дня"
+
+msgid "Last 7 days"
+msgstr "Последние 7 дней"
+
+msgid "Last 14 days"
+msgstr "Последние 14 дней"
+
+msgid "Weeks"
+msgstr "Недели"
+
+msgid "Reporting week"
+msgstr ""
+
+msgid "Last Week"
+msgstr ""
+
+msgid "Last 2 weeks"
+msgstr ""
+
+msgid "Last 12 weeks"
+msgstr "Прошлые 12 недель"
+
+msgid "Last 52 weeks"
+msgstr "Последние 52 недели"
+
+msgid "Weeks this year"
+msgstr "Недели этого года"
+
+msgid "Months"
+msgstr "Месяцы"
+
+msgid "Reporting month"
+msgstr "Отчетный месяц"
+
+msgid "Last month"
+msgstr "Последний месяц"
+
+msgid "Last 3 months"
+msgstr "Прошлые 3 месяца"
+
+msgid "Last 6 months"
+msgstr "Последние 6 месяцев"
+
+msgid "Last 12 months"
+msgstr "Прошлые 12 месяцев"
+
+msgid "Months this year"
+msgstr "Месяцы этого года"
+
+msgid "Bi-months"
+msgstr "Двухмесячный период"
+
+msgid "Reporting bi-month"
+msgstr "Отчетный  двухмесячный период"
+
+msgid "Last bi-month"
+msgstr "Прошлый двухмесячный период"
+
+msgid "Last 6 bi-month"
+msgstr ""
+
+msgid "Bi-months this year"
+msgstr "Би-месяцы этого года"
+
+msgid "Quarters"
+msgstr "Кварталы"
+
+msgid "Reporting quarter"
+msgstr "Отчетный квартал"
+
+msgid "Last quarter"
+msgstr "Последний квартал"
+
+msgid "Last 4 quarters"
+msgstr "Прошлые 4 квартала"
+
+msgid "Quarters of reporting year"
+msgstr ""
+
+msgid "Six-Months"
+msgstr ""
+
+msgid "Reporting six-month"
+msgstr "Отчет полугодовой"
+
+msgid "Last six-month"
+msgstr "Прошлое полугодие"
+
+msgid "Last 2 six-months"
+msgstr "Последние два полугодия"
+
+msgid "Financial Years"
+msgstr ""
+
+msgid "Reporting financial year"
+msgstr ""
+
+msgid "Last financial year"
+msgstr "Прошлый финансовый год"
+
+msgid "Last 5 financial years"
+msgstr "Прошлые 5 финансовых лет"
+
+msgid "Years"
+msgstr "Годы"
+
+msgid "Reporting year"
+msgstr ""
+
+msgid "Last year"
+msgstr "Прошлый год"
+
+msgid "Last 5 years"
+msgstr "Прошлые 5 лет"
 
 msgid "External url"
 msgstr ""

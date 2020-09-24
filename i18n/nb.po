@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-09-10T09:10:58.679Z\n"
+"POT-Creation-Date: 2020-09-23T12:16:43.780Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
 "Last-Translator: Karoline Tufte Lien <karoline@dhis2.org>, 2020\n"
 "Language-Team: Norwegian Bokmål (https://www.transifex.com/hisp-uio/teams/100509/nb/)\n"
@@ -270,132 +270,6 @@ msgstr "Buffer til klokka 06.00 i morgen"
 msgid "Cache for two weeks"
 msgstr "Buffer for to uker"
 
-msgid "Days"
-msgstr "Dager"
-
-msgid "Reporting day"
-msgstr "Rapporteringsdag"
-
-msgid "Yesterday"
-msgstr "I går"
-
-msgid "Last 3 days"
-msgstr "Siste 3 dager"
-
-msgid "Last 7 days"
-msgstr "Siste 7 dager"
-
-msgid "Last 14 days"
-msgstr "Siste 14 dager"
-
-msgid "Weeks"
-msgstr "Uker"
-
-msgid "Reporting week"
-msgstr "Rapporteringsuke"
-
-msgid "Last Week"
-msgstr "Forrige uke"
-
-msgid "Last 2 weeks"
-msgstr "Siste 2 uker"
-
-msgid "Last 12 weeks"
-msgstr "Siste 12 uker"
-
-msgid "Last 52 weeks"
-msgstr "Siste 52 uker"
-
-msgid "Weeks this year"
-msgstr "Uker inneværende år"
-
-msgid "Months"
-msgstr "Måneder"
-
-msgid "Reporting month"
-msgstr "Rapporteringsmåned"
-
-msgid "Last month"
-msgstr "Forrige måned"
-
-msgid "Last 3 months"
-msgstr "Siste 3 måneder"
-
-msgid "Last 6 months"
-msgstr "Siste 6 måneder"
-
-msgid "Last 12 months"
-msgstr "Siste 12 måneder"
-
-msgid "Months this year"
-msgstr "Måneder inneværende år"
-
-msgid "Bi-months"
-msgstr "Tomåneder"
-
-msgid "Reporting bi-month"
-msgstr "Rapportering to-månedlig"
-
-msgid "Last bi-month"
-msgstr "Siste tomåned"
-
-msgid "Last 6 bi-month"
-msgstr "Siste 6 tomåned"
-
-msgid "Bi-months this year"
-msgstr "Tomåneder i år"
-
-msgid "Quarters"
-msgstr "Kvartaler"
-
-msgid "Reporting quarter"
-msgstr "Rapporterende kvartal"
-
-msgid "Last quarter"
-msgstr "Siste kvartal"
-
-msgid "Last 4 quarters"
-msgstr "Siste 4 kvartaler"
-
-msgid "Quarters of reporting year"
-msgstr "Kvartaler av rapporterende år"
-
-msgid "Six-Months"
-msgstr "Halvår"
-
-msgid "Reporting six-month"
-msgstr "Rapporterende halvår"
-
-msgid "Last six-month"
-msgstr "Siste halvår"
-
-msgid "Last 2 six-months"
-msgstr "Siste 2 halvår"
-
-msgid "Financial Years"
-msgstr "Regnskapsår"
-
-msgid "Reporting financial year"
-msgstr "Rapporterer regenskapsår"
-
-msgid "Last financial year"
-msgstr "Siste regnskapsår"
-
-msgid "Last 5 financial years"
-msgstr "Siste 5 regnskapsår"
-
-msgid "Years"
-msgstr "År"
-
-msgid "Reporting year"
-msgstr "Rapporteringsår"
-
-msgid "Last year"
-msgstr "Forrige år"
-
-msgid "Last 5 years"
-msgstr "Siste 5 år"
-
 msgid "An error occurred whole loading the data set options"
 msgstr "En feil oppsto under lasting av datasettalternativer"
 
@@ -482,57 +356,6 @@ msgstr "Antall"
 
 msgid "Total"
 msgstr "Totalt"
-
-msgid "Daily"
-msgstr "Daglig"
-
-msgid "Weekly"
-msgstr "Ukentlig"
-
-msgid "Weekly Wednesday"
-msgstr "Ukentlig Onsdag"
-
-msgid "Weekly Thursday"
-msgstr "Ukentlig Torsdag"
-
-msgid "Weekly Saturday"
-msgstr "Ukentlig Lørdag"
-
-msgid "Weekly Sunday"
-msgstr "Ukentlig Søndag"
-
-msgid "Bi-Weekly"
-msgstr "Toukentlig"
-
-msgid "Monthly"
-msgstr "Månedlig"
-
-msgid "Bi-Monthly"
-msgstr "To-månedlig"
-
-msgid "Quarterly"
-msgstr "Kvartalsvis"
-
-msgid "Six-Monthly"
-msgstr "Halvårlig"
-
-msgid "Six-Monthly April"
-msgstr "Halvårig April"
-
-msgid "Six-Monthly November"
-msgstr "Halvårig November"
-
-msgid "Yearly"
-msgstr "Årlig"
-
-msgid "Financial-April"
-msgstr "Regnskap-April"
-
-msgid "Financial-July"
-msgstr "Regnskap-Juli"
-
-msgid "Financial-Oct"
-msgstr "Regnskap-Okt"
 
 msgid "Name"
 msgstr "Navn"
@@ -752,6 +575,183 @@ msgstr "Oktober-Mars"
 
 msgid "Bi-Week"
 msgstr "Toukentlig"
+
+msgid "Daily"
+msgstr "Daglig"
+
+msgid "Weekly"
+msgstr "Ukentlig"
+
+msgid "Weekly Wednesday"
+msgstr "Ukentlig Onsdag"
+
+msgid "Weekly Thursday"
+msgstr "Ukentlig Torsdag"
+
+msgid "Weekly Saturday"
+msgstr "Ukentlig Lørdag"
+
+msgid "Weekly Sunday"
+msgstr "Ukentlig Søndag"
+
+msgid "Bi-Weekly"
+msgstr "Toukentlig"
+
+msgid "Monthly"
+msgstr "Månedlig"
+
+msgid "Bi-Monthly"
+msgstr "To-månedlig"
+
+msgid "Quarterly"
+msgstr "Kvartalsvis"
+
+msgid "Six-Monthly"
+msgstr "Halvårlig"
+
+msgid "Six-Monthly April"
+msgstr "Halvårig April"
+
+msgid "Six-Monthly November"
+msgstr "Halvårig November"
+
+msgid "Yearly"
+msgstr "Årlig"
+
+msgid "Financial-April"
+msgstr "Regnskap-April"
+
+msgid "Financial-July"
+msgstr "Regnskap-Juli"
+
+msgid "Financial-Oct"
+msgstr "Regnskap-Okt"
+
+msgid "Days"
+msgstr "Dager"
+
+msgid "Reporting day"
+msgstr "Rapporteringsdag"
+
+msgid "Yesterday"
+msgstr "I går"
+
+msgid "Last 3 days"
+msgstr "Siste 3 dager"
+
+msgid "Last 7 days"
+msgstr "Siste 7 dager"
+
+msgid "Last 14 days"
+msgstr "Siste 14 dager"
+
+msgid "Weeks"
+msgstr "Uker"
+
+msgid "Reporting week"
+msgstr "Rapporteringsuke"
+
+msgid "Last Week"
+msgstr "Forrige uke"
+
+msgid "Last 2 weeks"
+msgstr "Siste 2 uker"
+
+msgid "Last 12 weeks"
+msgstr "Siste 12 uker"
+
+msgid "Last 52 weeks"
+msgstr "Siste 52 uker"
+
+msgid "Weeks this year"
+msgstr "Uker inneværende år"
+
+msgid "Months"
+msgstr "Måneder"
+
+msgid "Reporting month"
+msgstr "Rapporteringsmåned"
+
+msgid "Last month"
+msgstr "Forrige måned"
+
+msgid "Last 3 months"
+msgstr "Siste 3 måneder"
+
+msgid "Last 6 months"
+msgstr "Siste 6 måneder"
+
+msgid "Last 12 months"
+msgstr "Siste 12 måneder"
+
+msgid "Months this year"
+msgstr "Måneder inneværende år"
+
+msgid "Bi-months"
+msgstr "Tomåneder"
+
+msgid "Reporting bi-month"
+msgstr "Rapportering to-månedlig"
+
+msgid "Last bi-month"
+msgstr "Siste tomåned"
+
+msgid "Last 6 bi-month"
+msgstr "Siste 6 tomåned"
+
+msgid "Bi-months this year"
+msgstr "Tomåneder i år"
+
+msgid "Quarters"
+msgstr "Kvartaler"
+
+msgid "Reporting quarter"
+msgstr "Rapporterende kvartal"
+
+msgid "Last quarter"
+msgstr "Siste kvartal"
+
+msgid "Last 4 quarters"
+msgstr "Siste 4 kvartaler"
+
+msgid "Quarters of reporting year"
+msgstr "Kvartaler av rapporterende år"
+
+msgid "Six-Months"
+msgstr "Halvår"
+
+msgid "Reporting six-month"
+msgstr "Rapporterende halvår"
+
+msgid "Last six-month"
+msgstr "Siste halvår"
+
+msgid "Last 2 six-months"
+msgstr "Siste 2 halvår"
+
+msgid "Financial Years"
+msgstr "Regnskapsår"
+
+msgid "Reporting financial year"
+msgstr "Rapporterer regenskapsår"
+
+msgid "Last financial year"
+msgstr "Siste regnskapsår"
+
+msgid "Last 5 financial years"
+msgstr "Siste 5 regnskapsår"
+
+msgid "Years"
+msgstr "År"
+
+msgid "Reporting year"
+msgstr "Rapporteringsår"
+
+msgid "Last year"
+msgstr "Forrige år"
+
+msgid "Last 5 years"
+msgstr "Siste 5 år"
 
 msgid "External url"
 msgstr "Ekstern URL"

@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-09-10T09:10:58.679Z\n"
+"POT-Creation-Date: 2020-09-23T12:16:43.780Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
 "Last-Translator: Viktor Varland <viktor@dhis2.org>, 2020\n"
 "Language-Team: French (https://www.transifex.com/hisp-uio/teams/100509/fr/)\n"
@@ -275,132 +275,6 @@ msgstr "Cache jusqu'à 06h00 demain"
 msgid "Cache for two weeks"
 msgstr "Cache pendant 2 semaines"
 
-msgid "Days"
-msgstr "Jours"
-
-msgid "Reporting day"
-msgstr ""
-
-msgid "Yesterday"
-msgstr "Hier"
-
-msgid "Last 3 days"
-msgstr "3 derniers jours"
-
-msgid "Last 7 days"
-msgstr "7 derniers jours"
-
-msgid "Last 14 days"
-msgstr "14 dernier jours"
-
-msgid "Weeks"
-msgstr "Semaines"
-
-msgid "Reporting week"
-msgstr ""
-
-msgid "Last Week"
-msgstr ""
-
-msgid "Last 2 weeks"
-msgstr ""
-
-msgid "Last 12 weeks"
-msgstr "12 dernières semaines"
-
-msgid "Last 52 weeks"
-msgstr "52 dernières semaines"
-
-msgid "Weeks this year"
-msgstr "Semaines cette année"
-
-msgid "Months"
-msgstr "Mois"
-
-msgid "Reporting month"
-msgstr "Mois du rapportage"
-
-msgid "Last month"
-msgstr "Le mois dernier"
-
-msgid "Last 3 months"
-msgstr "3 derniers mois"
-
-msgid "Last 6 months"
-msgstr "6 derniers mois"
-
-msgid "Last 12 months"
-msgstr "12 derniers mois"
-
-msgid "Months this year"
-msgstr "Mois cette année"
-
-msgid "Bi-months"
-msgstr "Bimensuel"
-
-msgid "Reporting bi-month"
-msgstr "e mois de rapportage"
-
-msgid "Last bi-month"
-msgstr "Dernier bi-mestre"
-
-msgid "Last 6 bi-month"
-msgstr ""
-
-msgid "Bi-months this year"
-msgstr ""
-
-msgid "Quarters"
-msgstr "Trimestres"
-
-msgid "Reporting quarter"
-msgstr "Trimestre de rapportage"
-
-msgid "Last quarter"
-msgstr "Trimestre précédent"
-
-msgid "Last 4 quarters"
-msgstr "4 derniers trimestres"
-
-msgid "Quarters of reporting year"
-msgstr ""
-
-msgid "Six-Months"
-msgstr ""
-
-msgid "Reporting six-month"
-msgstr "Semestre de rapportage"
-
-msgid "Last six-month"
-msgstr "Dernier semestre"
-
-msgid "Last 2 six-months"
-msgstr "2 derniers semestres"
-
-msgid "Financial Years"
-msgstr ""
-
-msgid "Reporting financial year"
-msgstr ""
-
-msgid "Last financial year"
-msgstr "Dernière année financière"
-
-msgid "Last 5 financial years"
-msgstr "5 dernières années financières"
-
-msgid "Years"
-msgstr "Années"
-
-msgid "Reporting year"
-msgstr ""
-
-msgid "Last year"
-msgstr "L'année passée"
-
-msgid "Last 5 years"
-msgstr "5 dernières années"
-
 msgid "An error occurred whole loading the data set options"
 msgstr ""
 
@@ -487,57 +361,6 @@ msgstr "Décompte"
 
 msgid "Total"
 msgstr "Total"
-
-msgid "Daily"
-msgstr "Quotidien"
-
-msgid "Weekly"
-msgstr "Hebdomadaire"
-
-msgid "Weekly Wednesday"
-msgstr ""
-
-msgid "Weekly Thursday"
-msgstr ""
-
-msgid "Weekly Saturday"
-msgstr ""
-
-msgid "Weekly Sunday"
-msgstr ""
-
-msgid "Bi-Weekly"
-msgstr ""
-
-msgid "Monthly"
-msgstr "Mensuel"
-
-msgid "Bi-Monthly"
-msgstr ""
-
-msgid "Quarterly"
-msgstr "Trimestriel"
-
-msgid "Six-Monthly"
-msgstr ""
-
-msgid "Six-Monthly April"
-msgstr ""
-
-msgid "Six-Monthly November"
-msgstr ""
-
-msgid "Yearly"
-msgstr "Annuel"
-
-msgid "Financial-April"
-msgstr "Financier-Avril"
-
-msgid "Financial-July"
-msgstr "Financière-Juillet"
-
-msgid "Financial-Oct"
-msgstr "Financière-Oct"
 
 msgid "Name"
 msgstr "Nom"
@@ -757,6 +580,183 @@ msgstr ""
 
 msgid "Bi-Week"
 msgstr ""
+
+msgid "Daily"
+msgstr "Quotidien"
+
+msgid "Weekly"
+msgstr "Hebdomadaire"
+
+msgid "Weekly Wednesday"
+msgstr ""
+
+msgid "Weekly Thursday"
+msgstr ""
+
+msgid "Weekly Saturday"
+msgstr ""
+
+msgid "Weekly Sunday"
+msgstr ""
+
+msgid "Bi-Weekly"
+msgstr ""
+
+msgid "Monthly"
+msgstr "Mensuel"
+
+msgid "Bi-Monthly"
+msgstr ""
+
+msgid "Quarterly"
+msgstr "Trimestriel"
+
+msgid "Six-Monthly"
+msgstr ""
+
+msgid "Six-Monthly April"
+msgstr ""
+
+msgid "Six-Monthly November"
+msgstr ""
+
+msgid "Yearly"
+msgstr "Annuel"
+
+msgid "Financial-April"
+msgstr "Financier-Avril"
+
+msgid "Financial-July"
+msgstr "Financière-Juillet"
+
+msgid "Financial-Oct"
+msgstr "Financière-Oct"
+
+msgid "Days"
+msgstr "Jours"
+
+msgid "Reporting day"
+msgstr ""
+
+msgid "Yesterday"
+msgstr "Hier"
+
+msgid "Last 3 days"
+msgstr "3 derniers jours"
+
+msgid "Last 7 days"
+msgstr "7 derniers jours"
+
+msgid "Last 14 days"
+msgstr "14 dernier jours"
+
+msgid "Weeks"
+msgstr "Semaines"
+
+msgid "Reporting week"
+msgstr ""
+
+msgid "Last Week"
+msgstr ""
+
+msgid "Last 2 weeks"
+msgstr ""
+
+msgid "Last 12 weeks"
+msgstr "12 dernières semaines"
+
+msgid "Last 52 weeks"
+msgstr "52 dernières semaines"
+
+msgid "Weeks this year"
+msgstr "Semaines cette année"
+
+msgid "Months"
+msgstr "Mois"
+
+msgid "Reporting month"
+msgstr "Mois du rapportage"
+
+msgid "Last month"
+msgstr "Le mois dernier"
+
+msgid "Last 3 months"
+msgstr "3 derniers mois"
+
+msgid "Last 6 months"
+msgstr "6 derniers mois"
+
+msgid "Last 12 months"
+msgstr "12 derniers mois"
+
+msgid "Months this year"
+msgstr "Mois cette année"
+
+msgid "Bi-months"
+msgstr "Bimensuel"
+
+msgid "Reporting bi-month"
+msgstr "e mois de rapportage"
+
+msgid "Last bi-month"
+msgstr "Dernier bi-mestre"
+
+msgid "Last 6 bi-month"
+msgstr ""
+
+msgid "Bi-months this year"
+msgstr ""
+
+msgid "Quarters"
+msgstr "Trimestres"
+
+msgid "Reporting quarter"
+msgstr "Trimestre de rapportage"
+
+msgid "Last quarter"
+msgstr "Trimestre précédent"
+
+msgid "Last 4 quarters"
+msgstr "4 derniers trimestres"
+
+msgid "Quarters of reporting year"
+msgstr ""
+
+msgid "Six-Months"
+msgstr ""
+
+msgid "Reporting six-month"
+msgstr "Semestre de rapportage"
+
+msgid "Last six-month"
+msgstr "Dernier semestre"
+
+msgid "Last 2 six-months"
+msgstr "2 derniers semestres"
+
+msgid "Financial Years"
+msgstr ""
+
+msgid "Reporting financial year"
+msgstr ""
+
+msgid "Last financial year"
+msgstr "Dernière année financière"
+
+msgid "Last 5 financial years"
+msgstr "5 dernières années financières"
+
+msgid "Years"
+msgstr "Années"
+
+msgid "Reporting year"
+msgstr ""
+
+msgid "Last year"
+msgstr "L'année passée"
+
+msgid "Last 5 years"
+msgstr "5 dernières années"
 
 msgid "External url"
 msgstr ""
