@@ -44,24 +44,24 @@ export const RELATIVE_PERIODS = [
         label: i18n.t('Days'),
         options: [
             {
-                id: RELATIVE_PERIOD_CODES.thisDay,
-                name: i18n.t('Reporting day'),
+                value: RELATIVE_PERIOD_CODES.thisDay,
+                label: i18n.t('Reporting day'),
             },
             {
-                id: RELATIVE_PERIOD_CODES.yesterday,
-                name: i18n.t('Yesterday'),
+                value: RELATIVE_PERIOD_CODES.yesterday,
+                label: i18n.t('Yesterday'),
             },
             {
-                id: RELATIVE_PERIOD_CODES.last3Days,
-                name: i18n.t('Last 3 days'),
+                value: RELATIVE_PERIOD_CODES.last3Days,
+                label: i18n.t('Last 3 days'),
             },
             {
-                id: RELATIVE_PERIOD_CODES.last7Days,
-                name: i18n.t('Last 7 days'),
+                value: RELATIVE_PERIOD_CODES.last7Days,
+                label: i18n.t('Last 7 days'),
             },
             {
-                id: RELATIVE_PERIOD_CODES.last14Days,
-                name: i18n.t('Last 14 days'),
+                value: RELATIVE_PERIOD_CODES.last14Days,
+                label: i18n.t('Last 14 days'),
             },
         ],
     },
@@ -70,28 +70,28 @@ export const RELATIVE_PERIODS = [
         label: i18n.t('Weeks'),
         options: [
             {
-                id: RELATIVE_PERIOD_CODES.thisWeek,
-                name: i18n.t('Reporting week'),
+                value: RELATIVE_PERIOD_CODES.thisWeek,
+                label: i18n.t('Reporting week'),
             },
             {
-                id: RELATIVE_PERIOD_CODES.lastWeek,
-                name: i18n.t('Last Week'),
+                value: RELATIVE_PERIOD_CODES.lastWeek,
+                label: i18n.t('Last Week'),
             },
             {
-                id: RELATIVE_PERIOD_CODES.last4Weeks,
-                name: i18n.t('Last 2 weeks'),
+                value: RELATIVE_PERIOD_CODES.last4Weeks,
+                label: i18n.t('Last 2 weeks'),
             },
             {
-                id: RELATIVE_PERIOD_CODES.last12Weeks,
-                name: i18n.t('Last 12 weeks'),
+                value: RELATIVE_PERIOD_CODES.last12Weeks,
+                label: i18n.t('Last 12 weeks'),
             },
             {
-                id: RELATIVE_PERIOD_CODES.last52Weeks,
-                name: i18n.t('Last 52 weeks'),
+                value: RELATIVE_PERIOD_CODES.last52Weeks,
+                label: i18n.t('Last 52 weeks'),
             },
             {
-                id: RELATIVE_PERIOD_CODES.weeksThisYear,
-                name: i18n.t('Weeks this year'),
+                value: RELATIVE_PERIOD_CODES.weeksThisYear,
+                label: i18n.t('Weeks this year'),
             },
         ],
     },
@@ -100,28 +100,28 @@ export const RELATIVE_PERIODS = [
         label: i18n.t('Months'),
         options: [
             {
-                id: RELATIVE_PERIOD_CODES.thisMonth,
-                name: i18n.t('Reporting month'),
+                value: RELATIVE_PERIOD_CODES.thisMonth,
+                label: i18n.t('Reporting month'),
             },
             {
-                id: RELATIVE_PERIOD_CODES.lastMonth,
-                name: i18n.t('Last month'),
+                value: RELATIVE_PERIOD_CODES.lastMonth,
+                label: i18n.t('Last month'),
             },
             {
-                id: RELATIVE_PERIOD_CODES.last3Months,
-                name: i18n.t('Last 3 months'),
+                value: RELATIVE_PERIOD_CODES.last3Months,
+                label: i18n.t('Last 3 months'),
             },
             {
-                id: RELATIVE_PERIOD_CODES.last6Months,
-                name: i18n.t('Last 6 months'),
+                value: RELATIVE_PERIOD_CODES.last6Months,
+                label: i18n.t('Last 6 months'),
             },
             {
-                id: RELATIVE_PERIOD_CODES.last12Months,
-                name: i18n.t('Last 12 months'),
+                value: RELATIVE_PERIOD_CODES.last12Months,
+                label: i18n.t('Last 12 months'),
             },
             {
-                id: RELATIVE_PERIOD_CODES.monthsThisYear,
-                name: i18n.t('Months this year'),
+                value: RELATIVE_PERIOD_CODES.monthsThisYear,
+                label: i18n.t('Months this year'),
             },
         ],
     },
@@ -130,20 +130,20 @@ export const RELATIVE_PERIODS = [
         label: i18n.t('Bi-months'),
         options: [
             {
-                id: RELATIVE_PERIOD_CODES.thisBimonth,
-                name: i18n.t('Reporting bi-month'),
+                value: RELATIVE_PERIOD_CODES.thisBimonth,
+                label: i18n.t('Reporting bi-month'),
             },
             {
-                id: RELATIVE_PERIOD_CODES.lastBimonth,
-                name: i18n.t('Last bi-month'),
+                value: RELATIVE_PERIOD_CODES.lastBimonth,
+                label: i18n.t('Last bi-month'),
             },
             {
-                id: RELATIVE_PERIOD_CODES.last6BiMonths,
-                name: i18n.t('Last 6 bi-month'),
+                value: RELATIVE_PERIOD_CODES.last6BiMonths,
+                label: i18n.t('Last 6 bi-month'),
             },
             {
-                id: RELATIVE_PERIOD_CODES.biMonthsThisYear,
-                name: i18n.t('Bi-months this year'),
+                value: RELATIVE_PERIOD_CODES.biMonthsThisYear,
+                label: i18n.t('Bi-months this year'),
             },
         ],
     },
@@ -152,20 +152,20 @@ export const RELATIVE_PERIODS = [
         label: i18n.t('Quarters'),
         options: [
             {
-                id: RELATIVE_PERIOD_CODES.thisQuarter,
-                name: i18n.t('Reporting quarter'),
+                value: RELATIVE_PERIOD_CODES.thisQuarter,
+                label: i18n.t('Reporting quarter'),
             },
             {
-                id: RELATIVE_PERIOD_CODES.lastQuarter,
-                name: i18n.t('Last quarter'),
+                value: RELATIVE_PERIOD_CODES.lastQuarter,
+                label: i18n.t('Last quarter'),
             },
             {
-                id: RELATIVE_PERIOD_CODES.last4Quarters,
-                name: i18n.t('Last 4 quarters'),
+                value: RELATIVE_PERIOD_CODES.last4Quarters,
+                label: i18n.t('Last 4 quarters'),
             },
             {
-                id: RELATIVE_PERIOD_CODES.quartersThisYear,
-                name: i18n.t('Quarters of reporting year'),
+                value: RELATIVE_PERIOD_CODES.quartersThisYear,
+                label: i18n.t('Quarters of reporting year'),
             },
         ],
     },
@@ -174,16 +174,16 @@ export const RELATIVE_PERIODS = [
         label: i18n.t('Six-Months'),
         options: [
             {
-                id: RELATIVE_PERIOD_CODES.thisSixMonth,
-                name: i18n.t('Reporting six-month'),
+                value: RELATIVE_PERIOD_CODES.thisSixMonth,
+                label: i18n.t('Reporting six-month'),
             },
             {
-                id: RELATIVE_PERIOD_CODES.lastSixMonth,
-                name: i18n.t('Last six-month'),
+                value: RELATIVE_PERIOD_CODES.lastSixMonth,
+                label: i18n.t('Last six-month'),
             },
             {
-                id: RELATIVE_PERIOD_CODES.last2SixMonths,
-                name: i18n.t('Last 2 six-months'),
+                value: RELATIVE_PERIOD_CODES.last2SixMonths,
+                label: i18n.t('Last 2 six-months'),
             },
         ],
     },
@@ -192,16 +192,16 @@ export const RELATIVE_PERIODS = [
         label: i18n.t('Financial Years'),
         options: [
             {
-                id: RELATIVE_PERIOD_CODES.thisFinancialYear,
-                name: i18n.t('Reporting financial year'),
+                value: RELATIVE_PERIOD_CODES.thisFinancialYear,
+                label: i18n.t('Reporting financial year'),
             },
             {
-                id: RELATIVE_PERIOD_CODES.lastFinancialYear,
-                name: i18n.t('Last financial year'),
+                value: RELATIVE_PERIOD_CODES.lastFinancialYear,
+                label: i18n.t('Last financial year'),
             },
             {
-                id: RELATIVE_PERIOD_CODES.last5FinancialYears,
-                name: i18n.t('Last 5 financial years'),
+                value: RELATIVE_PERIOD_CODES.last5FinancialYears,
+                label: i18n.t('Last 5 financial years'),
             },
         ],
     },
@@ -210,16 +210,16 @@ export const RELATIVE_PERIODS = [
         label: i18n.t('Years'),
         options: [
             {
-                id: RELATIVE_PERIOD_CODES.thisYear,
-                name: i18n.t('Reporting year'),
+                value: RELATIVE_PERIOD_CODES.thisYear,
+                label: i18n.t('Reporting year'),
             },
             {
-                id: RELATIVE_PERIOD_CODES.lastYear,
-                name: i18n.t('Last year'),
+                value: RELATIVE_PERIOD_CODES.lastYear,
+                label: i18n.t('Last year'),
             },
             {
-                id: RELATIVE_PERIOD_CODES.last5Years,
-                name: i18n.t('Last 5 years'),
+                value: RELATIVE_PERIOD_CODES.last5Years,
+                label: i18n.t('Last 5 years'),
             },
         ],
     },
@@ -243,17 +243,23 @@ export const isFixedPeriodType = periodType =>
 
 const formatYyyyMmDd = timestamp => {
     const date = new Date(timestamp)
-    const y = date.getFullYear()
-    let m = String(date.getMonth() + 1)
-    let d = String(date.getDate())
+    const yyyy = date.getFullYear()
+    const mm = (date.getMonth() + 1).toString().padStart(2, '0')
+    const dd = date
+        .getDate()
+        .toString()
+        .padStart(2, '0')
 
-    m = m.length < 2 ? `0${m}` : m
-    d = d.length < 2 ? `0${d}` : d
-
-    return `${y}-${m}-${d}`
+    return `${yyyy}-${mm}-${dd}`
 }
 
 const getCurrentDate = () => new Date(Date.now())
+
+const getPreviousMonday = date => {
+    const day = date.getDay()
+    const mondayTimeStamp = date.getDate() - day + (day === 0 ? -6 : 1)
+    return new Date(date.setDate(mondayTimeStamp))
+}
 
 const daysAgo = offset => {
     const now = getCurrentDate()
@@ -262,20 +268,46 @@ const daysAgo = offset => {
 }
 
 const weeksAgo = offset => {
-    // const now = getCurrentDate()
+    const previousMonday = getPreviousMonday(getCurrentDate())
 
-    // Calculate the first date of an EPI year base on ISO standard  ( first week always contains 4th Jan )
-    // const jan4 = new Date(now.getFullYear(), 0, 4)
-    // const firstMondayOfYear = jan4.setDate(jan4.getDate() - jan4.getDay())
-
-    // const mondayOfCurrentWeek = now.setDate(now.getDate() - now.getDay())
-    // const currentWeekNumber
-    return offset
+    return previousMonday.setDate(previousMonday.getDate() - offset * 7)
 }
 
-// const weeksThisYear = () => {
-//     const now = get
-// }
+const weeksThisYear = () => {
+    const year = getCurrentDate().getFullYear()
+    // Calculate the first date of an EPI year base on ISO standard  ( first week always contains 4th Jan )
+    const jan4 = new Date(`${year}-01-04`)
+    const firstMondayOfYear = getPreviousMonday(jan4)
+
+    return firstMondayOfYear.getTime()
+}
+
+const startOfYear = () => {
+    const year = getCurrentDate().getFullYear()
+    const jan1 = new Date(`${year}-01-01`)
+
+    return jan1.getTime()
+}
+
+const monthUnitsAgo = (unitSize, offset) => {
+    const now = getCurrentDate()
+    const year = now.getFullYear()
+    const monthIndex = now.getMonth()
+    // Round down to nearest even number so feb(1) will become jan(0)
+    const firstMonthIndex = unitSize * Math.floor(monthIndex / unitSize)
+    const firstMonthStr = (firstMonthIndex + 1).toString().padStart(2, '0')
+    const firstMonthStartDate = new Date(`${year}-${firstMonthStr}-01`)
+
+    return firstMonthStartDate.setMonth(
+        firstMonthStartDate.getMonth() - offset * unitSize
+    )
+}
+
+const yearsAgo = (offset, isFinancial) => {
+    const currentYear = getCurrentDate().getFullYear()
+    const startYear = currentYear - offset
+    return new Date(isFinancial ? `${startYear}-04-01` : `${startYear}-01-01`)
+}
 
 const startDateCalculators = {
     thisDay: () => daysAgo(0),
@@ -285,38 +317,41 @@ const startDateCalculators = {
     last14Days: () => daysAgo(14),
     thisWeek: () => weeksAgo(0),
     lastWeek: () => weeksAgo(1),
-    last4Weeks: () => '',
-    last12Weeks: () => '',
-    last52Weeks: () => '',
-    weeksThisYear: () => '',
-    thisMonth: () => '',
-    lastMonth: () => '',
-    last3Months: () => '',
-    last6Months: () => '',
-    last12Months: () => '',
-    monthsThisYear: () => '',
-    thisBimonth: () => '',
-    lastBimonth: () => '',
-    last6BiMonths: () => '',
-    biMonthsThisYear: () => '',
-    thisQuarter: () => '',
-    lastQuarter: () => '',
-    last4Quarters: () => '',
-    quartersThisYear: () => '',
-    thisSixMonth: () => '',
-    lastSixMonth: () => '',
-    last2SixMonths: () => '',
-    thisFinancialYear: () => '',
-    lastFinancialYear: () => '',
-    last5FinancialYears: () => '',
-    thisYear: () => '',
-    lastYear: () => '',
-    last5Years: () => '',
+    last4Weeks: () => weeksAgo(4),
+    last12Weeks: () => weeksAgo(12),
+    last52Weeks: () => weeksAgo(52),
+    weeksThisYear: () => weeksThisYear(),
+    thisMonth: () => monthUnitsAgo(1, 0),
+    lastMonth: () => monthUnitsAgo(1, 1),
+    last3Months: () => monthUnitsAgo(1, 3),
+    last6Months: () => monthUnitsAgo(1, 6),
+    last12Months: () => monthUnitsAgo(1, 12),
+    monthsThisYear: () => startOfYear(),
+    thisBimonth: () => monthUnitsAgo(2, 0),
+    lastBimonth: () => monthUnitsAgo(2, 1),
+    last6BiMonths: () => monthUnitsAgo(2, 6),
+    biMonthsThisYear: () => startOfYear(),
+    thisQuarter: () => monthUnitsAgo(3, 0),
+    lastQuarter: () => monthUnitsAgo(3, 1),
+    last4Quarters: () => monthUnitsAgo(3, 4),
+    quartersThisYear: () => startOfYear(),
+    thisSixMonth: () => monthUnitsAgo(6, 0),
+    lastSixMonth: () => monthUnitsAgo(6, 1),
+    last2SixMonths: () => monthUnitsAgo(6, 2),
+    thisFinancialYear: () => yearsAgo(0, true),
+    lastFinancialYear: () => yearsAgo(1, true),
+    last5FinancialYears: () => yearsAgo(5, true),
+    thisYear: () => yearsAgo(0),
+    lastYear: () => yearsAgo(1),
+    last5Years: () => yearsAgo(5),
 }
 
 export const getRelativePeriodStartDate = periodCode => {
     const startDateCalutator = startDateCalculators[periodCode]
-    const startTimestamp = startDateCalutator && startDateCalutator()
 
-    return formatYyyyMmDd(startTimestamp)
+    if (!startDateCalutator) {
+        return null
+    }
+
+    return formatYyyyMmDd(startDateCalutator())
 }
