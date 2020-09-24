@@ -22,9 +22,8 @@ export const isJasperReportTableReport = report =>
     report.type === reportTypes.JASPER_REPORT_TABLE
 
 export const getReportParams = report =>
-    isJasperReportTableReport(report)
-        ? report.reportTable.reportParams
-        : report.reportParams
+    (report.reportTable && report.reportTable.reportParams) ||
+    report.reportParams
 
 export const appendOrgUnitsAndReportPeriodToQueryString = (
     state,
