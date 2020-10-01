@@ -492,8 +492,9 @@ export const generateHtmlReport = ({
 
         try {
             const relativePeriodStartDate = getRelativePeriodStartDate(
-                reportPeriod.selectedPeriod
+                reportPeriod
             )
+
             const fixedPeriod =
                 !relativePeriodStartDate && parseFixedPeriod(reportPeriod)
 
