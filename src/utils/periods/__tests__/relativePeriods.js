@@ -114,17 +114,17 @@ describe('getRelativePeriodStartDate', () => {
     })
     it('returns the correct start date for relative period "thisFinancialYear"', () => {
         expect(getRelativePeriodStartDate('thisFinancialYear')).toEqual(
-            '2020-04-01'
+            '2020-10-01'
         )
     })
     it('returns the correct start date for relative period "lastFinancialYear"', () => {
         expect(getRelativePeriodStartDate('lastFinancialYear')).toEqual(
-            '2019-04-01'
+            '2019-10-01'
         )
     })
     it('returns the correct start date for relative period "last5FinancialYears"', () => {
         expect(getRelativePeriodStartDate('last5FinancialYears')).toEqual(
-            '2015-04-01'
+            '2015-10-01'
         )
     })
     it('returns the correct start date for relative period "thisYear"', () => {

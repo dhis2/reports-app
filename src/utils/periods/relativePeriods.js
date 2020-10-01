@@ -306,7 +306,7 @@ const monthUnitsAgo = (unitSize, offset) => {
 const yearsAgo = (offset, isFinancial) => {
     const currentYear = getCurrentDate().getFullYear()
     const startYear = currentYear - offset
-    return new Date(isFinancial ? `${startYear}-04-01` : `${startYear}-01-01`)
+    return new Date(isFinancial ? `${startYear}-10-01` : `${startYear}-01-01`)
 }
 
 const startDateCalculators = {
