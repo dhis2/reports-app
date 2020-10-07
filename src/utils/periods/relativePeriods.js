@@ -259,6 +259,10 @@ const getCurrentDate = () => new Date(Date.now())
 
 const getPreviousMonday = date => {
     const day = date.getDay()
+    // date.getDay() will return 0 for a Sunday and 1 for a Monday
+    // so a week starts on Sunday according to the Date API, but
+    // we want the fist day of the week to be Monday, so we need this:
+    // `day + (day === 0 ? -6 : 1)`
     const mondayTimeStamp = date.getDate() - day + (day === 0 ? -6 : 1)
     return new Date(date.setDate(mondayTimeStamp))
 }
