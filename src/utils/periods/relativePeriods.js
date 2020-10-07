@@ -235,6 +235,10 @@ export const flattenedRelativePeriods = RELATIVE_PERIODS.reduce(
     {}
 )
 
+// This helper was "borrowed" from
+// https://github.com/dhis2/analytics/blob/master/src/components/PeriodDimension/utils/fixedPeriods.js#L537-L546
+// The plan is to eventually move the getRelativePeriodStartDate code over to the anaytics repo,
+// so we are using the helpers as they are there
 const formatYyyyMmDd = timestamp => {
     const date = new Date(timestamp)
     const yyyy = date.getFullYear()
