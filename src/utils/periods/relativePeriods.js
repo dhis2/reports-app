@@ -1,42 +1,40 @@
 import i18n from '@dhis2/d2-i18n'
 import { fixedPeriodTranslations } from './fixedPeriods'
 
-const RELATIVE_PERIOD_CODES = {
-    thisDay: 'thisDay',
-    yesterday: 'yesterday',
-    last3Days: 'last3Days',
-    last7Days: 'last7Days',
-    last14Days: 'last14Days',
-    thisWeek: 'thisWeek',
-    lastWeek: 'lastWeek',
-    last4Weeks: 'last4Weeks',
-    last12Weeks: 'last12Weeks',
-    last52Weeks: 'last52Weeks',
-    weeksThisYear: 'weeksThisYear',
-    thisMonth: 'thisMonth',
-    lastMonth: 'lastMonth',
-    last3Months: 'last3Months',
-    last6Months: 'last6Months',
-    last12Months: 'last12Months',
-    monthsThisYear: 'monthsThisYear',
-    thisBimonth: 'thisBimonth',
-    lastBimonth: 'lastBimonth',
-    last6BiMonths: 'last6BiMonths',
-    biMonthsThisYear: 'biMonthsThisYear',
-    thisQuarter: 'thisQuarter',
-    lastQuarter: 'lastQuarter',
-    last4Quarters: 'last4Quarters',
-    quartersThisYear: 'quartersThisYear',
-    thisSixMonth: 'thisSixMonth',
-    lastSixMonth: 'lastSixMonth',
-    last2SixMonths: 'last2SixMonths',
-    thisFinancialYear: 'thisFinancialYear',
-    lastFinancialYear: 'lastFinancialYear',
-    last5FinancialYears: 'last5FinancialYears',
-    thisYear: 'thisYear',
-    lastYear: 'lastYear',
-    last5Years: 'last5Years',
-}
+const THIS_DAY = 'thisDay'
+const YESTERDAY = 'yesterday'
+const LAST_3_DAYS = 'last3Days'
+const LAST_7_DAYS = 'last7Days'
+const LAST_14_DAYS = 'last14Days'
+const THIS_WEEK = 'thisWeek'
+const LAST_WEEK = 'lastWeek'
+const LAST_4_WEEKS = 'last4Weeks'
+const LAST_12_WEEKS = 'last12Weeks'
+const LAST_52_WEEKS = 'last52Weeks'
+const WEEKS_THIS_YEAR = 'weeksThisYear'
+const THIS_MONTH = 'thisMonth'
+const LAST_MONTH = 'lastMonth'
+const LAST_3_MONTHS = 'last3Months'
+const LAST_6_MONTHS = 'last6Months'
+const LAST_12_MONTHS = 'last12Months'
+const MONTHS_THIS_YEAR = 'monthsThisYear'
+const THIS_BIMONTH = 'thisBimonth'
+const LAST_BIMONTH = 'lastBimonth'
+const LAST_6_BI_MONTHS = 'last6BiMonths'
+const BI_MONTHS_THIS_YEAR = 'biMonthsThisYear'
+const THIS_QUARTER = 'thisQuarter'
+const LAST_QUARTER = 'lastQuarter'
+const LAST_4_QUARTERS = 'last4Quarters'
+const QUARTERS_THIS_YEAR = 'quartersThisYear'
+const THIS_SIX_MONTH = 'thisSixMonth'
+const LAST_SIX_MONTH = 'lastSixMonth'
+const LAST_2_SIX_MONTHS = 'last2SixMonths'
+const THIS_FINANCIAL_YEAR = 'thisFinancialYear'
+const LAST_FINANCIAL_YEAR = 'lastFinancialYear'
+const LAST_5_FINANCIAL_YEARS = 'last5FinancialYears'
+const THIS_YEAR = 'thisYear'
+const LAST_YEAR = 'lastYear'
+const LAST_5_YEARS = 'last5Years'
 
 export const RELATIVE_PERIODS = [
     // Days
@@ -44,23 +42,23 @@ export const RELATIVE_PERIODS = [
         label: i18n.t('Days'),
         options: [
             {
-                value: RELATIVE_PERIOD_CODES.thisDay,
+                value: THIS_DAY,
                 label: i18n.t('Reporting day'),
             },
             {
-                value: RELATIVE_PERIOD_CODES.yesterday,
+                value: YESTERDAY,
                 label: i18n.t('Yesterday'),
             },
             {
-                value: RELATIVE_PERIOD_CODES.last3Days,
+                value: LAST_3_DAYS,
                 label: i18n.t('Last 3 days'),
             },
             {
-                value: RELATIVE_PERIOD_CODES.last7Days,
+                value: LAST_7_DAYS,
                 label: i18n.t('Last 7 days'),
             },
             {
-                value: RELATIVE_PERIOD_CODES.last14Days,
+                value: LAST_14_DAYS,
                 label: i18n.t('Last 14 days'),
             },
         ],
@@ -70,27 +68,27 @@ export const RELATIVE_PERIODS = [
         label: i18n.t('Weeks'),
         options: [
             {
-                value: RELATIVE_PERIOD_CODES.thisWeek,
+                value: THIS_WEEK,
                 label: i18n.t('Reporting week'),
             },
             {
-                value: RELATIVE_PERIOD_CODES.lastWeek,
+                value: LAST_WEEK,
                 label: i18n.t('Last Week'),
             },
             {
-                value: RELATIVE_PERIOD_CODES.last4Weeks,
+                value: LAST_4_WEEKS,
                 label: i18n.t('Last 2 weeks'),
             },
             {
-                value: RELATIVE_PERIOD_CODES.last12Weeks,
+                value: LAST_12_WEEKS,
                 label: i18n.t('Last 12 weeks'),
             },
             {
-                value: RELATIVE_PERIOD_CODES.last52Weeks,
+                value: LAST_52_WEEKS,
                 label: i18n.t('Last 52 weeks'),
             },
             {
-                value: RELATIVE_PERIOD_CODES.weeksThisYear,
+                value: WEEKS_THIS_YEAR,
                 label: i18n.t('Weeks this year'),
             },
         ],
@@ -100,27 +98,27 @@ export const RELATIVE_PERIODS = [
         label: i18n.t('Months'),
         options: [
             {
-                value: RELATIVE_PERIOD_CODES.thisMonth,
+                value: THIS_MONTH,
                 label: i18n.t('Reporting month'),
             },
             {
-                value: RELATIVE_PERIOD_CODES.lastMonth,
+                value: LAST_MONTH,
                 label: i18n.t('Last month'),
             },
             {
-                value: RELATIVE_PERIOD_CODES.last3Months,
+                value: LAST_3_MONTHS,
                 label: i18n.t('Last 3 months'),
             },
             {
-                value: RELATIVE_PERIOD_CODES.last6Months,
+                value: LAST_6_MONTHS,
                 label: i18n.t('Last 6 months'),
             },
             {
-                value: RELATIVE_PERIOD_CODES.last12Months,
+                value: LAST_12_MONTHS,
                 label: i18n.t('Last 12 months'),
             },
             {
-                value: RELATIVE_PERIOD_CODES.monthsThisYear,
+                value: MONTHS_THIS_YEAR,
                 label: i18n.t('Months this year'),
             },
         ],
@@ -130,19 +128,19 @@ export const RELATIVE_PERIODS = [
         label: i18n.t('Bi-months'),
         options: [
             {
-                value: RELATIVE_PERIOD_CODES.thisBimonth,
+                value: THIS_BIMONTH,
                 label: i18n.t('Reporting bi-month'),
             },
             {
-                value: RELATIVE_PERIOD_CODES.lastBimonth,
+                value: LAST_BIMONTH,
                 label: i18n.t('Last bi-month'),
             },
             {
-                value: RELATIVE_PERIOD_CODES.last6BiMonths,
+                value: LAST_6_BI_MONTHS,
                 label: i18n.t('Last 6 bi-month'),
             },
             {
-                value: RELATIVE_PERIOD_CODES.biMonthsThisYear,
+                value: BI_MONTHS_THIS_YEAR,
                 label: i18n.t('Bi-months this year'),
             },
         ],
@@ -152,19 +150,19 @@ export const RELATIVE_PERIODS = [
         label: i18n.t('Quarters'),
         options: [
             {
-                value: RELATIVE_PERIOD_CODES.thisQuarter,
+                value: THIS_QUARTER,
                 label: i18n.t('Reporting quarter'),
             },
             {
-                value: RELATIVE_PERIOD_CODES.lastQuarter,
+                value: LAST_QUARTER,
                 label: i18n.t('Last quarter'),
             },
             {
-                value: RELATIVE_PERIOD_CODES.last4Quarters,
+                value: LAST_4_QUARTERS,
                 label: i18n.t('Last 4 quarters'),
             },
             {
-                value: RELATIVE_PERIOD_CODES.quartersThisYear,
+                value: QUARTERS_THIS_YEAR,
                 label: i18n.t('Quarters of reporting year'),
             },
         ],
@@ -174,15 +172,15 @@ export const RELATIVE_PERIODS = [
         label: i18n.t('Six-Months'),
         options: [
             {
-                value: RELATIVE_PERIOD_CODES.thisSixMonth,
+                value: THIS_SIX_MONTH,
                 label: i18n.t('Reporting six-month'),
             },
             {
-                value: RELATIVE_PERIOD_CODES.lastSixMonth,
+                value: LAST_SIX_MONTH,
                 label: i18n.t('Last six-month'),
             },
             {
-                value: RELATIVE_PERIOD_CODES.last2SixMonths,
+                value: LAST_2_SIX_MONTHS,
                 label: i18n.t('Last 2 six-months'),
             },
         ],
@@ -192,15 +190,15 @@ export const RELATIVE_PERIODS = [
         label: i18n.t('Financial Years'),
         options: [
             {
-                value: RELATIVE_PERIOD_CODES.thisFinancialYear,
+                value: THIS_FINANCIAL_YEAR,
                 label: i18n.t('Reporting financial year'),
             },
             {
-                value: RELATIVE_PERIOD_CODES.lastFinancialYear,
+                value: LAST_FINANCIAL_YEAR,
                 label: i18n.t('Last financial year'),
             },
             {
-                value: RELATIVE_PERIOD_CODES.last5FinancialYears,
+                value: LAST_5_FINANCIAL_YEARS,
                 label: i18n.t('Last 5 financial years'),
             },
         ],
@@ -210,15 +208,15 @@ export const RELATIVE_PERIODS = [
         label: i18n.t('Years'),
         options: [
             {
-                value: RELATIVE_PERIOD_CODES.thisYear,
+                value: THIS_YEAR,
                 label: i18n.t('Reporting year'),
             },
             {
-                value: RELATIVE_PERIOD_CODES.lastYear,
+                value: LAST_YEAR,
                 label: i18n.t('Last year'),
             },
             {
-                value: RELATIVE_PERIOD_CODES.last5Years,
+                value: LAST_5_YEARS,
                 label: i18n.t('Last 5 years'),
             },
         ],
@@ -310,40 +308,40 @@ const yearsAgo = (offset, isFinancial) => {
 }
 
 const startDateCalculators = {
-    [RELATIVE_PERIOD_CODES.thisDay]: () => daysAgo(0),
-    [RELATIVE_PERIOD_CODES.yesterday]: () => daysAgo(1),
-    [RELATIVE_PERIOD_CODES.last3Days]: () => daysAgo(3),
-    [RELATIVE_PERIOD_CODES.last7Days]: () => daysAgo(7),
-    [RELATIVE_PERIOD_CODES.last14Days]: () => daysAgo(14),
-    [RELATIVE_PERIOD_CODES.thisWeek]: () => weeksAgo(0),
-    [RELATIVE_PERIOD_CODES.lastWeek]: () => weeksAgo(1),
-    [RELATIVE_PERIOD_CODES.last4Weeks]: () => weeksAgo(4),
-    [RELATIVE_PERIOD_CODES.last12Weeks]: () => weeksAgo(12),
-    [RELATIVE_PERIOD_CODES.last52Weeks]: () => weeksAgo(52),
-    [RELATIVE_PERIOD_CODES.weeksThisYear]: () => weeksThisYear(),
-    [RELATIVE_PERIOD_CODES.thisMonth]: () => monthUnitsAgo(1, 0),
-    [RELATIVE_PERIOD_CODES.lastMonth]: () => monthUnitsAgo(1, 1),
-    [RELATIVE_PERIOD_CODES.last3Months]: () => monthUnitsAgo(1, 3),
-    [RELATIVE_PERIOD_CODES.last6Months]: () => monthUnitsAgo(1, 6),
-    [RELATIVE_PERIOD_CODES.last12Months]: () => monthUnitsAgo(1, 12),
-    [RELATIVE_PERIOD_CODES.monthsThisYear]: () => startOfYear(),
-    [RELATIVE_PERIOD_CODES.thisBimonth]: () => monthUnitsAgo(2, 0),
-    [RELATIVE_PERIOD_CODES.lastBimonth]: () => monthUnitsAgo(2, 1),
-    [RELATIVE_PERIOD_CODES.last6BiMonths]: () => monthUnitsAgo(2, 6),
-    [RELATIVE_PERIOD_CODES.biMonthsThisYear]: () => startOfYear(),
-    [RELATIVE_PERIOD_CODES.thisQuarter]: () => monthUnitsAgo(3, 0),
-    [RELATIVE_PERIOD_CODES.lastQuarter]: () => monthUnitsAgo(3, 1),
-    [RELATIVE_PERIOD_CODES.last4Quarters]: () => monthUnitsAgo(3, 4),
-    [RELATIVE_PERIOD_CODES.quartersThisYear]: () => startOfYear(),
-    [RELATIVE_PERIOD_CODES.thisSixMonth]: () => monthUnitsAgo(6, 0),
-    [RELATIVE_PERIOD_CODES.lastSixMonth]: () => monthUnitsAgo(6, 1),
-    [RELATIVE_PERIOD_CODES.last2SixMonths]: () => monthUnitsAgo(6, 2),
-    [RELATIVE_PERIOD_CODES.thisFinancialYear]: () => yearsAgo(0, true),
-    [RELATIVE_PERIOD_CODES.lastFinancialYear]: () => yearsAgo(1, true),
-    [RELATIVE_PERIOD_CODES.last5FinancialYears]: () => yearsAgo(5, true),
-    [RELATIVE_PERIOD_CODES.thisYear]: () => yearsAgo(0),
-    [RELATIVE_PERIOD_CODES.lastYear]: () => yearsAgo(1),
-    [RELATIVE_PERIOD_CODES.last5Years]: () => yearsAgo(5),
+    [THIS_DAY]: () => daysAgo(0),
+    [YESTERDAY]: () => daysAgo(1),
+    [LAST_3_DAYS]: () => daysAgo(3),
+    [LAST_7_DAYS]: () => daysAgo(7),
+    [LAST_14_DAYS]: () => daysAgo(14),
+    [THIS_WEEK]: () => weeksAgo(0),
+    [LAST_WEEK]: () => weeksAgo(1),
+    [LAST_4_WEEKS]: () => weeksAgo(4),
+    [LAST_12_WEEKS]: () => weeksAgo(12),
+    [LAST_52_WEEKS]: () => weeksAgo(52),
+    [WEEKS_THIS_YEAR]: () => weeksThisYear(),
+    [THIS_MONTH]: () => monthUnitsAgo(1, 0),
+    [LAST_MONTH]: () => monthUnitsAgo(1, 1),
+    [LAST_3_MONTHS]: () => monthUnitsAgo(1, 3),
+    [LAST_6_MONTHS]: () => monthUnitsAgo(1, 6),
+    [LAST_12_MONTHS]: () => monthUnitsAgo(1, 12),
+    [MONTHS_THIS_YEAR]: () => startOfYear(),
+    [THIS_BIMONTH]: () => monthUnitsAgo(2, 0),
+    [LAST_BIMONTH]: () => monthUnitsAgo(2, 1),
+    [LAST_6_BI_MONTHS]: () => monthUnitsAgo(2, 6),
+    [BI_MONTHS_THIS_YEAR]: () => startOfYear(),
+    [THIS_QUARTER]: () => monthUnitsAgo(3, 0),
+    [LAST_QUARTER]: () => monthUnitsAgo(3, 1),
+    [LAST_4_QUARTERS]: () => monthUnitsAgo(3, 4),
+    [QUARTERS_THIS_YEAR]: () => startOfYear(),
+    [THIS_SIX_MONTH]: () => monthUnitsAgo(6, 0),
+    [LAST_SIX_MONTH]: () => monthUnitsAgo(6, 1),
+    [LAST_2_SIX_MONTHS]: () => monthUnitsAgo(6, 2),
+    [THIS_FINANCIAL_YEAR]: () => yearsAgo(0, true),
+    [LAST_FINANCIAL_YEAR]: () => yearsAgo(1, true),
+    [LAST_5_FINANCIAL_YEARS]: () => yearsAgo(5, true),
+    [THIS_YEAR]: () => yearsAgo(0),
+    [LAST_YEAR]: () => yearsAgo(1),
+    [LAST_5_YEARS]: () => yearsAgo(5),
 }
 
 export const getRelativePeriodStartDate = periodCode => {
