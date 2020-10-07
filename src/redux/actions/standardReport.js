@@ -3,7 +3,6 @@ import { push } from 'connected-react-router'
 import debounce from 'lodash.debounce'
 import omit from 'lodash.omit'
 import size from 'lodash.size'
-import parsePeriod from 'd2/period/parser'
 
 import { DEBOUNCE_DELAY } from '../../config/search.config'
 import { STANDARD_REPORT_SECTION_KEY } from '../../config/sections.config'
@@ -48,6 +47,7 @@ import {
 import { clearSelectedReportPeriod } from './reportPeriod'
 import { loadStandardReportTables } from './standardReportTables'
 import { formatStandardReportPayloadBySystemVersion } from '../../utils/backwardCompatability'
+import { getPeriodStartDate } from '../../utils/periods/periodTypes'
 
 export const actionTypes = {
     SET_SELECTED_REPORT: 'SET_SELECTED_REPORT',
@@ -487,13 +487,12 @@ export const generateHtmlReport = ({
     }
 
     if (reportPeriod) {
+        const startDate = getPeriodStartDate(reportPeriod)
+
         reportRequestBody.pe = reportPeriod
 
-        try {
-            const period = parsePeriod(reportPeriod)
-            reportRequestBody.date = period.startDate
-        } catch (error) {
-            // ignore
+        if (startDate) {
+            reportRequestBody.date = startDate
         }
     }
 

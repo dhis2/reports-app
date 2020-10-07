@@ -1,4 +1,5 @@
 import i18n from '@dhis2/d2-i18n'
+import parseFixedPeriod from 'd2/period/parser'
 
 /* do not change property names, those are ids from period types server */
 export const fixedPeriodTranslations = {
@@ -42,4 +43,16 @@ export const relativePeriodsThatAreActuallyFixed = {
         'FinancialOct',
         'FinancialNov',
     ],
+}
+
+export const isFixedPeriodType = periodType =>
+    !!fixedPeriodTranslations[periodType]
+
+export const getFixedPeriodStartDate = periodCode => {
+    try {
+        const period = parseFixedPeriod(periodCode)
+        return period.startDate
+    } catch {
+        return null
+    }
 }

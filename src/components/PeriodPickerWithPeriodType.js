@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import { selectPeriod, selectPeriodType } from '../redux/actions/reportPeriod'
 import { getFilteredPeriodTypes } from '../redux/selectors/reportPeriod/periodTypes'
 import { formLabel } from '../utils/styles/shared.js'
-import { isFixedPeriodType } from '../utils/periods/periodTypes'
+import { isFixedPeriodType } from '../utils/periods/fixedPeriods'
 
 const periodTypeLabelText = i18n.t('Select Period Type')
 
