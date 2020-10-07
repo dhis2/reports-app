@@ -136,7 +136,7 @@ msgid "Reporting Period"
 msgstr "Ҳисобот даври"
 
 msgid "Organisation Unit"
-msgstr "Ташкилий бирлик"
+msgstr "Ташкилий бўлим"
 
 msgid "CONFIRM"
 msgstr "ТАСДИҚЛАНГ"
