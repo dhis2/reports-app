@@ -1,5 +1,4 @@
 import i18n from '@dhis2/d2-i18n'
-import { fixedPeriodTranslations } from './fixedPeriods'
 
 const THIS_DAY = 'thisDay'
 const YESTERDAY = 'yesterday'
@@ -235,9 +234,6 @@ export const flattenedRelativePeriods = RELATIVE_PERIODS.reduce(
     },
     {}
 )
-
-export const isFixedPeriodType = periodType =>
-    !!fixedPeriodTranslations[periodType]
 
 const formatYyyyMmDd = timestamp => {
     const date = new Date(timestamp)

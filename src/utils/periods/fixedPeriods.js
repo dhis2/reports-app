@@ -45,6 +45,9 @@ export const relativePeriodsThatAreActuallyFixed = {
     ],
 }
 
+export const isFixedPeriodType = periodType =>
+    !!fixedPeriodTranslations[periodType]
+
 export const getFixedPeriodStartDate = periodCode => {
     try {
         const period = parseFixedPeriod(periodCode)
