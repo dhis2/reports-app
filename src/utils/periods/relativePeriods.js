@@ -251,6 +251,10 @@ const formatYyyyMmDd = timestamp => {
     return `${yyyy}-${mm}-${dd}`
 }
 
+// We are passing `Date.now()` to the `Date` constructor to make this
+// module easier to unit test. This way we only have to mock `Date.now`,
+// which is a lot easier than to mock the `Date` class
+// See here for more info: https://codewithhugo.com/mocking-the-current-date-in-jest-tests/
 const getCurrentDate = () => new Date(Date.now())
 
 const getPreviousMonday = date => {
