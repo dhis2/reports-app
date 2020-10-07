@@ -1,17 +1,15 @@
 import { getRelativePeriodStartDate } from '../relativePeriods.js'
 
 describe('getRelativePeriodStartDate', () => {
-    const originalDateNow = Date.now
-
     beforeAll(() => {
-        global.Date.now = jest.fn(() =>
-            // Groundhog day: 2020-09-22
-            new Date('2020-09-22T10:00:00Z').getTime()
+        // Groundhog day: 2020-09-22
+        jest.spyOn(global.Date, 'now').mockImplementation(
+            () => '2020-09-22T10:00:00Z'
         )
     })
 
     afterAll(() => {
-        global.Date.now = originalDateNow
+        jest.restoreAllMocks()
     })
 
     it('returns the correct start date for relative period "thisDay"', () => {
