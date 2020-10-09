@@ -1,14 +1,14 @@
 # 
 # Translators:
-# easylin <lin_xd@126.com>, 2020
 # 晓东 林 <13981924470@126.com>, 2020
+# easylin <lin_xd@126.com>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2020-09-23T12:16:43.780Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
-"Last-Translator: 晓东 林 <13981924470@126.com>, 2020\n"
+"Last-Translator: easylin <lin_xd@126.com>, 2020\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/hisp-uio/teams/100509/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "Updating Organisation Units Tree..."
-msgstr ""
+msgstr "更新机构树"
 
 msgid "Select Option"
 msgstr ""
@@ -129,7 +129,7 @@ msgid "Organisation Unit"
 msgstr "组织机构"
 
 msgid "CONFIRM"
-msgstr ""
+msgstr "确认"
 
 msgid "Report period"
 msgstr "报告期间"
@@ -459,19 +459,19 @@ msgid "Close"
 msgstr "关闭"
 
 msgid "week"
-msgstr ""
+msgstr "周"
 
 msgid "month"
 msgstr "月"
 
 msgid "year"
-msgstr ""
+msgstr "年"
 
 msgid "bi monthly"
-msgstr ""
+msgstr "两月"
 
 msgid "day"
-msgstr ""
+msgstr "天"
 
 msgid "January"
 msgstr "01"
@@ -534,22 +534,22 @@ msgid "May-October"
 msgstr ""
 
 msgid "quarter"
-msgstr ""
+msgstr "季度"
 
 msgid "Q1"
-msgstr ""
+msgstr "春季"
 
 msgid "Q2"
-msgstr ""
+msgstr "夏季"
 
 msgid "Q3"
-msgstr ""
+msgstr "秋季"
 
 msgid "Q4"
-msgstr ""
+msgstr "冬季"
 
 msgid "six monthly"
-msgstr ""
+msgstr "每六个月"
 
 msgid "January-June"
 msgstr "1-6月"
