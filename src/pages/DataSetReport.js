@@ -28,6 +28,7 @@ const DataSetReport = props => (
                     onSelectedUnitOnlyChange={props.toggleSelectedUnitOnly}
                     onGetReportClick={props.loadReportData}
                     isGetReportDisabled={!props.isActionEnabled}
+                    onNoOfSignaturesChange={props.selectNoOfSignatures}
                 />
             </div>
         </Paper>
@@ -58,6 +59,7 @@ DataSetReport.propTypes = {
     toggleSelectedUnitOnly: PropTypes.func.isRequired,
     shareDataSetReportComment: PropTypes.func.isRequired,
     setDataSetReportComment: PropTypes.func.isRequired,
+    selectNoOfSignatures: PropTypes.func.isRequired,
 }
 
 const ConnectedDataSetReport = connectDataSetReport(DataSetReport)

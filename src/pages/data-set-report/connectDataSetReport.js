@@ -9,6 +9,10 @@ import { setReportComment } from '../../redux/actions/reportData'
 import { getIsActionEnabled } from '../../redux/selectors/dataSetReport/getIsActionEnabled'
 import getTransformedTableData from '../../redux/selectors/dataSetReport/getTransformedTableData'
 import { isHtmlReport } from '../../utils/dataSetReport/isHtmlReport'
+import {
+    loadNoOfSignatures,
+    selectNoOfSignatures,
+} from '../../redux/actions/dataSetNoOfSignatuesReport'
 
 const mapStateToProps = state => ({
     isHtmlReport: isHtmlReport(state.reportData.content),
@@ -28,6 +32,8 @@ const mapDispatchToProps = dispatch => ({
     shareDataSetReportComment: comment =>
         dispatch(shareDataSetReportComment(comment)),
     setDataSetReportComment: comment => dispatch(setReportComment(comment)),
+    loadNoOfSignatures: () => dispatch(loadNoOfSignatures()),
+    selectNoOfSignatures: e => dispatch(selectNoOfSignatures(e.target.value)),
 })
 
 export const connectDataSetReport = connect(

@@ -7,6 +7,7 @@ import DataSets from '../../components/DatasetsDropdown'
 import { DataSetDimensions } from '../../components/DataSetDimensions'
 import PeriodPickerComponent from '../../components/PeriodPickerWithPeriodType'
 import OrgUnitsTreeWithExtraOptions from '../../components/OrgUnitsTreeWithExtraOptions'
+import NoOfSignatures from '../../components/NoOfSignaturesDropdown'
 
 const Form = props => (
     <div id="data-set-report-form">
@@ -30,6 +31,9 @@ const Form = props => (
                     value={props.selectedUnitOnly}
                     label={i18n.t('Use data for selected unit only')}
                 />
+                <div id="no-of-signatures-selection">
+                    <NoOfSignatures onChange={props.onNoOfSignaturesChange} />
+                </div>
             </div>
         </div>
         <div id="main-action-button">
@@ -59,6 +63,7 @@ Form.propTypes = {
     onSelectedUnitOnlyChange: PropTypes.func.isRequired,
     isGetReportDisabled: PropTypes.bool.isRequired,
     onGetReportClick: PropTypes.func.isRequired,
+    onNoOfSignaturesChange: PropTypes.func.isRequired,
 }
 
 export default Form

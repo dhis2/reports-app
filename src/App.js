@@ -13,6 +13,7 @@ import React, { PureComponent } from 'react'
 
 import { Loader } from './components/feedback/Loader'
 import { loadDataSetOptions } from './redux/actions/dataSet'
+import { loadNoOfSignatures } from './redux/actions/dataSetNoOfSignatuesReport'
 import { loadOrganisationUnits } from './redux/actions/organisationUnits'
 import { loadPeriodTypes } from './redux/actions/reportPeriod'
 import { sectionOrder, sections } from './config/sections.config'
@@ -42,6 +43,7 @@ class App extends PureComponent {
         this.props.loadOrganisationUnits()
         this.props.loadPeriodTypes()
         this.props.loadDataSetOptions()
+        this.props.loadNoOfSignatures()
     }
 
     render() {
@@ -140,6 +142,7 @@ App.propTypes = {
     loadPeriodTypes: PropTypes.func.isRequired,
     loadDataSetOptions: PropTypes.func.isRequired,
     loadOrganisationUnits: PropTypes.func.isRequired,
+    loadNoOfSignatures: PropTypes.func.isRequired,
 }
 
 App.childContextTypes = {
@@ -157,5 +160,6 @@ export default connect(
         loadOrganisationUnits,
         loadPeriodTypes,
         loadDataSetOptions,
+        loadNoOfSignatures,
     }
 )(App)

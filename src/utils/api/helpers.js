@@ -97,6 +97,7 @@ export const getDataSetReportFileUrls = (resourceUrl, options) => {
         pe: options.period,
         ou: options.orgUnit,
         selectedUnitOnly: options.selectedUnitOnly,
+        noOfSignatures: options.noOfSignatures,
     })
     const filterQueryStr = Object.keys(mergedFilters)
         .map(key => `filter=${key}:${mergedFilters[key]}`)

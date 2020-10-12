@@ -36,6 +36,7 @@ export const loadReportData = () => (dispatch, getState) => {
         dataSetReport,
         organisationUnits,
         reportPeriod,
+        dataSetNoOfSignatuesReport,
     } = getState()
 
     return getDataSetReport({
@@ -45,6 +46,7 @@ export const loadReportData = () => (dispatch, getState) => {
         orgUnit: organisationUnits.selected.id,
         period: reportPeriod.selectedPeriod,
         selectedUnitOnly: dataSetReport.selectedUnitOnly,
+        noOfSignatures: dataSetNoOfSignatuesReport.selected.id,
     })
         .then(response =>
             dispatch(loadingReportDataSuccessWithFeedback(response))

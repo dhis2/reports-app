@@ -111,6 +111,7 @@ export const getDataSetReport = options => {
         pe: options.period,
         ou: options.orgUnit,
         selectedUnitOnly: options.selectedUnitOnly,
+        noOfSignatures: options.noOfSignatures,
         filter: mapCollectionToDimensionQueryString(
             options.dataSetDimensions,
             options.orgUnitGroupsOptions
