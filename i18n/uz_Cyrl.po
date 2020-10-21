@@ -433,7 +433,7 @@ msgid "Created By"
 msgstr "Томонидан яратилган"
 
 msgid "Who has access"
-msgstr "Кимда кириш ҳуқуқи мавжуд"
+msgstr "Кириш ҳуқуқига эга шахс"
 
 msgid "External access (without login)"
 msgstr "Ташқаридан кириш (рўйхатдан ўтмаган)"
