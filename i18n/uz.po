@@ -16,7 +16,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "Updating Organisation Units Tree..."
-msgstr "Муассасалар дарахти (кетма-кетлиги) янгиланмоқда..."
+msgstr "Муассасалар дарахти (шажараси) янгиланмоқда..."
 
 msgid "Select Option"
 msgstr "Вариантни танланг"
