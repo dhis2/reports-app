@@ -70,7 +70,7 @@ msgid "Select file"
 msgstr "Файлни танлаш"
 
 msgid "No file chosen"
-msgstr "Файл танланмаган"
+msgstr "Ҳеч қандай файл танланмади"
 
 msgid "Standard Report"
 msgstr "Стандарт ҳисобот"
