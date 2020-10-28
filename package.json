@@ -31,7 +31,7 @@
         "redux-mock-store": "^1.5.4"
     },
     "dependencies": {
-        "@dhis2/app-runtime": "^2.3.0",
+        "@dhis2/app-runtime": "^2.5.0",
         "@dhis2/app-runtime-adapter-d2": "^1.0.1",
         "@dhis2/d2-ui-app": "^2.0.0",
         "@dhis2/d2-ui-core": "^7.0.5",
