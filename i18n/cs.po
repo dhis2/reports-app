@@ -176,7 +176,7 @@ msgid "File resources can not be edited, only created"
 msgstr ""
 
 msgid "Cancel"
-msgstr ""
+msgstr "Zrušit"
 
 msgid "Edit standard report"
 msgstr ""
@@ -368,7 +368,7 @@ msgid "Log out"
 msgstr ""
 
 msgid "About DHIS 2"
-msgstr ""
+msgstr "O DHIS 2"
 
 msgid "Manage my apps"
 msgstr ""
@@ -386,7 +386,7 @@ msgid "Report Table"
 msgstr ""
 
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgid "Create"
 msgstr ""
@@ -617,7 +617,7 @@ msgid "Financial-Oct"
 msgstr ""
 
 msgid "Days"
-msgstr ""
+msgstr "Dnů"
 
 msgid "Reporting day"
 msgstr ""
@@ -662,7 +662,7 @@ msgid "Reporting month"
 msgstr ""
 
 msgid "Last month"
-msgstr ""
+msgstr "Minulý měsíc"
 
 msgid "Last 3 months"
 msgstr ""
