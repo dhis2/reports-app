@@ -359,7 +359,7 @@ msgid "Profile"
 msgstr ""
 
 msgid "Account"
-msgstr ""
+msgstr "Účet"
 
 msgid "Help"
 msgstr ""
@@ -473,7 +473,7 @@ msgid "day"
 msgstr ""
 
 msgid "January"
-msgstr ""
+msgstr "Leden"
 
 msgid "February"
 msgstr ""
