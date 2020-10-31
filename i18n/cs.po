@@ -52,7 +52,7 @@ msgid "Select Period Type"
 msgstr ""
 
 msgid "Search"
-msgstr ""
+msgstr "Hledat"
 
 msgid "No results have been found"
 msgstr ""
@@ -164,7 +164,7 @@ msgid "Name*"
 msgstr ""
 
 msgid "Details"
-msgstr ""
+msgstr "Detaily"
 
 msgid "Resource Type"
 msgstr ""
@@ -221,7 +221,7 @@ msgid "Design File*"
 msgstr ""
 
 msgid "Relative periods"
-msgstr ""
+msgstr "Relativní období"
 
 msgid "Settings"
 msgstr ""
@@ -485,7 +485,7 @@ msgid "April"
 msgstr ""
 
 msgid "May"
-msgstr ""
+msgstr "Květen"
 
 msgid "June"
 msgstr ""
@@ -566,7 +566,7 @@ msgid "Bi-Week"
 msgstr ""
 
 msgid "Daily"
-msgstr ""
+msgstr "Denně"
 
 msgid "Weekly"
 msgstr ""
@@ -605,7 +605,7 @@ msgid "Six-Monthly November"
 msgstr ""
 
 msgid "Yearly"
-msgstr ""
+msgstr "Ročně"
 
 msgid "Financial-April"
 msgstr ""
@@ -725,7 +725,7 @@ msgid "Reporting financial year"
 msgstr ""
 
 msgid "Last financial year"
-msgstr ""
+msgstr "Poslední finanční rok"
 
 msgid "Last 5 financial years"
 msgstr ""
