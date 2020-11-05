@@ -18,6 +18,7 @@ export const SCRIPT_FILES = [
     '/dhis-web-commons/javascripts/jQuery/jquery.min.js',
     '/dhis-web-commons/javascripts/jQuery/jquery.utils.js',
     '/dhis-web-commons/javascripts/jQuery/ui/jquery-ui.min.js',
+    '/dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.min.js',
     '/dhis-web-commons/javascripts/dhis2/dhis2.util.js',
     '/dhis-web-commons/javascripts/dhis2/dhis2.period.js',
     '/dhis-web-commons/javascripts/commons.js',
