@@ -31,7 +31,7 @@ msgid "Select Data Set"
 msgstr ""
 
 msgid "Data set"
-msgstr ""
+msgstr "Datová sada"
 
 msgid "Group Set"
 msgstr ""
@@ -158,7 +158,7 @@ msgid "No"
 msgstr "Ne"
 
 msgid "File"
-msgstr ""
+msgstr "Soubor"
 
 msgid "Name*"
 msgstr ""
@@ -341,7 +341,7 @@ msgid "An error occurred while loading the report table options"
 msgstr ""
 
 msgid "Count"
-msgstr ""
+msgstr "Počet"
 
 msgid "Total"
 msgstr ""
