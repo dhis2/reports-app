@@ -16,140 +16,150 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 msgid "Updating Organisation Units Tree..."
-msgstr ""
+msgstr "Aktualizace stromu Organizačních jednotek ..."
 
 msgid "Select Option"
-msgstr ""
+msgstr "Vybrat možnost"
 
 msgid "Data set dimensions"
-msgstr ""
+msgstr "Rozměry datové sady"
 
 msgid "Loading options..."
-msgstr ""
+msgstr "Možnosti načítání ..."
 
 msgid "Select Data Set"
-msgstr ""
+msgstr "Vybrat datovou sadu"
 
 msgid "Data set"
 msgstr "Datová sada"
 
 msgid "Group Set"
-msgstr ""
+msgstr "Skupinová sada"
 
 msgid "Select Group Set"
-msgstr ""
+msgstr "Vyberte sadu skupin"
 
 msgid "Show more options"
-msgstr ""
+msgstr "Zobrazit více možností"
 
 msgid "Show fewer options"
-msgstr ""
+msgstr "Zobrazit méně možností"
 
 msgid "Report organisation unit"
-msgstr ""
+msgstr "Zpráva o organizační jednotce"
 
 msgid "Select Period Type"
-msgstr ""
+msgstr "Vybrat Typ období"
 
 msgid "Search"
 msgstr "Hledat"
 
 msgid "No results have been found"
-msgstr ""
+msgstr "Nenalezeny žádné výsledky"
 
 msgid "Download as"
-msgstr ""
+msgstr "Stáhnout jako"
 
 msgid "Share"
-msgstr ""
+msgstr "Sdílet"
 
 msgid "Write a comment, question or interpretation of this report"
-msgstr ""
+msgstr "Napište komentář, otázku nebo výklad této zprávy"
 
 msgid "Select file"
 msgstr "Vybrat soubor"
 
 msgid "No file chosen"
-msgstr ""
+msgstr "Nevybrán žádný soubor"
 
 msgid "Standard Report"
-msgstr ""
+msgstr "Standardní zpráva"
 
 msgid ""
 "View and add reports based on the JasperReports library. These can be based "
 "on report tables and can be designed in iReport."
 msgstr ""
+"Prohlížejte a přidávejte zprávy na základě knihovny JasperReports. Ty mohou "
+"být založeny na tabulkách sestav a mohou být navrženy v iReportu."
 
 msgid "View Reports"
-msgstr ""
+msgstr "Zobrazit zprávy"
 
 msgid "Data Set Report"
-msgstr ""
+msgstr "Zpráva o souboru dat"
 
 msgid ""
 "View data set reports. These reports are based on data entry screens and "
 "will produce a report with aggregated data."
 msgstr ""
+"Zobrazit přehledy datových sad. Tyto sestavy jsou založeny na obrazovkách "
+"pro zadávání dat a vytvoří sestavu s agregovanými daty."
 
 msgid "Get Report"
-msgstr ""
+msgstr "Získat zprávu"
 
 msgid "Reporting Rate Summary"
-msgstr ""
+msgstr "Souhrn četnosti hlášení zpráv"
 
 msgid ""
 "Browse the reporting rates of data sets by organisation unit and period "
 "based on various criteria for submission."
 msgstr ""
+"Procházet četnost vykazování souborů dat podle organizační jednotky a období"
+" na základě různých kritérií pro odeslání."
 
 msgid "Resource"
-msgstr ""
+msgstr "Zdroj"
 
 msgid ""
 "View and add resources. These resources can be uploaded documents or URLs on"
 " the web."
 msgstr ""
+"Zobrazit a přidat zdroje. Tyto zdroje lze nahrát dokumenty nebo adresy URL "
+"na web."
 
 msgid "View Resources"
-msgstr ""
+msgstr "Zobrazit zdroje"
 
 msgid "Org unit distribution report"
-msgstr ""
+msgstr "Zpráva o distribuci organizační jednotky"
 
 msgid ""
 "Browse the organisation unit distribution report based on the organisation "
 "unit group sets and its groups."
 msgstr ""
+"Procházejte zprávu distribuce organizační jednotky na základě sad skupin "
+"organizačních jednotek a jejich skupin."
 
 msgid "Reporting Period"
-msgstr ""
+msgstr "Období podávání Zprávy"
 
 msgid "Organisation Unit"
 msgstr "Organizační jednotka"
 
 msgid "CONFIRM"
-msgstr ""
+msgstr "POTVRDIT"
 
 msgid "Report period"
-msgstr ""
+msgstr "Období zprávy"
 
 msgid "Use data for selected unit only"
-msgstr ""
+msgstr "Použít data pouze pro vybranou jednotku"
 
 msgid "Get Chart"
-msgstr ""
+msgstr "Získat graf"
 
 msgid "Edit resource"
-msgstr ""
+msgstr "Upravit zdroj"
 
 msgid "Save resource"
-msgstr ""
+msgstr "Uložit zdroj"
 
 msgid "Add resource"
-msgstr ""
+msgstr "Přidat zdroj"
 
 msgid "Do you want to use this file as an attachment?"
-msgstr ""
+msgstr "Chcete tento soubor použít jako přílohu?"
 
 msgid "Yes"
 msgstr "Ano"
@@ -161,16 +171,16 @@ msgid "File"
 msgstr "Soubor"
 
 msgid "Name*"
-msgstr ""
+msgstr "Název*"
 
 msgid "Details"
 msgstr "Detaily"
 
 msgid "Resource Type"
-msgstr ""
+msgstr "Typ zdroje"
 
 msgid "Url*"
-msgstr ""
+msgstr "Url*"
 
 msgid "File resources can not be edited, only created"
 msgstr ""
@@ -179,46 +189,46 @@ msgid "Cancel"
 msgstr "Zrušit"
 
 msgid "Edit standard report"
-msgstr ""
+msgstr "Upravit standardní zprávu"
 
 msgid "Create standard report"
-msgstr ""
+msgstr "Vytvořit standardní zprávu"
 
 msgid "Generate report"
-msgstr ""
+msgstr "Generovat zprávu"
 
 msgid "Report parameters"
-msgstr ""
+msgstr "Parametry zprávy"
 
 msgid "There are some errors you have to fix first!"
-msgstr ""
+msgstr "Nejprve musíte opravit některé chyby!"
 
 msgid "Back to standard reports list"
-msgstr ""
+msgstr "Zpět na seznam standardních zpráv"
 
 msgid "Get current design"
-msgstr ""
+msgstr "Získat aktuální design"
 
 msgid "Get HTML Report Template"
-msgstr ""
+msgstr "Získat HTML šablonu zprávy"
 
 msgid "Get Jasper Report Template"
-msgstr ""
+msgstr "Získat Jasper šablonu zprávy"
 
 msgid "Download"
 msgstr "Stáhnout"
 
 msgid "Report Type*"
-msgstr ""
+msgstr "Typ zprávy*"
 
 msgid "Report Table*"
-msgstr ""
+msgstr "Tabulka zprávy*"
 
 msgid "Design File"
-msgstr ""
+msgstr "Soubor úpravy"
 
 msgid "Design File*"
-msgstr ""
+msgstr "Soubor úpravy*"
 
 msgid "Relative periods"
 msgstr "Relativní období"
@@ -227,34 +237,34 @@ msgid "Settings"
 msgstr "Nastavení"
 
 msgid "Cache Strategy*"
-msgstr ""
+msgstr "Strategie mezipaměti*"
 
 msgid "Submit"
-msgstr ""
+msgstr "Odeslat"
 
 msgid "[ None ]"
-msgstr ""
+msgstr "[ Žádný ]"
 
 msgid "Jasper report with report table data source"
-msgstr ""
+msgstr "Zpráva Jasper se zprávou o zdroji dat tabulky"
 
 msgid "Jasper report with JDBC data source"
-msgstr ""
+msgstr "Zpráva Jasper se zdrojem dat JDBC"
 
 msgid "HTML report"
-msgstr ""
+msgstr "Zpráva HTML"
 
 msgid "No cache"
-msgstr ""
+msgstr "Žádná mezipaměť"
 
 msgid "Respect system setting"
-msgstr ""
+msgstr "Respektovat nastavení systému"
 
 msgid "Cache for one hour"
-msgstr ""
+msgstr "Vyrovnávací paměť po dobu jedné hodiny"
 
 msgid "Cache until 6 AM tomorrow"
-msgstr ""
+msgstr "Vyrovnávací paměť do zítra 6 ráno "
 
 msgid "Cache for two weeks"
 msgstr ""
@@ -278,16 +288,16 @@ msgid "Successfully loaded the {{ outputType }}"
 msgstr ""
 
 msgid "chart"
-msgstr ""
+msgstr "graf"
 
 msgid "table"
-msgstr ""
+msgstr "tabulka"
 
 msgid "An error occurred while loading the report!"
 msgstr ""
 
 msgid "Successfully added comment"
-msgstr ""
+msgstr "Komentář úspěšně přidán"
 
 msgid "An error occurred while submitting your comment!"
 msgstr ""
@@ -344,7 +354,7 @@ msgid "Count"
 msgstr "Počet"
 
 msgid "Total"
-msgstr ""
+msgstr "Celkem"
 
 msgid "Name"
 msgstr "Název"
@@ -383,25 +393,25 @@ msgid "Messages"
 msgstr "Zprávy"
 
 msgid "Report Table"
-msgstr ""
+msgstr "Tabulka zpráv"
 
 msgid "ID"
 msgstr "ID"
 
 msgid "Create"
-msgstr ""
+msgstr "Vytvořit"
 
 msgid "Edit"
-msgstr ""
+msgstr "Upravit"
 
 msgid "Actions"
-msgstr ""
+msgstr "Akce"
 
 msgid "Delete"
 msgstr "Smazat"
 
 msgid "Sharing settings"
-msgstr ""
+msgstr "Nastavení sdílení"
 
 msgid "View Resource"
 msgstr ""
@@ -410,67 +420,67 @@ msgid "Edit Resource"
 msgstr ""
 
 msgid "Add users and user groups"
-msgstr ""
+msgstr "Přidat uživatele a skupiny uživatelů"
 
 msgid "Enter names"
-msgstr ""
+msgstr "Zadejte jména"
 
 msgid "Permissions"
 msgstr ""
 
 msgid "Created By"
-msgstr ""
+msgstr "Vytvořil"
 
 msgid "Who has access"
-msgstr ""
+msgstr "Kdo má přístup"
 
 msgid "External access (without login)"
-msgstr ""
+msgstr "Externí přístup (bez přihlášení)"
 
 msgid "Can edit and view"
-msgstr ""
+msgstr "Může upravovat a prohlížet"
 
 msgid "Can view"
-msgstr ""
+msgstr "Může zobrazit"
 
 msgid "Can view only"
-msgstr ""
+msgstr "Lze pouze zobrazit "
 
 msgid "No access"
-msgstr ""
+msgstr "Žádný přístup"
 
 msgid "Public access (with login)"
-msgstr ""
+msgstr "Veřejný přístup (s přihlášením)"
 
 msgid "Public can edit"
-msgstr ""
+msgstr "Veřejnost může upravovat"
 
 msgid "Public can view"
-msgstr ""
+msgstr "Veřejnost může prohlížet"
 
 msgid "Public can find, view and edit"
-msgstr ""
+msgstr "Veřejnost může vyhledávat, prohlížet a upravovat"
 
 msgid "Public can find and view"
-msgstr ""
+msgstr "Veřejnost může vyhledat a zobrazit"
 
 msgid "Close"
 msgstr "Zavřít"
 
 msgid "week"
-msgstr ""
+msgstr "týden"
 
 msgid "month"
-msgstr ""
+msgstr "měsíc"
 
 msgid "year"
-msgstr ""
+msgstr "rok"
 
 msgid "bi monthly"
-msgstr ""
+msgstr "dvakrát za měsíc"
 
 msgid "day"
-msgstr ""
+msgstr "den"
 
 msgid "January"
 msgstr "Leden"
@@ -509,16 +519,16 @@ msgid "December"
 msgstr "prosinec"
 
 msgid "January-February"
-msgstr ""
+msgstr "Leden-Únor"
 
 msgid "March-April"
-msgstr ""
+msgstr "Březen-Duben"
 
 msgid "May-June"
-msgstr ""
+msgstr "Květen-Červen"
 
 msgid "July-August"
-msgstr ""
+msgstr "Červenec-Srpen"
 
 msgid "September-October"
 msgstr ""
@@ -533,7 +543,7 @@ msgid "May-October"
 msgstr ""
 
 msgid "quarter"
-msgstr ""
+msgstr "čtvrtletí"
 
 msgid "January-March"
 msgstr ""
@@ -548,7 +558,7 @@ msgid "October-December"
 msgstr ""
 
 msgid "six monthly"
-msgstr ""
+msgstr "půlrok"
 
 msgid "January-June"
 msgstr ""
@@ -716,7 +726,7 @@ msgid "Last six-month"
 msgstr "Poslední půlrok"
 
 msgid "Last 2 six-months"
-msgstr ""
+msgstr "Poslední 2 šestiměsíce"
 
 msgid "Financial Years"
 msgstr "Finanční roky"
