@@ -183,7 +183,7 @@ msgid "Url*"
 msgstr "Url*"
 
 msgid "File resources can not be edited, only created"
-msgstr ""
+msgstr "Zdroje souborů nelze upravovat, pouze vytvářet"
 
 msgid "Cancel"
 msgstr "Zrušit"
@@ -267,25 +267,25 @@ msgid "Cache until 6 AM tomorrow"
 msgstr "Vyrovnávací paměť do zítra 6 ráno "
 
 msgid "Cache for two weeks"
-msgstr ""
+msgstr "Vyrovnávací paměť  po dobu dvou týdnů"
 
 msgid "An error occurred whole loading the data set options"
-msgstr ""
+msgstr "Při načítání možností sady dat došlo k chybě"
 
 msgid "An error occurred while loading the data set dimensions"
-msgstr ""
+msgstr "Při načítání dimenzí datové sady došlo k chybě"
 
 msgid "An error occurred while loading the group sets!"
-msgstr ""
+msgstr "Při načítání skupinových sad došlo k chybě!"
 
 msgid "Could not load organisation units"
-msgstr ""
+msgstr "Nelze načíst organizační jednotky"
 
 msgid "An error occurred while loading the organisation units!"
-msgstr ""
+msgstr "Při načítání organizačních jednotek došlo k chybě!"
 
 msgid "Successfully loaded the {{ outputType }}"
-msgstr ""
+msgstr "Úspěšně načteno {{ outputType }}"
 
 msgid "chart"
 msgstr "graf"
@@ -294,61 +294,61 @@ msgid "table"
 msgstr "tabulka"
 
 msgid "An error occurred while loading the report!"
-msgstr ""
+msgstr "Při načítání zprávy došlo k chybě!"
 
 msgid "Successfully added comment"
 msgstr "Komentář úspěšně přidán"
 
 msgid "An error occurred while submitting your comment!"
-msgstr ""
+msgstr "Při odesílání vašeho komentáře došlo k chybě!"
 
 msgid "Could not load period types"
-msgstr ""
+msgstr "Nelze načíst typy období"
 
 msgid "An error occurred while loading the resources!"
-msgstr ""
+msgstr "Při načítání zdrojů došlo k chybě!"
 
 msgid "Do you really want to delete this resource?"
-msgstr ""
+msgstr "Opravdu chcete tento zdroj smazat?"
 
 msgid "The resource has been deleted successfully"
-msgstr ""
+msgstr "Zdroj byl úspěšně odstraněn"
 
 msgid "An error occurred when deleting the resource!"
-msgstr ""
+msgstr "Při mazání zdroje došlo k chybě!"
 
 msgid "An error occurred while adding the resource!"
-msgstr ""
+msgstr "Při přidávání zdroje došlo k chybě!"
 
 msgid "An error occurred while saving the modifications!"
-msgstr ""
+msgstr "Při ukládání úprav došlo k chybě!"
 
 msgid "An error occurred while loading the standard reports"
-msgstr ""
+msgstr "Při načítání standardních zpráv došlo k chybě"
 
 msgid "An error occurred while trying to delete the standard report"
-msgstr ""
+msgstr "Při pokusu o smazání standardní zprávy došlo k chybě"
 
 msgid "An error occurred while loading the standard report details"
-msgstr ""
+msgstr "Při načítání podrobností standardní zprávy došlo k chybě"
 
 msgid "The report has been updated successfully"
-msgstr ""
+msgstr "Zpráva byla úspěšně aktualizována"
 
 msgid "The report has been added successfully"
-msgstr ""
+msgstr "Zpráva byla úspěšně přidána"
 
 msgid "An error occurred while updating the report!"
-msgstr ""
+msgstr "Při aktualizaci zprávy došlo k chybě!"
 
 msgid "An error occurred while adding the report!"
-msgstr ""
+msgstr "Při přidávání zprávy došlo k chybě!"
 
 msgid "An error occurred while generating the html report"
-msgstr ""
+msgstr "Při generování zprávy html došlo k chybě"
 
 msgid "An error occurred while loading the report table options"
-msgstr ""
+msgstr "Při načítání možností tabulky zprávy došlo k chybě"
 
 msgid "Count"
 msgstr "Počet"
@@ -360,7 +360,7 @@ msgid "Name"
 msgstr "Název"
 
 msgid "Something went wrong when processing your request."
-msgstr ""
+msgstr "Při zpracování vašeho požadavku se něco pokazilo."
 
 msgid "Search apps"
 msgstr "Hledat aplikace"
@@ -414,10 +414,10 @@ msgid "Sharing settings"
 msgstr "Nastavení sdílení"
 
 msgid "View Resource"
-msgstr ""
+msgstr "Zobrazit zdroj"
 
 msgid "Edit Resource"
-msgstr ""
+msgstr "Upravit zdroj"
 
 msgid "Add users and user groups"
 msgstr "Přidat uživatele a skupiny uživatelů"
@@ -426,7 +426,7 @@ msgid "Enter names"
 msgstr "Zadejte jména"
 
 msgid "Permissions"
-msgstr ""
+msgstr "Oprávnění"
 
 msgid "Created By"
 msgstr "Vytvořil"
@@ -531,49 +531,49 @@ msgid "July-August"
 msgstr "Červenec-Srpen"
 
 msgid "September-October"
-msgstr ""
+msgstr "Září-Říjen"
 
 msgid "November-December"
-msgstr ""
+msgstr "Listopad-Prosinec"
 
 msgid "November-April"
-msgstr ""
+msgstr "Listopad-Duben"
 
 msgid "May-October"
-msgstr ""
+msgstr "Květen-Říjen"
 
 msgid "quarter"
 msgstr "čtvrtletí"
 
 msgid "January-March"
-msgstr ""
+msgstr "Leden-Březen"
 
 msgid "April-June"
-msgstr ""
+msgstr "Duben-Červen"
 
 msgid "July-September"
-msgstr ""
+msgstr "Červenec-Září"
 
 msgid "October-December"
-msgstr ""
+msgstr "Říjen-Prosinec"
 
 msgid "six monthly"
 msgstr "půlrok"
 
 msgid "January-June"
-msgstr ""
+msgstr "Leden-Červen"
 
 msgid "July-December"
-msgstr ""
+msgstr "Červenec-Prosinec"
 
 msgid "April-September"
-msgstr ""
+msgstr "Duben-Září"
 
 msgid "October-March"
-msgstr ""
+msgstr "Říjen-Březen"
 
 msgid "Bi-Week"
-msgstr ""
+msgstr "Dvoutýden"
 
 msgid "Daily"
 msgstr "Denně"
@@ -582,55 +582,55 @@ msgid "Weekly"
 msgstr "Týdně"
 
 msgid "Weekly Wednesday"
-msgstr ""
+msgstr "Každý týden ve středu"
 
 msgid "Weekly Thursday"
-msgstr ""
+msgstr "Každý týden ve čtvrtek"
 
 msgid "Weekly Saturday"
-msgstr ""
+msgstr "Každý týden v sobotu"
 
 msgid "Weekly Sunday"
-msgstr ""
+msgstr "Každý týden v neděli"
 
 msgid "Bi-Weekly"
-msgstr ""
+msgstr "Dvoutýdenní"
 
 msgid "Monthly"
 msgstr "Měsíčně"
 
 msgid "Bi-Monthly"
-msgstr ""
+msgstr "Dvouměsíční"
 
 msgid "Quarterly"
 msgstr "Čtvrtletně"
 
 msgid "Six-Monthly"
-msgstr ""
+msgstr "Šestiměsíční"
 
 msgid "Six-Monthly April"
-msgstr ""
+msgstr "Šestiměsíční Duben"
 
 msgid "Six-Monthly November"
-msgstr ""
+msgstr "Šestiměsíční Listopad"
 
 msgid "Yearly"
 msgstr "Ročně"
 
 msgid "Financial-April"
-msgstr ""
+msgstr "Finanční - Duben"
 
 msgid "Financial-July"
-msgstr ""
+msgstr "Finanční - Červenec"
 
 msgid "Financial-Oct"
-msgstr ""
+msgstr "Finanční - Říjen"
 
 msgid "Days"
 msgstr "Dnů"
 
 msgid "Reporting day"
-msgstr ""
+msgstr "Den hlášení zprávy"
 
 msgid "Yesterday"
 msgstr "Včera"
@@ -648,13 +648,13 @@ msgid "Weeks"
 msgstr "Týdnů"
 
 msgid "Reporting week"
-msgstr ""
+msgstr "Týden hlášení zprávy"
 
 msgid "Last Week"
-msgstr ""
+msgstr "Minulý týden"
 
 msgid "Last 2 weeks"
-msgstr ""
+msgstr "Poslední 2 týdny"
 
 msgid "Last 12 weeks"
 msgstr "Posledních 12 týdnů"
@@ -669,7 +669,7 @@ msgid "Months"
 msgstr "Měsíce"
 
 msgid "Reporting month"
-msgstr ""
+msgstr "Vykazovaný měsíc"
 
 msgid "Last month"
 msgstr "Minulý měsíc"
@@ -690,13 +690,13 @@ msgid "Bi-months"
 msgstr "Dva měsíce"
 
 msgid "Reporting bi-month"
-msgstr ""
+msgstr "Hlášení zprávy dvakrát za měsíc"
 
 msgid "Last bi-month"
 msgstr "Poslední dva měsíce"
 
 msgid "Last 6 bi-month"
-msgstr ""
+msgstr "Posledních 6 měsíců"
 
 msgid "Bi-months this year"
 msgstr "Dvouměsíčně tento rok"
@@ -705,7 +705,7 @@ msgid "Quarters"
 msgstr "Čtvrtletí"
 
 msgid "Reporting quarter"
-msgstr ""
+msgstr "Hlášení zprávy za čtvrtletí"
 
 msgid "Last quarter"
 msgstr "Poslední čtvrtletí"
@@ -714,13 +714,13 @@ msgid "Last 4 quarters"
 msgstr "Poslední 4 čtvrtletí "
 
 msgid "Quarters of reporting year"
-msgstr ""
+msgstr "Čtvrtletí vykazovaného roku"
 
 msgid "Six-Months"
-msgstr ""
+msgstr "Šest měsíců"
 
 msgid "Reporting six-month"
-msgstr ""
+msgstr "Hlášení zprávy za šest měsíců"
 
 msgid "Last six-month"
 msgstr "Poslední půlrok"
@@ -732,7 +732,7 @@ msgid "Financial Years"
 msgstr "Finanční roky"
 
 msgid "Reporting financial year"
-msgstr ""
+msgstr "Hlášení za finanční rok"
 
 msgid "Last financial year"
 msgstr "Poslední finanční rok"
@@ -744,7 +744,7 @@ msgid "Years"
 msgstr "Let"
 
 msgid "Reporting year"
-msgstr ""
+msgstr "Hlášení za rok"
 
 msgid "Last year"
 msgstr "Poslední rok"
@@ -753,10 +753,10 @@ msgid "Last 5 years"
 msgstr "Posledních 5 let"
 
 msgid "External url"
-msgstr ""
+msgstr "Externí adresa URL"
 
 msgid "Upload file"
-msgstr ""
+msgstr "Nahrát soubor"
 
 msgid "Confirm delete"
-msgstr ""
+msgstr "Potvrďte smazání"
