@@ -69,7 +69,7 @@ msgid "Write a comment, question or interpretation of this report"
 msgstr "Написать комментарий, вопрос или интерпретацию данного отчета"
 
 msgid "Select file"
-msgstr ""
+msgstr "Выберите файл"
 
 msgid "No file chosen"
 msgstr ""
