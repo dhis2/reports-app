@@ -98,7 +98,7 @@ msgstr ""
 " تقريرا يتضمن بيانات مجمعة."
 
 msgid "Get Report"
-msgstr ""
+msgstr "احصل على تقرير"
 
 msgid "Reporting Rate Summary"
 msgstr "ملخص معدل إعداد التقارير"
@@ -133,7 +133,7 @@ msgstr ""
 "التنظيمية ومجموعاتها."
 
 msgid "Reporting Period"
-msgstr ""
+msgstr "فترة التقرير"
 
 msgid "Organisation Unit"
 msgstr "الوحدة التنظيمية"
@@ -148,7 +148,7 @@ msgid "Use data for selected unit only"
 msgstr "استخدام البيانات للوحدة التنظيمية المحددة فقط"
 
 msgid "Get Chart"
-msgstr ""
+msgstr "احصل على الرسم البياني"
 
 msgid "Edit resource"
 msgstr "تعديل المورد"
@@ -184,7 +184,7 @@ msgid "Url*"
 msgstr ""
 
 msgid "File resources can not be edited, only created"
-msgstr ""
+msgstr "لا يمكن تحرير ملف ، يتم إنشاؤه فقط"
 
 msgid "Cancel"
 msgstr "إلغاء"
@@ -547,16 +547,16 @@ msgid "quarter"
 msgstr "ربع"
 
 msgid "January-March"
-msgstr ""
+msgstr "يناير-مارس"
 
 msgid "April-June"
-msgstr ""
+msgstr "أبريل-يونيو"
 
 msgid "July-September"
-msgstr ""
+msgstr "يوليو-سبتمبر"
 
 msgid "October-December"
-msgstr ""
+msgstr "اكتوبر-ديسمبر"
 
 msgid "six monthly"
 msgstr "كل ستة أشهر"
@@ -574,7 +574,7 @@ msgid "October-March"
 msgstr "اكتوبر-مارس"
 
 msgid "Bi-Week"
-msgstr ""
+msgstr "كل اسبوعين"
 
 msgid "Daily"
 msgstr "يومي"
