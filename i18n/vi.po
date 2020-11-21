@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-09-10T09:10:58.679Z\n"
+"POT-Creation-Date: 2020-11-04T12:33:41.214Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
 "Last-Translator: Viktor Varland <viktor@dhis2.org>, 2020\n"
 "Language-Team: Vietnamese (https://www.transifex.com/hisp-uio/teams/100509/vi/)\n"
@@ -269,132 +269,6 @@ msgstr "Lưu cache đến 6 giờ sáng ngày mai"
 msgid "Cache for two weeks"
 msgstr "Lưu cache trong 2 tuần"
 
-msgid "Days"
-msgstr "Ngày"
-
-msgid "Reporting day"
-msgstr "Ngày báo cáo"
-
-msgid "Yesterday"
-msgstr "Hôm Qua"
-
-msgid "Last 3 days"
-msgstr "3 ngày trước"
-
-msgid "Last 7 days"
-msgstr "7 ngày trước"
-
-msgid "Last 14 days"
-msgstr "14 ngày trước"
-
-msgid "Weeks"
-msgstr "Tuần"
-
-msgid "Reporting week"
-msgstr "Tuần báo cáo"
-
-msgid "Last Week"
-msgstr "Tuần trước"
-
-msgid "Last 2 weeks"
-msgstr "2 tuần trước"
-
-msgid "Last 12 weeks"
-msgstr "12 tuần trước"
-
-msgid "Last 52 weeks"
-msgstr "52 tuần trước"
-
-msgid "Weeks this year"
-msgstr "Các tuần trong năm nay"
-
-msgid "Months"
-msgstr "Tháng"
-
-msgid "Reporting month"
-msgstr "Báo cáo hàng tháng"
-
-msgid "Last month"
-msgstr "Tháng trước"
-
-msgid "Last 3 months"
-msgstr "3 tháng trước"
-
-msgid "Last 6 months"
-msgstr "6 tháng trước"
-
-msgid "Last 12 months"
-msgstr "Trong 12 tháng trước"
-
-msgid "Months this year"
-msgstr "Tháng năm nay"
-
-msgid "Bi-months"
-msgstr "Các kỳ 2 tháng"
-
-msgid "Reporting bi-month"
-msgstr "Báo cáo theo kỳ 2 tháng"
-
-msgid "Last bi-month"
-msgstr "Kỳ 2 tháng trước"
-
-msgid "Last 6 bi-month"
-msgstr "6 kỳ 2 tháng trước"
-
-msgid "Bi-months this year"
-msgstr "Các kỳ 2 tháng năm nay"
-
-msgid "Quarters"
-msgstr "Quý"
-
-msgid "Reporting quarter"
-msgstr "Báo cáo theo quý"
-
-msgid "Last quarter"
-msgstr "Quý trước"
-
-msgid "Last 4 quarters"
-msgstr "4 quý trước"
-
-msgid "Quarters of reporting year"
-msgstr "Các quý trong năm báo cáo"
-
-msgid "Six-Months"
-msgstr "6 tháng"
-
-msgid "Reporting six-month"
-msgstr "Báo cáo 6 tháng"
-
-msgid "Last six-month"
-msgstr "6 tháng trước"
-
-msgid "Last 2 six-months"
-msgstr "2 lần sáu-tháng trước"
-
-msgid "Financial Years"
-msgstr "Năm tài chính"
-
-msgid "Reporting financial year"
-msgstr "Báo cáo năm tài chính"
-
-msgid "Last financial year"
-msgstr "Năm tài chính trước"
-
-msgid "Last 5 financial years"
-msgstr "5 năm tài chính trước"
-
-msgid "Years"
-msgstr "Năm"
-
-msgid "Reporting year"
-msgstr "Năm báo cáo"
-
-msgid "Last year"
-msgstr "Năm ngoái"
-
-msgid "Last 5 years"
-msgstr "Trong 5 năm vừa qua"
-
 msgid "An error occurred whole loading the data set options"
 msgstr "Xảy ra lỗi trong khi tải các tùy chọn tập dữ liệu"
 
@@ -481,57 +355,6 @@ msgstr "Đếm"
 
 msgid "Total"
 msgstr "Tổng số"
-
-msgid "Daily"
-msgstr "Hàng ngày"
-
-msgid "Weekly"
-msgstr "Hàng tuần"
-
-msgid "Weekly Wednesday"
-msgstr "Thứ tư hàng tuần"
-
-msgid "Weekly Thursday"
-msgstr "Thứ năm hàng tuần"
-
-msgid "Weekly Saturday"
-msgstr "Thứ bảy hàng tuần"
-
-msgid "Weekly Sunday"
-msgstr "Chủ nhật hàng tuần"
-
-msgid "Bi-Weekly"
-msgstr "Kỳ 2 tuần"
-
-msgid "Monthly"
-msgstr "Hàng tháng"
-
-msgid "Bi-Monthly"
-msgstr "Kỳ 2 tháng"
-
-msgid "Quarterly"
-msgstr "Hàng quý"
-
-msgid "Six-Monthly"
-msgstr "6 tháng"
-
-msgid "Six-Monthly April"
-msgstr ""
-
-msgid "Six-Monthly November"
-msgstr ""
-
-msgid "Yearly"
-msgstr "Một năm"
-
-msgid "Financial-April"
-msgstr "Năm tài chính - tháng 4"
-
-msgid "Financial-July"
-msgstr "Năm tài chính - tháng 7"
-
-msgid "Financial-Oct"
-msgstr "Năm tài chính - tháng 10"
 
 msgid "Name"
 msgstr "Tên"
@@ -722,17 +545,17 @@ msgstr "Tháng năm - tháng mười"
 msgid "quarter"
 msgstr "Quý"
 
-msgid "Q1"
-msgstr "Q1"
+msgid "January-March"
+msgstr ""
 
-msgid "Q2"
-msgstr "Q2"
+msgid "April-June"
+msgstr ""
 
-msgid "Q3"
-msgstr "Q3"
+msgid "July-September"
+msgstr ""
 
-msgid "Q4"
-msgstr "Q4"
+msgid "October-December"
+msgstr ""
 
 msgid "six monthly"
 msgstr "6 tháng"
@@ -751,6 +574,183 @@ msgstr "Tháng Mười - Tháng Ba"
 
 msgid "Bi-Week"
 msgstr "Kỳ 2 tuần này"
+
+msgid "Daily"
+msgstr "Hàng ngày"
+
+msgid "Weekly"
+msgstr "Hàng tuần"
+
+msgid "Weekly Wednesday"
+msgstr "Thứ tư hàng tuần"
+
+msgid "Weekly Thursday"
+msgstr "Thứ năm hàng tuần"
+
+msgid "Weekly Saturday"
+msgstr "Thứ bảy hàng tuần"
+
+msgid "Weekly Sunday"
+msgstr "Chủ nhật hàng tuần"
+
+msgid "Bi-Weekly"
+msgstr "Kỳ 2 tuần"
+
+msgid "Monthly"
+msgstr "Hàng tháng"
+
+msgid "Bi-Monthly"
+msgstr "Kỳ 2 tháng"
+
+msgid "Quarterly"
+msgstr "Hàng quý"
+
+msgid "Six-Monthly"
+msgstr "6 tháng"
+
+msgid "Six-Monthly April"
+msgstr ""
+
+msgid "Six-Monthly November"
+msgstr ""
+
+msgid "Yearly"
+msgstr "Một năm"
+
+msgid "Financial-April"
+msgstr "Năm tài chính - tháng 4"
+
+msgid "Financial-July"
+msgstr "Năm tài chính - tháng 7"
+
+msgid "Financial-Oct"
+msgstr "Năm tài chính - tháng 10"
+
+msgid "Days"
+msgstr "Ngày"
+
+msgid "Reporting day"
+msgstr "Ngày báo cáo"
+
+msgid "Yesterday"
+msgstr "Hôm Qua"
+
+msgid "Last 3 days"
+msgstr "3 ngày trước"
+
+msgid "Last 7 days"
+msgstr "7 ngày trước"
+
+msgid "Last 14 days"
+msgstr "14 ngày trước"
+
+msgid "Weeks"
+msgstr "Tuần"
+
+msgid "Reporting week"
+msgstr "Tuần báo cáo"
+
+msgid "Last Week"
+msgstr "Tuần trước"
+
+msgid "Last 2 weeks"
+msgstr "2 tuần trước"
+
+msgid "Last 12 weeks"
+msgstr "12 tuần trước"
+
+msgid "Last 52 weeks"
+msgstr "52 tuần trước"
+
+msgid "Weeks this year"
+msgstr "Các tuần trong năm nay"
+
+msgid "Months"
+msgstr "Tháng"
+
+msgid "Reporting month"
+msgstr "Báo cáo hàng tháng"
+
+msgid "Last month"
+msgstr "Tháng trước"
+
+msgid "Last 3 months"
+msgstr "3 tháng trước"
+
+msgid "Last 6 months"
+msgstr "6 tháng trước"
+
+msgid "Last 12 months"
+msgstr "Trong 12 tháng trước"
+
+msgid "Months this year"
+msgstr "Tháng năm nay"
+
+msgid "Bi-months"
+msgstr "Các kỳ 2 tháng"
+
+msgid "Reporting bi-month"
+msgstr "Báo cáo theo kỳ 2 tháng"
+
+msgid "Last bi-month"
+msgstr "Kỳ 2 tháng trước"
+
+msgid "Last 6 bi-month"
+msgstr "6 kỳ 2 tháng trước"
+
+msgid "Bi-months this year"
+msgstr "Các kỳ 2 tháng năm nay"
+
+msgid "Quarters"
+msgstr "Quý"
+
+msgid "Reporting quarter"
+msgstr "Báo cáo theo quý"
+
+msgid "Last quarter"
+msgstr "Quý trước"
+
+msgid "Last 4 quarters"
+msgstr "4 quý trước"
+
+msgid "Quarters of reporting year"
+msgstr "Các quý trong năm báo cáo"
+
+msgid "Six-Months"
+msgstr "6 tháng"
+
+msgid "Reporting six-month"
+msgstr "Báo cáo 6 tháng"
+
+msgid "Last six-month"
+msgstr "6 tháng trước"
+
+msgid "Last 2 six-months"
+msgstr "2 lần sáu-tháng trước"
+
+msgid "Financial Years"
+msgstr "Năm tài chính"
+
+msgid "Reporting financial year"
+msgstr "Báo cáo năm tài chính"
+
+msgid "Last financial year"
+msgstr "Năm tài chính trước"
+
+msgid "Last 5 financial years"
+msgstr "5 năm tài chính trước"
+
+msgid "Years"
+msgstr "Năm"
+
+msgid "Reporting year"
+msgstr "Năm báo cáo"
+
+msgid "Last year"
+msgstr "Năm ngoái"
+
+msgid "Last 5 years"
+msgstr "Trong 5 năm vừa qua"
 
 msgid "External url"
 msgstr "Url ngoài"

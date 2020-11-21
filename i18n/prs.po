@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-09-10T09:10:58.679Z\n"
+"POT-Creation-Date: 2020-11-04T12:33:41.214Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
 "Last-Translator: phil_dhis2, 2020\n"
 "Language-Team: Persian (Afghanistan) (https://www.transifex.com/hisp-uio/teams/100509/fa_AF/)\n"
@@ -269,132 +269,6 @@ msgstr "ذخیره تا 6 AM فردا"
 msgid "Cache for two weeks"
 msgstr "ذخیره برای دو هفته"
 
-msgid "Days"
-msgstr "روزها"
-
-msgid "Reporting day"
-msgstr ""
-
-msgid "Yesterday"
-msgstr "دیروز"
-
-msgid "Last 3 days"
-msgstr "3 روز گذشته"
-
-msgid "Last 7 days"
-msgstr "7 روز گذشته"
-
-msgid "Last 14 days"
-msgstr "14 روز گذشته"
-
-msgid "Weeks"
-msgstr "هفته ها"
-
-msgid "Reporting week"
-msgstr ""
-
-msgid "Last Week"
-msgstr ""
-
-msgid "Last 2 weeks"
-msgstr ""
-
-msgid "Last 12 weeks"
-msgstr "12 هفته گذشته"
-
-msgid "Last 52 weeks"
-msgstr "52 هفته گذشته"
-
-msgid "Weeks this year"
-msgstr ""
-
-msgid "Months"
-msgstr "ماه ها"
-
-msgid "Reporting month"
-msgstr "گزارشدهی ماه"
-
-msgid "Last month"
-msgstr "ماه گذشته"
-
-msgid "Last 3 months"
-msgstr "3 ماهه گذشته"
-
-msgid "Last 6 months"
-msgstr "6 ماه گذشته"
-
-msgid "Last 12 months"
-msgstr "12 ماهه گذشته"
-
-msgid "Months this year"
-msgstr "ماه های سال هذا"
-
-msgid "Bi-months"
-msgstr "دوبار در ماه"
-
-msgid "Reporting bi-month"
-msgstr "گزارشدهی دو ماهه"
-
-msgid "Last bi-month"
-msgstr "دوبار در ماه گذشته"
-
-msgid "Last 6 bi-month"
-msgstr ""
-
-msgid "Bi-months this year"
-msgstr ""
-
-msgid "Quarters"
-msgstr "سه ماهه"
-
-msgid "Reporting quarter"
-msgstr "ربع گزارشدهی"
-
-msgid "Last quarter"
-msgstr "سه ماهه آخیر"
-
-msgid "Last 4 quarters"
-msgstr "4 سه ماهه آخیر"
-
-msgid "Quarters of reporting year"
-msgstr ""
-
-msgid "Six-Months"
-msgstr ""
-
-msgid "Reporting six-month"
-msgstr "گزارشدهی شش ماهه"
-
-msgid "Last six-month"
-msgstr "شش-ماهه گذشته"
-
-msgid "Last 2 six-months"
-msgstr "2 شش-ماهه گذشته"
-
-msgid "Financial Years"
-msgstr ""
-
-msgid "Reporting financial year"
-msgstr ""
-
-msgid "Last financial year"
-msgstr "سال گذشته مالی"
-
-msgid "Last 5 financial years"
-msgstr "5 سال گذشته مالی"
-
-msgid "Years"
-msgstr "سالانه"
-
-msgid "Reporting year"
-msgstr ""
-
-msgid "Last year"
-msgstr "سال گذشته"
-
-msgid "Last 5 years"
-msgstr "5 سال گذشته"
-
 msgid "An error occurred whole loading the data set options"
 msgstr ""
 
@@ -481,57 +355,6 @@ msgstr "تعداد"
 
 msgid "Total"
 msgstr "مجموع"
-
-msgid "Daily"
-msgstr "روزنه"
-
-msgid "Weekly"
-msgstr "هفته وار"
-
-msgid "Weekly Wednesday"
-msgstr ""
-
-msgid "Weekly Thursday"
-msgstr ""
-
-msgid "Weekly Saturday"
-msgstr ""
-
-msgid "Weekly Sunday"
-msgstr ""
-
-msgid "Bi-Weekly"
-msgstr ""
-
-msgid "Monthly"
-msgstr "ماهانه"
-
-msgid "Bi-Monthly"
-msgstr ""
-
-msgid "Quarterly"
-msgstr "سه ماهه"
-
-msgid "Six-Monthly"
-msgstr ""
-
-msgid "Six-Monthly April"
-msgstr ""
-
-msgid "Six-Monthly November"
-msgstr ""
-
-msgid "Yearly"
-msgstr "سالانه"
-
-msgid "Financial-April"
-msgstr "مالی- آپریل"
-
-msgid "Financial-July"
-msgstr "مالی - جولای"
-
-msgid "Financial-Oct"
-msgstr "مالی - اکتوبر"
 
 msgid "Name"
 msgstr "نام"
@@ -722,16 +545,16 @@ msgstr ""
 msgid "quarter"
 msgstr ""
 
-msgid "Q1"
+msgid "January-March"
 msgstr ""
 
-msgid "Q2"
+msgid "April-June"
 msgstr ""
 
-msgid "Q3"
+msgid "July-September"
 msgstr ""
 
-msgid "Q4"
+msgid "October-December"
 msgstr ""
 
 msgid "six monthly"
@@ -751,6 +574,183 @@ msgstr "اکتوبر-مارچ"
 
 msgid "Bi-Week"
 msgstr ""
+
+msgid "Daily"
+msgstr "روزنه"
+
+msgid "Weekly"
+msgstr "هفته وار"
+
+msgid "Weekly Wednesday"
+msgstr ""
+
+msgid "Weekly Thursday"
+msgstr ""
+
+msgid "Weekly Saturday"
+msgstr ""
+
+msgid "Weekly Sunday"
+msgstr ""
+
+msgid "Bi-Weekly"
+msgstr ""
+
+msgid "Monthly"
+msgstr "ماهانه"
+
+msgid "Bi-Monthly"
+msgstr ""
+
+msgid "Quarterly"
+msgstr "سه ماهه"
+
+msgid "Six-Monthly"
+msgstr ""
+
+msgid "Six-Monthly April"
+msgstr ""
+
+msgid "Six-Monthly November"
+msgstr ""
+
+msgid "Yearly"
+msgstr "سالانه"
+
+msgid "Financial-April"
+msgstr "مالی- آپریل"
+
+msgid "Financial-July"
+msgstr "مالی - جولای"
+
+msgid "Financial-Oct"
+msgstr "مالی - اکتوبر"
+
+msgid "Days"
+msgstr "روزها"
+
+msgid "Reporting day"
+msgstr ""
+
+msgid "Yesterday"
+msgstr "دیروز"
+
+msgid "Last 3 days"
+msgstr "3 روز گذشته"
+
+msgid "Last 7 days"
+msgstr "7 روز گذشته"
+
+msgid "Last 14 days"
+msgstr "14 روز گذشته"
+
+msgid "Weeks"
+msgstr "هفته ها"
+
+msgid "Reporting week"
+msgstr ""
+
+msgid "Last Week"
+msgstr ""
+
+msgid "Last 2 weeks"
+msgstr ""
+
+msgid "Last 12 weeks"
+msgstr "12 هفته گذشته"
+
+msgid "Last 52 weeks"
+msgstr "52 هفته گذشته"
+
+msgid "Weeks this year"
+msgstr ""
+
+msgid "Months"
+msgstr "ماه ها"
+
+msgid "Reporting month"
+msgstr "گزارشدهی ماه"
+
+msgid "Last month"
+msgstr "ماه گذشته"
+
+msgid "Last 3 months"
+msgstr "3 ماهه گذشته"
+
+msgid "Last 6 months"
+msgstr "6 ماه گذشته"
+
+msgid "Last 12 months"
+msgstr "12 ماهه گذشته"
+
+msgid "Months this year"
+msgstr "ماه های سال هذا"
+
+msgid "Bi-months"
+msgstr "دوبار در ماه"
+
+msgid "Reporting bi-month"
+msgstr "گزارشدهی دو ماهه"
+
+msgid "Last bi-month"
+msgstr "دوبار در ماه گذشته"
+
+msgid "Last 6 bi-month"
+msgstr ""
+
+msgid "Bi-months this year"
+msgstr ""
+
+msgid "Quarters"
+msgstr "سه ماهه"
+
+msgid "Reporting quarter"
+msgstr "ربع گزارشدهی"
+
+msgid "Last quarter"
+msgstr "سه ماهه آخیر"
+
+msgid "Last 4 quarters"
+msgstr "4 سه ماهه آخیر"
+
+msgid "Quarters of reporting year"
+msgstr ""
+
+msgid "Six-Months"
+msgstr ""
+
+msgid "Reporting six-month"
+msgstr "گزارشدهی شش ماهه"
+
+msgid "Last six-month"
+msgstr "شش-ماهه گذشته"
+
+msgid "Last 2 six-months"
+msgstr "2 شش-ماهه گذشته"
+
+msgid "Financial Years"
+msgstr ""
+
+msgid "Reporting financial year"
+msgstr ""
+
+msgid "Last financial year"
+msgstr "سال گذشته مالی"
+
+msgid "Last 5 financial years"
+msgstr "5 سال گذشته مالی"
+
+msgid "Years"
+msgstr "سالانه"
+
+msgid "Reporting year"
+msgstr ""
+
+msgid "Last year"
+msgstr "سال گذشته"
+
+msgid "Last 5 years"
+msgstr "5 سال گذشته"
 
 msgid "External url"
 msgstr ""

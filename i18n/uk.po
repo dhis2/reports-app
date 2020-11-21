@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-09-10T09:10:58.679Z\n"
+"POT-Creation-Date: 2020-11-04T12:33:41.214Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
 "Last-Translator: Viktor Varland <viktor@dhis2.org>, 2020\n"
 "Language-Team: Ukrainian (https://www.transifex.com/hisp-uio/teams/100509/uk/)\n"
@@ -260,132 +260,6 @@ msgstr "Кешувати до 6 ранку завтрашнього дня"
 msgid "Cache for two weeks"
 msgstr "Кешувати на два тижні"
 
-msgid "Days"
-msgstr "Дні"
-
-msgid "Reporting day"
-msgstr ""
-
-msgid "Yesterday"
-msgstr "Вчора"
-
-msgid "Last 3 days"
-msgstr "Минулі 3 дні"
-
-msgid "Last 7 days"
-msgstr "Минулі 7 днів"
-
-msgid "Last 14 days"
-msgstr "Минулі 14 днів"
-
-msgid "Weeks"
-msgstr "Тижні"
-
-msgid "Reporting week"
-msgstr ""
-
-msgid "Last Week"
-msgstr ""
-
-msgid "Last 2 weeks"
-msgstr ""
-
-msgid "Last 12 weeks"
-msgstr "Останні 12 тижнів"
-
-msgid "Last 52 weeks"
-msgstr "Останні 52 тижні"
-
-msgid "Weeks this year"
-msgstr "Тижні поточного року"
-
-msgid "Months"
-msgstr "Місяці"
-
-msgid "Reporting month"
-msgstr ""
-
-msgid "Last month"
-msgstr "Останній місяць"
-
-msgid "Last 3 months"
-msgstr "Останні 3 місяці"
-
-msgid "Last 6 months"
-msgstr "Останні 6 місяців"
-
-msgid "Last 12 months"
-msgstr "Останні 12 місяців"
-
-msgid "Months this year"
-msgstr "Місяців поточного року"
-
-msgid "Bi-months"
-msgstr "Двомісячні періоди"
-
-msgid "Reporting bi-month"
-msgstr ""
-
-msgid "Last bi-month"
-msgstr "Останні два місяці"
-
-msgid "Last 6 bi-month"
-msgstr ""
-
-msgid "Bi-months this year"
-msgstr "Щодва місяці поточного року"
-
-msgid "Quarters"
-msgstr "Квартали"
-
-msgid "Reporting quarter"
-msgstr ""
-
-msgid "Last quarter"
-msgstr "Минулий квартал"
-
-msgid "Last 4 quarters"
-msgstr "Останні 4 квартали"
-
-msgid "Quarters of reporting year"
-msgstr ""
-
-msgid "Six-Months"
-msgstr ""
-
-msgid "Reporting six-month"
-msgstr ""
-
-msgid "Last six-month"
-msgstr "Останнє півріччя"
-
-msgid "Last 2 six-months"
-msgstr "Останні 2 півріччя"
-
-msgid "Financial Years"
-msgstr ""
-
-msgid "Reporting financial year"
-msgstr ""
-
-msgid "Last financial year"
-msgstr "Минулий фінансовий рік"
-
-msgid "Last 5 financial years"
-msgstr "Останні 5 фінансових років"
-
-msgid "Years"
-msgstr "Роки"
-
-msgid "Reporting year"
-msgstr ""
-
-msgid "Last year"
-msgstr "Минулий рік"
-
-msgid "Last 5 years"
-msgstr "Останні 5 років"
-
 msgid "An error occurred whole loading the data set options"
 msgstr ""
 
@@ -472,57 +346,6 @@ msgstr "Підрахунок"
 
 msgid "Total"
 msgstr "Підсумок"
-
-msgid "Daily"
-msgstr "Щодня"
-
-msgid "Weekly"
-msgstr "Щотижня"
-
-msgid "Weekly Wednesday"
-msgstr ""
-
-msgid "Weekly Thursday"
-msgstr ""
-
-msgid "Weekly Saturday"
-msgstr ""
-
-msgid "Weekly Sunday"
-msgstr ""
-
-msgid "Bi-Weekly"
-msgstr ""
-
-msgid "Monthly"
-msgstr "Щомісячно"
-
-msgid "Bi-Monthly"
-msgstr ""
-
-msgid "Quarterly"
-msgstr "Щоквартально"
-
-msgid "Six-Monthly"
-msgstr ""
-
-msgid "Six-Monthly April"
-msgstr ""
-
-msgid "Six-Monthly November"
-msgstr ""
-
-msgid "Yearly"
-msgstr "Щорічно"
-
-msgid "Financial-April"
-msgstr "Фінансовий-квітень"
-
-msgid "Financial-July"
-msgstr "Фінансовий-липень"
-
-msgid "Financial-Oct"
-msgstr "Фінансовий - жовтень"
 
 msgid "Name"
 msgstr "Ім'я"
@@ -713,16 +536,16 @@ msgstr ""
 msgid "quarter"
 msgstr ""
 
-msgid "Q1"
+msgid "January-March"
 msgstr ""
 
-msgid "Q2"
+msgid "April-June"
 msgstr ""
 
-msgid "Q3"
+msgid "July-September"
 msgstr ""
 
-msgid "Q4"
+msgid "October-December"
 msgstr ""
 
 msgid "six monthly"
@@ -742,6 +565,183 @@ msgstr ""
 
 msgid "Bi-Week"
 msgstr ""
+
+msgid "Daily"
+msgstr "Щодня"
+
+msgid "Weekly"
+msgstr "Щотижня"
+
+msgid "Weekly Wednesday"
+msgstr ""
+
+msgid "Weekly Thursday"
+msgstr ""
+
+msgid "Weekly Saturday"
+msgstr ""
+
+msgid "Weekly Sunday"
+msgstr ""
+
+msgid "Bi-Weekly"
+msgstr ""
+
+msgid "Monthly"
+msgstr "Щомісячно"
+
+msgid "Bi-Monthly"
+msgstr ""
+
+msgid "Quarterly"
+msgstr "Щоквартально"
+
+msgid "Six-Monthly"
+msgstr ""
+
+msgid "Six-Monthly April"
+msgstr ""
+
+msgid "Six-Monthly November"
+msgstr ""
+
+msgid "Yearly"
+msgstr "Щорічно"
+
+msgid "Financial-April"
+msgstr "Фінансовий-квітень"
+
+msgid "Financial-July"
+msgstr "Фінансовий-липень"
+
+msgid "Financial-Oct"
+msgstr "Фінансовий - жовтень"
+
+msgid "Days"
+msgstr "Дні"
+
+msgid "Reporting day"
+msgstr ""
+
+msgid "Yesterday"
+msgstr "Вчора"
+
+msgid "Last 3 days"
+msgstr "Минулі 3 дні"
+
+msgid "Last 7 days"
+msgstr "Минулі 7 днів"
+
+msgid "Last 14 days"
+msgstr "Минулі 14 днів"
+
+msgid "Weeks"
+msgstr "Тижні"
+
+msgid "Reporting week"
+msgstr ""
+
+msgid "Last Week"
+msgstr ""
+
+msgid "Last 2 weeks"
+msgstr ""
+
+msgid "Last 12 weeks"
+msgstr "Останні 12 тижнів"
+
+msgid "Last 52 weeks"
+msgstr "Останні 52 тижні"
+
+msgid "Weeks this year"
+msgstr "Тижні поточного року"
+
+msgid "Months"
+msgstr "Місяці"
+
+msgid "Reporting month"
+msgstr ""
+
+msgid "Last month"
+msgstr "Останній місяць"
+
+msgid "Last 3 months"
+msgstr "Останні 3 місяці"
+
+msgid "Last 6 months"
+msgstr "Останні 6 місяців"
+
+msgid "Last 12 months"
+msgstr "Останні 12 місяців"
+
+msgid "Months this year"
+msgstr "Місяців поточного року"
+
+msgid "Bi-months"
+msgstr "Двомісячні періоди"
+
+msgid "Reporting bi-month"
+msgstr ""
+
+msgid "Last bi-month"
+msgstr "Останні два місяці"
+
+msgid "Last 6 bi-month"
+msgstr ""
+
+msgid "Bi-months this year"
+msgstr "Щодва місяці поточного року"
+
+msgid "Quarters"
+msgstr "Квартали"
+
+msgid "Reporting quarter"
+msgstr ""
+
+msgid "Last quarter"
+msgstr "Минулий квартал"
+
+msgid "Last 4 quarters"
+msgstr "Останні 4 квартали"
+
+msgid "Quarters of reporting year"
+msgstr ""
+
+msgid "Six-Months"
+msgstr ""
+
+msgid "Reporting six-month"
+msgstr ""
+
+msgid "Last six-month"
+msgstr "Останнє півріччя"
+
+msgid "Last 2 six-months"
+msgstr "Останні 2 півріччя"
+
+msgid "Financial Years"
+msgstr ""
+
+msgid "Reporting financial year"
+msgstr ""
+
+msgid "Last financial year"
+msgstr "Минулий фінансовий рік"
+
+msgid "Last 5 financial years"
+msgstr "Останні 5 фінансових років"
+
+msgid "Years"
+msgstr "Роки"
+
+msgid "Reporting year"
+msgstr ""
+
+msgid "Last year"
+msgstr "Минулий рік"
+
+msgid "Last 5 years"
+msgstr "Останні 5 років"
 
 msgid "External url"
 msgstr ""

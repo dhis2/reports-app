@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-09-10T09:10:58.679Z\n"
+"POT-Creation-Date: 2020-11-04T12:33:41.214Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
 "Last-Translator: Viktor Varland <viktor@dhis2.org>, 2020\n"
 "Language-Team: Urdu (https://www.transifex.com/hisp-uio/teams/100509/ur/)\n"
@@ -260,132 +260,6 @@ msgstr "کل 6 بجے تک کیش"
 msgid "Cache for two weeks"
 msgstr "دو ہفتوں کے لئے کیش"
 
-msgid "Days"
-msgstr "دن"
-
-msgid "Reporting day"
-msgstr ""
-
-msgid "Yesterday"
-msgstr "کل"
-
-msgid "Last 3 days"
-msgstr "آخری 3 دن"
-
-msgid "Last 7 days"
-msgstr "آخری 7 دن"
-
-msgid "Last 14 days"
-msgstr "آخری 14 دن"
-
-msgid "Weeks"
-msgstr "ہفتوں"
-
-msgid "Reporting week"
-msgstr ""
-
-msgid "Last Week"
-msgstr ""
-
-msgid "Last 2 weeks"
-msgstr ""
-
-msgid "Last 12 weeks"
-msgstr "آخری ۱۲ ہفتے"
-
-msgid "Last 52 weeks"
-msgstr "آخری ۵۲ ہفتے"
-
-msgid "Weeks this year"
-msgstr "اس سال ہفتہ"
-
-msgid "Months"
-msgstr "مہینے"
-
-msgid "Reporting month"
-msgstr ""
-
-msgid "Last month"
-msgstr "آخری ماہ"
-
-msgid "Last 3 months"
-msgstr "آخری ۳ ماہ"
-
-msgid "Last 6 months"
-msgstr "آخری ۶ ماہ"
-
-msgid "Last 12 months"
-msgstr "آخری ۱۲ ماہ"
-
-msgid "Months this year"
-msgstr "ماہ اس سال"
-
-msgid "Bi-months"
-msgstr "دو ماہ"
-
-msgid "Reporting bi-month"
-msgstr ""
-
-msgid "Last bi-month"
-msgstr "آخری دو ماہ"
-
-msgid "Last 6 bi-month"
-msgstr ""
-
-msgid "Bi-months this year"
-msgstr "اس مہینے میں مہینے"
-
-msgid "Quarters"
-msgstr "چوتھائی"
-
-msgid "Reporting quarter"
-msgstr ""
-
-msgid "Last quarter"
-msgstr "آخری سہ ماہ"
-
-msgid "Last 4 quarters"
-msgstr "آخری ۴ سہ ماہی"
-
-msgid "Quarters of reporting year"
-msgstr ""
-
-msgid "Six-Months"
-msgstr ""
-
-msgid "Reporting six-month"
-msgstr ""
-
-msgid "Last six-month"
-msgstr "آخری ۶ ماہ"
-
-msgid "Last 2 six-months"
-msgstr "آخری ۲ چھ ماہ"
-
-msgid "Financial Years"
-msgstr ""
-
-msgid "Reporting financial year"
-msgstr ""
-
-msgid "Last financial year"
-msgstr "آخری مالیاتی سال"
-
-msgid "Last 5 financial years"
-msgstr "آخری ۵ مالیاتی سال"
-
-msgid "Years"
-msgstr "سال"
-
-msgid "Reporting year"
-msgstr ""
-
-msgid "Last year"
-msgstr "آخری سال"
-
-msgid "Last 5 years"
-msgstr "آخری ۵ سال"
-
 msgid "An error occurred whole loading the data set options"
 msgstr ""
 
@@ -472,57 +346,6 @@ msgstr "شمار"
 
 msgid "Total"
 msgstr "کُل"
-
-msgid "Daily"
-msgstr "روزانہ"
-
-msgid "Weekly"
-msgstr "ہفتہ وار"
-
-msgid "Weekly Wednesday"
-msgstr "ہفتہ وار بدھ"
-
-msgid "Weekly Thursday"
-msgstr "ہفتہ وار جمعرات"
-
-msgid "Weekly Saturday"
-msgstr "ہفتہ وار ہفتہ"
-
-msgid "Weekly Sunday"
-msgstr "ہفتہ وار اتوار"
-
-msgid "Bi-Weekly"
-msgstr ""
-
-msgid "Monthly"
-msgstr "ماہانہ"
-
-msgid "Bi-Monthly"
-msgstr ""
-
-msgid "Quarterly"
-msgstr "سہ ماہی"
-
-msgid "Six-Monthly"
-msgstr ""
-
-msgid "Six-Monthly April"
-msgstr ""
-
-msgid "Six-Monthly November"
-msgstr ""
-
-msgid "Yearly"
-msgstr "سالانہ"
-
-msgid "Financial-April"
-msgstr "مالیاتی۔اپریل"
-
-msgid "Financial-July"
-msgstr "مالیاتی۔جولائی"
-
-msgid "Financial-Oct"
-msgstr "مالیاتی۔اکتوبر"
 
 msgid "Name"
 msgstr "ÙØ§Ù"
@@ -713,16 +536,16 @@ msgstr ""
 msgid "quarter"
 msgstr ""
 
-msgid "Q1"
+msgid "January-March"
 msgstr ""
 
-msgid "Q2"
+msgid "April-June"
 msgstr ""
 
-msgid "Q3"
+msgid "July-September"
 msgstr ""
 
-msgid "Q4"
+msgid "October-December"
 msgstr ""
 
 msgid "six monthly"
@@ -742,6 +565,183 @@ msgstr "اکتوبر - مارچ"
 
 msgid "Bi-Week"
 msgstr ""
+
+msgid "Daily"
+msgstr "روزانہ"
+
+msgid "Weekly"
+msgstr "ہفتہ وار"
+
+msgid "Weekly Wednesday"
+msgstr "ہفتہ وار بدھ"
+
+msgid "Weekly Thursday"
+msgstr "ہفتہ وار جمعرات"
+
+msgid "Weekly Saturday"
+msgstr "ہفتہ وار ہفتہ"
+
+msgid "Weekly Sunday"
+msgstr "ہفتہ وار اتوار"
+
+msgid "Bi-Weekly"
+msgstr ""
+
+msgid "Monthly"
+msgstr "ماہانہ"
+
+msgid "Bi-Monthly"
+msgstr ""
+
+msgid "Quarterly"
+msgstr "سہ ماہی"
+
+msgid "Six-Monthly"
+msgstr ""
+
+msgid "Six-Monthly April"
+msgstr ""
+
+msgid "Six-Monthly November"
+msgstr ""
+
+msgid "Yearly"
+msgstr "سالانہ"
+
+msgid "Financial-April"
+msgstr "مالیاتی۔اپریل"
+
+msgid "Financial-July"
+msgstr "مالیاتی۔جولائی"
+
+msgid "Financial-Oct"
+msgstr "مالیاتی۔اکتوبر"
+
+msgid "Days"
+msgstr "دن"
+
+msgid "Reporting day"
+msgstr ""
+
+msgid "Yesterday"
+msgstr "کل"
+
+msgid "Last 3 days"
+msgstr "آخری 3 دن"
+
+msgid "Last 7 days"
+msgstr "آخری 7 دن"
+
+msgid "Last 14 days"
+msgstr "آخری 14 دن"
+
+msgid "Weeks"
+msgstr "ہفتوں"
+
+msgid "Reporting week"
+msgstr ""
+
+msgid "Last Week"
+msgstr ""
+
+msgid "Last 2 weeks"
+msgstr ""
+
+msgid "Last 12 weeks"
+msgstr "آخری ۱۲ ہفتے"
+
+msgid "Last 52 weeks"
+msgstr "آخری ۵۲ ہفتے"
+
+msgid "Weeks this year"
+msgstr "اس سال ہفتہ"
+
+msgid "Months"
+msgstr "مہینے"
+
+msgid "Reporting month"
+msgstr ""
+
+msgid "Last month"
+msgstr "آخری ماہ"
+
+msgid "Last 3 months"
+msgstr "آخری ۳ ماہ"
+
+msgid "Last 6 months"
+msgstr "آخری ۶ ماہ"
+
+msgid "Last 12 months"
+msgstr "آخری ۱۲ ماہ"
+
+msgid "Months this year"
+msgstr "ماہ اس سال"
+
+msgid "Bi-months"
+msgstr "دو ماہ"
+
+msgid "Reporting bi-month"
+msgstr ""
+
+msgid "Last bi-month"
+msgstr "آخری دو ماہ"
+
+msgid "Last 6 bi-month"
+msgstr ""
+
+msgid "Bi-months this year"
+msgstr "اس مہینے میں مہینے"
+
+msgid "Quarters"
+msgstr "چوتھائی"
+
+msgid "Reporting quarter"
+msgstr ""
+
+msgid "Last quarter"
+msgstr "آخری سہ ماہ"
+
+msgid "Last 4 quarters"
+msgstr "آخری ۴ سہ ماہی"
+
+msgid "Quarters of reporting year"
+msgstr ""
+
+msgid "Six-Months"
+msgstr ""
+
+msgid "Reporting six-month"
+msgstr ""
+
+msgid "Last six-month"
+msgstr "آخری ۶ ماہ"
+
+msgid "Last 2 six-months"
+msgstr "آخری ۲ چھ ماہ"
+
+msgid "Financial Years"
+msgstr ""
+
+msgid "Reporting financial year"
+msgstr ""
+
+msgid "Last financial year"
+msgstr "آخری مالیاتی سال"
+
+msgid "Last 5 financial years"
+msgstr "آخری ۵ مالیاتی سال"
+
+msgid "Years"
+msgstr "سال"
+
+msgid "Reporting year"
+msgstr ""
+
+msgid "Last year"
+msgstr "آخری سال"
+
+msgid "Last 5 years"
+msgstr "آخری ۵ سال"
 
 msgid "External url"
 msgstr ""

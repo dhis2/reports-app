@@ -1,23 +1,20 @@
 # 
 # Translators:
 # phil_dhis2, 2020
-# Marta Vila <marta@dhis2.org>, 2020
-# ericbp <ericbarredap@gmail.com>, 2020
-# William Aviles <waviles@clintonhealthaccess.org>, 2020
-# Gabriela Rodriguez <grodriguezcoronado@gmail.com>, 2020
 # Viktor Varland <viktor@dhis2.org>, 2020
+# KRG HIS <antonia.bezenchek@informa.pro>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2020-11-04T12:33:41.214Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
-"Last-Translator: Viktor Varland <viktor@dhis2.org>, 2020\n"
-"Language-Team: Spanish (https://www.transifex.com/hisp-uio/teams/100509/es/)\n"
+"Last-Translator: KRG HIS <antonia.bezenchek@informa.pro>, 2020\n"
+"Language-Team: Central Kurdish (https://www.transifex.com/hisp-uio/teams/100509/ckb/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
+"Language: ckb\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "Updating Organisation Units Tree..."
@@ -36,7 +33,7 @@ msgid "Select Data Set"
 msgstr ""
 
 msgid "Data set"
-msgstr "Set de Datos\\:"
+msgstr ""
 
 msgid "Group Set"
 msgstr ""
@@ -45,83 +42,75 @@ msgid "Select Group Set"
 msgstr ""
 
 msgid "Show more options"
-msgstr "Mostrar más opciones"
+msgstr ""
 
 msgid "Show fewer options"
-msgstr "Mostrar menos opciones"
+msgstr ""
 
 msgid "Report organisation unit"
-msgstr "Padre de la unidad organizativa"
+msgstr ""
 
 msgid "Select Period Type"
-msgstr "Seleccionar tipo de periodo"
+msgstr ""
 
 msgid "Search"
-msgstr "Buscar"
+msgstr "گەڕان"
 
 msgid "No results have been found"
 msgstr ""
 
 msgid "Download as"
-msgstr "Descargar como"
+msgstr ""
 
 msgid "Share"
-msgstr "Compartir"
+msgstr ""
 
 msgid "Write a comment, question or interpretation of this report"
-msgstr "Escriba un comentario, pregunta o interpretación de este reporte"
+msgstr ""
 
 msgid "Select file"
-msgstr ""
+msgstr "فایل هەڵبژێرە"
 
 msgid "No file chosen"
 msgstr ""
 
 msgid "Standard Report"
-msgstr "Informe Estandard"
+msgstr ""
 
 msgid ""
 "View and add reports based on the JasperReports library. These can be based "
 "on report tables and can be designed in iReport."
 msgstr ""
-"Ver y añadir informes basados en la librería JasprReports. Estos pueden "
-"basarse en tablas de informe y pueden ser diseñados con iReport."
 
 msgid "View Reports"
 msgstr ""
 
 msgid "Data Set Report"
-msgstr "Reporte de Set de Datos"
+msgstr ""
 
 msgid ""
 "View data set reports. These reports are based on data entry screens and "
 "will produce a report with aggregated data."
 msgstr ""
-"Ver reporte de set de datos. Estos reportes se basan en las pantallas de "
-"entrada de datos y generarán un reporte con datos agregados."
 
 msgid "Get Report"
 msgstr ""
 
 msgid "Reporting Rate Summary"
-msgstr "Resumen de tasas de notificación"
+msgstr ""
 
 msgid ""
 "Browse the reporting rates of data sets by organisation unit and period "
 "based on various criteria for submission."
 msgstr ""
-"Examinar las tasas de notificación de los sets de datos por unidad "
-"organizativa basado en diversos criterios de presentación."
 
 msgid "Resource"
-msgstr "Recurso"
+msgstr ""
 
 msgid ""
 "View and add resources. These resources can be uploaded documents or URLs on"
 " the web."
 msgstr ""
-"Ver y añadir recursos. Estos recursos pueden ser documentos subidos al "
-"servidor o URLs en la web."
 
 msgid "View Resources"
 msgstr ""
@@ -133,23 +122,21 @@ msgid ""
 "Browse the organisation unit distribution report based on the organisation "
 "unit group sets and its groups."
 msgstr ""
-"Examinar el informe de distribución de unidades organizativas basado en el "
-"set de grupos de unidades organizativas y sus grupos."
 
 msgid "Reporting Period"
 msgstr ""
 
 msgid "Organisation Unit"
-msgstr "Unidad Organizativa"
+msgstr "یەکەی ڕێخکڕاو"
 
 msgid "CONFIRM"
 msgstr ""
 
 msgid "Report period"
-msgstr "Periodo de presentacion de informe"
+msgstr ""
 
 msgid "Use data for selected unit only"
-msgstr "Usar solo datos de la unidad seleccionada"
+msgstr ""
 
 msgid "Get Chart"
 msgstr ""
@@ -167,19 +154,19 @@ msgid "Do you want to use this file as an attachment?"
 msgstr ""
 
 msgid "Yes"
-msgstr "Sí"
+msgstr "بەڵێ"
 
 msgid "No"
-msgstr "No"
+msgstr "نەخێر"
 
 msgid "File"
-msgstr "Fichero"
+msgstr ""
 
 msgid "Name*"
 msgstr ""
 
 msgid "Details"
-msgstr "Detalles"
+msgstr ""
 
 msgid "Resource Type"
 msgstr ""
@@ -191,7 +178,7 @@ msgid "File resources can not be edited, only created"
 msgstr ""
 
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "لابردن"
 
 msgid "Edit standard report"
 msgstr ""
@@ -203,7 +190,7 @@ msgid "Generate report"
 msgstr ""
 
 msgid "Report parameters"
-msgstr "Parámetros de informe"
+msgstr ""
 
 msgid "There are some errors you have to fix first!"
 msgstr ""
@@ -212,7 +199,7 @@ msgid "Back to standard reports list"
 msgstr ""
 
 msgid "Get current design"
-msgstr "Cargar diseño actual"
+msgstr ""
 
 msgid "Get HTML Report Template"
 msgstr ""
@@ -221,7 +208,7 @@ msgid "Get Jasper Report Template"
 msgstr ""
 
 msgid "Download"
-msgstr "Descargar"
+msgstr ""
 
 msgid "Report Type*"
 msgstr ""
@@ -236,43 +223,43 @@ msgid "Design File*"
 msgstr ""
 
 msgid "Relative periods"
-msgstr "Periodos relativos"
+msgstr ""
 
 msgid "Settings"
-msgstr "Configuración"
+msgstr "ريكخستن"
 
 msgid "Cache Strategy*"
 msgstr ""
 
 msgid "Submit"
-msgstr "Enviar"
+msgstr ""
 
 msgid "[ None ]"
 msgstr ""
 
 msgid "Jasper report with report table data source"
-msgstr "Reporte Jasper con tabla de reporte como fuente de datos"
+msgstr ""
 
 msgid "Jasper report with JDBC data source"
-msgstr "Reporte Jasper con fuente de datos JDBC"
+msgstr ""
 
 msgid "HTML report"
-msgstr "Reporte HTML"
+msgstr ""
 
 msgid "No cache"
-msgstr "Sin caché"
+msgstr ""
 
 msgid "Respect system setting"
-msgstr "Respeto a la configuración del sistema"
+msgstr ""
 
 msgid "Cache for one hour"
-msgstr "Caché por una hora"
+msgstr ""
 
 msgid "Cache until 6 AM tomorrow"
-msgstr "Cache hasta las 6am de mañana"
+msgstr ""
 
 msgid "Cache for two weeks"
-msgstr "Caché por dos semanas"
+msgstr ""
 
 msgid "An error occurred whole loading the data set options"
 msgstr ""
@@ -293,7 +280,7 @@ msgid "Successfully loaded the {{ outputType }}"
 msgstr ""
 
 msgid "chart"
-msgstr "gráfico"
+msgstr ""
 
 msgid "table"
 msgstr ""
@@ -356,67 +343,67 @@ msgid "An error occurred while loading the report table options"
 msgstr ""
 
 msgid "Count"
-msgstr "Conteo"
+msgstr ""
 
 msgid "Total"
-msgstr "Total"
+msgstr "كؤي طشتي"
 
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgid "Something went wrong when processing your request."
-msgstr "Algo salió mal al procesar su solicitud."
+msgstr ""
 
 msgid "Search apps"
-msgstr "Buscar aplicaciones"
+msgstr ""
 
 msgid "Profile"
-msgstr "Perfil"
+msgstr "پرۆفایل"
 
 msgid "Account"
-msgstr "Cuenta"
+msgstr ""
 
 msgid "Help"
-msgstr "Ayuda"
+msgstr "هاوكاري"
 
 msgid "Log out"
-msgstr "Salir"
+msgstr "جونةدةرةوة"
 
 msgid "About DHIS 2"
-msgstr "Sobre DHIS 2"
+msgstr ""
 
 msgid "Manage my apps"
-msgstr "Manage my apps"
+msgstr ""
 
 msgid "No results found"
-msgstr "No results found"
+msgstr ""
 
 msgid "Interpretations"
-msgstr "Interpretaciones"
+msgstr ""
 
 msgid "Messages"
-msgstr "Mensajes"
+msgstr ""
 
 msgid "Report Table"
-msgstr "Tabla de informe"
+msgstr ""
 
 msgid "ID"
-msgstr "Identificador"
+msgstr ""
 
 msgid "Create"
-msgstr "Crear"
+msgstr ""
 
 msgid "Edit"
-msgstr "Editar"
+msgstr "دةستكاري"
 
 msgid "Actions"
-msgstr "Acciones"
+msgstr ""
 
 msgid "Delete"
-msgstr "Borrar"
+msgstr "سڕینەوە"
 
 msgid "Sharing settings"
-msgstr "Configuración de uso compartido"
+msgstr ""
 
 msgid "View Resource"
 msgstr ""
@@ -425,10 +412,10 @@ msgid "Edit Resource"
 msgstr ""
 
 msgid "Add users and user groups"
-msgstr "Añadir usuarios y grupos de usuarios"
+msgstr ""
 
 msgid "Enter names"
-msgstr "Ingresar nombres"
+msgstr ""
 
 msgid "Permissions"
 msgstr ""
@@ -437,25 +424,25 @@ msgid "Created By"
 msgstr ""
 
 msgid "Who has access"
-msgstr "Quien tiene acceso"
+msgstr ""
 
 msgid "External access (without login)"
-msgstr "Acceso externo (sin identificación)"
+msgstr ""
 
 msgid "Can edit and view"
-msgstr "Puede editar y ver"
+msgstr ""
 
 msgid "Can view"
-msgstr "Puede ver"
+msgstr ""
 
 msgid "Can view only"
-msgstr "Solo lectura"
+msgstr ""
 
 msgid "No access"
-msgstr "Sin acceso"
+msgstr ""
 
 msgid "Public access (with login)"
-msgstr "Acceso público"
+msgstr ""
 
 msgid "Public can edit"
 msgstr ""
@@ -470,13 +457,13 @@ msgid "Public can find and view"
 msgstr ""
 
 msgid "Close"
-msgstr "Cerrar"
+msgstr "داخستن"
 
 msgid "week"
 msgstr ""
 
 msgid "month"
-msgstr "mes"
+msgstr ""
 
 msgid "year"
 msgstr ""
@@ -488,40 +475,40 @@ msgid "day"
 msgstr ""
 
 msgid "January"
-msgstr "Enero"
+msgstr ""
 
 msgid "February"
-msgstr "Febrero"
+msgstr ""
 
 msgid "March"
-msgstr "Marzo"
+msgstr ""
 
 msgid "April"
-msgstr "Abril"
+msgstr ""
 
 msgid "May"
-msgstr "Mayo"
+msgstr ""
 
 msgid "June"
-msgstr "Junio"
+msgstr ""
 
 msgid "July"
-msgstr "Julio"
+msgstr ""
 
 msgid "August"
-msgstr "Agosto"
+msgstr ""
 
 msgid "September"
-msgstr "Septiembre"
+msgstr ""
 
 msgid "October"
-msgstr "Octubre"
+msgstr ""
 
 msgid "November"
-msgstr "Noviembre"
+msgstr ""
 
 msgid "December"
-msgstr "Diciembre"
+msgstr ""
 
 msgid "January-February"
 msgstr ""
@@ -581,10 +568,10 @@ msgid "Bi-Week"
 msgstr ""
 
 msgid "Daily"
-msgstr "Diario"
+msgstr ""
 
 msgid "Weekly"
-msgstr "Semanal"
+msgstr ""
 
 msgid "Weekly Wednesday"
 msgstr ""
@@ -602,13 +589,13 @@ msgid "Bi-Weekly"
 msgstr ""
 
 msgid "Monthly"
-msgstr "Mensual"
+msgstr ""
 
 msgid "Bi-Monthly"
 msgstr ""
 
 msgid "Quarterly"
-msgstr "Trimestral"
+msgstr ""
 
 msgid "Six-Monthly"
 msgstr ""
@@ -620,37 +607,37 @@ msgid "Six-Monthly November"
 msgstr ""
 
 msgid "Yearly"
-msgstr "Anual"
+msgstr ""
 
 msgid "Financial-April"
-msgstr "Fiscal - Abril"
+msgstr ""
 
 msgid "Financial-July"
-msgstr "Fiscal - Julio"
+msgstr ""
 
 msgid "Financial-Oct"
-msgstr "Fiscal - Oct"
+msgstr ""
 
 msgid "Days"
-msgstr "Días"
+msgstr "رۆژەکان"
 
 msgid "Reporting day"
 msgstr ""
 
 msgid "Yesterday"
-msgstr "Ayer"
+msgstr ""
 
 msgid "Last 3 days"
-msgstr "Últimos 3 días"
+msgstr ""
 
 msgid "Last 7 days"
-msgstr "Últimos 7 diass"
+msgstr ""
 
 msgid "Last 14 days"
-msgstr "Últimos 14 días"
+msgstr ""
 
 msgid "Weeks"
-msgstr "Semanas"
+msgstr ""
 
 msgid "Reporting week"
 msgstr ""
@@ -662,43 +649,43 @@ msgid "Last 2 weeks"
 msgstr ""
 
 msgid "Last 12 weeks"
-msgstr "Últimas 12 semanas"
+msgstr ""
 
 msgid "Last 52 weeks"
-msgstr "Últimas 52 semanas"
+msgstr ""
 
 msgid "Weeks this year"
-msgstr "Semanas de este año"
+msgstr ""
 
 msgid "Months"
-msgstr "Meses"
+msgstr "مانگەکان"
 
 msgid "Reporting month"
-msgstr "Mes de presentacion de informe"
+msgstr ""
 
 msgid "Last month"
-msgstr "Mes anterior"
+msgstr "مانگی ڕابردوو"
 
 msgid "Last 3 months"
-msgstr "Últimos 3 meses"
+msgstr "٣ مانگ پێشووتر"
 
 msgid "Last 6 months"
-msgstr "Últimos 6 meses"
+msgstr ""
 
 msgid "Last 12 months"
-msgstr "Ultimos 12 meses"
+msgstr ""
 
 msgid "Months this year"
-msgstr "Meses este año"
+msgstr ""
 
 msgid "Bi-months"
-msgstr "Bimestres"
+msgstr ""
 
 msgid "Reporting bi-month"
-msgstr "Reporte bimensual"
+msgstr ""
 
 msgid "Last bi-month"
-msgstr "Bimestre anterior"
+msgstr ""
 
 msgid "Last 6 bi-month"
 msgstr ""
@@ -707,16 +694,16 @@ msgid "Bi-months this year"
 msgstr ""
 
 msgid "Quarters"
-msgstr "Trimestral"
+msgstr ""
 
 msgid "Reporting quarter"
-msgstr "Reporte trimestral"
+msgstr ""
 
 msgid "Last quarter"
-msgstr "El trimestre pasado"
+msgstr ""
 
 msgid "Last 4 quarters"
-msgstr "Últimos 4 trimestres"
+msgstr ""
 
 msgid "Quarters of reporting year"
 msgstr ""
@@ -725,13 +712,13 @@ msgid "Six-Months"
 msgstr ""
 
 msgid "Reporting six-month"
-msgstr "Mes de presentacion de informe"
+msgstr ""
 
 msgid "Last six-month"
-msgstr "Último semestre"
+msgstr ""
 
 msgid "Last 2 six-months"
-msgstr "Últimos 2 semestres"
+msgstr ""
 
 msgid "Financial Years"
 msgstr ""
@@ -740,28 +727,28 @@ msgid "Reporting financial year"
 msgstr ""
 
 msgid "Last financial year"
-msgstr "Último ejercicio financiero"
+msgstr ""
 
 msgid "Last 5 financial years"
-msgstr "Últimos 5 ejercicios financieros"
+msgstr ""
 
 msgid "Years"
-msgstr "Años"
+msgstr "ساڵەکان"
 
 msgid "Reporting year"
 msgstr ""
 
 msgid "Last year"
-msgstr "El año pasado"
+msgstr ""
 
 msgid "Last 5 years"
-msgstr "Últimos 5 años"
+msgstr ""
 
 msgid "External url"
 msgstr ""
 
 msgid "Upload file"
-msgstr "Cargar fichero"
+msgstr ""
 
 msgid "Confirm delete"
 msgstr ""

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-09-23T12:16:43.780Z\n"
+"POT-Creation-Date: 2020-11-04T12:33:41.214Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
 "Last-Translator: Ibatov <ibatovk@who.int>, 2020\n"
 "Language-Team: Uzbek (Cyrillic) (https://www.transifex.com/hisp-uio/teams/100509/uz@Cyrl/)\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "Updating Organisation Units Tree..."
-msgstr "Муассасалар дарахти (кетма-кетлиги) янгиланмоқда..."
+msgstr "Муассасалар дарахти (шажараси) янгиланмоқда..."
 
 msgid "Select Option"
 msgstr "Вариантни танланг"
@@ -70,7 +70,7 @@ msgid "Select file"
 msgstr "Файлни танлаш"
 
 msgid "No file chosen"
-msgstr "Файл танланмаган"
+msgstr "Ҳеч қандай файл танланмади"
 
 msgid "Standard Report"
 msgstr "Стандарт ҳисобот"
@@ -546,17 +546,17 @@ msgstr "Май-Октябрь"
 msgid "quarter"
 msgstr "квартал"
 
-msgid "Q1"
-msgstr "Q1"
+msgid "January-March"
+msgstr ""
 
-msgid "Q2"
-msgstr "Q2"
+msgid "April-June"
+msgstr ""
 
-msgid "Q3"
-msgstr "Q3"
+msgid "July-September"
+msgstr ""
 
-msgid "Q4"
-msgstr "Q4"
+msgid "October-December"
+msgstr ""
 
 msgid "six monthly"
 msgstr "6 ойлик"

@@ -1,14 +1,14 @@
 # 
 # Translators:
-# easylin <lin_xd@126.com>, 2020
 # 晓东 林 <13981924470@126.com>, 2020
+# easylin <lin_xd@126.com>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-09-10T09:10:58.679Z\n"
+"POT-Creation-Date: 2020-11-04T12:33:41.214Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
-"Last-Translator: 晓东 林 <13981924470@126.com>, 2020\n"
+"Last-Translator: easylin <lin_xd@126.com>, 2020\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/hisp-uio/teams/100509/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "Updating Organisation Units Tree..."
-msgstr ""
+msgstr "更新机构树"
 
 msgid "Select Option"
 msgstr ""
@@ -129,7 +129,7 @@ msgid "Organisation Unit"
 msgstr "组织机构"
 
 msgid "CONFIRM"
-msgstr ""
+msgstr "确认"
 
 msgid "Report period"
 msgstr "报告期间"
@@ -260,6 +260,363 @@ msgstr "缓冲至明天早上六点"
 msgid "Cache for two weeks"
 msgstr "缓冲两周"
 
+msgid "An error occurred whole loading the data set options"
+msgstr ""
+
+msgid "An error occurred while loading the data set dimensions"
+msgstr ""
+
+msgid "An error occurred while loading the group sets!"
+msgstr ""
+
+msgid "Could not load organisation units"
+msgstr ""
+
+msgid "An error occurred while loading the organisation units!"
+msgstr ""
+
+msgid "Successfully loaded the {{ outputType }}"
+msgstr ""
+
+msgid "chart"
+msgstr ""
+
+msgid "table"
+msgstr ""
+
+msgid "An error occurred while loading the report!"
+msgstr ""
+
+msgid "Successfully added comment"
+msgstr ""
+
+msgid "An error occurred while submitting your comment!"
+msgstr ""
+
+msgid "Could not load period types"
+msgstr ""
+
+msgid "An error occurred while loading the resources!"
+msgstr ""
+
+msgid "Do you really want to delete this resource?"
+msgstr ""
+
+msgid "The resource has been deleted successfully"
+msgstr ""
+
+msgid "An error occurred when deleting the resource!"
+msgstr ""
+
+msgid "An error occurred while adding the resource!"
+msgstr ""
+
+msgid "An error occurred while saving the modifications!"
+msgstr ""
+
+msgid "An error occurred while loading the standard reports"
+msgstr ""
+
+msgid "An error occurred while trying to delete the standard report"
+msgstr ""
+
+msgid "An error occurred while loading the standard report details"
+msgstr ""
+
+msgid "The report has been updated successfully"
+msgstr ""
+
+msgid "The report has been added successfully"
+msgstr ""
+
+msgid "An error occurred while updating the report!"
+msgstr ""
+
+msgid "An error occurred while adding the report!"
+msgstr ""
+
+msgid "An error occurred while generating the html report"
+msgstr ""
+
+msgid "An error occurred while loading the report table options"
+msgstr ""
+
+msgid "Count"
+msgstr "计数"
+
+msgid "Total"
+msgstr "总共"
+
+msgid "Name"
+msgstr "名称"
+
+msgid "Something went wrong when processing your request."
+msgstr "处理你的请求发生错误"
+
+msgid "Search apps"
+msgstr "搜索 apps"
+
+msgid "Profile"
+msgstr "简历"
+
+msgid "Account"
+msgstr "账户"
+
+msgid "Help"
+msgstr "帮助"
+
+msgid "Log out"
+msgstr "登出"
+
+msgid "About DHIS 2"
+msgstr "关于"
+
+msgid "Manage my apps"
+msgstr "管理我的应用"
+
+msgid "No results found"
+msgstr "没有发现"
+
+msgid "Interpretations"
+msgstr "注释"
+
+msgid "Messages"
+msgstr "消息"
+
+msgid "Report Table"
+msgstr ""
+
+msgid "ID"
+msgstr "Id"
+
+msgid "Create"
+msgstr "创建"
+
+msgid "Edit"
+msgstr "编辑"
+
+msgid "Actions"
+msgstr "行动"
+
+msgid "Delete"
+msgstr "删除"
+
+msgid "Sharing settings"
+msgstr "共享设置"
+
+msgid "View Resource"
+msgstr ""
+
+msgid "Edit Resource"
+msgstr ""
+
+msgid "Add users and user groups"
+msgstr "添加用户和用户组"
+
+msgid "Enter names"
+msgstr "输入名称"
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Created By"
+msgstr ""
+
+msgid "Who has access"
+msgstr "谁访问过"
+
+msgid "External access (without login)"
+msgstr ""
+
+msgid "Can edit and view"
+msgstr "可编辑和查看"
+
+msgid "Can view"
+msgstr "可查看"
+
+msgid "Can view only"
+msgstr "仅查看"
+
+msgid "No access"
+msgstr "不能访问"
+
+msgid "Public access (with login)"
+msgstr ""
+
+msgid "Public can edit"
+msgstr ""
+
+msgid "Public can view"
+msgstr ""
+
+msgid "Public can find, view and edit"
+msgstr ""
+
+msgid "Public can find and view"
+msgstr ""
+
+msgid "Close"
+msgstr "关闭"
+
+msgid "week"
+msgstr "周"
+
+msgid "month"
+msgstr "月"
+
+msgid "year"
+msgstr "年"
+
+msgid "bi monthly"
+msgstr "两月"
+
+msgid "day"
+msgstr "天"
+
+msgid "January"
+msgstr "01"
+
+msgid "February"
+msgstr "02"
+
+msgid "March"
+msgstr "03"
+
+msgid "April"
+msgstr "04"
+
+msgid "May"
+msgstr "05"
+
+msgid "June"
+msgstr "06"
+
+msgid "July"
+msgstr "07"
+
+msgid "August"
+msgstr "08"
+
+msgid "September"
+msgstr "09"
+
+msgid "October"
+msgstr "10"
+
+msgid "November"
+msgstr "11"
+
+msgid "December"
+msgstr "12"
+
+msgid "January-February"
+msgstr "一二月"
+
+msgid "March-April"
+msgstr "三四月"
+
+msgid "May-June"
+msgstr "五六月"
+
+msgid "July-August"
+msgstr "七八月"
+
+msgid "September-October"
+msgstr "九十月"
+
+msgid "November-December"
+msgstr "十一十二月"
+
+msgid "November-April"
+msgstr ""
+
+msgid "May-October"
+msgstr ""
+
+msgid "quarter"
+msgstr "季度"
+
+msgid "January-March"
+msgstr ""
+
+msgid "April-June"
+msgstr ""
+
+msgid "July-September"
+msgstr ""
+
+msgid "October-December"
+msgstr ""
+
+msgid "six monthly"
+msgstr "每六个月"
+
+msgid "January-June"
+msgstr "1-6月"
+
+msgid "July-December"
+msgstr "7-12月"
+
+msgid "April-September"
+msgstr "4-9月"
+
+msgid "October-March"
+msgstr "10-3月"
+
+msgid "Bi-Week"
+msgstr ""
+
+msgid "Daily"
+msgstr "每日"
+
+msgid "Weekly"
+msgstr "每周"
+
+msgid "Weekly Wednesday"
+msgstr ""
+
+msgid "Weekly Thursday"
+msgstr ""
+
+msgid "Weekly Saturday"
+msgstr ""
+
+msgid "Weekly Sunday"
+msgstr ""
+
+msgid "Bi-Weekly"
+msgstr ""
+
+msgid "Monthly"
+msgstr "每月"
+
+msgid "Bi-Monthly"
+msgstr ""
+
+msgid "Quarterly"
+msgstr "季度"
+
+msgid "Six-Monthly"
+msgstr ""
+
+msgid "Six-Monthly April"
+msgstr ""
+
+msgid "Six-Monthly November"
+msgstr ""
+
+msgid "Yearly"
+msgstr "每年"
+
+msgid "Financial-April"
+msgstr ""
+
+msgid "Financial-July"
+msgstr ""
+
+msgid "Financial-Oct"
+msgstr ""
+
 msgid "Days"
 msgstr "天数"
 
@@ -385,363 +742,6 @@ msgstr "去年"
 
 msgid "Last 5 years"
 msgstr "最近5年"
-
-msgid "An error occurred whole loading the data set options"
-msgstr ""
-
-msgid "An error occurred while loading the data set dimensions"
-msgstr ""
-
-msgid "An error occurred while loading the group sets!"
-msgstr ""
-
-msgid "Could not load organisation units"
-msgstr ""
-
-msgid "An error occurred while loading the organisation units!"
-msgstr ""
-
-msgid "Successfully loaded the {{ outputType }}"
-msgstr ""
-
-msgid "chart"
-msgstr ""
-
-msgid "table"
-msgstr ""
-
-msgid "An error occurred while loading the report!"
-msgstr ""
-
-msgid "Successfully added comment"
-msgstr ""
-
-msgid "An error occurred while submitting your comment!"
-msgstr ""
-
-msgid "Could not load period types"
-msgstr ""
-
-msgid "An error occurred while loading the resources!"
-msgstr ""
-
-msgid "Do you really want to delete this resource?"
-msgstr ""
-
-msgid "The resource has been deleted successfully"
-msgstr ""
-
-msgid "An error occurred when deleting the resource!"
-msgstr ""
-
-msgid "An error occurred while adding the resource!"
-msgstr ""
-
-msgid "An error occurred while saving the modifications!"
-msgstr ""
-
-msgid "An error occurred while loading the standard reports"
-msgstr ""
-
-msgid "An error occurred while trying to delete the standard report"
-msgstr ""
-
-msgid "An error occurred while loading the standard report details"
-msgstr ""
-
-msgid "The report has been updated successfully"
-msgstr ""
-
-msgid "The report has been added successfully"
-msgstr ""
-
-msgid "An error occurred while updating the report!"
-msgstr ""
-
-msgid "An error occurred while adding the report!"
-msgstr ""
-
-msgid "An error occurred while generating the html report"
-msgstr ""
-
-msgid "An error occurred while loading the report table options"
-msgstr ""
-
-msgid "Count"
-msgstr "计数"
-
-msgid "Total"
-msgstr "总共"
-
-msgid "Daily"
-msgstr "每日"
-
-msgid "Weekly"
-msgstr "每周"
-
-msgid "Weekly Wednesday"
-msgstr ""
-
-msgid "Weekly Thursday"
-msgstr ""
-
-msgid "Weekly Saturday"
-msgstr ""
-
-msgid "Weekly Sunday"
-msgstr ""
-
-msgid "Bi-Weekly"
-msgstr ""
-
-msgid "Monthly"
-msgstr "每月"
-
-msgid "Bi-Monthly"
-msgstr ""
-
-msgid "Quarterly"
-msgstr "季度"
-
-msgid "Six-Monthly"
-msgstr ""
-
-msgid "Six-Monthly April"
-msgstr ""
-
-msgid "Six-Monthly November"
-msgstr ""
-
-msgid "Yearly"
-msgstr "每年"
-
-msgid "Financial-April"
-msgstr ""
-
-msgid "Financial-July"
-msgstr ""
-
-msgid "Financial-Oct"
-msgstr ""
-
-msgid "Name"
-msgstr "名称"
-
-msgid "Something went wrong when processing your request."
-msgstr "处理你的请求发生错误"
-
-msgid "Search apps"
-msgstr "搜索 apps"
-
-msgid "Profile"
-msgstr "简历"
-
-msgid "Account"
-msgstr "账户"
-
-msgid "Help"
-msgstr "帮助"
-
-msgid "Log out"
-msgstr "登出"
-
-msgid "About DHIS 2"
-msgstr "关于"
-
-msgid "Manage my apps"
-msgstr "管理我的应用"
-
-msgid "No results found"
-msgstr "没有发现"
-
-msgid "Interpretations"
-msgstr "注释"
-
-msgid "Messages"
-msgstr "消息"
-
-msgid "Report Table"
-msgstr ""
-
-msgid "ID"
-msgstr "Id"
-
-msgid "Create"
-msgstr "创建"
-
-msgid "Edit"
-msgstr "编辑"
-
-msgid "Actions"
-msgstr "行动"
-
-msgid "Delete"
-msgstr "删除"
-
-msgid "Sharing settings"
-msgstr "共享设置"
-
-msgid "View Resource"
-msgstr ""
-
-msgid "Edit Resource"
-msgstr ""
-
-msgid "Add users and user groups"
-msgstr "添加用户和用户组"
-
-msgid "Enter names"
-msgstr "输入名称"
-
-msgid "Permissions"
-msgstr ""
-
-msgid "Created By"
-msgstr ""
-
-msgid "Who has access"
-msgstr "谁访问过"
-
-msgid "External access (without login)"
-msgstr ""
-
-msgid "Can edit and view"
-msgstr "可编辑和查看"
-
-msgid "Can view"
-msgstr "可查看"
-
-msgid "Can view only"
-msgstr "仅查看"
-
-msgid "No access"
-msgstr "不能访问"
-
-msgid "Public access (with login)"
-msgstr ""
-
-msgid "Public can edit"
-msgstr ""
-
-msgid "Public can view"
-msgstr ""
-
-msgid "Public can find, view and edit"
-msgstr ""
-
-msgid "Public can find and view"
-msgstr ""
-
-msgid "Close"
-msgstr "关闭"
-
-msgid "week"
-msgstr ""
-
-msgid "month"
-msgstr "月"
-
-msgid "year"
-msgstr ""
-
-msgid "bi monthly"
-msgstr ""
-
-msgid "day"
-msgstr ""
-
-msgid "January"
-msgstr "01"
-
-msgid "February"
-msgstr "02"
-
-msgid "March"
-msgstr "03"
-
-msgid "April"
-msgstr "04"
-
-msgid "May"
-msgstr "05"
-
-msgid "June"
-msgstr "06"
-
-msgid "July"
-msgstr "07"
-
-msgid "August"
-msgstr "08"
-
-msgid "September"
-msgstr "09"
-
-msgid "October"
-msgstr "10"
-
-msgid "November"
-msgstr "11"
-
-msgid "December"
-msgstr "12"
-
-msgid "January-February"
-msgstr "一二月"
-
-msgid "March-April"
-msgstr "三四月"
-
-msgid "May-June"
-msgstr "五六月"
-
-msgid "July-August"
-msgstr "七八月"
-
-msgid "September-October"
-msgstr "九十月"
-
-msgid "November-December"
-msgstr "十一十二月"
-
-msgid "November-April"
-msgstr ""
-
-msgid "May-October"
-msgstr ""
-
-msgid "quarter"
-msgstr ""
-
-msgid "Q1"
-msgstr ""
-
-msgid "Q2"
-msgstr ""
-
-msgid "Q3"
-msgstr ""
-
-msgid "Q4"
-msgstr ""
-
-msgid "six monthly"
-msgstr ""
-
-msgid "January-June"
-msgstr "1-6月"
-
-msgid "July-December"
-msgstr "7-12月"
-
-msgid "April-September"
-msgstr "4-9月"
-
-msgid "October-March"
-msgstr "10-3月"
-
-msgid "Bi-Week"
-msgstr ""
 
 msgid "External url"
 msgstr ""

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-09-10T09:10:58.679Z\n"
+"POT-Creation-Date: 2020-11-04T12:33:41.214Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
 "Last-Translator: Viktor Varland <viktor@dhis2.org>, 2020\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/hisp-uio/teams/100509/pt_BR/)\n"
@@ -271,132 +271,6 @@ msgstr "Cache até seis horas de amanhã"
 msgid "Cache for two weeks"
 msgstr "Cache por duas semanas"
 
-msgid "Days"
-msgstr ""
-
-msgid "Reporting day"
-msgstr ""
-
-msgid "Yesterday"
-msgstr "Ontém"
-
-msgid "Last 3 days"
-msgstr ""
-
-msgid "Last 7 days"
-msgstr "Últimos 7 dias"
-
-msgid "Last 14 days"
-msgstr ""
-
-msgid "Weeks"
-msgstr ""
-
-msgid "Reporting week"
-msgstr ""
-
-msgid "Last Week"
-msgstr ""
-
-msgid "Last 2 weeks"
-msgstr ""
-
-msgid "Last 12 weeks"
-msgstr "Últimoas 12 semanas"
-
-msgid "Last 52 weeks"
-msgstr ""
-
-msgid "Weeks this year"
-msgstr ""
-
-msgid "Months"
-msgstr "Meses"
-
-msgid "Reporting month"
-msgstr "Mes de relatório"
-
-msgid "Last month"
-msgstr "Mês passado"
-
-msgid "Last 3 months"
-msgstr "Últimos 3 meses"
-
-msgid "Last 6 months"
-msgstr "Últimos 6 meses"
-
-msgid "Last 12 months"
-msgstr "Últimos 12 meses"
-
-msgid "Months this year"
-msgstr "Meses deste ano"
-
-msgid "Bi-months"
-msgstr ""
-
-msgid "Reporting bi-month"
-msgstr "Relatório bi-mensal"
-
-msgid "Last bi-month"
-msgstr ""
-
-msgid "Last 6 bi-month"
-msgstr ""
-
-msgid "Bi-months this year"
-msgstr ""
-
-msgid "Quarters"
-msgstr "Trimestres"
-
-msgid "Reporting quarter"
-msgstr "Relatório trimestral"
-
-msgid "Last quarter"
-msgstr "Último trimestre"
-
-msgid "Last 4 quarters"
-msgstr "Últimos 4 trimestresÚltimo 4 trimestre"
-
-msgid "Quarters of reporting year"
-msgstr ""
-
-msgid "Six-Months"
-msgstr ""
-
-msgid "Reporting six-month"
-msgstr "Relatando os seis meses"
-
-msgid "Last six-month"
-msgstr "Últimos 6 meses"
-
-msgid "Last 2 six-months"
-msgstr "Último 2 seis-meses"
-
-msgid "Financial Years"
-msgstr ""
-
-msgid "Reporting financial year"
-msgstr ""
-
-msgid "Last financial year"
-msgstr "último ano financeiro"
-
-msgid "Last 5 financial years"
-msgstr "Últimos 5 anos financeiros"
-
-msgid "Years"
-msgstr "Anos"
-
-msgid "Reporting year"
-msgstr ""
-
-msgid "Last year"
-msgstr "Ano passado"
-
-msgid "Last 5 years"
-msgstr "Últimos 5 anos"
-
 msgid "An error occurred whole loading the data set options"
 msgstr ""
 
@@ -483,57 +357,6 @@ msgstr "Contagem"
 
 msgid "Total"
 msgstr ""
-
-msgid "Daily"
-msgstr "Diário"
-
-msgid "Weekly"
-msgstr "Semanal"
-
-msgid "Weekly Wednesday"
-msgstr ""
-
-msgid "Weekly Thursday"
-msgstr ""
-
-msgid "Weekly Saturday"
-msgstr ""
-
-msgid "Weekly Sunday"
-msgstr ""
-
-msgid "Bi-Weekly"
-msgstr ""
-
-msgid "Monthly"
-msgstr "Mensal"
-
-msgid "Bi-Monthly"
-msgstr ""
-
-msgid "Quarterly"
-msgstr "Trimestral"
-
-msgid "Six-Monthly"
-msgstr ""
-
-msgid "Six-Monthly April"
-msgstr ""
-
-msgid "Six-Monthly November"
-msgstr ""
-
-msgid "Yearly"
-msgstr "Anual"
-
-msgid "Financial-April"
-msgstr "Financeiro-Abril"
-
-msgid "Financial-July"
-msgstr "Financeiro-Julho"
-
-msgid "Financial-Oct"
-msgstr "Financeiro-Outubro"
 
 msgid "Name"
 msgstr "Nome"
@@ -724,16 +547,16 @@ msgstr ""
 msgid "quarter"
 msgstr ""
 
-msgid "Q1"
+msgid "January-March"
 msgstr ""
 
-msgid "Q2"
+msgid "April-June"
 msgstr ""
 
-msgid "Q3"
+msgid "July-September"
 msgstr ""
 
-msgid "Q4"
+msgid "October-December"
 msgstr ""
 
 msgid "six monthly"
@@ -753,6 +576,183 @@ msgstr ""
 
 msgid "Bi-Week"
 msgstr ""
+
+msgid "Daily"
+msgstr "Diário"
+
+msgid "Weekly"
+msgstr "Semanal"
+
+msgid "Weekly Wednesday"
+msgstr ""
+
+msgid "Weekly Thursday"
+msgstr ""
+
+msgid "Weekly Saturday"
+msgstr ""
+
+msgid "Weekly Sunday"
+msgstr ""
+
+msgid "Bi-Weekly"
+msgstr ""
+
+msgid "Monthly"
+msgstr "Mensal"
+
+msgid "Bi-Monthly"
+msgstr ""
+
+msgid "Quarterly"
+msgstr "Trimestral"
+
+msgid "Six-Monthly"
+msgstr ""
+
+msgid "Six-Monthly April"
+msgstr ""
+
+msgid "Six-Monthly November"
+msgstr ""
+
+msgid "Yearly"
+msgstr "Anual"
+
+msgid "Financial-April"
+msgstr "Financeiro-Abril"
+
+msgid "Financial-July"
+msgstr "Financeiro-Julho"
+
+msgid "Financial-Oct"
+msgstr "Financeiro-Outubro"
+
+msgid "Days"
+msgstr ""
+
+msgid "Reporting day"
+msgstr ""
+
+msgid "Yesterday"
+msgstr "Ontém"
+
+msgid "Last 3 days"
+msgstr ""
+
+msgid "Last 7 days"
+msgstr "Últimos 7 dias"
+
+msgid "Last 14 days"
+msgstr ""
+
+msgid "Weeks"
+msgstr ""
+
+msgid "Reporting week"
+msgstr ""
+
+msgid "Last Week"
+msgstr ""
+
+msgid "Last 2 weeks"
+msgstr ""
+
+msgid "Last 12 weeks"
+msgstr "Últimoas 12 semanas"
+
+msgid "Last 52 weeks"
+msgstr ""
+
+msgid "Weeks this year"
+msgstr ""
+
+msgid "Months"
+msgstr "Meses"
+
+msgid "Reporting month"
+msgstr "Mes de relatório"
+
+msgid "Last month"
+msgstr "Mês passado"
+
+msgid "Last 3 months"
+msgstr "Últimos 3 meses"
+
+msgid "Last 6 months"
+msgstr "Últimos 6 meses"
+
+msgid "Last 12 months"
+msgstr "Últimos 12 meses"
+
+msgid "Months this year"
+msgstr "Meses deste ano"
+
+msgid "Bi-months"
+msgstr ""
+
+msgid "Reporting bi-month"
+msgstr "Relatório bi-mensal"
+
+msgid "Last bi-month"
+msgstr ""
+
+msgid "Last 6 bi-month"
+msgstr ""
+
+msgid "Bi-months this year"
+msgstr ""
+
+msgid "Quarters"
+msgstr "Trimestres"
+
+msgid "Reporting quarter"
+msgstr "Relatório trimestral"
+
+msgid "Last quarter"
+msgstr "Último trimestre"
+
+msgid "Last 4 quarters"
+msgstr "Últimos 4 trimestresÚltimo 4 trimestre"
+
+msgid "Quarters of reporting year"
+msgstr ""
+
+msgid "Six-Months"
+msgstr ""
+
+msgid "Reporting six-month"
+msgstr "Relatando os seis meses"
+
+msgid "Last six-month"
+msgstr "Últimos 6 meses"
+
+msgid "Last 2 six-months"
+msgstr "Último 2 seis-meses"
+
+msgid "Financial Years"
+msgstr ""
+
+msgid "Reporting financial year"
+msgstr ""
+
+msgid "Last financial year"
+msgstr "último ano financeiro"
+
+msgid "Last 5 financial years"
+msgstr "Últimos 5 anos financeiros"
+
+msgid "Years"
+msgstr "Anos"
+
+msgid "Reporting year"
+msgstr ""
+
+msgid "Last year"
+msgstr "Ano passado"
+
+msgid "Last 5 years"
+msgstr "Últimos 5 anos"
 
 msgid "External url"
 msgstr ""
