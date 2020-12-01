@@ -1,16 +1,16 @@
 # 
 # Translators:
-# easylin <lin_xd@126.com>, 2020
 # phil_dhis2, 2020
 # 晓东 林 <13981924470@126.com>, 2020
 # Viktor Varland <viktor@dhis2.org>, 2020
+# easylin <lin_xd@126.com>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2020-11-04T12:33:41.214Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
-"Last-Translator: Viktor Varland <viktor@dhis2.org>, 2020\n"
+"Last-Translator: easylin <lin_xd@126.com>, 2020\n"
 "Language-Team: Chinese (https://www.transifex.com/hisp-uio/teams/100509/zh/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -43,10 +43,10 @@ msgid "Select Group Set"
 msgstr "选择组集"
 
 msgid "Show more options"
-msgstr "Show more options"
+msgstr "显示更多选项"
 
 msgid "Show fewer options"
-msgstr "Show fewer options"
+msgstr "显示较少的选项"
 
 msgid "Report organisation unit"
 msgstr "报表组织机构"
@@ -67,7 +67,7 @@ msgid "Share"
 msgstr "分享"
 
 msgid "Write a comment, question or interpretation of this report"
-msgstr "Write a comment, question or interpretation of this report"
+msgstr "对此报告发表评论，问题或解释"
 
 msgid "Select file"
 msgstr "选择文件"
@@ -125,7 +125,7 @@ msgid ""
 msgstr "基于组织机构组和组集浏览组织机构分布报表"
 
 msgid "Reporting Period"
-msgstr ""
+msgstr "报告期间"
 
 msgid "Organisation Unit"
 msgstr "组织机构"
@@ -239,13 +239,13 @@ msgid "[ None ]"
 msgstr "【无】"
 
 msgid "Jasper report with report table data source"
-msgstr "Jasper report with report table data source"
+msgstr "带有报表表数据源的Jasper报表"
 
 msgid "Jasper report with JDBC data source"
-msgstr "Jasper report with JDBC data source"
+msgstr "带有JDBC数据源的Jasper报告"
 
 msgid "HTML report"
-msgstr "HTML report"
+msgstr "HTML报告"
 
 msgid "No cache"
 msgstr "无缓冲"
@@ -257,7 +257,7 @@ msgid "Cache for one hour"
 msgstr "缓存一小时"
 
 msgid "Cache until 6 AM tomorrow"
-msgstr "缓冲至明天早上六点"
+msgstr "缓存到明天凌晨6点"
 
 msgid "Cache for two weeks"
 msgstr "缓冲两周"
@@ -539,16 +539,16 @@ msgid "quarter"
 msgstr "季度"
 
 msgid "January-March"
-msgstr ""
+msgstr "一月至三月"
 
 msgid "April-June"
-msgstr ""
+msgstr "四月至六月"
 
 msgid "July-September"
-msgstr ""
+msgstr "七月至九月"
 
 msgid "October-December"
-msgstr ""
+msgstr "十月至十二月"
 
 msgid "six monthly"
 msgstr "每六个月"
@@ -623,40 +623,40 @@ msgid "Days"
 msgstr "天数"
 
 msgid "Reporting day"
-msgstr "Reporting day"
+msgstr "报告日"
 
 msgid "Yesterday"
 msgstr "昨天"
 
 msgid "Last 3 days"
-msgstr "Last 3 days"
+msgstr "最近三天"
 
 msgid "Last 7 days"
 msgstr "最近7天"
 
 msgid "Last 14 days"
-msgstr "Last 14 days"
+msgstr "最近14天"
 
 msgid "Weeks"
 msgstr "星期"
 
 msgid "Reporting week"
-msgstr "Reporting week"
+msgstr "报告周"
 
 msgid "Last Week"
 msgstr "上周"
 
 msgid "Last 2 weeks"
-msgstr "最近两周"
+msgstr "最近2周"
 
 msgid "Last 12 weeks"
 msgstr "最近12周"
 
 msgid "Last 52 weeks"
-msgstr "Last 52 weeks"
+msgstr "最近52周"
 
 msgid "Weeks this year"
-msgstr "Weeks this year"
+msgstr "今年的几周"
 
 msgid "Months"
 msgstr "月"
@@ -671,7 +671,7 @@ msgid "Last 3 months"
 msgstr "最近3个月"
 
 msgid "Last 6 months"
-msgstr "Last 6 months"
+msgstr "最近6个月"
 
 msgid "Last 12 months"
 msgstr "最近12月"
@@ -680,19 +680,19 @@ msgid "Months this year"
 msgstr "今年的月份"
 
 msgid "Bi-months"
-msgstr "Bi-months"
+msgstr "双月"
 
 msgid "Reporting bi-month"
 msgstr "双月报表"
 
 msgid "Last bi-month"
-msgstr "Last bi-month"
+msgstr "最近两个月"
 
 msgid "Last 6 bi-month"
 msgstr "最近6个两月"
 
 msgid "Bi-months this year"
-msgstr "Bi-months this year"
+msgstr "今年双月"
 
 msgid "Quarters"
 msgstr "四分之一"
@@ -704,7 +704,7 @@ msgid "Last quarter"
 msgstr "最近一季"
 
 msgid "Last 4 quarters"
-msgstr "最近四个季度"
+msgstr "最近4个季度"
 
 msgid "Quarters of reporting year"
 msgstr "报表年的季度"
@@ -719,13 +719,13 @@ msgid "Last six-month"
 msgstr "最近六个月"
 
 msgid "Last 2 six-months"
-msgstr "最近两个半年"
+msgstr "最近2个半年"
 
 msgid "Financial Years"
-msgstr "Financial Years"
+msgstr "财政年度"
 
 msgid "Reporting financial year"
-msgstr "Reporting financial year"
+msgstr "报告财政年度"
 
 msgid "Last financial year"
 msgstr "上一财政年"
@@ -737,7 +737,7 @@ msgid "Years"
 msgstr "年"
 
 msgid "Reporting year"
-msgstr "Reporting year"
+msgstr "报告年度"
 
 msgid "Last year"
 msgstr "去年"
