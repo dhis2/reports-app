@@ -547,16 +547,16 @@ msgid "quarter"
 msgstr "квартал"
 
 msgid "January-March"
-msgstr ""
+msgstr "Январь-Март"
 
 msgid "April-June"
-msgstr ""
+msgstr "Апрель-Июнь"
 
 msgid "July-September"
-msgstr ""
+msgstr "Июль-Сентябрь"
 
 msgid "October-December"
-msgstr ""
+msgstr "Октябрь-Декабрь"
 
 msgid "six monthly"
 msgstr "6 ойлик"
