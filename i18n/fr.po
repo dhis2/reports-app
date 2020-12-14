@@ -706,7 +706,7 @@ msgid "Last 6 bi-month"
 msgstr ""
 
 msgid "Bi-months this year"
-msgstr ""
+msgstr "Bimensuels cette année"
 
 msgid "Quarters"
 msgstr "Trimestres"
