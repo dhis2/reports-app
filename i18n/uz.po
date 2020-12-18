@@ -61,7 +61,7 @@ msgid "Download as"
 msgstr "Юклаш, қайсидир сифатда"
 
 msgid "Share"
-msgstr "Баҳам кўриш"
+msgstr "Улашиш"
 
 msgid "Write a comment, question or interpretation of this report"
 msgstr "Ушбу ҳисоботга шарҳ, савол ёки интерпретация ёзиш"
