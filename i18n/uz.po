@@ -409,7 +409,7 @@ msgid "Actions"
 msgstr "Амаллар"
 
 msgid "Delete"
-msgstr "Ўчириш"
+msgstr "Ўчириб ташлаш"
 
 msgid "Sharing settings"
 msgstr "Созламаларни улашиш"

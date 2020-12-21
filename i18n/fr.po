@@ -388,7 +388,7 @@ msgid "About DHIS 2"
 msgstr "À propos DHIS 2"
 
 msgid "Manage my apps"
-msgstr ""
+msgstr "Gérer mes applications"
 
 msgid "No results found"
 msgstr "Aucun résultat trouvé"
@@ -589,16 +589,16 @@ msgid "Weekly"
 msgstr "Hebdomadaire"
 
 msgid "Weekly Wednesday"
-msgstr ""
+msgstr "Chaque semaine, le mercredi"
 
 msgid "Weekly Thursday"
-msgstr ""
+msgstr "Chaque semaine, le jeudi"
 
 msgid "Weekly Saturday"
-msgstr ""
+msgstr "Chaque semaine, le samedi"
 
 msgid "Weekly Sunday"
-msgstr ""
+msgstr "Chaque semaine, le dimanche"
 
 msgid "Bi-Weekly"
 msgstr ""
