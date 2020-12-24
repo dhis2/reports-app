@@ -1,15 +1,15 @@
 # 
 # Translators:
 # phil_dhis2, 2020
-# Mai Nguyen <thanhmai.jica@gmail.com>, 2020
 # Viktor Varland <viktor@dhis2.org>, 2020
+# Mai Nguyen <thanhmai.jica@gmail.com>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2020-11-04T12:33:41.214Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
-"Last-Translator: Viktor Varland <viktor@dhis2.org>, 2020\n"
+"Last-Translator: Mai Nguyen <thanhmai.jica@gmail.com>, 2020\n"
 "Language-Team: Vietnamese (https://www.transifex.com/hisp-uio/teams/100509/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -132,7 +132,7 @@ msgid ""
 msgstr "Duyệt xem các báo cáo mở rộng theo đơn vị"
 
 msgid "Reporting Period"
-msgstr ""
+msgstr "Kỳ báo cáo"
 
 msgid "Organisation Unit"
 msgstr "Đơn vị"
@@ -237,13 +237,13 @@ msgid "Settings"
 msgstr "Cài đặt"
 
 msgid "Cache Strategy*"
-msgstr ""
+msgstr "Chiến lược bộ nhớ đệm *"
 
 msgid "Submit"
 msgstr "Nộp"
 
 msgid "[ None ]"
-msgstr ""
+msgstr "[ Không ai ]"
 
 msgid "Jasper report with report table data source"
 msgstr "Báo cáo Jasper với nguồn dữ liệu bảng báo cáo "
@@ -285,7 +285,7 @@ msgid "An error occurred while loading the organisation units!"
 msgstr "Xảy ra lỗi khi tải cây đơn vị "
 
 msgid "Successfully loaded the {{ outputType }}"
-msgstr ""
+msgstr "Đã tải thành công {{outputType}}"
 
 msgid "chart"
 msgstr "Biểu đồ"
@@ -546,16 +546,16 @@ msgid "quarter"
 msgstr "Quý"
 
 msgid "January-March"
-msgstr ""
+msgstr "Tháng một - tháng ba"
 
 msgid "April-June"
-msgstr ""
+msgstr "Tháng Tư - tháng Sáu"
 
 msgid "July-September"
-msgstr ""
+msgstr "Tháng chín - tháng bảy"
 
 msgid "October-December"
-msgstr ""
+msgstr "Tháng Mười - Tháng Mười Hai"
 
 msgid "six monthly"
 msgstr "6 tháng"
@@ -609,10 +609,10 @@ msgid "Six-Monthly"
 msgstr "6 tháng"
 
 msgid "Six-Monthly April"
-msgstr ""
+msgstr "Sáu tháng từ tháng tư "
 
 msgid "Six-Monthly November"
-msgstr ""
+msgstr "Sáu tháng từ tháng mười một"
 
 msgid "Yearly"
 msgstr "Một năm"
