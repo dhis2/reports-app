@@ -466,7 +466,7 @@ msgid "Public can find and view"
 msgstr "Оммавий топиш ва кўриш мумкин"
 
 msgid "Close"
-msgstr "Ёпмоқ"
+msgstr "Ёпиш"
 
 msgid "week"
 msgstr "ҳафта"
