@@ -412,7 +412,9 @@ export const getFilteredStandardReports = (page, pageSize, nameFilter) =>
  */
 export const getStandardReportDetails = id =>
     api
-        .get(`${STANDARD_REPORTS_ENDPOINT}/${id}`)
+        .get(`${STANDARD_REPORTS_ENDPOINT}/${id}`, {
+            fields: getStandardReportFieldsBySystemVersion(),
+        })
         .then(formatStandardReportResponseBySystemVersion)
 
 /**
