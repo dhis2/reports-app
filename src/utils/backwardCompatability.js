@@ -82,6 +82,14 @@ const getReportParamsPropertiesBySystemVersion = reportParams => {
     }
 }
 
+export const getStandardReportFieldsBySystemVersion = () => {
+    const reportTableField = isAtLeastVersion34()
+        ? 'visualization[id,displayName]'
+        : 'reportTable[id,displayName]'
+
+    return [':owner', reportTableField]
+}
+
 export const formatStandardReportResponseBySystemVersion = reportModel => {
     // handle both d2 model instances and plain objects
     const reportJson = reportModel.toJSON ? reportModel.toJSON() : reportModel
