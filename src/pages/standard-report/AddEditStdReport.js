@@ -11,7 +11,6 @@ import {
     navigateToList,
     sendStandardReport,
 } from '../../redux/actions/standardReport'
-import { loadStandardReportTables } from '../../redux/actions/standardReportTables'
 import {
     getEditFormInitialValues,
     getIsEdit,
@@ -21,19 +20,10 @@ import { ReportForm } from './add-edit-report/ReportForm'
 
 export class AddEditStandardReport extends PureComponent {
     componentDidMount() {
-        const {
-            edit,
-            loadStandardReportDetails,
-            match,
-            reportTables,
-            loadStandardReportTables,
-        } = this.props
+        const { edit, loadStandardReportDetails, match } = this.props
 
         if (edit) {
             loadStandardReportDetails(match.params.id)
-        }
-        if (reportTables.length === 0) {
-            loadStandardReportTables()
         }
     }
 
@@ -79,7 +69,6 @@ export class AddEditStandardReport extends PureComponent {
 
 AddEditStandardReport.propTypes = {
     loadStandardReportDetails: PropTypes.func.isRequired,
-    loadStandardReportTables: PropTypes.func.isRequired,
     match: PropTypes.shape({
         params: PropTypes.shape({
             id: PropTypes.string,
@@ -103,7 +92,6 @@ const mapStateToProps = state => {
 
 const ConnectedComponent = connect(mapStateToProps, {
     loadStandardReportDetails,
-    loadStandardReportTables,
     sendStandardReport,
     navigateToList,
 })(AddEditStandardReport)
