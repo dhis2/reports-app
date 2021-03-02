@@ -14,8 +14,10 @@ import {
 } from './api/helpers'
 import {
     getReportTablesResourceNameBySystemVersion,
+    getReportTablesFilterBySystemVersion,
     getStandardReportsFieldsBySystemVersion,
     formatStandardReportResponseBySystemVersion,
+    getStandardReportFieldsBySystemVersion,
 } from './backwardCompatability.js'
 import { isCustomFormType } from './dataSetReport/isCustomFormType'
 
@@ -297,13 +299,17 @@ export const deleteResource = resourceId =>
 /**
  * @returns {Promise}
  */
-export const getStandardReportTables = () => {
+export const getStandardReportTables = searchTerm => {
     const resourceName = getReportTablesResourceNameBySystemVersion()
+    const filter = getReportTablesFilterBySystemVersion(searchTerm)
 
+    console.log('getStandardReportTables', filter)
     return api
         .get(resourceName, {
-            paging: false,
-            fields: 'id,name',
+            paging: true,
+            pageSize: 30,
+            fields: 'id,displayName',
+            filter,
         })
         .then(response => response[resourceName])
 }

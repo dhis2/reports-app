@@ -2,7 +2,9 @@ import { actionTypes } from '../actions/standardReportTables'
 
 export const defaultState = {
     loading: false,
+    error: '',
     collection: [],
+    searchTerm: '',
 }
 
 export const standardReportTables = (
@@ -10,9 +12,16 @@ export const standardReportTables = (
     { type, payload } = {}
 ) => {
     switch (type) {
+        case actionTypes.STANDARD_REPORT_TABLES_SET_FILTER:
+            return {
+                ...state,
+                searchTerm: payload,
+            }
+
         case actionTypes.STANDARD_REPORT_TABLES_LOADING_START:
             return {
                 ...state,
+                error: '',
                 loading: true,
             }
 
@@ -20,6 +29,7 @@ export const standardReportTables = (
             return {
                 ...state,
                 loading: false,
+                error: '',
                 collection: payload,
             }
 
@@ -27,6 +37,7 @@ export const standardReportTables = (
             return {
                 ...state,
                 loading: false,
+                error: payload,
             }
 
         default:

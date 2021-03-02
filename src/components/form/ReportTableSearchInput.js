@@ -1,176 +1,158 @@
-import React from 'react'
 import PropTypes from 'prop-types'
-import deburr from 'lodash/deburr'
-import Downshift from 'downshift'
-import TextField from '@material-ui/core/TextField'
+import { connect } from 'react-redux'
+import React, { useState, useRef } from 'react'
+import i18n from '@dhis2/d2-i18n'
 import Paper from '@material-ui/core/Paper'
 import MenuItem from '@material-ui/core/MenuItem'
-// import { formInput, formInputMeta } from '../../utils/react/propTypes'
+import Popper from '@material-ui/core/Popper'
+import CircularProgress from '@material-ui/core/CircularProgress'
+import { Input } from './Input'
+import { formInput, formInputMeta } from '../../utils/react/propTypes'
+import { loadFilteredStandardReportTables } from '../../redux/actions/standardReportTables'
 
-const suggestions = [
-    { label: 'Afghanistan' },
-    { label: 'Aland Islands' },
-    { label: 'Albania' },
-    { label: 'Algeria' },
-    { label: 'American Samoa' },
-    { label: 'Andorra' },
-    { label: 'Angola' },
-    { label: 'Anguilla' },
-    { label: 'Antarctica' },
-    { label: 'Antigua and Barbuda' },
-    { label: 'Argentina' },
-    { label: 'Armenia' },
-    { label: 'Aruba' },
-    { label: 'Australia' },
-    { label: 'Austria' },
-    { label: 'Azerbaijan' },
-    { label: 'Bahamas' },
-    { label: 'Bahrain' },
-    { label: 'Bangladesh' },
-    { label: 'Barbados' },
-    { label: 'Belarus' },
-    { label: 'Belgium' },
-    { label: 'Belize' },
-    { label: 'Benin' },
-    { label: 'Bermuda' },
-    { label: 'Bhutan' },
-    { label: 'Bolivia, Plurinational State of' },
-    { label: 'Bonaire, Sint Eustatius and Saba' },
-    { label: 'Bosnia and Herzegovina' },
-    { label: 'Botswana' },
-    { label: 'Bouvet Island' },
-    { label: 'Brazil' },
-    { label: 'British Indian Ocean Territory' },
-    { label: 'Brunei Darussalam' },
-]
+const centeredStyle = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: 16,
+    paddingBottom: 16,
+}
 
-function renderInput(inputProps) {
-    const { InputProps, classes, ref, ...other } = inputProps
+const errorStyle = {
+    ...centeredStyle,
+    color: '#f44336',
+}
+
+const infoStyle = {
+    ...centeredStyle,
+    color: '#494949,',
+    fontStyle: 'italic',
+}
+
+const getListContent = ({ onClick, loading, error, collection, noMatches }) => {
+    if (loading) {
+        return (
+            <div style={centeredStyle}>
+                <CircularProgress />
+            </div>
+        )
+    } else if (error) {
+        return <div style={errorStyle}>{error}</div>
+    } else if (noMatches) {
+        return <div style={infoStyle}>{i18n.t('No matches found')}</div>
+    } else if (collection.length > 0) {
+        return collection.map(item => {
+            return (
+                <MenuItem
+                    key={item.value}
+                    onClick={() => onClick(item.value, item.label)}
+                >
+                    {item.label}
+                </MenuItem>
+            )
+        })
+    } else {
+        return null
+    }
+}
+
+export const ReportTableSearchInputUI = props => {
+    const inputRef = useRef()
+    const [isSearchMode, setSearchMode] = useState(false)
+    const [reportTableName, setReportTableName] = useState('')
+    const onFocus = () => {
+        if (!isSearchMode) {
+            setSearchMode(true)
+        }
+        props.input.onFocus && props.input.onFocus()
+    }
+    const onBlur = () => {
+        if (isSearchMode) {
+            // HACK: when clicking on a list item the onBlur event
+            // of the input happens first and the onClick event on the
+            // list item second. This timeout works around that problem
+            // but we probably need a more structural fix
+            setTimeout(() => {
+                setSearchMode(false)
+            }, 250)
+        }
+        props.input.onBlur && props.input.onBlur()
+    }
+    const onSearch = event => {
+        props.loadFilteredStandardReportTables(event.target.value)
+    }
+    const usedValue = isSearchMode
+        ? props.searchTerm
+        : reportTableName || props.persistedReportTableName
+    const inputProps = {
+        ...props,
+        input: {
+            ...props.input,
+            value: usedValue,
+            onFocus: onFocus,
+            onChange: isSearchMode ? onSearch : props.input.onChange,
+            onBlur: isSearchMode ? onBlur : props.input.onBlur,
+            placeholder: i18n.t('Type to search a report table'),
+            inputRef,
+            autoComplete: 'off',
+        },
+    }
+    const onChange = (value, label) => {
+        setSearchMode(false)
+        setReportTableName(label)
+        props.input.onChange(value)
+    }
 
     return (
-        <TextField
-            InputProps={{
-                inputRef: ref,
-                classes: {
-                    root: classes.inputRoot,
-                    input: classes.inputInput,
-                },
-                ...InputProps,
-            }}
-            {...other}
-        />
-    )
-}
+        <React.Fragment>
+            <Input {...inputProps} />
 
-function renderSuggestion({
-    suggestion,
-    index,
-    itemProps,
-    highlightedIndex,
-    selectedItem,
-}) {
-    const isHighlighted = highlightedIndex === index
-    const isSelected = (selectedItem || '').indexOf(suggestion.label) > -1
-
-    return (
-        <MenuItem
-            {...itemProps}
-            key={suggestion.label}
-            selected={isHighlighted}
-            component="div"
-            style={{
-                fontWeight: isSelected ? 500 : 400,
-            }}
-        >
-            {suggestion.label}
-        </MenuItem>
-    )
-}
-renderSuggestion.propTypes = {
-    suggestion: PropTypes.shape({ label: PropTypes.string }).isRequired,
-    highlightedIndex: PropTypes.number,
-    index: PropTypes.number,
-    itemProps: PropTypes.object,
-    selectedItem: PropTypes.string,
-}
-
-function getSuggestions(value) {
-    const inputValue = deburr(value.trim()).toLowerCase()
-    const inputLength = inputValue.length
-    let count = 0
-
-    return inputLength === 0
-        ? []
-        : suggestions.filter(suggestion => {
-              const keep =
-                  count < 5 &&
-                  suggestion.label.slice(0, inputLength).toLowerCase() ===
-                      inputValue
-
-              if (keep) {
-                  count += 1
-              }
-
-              return keep
-          })
-}
-
-const CompiePompie = props => {
-    const classes = props.classes || {}
-    return (
-        <Downshift id="downshift-simple">
-            {({
-                getInputProps,
-                getItemProps,
-                getMenuProps,
-                highlightedIndex,
-                inputValue,
-                isOpen,
-                selectedItem,
-            }) => (
-                <div className={classes.container}>
-                    {renderInput({
-                        fullWidth: true,
-                        classes,
-                        InputProps: getInputProps({
-                            placeholder: 'Search a country (start with a)',
-                        }),
+            <Popper
+                open={isSearchMode}
+                anchorEl={inputRef.current}
+                style={{
+                    width: inputRef.current?.offsetWidth,
+                }}
+            >
+                <Paper style={{ maxHeight: 400, overflow: 'auto' }}>
+                    {getListContent({
+                        onClick: onChange,
+                        loading: props.loading,
+                        error: props.error,
+                        collection: props.collection,
+                        noMatches:
+                            props.collection.length === 0 &&
+                            props.searchTerm.length > 2,
                     })}
-                    <div {...getMenuProps()}>
-                        {isOpen ? (
-                            <Paper className={classes.paper} square>
-                                {getSuggestions(inputValue).map(
-                                    (suggestion, index) =>
-                                        renderSuggestion({
-                                            suggestion,
-                                            index,
-                                            itemProps: getItemProps({
-                                                item: suggestion.label,
-                                            }),
-                                            highlightedIndex,
-                                            selectedItem,
-                                        })
-                                )}
-                            </Paper>
-                        ) : null}
-                    </div>
-                </div>
-            )}
-        </Downshift>
+                </Paper>
+            </Popper>
+        </React.Fragment>
     )
 }
 
-CompiePompie.propTypes = {
-    classes: PropTypes.object.isRequired,
+ReportTableSearchInputUI.propTypes = {
+    input: formInput.isRequired,
+    meta: formInputMeta.isRequired,
+    placeholder: PropTypes.string.isRequired,
+    collection: PropTypes.array,
+    error: PropTypes.string,
+    loadFilteredStandardReportTables: PropTypes.func,
+    loading: PropTypes.bool,
+    persistedReportTableName: PropTypes.string,
+    searchTerm: PropTypes.string,
 }
 
-export const ReportTableSearchInput = props => {
-    console.log(props)
-    return <CompiePompie />
-}
+const mapStateToProps = state => ({
+    searchTerm: state.standardReportTables.searchTerm,
+    collection: state.standardReportTables.collection,
+    loading: state.standardReportTables.loading,
+    error: state.standardReportTables.error,
+    persistedReportTableName:
+        (state.standardReport.selectedReport.reportTable &&
+            state.standardReport.selectedReport.reportTable.displayName) ||
+        '',
+})
 
-// ReportTableSearchInput.propTypes = {
-//     input: formInput.isRequired,
-//     meta: formInputMeta.isRequired,
-//     placeholder: PropTypes.string.isRequired,
-// }
+export const ReportTableSearchInput = connect(mapStateToProps, {
+    loadFilteredStandardReportTables,
+})(ReportTableSearchInputUI)

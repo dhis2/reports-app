@@ -398,8 +398,8 @@ export const sendStandardReport = (report, isEdit) => (dispatch, getState) => {
         reportTable: report.reportTable ? { id: report.reportTable } : '',
     }
     const cleanedFormattedReportReport = isJasperReportTableReport(report)
-        ? omit(formattedReport, ['reportTable'])
-        : formattedReport
+        ? formattedReport
+        : omit(formattedReport, ['reportTable'])
 
     const dhis2CoreVersionFormattedReport = formatStandardReportPayloadBySystemVersion(
         cleanedFormattedReportReport

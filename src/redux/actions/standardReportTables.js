@@ -1,9 +1,12 @@
+import debounce from 'lodash.debounce'
 import i18n from '@dhis2/d2-i18n'
 import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
 import { getStandardReportTables } from '../../utils/api'
+import { DEBOUNCE_DELAY } from '../../config/search.config'
 import { showErrorSnackBar } from './feedback'
 
 export const actionTypes = {
+    STANDARD_REPORT_TABLES_SET_FILTER: 'STANDARD_REPORT_TABLES_SET_FILTER',
     STANDARD_REPORT_TABLES_LOADING_START:
         'STANDARD_REPORT_TABLES_LOADING_START',
     STANDARD_REPORT_TABLES_LOADING_SUCCESS:
@@ -13,10 +16,28 @@ export const actionTypes = {
 }
 
 /**
+ * @returns {Function}
+ */
+export const loadFilteredStandardReportTables = searchTerm => dispatch => {
+    dispatch(setSearch(searchTerm))
+    if (searchTerm.length > 2) {
+        debouncedSearchStandardReportTables(dispatch)
+    }
+}
+
+/**
  * @returns {Object}
  */
 export const loadingStandardReportTablesStart = () => ({
     type: actionTypes.STANDARD_REPORT_TABLES_LOADING_START,
+})
+
+/**
+ * @returns {Object}
+ */
+export const setSearch = searchTerm => ({
+    type: actionTypes.STANDARD_REPORT_TABLES_SET_FILTER,
+    payload: searchTerm,
 })
 
 /**
@@ -52,18 +73,28 @@ export const loadingStandardReportTablesErrorWithFeedback = error => dispatch =>
 /**
  * @returns {Function}
  */
-export const loadStandardReportTables = () => dispatch => {
+export const searchStandardReportTables = () => (dispatch, getState) => {
+    const { standardReportTables } = getState()
+
     dispatch(loadingStandardReportTablesStart())
 
-    return getStandardReportTables()
+    return getStandardReportTables(standardReportTables.searchTerm)
         .then(reportTables => {
-            const formattedReportTables = reportTables.map(({ id, name }) => ({
-                value: id,
-                label: name,
-            }))
+            const formattedReportTables = reportTables.map(
+                ({ id, displayName }) => ({
+                    value: id,
+                    label: displayName,
+                })
+            )
+            console.log(reportTables)
             dispatch(loadingStandardReportTablesSuccess(formattedReportTables))
         })
         .catch(error => {
             dispatch(loadingStandardReportTablesErrorWithFeedback(error))
         })
 }
+
+const debouncedSearchStandardReportTables = debounce(
+    dispatch => dispatch(searchStandardReportTables()),
+    DEBOUNCE_DELAY
+)

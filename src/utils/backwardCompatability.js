@@ -50,6 +50,16 @@ const getReportParamsFieldName = () =>
 export const getReportTablesResourceNameBySystemVersion = () =>
     `${getReportTableNameBySystemVersion()}s`
 
+export const getReportTablesFilterBySystemVersion = searchTerm => {
+    const filter = [`identifiable:token:${searchTerm}`]
+
+    if (isAtLeastVersion34()) {
+        filter.push('type:eq:PIVOT_TABLE')
+    }
+
+    return filter
+}
+
 /**
  * Required fields for displaying the standard reports
  */
@@ -87,7 +97,7 @@ export const getStandardReportFieldsBySystemVersion = () => {
         ? 'visualization[id,displayName]'
         : 'reportTable[id,displayName]'
 
-    return [':owner', reportTableField]
+    return [':all', reportTableField]
 }
 
 export const formatStandardReportResponseBySystemVersion = reportModel => {
@@ -117,7 +127,12 @@ export const formatStandardReportResponseBySystemVersion = reportModel => {
 
 export const formatStandardReportPayloadBySystemVersion = report => {
     if (isAtLeastVersion34()) {
-        return report
+        const visualization = report.reportTable
+        delete report.reportTable
+        return {
+            ...report,
+            visualization,
+        }
     }
 
     const rp = report.reportParams
