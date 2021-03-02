@@ -37,8 +37,7 @@ const mapDispatchToProps = dispatch => ({
     goToNextPage: () => dispatch(goToNextPage()),
     goToPrevPage: () => dispatch(goToPrevPage()),
     hideReportData: reportData => dispatch(hideReportData(reportData)),
-    loadStandardReports: fetchReportTables =>
-        dispatch(loadStandardReports(fetchReportTables)),
+    loadStandardReports: () => dispatch(loadStandardReports()),
     requestDeleteStandardReport: report =>
         dispatch(requestDeleteStandardReport(report)),
     setSearch: event => dispatch(setSearch(event.target.value)),
