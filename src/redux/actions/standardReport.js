@@ -50,6 +50,7 @@ import { getPeriodStartDate } from '../../utils/periods/periodTypes'
 
 export const actionTypes = {
     SET_SELECTED_REPORT: 'SET_SELECTED_REPORT',
+    CLEAR_SELECTED_REPORT: 'CLEAR_SELECTED_REPORT',
     LOAD_STANDARD_REPORTS: 'LOAD_STANDARD_REPORTS',
     LOADING_STANDARD_REPORTS_START: 'LOADING_STANDARD_REPORTS_START',
     LOADING_STANDARD_REPORTS_SUCCESS: 'LOADING_STANDARD_REPORTS_SUCCESS',
@@ -91,6 +92,10 @@ export const actionTypes = {
 export const setSelectedReport = report => ({
     type: actionTypes.SET_SELECTED_REPORT,
     payload: report,
+})
+
+export const clearSelectedReport = () => ({
+    type: actionTypes.CLEAR_SELECTED_REPORT,
 })
 
 /**
@@ -438,7 +443,10 @@ export const sendStandardReport = (report, isEdit) => (dispatch, getState) => {
         })
 }
 
-export const navigateToList = () => push(`/${STANDARD_REPORT_SECTION_KEY}`)
+export const navigateToList = () => dispatch => {
+    dispatch(clearSelectedReport())
+    dispatch(push(`/${STANDARD_REPORT_SECTION_KEY}`))
+}
 
 /**
  * =============================================
