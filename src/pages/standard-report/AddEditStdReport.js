@@ -33,8 +33,7 @@ export class AddEditStandardReport extends PureComponent {
     }
 
     render() {
-        const isLoading =
-            isEmpty(this.props.report) || this.props.reportTables.length === 0
+        const isLoading = isEmpty(this.props.report)
         const headlineText = this.props.edit
             ? i18n.t('Edit standard report')
             : i18n.t('Create standard report')
@@ -79,12 +78,10 @@ AddEditStandardReport.propTypes = {
     sendStandardReport: PropTypes.func.isRequired,
     edit: ReportForm.propTypes.edit,
     report: ReportForm.propTypes.report,
-    reportTables: ReportForm.propTypes.reportTables,
 }
 
 const mapStateToProps = state => {
     return {
-        reportTables: state.standardReportTables.collection,
         report: getEditFormInitialValues(state),
         edit: getIsEdit(state),
     }

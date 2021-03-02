@@ -46,6 +46,7 @@
         "connected-react-router": "^6.3.1",
         "d2": "^31.7.0",
         "d3-color": "^1.2.0",
+        "downshift": "^6.1.0",
         "final-form": "^4.11.1",
         "flexboxgrid": "^6.3.1",
         "history": "^4.7.2",
