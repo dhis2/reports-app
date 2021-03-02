@@ -45,7 +45,6 @@ import {
     loadingReportDataSuccess,
 } from './reportData'
 import { clearSelectedReportPeriod } from './reportPeriod'
-import { loadStandardReportTables } from './standardReportTables'
 import { formatStandardReportPayloadBySystemVersion } from '../../utils/backwardCompatability'
 import { getPeriodStartDate } from '../../utils/periods/periodTypes'
 
@@ -271,10 +270,7 @@ export const hideReportData = () => ({
 /**
  * @return {Function} Redux thunk
  */
-export const loadStandardReports = (postLoadStandartReportTables = false) => (
-    dispatch,
-    getState
-) => {
+export const loadStandardReports = () => (dispatch, getState) => {
     const { standardReport, pagination } = getState()
     const { page, pageSize } = pagination
     const { search } = standardReport
@@ -284,10 +280,6 @@ export const loadStandardReports = (postLoadStandartReportTables = false) => (
         .then(response => {
             dispatch(loadingStandardReportsSuccess(response.reports))
             dispatch(setPagination(response.pager))
-
-            if (postLoadStandartReportTables) {
-                dispatch(loadStandardReportTables())
-            }
         })
         .catch(error =>
             dispatch(loadingStandardReportsErrorWithFeedback(error))
