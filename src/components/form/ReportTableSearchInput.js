@@ -6,9 +6,14 @@ import Paper from '@material-ui/core/Paper'
 import MenuItem from '@material-ui/core/MenuItem'
 import Popper from '@material-ui/core/Popper'
 import CircularProgress from '@material-ui/core/CircularProgress'
+import red from '@material-ui/core/colors/red'
 import { Input } from './Input'
 import { formInput, formInputMeta } from '../../utils/react/propTypes'
-import { loadFilteredStandardReportTables } from '../../redux/actions/standardReportTables'
+import {
+    loadFilteredStandardReportTables,
+    clearSearch,
+    MIN_CHAR_LENGTH,
+} from '../../redux/actions/standardReportTables'
 
 const centeredStyle = {
     display: 'flex',
@@ -20,7 +25,7 @@ const centeredStyle = {
 
 const errorStyle = {
     ...centeredStyle,
-    color: '#f44336',
+    color: red[500],
 }
 
 const infoStyle = {
@@ -60,6 +65,9 @@ export const ReportTableSearchInputUI = props => {
     const inputRef = useRef()
     const [isSearchMode, setSearchMode] = useState(false)
     const [reportTableName, setReportTableName] = useState('')
+    const showResults =
+        isSearchMode && props.searchTerm.length >= MIN_CHAR_LENGTH
+    const showHint = isSearchMode && props.searchTerm.length < MIN_CHAR_LENGTH
     const onFocus = () => {
         if (!isSearchMode) {
             setSearchMode(true)
@@ -86,6 +94,11 @@ export const ReportTableSearchInputUI = props => {
         : reportTableName || props.persistedReportTableName
     const inputProps = {
         ...props,
+        helpText: showHint
+            ? i18n.t('Please enter at least {{count}} characters', {
+                  count: MIN_CHAR_LENGTH,
+              })
+            : undefined,
         input: {
             ...props.input,
             value: usedValue,
@@ -100,6 +113,7 @@ export const ReportTableSearchInputUI = props => {
     const onChange = (value, label) => {
         setSearchMode(false)
         setReportTableName(label)
+        props.clearSearch()
         props.input.onChange(value)
     }
 
@@ -108,7 +122,7 @@ export const ReportTableSearchInputUI = props => {
             <Input {...inputProps} />
 
             <Popper
-                open={isSearchMode}
+                open={showResults}
                 anchorEl={inputRef.current}
                 style={{
                     width: inputRef.current?.offsetWidth,
@@ -120,9 +134,7 @@ export const ReportTableSearchInputUI = props => {
                         loading: props.loading,
                         error: props.error,
                         collection: props.collection,
-                        noMatches:
-                            props.collection.length === 0 &&
-                            props.searchTerm.length > 2,
+                        noMatches: props.noMatches,
                     })}
                 </Paper>
             </Popper>
@@ -131,13 +143,15 @@ export const ReportTableSearchInputUI = props => {
 }
 
 ReportTableSearchInputUI.propTypes = {
+    clearSearch: PropTypes.func.isRequired,
     input: formInput.isRequired,
+    loadFilteredStandardReportTables: PropTypes.func.isRequired,
     meta: formInputMeta.isRequired,
     placeholder: PropTypes.string.isRequired,
     collection: PropTypes.array,
     error: PropTypes.string,
-    loadFilteredStandardReportTables: PropTypes.func,
     loading: PropTypes.bool,
+    noMatches: PropTypes.bool,
     persistedReportTableName: PropTypes.string,
     searchTerm: PropTypes.string,
 }
@@ -147,6 +161,7 @@ const mapStateToProps = state => ({
     collection: state.standardReportTables.collection,
     loading: state.standardReportTables.loading,
     error: state.standardReportTables.error,
+    noMatches: state.standardReportTables.noMatches,
     persistedReportTableName:
         (state.standardReport.selectedReport.reportTable &&
             state.standardReport.selectedReport.reportTable.displayName) ||
@@ -155,4 +170,5 @@ const mapStateToProps = state => ({
 
 export const ReportTableSearchInput = connect(mapStateToProps, {
     loadFilteredStandardReportTables,
+    clearSearch,
 })(ReportTableSearchInputUI)

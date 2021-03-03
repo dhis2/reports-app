@@ -4,6 +4,7 @@ export const defaultState = {
     loading: false,
     error: '',
     collection: [],
+    noMatches: false,
     searchTerm: '',
 }
 
@@ -12,10 +13,19 @@ export const standardReportTables = (
     { type, payload } = {}
 ) => {
     switch (type) {
-        case actionTypes.STANDARD_REPORT_TABLES_SET_FILTER:
+        case actionTypes.STANDARD_REPORT_TABLES_SET_SEARCH_TERM:
             return {
                 ...state,
                 searchTerm: payload,
+                noMatches: false,
+            }
+
+        case actionTypes.STANDARD_REPORT_TABLES_CLEAR_SEARCH_TERM:
+            return {
+                ...state,
+                searchTerm: '',
+                collection: [],
+                noMatches: false,
             }
 
         case actionTypes.STANDARD_REPORT_TABLES_LOADING_START:
@@ -31,6 +41,7 @@ export const standardReportTables = (
                 loading: false,
                 error: '',
                 collection: payload,
+                noMatches: payload.length === 0,
             }
 
         case actionTypes.STANDARD_REPORT_TABLES_LOADING_ERROR:
@@ -38,6 +49,7 @@ export const standardReportTables = (
                 ...state,
                 loading: false,
                 error: payload,
+                noMatches: false,
             }
 
         default:
