@@ -5,8 +5,13 @@ import { getStandardReportTables } from '../../utils/api'
 import { DEBOUNCE_DELAY } from '../../config/search.config'
 import { showErrorSnackBar } from './feedback'
 
+export const MIN_CHAR_LENGTH = 3
+
 export const actionTypes = {
-    STANDARD_REPORT_TABLES_SET_FILTER: 'STANDARD_REPORT_TABLES_SET_FILTER',
+    STANDARD_REPORT_TABLES_SET_SEARCH_TERM:
+        'STANDARD_REPORT_TABLES_SET_SEARCH_TERM',
+    STANDARD_REPORT_TABLES_CLEAR_SEARCH_TERM:
+        'STANDARD_REPORT_TABLES_CLEAR_SEARCH_TERM',
     STANDARD_REPORT_TABLES_LOADING_START:
         'STANDARD_REPORT_TABLES_LOADING_START',
     STANDARD_REPORT_TABLES_LOADING_SUCCESS:
@@ -20,7 +25,7 @@ export const actionTypes = {
  */
 export const loadFilteredStandardReportTables = searchTerm => dispatch => {
     dispatch(setSearch(searchTerm))
-    if (searchTerm.length > 2) {
+    if (searchTerm.length >= MIN_CHAR_LENGTH) {
         debouncedSearchStandardReportTables(dispatch)
     }
 }
@@ -36,8 +41,12 @@ export const loadingStandardReportTablesStart = () => ({
  * @returns {Object}
  */
 export const setSearch = searchTerm => ({
-    type: actionTypes.STANDARD_REPORT_TABLES_SET_FILTER,
+    type: actionTypes.STANDARD_REPORT_TABLES_SET_SEARCH_TERM,
     payload: searchTerm,
+})
+
+export const clearSearch = () => ({
+    type: actionTypes.STANDARD_REPORT_TABLES_CLEAR_SEARCH_TERM,
 })
 
 /**
@@ -86,7 +95,6 @@ export const searchStandardReportTables = () => (dispatch, getState) => {
                     label: displayName,
                 })
             )
-            console.log(reportTables)
             dispatch(loadingStandardReportTablesSuccess(formattedReportTables))
         })
         .catch(error => {
