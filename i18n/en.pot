@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2021-03-02T13:16:29.404Z\n"
-"PO-Revision-Date: 2021-03-02T13:16:29.404Z\n"
+"POT-Creation-Date: 2021-03-03T07:16:10.327Z\n"
+"PO-Revision-Date: 2021-03-03T07:16:10.327Z\n"
 
 msgid "Updating Organisation Units Tree..."
 msgstr ""
@@ -63,6 +63,9 @@ msgid "Select file"
 msgstr ""
 
 msgid "No file chosen"
+msgstr ""
+
+msgid "No matches found"
 msgstr ""
 
 msgid "Type to search a report table"
