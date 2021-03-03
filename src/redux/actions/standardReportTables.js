@@ -26,7 +26,7 @@ export const actionTypes = {
 export const loadFilteredStandardReportTables = searchTerm => dispatch => {
     dispatch(setSearch(searchTerm))
     if (searchTerm.length >= MIN_CHAR_LENGTH) {
-        debouncedSearchStandardReportTables(dispatch)
+        debouncedLoadStandardReportTables(dispatch)
     }
 }
 
@@ -82,7 +82,7 @@ export const loadingStandardReportTablesErrorWithFeedback = error => dispatch =>
 /**
  * @returns {Function}
  */
-export const searchStandardReportTables = () => (dispatch, getState) => {
+export const loadStandardReportTables = () => (dispatch, getState) => {
     const { standardReportTables } = getState()
 
     dispatch(loadingStandardReportTablesStart())
@@ -102,7 +102,7 @@ export const searchStandardReportTables = () => (dispatch, getState) => {
         })
 }
 
-const debouncedSearchStandardReportTables = debounce(
-    dispatch => dispatch(searchStandardReportTables()),
+const debouncedLoadStandardReportTables = debounce(
+    dispatch => dispatch(loadStandardReportTables()),
     DEBOUNCE_DELAY
 )

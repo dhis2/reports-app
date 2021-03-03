@@ -48,7 +48,6 @@ export const standardReportTables = (
             return {
                 ...state,
                 loading: false,
-                error: payload,
                 noMatches: false,
             }
 
