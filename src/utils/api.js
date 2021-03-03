@@ -303,7 +303,6 @@ export const getStandardReportTables = searchTerm => {
     const resourceName = getReportTablesResourceNameBySystemVersion()
     const filter = getReportTablesFilterBySystemVersion(searchTerm)
 
-    console.log('getStandardReportTables', filter)
     return api
         .get(resourceName, {
             paging: true,
@@ -326,7 +325,10 @@ export const postStandardReport = report =>
  * @returns {Promise}
  */
 export const updateStandardReport = report =>
-    api.patch(`${STANDARD_REPORTS_ENDPOINT}/${report.id}`, report)
+    api.update(
+        `${STANDARD_REPORTS_ENDPOINT}/${report.id}?mergeMode=MERGE`,
+        report
+    )
 
 /**
  * @returns {Promise}
