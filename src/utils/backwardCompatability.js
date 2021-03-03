@@ -50,15 +50,10 @@ const getReportParamsFieldName = () =>
 export const getReportTablesResourceNameBySystemVersion = () =>
     `${getReportTableNameBySystemVersion()}s`
 
-export const getReportTablesFilterBySystemVersion = searchTerm => {
-    const filter = [`identifiable:token:${searchTerm}`]
-
-    if (isAtLeastVersion34()) {
-        filter.push('type:eq:PIVOT_TABLE')
-    }
-
-    return filter
-}
+export const getReportTablesFilterBySystemVersion = searchTerm =>
+    isAtLeastVersion34()
+        ? [`identifiable:token:${searchTerm}`, 'type:eq:PIVOT_TABLE']
+        : [`name:ilike:${searchTerm}`]
 
 /**
  * Required fields for displaying the standard reports
