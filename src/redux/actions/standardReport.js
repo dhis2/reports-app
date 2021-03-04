@@ -45,12 +45,12 @@ import {
     loadingReportDataSuccess,
 } from './reportData'
 import { clearSelectedReportPeriod } from './reportPeriod'
-import { loadStandardReportTables } from './standardReportTables'
 import { formatStandardReportPayloadBySystemVersion } from '../../utils/backwardCompatability'
 import { getPeriodStartDate } from '../../utils/periods/periodTypes'
 
 export const actionTypes = {
     SET_SELECTED_REPORT: 'SET_SELECTED_REPORT',
+    CLEAR_SELECTED_REPORT: 'CLEAR_SELECTED_REPORT',
     LOAD_STANDARD_REPORTS: 'LOAD_STANDARD_REPORTS',
     LOADING_STANDARD_REPORTS_START: 'LOADING_STANDARD_REPORTS_START',
     LOADING_STANDARD_REPORTS_SUCCESS: 'LOADING_STANDARD_REPORTS_SUCCESS',
@@ -92,6 +92,10 @@ export const actionTypes = {
 export const setSelectedReport = report => ({
     type: actionTypes.SET_SELECTED_REPORT,
     payload: report,
+})
+
+export const clearSelectedReport = () => ({
+    type: actionTypes.CLEAR_SELECTED_REPORT,
 })
 
 /**
@@ -271,10 +275,7 @@ export const hideReportData = () => ({
 /**
  * @return {Function} Redux thunk
  */
-export const loadStandardReports = (postLoadStandartReportTables = false) => (
-    dispatch,
-    getState
-) => {
+export const loadStandardReports = () => (dispatch, getState) => {
     const { standardReport, pagination } = getState()
     const { page, pageSize } = pagination
     const { search } = standardReport
@@ -284,10 +285,6 @@ export const loadStandardReports = (postLoadStandartReportTables = false) => (
         .then(response => {
             dispatch(loadingStandardReportsSuccess(response.reports))
             dispatch(setPagination(response.pager))
-
-            if (postLoadStandartReportTables) {
-                dispatch(loadStandardReportTables())
-            }
         })
         .catch(error =>
             dispatch(loadingStandardReportsErrorWithFeedback(error))
@@ -401,8 +398,8 @@ export const sendStandardReport = (report, isEdit) => (dispatch, getState) => {
         reportTable: report.reportTable ? { id: report.reportTable } : '',
     }
     const cleanedFormattedReportReport = isJasperReportTableReport(report)
-        ? omit(formattedReport, ['reportTable'])
-        : formattedReport
+        ? formattedReport
+        : omit(formattedReport, ['reportTable'])
 
     const dhis2CoreVersionFormattedReport = formatStandardReportPayloadBySystemVersion(
         cleanedFormattedReportReport
@@ -421,9 +418,10 @@ export const sendStandardReport = (report, isEdit) => (dispatch, getState) => {
         : i18n.t('An error occurred while adding the report!')
 
     const request = !dhis2CoreVersionFormattedReport.designContent
-        ? doRequest(dhis2CoreVersionFormattedReport)
+        ? doRequest({ ...selectedReport, ...dhis2CoreVersionFormattedReport })
         : fileToText(dhis2CoreVersionFormattedReport.designContent.file)
               .then(file => ({
+                  ...selectedReport,
                   ...dhis2CoreVersionFormattedReport,
                   designContent: file,
               }))
@@ -446,7 +444,10 @@ export const sendStandardReport = (report, isEdit) => (dispatch, getState) => {
         })
 }
 
-export const navigateToList = () => push(`/${STANDARD_REPORT_SECTION_KEY}`)
+export const navigateToList = () => dispatch => {
+    dispatch(clearSelectedReport())
+    dispatch(push(`/${STANDARD_REPORT_SECTION_KEY}`))
+}
 
 /**
  * =============================================

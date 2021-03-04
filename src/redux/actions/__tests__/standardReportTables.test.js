@@ -12,7 +12,11 @@ jest.mock('../../../utils/api', () => ({
 }))
 
 describe('Actions - standardReportTables', () => {
-    const store = mockStore({})
+    const store = mockStore({
+        standardReportTables: {
+            searchTerm: 'test',
+        },
+    })
 
     beforeEach(() => {
         store.clearActions()

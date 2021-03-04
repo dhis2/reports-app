@@ -30,6 +30,12 @@ export const standardReport = (state = defaultState, action = {}) => {
                 selectedReport: payload,
             }
 
+        case actionTypes.CLEAR_SELECTED_REPORT:
+            return {
+                ...state,
+                selectedReport: {},
+            }
+
         case actionTypes.LOADING_STANDARD_REPORTS_START:
             return {
                 ...state,

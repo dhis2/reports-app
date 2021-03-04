@@ -14,8 +14,10 @@ import {
 } from './api/helpers'
 import {
     getReportTablesResourceNameBySystemVersion,
+    getReportTablesFilterBySystemVersion,
     getStandardReportsFieldsBySystemVersion,
     formatStandardReportResponseBySystemVersion,
+    getStandardReportFieldsBySystemVersion,
 } from './backwardCompatability.js'
 import { isCustomFormType } from './dataSetReport/isCustomFormType'
 
@@ -297,13 +299,16 @@ export const deleteResource = resourceId =>
 /**
  * @returns {Promise}
  */
-export const getStandardReportTables = () => {
+export const getStandardReportTables = searchTerm => {
     const resourceName = getReportTablesResourceNameBySystemVersion()
+    const filter = getReportTablesFilterBySystemVersion(searchTerm)
 
     return api
         .get(resourceName, {
-            paging: false,
-            fields: 'id,name',
+            paging: true,
+            pageSize: 30,
+            fields: 'id,displayName',
+            filter,
         })
         .then(response => response[resourceName])
 }
@@ -320,7 +325,7 @@ export const postStandardReport = report =>
  * @returns {Promise}
  */
 export const updateStandardReport = report =>
-    api.patch(`${STANDARD_REPORTS_ENDPOINT}/${report.id}`, report)
+    api.update(`${STANDARD_REPORTS_ENDPOINT}/${report.id}`, report)
 
 /**
  * @returns {Promise}
@@ -412,7 +417,9 @@ export const getFilteredStandardReports = (page, pageSize, nameFilter) =>
  */
 export const getStandardReportDetails = id =>
     api
-        .get(`${STANDARD_REPORTS_ENDPOINT}/${id}`)
+        .get(`${STANDARD_REPORTS_ENDPOINT}/${id}`, {
+            fields: getStandardReportFieldsBySystemVersion(),
+        })
         .then(formatStandardReportResponseBySystemVersion)
 
 /**
