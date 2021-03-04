@@ -418,9 +418,10 @@ export const sendStandardReport = (report, isEdit) => (dispatch, getState) => {
         : i18n.t('An error occurred while adding the report!')
 
     const request = !dhis2CoreVersionFormattedReport.designContent
-        ? doRequest(dhis2CoreVersionFormattedReport)
+        ? doRequest({ ...selectedReport, ...dhis2CoreVersionFormattedReport })
         : fileToText(dhis2CoreVersionFormattedReport.designContent.file)
               .then(file => ({
+                  ...selectedReport,
                   ...dhis2CoreVersionFormattedReport,
                   designContent: file,
               }))
