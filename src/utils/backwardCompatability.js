@@ -92,7 +92,7 @@ export const getStandardReportFieldsBySystemVersion = () => {
         ? 'visualization[id,displayName]'
         : 'reportTable[id,displayName]'
 
-    return [':all', reportTableField]
+    return [':owner', reportTableField]
 }
 
 export const formatStandardReportResponseBySystemVersion = reportModel => {

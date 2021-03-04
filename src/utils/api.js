@@ -325,10 +325,7 @@ export const postStandardReport = report =>
  * @returns {Promise}
  */
 export const updateStandardReport = report =>
-    api.update(
-        `${STANDARD_REPORTS_ENDPOINT}/${report.id}?mergeMode=MERGE`,
-        report
-    )
+    api.update(`${STANDARD_REPORTS_ENDPOINT}/${report.id}`, report)
 
 /**
  * @returns {Promise}
