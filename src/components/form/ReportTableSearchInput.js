@@ -50,7 +50,9 @@ const getListContent = ({ onClick, loading, error, collection, noMatches }) => {
             return (
                 <MenuItem
                     key={item.value}
-                    onClick={() => onClick(item.value, item.label)}
+                    // use onMouseDown instead of onClick because this fires
+                    // before the search-input's onBlur
+                    onMouseDown={() => onClick(item.value, item.label)}
                 >
                     {item.label}
                 </MenuItem>
@@ -76,13 +78,7 @@ export const ReportTableSearchInputUI = props => {
     }
     const onBlur = () => {
         if (isSearchMode) {
-            // HACK: when clicking on a list item the onBlur event
-            // of the input happens first and the onClick event on the
-            // list item second. This timeout works around that problem
-            // but we probably need a more structural fix
-            setTimeout(() => {
-                setSearchMode(false)
-            }, 250)
+            setSearchMode(false)
         }
         props.input.onBlur && props.input.onBlur()
     }
