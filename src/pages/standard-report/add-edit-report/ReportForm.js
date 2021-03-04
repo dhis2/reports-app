@@ -16,13 +16,13 @@ import { Select } from '../../../components/form/Select'
 import { reportParameterOptions } from '../../../config/standardReport'
 import { RELATIVE_PERIODS } from '../../../utils/periods/relativePeriods'
 import { DesignFileDownloadButton } from './DesignFileDownloadButton'
-import { formOptions } from '../../../utils/react/propTypes'
 import { validateNewReport, validateReportUpdate } from './validate'
 import {
     cacheStrategies,
     reportTypeOptions,
     reportTypes,
 } from '../standard.report.conf'
+import { ReportTableSearchInput } from '../../../components/form/ReportTableSearchInput'
 
 const ReportForm = props => (
     <Form
@@ -60,9 +60,7 @@ const ReportForm = props => (
                                 <Field
                                     name="reportTable"
                                     placeholder={i18n.t('Report Table*')}
-                                    options={props.reportTables}
-                                    showErrorText={false}
-                                    component={Select}
+                                    component={ReportTableSearchInput}
                                 />
                             </FormRow>
                         )}
@@ -157,7 +155,6 @@ ReportForm.propTypes = {
     backToList: PropTypes.func.isRequired,
     edit: PropTypes.bool.isRequired,
     report: PropTypes.object.isRequired,
-    reportTables: formOptions.isRequired,
     onSubmit: PropTypes.func.isRequired,
 }
 

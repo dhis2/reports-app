@@ -16,11 +16,9 @@ export const getIsEdit = state => {
     return !!(match && match.params.mode === 'edit')
 }
 
-const getStandardReportTables = state => state.standardReportTables.collection
-
 export const getEditFormInitialValues = createSelector(
-    [getSelectedStandardReport, getIsEdit, getStandardReportTables],
-    (selectedReport, isEdit, standardReportTables) => {
+    [getSelectedStandardReport, getIsEdit],
+    (selectedReport, isEdit) => {
         if (isEdit) {
             if (selectedReport.id) {
                 return {
@@ -61,9 +59,7 @@ export const getEditFormInitialValues = createSelector(
         return {
             type: reportTypes.JASPER_REPORT_TABLE,
             cacheStrategy: cacheStrategies[1].value,
-            reportTable: standardReportTables.length
-                ? standardReportTables[0].value
-                : '',
+            reportTable: '',
         }
     }
 )
