@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-11-04T12:33:41.214Z\n"
+"POT-Creation-Date: 2021-03-03T10:35:11.879Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
 "Last-Translator: Mai Nguyen <thanhmai.jica@gmail.com>, 2020\n"
 "Language-Team: Vietnamese (https://www.transifex.com/hisp-uio/teams/100509/vi/)\n"
@@ -73,6 +73,16 @@ msgstr "Chọn tập tin"
 
 msgid "No file chosen"
 msgstr "Chưa chọn file"
+
+msgid "No matches found"
+msgstr ""
+
+msgid "Please enter at least {{count}} characters"
+msgid_plural "Please enter at least {{count}} characters"
+msgstr[0] ""
+
+msgid "Type to search a report table"
+msgstr ""
 
 msgid "Standard Report"
 msgstr "Báo cáo chuẩn"
