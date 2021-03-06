@@ -73,7 +73,7 @@ msgid "No file chosen"
 msgstr "Ҳеч қандай файл танланмади"
 
 msgid "No matches found"
-msgstr ""
+msgstr "Ҳеч нарса топилмади"
 
 msgid "Please enter at least {{count}} characters"
 msgid_plural "Please enter at least {{count}} characters"

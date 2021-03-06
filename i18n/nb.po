@@ -74,7 +74,7 @@ msgid "No file chosen"
 msgstr "Ingen fil valgt"
 
 msgid "No matches found"
-msgstr ""
+msgstr "Ingen treff funnet"
 
 msgid "Please enter at least {{count}} characters"
 msgid_plural "Please enter at least {{count}} characters"
