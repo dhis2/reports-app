@@ -80,10 +80,10 @@ msgstr "没有发现匹配的"
 
 msgid "Please enter at least {{count}} characters"
 msgid_plural "Please enter at least {{count}} characters"
-msgstr[0] ""
+msgstr[0] "请输入至少{{count}}个字符"
 
 msgid "Type to search a report table"
-msgstr ""
+msgstr "键入以搜索报告表"
 
 msgid "Standard Report"
 msgstr "标准报表"
