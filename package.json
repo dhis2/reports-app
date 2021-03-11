@@ -25,7 +25,7 @@
         "@dhis2/cli-style": "^7.3.0",
         "@dhis2/cli-utils-cypress": "^2.2.1",
         "enzyme": "^3.11.0",
-        "enzyme-adapter-react-16": "^1.15.4",
+        "enzyme-adapter-react-16": "^1.15.6",
         "enzyme-to-json": "^3.5.0",
         "redux-devtools-extension": "^2.13.8",
         "redux-mock-store": "^1.5.4"
