@@ -1,5 +1,4 @@
 import omit from 'lodash.omit'
-
 import { isRequiredWhen } from '../../utils/form/validators'
 import { resourceActions, resourceTypes } from '../../utils/resource/constants'
 

@@ -1,20 +1,20 @@
-import React, { Component, Fragment } from 'react'
-import PropTypes from 'prop-types'
 import i18n from '@dhis2/d2-i18n'
+import { Card, CircularProgress } from '@material-ui/core'
+import PropTypes from 'prop-types'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
+import { SectionHeadline } from '../../components/SectionHeadline'
+import { RESOURCE_SECTION_KEY } from '../../config/sections.config'
 import {
     loadResource,
     addNewResource,
     updateResource,
     backToList,
 } from '../../redux/actions/resource'
-import { extractFileAndFormattedResource } from './helper'
 import { resourceTypeOptions } from '../../utils/resource/constants'
-import { ResourceForm } from './add-edit-resource/ResourceForm'
 import { formCard, formLoader } from '../../utils/styles/shared'
-import { SectionHeadline } from '../../components/SectionHeadline'
-import { RESOURCE_SECTION_KEY } from '../../config/sections.config'
-import { Card, CircularProgress } from '@material-ui/core'
+import { ResourceForm } from './add-edit-resource/ResourceForm'
+import { extractFileAndFormattedResource } from './helper'
 
 class AddEditResource extends Component {
     componentDidMount() {

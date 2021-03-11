@@ -1,6 +1,6 @@
-import { FILE_RESOURCES_ENDPOINT } from './constants'
 import { getApi } from '../api'
 import { formatStandardReportResponseBySystemVersion } from '../backwardCompatability'
+import { FILE_RESOURCES_ENDPOINT } from './constants'
 
 /**
  * @param {Object} d2 ModelCollection instance
@@ -15,12 +15,7 @@ export const mapResponseToArrayOfIds = model =>
  * @return {Object} The model with the filter if it wasn't an empty string otherwise the model without the filter
  */
 export const addFilterForName = (name, model) =>
-    !name
-        ? model
-        : model
-              .filter()
-              .on('displayName')
-              .ilike(name)
+    !name ? model : model.filter().on('displayName').ilike(name)
 
 /**
  * @param {Promise} request

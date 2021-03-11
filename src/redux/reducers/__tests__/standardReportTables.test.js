@@ -1,9 +1,9 @@
-import { defaultState, standardReportTables } from '../standardReportTables'
 import {
     loadingStandardReportTablesError,
     loadingStandardReportTablesStart,
     loadingStandardReportTablesSuccess,
 } from '../../actions/standardReportTables'
+import { defaultState, standardReportTables } from '../standardReportTables'
 
 describe('Reducer - standardReportTables', () => {
     it('should return the default state', () => {

@@ -1,6 +1,4 @@
 import createComponentRenderer from '../../utils/test-helpers/createComponentRenderer'
-
-/* App components */
 import { AvailableOrganisationUnitsTree } from '../AvailableOrganisationUnitsTree'
 
 jest.mock('@dhis2/d2-ui-org-unit-tree', () => ({

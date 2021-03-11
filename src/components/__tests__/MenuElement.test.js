@@ -1,8 +1,6 @@
 import Paper from '@material-ui/core/Paper'
-import React from 'react'
-
 import { shallow } from 'enzyme'
-
+import React from 'react'
 import {
     STANDARD_REPORT_SECTION_KEY,
     sections,

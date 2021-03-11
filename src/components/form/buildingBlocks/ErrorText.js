@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import FormHelperText from '@material-ui/core/FormHelperText'
 import red from '@material-ui/core/colors/red'
+import FormHelperText from '@material-ui/core/FormHelperText'
+import PropTypes from 'prop-types'
+import React from 'react'
 
 const errorTextColor = red[500]
 

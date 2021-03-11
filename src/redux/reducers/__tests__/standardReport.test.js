@@ -1,23 +1,23 @@
+import { CONTEXT_MENU_ACTION } from '../../../pages/standard-report/standard.report.conf'
 import { actionTypes } from '../../actions/standardReport'
 import { standardReport, defaultState } from '../standardReport'
-import { CONTEXT_MENU_ACTION } from '../../../pages/standard-report/standard.report.conf'
 
-describe('Reducer - standardReport', function() {
+describe('Reducer - standardReport', function () {
     const mockReport = () => ({ displayName: 'foobar' })
 
-    it('should return the default state', function() {
+    it('should return the default state', function () {
         const actual = standardReport()
         const expected = defaultState
         expect(actual).toEqual(expected)
     })
 
-    describe('loading reports', function() {
+    describe('loading reports', function () {
         const {
             LOADING_STANDARD_REPORTS_START,
             LOADING_STANDARD_REPORTS_ERROR,
         } = actionTypes
 
-        it('should start loading', function() {
+        it('should start loading', function () {
             const action = { type: LOADING_STANDARD_REPORTS_START }
             const preState = {
                 ...defaultState,
@@ -31,7 +31,7 @@ describe('Reducer - standardReport', function() {
             expect(actual).toEqual(expected)
         })
 
-        it('should set loading to false on error', function() {
+        it('should set loading to false on error', function () {
             const loadingError = 'Foobar'
             const action = {
                 type: LOADING_STANDARD_REPORTS_ERROR,
@@ -51,8 +51,8 @@ describe('Reducer - standardReport', function() {
         })
     })
 
-    describe('search', function() {
-        it('should set the search term', function() {
+    describe('search', function () {
+        it('should set the search term', function () {
             const term = 'foobar'
             const { SET_SEARCH } = actionTypes
             const preState = { ...defaultState, search: 'fooba' }
@@ -65,12 +65,12 @@ describe('Reducer - standardReport', function() {
         })
     })
 
-    describe('Using context menu actions', function() {
+    describe('Using context menu actions', function () {
         let report
         let preState
         const { SHARING_SETTINGS_SHOW } = actionTypes
 
-        beforeEach(function() {
+        beforeEach(function () {
             report = mockReport()
             preState = {
                 ...defaultState,
@@ -80,7 +80,7 @@ describe('Reducer - standardReport', function() {
             }
         })
 
-        it('should show the sharing settings', function() {
+        it('should show the sharing settings', function () {
             const expected = {
                 ...defaultState,
                 open: true,
@@ -95,7 +95,7 @@ describe('Reducer - standardReport', function() {
         })
     })
 
-    describe('Hiding context actions', function() {
+    describe('Hiding context actions', function () {
         let preState
         const { CLOSE_CONTEXT_MENU } = actionTypes
         const expected = {
@@ -105,7 +105,7 @@ describe('Reducer - standardReport', function() {
             selectedAction: '',
         }
 
-        beforeEach(function() {
+        beforeEach(function () {
             preState = {
                 ...defaultState,
                 open: true,
@@ -113,7 +113,7 @@ describe('Reducer - standardReport', function() {
             }
         })
 
-        it('should close the context menu', function() {
+        it('should close the context menu', function () {
             preState = { ...preState, selectedAction: 'any action' }
             const actual = standardReport(preState, {
                 type: CLOSE_CONTEXT_MENU,
@@ -122,7 +122,7 @@ describe('Reducer - standardReport', function() {
         })
     })
 
-    describe('Deleting a report', function() {
+    describe('Deleting a report', function () {
         let report
         let preState
         const {
@@ -132,7 +132,7 @@ describe('Reducer - standardReport', function() {
             DELETE_STANDARD_REPORT_ERROR,
         } = actionTypes
 
-        beforeEach(function() {
+        beforeEach(function () {
             report = mockReport()
             preState = {
                 ...defaultState,
@@ -142,7 +142,7 @@ describe('Reducer - standardReport', function() {
             }
         })
 
-        it('should request the deletion', function() {
+        it('should request the deletion', function () {
             preState = {
                 ...defaultState,
                 requestDelete: false,
@@ -162,7 +162,7 @@ describe('Reducer - standardReport', function() {
             expect(actual).toEqual(expected)
         })
 
-        it('should start deleting the report', function() {
+        it('should start deleting the report', function () {
             preState = {
                 ...preState,
                 requestDelete: true,
@@ -179,7 +179,7 @@ describe('Reducer - standardReport', function() {
             expect(actual).toEqual(expected)
         })
 
-        it('should have deleted the report successfully', function() {
+        it('should have deleted the report successfully', function () {
             const action = { type: DELETE_STANDARD_REPORT_SUCCESS }
             const postState = standardReport(preState, action)
             const expected = {
@@ -201,7 +201,7 @@ describe('Reducer - standardReport', function() {
             expect(loadingPostState).toEqual(expectedLoadingState)
         })
 
-        it('should not have deleted the report successfully', function() {
+        it('should not have deleted the report successfully', function () {
             const action = {
                 type: DELETE_STANDARD_REPORT_ERROR,
                 payload: '',

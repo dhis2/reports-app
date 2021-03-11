@@ -1,7 +1,7 @@
-import React from 'react'
 import { shallow } from 'enzyme'
-import ReportTable, { Row } from '../../TabularReport/ReportTable'
+import React from 'react'
 import { transformedTableData } from '../../../__fixtures__/orgUnitDistReport'
+import ReportTable, { Row } from '../../TabularReport/ReportTable'
 
 describe('<ReportTable/>', () => {
     it('matches the snapshot for a given input', () => {

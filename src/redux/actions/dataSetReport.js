@@ -1,6 +1,6 @@
+import { getDataSetReport, postDataSetReportComment } from '../../utils/api'
 import { selectDataSet as selectDataSetOriginal } from './dataSet'
 import { loadDimensions } from './dataSetDimensions'
-import { getDataSetReport, postDataSetReportComment } from '../../utils/api'
 import {
     loadingReportDataStart,
     loadingReportDataSuccessWithFeedback,

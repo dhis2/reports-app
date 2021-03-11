@@ -1,15 +1,14 @@
-import { Link } from 'react-router-dom'
 import { Sidebar } from '@dhis2/d2-ui-core'
-import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
-
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+import AppRouter from './components/AppRouter'
 import { Loader } from './components/feedback/Loader'
+import { sectionOrder, sections } from './config/sections.config'
 import { loadDataSetOptions } from './redux/actions/dataSet'
 import { loadOrganisationUnits } from './redux/actions/organisationUnits'
 import { loadPeriodTypes } from './redux/actions/reportPeriod'
-import { sectionOrder, sections } from './config/sections.config'
-import AppRouter from './components/AppRouter'
 import { getCurrentSection, getShowSidebar } from './redux/selectors/sidebar'
 
 // is not "marked" as required but it's used by Sidebar

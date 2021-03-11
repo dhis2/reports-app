@@ -1,8 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-
-/* Material UI */
 import Paper from '@material-ui/core/Paper'
+import PropTypes from 'prop-types'
+import React from 'react'
 import { card } from '../utils/styles/shared.js'
 
 const MenuElement = ({ entry }) => (

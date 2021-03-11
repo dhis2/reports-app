@@ -1,5 +1,5 @@
-import { mockStore } from '../../../utils/test-helpers/mockStore'
 import { getDataSetOptions } from '../../../utils/api'
+import { mockStore } from '../../../utils/test-helpers/mockStore'
 import {
     loadingDataSetOptionsStart,
     loadingDataSetOptionsSuccess,

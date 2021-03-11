@@ -1,21 +1,20 @@
-import { connect } from 'react-redux'
-import { resolve } from 'styled-jsx/css'
+import i18n from '@dhis2/d2-i18n'
+import theme from '@dhis2/d2-ui-core/theme/theme'
 import Button from '@material-ui/core/Button'
+import red from '@material-ui/core/colors/red'
 import Dialog from '@material-ui/core/Dialog'
 import DialogContent from '@material-ui/core/DialogContent'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import PropTypes from 'prop-types'
 import React from 'react'
-import i18n from '@dhis2/d2-i18n'
-import red from '@material-ui/core/colors/red'
-import theme from '@dhis2/d2-ui-core/theme/theme'
-
+import { connect } from 'react-redux'
+import { resolve } from 'styled-jsx/css'
+import OrganisationUnitTree from '../../components/AvailableOrganisationUnitsTree'
+import PeriodPicker from '../../components/PeriodPickerWithPeriodType'
 import {
     cancelGeneratingPdfReport,
     submitRequiredReportParams,
 } from '../../redux/actions/standardReport'
-import OrganisationUnitTree from '../../components/AvailableOrganisationUnitsTree'
-import PeriodPicker from '../../components/PeriodPickerWithPeriodType'
 
 const labelCancel = i18n.t('Cancel')
 const labelSubmit = i18n.t('Generate report')

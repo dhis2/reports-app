@@ -18,6 +18,9 @@ jobs:
             - name: Build
               run: yarn build
 
+            - name: Generate translations
+              run: yarn d2-app-scripts i18n generate
+
             - name: Test
               run: yarn test
         env:

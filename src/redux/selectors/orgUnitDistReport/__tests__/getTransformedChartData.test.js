@@ -1,8 +1,8 @@
-import getTransformedChartData, { cache } from '../getTransformedChartData'
 import {
     chartResponseData,
     transformedChartData,
 } from '../../../../__fixtures__/orgUnitDistReport'
+import getTransformedChartData, { cache } from '../getTransformedChartData'
 
 describe('getTransformedChartData', () => {
     const state = {

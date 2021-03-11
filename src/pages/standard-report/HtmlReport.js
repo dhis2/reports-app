@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { getContextPath } from '../../utils/api'
 import CircularProgress from '@material-ui/core/CircularProgress'
+import PropTypes from 'prop-types'
+import React, { Component } from 'react'
+import { getContextPath } from '../../utils/api'
 import { CSS_FILES, SCRIPT_FILES, PAGE_STYLES } from './HtmlReportAssets'
 
 const wrapHtmlInTemplate = html => `

@@ -1,11 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import i18n from '@dhis2/d2-i18n'
-import OrganisationUnitsTree from './AvailableOrganisationUnitsTree'
-import OrganisationUnitGroupSets from './OrganisationUnitGroupSets'
+import PropTypes from 'prop-types'
+import React from 'react'
+import { connect } from 'react-redux'
 import { toggleShowOptions } from '../redux/actions/organisationUnits'
 import { formLabel } from '../utils/styles/shared.js'
+import OrganisationUnitsTree from './AvailableOrganisationUnitsTree'
+import OrganisationUnitGroupSets from './OrganisationUnitGroupSets'
 
 const getExtraOptionsLabel = showOptions =>
     !showOptions ? i18n.t('Show more options') : i18n.t('Show fewer options')

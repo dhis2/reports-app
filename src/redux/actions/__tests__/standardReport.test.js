@@ -1,8 +1,8 @@
-import { mockStore } from '../../../utils/test-helpers/mockStore'
 import {
     getFilteredStandardReports,
     deleteStandardReport as deleteStandardReportRequest,
 } from '../../../utils/api'
+import { mockStore } from '../../../utils/test-helpers/mockStore'
 import { defaultState as INITIAL_PAGER } from '../../reducers/pagination'
 import { setPagination } from '../pagination'
 import {

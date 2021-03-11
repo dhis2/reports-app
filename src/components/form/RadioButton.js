@@ -1,5 +1,5 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import React from 'react'
 import { formInput } from '../../utils/react/propTypes'
 
 export const RadioButton = props => (

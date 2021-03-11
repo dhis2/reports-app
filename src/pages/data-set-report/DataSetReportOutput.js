@@ -1,9 +1,9 @@
-import React from 'react'
 import PropTypes from 'prop-types'
-import { DownloadOptions } from '../../components/TabularReport/DownloadOptions'
-import ReportTable from '../../components/TabularReport/ReportTable'
-import { ReportComment } from '../../components/TabularReport/ReportComment'
+import React from 'react'
 import ReportLoader from '../../components/ReportLoader'
+import { DownloadOptions } from '../../components/TabularReport/DownloadOptions'
+import { ReportComment } from '../../components/TabularReport/ReportComment'
+import ReportTable from '../../components/TabularReport/ReportTable'
 import { reportContent } from '../../utils/react/propTypes'
 import HtmlReport from '../standard-report/HtmlReport'
 

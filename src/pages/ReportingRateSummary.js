@@ -1,18 +1,17 @@
 import Paper from '@material-ui/core/Paper'
 import PropTypes from 'prop-types'
 import React from 'react'
-
-import { Form } from './reporting-rate-summary/Form'
+import { Snackbar } from '../components/feedback/Snackbar'
+import { SectionHeadline } from '../components/SectionHeadline'
+import TabularReport from '../components/TabularReport'
 import {
     REPORTING_RATE_SUMMARY_SECTION_KEY,
     sections,
 } from '../config/sections.config'
-import { SectionHeadline } from '../components/SectionHeadline'
-import { Snackbar } from '../components/feedback/Snackbar'
-import { connectReportingRateSummary } from './reporting-rate-summary/connectReportingRateSummary'
-import { container } from '../utils/styles/shared.js'
 import { reportContent } from '../utils/react/propTypes'
-import TabularReport from '../components/TabularReport'
+import { container } from '../utils/styles/shared.js'
+import { connectReportingRateSummary } from './reporting-rate-summary/connectReportingRateSummary'
+import { Form } from './reporting-rate-summary/Form'
 
 const ReportingRateSummary = props => (
     <div>

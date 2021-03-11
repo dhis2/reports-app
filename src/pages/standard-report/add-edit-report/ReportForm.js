@@ -3,7 +3,6 @@ import FormHelperText from '@material-ui/core/FormHelperText'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { Field, Form } from 'react-final-form'
-
 import { Button } from '../../../components/form/Button'
 import { CheckBoxes } from '../../../components/form/CheckBoxes'
 import { CheckBoxGroups } from '../../../components/form/CheckBoxGroups'
@@ -12,17 +11,17 @@ import { FormRow } from '../../../components/form/FormRow'
 import { FormSection } from '../../../components/form/FormSection'
 import { FormSectionTitle } from '../../../components/form/FormSectionTitle'
 import { Input } from '../../../components/form/Input'
+import { ReportTableSearchInput } from '../../../components/form/ReportTableSearchInput'
 import { Select } from '../../../components/form/Select'
 import { reportParameterOptions } from '../../../config/standardReport'
 import { RELATIVE_PERIODS } from '../../../utils/periods/relativePeriods'
-import { DesignFileDownloadButton } from './DesignFileDownloadButton'
-import { validateNewReport, validateReportUpdate } from './validate'
 import {
     cacheStrategies,
     reportTypeOptions,
     reportTypes,
 } from '../standard.report.conf'
-import { ReportTableSearchInput } from '../../../components/form/ReportTableSearchInput'
+import { DesignFileDownloadButton } from './DesignFileDownloadButton'
+import { validateNewReport, validateReportUpdate } from './validate'
 
 const ReportForm = props => (
     <Form

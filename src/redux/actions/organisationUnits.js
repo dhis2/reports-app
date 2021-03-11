@@ -1,7 +1,7 @@
 import i18n from '@dhis2/d2-i18n'
 import { getOrganisationUnits } from '../../utils/api'
-import { showErrorSnackBar } from './feedback'
 import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
+import { showErrorSnackBar } from './feedback'
 import { loadGroupSetOptions } from './orgUnitGroupSets'
 
 export const actionTypes = {

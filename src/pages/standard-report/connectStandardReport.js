@@ -1,6 +1,5 @@
-import { connect } from 'react-redux'
 import isEmpty from 'lodash.isempty'
-
+import { connect } from 'react-redux'
 import {
     addReportFormShow,
     closeContextMenu,

@@ -3,13 +3,13 @@
 import i18n from '@dhis2/d2-i18n'
 /* d2-ui components */
 import { DropDown } from '@dhis2/d2-ui-core'
+import { CircularProgress } from '@material-ui/core'
 import PropTypes from 'prop-types'
 import React from 'react'
 /* App context */
-import { formLabel } from '../utils/styles/shared.js'
 import { connect } from 'react-redux'
 import { selectOrgUnitOption } from '../redux/actions/organisationUnits'
-import { CircularProgress } from '@material-ui/core'
+import { formLabel } from '../utils/styles/shared.js'
 
 const createGroupSetOnChange = (groupSetId, onChange) => event => {
     onChange(groupSetId, event.target.value)

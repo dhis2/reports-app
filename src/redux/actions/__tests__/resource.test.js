@@ -1,8 +1,8 @@
-import { mockStore } from '../../../utils/test-helpers/mockStore'
 import {
     getResources,
     deleteResource as sendDeleteResourceRequest,
 } from '../../../utils/api'
+import { mockStore } from '../../../utils/test-helpers/mockStore'
 import {
     loadingResourcesStart,
     loadingResourcesSuccess,

@@ -1,8 +1,8 @@
-import { defaultState, pagination } from '../pagination'
 import { actionTypes } from '../../actions/pagination'
+import { defaultState, pagination } from '../pagination'
 
-describe('Reducer - pagination', function() {
-    it('should increase the current page num by 1', function() {
+describe('Reducer - pagination', function () {
+    it('should increase the current page num by 1', function () {
         const { GO_TO_NEXT_PAGE } = actionTypes
         const preState = {
             ...defaultState,
@@ -17,7 +17,7 @@ describe('Reducer - pagination', function() {
         expect(actual).toEqual(expected)
     })
 
-    it('should decrease the current page num by 1', function() {
+    it('should decrease the current page num by 1', function () {
         const { GO_TO_PREV_PAGE } = actionTypes
         const preState = {
             ...defaultState,

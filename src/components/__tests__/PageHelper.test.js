@@ -1,10 +1,5 @@
-/* React */
-import React from 'react'
-
-/* unit testing tools */
 import { shallow } from 'enzyme'
-
-/* App components */
+import React from 'react'
 import PageHelper from '../PageHelper'
 
 const ownShallow = () => {

@@ -1,4 +1,3 @@
-import { isDevelopment } from './env/isDevelopment'
 import {
     addFileResourceUrlToResource,
     uploadFile,
@@ -20,6 +19,7 @@ import {
     getStandardReportFieldsBySystemVersion,
 } from './backwardCompatability.js'
 import { isCustomFormType } from './dataSetReport/isCustomFormType'
+import { isDevelopment } from './env/isDevelopment'
 
 export const RESOURCE_ENDPOINT = 'documents'
 const DATA_DIMENSION_SUFFIXES = [

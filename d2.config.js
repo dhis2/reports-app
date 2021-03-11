@@ -4,7 +4,7 @@ const config = {
     title: 'Reports',
     name: 'reports',
     entryPoints: {
-        app: './src/AppWrapper',
+        app: './src/AppWrapper.js',
     },
 }
 

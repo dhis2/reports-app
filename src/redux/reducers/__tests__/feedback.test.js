@@ -1,6 +1,6 @@
-import { feedback, defaultState } from '../feedback'
-import { actionTypes as ACTIONS } from '../../actions/feedback'
 import * as FEEDBACK_TYPES from '../../../utils/feedbackTypes'
+import { actionTypes as ACTIONS } from '../../actions/feedback'
+import { feedback, defaultState } from '../feedback'
 
 describe('Reducer - feedback', () => {
     const message = 'Hello world'

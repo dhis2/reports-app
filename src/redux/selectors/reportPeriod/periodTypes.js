@@ -1,8 +1,8 @@
-import { flattenedRelativePeriods } from '../../../utils/periods/relativePeriods'
 import {
     fixedPeriodTranslations,
     relativePeriodsThatAreActuallyFixed,
 } from '../../../utils/periods/fixedPeriods'
+import { flattenedRelativePeriods } from '../../../utils/periods/relativePeriods'
 import { isJasperReportTableReport } from '../../../utils/standardReport'
 
 export const getFilteredPeriodTypes = state => {

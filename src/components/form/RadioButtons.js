@@ -1,10 +1,9 @@
-import { Field } from 'react-final-form'
-import { withStyles } from '@material-ui/core/styles'
 import FormControl from '@material-ui/core/FormControl'
 import FormHelperText from '@material-ui/core/FormHelperText'
+import { withStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
 import React from 'react'
-
+import { Field } from 'react-final-form'
 import { RadioButton } from './RadioButton'
 
 const styles = {

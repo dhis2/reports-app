@@ -1,5 +1,5 @@
-import { mockStore } from '../../../utils/test-helpers/mockStore'
 import { getStandardReportTables } from '../../../utils/api'
+import { mockStore } from '../../../utils/test-helpers/mockStore'
 import {
     loadingStandardReportTablesStart,
     loadingStandardReportTablesSuccess,

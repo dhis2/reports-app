@@ -1,22 +1,21 @@
+import i18n from '@dhis2/d2-i18n'
 import PropTypes from 'prop-types'
 import React from 'react'
-import i18n from '@dhis2/d2-i18n'
-
-import {
-    CONTEXT_MENU_ACTION,
-    CONTEXT_MENU_ICONS,
-} from './standard-report/standard.report.conf'
-import { ConnectedReportParams } from './standard-report/ReportParams'
+import { Snackbar } from '../components/feedback/Snackbar'
+import SearchablePagedList from '../components/SearchablePagedList'
+import { SectionHeadline } from '../components/SectionHeadline'
 import {
     STANDARD_REPORT_SECTION_KEY,
     sections,
 } from '../config/sections.config'
-import { SectionHeadline } from '../components/SectionHeadline'
-import { Snackbar } from '../components/feedback/Snackbar'
-import { showContextAction } from './standard-report/helper'
-import SearchablePagedList from '../components/SearchablePagedList'
-import StandardReportActions from './standard-report/StandardReportActions'
 import connectStandardReport from './standard-report/connectStandardReport'
+import { showContextAction } from './standard-report/helper'
+import { ConnectedReportParams } from './standard-report/ReportParams'
+import {
+    CONTEXT_MENU_ACTION,
+    CONTEXT_MENU_ICONS,
+} from './standard-report/standard.report.conf'
+import StandardReportActions from './standard-report/StandardReportActions'
 
 const createContextMenuOptions = props => ({
     [CONTEXT_MENU_ACTION.CREATE]: props.createReport,
