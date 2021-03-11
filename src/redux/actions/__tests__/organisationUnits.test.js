@@ -1,4 +1,6 @@
+import { getOrganisationUnits } from '../../../utils/api'
 import { mockStore } from '../../../utils/test-helpers/mockStore'
+import { showErrorSnackBar } from '../feedback'
 import {
     loadOrganisationUnits,
     loadOrganisationUnitsErrorDefaultMessage,
@@ -6,8 +8,6 @@ import {
     loadOrganisationUnitsSuccess,
     loadOrganisationUnitsError,
 } from '../organisationUnits'
-import { showErrorSnackBar } from '../feedback'
-import { getOrganisationUnits } from '../../../utils/api'
 
 jest.mock('../../../utils/api', () => ({
     getOrganisationUnits: jest.fn(),

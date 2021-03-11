@@ -1,4 +1,6 @@
+import { getDataSetReport, postDataSetReportComment } from '../../../utils/api'
 import { mockStore } from '../../../utils/test-helpers/mockStore'
+import { loadReportData, shareDataSetReportComment } from '../dataSetReport'
 import {
     loadingReportDataStart,
     loadingReportDataSuccess,
@@ -7,8 +9,6 @@ import {
     sharingReportCommentSuccess,
     sharingReportCommentError,
 } from '../reportData'
-import { loadReportData, shareDataSetReportComment } from '../dataSetReport'
-import { getDataSetReport, postDataSetReportComment } from '../../../utils/api'
 
 jest.mock('../../../utils/api', () => ({
     getDataSetReport: jest.fn(() => Promise.resolve()),

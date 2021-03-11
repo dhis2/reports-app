@@ -1,6 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import i18n from '@dhis2/d2-i18n'
+import PropTypes from 'prop-types'
+import React from 'react'
 
 const prefix = i18n.t('Download as')
 
@@ -10,6 +10,7 @@ export const DownloadOption = ({ file }) => (
         href={file.url}
         download
         tabIndex="0"
+        rel="noreferrer"
         target={file.extension === 'pdf' ? '_blank' : '_self'}
     >
         {prefix} {file.extension}

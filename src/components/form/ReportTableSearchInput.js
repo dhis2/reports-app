@@ -1,19 +1,19 @@
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import React, { useState, useRef } from 'react'
 import i18n from '@dhis2/d2-i18n'
-import Paper from '@material-ui/core/Paper'
-import MenuItem from '@material-ui/core/MenuItem'
-import Popper from '@material-ui/core/Popper'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import red from '@material-ui/core/colors/red'
-import { Input } from './Input'
-import { formInput, formInputMeta } from '../../utils/react/propTypes'
+import MenuItem from '@material-ui/core/MenuItem'
+import Paper from '@material-ui/core/Paper'
+import Popper from '@material-ui/core/Popper'
+import PropTypes from 'prop-types'
+import React, { useState, useRef } from 'react'
+import { connect } from 'react-redux'
 import {
     loadFilteredStandardReportTables,
     clearSearch,
     MIN_CHAR_LENGTH,
 } from '../../redux/actions/standardReportTables'
+import { formInput, formInputMeta } from '../../utils/react/propTypes'
+import { Input } from './Input'
 
 const centeredStyle = {
     display: 'flex',

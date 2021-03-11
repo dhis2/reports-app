@@ -1,6 +1,6 @@
 /* React */
-import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
+import React, { Fragment } from 'react'
 
 export const Row = ({ cells }) => (
     <tr>

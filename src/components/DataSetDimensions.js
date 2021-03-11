@@ -1,10 +1,10 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { DropDown } from '@dhis2/d2-ui-core'
 import i18n from '@dhis2/d2-i18n'
-import { selectDimensionOption } from '../redux/actions/dataSetDimensions'
+import { DropDown } from '@dhis2/d2-ui-core'
 import CircularProgress from '@material-ui/core/CircularProgress'
+import PropTypes from 'prop-types'
+import React from 'react'
+import { connect } from 'react-redux'
+import { selectDimensionOption } from '../redux/actions/dataSetDimensions'
 import { formLabel } from '../utils/styles/shared.js'
 
 const createDimensionChangeHandler = (onChange, dimensionId) => element =>

@@ -1,9 +1,5 @@
-/* React */
-import React from 'react'
-
-/* unit testing tools */
 import { shallow } from 'enzyme'
-
+import React from 'react'
 import TabularReport from '../TabularReport'
 
 const content = {

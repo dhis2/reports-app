@@ -1,7 +1,7 @@
-import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
 import i18n from '@dhis2/d2-i18n'
-import { showWarningSnackBar } from './feedback'
 import { getDimensions } from '../../utils/api'
+import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
+import { showWarningSnackBar } from './feedback'
 
 export const actionTypes = {
     LOADING_DIMENSIONS_START: 'LOADING_DIMENSIONS_START',

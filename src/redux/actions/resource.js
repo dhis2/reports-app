@@ -1,6 +1,6 @@
-import debounce from 'lodash.debounce'
 import i18n from '@dhis2/d2-i18n'
-
+import { push } from 'connected-react-router'
+import debounce from 'lodash.debounce'
 import { DEBOUNCE_DELAY } from '../../config/search.config'
 import { RESOURCE_ENDPOINT } from '../../utils/api'
 import {
@@ -11,19 +11,18 @@ import {
     putResource,
     deleteResource as sendDeleteResourceRequest,
 } from '../../utils/api'
+import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
+import {
+    showSuccessSnackBar,
+    showErrorSnackBar,
+    showConfirmationSnackBar,
+} from './feedback'
 import {
     goToNextPage as goToNextPageOrig,
     goToPrevPage as goToPrevPageOrig,
     resetPagination,
     setPagination,
 } from './pagination'
-import {
-    showSuccessSnackBar,
-    showErrorSnackBar,
-    showConfirmationSnackBar,
-} from './feedback'
-import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
-import { push } from 'connected-react-router'
 
 export const actionTypes = {
     LOADING_RESOURCES_START: 'LOADING_RESOURCES_START',

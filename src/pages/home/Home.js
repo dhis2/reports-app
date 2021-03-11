@@ -1,8 +1,7 @@
-import { Link } from 'react-router-dom'
 import React from 'react'
-
-import { sectionOrder, sections } from '../../config/sections.config'
+import { Link } from 'react-router-dom'
 import MenuElement from '../../components/MenuElement'
+import { sectionOrder, sections } from '../../config/sections.config'
 
 const Home = () => {
     const menuCards = sectionOrder.map(sectionKey => {

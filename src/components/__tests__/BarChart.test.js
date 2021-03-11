@@ -1,7 +1,7 @@
-import React from 'react'
 import { shallow } from 'enzyme'
-import BarChart from '../BarChart'
+import React from 'react'
 import { transformedChartData } from '../../__fixtures__/orgUnitDistReport'
+import BarChart from '../BarChart'
 
 describe('<BarChart/>', () => {
     it('Should match the snapshot', () => {

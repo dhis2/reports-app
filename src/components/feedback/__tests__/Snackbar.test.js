@@ -1,5 +1,5 @@
-import createComponentRenderer from '../../../utils/test-helpers/createComponentRenderer'
 import { SUCCESS, ERROR, WARNING } from '../../../utils/feedbackTypes'
+import createComponentRenderer from '../../../utils/test-helpers/createComponentRenderer'
 import { SnackbarOriginal as Snackbar } from '../Snackbar'
 
 jest.mock('@dhis2/d2-ui-core', () => ({

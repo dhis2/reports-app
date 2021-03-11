@@ -1,9 +1,8 @@
-import React from 'react'
 import { shallow } from 'enzyme'
-import Home from './Home'
+import React from 'react'
 import MenuElement from '../../components/MenuElement'
-
 import { sectionOrder } from '../../config/sections.config'
+import Home from './Home'
 
 jest.mock('@dhis2/d2-ui-org-unit-tree', () => ({
     OrgUnitTree: 'OrgUnitTree',

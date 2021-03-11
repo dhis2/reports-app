@@ -3,7 +3,6 @@ import { push } from 'connected-react-router'
 import debounce from 'lodash.debounce'
 import omit from 'lodash.omit'
 import size from 'lodash.size'
-
 import { DEBOUNCE_DELAY } from '../../config/search.config'
 import { STANDARD_REPORT_SECTION_KEY } from '../../config/sections.config'
 import { reportTypes } from '../../pages/standard-report/standard.report.conf'
@@ -16,8 +15,10 @@ import {
     postStandardReport,
     updateStandardReport,
 } from '../../utils/api'
+import { formatStandardReportPayloadBySystemVersion } from '../../utils/backwardCompatability'
 import { fileToText } from '../../utils/fileToText'
 import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
+import { getPeriodStartDate } from '../../utils/periods/periodTypes'
 import {
     appendOrgUnitsAndReportPeriodToQueryString,
     extractRequiredReportParams,
@@ -45,8 +46,6 @@ import {
     loadingReportDataSuccess,
 } from './reportData'
 import { clearSelectedReportPeriod } from './reportPeriod'
-import { formatStandardReportPayloadBySystemVersion } from '../../utils/backwardCompatability'
-import { getPeriodStartDate } from '../../utils/periods/periodTypes'
 
 export const actionTypes = {
     SET_SELECTED_REPORT: 'SET_SELECTED_REPORT',

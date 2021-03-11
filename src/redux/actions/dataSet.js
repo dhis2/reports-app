@@ -1,6 +1,6 @@
-import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
 import i18n from '@dhis2/d2-i18n'
 import { getDataSetOptions } from '../../utils/api'
+import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
 import { showErrorSnackBar } from './feedback'
 
 export const actionTypes = {

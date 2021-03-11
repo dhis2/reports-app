@@ -1,9 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import SharingDialog from '@dhis2/d2-ui-sharing-dialog'
+import PropTypes from 'prop-types'
+import React from 'react'
+import { getD2 } from '../../utils/api'
 import { CONTEXT_MENU_ACTION } from './standard.report.conf'
 // import { ConnectedAddEditStdReport } from './AddEditStdReport'
-import { getD2 } from '../../utils/api'
 
 const StandardReportActions = ({
     open,

@@ -1,5 +1,5 @@
-import { mockStore } from '../../../utils/test-helpers/mockStore'
 import { getReportingRateSummaryReport } from '../../../utils/api'
+import { mockStore } from '../../../utils/test-helpers/mockStore'
 import {
     loadingReportDataStart,
     loadingReportDataSuccess,

@@ -1,3 +1,4 @@
+import { getOrgUnitDistReport } from '../../../utils/api'
 import { mockStore } from '../../../utils/test-helpers/mockStore'
 import {
     setOutputToChart,
@@ -12,7 +13,6 @@ import {
     loadingReportDataSuccess,
     loadingReportDataError,
 } from '../reportData'
-import { getOrgUnitDistReport } from '../../../utils/api'
 
 jest.mock('../../../utils/api', () => ({
     getOrgUnitDistReport: jest.fn(() => Promise.resolve()),

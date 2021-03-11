@@ -1,10 +1,10 @@
 import { matchPath } from 'react-router-dom'
+import { createSelector } from 'reselect'
 import {
     reportTypes,
     cacheStrategies,
 } from '../../../pages/standard-report/standard.report.conf'
 import { identity } from '../../../utils/boolean/identity'
-import { createSelector } from 'reselect'
 
 export const getSelectedStandardReport = state =>
     state.standardReport.selectedReport

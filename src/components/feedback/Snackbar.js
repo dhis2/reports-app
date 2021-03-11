@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import { FeedbackSnackbar } from '@dhis2/d2-ui-core'
+import PropTypes from 'prop-types'
+import React from 'react'
+import { connect } from 'react-redux'
 import { clearFeedback } from '../../redux/actions/feedback'
 
 const Snackbar = ({

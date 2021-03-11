@@ -1,8 +1,7 @@
-import { Route, Switch } from 'react-router-dom'
 import React from 'react'
-// import PropTypes from 'prop-types'
-
+import { Route, Switch } from 'react-router-dom'
 import {
+    sections,
     DATA_SET_REPORT_SECTION_KEY,
     ORG_UNIT_DIST_REPORT_SECTION_KEY,
     REPORTING_RATE_SUMMARY_SECTION_KEY,
@@ -10,16 +9,15 @@ import {
     STANDARD_REPORT_SECTION_KEY,
 } from '../config/sections.config'
 import { DataSetReport } from '../pages/DataSetReport'
+import Home from '../pages/home/Home'
 import { OrganisationUnitDistributionReport } from '../pages/OrganisationUnitDistributionReport'
 import { ReportingRateSummary } from '../pages/ReportingRateSummary'
 import { Resource } from '../pages/Resource'
-import { StandardReport } from '../pages/StandardReport'
-import StyledHtmlReport from '../pages/standard-report/StyledHtmlReport'
-import { sections } from '../config/sections.config'
-import Home from '../pages/home/Home'
-import NoMatch from './NoMatch'
-import { ConnectedAddEditStdReport } from '../pages/standard-report/AddEditStdReport'
 import { AddEditResource } from '../pages/resource/AddEditResource'
+import { ConnectedAddEditStdReport } from '../pages/standard-report/AddEditStdReport'
+import StyledHtmlReport from '../pages/standard-report/StyledHtmlReport'
+import { StandardReport } from '../pages/StandardReport'
+import NoMatch from './NoMatch'
 
 const standardReportPath = sections[STANDARD_REPORT_SECTION_KEY].path
 const resourcePath = sections[RESOURCE_SECTION_KEY].path

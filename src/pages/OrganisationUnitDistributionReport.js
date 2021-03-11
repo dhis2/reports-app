@@ -1,19 +1,18 @@
 import Paper from '@material-ui/core/Paper'
 import PropTypes from 'prop-types'
 import React from 'react'
-
-import { Form } from './organisation-unit-distribution-report/Form'
+import BarChart from '../components/BarChart'
+import { Snackbar } from '../components/feedback/Snackbar'
+import { SectionHeadline } from '../components/SectionHeadline'
+import TabularReport from '../components/TabularReport'
 import {
     ORG_UNIT_DIST_REPORT_SECTION_KEY,
     sections,
 } from '../config/sections.config'
-import { SectionHeadline } from '../components/SectionHeadline'
-import { Snackbar } from '../components/feedback/Snackbar'
-import { connectOrganisationUnitDistributionReport } from './organisation-unit-distribution-report/connectOrganisationUnitDistributionReport'
-import { container } from '../utils/styles/shared.js'
 import { reportContent } from '../utils/react/propTypes'
-import BarChart from '../components/BarChart'
-import TabularReport from '../components/TabularReport'
+import { container } from '../utils/styles/shared.js'
+import { connectOrganisationUnitDistributionReport } from './organisation-unit-distribution-report/connectOrganisationUnitDistributionReport'
+import { Form } from './organisation-unit-distribution-report/Form'
 
 class OrganisationUnitDistributionReport extends React.Component {
     componentDidMount() {

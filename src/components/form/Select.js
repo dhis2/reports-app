@@ -1,16 +1,16 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import FormControl from '@material-ui/core/FormControl'
 import InputLabel from '@material-ui/core/InputLabel'
-import MUISelect from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
+import MUISelect from '@material-ui/core/Select'
+import PropTypes from 'prop-types'
+import React from 'react'
 import {
     formInput,
     formInputMeta,
     formOptions,
 } from '../../utils/react/propTypes'
-import { inputWrapper } from './styles'
 import { ErrorText } from './buildingBlocks/ErrorText'
+import { inputWrapper } from './styles'
 
 export const SelectField = props => (
     <MUISelect {...props.input} disabled={props.disabled}>

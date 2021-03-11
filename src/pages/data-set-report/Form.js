@@ -1,12 +1,12 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import i18n from '@dhis2/d2-i18n'
 import { CheckBox } from '@dhis2/d2-ui-core'
 import { Button } from '@dhis2/d2-ui-core'
-import DataSets from '../../components/DatasetsDropdown'
+import PropTypes from 'prop-types'
+import React from 'react'
 import { DataSetDimensions } from '../../components/DataSetDimensions'
-import PeriodPickerComponent from '../../components/PeriodPickerWithPeriodType'
+import DataSets from '../../components/DatasetsDropdown'
 import OrgUnitsTreeWithExtraOptions from '../../components/OrgUnitsTreeWithExtraOptions'
+import PeriodPickerComponent from '../../components/PeriodPickerWithPeriodType'
 
 const Form = props => (
     <div id="data-set-report-form">

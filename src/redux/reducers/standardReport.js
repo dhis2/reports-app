@@ -1,6 +1,6 @@
-import { actionTypes } from '../actions/standardReport'
-import { actionTypes as reportDataActionTypes } from '../actions/reportData'
 import { CONTEXT_MENU_ACTION } from '../../pages/standard-report/standard.report.conf'
+import { actionTypes as reportDataActionTypes } from '../actions/reportData'
+import { actionTypes } from '../actions/standardReport'
 
 export const defaultState = {
     reports: [],
