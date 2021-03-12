@@ -77,13 +77,13 @@ msgstr "Nenalezeny žádné shody"
 
 msgid "Please enter at least {{count}} characters"
 msgid_plural "Please enter at least {{count}} characters"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Zadejte alespoň {{count}} znak"
+msgstr[1] "Zadejte alespoň {{count}} znaky"
+msgstr[2] "Zadejte alespoň {{count}} znaků"
+msgstr[3] "Zadejte alespoň {{count}} znaků"
 
 msgid "Type to search a report table"
-msgstr ""
+msgstr "Zadejte vyhledávání tabulky přehledů"
 
 msgid "Standard Report"
 msgstr "Standardní zpráva"
