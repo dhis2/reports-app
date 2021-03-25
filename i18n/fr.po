@@ -5,15 +5,16 @@
 # Bram Piot <bram.piot@gmail.com>, 2020
 # Edem Kossi <ekossi@hispwca.org>, 2020
 # Viktor Varland <viktor@dhis2.org>, 2020
-# Yao Selom SAKA <saka.yao@yahoo.fr>, 2020
 # Gabriela Rodriguez <grodriguezcoronado@gmail.com>, 2021
+# Yayra Gomado <ygomado@hispwca.org>, 2021
+# Yao Selom SAKA <saka.yao@yahoo.fr>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2021-03-03T10:35:11.879Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
-"Last-Translator: Gabriela Rodriguez <grodriguezcoronado@gmail.com>, 2021\n"
+"Last-Translator: Yao Selom SAKA <saka.yao@yahoo.fr>, 2021\n"
 "Language-Team: French (https://www.transifex.com/hisp-uio/teams/100509/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -165,16 +166,16 @@ msgid "Use data for selected unit only"
 msgstr "Utiliser les données pour l'unité sélectionnée uniquement"
 
 msgid "Get Chart"
-msgstr ""
+msgstr "Obtenir un graphique"
 
 msgid "Edit resource"
-msgstr ""
+msgstr "Modifier la ressource"
 
 msgid "Save resource"
-msgstr ""
+msgstr "Sauvegarder la ressource"
 
 msgid "Add resource"
-msgstr ""
+msgstr "Ajouter une ressource"
 
 msgid "Do you want to use this file as an attachment?"
 msgstr ""
@@ -189,16 +190,16 @@ msgid "File"
 msgstr "Fichier"
 
 msgid "Name*"
-msgstr ""
+msgstr "Nom*"
 
 msgid "Details"
 msgstr "Details"
 
 msgid "Resource Type"
-msgstr ""
+msgstr "Type de ressource"
 
 msgid "Url*"
-msgstr ""
+msgstr "Url*"
 
 msgid "File resources can not be edited, only created"
 msgstr ""
@@ -237,10 +238,10 @@ msgid "Download"
 msgstr "Télécharger"
 
 msgid "Report Type*"
-msgstr ""
+msgstr "Type de rapport*"
 
 msgid "Report Table*"
-msgstr ""
+msgstr "Tableau de rapport*"
 
 msgid "Design File"
 msgstr ""
@@ -261,7 +262,7 @@ msgid "Submit"
 msgstr "Envoyer"
 
 msgid "[ None ]"
-msgstr ""
+msgstr "[ Aucun ]"
 
 msgid "Jasper report with report table data source"
 msgstr "Rapport Jasper avec source de données tableau"
@@ -309,7 +310,7 @@ msgid "chart"
 msgstr "graphique"
 
 msgid "table"
-msgstr ""
+msgstr "tableau"
 
 msgid "An error occurred while loading the report!"
 msgstr ""
@@ -486,19 +487,19 @@ msgid "Close"
 msgstr "Fermer"
 
 msgid "week"
-msgstr ""
+msgstr "semaine"
 
 msgid "month"
 msgstr "mois"
 
 msgid "year"
-msgstr ""
+msgstr "année"
 
 msgid "bi monthly"
-msgstr ""
+msgstr "bimensuel"
 
 msgid "day"
-msgstr ""
+msgstr "jour"
 
 msgid "January"
 msgstr "Janvier"
@@ -612,13 +613,13 @@ msgid "Weekly Sunday"
 msgstr "Chaque semaine, le dimanche"
 
 msgid "Bi-Weekly"
-msgstr ""
+msgstr "bi-hebdomadaire"
 
 msgid "Monthly"
 msgstr "Mensuel"
 
 msgid "Bi-Monthly"
-msgstr ""
+msgstr "Bimensuel"
 
 msgid "Quarterly"
 msgstr "Trimestriel"
@@ -669,10 +670,10 @@ msgid "Reporting week"
 msgstr ""
 
 msgid "Last Week"
-msgstr ""
+msgstr "Semaine dernière"
 
 msgid "Last 2 weeks"
-msgstr ""
+msgstr "2 dernières semaines"
 
 msgid "Last 12 weeks"
 msgstr "12 dernières semaines"
@@ -747,7 +748,7 @@ msgid "Last 2 six-months"
 msgstr "2 derniers semestres"
 
 msgid "Financial Years"
-msgstr ""
+msgstr "Années fiscales"
 
 msgid "Reporting financial year"
 msgstr ""
@@ -771,10 +772,10 @@ msgid "Last 5 years"
 msgstr "5 dernières années"
 
 msgid "External url"
-msgstr ""
+msgstr "URL externe"
 
 msgid "Upload file"
 msgstr "Charger fichier"
 
 msgid "Confirm delete"
-msgstr ""
+msgstr "Confirmer la suppression"
