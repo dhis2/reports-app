@@ -88,7 +88,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 msgid "Type to search a report table"
-msgstr ""
+msgstr "Taper pour rechercher un tableau de rapport"
 
 msgid "Standard Report"
 msgstr "Rapport standard"
@@ -141,7 +141,7 @@ msgid "View Resources"
 msgstr "Voir les ressources"
 
 msgid "Org unit distribution report"
-msgstr ""
+msgstr "Rapport de distribution des unités d'organisation"
 
 msgid ""
 "Browse the organisation unit distribution report based on the organisation "
@@ -203,6 +203,8 @@ msgstr "Url*"
 
 msgid "File resources can not be edited, only created"
 msgstr ""
+"Les ressources de fichiers ne peuvent pas être modifiées, elles peuvent "
+"seulement être créées"
 
 msgid "Cancel"
 msgstr "Annuler"
@@ -220,10 +222,10 @@ msgid "Report parameters"
 msgstr "Les paramètres de rapport"
 
 msgid "There are some errors you have to fix first!"
-msgstr ""
+msgstr "Il y a des erreurs que vous devez d'abord corriger !"
 
 msgid "Back to standard reports list"
-msgstr ""
+msgstr "Retour à la liste des rapports standard"
 
 msgid "Get current design"
 msgstr "Obtenir le design actuel"
@@ -310,7 +312,7 @@ msgstr ""
 "Une erreur s'est produite lors du chargement des unités d'organisation"
 
 msgid "Successfully loaded the {{ outputType }}"
-msgstr ""
+msgstr "Chargement de {{ outputType }} réussi"
 
 msgid "chart"
 msgstr "graphique"
@@ -319,13 +321,14 @@ msgid "table"
 msgstr "tableau"
 
 msgid "An error occurred while loading the report!"
-msgstr ""
+msgstr "Une erreur s'est produite lors du chargement du rapport !"
 
 msgid "Successfully added comment"
 msgstr "Commentaire ajouté avec succès"
 
 msgid "An error occurred while submitting your comment!"
 msgstr ""
+"Une erreur s'est produite lors de la soumission de votre commentaire !"
 
 msgid "Could not load period types"
 msgstr "Impossible de charger les types de période"
@@ -347,33 +350,39 @@ msgstr "Une erreur s'est produite lors de l'ajout de la ressource !"
 
 msgid "An error occurred while saving the modifications!"
 msgstr ""
+"Une erreur s'est produite lors de l'enregistrement des modifications !"
 
 msgid "An error occurred while loading the standard reports"
-msgstr ""
+msgstr "Une erreur s'est produite lors du chargement des rapports standard"
 
 msgid "An error occurred while trying to delete the standard report"
 msgstr ""
+"Une erreur s'est produite lors de la tentative de suppression du rapport "
+"standard"
 
 msgid "An error occurred while loading the standard report details"
 msgstr ""
+"Une erreur s'est produite lors du chargement des détails du rapport standard"
 
 msgid "The report has been updated successfully"
-msgstr ""
+msgstr "Le rapport a été mis à jour avec succès"
 
 msgid "The report has been added successfully"
-msgstr ""
+msgstr "Le rapport a été ajouté avec succès"
 
 msgid "An error occurred while updating the report!"
-msgstr ""
+msgstr "Une erreur s'est produite lors de la mise à jour du rapport !"
 
 msgid "An error occurred while adding the report!"
-msgstr ""
+msgstr "Une erreur s'est produite lors de l'ajout du rapport !"
 
 msgid "An error occurred while generating the html report"
-msgstr ""
+msgstr "Une erreur s'est produite lors de la création du rapport html"
 
 msgid "An error occurred while loading the report table options"
 msgstr ""
+"Une erreur s'est produite lors du chargement des options du tableau de "
+"rapport"
 
 msgid "Count"
 msgstr "Décompte"
@@ -439,10 +448,10 @@ msgid "Sharing settings"
 msgstr "Paramètres de partage"
 
 msgid "View Resource"
-msgstr ""
+msgstr "Voir les ressources"
 
 msgid "Edit Resource"
-msgstr ""
+msgstr "Modifier la ressource"
 
 msgid "Add users and user groups"
 msgstr "Ajouter des utilisateurs et groupes d'utilisateurs"
@@ -451,10 +460,10 @@ msgid "Enter names"
 msgstr "Enter names"
 
 msgid "Permissions"
-msgstr ""
+msgstr "Autorisations"
 
 msgid "Created By"
-msgstr ""
+msgstr "Créé par"
 
 msgid "Who has access"
 msgstr "Qui a accès"
@@ -478,16 +487,16 @@ msgid "Public access (with login)"
 msgstr "Accès public"
 
 msgid "Public can edit"
-msgstr ""
+msgstr "Tout le monde peut modifier"
 
 msgid "Public can view"
-msgstr ""
+msgstr "Tout le monde peut consulter"
 
 msgid "Public can find, view and edit"
-msgstr ""
+msgstr "Tout le monde peut trouver, consulter et modifier"
 
 msgid "Public can find and view"
-msgstr ""
+msgstr "Tout le monde peut trouver, consulter"
 
 msgid "Close"
 msgstr "Fermer"
