@@ -23,28 +23,28 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 msgid "Updating Organisation Units Tree..."
-msgstr ""
+msgstr "Arborescence des Unités d'organisation..."
 
 msgid "Select Option"
-msgstr ""
+msgstr "Sélectionner une option"
 
 msgid "Data set dimensions"
-msgstr ""
+msgstr "Dimensions de l'ensemble de données"
 
 msgid "Loading options..."
-msgstr ""
+msgstr "Chargement des options..."
 
 msgid "Select Data Set"
-msgstr ""
+msgstr "Sélectionner un ensemble de données"
 
 msgid "Data set"
 msgstr "Ensemble de données"
 
 msgid "Group Set"
-msgstr ""
+msgstr "Ensemble de groupes"
 
 msgid "Select Group Set"
-msgstr ""
+msgstr "Sélectionner un ensemble de groupes"
 
 msgid "Show more options"
 msgstr "Afficher d'autres options"
@@ -62,7 +62,7 @@ msgid "Search"
 msgstr "Chercher"
 
 msgid "No results have been found"
-msgstr ""
+msgstr "Aucun résultat trouvé"
 
 msgid "Download as"
 msgstr "Télécharger"
@@ -77,7 +77,7 @@ msgid "Select file"
 msgstr "Sélectionner le fichier"
 
 msgid "No file chosen"
-msgstr ""
+msgstr "Aucun fichier choisi"
 
 msgid "No matches found"
 msgstr "Aucun résultat"
@@ -101,7 +101,7 @@ msgstr ""
 "les tableaux de rapport et peuvent être conçus dans BIRT ou JasperReports."
 
 msgid "View Reports"
-msgstr ""
+msgstr "Afficher les rapports"
 
 msgid "Data Set Report"
 msgstr "Rapport basé sur le formulaire"
@@ -115,10 +115,10 @@ msgstr ""
 "agrégées."
 
 msgid "Get Report"
-msgstr ""
+msgstr "Obtenir un rapport"
 
 msgid "Reporting Rate Summary"
-msgstr "Apercu taux rapportage"
+msgstr "Apercu du taux de déclaration"
 
 msgid ""
 "Browse the reporting rates of data sets by organisation unit and period "
@@ -138,7 +138,7 @@ msgstr ""
 "téléchargées ou des URL web."
 
 msgid "View Resources"
-msgstr ""
+msgstr "Voir les ressources"
 
 msgid "Org unit distribution report"
 msgstr ""
@@ -151,13 +151,13 @@ msgstr ""
 "ensembles de groupes d'unités d'organisation et leurs groupes."
 
 msgid "Reporting Period"
-msgstr ""
+msgstr "Période de déclaration"
 
 msgid "Organisation Unit"
 msgstr "Unité d'organisation"
 
 msgid "CONFIRM"
-msgstr ""
+msgstr "CONFIRMER"
 
 msgid "Report period"
 msgstr "Période du rapport"
@@ -178,7 +178,7 @@ msgid "Add resource"
 msgstr "Ajouter une ressource"
 
 msgid "Do you want to use this file as an attachment?"
-msgstr ""
+msgstr "Voulez-vous utiliser ce fichier en pièce jointe ?"
 
 msgid "Yes"
 msgstr "Oui"
@@ -208,13 +208,13 @@ msgid "Cancel"
 msgstr "Annuler"
 
 msgid "Edit standard report"
-msgstr ""
+msgstr "Modifier un rapport standard"
 
 msgid "Create standard report"
-msgstr ""
+msgstr "Créer un rapport standard"
 
 msgid "Generate report"
-msgstr ""
+msgstr "Générer un rapport"
 
 msgid "Report parameters"
 msgstr "Les paramètres de rapport"
@@ -229,10 +229,10 @@ msgid "Get current design"
 msgstr "Obtenir le design actuel"
 
 msgid "Get HTML Report Template"
-msgstr ""
+msgstr "Obtenir le modèle de rapport HTML"
 
 msgid "Get Jasper Report Template"
-msgstr ""
+msgstr "Obtenir le modèle de rapport Jasper"
 
 msgid "Download"
 msgstr "Télécharger"
@@ -244,10 +244,10 @@ msgid "Report Table*"
 msgstr "Tableau de rapport*"
 
 msgid "Design File"
-msgstr ""
+msgstr "Fichier de conception"
 
 msgid "Design File*"
-msgstr ""
+msgstr "Fichier de conception*"
 
 msgid "Relative periods"
 msgstr "Périodes relatives"
@@ -256,7 +256,7 @@ msgid "Settings"
 msgstr "Paramètres"
 
 msgid "Cache Strategy*"
-msgstr ""
+msgstr "Stratégie de mise en cache*"
 
 msgid "Submit"
 msgstr "Envoyer"
@@ -290,18 +290,24 @@ msgstr "Cache pendant 2 semaines"
 
 msgid "An error occurred whole loading the data set options"
 msgstr ""
+"Une erreur s'est produite lors du chargement des options d'ensemble de "
+"données"
 
 msgid "An error occurred while loading the data set dimensions"
 msgstr ""
+"Une erreur s'est produite lors du chargement des dimensions des ensemble de "
+"données"
 
 msgid "An error occurred while loading the group sets!"
 msgstr ""
+"Une erreur s'est produite lors du chargement des ensembles de groupes !"
 
 msgid "Could not load organisation units"
-msgstr ""
+msgstr "Impossible de charger les unités d'organisation"
 
 msgid "An error occurred while loading the organisation units!"
 msgstr ""
+"Une erreur s'est produite lors du chargement des unités d'organisation"
 
 msgid "Successfully loaded the {{ outputType }}"
 msgstr ""
@@ -316,28 +322,28 @@ msgid "An error occurred while loading the report!"
 msgstr ""
 
 msgid "Successfully added comment"
-msgstr ""
+msgstr "Commentaire ajouté avec succès"
 
 msgid "An error occurred while submitting your comment!"
 msgstr ""
 
 msgid "Could not load period types"
-msgstr ""
+msgstr "Impossible de charger les types de période"
 
 msgid "An error occurred while loading the resources!"
-msgstr ""
+msgstr "Une erreur s'est produite lors du chargement des ressources !"
 
 msgid "Do you really want to delete this resource?"
-msgstr ""
+msgstr "Voulez-vous vraiment supprimer cette ressource ?"
 
 msgid "The resource has been deleted successfully"
-msgstr ""
+msgstr "La ressource a été supprimée avec succès"
 
 msgid "An error occurred when deleting the resource!"
-msgstr ""
+msgstr "Une erreur s'est produite lors de la suppression de la ressource !"
 
 msgid "An error occurred while adding the resource!"
-msgstr ""
+msgstr "Une erreur s'est produite lors de l'ajout de la ressource !"
 
 msgid "An error occurred while saving the modifications!"
 msgstr ""
@@ -538,61 +544,61 @@ msgid "December"
 msgstr "Décembre"
 
 msgid "January-February"
-msgstr ""
+msgstr "Janvier-Février"
 
 msgid "March-April"
-msgstr ""
+msgstr "Mars-Avril"
 
 msgid "May-June"
-msgstr ""
+msgstr "Mai-Juin"
 
 msgid "July-August"
-msgstr ""
+msgstr "Juillet-Août"
 
 msgid "September-October"
-msgstr ""
+msgstr "Septembre-Octobre"
 
 msgid "November-December"
-msgstr ""
+msgstr "Novembre-Décembre"
 
 msgid "November-April"
-msgstr ""
+msgstr "Novembre-Avril"
 
 msgid "May-October"
-msgstr ""
+msgstr "Mai-Octobre"
 
 msgid "quarter"
-msgstr ""
+msgstr "Trimestre"
 
 msgid "January-March"
-msgstr ""
+msgstr "Janvier-Mars"
 
 msgid "April-June"
-msgstr ""
+msgstr "Avril-Juin"
 
 msgid "July-September"
-msgstr ""
+msgstr "Juillet-Septembre"
 
 msgid "October-December"
-msgstr ""
+msgstr "Octobre-Décembre"
 
 msgid "six monthly"
-msgstr ""
+msgstr "Semestriel"
 
 msgid "January-June"
-msgstr ""
+msgstr "Janvier-Juin"
 
 msgid "July-December"
-msgstr ""
+msgstr "Juillet-Décembre"
 
 msgid "April-September"
-msgstr ""
+msgstr "Avril-Septembre"
 
 msgid "October-March"
-msgstr ""
+msgstr "Octobre-Mars"
 
 msgid "Bi-Week"
-msgstr ""
+msgstr "Bi-hebdomadaire"
 
 msgid "Daily"
 msgstr "Quotidien"
@@ -625,13 +631,13 @@ msgid "Quarterly"
 msgstr "Trimestriel"
 
 msgid "Six-Monthly"
-msgstr ""
+msgstr "Semestriel"
 
 msgid "Six-Monthly April"
-msgstr ""
+msgstr "Avril Semestriel"
 
 msgid "Six-Monthly November"
-msgstr ""
+msgstr "Novembre semestriel"
 
 msgid "Yearly"
 msgstr "Annuel"
@@ -649,7 +655,7 @@ msgid "Days"
 msgstr "Jours"
 
 msgid "Reporting day"
-msgstr ""
+msgstr "Jour de déclaration"
 
 msgid "Yesterday"
 msgstr "Hier"
@@ -667,7 +673,7 @@ msgid "Weeks"
 msgstr "Semaines"
 
 msgid "Reporting week"
-msgstr ""
+msgstr "Semaine de rapport"
 
 msgid "Last Week"
 msgstr "Semaine dernière"
@@ -715,7 +721,7 @@ msgid "Last bi-month"
 msgstr "Dernier bi-mestre"
 
 msgid "Last 6 bi-month"
-msgstr ""
+msgstr "6 derniers bimestres"
 
 msgid "Bi-months this year"
 msgstr "Bimensuels cette année"
@@ -733,10 +739,10 @@ msgid "Last 4 quarters"
 msgstr "4 derniers trimestres"
 
 msgid "Quarters of reporting year"
-msgstr ""
+msgstr "Trimestres de l'année de rapport"
 
 msgid "Six-Months"
-msgstr ""
+msgstr "Semestres"
 
 msgid "Reporting six-month"
 msgstr "Semestre de rapportage"
@@ -751,7 +757,7 @@ msgid "Financial Years"
 msgstr "Années fiscales"
 
 msgid "Reporting financial year"
-msgstr ""
+msgstr "Année fiscale de rapport"
 
 msgid "Last financial year"
 msgstr "Dernière année financière"
@@ -763,7 +769,7 @@ msgid "Years"
 msgstr "Années"
 
 msgid "Reporting year"
-msgstr ""
+msgstr "Année de rapport"
 
 msgid "Last year"
 msgstr "L'année passée"
