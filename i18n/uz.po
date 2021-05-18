@@ -77,10 +77,10 @@ msgstr "Ҳеч нарса топилмади"
 
 msgid "Please enter at least {{count}} characters"
 msgid_plural "Please enter at least {{count}} characters"
-msgstr[0] ""
+msgstr[0] "Камида 21 {{count}} та белгини киритинг"
 
 msgid "Type to search a report table"
-msgstr ""
+msgstr "Ҳисобот жадвалини қидириш ёзинг"
 
 msgid "Standard Report"
 msgstr "Стандарт ҳисобот"
