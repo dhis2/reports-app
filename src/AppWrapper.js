@@ -32,7 +32,6 @@ const AppWrapper = () => {
                 'organisationUnit',
                 'organisationUnitGroupSet',
                 'report',
-                'reportTable',
             ],
         },
         onInitialized: d2 => {
