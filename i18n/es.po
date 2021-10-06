@@ -7,13 +7,14 @@
 # Viktor Varland <viktor@dhis2.org>, 2020
 # Gabriela Rodriguez <grodriguezcoronado@gmail.com>, 2021
 # Alison Andrade <aandrade@ippfwhr.org>, 2021
+# Pablo Pajuelo Cabezas <ppajuelo@quadram.mobi>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2021-03-03T10:35:11.879Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
-"Last-Translator: Alison Andrade <aandrade@ippfwhr.org>, 2021\n"
+"Last-Translator: Pablo Pajuelo Cabezas <ppajuelo@quadram.mobi>, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/hisp-uio/teams/100509/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -668,7 +669,7 @@ msgid "Reporting week"
 msgstr ""
 
 msgid "Last Week"
-msgstr ""
+msgstr "La semana pasada"
 
 msgid "Last 2 weeks"
 msgstr ""
