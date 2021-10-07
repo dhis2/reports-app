@@ -88,20 +88,28 @@ export const getPeriodTypes = () =>
 /**
  * @return {Promise} Organisation units
  */
-export const getOrganisationUnits = () =>
-    d2.models.organisationUnits
-        .list({
+export const getOrganisationUnits = async () => {
+    const orgUnitFields = [
+        'id',
+        'displayName',
+        'path',
+        'children::isNotEmpty',
+        'memberCount',
+    ].join(',')
+    const organisationUnits = await d2.currentUser.getOrganisationUnits({
+        fields: orgUnitFields,
+    })
+    if (organisationUnits.size > 0) {
+        return organisationUnits.toArray()
+    } else {
+        const orgUnitModel = await d2.models.organisationUnits.list({
             paging: false,
             level: 1,
-            fields: [
-                'id',
-                'displayName',
-                'path',
-                'children::isNotEmpty',
-                'memberCount',
-            ],
+            fields: orgUnitFields,
         })
-        .then(modelCollection => modelCollection.toArray())
+        return orgUnitModel.toArray()
+    }
+}
 
 /**
  * @param {Array} dataSetOptions
