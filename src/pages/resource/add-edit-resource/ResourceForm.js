@@ -13,7 +13,7 @@ import { TitleResource } from './ResourceForm/TitleResource'
 import { Type } from './ResourceForm/Type'
 import { Url } from './ResourceForm/Url'
 
-export const ResourceForm = props => (
+export const ResourceForm = (props) => (
     <Form onSubmit={props.onSubmit} initialValues={props.initialValues}>
         {({ handleSubmit, values, valid }) => (
             <form onSubmit={handleSubmit}>

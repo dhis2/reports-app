@@ -5,7 +5,7 @@ import { File as FileInput } from '../../../../components/form/File'
 import { FormRow } from '../../../../components/form/FormRow'
 import { isRequired } from '../../../../utils/form/validators'
 
-export const File = props => (
+export const File = (props) => (
     <FormRow>
         <FileInput
             name="file"

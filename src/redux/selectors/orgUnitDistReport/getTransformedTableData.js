@@ -38,7 +38,7 @@ export default function getTransformedTableData(state) {
  */
 function getHeaders(headers) {
     return [
-        ...headers.map(header =>
+        ...headers.map((header) =>
             header.name === 'ou' ? orgUnitColumnDisplayName : header.column
         ),
         totalColumnDisplayName,
@@ -89,8 +89,12 @@ function ascByNameWithParentBelow(a, b, selectedOrgUnitName) {
     const nameB = b[0].toUpperCase()
     const upperOrgUnitName = selectedOrgUnitName.toUpperCase()
 
-    if (nameB === upperOrgUnitName) return -1
-    if (nameA === upperOrgUnitName) return 1
+    if (nameB === upperOrgUnitName) {
+        return -1
+    }
+    if (nameA === upperOrgUnitName) {
+        return 1
+    }
 
     return nameA.localeCompare(nameB)
 }

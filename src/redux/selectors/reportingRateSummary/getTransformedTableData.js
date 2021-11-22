@@ -54,7 +54,7 @@ export function parseHeaders(data) {
 
 export function parseRows(rowsWithAllFields) {
     return rowsWithAllFields
-        .map(row =>
+        .map((row) =>
             rowIndexesToRead.reduce((acc, rowIndex) => {
                 acc.push(row[rowIndex])
                 return acc

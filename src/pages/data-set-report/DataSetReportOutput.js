@@ -7,7 +7,7 @@ import ReportTable from '../../components/TabularReport/ReportTable'
 import { reportContent } from '../../utils/react/propTypes'
 import HtmlReport from '../standard-report/HtmlReport'
 
-const DataSetReportOutput = props => (
+const DataSetReportOutput = (props) => (
     <ReportLoader content={props.content} isLoading={props.isLoading}>
         <div className="tabular-report">
             <ReportComment
@@ -20,7 +20,7 @@ const DataSetReportOutput = props => (
                 <HtmlReport html={props.content.data} />
             ) : (
                 !!props.content.length &&
-                props.content.map(table => (
+                props.content.map((table) => (
                     <ReportTable key={table.title} content={table} />
                 ))
             )}

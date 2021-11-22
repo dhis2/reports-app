@@ -17,7 +17,7 @@ const styles = {
     },
 }
 
-export const CheckBoxes = withStyles(styles)(props => (
+export const CheckBoxes = withStyles(styles)((props) => (
     <FormControl className={props.classes.container}>
         {props.label && (
             <FormHelperText className={props.classes.label}>
@@ -29,7 +29,7 @@ export const CheckBoxes = withStyles(styles)(props => (
                 {({ meta }) => (meta.error && meta.touched ? meta.error : '')}
             </Field>
         )}
-        {props.options.map(option => (
+        {props.options.map((option) => (
             <div key={option.label}>
                 <Field
                     type="checkbox"

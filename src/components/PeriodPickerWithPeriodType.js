@@ -17,7 +17,7 @@ export function PeriodPickerWithPeriodType({
     collection,
     selectedPeriodType,
 }) {
-    const onDropDownChange = event => {
+    const onDropDownChange = (event) => {
         selectPeriodType(event)
 
         // relative periods can be selected from the first dropdown
@@ -56,7 +56,7 @@ PeriodPickerWithPeriodType.propTypes = {
     selectedPeriodType: PropTypes.string,
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
     ...state.reportPeriod,
     collection: getFilteredPeriodTypes(state),
 })

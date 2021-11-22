@@ -13,7 +13,7 @@ import getPagerCurrentlyShown from '../redux/selectors/pagination/getPagerCurren
 
 const searchText = i18n.t('Search')
 
-const SearchablePagedList = props => {
+const SearchablePagedList = (props) => {
     const pagination = (
         <Pagination
             total={props.pagerTotal}
@@ -117,7 +117,7 @@ SearchablePagedList.propTypes = {
     searchInputValue: PropTypes.string.isRequired,
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
     pagerTotal: state.pagination.total,
     pagerHasNextPage: () => state.pagination.page < state.pagination.pageCount,
     pagerHasPreviousPage: () => state.pagination.page > 1,

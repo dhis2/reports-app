@@ -65,13 +65,11 @@ export const reportResponseData = {
     fileUrls: [
         {
             extension: 'xls',
-            url:
-                'http://localhost:8080/dhis/api/32/orgUnitAnalytics.xls?ou=O6uvpzGd5pu;YmmeuGbqOwR;JdhagCUEMbj;ARZ4y5i4reU;sxRd2XOzFbz;vWbkYPRmKyS;YuQRtpLP10I;I4jWcnFmgEC;daJPPxtIrQn;npWGUj37qDe;kU8vhUkAGaT;BGGmAwx33dj;dGheVylzol6;U6Kr7Gtpidn;KctpIIucige;zFDYIgyGmXG&ougs=J5jldMd8OHv&columns=J5jldMd8OHv',
+            url: 'http://localhost:8080/dhis/api/32/orgUnitAnalytics.xls?ou=O6uvpzGd5pu;YmmeuGbqOwR;JdhagCUEMbj;ARZ4y5i4reU;sxRd2XOzFbz;vWbkYPRmKyS;YuQRtpLP10I;I4jWcnFmgEC;daJPPxtIrQn;npWGUj37qDe;kU8vhUkAGaT;BGGmAwx33dj;dGheVylzol6;U6Kr7Gtpidn;KctpIIucige;zFDYIgyGmXG&ougs=J5jldMd8OHv&columns=J5jldMd8OHv',
         },
         {
             extension: 'pdf',
-            url:
-                'http://localhost:8080/dhis/api/32/orgUnitAnalytics.pdf?ou=O6uvpzGd5pu;YmmeuGbqOwR;JdhagCUEMbj;ARZ4y5i4reU;sxRd2XOzFbz;vWbkYPRmKyS;YuQRtpLP10I;I4jWcnFmgEC;daJPPxtIrQn;npWGUj37qDe;kU8vhUkAGaT;BGGmAwx33dj;dGheVylzol6;U6Kr7Gtpidn;KctpIIucige;zFDYIgyGmXG&ougs=J5jldMd8OHv&columns=J5jldMd8OHv',
+            url: 'http://localhost:8080/dhis/api/32/orgUnitAnalytics.pdf?ou=O6uvpzGd5pu;YmmeuGbqOwR;JdhagCUEMbj;ARZ4y5i4reU;sxRd2XOzFbz;vWbkYPRmKyS;YuQRtpLP10I;I4jWcnFmgEC;daJPPxtIrQn;npWGUj37qDe;kU8vhUkAGaT;BGGmAwx33dj;dGheVylzol6;U6Kr7Gtpidn;KctpIIucige;zFDYIgyGmXG&ougs=J5jldMd8OHv&columns=J5jldMd8OHv',
         },
     ],
 }
@@ -156,13 +154,11 @@ export const chartResponseData = {
     fileUrls: [
         {
             extension: 'xls',
-            url:
-                'http://localhost:8080/dhis/api/32/orgUnitAnalytics.xls?ou=O6uvpzGd5pu&ougs=J5jldMd8OHv&columns=J5jldMd8OHv',
+            url: 'http://localhost:8080/dhis/api/32/orgUnitAnalytics.xls?ou=O6uvpzGd5pu&ougs=J5jldMd8OHv&columns=J5jldMd8OHv',
         },
         {
             extension: 'pdf',
-            url:
-                'http://localhost:8080/dhis/api/32/orgUnitAnalytics.pdf?ou=O6uvpzGd5pu&ougs=J5jldMd8OHv&columns=J5jldMd8OHv',
+            url: 'http://localhost:8080/dhis/api/32/orgUnitAnalytics.pdf?ou=O6uvpzGd5pu&ougs=J5jldMd8OHv&columns=J5jldMd8OHv',
         },
     ],
 }

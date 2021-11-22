@@ -10,7 +10,7 @@ export const actionTypes = {
     LOADING_DATA_SET_OPTIONS_ERROR: 'LOADING_DATA_SET_OPTIONS_ERROR',
 }
 
-export const selectDataSet = dataSetId => ({
+export const selectDataSet = (dataSetId) => ({
     type: actionTypes.SELECT_DATA_SET,
     payload: dataSetId,
 })
@@ -19,7 +19,7 @@ export const loadingDataSetOptionsStart = () => ({
     type: actionTypes.LOADING_DATA_SET_OPTIONS_START,
 })
 
-export const loadingDataSetOptionsSuccess = options => ({
+export const loadingDataSetOptionsSuccess = (options) => ({
     type: actionTypes.LOADING_DATA_SET_OPTIONS_SUCCESS,
     payload: options,
 })
@@ -32,7 +32,7 @@ export const loadingDataSetOptionsError = () => ({
  * @param {Error} error
  * @returns {Function}
  */
-export const loadingDataSetOptionsErrorWithFeedback = error => dispatch => {
+export const loadingDataSetOptionsErrorWithFeedback = (error) => (dispatch) => {
     const defaultMessage = i18n.t(
         'An error occurred whole loading the data set options'
     )
@@ -41,10 +41,14 @@ export const loadingDataSetOptionsErrorWithFeedback = error => dispatch => {
     dispatch(loadingDataSetOptionsError())
 }
 
-export const loadDataSetOptions = (filter = null) => dispatch => {
-    dispatch(loadingDataSetOptionsStart())
-    return getDataSetOptions()
-        .then(options => (filter ? options.filter(filter) : options))
-        .then(options => dispatch(loadingDataSetOptionsSuccess(options)))
-        .catch(error => dispatch(loadingDataSetOptionsErrorWithFeedback(error)))
-}
+export const loadDataSetOptions =
+    (filter = null) =>
+    (dispatch) => {
+        dispatch(loadingDataSetOptionsStart())
+        return getDataSetOptions()
+            .then((options) => (filter ? options.filter(filter) : options))
+            .then((options) => dispatch(loadingDataSetOptionsSuccess(options)))
+            .catch((error) =>
+                dispatch(loadingDataSetOptionsErrorWithFeedback(error))
+            )
+    }

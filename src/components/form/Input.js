@@ -8,7 +8,7 @@ import { ErrorText } from './buildingBlocks/ErrorText'
 import { HelpText } from './buildingBlocks/HelpText'
 import { inputWrapper } from './styles'
 
-export const Input = props => (
+export const Input = (props) => (
     <React.Fragment>
         <FormControl className={inputWrapper.className}>
             <InputLabel htmlFor={props.input.name}>

@@ -23,7 +23,7 @@ class AddEditResource extends Component {
         }
     }
 
-    onSubmit = values => {
+    onSubmit = (values) => {
         const { file, resource } = extractFileAndFormattedResource(values)
         const submitHandler = this.isEdit()
             ? this.props.updateResource
@@ -128,7 +128,7 @@ AddEditResource.propTypes = {
 }
 
 const ConnectedAddEditResource = connect(
-    state => ({
+    (state) => ({
         resource: state.resource.selectedResource,
     }),
     {

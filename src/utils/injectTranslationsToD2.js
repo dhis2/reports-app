@@ -78,7 +78,7 @@ const d2UiTranslations = {
     bi_week: i18n.t('Bi-Week'),
 }
 
-const injectTranslationsToD2 = d2 => {
+const injectTranslationsToD2 = (d2) => {
     if (d2) {
         Object.assign(d2.i18n.translations, d2UiTranslations)
     }

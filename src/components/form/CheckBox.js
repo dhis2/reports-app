@@ -12,7 +12,7 @@ const checkboxStyle = resolve`
     }
 `
 
-export const CheckBox = props => (
+export const CheckBox = (props) => (
     <div className="form-checkbox">
         <div className="input-container">
             <Checkbox

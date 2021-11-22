@@ -1,7 +1,7 @@
 import React from 'react'
 import { children } from '../../utils/react/propTypes'
 
-export const FormRow = props => (
+export const FormRow = (props) => (
     <React.Fragment>
         <div>{props.children}</div>
 

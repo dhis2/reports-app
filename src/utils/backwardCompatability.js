@@ -50,7 +50,7 @@ const getReportParamsFieldName = () =>
 export const getReportTablesResourceNameBySystemVersion = () =>
     `${getReportTableNameBySystemVersion()}s`
 
-export const getReportTablesFilterBySystemVersion = searchTerm =>
+export const getReportTablesFilterBySystemVersion = (searchTerm) =>
     isAtLeastVersion34()
         ? [`identifiable:token:${searchTerm}`, 'type:eq:PIVOT_TABLE']
         : [`name:ilike:${searchTerm}`]
@@ -73,7 +73,7 @@ export const getStandardReportsFieldsBySystemVersion = () => {
     ]
 }
 
-const getReportParamsPropertiesBySystemVersion = reportParams => {
+const getReportParamsPropertiesBySystemVersion = (reportParams) => {
     if (isAtLeastVersion34() || !reportParams) {
         return reportParams
     }
@@ -95,7 +95,7 @@ export const getStandardReportFieldsBySystemVersion = () => {
     return [':owner', reportTableField]
 }
 
-export const formatStandardReportResponseBySystemVersion = reportModel => {
+export const formatStandardReportResponseBySystemVersion = (reportModel) => {
     // handle both d2 model instances and plain objects
     const reportJson = reportModel.toJSON ? reportModel.toJSON() : reportModel
     // <2.34 reportModel.reportTable, >=2.34 reportmodel.visualization
@@ -120,7 +120,7 @@ export const formatStandardReportResponseBySystemVersion = reportModel => {
     }
 }
 
-export const formatStandardReportPayloadBySystemVersion = report => {
+export const formatStandardReportPayloadBySystemVersion = (report) => {
     if (isAtLeastVersion34()) {
         const visualization = report.reportTable
         delete report.reportTable

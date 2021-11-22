@@ -2,7 +2,7 @@ import React from 'react'
 import createComponentRenderer from '../createComponentRenderer'
 
 describe('createComponentRenderer', () => {
-    const MockComponent = props => <div {...props} />
+    const MockComponent = (props) => <div {...props} />
     const defaultProps = { prop1: '1', prop2: '2' }
     const componentRenderer = createComponentRenderer(
         MockComponent,

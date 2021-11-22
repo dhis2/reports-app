@@ -36,7 +36,7 @@ const primaryButtonStyle = resolve`
     }
 `
 
-export const ReportParams = props => (
+export const ReportParams = (props) => (
     <Dialog
         open={props.showReportParams}
         onClose={props.cancelGeneratingPdfReport}
@@ -60,7 +60,7 @@ export const ReportParams = props => (
                         {i18n.t('There are some errors you have to fix first!')}
                     </p>
                     <ul>
-                        {props.reportParamsErrors.map(error => (
+                        {props.reportParamsErrors.map((error) => (
                             <li className="error" key={error}>
                                 {error}
                             </li>
@@ -122,7 +122,7 @@ ReportParams.propTypes = {
 }
 
 export const ConnectedReportParams = connect(
-    state => ({
+    (state) => ({
         reportParams: state.standardReport.reportParams,
         reportParamsErrors: state.standardReport.reportParamsErrors,
         showReportParams: state.standardReport.showReportParams,

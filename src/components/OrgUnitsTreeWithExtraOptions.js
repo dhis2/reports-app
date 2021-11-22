@@ -7,13 +7,13 @@ import { formLabel } from '../utils/styles/shared.js'
 import OrganisationUnitsTree from './AvailableOrganisationUnitsTree'
 import OrganisationUnitGroupSets from './OrganisationUnitGroupSets'
 
-const getExtraOptionsLabel = showOptions =>
+const getExtraOptionsLabel = (showOptions) =>
     !showOptions ? i18n.t('Show more options') : i18n.t('Show fewer options')
 
-const getExtraOptionsClassName = showOptions =>
+const getExtraOptionsClassName = (showOptions) =>
     showOptions ? 'show-options' : 'hide-options'
 
-export const OrgUnitsTreeWithExtraOptions = props => (
+export const OrgUnitsTreeWithExtraOptions = (props) => (
     <React.Fragment>
         <div className={formLabel.className}>
             {i18n.t('Report organisation unit')}
@@ -64,7 +64,7 @@ OrgUnitsTreeWithExtraOptions.propTypes = {
     toggleShowOptions: PropTypes.func.isRequired,
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
     showOptions: state.organisationUnits.showOptions,
     isLoadingOptions: state.orgUnitGroupSets.loading,
 })

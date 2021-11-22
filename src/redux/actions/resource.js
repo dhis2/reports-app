@@ -2,8 +2,8 @@ import i18n from '@dhis2/d2-i18n'
 import { push } from 'connected-react-router'
 import debounce from 'lodash.debounce'
 import { DEBOUNCE_DELAY } from '../../config/search.config'
-import { RESOURCE_ENDPOINT } from '../../utils/api'
 import {
+    RESOURCE_ENDPOINT,
     getApi,
     getResources,
     getResourceById,
@@ -56,7 +56,7 @@ export const loadingResourcesStart = () => ({
  * @param {Array} resources
  * @returns {Object}
  */
-export const loadingResourcesSuccess = resources => ({
+export const loadingResourcesSuccess = (resources) => ({
     type: actionTypes.LOADING_RESOURCES_SUCCESS,
     payload: resources,
 })
@@ -72,7 +72,7 @@ export const loadingResourcesError = () => ({
  * @param {Error} error
  * @returns {Function}
  */
-export const loadingResourcesErrorWithFeedback = error => dispatch => {
+export const loadingResourcesErrorWithFeedback = (error) => (dispatch) => {
     const defaultMessage = i18n.t(
         'An error occurred while loading the resources!'
     )
@@ -91,11 +91,11 @@ export const loadResources = () => (dispatch, getState) => {
     const { search } = resource
 
     return getResources(page, pageSize, search)
-        .then(response => {
+        .then((response) => {
             dispatch(loadingResourcesSuccess(response.documents))
             dispatch(setPagination(response.pager))
         })
-        .catch(error => {
+        .catch((error) => {
             dispatch(loadingResourcesErrorWithFeedback(error))
         })
 }
@@ -104,7 +104,7 @@ export const loadResources = () => (dispatch, getState) => {
  * @param {number} nextPage
  * @return {Function}
  */
-export const goToNextPage = () => dispatch => {
+export const goToNextPage = () => (dispatch) => {
     dispatch(goToNextPageOrig())
     dispatch(loadResources())
 }
@@ -113,7 +113,7 @@ export const goToNextPage = () => dispatch => {
  * @param {number} nextPage
  * @return {Function}
  */
-export const goToPrevPage = () => dispatch => {
+export const goToPrevPage = () => (dispatch) => {
     dispatch(goToPrevPageOrig())
     dispatch(loadResources())
 }
@@ -122,7 +122,7 @@ export const goToPrevPage = () => dispatch => {
  * @param {string} searchTerm
  * @returns {Object}
  */
-export const setSearch = searchTerm => ({
+export const setSearch = (searchTerm) => ({
     type: actionTypes.SET_RESOURCE_SEARCH,
     payload: searchTerm,
 })
@@ -132,10 +132,10 @@ export const setSearch = searchTerm => ({
  * @return {Function} Redux thunk
  */
 const debouncedLoadResources = debounce(
-    dispatch => dispatch(loadResources()),
+    (dispatch) => dispatch(loadResources()),
     DEBOUNCE_DELAY
 )
-export const setSearchAndLoadResources = searchTerm => dispatch => {
+export const setSearchAndLoadResources = (searchTerm) => (dispatch) => {
     dispatch(setSearch(searchTerm))
     debouncedLoadResources(dispatch)
 }
@@ -145,7 +145,7 @@ export const setSearchAndLoadResources = searchTerm => dispatch => {
  * @param {string} resource.id
  * @returns {Object}
  */
-export const viewResource = resource => {
+export const viewResource = (resource) => {
     const { id } = resource
     const baseUrl = getApi().baseUrl
     const resourceUrl = `${baseUrl}/${RESOURCE_ENDPOINT}/${id}/data`
@@ -161,7 +161,7 @@ export const viewResource = resource => {
  * @param {Object} resource
  * @returns {Object}
  */
-export const showSharingSettings = resource => ({
+export const showSharingSettings = (resource) => ({
     type: actionTypes.SHOW_SHARING_SETTINGS,
     payload: resource,
 })
@@ -169,7 +169,7 @@ export const showSharingSettings = resource => ({
 /**
  * @returns {Object}
  */
-export const addResource = () => dispatch => {
+export const addResource = () => (dispatch) => {
     dispatch(toResourceForm())
 }
 
@@ -177,7 +177,7 @@ export const addResource = () => dispatch => {
  * @param {Object} resource
  * @returns {Object}
  */
-export const editResource = resource => dispatch => {
+export const editResource = (resource) => (dispatch) => {
     dispatch(setResource(resource))
     dispatch(toResourceForm(resource.id))
 }
@@ -186,7 +186,7 @@ export const editResource = resource => dispatch => {
  * @param {String} id
  * @returns {Object}
  */
-export const toResourceForm = id => {
+export const toResourceForm = (id) => {
     const path = id ? `/resource/edit/${id}` : '/resource/new'
     return push(path)
 }
@@ -195,7 +195,7 @@ export const toResourceForm = id => {
  * @param {String} id
  * @returns {Object}
  */
-export const loadResource = id => async dispatch => {
+export const loadResource = (id) => async (dispatch) => {
     const resource = await getResourceById(id)
     return dispatch(setResource(resource))
 }
@@ -204,7 +204,7 @@ export const loadResource = id => async dispatch => {
  * @param {Object} resource
  * @returns {Object}
  */
-export const setResource = resource => ({
+export const setResource = (resource) => ({
     type: actionTypes.SET_RESOURCE,
     payload: resource,
 })
@@ -216,7 +216,7 @@ export const setResource = resource => ({
 const confirmationMessage = i18n.t(
     'Do you really want to delete this resource?'
 )
-export const requestDeleteResource = resource => dispatch => {
+export const requestDeleteResource = (resource) => (dispatch) => {
     dispatch({
         type: actionTypes.REQUEST_DELETE_RESOURCE,
         payload: resource,
@@ -237,7 +237,7 @@ export const deleteResourceError = () => ({
 })
 
 const successMessage = i18n.t('The resource has been deleted successfully')
-export const deleteResourceSuccessWithFeedback = () => dispatch => {
+export const deleteResourceSuccessWithFeedback = () => (dispatch) => {
     dispatch(showSuccessSnackBar(successMessage))
     dispatch(deleteResourceSuccess())
 }
@@ -245,7 +245,7 @@ export const deleteResourceSuccessWithFeedback = () => dispatch => {
 const defaultDeleteResourceErrorMessage = i18n.t(
     'An error occurred when deleting the resource!'
 )
-export const deleteResourceErrorWithFeedback = error => dispatch => {
+export const deleteResourceErrorWithFeedback = (error) => (dispatch) => {
     const message = humanReadableErrorMessage(
         error,
         defaultDeleteResourceErrorMessage
@@ -264,19 +264,19 @@ export const deleteResource = () => (dispatch, getState) => {
             dispatch(deleteResourceSuccessWithFeedback())
             dispatch(loadResources())
         })
-        .catch(error => dispatch(deleteResourceErrorWithFeedback(error)))
+        .catch((error) => dispatch(deleteResourceErrorWithFeedback(error)))
 }
 
 export const clearSelectedResource = () => ({
     type: actionTypes.CLEAR_SELECTED_RESOURCE,
 })
 
-export const backToList = () => dispatch => {
+export const backToList = () => (dispatch) => {
     dispatch(clearSelectedResource())
     dispatch(push('/resource'))
 }
 
-export const closeContextMenu = refreshList => dispatch => {
+export const closeContextMenu = (refreshList) => (dispatch) => {
     dispatch(clearSelectedResource())
 
     if (refreshList) {
@@ -316,7 +316,7 @@ export const loadingAddResourceError = () => ({
  * @param {Error} error
  * @returns {Function}
  */
-export const loadingAddResourceErrorWithFeedback = error => dispatch => {
+export const loadingAddResourceErrorWithFeedback = (error) => (dispatch) => {
     const defaultAddResourceErrorMessage = i18n.t(
         'An error occurred while adding the resource!'
     )
@@ -333,7 +333,7 @@ export const loadingAddResourceErrorWithFeedback = error => dispatch => {
  * @param {File} [file]
  * @returns {Function}
  */
-export const addNewResource = (resource, file) => dispatch => {
+export const addNewResource = (resource, file) => (dispatch) => {
     dispatch(loadingAddResourceStart())
 
     postResource(resource, file)
@@ -341,7 +341,7 @@ export const addNewResource = (resource, file) => dispatch => {
             dispatch(loadingAddResourceSuccess())
             dispatch(loadResources())
         })
-        .catch(error => {
+        .catch((error) => {
             dispatch(loadingAddResourceErrorWithFeedback(error))
         })
 }
@@ -377,7 +377,7 @@ export const loadingEditResourceError = () => ({
  * @param {Error} error
  * @returns {Function}
  */
-export const loadingEditResourceErrorWithFeedback = error => dispatch => {
+export const loadingEditResourceErrorWithFeedback = (error) => (dispatch) => {
     const defaultAddResourceErrorMessage = i18n.t(
         'An error occurred while saving the modifications!'
     )
@@ -403,7 +403,7 @@ export const updateResource = (resource, file) => (dispatch, getState) => {
             dispatch(loadingEditResourceSuccess())
             dispatch(loadResources())
         })
-        .catch(error => {
+        .catch((error) => {
             dispatch(loadingEditResourceErrorWithFeedback(error))
         })
 }

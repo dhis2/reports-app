@@ -5,7 +5,7 @@ import { getIsActionEnabled } from '../../redux/selectors/orgUnitDistReport/getI
 import getTransformedChartData from '../../redux/selectors/orgUnitDistReport/getTransformedChartData'
 import getTransformedTableData from '../../redux/selectors/orgUnitDistReport/getTransformedTableData'
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
     shouldShowChart: state.orgUnitDistReport.shouldShowChart,
     loading: state.reportData.loading,
     reportContent: state.orgUnitDistReport.shouldShowChart

@@ -27,7 +27,7 @@ export class AddEditStandardReport extends PureComponent {
         }
     }
 
-    onSubmit = values => {
+    onSubmit = (values) => {
         const { sendStandardReport, edit } = this.props
         sendStandardReport(values, edit)
     }
@@ -80,7 +80,7 @@ AddEditStandardReport.propTypes = {
     report: ReportForm.propTypes.report,
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
         report: getEditFormInitialValues(state),
         edit: getIsEdit(state),

@@ -23,7 +23,7 @@ import {
 import { DesignFileDownloadButton } from './DesignFileDownloadButton'
 import { validateNewReport, validateReportUpdate } from './validate'
 
-const ReportForm = props => (
+const ReportForm = (props) => (
     <Form
         onSubmit={props.onSubmit}
         validate={props.edit ? validateReportUpdate : validateNewReport}

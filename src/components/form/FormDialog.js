@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { children } from '../../utils/react/propTypes'
 
-export const FormDialog = props => (
+export const FormDialog = (props) => (
     <Dialog open={props.open} onClose={props.onClose} maxWidth="md" fullWidth>
         <div className="form-dialog-title">
             <DialogTitle>{props.title}</DialogTitle>

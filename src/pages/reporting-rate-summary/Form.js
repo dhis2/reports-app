@@ -7,7 +7,7 @@ import OrgUnitsTreeWithExtraOptions from '../../components/OrgUnitsTreeWithExtra
 import PeriodPickerComponent from '../../components/PeriodPickerWithPeriodType'
 import { actionsContainer } from '../../utils/styles/shared.js'
 
-export const Form = props => (
+export const Form = (props) => (
     <div id="report-rate-summary-form">
         <div className="row">
             <div className="col-xs-12 col-md-6">

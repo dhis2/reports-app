@@ -9,7 +9,7 @@ import { formLabel } from '../utils/styles/shared.js'
 const hintTextLoading = i18n.t('Loading options...')
 const hintTextDefault = i18n.t('Select Data Set')
 
-export const DatasetsDropdown = props => (
+export const DatasetsDropdown = (props) => (
     <div>
         <span className={formLabel.className}>{props.label}</span>
         <DropDown
@@ -47,8 +47,8 @@ const mapStateToProps = ({ dataSet: { loading, selected, options } }) => ({
     options,
 })
 
-const mapDispatchToProps = dispatch => ({
-    selectDataSet: event => dispatch(selectDataSet(event.target.value)),
+const mapDispatchToProps = (dispatch) => ({
+    selectDataSet: (event) => dispatch(selectDataSet(event.target.value)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(DatasetsDropdown)

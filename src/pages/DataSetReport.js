@@ -13,7 +13,7 @@ import { connectDataSetReport } from './data-set-report/connectDataSetReport'
 import DataSetReportOutput from './data-set-report/DataSetReportOutput'
 import Form from './data-set-report/Form'
 
-const DataSetReport = props => (
+const DataSetReport = (props) => (
     <div>
         <SectionHeadline
             label={sections[DATA_SET_REPORT_SECTION_KEY].info.label}

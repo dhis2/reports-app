@@ -18,7 +18,7 @@ describe('Actions - organisationUnits GroupSets', () => {
         store = mockStore({})
     })
 
-    const mockShowErrorFeedback = errorMessage => ({
+    const mockShowErrorFeedback = (errorMessage) => ({
         type: feedbackActionTypes.FEEDBACK_SHOW_SNACKBAR,
         payload: { message: errorMessage, type: feedbackTypes.ERROR },
     })
@@ -27,12 +27,12 @@ describe('Actions - organisationUnits GroupSets', () => {
         type: actionTypes.LOADING_GROUP_SETS_START,
     })
 
-    const mockLoadingGroupSetsSuccess = groupSets => ({
+    const mockLoadingGroupSetsSuccess = (groupSets) => ({
         type: actionTypes.LOADING_GROUP_SETS_SUCCESS,
         payload: groupSets,
     })
 
-    const mockLoadingGroupSetsError = errorMessage => ({
+    const mockLoadingGroupSetsError = (errorMessage) => ({
         type: actionTypes.LOADING_GROUP_SETS_ERROR,
         payload: errorMessage,
     })

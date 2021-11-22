@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-const PageHelper = props => (
+const PageHelper = (props) => (
     <a
         className="helper-icon material-icons"
         href={props.url}

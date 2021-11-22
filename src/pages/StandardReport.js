@@ -17,7 +17,7 @@ import {
 } from './standard-report/standard.report.conf'
 import StandardReportActions from './standard-report/StandardReportActions'
 
-const createContextMenuOptions = props => ({
+const createContextMenuOptions = (props) => ({
     [CONTEXT_MENU_ACTION.CREATE]: props.createReport,
     [CONTEXT_MENU_ACTION.EDIT]: props.editReport,
     [CONTEXT_MENU_ACTION.SHARING_SETTINGS]: props.sharingSettings,

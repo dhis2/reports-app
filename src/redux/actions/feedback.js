@@ -21,16 +21,16 @@ export const showSnackbar = (
     payload: { message, type },
 })
 
-export const showSuccessSnackBar = message =>
+export const showSuccessSnackBar = (message) =>
     showSnackbar(message, FEEDBACK_TYPES.SUCCESS)
 
-export const showErrorSnackBar = message =>
+export const showErrorSnackBar = (message) =>
     showSnackbar(message, FEEDBACK_TYPES.ERROR)
 
-export const showWarningSnackBar = message =>
+export const showWarningSnackBar = (message) =>
     showSnackbar(message, FEEDBACK_TYPES.WARNING)
 
-export const showConfirmationSnackBar = message =>
+export const showConfirmationSnackBar = (message) =>
     showSnackbar(message, FEEDBACK_TYPES.ACTION_MESSAGE)
 
 // TODO: remove this

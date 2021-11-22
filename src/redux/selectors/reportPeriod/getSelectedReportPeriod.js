@@ -1,2 +1,2 @@
-export const getSelectedReportPeriod = state =>
+export const getSelectedReportPeriod = (state) =>
     state.reportPeriod.selectedPeriod

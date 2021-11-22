@@ -29,7 +29,7 @@ export const loadingReportDataStart = () => ({
  * @param {string} reportData
  * @returns {Object}
  */
-export const loadingReportDataSuccess = reportData => ({
+export const loadingReportDataSuccess = (reportData) => ({
     type: actionTypes.LOADING_REPORT_DATA_SUCCESS,
     payload: reportData,
 })
@@ -45,21 +45,19 @@ export const loadingReportDataError = () => ({
  * @param {string} reportData
  * @return {Object}
  */
-export const loadingReportDataSuccessWithFeedback = (
-    reportData,
-    shouldShowChart
-) => dispatch => {
-    const successMsg = i18n.t('Successfully loaded the {{ outputType }}', {
-        outputType: shouldShowChart ? i18n.t('chart') : i18n.t('table'),
-    })
-    dispatch(showSuccessSnackBar(i18n.t(successMsg)))
-    dispatch(loadingReportDataSuccess(reportData))
-}
+export const loadingReportDataSuccessWithFeedback =
+    (reportData, shouldShowChart) => (dispatch) => {
+        const successMsg = i18n.t('Successfully loaded the {{ outputType }}', {
+            outputType: shouldShowChart ? i18n.t('chart') : i18n.t('table'),
+        })
+        dispatch(showSuccessSnackBar(i18n.t(successMsg)))
+        dispatch(loadingReportDataSuccess(reportData))
+    }
 
 /**
  * @param {Error} error
  */
-export const loadingReportDataErrorWithFeedback = error => dispatch => {
+export const loadingReportDataErrorWithFeedback = (error) => (dispatch) => {
     const defaultMessage = i18n.t('An error occurred while loading the report!')
     const displayMessage = humanReadableErrorMessage(error, defaultMessage)
     dispatch(showErrorSnackBar(displayMessage))
@@ -77,7 +75,7 @@ export const unsetReportData = () => ({
  * @return {Object}
  */
 // @TODO: not sure this is needed. I think this can be removed
-export const exportReportToXls = tableNodes => {
+export const exportReportToXls = (tableNodes) => {
     const workbook = XLSX.utils.book_new()
 
     tableNodes.forEach((tableNode, index) => {
@@ -94,7 +92,7 @@ export const exportReportToXls = tableNodes => {
  * @param {string} comment
  * @returns {Object}
  */
-export const setReportComment = comment => ({
+export const setReportComment = (comment) => ({
     type: actionTypes.SET_DATA_SET_REPORT_COMMENT,
     payload: comment,
 })
@@ -123,7 +121,7 @@ export const sharingReportCommentError = () => ({
 /**
  * @returns {Function}
  */
-export const sharingReportCommentStartWithFeedback = () => dispatch => {
+export const sharingReportCommentStartWithFeedback = () => (dispatch) => {
     dispatch(showLoader())
     dispatch(sharingReportCommentStart())
 }
@@ -131,7 +129,7 @@ export const sharingReportCommentStartWithFeedback = () => dispatch => {
 /**
  * @returns {Function}
  */
-export const sharingReportCommentSuccessWithFeedback = () => dispatch => {
+export const sharingReportCommentSuccessWithFeedback = () => (dispatch) => {
     dispatch(showSuccessSnackBar(i18n.t('Successfully added comment')))
     dispatch(sharingReportCommentSuccess())
 }
@@ -140,7 +138,7 @@ export const sharingReportCommentSuccessWithFeedback = () => dispatch => {
  * @param {Error} error
  * @returns {Function}
  */
-export const sharingReportCommentErrorWithFeedback = error => dispatch => {
+export const sharingReportCommentErrorWithFeedback = (error) => (dispatch) => {
     const defaultMessge = i18n.t(
         'An error occurred while submitting your comment!'
     )

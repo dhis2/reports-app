@@ -4,7 +4,7 @@ import MenuElement from '../../components/MenuElement'
 import { sectionOrder, sections } from '../../config/sections.config'
 
 const Home = () => {
-    const menuCards = sectionOrder.map(sectionKey => {
+    const menuCards = sectionOrder.map((sectionKey) => {
         const element = sections[sectionKey]
 
         return (

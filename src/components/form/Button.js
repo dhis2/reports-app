@@ -2,7 +2,7 @@ import { Button as D2UIButton } from '@dhis2/d2-ui-core'
 import PropTypes from 'prop-types'
 import React from 'react'
 
-export const Button = props => (
+export const Button = (props) => (
     <span>
         <D2UIButton
             raised

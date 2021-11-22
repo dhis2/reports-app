@@ -6,7 +6,7 @@ import { FormRow } from '../../../../components/form/FormRow'
 import { Select } from '../../../../components/form/Select'
 import { resourceTypeOptions } from '../../../../utils/resource/constants'
 
-export const Type = props => (
+export const Type = (props) => (
     <FormRow>
         <Field
             name="type"

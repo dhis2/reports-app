@@ -21,7 +21,7 @@ export function AvailableOrganisationUnitsTree({
                 hideMemberCount
                 roots={collection}
                 selected={selected ? [selected.path] : []}
-                initiallyExpanded={collection.map(unit => `/${unit.id}`)}
+                initiallyExpanded={collection.map((unit) => `/${unit.id}`)}
                 onSelectClick={selectOrganisationUnit}
             />
             <style jsx>{`

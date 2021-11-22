@@ -13,7 +13,7 @@ import { container } from '../utils/styles/shared.js'
 import { connectReportingRateSummary } from './reporting-rate-summary/connectReportingRateSummary'
 import { Form } from './reporting-rate-summary/Form'
 
-const ReportingRateSummary = props => (
+const ReportingRateSummary = (props) => (
     <div>
         <SectionHeadline
             label={sections[REPORTING_RATE_SUMMARY_SECTION_KEY].info.label}
@@ -43,8 +43,7 @@ ReportingRateSummary.propTypes = {
     reportContent: reportContent.isRequired,
 }
 
-const ConnectedReportingRateSummary = connectReportingRateSummary(
-    ReportingRateSummary
-)
+const ConnectedReportingRateSummary =
+    connectReportingRateSummary(ReportingRateSummary)
 
 export { ConnectedReportingRateSummary as ReportingRateSummary }

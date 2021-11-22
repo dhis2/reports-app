@@ -23,7 +23,7 @@ export const actionTypes = {
 /**
  * @returns {Function}
  */
-export const loadFilteredStandardReportTables = searchTerm => dispatch => {
+export const loadFilteredStandardReportTables = (searchTerm) => (dispatch) => {
     dispatch(setSearch(searchTerm))
     if (searchTerm.length >= MIN_CHAR_LENGTH) {
         debouncedLoadStandardReportTables(dispatch)
@@ -40,7 +40,7 @@ export const loadingStandardReportTablesStart = () => ({
 /**
  * @returns {Object}
  */
-export const setSearch = searchTerm => ({
+export const setSearch = (searchTerm) => ({
     type: actionTypes.STANDARD_REPORT_TABLES_SET_SEARCH_TERM,
     payload: searchTerm,
 })
@@ -53,7 +53,7 @@ export const clearSearch = () => ({
  * @param {Array} tables
  * @returns {Object}
  */
-export const loadingStandardReportTablesSuccess = tables => ({
+export const loadingStandardReportTablesSuccess = (tables) => ({
     type: actionTypes.STANDARD_REPORT_TABLES_LOADING_SUCCESS,
     payload: tables,
 })
@@ -69,15 +69,16 @@ export const loadingStandardReportTablesError = () => ({
  * @param {Error} error
  * @returns {Function}
  */
-export const loadingStandardReportTablesErrorWithFeedback = error => dispatch => {
-    const defaultMessage = i18n.t(
-        'An error occurred while loading the report table options'
-    )
-    const displayMessage = humanReadableErrorMessage(error, defaultMessage)
+export const loadingStandardReportTablesErrorWithFeedback =
+    (error) => (dispatch) => {
+        const defaultMessage = i18n.t(
+            'An error occurred while loading the report table options'
+        )
+        const displayMessage = humanReadableErrorMessage(error, defaultMessage)
 
-    dispatch(showErrorSnackBar(displayMessage))
-    dispatch(loadingStandardReportTablesError())
-}
+        dispatch(showErrorSnackBar(displayMessage))
+        dispatch(loadingStandardReportTablesError())
+    }
 
 /**
  * @returns {Function}
@@ -88,7 +89,7 @@ export const loadStandardReportTables = () => (dispatch, getState) => {
     dispatch(loadingStandardReportTablesStart())
 
     return getStandardReportTables(standardReportTables.searchTerm)
-        .then(reportTables => {
+        .then((reportTables) => {
             const formattedReportTables = reportTables.map(
                 ({ id, displayName }) => ({
                     value: id,
@@ -97,12 +98,12 @@ export const loadStandardReportTables = () => (dispatch, getState) => {
             )
             dispatch(loadingStandardReportTablesSuccess(formattedReportTables))
         })
-        .catch(error => {
+        .catch((error) => {
             dispatch(loadingStandardReportTablesErrorWithFeedback(error))
         })
 }
 
 const debouncedLoadStandardReportTables = debounce(
-    dispatch => dispatch(loadStandardReportTables()),
+    (dispatch) => dispatch(loadStandardReportTables()),
     DEBOUNCE_DELAY
 )

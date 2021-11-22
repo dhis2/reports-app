@@ -21,7 +21,7 @@ export const loadingGroupSetsStart = () => ({
  * @param {Array} groupSets
  * @returns {Object}
  */
-export const loadingGroupSetsSuccess = groupSets => ({
+export const loadingGroupSetsSuccess = (groupSets) => ({
     type: actionTypes.LOADING_GROUP_SETS_SUCCESS,
     payload: groupSets,
 })
@@ -33,7 +33,7 @@ export const loadingGroupSetsSuccess = groupSets => ({
 export const loadingGroupSetsErrorDefaultMessage = i18n.t(
     'An error occurred while loading the group sets!'
 )
-export const loadingGroupSetsError = error => dispatch => {
+export const loadingGroupSetsError = (error) => (dispatch) => {
     const displayMessage = humanReadableErrorMessage(
         error,
         loadingGroupSetsErrorDefaultMessage
@@ -48,19 +48,21 @@ export const loadingGroupSetsError = error => dispatch => {
 /**
  * @returns {Function}
  */
-export const loadGroupSetOptions = () => dispatch => {
+export const loadGroupSetOptions = () => (dispatch) => {
     dispatch(loadingGroupSetsStart())
 
     return getOrgUnitGroupSets()
-        .then(response => dispatch(loadingGroupSetsSuccess(response.toArray())))
-        .catch(error => dispatch(loadingGroupSetsError(error)))
+        .then((response) =>
+            dispatch(loadingGroupSetsSuccess(response.toArray()))
+        )
+        .catch((error) => dispatch(loadingGroupSetsError(error)))
 }
 
 /**
  * @param {string} groupSetId
  * @return {Object}
  */
-export const setGroupSet = groupSetId => ({
+export const setGroupSet = (groupSetId) => ({
     type: actionTypes.SET_GROUP_SET,
     payload: groupSetId,
 })

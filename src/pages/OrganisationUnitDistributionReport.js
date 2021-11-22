@@ -71,8 +71,9 @@ OrganisationUnitDistributionReport.propTypes = {
     shouldShowChart: PropTypes.bool.isRequired,
 }
 
-const ConnectedOrganisationUnitDistributionReport = connectOrganisationUnitDistributionReport(
-    OrganisationUnitDistributionReport
-)
+const ConnectedOrganisationUnitDistributionReport =
+    connectOrganisationUnitDistributionReport(
+        OrganisationUnitDistributionReport
+    )
 
 export { ConnectedOrganisationUnitDistributionReport as OrganisationUnitDistributionReport }

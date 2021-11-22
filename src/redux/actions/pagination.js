@@ -23,7 +23,7 @@ export const goToPrevPage = () => ({
  * @param {Object} pagination
  * @returns {Object}
  */
-export const setPagination = pagination => ({
+export const setPagination = (pagination) => ({
     type: actionTypes.SET_PAGINATION,
     payload: pagination,
 })

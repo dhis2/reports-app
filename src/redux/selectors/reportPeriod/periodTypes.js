@@ -5,11 +5,13 @@ import {
 import { flattenedRelativePeriods } from '../../../utils/periods/relativePeriods'
 import { isJasperReportTableReport } from '../../../utils/standardReport'
 
-export const getFilteredPeriodTypes = state => {
-    const fixedPeriodTypes = state.reportPeriod.collection.map(periodType => ({
-        id: periodType.name,
-        displayName: fixedPeriodTranslations[periodType.name],
-    }))
+export const getFilteredPeriodTypes = (state) => {
+    const fixedPeriodTypes = state.reportPeriod.collection.map(
+        (periodType) => ({
+            id: periodType.name,
+            displayName: fixedPeriodTranslations[periodType.name],
+        })
+    )
 
     if (!state.standardReport.showReportParams) {
         return fixedPeriodTypes
@@ -31,7 +33,7 @@ export const getFilteredPeriodTypes = state => {
                 relativePeriodsThatAreActuallyFixed[periodKey]
 
             if (fixedPeriodTypes) {
-                fixedPeriodTypes.forEach(periodKey => {
+                fixedPeriodTypes.forEach((periodKey) => {
                     acc.push({
                         id: periodKey,
                         displayName: fixedPeriodTranslations[periodKey],

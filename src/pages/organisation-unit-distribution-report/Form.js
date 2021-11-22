@@ -6,7 +6,7 @@ import OrganisationUnitsTree from '../../components/AvailableOrganisationUnitsTr
 import GroupSets from '../../components/GroupSetsDropdown'
 import { formLabel, actionsContainer } from '../../utils/styles/shared.js'
 
-export const Form = props => (
+export const Form = (props) => (
     <div id="org-unit-dist-report-form">
         <div className="row">
             <div className="col-xs-12 col-md-6">

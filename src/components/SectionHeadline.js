@@ -3,7 +3,7 @@ import React from 'react'
 import PageHelper from '../components/PageHelper'
 import { getDocsUrl } from '../utils/getDocsUrl'
 
-export const SectionHeadline = props => (
+export const SectionHeadline = (props) => (
     <h1>
         {props.showBackButton && (
             <span

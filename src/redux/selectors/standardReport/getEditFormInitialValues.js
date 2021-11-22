@@ -6,10 +6,10 @@ import {
 } from '../../../pages/standard-report/standard.report.conf'
 import { identity } from '../../../utils/boolean/identity'
 
-export const getSelectedStandardReport = state =>
+export const getSelectedStandardReport = (state) =>
     state.standardReport.selectedReport
 
-export const getIsEdit = state => {
+export const getIsEdit = (state) => {
     const match = matchPath(state.router.location.pathname, {
         path: '/standard-report/:mode',
     })

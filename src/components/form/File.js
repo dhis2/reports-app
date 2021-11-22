@@ -7,7 +7,7 @@ import React from 'react'
 import { Field } from 'react-final-form'
 import { ErrorText } from './buildingBlocks/ErrorText'
 
-const useFileBlobAsValue = input => event => {
+const useFileBlobAsValue = (input) => (event) => {
     event.persist()
     input.onChange({
         file: event.target.files[0],
@@ -15,9 +15,9 @@ const useFileBlobAsValue = input => event => {
     })
 }
 
-const formatBlobToString = data => (data ? data.value : '')
+const formatBlobToString = (data) => (data ? data.value : '')
 
-export const File = props => (
+export const File = (props) => (
     <div>
         <Field
             name={props.name}

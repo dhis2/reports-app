@@ -34,7 +34,7 @@ const AppWrapper = () => {
                 'report',
             ],
         },
-        onInitialized: d2 => {
+        onInitialized: (d2) => {
             initApi(d2)
             injectTranslationsToD2(d2)
         },

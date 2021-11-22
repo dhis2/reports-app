@@ -4,7 +4,7 @@ import React from 'react'
 import { Field } from 'react-final-form'
 import { CheckBoxes } from './CheckBoxes'
 
-export const CheckBoxGroups = props => (
+export const CheckBoxGroups = (props) => (
     <div className="row">
         {props.displayError && (
             <div className="col-xs-12">
@@ -18,7 +18,7 @@ export const CheckBoxGroups = props => (
             </div>
         )}
 
-        {props.groups.map(group => (
+        {props.groups.map((group) => (
             <div
                 key={group.label}
                 className="col-xs-12 col-sm-6 col-md-4 col-lg-3"

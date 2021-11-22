@@ -3,7 +3,9 @@ import React from 'react'
 import { children } from '../../utils/react/propTypes'
 
 export const FormSection = ({ show, render, children }) => {
-    if (!show) return null
+    if (!show) {
+        return null
+    }
 
     return (
         <section>

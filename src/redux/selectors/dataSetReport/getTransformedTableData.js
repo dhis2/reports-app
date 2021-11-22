@@ -24,7 +24,9 @@ export default function getTransformedTableData(state) {
 function transformTableData(data) {
     return {
         title: data.title,
-        headers: data.headers.map(h => h.column),
-        rows: data.rows.map(cells => cells.map(x => (!!x || x === 0 ? x : ''))),
+        headers: data.headers.map((h) => h.column),
+        rows: data.rows.map((cells) =>
+            cells.map((x) => (!!x || x === 0 ? x : ''))
+        ),
     }
 }

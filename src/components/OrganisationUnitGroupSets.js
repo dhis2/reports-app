@@ -11,7 +11,7 @@ import { connect } from 'react-redux'
 import { selectOrgUnitOption } from '../redux/actions/organisationUnits'
 import { formLabel } from '../utils/styles/shared.js'
 
-const createGroupSetOnChange = (groupSetId, onChange) => event => {
+const createGroupSetOnChange = (groupSetId, onChange) => (event) => {
     onChange(groupSetId, event.target.value)
 }
 
@@ -67,7 +67,7 @@ export const OrganisationUnitGroupSets = ({
             `}</style>
         </div>
     ) : (
-        groupSets.map(groupSet => (
+        groupSets.map((groupSet) => (
             <OrganisationUnitGroupSetDropdown
                 groupSet={groupSet}
                 key={groupSet.id}
@@ -90,7 +90,7 @@ OrganisationUnitGroupSets.defaultProps = {
     fullWidth: true,
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
     isLoading: state.orgUnitGroupSets.loading,
     groupSets: state.orgUnitGroupSets.collection,
     values: state.organisationUnits.selectedOptions,

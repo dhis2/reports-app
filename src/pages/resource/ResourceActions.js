@@ -4,9 +4,11 @@ import React from 'react'
 import { getD2 } from '../../utils/api'
 import { resourceActions } from '../../utils/resource/constants'
 
-const ResourceActions = props => {
+const ResourceActions = (props) => {
     const { selectedAction } = props
-    if (!props.selectedAction) return null
+    if (!props.selectedAction) {
+        return null
+    }
 
     if (selectedAction === resourceActions.SHARING_SETTINGS) {
         return (

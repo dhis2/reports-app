@@ -4,7 +4,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { getShowLoading } from '../../redux/selectors/feedback/getShowLoading'
 
-const Loader = props =>
+const Loader = (props) =>
     props.show ? (
         <div className="loading-container">
             <div className="progress-wrap">
@@ -34,7 +34,7 @@ Loader.propTypes = {
     show: PropTypes.bool.isRequired,
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
     show: getShowLoading(state),
 })
 

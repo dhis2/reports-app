@@ -13,7 +13,7 @@ import { getCurrentSection, getShowSidebar } from './redux/selectors/sidebar'
 
 // is not "marked" as required but it's used by Sidebar
 const nonOnChangeSection = () => null
-const sidebarSections = sectionOrder.map(sectionKey => {
+const sidebarSections = sectionOrder.map((sectionKey) => {
     const section = sections[sectionKey]
     return {
         ...section,
@@ -135,7 +135,7 @@ App.childContextTypes = {
     d2: PropTypes.object.isRequired,
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
     currentSection: getCurrentSection(state),
     showSidebar: getShowSidebar(state),
 })

@@ -19,8 +19,8 @@ export const loadReportData = () => (dispatch, getState) => {
         reportPeriod.selectedPeriod,
         organisationUnits.selectedOptions
     )
-        .then(response =>
+        .then((response) =>
             dispatch(loadingReportDataSuccessWithFeedback(response))
         )
-        .catch(error => dispatch(loadingReportDataErrorWithFeedback(error)))
+        .catch((error) => dispatch(loadingReportDataErrorWithFeedback(error)))
 }

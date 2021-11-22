@@ -7,10 +7,10 @@ import { connect } from 'react-redux'
 import { selectDimensionOption } from '../redux/actions/dataSetDimensions'
 import { formLabel } from '../utils/styles/shared.js'
 
-const createDimensionChangeHandler = (onChange, dimensionId) => element =>
+const createDimensionChangeHandler = (onChange, dimensionId) => (element) =>
     onChange(dimensionId, element)
 
-const DimensionDropdown = props => (
+const DimensionDropdown = (props) => (
     <div key={props.dimension.id} className="data-set-dimension">
         <span className={formLabel.className}>
             {props.dimension.displayName}
@@ -67,7 +67,7 @@ const DataSetDimensions = ({
         <React.Fragment>
             <h6 className="header">{i18n.t('Data set dimensions')}</h6>
             <div className="box">
-                {options.map(dimension => (
+                {options.map((dimension) => (
                     <DimensionDropdown
                         key={dimension.id}
                         dimension={dimension}
@@ -112,14 +112,14 @@ DataSetDimensions.defaultProps = {
     fullWidth: true,
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
     hide: !state.dataSet.selected.id,
     isLoading: state.dataSetDimensions.loading,
     options: state.dataSetDimensions.options,
     selected: state.dataSetDimensions.selected,
 })
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
     onChange: (id, evt) =>
         dispatch(selectDimensionOption(id, evt.target.value)),
 })

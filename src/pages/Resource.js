@@ -10,7 +10,7 @@ import { connectResource } from './resource/connectResource'
 import { showContextAction } from './resource/helper'
 import ResourceActions from './resource/ResourceActions'
 
-const createContextMenuOptions = props => ({
+const createContextMenuOptions = (props) => ({
     [resourceActions.VIEW]: props.viewResource,
     [resourceActions.EDIT]: props.editResource,
     [resourceActions.SHARING_SETTINGS]: props.showSharingSettings,
