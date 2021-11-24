@@ -3,18 +3,18 @@ import { Card, CircularProgress } from '@material-ui/core'
 import PropTypes from 'prop-types'
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import { SectionHeadline } from '../../components/SectionHeadline'
-import { RESOURCE_SECTION_KEY } from '../../config/sections.config'
+import { SectionHeadline } from '../../components/SectionHeadline.js'
+import { RESOURCE_SECTION_KEY } from '../../config/sections.config.js'
 import {
     loadResource,
     addNewResource,
     updateResource,
     backToList,
-} from '../../redux/actions/resource'
-import { resourceTypeOptions } from '../../utils/resource/constants'
-import { formCard, formLoader } from '../../utils/styles/shared'
-import { ResourceForm } from './add-edit-resource/ResourceForm'
-import { extractFileAndFormattedResource } from './helper'
+} from '../../redux/actions/resource.js'
+import { resourceTypeOptions } from '../../utils/resource/constants.js'
+import { formCard, formLoader } from '../../utils/styles/shared.js'
+import { ResourceForm } from './add-edit-resource/ResourceForm.js'
+import { extractFileAndFormattedResource } from './helper.js'
 
 class AddEditResource extends Component {
     componentDidMount() {
@@ -23,7 +23,7 @@ class AddEditResource extends Component {
         }
     }
 
-    onSubmit = values => {
+    onSubmit = (values) => {
         const { file, resource } = extractFileAndFormattedResource(values)
         const submitHandler = this.isEdit()
             ? this.props.updateResource
@@ -128,7 +128,7 @@ AddEditResource.propTypes = {
 }
 
 const ConnectedAddEditResource = connect(
-    state => ({
+    (state) => ({
         resource: state.resource.selectedResource,
     }),
     {

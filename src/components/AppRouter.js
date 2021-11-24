@@ -7,17 +7,17 @@ import {
     REPORTING_RATE_SUMMARY_SECTION_KEY,
     RESOURCE_SECTION_KEY,
     STANDARD_REPORT_SECTION_KEY,
-} from '../config/sections.config'
-import { DataSetReport } from '../pages/DataSetReport'
-import Home from '../pages/home/Home'
-import { OrganisationUnitDistributionReport } from '../pages/OrganisationUnitDistributionReport'
-import { ReportingRateSummary } from '../pages/ReportingRateSummary'
-import { Resource } from '../pages/Resource'
-import { AddEditResource } from '../pages/resource/AddEditResource'
-import { ConnectedAddEditStdReport } from '../pages/standard-report/AddEditStdReport'
-import StyledHtmlReport from '../pages/standard-report/StyledHtmlReport'
-import { StandardReport } from '../pages/StandardReport'
-import NoMatch from './NoMatch'
+} from '../config/sections.config.js'
+import { DataSetReport } from '../pages/DataSetReport.js'
+import Home from '../pages/home/Home.js'
+import { OrganisationUnitDistributionReport } from '../pages/OrganisationUnitDistributionReport.js'
+import { ReportingRateSummary } from '../pages/ReportingRateSummary.js'
+import { Resource } from '../pages/Resource.js'
+import { AddEditResource } from '../pages/resource/AddEditResource.js'
+import { ConnectedAddEditStdReport } from '../pages/standard-report/AddEditStdReport.js'
+import StyledHtmlReport from '../pages/standard-report/StyledHtmlReport.js'
+import { StandardReport } from '../pages/StandardReport.js'
+import NoMatch from './NoMatch.js'
 
 const standardReportPath = sections[STANDARD_REPORT_SECTION_KEY].path
 const resourcePath = sections[RESOURCE_SECTION_KEY].path

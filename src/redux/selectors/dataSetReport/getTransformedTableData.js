@@ -1,6 +1,6 @@
 import isEmpty from 'lodash.isempty'
-import { isHtmlReport } from '../../../utils/dataSetReport/isHtmlReport'
-import createDataTransformCache from '../../../utils/dataTransformCache'
+import { isHtmlReport } from '../../../utils/dataSetReport/isHtmlReport.js'
+import createDataTransformCache from '../../../utils/dataTransformCache.js'
 
 export const cache = createDataTransformCache()
 
@@ -24,7 +24,9 @@ export default function getTransformedTableData(state) {
 function transformTableData(data) {
     return {
         title: data.title,
-        headers: data.headers.map(h => h.column),
-        rows: data.rows.map(cells => cells.map(x => (!!x || x === 0 ? x : ''))),
+        headers: data.headers.map((h) => h.column),
+        rows: data.rows.map((cells) =>
+            cells.map((x) => (!!x || x === 0 ? x : ''))
+        ),
     }
 }

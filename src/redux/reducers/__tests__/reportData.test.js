@@ -1,6 +1,6 @@
 import { LOCATION_CHANGE } from 'connected-react-router'
-import { actionTypes } from '../../actions/reportData'
-import { defaultState, reportData } from '../reportData'
+import { actionTypes } from '../../actions/reportData.js'
+import { defaultState, reportData } from '../reportData.js'
 
 describe('Reducer - reportData', () => {
     describe('Initial state', () => {

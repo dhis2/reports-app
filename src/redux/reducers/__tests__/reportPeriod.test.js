@@ -1,4 +1,4 @@
-import { reportPeriod, ACTIONS, defaultState } from '../reportPeriod'
+import { reportPeriod, ACTIONS, defaultState } from '../reportPeriod.js'
 
 describe('Reducer - reportPeriod', () => {
     const mockCollection = [

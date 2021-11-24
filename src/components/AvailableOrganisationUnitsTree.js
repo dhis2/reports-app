@@ -3,7 +3,7 @@ import { OrgUnitTreeMultipleRoots } from '@dhis2/d2-ui-org-unit-tree'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
-import { selectOrganisationUnit } from '../redux/actions/organisationUnits'
+import { selectOrganisationUnit } from '../redux/actions/organisationUnits.js'
 
 export function AvailableOrganisationUnitsTree({
     selectOrganisationUnit,
@@ -21,7 +21,7 @@ export function AvailableOrganisationUnitsTree({
                 hideMemberCount
                 roots={collection}
                 selected={selected ? [selected.path] : []}
-                initiallyExpanded={collection.map(unit => `/${unit.id}`)}
+                initiallyExpanded={collection.map((unit) => `/${unit.id}`)}
                 onSelectClick={selectOrganisationUnit}
             />
             <style jsx>{`

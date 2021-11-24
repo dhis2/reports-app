@@ -9,11 +9,11 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
 import css from 'styled-jsx/css'
-import getPagerCurrentlyShown from '../redux/selectors/pagination/getPagerCurrentlyShown'
+import getPagerCurrentlyShown from '../redux/selectors/pagination/getPagerCurrentlyShown.js'
 
 const searchText = i18n.t('Search')
 
-const SearchablePagedList = props => {
+const SearchablePagedList = (props) => {
     const pagination = (
         <Pagination
             total={props.pagerTotal}
@@ -117,7 +117,7 @@ SearchablePagedList.propTypes = {
     searchInputValue: PropTypes.string.isRequired,
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
     pagerTotal: state.pagination.total,
     pagerHasNextPage: () => state.pagination.page < state.pagination.pageCount,
     pagerHasPreviousPage: () => state.pagination.page > 1,

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import { Bar } from 'react-chartjs-2'
-import ReportLoader from './ReportLoader'
+import ReportLoader from './ReportLoader.js'
 
 const BarChart = ({ content, isLoading }) => (
     <ReportLoader content={content} isLoading={isLoading}>

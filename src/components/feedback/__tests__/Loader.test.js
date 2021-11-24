@@ -1,5 +1,5 @@
-import createComponentRenderer from '../../../utils/test-helpers/createComponentRenderer'
-import { LoaderOriginal as Loader } from '../Loader'
+import createComponentRenderer from '../../../utils/test-helpers/createComponentRenderer.js'
+import { LoaderOriginal as Loader } from '../Loader.js'
 
 jest.mock('@dhis2/d2-ui-core', () => ({
     FeedbackSnackbar: 'FeedbackSnackbar',

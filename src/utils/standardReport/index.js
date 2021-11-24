@@ -1,11 +1,11 @@
 import omitBy from 'lodash.omitby'
-import { reportTypes } from '../../pages/standard-report/standard.report.conf'
-import { getSelectedOrgUnit } from '../../redux/selectors/organisationUnit/getSelectedOrgUnit'
-import { getSelectedReportPeriod } from '../../redux/selectors/reportPeriod/getSelectedReportPeriod'
-import { isFalsy } from '../boolean/isFalsy'
-import { getPeriodStartDate } from '../periods/periodTypes'
+import { reportTypes } from '../../pages/standard-report/standard.report.conf.js'
+import { getSelectedOrgUnit } from '../../redux/selectors/organisationUnit/getSelectedOrgUnit.js'
+import { getSelectedReportPeriod } from '../../redux/selectors/reportPeriod/getSelectedReportPeriod.js'
+import { isFalsy } from '../boolean/isFalsy.js'
+import { getPeriodStartDate } from '../periods/periodTypes.js'
 
-export const extractRequiredReportParams = reportParams =>
+export const extractRequiredReportParams = (reportParams) =>
     omitBy(
         {
             period: reportParams.reportingPeriod,
@@ -17,11 +17,11 @@ export const extractRequiredReportParams = reportParams =>
         isFalsy
     )
 
-export const isHtmlReport = report => report.type === reportTypes.HTML
-export const isJasperReportTableReport = report =>
+export const isHtmlReport = (report) => report.type === reportTypes.HTML
+export const isJasperReportTableReport = (report) =>
     report.type === reportTypes.JASPER_REPORT_TABLE
 
-export const getReportParams = report =>
+export const getReportParams = (report) =>
     (report.reportTable && report.reportTable.reportParams) ||
     report.reportParams
 

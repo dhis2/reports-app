@@ -1,4 +1,4 @@
-import * as FEEDBACK_TYPES from '../../../utils/feedbackTypes'
+import * as FEEDBACK_TYPES from '../../../utils/feedbackTypes.js'
 import {
     actionTypes as ACTIONS,
     clearFeedback,
@@ -7,7 +7,7 @@ import {
     showSuccessSnackBar,
     showErrorSnackBar,
     showWarningSnackBar,
-} from '../feedback'
+} from '../feedback.js'
 
 describe('Actions - feedback', () => {
     const message = 'Hello world'

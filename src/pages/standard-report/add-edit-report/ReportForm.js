@@ -3,27 +3,27 @@ import FormHelperText from '@material-ui/core/FormHelperText'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { Field, Form } from 'react-final-form'
-import { Button } from '../../../components/form/Button'
-import { CheckBoxes } from '../../../components/form/CheckBoxes'
-import { CheckBoxGroups } from '../../../components/form/CheckBoxGroups'
-import { File } from '../../../components/form/File'
-import { FormRow } from '../../../components/form/FormRow'
-import { FormSection } from '../../../components/form/FormSection'
-import { FormSectionTitle } from '../../../components/form/FormSectionTitle'
-import { Input } from '../../../components/form/Input'
-import { ReportTableSearchInput } from '../../../components/form/ReportTableSearchInput'
-import { Select } from '../../../components/form/Select'
-import { reportParameterOptions } from '../../../config/standardReport'
-import { RELATIVE_PERIODS } from '../../../utils/periods/relativePeriods'
+import { Button } from '../../../components/form/Button.js'
+import { CheckBoxes } from '../../../components/form/CheckBoxes.js'
+import { CheckBoxGroups } from '../../../components/form/CheckBoxGroups.js'
+import { File } from '../../../components/form/File.js'
+import { FormRow } from '../../../components/form/FormRow.js'
+import { FormSection } from '../../../components/form/FormSection.js'
+import { FormSectionTitle } from '../../../components/form/FormSectionTitle.js'
+import { Input } from '../../../components/form/Input.js'
+import { ReportTableSearchInput } from '../../../components/form/ReportTableSearchInput.js'
+import { Select } from '../../../components/form/Select.js'
+import { reportParameterOptions } from '../../../config/standardReport.js'
+import { RELATIVE_PERIODS } from '../../../utils/periods/relativePeriods.js'
 import {
     cacheStrategies,
     reportTypeOptions,
     reportTypes,
-} from '../standard.report.conf'
-import { DesignFileDownloadButton } from './DesignFileDownloadButton'
-import { validateNewReport, validateReportUpdate } from './validate'
+} from '../standard.report.conf.js'
+import { DesignFileDownloadButton } from './DesignFileDownloadButton.js'
+import { validateNewReport, validateReportUpdate } from './validate.js'
 
-const ReportForm = props => (
+const ReportForm = (props) => (
     <Form
         onSubmit={props.onSubmit}
         validate={props.edit ? validateReportUpdate : validateNewReport}

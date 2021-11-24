@@ -1,1 +1,1 @@
-export const getSelectedOrgUnit = state => state.organisationUnits.selected
+export const getSelectedOrgUnit = (state) => state.organisationUnits.selected

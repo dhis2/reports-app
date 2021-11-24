@@ -1,19 +1,19 @@
 import Paper from '@material-ui/core/Paper'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { Snackbar } from '../components/feedback/Snackbar'
-import { SectionHeadline } from '../components/SectionHeadline'
+import { Snackbar } from '../components/feedback/Snackbar.js'
+import { SectionHeadline } from '../components/SectionHeadline.js'
 import {
     DATA_SET_REPORT_SECTION_KEY,
     sections,
-} from '../config/sections.config'
-import { reportContent } from '../utils/react/propTypes'
+} from '../config/sections.config.js'
+import { reportContent } from '../utils/react/propTypes.js'
 import { container } from '../utils/styles/shared.js'
-import { connectDataSetReport } from './data-set-report/connectDataSetReport'
-import DataSetReportOutput from './data-set-report/DataSetReportOutput'
-import Form from './data-set-report/Form'
+import { connectDataSetReport } from './data-set-report/connectDataSetReport.js'
+import DataSetReportOutput from './data-set-report/DataSetReportOutput.js'
+import Form from './data-set-report/Form.js'
 
-const DataSetReport = props => (
+const DataSetReport = (props) => (
     <div>
         <SectionHeadline
             label={sections[DATA_SET_REPORT_SECTION_KEY].info.label}

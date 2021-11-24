@@ -1,6 +1,6 @@
 import humanReadableErrorMessage, {
     fallBackDefault,
-} from '../humanReadableErrorMessage'
+} from '../humanReadableErrorMessage.js'
 
 describe('humanReadableErrorMessage', () => {
     const fallBackErrorMessage = 'I am a fallback message'

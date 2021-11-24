@@ -1,5 +1,5 @@
-import createComponentRenderer from '../../utils/test-helpers/createComponentRenderer'
-import { PeriodPickerWithPeriodType } from '../PeriodPickerWithPeriodType'
+import createComponentRenderer from '../../utils/test-helpers/createComponentRenderer.js'
+import { PeriodPickerWithPeriodType } from '../PeriodPickerWithPeriodType.js'
 
 jest.mock('@dhis2/d2-ui-core', () => ({
     DropDown: 'DropDown',

@@ -1,6 +1,6 @@
-import { reportTypes } from '../standard.report.conf'
+import { reportTypes } from '../standard.report.conf.js'
 
-export const validateNewReport = values => {
+export const validateNewReport = (values) => {
     const errors = {}
 
     validateName(errors, values)
@@ -11,7 +11,7 @@ export const validateNewReport = values => {
     return errors
 }
 
-export const validateReportUpdate = values => {
+export const validateReportUpdate = (values) => {
     const errors = {}
 
     validateName(errors, values)

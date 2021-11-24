@@ -1,16 +1,16 @@
 import { connect } from 'react-redux'
-import { loadReportData } from '../../redux/actions/reportingRateSummary'
-import { getIsActionEnabled } from '../../redux/selectors/reportingRateSummary/getIsActionEnabled'
+import { loadReportData } from '../../redux/actions/reportingRateSummary.js'
+import { getIsActionEnabled } from '../../redux/selectors/reportingRateSummary/getIsActionEnabled.js'
 import getTransformedTableData from '../../redux/selectors/reportingRateSummary/getTransformedTableData.js'
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
     reportContent: getTransformedTableData(state),
     fileUrls: state.reportData.content.fileUrls || [],
     isReportLoading: state.reportData.loading,
     isActionEnabled: getIsActionEnabled(state),
 })
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
     loadReportData: () => dispatch(loadReportData()),
 })
 

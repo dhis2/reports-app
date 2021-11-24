@@ -1,9 +1,9 @@
-import { getReportingRateSummaryReport } from '../../utils/api'
+import { getReportingRateSummaryReport } from '../../utils/api.js'
 import {
     loadingReportDataStart,
     loadingReportDataSuccessWithFeedback,
     loadingReportDataErrorWithFeedback,
-} from './reportData'
+} from './reportData.js'
 
 /**
  * @returns {Function} redux thunk
@@ -19,8 +19,8 @@ export const loadReportData = () => (dispatch, getState) => {
         reportPeriod.selectedPeriod,
         organisationUnits.selectedOptions
     )
-        .then(response =>
+        .then((response) =>
             dispatch(loadingReportDataSuccessWithFeedback(response))
         )
-        .catch(error => dispatch(loadingReportDataErrorWithFeedback(error)))
+        .catch((error) => dispatch(loadingReportDataErrorWithFeedback(error)))
 }

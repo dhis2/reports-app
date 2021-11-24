@@ -11,9 +11,9 @@ import {
     loadFilteredStandardReportTables,
     clearSearch,
     MIN_CHAR_LENGTH,
-} from '../../redux/actions/standardReportTables'
-import { formInput, formInputMeta } from '../../utils/react/propTypes'
-import { Input } from './Input'
+} from '../../redux/actions/standardReportTables.js'
+import { formInput, formInputMeta } from '../../utils/react/propTypes.js'
+import { Input } from './Input.js'
 
 const centeredStyle = {
     display: 'flex',
@@ -46,7 +46,7 @@ const getListContent = ({ onClick, loading, error, collection, noMatches }) => {
     } else if (noMatches) {
         return <div style={infoStyle}>{i18n.t('No matches found')}</div>
     } else if (collection.length > 0) {
-        return collection.map(item => {
+        return collection.map((item) => {
             return (
                 <MenuItem
                     key={item.value}
@@ -63,7 +63,7 @@ const getListContent = ({ onClick, loading, error, collection, noMatches }) => {
     }
 }
 
-export const ReportTableSearchInputUI = props => {
+export const ReportTableSearchInputUI = (props) => {
     const inputRef = useRef()
     const [isSearchMode, setSearchMode] = useState(false)
     const [reportTableName, setReportTableName] = useState('')
@@ -82,7 +82,7 @@ export const ReportTableSearchInputUI = props => {
         }
         props.input.onBlur && props.input.onBlur()
     }
-    const onSearch = event => {
+    const onSearch = (event) => {
         props.loadFilteredStandardReportTables(event.target.value)
     }
     const usedValue = isSearchMode
@@ -152,7 +152,7 @@ ReportTableSearchInputUI.propTypes = {
     searchTerm: PropTypes.string,
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
     searchTerm: state.standardReportTables.searchTerm,
     collection: state.standardReportTables.collection,
     loading: state.standardReportTables.loading,

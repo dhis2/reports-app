@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import ReportLoader from './ReportLoader'
-import { DownloadOptions } from './TabularReport/DownloadOptions'
-import ReportTable from './TabularReport/ReportTable'
+import ReportLoader from './ReportLoader.js'
+import { DownloadOptions } from './TabularReport/DownloadOptions.js'
+import ReportTable from './TabularReport/ReportTable.js'
 
 const TabularReport = ({ content, isLoading, fileUrls }) => (
     <ReportLoader content={content} isLoading={isLoading}>

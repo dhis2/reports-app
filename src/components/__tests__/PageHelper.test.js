@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme'
 import React from 'react'
-import PageHelper from '../PageHelper'
+import PageHelper from '../PageHelper.js'
 
 const ownShallow = () => {
     return shallow(<PageHelper url="http://dummy.com" />)

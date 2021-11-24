@@ -1,1 +1,1 @@
-export const isCustomFormType = formType => formType === 'CUSTOM'
+export const isCustomFormType = (formType) => formType === 'CUSTOM'

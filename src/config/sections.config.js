@@ -1,4 +1,4 @@
-import i18n from '../locales'
+import i18n from '../locales/index.js'
 
 export const STANDARD_REPORT_SECTION_KEY = 'standard-report'
 export const DATA_SET_REPORT_SECTION_KEY = 'data-set-report'

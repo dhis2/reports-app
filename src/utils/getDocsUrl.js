@@ -1,5 +1,5 @@
-import { sections } from '../config/sections.config'
-import { getSystemVersion } from './api'
+import { sections } from '../config/sections.config.js'
+import { getSystemVersion } from './api.js'
 
 export const DOCS_LINK = 'https://docs.dhis2.org'
 export const DEFAULT_DOC_LANGUAGE = 'en'

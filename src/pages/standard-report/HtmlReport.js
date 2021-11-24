@@ -1,10 +1,10 @@
 import CircularProgress from '@material-ui/core/CircularProgress'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
-import { getContextPath } from '../../utils/api'
-import { CSS_FILES, SCRIPT_FILES, PAGE_STYLES } from './HtmlReportAssets'
+import { getContextPath } from '../../utils/api.js'
+import { CSS_FILES, SCRIPT_FILES, PAGE_STYLES } from './HtmlReportAssets.js'
 
-const wrapHtmlInTemplate = html => `
+const wrapHtmlInTemplate = (html) => `
     <!DOCTYPE html>
     <html lang="en">
         <head>
@@ -20,7 +20,7 @@ const wrapHtmlInTemplate = html => `
         </body>
     </html>
 `
-const createScriptTag = script => {
+const createScriptTag = (script) => {
     const src = getContextPath() + script
     return `<script src="${src}" type="text/javascript"></script>`
 }
@@ -46,7 +46,7 @@ class HtmlReport extends Component {
     state = { heigth: 'auto' }
     heightObserver = null
 
-    onIframeLoad = event => {
+    onIframeLoad = (event) => {
         const iframeHtml = event.target.contentWindow.document.documentElement
         const iframeBody = event.target.contentWindow.document.body
 
@@ -60,8 +60,8 @@ class HtmlReport extends Component {
         )
     }
 
-    onContentResize = entries => {
-        this.adjustHeight(...entries.map(entry => entry.contentRect))
+    onContentResize = (entries) => {
+        this.adjustHeight(...entries.map((entry) => entry.contentRect))
     }
 
     adjustHeight = (iframeHtmlRect, iframeBodyRect) => {

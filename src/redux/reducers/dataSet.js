@@ -1,5 +1,5 @@
 import { LOCATION_CHANGE } from 'connected-react-router'
-import { actionTypes } from '../actions/dataSet'
+import { actionTypes } from '../actions/dataSet.js'
 
 export const defaultSelected = { id: '', displayName: '' }
 export const defaultState = {

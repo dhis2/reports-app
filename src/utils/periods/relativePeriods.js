@@ -224,7 +224,7 @@ export const RELATIVE_PERIODS = [
 
 export const flattenedRelativePeriods = RELATIVE_PERIODS.reduce(
     (acc, group) => {
-        group.options.forEach(period => {
+        group.options.forEach((period) => {
             acc[period.value] = {
                 id: period.value,
                 displayName: period.label,
@@ -239,7 +239,7 @@ export const flattenedRelativePeriods = RELATIVE_PERIODS.reduce(
 // https://github.com/dhis2/analytics/blob/master/src/components/PeriodDimension/utils/fixedPeriods.js#L537-L546
 // The plan is to eventually move the getRelativePeriodStartDate code over to the anaytics repo,
 // so we are using the helpers as they are there
-const formatYyyyMmDd = timestamp => {
+const formatYyyyMmDd = (timestamp) => {
     const date = new Date(timestamp)
     const yyyy = date.getFullYear()
     const mm = (date.getMonth() + 1).toString().padStart(2, '0')
@@ -254,7 +254,7 @@ const formatYyyyMmDd = timestamp => {
 // See here for more info: https://codewithhugo.com/mocking-the-current-date-in-jest-tests/
 const getCurrentDate = () => new Date(Date.now())
 
-const getPreviousMonday = date => {
+const getPreviousMonday = (date) => {
     const day = date.getDay()
     // date.getDay() will return 0 for a Sunday and 1 for a Monday
     // so a week starts on Sunday according to the Date API, but
@@ -264,13 +264,13 @@ const getPreviousMonday = date => {
     return new Date(date.setDate(mondayTimeStamp))
 }
 
-const daysAgo = offset => {
+const daysAgo = (offset) => {
     const now = getCurrentDate()
 
     return now.setDate(now.getDate() - offset)
 }
 
-const weeksAgo = offset => {
+const weeksAgo = (offset) => {
     const previousMonday = getPreviousMonday(getCurrentDate())
 
     return previousMonday.setDate(previousMonday.getDate() - offset * 7)
@@ -349,7 +349,7 @@ const startDateCalculators = {
     [LAST_5_YEARS]: () => yearsAgo(5),
 }
 
-export const getRelativePeriodStartDate = periodCode => {
+export const getRelativePeriodStartDate = (periodCode) => {
     const startDateCalutator = startDateCalculators[periodCode]
 
     if (!startDateCalutator) {

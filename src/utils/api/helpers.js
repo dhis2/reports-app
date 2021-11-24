@@ -1,12 +1,12 @@
-import { getApi } from '../api'
-import { formatStandardReportResponseBySystemVersion } from '../backwardCompatability'
-import { FILE_RESOURCES_ENDPOINT } from './constants'
+import { getApi } from '../api.js'
+import { formatStandardReportResponseBySystemVersion } from '../backwardCompatability.js'
+import { FILE_RESOURCES_ENDPOINT } from './constants.js'
 
 /**
  * @param {Object} d2 ModelCollection instance
  * @return {Array<string>}
  */
-export const mapResponseToArrayOfIds = model =>
+export const mapResponseToArrayOfIds = (model) =>
     model.toArray().map(({ id }) => id)
 
 /**
@@ -21,7 +21,7 @@ export const addFilterForName = (name, model) =>
  * @param {Promise} request
  * @returns {Object}
  */
-export const formatStandardReportsResponse = reportsCollection => {
+export const formatStandardReportsResponse = (reportsCollection) => {
     const reports = reportsCollection
         .toArray()
         .map(formatStandardReportResponseBySystemVersion)
@@ -44,7 +44,9 @@ export const mapCollectionToDimensionQueryString = (...collections) =>
     collections.reduce(
         (dimensionQueryString, collection) => [
             ...dimensionQueryString,
-            ...Object.keys(collection).map(key => `${key}:${collection[key]}`),
+            ...Object.keys(collection).map(
+                (key) => `${key}:${collection[key]}`
+            ),
         ],
         []
     )
@@ -82,7 +84,7 @@ export const getDataSetReportFileUrls = (resourceUrl, options) => {
         selectedUnitOnly: options.selectedUnitOnly,
     })
     const filterQueryStr = Object.keys(mergedFilters)
-        .map(key => `filter=${key}:${mergedFilters[key]}`)
+        .map((key) => `filter=${key}:${mergedFilters[key]}`)
         .join('&')
     const fullQueryStr = filterQueryStr
         ? `${baseQueryStr}&${filterQueryStr}`
@@ -121,7 +123,7 @@ export const addFileResourceUrlToResource = (resource, file) => ({
  * @returns {Array} - Array of objects with extension and url properties
  */
 export const getFileUrls = (endPoint, queryString, extensions) =>
-    extensions.map(extension => ({
+    extensions.map((extension) => ({
         extension,
         url: `${getApi().baseUrl}/${endPoint}.${extension}?${queryString}`,
     }))
@@ -135,7 +137,7 @@ export const getFileUrls = (endPoint, queryString, extensions) =>
  * // returns 'a=yeah&b=u;1'
  * @returns {String} - query string
  */
-export const buildQueryString = o => {
+export const buildQueryString = (o) => {
     return Object.keys(o)
         .reduce((acc, key) => {
             const value = Array.isArray(o[key]) ? o[key].join(';') : o[key]

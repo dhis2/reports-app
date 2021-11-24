@@ -1,7 +1,7 @@
 import i18n from '@dhis2/d2-i18n'
-import { getDimensions } from '../../utils/api'
-import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
-import { showWarningSnackBar } from './feedback'
+import { getDimensions } from '../../utils/api.js'
+import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage.js'
+import { showWarningSnackBar } from './feedback.js'
 
 export const actionTypes = {
     LOADING_DIMENSIONS_START: 'LOADING_DIMENSIONS_START',
@@ -21,7 +21,7 @@ export const loadingDimensionsStart = () => ({
  * @param {Array} dimensions
  * @returns {Object}
  */
-export const loadingDimensionsSuccess = dimensions => ({
+export const loadingDimensionsSuccess = (dimensions) => ({
     type: actionTypes.LOADING_DIMENSIONS_SUCCESS,
     payload: dimensions,
 })
@@ -34,7 +34,7 @@ export const loadingDimensionsError = () => ({
  * @param (Error) error
  * @returns {Function}
  */
-export const loadingDimensionsErrorWithFeedback = error => dispatch => {
+export const loadingDimensionsErrorWithFeedback = (error) => (dispatch) => {
     const defaultMessage = i18n.t(
         'An error occurred while loading the data set dimensions'
     )
@@ -61,6 +61,6 @@ export const loadDimensions = () => (dispatch, getState) => {
 
     const { dataSet } = getState()
     return getDimensions(dataSet.selected.id)
-        .then(dimensions => dispatch(loadingDimensionsSuccess(dimensions)))
-        .catch(error => dispatch(loadingDimensionsErrorWithFeedback(error)))
+        .then((dimensions) => dispatch(loadingDimensionsSuccess(dimensions)))
+        .catch((error) => dispatch(loadingDimensionsErrorWithFeedback(error)))
 }

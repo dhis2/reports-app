@@ -1,9 +1,9 @@
-import { getOrgUnitDistReport } from '../../utils/api'
+import { getOrgUnitDistReport } from '../../utils/api.js'
 import {
     loadingReportDataStart,
     loadingReportDataSuccessWithFeedback,
     loadingReportDataErrorWithFeedback,
-} from './reportData'
+} from './reportData.js'
 
 export const actionTypes = {
     SET_TABULAR_OUTPUT: 'SET_TABULAR_OUTPUT',
@@ -26,7 +26,7 @@ export const setOutputToTabular = () => ({
 /**
  * @returns {Function}
  */
-export const loadChart = () => dispatch => {
+export const loadChart = () => (dispatch) => {
     dispatch(setOutputToChart())
     dispatch(loadReport())
 }
@@ -34,7 +34,7 @@ export const loadChart = () => dispatch => {
 /**
  * @returns {Function}
  */
-export const loadTable = () => dispatch => {
+export const loadTable = () => (dispatch) => {
     dispatch(setOutputToTabular())
     dispatch(loadReport())
 }
@@ -54,10 +54,10 @@ export const loadReport = () => (dispatch, getState) => {
     const groupSetId = orgUnitGroupSets.selected
 
     return getOrgUnitDistReport(orgUnit, groupSetId, shouldShowChart)
-        .then(response =>
+        .then((response) =>
             dispatch(
                 loadingReportDataSuccessWithFeedback(response, shouldShowChart)
             )
         )
-        .catch(error => dispatch(loadingReportDataErrorWithFeedback(error)))
+        .catch((error) => dispatch(loadingReportDataErrorWithFeedback(error)))
 }

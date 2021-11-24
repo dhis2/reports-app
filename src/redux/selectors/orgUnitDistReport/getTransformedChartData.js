@@ -1,8 +1,8 @@
 import i18n from '@dhis2/d2-i18n'
 import isEmpty from 'lodash.isempty'
-import { FONT_FAMILY, BASE_COLOR } from '../../../config/style.config'
-import createDataTransformCache from '../../../utils/dataTransformCache'
-import { getTitle } from '../../../utils/dataTransformHelpers'
+import { FONT_FAMILY, BASE_COLOR } from '../../../config/style.config.js'
+import createDataTransformCache from '../../../utils/dataTransformCache.js'
+import { getTitle } from '../../../utils/dataTransformHelpers.js'
 
 export const cache = createDataTransformCache()
 

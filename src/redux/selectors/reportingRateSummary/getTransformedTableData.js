@@ -1,6 +1,6 @@
 import i18n from '@dhis2/d2-i18n'
 import isEmpty from 'lodash.isempty'
-import createDataTransformCache from '../../../utils/dataTransformCache'
+import createDataTransformCache from '../../../utils/dataTransformCache.js'
 
 const cache = createDataTransformCache()
 const nameColumnDisplayName = i18n.t('Name')
@@ -54,7 +54,7 @@ export function parseHeaders(data) {
 
 export function parseRows(rowsWithAllFields) {
     return rowsWithAllFields
-        .map(row =>
+        .map((row) =>
             rowIndexesToRead.reduce((acc, rowIndex) => {
                 acc.push(row[rowIndex])
                 return acc

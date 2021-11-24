@@ -5,8 +5,10 @@ import React from 'react'
 
 const errorTextColor = red[500]
 
-export const ErrorText = props => {
-    if (!props.showErrorText) return null
+export const ErrorText = (props) => {
+    if (!props.showErrorText) {
+        return null
+    }
 
     return (
         <FormHelperText>

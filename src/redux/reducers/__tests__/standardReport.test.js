@@ -1,6 +1,6 @@
-import { CONTEXT_MENU_ACTION } from '../../../pages/standard-report/standard.report.conf'
-import { actionTypes } from '../../actions/standardReport'
-import { standardReport, defaultState } from '../standardReport'
+import { CONTEXT_MENU_ACTION } from '../../../pages/standard-report/standard.report.conf.js'
+import { actionTypes } from '../../actions/standardReport.js'
+import { standardReport, defaultState } from '../standardReport.js'
 
 describe('Reducer - standardReport', function () {
     const mockReport = () => ({ displayName: 'foobar' })

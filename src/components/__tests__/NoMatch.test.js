@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme'
 import React from 'react'
-import NoMatch from '../NoMatch'
+import NoMatch from '../NoMatch.js'
 
 const location = {
     path: 'path',

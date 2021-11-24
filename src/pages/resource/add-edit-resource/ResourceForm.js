@@ -2,18 +2,18 @@ import i18n from '@dhis2/d2-i18n'
 import PropTypes from 'prop-types'
 import React, { Fragment } from 'react'
 import { Form } from 'react-final-form'
-import { Button } from '../../../components/form/Button'
-import { FormSection } from '../../../components/form/FormSection'
-import { resourceTypes } from '../../../utils/resource/constants'
-import { Attachment } from './ResourceForm/Attachment'
-import { File } from './ResourceForm/File'
-import { Name } from './ResourceForm/Name'
-import { TitleDetails } from './ResourceForm/TitleDetails'
-import { TitleResource } from './ResourceForm/TitleResource'
-import { Type } from './ResourceForm/Type'
-import { Url } from './ResourceForm/Url'
+import { Button } from '../../../components/form/Button.js'
+import { FormSection } from '../../../components/form/FormSection.js'
+import { resourceTypes } from '../../../utils/resource/constants.js'
+import { Attachment } from './ResourceForm/Attachment.js'
+import { File } from './ResourceForm/File.js'
+import { Name } from './ResourceForm/Name.js'
+import { TitleDetails } from './ResourceForm/TitleDetails.js'
+import { TitleResource } from './ResourceForm/TitleResource.js'
+import { Type } from './ResourceForm/Type.js'
+import { Url } from './ResourceForm/Url.js'
 
-export const ResourceForm = props => (
+export const ResourceForm = (props) => (
     <Form onSubmit={props.onSubmit} initialValues={props.initialValues}>
         {({ handleSubmit, values, valid }) => (
             <form onSubmit={handleSubmit}>

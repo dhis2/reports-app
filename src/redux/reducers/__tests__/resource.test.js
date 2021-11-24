@@ -1,4 +1,4 @@
-import { resourceActions } from '../../../utils/resource/constants'
+import { resourceActions } from '../../../utils/resource/constants.js'
 import {
     deleteResourceError,
     deleteResourceStart,
@@ -10,8 +10,8 @@ import {
     clearSelectedResource,
     setSearch,
     showSharingSettings,
-} from '../../actions/resource'
-import { defaultSelectedResource, defaultState, resource } from '../resource'
+} from '../../actions/resource.js'
+import { defaultSelectedResource, defaultState, resource } from '../resource.js'
 
 describe('Reducer - resource', () => {
     const selectedResource = { id: 'foo', displayName: 'bar' }

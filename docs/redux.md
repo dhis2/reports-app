@@ -17,20 +17,20 @@ objects themselves but make use of action creators. One such example
 is giving feedback, here's a simplified example:
 
 ```js
-const loadingDataSetsSuccess = dataSets => ({
+const loadingDataSetsSuccess = (dataSets) => ({
     type: 'DATA_SETS_LOADING_SUCCESS',
     payload: dataSets,
 })
 
-const loadingDataSetSuccessWithFeedback = dataSets => dispatch => {
+const loadingDataSetSuccessWithFeedback = (dataSets) => (dispatch) => {
     dispatch(showFeedbackSuccess('Successfully loaded dataSets'))
     dispatch(loadingDataSetsSuccess(dataSets))
 }
 
-const loadDataSets = () => dispatch =>
+const loadDataSets = () => (dispatch) =>
     api
         .getDataSets()
-        .then(dataSets =>
+        .then((dataSets) =>
             dispatch(loadingDataSetsSuccessWithFeedback(dataSets))
         )
 ```

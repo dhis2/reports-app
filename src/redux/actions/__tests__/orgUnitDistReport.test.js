@@ -1,18 +1,18 @@
-import { getOrgUnitDistReport } from '../../../utils/api'
-import { mockStore } from '../../../utils/test-helpers/mockStore'
+import { getOrgUnitDistReport } from '../../../utils/api.js'
+import { mockStore } from '../../../utils/test-helpers/mockStore.js'
 import {
     setOutputToChart,
     setOutputToTabular,
     loadChart,
     loadTable,
     loadReport,
-} from '../orgUnitDistReport'
+} from '../orgUnitDistReport.js'
 import {
     actionTypes as reportDataActions,
     loadingReportDataStart,
     loadingReportDataSuccess,
     loadingReportDataError,
-} from '../reportData'
+} from '../reportData.js'
 
 jest.mock('../../../utils/api', () => ({
     getOrgUnitDistReport: jest.fn(() => Promise.resolve()),

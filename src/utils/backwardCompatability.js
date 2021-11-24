@@ -1,4 +1,4 @@
-import { getSystemMinorVersion } from './api'
+import { getSystemMinorVersion } from './api.js'
 
 /*
 The following API changes were introduced in v2.34:
@@ -6,7 +6,7 @@ The following API changes were introduced in v2.34:
 1. The `api/reportTables` endpoint was replaced by `api/visualizations`
 
 2. The response payload from this endpoint now looks slightly different:
-    
+
     < 2.34
     "reportParams": {
         "paramGrandParentOrganisationUnit": false,
@@ -30,7 +30,7 @@ The following API changes were introduced in v2.34:
 The functions in this module are there to deal with these discrepancies. To avoid too many changes to the app state model, the following names have been settled on:
 1. `reportTables` in favour of `visualizations`
 2. `reportParams` in favour of `reportingParams`
-3. don't prefix reportParams properties with `param`, 
+3. don't prefix reportParams properties with `param`,
    i.e. `reportingPeriod` in favour of `paramReportingPeriod`
 
 
@@ -50,7 +50,7 @@ const getReportParamsFieldName = () =>
 export const getReportTablesResourceNameBySystemVersion = () =>
     `${getReportTableNameBySystemVersion()}s`
 
-export const getReportTablesFilterBySystemVersion = searchTerm =>
+export const getReportTablesFilterBySystemVersion = (searchTerm) =>
     isAtLeastVersion34()
         ? [`identifiable:token:${searchTerm}`, 'type:eq:PIVOT_TABLE']
         : [`name:ilike:${searchTerm}`]
@@ -73,7 +73,7 @@ export const getStandardReportsFieldsBySystemVersion = () => {
     ]
 }
 
-const getReportParamsPropertiesBySystemVersion = reportParams => {
+const getReportParamsPropertiesBySystemVersion = (reportParams) => {
     if (isAtLeastVersion34() || !reportParams) {
         return reportParams
     }
@@ -95,7 +95,7 @@ export const getStandardReportFieldsBySystemVersion = () => {
     return [':owner', reportTableField]
 }
 
-export const formatStandardReportResponseBySystemVersion = reportModel => {
+export const formatStandardReportResponseBySystemVersion = (reportModel) => {
     // handle both d2 model instances and plain objects
     const reportJson = reportModel.toJSON ? reportModel.toJSON() : reportModel
     // <2.34 reportModel.reportTable, >=2.34 reportmodel.visualization
@@ -120,7 +120,7 @@ export const formatStandardReportResponseBySystemVersion = reportModel => {
     }
 }
 
-export const formatStandardReportPayloadBySystemVersion = report => {
+export const formatStandardReportPayloadBySystemVersion = (report) => {
     if (isAtLeastVersion34()) {
         const visualization = report.reportTable
         delete report.reportTable

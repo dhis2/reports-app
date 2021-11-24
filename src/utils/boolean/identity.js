@@ -1,1 +1,1 @@
-export const identity = input => input
+export const identity = (input) => input

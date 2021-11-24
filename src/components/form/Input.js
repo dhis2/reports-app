@@ -3,12 +3,12 @@ import MUIInput from '@material-ui/core/Input'
 import InputLabel from '@material-ui/core/InputLabel'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { formInput, formInputMeta } from '../../utils/react/propTypes'
-import { ErrorText } from './buildingBlocks/ErrorText'
-import { HelpText } from './buildingBlocks/HelpText'
-import { inputWrapper } from './styles'
+import { formInput, formInputMeta } from '../../utils/react/propTypes.js'
+import { ErrorText } from './buildingBlocks/ErrorText.js'
+import { HelpText } from './buildingBlocks/HelpText.js'
+import { inputWrapper } from './styles.js'
 
-export const Input = props => (
+export const Input = (props) => (
     <React.Fragment>
         <FormControl className={inputWrapper.className}>
             <InputLabel htmlFor={props.input.name}>

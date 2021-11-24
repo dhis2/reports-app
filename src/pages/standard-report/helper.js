@@ -1,4 +1,4 @@
-import { CONTEXT_MENU_ACTION } from './standard.report.conf'
+import { CONTEXT_MENU_ACTION } from './standard.report.conf.js'
 
 /* Context Menu */
 const displayNoResults = (reports, loading) =>

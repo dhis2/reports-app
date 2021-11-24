@@ -8,14 +8,14 @@ import {
     formInput,
     formInputMeta,
     formOptions,
-} from '../../utils/react/propTypes'
-import { ErrorText } from './buildingBlocks/ErrorText'
-import { inputWrapper } from './styles'
+} from '../../utils/react/propTypes.js'
+import { ErrorText } from './buildingBlocks/ErrorText.js'
+import { inputWrapper } from './styles.js'
 
-export const SelectField = props => (
+export const SelectField = (props) => (
     <MUISelect {...props.input} disabled={props.disabled}>
         {props.showEmptyOption && <MenuItem value="" />}
-        {props.options.map(option => (
+        {props.options.map((option) => (
             <MenuItem key={option.value} value={option.value}>
                 {option.label}
             </MenuItem>
@@ -31,7 +31,7 @@ SelectField.propTypes = {
 }
 
 const { className, styles } = inputWrapper
-export const Select = props => (
+export const Select = (props) => (
     <FormControl className={className}>
         <InputLabel htmlFor={props.input.name}>{props.placeholder}</InputLabel>
         <SelectField

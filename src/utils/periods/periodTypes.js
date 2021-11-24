@@ -1,7 +1,7 @@
-import { getFixedPeriodStartDate } from './fixedPeriods'
-import { getRelativePeriodStartDate } from './relativePeriods'
+import { getFixedPeriodStartDate } from './fixedPeriods.js'
+import { getRelativePeriodStartDate } from './relativePeriods.js'
 
-export const getPeriodStartDate = periodCode => {
+export const getPeriodStartDate = (periodCode) => {
     return (
         getRelativePeriodStartDate(periodCode) ||
         getFixedPeriodStartDate(periodCode)

@@ -4,13 +4,13 @@ import {
     selectDataSet,
     toggleSelectedUnitOnly,
     shareDataSetReportComment,
-} from '../../redux/actions/dataSetReport'
-import { setReportComment } from '../../redux/actions/reportData'
-import { getIsActionEnabled } from '../../redux/selectors/dataSetReport/getIsActionEnabled'
-import getTransformedTableData from '../../redux/selectors/dataSetReport/getTransformedTableData'
-import { isHtmlReport } from '../../utils/dataSetReport/isHtmlReport'
+} from '../../redux/actions/dataSetReport.js'
+import { setReportComment } from '../../redux/actions/reportData.js'
+import { getIsActionEnabled } from '../../redux/selectors/dataSetReport/getIsActionEnabled.js'
+import getTransformedTableData from '../../redux/selectors/dataSetReport/getTransformedTableData.js'
+import { isHtmlReport } from '../../utils/dataSetReport/isHtmlReport.js'
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
     isHtmlReport: isHtmlReport(state.reportData.content),
     reportContent: getTransformedTableData(state),
     fileUrls: state.reportData.content.fileUrls || [],
@@ -20,14 +20,14 @@ const mapStateToProps = state => ({
     isActionEnabled: getIsActionEnabled(state),
 })
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
     loadReportData: () => dispatch(loadReportData()),
-    selectDataSet: e => dispatch(selectDataSet(e.target.value)),
+    selectDataSet: (e) => dispatch(selectDataSet(e.target.value)),
     toggleSelectedUnitOnly: (e, selectedUnitOnly) =>
         dispatch(toggleSelectedUnitOnly(selectedUnitOnly)),
-    shareDataSetReportComment: comment =>
+    shareDataSetReportComment: (comment) =>
         dispatch(shareDataSetReportComment(comment)),
-    setDataSetReportComment: comment => dispatch(setReportComment(comment)),
+    setDataSetReportComment: (comment) => dispatch(setReportComment(comment)),
 })
 
 export const connectDataSetReport = connect(mapStateToProps, mapDispatchToProps)

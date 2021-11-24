@@ -1,6 +1,6 @@
 import { LOCATION_CHANGE } from 'connected-react-router'
-import { actionTypes } from '../../actions/dataSetDimensions'
-import { dataSetDimensions, defaultState } from '../dataSetDimensions'
+import { actionTypes } from '../../actions/dataSetDimensions.js'
+import { dataSetDimensions, defaultState } from '../dataSetDimensions.js'
 
 describe('Reducers - dataSetDimensions', () => {
     const dimensionOptions = [

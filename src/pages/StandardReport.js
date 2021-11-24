@@ -1,23 +1,23 @@
 import i18n from '@dhis2/d2-i18n'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { Snackbar } from '../components/feedback/Snackbar'
-import SearchablePagedList from '../components/SearchablePagedList'
-import { SectionHeadline } from '../components/SectionHeadline'
+import { Snackbar } from '../components/feedback/Snackbar.js'
+import SearchablePagedList from '../components/SearchablePagedList.js'
+import { SectionHeadline } from '../components/SectionHeadline.js'
 import {
     STANDARD_REPORT_SECTION_KEY,
     sections,
-} from '../config/sections.config'
-import connectStandardReport from './standard-report/connectStandardReport'
-import { showContextAction } from './standard-report/helper'
-import { ConnectedReportParams } from './standard-report/ReportParams'
+} from '../config/sections.config.js'
+import connectStandardReport from './standard-report/connectStandardReport.js'
+import { showContextAction } from './standard-report/helper.js'
+import { ConnectedReportParams } from './standard-report/ReportParams.js'
 import {
     CONTEXT_MENU_ACTION,
     CONTEXT_MENU_ICONS,
-} from './standard-report/standard.report.conf'
-import StandardReportActions from './standard-report/StandardReportActions'
+} from './standard-report/standard.report.conf.js'
+import StandardReportActions from './standard-report/StandardReportActions.js'
 
-const createContextMenuOptions = props => ({
+const createContextMenuOptions = (props) => ({
     [CONTEXT_MENU_ACTION.CREATE]: props.createReport,
     [CONTEXT_MENU_ACTION.EDIT]: props.editReport,
     [CONTEXT_MENU_ACTION.SHARING_SETTINGS]: props.sharingSettings,

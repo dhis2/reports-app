@@ -2,9 +2,9 @@ import Dialog from '@material-ui/core/Dialog'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { children } from '../../utils/react/propTypes'
+import { children } from '../../utils/react/propTypes.js'
 
-export const FormDialog = props => (
+export const FormDialog = (props) => (
     <Dialog open={props.open} onClose={props.onClose} maxWidth="md" fullWidth>
         <div className="form-dialog-title">
             <DialogTitle>{props.title}</DialogTitle>
@@ -12,7 +12,7 @@ export const FormDialog = props => (
 
         <div className="form-dialog-content">{props.children}</div>
 
-        {/* 
+        {/*
             Make Dialog always have same width,
             instead of depending on childrens' width
         */}

@@ -1,11 +1,11 @@
 import { connect } from 'react-redux'
-import { loadChart, loadTable } from '../../redux/actions/orgUnitDistReport'
-import { loadGroupSetOptions } from '../../redux/actions/orgUnitGroupSets'
-import { getIsActionEnabled } from '../../redux/selectors/orgUnitDistReport/getIsActionEnabled'
-import getTransformedChartData from '../../redux/selectors/orgUnitDistReport/getTransformedChartData'
-import getTransformedTableData from '../../redux/selectors/orgUnitDistReport/getTransformedTableData'
+import { loadChart, loadTable } from '../../redux/actions/orgUnitDistReport.js'
+import { loadGroupSetOptions } from '../../redux/actions/orgUnitGroupSets.js'
+import { getIsActionEnabled } from '../../redux/selectors/orgUnitDistReport/getIsActionEnabled.js'
+import getTransformedChartData from '../../redux/selectors/orgUnitDistReport/getTransformedChartData.js'
+import getTransformedTableData from '../../redux/selectors/orgUnitDistReport/getTransformedTableData.js'
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
     shouldShowChart: state.orgUnitDistReport.shouldShowChart,
     loading: state.reportData.loading,
     reportContent: state.orgUnitDistReport.shouldShowChart

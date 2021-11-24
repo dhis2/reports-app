@@ -3,13 +3,13 @@ import { InputField, Button } from '@dhis2/d2-ui-core'
 import PropTypes from 'prop-types'
 import React from 'react'
 
-const isCommentingActionEnabled = comment => comment.trim()
+const isCommentingActionEnabled = (comment) => comment.trim()
 const actionButtonPlaceholder = i18n.t('Share')
 const inputFieldPlaceholder = i18n.t(
     'Write a comment, question or interpretation of this report'
 )
 
-export const ReportComment = props => (
+export const ReportComment = (props) => (
     <div id="share-component">
         <div>
             <InputField

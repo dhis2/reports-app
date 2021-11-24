@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme'
 import React from 'react'
-import TabularReport from '../TabularReport'
+import TabularReport from '../TabularReport.js'
 
 const content = {
     title: 'Bo - Child Health - Jan to Mar 2019',

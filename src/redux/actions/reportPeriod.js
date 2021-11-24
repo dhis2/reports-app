@@ -1,7 +1,7 @@
 import i18n from '@dhis2/d2-i18n'
-import { getPeriodTypes } from '../../utils/api'
-import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
-import { showErrorSnackBar } from './feedback'
+import { getPeriodTypes } from '../../utils/api.js'
+import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage.js'
+import { showErrorSnackBar } from './feedback.js'
 
 export const actionTypes = {
     REPORT_PERIOD_TYPES_LOADING_START: 'REPORT_PERIOD_TYPES_LOADING_START',
@@ -16,7 +16,7 @@ export const actionTypes = {
  * @param {Array} periodTypes
  * @returns {Object}
  */
-export const loadPeriodTypesSuccess = periodTypes => ({
+export const loadPeriodTypesSuccess = (periodTypes) => ({
     type: actionTypes.REPORT_PERIOD_TYPES_RECEIVED,
     payload: periodTypes,
 })
@@ -34,7 +34,7 @@ export const loadPeriodTypesError = () => ({
  */
 
 export const fallbackErrorMessage = i18n.t('Could not load period types')
-export const loadPeriodTypesErrorWithFeedback = error => dispatch => {
+export const loadPeriodTypesErrorWithFeedback = (error) => (dispatch) => {
     const displayMessage = humanReadableErrorMessage(
         error,
         fallbackErrorMessage
@@ -43,20 +43,20 @@ export const loadPeriodTypesErrorWithFeedback = error => dispatch => {
     dispatch(loadPeriodTypesError())
 }
 
-export const loadPeriodTypes = () => dispatch =>
+export const loadPeriodTypes = () => (dispatch) =>
     getPeriodTypes()
-        .then(periodTypes => dispatch(loadPeriodTypesSuccess(periodTypes)))
-        .catch(error => {
+        .then((periodTypes) => dispatch(loadPeriodTypesSuccess(periodTypes)))
+        .catch((error) => {
             console.error(error)
             dispatch(loadPeriodTypesErrorWithFeedback(error))
         })
 
-export const selectPeriodType = event => ({
+export const selectPeriodType = (event) => ({
     type: actionTypes.REPORT_PERIOD_TYPE_SELECTED,
     payload: event.target.value,
 })
 
-export const selectPeriod = period => ({
+export const selectPeriod = (period) => ({
     type: actionTypes.REPORT_PERIOD_SELECTED,
     payload: period,
 })

@@ -4,19 +4,19 @@ import isEmpty from 'lodash.isempty'
 import PropTypes from 'prop-types'
 import React, { Fragment, PureComponent } from 'react'
 import { connect } from 'react-redux'
-import { SectionHeadline } from '../../components/SectionHeadline'
-import { STANDARD_REPORT_SECTION_KEY } from '../../config/sections.config'
+import { SectionHeadline } from '../../components/SectionHeadline.js'
+import { STANDARD_REPORT_SECTION_KEY } from '../../config/sections.config.js'
 import {
     loadStandardReportDetails,
     navigateToList,
     sendStandardReport,
-} from '../../redux/actions/standardReport'
+} from '../../redux/actions/standardReport.js'
 import {
     getEditFormInitialValues,
     getIsEdit,
-} from '../../redux/selectors/standardReport/getEditFormInitialValues'
-import { formCard, formLoader } from '../../utils/styles/shared'
-import { ReportForm } from './add-edit-report/ReportForm'
+} from '../../redux/selectors/standardReport/getEditFormInitialValues.js'
+import { formCard, formLoader } from '../../utils/styles/shared.js'
+import { ReportForm } from './add-edit-report/ReportForm.js'
 
 export class AddEditStandardReport extends PureComponent {
     componentDidMount() {
@@ -27,7 +27,7 @@ export class AddEditStandardReport extends PureComponent {
         }
     }
 
-    onSubmit = values => {
+    onSubmit = (values) => {
         const { sendStandardReport, edit } = this.props
         sendStandardReport(values, edit)
     }
@@ -80,7 +80,7 @@ AddEditStandardReport.propTypes = {
     report: ReportForm.propTypes.report,
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
         report: getEditFormInitialValues(state),
         edit: getIsEdit(state),

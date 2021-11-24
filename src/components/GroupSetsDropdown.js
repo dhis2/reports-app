@@ -3,13 +3,13 @@ import { DropDown } from '@dhis2/d2-ui-core'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
-import { setGroupSet } from '../redux/actions/orgUnitGroupSets'
+import { setGroupSet } from '../redux/actions/orgUnitGroupSets.js'
 import { formLabel } from '../utils/styles/shared.js'
 
 const label = i18n.t('Group Set')
 const hintText = i18n.t('Select Group Set')
 
-export const GroupSetsDropdown = props => (
+export const GroupSetsDropdown = (props) => (
     <div>
         <span className={formLabel.className}>{label}</span>
         <DropDown
@@ -36,13 +36,13 @@ GroupSetsDropdown.defaultProps = {
     fullWidth: true,
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
     collection: state.orgUnitGroupSets.collection,
     selected: state.orgUnitGroupSets.selected,
 })
 
-const mapDispatchToProps = dispatch => ({
-    selectGroupSet: e => dispatch(setGroupSet(e.target.value)),
+const mapDispatchToProps = (dispatch) => ({
+    selectGroupSet: (e) => dispatch(setGroupSet(e.target.value)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(GroupSetsDropdown)

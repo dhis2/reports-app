@@ -1,5 +1,5 @@
-import { actionTypes } from '../../actions/dataSetReport'
-import { dataSetReport, defaultState } from '../dataSetReport'
+import { actionTypes } from '../../actions/dataSetReport.js'
+import { dataSetReport, defaultState } from '../dataSetReport.js'
 
 describe('Reducer - dataSetReport', () => {
     it('should return the default state when called with no state', () => {

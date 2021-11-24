@@ -3,7 +3,7 @@ import React from 'react'
 import {
     DownloadOptions,
     DownloadOption,
-} from '../../TabularReport/DownloadOptions'
+} from '../../TabularReport/DownloadOptions.js'
 
 describe('<DownloadOptions/>', () => {
     const fileUrls = [

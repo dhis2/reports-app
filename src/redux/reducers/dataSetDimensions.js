@@ -1,5 +1,5 @@
 import { LOCATION_CHANGE } from 'connected-react-router'
-import { actionTypes } from '../actions/dataSetDimensions'
+import { actionTypes } from '../actions/dataSetDimensions.js'
 
 export const defaultState = {
     loading: false,

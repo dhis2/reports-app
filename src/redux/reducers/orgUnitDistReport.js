@@ -1,4 +1,4 @@
-import { actionTypes } from '../actions/orgUnitDistReport'
+import { actionTypes } from '../actions/orgUnitDistReport.js'
 
 export const defaultState = {
     shouldShowChart: false,

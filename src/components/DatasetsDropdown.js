@@ -3,13 +3,13 @@ import { DropDown } from '@dhis2/d2-ui-core'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
-import { selectDataSet } from '../redux/actions/dataSet'
+import { selectDataSet } from '../redux/actions/dataSet.js'
 import { formLabel } from '../utils/styles/shared.js'
 
 const hintTextLoading = i18n.t('Loading options...')
 const hintTextDefault = i18n.t('Select Data Set')
 
-export const DatasetsDropdown = props => (
+export const DatasetsDropdown = (props) => (
     <div>
         <span className={formLabel.className}>{props.label}</span>
         <DropDown
@@ -47,8 +47,8 @@ const mapStateToProps = ({ dataSet: { loading, selected, options } }) => ({
     options,
 })
 
-const mapDispatchToProps = dispatch => ({
-    selectDataSet: event => dispatch(selectDataSet(event.target.value)),
+const mapDispatchToProps = (dispatch) => ({
+    selectDataSet: (event) => dispatch(selectDataSet(event.target.value)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(DatasetsDropdown)

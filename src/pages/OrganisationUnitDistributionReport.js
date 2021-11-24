@@ -1,18 +1,18 @@
 import Paper from '@material-ui/core/Paper'
 import PropTypes from 'prop-types'
 import React from 'react'
-import BarChart from '../components/BarChart'
-import { Snackbar } from '../components/feedback/Snackbar'
-import { SectionHeadline } from '../components/SectionHeadline'
-import TabularReport from '../components/TabularReport'
+import BarChart from '../components/BarChart.js'
+import { Snackbar } from '../components/feedback/Snackbar.js'
+import { SectionHeadline } from '../components/SectionHeadline.js'
+import TabularReport from '../components/TabularReport.js'
 import {
     ORG_UNIT_DIST_REPORT_SECTION_KEY,
     sections,
-} from '../config/sections.config'
-import { reportContent } from '../utils/react/propTypes'
+} from '../config/sections.config.js'
+import { reportContent } from '../utils/react/propTypes.js'
 import { container } from '../utils/styles/shared.js'
-import { connectOrganisationUnitDistributionReport } from './organisation-unit-distribution-report/connectOrganisationUnitDistributionReport'
-import { Form } from './organisation-unit-distribution-report/Form'
+import { connectOrganisationUnitDistributionReport } from './organisation-unit-distribution-report/connectOrganisationUnitDistributionReport.js'
+import { Form } from './organisation-unit-distribution-report/Form.js'
 
 class OrganisationUnitDistributionReport extends React.Component {
     componentDidMount() {
@@ -71,8 +71,9 @@ OrganisationUnitDistributionReport.propTypes = {
     shouldShowChart: PropTypes.bool.isRequired,
 }
 
-const ConnectedOrganisationUnitDistributionReport = connectOrganisationUnitDistributionReport(
-    OrganisationUnitDistributionReport
-)
+const ConnectedOrganisationUnitDistributionReport =
+    connectOrganisationUnitDistributionReport(
+        OrganisationUnitDistributionReport
+    )
 
 export { ConnectedOrganisationUnitDistributionReport as OrganisationUnitDistributionReport }

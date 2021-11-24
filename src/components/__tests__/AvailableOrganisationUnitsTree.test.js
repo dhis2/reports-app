@@ -1,5 +1,5 @@
-import createComponentRenderer from '../../utils/test-helpers/createComponentRenderer'
-import { AvailableOrganisationUnitsTree } from '../AvailableOrganisationUnitsTree'
+import createComponentRenderer from '../../utils/test-helpers/createComponentRenderer.js'
+import { AvailableOrganisationUnitsTree } from '../AvailableOrganisationUnitsTree.js'
 
 jest.mock('@dhis2/d2-ui-org-unit-tree', () => ({
     OrgUnitTreeMultipleRoots: 'OrgUnitTreeMultipleRoots',

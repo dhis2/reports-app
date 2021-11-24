@@ -10,7 +10,7 @@ import {
     getFileUrls,
     postDataSetReportCommentUrl,
     getDataSetReportFileUrls,
-} from './api/helpers'
+} from './api/helpers.js'
 import {
     getReportTablesResourceNameBySystemVersion,
     getReportTablesFilterBySystemVersion,
@@ -18,8 +18,8 @@ import {
     formatStandardReportResponseBySystemVersion,
     getStandardReportFieldsBySystemVersion,
 } from './backwardCompatability.js'
-import { isCustomFormType } from './dataSetReport/isCustomFormType'
-import { isDevelopment } from './env/isDevelopment'
+import { isCustomFormType } from './dataSetReport/isCustomFormType.js'
+import { isDevelopment } from './env/isDevelopment.js'
 
 export const RESOURCE_ENDPOINT = 'documents'
 const DATA_DIMENSION_SUFFIXES = [
@@ -37,7 +37,7 @@ let api
 /**
  * Sets d2 and the api
  */
-export const initApi = d2Instance => {
+export const initApi = (d2Instance) => {
     d2 = d2Instance
     api = d2.Api.getApi()
 
@@ -83,7 +83,7 @@ export const getSystemMinorVersion = () => d2.system.version.minor
  * @return {Promise} Period types
  */
 export const getPeriodTypes = () =>
-    api.get('periodTypes').then(resp => resp.periodTypes)
+    api.get('periodTypes').then((resp) => resp.periodTypes)
 
 /**
  * @return {Promise} Organisation units
@@ -120,7 +120,7 @@ export const getOrganisationUnits = async () => {
  * @param {bool} selectedUnitOnly
  * @returns {Promise}
  */
-export const getDataSetReport = options => {
+export const getDataSetReport = (options) => {
     const endPoint = 'dataSetReport'
     const url = isCustomFormType(options.dataSet.formType)
         ? `${endPoint}/custom`
@@ -142,14 +142,14 @@ export const getDataSetReport = options => {
 
     return api
         .get(url, data, requestOptions)
-        .then(response => ({ data: response, fileUrls }))
+        .then((response) => ({ data: response, fileUrls }))
 }
 
 /**
  * @param {string} dataSetId
  * @returns {Promise<array>} The dimensions for a given dataset
  */
-export const getDimensions = dataSetId =>
+export const getDimensions = (dataSetId) =>
     api
         .get(`dimensions/dataSet/${dataSetId}`, {
             fields: ['id', 'displayName', 'items[id,displayName]'].join(','),
@@ -195,7 +195,7 @@ export const getReportingRateSummaryReport = async (
 ) => {
     const orgUnitIds = await getOrgUnitAndChildrenIds(orgUnit)
     const dataDimensions = DATA_DIMENSION_SUFFIXES.map(
-        suffix => `${dataSetId}.${suffix}`
+        (suffix) => `${dataSetId}.${suffix}`
     )
     const req = new d2.analytics.request()
         .addDataDimension(dataDimensions)
@@ -219,21 +219,21 @@ export const getReportingRateSummaryReport = async (
     // which only spawns a single request
     const extensions = ['json', 'xls', 'csv']
     const [{ url }, ...fileUrls] = getAnalyticsFileUrls(req, extensions)
-    return api.get(url).then(data => ({ ...data, fileUrls }))
+    return api.get(url).then((data) => ({ ...data, fileUrls }))
 }
 
 /**
  * @param {Object} orgUnit
  * @returns {Promise} - Array of IDs of the orgUnit and its direct descendants
  */
-export const getOrgUnitAndChildrenIds = orgUnit => {
+export const getOrgUnitAndChildrenIds = (orgUnit) => {
     const children = orgUnit.children.size
         ? Promise.resolve(orgUnit.children)
         : d2.models.organisationUnits
               .get(orgUnit.id, { fields: ['children[id]'] })
               .then(({ children }) => children)
 
-    return children.then(children => [
+    return children.then((children) => [
         orgUnit.id,
         ...mapResponseToArrayOfIds(children),
     ])
@@ -271,7 +271,7 @@ export const getOrgUnitDistReport = async (
     const relativeUrl = `${endPoint}?${queryString}`
     const fileUrls = getFileUrls(endPoint, queryString, ['xls', 'pdf'])
 
-    return api.get(relativeUrl).then(response => ({ ...response, fileUrls }))
+    return api.get(relativeUrl).then((response) => ({ ...response, fileUrls }))
 }
 
 /**
@@ -294,20 +294,20 @@ export const getResources = (page, pageSize, search) => {
 /**
  * @returns {Promise}
  */
-export const getResourceById = id => {
+export const getResourceById = (id) => {
     return api.get(`${RESOURCE_ENDPOINT}/${id}`)
 }
 
 /**
  * @returns {Promise}
  */
-export const deleteResource = resourceId =>
+export const deleteResource = (resourceId) =>
     api.delete(`${RESOURCE_ENDPOINT}/${resourceId}`)
 
 /**
  * @returns {Promise}
  */
-export const getStandardReportTables = searchTerm => {
+export const getStandardReportTables = (searchTerm) => {
     const resourceName = getReportTablesResourceNameBySystemVersion()
     const filter = getReportTablesFilterBySystemVersion(searchTerm)
 
@@ -318,21 +318,21 @@ export const getStandardReportTables = searchTerm => {
             fields: 'id,displayName',
             filter,
         })
-        .then(response => response[resourceName])
+        .then((response) => response[resourceName])
 }
 
 /**
  * @param {Object} report
  * @returns {Promise}
  */
-export const postStandardReport = report =>
+export const postStandardReport = (report) =>
     api.post(STANDARD_REPORTS_ENDPOINT, report)
 
 /**
  * @param {Object} report
  * @returns {Promise}
  */
-export const updateStandardReport = report =>
+export const updateStandardReport = (report) =>
     api.update(`${STANDARD_REPORTS_ENDPOINT}/${report.id}`, report)
 
 /**
@@ -341,7 +341,7 @@ export const updateStandardReport = report =>
 export const getDataSetOptions = () =>
     d2.models.dataSet
         .list({ paging: false, fields: 'id,displayName,formType' })
-        .then(response => response.toArray())
+        .then((response) => response.toArray())
 
 /**
  * @param {Object} api
@@ -376,7 +376,7 @@ export const postResource = (resource, file = null) =>
                       )
                   )
               )
-              .then(resource => postDocument(api, resource))
+              .then((resource) => postDocument(api, resource))
         : postDocument(api, resource)
 
 /**
@@ -395,7 +395,7 @@ export const putResource = (resourceId, resource, file = null) =>
                       )
                   )
               )
-              .then(resource => putDocument(api, resourceId, resource))
+              .then((resource) => putDocument(api, resourceId, resource))
         : putDocument(api, resourceId, resource)
 
 /**
@@ -423,7 +423,7 @@ export const getFilteredStandardReports = (page, pageSize, nameFilter) =>
  * @param {string} id
  * @returns {Promise}
  */
-export const getStandardReportDetails = id =>
+export const getStandardReportDetails = (id) =>
     api
         .get(`${STANDARD_REPORTS_ENDPOINT}/${id}`, {
             fields: getStandardReportFieldsBySystemVersion(),
@@ -434,7 +434,7 @@ export const getStandardReportDetails = id =>
  * @param {string} id
  * @return {Promise}
  */
-export const deleteStandardReport = id =>
+export const deleteStandardReport = (id) =>
     api.delete(`${STANDARD_REPORTS_ENDPOINT}/${id}`)
 
 /**

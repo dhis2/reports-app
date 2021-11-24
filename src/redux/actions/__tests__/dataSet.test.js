@@ -1,11 +1,11 @@
-import { getDataSetOptions } from '../../../utils/api'
-import { mockStore } from '../../../utils/test-helpers/mockStore'
+import { getDataSetOptions } from '../../../utils/api.js'
+import { mockStore } from '../../../utils/test-helpers/mockStore.js'
 import {
     loadingDataSetOptionsStart,
     loadingDataSetOptionsSuccess,
     loadingDataSetOptionsError,
     loadDataSetOptions,
-} from '../dataSet'
+} from '../dataSet.js'
 
 jest.mock('../../../utils/api', () => ({
     getDataSetOptions: jest.fn(() => Promise.resolve()),

@@ -1,6 +1,6 @@
 import { LOCATION_CHANGE } from 'connected-react-router'
-import { actionTypes } from '../../actions/orgUnitGroupSets'
-import { orgUnitGroupSets, defaultState } from '../orgUnitGroupSets'
+import { actionTypes } from '../../actions/orgUnitGroupSets.js'
+import { orgUnitGroupSets, defaultState } from '../orgUnitGroupSets.js'
 
 describe('Reducer - orgUnitGroupSets', () => {
     it('should return the default state', () => {

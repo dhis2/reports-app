@@ -1,11 +1,11 @@
-import { getReportingRateSummaryReport } from '../../../utils/api'
-import { mockStore } from '../../../utils/test-helpers/mockStore'
+import { getReportingRateSummaryReport } from '../../../utils/api.js'
+import { mockStore } from '../../../utils/test-helpers/mockStore.js'
 import {
     loadingReportDataStart,
     loadingReportDataSuccess,
     loadingReportDataError,
-} from '../reportData'
-import { loadReportData } from '../reportingRateSummary'
+} from '../reportData.js'
+import { loadReportData } from '../reportingRateSummary.js'
 
 jest.mock('../../../utils/api', () => ({
     getReportingRateSummaryReport: jest.fn(() => Promise.resolve()),

@@ -11,9 +11,9 @@ import {
     setSearchAndLoadResources,
     showSharingSettings,
     viewResource,
-} from '../../redux/actions/resource'
+} from '../../redux/actions/resource.js'
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
     open: state.resource.open,
     resources: state.resource.collection,
     selectedAction: state.resource.selectedAction,
@@ -29,7 +29,7 @@ const mapDispatchToProps = {
     loadResources,
     requestDeleteResource,
     deleteResource,
-    setSearch: event => setSearchAndLoadResources(event.target.value),
+    setSearch: (event) => setSearchAndLoadResources(event.target.value),
     addResource,
     viewResource,
     editResource,

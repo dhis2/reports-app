@@ -1,5 +1,5 @@
 import i18n from '@dhis2/d2-i18n'
-export { RELATIVE_PERIODS } from '../../utils/periods/relativePeriods'
+export { RELATIVE_PERIODS } from '../../utils/periods/relativePeriods.js'
 
 export const REPORTS_ENDPOINT = 'reports'
 export const REPORT_TEMPLATES_ENDPOINT = 'reportTemplate'

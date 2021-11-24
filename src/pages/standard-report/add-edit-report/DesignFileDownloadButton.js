@@ -3,12 +3,12 @@ import Button from '@material-ui/core/Button'
 import FormHelperText from '@material-ui/core/FormHelperText'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { getApi } from '../../../utils/api'
+import { getApi } from '../../../utils/api.js'
 import {
     reportTypes,
     REPORTS_ENDPOINT,
     REPORT_TEMPLATES_ENDPOINT,
-} from '../standard.report.conf'
+} from '../standard.report.conf.js'
 
 export const DesignFileDownloadButton = ({
     isEditing,
@@ -36,8 +36,8 @@ export const DesignFileDownloadButton = ({
             <FormHelperText>{label}</FormHelperText>
             <FormHelperText>
                 <Button variant="contained" component="span">
-                    {/* 
-                    Having an anchor to a HTML file with a download attribute 
+                    {/*
+                    Having an anchor to a HTML file with a download attribute
                     causes unexpected behavior in Chrome, see:
                     https://dhis2.slack.com/archives/G451J9KGR/p1570090946063500
                     */}
