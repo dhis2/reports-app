@@ -1,8 +1,8 @@
 import i18n from '@dhis2/d2-i18n'
-import { getOrganisationUnits } from '../../utils/api'
-import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
-import { showErrorSnackBar } from './feedback'
-import { loadGroupSetOptions } from './orgUnitGroupSets'
+import { getOrganisationUnits } from '../../utils/api.js'
+import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage.js'
+import { showErrorSnackBar } from './feedback.js'
+import { loadGroupSetOptions } from './orgUnitGroupSets.js'
 
 export const actionTypes = {
     ORGANISATION_UNITS_LOADING_START: 'ORGANISATION_UNITS_LOADING_START',

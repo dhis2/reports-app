@@ -4,8 +4,8 @@ import React from 'react'
 import {
     STANDARD_REPORT_SECTION_KEY,
     sections,
-} from '../../config/sections.config'
-import MenuElement from '../MenuElement'
+} from '../../config/sections.config.js'
+import MenuElement from '../MenuElement.js'
 
 jest.mock('@dhis2/d2-ui-org-unit-tree', () => ({
     OrgUnitTree: 'OrgUnitTree',

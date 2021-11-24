@@ -1,6 +1,9 @@
 import omit from 'lodash.omit'
-import { isRequiredWhen } from '../../utils/form/validators'
-import { resourceActions, resourceTypes } from '../../utils/resource/constants'
+import { isRequiredWhen } from '../../utils/form/validators.js'
+import {
+    resourceActions,
+    resourceTypes,
+} from '../../utils/resource/constants.js'
 
 export const showContextAction = (deleteResource) => (document, action) => {
     const access = document && document.access ? document.access : {}

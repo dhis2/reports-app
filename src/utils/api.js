@@ -10,7 +10,7 @@ import {
     getFileUrls,
     postDataSetReportCommentUrl,
     getDataSetReportFileUrls,
-} from './api/helpers'
+} from './api/helpers.js'
 import {
     getReportTablesResourceNameBySystemVersion,
     getReportTablesFilterBySystemVersion,
@@ -18,8 +18,8 @@ import {
     formatStandardReportResponseBySystemVersion,
     getStandardReportFieldsBySystemVersion,
 } from './backwardCompatability.js'
-import { isCustomFormType } from './dataSetReport/isCustomFormType'
-import { isDevelopment } from './env/isDevelopment'
+import { isCustomFormType } from './dataSetReport/isCustomFormType.js'
+import { isDevelopment } from './env/isDevelopment.js'
 
 export const RESOURCE_ENDPOINT = 'documents'
 const DATA_DIMENSION_SUFFIXES = [

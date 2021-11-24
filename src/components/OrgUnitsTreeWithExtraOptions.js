@@ -2,10 +2,10 @@ import i18n from '@dhis2/d2-i18n'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
-import { toggleShowOptions } from '../redux/actions/organisationUnits'
+import { toggleShowOptions } from '../redux/actions/organisationUnits.js'
 import { formLabel } from '../utils/styles/shared.js'
-import OrganisationUnitsTree from './AvailableOrganisationUnitsTree'
-import OrganisationUnitGroupSets from './OrganisationUnitGroupSets'
+import OrganisationUnitsTree from './AvailableOrganisationUnitsTree.js'
+import { OrganisationUnitGroupSets } from './OrganisationUnitGroupSets.js'
 
 const getExtraOptionsLabel = (showOptions) =>
     !showOptions ? i18n.t('Show more options') : i18n.t('Show fewer options')
@@ -13,7 +13,7 @@ const getExtraOptionsLabel = (showOptions) =>
 const getExtraOptionsClassName = (showOptions) =>
     showOptions ? 'show-options' : 'hide-options'
 
-export const OrgUnitsTreeWithExtraOptions = (props) => (
+export const __OrgUnitsTreeWithExtraOptions = (props) => (
     <React.Fragment>
         <div className={formLabel.className}>
             {i18n.t('Report organisation unit')}
@@ -58,7 +58,7 @@ export const OrgUnitsTreeWithExtraOptions = (props) => (
     </React.Fragment>
 )
 
-OrgUnitsTreeWithExtraOptions.propTypes = {
+__OrgUnitsTreeWithExtraOptions.propTypes = {
     isLoadingOptions: PropTypes.bool.isRequired,
     showOptions: PropTypes.bool.isRequired,
     toggleShowOptions: PropTypes.func.isRequired,
@@ -69,6 +69,6 @@ const mapStateToProps = (state) => ({
     isLoadingOptions: state.orgUnitGroupSets.loading,
 })
 
-export default connect(mapStateToProps, {
+export const OrgUnitsTreeWithExtraOptions = connect(mapStateToProps, {
     toggleShowOptions,
-})(OrgUnitsTreeWithExtraOptions)
+})(__OrgUnitsTreeWithExtraOptions)

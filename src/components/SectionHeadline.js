@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import PageHelper from '../components/PageHelper'
-import { getDocsUrl } from '../utils/getDocsUrl'
+import PageHelper from '../components/PageHelper.js'
+import { getDocsUrl } from '../utils/getDocsUrl.js'
 
 export const SectionHeadline = (props) => (
     <h1>

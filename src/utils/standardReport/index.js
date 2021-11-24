@@ -1,9 +1,9 @@
 import omitBy from 'lodash.omitby'
-import { reportTypes } from '../../pages/standard-report/standard.report.conf'
-import { getSelectedOrgUnit } from '../../redux/selectors/organisationUnit/getSelectedOrgUnit'
-import { getSelectedReportPeriod } from '../../redux/selectors/reportPeriod/getSelectedReportPeriod'
-import { isFalsy } from '../boolean/isFalsy'
-import { getPeriodStartDate } from '../periods/periodTypes'
+import { reportTypes } from '../../pages/standard-report/standard.report.conf.js'
+import { getSelectedOrgUnit } from '../../redux/selectors/organisationUnit/getSelectedOrgUnit.js'
+import { getSelectedReportPeriod } from '../../redux/selectors/reportPeriod/getSelectedReportPeriod.js'
+import { isFalsy } from '../boolean/isFalsy.js'
+import { getPeriodStartDate } from '../periods/periodTypes.js'
 
 export const extractRequiredReportParams = (reportParams) =>
     omitBy(

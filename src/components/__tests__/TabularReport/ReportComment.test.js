@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme'
 import React from 'react'
-import { ReportComment } from '../../TabularReport/ReportComment'
+import { ReportComment } from '../../TabularReport/ReportComment.js'
 
 describe('<ReportComment/>', () => {
     it('Matches the snapshot', () => {

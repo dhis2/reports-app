@@ -3,8 +3,8 @@ import { createSelector } from 'reselect'
 import {
     reportTypes,
     cacheStrategies,
-} from '../../../pages/standard-report/standard.report.conf'
-import { identity } from '../../../utils/boolean/identity'
+} from '../../../pages/standard-report/standard.report.conf.js'
+import { identity } from '../../../utils/boolean/identity.js'
 
 export const getSelectedStandardReport = (state) =>
     state.standardReport.selectedReport

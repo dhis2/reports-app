@@ -2,7 +2,7 @@ import { CircularProgress } from '@dhis2/d2-ui-core'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
-import { getShowLoading } from '../../redux/selectors/feedback/getShowLoading'
+import { getShowLoading } from '../../redux/selectors/feedback/getShowLoading.js'
 
 const Loader = (props) =>
     props.show ? (

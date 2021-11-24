@@ -1,9 +1,9 @@
 import i18n from '@dhis2/d2-i18n'
 import debounce from 'lodash.debounce'
-import { DEBOUNCE_DELAY } from '../../config/search.config'
-import { getStandardReportTables } from '../../utils/api'
-import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
-import { showErrorSnackBar } from './feedback'
+import { DEBOUNCE_DELAY } from '../../config/search.config.js'
+import { getStandardReportTables } from '../../utils/api.js'
+import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage.js'
+import { showErrorSnackBar } from './feedback.js'
 
 export const MIN_CHAR_LENGTH = 3
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import createComponentRenderer from '../createComponentRenderer'
+import createComponentRenderer from '../createComponentRenderer.js'
 
 describe('createComponentRenderer', () => {
     const MockComponent = (props) => <div {...props} />

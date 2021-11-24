@@ -8,7 +8,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 /* App context */
 import { connect } from 'react-redux'
-import { selectOrgUnitOption } from '../redux/actions/organisationUnits'
+import { selectOrgUnitOption } from '../redux/actions/organisationUnits.js'
 import { formLabel } from '../utils/styles/shared.js'
 
 const createGroupSetOnChange = (groupSetId, onChange) => (event) => {
@@ -49,7 +49,7 @@ OrganisationUnitGroupSetDropdown.defaultProps = {
     value: '',
 }
 
-export const OrganisationUnitGroupSets = ({
+export const __OrganisationUnitGroupSets = ({
     groupSets,
     isLoading,
     selectGroupSet,
@@ -78,7 +78,7 @@ export const OrganisationUnitGroupSets = ({
         ))
     )
 
-OrganisationUnitGroupSets.propTypes = {
+__OrganisationUnitGroupSets.propTypes = {
     groupSets: PropTypes.array.isRequired,
     isLoading: PropTypes.bool.isRequired,
     selectGroupSet: PropTypes.func.isRequired,
@@ -86,7 +86,7 @@ OrganisationUnitGroupSets.propTypes = {
     fullWidth: PropTypes.bool,
 }
 
-OrganisationUnitGroupSets.defaultProps = {
+__OrganisationUnitGroupSets.defaultProps = {
     fullWidth: true,
 }
 
@@ -96,6 +96,6 @@ const mapStateToProps = (state) => ({
     values: state.organisationUnits.selectedOptions,
 })
 
-export default connect(mapStateToProps, {
+export const OrganisationUnitGroupSets = connect(mapStateToProps, {
     selectGroupSet: selectOrgUnitOption,
-})(OrganisationUnitGroupSets)
+})(__OrganisationUnitGroupSets)

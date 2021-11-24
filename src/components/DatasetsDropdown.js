@@ -3,7 +3,7 @@ import { DropDown } from '@dhis2/d2-ui-core'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
-import { selectDataSet } from '../redux/actions/dataSet'
+import { selectDataSet } from '../redux/actions/dataSet.js'
 import { formLabel } from '../utils/styles/shared.js'
 
 const hintTextLoading = i18n.t('Loading options...')

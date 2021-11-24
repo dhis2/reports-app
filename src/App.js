@@ -3,13 +3,16 @@ import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import AppRouter from './components/AppRouter'
-import { Loader } from './components/feedback/Loader'
-import { sectionOrder, sections } from './config/sections.config'
-import { loadDataSetOptions } from './redux/actions/dataSet'
-import { loadOrganisationUnits } from './redux/actions/organisationUnits'
-import { loadPeriodTypes } from './redux/actions/reportPeriod'
-import { getCurrentSection, getShowSidebar } from './redux/selectors/sidebar'
+import AppRouter from './components/AppRouter.js'
+import { Loader } from './components/feedback/Loader.js'
+import { sectionOrder, sections } from './config/sections.config.js'
+import { loadDataSetOptions } from './redux/actions/dataSet.js'
+import { loadOrganisationUnits } from './redux/actions/organisationUnits.js'
+import { loadPeriodTypes } from './redux/actions/reportPeriod.js'
+import {
+    getCurrentSection,
+    getShowSidebar,
+} from './redux/selectors/sidebar/index.js'
 
 // is not "marked" as required but it's used by Sidebar
 const nonOnChangeSection = () => null

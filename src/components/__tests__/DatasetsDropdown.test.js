@@ -1,7 +1,7 @@
 import { DropDown } from '@dhis2/d2-ui-core'
 import { shallow } from 'enzyme'
 import React from 'react'
-import { DatasetsDropdown } from '../DatasetsDropdown'
+import { DatasetsDropdown } from '../DatasetsDropdown.js'
 
 jest.mock('@dhis2/d2-ui-core', () => ({ DropDown: 'DropDown' }))
 

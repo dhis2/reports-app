@@ -9,9 +9,9 @@ import { resolve } from 'styled-jsx/css'
 import {
     sections,
     STANDARD_REPORT_SECTION_KEY,
-} from '../../config/sections.config'
-import { generateHtmlReport } from '../../redux/actions/standardReport'
-import HtmlReport from './HtmlReport'
+} from '../../config/sections.config.js'
+import { generateHtmlReport } from '../../redux/actions/standardReport.js'
+import HtmlReport from './HtmlReport.js'
 
 const reportCard = resolve`
      {

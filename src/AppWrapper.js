@@ -1,6 +1,6 @@
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import 'flexboxgrid/css/flexboxgrid.css'
-import './locales'
+import './locales/index.js'
 
 import { useConfig } from '@dhis2/app-runtime'
 import { useD2 } from '@dhis2/app-runtime-adapter-d2'
@@ -13,11 +13,11 @@ import {
 import { ConnectedRouter } from 'connected-react-router'
 import React from 'react'
 import { Provider } from 'react-redux'
-import App from './App'
-import store from './redux/store'
-import { initApi } from './utils/api'
-import history from './utils/history'
-import injectTranslationsToD2 from './utils/injectTranslationsToD2'
+import App from './App.js'
+import store from './redux/store.js'
+import { initApi } from './utils/api.js'
+import history from './utils/history.js'
+import injectTranslationsToD2 from './utils/injectTranslationsToD2.js'
 
 const MUI3Theme = createMui3Theme(mui3theme)
 

@@ -1,5 +1,5 @@
 import { LOCATION_CHANGE } from 'connected-react-router'
-import { actionTypes } from '../actions/orgUnitGroupSets'
+import { actionTypes } from '../actions/orgUnitGroupSets.js'
 
 export const defaultState = {
     loading: false,

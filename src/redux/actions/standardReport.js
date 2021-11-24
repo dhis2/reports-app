@@ -3,9 +3,9 @@ import { push } from 'connected-react-router'
 import debounce from 'lodash.debounce'
 import omit from 'lodash.omit'
 import size from 'lodash.size'
-import { DEBOUNCE_DELAY } from '../../config/search.config'
-import { STANDARD_REPORT_SECTION_KEY } from '../../config/sections.config'
-import { reportTypes } from '../../pages/standard-report/standard.report.conf'
+import { DEBOUNCE_DELAY } from '../../config/search.config.js'
+import { STANDARD_REPORT_SECTION_KEY } from '../../config/sections.config.js'
+import { reportTypes } from '../../pages/standard-report/standard.report.conf.js'
 import {
     deleteStandardReport as deleteStandardReportRequest,
     getApi,
@@ -14,11 +14,11 @@ import {
     getStandardReportHtmlReport,
     postStandardReport,
     updateStandardReport,
-} from '../../utils/api'
-import { formatStandardReportPayloadBySystemVersion } from '../../utils/backwardCompatability'
-import { fileToText } from '../../utils/fileToText'
-import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
-import { getPeriodStartDate } from '../../utils/periods/periodTypes'
+} from '../../utils/api.js'
+import { formatStandardReportPayloadBySystemVersion } from '../../utils/backwardCompatability.js'
+import { fileToText } from '../../utils/fileToText.js'
+import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage.js'
+import { getPeriodStartDate } from '../../utils/periods/periodTypes.js'
 import {
     appendOrgUnitsAndReportPeriodToQueryString,
     extractRequiredReportParams,
@@ -27,25 +27,25 @@ import {
     validateRequiredParams,
     processCheckboxValues,
     isJasperReportTableReport,
-} from '../../utils/standardReport'
+} from '../../utils/standardReport/index.js'
 import {
     clearFeedback,
     showConfirmationSnackBar,
     showErrorSnackBar,
     showSuccessSnackBar,
-} from './feedback'
-import { clearSelectedOrgUnit } from './organisationUnits'
+} from './feedback.js'
+import { clearSelectedOrgUnit } from './organisationUnits.js'
 import {
     goToNextPage as goToNextPageOrig,
     goToPrevPage as goToPrevPageOrig,
     setPagination,
-} from './pagination'
+} from './pagination.js'
 import {
     loadingReportDataError,
     loadingReportDataStart,
     loadingReportDataSuccess,
-} from './reportData'
-import { clearSelectedReportPeriod } from './reportPeriod'
+} from './reportData.js'
+import { clearSelectedReportPeriod } from './reportPeriod.js'
 
 export const actionTypes = {
     SET_SELECTED_REPORT: 'SET_SELECTED_REPORT',

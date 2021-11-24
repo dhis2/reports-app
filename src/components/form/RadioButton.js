@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import { formInput } from '../../utils/react/propTypes'
+import { formInput } from '../../utils/react/propTypes.js'
 
 export const RadioButton = (props) => (
     <div className="form-checkbox">

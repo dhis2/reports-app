@@ -1,6 +1,6 @@
-import { getDataSetReport, postDataSetReportComment } from '../../utils/api'
-import { selectDataSet as selectDataSetOriginal } from './dataSet'
-import { loadDimensions } from './dataSetDimensions'
+import { getDataSetReport, postDataSetReportComment } from '../../utils/api.js'
+import { selectDataSet as selectDataSetOriginal } from './dataSet.js'
+import { loadDimensions } from './dataSetDimensions.js'
 import {
     loadingReportDataStart,
     loadingReportDataSuccessWithFeedback,
@@ -8,7 +8,7 @@ import {
     sharingReportCommentStartWithFeedback,
     sharingReportCommentSuccessWithFeedback,
     sharingReportCommentErrorWithFeedback,
-} from './reportData'
+} from './reportData.js'
 
 export const actionTypes = {
     SHOW_DATA_SET_REPORT_FORM: 'SHOW_DATA_SET_REPORT_FORM',

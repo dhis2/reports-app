@@ -1,4 +1,4 @@
-import { getFilteredPeriodTypes } from '../periodTypes'
+import { getFilteredPeriodTypes } from '../periodTypes.js'
 
 describe('getFilteredPeriodTypes', () => {
     const periodTypes = [{ name: 'Daily' }, { name: 'WeeklyWednesday' }]

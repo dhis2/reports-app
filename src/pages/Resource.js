@@ -1,14 +1,17 @@
 import i18n from '@dhis2/d2-i18n'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { Snackbar } from '../components/feedback/Snackbar'
-import SearchablePagedList from '../components/SearchablePagedList'
-import { SectionHeadline } from '../components/SectionHeadline'
-import { RESOURCE_SECTION_KEY, sections } from '../config/sections.config'
-import { contextMenuIcons, resourceActions } from '../utils/resource/constants'
-import { connectResource } from './resource/connectResource'
-import { showContextAction } from './resource/helper'
-import ResourceActions from './resource/ResourceActions'
+import { Snackbar } from '../components/feedback/Snackbar.js'
+import SearchablePagedList from '../components/SearchablePagedList.js'
+import { SectionHeadline } from '../components/SectionHeadline.js'
+import { RESOURCE_SECTION_KEY, sections } from '../config/sections.config.js'
+import {
+    contextMenuIcons,
+    resourceActions,
+} from '../utils/resource/constants.js'
+import { connectResource } from './resource/connectResource.js'
+import { showContextAction } from './resource/helper.js'
+import ResourceActions from './resource/ResourceActions.js'
 
 const createContextMenuOptions = (props) => ({
     [resourceActions.VIEW]: props.viewResource,

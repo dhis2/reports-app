@@ -1,5 +1,5 @@
 import { LOCATION_CHANGE } from 'connected-react-router'
-import { actionTypes } from '../actions/pagination'
+import { actionTypes } from '../actions/pagination.js'
 
 const allActionTypes = { ...actionTypes, LOCATION_CHANGE }
 

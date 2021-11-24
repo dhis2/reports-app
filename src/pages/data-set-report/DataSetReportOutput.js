@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import ReportLoader from '../../components/ReportLoader'
-import { DownloadOptions } from '../../components/TabularReport/DownloadOptions'
-import { ReportComment } from '../../components/TabularReport/ReportComment'
-import ReportTable from '../../components/TabularReport/ReportTable'
-import { reportContent } from '../../utils/react/propTypes'
-import HtmlReport from '../standard-report/HtmlReport'
+import ReportLoader from '../../components/ReportLoader.js'
+import { DownloadOptions } from '../../components/TabularReport/DownloadOptions.js'
+import { ReportComment } from '../../components/TabularReport/ReportComment.js'
+import ReportTable from '../../components/TabularReport/ReportTable.js'
+import { reportContent } from '../../utils/react/propTypes.js'
+import HtmlReport from '../standard-report/HtmlReport.js'
 
 const DataSetReportOutput = (props) => (
     <ReportLoader content={props.content} isLoading={props.isLoading}>

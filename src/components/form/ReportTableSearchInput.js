@@ -11,9 +11,9 @@ import {
     loadFilteredStandardReportTables,
     clearSearch,
     MIN_CHAR_LENGTH,
-} from '../../redux/actions/standardReportTables'
-import { formInput, formInputMeta } from '../../utils/react/propTypes'
-import { Input } from './Input'
+} from '../../redux/actions/standardReportTables.js'
+import { formInput, formInputMeta } from '../../utils/react/propTypes.js'
+import { Input } from './Input.js'
 
 const centeredStyle = {
     display: 'flex',

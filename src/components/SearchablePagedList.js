@@ -9,7 +9,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
 import css from 'styled-jsx/css'
-import getPagerCurrentlyShown from '../redux/selectors/pagination/getPagerCurrentlyShown'
+import getPagerCurrentlyShown from '../redux/selectors/pagination/getPagerCurrentlyShown.js'
 
 const searchText = i18n.t('Search')
 

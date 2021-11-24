@@ -1,9 +1,9 @@
-import { getOrgUnitDistReport } from '../../utils/api'
+import { getOrgUnitDistReport } from '../../utils/api.js'
 import {
     loadingReportDataStart,
     loadingReportDataSuccessWithFeedback,
     loadingReportDataErrorWithFeedback,
-} from './reportData'
+} from './reportData.js'
 
 export const actionTypes = {
     SET_TABULAR_OUTPUT: 'SET_TABULAR_OUTPUT',

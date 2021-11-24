@@ -1,6 +1,6 @@
-import { getApi } from '../api'
-import { formatStandardReportResponseBySystemVersion } from '../backwardCompatability'
-import { FILE_RESOURCES_ENDPOINT } from './constants'
+import { getApi } from '../api.js'
+import { formatStandardReportResponseBySystemVersion } from '../backwardCompatability.js'
+import { FILE_RESOURCES_ENDPOINT } from './constants.js'
 
 /**
  * @param {Object} d2 ModelCollection instance

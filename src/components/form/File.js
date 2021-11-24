@@ -5,7 +5,7 @@ import FormHelperText from '@material-ui/core/FormHelperText'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { Field } from 'react-final-form'
-import { ErrorText } from './buildingBlocks/ErrorText'
+import { ErrorText } from './buildingBlocks/ErrorText.js'
 
 const useFileBlobAsValue = (input) => (event) => {
     event.persist()

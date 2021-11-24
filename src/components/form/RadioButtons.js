@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { Field } from 'react-final-form'
-import { RadioButton } from './RadioButton'
+import { RadioButton } from './RadioButton.js'
 
 const styles = {
     container: {

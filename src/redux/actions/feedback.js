@@ -1,4 +1,4 @@
-import * as FEEDBACK_TYPES from '../../utils/feedbackTypes'
+import * as FEEDBACK_TYPES from '../../utils/feedbackTypes.js'
 export const actionTypes = {
     FEEDBACK_CLEAR: 'FEEDBACK_CLEAR',
     FEEDBACK_SHOW_LOADER: 'FEEDBACK_SHOW_LOADER',

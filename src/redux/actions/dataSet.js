@@ -1,7 +1,7 @@
 import i18n from '@dhis2/d2-i18n'
-import { getDataSetOptions } from '../../utils/api'
-import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage'
-import { showErrorSnackBar } from './feedback'
+import { getDataSetOptions } from '../../utils/api.js'
+import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage.js'
+import { showErrorSnackBar } from './feedback.js'
 
 export const actionTypes = {
     SELECT_DATA_SET: 'SELECT_DATA_SET',

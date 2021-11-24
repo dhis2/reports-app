@@ -1,4 +1,4 @@
-import { actionTypes } from '../actions/dataSetReport'
+import { actionTypes } from '../actions/dataSetReport.js'
 
 export const defaultState = {
     selectedUnitOnly: false,

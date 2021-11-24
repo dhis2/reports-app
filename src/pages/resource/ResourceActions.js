@@ -1,8 +1,8 @@
 import SharingDialog from '@dhis2/d2-ui-sharing-dialog'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { getD2 } from '../../utils/api'
-import { resourceActions } from '../../utils/resource/constants'
+import { getD2 } from '../../utils/api.js'
+import { resourceActions } from '../../utils/resource/constants.js'
 
 const ResourceActions = (props) => {
     const { selectedAction } = props

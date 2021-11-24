@@ -1,7 +1,7 @@
 import i18n from '@dhis2/d2-i18n'
 import React from 'react'
-import { FormRow } from '../../../../components/form/FormRow'
-import { RadioButtons } from '../../../../components/form/RadioButtons'
+import { FormRow } from '../../../../components/form/FormRow.js'
+import { RadioButtons } from '../../../../components/form/RadioButtons.js'
 
 export const Attachment = () => (
     <FormRow>

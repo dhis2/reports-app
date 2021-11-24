@@ -1,11 +1,11 @@
-import { getDimensions } from '../../../utils/api'
-import { mockStore } from '../../../utils/test-helpers/mockStore'
+import { getDimensions } from '../../../utils/api.js'
+import { mockStore } from '../../../utils/test-helpers/mockStore.js'
 import {
     loadingDimensionsStart,
     loadingDimensionsSuccess,
     loadingDimensionsError,
     loadDimensions,
-} from '../dataSetDimensions'
+} from '../dataSetDimensions.js'
 
 jest.mock('../../../utils/api', () => ({
     getDimensions: jest.fn(() => Promise.resolve()),

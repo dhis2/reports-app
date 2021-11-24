@@ -1,5 +1,5 @@
 import React from 'react'
-import { children } from '../../utils/react/propTypes'
+import { children } from '../../utils/react/propTypes.js'
 
 export const FormRow = (props) => (
     <React.Fragment>

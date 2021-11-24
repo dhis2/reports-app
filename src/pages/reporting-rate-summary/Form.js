@@ -2,9 +2,9 @@ import i18n from '@dhis2/d2-i18n'
 import { Button } from '@dhis2/d2-ui-core'
 import PropTypes from 'prop-types'
 import React from 'react'
-import DataSets from '../../components/DatasetsDropdown'
-import OrgUnitsTreeWithExtraOptions from '../../components/OrgUnitsTreeWithExtraOptions'
-import PeriodPickerComponent from '../../components/PeriodPickerWithPeriodType'
+import DataSets from '../../components/DatasetsDropdown.js'
+import { OrgUnitsTreeWithExtraOptions } from '../../components/OrgUnitsTreeWithExtraOptions.js'
+import PeriodPickerComponent from '../../components/PeriodPickerWithPeriodType.js'
 import { actionsContainer } from '../../utils/styles/shared.js'
 
 export const Form = (props) => (

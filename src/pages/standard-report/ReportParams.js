@@ -9,12 +9,12 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
 import { resolve } from 'styled-jsx/css'
-import OrganisationUnitTree from '../../components/AvailableOrganisationUnitsTree'
-import PeriodPicker from '../../components/PeriodPickerWithPeriodType'
+import OrganisationUnitTree from '../../components/AvailableOrganisationUnitsTree.js'
+import PeriodPicker from '../../components/PeriodPickerWithPeriodType.js'
 import {
     cancelGeneratingPdfReport,
     submitRequiredReportParams,
-} from '../../redux/actions/standardReport'
+} from '../../redux/actions/standardReport.js'
 
 const labelCancel = i18n.t('Cancel')
 const labelSubmit = i18n.t('Generate report')

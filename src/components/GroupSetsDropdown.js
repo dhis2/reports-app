@@ -3,7 +3,7 @@ import { DropDown } from '@dhis2/d2-ui-core'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
-import { setGroupSet } from '../redux/actions/orgUnitGroupSets'
+import { setGroupSet } from '../redux/actions/orgUnitGroupSets.js'
 import { formLabel } from '../utils/styles/shared.js'
 
 const label = i18n.t('Group Set')

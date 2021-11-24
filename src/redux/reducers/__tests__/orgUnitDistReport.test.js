@@ -1,5 +1,5 @@
-import { actionTypes } from '../../actions/orgUnitDistReport'
-import { orgUnitDistReport, defaultState } from '../orgUnitDistReport'
+import { actionTypes } from '../../actions/orgUnitDistReport.js'
+import { orgUnitDistReport, defaultState } from '../orgUnitDistReport.js'
 
 describe('Reducer - orgUnitDistReport', () => {
     it('should return the default state', () => {

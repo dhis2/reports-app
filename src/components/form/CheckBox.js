@@ -2,7 +2,7 @@ import Checkbox from '@material-ui/core/Checkbox'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { resolve } from 'styled-jsx/css'
-import { formInput } from '../../utils/react/propTypes'
+import { formInput } from '../../utils/react/propTypes.js'
 
 const checkboxStyle = resolve`
     span {

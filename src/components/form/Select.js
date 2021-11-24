@@ -8,9 +8,9 @@ import {
     formInput,
     formInputMeta,
     formOptions,
-} from '../../utils/react/propTypes'
-import { ErrorText } from './buildingBlocks/ErrorText'
-import { inputWrapper } from './styles'
+} from '../../utils/react/propTypes.js'
+import { ErrorText } from './buildingBlocks/ErrorText.js'
+import { inputWrapper } from './styles.js'
 
 export const SelectField = (props) => (
     <MUISelect {...props.input} disabled={props.disabled}>

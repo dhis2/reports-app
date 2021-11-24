@@ -3,7 +3,7 @@ import Paper from '@material-ui/core/Paper'
 import isEmpty from 'lodash.isempty'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { reportContent } from '../utils/react/propTypes'
+import { reportContent } from '../utils/react/propTypes.js'
 import { container } from '../utils/styles/shared.js'
 
 const ReportLoader = ({ isLoading, content, children }) => {

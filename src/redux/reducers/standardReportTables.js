@@ -1,4 +1,4 @@
-import { actionTypes } from '../actions/standardReportTables'
+import { actionTypes } from '../actions/standardReportTables.js'
 
 export const defaultState = {
     loading: false,

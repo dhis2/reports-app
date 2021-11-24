@@ -2,7 +2,7 @@ import FormHelperText from '@material-ui/core/FormHelperText'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { Field } from 'react-final-form'
-import { CheckBoxes } from './CheckBoxes'
+import { CheckBoxes } from './CheckBoxes.js'
 
 export const CheckBoxGroups = (props) => (
     <div className="row">

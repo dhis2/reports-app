@@ -1,5 +1,5 @@
-import { resourceActions } from '../../utils/resource/constants'
-import { actionTypes } from '../actions/resource'
+import { resourceActions } from '../../utils/resource/constants.js'
+import { actionTypes } from '../actions/resource.js'
 
 export const defaultSelectedResource = { id: '', displayName: '' }
 export const defaultState = {

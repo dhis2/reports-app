@@ -1,5 +1,5 @@
 import { LOCATION_CHANGE } from 'connected-react-router'
-import { actionTypes } from '../actions/reportPeriod'
+import { actionTypes } from '../actions/reportPeriod.js'
 
 export const ACTIONS = { LOCATION_CHANGE, ...actionTypes }
 export const defaultState = {

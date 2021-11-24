@@ -1,6 +1,6 @@
 import { LOCATION_CHANGE } from 'connected-react-router'
-import { actionTypes } from '../../actions/dataSet'
-import { dataSet, defaultSelected, defaultState } from '../dataSet'
+import { actionTypes } from '../../actions/dataSet.js'
+import { dataSet, defaultSelected, defaultState } from '../dataSet.js'
 
 describe('Reducers - dataSet', () => {
     const dataSetOptions = [

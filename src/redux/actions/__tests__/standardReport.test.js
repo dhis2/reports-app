@@ -1,10 +1,10 @@
 import {
     getFilteredStandardReports,
     deleteStandardReport as deleteStandardReportRequest,
-} from '../../../utils/api'
-import { mockStore } from '../../../utils/test-helpers/mockStore'
-import { defaultState as INITIAL_PAGER } from '../../reducers/pagination'
-import { setPagination } from '../pagination'
+} from '../../../utils/api.js'
+import { mockStore } from '../../../utils/test-helpers/mockStore.js'
+import { defaultState as INITIAL_PAGER } from '../../reducers/pagination.js'
+import { setPagination } from '../pagination.js'
 import {
     startLoadingStandardReports,
     loadingStandardReportsSuccess,
@@ -14,7 +14,7 @@ import {
     deleteStandardReportError,
     loadStandardReports,
     deleteStandardReport,
-} from '../standardReport'
+} from '../standardReport.js'
 
 jest.mock('../../../utils/api', () => ({
     getFilteredStandardReports: jest.fn(),

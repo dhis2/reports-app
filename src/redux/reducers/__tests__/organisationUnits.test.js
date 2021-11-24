@@ -1,4 +1,8 @@
-import { organisationUnits, ACTIONS, defaultState } from '../organisationUnits'
+import {
+    organisationUnits,
+    ACTIONS,
+    defaultState,
+} from '../organisationUnits.js'
 
 describe('Reducer - organisationUnits', () => {
     const errorStr = 'Oops'

@@ -1,5 +1,5 @@
 import { LOCATION_CHANGE } from 'connected-react-router'
-import { actionTypes } from '../actions/reportData'
+import { actionTypes } from '../actions/reportData.js'
 
 export const defaultState = {
     loading: false,

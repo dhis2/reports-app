@@ -1,5 +1,5 @@
-import { actionTypes } from '../../actions/pagination'
-import { defaultState, pagination } from '../pagination'
+import { actionTypes } from '../../actions/pagination.js'
+import { defaultState, pagination } from '../pagination.js'
 
 describe('Reducer - pagination', function () {
     it('should increase the current page num by 1', function () {

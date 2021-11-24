@@ -2,8 +2,8 @@ import i18n from '@dhis2/d2-i18n'
 import { Button } from '@dhis2/d2-ui-core'
 import PropTypes from 'prop-types'
 import React from 'react'
-import OrganisationUnitsTree from '../../components/AvailableOrganisationUnitsTree'
-import GroupSets from '../../components/GroupSetsDropdown'
+import OrganisationUnitsTree from '../../components/AvailableOrganisationUnitsTree.js'
+import GroupSets from '../../components/GroupSetsDropdown.js'
 import { formLabel, actionsContainer } from '../../utils/styles/shared.js'
 
 export const Form = (props) => (

@@ -4,11 +4,11 @@ import {
     selectDataSet,
     toggleSelectedUnitOnly,
     shareDataSetReportComment,
-} from '../../redux/actions/dataSetReport'
-import { setReportComment } from '../../redux/actions/reportData'
-import { getIsActionEnabled } from '../../redux/selectors/dataSetReport/getIsActionEnabled'
-import getTransformedTableData from '../../redux/selectors/dataSetReport/getTransformedTableData'
-import { isHtmlReport } from '../../utils/dataSetReport/isHtmlReport'
+} from '../../redux/actions/dataSetReport.js'
+import { setReportComment } from '../../redux/actions/reportData.js'
+import { getIsActionEnabled } from '../../redux/selectors/dataSetReport/getIsActionEnabled.js'
+import getTransformedTableData from '../../redux/selectors/dataSetReport/getTransformedTableData.js'
+import { isHtmlReport } from '../../utils/dataSetReport/isHtmlReport.js'
 
 const mapStateToProps = (state) => ({
     isHtmlReport: isHtmlReport(state.reportData.content),

@@ -3,9 +3,12 @@ import { DropDown, PeriodPicker } from '@dhis2/d2-ui-core'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
-import { selectPeriod, selectPeriodType } from '../redux/actions/reportPeriod'
-import { getFilteredPeriodTypes } from '../redux/selectors/reportPeriod/periodTypes'
-import { isFixedPeriodType } from '../utils/periods/fixedPeriods'
+import {
+    selectPeriod,
+    selectPeriodType,
+} from '../redux/actions/reportPeriod.js'
+import { getFilteredPeriodTypes } from '../redux/selectors/reportPeriod/periodTypes.js'
+import { isFixedPeriodType } from '../utils/periods/fixedPeriods.js'
 import { formLabel } from '../utils/styles/shared.js'
 
 const periodTypeLabelText = i18n.t('Select Period Type')

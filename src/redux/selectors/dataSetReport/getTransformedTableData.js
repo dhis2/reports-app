@@ -1,6 +1,6 @@
 import isEmpty from 'lodash.isempty'
-import { isHtmlReport } from '../../../utils/dataSetReport/isHtmlReport'
-import createDataTransformCache from '../../../utils/dataTransformCache'
+import { isHtmlReport } from '../../../utils/dataSetReport/isHtmlReport.js'
+import createDataTransformCache from '../../../utils/dataTransformCache.js'
 
 export const cache = createDataTransformCache()
 

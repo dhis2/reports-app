@@ -1,8 +1,8 @@
 import {
     reportResponseData,
     transformedTableData,
-} from '../../../../__fixtures__/orgUnitDistReport'
-import getTransformedTableData, { cache } from '../getTransformedTableData'
+} from '../../../../__fixtures__/orgUnitDistReport.js'
+import getTransformedTableData, { cache } from '../getTransformedTableData.js'
 
 describe('getTransformedTableData', () => {
     const state = {

@@ -1,12 +1,12 @@
-import { getOrgUnitGroupSets } from '../../../utils/api'
-import * as feedbackTypes from '../../../utils/feedbackTypes'
-import { mockStore } from '../../../utils/test-helpers/mockStore'
-import { actionTypes as feedbackActionTypes } from '../feedback'
+import { getOrgUnitGroupSets } from '../../../utils/api.js'
+import * as feedbackTypes from '../../../utils/feedbackTypes.js'
+import { mockStore } from '../../../utils/test-helpers/mockStore.js'
+import { actionTypes as feedbackActionTypes } from '../feedback.js'
 import {
     actionTypes,
     loadGroupSetOptions,
     loadingGroupSetsErrorDefaultMessage,
-} from '../orgUnitGroupSets'
+} from '../orgUnitGroupSets.js'
 
 jest.mock('../../../utils/api', () => ({
     getOrgUnitGroupSets: jest.fn(),

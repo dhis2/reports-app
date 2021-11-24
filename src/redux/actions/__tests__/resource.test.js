@@ -1,8 +1,8 @@
 import {
     getResources,
     deleteResource as sendDeleteResourceRequest,
-} from '../../../utils/api'
-import { mockStore } from '../../../utils/test-helpers/mockStore'
+} from '../../../utils/api.js'
+import { mockStore } from '../../../utils/test-helpers/mockStore.js'
 import {
     loadingResourcesStart,
     loadingResourcesSuccess,
@@ -12,7 +12,7 @@ import {
     deleteResourceError,
     loadResources,
     deleteResource,
-} from '../resource'
+} from '../resource.js'
 
 jest.mock('../../../utils/api', () => ({
     getResources: jest.fn(() => Promise.resolve()),

@@ -1,11 +1,11 @@
-import { getStandardReportTables } from '../../../utils/api'
-import { mockStore } from '../../../utils/test-helpers/mockStore'
+import { getStandardReportTables } from '../../../utils/api.js'
+import { mockStore } from '../../../utils/test-helpers/mockStore.js'
 import {
     loadingStandardReportTablesStart,
     loadingStandardReportTablesSuccess,
     loadingStandardReportTablesError,
     loadStandardReportTables,
-} from '../standardReportTables'
+} from '../standardReportTables.js'
 
 jest.mock('../../../utils/api', () => ({
     getStandardReportTables: jest.fn(() => Promise.resolve()),

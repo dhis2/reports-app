@@ -1,4 +1,4 @@
-import i18n from '../locales'
+import i18n from '../locales/index.js'
 
 export const reportParameterOptions = [
     {

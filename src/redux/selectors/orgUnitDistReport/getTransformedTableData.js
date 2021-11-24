@@ -1,7 +1,7 @@
 import i18n from '@dhis2/d2-i18n'
 import isEmpty from 'lodash.isempty'
-import createDataTransformCache from '../../../utils/dataTransformCache'
-import { getTitle } from '../../../utils/dataTransformHelpers'
+import createDataTransformCache from '../../../utils/dataTransformCache.js'
+import { getTitle } from '../../../utils/dataTransformHelpers.js'
 
 const orgUnitColumnDisplayName = i18n.t('Organisation Unit')
 const totalColumnDisplayName = i18n.t('Total')

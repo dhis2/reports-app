@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme'
 import React from 'react'
-import ReportLoader from '../ReportLoader'
+import ReportLoader from '../ReportLoader.js'
 
 describe('<ReportLoader/>', () => {
     it('Renders a loader when isLoading is true', () => {

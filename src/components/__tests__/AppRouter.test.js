@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme'
 import React from 'react'
-import AppRouter from '../AppRouter'
+import AppRouter from '../AppRouter.js'
 
 jest.mock('@dhis2/d2-ui-org-unit-tree', () => ({ OrgUnitTree: 'OrgUnitTree' }))
 

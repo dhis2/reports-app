@@ -2,9 +2,9 @@ import i18n from '@dhis2/d2-i18n'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { Field } from 'react-final-form'
-import { FormRow } from '../../../../components/form/FormRow'
-import { Select } from '../../../../components/form/Select'
-import { resourceTypeOptions } from '../../../../utils/resource/constants'
+import { FormRow } from '../../../../components/form/FormRow.js'
+import { Select } from '../../../../components/form/Select.js'
+import { resourceTypeOptions } from '../../../../utils/resource/constants.js'
 
 export const Type = (props) => (
     <FormRow>

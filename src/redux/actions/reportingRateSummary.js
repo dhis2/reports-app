@@ -1,9 +1,9 @@
-import { getReportingRateSummaryReport } from '../../utils/api'
+import { getReportingRateSummaryReport } from '../../utils/api.js'
 import {
     loadingReportDataStart,
     loadingReportDataSuccessWithFeedback,
     loadingReportDataErrorWithFeedback,
-} from './reportData'
+} from './reportData.js'
 
 /**
  * @returns {Function} redux thunk

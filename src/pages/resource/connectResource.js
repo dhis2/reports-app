@@ -11,7 +11,7 @@ import {
     setSearchAndLoadResources,
     showSharingSettings,
     viewResource,
-} from '../../redux/actions/resource'
+} from '../../redux/actions/resource.js'
 
 const mapStateToProps = (state) => ({
     open: state.resource.open,

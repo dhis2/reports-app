@@ -1,10 +1,10 @@
-import { getPeriodTypes } from '../../../utils/api'
-import { mockStore } from '../../../utils/test-helpers/mockStore'
+import { getPeriodTypes } from '../../../utils/api.js'
+import { mockStore } from '../../../utils/test-helpers/mockStore.js'
 import {
     loadPeriodTypes,
     loadPeriodTypesSuccess,
     loadPeriodTypesError,
-} from '../reportPeriod'
+} from '../reportPeriod.js'
 
 jest.mock('../../../utils/api', () => ({
     getPeriodTypes: jest.fn(),

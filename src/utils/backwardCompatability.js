@@ -1,4 +1,4 @@
-import { getSystemMinorVersion } from './api'
+import { getSystemMinorVersion } from './api.js'
 
 /*
 The following API changes were introduced in v2.34:
@@ -6,7 +6,7 @@ The following API changes were introduced in v2.34:
 1. The `api/reportTables` endpoint was replaced by `api/visualizations`
 
 2. The response payload from this endpoint now looks slightly different:
-    
+
     < 2.34
     "reportParams": {
         "paramGrandParentOrganisationUnit": false,
@@ -30,7 +30,7 @@ The following API changes were introduced in v2.34:
 The functions in this module are there to deal with these discrepancies. To avoid too many changes to the app state model, the following names have been settled on:
 1. `reportTables` in favour of `visualizations`
 2. `reportParams` in favour of `reportingParams`
-3. don't prefix reportParams properties with `param`, 
+3. don't prefix reportParams properties with `param`,
    i.e. `reportingPeriod` in favour of `paramReportingPeriod`
 
 

@@ -3,7 +3,7 @@ import { OrgUnitTreeMultipleRoots } from '@dhis2/d2-ui-org-unit-tree'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
-import { selectOrganisationUnit } from '../redux/actions/organisationUnits'
+import { selectOrganisationUnit } from '../redux/actions/organisationUnits.js'
 
 export function AvailableOrganisationUnitsTree({
     selectOrganisationUnit,

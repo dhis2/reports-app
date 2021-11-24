@@ -15,8 +15,8 @@ import {
     sharingSettingsShow,
     showReportData,
     showReportParams,
-} from '../../redux/actions/standardReport'
-// import { unsetReportData } from '../../redux/actions/reportData'
+} from '../../redux/actions/standardReport.js'
+// import { unsetReportData } from '../../redux/actions/reportData.js'
 
 const mapStateToProps = (state) => ({
     ...state.standardReport,
