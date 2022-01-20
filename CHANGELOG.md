@@ -1,3 +1,10 @@
+## [100.0.3](https://github.com/dhis2/reports-app/compare/v100.0.2...v100.0.3) (2022-01-20)
+
+
+### Bug Fixes
+
+* **noop:** trigger release ([8f02306](https://github.com/dhis2/reports-app/commit/8f0230698fe244252ac95e34ad49d6c74c7c4d0f))
+
 ## [100.0.2](https://github.com/dhis2/reports-app/compare/v100.0.1...v100.0.2) (2022-01-13)
 
 
