@@ -9,14 +9,14 @@
 # Alison Andrade <aandrade@ippfwhr.org>, 2021
 # Pablo Pajuelo Cabezas <ppajuelo@quadram.mobi>, 2021
 # Prabhjot Singh, 2021
-# Janeth Cruz, 2021
+# Janeth Cruz, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2021-03-03T10:35:11.879Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
-"Last-Translator: Janeth Cruz, 2021\n"
+"Last-Translator: Janeth Cruz, 2022\n"
 "Language-Team: Spanish (https://www.transifex.com/hisp-uio/teams/100509/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,28 +25,28 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "Updating Organisation Units Tree..."
-msgstr ""
+msgstr "Actualizando árbol de unidades organizativas..."
 
 msgid "Select Option"
-msgstr ""
+msgstr "Seleccionar opción"
 
 msgid "Data set dimensions"
-msgstr ""
+msgstr "Dimensiones del Set de Datos"
 
 msgid "Loading options..."
-msgstr ""
+msgstr "Cargando las opciones..."
 
 msgid "Select Data Set"
-msgstr ""
+msgstr "Seleccionar set de datos"
 
 msgid "Data set"
 msgstr "Set de Datos\\:"
 
 msgid "Group Set"
-msgstr ""
+msgstr "Set de grupos"
 
 msgid "Select Group Set"
-msgstr ""
+msgstr "Seleccionar set de grupos"
 
 msgid "Show more options"
 msgstr "Mostrar más opciones"
@@ -64,7 +64,7 @@ msgid "Search"
 msgstr "Buscar"
 
 msgid "No results have been found"
-msgstr ""
+msgstr "No se han encontrado resultados"
 
 msgid "Download as"
 msgstr "Descargar como"
@@ -79,7 +79,7 @@ msgid "Select file"
 msgstr "Seleccionar archivos"
 
 msgid "No file chosen"
-msgstr ""
+msgstr "Ningún archivo elegido"
 
 msgid "No matches found"
 msgstr "No se encontraron coincidencias"
@@ -90,7 +90,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 msgid "Type to search a report table"
-msgstr ""
+msgstr "Escriba para buscar una tabla de informe"
 
 msgid "Standard Report"
 msgstr "Informe Estandard"
@@ -103,7 +103,7 @@ msgstr ""
 "basarse en tablas de informe y pueden ser diseñados con iReport."
 
 msgid "View Reports"
-msgstr ""
+msgstr "Ver Informes"
 
 msgid "Data Set Report"
 msgstr "Reporte de Set de Datos"
@@ -116,7 +116,7 @@ msgstr ""
 "entrada de datos y generarán un reporte con datos agregados."
 
 msgid "Get Report"
-msgstr ""
+msgstr "Obtener informe"
 
 msgid "Reporting Rate Summary"
 msgstr "Resumen de tasas de notificación"
@@ -139,10 +139,10 @@ msgstr ""
 "servidor o URLs en la web."
 
 msgid "View Resources"
-msgstr ""
+msgstr "Ver recursos"
 
 msgid "Org unit distribution report"
-msgstr ""
+msgstr "Informe de distribución de unidades organizativas"
 
 msgid ""
 "Browse the organisation unit distribution report based on the organisation "
@@ -152,13 +152,13 @@ msgstr ""
 "set de grupos de unidades organizativas y sus grupos."
 
 msgid "Reporting Period"
-msgstr ""
+msgstr "Período del informe"
 
 msgid "Organisation Unit"
 msgstr "Unidad Organizativa"
 
 msgid "CONFIRM"
-msgstr ""
+msgstr "CONFIRMAR"
 
 msgid "Report period"
 msgstr "Periodo de presentacion de informe"
@@ -167,19 +167,19 @@ msgid "Use data for selected unit only"
 msgstr "Usar solo datos de la unidad seleccionada"
 
 msgid "Get Chart"
-msgstr ""
+msgstr "Obtener gráfico"
 
 msgid "Edit resource"
-msgstr ""
+msgstr "Editar recursos"
 
 msgid "Save resource"
-msgstr ""
+msgstr "Guardar recursos"
 
 msgid "Add resource"
-msgstr ""
+msgstr "Agregar recursos"
 
 msgid "Do you want to use this file as an attachment?"
-msgstr ""
+msgstr "¿Desea utilizar este archivo como archivo adjunto?"
 
 msgid "Yes"
 msgstr "Sí"
@@ -191,49 +191,49 @@ msgid "File"
 msgstr "Fichero"
 
 msgid "Name*"
-msgstr ""
+msgstr "Nombre*"
 
 msgid "Details"
 msgstr "Detalles"
 
 msgid "Resource Type"
-msgstr ""
+msgstr "Tipo de recurso"
 
 msgid "Url*"
-msgstr ""
+msgstr "Url*"
 
 msgid "File resources can not be edited, only created"
-msgstr ""
+msgstr "Los recursos de archivo no se pueden editar, solo crear"
 
 msgid "Cancel"
 msgstr "Cancelar"
 
 msgid "Edit standard report"
-msgstr ""
+msgstr "Editar informe estándar"
 
 msgid "Create standard report"
-msgstr ""
+msgstr "Crear informe estándar"
 
 msgid "Generate report"
-msgstr ""
+msgstr "Generar informe"
 
 msgid "Report parameters"
 msgstr "Parámetros de informe"
 
 msgid "There are some errors you have to fix first!"
-msgstr ""
+msgstr "¡Hay algunos errores que debes corregir primero!"
 
 msgid "Back to standard reports list"
-msgstr ""
+msgstr "Volver a la lista de informes estándar"
 
 msgid "Get current design"
 msgstr "Cargar diseño actual"
 
 msgid "Get HTML Report Template"
-msgstr ""
+msgstr "Obtener plantilla de informe HTML"
 
 msgid "Get Jasper Report Template"
-msgstr ""
+msgstr "Obtener plantilla de informe Jasper"
 
 msgid "Download"
 msgstr "Descargar"
@@ -290,22 +290,22 @@ msgid "Cache for two weeks"
 msgstr "Caché por dos semanas"
 
 msgid "An error occurred whole loading the data set options"
-msgstr ""
+msgstr "Ocurrió un error al cargar las opciones del set de datos"
 
 msgid "An error occurred while loading the data set dimensions"
-msgstr ""
+msgstr "Ocurrió un error al cargar las dimensiones del set de datos"
 
 msgid "An error occurred while loading the group sets!"
-msgstr ""
+msgstr "¡Ocurrió un error al cargar los sets de grupos!"
 
 msgid "Could not load organisation units"
-msgstr ""
+msgstr "No se pudieron cargar las unidades organizativas"
 
 msgid "An error occurred while loading the organisation units!"
-msgstr ""
+msgstr "¡Ocurrió un error al cargar las unidades organizativas!"
 
 msgid "Successfully loaded the {{ outputType }}"
-msgstr ""
+msgstr "Cargado con éxito el {{ outputType }}"
 
 msgid "chart"
 msgstr "gráfico"
@@ -314,46 +314,46 @@ msgid "table"
 msgstr ""
 
 msgid "An error occurred while loading the report!"
-msgstr ""
+msgstr "¡Ocurrió un error al cargar el informe!"
 
 msgid "Successfully added comment"
-msgstr ""
+msgstr "Comentario agregado con éxito"
 
 msgid "An error occurred while submitting your comment!"
-msgstr ""
+msgstr "¡Ocurrió un error al enviar su comentario!"
 
 msgid "Could not load period types"
-msgstr ""
+msgstr "No se pudieron cargar los tipos de periodo"
 
 msgid "An error occurred while loading the resources!"
-msgstr ""
+msgstr "¡Ocurrió un error al cargar los recursos!"
 
 msgid "Do you really want to delete this resource?"
-msgstr ""
+msgstr "¿Desea realmente eliminar este recurso?"
 
 msgid "The resource has been deleted successfully"
-msgstr ""
+msgstr "El recurso ha sido eliminado con éxito"
 
 msgid "An error occurred when deleting the resource!"
-msgstr ""
+msgstr "¡Ocurrió un error al eliminar el recurso!"
 
 msgid "An error occurred while adding the resource!"
-msgstr ""
+msgstr "¡Ocurrió un error al agregar el recurso!"
 
 msgid "An error occurred while saving the modifications!"
-msgstr ""
+msgstr "¡Ocurrió un error al guardar las modificaciones!"
 
 msgid "An error occurred while loading the standard reports"
-msgstr ""
+msgstr "Ocurrió un error al cargar los informes estándar"
 
 msgid "An error occurred while trying to delete the standard report"
-msgstr ""
+msgstr "Ocurrió un error al intentar eliminar el informe estándar"
 
 msgid "An error occurred while loading the standard report details"
-msgstr ""
+msgstr "Ocurrió un error al cargar los detalles del informe estándar"
 
 msgid "The report has been updated successfully"
-msgstr ""
+msgstr "El informe ha sido actualizado con éxito"
 
 msgid "The report has been added successfully"
 msgstr ""
