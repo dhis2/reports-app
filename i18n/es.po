@@ -152,7 +152,7 @@ msgstr ""
 "set de grupos de unidades organizativas y sus grupos."
 
 msgid "Reporting Period"
-msgstr "Período del informe"
+msgstr "Periodo del informe"
 
 msgid "Organisation Unit"
 msgstr "Unidad Organizativa"
@@ -311,7 +311,7 @@ msgid "chart"
 msgstr "gráfico"
 
 msgid "table"
-msgstr ""
+msgstr "tabla"
 
 msgid "An error occurred while loading the report!"
 msgstr "¡Ocurrió un error al cargar el informe!"
@@ -434,10 +434,10 @@ msgid "Sharing settings"
 msgstr "Configuración de uso compartido"
 
 msgid "View Resource"
-msgstr ""
+msgstr "Ver recursos"
 
 msgid "Edit Resource"
-msgstr ""
+msgstr "Editar recursos"
 
 msgid "Add users and user groups"
 msgstr "Añadir usuarios y grupos de usuarios"
@@ -446,10 +446,10 @@ msgid "Enter names"
 msgstr "Ingresar nombres"
 
 msgid "Permissions"
-msgstr ""
+msgstr "Permisos"
 
 msgid "Created By"
-msgstr ""
+msgstr "Creado por"
 
 msgid "Who has access"
 msgstr "Quien tiene acceso"
