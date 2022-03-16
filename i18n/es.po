@@ -86,8 +86,8 @@ msgstr "No se encontraron coincidencias"
 
 msgid "Please enter at least {{count}} characters"
 msgid_plural "Please enter at least {{count}} characters"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Por favor ingrese al menos {{count}} caracteres"
+msgstr[1] "Por favor ingrese al menos {{count}} caracteres"
 
 msgid "Type to search a report table"
 msgstr "Escriba para buscar una tabla de informe"
@@ -239,16 +239,16 @@ msgid "Download"
 msgstr "Descargar"
 
 msgid "Report Type*"
-msgstr ""
+msgstr "Tipo de informe*"
 
 msgid "Report Table*"
-msgstr ""
+msgstr "Tabla de informe*"
 
 msgid "Design File"
-msgstr ""
+msgstr "Archivo de diseño"
 
 msgid "Design File*"
-msgstr ""
+msgstr "Archivo de diseño*"
 
 msgid "Relative periods"
 msgstr "Periodos relativos"
@@ -257,13 +257,13 @@ msgid "Settings"
 msgstr "Configuración"
 
 msgid "Cache Strategy*"
-msgstr ""
+msgstr "Estrategia de caché*"
 
 msgid "Submit"
 msgstr "Enviar"
 
 msgid "[ None ]"
-msgstr ""
+msgstr "[ Ninguno ]"
 
 msgid "Jasper report with report table data source"
 msgstr "Reporte Jasper con tabla de reporte como fuente de datos"
@@ -356,13 +356,13 @@ msgid "The report has been updated successfully"
 msgstr "El informe ha sido actualizado con éxito"
 
 msgid "The report has been added successfully"
-msgstr ""
+msgstr "El informe se ha añadido con éxito"
 
 msgid "An error occurred while updating the report!"
-msgstr ""
+msgstr "¡Ocurrió un error al actualizar el informe!"
 
 msgid "An error occurred while adding the report!"
-msgstr ""
+msgstr "¡Ocurrió un error al agregar el informe!"
 
 msgid "An error occurred while generating the html report"
 msgstr ""
