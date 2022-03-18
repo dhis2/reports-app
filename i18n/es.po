@@ -365,10 +365,10 @@ msgid "An error occurred while adding the report!"
 msgstr "¡Ocurrió un error al agregar el informe!"
 
 msgid "An error occurred while generating the html report"
-msgstr ""
+msgstr "Ocurrió un error al generar el informe html"
 
 msgid "An error occurred while loading the report table options"
-msgstr ""
+msgstr "Ocurrió un error al cargar las opciones de la tabla de informes"
 
 msgid "Count"
 msgstr "Conteo"
@@ -539,61 +539,61 @@ msgid "December"
 msgstr "Diciembre"
 
 msgid "January-February"
-msgstr ""
+msgstr "Enero-Febrero"
 
 msgid "March-April"
-msgstr ""
+msgstr "Marzo-Abril"
 
 msgid "May-June"
-msgstr ""
+msgstr "Mayo-Junio"
 
 msgid "July-August"
-msgstr ""
+msgstr "Julio-Agosto"
 
 msgid "September-October"
-msgstr ""
+msgstr "Septiembre-Octubre"
 
 msgid "November-December"
-msgstr ""
+msgstr "Noviembre-Diciembre"
 
 msgid "November-April"
-msgstr ""
+msgstr "Noviembre-Abril"
 
 msgid "May-October"
-msgstr ""
+msgstr "Mayo-Octubre"
 
 msgid "quarter"
-msgstr ""
+msgstr "trimestre"
 
 msgid "January-March"
-msgstr ""
+msgstr "Enero-Marzo"
 
 msgid "April-June"
-msgstr ""
+msgstr "Abril-Junio"
 
 msgid "July-September"
-msgstr ""
+msgstr "Julio-Septiembre"
 
 msgid "October-December"
-msgstr ""
+msgstr "Octubre-Diciembre"
 
 msgid "six monthly"
-msgstr ""
+msgstr "Semestral"
 
 msgid "January-June"
-msgstr ""
+msgstr "Enero-Junio"
 
 msgid "July-December"
-msgstr ""
+msgstr "Julio-Diciembre"
 
 msgid "April-September"
-msgstr ""
+msgstr "Abril-Septiembre"
 
 msgid "October-March"
-msgstr ""
+msgstr "Octubre-Marzo"
 
 msgid "Bi-Week"
-msgstr ""
+msgstr "Quincenal"
 
 msgid "Daily"
 msgstr "Diario"
@@ -602,16 +602,16 @@ msgid "Weekly"
 msgstr "Semanal"
 
 msgid "Weekly Wednesday"
-msgstr ""
+msgstr "Miércoles de cada semana"
 
 msgid "Weekly Thursday"
-msgstr ""
+msgstr "Jueves de cada semana"
 
 msgid "Weekly Saturday"
-msgstr ""
+msgstr "Sábado de cada semana"
 
 msgid "Weekly Sunday"
-msgstr ""
+msgstr "Domingo de cada semana"
 
 msgid "Bi-Weekly"
 msgstr ""
