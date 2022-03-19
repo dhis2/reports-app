@@ -473,16 +473,16 @@ msgid "Public access (with login)"
 msgstr "Acceso público"
 
 msgid "Public can edit"
-msgstr ""
+msgstr "Público puede editar"
 
 msgid "Public can view"
-msgstr ""
+msgstr "Público puede ver"
 
 msgid "Public can find, view and edit"
-msgstr ""
+msgstr "Público puede encontrar, ver y editar"
 
 msgid "Public can find and view"
-msgstr ""
+msgstr "Público puede encontrar y ver"
 
 msgid "Close"
 msgstr "Cerrar"
@@ -614,25 +614,25 @@ msgid "Weekly Sunday"
 msgstr "Domingo de cada semana"
 
 msgid "Bi-Weekly"
-msgstr ""
+msgstr "Quincenal"
 
 msgid "Monthly"
 msgstr "Mensual"
 
 msgid "Bi-Monthly"
-msgstr ""
+msgstr "Bimestral"
 
 msgid "Quarterly"
 msgstr "Trimestral"
 
 msgid "Six-Monthly"
-msgstr ""
+msgstr "Semestral"
 
 msgid "Six-Monthly April"
-msgstr ""
+msgstr "Semestral Abril"
 
 msgid "Six-Monthly November"
-msgstr ""
+msgstr "Semestral Noviembre"
 
 msgid "Yearly"
 msgstr "Anual"
@@ -650,7 +650,7 @@ msgid "Days"
 msgstr "Días"
 
 msgid "Reporting day"
-msgstr ""
+msgstr "Día del informe"
 
 msgid "Yesterday"
 msgstr "Ayer"
@@ -668,13 +668,13 @@ msgid "Weeks"
 msgstr "Semanas"
 
 msgid "Reporting week"
-msgstr ""
+msgstr "Semana del informe"
 
 msgid "Last Week"
 msgstr "La semana pasada"
 
 msgid "Last 2 weeks"
-msgstr ""
+msgstr "Últimas 2 semanas"
 
 msgid "Last 12 weeks"
 msgstr "Últimas 12 semanas"
@@ -716,7 +716,7 @@ msgid "Last bi-month"
 msgstr "Bimestre anterior"
 
 msgid "Last 6 bi-month"
-msgstr ""
+msgstr "Últimos 6 bimestres"
 
 msgid "Bi-months this year"
 msgstr "Bimestres de este año"
@@ -734,10 +734,10 @@ msgid "Last 4 quarters"
 msgstr "Últimos 4 trimestres"
 
 msgid "Quarters of reporting year"
-msgstr ""
+msgstr "Trimestres del año del informe"
 
 msgid "Six-Months"
-msgstr ""
+msgstr "Semestres"
 
 msgid "Reporting six-month"
 msgstr "Mes de presentacion de informe"
@@ -749,10 +749,10 @@ msgid "Last 2 six-months"
 msgstr "Últimos 2 semestres"
 
 msgid "Financial Years"
-msgstr ""
+msgstr "Años fiscales"
 
 msgid "Reporting financial year"
-msgstr ""
+msgstr "Informe del año fiscal"
 
 msgid "Last financial year"
 msgstr "Último ejercicio financiero"
@@ -764,7 +764,7 @@ msgid "Years"
 msgstr "Años"
 
 msgid "Reporting year"
-msgstr ""
+msgstr "Año del informe"
 
 msgid "Last year"
 msgstr "El año pasado"
@@ -773,10 +773,10 @@ msgid "Last 5 years"
 msgstr "Últimos 5 años"
 
 msgid "External url"
-msgstr ""
+msgstr "URL externo"
 
 msgid "Upload file"
 msgstr "Cargar fichero"
 
 msgid "Confirm delete"
-msgstr ""
+msgstr "Confirmar eliminación"
