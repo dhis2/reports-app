@@ -137,7 +137,7 @@ msgid "Reporting Period"
 msgstr ""
 
 msgid "Organisation Unit"
-msgstr ""
+msgstr "Organisatieëenheid"
 
 msgid "CONFIRM"
 msgstr ""
@@ -353,7 +353,7 @@ msgid "An error occurred while loading the report table options"
 msgstr ""
 
 msgid "Count"
-msgstr ""
+msgstr "Tel"
 
 msgid "Total"
 msgstr ""
@@ -398,7 +398,7 @@ msgid "Report Table"
 msgstr ""
 
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgid "Create"
 msgstr ""
@@ -578,10 +578,10 @@ msgid "Bi-Week"
 msgstr ""
 
 msgid "Daily"
-msgstr ""
+msgstr "Dagelijks"
 
 msgid "Weekly"
-msgstr ""
+msgstr "Wekelijks"
 
 msgid "Weekly Wednesday"
 msgstr ""
@@ -599,7 +599,7 @@ msgid "Bi-Weekly"
 msgstr ""
 
 msgid "Monthly"
-msgstr ""
+msgstr "Maandelijks"
 
 msgid "Bi-Monthly"
 msgstr ""
@@ -617,7 +617,7 @@ msgid "Six-Monthly November"
 msgstr ""
 
 msgid "Yearly"
-msgstr ""
+msgstr "Jaarlijks"
 
 msgid "Financial-April"
 msgstr ""
@@ -635,7 +635,7 @@ msgid "Reporting day"
 msgstr ""
 
 msgid "Yesterday"
-msgstr ""
+msgstr "Gisteren"
 
 msgid "Last 3 days"
 msgstr ""
