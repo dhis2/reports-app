@@ -386,7 +386,7 @@ msgid "Manage my apps"
 msgstr ""
 
 msgid "No results found"
-msgstr ""
+msgstr "Geen resultaten gevonden"
 
 msgid "Interpretations"
 msgstr "Interpretaties"
@@ -638,13 +638,13 @@ msgid "Yesterday"
 msgstr "Gisteren"
 
 msgid "Last 3 days"
-msgstr ""
+msgstr "Laatste 3 dagen"
 
 msgid "Last 7 days"
-msgstr ""
+msgstr "Laatste 7 dagen"
 
 msgid "Last 14 days"
-msgstr ""
+msgstr "Laatste 14 dagen"
 
 msgid "Weeks"
 msgstr ""
@@ -659,13 +659,13 @@ msgid "Last 2 weeks"
 msgstr ""
 
 msgid "Last 12 weeks"
-msgstr ""
+msgstr "Laatste 12 weken"
 
 msgid "Last 52 weeks"
-msgstr ""
+msgstr "Laatste 52 weken"
 
 msgid "Weeks this year"
-msgstr ""
+msgstr "Weken dit jaar"
 
 msgid "Months"
 msgstr ""
@@ -674,19 +674,19 @@ msgid "Reporting month"
 msgstr ""
 
 msgid "Last month"
-msgstr ""
+msgstr "Laatste maand"
 
 msgid "Last 3 months"
-msgstr ""
+msgstr "Laatste 3 maanden"
 
 msgid "Last 6 months"
-msgstr ""
+msgstr "Laatste 6 maanden"
 
 msgid "Last 12 months"
-msgstr ""
+msgstr "Laatste 12 maanden"
 
 msgid "Months this year"
-msgstr ""
+msgstr "Maanden dit jaar"
 
 msgid "Bi-months"
 msgstr ""
@@ -710,10 +710,10 @@ msgid "Reporting quarter"
 msgstr ""
 
 msgid "Last quarter"
-msgstr ""
+msgstr "Laatste kwartier"
 
 msgid "Last 4 quarters"
-msgstr ""
+msgstr "Laatste 4 kwartieren"
 
 msgid "Quarters of reporting year"
 msgstr ""
@@ -725,10 +725,10 @@ msgid "Reporting six-month"
 msgstr ""
 
 msgid "Last six-month"
-msgstr ""
+msgstr "Laatste halfjaar"
 
 msgid "Last 2 six-months"
-msgstr ""
+msgstr "Laatste 2 halfjaren"
 
 msgid "Financial Years"
 msgstr ""
@@ -737,10 +737,10 @@ msgid "Reporting financial year"
 msgstr ""
 
 msgid "Last financial year"
-msgstr ""
+msgstr "Laatste financieel jaar"
 
 msgid "Last 5 financial years"
-msgstr ""
+msgstr "Laatste 5 financiële jaren"
 
 msgid "Years"
 msgstr ""
@@ -749,10 +749,10 @@ msgid "Reporting year"
 msgstr ""
 
 msgid "Last year"
-msgstr ""
+msgstr "Laatste jaar"
 
 msgid "Last 5 years"
-msgstr ""
+msgstr "Laatste 5 jaren"
 
 msgid "External url"
 msgstr ""
