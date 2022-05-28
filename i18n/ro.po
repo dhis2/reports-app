@@ -1,19 +1,19 @@
 # 
 # Translators:
-# SubhamJena <subhamjena8465@gmail.com>, 2022
+# Valeriu Plesca <vplesca@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2021-03-03T10:35:11.879Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
-"Last-Translator: SubhamJena <subhamjena8465@gmail.com>, 2022\n"
-"Language-Team: Odia (https://www.transifex.com/hisp-uio/teams/100509/or/)\n"
+"Last-Translator: Valeriu Plesca <vplesca@gmail.com>, 2022\n"
+"Language-Team: Romanian (https://www.transifex.com/hisp-uio/teams/100509/ro/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: or\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: ro\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
 msgid "Updating Organisation Units Tree..."
 msgstr ""
@@ -52,7 +52,7 @@ msgid "Select Period Type"
 msgstr ""
 
 msgid "Search"
-msgstr ""
+msgstr "Căutare"
 
 msgid "No results have been found"
 msgstr ""
@@ -79,6 +79,7 @@ msgid "Please enter at least {{count}} characters"
 msgid_plural "Please enter at least {{count}} characters"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 msgid "Type to search a report table"
 msgstr ""
@@ -163,10 +164,10 @@ msgid "Do you want to use this file as an attachment?"
 msgstr ""
 
 msgid "Yes"
-msgstr "ହଁ"
+msgstr "Da"
 
 msgid "No"
-msgstr "ନାହିଁ"
+msgstr "Nu"
 
 msgid "File"
 msgstr ""
@@ -175,7 +176,7 @@ msgid "Name*"
 msgstr ""
 
 msgid "Details"
-msgstr "ବିବରଣୀ"
+msgstr ""
 
 msgid "Resource Type"
 msgstr ""
@@ -367,7 +368,7 @@ msgid "Search apps"
 msgstr ""
 
 msgid "Profile"
-msgstr ""
+msgstr "Profil"
 
 msgid "Account"
 msgstr ""
@@ -385,7 +386,7 @@ msgid "Manage my apps"
 msgstr ""
 
 msgid "No results found"
-msgstr ""
+msgstr "Nu au fost găsite rezultate"
 
 msgid "Interpretations"
 msgstr ""
@@ -403,13 +404,13 @@ msgid "Create"
 msgstr ""
 
 msgid "Edit"
-msgstr ""
+msgstr "Editare"
 
 msgid "Actions"
 msgstr ""
 
 msgid "Delete"
-msgstr ""
+msgstr "Lichidare"
 
 msgid "Sharing settings"
 msgstr ""
@@ -466,7 +467,7 @@ msgid "Public can find and view"
 msgstr ""
 
 msgid "Close"
-msgstr ""
+msgstr "Închidere"
 
 msgid "week"
 msgstr ""
@@ -580,7 +581,7 @@ msgid "Daily"
 msgstr ""
 
 msgid "Weekly"
-msgstr "ସାପ୍ତାହିକ"
+msgstr ""
 
 msgid "Weekly Wednesday"
 msgstr ""
@@ -598,7 +599,7 @@ msgid "Bi-Weekly"
 msgstr ""
 
 msgid "Monthly"
-msgstr "ମାସିକ"
+msgstr ""
 
 msgid "Bi-Monthly"
 msgstr ""
@@ -616,7 +617,7 @@ msgid "Six-Monthly November"
 msgstr ""
 
 msgid "Yearly"
-msgstr "ବାର୍ଷିକ"
+msgstr ""
 
 msgid "Financial-April"
 msgstr ""
@@ -628,13 +629,13 @@ msgid "Financial-Oct"
 msgstr ""
 
 msgid "Days"
-msgstr ""
+msgstr "Zile"
 
 msgid "Reporting day"
 msgstr ""
 
 msgid "Yesterday"
-msgstr "ଗତକାଲି"
+msgstr ""
 
 msgid "Last 3 days"
 msgstr ""
@@ -652,7 +653,7 @@ msgid "Reporting week"
 msgstr ""
 
 msgid "Last Week"
-msgstr "ଗତ ସପ୍ତାହ"
+msgstr ""
 
 msgid "Last 2 weeks"
 msgstr ""
@@ -667,16 +668,16 @@ msgid "Weeks this year"
 msgstr ""
 
 msgid "Months"
-msgstr ""
+msgstr "Luni"
 
 msgid "Reporting month"
 msgstr ""
 
 msgid "Last month"
-msgstr "ଗତ ମାସ"
+msgstr "Luna trecută"
 
 msgid "Last 3 months"
-msgstr ""
+msgstr "Ultimele 3 luni"
 
 msgid "Last 6 months"
 msgstr ""
@@ -742,7 +743,7 @@ msgid "Last 5 financial years"
 msgstr ""
 
 msgid "Years"
-msgstr ""
+msgstr "Ani"
 
 msgid "Reporting year"
 msgstr ""
