@@ -40,10 +40,10 @@ msgid "Select Group Set"
 msgstr ""
 
 msgid "Show more options"
-msgstr ""
+msgstr "Afișare mai multe opțiuni"
 
 msgid "Show fewer options"
-msgstr ""
+msgstr "Afișare mai puține opțiuni"
 
 msgid "Report organisation unit"
 msgstr ""
@@ -85,7 +85,7 @@ msgid "Type to search a report table"
 msgstr ""
 
 msgid "Standard Report"
-msgstr ""
+msgstr "Raport standard"
 
 msgid ""
 "View and add reports based on the JasperReports library. These can be based "
@@ -115,7 +115,7 @@ msgid ""
 msgstr ""
 
 msgid "Resource"
-msgstr ""
+msgstr "Resursă"
 
 msgid ""
 "View and add resources. These resources can be uploaded documents or URLs on"
@@ -143,7 +143,7 @@ msgid "CONFIRM"
 msgstr ""
 
 msgid "Report period"
-msgstr ""
+msgstr "Perioada raportului"
 
 msgid "Use data for selected unit only"
 msgstr ""
@@ -170,7 +170,7 @@ msgid "No"
 msgstr "Nu"
 
 msgid "File"
-msgstr ""
+msgstr "Fişier"
 
 msgid "Name*"
 msgstr ""
@@ -200,7 +200,7 @@ msgid "Generate report"
 msgstr ""
 
 msgid "Report parameters"
-msgstr ""
+msgstr "Parametrii raportului"
 
 msgid "There are some errors you have to fix first!"
 msgstr ""
@@ -233,7 +233,7 @@ msgid "Design File*"
 msgstr ""
 
 msgid "Relative periods"
-msgstr ""
+msgstr "Perioade relative"
 
 msgid "Settings"
 msgstr ""
@@ -254,7 +254,7 @@ msgid "Jasper report with JDBC data source"
 msgstr ""
 
 msgid "HTML report"
-msgstr ""
+msgstr "Raport HTML"
 
 msgid "No cache"
 msgstr ""
@@ -401,7 +401,7 @@ msgid "ID"
 msgstr ""
 
 msgid "Create"
-msgstr ""
+msgstr "Creare"
 
 msgid "Edit"
 msgstr "Editare"
@@ -599,13 +599,13 @@ msgid "Bi-Weekly"
 msgstr ""
 
 msgid "Monthly"
-msgstr ""
+msgstr "Lunar"
 
 msgid "Bi-Monthly"
 msgstr ""
 
 msgid "Quarterly"
-msgstr ""
+msgstr "Trimestrial"
 
 msgid "Six-Monthly"
 msgstr ""
@@ -617,7 +617,7 @@ msgid "Six-Monthly November"
 msgstr ""
 
 msgid "Yearly"
-msgstr ""
+msgstr "Anual"
 
 msgid "Financial-April"
 msgstr ""
@@ -632,25 +632,25 @@ msgid "Days"
 msgstr "Zile"
 
 msgid "Reporting day"
-msgstr ""
+msgstr "Ziua de raportare"
 
 msgid "Yesterday"
-msgstr ""
+msgstr "Ieri"
 
 msgid "Last 3 days"
-msgstr ""
+msgstr "Ultimele 3 zile"
 
 msgid "Last 7 days"
-msgstr ""
+msgstr "Ultimele 7 zile"
 
 msgid "Last 14 days"
-msgstr ""
+msgstr "Ultimele 14 zile"
 
 msgid "Weeks"
-msgstr ""
+msgstr "Săptămâni"
 
 msgid "Reporting week"
-msgstr ""
+msgstr "Săptămâna de raportare"
 
 msgid "Last Week"
 msgstr ""
@@ -662,16 +662,16 @@ msgid "Last 12 weeks"
 msgstr ""
 
 msgid "Last 52 weeks"
-msgstr ""
+msgstr "Ultimele 52 de săptămâni"
 
 msgid "Weeks this year"
-msgstr ""
+msgstr "Săptămâni în anul curent"
 
 msgid "Months"
 msgstr "Luni"
 
 msgid "Reporting month"
-msgstr ""
+msgstr "Luna de raportare"
 
 msgid "Last month"
 msgstr "Luna trecută"
@@ -680,16 +680,16 @@ msgid "Last 3 months"
 msgstr "Ultimele 3 luni"
 
 msgid "Last 6 months"
-msgstr ""
+msgstr "Ultimele 6 luni"
 
 msgid "Last 12 months"
-msgstr ""
+msgstr "Ultimele 12 luni"
 
 msgid "Months this year"
-msgstr ""
+msgstr "Luni în anul curent"
 
 msgid "Bi-months"
-msgstr ""
+msgstr "Bi-lunar"
 
 msgid "Reporting bi-month"
 msgstr ""
@@ -704,16 +704,16 @@ msgid "Bi-months this year"
 msgstr ""
 
 msgid "Quarters"
-msgstr ""
+msgstr "Trimestre"
 
 msgid "Reporting quarter"
-msgstr ""
+msgstr "Trimestrul de raportare"
 
 msgid "Last quarter"
-msgstr ""
+msgstr "Ultimul trimestru"
 
 msgid "Last 4 quarters"
-msgstr ""
+msgstr "Ultimele 4 trimestre"
 
 msgid "Quarters of reporting year"
 msgstr ""
@@ -725,40 +725,40 @@ msgid "Reporting six-month"
 msgstr ""
 
 msgid "Last six-month"
-msgstr ""
+msgstr "Ultimele șase luni"
 
 msgid "Last 2 six-months"
-msgstr ""
+msgstr "Ultimele 2 șase luni"
 
 msgid "Financial Years"
-msgstr ""
+msgstr "Ani financiari"
 
 msgid "Reporting financial year"
 msgstr ""
 
 msgid "Last financial year"
-msgstr ""
+msgstr "Ultimul an financiar"
 
 msgid "Last 5 financial years"
-msgstr ""
+msgstr "Ultimii 5 ani financiari"
 
 msgid "Years"
 msgstr "Ani"
 
 msgid "Reporting year"
-msgstr ""
+msgstr "Anul de raportare"
 
 msgid "Last year"
-msgstr ""
+msgstr "Anul trecut"
 
 msgid "Last 5 years"
-msgstr ""
+msgstr "Ultimii 5 ani"
 
 msgid "External url"
 msgstr ""
 
 msgid "Upload file"
-msgstr ""
+msgstr "Incarcare fișier"
 
 msgid "Confirm delete"
 msgstr ""
