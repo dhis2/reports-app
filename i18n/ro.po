@@ -31,7 +31,7 @@ msgid "Select Data Set"
 msgstr ""
 
 msgid "Data set"
-msgstr ""
+msgstr "Set de date"
 
 msgid "Group Set"
 msgstr ""
@@ -61,13 +61,13 @@ msgid "Download as"
 msgstr ""
 
 msgid "Share"
-msgstr ""
+msgstr "Partajare"
 
 msgid "Write a comment, question or interpretation of this report"
-msgstr ""
+msgstr "Scrierea unui comentariu, întrebare sau interpretare a acestui raport"
 
 msgid "Select file"
-msgstr ""
+msgstr "Selectare fișier"
 
 msgid "No file chosen"
 msgstr ""
@@ -137,7 +137,7 @@ msgid "Reporting Period"
 msgstr ""
 
 msgid "Organisation Unit"
-msgstr ""
+msgstr "Unitate Organizațională"
 
 msgid "CONFIRM"
 msgstr ""
@@ -188,7 +188,7 @@ msgid "File resources can not be edited, only created"
 msgstr ""
 
 msgid "Cancel"
-msgstr ""
+msgstr "Anulare"
 
 msgid "Edit standard report"
 msgstr ""
@@ -242,7 +242,7 @@ msgid "Cache Strategy*"
 msgstr ""
 
 msgid "Submit"
-msgstr ""
+msgstr "Trimite"
 
 msgid "[ None ]"
 msgstr ""
@@ -659,7 +659,7 @@ msgid "Last 2 weeks"
 msgstr ""
 
 msgid "Last 12 weeks"
-msgstr ""
+msgstr "Ultimele 12 săptămâni"
 
 msgid "Last 52 weeks"
 msgstr "Ultimele 52 de săptămâni"
@@ -722,7 +722,7 @@ msgid "Six-Months"
 msgstr ""
 
 msgid "Reporting six-month"
-msgstr ""
+msgstr "Raportare la șase luni"
 
 msgid "Last six-month"
 msgstr "Ultimele șase luni"
