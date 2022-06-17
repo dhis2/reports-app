@@ -475,19 +475,19 @@ msgid "Close"
 msgstr "Tutup"
 
 msgid "week"
-msgstr ""
+msgstr "minggu"
 
 msgid "month"
-msgstr ""
+msgstr "bulan"
 
 msgid "year"
-msgstr ""
+msgstr "tahun"
 
 msgid "bi monthly"
-msgstr ""
+msgstr "dua bulan sekali"
 
 msgid "day"
-msgstr ""
+msgstr "hari"
 
 msgid "January"
 msgstr "Januari"
@@ -550,7 +550,7 @@ msgid "May-October"
 msgstr ""
 
 msgid "quarter"
-msgstr ""
+msgstr "seperempat"
 
 msgid "January-March"
 msgstr ""
@@ -565,7 +565,7 @@ msgid "October-December"
 msgstr ""
 
 msgid "six monthly"
-msgstr ""
+msgstr "Per enam bulan"
 
 msgid "January-June"
 msgstr ""
