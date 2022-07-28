@@ -605,7 +605,7 @@ msgid "Bi-Monthly"
 msgstr ""
 
 msgid "Quarterly"
-msgstr ""
+msgstr "Driemaandelijks"
 
 msgid "Six-Monthly"
 msgstr ""
