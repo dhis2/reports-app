@@ -2,13 +2,14 @@
 # Translators:
 # phil_dhis2, 2020
 # Viktor Varland <viktor@dhis2.org>, 2020
+# Éva Tamási, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2021-03-03T10:35:11.879Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
-"Last-Translator: Viktor Varland <viktor@dhis2.org>, 2020\n"
+"Last-Translator: Éva Tamási, 2022\n"
 "Language-Team: Ukrainian (https://www.transifex.com/hisp-uio/teams/100509/uk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -292,7 +293,7 @@ msgid "Successfully loaded the {{ outputType }}"
 msgstr ""
 
 msgid "chart"
-msgstr ""
+msgstr "діаграма"
 
 msgid "table"
 msgstr ""
@@ -427,7 +428,7 @@ msgid "Add users and user groups"
 msgstr "Додати користувачів та групи користувачів"
 
 msgid "Enter names"
-msgstr ""
+msgstr "Введіть імена"
 
 msgid "Permissions"
 msgstr ""
@@ -436,7 +437,7 @@ msgid "Created By"
 msgstr ""
 
 msgid "Who has access"
-msgstr ""
+msgstr "Хто має доступ"
 
 msgid "External access (without login)"
 msgstr "Зовнішній доступ (без логіна)"
@@ -448,10 +449,10 @@ msgid "Can view"
 msgstr "Може переглядати"
 
 msgid "Can view only"
-msgstr ""
+msgstr "Може лише переглядати"
 
 msgid "No access"
-msgstr ""
+msgstr "Немає доступу"
 
 msgid "Public access (with login)"
 msgstr "Загальний доступ (з логіном)"
@@ -760,7 +761,7 @@ msgid "External url"
 msgstr ""
 
 msgid "Upload file"
-msgstr ""
+msgstr "Вивантажити файл"
 
 msgid "Confirm delete"
 msgstr ""
