@@ -410,7 +410,7 @@ msgid "Edit"
 msgstr "Редагувати"
 
 msgid "Actions"
-msgstr ""
+msgstr "Дії"
 
 msgid "Delete"
 msgstr "Видалити"
