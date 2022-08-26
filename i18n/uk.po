@@ -75,7 +75,7 @@ msgid "No file chosen"
 msgstr ""
 
 msgid "No matches found"
-msgstr ""
+msgstr "Результатів не знайдено"
 
 msgid "Please enter at least {{count}} characters"
 msgid_plural "Please enter at least {{count}} characters"
@@ -365,7 +365,7 @@ msgid "Name"
 msgstr "Ім'я"
 
 msgid "Something went wrong when processing your request."
-msgstr ""
+msgstr "Під час обробки запиту сталася помилка."
 
 msgid "Search apps"
 msgstr "Пошук додатків"
@@ -410,7 +410,7 @@ msgid "Edit"
 msgstr "Редагувати"
 
 msgid "Actions"
-msgstr ""
+msgstr "Дії"
 
 msgid "Delete"
 msgstr "Видалити"

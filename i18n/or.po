@@ -373,7 +373,7 @@ msgid "Account"
 msgstr ""
 
 msgid "Help"
-msgstr ""
+msgstr "ସହାୟତା"
 
 msgid "Log out"
 msgstr ""
