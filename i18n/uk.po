@@ -42,10 +42,10 @@ msgid "Select Group Set"
 msgstr ""
 
 msgid "Show more options"
-msgstr ""
+msgstr "Показати більше параметрів"
 
 msgid "Show fewer options"
-msgstr ""
+msgstr "Показати менше параметрів"
 
 msgid "Report organisation unit"
 msgstr ""
@@ -431,7 +431,7 @@ msgid "Enter names"
 msgstr "Введіть імена"
 
 msgid "Permissions"
-msgstr ""
+msgstr "Дозволи"
 
 msgid "Created By"
 msgstr ""
@@ -476,7 +476,7 @@ msgid "week"
 msgstr ""
 
 msgid "month"
-msgstr ""
+msgstr "місяць"
 
 msgid "year"
 msgstr ""
