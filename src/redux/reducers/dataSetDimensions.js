@@ -1,6 +1,12 @@
 import { LOCATION_CHANGE } from 'connected-react-router'
 import { actionTypes } from '../actions/dataSetDimensions.js'
 
+const removeKeyFromObj = (obj, removeKey) => {
+    // eslint-disable-next-line no-unused-vars
+    const { [removeKey]: remove, ...remainingKeys } = obj
+    return remainingKeys
+}
+
 export const defaultState = {
     loading: false,
     options: [],
@@ -33,13 +39,21 @@ export const dataSetDimensions = (
             }
 
         case actionTypes.SELECT_DIMENSION_OPTION:
-            return {
-                ...state,
-                selected: {
-                    ...state.selected,
-                    [payload.dimension]: payload.value,
-                },
-            }
+            return payload.value
+                ? {
+                      ...state,
+                      selected: {
+                          ...state.selected,
+                          [payload.dimension]: payload.value,
+                      },
+                  }
+                : {
+                      ...state,
+                      selected: removeKeyFromObj(
+                          state.selected,
+                          payload.dimension
+                      ),
+                  }
 
         case LOCATION_CHANGE:
             return {
