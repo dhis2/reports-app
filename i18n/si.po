@@ -52,7 +52,7 @@ msgid "Select Period Type"
 msgstr ""
 
 msgid "Search"
-msgstr ""
+msgstr "සොයන්න"
 
 msgid "No results have been found"
 msgstr ""
@@ -163,10 +163,10 @@ msgid "Do you want to use this file as an attachment?"
 msgstr ""
 
 msgid "Yes"
-msgstr ""
+msgstr "ඔව්"
 
 msgid "No"
-msgstr ""
+msgstr "නැත"
 
 msgid "File"
 msgstr ""
@@ -403,7 +403,7 @@ msgid "Create"
 msgstr ""
 
 msgid "Edit"
-msgstr ""
+msgstr "වෙනස් කරන්න"
 
 msgid "Actions"
 msgstr ""
@@ -466,7 +466,7 @@ msgid "Public can find and view"
 msgstr ""
 
 msgid "Close"
-msgstr ""
+msgstr "වසන්න"
 
 msgid "week"
 msgstr ""
@@ -577,10 +577,10 @@ msgid "Bi-Week"
 msgstr ""
 
 msgid "Daily"
-msgstr ""
+msgstr "දිනපතා"
 
 msgid "Weekly"
-msgstr ""
+msgstr "සතිපතා"
 
 msgid "Weekly Wednesday"
 msgstr ""
@@ -598,7 +598,7 @@ msgid "Bi-Weekly"
 msgstr ""
 
 msgid "Monthly"
-msgstr ""
+msgstr "මාස්පතා"
 
 msgid "Bi-Monthly"
 msgstr ""
@@ -616,7 +616,7 @@ msgid "Six-Monthly November"
 msgstr ""
 
 msgid "Yearly"
-msgstr ""
+msgstr "අවුරුදු පතා"
 
 msgid "Financial-April"
 msgstr ""
@@ -634,7 +634,7 @@ msgid "Reporting day"
 msgstr ""
 
 msgid "Yesterday"
-msgstr ""
+msgstr "ඊයේ"
 
 msgid "Last 3 days"
 msgstr ""
@@ -652,7 +652,7 @@ msgid "Reporting week"
 msgstr ""
 
 msgid "Last Week"
-msgstr ""
+msgstr "පසුගිය සතිය"
 
 msgid "Last 2 weeks"
 msgstr ""
