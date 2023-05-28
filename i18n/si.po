@@ -103,7 +103,7 @@ msgid ""
 msgstr ""
 
 msgid "Get Report"
-msgstr ""
+msgstr "වාර්තාව ගන්න"
 
 msgid "Reporting Rate Summary"
 msgstr ""
@@ -169,10 +169,10 @@ msgid "No"
 msgstr "නැත"
 
 msgid "File"
-msgstr ""
+msgstr "ගොනුව"
 
 msgid "Name*"
-msgstr ""
+msgstr "නම*"
 
 msgid "Details"
 msgstr ""
@@ -217,13 +217,13 @@ msgid "Get Jasper Report Template"
 msgstr ""
 
 msgid "Download"
-msgstr ""
+msgstr "බාගත කරන්න"
 
 msgid "Report Type*"
-msgstr ""
+msgstr "වාර්තා වර්ගය*"
 
 msgid "Report Table*"
-msgstr ""
+msgstr "වාර්තා වගුව*"
 
 msgid "Design File"
 msgstr ""
@@ -241,7 +241,7 @@ msgid "Cache Strategy*"
 msgstr ""
 
 msgid "Submit"
-msgstr ""
+msgstr "යොමු කරන්න"
 
 msgid "[ None ]"
 msgstr ""
@@ -352,13 +352,13 @@ msgid "An error occurred while loading the report table options"
 msgstr ""
 
 msgid "Count"
-msgstr ""
+msgstr "ගණන"
 
 msgid "Total"
-msgstr ""
+msgstr "එකතුව"
 
 msgid "Name"
-msgstr ""
+msgstr "නම"
 
 msgid "Something went wrong when processing your request."
 msgstr ""
@@ -373,13 +373,13 @@ msgid "Account"
 msgstr ""
 
 msgid "Help"
-msgstr ""
+msgstr "උදවු"
 
 msgid "Log out"
 msgstr ""
 
 msgid "About DHIS 2"
-msgstr ""
+msgstr "DHIS 2 ගැන"
 
 msgid "Manage my apps"
 msgstr ""
@@ -394,7 +394,7 @@ msgid "Messages"
 msgstr "පණිවිඩ"
 
 msgid "Report Table"
-msgstr ""
+msgstr "වාර්තා වගුව"
 
 msgid "ID"
 msgstr ""
@@ -439,10 +439,10 @@ msgid "External access (without login)"
 msgstr ""
 
 msgid "Can edit and view"
-msgstr ""
+msgstr "සංස්කරණයට හා නැරඹීමටහැක"
 
 msgid "Can view"
-msgstr ""
+msgstr "නාරඹිය හැක"
 
 msgid "Can view only"
 msgstr ""
@@ -484,94 +484,94 @@ msgid "day"
 msgstr ""
 
 msgid "January"
-msgstr ""
+msgstr "ජනවාරි"
 
 msgid "February"
-msgstr ""
+msgstr "පෙබරවාරි"
 
 msgid "March"
-msgstr ""
+msgstr "මාර්තු"
 
 msgid "April"
-msgstr ""
+msgstr "අප්‍රේල්"
 
 msgid "May"
-msgstr ""
+msgstr "මැයි"
 
 msgid "June"
-msgstr ""
+msgstr "ජූනි"
 
 msgid "July"
-msgstr ""
+msgstr "ජූලි"
 
 msgid "August"
-msgstr ""
+msgstr "අගෝස්තු"
 
 msgid "September"
-msgstr ""
+msgstr "සැප්තැම්බර්"
 
 msgid "October"
-msgstr ""
+msgstr "ඔක්තෝබර්"
 
 msgid "November"
-msgstr ""
+msgstr "නොවැම්බර්"
 
 msgid "December"
-msgstr ""
+msgstr "දෙසැම්බර්"
 
 msgid "January-February"
-msgstr ""
+msgstr "ජනවාරි-පෙබරවාරි"
 
 msgid "March-April"
-msgstr ""
+msgstr "මාර්තු-අප්‍රේල්"
 
 msgid "May-June"
-msgstr ""
+msgstr "මැයි-ජූනි"
 
 msgid "July-August"
-msgstr ""
+msgstr "ජූලි-අගෝස්තු"
 
 msgid "September-October"
-msgstr ""
+msgstr "සැප්කැම්බර්-ඔක්තෝබර්"
 
 msgid "November-December"
-msgstr ""
+msgstr "නොවැම්බර්-දෙසැම්බර්"
 
 msgid "November-April"
-msgstr ""
+msgstr "නොවැම්බර්-අප්‍රේල්"
 
 msgid "May-October"
-msgstr ""
+msgstr "මැයි-ඔක්තෝබර්"
 
 msgid "quarter"
-msgstr ""
+msgstr "කාර්තුව"
 
 msgid "January-March"
-msgstr ""
+msgstr "ජනවාරි-මාර්තු"
 
 msgid "April-June"
-msgstr ""
+msgstr "අප්‍රේල්-ජූනි"
 
 msgid "July-September"
-msgstr ""
+msgstr "ජූලි-සැප්තැම්බර්"
 
 msgid "October-December"
-msgstr ""
+msgstr "ඔක්තෝබර්-දෙසැම්බර්"
 
 msgid "six monthly"
-msgstr ""
+msgstr "6 මසකට වරක්"
 
 msgid "January-June"
-msgstr ""
+msgstr "ජනවාරි-ජූනි"
 
 msgid "July-December"
-msgstr ""
+msgstr "ජූලි-දෙසැම්බර්"
 
 msgid "April-September"
-msgstr ""
+msgstr "අප්‍රේල්-සැප්තැම්බර්"
 
 msgid "October-March"
-msgstr ""
+msgstr "ඔක්තෝබර්-මාර්තු"
 
 msgid "Bi-Week"
 msgstr ""
@@ -604,7 +604,7 @@ msgid "Bi-Monthly"
 msgstr ""
 
 msgid "Quarterly"
-msgstr ""
+msgstr "කාර්තු පතා"
 
 msgid "Six-Monthly"
 msgstr ""
@@ -628,7 +628,7 @@ msgid "Financial-Oct"
 msgstr ""
 
 msgid "Days"
-msgstr ""
+msgstr "දින"
 
 msgid "Reporting day"
 msgstr ""
@@ -637,16 +637,16 @@ msgid "Yesterday"
 msgstr "ඊයේ"
 
 msgid "Last 3 days"
-msgstr ""
+msgstr "පසුගිය දින 3"
 
 msgid "Last 7 days"
-msgstr ""
+msgstr "පසුගිය දින 7"
 
 msgid "Last 14 days"
-msgstr ""
+msgstr "පසුගිය දින 14"
 
 msgid "Weeks"
-msgstr ""
+msgstr "සති"
 
 msgid "Reporting week"
 msgstr ""
@@ -655,34 +655,34 @@ msgid "Last Week"
 msgstr "පසුගිය සතිය"
 
 msgid "Last 2 weeks"
-msgstr ""
+msgstr "පසුගිය සති 2"
 
 msgid "Last 12 weeks"
-msgstr ""
+msgstr "පසුගිය සති 12"
 
 msgid "Last 52 weeks"
-msgstr ""
+msgstr "පසුගිය සති 52"
 
 msgid "Weeks this year"
 msgstr ""
 
 msgid "Months"
-msgstr ""
+msgstr "මාස"
 
 msgid "Reporting month"
 msgstr ""
 
 msgid "Last month"
-msgstr ""
+msgstr "පසුගිය මාසය"
 
 msgid "Last 3 months"
-msgstr ""
+msgstr "පසුගිය මාස 3"
 
 msgid "Last 6 months"
-msgstr ""
+msgstr "පසුගිය මාස 6"
 
 msgid "Last 12 months"
-msgstr ""
+msgstr "පසුගිය මාස 12"
 
 msgid "Months this year"
 msgstr ""
@@ -703,7 +703,7 @@ msgid "Bi-months this year"
 msgstr ""
 
 msgid "Quarters"
-msgstr ""
+msgstr "කාර්තු"
 
 msgid "Reporting quarter"
 msgstr ""
@@ -742,16 +742,16 @@ msgid "Last 5 financial years"
 msgstr ""
 
 msgid "Years"
-msgstr ""
+msgstr "අවුරුදු"
 
 msgid "Reporting year"
 msgstr ""
 
 msgid "Last year"
-msgstr ""
+msgstr "පසුගිය වසර"
 
 msgid "Last 5 years"
-msgstr ""
+msgstr "පසුගිය 5 වසර"
 
 msgid "External url"
 msgstr ""
