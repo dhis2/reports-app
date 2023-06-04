@@ -393,7 +393,7 @@ msgid "Interpretations"
 msgstr "Interpretaties"
 
 msgid "Messages"
-msgstr ""
+msgstr "Berichten"
 
 msgid "Report Table"
 msgstr ""
