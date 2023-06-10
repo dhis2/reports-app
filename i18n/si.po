@@ -292,7 +292,7 @@ msgid "chart"
 msgstr ""
 
 msgid "table"
-msgstr ""
+msgstr "වගුව"
 
 msgid "An error occurred while loading the report!"
 msgstr ""
