@@ -357,7 +357,7 @@ msgid "Count"
 msgstr "Tel"
 
 msgid "Total"
-msgstr ""
+msgstr "Totaal"
 
 msgid "Name"
 msgstr "Naam"
