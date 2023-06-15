@@ -54,7 +54,7 @@ msgid "Select Period Type"
 msgstr ""
 
 msgid "Search"
-msgstr ""
+msgstr "Zoek"
 
 msgid "No results have been found"
 msgstr ""
@@ -63,7 +63,7 @@ msgid "Download as"
 msgstr ""
 
 msgid "Share"
-msgstr ""
+msgstr "Deel"
 
 msgid "Write a comment, question or interpretation of this report"
 msgstr ""
@@ -366,7 +366,7 @@ msgid "Something went wrong when processing your request."
 msgstr ""
 
 msgid "Search apps"
-msgstr ""
+msgstr "Zoek apps"
 
 msgid "Profile"
 msgstr "Profiel"
@@ -444,7 +444,7 @@ msgid "Can edit and view"
 msgstr "Kan bewerken en bezichtigen"
 
 msgid "Can view"
-msgstr ""
+msgstr "Kan bekijken"
 
 msgid "Can view only"
 msgstr "Kan alleen bezichtigen"
@@ -759,7 +759,7 @@ msgid "External url"
 msgstr ""
 
 msgid "Upload file"
-msgstr ""
+msgstr "Upload bestand"
 
 msgid "Confirm delete"
 msgstr ""
