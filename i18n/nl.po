@@ -237,7 +237,7 @@ msgid "Relative periods"
 msgstr ""
 
 msgid "Settings"
-msgstr ""
+msgstr "Instellingen"
 
 msgid "Cache Strategy*"
 msgstr ""
@@ -369,16 +369,16 @@ msgid "Search apps"
 msgstr ""
 
 msgid "Profile"
-msgstr ""
+msgstr "Profiel"
 
 msgid "Account"
-msgstr ""
+msgstr "Account"
 
 msgid "Help"
-msgstr ""
+msgstr "Hulp"
 
 msgid "Log out"
-msgstr ""
+msgstr "Uitloggen"
 
 msgid "About DHIS 2"
 msgstr ""
@@ -486,40 +486,40 @@ msgid "day"
 msgstr ""
 
 msgid "January"
-msgstr ""
+msgstr "Januari"
 
 msgid "February"
-msgstr ""
+msgstr "Februari"
 
 msgid "March"
-msgstr ""
+msgstr "Maart"
 
 msgid "April"
-msgstr ""
+msgstr "april"
 
 msgid "May"
-msgstr ""
+msgstr "Mei"
 
 msgid "June"
-msgstr ""
+msgstr "Juni"
 
 msgid "July"
-msgstr ""
+msgstr "Juli"
 
 msgid "August"
-msgstr ""
+msgstr "Augustus"
 
 msgid "September"
-msgstr ""
+msgstr "September"
 
 msgid "October"
-msgstr ""
+msgstr "Oktober"
 
 msgid "November"
-msgstr ""
+msgstr "November"
 
 msgid "December"
-msgstr ""
+msgstr "December"
 
 msgid "January-February"
 msgstr ""
@@ -630,7 +630,7 @@ msgid "Financial-Oct"
 msgstr ""
 
 msgid "Days"
-msgstr ""
+msgstr "Dagen"
 
 msgid "Reporting day"
 msgstr ""
@@ -669,7 +669,7 @@ msgid "Weeks this year"
 msgstr "Weken dit jaar"
 
 msgid "Months"
-msgstr ""
+msgstr "Maanden"
 
 msgid "Reporting month"
 msgstr ""
@@ -744,7 +744,7 @@ msgid "Last 5 financial years"
 msgstr "Laatste 5 financiële jaren"
 
 msgid "Years"
-msgstr ""
+msgstr "Jaren"
 
 msgid "Reporting year"
 msgstr ""
