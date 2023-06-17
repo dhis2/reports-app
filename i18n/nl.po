@@ -60,7 +60,7 @@ msgid "No results have been found"
 msgstr ""
 
 msgid "Download as"
-msgstr ""
+msgstr "Downloaden als"
 
 msgid "Share"
 msgstr "Deel"
@@ -381,7 +381,7 @@ msgid "Log out"
 msgstr "Uitloggen"
 
 msgid "About DHIS 2"
-msgstr ""
+msgstr "Over DHIS 2"
 
 msgid "Manage my apps"
 msgstr ""
