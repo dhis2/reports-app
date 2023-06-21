@@ -69,7 +69,7 @@ msgid "Write a comment, question or interpretation of this report"
 msgstr ""
 
 msgid "Select file"
-msgstr ""
+msgstr "Selecteer bestand"
 
 msgid "No file chosen"
 msgstr ""
