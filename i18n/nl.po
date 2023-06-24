@@ -654,7 +654,7 @@ msgid "Reporting week"
 msgstr ""
 
 msgid "Last Week"
-msgstr ""
+msgstr "Vorige week"
 
 msgid "Last 2 weeks"
 msgstr ""
