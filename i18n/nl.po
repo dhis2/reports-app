@@ -648,7 +648,7 @@ msgid "Last 14 days"
 msgstr "Laatste 14 dagen"
 
 msgid "Weeks"
-msgstr ""
+msgstr "Weken"
 
 msgid "Reporting week"
 msgstr ""
