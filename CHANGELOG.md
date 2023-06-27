@@ -1,3 +1,10 @@
+## [100.0.44](https://github.com/dhis2/reports-app/compare/v100.0.43...v100.0.44) (2023-06-27)
+
+
+### Bug Fixes
+
+* **translations:** sync translations from transifex (master) ([d71b52f](https://github.com/dhis2/reports-app/commit/d71b52f94b4e31ac0b2aba897597e7d03ba7577c))
+
 ## [100.0.43](https://github.com/dhis2/reports-app/compare/v100.0.42...v100.0.43) (2023-06-24)
 
 
