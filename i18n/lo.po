@@ -3,15 +3,15 @@
 # phil_dhis2, 2020
 # Viktor Varland <viktor@dhis2.org>, 2020
 # Thuy Nguyen <thuynguyen@hispvietnam.org>, 2022
-# Saysamone Sibounma, 2022
+# Saysamone Sibounma, 2023
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2021-03-03T10:35:11.879Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
-"Last-Translator: Saysamone Sibounma, 2022\n"
-"Language-Team: Lao (https://www.transifex.com/hisp-uio/teams/100509/lo/)\n"
+"Last-Translator: Saysamone Sibounma, 2023\n"
+"Language-Team: Lao (https://app.transifex.com/hisp-uio/teams/100509/lo/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -34,7 +34,7 @@ msgid "Select Data Set"
 msgstr ""
 
 msgid "Data set"
-msgstr "Data set\\:"
+msgstr "ຊຸດຂໍ້ມູນ"
 
 msgid "Group Set"
 msgstr ""
@@ -52,7 +52,7 @@ msgid "Report organisation unit"
 msgstr "​ບົດລາຍງານ​ທາງ​ດ້ານໂຄງຮ່າງການຈັດຕັ້ງ"
 
 msgid "Select Period Type"
-msgstr "Select Period Type"
+msgstr "ເລືອກປະເພດຂອງຊ່ວງເວລາ"
 
 msgid "Search"
 msgstr "ຄົນຫາ"
@@ -64,16 +64,16 @@ msgid "Download as"
 msgstr "ດາວໂຫຼດ"
 
 msgid "Share"
-msgstr "ແຈກ"
+msgstr "ເຜີຍແຜ່"
 
 msgid "Write a comment, question or interpretation of this report"
 msgstr "​ຂຽນ​ຄຳ​ເຫັນ, ຄຳ​ຖາມ ຫລື ການ​ແປ​ຜົນ​ຂອງ​ບົດ​ລາຍ​ງານນີ້"
 
 msgid "Select file"
-msgstr ""
+msgstr "ເລືອກເອກະສານ"
 
 msgid "No file chosen"
-msgstr ""
+msgstr "ບໍ່ມີເອກະສານທີ່ເລືອກ"
 
 msgid "No matches found"
 msgstr ""
@@ -96,7 +96,7 @@ msgstr ""
 "ອາດ​ຈະ​ອີງ​ໃສ່​ຕາ​ຕະ​ລາງ​ລາຍ​ງານ ແລະ ການ​ອອກ​ແບບ​ຢູ່​ໃນ  iReport."
 
 msgid "View Reports"
-msgstr ""
+msgstr "ເບິ່ງບົດລາຍງານ"
 
 msgid "Data Set Report"
 msgstr "​ບົດລາຍງານ​ຊຸດຂໍ້ມູນ"
@@ -110,7 +110,7 @@ msgstr ""
 "ຈະ​ຜະ​ລິດ​ເປັນ​ບົດ​ລາຍ​ງານ​ທີ່​ມີ​​ມູນ​ຄ່າ​ຂໍ້​ມູນສະ​ສົມ"
 
 msgid "Get Report"
-msgstr ""
+msgstr "ຮັບບົດລາຍງານ"
 
 msgid "Reporting Rate Summary"
 msgstr "ອັດຕາການລາຍງານ"
@@ -200,7 +200,7 @@ msgid "File resources can not be edited, only created"
 msgstr ""
 
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "ຍົກເລິກ"
 
 msgid "Edit standard report"
 msgstr ""
