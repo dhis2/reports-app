@@ -96,9 +96,11 @@ export const getOrganisationUnits = async () => {
         'children::isNotEmpty',
         'memberCount',
     ].join(',')
-    const organisationUnits = await d2.currentUser.getOrganisationUnits({
-        fields: orgUnitFields,
-    })
+    const organisationUnits = await d2.currentUser.getDataViewOrganisationUnits(
+        {
+            fields: orgUnitFields,
+        }
+    )
     if (organisationUnits.size > 0) {
         return organisationUnits.toArray()
     } else {
