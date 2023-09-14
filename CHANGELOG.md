@@ -1,3 +1,10 @@
+## [100.0.48](https://github.com/dhis2/reports-app/compare/v100.0.47...v100.0.48) (2023-09-14)
+
+
+### Bug Fixes
+
+* clear selected dimension if selection is null [DHIS2-15041] ([5fddd7f](https://github.com/dhis2/reports-app/commit/5fddd7f24fa61b9d0b53790d10cdc58cee731b87))
+
 ## [100.0.47](https://github.com/dhis2/reports-app/compare/v100.0.46...v100.0.47) (2023-09-14)
 
 
