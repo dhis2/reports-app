@@ -1,3 +1,11 @@
+## [100.0.49](https://github.com/dhis2/reports-app/compare/v100.0.48...v100.0.49) (2023-09-29)
+
+
+### Bug Fixes
+
+* use data view organisation units [DHIS-15651] ([9d469f5](https://github.com/dhis2/reports-app/commit/9d469f5c7ae44f2970ebc9024ebc78e055a842a5))
+* use data view organisation units [DHIS-15651] [#382](https://github.com/dhis2/reports-app/issues/382) ([cac7d41](https://github.com/dhis2/reports-app/commit/cac7d412885468c43d2a4018fe1469db500473fd))
+
 ## [100.0.48](https://github.com/dhis2/reports-app/compare/v100.0.47...v100.0.48) (2023-09-14)
 
 
