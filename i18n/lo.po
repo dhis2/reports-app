@@ -1,6 +1,6 @@
 # 
 # Translators:
-# phil_dhis2, 2020
+# Philip Larsen Donnelly, 2020
 # Viktor Varland <viktor@dhis2.org>, 2020
 # Thuy Nguyen <thuynguyen@hispvietnam.org>, 2022
 # Saysamone Sibounma, 2023
@@ -22,7 +22,7 @@ msgid "Updating Organisation Units Tree..."
 msgstr ""
 
 msgid "Select Option"
-msgstr ""
+msgstr "ເລືອກຕົວເລືອກ"
 
 msgid "Data set dimensions"
 msgstr ""
@@ -31,16 +31,16 @@ msgid "Loading options..."
 msgstr ""
 
 msgid "Select Data Set"
-msgstr ""
+msgstr "ເລືອກຊຸດຂໍ້ມູນ"
 
 msgid "Data set"
 msgstr "ຊຸດຂໍ້ມູນ"
 
 msgid "Group Set"
-msgstr ""
+msgstr "ຊຸດກຸ່ມ"
 
 msgid "Select Group Set"
-msgstr ""
+msgstr "ເລືອກເປັນກຸ່ມ"
 
 msgid "Show more options"
 msgstr "​ສະ​ແດງ​ໃຫ້​ເຫັນ​ທາງ​ເລືອກ​ອື່ນໆ"
@@ -133,7 +133,7 @@ msgstr ""
 "ເອົາ​ຢູ່​ໃນ​ເອ​ກະ​ສານ ຫລື ຈະ​ເອົາ​ມາ​ຈາກ​ແວບ​ໃຊ URLs"
 
 msgid "View Resources"
-msgstr ""
+msgstr "ເບີ່ງແຫຼ່ງທີ່ມາ"
 
 msgid "Org unit distribution report"
 msgstr ""
@@ -146,7 +146,7 @@ msgstr ""
 " ແລະ ກຸມ​ຂອງ​ມັນ"
 
 msgid "Reporting Period"
-msgstr ""
+msgstr "ຊ່ວງເວລາການລາຍງານ"
 
 msgid "Organisation Unit"
 msgstr "ຫົວໜ່ວຍ ການຈັດຕັ້ງ"
@@ -164,13 +164,13 @@ msgid "Get Chart"
 msgstr ""
 
 msgid "Edit resource"
-msgstr ""
+msgstr "ແກ້ໄຂແຫຼ່ງທີ່ມາ"
 
 msgid "Save resource"
-msgstr ""
+msgstr "ບັນທຶກແຫຼ່ງທີ່ມາ"
 
 msgid "Add resource"
-msgstr ""
+msgstr "ເພີ່ມແຫຼ່ງທີ່ມາ"
 
 msgid "Do you want to use this file as an attachment?"
 msgstr ""
@@ -185,13 +185,13 @@ msgid "File"
 msgstr "ເອກະສານ"
 
 msgid "Name*"
-msgstr ""
+msgstr "ຊື່*"
 
 msgid "Details"
 msgstr "ລາຍລະອຽດ"
 
 msgid "Resource Type"
-msgstr ""
+msgstr "ປະເພດແຫຼ່ງທີ່ມາ"
 
 msgid "Url*"
 msgstr ""
@@ -203,13 +203,13 @@ msgid "Cancel"
 msgstr "ຍົກເລິກ"
 
 msgid "Edit standard report"
-msgstr ""
+msgstr "ແກ້ໄຂບົດລາຍງານແບບມາດຕະຖານ"
 
 msgid "Create standard report"
-msgstr ""
+msgstr "ສ້າງບົດລາຍງານແບບມາດຕະຖານ"
 
 msgid "Generate report"
-msgstr ""
+msgstr "ສ້າງບົດລາຍງານ"
 
 msgid "Report parameters"
 msgstr "​ສ່ວນ​ປະ​ກອບ​ຕ່າງໆ​ຂອງ​ບົດ​ລາຍ​ງານ"
@@ -218,7 +218,7 @@ msgid "There are some errors you have to fix first!"
 msgstr ""
 
 msgid "Back to standard reports list"
-msgstr ""
+msgstr "ກັບຄືນໄປໜ້າຫຼັກລາຍການຂອງລາຍງານແບບມາດຕະຖານ"
 
 msgid "Get current design"
 msgstr "​ເອົາ​ຕາມ​ການ​ອອກ​ແບບ​ປະ​ຈຸ​ບັນ"
@@ -233,10 +233,10 @@ msgid "Download"
 msgstr "ດາວໂຫຼດ"
 
 msgid "Report Type*"
-msgstr ""
+msgstr "ປະເພດລາຍງານ*"
 
 msgid "Report Table*"
-msgstr ""
+msgstr "ຕາຕະລາງລາຍງານ*"
 
 msgid "Design File"
 msgstr ""
@@ -293,7 +293,7 @@ msgid "An error occurred while loading the group sets!"
 msgstr ""
 
 msgid "Could not load organisation units"
-msgstr ""
+msgstr "ບໍ່ສາມາດໂຫຼດຫົວໜ່ວຍການຈັດຕັ້ງໄດ້"
 
 msgid "An error occurred while loading the organisation units!"
 msgstr ""
@@ -305,19 +305,19 @@ msgid "chart"
 msgstr ""
 
 msgid "table"
-msgstr ""
+msgstr "ຕາຕະລາງ"
 
 msgid "An error occurred while loading the report!"
 msgstr ""
 
 msgid "Successfully added comment"
-msgstr ""
+msgstr "ເພີ່ມຄວາມຄິດເຫັນສຳເລັດແລ້ວ"
 
 msgid "An error occurred while submitting your comment!"
 msgstr ""
 
 msgid "Could not load period types"
-msgstr ""
+msgstr "ບໍ່ສາມາດໂຫຼດປະເພດຊ່ວງເວລາໄດ້"
 
 msgid "An error occurred while loading the resources!"
 msgstr ""
@@ -347,10 +347,10 @@ msgid "An error occurred while loading the standard report details"
 msgstr ""
 
 msgid "The report has been updated successfully"
-msgstr ""
+msgstr "ໄດ້ອັບເດດບົດລາຍງານສຳເລັດແລ້ວ"
 
 msgid "The report has been added successfully"
-msgstr ""
+msgstr "ໄດ້ເພີ່ມບົດລາຍງານສຳເລັດແລ້ວ"
 
 msgid "An error occurred while updating the report!"
 msgstr ""
@@ -437,13 +437,13 @@ msgid "Add users and user groups"
 msgstr "ເພື່ມບຸກຄົນແລະກຸ່ມຄົນ"
 
 msgid "Enter names"
-msgstr ""
+msgstr "ປ້ອນຊື່"
 
 msgid "Permissions"
 msgstr ""
 
 msgid "Created By"
-msgstr ""
+msgstr "ສ້າງໂດຍ"
 
 msgid "Who has access"
 msgstr ""
@@ -458,43 +458,43 @@ msgid "Can view"
 msgstr "ສາມາດເບີ່ງ"
 
 msgid "Can view only"
-msgstr ""
+msgstr "ອານຸຍາດໃຫ້ເບີ່ງໄດ້ເທົ່ານັ້ນ"
 
 msgid "No access"
-msgstr ""
+msgstr "ບໍ່ມີການເຂົ້າເຖີງ"
 
 msgid "Public access (with login)"
 msgstr ""
 
 msgid "Public can edit"
-msgstr ""
+msgstr "ທຸກຄົນສາມາດແກ້ໄຂໄດ້"
 
 msgid "Public can view"
-msgstr ""
+msgstr "ທຸກຄົນສາມາດເບີ່ງໄດ້"
 
 msgid "Public can find, view and edit"
-msgstr ""
+msgstr "ທຸກຄົນສາມາດຊອກຫາ, ເບີ່ງ ແລະ ແກ້ໄຂໄດ້"
 
 msgid "Public can find and view"
-msgstr ""
+msgstr "ທຸກຄົນສາມາດຊອກຫາ ແລະ ເບີ່ງໄດ້"
 
 msgid "Close"
 msgstr "ປິດ"
 
 msgid "week"
-msgstr ""
+msgstr "ອາທິດ"
 
 msgid "month"
-msgstr ""
+msgstr "ເດືອນ"
 
 msgid "year"
-msgstr ""
+msgstr "ປີ"
 
 msgid "bi monthly"
-msgstr ""
+msgstr "ສອງເດືອນຕໍ່ຄັ້ງ"
 
 msgid "day"
-msgstr ""
+msgstr "ມື້"
 
 msgid "January"
 msgstr "ມັງກອນ"
@@ -533,88 +533,88 @@ msgid "December"
 msgstr "ທັນວາ"
 
 msgid "January-February"
-msgstr ""
+msgstr "ມັງກອນ - ກຸມພາ"
 
 msgid "March-April"
-msgstr ""
+msgstr "ມີນາ - ເມສາ"
 
 msgid "May-June"
-msgstr ""
+msgstr "ພຶດສະພາ - ມິຖຸນາ"
 
 msgid "July-August"
-msgstr ""
+msgstr "ກໍລະກົດ - ສິງຫາ"
 
 msgid "September-October"
-msgstr ""
+msgstr "ກັນຍາ - ຕຸລາ"
 
 msgid "November-December"
-msgstr ""
+msgstr "ພະຈິກ - ທັນວາ"
 
 msgid "November-April"
-msgstr ""
+msgstr "ພະຈິກ - ເມສາ"
 
 msgid "May-October"
-msgstr ""
+msgstr "ພຶດສະພາ - ຕຸລາ"
 
 msgid "quarter"
-msgstr ""
+msgstr "ໄຕມາດ"
 
 msgid "January-March"
-msgstr ""
+msgstr "ມັງກອນ - ມີນາ"
 
 msgid "April-June"
-msgstr ""
+msgstr "ເມສາ - ມິຖຸນາ"
 
 msgid "July-September"
-msgstr ""
+msgstr "ກໍລະກົດ - ກັນຍາ"
 
 msgid "October-December"
-msgstr ""
+msgstr "ຕຸລາ - ທັນວາ"
 
 msgid "six monthly"
-msgstr ""
+msgstr "ຫົກເດືອນຕໍ່ຄັ້ງ"
 
 msgid "January-June"
-msgstr ""
+msgstr "ມັງກອນ - ມິຖຸນາ"
 
 msgid "July-December"
-msgstr ""
+msgstr "ກໍລະກົດ - ທັນວາ"
 
 msgid "April-September"
-msgstr ""
+msgstr "ເມສາ - ກັນຍາ"
 
 msgid "October-March"
-msgstr ""
+msgstr "ຕຸລາ - ມີນາ"
 
 msgid "Bi-Week"
-msgstr ""
+msgstr "ສອງອາທິດຕໍ່ຄັ້ງ"
 
 msgid "Daily"
 msgstr "ທຸກໆມື້"
 
 msgid "Weekly"
-msgstr "ເປັນອາທິດ"
+msgstr "ລາຍອາທິດ"
 
 msgid "Weekly Wednesday"
-msgstr ""
+msgstr "ລາຍອາທິດ ເລີ່ມວັນພຸດ"
 
 msgid "Weekly Thursday"
-msgstr ""
+msgstr "ລາຍອາທິດ ເລີ່ມວັນພະຫັດ"
 
 msgid "Weekly Saturday"
-msgstr ""
+msgstr "ລາຍອາທິດ ເລີ່ມວັນເສົາ"
 
 msgid "Weekly Sunday"
-msgstr ""
+msgstr "ລາຍອາທິດ ເລີ່ມວັນອາທິດ"
 
 msgid "Bi-Weekly"
-msgstr ""
+msgstr "ສອງອາທິດຕໍ່ຄັ້ງ"
 
 msgid "Monthly"
 msgstr "ລາຍເດືອນ"
 
 msgid "Bi-Monthly"
-msgstr ""
+msgstr "ສອງເດືອນຕໍ່ຄັ້ງ"
 
 msgid "Quarterly"
 msgstr "ໄຕມາດ"
@@ -668,7 +668,7 @@ msgid "Last Week"
 msgstr "ອາທິດທີ່ແລ້ວ"
 
 msgid "Last 2 weeks"
-msgstr ""
+msgstr "2 ອາທິດຜ່ານມາ"
 
 msgid "Last 12 weeks"
 msgstr "12 ອາທິດຍ້ອນຫຼັງ"
@@ -683,7 +683,7 @@ msgid "Months"
 msgstr "ເດືອນ"
 
 msgid "Reporting month"
-msgstr "​ເດືອນ​ຂອງ​ການ​ລາຍ​ງານ"
+msgstr "​ເດືອນ​ທີ່​ລາຍ​ງານ"
 
 msgid "Last month"
 msgstr "ເດືອນຜ່ານມາ"
@@ -731,7 +731,7 @@ msgid "Quarters of reporting year"
 msgstr ""
 
 msgid "Six-Months"
-msgstr ""
+msgstr "6 ເດືອນ"
 
 msgid "Reporting six-month"
 msgstr "ລາຍງານເປັນ 6 ເດືອນ"
@@ -773,4 +773,4 @@ msgid "Upload file"
 msgstr "ໂຫຼດເອກະສານ"
 
 msgid "Confirm delete"
-msgstr ""
+msgstr "ຢືນຢັນການລົບ"
