@@ -67,7 +67,7 @@ msgid "Share"
 msgstr "ເຜີຍແຜ່"
 
 msgid "Write a comment, question or interpretation of this report"
-msgstr "​ຂຽນ​ຄຳ​ເຫັນ, ຄຳ​ຖາມ ຫລື ການ​ແປ​ຜົນ​ຂອງ​ບົດ​ລາຍ​ງານນີ້"
+msgstr "​ຂຽນ​ຄຳ​ເຫັນ, ຄຳ​ຖາມ ຫຼື ການ​ແປ​ຜົນ​ຂອງ​ບົດ​ລາຍ​ງານນີ້"
 
 msgid "Select file"
 msgstr "ເລືອກເອກະສານ"
@@ -347,10 +347,10 @@ msgid "An error occurred while loading the standard report details"
 msgstr ""
 
 msgid "The report has been updated successfully"
-msgstr "ໄດ້ອັບເດດບົດລາຍງານສຳເລັດແລ້ວ"
+msgstr "ອັບເດດບົດລາຍງານສຳເລັດແລ້ວ"
 
 msgid "The report has been added successfully"
-msgstr "ໄດ້ເພີ່ມບົດລາຍງານສຳເລັດແລ້ວ"
+msgstr "ເພີ່ມບົດລາຍງານສຳເລັດແລ້ວ"
 
 msgid "An error occurred while updating the report!"
 msgstr ""
@@ -452,10 +452,10 @@ msgid "External access (without login)"
 msgstr ""
 
 msgid "Can edit and view"
-msgstr "ສາມາດເບີ່ງ ແລະ ແກ້ໄຂໄດ້"
+msgstr "ອານຸຍາດໃຫ້ເບີ່ງ ແລະ ແກ້ໄຂໄດ້"
 
 msgid "Can view"
-msgstr "ສາມາດເບີ່ງ"
+msgstr "ອານຸຍາດໃຫ້ເບີ່ງໄດ້"
 
 msgid "Can view only"
 msgstr "ອານຸຍາດໃຫ້ເບີ່ງໄດ້ເທົ່ານັ້ນ"
@@ -770,7 +770,7 @@ msgid "External url"
 msgstr ""
 
 msgid "Upload file"
-msgstr "ໂຫຼດເອກະສານ"
+msgstr "ອັບໂຫຼດເອກະສານ"
 
 msgid "Confirm delete"
 msgstr "ຢືນຢັນການລົບ"
