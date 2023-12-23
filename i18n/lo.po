@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "Updating Organisation Units Tree..."
-msgstr ""
+msgstr "ກຳລັງໂຫຼດໂຄງຮ່າງການຈັດຕັ້ງ"
 
 msgid "Select Option"
 msgstr "ເລືອກຕົວເລືອກ"
@@ -58,7 +58,7 @@ msgid "Search"
 msgstr "ຄົນຫາ"
 
 msgid "No results have been found"
-msgstr ""
+msgstr "ບໍ່ພົບຜົນຮັບ"
 
 msgid "Download as"
 msgstr "ດາວໂຫຼດ"
@@ -76,7 +76,7 @@ msgid "No file chosen"
 msgstr "ບໍ່ມີເອກະສານທີ່ເລືອກ"
 
 msgid "No matches found"
-msgstr ""
+msgstr "ບໍ່ພົບລາຍການທີ່ຄືກັນ"
 
 msgid "Please enter at least {{count}} characters"
 msgid_plural "Please enter at least {{count}} characters"
@@ -173,7 +173,7 @@ msgid "Add resource"
 msgstr "ເພີ່ມແຫຼ່ງທີ່ມາ"
 
 msgid "Do you want to use this file as an attachment?"
-msgstr ""
+msgstr "ທ່ານຕ້ອງການໃຊ້ຟາຍນີ້ເປັນຟາຍແນບຫຼືບໍ?"
 
 msgid "Yes"
 msgstr "ແມ່ນ"
@@ -239,10 +239,10 @@ msgid "Report Table*"
 msgstr "ຕາຕະລາງລາຍງານ*"
 
 msgid "Design File"
-msgstr ""
+msgstr "ອອກແບບຟາຍ"
 
 msgid "Design File*"
-msgstr ""
+msgstr "ອອກແບບຟາຍ*"
 
 msgid "Relative periods"
 msgstr "​ໄລ​ຍະ​ເວ​ລາ​ໄກ້​ຄຽງ"
@@ -272,7 +272,7 @@ msgid "No cache"
 msgstr "No cache"
 
 msgid "Respect system setting"
-msgstr ""
+msgstr "ປະຕິບັດຕາມການຕັ້ງຄ່າຂອງລະບົບ"
 
 msgid "Cache for one hour"
 msgstr ""
