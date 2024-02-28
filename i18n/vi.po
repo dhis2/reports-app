@@ -1,16 +1,16 @@
 # 
 # Translators:
-# phil_dhis2, 2020
 # Viktor Varland <viktor@dhis2.org>, 2020
 # Mai Nguyen <thanhmai.jica@gmail.com>, 2021
+# Philip Larsen Donnelly, 2024
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2021-03-03T10:35:11.879Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
-"Last-Translator: Mai Nguyen <thanhmai.jica@gmail.com>, 2021\n"
-"Language-Team: Vietnamese (https://www.transifex.com/hisp-uio/teams/100509/vi/)\n"
+"Last-Translator: Philip Larsen Donnelly, 2024\n"
+"Language-Team: Vietnamese (https://app.transifex.com/hisp-uio/teams/100509/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -295,7 +295,7 @@ msgid "An error occurred while loading the organisation units!"
 msgstr "Xảy ra lỗi khi tải cây đơn vị "
 
 msgid "Successfully loaded the {{ outputType }}"
-msgstr "Đã tải thành công {{outputType}}"
+msgstr "Đã tải thành công {{ outputType }}"
 
 msgid "chart"
 msgstr "Biểu đồ"
