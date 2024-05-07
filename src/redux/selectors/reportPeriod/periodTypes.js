@@ -9,7 +9,8 @@ export const getFilteredPeriodTypes = (state) => {
     const fixedPeriodTypes = state.reportPeriod.collection.map(
         (periodType) => ({
             id: periodType.name,
-            displayName: fixedPeriodTranslations[periodType.name],
+            displayName:
+                fixedPeriodTranslations[periodType.name] || periodType.name,
         })
     )
 
