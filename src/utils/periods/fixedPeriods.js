@@ -13,6 +13,7 @@ export const fixedPeriodTranslations = {
     Monthly: i18n.t('Monthly'),
     BiMonthly: i18n.t('Bi-Monthly'),
     Quarterly: i18n.t('Quarterly'),
+    QuarterlyNov: i18n.t('Quarterly-Nov'),
     SixMonthly: i18n.t('Six-Monthly'),
     SixMonthlyApril: i18n.t('Six-Monthly April'),
     SixMonthlyNov: i18n.t('Six-Monthly November'),
@@ -20,6 +21,7 @@ export const fixedPeriodTranslations = {
     FinancialApril: i18n.t('Financial-April'),
     FinancialJuly: i18n.t('Financial-July'),
     FinancialOct: i18n.t('Financial-Oct'),
+    FinancialNov: i18n.t('Financial-Nov'),
 }
 
 export const relativePeriodsThatAreActuallyFixed = {
