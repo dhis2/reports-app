@@ -1,3 +1,12 @@
+## [100.0.57](https://github.com/dhis2/reports-app/compare/v100.0.56...v100.0.57) (2024-06-26)
+
+
+### Bug Fixes
+
+* fall back to periodType name if translation isn't present ([317d1a7](https://github.com/dhis2/reports-app/commit/317d1a70f12910c00f5d0244da162e267bbc1d5d))
+* missing labels in report period selector ([e7b9f29](https://github.com/dhis2/reports-app/commit/e7b9f29b6b8e2fb9c47200f9e57f703b7e27780a))
+* missing labels in report period selector [DHIS2-16199] ([3cc9fdc](https://github.com/dhis2/reports-app/commit/3cc9fdc17f58c4a754dc92b8237616a8d7f590d5))
+
 ## [100.0.56](https://github.com/dhis2/reports-app/compare/v100.0.55...v100.0.56) (2024-06-09)
 
 
