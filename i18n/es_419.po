@@ -576,7 +576,7 @@ msgid "October-March"
 msgstr ""
 
 msgid "Bi-Week"
-msgstr ""
+msgstr "Cada dos semanas"
 
 msgid "Daily"
 msgstr "Diario"
@@ -705,7 +705,7 @@ msgid "Bi-months this year"
 msgstr ""
 
 msgid "Quarters"
-msgstr ""
+msgstr "Trimestres"
 
 msgid "Reporting quarter"
 msgstr ""
