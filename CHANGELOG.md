@@ -1,3 +1,10 @@
+## [100.0.60](https://github.com/dhis2/reports-app/compare/v100.0.59...v100.0.60) (2024-08-21)
+
+
+### Bug Fixes
+
+* [DHIS2-17324] Ensure standard report id is in the right format ([#393](https://github.com/dhis2/reports-app/issues/393)) ([12b9277](https://github.com/dhis2/reports-app/commit/12b9277d870ae733ced87eacd9aef76be74b1199))
+
 ## [100.0.59](https://github.com/dhis2/reports-app/compare/v100.0.58...v100.0.59) (2024-07-24)
 
 
