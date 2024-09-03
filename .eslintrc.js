@@ -4,9 +4,15 @@ module.exports = {
     extends: [config.eslintReact],
     rules: {
         'max-params': [
-            2,
+            'error',
             {
                 max: 4,
+            },
+        ],
+        'react/no-unknown-property': [
+            'error',
+            {
+                ignore: ['jsx'],
             },
         ],
     },
