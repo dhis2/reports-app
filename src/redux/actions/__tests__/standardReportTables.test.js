@@ -44,7 +44,7 @@ describe('Actions - standardReportTables', () => {
         ])
 
         getStandardReportTables.mockImplementationOnce(() =>
-            Promise.resolve([{ id: '1337', name: 'foobar' }])
+            Promise.resolve([{ id: '1337', displayName: 'foobar' }])
         )
 
         store.dispatch(loadStandardReportTables()).then(() => {
