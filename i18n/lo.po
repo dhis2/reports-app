@@ -447,7 +447,7 @@ msgid "Created By"
 msgstr "ສ້າງໂດຍ"
 
 msgid "Who has access"
-msgstr ""
+msgstr "ແມ່ນໃຜສາມາດເຂົ້າເຖີງໄດ້"
 
 msgid "External access (without login)"
 msgstr ""
