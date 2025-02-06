@@ -21,11 +21,11 @@
         "cypress:run": "yarn d2-utils-cypress run"
     },
     "devDependencies": {
+        "@cfaester/enzyme-adapter-react-18": "^0.8.0",
         "@dhis2/cli-app-scripts": "^12.3.0",
         "@dhis2/cli-style": "^10.7.6",
         "@dhis2/cli-utils-cypress": "^2.2.1",
         "enzyme": "^3.11.0",
-        "enzyme-adapter-react-16": "^1.15.4",
         "enzyme-to-json": "^3.5.0",
         "redux-devtools-extension": "^2.13.8",
         "redux-mock-store": "^1.5.4"
