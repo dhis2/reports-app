@@ -1,5 +1,5 @@
-import createComponentRenderer from '../../utils/test-helpers/createComponentRenderer.js'
-import { __OrganisationUnitGroupSets } from '../OrganisationUnitGroupSets.js'
+import createComponentRenderer from '../../utils/test-helpers/createComponentRenderer.jsx'
+import { __OrganisationUnitGroupSets } from '../OrganisationUnitGroupSets.jsx'
 
 jest.mock('@dhis2/d2-ui-core', () => ({
     DropDown: 'DropDown',
