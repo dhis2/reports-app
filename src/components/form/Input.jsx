@@ -6,7 +6,7 @@ import React from 'react'
 import { formInput, formInputMeta } from '../../utils/react/propTypes.js'
 import { ErrorText } from './buildingBlocks/ErrorText.jsx'
 import { HelpText } from './buildingBlocks/HelpText.jsx'
-import { inputWrapper } from './styles.js'
+import { inputWrapper } from './styles.jsx'
 
 export const Input = (props) => (
     <React.Fragment>

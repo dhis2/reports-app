@@ -12,7 +12,7 @@ import {
     backToList,
 } from '../../redux/actions/resource.js'
 import { resourceTypeOptions } from '../../utils/resource/constants.js'
-import { formCard, formLoader } from '../../utils/styles/shared.js'
+import { formCard, formLoader } from '../../utils/styles/shared.jsx'
 import { ResourceForm } from './add-edit-resource/ResourceForm.jsx'
 import { extractFileAndFormattedResource } from './helper.js'
 

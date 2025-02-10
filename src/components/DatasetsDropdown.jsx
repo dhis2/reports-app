@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
 import { selectDataSet } from '../redux/actions/dataSet.js'
-import { formLabel } from '../utils/styles/shared.js'
+import { formLabel } from '../utils/styles/shared.jsx'
 
 const hintTextLoading = i18n.t('Loading options...')
 const hintTextDefault = i18n.t('Select Data Set')

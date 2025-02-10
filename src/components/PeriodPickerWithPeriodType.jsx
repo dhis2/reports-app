@@ -9,7 +9,7 @@ import {
 } from '../redux/actions/reportPeriod.js'
 import { getFilteredPeriodTypes } from '../redux/selectors/reportPeriod/periodTypes.js'
 import { isFixedPeriodType } from '../utils/periods/fixedPeriods.js'
-import { formLabel } from '../utils/styles/shared.js'
+import { formLabel } from '../utils/styles/shared.jsx'
 
 const periodTypeLabelText = i18n.t('Select Period Type')
 

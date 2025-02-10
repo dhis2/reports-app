@@ -9,7 +9,7 @@ import React from 'react'
 /* App context */
 import { connect } from 'react-redux'
 import { selectOrgUnitOption } from '../redux/actions/organisationUnits.js'
-import { formLabel } from '../utils/styles/shared.js'
+import { formLabel } from '../utils/styles/shared.jsx'
 
 const createGroupSetOnChange = (groupSetId, onChange) => (event) => {
     onChange(groupSetId, event.target.value)

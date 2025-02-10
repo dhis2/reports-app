@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
 import { setGroupSet } from '../redux/actions/orgUnitGroupSets.js'
-import { formLabel } from '../utils/styles/shared.js'
+import { formLabel } from '../utils/styles/shared.jsx'
 
 const label = i18n.t('Group Set')
 const hintText = i18n.t('Select Group Set')

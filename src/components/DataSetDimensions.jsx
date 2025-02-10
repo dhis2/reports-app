@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
 import { selectDimensionOption } from '../redux/actions/dataSetDimensions.js'
-import { formLabel } from '../utils/styles/shared.js'
+import { formLabel } from '../utils/styles/shared.jsx'
 
 const createDimensionChangeHandler = (onChange, dimensionId) => (element) =>
     onChange(dimensionId, element)

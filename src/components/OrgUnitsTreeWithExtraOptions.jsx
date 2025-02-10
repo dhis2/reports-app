@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
 import { toggleShowOptions } from '../redux/actions/organisationUnits.js'
-import { formLabel } from '../utils/styles/shared.js'
+import { formLabel } from '../utils/styles/shared.jsx'
 import OrganisationUnitsTree from './AvailableOrganisationUnitsTree.jsx'
 import { OrganisationUnitGroupSets } from './OrganisationUnitGroupSets.jsx'
 

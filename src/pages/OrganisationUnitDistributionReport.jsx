@@ -10,7 +10,7 @@ import {
     sections,
 } from '../config/sections.config.js'
 import { reportContent } from '../utils/react/propTypes.js'
-import { container } from '../utils/styles/shared.js'
+import { container } from '../utils/styles/shared.jsx'
 import { connectOrganisationUnitDistributionReport } from './organisation-unit-distribution-report/connectOrganisationUnitDistributionReport.js'
 import { Form } from './organisation-unit-distribution-report/Form.jsx'
 

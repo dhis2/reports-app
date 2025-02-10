@@ -8,7 +8,7 @@ import {
     sections,
 } from '../config/sections.config.js'
 import { reportContent } from '../utils/react/propTypes.js'
-import { container } from '../utils/styles/shared.js'
+import { container } from '../utils/styles/shared.jsx'
 import { connectDataSetReport } from './data-set-report/connectDataSetReport.js'
 import DataSetReportOutput from './data-set-report/DataSetReportOutput.jsx'
 import Form from './data-set-report/Form.jsx'

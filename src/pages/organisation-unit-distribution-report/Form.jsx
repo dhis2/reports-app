@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import OrganisationUnitsTree from '../../components/AvailableOrganisationUnitsTree.jsx'
 import GroupSets from '../../components/GroupSetsDropdown.jsx'
-import { formLabel, actionsContainer } from '../../utils/styles/shared.js'
+import { formLabel, actionsContainer } from '../../utils/styles/shared.jsx'
 
 export const Form = (props) => (
     <div id="org-unit-dist-report-form">

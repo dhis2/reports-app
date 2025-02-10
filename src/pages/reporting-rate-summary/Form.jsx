@@ -5,7 +5,7 @@ import React from 'react'
 import DataSets from '../../components/DatasetsDropdown.jsx'
 import { OrgUnitsTreeWithExtraOptions } from '../../components/OrgUnitsTreeWithExtraOptions.jsx'
 import PeriodPickerComponent from '../../components/PeriodPickerWithPeriodType.jsx'
-import { actionsContainer } from '../../utils/styles/shared.js'
+import { actionsContainer } from '../../utils/styles/shared.jsx'
 
 export const Form = (props) => (
     <div id="report-rate-summary-form">

@@ -1,7 +1,7 @@
 import Paper from '@material-ui/core/Paper'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { card } from '../utils/styles/shared.js'
+import { card } from '../utils/styles/shared.jsx'
 
 const MenuElement = ({ entry }) => (
     <Paper className={card.className}>

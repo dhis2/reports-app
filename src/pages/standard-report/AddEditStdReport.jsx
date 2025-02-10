@@ -15,7 +15,7 @@ import {
     getEditFormInitialValues,
     getIsEdit,
 } from '../../redux/selectors/standardReport/getEditFormInitialValues.js'
-import { formCard, formLoader } from '../../utils/styles/shared.js'
+import { formCard, formLoader } from '../../utils/styles/shared.jsx'
 import { ReportForm } from './add-edit-report/ReportForm.jsx'
 
 export class AddEditStandardReport extends PureComponent {

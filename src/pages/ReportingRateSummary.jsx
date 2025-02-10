@@ -9,7 +9,7 @@ import {
     sections,
 } from '../config/sections.config.js'
 import { reportContent } from '../utils/react/propTypes.js'
-import { container } from '../utils/styles/shared.js'
+import { container } from '../utils/styles/shared.jsx'
 import { connectReportingRateSummary } from './reporting-rate-summary/connectReportingRateSummary.js'
 import { Form } from './reporting-rate-summary/Form.jsx'
 
