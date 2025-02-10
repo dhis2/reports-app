@@ -15,7 +15,6 @@ exports[`Matches the snapshot 1`] = `
           "$$typeof": Symbol(react.memo),
           "WrappedComponent": [Function],
           "compare": null,
-          "displayName": "Connect(StandardReport)",
           "type": [Function],
         }
       }
@@ -29,7 +28,6 @@ exports[`Matches the snapshot 1`] = `
           "$$typeof": Symbol(react.memo),
           "WrappedComponent": [Function],
           "compare": null,
-          "displayName": "Connect(StyledHtmlReport)",
           "type": [Function],
         }
       }
@@ -43,7 +41,6 @@ exports[`Matches the snapshot 1`] = `
           "$$typeof": Symbol(react.memo),
           "WrappedComponent": [Function],
           "compare": null,
-          "displayName": "Connect(AddEditStandardReport)",
           "type": [Function],
         }
       }
@@ -57,7 +54,6 @@ exports[`Matches the snapshot 1`] = `
           "$$typeof": Symbol(react.memo),
           "WrappedComponent": [Function],
           "compare": null,
-          "displayName": "Connect(DataSetReport)",
           "type": [Function],
         }
       }
@@ -71,7 +67,6 @@ exports[`Matches the snapshot 1`] = `
           "$$typeof": Symbol(react.memo),
           "WrappedComponent": [Function],
           "compare": null,
-          "displayName": "Connect(ReportingRateSummary)",
           "type": [Function],
         }
       }
@@ -85,7 +80,6 @@ exports[`Matches the snapshot 1`] = `
           "$$typeof": Symbol(react.memo),
           "WrappedComponent": [Function],
           "compare": null,
-          "displayName": "Connect(Resource)",
           "type": [Function],
         }
       }
@@ -99,7 +93,6 @@ exports[`Matches the snapshot 1`] = `
           "$$typeof": Symbol(react.memo),
           "WrappedComponent": [Function],
           "compare": null,
-          "displayName": "Connect(AddEditResource)",
           "type": [Function],
         }
       }
@@ -113,7 +106,6 @@ exports[`Matches the snapshot 1`] = `
           "$$typeof": Symbol(react.memo),
           "WrappedComponent": [Function],
           "compare": null,
-          "displayName": "Connect(OrganisationUnitDistributionReport)",
           "type": [Function],
         }
       }
