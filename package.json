@@ -18,7 +18,8 @@
         "format": "yarn format:js && yarn format:text",
         "cypress:server": "yarn build && STORYBOOK_TESTING=1 yarn start",
         "cypress:open": "yarn d2-utils-cypress open",
-        "cypress:run": "yarn d2-utils-cypress run"
+        "cypress:run": "yarn d2-utils-cypress run",
+        "postinstall": "patch-package"
     },
     "devDependencies": {
         "@cfaester/enzyme-adapter-react-18": "^0.8.0",
@@ -27,6 +28,8 @@
         "@dhis2/cli-utils-cypress": "^2.2.1",
         "enzyme": "^3.11.0",
         "enzyme-to-json": "^3.5.0",
+        "patch-package": "^8.0.0",
+        "postinstall-postinstall": "^2.1.0",
         "redux-devtools-extension": "^2.13.8",
         "redux-mock-store": "^1.5.4"
     },
