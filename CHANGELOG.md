@@ -1,3 +1,10 @@
+## [100.0.65](https://github.com/dhis2/reports-app/compare/v100.0.64...v100.0.65) (2025-03-27)
+
+
+### Bug Fixes
+
+* expect relative periods to be either undefined or an object ([cf3d5c8](https://github.com/dhis2/reports-app/commit/cf3d5c8a20bc2e4a081bf8951160bac972f9c683))
+
 ## [100.0.64](https://github.com/dhis2/reports-app/compare/v100.0.63...v100.0.64) (2025-02-04)
 
 
