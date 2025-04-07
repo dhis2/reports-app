@@ -4,14 +4,7 @@ import createDataTransformCache from '../../../utils/dataTransformCache.js'
 
 const cache = createDataTransformCache()
 const nameColumnDisplayName = i18n.t('Name')
-const rowIndexesToRead = [
-    1, // Org unit name
-    4, // column values
-    5,
-    6,
-    7,
-    8,
-]
+const rowIndexesToRead = [1, 4, 5, 6, 7, 8]
 
 export default function getTransformedTableData(state) {
     const data = state.reportData.content
@@ -43,23 +36,21 @@ export function parseTitle(state) {
 }
 
 export function parseHeaders(data) {
-    return data.metaData.dimensions.dx.reduce(
-        (acc, dimensionCode) => {
-            acc.push(data.metaData.items[dimensionCode].name)
-            return acc
-        },
-        [nameColumnDisplayName]
-    )
+    const headers = [nameColumnDisplayName]
+
+    const headerNames = data.headers
+        .filter(
+            (header) => header.name !== 'Organisation unit' && !header.hidden
+        )
+        .map((header) => header.name)
+
+    headers.push(...headerNames)
+    return headers
 }
 
 export function parseRows(rowsWithAllFields) {
     return rowsWithAllFields
-        .map((row) =>
-            rowIndexesToRead.reduce((acc, rowIndex) => {
-                acc.push(row[rowIndex])
-                return acc
-            }, [])
-        )
+        .map((row) => rowIndexesToRead.map((index) => row[index]))
         .sort(
             (a, b) => parseFloat(b[b.length - 1]) - parseFloat(a[a.length - 1])
         )
