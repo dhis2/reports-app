@@ -1,3 +1,10 @@
+## [100.0.67](https://github.com/dhis2/reports-app/compare/v100.0.66...v100.0.67) (2025-04-24)
+
+
+### Bug Fixes
+
+* update header filtering logic in parseHeaders function ([4485ee7](https://github.com/dhis2/reports-app/commit/4485ee7344e3855f0fa1083215a82c973d291e18))
+
 ## [100.0.66](https://github.com/dhis2/reports-app/compare/v100.0.65...v100.0.66) (2025-03-30)
 
 
