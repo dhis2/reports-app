@@ -39,8 +39,10 @@ export function parseHeaders(data) {
     const headers = [nameColumnDisplayName]
 
     const headerNames = data.headers
-    .filter(({ column, hidden }) => column !== 'organisationunitname' && !hidden)
-    .map(({ column }) => column)
+        .filter(
+            ({ column, hidden }) => column !== 'organisationunitname' && !hidden
+        )
+        .map(({ column }) => column)
 
     headers.push(...headerNames)
     return headers
