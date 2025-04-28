@@ -67,8 +67,12 @@ describe('getTransformedTableData', () => {
         const result = getTransformedTableData(state)
 
         expect(result).toEqual(fakeCachedResult)
-        expect(mockHasValidCacheFor).toHaveBeenCalledWith(state.reportData.content)
-        expect(mockGetCachedResult).toHaveBeenCalledWith(state.reportData.content)
+        expect(mockHasValidCacheFor).toHaveBeenCalledWith(
+            state.reportData.content
+        )
+        expect(mockGetCachedResult).toHaveBeenCalledWith(
+            state.reportData.content
+        )
     })
 
     it('transforms and caches data when no valid cache exists', () => {
