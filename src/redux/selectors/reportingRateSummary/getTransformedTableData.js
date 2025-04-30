@@ -2,6 +2,7 @@ import i18n from '@dhis2/d2-i18n'
 import isEmpty from 'lodash.isempty'
 import createDataTransformCache from '../../../utils/dataTransformCache.js'
 
+const cache = createDataTransformCache()
 const nameColumnDisplayName = i18n.t('Name')
 const rowIndexesToRead = [1, 4, 5, 6, 7, 8]
 
@@ -12,11 +13,8 @@ export default function getTransformedTableData(state) {
         return data
     }
 
-    // create a fresh cache instance every call
-    const cache = createDataTransformCache()
-
     if (cache.hasValidCacheFor(data)) {
-        return cache.getCachedResult(data)
+        return cache.getCachedResult()
     }
 
     const tableData = {

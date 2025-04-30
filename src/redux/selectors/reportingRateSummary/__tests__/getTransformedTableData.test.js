@@ -12,19 +12,6 @@ jest.mock('@dhis2/d2-i18n', () => {
     }
 })
 
-const mockHasValidCacheFor = jest.fn()
-const mockGetCachedResult = jest.fn()
-const mockSetCachedResult = jest.fn()
-
-jest.mock('../../../../utils/dataTransformCache.js', () => ({
-    __esModule: true,
-    default: jest.fn(() => ({
-        hasValidCacheFor: mockHasValidCacheFor,
-        getCachedResult: mockGetCachedResult,
-        setCachedResult: mockSetCachedResult,
-    })),
-}))
-
 describe('getTransformedTableData', () => {
     let state
 
@@ -53,7 +40,7 @@ describe('getTransformedTableData', () => {
 
     it('returns cached data if available', () => {
         const fakeCachedResult = {
-            title: 'OrgUnit 1 - DataSet A - Report Title',
+            title: 'OrgUnit 2 - DataSet B - Report Title',
             headers: ['Name', 'data1', 'data2'],
             rows: [
                 ['Org B', 15, 25, 35, 45, 150],
@@ -61,23 +48,19 @@ describe('getTransformedTableData', () => {
             ],
         }
 
-        mockHasValidCacheFor.mockReturnValue(true)
-        mockGetCachedResult.mockReturnValue(fakeCachedResult)
+        const dataToBeCached = {
+            organisationUnits: { selected: { displayName: 'OrgUnit 2' } },
+            dataSet: { selected: { displayName: 'DataSet B' } },
+            reportData: state.reportData,
+        }
 
+        getTransformedTableData(dataToBeCached)
         const result = getTransformedTableData(state)
 
         expect(result).toEqual(fakeCachedResult)
-        expect(mockHasValidCacheFor).toHaveBeenCalledWith(
-            state.reportData.content
-        )
-        expect(mockGetCachedResult).toHaveBeenCalledWith(
-            state.reportData.content
-        )
     })
 
-    it('transforms and caches data when no valid cache exists', () => {
-        mockHasValidCacheFor.mockReturnValue(false)
-
+    it('transforms data when no valid cache exists', () => {
         const result = getTransformedTableData(state)
 
         expect(result.title).toBe('OrgUnit 1 - DataSet A - Report Title')
@@ -86,15 +69,6 @@ describe('getTransformedTableData', () => {
             ['Org B', 15, 25, 35, 45, 150],
             ['Org A', 10, 20, 30, 40, 100],
         ])
-
-        expect(mockSetCachedResult).toHaveBeenCalledWith(
-            state.reportData.content,
-            expect.objectContaining({
-                title: 'OrgUnit 1 - DataSet A - Report Title',
-                headers: ['Name', 'data1', 'data2'],
-                rows: expect.any(Array),
-            })
-        )
     })
 })
 
