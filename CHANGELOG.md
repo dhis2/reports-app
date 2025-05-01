@@ -1,3 +1,11 @@
+# [100.1.0](https://github.com/dhis2/reports-app/compare/v100.0.67...v100.1.0) (2025-05-01)
+
+
+### Features
+
+* add caching and tests for getTransformedTableData function ([c9a6bce](https://github.com/dhis2/reports-app/commit/c9a6bce0b3c07303d7f4be6f9259f67ab1243d0a))
+* do not mock cash in tests ([2e1a5a5](https://github.com/dhis2/reports-app/commit/2e1a5a5fbf18b69122b27576d971dc126f14ce6d))
+
 ## [100.0.67](https://github.com/dhis2/reports-app/compare/v100.0.66...v100.0.67) (2025-04-24)
 
 
