@@ -1,0 +1,16 @@
+diff --git a/node_modules/@dhis2/app-shell/index.html b/node_modules/@dhis2/app-shell/index.html
+index dd10d7d..1bdddf1 100644
+--- a/node_modules/@dhis2/app-shell/index.html
++++ b/node_modules/@dhis2/app-shell/index.html
+@@ -55,6 +55,11 @@
+         <div id="dhis2-app-root"></div>
+         <div id="dhis2-portal-root"></div>
+ 
++        <!-- Polyfill to add `global` for Material UI -->
++        <script>
++            var global = global || window
++        </script>
++
+         <!-- The entrypoint for Vite -->
+         <script type="module" src="./src/index.jsx"></script>
+ 
