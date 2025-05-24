@@ -232,7 +232,7 @@ msgid "Design File*"
 msgstr ""
 
 msgid "Relative periods"
-msgstr ""
+msgstr "相对期间"
 
 msgid "Settings"
 msgstr "设置"
@@ -694,7 +694,7 @@ msgid "Months this year"
 msgstr "今年的月份"
 
 msgid "Bi-months"
-msgstr ""
+msgstr "俩月"
 
 msgid "Reporting bi-month"
 msgstr ""
@@ -709,7 +709,7 @@ msgid "Bi-months this year"
 msgstr "今年的双月"
 
 msgid "Quarters"
-msgstr ""
+msgstr "季节"
 
 msgid "Reporting quarter"
 msgstr ""
