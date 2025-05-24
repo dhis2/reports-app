@@ -1,14 +1,14 @@
 # 
 # Translators:
-# Ibatov <ibatovk@who.int>, 2021
 # Philip Larsen Donnelly, 2024
+# Khurshid Ibatov <x.ibatov@dtsj.uz>, 2025
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2021-03-03T10:35:11.879Z\n"
+"POT-Creation-Date: 2025-04-24T07:07:24.119Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
-"Last-Translator: Philip Larsen Donnelly, 2024\n"
+"Last-Translator: Khurshid Ibatov <x.ibatov@dtsj.uz>, 2025\n"
 "Language-Team: Uzbek (Cyrillic) (https://app.transifex.com/hisp-uio/teams/100509/uz@Cyrl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -617,6 +617,9 @@ msgstr "Жуфт ойлик"
 msgid "Quarterly"
 msgstr "Ҳар квартал"
 
+msgid "Quarterly-Nov"
+msgstr ""
+
 msgid "Six-Monthly"
 msgstr "Ҳар ярим йиллик"
 
@@ -637,6 +640,9 @@ msgstr "Молиявий-Июль"
 
 msgid "Financial-Oct"
 msgstr "Молиявий-Октябрь"
+
+msgid "Financial-Nov"
+msgstr "Молиявий-Ноябрь"
 
 msgid "Days"
 msgstr "Кунлар"
