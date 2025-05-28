@@ -1,3 +1,32 @@
+# [100.1.0](https://github.com/dhis2/reports-app/compare/v100.0.67...v100.1.0) (2025-05-01)
+
+
+### Features
+
+* add caching and tests for getTransformedTableData function ([c9a6bce](https://github.com/dhis2/reports-app/commit/c9a6bce0b3c07303d7f4be6f9259f67ab1243d0a))
+* do not mock cash in tests ([2e1a5a5](https://github.com/dhis2/reports-app/commit/2e1a5a5fbf18b69122b27576d971dc126f14ce6d))
+
+## [100.0.67](https://github.com/dhis2/reports-app/compare/v100.0.66...v100.0.67) (2025-04-24)
+
+
+### Bug Fixes
+
+* update header filtering logic in parseHeaders function ([4485ee7](https://github.com/dhis2/reports-app/commit/4485ee7344e3855f0fa1083215a82c973d291e18))
+
+## [100.0.66](https://github.com/dhis2/reports-app/compare/v100.0.65...v100.0.66) (2025-03-30)
+
+
+### Bug Fixes
+
+* **translations:** sync translations from transifex (master) ([4567171](https://github.com/dhis2/reports-app/commit/4567171b715b9516785207a3e8f4da1377b1698d))
+
+## [100.0.65](https://github.com/dhis2/reports-app/compare/v100.0.64...v100.0.65) (2025-03-27)
+
+
+### Bug Fixes
+
+* expect relative periods to be either undefined or an object ([cf3d5c8](https://github.com/dhis2/reports-app/commit/cf3d5c8a20bc2e4a081bf8951160bac972f9c683))
+
 ## [100.0.64](https://github.com/dhis2/reports-app/compare/v100.0.63...v100.0.64) (2025-02-04)
 
 
