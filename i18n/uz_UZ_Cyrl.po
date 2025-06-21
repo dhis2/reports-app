@@ -618,7 +618,7 @@ msgid "Quarterly"
 msgstr "Ҳар квартал"
 
 msgid "Quarterly-Nov"
-msgstr ""
+msgstr "Чораклик Ноябрь"
 
 msgid "Six-Monthly"
 msgstr "Ҳар ярим йиллик"
