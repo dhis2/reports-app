@@ -1,6 +1,8 @@
 import {
     getFilteredStandardReports,
     deleteStandardReport as deleteStandardReportRequest,
+    postStandardReport,
+    updateStandardReport,
 } from '../../../utils/api.js'
 import { mockStore } from '../../../utils/test-helpers/mockStore.js'
 import { defaultState as INITIAL_PAGER } from '../../reducers/pagination.js'
@@ -14,11 +16,15 @@ import {
     deleteStandardReportError,
     loadStandardReports,
     deleteStandardReport,
+    sendStandardReport,
 } from '../standardReport.js'
 
 jest.mock('../../../utils/api', () => ({
     getFilteredStandardReports: jest.fn(),
     deleteStandardReport: jest.fn(),
+    getSystemMinorVersion: () => 42,
+    postStandardReport: jest.fn(),
+    updateStandardReport: jest.fn(),
 }))
 
 describe('Actions - Standard Reports - Async Thunks', () => {
@@ -123,6 +129,82 @@ describe('Actions - Standard Reports - Async Thunks', () => {
 
             store.dispatch(deleteStandardReport()).then(() => {
                 expect(store.getActions()).toEqual(expectedActions)
+            })
+        })
+    })
+
+    describe.only('saving standard reports', () => {
+        afterEach(() => {
+            getFilteredStandardReports.mockClear()
+        })
+
+        it('will get relativePeriods and reportParams from form when posting', () => {
+            const store = mockStore({
+                standardReport: { selectedReport: {} },
+            })
+            const mockPost = jest.fn()
+            postStandardReport.mockImplementationOnce((report) => {
+                mockPost(report)
+                return Promise.resolve()
+            })
+            const mockReport = {
+                relativePeriods: ['last3Months', 'last4Quarters'],
+                reportParams: ['organisationUnit'],
+            }
+            store.dispatch(sendStandardReport(mockReport, false)).then(() => {
+                expect(mockPost).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        relativePeriods: expect.objectContaining({
+                            last3Months: true,
+                            last4Quarters: true,
+                            last12Months: false,
+                        }),
+                        reportParams: expect.objectContaining({
+                            organisationUnit: true,
+                            reportingPeriod: false,
+                        }),
+                    })
+                )
+            })
+        })
+
+        it.skip('will get relativePeriods and reportParams from form when editing (uses relativePeriod/reportParams definition from report payload)', () => {
+            const store = mockStore({
+                standardReport: {
+                    selectedReport: {
+                        relativePeriods: {
+                            last3Months: false,
+                            lastFakeMonths: false,
+                        },
+                        reportParams: {
+                            organisationUnit: false,
+                            fakeParam: false,
+                        },
+                    },
+                },
+            })
+            const mockPost = jest.fn()
+            updateStandardReport.mockImplementationOnce((report) => {
+                mockPost(report)
+                return Promise.resolve()
+            })
+            const mockReport = {
+                relativePeriods: ['last3Months', 'last4Quarters'],
+                reportParams: ['organisationUnit'],
+            }
+            store.dispatch(sendStandardReport(mockReport, true)).then(() => {
+                expect(mockPost).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        relativePeriods: expect.objectContaining({
+                            last3Months: true,
+                            lastFakeMonths: false,
+                        }),
+                        reportParams: expect.objectContaining({
+                            organisationUnit: true,
+                            fakeParam: false,
+                        }),
+                    })
+                )
             })
         })
     })
