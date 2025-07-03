@@ -15,10 +15,14 @@ import {
     postStandardReport,
     updateStandardReport,
 } from '../../utils/api.js'
-import { formatStandardReportPayloadBySystemVersion } from '../../utils/backwardCompatability.js'
+import {
+    formatStandardReportPayloadBySystemVersion,
+    getDefaultReportParams,
+} from '../../utils/backwardCompatability.js'
 import { fileToText } from '../../utils/fileToText.js'
 import humanReadableErrorMessage from '../../utils/humanReadableErrorMessage.js'
 import { getPeriodStartDate } from '../../utils/periods/periodTypes.js'
+import { flattenedRelativePeriods } from '../../utils/periods/relativePeriods.js'
 import {
     appendOrgUnitsAndReportPeriodToQueryString,
     extractRequiredReportParams,
@@ -394,11 +398,11 @@ export const sendStandardReport = (report, isEdit) => (dispatch, getState) => {
         ...report,
         relativePeriods: processCheckboxValues(
             report.relativePeriods,
-            selectedReport.relativePeriods
+            selectedReport.relativePeriods ?? flattenedRelativePeriods
         ),
         reportParams: processCheckboxValues(
             report.reportParams,
-            selectedReport.reportParams
+            getDefaultReportParams()
         ),
         reportTable: report.reportTable ? { id: report.reportTable } : '',
     }
