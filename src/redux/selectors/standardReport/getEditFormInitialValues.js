@@ -30,15 +30,15 @@ export const getEditFormInitialValues = createSelector(
                         selectedReport.reportTable.id
                             ? selectedReport.reportTable.id
                             : '',
-                    relativePeriods: Object.keys(
-                        selectedReport?.relativePeriods ?? {}
-                    ).reduce(
-                        (acc, cur) =>
-                            selectedReport.relativePeriods[cur]
-                                ? [...acc, cur]
-                                : acc,
-                        []
-                    ),
+                    relativePeriods: selectedReport.relativePeriods
+                        ? Object.keys(selectedReport.relativePeriods).reduce(
+                              (acc, cur) =>
+                                  selectedReport.relativePeriods[cur]
+                                      ? [...acc, cur]
+                                      : acc,
+                              []
+                          )
+                        : {},
                     reportParams: [
                         selectedReport?.reportParams?.reportingPeriod
                             ? 'reportingPeriod'

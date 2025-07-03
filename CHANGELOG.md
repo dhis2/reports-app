@@ -1,3 +1,67 @@
+# [100.1.0](https://github.com/dhis2/reports-app/compare/v100.0.67...v100.1.0) (2025-05-01)
+
+
+### Features
+
+* add caching and tests for getTransformedTableData function ([c9a6bce](https://github.com/dhis2/reports-app/commit/c9a6bce0b3c07303d7f4be6f9259f67ab1243d0a))
+* do not mock cash in tests ([2e1a5a5](https://github.com/dhis2/reports-app/commit/2e1a5a5fbf18b69122b27576d971dc126f14ce6d))
+
+## [100.0.67](https://github.com/dhis2/reports-app/compare/v100.0.66...v100.0.67) (2025-04-24)
+
+
+### Bug Fixes
+
+* update header filtering logic in parseHeaders function ([4485ee7](https://github.com/dhis2/reports-app/commit/4485ee7344e3855f0fa1083215a82c973d291e18))
+
+## [100.0.66](https://github.com/dhis2/reports-app/compare/v100.0.65...v100.0.66) (2025-03-30)
+
+
+### Bug Fixes
+
+* **translations:** sync translations from transifex (master) ([4567171](https://github.com/dhis2/reports-app/commit/4567171b715b9516785207a3e8f4da1377b1698d))
+
+## [100.0.65](https://github.com/dhis2/reports-app/compare/v100.0.64...v100.0.65) (2025-03-27)
+
+
+### Bug Fixes
+
+* expect relative periods to be either undefined or an object ([cf3d5c8](https://github.com/dhis2/reports-app/commit/cf3d5c8a20bc2e4a081bf8951160bac972f9c683))
+
+## [100.0.64](https://github.com/dhis2/reports-app/compare/v100.0.63...v100.0.64) (2025-02-04)
+
+
+### Bug Fixes
+
+* **translations:** sync translations from transifex (master) ([41cf646](https://github.com/dhis2/reports-app/commit/41cf646ae7c35c694234d42789337daa8d8e8162))
+
+## [100.0.63](https://github.com/dhis2/reports-app/compare/v100.0.62...v100.0.63) (2024-10-20)
+
+
+### Bug Fixes
+
+* **translations:** sync translations from transifex (master) ([9c3fba3](https://github.com/dhis2/reports-app/commit/9c3fba3e2c4e1e6baec889000f6cbe7289b44357))
+
+## [100.0.62](https://github.com/dhis2/reports-app/compare/v100.0.61...v100.0.62) (2024-10-06)
+
+
+### Bug Fixes
+
+* **translations:** sync translations from transifex (master) ([5245542](https://github.com/dhis2/reports-app/commit/52455423acfbbec2f360dc191b4d28f6c5a2d8f2))
+
+## [100.0.61](https://github.com/dhis2/reports-app/compare/v100.0.60...v100.0.61) (2024-08-25)
+
+
+### Bug Fixes
+
+* **translations:** sync translations from transifex (master) ([3bc0471](https://github.com/dhis2/reports-app/commit/3bc047122630e673a0dee81284218ded397f5162))
+
+## [100.0.60](https://github.com/dhis2/reports-app/compare/v100.0.59...v100.0.60) (2024-08-21)
+
+
+### Bug Fixes
+
+* [DHIS2-17324] Ensure standard report id is in the right format ([#393](https://github.com/dhis2/reports-app/issues/393)) ([12b9277](https://github.com/dhis2/reports-app/commit/12b9277d870ae733ced87eacd9aef76be74b1199))
+
 ## [100.0.59](https://github.com/dhis2/reports-app/compare/v100.0.58...v100.0.59) (2024-07-24)
 
 

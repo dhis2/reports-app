@@ -12,8 +12,8 @@ import { DataSetReport } from '../pages/DataSetReport.js'
 import Home from '../pages/home/Home.js'
 import { OrganisationUnitDistributionReport } from '../pages/OrganisationUnitDistributionReport.js'
 import { ReportingRateSummary } from '../pages/ReportingRateSummary.js'
-import { Resource } from '../pages/Resource.js'
 import { AddEditResource } from '../pages/resource/AddEditResource.js'
+import { Resource } from '../pages/Resource.js'
 import { ConnectedAddEditStdReport } from '../pages/standard-report/AddEditStdReport.js'
 import StyledHtmlReport from '../pages/standard-report/StyledHtmlReport.js'
 import { StandardReport } from '../pages/StandardReport.js'
@@ -21,6 +21,8 @@ import NoMatch from './NoMatch.js'
 
 const standardReportPath = sections[STANDARD_REPORT_SECTION_KEY].path
 const resourcePath = sections[RESOURCE_SECTION_KEY].path
+// Used to ensure we are matching the pattern of an actual id
+const ID_REGEXP = '[a-zA-Z][a-zA-Z0-9]{10}'
 
 const AppRouter = () => (
     <main>
@@ -35,14 +37,14 @@ const AppRouter = () => (
             <Route
                 exact
                 key={`${STANDARD_REPORT_SECTION_KEY}-viewHTMLReport`}
-                path={`${standardReportPath}/view/:id`}
+                path={`${standardReportPath}/view/:id(${ID_REGEXP})`}
                 component={StyledHtmlReport}
             />
             <Route
                 exact
                 key={`${STANDARD_REPORT_SECTION_KEY}-addEdit`}
                 // /edit/id or /new
-                path={`${standardReportPath}/:mode/:id?`}
+                path={`${standardReportPath}/:mode/:id(${ID_REGEXP})?`}
                 component={ConnectedAddEditStdReport}
             />
             <Route
@@ -67,7 +69,7 @@ const AppRouter = () => (
                 exact
                 key={`${RESOURCE_SECTION_KEY}-addEdit`}
                 // /edit/id or /new
-                path={`${resourcePath}/:mode/:id?`}
+                path={`${resourcePath}/:mode/:id(${ID_REGEXP})?`}
                 component={AddEditResource}
             />
             <Route

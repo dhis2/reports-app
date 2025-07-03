@@ -5,752 +5,768 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2021-03-03T10:35:11.879Z\n"
-"PO-Revision-Date: 2021-03-03T10:35:11.880Z\n"
+"POT-Creation-Date: 2025-04-24T07:07:24.119Z\n"
+"PO-Revision-Date: 2025-04-24T07:07:24.119Z\n"
 
 msgid "Updating Organisation Units Tree..."
-msgstr ""
+msgstr "Updating Organisation Units Tree..."
 
 msgid "Select Option"
-msgstr ""
+msgstr "Select Option"
 
 msgid "Data set dimensions"
-msgstr ""
+msgstr "Data set dimensions"
 
 msgid "Loading options..."
-msgstr ""
+msgstr "Loading options..."
 
 msgid "Select Data Set"
-msgstr ""
+msgstr "Select Data Set"
 
 msgid "Data set"
-msgstr ""
+msgstr "Data set"
 
 msgid "Group Set"
-msgstr ""
+msgstr "Group Set"
 
 msgid "Select Group Set"
-msgstr ""
+msgstr "Select Group Set"
 
 msgid "Show more options"
-msgstr ""
+msgstr "Show more options"
 
 msgid "Show fewer options"
-msgstr ""
+msgstr "Show fewer options"
 
 msgid "Report organisation unit"
-msgstr ""
+msgstr "Report organisation unit"
 
 msgid "Select Period Type"
-msgstr ""
+msgstr "Select Period Type"
 
 msgid "Search"
-msgstr ""
+msgstr "Search"
 
 msgid "No results have been found"
-msgstr ""
+msgstr "No results have been found"
 
 msgid "Download as"
-msgstr ""
+msgstr "Download as"
 
 msgid "Share"
-msgstr ""
+msgstr "Share"
 
 msgid "Write a comment, question or interpretation of this report"
-msgstr ""
+msgstr "Write a comment, question or interpretation of this report"
 
 msgid "Select file"
-msgstr ""
+msgstr "Select file"
 
 msgid "No file chosen"
-msgstr ""
+msgstr "No file chosen"
 
 msgid "No matches found"
-msgstr ""
+msgstr "No matches found"
 
 msgid "Please enter at least {{count}} characters"
 msgid_plural "Please enter at least {{count}} characters"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Please enter at least {{count}} characters"
+msgstr[1] "Please enter at least {{count}} characters"
 
 msgid "Type to search a report table"
-msgstr ""
+msgstr "Type to search a report table"
 
 msgid "Standard Report"
-msgstr ""
+msgstr "Standard Report"
 
 msgid ""
 "View and add reports based on the JasperReports library. These can be based "
 "on report tables and can be designed in iReport."
 msgstr ""
+"View and add reports based on the JasperReports library. These can be based "
+"on report tables and can be designed in iReport."
 
 msgid "View Reports"
-msgstr ""
+msgstr "View Reports"
 
 msgid "Data Set Report"
-msgstr ""
+msgstr "Data Set Report"
 
 msgid ""
 "View data set reports. These reports are based on data entry screens and "
 "will produce a report with aggregated data."
 msgstr ""
+"View data set reports. These reports are based on data entry screens and "
+"will produce a report with aggregated data."
 
 msgid "Get Report"
-msgstr ""
+msgstr "Get Report"
 
 msgid "Reporting Rate Summary"
-msgstr ""
+msgstr "Reporting Rate Summary"
 
 msgid ""
 "Browse the reporting rates of data sets by organisation unit and period "
 "based on various criteria for submission."
 msgstr ""
+"Browse the reporting rates of data sets by organisation unit and period "
+"based on various criteria for submission."
 
 msgid "Resource"
-msgstr ""
+msgstr "Resource"
 
 msgid ""
 "View and add resources. These resources can be uploaded documents or URLs "
 "on the web."
 msgstr ""
+"View and add resources. These resources can be uploaded documents or URLs "
+"on the web."
 
 msgid "View Resources"
-msgstr ""
+msgstr "View Resources"
 
 msgid "Org unit distribution report"
-msgstr ""
+msgstr "Org unit distribution report"
 
 msgid ""
 "Browse the organisation unit distribution report based on the organisation "
 "unit group sets and its groups."
 msgstr ""
+"Browse the organisation unit distribution report based on the organisation "
+"unit group sets and its groups."
 
 msgid "Reporting Period"
-msgstr ""
+msgstr "Reporting Period"
 
 msgid "Organisation Unit"
-msgstr ""
+msgstr "Organisation Unit"
 
 msgid "CONFIRM"
-msgstr ""
+msgstr "CONFIRM"
 
 msgid "Report period"
-msgstr ""
+msgstr "Report period"
 
 msgid "Use data for selected unit only"
-msgstr ""
+msgstr "Use data for selected unit only"
 
 msgid "Get Chart"
-msgstr ""
+msgstr "Get Chart"
 
 msgid "Edit resource"
-msgstr ""
+msgstr "Edit resource"
 
 msgid "Save resource"
-msgstr ""
+msgstr "Save resource"
 
 msgid "Add resource"
-msgstr ""
+msgstr "Add resource"
 
 msgid "Do you want to use this file as an attachment?"
-msgstr ""
+msgstr "Do you want to use this file as an attachment?"
 
 msgid "Yes"
-msgstr ""
+msgstr "Yes"
 
 msgid "No"
-msgstr ""
+msgstr "No"
 
 msgid "File"
-msgstr ""
+msgstr "File"
 
 msgid "Name*"
-msgstr ""
+msgstr "Name*"
 
 msgid "Details"
-msgstr ""
+msgstr "Details"
 
 msgid "Resource Type"
-msgstr ""
+msgstr "Resource Type"
 
 msgid "Url*"
-msgstr ""
+msgstr "Url*"
 
 msgid "File resources can not be edited, only created"
-msgstr ""
+msgstr "File resources can not be edited, only created"
 
 msgid "Cancel"
-msgstr ""
+msgstr "Cancel"
 
 msgid "Edit standard report"
-msgstr ""
+msgstr "Edit standard report"
 
 msgid "Create standard report"
-msgstr ""
+msgstr "Create standard report"
 
 msgid "Generate report"
-msgstr ""
+msgstr "Generate report"
 
 msgid "Report parameters"
-msgstr ""
+msgstr "Report parameters"
 
 msgid "There are some errors you have to fix first!"
-msgstr ""
+msgstr "There are some errors you have to fix first!"
 
 msgid "Back to standard reports list"
-msgstr ""
+msgstr "Back to standard reports list"
 
 msgid "Get current design"
-msgstr ""
+msgstr "Get current design"
 
 msgid "Get HTML Report Template"
-msgstr ""
+msgstr "Get HTML Report Template"
 
 msgid "Get Jasper Report Template"
-msgstr ""
+msgstr "Get Jasper Report Template"
 
 msgid "Download"
-msgstr ""
+msgstr "Download"
 
 msgid "Report Type*"
-msgstr ""
+msgstr "Report Type*"
 
 msgid "Report Table*"
-msgstr ""
+msgstr "Report Table*"
 
 msgid "Design File"
-msgstr ""
+msgstr "Design File"
 
 msgid "Design File*"
-msgstr ""
+msgstr "Design File*"
 
 msgid "Relative periods"
-msgstr ""
+msgstr "Relative periods"
 
 msgid "Settings"
-msgstr ""
+msgstr "Settings"
 
 msgid "Cache Strategy*"
-msgstr ""
+msgstr "Cache Strategy*"
 
 msgid "Submit"
-msgstr ""
+msgstr "Submit"
 
 msgid "[ None ]"
-msgstr ""
+msgstr "[ None ]"
 
 msgid "Jasper report with report table data source"
-msgstr ""
+msgstr "Jasper report with report table data source"
 
 msgid "Jasper report with JDBC data source"
-msgstr ""
+msgstr "Jasper report with JDBC data source"
 
 msgid "HTML report"
-msgstr ""
+msgstr "HTML report"
 
 msgid "No cache"
-msgstr ""
+msgstr "No cache"
 
 msgid "Respect system setting"
-msgstr ""
+msgstr "Respect system setting"
 
 msgid "Cache for one hour"
-msgstr ""
+msgstr "Cache for one hour"
 
 msgid "Cache until 6 AM tomorrow"
-msgstr ""
+msgstr "Cache until 6 AM tomorrow"
 
 msgid "Cache for two weeks"
-msgstr ""
+msgstr "Cache for two weeks"
 
 msgid "An error occurred whole loading the data set options"
-msgstr ""
+msgstr "An error occurred whole loading the data set options"
 
 msgid "An error occurred while loading the data set dimensions"
-msgstr ""
+msgstr "An error occurred while loading the data set dimensions"
 
 msgid "An error occurred while loading the group sets!"
-msgstr ""
+msgstr "An error occurred while loading the group sets!"
 
 msgid "Could not load organisation units"
-msgstr ""
+msgstr "Could not load organisation units"
 
 msgid "An error occurred while loading the organisation units!"
-msgstr ""
+msgstr "An error occurred while loading the organisation units!"
 
 msgid "Successfully loaded the {{ outputType }}"
-msgstr ""
+msgstr "Successfully loaded the {{ outputType }}"
 
 msgid "chart"
-msgstr ""
+msgstr "chart"
 
 msgid "table"
-msgstr ""
+msgstr "table"
 
 msgid "An error occurred while loading the report!"
-msgstr ""
+msgstr "An error occurred while loading the report!"
 
 msgid "Successfully added comment"
-msgstr ""
+msgstr "Successfully added comment"
 
 msgid "An error occurred while submitting your comment!"
-msgstr ""
+msgstr "An error occurred while submitting your comment!"
 
 msgid "Could not load period types"
-msgstr ""
+msgstr "Could not load period types"
 
 msgid "An error occurred while loading the resources!"
-msgstr ""
+msgstr "An error occurred while loading the resources!"
 
 msgid "Do you really want to delete this resource?"
-msgstr ""
+msgstr "Do you really want to delete this resource?"
 
 msgid "The resource has been deleted successfully"
-msgstr ""
+msgstr "The resource has been deleted successfully"
 
 msgid "An error occurred when deleting the resource!"
-msgstr ""
+msgstr "An error occurred when deleting the resource!"
 
 msgid "An error occurred while adding the resource!"
-msgstr ""
+msgstr "An error occurred while adding the resource!"
 
 msgid "An error occurred while saving the modifications!"
-msgstr ""
+msgstr "An error occurred while saving the modifications!"
 
 msgid "An error occurred while loading the standard reports"
-msgstr ""
+msgstr "An error occurred while loading the standard reports"
 
 msgid "An error occurred while trying to delete the standard report"
-msgstr ""
+msgstr "An error occurred while trying to delete the standard report"
 
 msgid "An error occurred while loading the standard report details"
-msgstr ""
+msgstr "An error occurred while loading the standard report details"
 
 msgid "The report has been updated successfully"
-msgstr ""
+msgstr "The report has been updated successfully"
 
 msgid "The report has been added successfully"
-msgstr ""
+msgstr "The report has been added successfully"
 
 msgid "An error occurred while updating the report!"
-msgstr ""
+msgstr "An error occurred while updating the report!"
 
 msgid "An error occurred while adding the report!"
-msgstr ""
+msgstr "An error occurred while adding the report!"
 
 msgid "An error occurred while generating the html report"
-msgstr ""
+msgstr "An error occurred while generating the html report"
 
 msgid "An error occurred while loading the report table options"
-msgstr ""
+msgstr "An error occurred while loading the report table options"
 
 msgid "Count"
-msgstr ""
+msgstr "Count"
 
 msgid "Total"
-msgstr ""
+msgstr "Total"
 
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
 msgid "Something went wrong when processing your request."
-msgstr ""
+msgstr "Something went wrong when processing your request."
 
 msgid "Search apps"
-msgstr ""
+msgstr "Search apps"
 
 msgid "Profile"
-msgstr ""
+msgstr "Profile"
 
 msgid "Account"
-msgstr ""
+msgstr "Account"
 
 msgid "Help"
-msgstr ""
+msgstr "Help"
 
 msgid "Log out"
-msgstr ""
+msgstr "Log out"
 
 msgid "About DHIS 2"
-msgstr ""
+msgstr "About DHIS 2"
 
 msgid "Manage my apps"
-msgstr ""
+msgstr "Manage my apps"
 
 msgid "No results found"
-msgstr ""
+msgstr "No results found"
 
 msgid "Interpretations"
-msgstr ""
+msgstr "Interpretations"
 
 msgid "Messages"
-msgstr ""
+msgstr "Messages"
 
 msgid "Report Table"
-msgstr ""
+msgstr "Report Table"
 
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgid "Create"
-msgstr ""
+msgstr "Create"
 
 msgid "Edit"
-msgstr ""
+msgstr "Edit"
 
 msgid "Actions"
-msgstr ""
+msgstr "Actions"
 
 msgid "Delete"
-msgstr ""
+msgstr "Delete"
 
 msgid "Sharing settings"
-msgstr ""
+msgstr "Sharing settings"
 
 msgid "View Resource"
-msgstr ""
+msgstr "View Resource"
 
 msgid "Edit Resource"
-msgstr ""
+msgstr "Edit Resource"
 
 msgid "Add users and user groups"
-msgstr ""
+msgstr "Add users and user groups"
 
 msgid "Enter names"
-msgstr ""
+msgstr "Enter names"
 
 msgid "Permissions"
-msgstr ""
+msgstr "Permissions"
 
 msgid "Created By"
-msgstr ""
+msgstr "Created By"
 
 msgid "Who has access"
-msgstr ""
+msgstr "Who has access"
 
 msgid "External access (without login)"
-msgstr ""
+msgstr "External access (without login)"
 
 msgid "Can edit and view"
-msgstr ""
+msgstr "Can edit and view"
 
 msgid "Can view"
-msgstr ""
+msgstr "Can view"
 
 msgid "Can view only"
-msgstr ""
+msgstr "Can view only"
 
 msgid "No access"
-msgstr ""
+msgstr "No access"
 
 msgid "Public access (with login)"
-msgstr ""
+msgstr "Public access (with login)"
 
 msgid "Public can edit"
-msgstr ""
+msgstr "Public can edit"
 
 msgid "Public can view"
-msgstr ""
+msgstr "Public can view"
 
 msgid "Public can find, view and edit"
-msgstr ""
+msgstr "Public can find, view and edit"
 
 msgid "Public can find and view"
-msgstr ""
+msgstr "Public can find and view"
 
 msgid "Close"
-msgstr ""
+msgstr "Close"
 
 msgid "week"
-msgstr ""
+msgstr "week"
 
 msgid "month"
-msgstr ""
+msgstr "month"
 
 msgid "year"
-msgstr ""
+msgstr "year"
 
 msgid "bi monthly"
-msgstr ""
+msgstr "bi monthly"
 
 msgid "day"
-msgstr ""
+msgstr "day"
 
 msgid "January"
-msgstr ""
+msgstr "January"
 
 msgid "February"
-msgstr ""
+msgstr "February"
 
 msgid "March"
-msgstr ""
+msgstr "March"
 
 msgid "April"
-msgstr ""
+msgstr "April"
 
 msgid "May"
-msgstr ""
+msgstr "May"
 
 msgid "June"
-msgstr ""
+msgstr "June"
 
 msgid "July"
-msgstr ""
+msgstr "July"
 
 msgid "August"
-msgstr ""
+msgstr "August"
 
 msgid "September"
-msgstr ""
+msgstr "September"
 
 msgid "October"
-msgstr ""
+msgstr "October"
 
 msgid "November"
-msgstr ""
+msgstr "November"
 
 msgid "December"
-msgstr ""
+msgstr "December"
 
 msgid "January-February"
-msgstr ""
+msgstr "January-February"
 
 msgid "March-April"
-msgstr ""
+msgstr "March-April"
 
 msgid "May-June"
-msgstr ""
+msgstr "May-June"
 
 msgid "July-August"
-msgstr ""
+msgstr "July-August"
 
 msgid "September-October"
-msgstr ""
+msgstr "September-October"
 
 msgid "November-December"
-msgstr ""
+msgstr "November-December"
 
 msgid "November-April"
-msgstr ""
+msgstr "November-April"
 
 msgid "May-October"
-msgstr ""
+msgstr "May-October"
 
 msgid "quarter"
-msgstr ""
+msgstr "quarter"
 
 msgid "January-March"
-msgstr ""
+msgstr "January-March"
 
 msgid "April-June"
-msgstr ""
+msgstr "April-June"
 
 msgid "July-September"
-msgstr ""
+msgstr "July-September"
 
 msgid "October-December"
-msgstr ""
+msgstr "October-December"
 
 msgid "six monthly"
-msgstr ""
+msgstr "six monthly"
 
 msgid "January-June"
-msgstr ""
+msgstr "January-June"
 
 msgid "July-December"
-msgstr ""
+msgstr "July-December"
 
 msgid "April-September"
-msgstr ""
+msgstr "April-September"
 
 msgid "October-March"
-msgstr ""
+msgstr "October-March"
 
 msgid "Bi-Week"
-msgstr ""
+msgstr "Bi-Week"
 
 msgid "Daily"
-msgstr ""
+msgstr "Daily"
 
 msgid "Weekly"
-msgstr ""
+msgstr "Weekly"
 
 msgid "Weekly Wednesday"
-msgstr ""
+msgstr "Weekly Wednesday"
 
 msgid "Weekly Thursday"
-msgstr ""
+msgstr "Weekly Thursday"
 
 msgid "Weekly Saturday"
-msgstr ""
+msgstr "Weekly Saturday"
 
 msgid "Weekly Sunday"
-msgstr ""
+msgstr "Weekly Sunday"
 
 msgid "Bi-Weekly"
-msgstr ""
+msgstr "Bi-Weekly"
 
 msgid "Monthly"
-msgstr ""
+msgstr "Monthly"
 
 msgid "Bi-Monthly"
-msgstr ""
+msgstr "Bi-Monthly"
 
 msgid "Quarterly"
-msgstr ""
+msgstr "Quarterly"
+
+msgid "Quarterly-Nov"
+msgstr "Quarterly-Nov"
 
 msgid "Six-Monthly"
-msgstr ""
+msgstr "Six-Monthly"
 
 msgid "Six-Monthly April"
-msgstr ""
+msgstr "Six-Monthly April"
 
 msgid "Six-Monthly November"
-msgstr ""
+msgstr "Six-Monthly November"
 
 msgid "Yearly"
-msgstr ""
+msgstr "Yearly"
 
 msgid "Financial-April"
-msgstr ""
+msgstr "Financial-April"
 
 msgid "Financial-July"
-msgstr ""
+msgstr "Financial-July"
 
 msgid "Financial-Oct"
-msgstr ""
+msgstr "Financial-Oct"
+
+msgid "Financial-Nov"
+msgstr "Financial-Nov"
 
 msgid "Days"
-msgstr ""
+msgstr "Days"
 
 msgid "Reporting day"
-msgstr ""
+msgstr "Reporting day"
 
 msgid "Yesterday"
-msgstr ""
+msgstr "Yesterday"
 
 msgid "Last 3 days"
-msgstr ""
+msgstr "Last 3 days"
 
 msgid "Last 7 days"
-msgstr ""
+msgstr "Last 7 days"
 
 msgid "Last 14 days"
-msgstr ""
+msgstr "Last 14 days"
 
 msgid "Weeks"
-msgstr ""
+msgstr "Weeks"
 
 msgid "Reporting week"
-msgstr ""
+msgstr "Reporting week"
 
 msgid "Last Week"
-msgstr ""
+msgstr "Last Week"
 
 msgid "Last 2 weeks"
-msgstr ""
+msgstr "Last 2 weeks"
 
 msgid "Last 12 weeks"
-msgstr ""
+msgstr "Last 12 weeks"
 
 msgid "Last 52 weeks"
-msgstr ""
+msgstr "Last 52 weeks"
 
 msgid "Weeks this year"
-msgstr ""
+msgstr "Weeks this year"
 
 msgid "Months"
-msgstr ""
+msgstr "Months"
 
 msgid "Reporting month"
-msgstr ""
+msgstr "Reporting month"
 
 msgid "Last month"
-msgstr ""
+msgstr "Last month"
 
 msgid "Last 3 months"
-msgstr ""
+msgstr "Last 3 months"
 
 msgid "Last 6 months"
-msgstr ""
+msgstr "Last 6 months"
 
 msgid "Last 12 months"
-msgstr ""
+msgstr "Last 12 months"
 
 msgid "Months this year"
-msgstr ""
+msgstr "Months this year"
 
 msgid "Bi-months"
-msgstr ""
+msgstr "Bi-months"
 
 msgid "Reporting bi-month"
-msgstr ""
+msgstr "Reporting bi-month"
 
 msgid "Last bi-month"
-msgstr ""
+msgstr "Last bi-month"
 
 msgid "Last 6 bi-month"
-msgstr ""
+msgstr "Last 6 bi-month"
 
 msgid "Bi-months this year"
-msgstr ""
+msgstr "Bi-months this year"
 
 msgid "Quarters"
-msgstr ""
+msgstr "Quarters"
 
 msgid "Reporting quarter"
-msgstr ""
+msgstr "Reporting quarter"
 
 msgid "Last quarter"
-msgstr ""
+msgstr "Last quarter"
 
 msgid "Last 4 quarters"
-msgstr ""
+msgstr "Last 4 quarters"
 
 msgid "Quarters of reporting year"
-msgstr ""
+msgstr "Quarters of reporting year"
 
 msgid "Six-Months"
-msgstr ""
+msgstr "Six-Months"
 
 msgid "Reporting six-month"
-msgstr ""
+msgstr "Reporting six-month"
 
 msgid "Last six-month"
-msgstr ""
+msgstr "Last six-month"
 
 msgid "Last 2 six-months"
-msgstr ""
+msgstr "Last 2 six-months"
 
 msgid "Financial Years"
-msgstr ""
+msgstr "Financial Years"
 
 msgid "Reporting financial year"
-msgstr ""
+msgstr "Reporting financial year"
 
 msgid "Last financial year"
-msgstr ""
+msgstr "Last financial year"
 
 msgid "Last 5 financial years"
-msgstr ""
+msgstr "Last 5 financial years"
 
 msgid "Years"
-msgstr ""
+msgstr "Years"
 
 msgid "Reporting year"
-msgstr ""
+msgstr "Reporting year"
 
 msgid "Last year"
-msgstr ""
+msgstr "Last year"
 
 msgid "Last 5 years"
-msgstr ""
+msgstr "Last 5 years"
 
 msgid "External url"
-msgstr ""
+msgstr "External url"
 
 msgid "Upload file"
-msgstr ""
+msgstr "Upload file"
 
 msgid "Confirm delete"
-msgstr ""
+msgstr "Confirm delete"
