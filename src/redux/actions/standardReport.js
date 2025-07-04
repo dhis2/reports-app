@@ -402,7 +402,7 @@ export const sendStandardReport = (report, isEdit) => (dispatch, getState) => {
         ),
         reportParams: processCheckboxValues(
             report.reportParams,
-            getDefaultReportParams()
+            selectedReport.reportParams ?? getDefaultReportParams()
         ),
         reportTable: report.reportTable ? { id: report.reportTable } : '',
     }

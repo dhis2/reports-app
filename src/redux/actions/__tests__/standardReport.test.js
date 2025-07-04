@@ -168,7 +168,7 @@ describe('Actions - Standard Reports - Async Thunks', () => {
             })
         })
 
-        it.skip('will get relativePeriods and reportParams from form when editing (uses relativePeriod/reportParams definition from report payload)', () => {
+        it('will get relativePeriods and reportParams from form when editing (uses relativePeriod/reportParams definition from report payload)', () => {
             const store = mockStore({
                 standardReport: {
                     selectedReport: {
