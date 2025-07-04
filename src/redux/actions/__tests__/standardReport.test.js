@@ -133,7 +133,7 @@ describe('Actions - Standard Reports - Async Thunks', () => {
         })
     })
 
-    describe.only('saving standard reports', () => {
+    describe('saving standard reports', () => {
         afterEach(() => {
             getFilteredStandardReports.mockClear()
         })
