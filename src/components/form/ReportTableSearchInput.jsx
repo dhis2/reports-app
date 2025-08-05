@@ -161,9 +161,7 @@ const mapStateToProps = (state) => ({
     error: state.standardReportTables.error,
     noMatches: state.standardReportTables.noMatches,
     persistedReportTableName:
-        (state.standardReport.selectedReport.reportTable &&
-            state.standardReport.selectedReport.reportTable.displayName) ||
-        '',
+        state.standardReport.selectedReport.reportTable?.displayName || '',
 })
 
 export const ReportTableSearchInput = connect(mapStateToProps, {
