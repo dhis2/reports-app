@@ -6,6 +6,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { selectDimensionOption } from '../redux/actions/dataSetDimensions.js'
 import { formLabel } from '../utils/styles/shared.jsx'
+import styles from './DataSetDimensions.module.css'
 
 const createDimensionChangeHandler = (onChange, dimensionId) => (element) =>
     onChange(dimensionId, element)
@@ -29,14 +30,8 @@ const DimensionDropdown = (props) => (
 )
 
 const Loader = () => (
-    <div>
+    <div className={styles.loaderWrapper}>
         <CircularProgress size={24} thickness={3} />
-        <style jsx>{`
-            div {
-                margin-bottom: 16px;
-                text-align: center;
-            }
-        `}</style>
     </div>
 )
 
@@ -65,8 +60,8 @@ const DataSetDimensions = ({
 
     return (
         <React.Fragment>
-            <h6 className="header">{i18n.t('Data set dimensions')}</h6>
-            <div className="box">
+            <h6 className={styles.header}>{i18n.t('Data set dimensions')}</h6>
+            <div className={styles.box}>
                 {options.map((dimension) => (
                     <DimensionDropdown
                         key={dimension.id}
@@ -80,21 +75,6 @@ const DataSetDimensions = ({
                     />
                 ))}
             </div>
-            <style jsx>{`
-                h6 {
-                    color: #757575;
-                    font-size: 14px;
-                    margin-bottom: 5px;
-                    margin-top: 0;
-                    text-align: left;
-                    font-weight: normal;
-                }
-                div {
-                    border: 1px solid #bcbcbc;
-                    padding: 4px;
-                    margin-bottom: 16px;
-                }
-            `}</style>
         </React.Fragment>
     )
 }

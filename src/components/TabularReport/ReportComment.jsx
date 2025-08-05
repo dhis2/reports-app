@@ -1,7 +1,7 @@
 import i18n from '@dhis2/d2-i18n'
 import { InputField, Button } from '@dhis2/d2-ui-core'
 import PropTypes from 'prop-types'
-import React from 'react'
+import styles from './ReportComment.module.css'
 
 const isCommentingActionEnabled = (comment) => comment.trim()
 const actionButtonPlaceholder = i18n.t('Share')
@@ -11,7 +11,7 @@ const inputFieldPlaceholder = i18n.t(
 
 export const ReportComment = (props) => (
     <div id="share-component">
-        <div>
+        <div className={styles.wrapper}>
             <InputField
                 placeholder={inputFieldPlaceholder}
                 type="text"
@@ -29,11 +29,6 @@ export const ReportComment = (props) => (
                 {actionButtonPlaceholder}
             </Button>
         </div>
-        <style jsx>{`
-            div > div {
-                margin: 16px 0;
-            }
-        `}</style>
     </div>
 )
 

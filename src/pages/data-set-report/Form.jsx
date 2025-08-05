@@ -1,11 +1,11 @@
 import i18n from '@dhis2/d2-i18n'
 import { CheckBox, Button } from '@dhis2/d2-ui-core'
 import PropTypes from 'prop-types'
-import React from 'react'
 import { DataSetDimensions } from '../../components/DataSetDimensions.jsx'
 import DataSets from '../../components/DatasetsDropdown.jsx'
 import { OrgUnitsTreeWithExtraOptions } from '../../components/OrgUnitsTreeWithExtraOptions.jsx'
 import PeriodPickerComponent from '../../components/PeriodPickerWithPeriodType.jsx'
+import styles from './Form.module.css'
 
 const Form = (props) => (
     <div id="data-set-report-form">
@@ -31,7 +31,7 @@ const Form = (props) => (
                 />
             </div>
         </div>
-        <div id="main-action-button">
+        <div id="main-action-button" className={styles['main-action-button']}>
             <Button
                 id="main-action-button"
                 raised
@@ -41,13 +41,6 @@ const Form = (props) => (
             >
                 {i18n.t('Get Report')}
             </Button>
-            <style jsx>{`
-                div {
-                    display: block;
-                    margin-top: 48px;
-                    margin-bottom: 16px;
-                }
-            `}</style>
         </div>
     </div>
 )

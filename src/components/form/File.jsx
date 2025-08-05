@@ -3,9 +3,9 @@ import Button from '@material-ui/core/Button'
 import FormControl from '@material-ui/core/FormControl'
 import FormHelperText from '@material-ui/core/FormHelperText'
 import PropTypes from 'prop-types'
-import React from 'react'
 import { Field } from 'react-final-form'
 import { ErrorText } from './buildingBlocks/ErrorText.jsx'
+import styles from './File.module.css'
 
 const createChangeHandler = (input) => (event) => {
     event.persist()
@@ -41,6 +41,7 @@ export const File = (props) => (
                         </label>
                     </FormHelperText>
                     <input
+                        className={styles.hiddenInput}
                         name={input.name}
                         value={input.value}
                         onChange={createChangeHandler(input)}
@@ -54,11 +55,6 @@ export const File = (props) => (
                 </FormControl>
             )}
         </Field>
-        <style jsx>{`
-            input {
-                display: none;
-            }
-        `}</style>
     </div>
 )
 

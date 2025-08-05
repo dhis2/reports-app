@@ -5,24 +5,13 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { resolve } from 'styled-jsx/css'
 import {
     sections,
     STANDARD_REPORT_SECTION_KEY,
 } from '../../config/sections.config.js'
 import { generateHtmlReport } from '../../redux/actions/standardReport.js'
 import HtmlReport from './HtmlReport.jsx'
-
-const reportCard = resolve`
-     {
-        margin-top: 16px;
-        padding: 16px;
-        flex-grow: 1;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-    }
-`
+import styles from './StyledHtmlReport.module.css'
 
 const LinkToListWithRef = React.forwardRef((props, ref) => (
     <Link
@@ -43,16 +32,18 @@ class StyledHtmlReport extends React.Component {
             location: { search },
             generateHtmlReport,
         } = this.props
+
         const searchParams = new URLSearchParams(search)
         const orgUnitId = searchParams.get('ou')
         const reportPeriod = searchParams.get('pe')
 
         generateHtmlReport({ id, orgUnitId, reportPeriod })
     }
+
     render() {
         return (
-            <div className="container">
-                <div className="button-row">
+            <div className={styles.container}>
+                <div className={styles.buttonRow}>
                     <Button
                         variant="contained"
                         color="primary"
@@ -61,17 +52,9 @@ class StyledHtmlReport extends React.Component {
                         {i18n.t('Back to standard reports list')}
                     </Button>
                 </div>
-                <Card className={reportCard.className}>
+                <Card className={styles.reportCard}>
                     <HtmlReport html={this.props.reportData} />
                 </Card>
-                <style jsx>{`
-                    .container {
-                        min-height: calc(100vh - 84px);
-                        display: flex;
-                        flex-direction: column;
-                    }
-                `}</style>
-                {reportCard.styles}
             </div>
         )
     }

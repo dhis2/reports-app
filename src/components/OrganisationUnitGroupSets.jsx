@@ -10,6 +10,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { selectOrgUnitOption } from '../redux/actions/organisationUnits.js'
 import { formLabel } from '../utils/styles/shared.jsx'
+import styles from './OrganisationUnitGroupSets.module.css'
 
 const createGroupSetOnChange = (groupSetId, onChange) => (event) => {
     onChange(groupSetId, event.target.value)
@@ -57,14 +58,8 @@ export const __OrganisationUnitGroupSets = ({
     fullWidth,
 }) =>
     isLoading ? (
-        <div>
+        <div className={styles.loader}>
             <CircularProgress size={24} thickness={3} />
-            <style jsx>{`
-                div {
-                    padding-top: 16px;
-                    text-align: center;
-                }
-            `}</style>
         </div>
     ) : (
         groupSets.map((groupSet) => (

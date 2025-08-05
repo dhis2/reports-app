@@ -6,12 +6,13 @@ import { toggleShowOptions } from '../redux/actions/organisationUnits.js'
 import { formLabel } from '../utils/styles/shared.jsx'
 import OrganisationUnitsTree from './AvailableOrganisationUnitsTree.jsx'
 import { OrganisationUnitGroupSets } from './OrganisationUnitGroupSets.jsx'
+import styles from './OrgUnitsTreeWithExtraOptions.module.css'
 
 const getExtraOptionsLabel = (showOptions) =>
     !showOptions ? i18n.t('Show more options') : i18n.t('Show fewer options')
 
 const getExtraOptionsClassName = (showOptions) =>
-    showOptions ? 'show-options' : 'hide-options'
+    showOptions ? styles.showOptions : styles.hideOptions
 
 export const __OrgUnitsTreeWithExtraOptions = (props) => (
     <React.Fragment>
@@ -23,7 +24,7 @@ export const __OrgUnitsTreeWithExtraOptions = (props) => (
             {!props.isLoadingOptions && (
                 <span
                     id="extra-options-action"
-                    className="show-more-options-button"
+                    className={styles.showMoreOptionsButton}
                     role="button"
                     tabIndex="0"
                     onClick={props.toggleShowOptions}
@@ -39,22 +40,6 @@ export const __OrgUnitsTreeWithExtraOptions = (props) => (
             </div>
         </div>
         {formLabel.styles}
-        <style jsx>{`
-            .hide-options {
-                display: none;
-            }
-            .show-options {
-                display: block;
-            }
-            .show-more-options-button {
-                display: block;
-                cursor: pointer;
-                color: #004ba0;
-                margin-top: 5;
-                margin-bottom: 5;
-                outline: none;
-            }
-        `}</style>
     </React.Fragment>
 )
 

@@ -2,13 +2,13 @@ import i18n from '@dhis2/d2-i18n'
 import Button from '@material-ui/core/Button'
 import FormHelperText from '@material-ui/core/FormHelperText'
 import PropTypes from 'prop-types'
-import React from 'react'
 import { getApi } from '../../../utils/api.js'
 import {
     reportTypes,
     REPORTS_ENDPOINT,
     REPORT_TEMPLATES_ENDPOINT,
 } from '../standard.report.conf.js'
+import styles from './DesignFileDownloadButton.module.css'
 
 export const DesignFileDownloadButton = ({
     isEditing,
@@ -36,24 +36,18 @@ export const DesignFileDownloadButton = ({
             <FormHelperText>{label}</FormHelperText>
             <FormHelperText>
                 <Button variant="contained" component="span">
-                    {/*
-                    Having an anchor to a HTML file with a download attribute
-                    causes unexpected behavior in Chrome, see:
-                    https://dhis2.slack.com/archives/G451J9KGR/p1570090946063500
-                    */}
                     {/* eslint-disable-next-line react/jsx-no-target-blank */}
-                    <a href={url} target="_blank" download={type !== 'html'}>
+                    <a
+                        href={url}
+                        target="_blank"
+                        download={type !== 'html'}
+                        className={styles.downloadLink}
+                    >
                         {i18n.t('Download')}
                     </a>
                 </Button>
             </FormHelperText>
             <FormHelperText />
-            <style jsx>{`
-                a {
-                    color: inherit;
-                    text-decoration: none;
-                }
-            `}</style>
         </div>
     )
 }

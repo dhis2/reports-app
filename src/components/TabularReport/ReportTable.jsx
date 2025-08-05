@@ -1,11 +1,15 @@
-/* React */
 import PropTypes from 'prop-types'
-import React, { Fragment } from 'react'
+import styles from './ReportTable.module.css'
 
 export const Row = ({ cells }) => (
-    <tr>
+    <tr className={styles.bodyRow}>
         {cells.map((cell, index) => (
-            <td key={`c-${cell}-${index}`}>{cell}</td>
+            <td
+                key={`c-${cell}-${index}`}
+                className={`${styles.cell} ${index !== 0 ? styles.centered : ''}`}
+            >
+                {cell}
+            </td>
         ))}
     </tr>
 )
@@ -19,11 +23,18 @@ Row.propTypes = {
 const ReportTable = ({ content: { title, headers, rows } }) => (
     <Fragment>
         <h1>{title}</h1>
-        <table>
+        <table className={styles.table}>
             <thead>
-                <tr>
+                <tr className={styles.headerRow}>
                     {headers.map((header, index) => (
-                        <th key={`h-${header}-${index}`}>{header}</th>
+                        <th
+                            key={`h-${header}-${index}`}
+                            className={`${styles.headerCell} ${
+                                index !== 0 ? styles.centered : ''
+                            }`}
+                        >
+                            {header}
+                        </th>
                     ))}
                 </tr>
             </thead>
@@ -33,31 +44,6 @@ const ReportTable = ({ content: { title, headers, rows } }) => (
                 ))}
             </tbody>
         </table>
-        <style jsx>{`
-            table {
-                border-collapse: collapse;
-            }
-            tr {
-                border-bottom: 2px solid #e0e0e0;
-            }
-            tbody :global(tr) {
-                border-bottom: 1px solid #e0e0e0;
-            }
-            th,
-            tbody :global(td) {
-                border: none;
-                font-size: 14px;
-                padding: 16px 16px;
-            }
-            th {
-                text-align: left;
-                font-weight: bold;
-            }
-            tbody :global(td):not(:first-child),
-            thead :global(th):not(:first-child) {
-                text-align: center;
-            }
-        `}</style>
     </Fragment>
 )
 

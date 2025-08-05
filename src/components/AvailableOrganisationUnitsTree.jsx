@@ -1,9 +1,9 @@
 import i18n from '@dhis2/d2-i18n'
 import { OrgUnitTreeMultipleRoots } from '@dhis2/d2-ui-org-unit-tree'
 import PropTypes from 'prop-types'
-import React from 'react'
 import { connect } from 'react-redux'
 import { selectOrganisationUnit } from '../redux/actions/organisationUnits.js'
+import styles from './AvailableOrganisationUnitsTree.module.css'
 
 export function AvailableOrganisationUnitsTree({
     selectOrganisationUnit,
@@ -16,7 +16,7 @@ export function AvailableOrganisationUnitsTree({
     }
 
     return (
-        <div className="org-unit-tree-wrapper">
+        <div className={styles.orgUnitTreeWrapper}>
             <OrgUnitTreeMultipleRoots
                 hideMemberCount
                 roots={collection}
@@ -24,17 +24,6 @@ export function AvailableOrganisationUnitsTree({
                 initiallyExpanded={collection.map((unit) => `/${unit.id}`)}
                 onSelectClick={selectOrganisationUnit}
             />
-            <style jsx>{`
-                div {
-                    border: 1px solid #bcbcbc;
-                    overflow: auto;
-                    width: 100%;
-                    box-sizing: border-box;
-                    font-weight: 300;
-                    max-height: 400px;
-                    padding: 10px 5px;
-                }
-            `}</style>
         </div>
     )
 }

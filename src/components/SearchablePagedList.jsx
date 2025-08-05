@@ -8,8 +8,8 @@ import TextField from '@material-ui/core/TextField'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
-import css from 'styled-jsx/css'
 import getPagerCurrentlyShown from '../redux/selectors/pagination/getPagerCurrentlyShown.js'
+import styles from './SearchablePagedList.module.css'
 
 const searchText = i18n.t('Search')
 
@@ -29,7 +29,7 @@ const SearchablePagedList = (props) => {
         <div>
             {pagination}
             <TextField
-                className="search-input"
+                className={styles.searchInput}
                 value={props.searchInputValue}
                 type="search"
                 label={searchText}
@@ -44,59 +44,26 @@ const SearchablePagedList = (props) => {
                 isContextActionAllowed={props.isContextActionAllowed}
             />
             {props.isLoading && (
-                <div className="data-table-fake-row">
+                <div className={styles.dataTableFakeRow}>
                     <CircularProgress size={32} className="loader" />
                 </div>
             )}
             {props.rows.length === 0 && !props.isLoading && (
-                <div className="data-table-fake-row">
+                <div className={styles.dataTableFakeRow}>
                     {i18n.t('No results have been found')}
                 </div>
             )}
             {pagination}
             <Button
-                id={'add-resource-btn-id'}
+                id="add-resource-btn-id"
                 fab
                 onClick={props.addButtonClickHandler}
             >
                 <SvgIcon icon="Add" />
             </Button>
-            <style jsx>{styles}</style>
         </div>
     )
 }
-
-const styles = css`
-    div > :global(.search-input) input {
-        -webkit-appearance: textfield;
-    }
-    div > :global(.search-input) {
-        width: 400px;
-    }
-    div > :global(.data-table-pager) {
-        float: right;
-        padding-top: 8px;
-    }
-    div > :global(.d2-ui-button) {
-        position: fixed;
-        bottom: 1.5rem;
-        right: 1.5rem;
-    }
-    .data-table-fake-row {
-        position: relative;
-        height: 50px;
-        line-height: 50px;
-        background-color: #ffffff;
-        text-align: center;
-        font-style: italic;
-        color: #757575;
-        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12),
-            0 1px 2px 0 rgba(0, 0, 0, 0.24);
-    }
-    .data-table-fake-row :global(.loader) {
-        margin-top: 8px;
-    }
-`
 
 SearchablePagedList.propTypes = {
     addButtonClickHandler: PropTypes.func.isRequired,

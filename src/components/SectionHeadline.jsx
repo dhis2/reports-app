@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types'
-import React from 'react'
 import PageHelper from '../components/PageHelper.jsx'
 import { getDocsUrl } from '../utils/getDocsUrl.js'
+import styles from './SectionHeadline.module.css'
 
 export const SectionHeadline = (props) => (
-    <h1>
+    <h1 className={styles.headline}>
         {props.showBackButton && (
             <span
                 id="back-button"
-                className="material-icons back-button"
+                className={`material-icons ${styles.backButton}`}
                 role="button"
                 tabIndex="0"
                 onClick={props.onBackClick}
@@ -18,16 +18,6 @@ export const SectionHeadline = (props) => (
         )}
         {props.label}
         <PageHelper url={getDocsUrl(props.sectionKey)} />
-        <style jsx>{`
-            h1 {
-                margin-bottom: 0;
-            }
-            .back-button {
-                cursor: pointer;
-                outline: none;
-                padding: 12px;
-            }
-        `}</style>
     </h1>
 )
 

@@ -1,9 +1,6 @@
-import red from '@material-ui/core/colors/red'
 import FormHelperText from '@material-ui/core/FormHelperText'
 import PropTypes from 'prop-types'
-import React from 'react'
-
-const errorTextColor = red[500]
+import styles from './ErrorText.module.css'
 
 export const ErrorText = (props) => {
     if (!props.showErrorText) {
@@ -12,13 +9,9 @@ export const ErrorText = (props) => {
 
     return (
         <FormHelperText>
-            <span>{props.error && props.touched ? props.error : ''}</span>
-
-            <style jsx>{`
-                span {
-                    color: ${errorTextColor};
-                }
-            `}</style>
+            <span className={styles.errorText}>
+                {props.error && props.touched ? props.error : ''}
+            </span>
         </FormHelperText>
     )
 }

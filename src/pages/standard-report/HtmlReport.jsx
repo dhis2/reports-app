@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { getContextPath } from '../../utils/api.js'
 import { CSS_FILES, SCRIPT_FILES, PAGE_STYLES } from './HtmlReportAssets.js'
+import styles from './HtmlReport.module.css'
 
 const wrapHtmlInTemplate = (html) => `
     <!DOCTYPE html>
@@ -20,6 +21,7 @@ const wrapHtmlInTemplate = (html) => `
         </body>
     </html>
 `
+
 const createScriptTag = (script) => {
     const src = getContextPath() + script
     return `<script src="${src}" type="text/javascript"></script>`
@@ -31,19 +33,13 @@ const createLinkTag = ({ media, styleSheet }) => {
 }
 
 const Loader = () => (
-    <div>
+    <div className={styles.loader}>
         <CircularProgress />
-        <style jsx>{`
-            div {
-                text-align: center;
-                margin: 16px;
-            }
-        `}</style>
     </div>
 )
 
 class HtmlReport extends Component {
-    state = { heigth: 'auto' }
+    state = { height: 'auto' }
     heightObserver = null
 
     onIframeLoad = (event) => {
@@ -66,9 +62,7 @@ class HtmlReport extends Component {
 
     adjustHeight = (iframeHtmlRect, iframeBodyRect) => {
         const height = Math.max(iframeHtmlRect.height, iframeBodyRect.height)
-
-        // Add 20px as a "safety margin" in case we get a horizontal scroll bar
-        this.setState({ height: Math.ceil(height) + 20 })
+        this.setState({ height: Math.ceil(height) + 20 }) // safety margin
     }
 
     componentWillUnmount() {
@@ -84,16 +78,10 @@ class HtmlReport extends Component {
                 width="100%"
                 height={this.state.height}
                 seamless={true}
+                className={styles.iframe}
                 sandbox="allow-same-origin allow-scripts allow-modals allow-downloads"
                 onLoad={this.onIframeLoad}
-            >
-                <style jsx>{`
-                    iframe {
-                        border: none;
-                        flex-grow: 1;
-                    }
-                `}</style>
-            </iframe>
+            />
         ) : (
             <Loader />
         )

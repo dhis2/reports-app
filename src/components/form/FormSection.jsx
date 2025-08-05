@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
-import React from 'react'
 import { children } from '../../utils/react/propTypes.js'
+import styles from './FormSection.module.css'
 
 export const FormSection = ({ show, render, children }) => {
     if (!show) {
@@ -8,15 +8,8 @@ export const FormSection = ({ show, render, children }) => {
     }
 
     return (
-        <section>
+        <section className={styles.formSection}>
             {children || render()}
-            <style jsx>{`
-                section {
-                    margin: 0 0 10px;
-                    padding: 0 2px;
-                    overflow: hidden;
-                }
-            `}</style>
         </section>
     )
 }

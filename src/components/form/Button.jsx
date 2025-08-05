@@ -1,9 +1,10 @@
 import { Button as D2UIButton } from '@dhis2/d2-ui-core'
 import PropTypes from 'prop-types'
 import React from 'react'
+import styles from './Button.module.css'
 
 export const Button = (props) => (
-    <span>
+    <span className={styles.wrapper}>
         <D2UIButton
             raised
             type={props.type}
@@ -13,13 +14,6 @@ export const Button = (props) => (
         >
             {props.label}
         </D2UIButton>
-
-        <style jsx>{`
-            span {
-                display: inline-block;
-                margin-right: 10px;
-            }
-        `}</style>
     </span>
 )
 

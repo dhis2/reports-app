@@ -2,9 +2,9 @@ import { CircularProgress } from '@dhis2/d2-ui-core'
 import Paper from '@material-ui/core/Paper'
 import isEmpty from 'lodash.isempty'
 import PropTypes from 'prop-types'
-import React from 'react'
 import { reportContent } from '../utils/react/propTypes.js'
 import { container } from '../utils/styles/shared.jsx'
+import styles from './ReportLoader.module.css'
 
 const ReportLoader = ({ isLoading, content, children }) => {
     if (!isLoading && isEmpty(content)) {
@@ -12,14 +12,8 @@ const ReportLoader = ({ isLoading, content, children }) => {
     }
 
     const childrenToWrap = isLoading ? (
-        <div className="report-loader">
+        <div className={styles.reportLoader}>
             <CircularProgress />
-            <style jsx>{`
-                div {
-                    margin: 48px 0;
-                    text-align: center;
-                }
-            `}</style>
         </div>
     ) : (
         children

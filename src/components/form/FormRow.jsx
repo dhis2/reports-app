@@ -1,16 +1,8 @@
-import React from 'react'
 import { children } from '../../utils/react/propTypes.js'
+import styles from './FormRow.module.css'
 
 export const FormRow = (props) => (
-    <React.Fragment>
-        <div>{props.children}</div>
-
-        <style jsx>{`
-            div {
-                margin-bottom: 20px;
-            }
-        `}</style>
-    </React.Fragment>
+    <div className={styles.formRow}>{props.children}</div>
 )
 
 FormRow.propTypes = {

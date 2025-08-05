@@ -1,22 +1,14 @@
-/* React */
 import PropTypes from 'prop-types'
-import React from 'react'
+import styles from './PageHelper.module.css'
 
-const PageHelper = (props) => (
+const PageHelper = ({ url }) => (
     <a
-        className="helper-icon material-icons"
-        href={props.url}
+        className={`helper-icon material-icons ${styles.helperIcon}`}
+        href={url}
         target="_blank"
         rel="noopener noreferrer"
     >
         help
-        <style jsx>{`
-            a {
-                padding-left: 12px;
-                color: #276696;
-                text-decoration: none;
-            }
-        `}</style>
     </a>
 )
 

@@ -8,45 +8,34 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
-import { resolve } from 'styled-jsx/css'
 import OrganisationUnitTree from '../../components/AvailableOrganisationUnitsTree.jsx'
 import PeriodPicker from '../../components/PeriodPickerWithPeriodType.jsx'
 import {
     cancelGeneratingPdfReport,
     submitRequiredReportParams,
 } from '../../redux/actions/standardReport.js'
+import styles from './ReportParams.module.css'
 
 const labelCancel = i18n.t('Cancel')
 const labelSubmit = i18n.t('Generate report')
 const title = i18n.t('Report parameters')
-const colorError = red[500]
-
-const buttonStyles = resolve`
-    width: 100%;
-`
-
-const primaryButtonStyle = resolve`
-    button {
-        color: white;
-        background-color: ${theme.palette.primary2Color}
-    }
-
-    button:hover {
-        background-color: ${theme.palette.primary1Color}
-    }
-`
 
 export const ReportParams = (props) => (
     <Dialog
         open={props.showReportParams}
         onClose={props.cancelGeneratingPdfReport}
-        fullWidth={true}
+        fullWidth
         maxWidth="md"
     >
         <DialogTitle>{title}</DialogTitle>
 
-        <DialogContent>
-            <div className="inputs">
+        <DialogContent
+            style={{
+                '--primary1-color': theme.palette.primary1Color,
+                '--primary2-color': theme.palette.primary2Color,
+            }}
+        >
+            <div className={styles.inputs}>
                 {props.reportParams.organisationUnit && (
                     <OrganisationUnitTree />
                 )}
@@ -55,13 +44,13 @@ export const ReportParams = (props) => (
             </div>
 
             {!!props.reportParamsErrors.length && (
-                <div className="errors">
+                <div className={styles.errors}>
                     <p>
                         {i18n.t('There are some errors you have to fix first!')}
                     </p>
                     <ul>
                         {props.reportParamsErrors.map((error) => (
-                            <li className="error" key={error}>
+                            <li className={styles.error} key={error}>
                                 {error}
                             </li>
                         ))}
@@ -69,15 +58,11 @@ export const ReportParams = (props) => (
                 </div>
             )}
 
-            <div className="primary-action">
+            <div className={styles.primaryAction}>
                 <Button
                     onClick={props.submitRequiredReportParams}
                     variant="contained"
-                    className={
-                        buttonStyles.className +
-                        ' ' +
-                        primaryButtonStyle.className
-                    }
+                    className={`${styles.fullWidthButton} ${styles.primaryButton}`}
                 >
                     {labelSubmit}
                 </Button>
@@ -87,28 +72,11 @@ export const ReportParams = (props) => (
                 <Button
                     onClick={props.cancelGeneratingPdfReport}
                     variant="contained"
-                    className={buttonStyles.className}
+                    className={styles.fullWidthButton}
                 >
                     {labelCancel}
                 </Button>
             </div>
-
-            <style jsx>{`
-                .inputs {
-                    margin-bottom: 30px;
-                }
-                .errors {
-                    margin-bottom: 10px;
-                }
-                .error {
-                    color: ${colorError};
-                }
-                .primary-action {
-                    margin-bottom: 10px;
-                }
-            `}</style>
-            {buttonStyles.styles}
-            {primaryButtonStyle.styles}
         </DialogContent>
     </Dialog>
 )
