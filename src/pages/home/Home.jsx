@@ -1,3 +1,4 @@
+import React from 'react'
 import { Link } from 'react-router-dom'
 import MenuElement from '../../components/MenuElement.jsx'
 import { sectionOrder, sections } from '../../config/sections.config.js'

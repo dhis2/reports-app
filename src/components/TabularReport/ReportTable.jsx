@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import React from 'react'
 import styles from './ReportTable.module.css'
 
 export const Row = ({ cells }) => (
@@ -6,7 +7,9 @@ export const Row = ({ cells }) => (
         {cells.map((cell, index) => (
             <td
                 key={`c-${cell}-${index}`}
-                className={`${styles.cell} ${index !== 0 ? styles.centered : ''}`}
+                className={`${styles.cell} ${
+                    index !== 0 ? styles.centered : ''
+                }`}
             >
                 {cell}
             </td>
@@ -21,7 +24,7 @@ Row.propTypes = {
 }
 
 const ReportTable = ({ content: { title, headers, rows } }) => (
-    <Fragment>
+    <>
         <h1>{title}</h1>
         <table className={styles.table}>
             <thead>
@@ -44,7 +47,7 @@ const ReportTable = ({ content: { title, headers, rows } }) => (
                 ))}
             </tbody>
         </table>
-    </Fragment>
+    </>
 )
 
 ReportTable.propTypes = {

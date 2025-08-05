@@ -1,5 +1,6 @@
 import Paper from '@material-ui/core/Paper'
 import PropTypes from 'prop-types'
+import React from 'react'
 import { card } from '../utils/styles/shared.jsx'
 import styles from './MenuElement.module.css'
 

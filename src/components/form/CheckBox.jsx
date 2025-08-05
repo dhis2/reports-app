@@ -1,5 +1,6 @@
 import Checkbox from '@material-ui/core/Checkbox'
 import PropTypes from 'prop-types'
+import React from 'react'
 import { formInput } from '../../utils/react/propTypes.js'
 import styles from './CheckBox.module.css'
 

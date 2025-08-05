@@ -2,8 +2,8 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { getContextPath } from '../../utils/api.js'
-import { CSS_FILES, SCRIPT_FILES, PAGE_STYLES } from './HtmlReportAssets.js'
 import styles from './HtmlReport.module.css'
+import { CSS_FILES, SCRIPT_FILES, PAGE_STYLES } from './HtmlReportAssets.js'
 
 const wrapHtmlInTemplate = (html) => `
     <!DOCTYPE html>
@@ -66,7 +66,7 @@ class HtmlReport extends Component {
     }
 
     componentWillUnmount() {
-        this.heightObserver && this.heightObserver.disconnect()
+        this.heightObserver?.disconnect()
     }
 
     render() {

@@ -1,6 +1,7 @@
 import i18n from '@dhis2/d2-i18n'
 import { CheckBox, Button } from '@dhis2/d2-ui-core'
 import PropTypes from 'prop-types'
+import React from 'react'
 import { DataSetDimensions } from '../../components/DataSetDimensions.jsx'
 import DataSets from '../../components/DatasetsDropdown.jsx'
 import { OrgUnitsTreeWithExtraOptions } from '../../components/OrgUnitsTreeWithExtraOptions.jsx'

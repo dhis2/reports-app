@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import React from 'react'
 import PageHelper from '../components/PageHelper.jsx'
 import { getDocsUrl } from '../utils/getDocsUrl.js'
 import styles from './SectionHeadline.module.css'
@@ -6,16 +7,17 @@ import styles from './SectionHeadline.module.css'
 export const SectionHeadline = (props) => (
     <h1 className={styles.headline}>
         {props.showBackButton && (
-            <span
+            <button
                 id="back-button"
                 className={`material-icons ${styles.backButton}`}
-                role="button"
-                tabIndex="0"
+                type="button"
                 onClick={props.onBackClick}
+                aria-label="Go back"
             >
                 arrow_back
-            </span>
+            </button>
         )}
+
         {props.label}
         <PageHelper url={getDocsUrl(props.sectionKey)} />
     </h1>

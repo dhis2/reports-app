@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import styles from './App.module.css'
 import AppRouter from './components/AppRouter.jsx'
 import { Loader } from './components/feedback/Loader.jsx'
 import { sectionOrder, sections } from './config/sections.config.js'
@@ -14,7 +15,6 @@ import {
     getShowSidebar,
 } from './redux/selectors/sidebar/index.js'
 import './global.css'
-import styles from './App.module.css'
 
 // is not "marked" as required but it's used by Sidebar
 const nonOnChangeSection = () => null

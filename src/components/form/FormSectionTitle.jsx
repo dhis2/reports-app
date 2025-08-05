@@ -1,3 +1,4 @@
+import React from 'react'
 import { children } from '../../utils/react/propTypes.js'
 import styles from './FormSectionTitle.module.css'
 

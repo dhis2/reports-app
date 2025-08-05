@@ -1,5 +1,6 @@
 import FormHelperText from '@material-ui/core/FormHelperText'
 import PropTypes from 'prop-types'
+import React from 'react'
 import styles from './ErrorText.module.css'
 
 export const ErrorText = (props) => {

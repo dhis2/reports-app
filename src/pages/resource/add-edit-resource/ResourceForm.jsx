@@ -1,5 +1,6 @@
 import i18n from '@dhis2/d2-i18n'
 import PropTypes from 'prop-types'
+import React from 'react'
 import { Form } from 'react-final-form'
 import { Button } from '../../../components/form/Button.jsx'
 import { FormSection } from '../../../components/form/FormSection.jsx'
@@ -37,21 +38,21 @@ export const ResourceForm = (props) => (
                     <FormSection
                         show={values.type === resourceTypes.EXTERNAL_URL}
                         render={() => (
-                            <Fragment>
+                            <>
                                 <TitleResource />
                                 <Url />
-                            </Fragment>
+                            </>
                         )}
                     />
 
                     <FormSection
                         show={values.type === resourceTypes.UPLOAD_FILE}
                         render={() => (
-                            <Fragment>
+                            <>
                                 <TitleResource />
                                 <Attachment />
                                 <File isRequired={props.isFileRequired} />
-                            </Fragment>
+                            </>
                         )}
                     />
                 </fieldset>

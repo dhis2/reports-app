@@ -1,6 +1,7 @@
 import i18n from '@dhis2/d2-i18n'
 import { InputField, Button } from '@dhis2/d2-ui-core'
 import PropTypes from 'prop-types'
+import React from 'react'
 import styles from './ReportComment.module.css'
 
 const isCommentingActionEnabled = (comment) => comment.trim()

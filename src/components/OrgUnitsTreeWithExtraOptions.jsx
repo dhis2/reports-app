@@ -22,16 +22,16 @@ export const __OrgUnitsTreeWithExtraOptions = (props) => (
         <OrganisationUnitsTree />
         <div>
             {!props.isLoadingOptions && (
-                <span
+                <button
                     id="extra-options-action"
                     className={styles.showMoreOptionsButton}
-                    role="button"
-                    tabIndex="0"
+                    type="button"
                     onClick={props.toggleShowOptions}
                 >
                     {getExtraOptionsLabel(props.showOptions)}
-                </span>
+                </button>
             )}
+
             <div
                 id="extra-options"
                 className={getExtraOptionsClassName(props.showOptions)}

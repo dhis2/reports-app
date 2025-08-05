@@ -74,14 +74,16 @@ export const ReportTableSearchInputUI = (props) => {
         if (!isSearchMode) {
             setSearchMode(true)
         }
-        props.input.onFocus && props.input.onFocus()
+        props.input.onFocus?.()
     }
+
     const onBlur = () => {
         if (isSearchMode) {
             setSearchMode(false)
         }
-        props.input.onBlur && props.input.onBlur()
+        props.input.onBlur?.()
     }
+
     const onSearch = (event) => {
         props.loadFilteredStandardReportTables(event.target.value)
     }

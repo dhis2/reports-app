@@ -2,6 +2,7 @@ import i18n from '@dhis2/d2-i18n'
 import Button from '@material-ui/core/Button'
 import FormHelperText from '@material-ui/core/FormHelperText'
 import PropTypes from 'prop-types'
+import React from 'react'
 import { getApi } from '../../../utils/api.js'
 import {
     reportTypes,

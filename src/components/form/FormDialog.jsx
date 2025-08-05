@@ -1,6 +1,7 @@
 import Dialog from '@material-ui/core/Dialog'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import PropTypes from 'prop-types'
+import React from 'react'
 import { children } from '../../utils/react/propTypes.js'
 import styles from './FormDialog.module.css'
 

@@ -27,8 +27,8 @@ DownloadOption.propTypes = {
 
 export const DownloadOptions = ({ fileUrls }) => (
     <div className={styles.downloadOptionsContainer}>
-        {fileUrls.map((file, index) => (
-            <DownloadOption file={file} key={index} />
+        {fileUrls.map((file) => (
+            <DownloadOption file={file} key={file.url} />
         ))}
     </div>
 )

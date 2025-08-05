@@ -1,7 +1,6 @@
 import i18n from '@dhis2/d2-i18n'
 import theme from '@dhis2/d2-ui-core/theme/theme'
 import Button from '@material-ui/core/Button'
-import red from '@material-ui/core/colors/red'
 import Dialog from '@material-ui/core/Dialog'
 import DialogContent from '@material-ui/core/DialogContent'
 import DialogTitle from '@material-ui/core/DialogTitle'
