@@ -8,7 +8,6 @@ global.ReadableStream = global.ReadableStream || ReadableStream
 global.Blob = global.Blob || Blob
 global.File = global.File || File
 
-/* eslint-disable no-empty */
 jest.mock('undici', () => ({
     fetch: () =>
         Promise.resolve({
@@ -17,8 +16,4 @@ jest.mock('undici', () => ({
             json: async () => ({}),
             text: async () => '',
         }),
-    Request: class {},
-    Response: class {},
-    Headers: class {},
 }))
-/* eslint-disable no-empty */
