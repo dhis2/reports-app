@@ -69,11 +69,15 @@
         "xlsx": "^0.16.6"
     },
     "jest": {
+        "setupFiles": [
+            "<rootDir>/jest.setup-globals.js"
+        ],
         "setupFilesAfterEnv": [
-            "<rootDir>src/setupTests.js"
+            "<rootDir>/src/setupTests.js"
         ],
         "snapshotSerializers": [
             "enzyme-to-json/serializer"
-        ]
+        ],
+        "testEnvironment": "jsdom"
     }
 }
