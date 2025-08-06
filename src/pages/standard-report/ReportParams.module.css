@@ -1,0 +1,28 @@
+.inputs {
+    margin-bottom: 30px;
+}
+
+.errors {
+    margin-bottom: 10px;
+}
+
+.error {
+    color: #f44336;
+}
+
+.primaryAction {
+    margin-bottom: 10px;
+}
+
+.fullWidthButton {
+    width: 100%;
+}
+
+.primaryButton {
+    color: white !important;
+    background-color: var(--primary2-color) !important;
+}
+
+.primaryButton:hover {
+    background-color: var(--primary1-color) !important;
+}

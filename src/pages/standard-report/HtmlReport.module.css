@@ -1,0 +1,9 @@
+.loader {
+    text-align: center;
+    margin: 16px;
+}
+
+.iframe {
+    border: none;
+    flex-grow: 1;
+}

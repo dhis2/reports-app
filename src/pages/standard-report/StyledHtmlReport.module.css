@@ -1,0 +1,18 @@
+.container {
+    min-height: calc(100vh - 84px);
+    display: flex;
+    flex-direction: column;
+}
+
+.buttonRow {
+    margin-bottom: 16px;
+}
+
+.reportCard {
+    margin-top: 16px;
+    padding: 16px;
+    flex-grow: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}

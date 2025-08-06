@@ -1,0 +1,9 @@
+.headline {
+    margin-bottom: 0;
+}
+
+.backButton {
+    cursor: pointer;
+    outline: none;
+    padding: 12px;
+}

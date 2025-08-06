@@ -1,0 +1,20 @@
+.formCheckbox {
+    align-items: center;
+    display: flex;
+    height: 30px;
+    width: 100%;
+}
+
+.inputContainer {
+    width: 20px;
+}
+
+input {
+    display: block;
+    margin: 0;
+}
+
+.labelContainer {
+    display: block;
+    flex-grow: 1;
+}

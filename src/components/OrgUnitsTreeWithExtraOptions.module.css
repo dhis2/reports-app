@@ -1,0 +1,16 @@
+.hideOptions {
+    display: none;
+}
+
+.showOptions {
+    display: block;
+}
+
+.showMoreOptionsButton {
+    display: block;
+    cursor: pointer;
+    color: #004ba0;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    outline: none;
+}

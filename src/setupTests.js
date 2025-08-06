@@ -1,4 +1,9 @@
+import { TextEncoder } from 'util'
+import Adapter from '@cfaester/enzyme-adapter-react-18'
 import { configure } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
+
+if (typeof global.TextEncoder === 'undefined') {
+    global.TextEncoder = TextEncoder
+}
 
 configure({ adapter: new Adapter() })

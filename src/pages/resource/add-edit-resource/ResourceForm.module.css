@@ -1,0 +1,22 @@
+.fieldset {
+    position: relative;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.fieldset:disabled::after {
+    content: ' ';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    pointer-events: none;
+}
+
+.editUnavailable {
+    color: red;
+}

@@ -1,0 +1,78 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background: #f3f3f3;
+    font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 300;
+    letter-spacing: 1.2px;
+    color: rgba(0, 0, 0, 0.87);
+    display: flex;
+    align-items: center;
+    height: 48px;
+}
+
+.left-bar {
+    width: 295px;
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    margin-top: 3rem;
+}
+
+.d2-ui-table {
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+}
+
+.d2-ui-table__rows__row {
+    font-size: 14px;
+}
+
+.data-table-pager--page-info {
+    padding: 0 !important;
+}
+
+.data-table-pager--buttons {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
+
+.data-table-pager--buttons .material-icons {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#report-container table {
+    width: 100% !important;
+}
+
+input {
+    -webkit-appearance: textfield;
+}
+
+.data-table-pager {
+    float: right;
+    padding-top: 8px;
+}
+
+.d2-ui-button {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+}
+
+.dataTableFakeRow .loader {
+    margin-top: 8px;
+}
+
+.actions .d2-ui-button:first-child {
+    margin-right: 16px;
+}

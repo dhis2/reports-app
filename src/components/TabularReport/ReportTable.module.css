@@ -1,0 +1,27 @@
+.table {
+    border-collapse: collapse;
+}
+
+.headerRow {
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.bodyRow {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.cell,
+.headerCell {
+    border: none;
+    font-size: 14px;
+    padding: 16px 16px;
+}
+
+.headerCell {
+    text-align: left;
+    font-weight: bold;
+}
+
+.centered {
+    text-align: center;
+}

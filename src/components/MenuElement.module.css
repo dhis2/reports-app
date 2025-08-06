@@ -1,0 +1,39 @@
+.sectionTitleBar {
+    margin-top: 28px;
+    min-height: 42px;
+    flex-wrap: nowrap;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sectionName {
+    font-size: 24px;
+    text-align: left;
+    color: #000000;
+}
+
+.sectionIcon {
+    float: right;
+    color: #757575;
+    font-size: 50px;
+}
+
+.sectionDescription {
+    font-size: 14px;
+    text-align: left;
+    color: #757575;
+    margin-top: 38px;
+    margin-bottom: 38px;
+    display: block;
+}
+
+.sectionActionText {
+    position: absolute;
+    bottom: 20px;
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: left;
+    color: #2196f3;
+}
