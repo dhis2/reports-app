@@ -8,6 +8,30 @@ const config = {
     entryPoints: {
         app: './src/AppWrapper.js',
     },
+    shortcuts: [
+        {
+            name: 'Standard report',
+            url: '#/standard-report'
+        },
+        {
+            name: 'Data set report',
+            url: '#/data-set-report'
+        },
+        {
+            name: 'Reporting rates summary',
+            url: '#/reporting-rate-summary'
+        },
+        {
+            name: 'Resources',
+            url: '#/resource'
+        },
+        {
+            name: 'Org unit distribution report',
+            url: '#/organisation-unit-distribution-report'
+        }
+    ]
 }
 
 module.exports = config
+
+// needs lots of dependencies updated. might break things. will do later
