@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2025-08-06T12:32:49.101Z\n"
-"PO-Revision-Date: 2025-08-06T12:32:49.102Z\n"
+"POT-Creation-Date: 2025-09-14T21:01:51.660Z\n"
+"PO-Revision-Date: 2025-09-14T21:01:51.660Z\n"
 
 msgid "Updating Organisation Units Tree..."
 msgstr "Updating Organisation Units Tree..."
@@ -765,11 +765,3 @@ msgstr "Upload file"
 
 msgid "Confirm delete"
 msgstr "Confirm delete"
-
-msgctxt "Application title"
-msgid "__MANIFEST_APP_TITLE"
-msgstr "Reports"
-
-msgctxt "Application description"
-msgid "__MANIFEST_APP_DESCRIPTION"
-msgstr ""

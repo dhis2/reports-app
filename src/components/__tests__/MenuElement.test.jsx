@@ -7,21 +7,11 @@ import {
 } from '../../config/sections.config.js'
 import MenuElement from '../MenuElement.jsx'
 
-jest.mock('@dhis2/d2-ui-org-unit-tree', () => ({
-    OrgUnitTree: 'OrgUnitTree',
-}))
-
-const ownShallow = () => {
-    return shallow(
+const ownShallow = () =>
+    shallow(
         <MenuElement entry={sections[STANDARD_REPORT_SECTION_KEY].info} />,
-        {
-            disableLifecycleMethods: true,
-        }
+        { disableLifecycleMethods: true }
     )
-}
-
-/* Mocks */
-jest.mock('@dhis2/d2-ui-org-unit-tree', () => 'OrgUnitTree')
 
 describe('Test <MenuElement /> rendering:', () => {
     let wrapper
@@ -38,14 +28,18 @@ describe('Test <MenuElement /> rendering:', () => {
     })
 
     it('Renders correct section title.', () => {
-        expect(wrapper.find('.section-title-bar')).toHaveLength(1)
+        expect(wrapper.find('[data-test="section-title-bar"]')).toHaveLength(1)
     })
 
     it('Renders correct section description.', () => {
-        expect(wrapper.find('.section-description')).toHaveLength(1)
+        expect(wrapper.find('[data-test="section-description"]')).toHaveLength(
+            1
+        )
     })
 
     it('Renders correct section action text.', () => {
-        expect(wrapper.find('.section-action-text')).toHaveLength(1)
+        expect(wrapper.find('[data-test="section-action-text"]')).toHaveLength(
+            1
+        )
     })
 })

@@ -3,34 +3,30 @@ import React from 'react'
 import ReportLoader from '../ReportLoader.jsx'
 
 describe('<ReportLoader/>', () => {
-    it('Renders a loader when isLoading is true', () => {
+    it('renders a CircularProgress when loading', () => {
         const wrapper = shallow(
             <ReportLoader content={{}} isLoading={true}>
-                <div>Hello world</div>
+                <div>Hello</div>
             </ReportLoader>
         )
-        expect(wrapper).toMatchSnapshot()
+        expect(wrapper.find('CircularProgress').exists()).toBe(true)
     })
 
-    it('Renders nothing when content is an empty object and isLoading is false', () => {
+    it('renders nothing when empty content & not loading', () => {
         const wrapper = shallow(
             <ReportLoader content={{}} isLoading={false}>
-                <div>Hello world</div>
+                <div>Hello</div>
             </ReportLoader>
         )
-        expect(wrapper.html()).toBeNull()
+        expect(wrapper.type()).toBeNull()
     })
 
-    it('Renders its children when isLoading is false and content is non-empty', () => {
-        const props = {
-            content: { text: 'hello world' },
-            isLoading: false,
-        }
+    it('renders children when not loading and content is non-empty', () => {
         const wrapper = shallow(
-            <ReportLoader {...props}>
-                <div>Hello world</div>
+            <ReportLoader content={{ foo: 'bar' }} isLoading={false}>
+                <div>Hello</div>
             </ReportLoader>
         )
-        expect(wrapper.html()).toMatchSnapshot()
+        expect(wrapper.contains(<div>Hello</div>)).toBe(true)
     })
 })

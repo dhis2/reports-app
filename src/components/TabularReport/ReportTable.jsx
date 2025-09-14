@@ -7,9 +7,8 @@ export const Row = ({ cells }) => (
         {cells.map((cell, index) => (
             <td
                 key={`c-${cell}-${index}`}
-                className={`${styles.cell} ${
-                    index !== 0 ? styles.centered : ''
-                }`}
+                data-test={index === 0 ? 'cell-left' : 'cell-centered'}
+                className={styles.cell}
             >
                 {cell}
             </td>

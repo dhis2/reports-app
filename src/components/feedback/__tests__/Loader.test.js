@@ -9,11 +9,13 @@ jest.mock('@dhis2/d2-ui-core', () => ({
 describe('<Loader />', () => {
     const renderLoader = createComponentRenderer(Loader, {})
 
-    it('should render loader when show is true', () => {
-        expect(renderLoader({ show: true })).toMatchSnapshot()
+    it('renders loader when show is true', () => {
+        const wrapper = renderLoader({ show: true })
+        expect(wrapper.find('CircularProgress').exists()).toBe(true)
     })
 
-    it('should not render the loader when show is false', () => {
-        expect(renderLoader({ show: false })).toMatchSnapshot()
+    it('does not render loader when show is false', () => {
+        const wrapper = renderLoader({ show: false })
+        expect(wrapper.find('CircularProgress').exists()).toBe(false)
     })
 })

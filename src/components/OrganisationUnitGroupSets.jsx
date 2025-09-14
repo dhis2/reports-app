@@ -18,7 +18,7 @@ const createGroupSetOnChange = (groupSetId, onChange) => (event) => {
 
 const labelText = i18n.t('Select Option')
 
-const OrganisationUnitGroupSetDropdown = ({
+export const OrganisationUnitGroupSetDropdown = ({
     groupSet,
     fullWidth,
     value,
