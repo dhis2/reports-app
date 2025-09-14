@@ -87,12 +87,29 @@ const getReportParamsPropertiesBySystemVersion = (reportParams) => {
     }
 }
 
+export const getDefaultReportParams = () => {
+    if (!isAtLeastVersion34()) {
+        return {
+            paramGrandParentOrganisationUnit: false,
+            paramReportingPeriod: false,
+            paramOrganisationUnit: false,
+            paramParentOrganisationUnit: false,
+        }
+    }
+    return {
+        grandParentOrganisationUnit: false,
+        reportingPeriod: false,
+        organisationUnit: false,
+        parentOrganisationUnit: false,
+    }
+}
+
 export const getStandardReportFieldsBySystemVersion = () => {
     const reportTableField = isAtLeastVersion34()
         ? 'visualization[id,displayName]'
         : 'reportTable[id,displayName]'
 
-    return [':owner', reportTableField]
+    return [':owner', 'relativePeriods', reportTableField]
 }
 
 export const formatStandardReportResponseBySystemVersion = (reportModel) => {

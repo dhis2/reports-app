@@ -1,3 +1,13 @@
+## [100.1.1](https://github.com/dhis2/reports-app/compare/v100.1.0...v100.1.1) (2025-07-16)
+
+
+### Bug Fixes
+
+* clean up save with reports app [BETA-155] [DHIS2-19815] ([85dbd91](https://github.com/dhis2/reports-app/commit/85dbd9186e1b5217363c52384428cba30cff19ee))
+* clean up save with reports app [DHIS2-19815] ([45d6552](https://github.com/dhis2/reports-app/commit/45d6552e12de2f2c8dd320780fc0f15c4b0b644d))
+* remove only from test ([ed9dfd1](https://github.com/dhis2/reports-app/commit/ed9dfd17e71c08b6319378dbdf4898bb71526cfa))
+* test issue ([af4cb9f](https://github.com/dhis2/reports-app/commit/af4cb9fb35318d490025eff7f8fba30d4d038966))
+
 # [100.1.0](https://github.com/dhis2/reports-app/compare/v100.0.67...v100.1.0) (2025-05-01)
 
 ### Features
