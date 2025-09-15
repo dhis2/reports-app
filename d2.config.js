@@ -8,6 +8,11 @@ const config = {
     entryPoints: {
         app: './src/AppWrapper.jsx',
     },
+    viteConfigExtensions: {
+        define: {
+            global: 'window',
+        },
+    },
 }
 
 module.exports = config
