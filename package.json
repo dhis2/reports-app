@@ -23,7 +23,7 @@
     },
     "devDependencies": {
         "@cfaester/enzyme-adapter-react-18": "^0.8.0",
-        "@dhis2/cli-app-scripts": "^12.3.0",
+        "@dhis2/cli-app-scripts": "^12.7.1",
         "@dhis2/cli-style": "^10.7.6",
         "@dhis2/cli-utils-cypress": "^2.2.1",
         "cheerio": "0.22.0",
