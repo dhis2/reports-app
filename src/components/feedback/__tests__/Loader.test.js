@@ -1,5 +1,5 @@
-import createComponentRenderer from '../../../utils/test-helpers/createComponentRenderer.js'
-import { LoaderOriginal as Loader } from '../Loader.js'
+import createComponentRenderer from '../../../utils/test-helpers/createComponentRenderer.jsx'
+import { LoaderOriginal as Loader } from '../Loader.jsx'
 
 jest.mock('@dhis2/d2-ui-core', () => ({
     FeedbackSnackbar: 'FeedbackSnackbar',
@@ -9,11 +9,13 @@ jest.mock('@dhis2/d2-ui-core', () => ({
 describe('<Loader />', () => {
     const renderLoader = createComponentRenderer(Loader, {})
 
-    it('should render loader when show is true', () => {
-        expect(renderLoader({ show: true })).toMatchSnapshot()
+    it('renders loader when show is true', () => {
+        const wrapper = renderLoader({ show: true })
+        expect(wrapper.find('CircularProgress').exists()).toBe(true)
     })
 
-    it('should not render the loader when show is false', () => {
-        expect(renderLoader({ show: false })).toMatchSnapshot()
+    it('does not render loader when show is false', () => {
+        const wrapper = renderLoader({ show: false })
+        expect(wrapper.find('CircularProgress').exists()).toBe(false)
     })
 })

@@ -6,7 +6,12 @@ const config = {
     minDHIS2Version: '2.33',
     name: 'reports',
     entryPoints: {
-        app: './src/AppWrapper.js',
+        app: './src/AppWrapper.jsx',
+    },
+    viteConfigExtensions: {
+        define: {
+            global: 'window',
+        },
     },
 }
 

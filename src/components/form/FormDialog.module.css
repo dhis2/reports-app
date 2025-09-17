@@ -1,0 +1,10 @@
+.formDialogTitle {
+    border-bottom: 1px solid black;
+}
+
+.formDialogContent {
+    max-width: 100%;
+    box-sizing: border-box;
+    margin-left: 0;
+    margin-right: 0;
+}

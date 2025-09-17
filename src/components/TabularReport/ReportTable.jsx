@@ -1,0 +1,56 @@
+import PropTypes from 'prop-types'
+import React from 'react'
+import styles from './ReportTable.module.css'
+
+export const Row = ({ cells }) => (
+    <tr className={styles.bodyRow}>
+        {cells.map((cell, index) => (
+            <td
+                key={`c-${cell}-${index}`}
+                data-test={index === 0 ? 'cell-left' : 'cell-centered'}
+                className={styles.cell}
+            >
+                {cell}
+            </td>
+        ))}
+    </tr>
+)
+
+Row.propTypes = {
+    cells: PropTypes.arrayOf(
+        PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    ).isRequired,
+}
+
+const ReportTable = ({ content: { title, headers, rows } }) => (
+    <>
+        <h1>{title}</h1>
+        <table className={styles.table}>
+            <thead>
+                <tr className={styles.headerRow}>
+                    {headers.map((header, index) => (
+                        <th
+                            key={`h-${header}-${index}`}
+                            className={`${styles.headerCell} ${
+                                index !== 0 ? styles.centered : ''
+                            }`}
+                        >
+                            {header}
+                        </th>
+                    ))}
+                </tr>
+            </thead>
+            <tbody>
+                {rows.map((cells, index) => (
+                    <Row cells={cells} key={`r-${cells[0]}-${index}`} />
+                ))}
+            </tbody>
+        </table>
+    </>
+)
+
+ReportTable.propTypes = {
+    content: PropTypes.object.isRequired,
+}
+
+export default ReportTable
