@@ -1,3 +1,10 @@
+## [100.1.2](https://github.com/dhis2/reports-app/compare/v100.1.1...v100.1.2) (2025-09-17)
+
+
+### Bug Fixes
+
+* upgrade deps for vite and React 18 ([#410](https://github.com/dhis2/reports-app/issues/410)) ([36621f7](https://github.com/dhis2/reports-app/commit/36621f7f47afa4cffd5ab33733528a14ff8b3107))
+
 ## [100.1.1](https://github.com/dhis2/reports-app/compare/v100.1.0...v100.1.1) (2025-07-16)
 
 
