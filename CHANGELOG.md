@@ -1,3 +1,10 @@
+## [100.1.3](https://github.com/dhis2/reports-app/compare/v100.1.2...v100.1.3) (2025-09-22)
+
+
+### Bug Fixes
+
+* reports distorted UI updates ([#412](https://github.com/dhis2/reports-app/issues/412)) ([72fdda5](https://github.com/dhis2/reports-app/commit/72fdda5ab891c86fb1bb0de8ae976afc8019c0c4))
+
 ## [100.1.2](https://github.com/dhis2/reports-app/compare/v100.1.1...v100.1.2) (2025-09-17)
 
 
