@@ -1,4 +1,4 @@
-import { InputField, Button } from '@dhis2/d2-ui-core'
+import { InputField } from '@dhis2/d2-ui-core'
 import { shallow } from 'enzyme'
 import React from 'react'
 import { ReportComment } from '../../TabularReport/ReportComment.jsx'
@@ -18,23 +18,23 @@ describe('<ReportComment/>', () => {
         expect(input.prop('value')).toBe(baseProps.comment)
     })
 
-    it('renders a Button with text "Share"', () => {
+    it('renders a button with text "Share"', () => {
         const wrapper = shallow(<ReportComment {...baseProps} />)
-        const button = wrapper.find(Button)
+        const button = wrapper.find('button#main-action-button')
 
         expect(button.exists()).toBe(true)
-        expect(button.children().text()).toBe('Share')
+        expect(button.text()).toBe('Share')
     })
 
     it('disables the button if comment is empty', () => {
         const wrapper = shallow(<ReportComment {...baseProps} comment="" />)
-        const button = wrapper.find(Button)
+        const button = wrapper.find('button#main-action-button')
         expect(button.prop('disabled')).toBe(true)
     })
 
     it('enables the button if comment is non-empty', () => {
         const wrapper = shallow(<ReportComment {...baseProps} />)
-        const button = wrapper.find(Button)
+        const button = wrapper.find('button#main-action-button')
         expect(button.prop('disabled')).toBe(false)
     })
 
@@ -46,9 +46,9 @@ describe('<ReportComment/>', () => {
         })
     })
 
-    it('calls shareDataSetReportComment when Button is clicked', () => {
+    it('calls shareDataSetReportComment when button is clicked', () => {
         const wrapper = shallow(<ReportComment {...baseProps} />)
-        wrapper.find(Button).simulate('click')
+        wrapper.find('button#main-action-button').simulate('click')
         expect(baseProps.shareDataSetReportComment).toHaveBeenCalled()
     })
 })

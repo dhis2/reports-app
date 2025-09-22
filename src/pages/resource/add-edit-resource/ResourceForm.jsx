@@ -2,7 +2,6 @@ import i18n from '@dhis2/d2-i18n'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { Form } from 'react-final-form'
-import { Button } from '../../../components/form/Button.jsx'
 import { FormSection } from '../../../components/form/FormSection.jsx'
 import { resourceTypes } from '../../../utils/resource/constants.js'
 import { Attachment } from './ResourceForm/Attachment.jsx'
@@ -56,15 +55,22 @@ export const ResourceForm = (props) => (
                         )}
                     />
                 </fieldset>
-
-                <Button
-                    label={props.onSubmitLabel}
-                    isPrimary={true}
+                <button
+                    type="button"
+                    id="main-action-button"
                     onClick={handleSubmit}
                     disabled={!valid || props.isEditingFileResource}
-                />
+                >
+                    {props.onSubmitLabel}
+                </button>
 
-                <Button label={i18n.t('Cancel')} onClick={props.onCancel} />
+                <button
+                    type="button"
+                    id="cancel-button"
+                    onClick={props.onCancel}
+                >
+                    {i18n.t('CANCEL')}
+                </button>
             </form>
         )}
     </Form>

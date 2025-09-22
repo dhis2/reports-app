@@ -1,12 +1,11 @@
 import i18n from '@dhis2/d2-i18n'
-import { CheckBox, Button } from '@dhis2/d2-ui-core'
+import { CheckBox } from '@dhis2/d2-ui-core'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { DataSetDimensions } from '../../components/DataSetDimensions.jsx'
 import DataSets from '../../components/DatasetsDropdown.jsx'
 import { OrgUnitsTreeWithExtraOptions } from '../../components/OrgUnitsTreeWithExtraOptions.jsx'
 import PeriodPickerComponent from '../../components/PeriodPickerWithPeriodType.jsx'
-import styles from './Form.module.css'
 
 const Form = (props) => (
     <div id="data-set-report-form">
@@ -14,6 +13,7 @@ const Form = (props) => (
             <div className="col-xs-12 col-md-6">
                 <OrgUnitsTreeWithExtraOptions />
             </div>
+
             <div className="col-xs-12 col-md-6">
                 <div id="data-set-selection">
                     <DataSets onChange={props.onDataSetChange} />
@@ -31,17 +31,15 @@ const Form = (props) => (
                     label={i18n.t('Use data for selected unit only')}
                 />
             </div>
-        </div>
-        <div id="main-action-button" className={styles['main-action-button']}>
-            <Button
-                id="main-action-button"
-                raised
-                color="primary"
-                onClick={props.onGetReportClick}
-                disabled={props.isGetReportDisabled}
-            >
-                {i18n.t('Get Report')}
-            </Button>
+            <div className="col-xs-12 col-md-6">
+                <button
+                    id="main-action-button"
+                    onClick={props.onGetReportClick}
+                    disabled={props.isGetReportDisabled}
+                >
+                    {i18n.t('Get Report')}
+                </button>
+            </div>
         </div>
     </div>
 )

@@ -3,7 +3,6 @@ import FormHelperText from '@material-ui/core/FormHelperText'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { Field, Form } from 'react-final-form'
-import { Button } from '../../../components/form/Button.jsx'
 import { CheckBoxes } from '../../../components/form/CheckBoxes.jsx'
 import { CheckBoxGroups } from '../../../components/form/CheckBoxGroups.jsx'
 import { File } from '../../../components/form/File.jsx'
@@ -134,16 +133,21 @@ const ReportForm = (props) => (
                             />
                         </FormRow>
                     </FormSection>
-                    <Button
-                        label={i18n.t('Submit')}
-                        isPrimary={true}
-                        onClick={handleSubmit}
-                    />
 
-                    <Button
-                        label={i18n.t('Cancel')}
+                    <button
+                        type="submit"
+                        onClick={handleSubmit}
+                        id="main-action-button"
+                    >
+                        {i18n.t('Submit')}
+                    </button>
+                    <button
+                        type="button"
+                        id="cancel-button"
                         onClick={props.backToList}
-                    />
+                    >
+                        {i18n.t('Cancel')}
+                    </button>
                 </form>
             )
         }}

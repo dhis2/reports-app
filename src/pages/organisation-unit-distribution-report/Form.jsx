@@ -1,5 +1,4 @@
 import i18n from '@dhis2/d2-i18n'
-import { Button } from '@dhis2/d2-ui-core'
 import PropTypes from 'prop-types'
 import React from 'react'
 import OrganisationUnitsTree from '../../components/AvailableOrganisationUnitsTree.jsx'
@@ -22,22 +21,23 @@ export const Form = (props) => (
             </div>
         </div>
         <div id="actions" className={`${actionsContainer.className}`}>
-            <Button
-                raised
-                color="primary"
+            <button
+                type="button"
+                id="main-action-button"
                 onClick={props.onGetReportClick}
                 disabled={!props.isActionEnabled}
             >
                 {i18n.t('Get Report')}
-            </Button>
-            <Button
-                raised
-                color="accent"
+            </button>
+
+            <button
+                type="button"
+                id="secondary-action-button"
                 onClick={props.onGetChartClick}
                 disabled={!props.isActionEnabled}
             >
                 {i18n.t('Get Chart')}
-            </Button>
+            </button>
         </div>
         {formLabel.styles}
         {actionsContainer.styles}
