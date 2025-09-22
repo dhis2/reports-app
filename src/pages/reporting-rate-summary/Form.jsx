@@ -11,13 +11,6 @@ export const Form = (props) => (
         <div className="row">
             <div className="col-xs-12 col-md-6">
                 <OrgUnitsTreeWithExtraOptions />
-                <button
-                    id="main-action-button"
-                    onClick={props.loadReportData}
-                    disabled={!props.isActionEnabled}
-                >
-                    {i18n.t('Get Report')}
-                </button>
             </div>
             <div className="col-xs-12 col-md-6">
                 <div id="data-set-selection">
@@ -28,6 +21,13 @@ export const Form = (props) => (
                 </div>
             </div>
         </div>
+        <button
+            id="main-action-button"
+            onClick={props.loadReportData}
+            disabled={!props.isActionEnabled}
+        >
+            {i18n.t('Get Report')}
+        </button>
         {actionsContainer.styles}
     </div>
 )

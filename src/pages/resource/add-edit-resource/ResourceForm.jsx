@@ -69,7 +69,7 @@ export const ResourceForm = (props) => (
                     id="cancel-button"
                     onClick={props.onCancel}
                 >
-                    {i18n.t('Cancel')}
+                    {i18n.t('CANCEL')}
                 </button>
             </form>
         )}

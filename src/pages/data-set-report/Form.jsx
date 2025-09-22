@@ -12,13 +12,6 @@ const Form = (props) => (
         <div className="row">
             <div className="col-xs-12 col-md-6">
                 <OrgUnitsTreeWithExtraOptions />
-                <button
-                    id="main-action-button"
-                    onClick={props.onGetReportClick}
-                    disabled={props.isGetReportDisabled}
-                >
-                    {i18n.t('Get Report')}
-                </button>
             </div>
 
             <div className="col-xs-12 col-md-6">
@@ -37,6 +30,15 @@ const Form = (props) => (
                     value={props.selectedUnitOnly}
                     label={i18n.t('Use data for selected unit only')}
                 />
+            </div>
+            <div className="col-xs-12 col-md-6">
+                <button
+                    id="main-action-button"
+                    onClick={props.onGetReportClick}
+                    disabled={props.isGetReportDisabled}
+                >
+                    {i18n.t('Get Report')}
+                </button>
             </div>
         </div>
     </div>
