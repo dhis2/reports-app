@@ -23,7 +23,7 @@ export const ReportComment = (props) => (
             />
             <button
                 type="button"
-             id='main-action-button'
+                id="main-action-button"
                 onClick={props.shareDataSetReportComment}
                 disabled={!isCommentingActionEnabled(props.comment)}
             >

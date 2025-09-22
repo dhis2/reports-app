@@ -55,22 +55,22 @@ export const ResourceForm = (props) => (
                         )}
                     />
                 </fieldset>
-                    <button
-                        type="button"
-                        id="main-action-button"
-                        onClick={handleSubmit}
-                        disabled={!valid || props.isEditingFileResource}
-                    >
-                        {props.onSubmitLabel}
-                    </button>
+                <button
+                    type="button"
+                    id="main-action-button"
+                    onClick={handleSubmit}
+                    disabled={!valid || props.isEditingFileResource}
+                >
+                    {props.onSubmitLabel}
+                </button>
 
-                    <button
-                        type="button"
-                        id="cancel-button"
-                        onClick={props.onCancel}
-                    >
-                        {i18n.t('Cancel')}
-                    </button>
+                <button
+                    type="button"
+                    id="cancel-button"
+                    onClick={props.onCancel}
+                >
+                    {i18n.t('Cancel')}
+                </button>
             </form>
         )}
     </Form>

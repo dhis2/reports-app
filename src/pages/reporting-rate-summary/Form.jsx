@@ -1,5 +1,4 @@
 import i18n from '@dhis2/d2-i18n'
-import { Button } from '@dhis2/d2-ui-core'
 import PropTypes from 'prop-types'
 import React from 'react'
 import DataSets from '../../components/DatasetsDropdown.jsx'
@@ -12,10 +11,10 @@ export const Form = (props) => (
         <div className="row">
             <div className="col-xs-12 col-md-6">
                 <OrgUnitsTreeWithExtraOptions />
-                  <button
+                <button
                     id="main-action-button"
-            onClick={props.loadReportData}
-                disabled={!props.isActionEnabled}
+                    onClick={props.loadReportData}
+                    disabled={!props.isActionEnabled}
                 >
                     {i18n.t('Get Report')}
                 </button>

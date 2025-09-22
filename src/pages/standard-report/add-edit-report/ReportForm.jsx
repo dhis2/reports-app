@@ -20,8 +20,8 @@ import {
     reportTypes,
 } from '../standard.report.conf.js'
 import { DesignFileDownloadButton } from './DesignFileDownloadButton.jsx'
-import { validateNewReport, validateReportUpdate } from './validate.js'
 import styles from './Form.module.css'
+import { validateNewReport, validateReportUpdate } from './validate.js'
 
 const ReportForm = (props) => (
     <Form
@@ -139,13 +139,13 @@ const ReportForm = (props) => (
                             type="submit"
                             className={`${styles.button} ${styles.buttonPrimary}`}
                             onClick={handleSubmit}
-                            id='main-action-button'
+                            id="main-action-button"
                         >
                             {i18n.t('Submit')}
                         </button>
                         <button
                             type="button"
-                            id='cancel-button'
+                            id="cancel-button"
                             onClick={props.backToList}
                         >
                             {i18n.t('Cancel')}
