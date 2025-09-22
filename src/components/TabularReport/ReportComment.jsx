@@ -1,5 +1,5 @@
 import i18n from '@dhis2/d2-i18n'
-import { InputField, Button } from '@dhis2/d2-ui-core'
+import { InputField } from '@dhis2/d2-ui-core'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styles from './ReportComment.module.css'
@@ -21,14 +21,14 @@ export const ReportComment = (props) => (
                 value={props.comment}
                 onChange={props.setDataSetReportComment}
             />
-            <Button
-                raised
-                color="primary"
+            <button
+                type="button"
+             id='main-action-button'
                 onClick={props.shareDataSetReportComment}
                 disabled={!isCommentingActionEnabled(props.comment)}
             >
                 {actionButtonPlaceholder}
-            </Button>
+            </button>
         </div>
     </div>
 )

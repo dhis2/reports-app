@@ -12,6 +12,13 @@ export const Form = (props) => (
         <div className="row">
             <div className="col-xs-12 col-md-6">
                 <OrgUnitsTreeWithExtraOptions />
+                  <button
+                    id="main-action-button"
+            onClick={props.loadReportData}
+                disabled={!props.isActionEnabled}
+                >
+                    {i18n.t('Get Report')}
+                </button>
             </div>
             <div className="col-xs-12 col-md-6">
                 <div id="data-set-selection">
@@ -21,16 +28,6 @@ export const Form = (props) => (
                     <PeriodPickerComponent label={i18n.t('Report period')} />
                 </div>
             </div>
-        </div>
-        <div id="main-action-button" className={actionsContainer.className}>
-            <Button
-                raised
-                color="primary"
-                onClick={props.loadReportData}
-                disabled={!props.isActionEnabled}
-            >
-                {i18n.t('Get Report')}
-            </Button>
         </div>
         {actionsContainer.styles}
     </div>
