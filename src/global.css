@@ -92,7 +92,6 @@ input {
 
 #main-action-button:disabled {
     background-color: rgb(229, 229, 229);
-    color: #f5f5f5;
     cursor: not-allowed;
     text-transform: uppercase;
     color: rgba(16, 16, 16, 0.3);
@@ -115,7 +114,6 @@ input {
 }
 #secondary-action-button:disabled {
     background-color: rgb(229, 229, 229);
-    color: #f5f5f5;
     cursor: not-allowed;
     text-transform: uppercase;
     color: rgba(16, 16, 16, 0.3);
