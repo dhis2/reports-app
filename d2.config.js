@@ -1,3 +1,4 @@
+/** @type {import('@dhis2/cli-app-scripts').D2Config} */
 const config = {
     type: 'app',
     coreApp: true,
@@ -16,27 +17,25 @@ const config = {
     shortcuts: [
         {
             name: 'Standard report',
-            url: '#/standard-report'
+            url: '#/standard-report',
         },
         {
             name: 'Data set report',
-            url: '#/data-set-report'
+            url: '#/data-set-report',
         },
         {
             name: 'Reporting rates summary',
-            url: '#/reporting-rate-summary'
+            url: '#/reporting-rate-summary',
         },
         {
             name: 'Resources',
-            url: '#/resource'
+            url: '#/resource',
         },
         {
             name: 'Org unit distribution report',
-            url: '#/organisation-unit-distribution-report'
-        }
-    ]
+            url: '#/organisation-unit-distribution-report',
+        },
+    ],
 }
 
 module.exports = config
-
-// needs lots of dependencies updated. might break things. will do later
