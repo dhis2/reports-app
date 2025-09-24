@@ -1,0 +1,11 @@
+.contentWrapper {
+    margin-left: 295px;
+}
+
+.contentWrapperNoSidebar {
+    margin-left: 0;
+}
+
+.contentArea {
+    padding: 1rem 20px 20px;
+}

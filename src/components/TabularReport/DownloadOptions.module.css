@@ -1,0 +1,13 @@
+.downloadButton {
+    cursor: pointer;
+    outline: none;
+    color: #757575;
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-left: 8px;
+}
+
+.downloadOptionsContainer {
+    display: flex;
+    justify-content: flex-end;
+}

@@ -1,0 +1,19 @@
+.header {
+    color: #757575;
+    font-size: 14px;
+    margin-bottom: 5px;
+    margin-top: 0;
+    text-align: left;
+    font-weight: normal;
+}
+
+.box {
+    border: 1px solid #bcbcbc;
+    padding: 4px;
+    margin-bottom: 16px;
+}
+
+.loaderWrapper {
+    margin-bottom: 16px;
+    text-align: center;
+}
