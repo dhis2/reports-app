@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2025-09-15T10:05:50.425Z\n"
-"PO-Revision-Date: 2025-09-15T10:05:50.425Z\n"
+"POT-Creation-Date: 2025-09-24T07:43:05.475Z\n"
+"PO-Revision-Date: 2025-09-24T07:43:05.475Z\n"
 
 msgid "Updating Organisation Units Tree..."
 msgstr "Updating Organisation Units Tree..."
@@ -184,14 +184,17 @@ msgstr "Url*"
 msgid "File resources can not be edited, only created"
 msgstr "File resources can not be edited, only created"
 
-msgid "Cancel"
-msgstr "Cancel"
+msgid "CANCEL"
+msgstr "CANCEL"
 
 msgid "Edit standard report"
 msgstr "Edit standard report"
 
 msgid "Create standard report"
 msgstr "Create standard report"
+
+msgid "Cancel"
+msgstr "Cancel"
 
 msgid "Generate report"
 msgstr "Generate report"
@@ -765,3 +768,31 @@ msgstr "Upload file"
 
 msgid "Confirm delete"
 msgstr "Confirm delete"
+
+msgctxt "Application title"
+msgid "__MANIFEST_APP_TITLE"
+msgstr "Reports"
+
+msgctxt "Application description"
+msgid "__MANIFEST_APP_DESCRIPTION"
+msgstr ""
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Standard report"
+msgstr "Standard report"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Data set report"
+msgstr "Data set report"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Reporting rates summary"
+msgstr "Reporting rates summary"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Resources"
+msgstr "Resources"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Org unit distribution report"
+msgstr "Org unit distribution report"
