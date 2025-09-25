@@ -1,3 +1,10 @@
+# [100.2.0](https://github.com/dhis2/reports-app/compare/v100.1.3...v100.2.0) (2025-09-25)
+
+
+### Features
+
+* add shortcuts for command palette ([#411](https://github.com/dhis2/reports-app/issues/411)) ([9bb3d2f](https://github.com/dhis2/reports-app/commit/9bb3d2fc27c62609085325c42bb46792fb5218d8))
+
 ## [100.1.3](https://github.com/dhis2/reports-app/compare/v100.1.2...v100.1.3) (2025-09-22)
 
 
