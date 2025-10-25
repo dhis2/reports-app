@@ -1,13 +1,14 @@
 # 
 # Translators:
 # Siddharth Agarwal, 2025
+# Rohit Wadhwani, 2025
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2021-03-03T10:35:11.879Z\n"
+"POT-Creation-Date: 2025-04-24T07:07:24.119Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
-"Last-Translator: Siddharth Agarwal, 2025\n"
+"Last-Translator: Rohit Wadhwani, 2025\n"
 "Language-Team: Hindi (India) (https://app.transifex.com/hisp-uio/teams/100509/hi_IN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -52,7 +53,7 @@ msgid "Select Period Type"
 msgstr ""
 
 msgid "Search"
-msgstr ""
+msgstr "सर्च करें / खोजें"
 
 msgid "No results have been found"
 msgstr ""
@@ -385,7 +386,7 @@ msgid "Manage my apps"
 msgstr ""
 
 msgid "No results found"
-msgstr ""
+msgstr "कोई परिणाम नहीं मिला"
 
 msgid "Interpretations"
 msgstr ""
@@ -577,10 +578,10 @@ msgid "Bi-Week"
 msgstr ""
 
 msgid "Daily"
-msgstr ""
+msgstr "रोज़ाना"
 
 msgid "Weekly"
-msgstr ""
+msgstr "साप्ताहिक"
 
 msgid "Weekly Wednesday"
 msgstr ""
@@ -598,12 +599,15 @@ msgid "Bi-Weekly"
 msgstr ""
 
 msgid "Monthly"
-msgstr ""
+msgstr "मासिक"
 
 msgid "Bi-Monthly"
 msgstr ""
 
 msgid "Quarterly"
+msgstr ""
+
+msgid "Quarterly-Nov"
 msgstr ""
 
 msgid "Six-Monthly"
@@ -616,7 +620,7 @@ msgid "Six-Monthly November"
 msgstr ""
 
 msgid "Yearly"
-msgstr ""
+msgstr "वार्षिक"
 
 msgid "Financial-April"
 msgstr ""
@@ -625,6 +629,9 @@ msgid "Financial-July"
 msgstr ""
 
 msgid "Financial-Oct"
+msgstr ""
+
+msgid "Financial-Nov"
 msgstr ""
 
 msgid "Days"
