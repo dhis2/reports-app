@@ -4,13 +4,14 @@
 # Viktor Varland <viktor@dhis2.org>, 2020
 # channara rin, 2023
 # Em Le <em.hispvietnam@gmail.com>, 2025
+# Kiry Heng, 2025
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2025-04-24T07:07:24.119Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
-"Last-Translator: Em Le <em.hispvietnam@gmail.com>, 2025\n"
+"Last-Translator: Kiry Heng, 2025\n"
 "Language-Team: Khmer (https://app.transifex.com/hisp-uio/teams/100509/km/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -711,7 +712,7 @@ msgid "Bi-months this year"
 msgstr ""
 
 msgid "Quarters"
-msgstr ""
+msgstr "ត្រីមាស"
 
 msgid "Reporting quarter"
 msgstr ""
