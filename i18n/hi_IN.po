@@ -680,10 +680,10 @@ msgid "Reporting month"
 msgstr ""
 
 msgid "Last month"
-msgstr ""
+msgstr "पिछला महीना"
 
 msgid "Last 3 months"
-msgstr ""
+msgstr "पिछले 3 महीने"
 
 msgid "Last 6 months"
 msgstr ""
