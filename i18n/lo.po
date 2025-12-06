@@ -3,15 +3,15 @@
 # Philip Larsen Donnelly, 2020
 # Viktor Varland <viktor@dhis2.org>, 2020
 # Thuy Nguyen <thuynguyen@hispvietnam.org>, 2022
-# Namwan Chanthavisouk, 2024
 # Saysamone Sibounma, 2024
+# Namwan Chanthavisouk, 2025
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2021-03-03T10:35:11.879Z\n"
+"POT-Creation-Date: 2025-04-24T07:07:24.119Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
-"Last-Translator: Saysamone Sibounma, 2024\n"
+"Last-Translator: Namwan Chanthavisouk, 2025\n"
 "Language-Team: Lao (https://app.transifex.com/hisp-uio/teams/100509/lo/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -276,10 +276,10 @@ msgid "Respect system setting"
 msgstr "ປະຕິບັດຕາມການຕັ້ງຄ່າຂອງລະບົບ"
 
 msgid "Cache for one hour"
-msgstr ""
+msgstr "Cache ເປັນເວລາ 1 ຊົ່ວໂມງ"
 
 msgid "Cache until 6 AM tomorrow"
-msgstr ""
+msgstr "Cache ຈົນຮອດ 6 ໂມງເຊົ້າ ມື້ອື່ນ"
 
 msgid "Cache for two weeks"
 msgstr "Cache for two weeks"
@@ -450,7 +450,7 @@ msgid "Who has access"
 msgstr "ແມ່ນໃຜສາມາດເຂົ້າເຖີງໄດ້"
 
 msgid "External access (without login)"
-msgstr ""
+msgstr "External access (without login)"
 
 msgid "Can edit and view"
 msgstr "ອານຸຍາດໃຫ້ເບີ່ງ ແລະ ແກ້ໄຂໄດ້"
@@ -465,7 +465,7 @@ msgid "No access"
 msgstr "ບໍ່ມີການເຂົ້າເຖີງ"
 
 msgid "Public access (with login)"
-msgstr ""
+msgstr "ການເຂົ້າເຖິງສາທາລະນະ (ຕ້ອງເຂົ້າສູ່ລະບົບ)"
 
 msgid "Public can edit"
 msgstr "ທຸກຄົນສາມາດແກ້ໄຂໄດ້"
@@ -620,6 +620,9 @@ msgstr "ສອງເດືອນຕໍ່ຄັ້ງ"
 msgid "Quarterly"
 msgstr "ໄຕມາດ"
 
+msgid "Quarterly-Nov"
+msgstr ""
+
 msgid "Six-Monthly"
 msgstr ""
 
@@ -633,13 +636,16 @@ msgid "Yearly"
 msgstr "ລາຍປີ"
 
 msgid "Financial-April"
-msgstr ""
+msgstr "ປີງົບປະມານ (ເມສາ)"
 
 msgid "Financial-July"
 msgstr "ສົກປີງົບປະມານ ແຕ່ ເດືອນ 7"
 
 msgid "Financial-Oct"
-msgstr ""
+msgstr "ປີງົບປະມານ (ຕຸລາ)"
+
+msgid "Financial-Nov"
+msgstr "ປີງົບປະມານ (ພະຈິກ)"
 
 msgid "Days"
 msgstr "ມື້"
