@@ -3,18 +3,18 @@
 # Philip Larsen Donnelly, 2020
 # Viktor Varland <viktor@dhis2.org>, 2020
 # Thuy Nguyen <thuynguyen@hispvietnam.org>, 2022
-# Saysamone Sibounma, 2024
 # Namwan Chanthavisouk, 2025
+# Saysamone Sibounma, 2026
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2025-04-24T07:07:24.119Z\n"
 "PO-Revision-Date: 2020-04-28 22:12+0000\n"
-"Last-Translator: Namwan Chanthavisouk, 2025\n"
+"Last-Translator: Saysamone Sibounma, 2026\n"
 "Language-Team: Lao (https://app.transifex.com/hisp-uio/teams/100509/lo/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: lo\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -29,7 +29,7 @@ msgid "Data set dimensions"
 msgstr ""
 
 msgid "Loading options..."
-msgstr ""
+msgstr "ກຳລັງໂຫຼດຕົວເລືອກ..."
 
 msgid "Select Data Set"
 msgstr "ເລືອກຊຸດຂໍ້ມູນ"
@@ -84,7 +84,7 @@ msgid_plural "Please enter at least {{count}} characters"
 msgstr[0] ""
 
 msgid "Type to search a report table"
-msgstr ""
+msgstr "ປ້ອນຂໍ້ມູນເພື່ອຄົ້ນຫາຕາຕະລາງບົດລາຍງານ"
 
 msgid "Standard Report"
 msgstr "​ບົດ​ລາຍ​ງານ​ແບບ​ມາດ​ຕະ​ຖານ"
@@ -137,7 +137,7 @@ msgid "View Resources"
 msgstr "ເບີ່ງແຫຼ່ງທີ່ມາ"
 
 msgid "Org unit distribution report"
-msgstr ""
+msgstr "ບົດລາຍງານການກະຈາຍຕົວຂອງໜ່ວຍງານຈັດຕັ້ງ"
 
 msgid ""
 "Browse the organisation unit distribution report based on the organisation "
@@ -153,7 +153,7 @@ msgid "Organisation Unit"
 msgstr "ຫົວໜ່ວຍ ການຈັດຕັ້ງ"
 
 msgid "CONFIRM"
-msgstr ""
+msgstr "ຢືນຢັນ"
 
 msgid "Report period"
 msgstr "ຊ່ວງເວລາ ການລາຍງານ"
@@ -162,7 +162,7 @@ msgid "Use data for selected unit only"
 msgstr "​ໃຊ້​ຂໍ້​ມູນ​ເພື່ອ​ເລືອກ​ເອົາ​ຫົວ​ໜ່ວຍ​ພຽງ​ຢ່າງ​ດຽວ"
 
 msgid "Get Chart"
-msgstr ""
+msgstr "ດຶງແຜນພູມ"
 
 msgid "Edit resource"
 msgstr "ແກ້ໄຂແຫຼ່ງທີ່ມາ"
@@ -195,10 +195,10 @@ msgid "Resource Type"
 msgstr "ປະເພດແຫຼ່ງທີ່ມາ"
 
 msgid "Url*"
-msgstr ""
+msgstr "Url*"
 
 msgid "File resources can not be edited, only created"
-msgstr ""
+msgstr "ແຫຼ່ງຂໍ້ມູນບໍ່ສາມາດແກ້ໄຂໄດ້, ສາມາດສ້າງໄດ້ເທົ່ານັ້ນ"
 
 msgid "Cancel"
 msgstr "ຍົກເລິກ"
@@ -216,7 +216,7 @@ msgid "Report parameters"
 msgstr "​ສ່ວນ​ປະ​ກອບ​ຕ່າງໆ​ຂອງ​ບົດ​ລາຍ​ງານ"
 
 msgid "There are some errors you have to fix first!"
-msgstr ""
+msgstr "ມີບາງງຢ່າງຜິດພາດທ່ານຕ້ອງໄດ້ແກ້ໄຂກ່ອນ!"
 
 msgid "Back to standard reports list"
 msgstr "ກັບຄືນໄປໜ້າຫຼັກລາຍການຂອງລາຍງານແບບມາດຕະຖານ"
@@ -258,7 +258,7 @@ msgid "Submit"
 msgstr "ສົ່ງໄປລະບົບ"
 
 msgid "[ None ]"
-msgstr ""
+msgstr "[ບໍ່ມີ]"
 
 msgid "Jasper report with report table data source"
 msgstr "​ບົດ​ລາຍ​ງານ ຈັ​ສ​ເປີ ກັບ​ຕາ​ຕະ​ລາງ​ແຫ່ງ​ຂໍ້​ມູນ"
@@ -429,10 +429,10 @@ msgid "Sharing settings"
 msgstr "ຕັ້ງຄ່າການ share"
 
 msgid "View Resource"
-msgstr ""
+msgstr "ເບີ່ງແຫຼ່ງທີ່ມາ"
 
 msgid "Edit Resource"
-msgstr ""
+msgstr "ແກ້ໄຂແຫຼ່ງທີ່ມາ"
 
 msgid "Add users and user groups"
 msgstr "ເພື່ມບຸກຄົນແລະກຸ່ມຄົນ"
@@ -441,7 +441,7 @@ msgid "Enter names"
 msgstr "ປ້ອນຊື່"
 
 msgid "Permissions"
-msgstr ""
+msgstr "ານເຂົ້າເຖີງ"
 
 msgid "Created By"
 msgstr "ສ້າງໂດຍ"
@@ -624,7 +624,7 @@ msgid "Quarterly-Nov"
 msgstr ""
 
 msgid "Six-Monthly"
-msgstr ""
+msgstr "ຫົກເດືອນຕໍ່ຄັ້ງ"
 
 msgid "Six-Monthly April"
 msgstr ""
@@ -651,7 +651,7 @@ msgid "Days"
 msgstr "ມື້"
 
 msgid "Reporting day"
-msgstr ""
+msgstr "ວັນທີລາຍງານ"
 
 msgid "Yesterday"
 msgstr "ມື້ວານນີ"
@@ -669,7 +669,7 @@ msgid "Weeks"
 msgstr "ອາທິດ"
 
 msgid "Reporting week"
-msgstr ""
+msgstr "ອາທິດທີ່ລາຍງານ"
 
 msgid "Last Week"
 msgstr "ອາທິດທີ່ແລ້ວ"

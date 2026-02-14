@@ -392,7 +392,7 @@ msgid "Interpretations"
 msgstr ""
 
 msgid "Messages"
-msgstr ""
+msgstr "मैसेजेस"
 
 msgid "Report Table"
 msgstr ""
@@ -449,7 +449,7 @@ msgid "Can view only"
 msgstr ""
 
 msgid "No access"
-msgstr ""
+msgstr "कोई एक्सेस नहीं"
 
 msgid "Public access (with login)"
 msgstr ""
@@ -764,7 +764,7 @@ msgid "External url"
 msgstr ""
 
 msgid "Upload file"
-msgstr ""
+msgstr "फ़ाइल अपलोड करें"
 
 msgid "Confirm delete"
 msgstr ""
