@@ -1,3 +1,10 @@
+## [100.2.3](https://github.com/dhis2/reports-app/compare/v100.2.2...v100.2.3) (2026-02-15)
+
+
+### Bug Fixes
+
+* **translations:** sync translations from transifex (master) ([1d6597c](https://github.com/dhis2/reports-app/commit/1d6597cd8745c6467aac372eaf0ceaa8bc64a0fa))
+
 ## [100.2.2](https://github.com/dhis2/reports-app/compare/v100.2.1...v100.2.2) (2026-02-01)
 
 
