@@ -1,4 +1,3 @@
-# 
 # Translators:
 # Philip Larsen Donnelly, 2020
 # Viktor Varland <viktor@dhis2.org>, 2020
@@ -26,7 +25,7 @@ msgid "Select Option"
 msgstr "ເລືອກຕົວເລືອກ"
 
 msgid "Data set dimensions"
-msgstr ""
+msgstr "ຂອບເຂດຂອງຊຸດຂໍ້ມູນ"
 
 msgid "Loading options..."
 msgstr "ກຳລັງໂຫຼດຕົວເລືອກ..."
@@ -38,7 +37,7 @@ msgid "Data set"
 msgstr "ຊຸດຂໍ້ມູນ"
 
 msgid "Group Set"
-msgstr "ຊຸດກຸ່ມ"
+msgstr "ກຸ່ມລວມ"
 
 msgid "Select Group Set"
 msgstr "ເລືອກເປັນກຸ່ມ"
@@ -81,7 +80,7 @@ msgstr "ບໍ່ພົບລາຍການທີ່ຄືກັນ"
 
 msgid "Please enter at least {{count}} characters"
 msgid_plural "Please enter at least {{count}} characters"
-msgstr[0] ""
+msgstr[0] "ກະລຸນາປ້ອນຢ່າງໜ້ອຍ {{count}} ຕົວອັກສອນ"
 
 msgid "Type to search a report table"
 msgstr "ປ້ອນຂໍ້ມູນເພື່ອຄົ້ນຫາຕາຕະລາງບົດລາຍງານ"
@@ -225,10 +224,10 @@ msgid "Get current design"
 msgstr "​ເອົາ​ຕາມ​ການ​ອອກ​ແບບ​ປະ​ຈຸ​ບັນ"
 
 msgid "Get HTML Report Template"
-msgstr ""
+msgstr "ດຶງເອົາແບບຟອມບົດລາຍງານແບບ HTML"
 
 msgid "Get Jasper Report Template"
-msgstr ""
+msgstr "ດຶງເອົາແບບຟອມບົດລາຍງານແບບ Jasper"
 
 msgid "Download"
 msgstr "ດາວໂຫຼດ"
@@ -252,7 +251,7 @@ msgid "Settings"
 msgstr "ຕັ້ງຄ່າ"
 
 msgid "Cache Strategy*"
-msgstr ""
+msgstr "ນະໂຍບາຍການເກັບແຄັດ*"
 
 msgid "Submit"
 msgstr "ສົ່ງໄປລະບົບ"
@@ -285,67 +284,67 @@ msgid "Cache for two weeks"
 msgstr "Cache for two weeks"
 
 msgid "An error occurred whole loading the data set options"
-msgstr ""
+msgstr "ເກີດຂໍ້ຜິດພາດໃນຂະນະທີ່ກຳລັງໂຫລດຕົວເລືອກຂອງຊຸດຂໍ້ມູນ"
 
 msgid "An error occurred while loading the data set dimensions"
-msgstr ""
+msgstr "ເກີດຂໍ້ຜິດພາດໃນຂະນະທີ່ກຳລັງໂຫລດຂອບເຂດຂອງຊຸດຂໍ້ມູນ"
 
 msgid "An error occurred while loading the group sets!"
-msgstr ""
+msgstr "ເກີດຂໍ້ຜິດພາດໃນຂະນະທີ່ກຳລັງໂຫລດກຸ່ມລວມ!"
 
 msgid "Could not load organisation units"
 msgstr "ບໍ່ສາມາດໂຫຼດຫົວໜ່ວຍການຈັດຕັ້ງໄດ້"
 
 msgid "An error occurred while loading the organisation units!"
-msgstr ""
+msgstr "ເກີດຂໍ້ຜິດພາດໃນຂະນະທີ່ກຳລັງໂຫລດໜ່ວຍງານຈັດຕັ້ງ!"
 
 msgid "Successfully loaded the {{ outputType }}"
-msgstr ""
+msgstr "ໂຫລດສຳເລັດແລ້ວສຳລັບ {{ outputType }}"
 
 msgid "chart"
-msgstr ""
+msgstr "ແຜນພູມ"
 
 msgid "table"
 msgstr "ຕາຕະລາງ"
 
 msgid "An error occurred while loading the report!"
-msgstr ""
+msgstr "ເກີດຂໍ້ຜິດພາດໃນຂະນະທີ່ກຳລັງໂຫລດບົດລາຍງານ!"
 
 msgid "Successfully added comment"
 msgstr "ເພີ່ມຄວາມຄິດເຫັນສຳເລັດແລ້ວ"
 
 msgid "An error occurred while submitting your comment!"
-msgstr ""
+msgstr "ເກີດຂໍ້ຜິດພາດໃນຂະນະທີ່ກຳລັງສົ່ງຄຳເຫັນຂອງທ່ານ!"
 
 msgid "Could not load period types"
 msgstr "ບໍ່ສາມາດໂຫຼດປະເພດຊ່ວງເວລາໄດ້"
 
 msgid "An error occurred while loading the resources!"
-msgstr ""
+msgstr "ເກີດຂໍ້ຜິດພາດໃນຂະນະທີ່ກຳລັງໂຫລດແຫຼ່ງທີ່ມາ!"
 
 msgid "Do you really want to delete this resource?"
-msgstr ""
+msgstr "ທ່ານແນ່ໃຈຫຼືບໍ່ທີ່ຈະລຶບແຫຼ່ງທີ່ມານີ້?"
 
 msgid "The resource has been deleted successfully"
-msgstr ""
+msgstr "ລຶບແຫຼ່ງທີ່ມາສຳເລັດແລ້ວ"
 
 msgid "An error occurred when deleting the resource!"
-msgstr ""
+msgstr "ເກີດຂໍ້ຜິດພາດໃນຂະນະທີ່ກຳລັງລຶບແຫຼ່ງທີ່ມາ!"
 
 msgid "An error occurred while adding the resource!"
-msgstr ""
+msgstr "ເກີດຂໍ້ຜິດພາດໃນຂະນະທີ່ກຳລັງເພີ່ມແຫຼ່ງທີ່ມາ!"
 
 msgid "An error occurred while saving the modifications!"
-msgstr ""
+msgstr "ເກີດຂໍ້ຜິດພາດໃນຂະນະທີ່ກຳລັງບັນທຶກການປ່ຽນແປງ!"
 
 msgid "An error occurred while loading the standard reports"
-msgstr ""
+msgstr "ເກີດຂໍ້ຜິດພາດໃນຂະນະທີ່ກຳລັງໂຫລດບົດລາຍງານມາດຕະຖານ"
 
 msgid "An error occurred while trying to delete the standard report"
-msgstr ""
+msgstr "ເກີດຂໍ້ຜິດພາດໃນຂະນະທີ່ພະຍາຍາມລຶບບົດລາຍງານມາດຕະຖານ"
 
 msgid "An error occurred while loading the standard report details"
-msgstr ""
+msgstr "ເກີດຂໍ້ຜິດພາດໃນຂະນະທີ່ກຳລັງໂຫລດລາຍລະອຽດຂອງບົດລາຍງານມາດຕະຖານ"
 
 msgid "The report has been updated successfully"
 msgstr "ອັບເດດບົດລາຍງານສຳເລັດແລ້ວ"
@@ -354,16 +353,16 @@ msgid "The report has been added successfully"
 msgstr "ເພີ່ມບົດລາຍງານສຳເລັດແລ້ວ"
 
 msgid "An error occurred while updating the report!"
-msgstr ""
+msgstr "ເກີດຂໍ້ຜິດພາດໃນຂະນະທີ່ກຳລັງອັບເດດບົດລາຍງານ!"
 
 msgid "An error occurred while adding the report!"
-msgstr ""
+msgstr "ເກີດຂໍ້ຜິດພາດໃນຂະນະທີ່ກຳລັງເພີ່ມບົດລາຍງານ!"
 
 msgid "An error occurred while generating the html report"
-msgstr ""
+msgstr "ເກີດຂໍ້ຜິດພາດໃນຂະນະທີ່ກຳລັງສ້າງບົດລາຍງານແບບ HTML"
 
 msgid "An error occurred while loading the report table options"
-msgstr ""
+msgstr "ເກີດຂໍ້ຜິດພາດໃນຂະນະທີ່ກຳລັງໂຫລດຕົວເລືອກຕາຕະລາງບົດລາຍງານ"
 
 msgid "Count"
 msgstr "ນັບ"
@@ -375,7 +374,7 @@ msgid "Name"
 msgstr "ຊື່"
 
 msgid "Something went wrong when processing your request."
-msgstr ""
+msgstr "ເກີດຂໍ້ຜິດພາດບາງຢ່າງ ໃນຂະນະທີ່ກຳລັງປະມວນຜົນຄຳຮ້ອງຂໍຂອງທ່ານ."
 
 msgid "Search apps"
 msgstr "ຄົ້ນຫາແອັບ"
@@ -420,7 +419,7 @@ msgid "Edit"
 msgstr "ແກ້ໄຂ"
 
 msgid "Actions"
-msgstr ""
+msgstr "ຄຳສັ່ງ"
 
 msgid "Delete"
 msgstr "ລົບ"
@@ -621,16 +620,16 @@ msgid "Quarterly"
 msgstr "ໄຕມາດ"
 
 msgid "Quarterly-Nov"
-msgstr ""
+msgstr "ລາຍໄຕມາດ-ພະຈິກ"
 
 msgid "Six-Monthly"
 msgstr "ຫົກເດືອນຕໍ່ຄັ້ງ"
 
 msgid "Six-Monthly April"
-msgstr ""
+msgstr "ລາຍ 6 ເດືອນ ເລີ່ມເດືອນເມສາ"
 
 msgid "Six-Monthly November"
-msgstr ""
+msgstr "ລາຍ 6 ເດືອນ ເລີ່ມເດືອນພະຈິກ"
 
 msgid "Yearly"
 msgstr "ລາຍປີ"
@@ -717,7 +716,7 @@ msgid "Last bi-month"
 msgstr "ສອງເດືອນກ່ອນທ້າຍປີ"
 
 msgid "Last 6 bi-month"
-msgstr ""
+msgstr "6 ສອງເດືອນຜ່ານມາ"
 
 msgid "Bi-months this year"
 msgstr "ສອງເດືອນ ຂອງປີນີ້"
@@ -735,7 +734,7 @@ msgid "Last 4 quarters"
 msgstr "4 ໄຕມາດຍ້ອນຫຼັງ"
 
 msgid "Quarters of reporting year"
-msgstr ""
+msgstr "ໄຕມາດຕ່າງໆຂອງປີລາຍງານ"
 
 msgid "Six-Months"
 msgstr "6 ເດືອນ"
@@ -753,7 +752,7 @@ msgid "Financial Years"
 msgstr "ສົກປີງົບປະມານ"
 
 msgid "Reporting financial year"
-msgstr ""
+msgstr "ສົກປີງົບປະມານການລາຍງານ"
 
 msgid "Last financial year"
 msgstr "​ສົກ​ປີ​ງົບ​ປະ​ມານ​ປີ​ກາຍ"
@@ -765,7 +764,7 @@ msgid "Years"
 msgstr "ປີ"
 
 msgid "Reporting year"
-msgstr ""
+msgstr "ປີລາຍງານ"
 
 msgid "Last year"
 msgstr "ປີກາຍ"
@@ -774,7 +773,7 @@ msgid "Last 5 years"
 msgstr "5 ປີຍ້ອນຫຼັງ"
 
 msgid "External url"
-msgstr ""
+msgstr "URL ພາຍນອກ"
 
 msgid "Upload file"
 msgstr "ອັບໂຫຼດເອກະສານ"
