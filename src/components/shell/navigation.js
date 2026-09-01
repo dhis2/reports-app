@@ -13,6 +13,7 @@ import {
     ORG_UNIT_DIST_REPORT_SECTION_KEY,
     REPORTING_RATE_SUMMARY_SECTION_KEY,
     RESOURCE_SECTION_KEY,
+    STANDARD_REPORT_NEXT_SECTION_KEY,
     STANDARD_REPORT_SECTION_KEY,
     sections,
 } from '../../config/sections.config.js'
@@ -39,7 +40,7 @@ const GROUPS = [
     {
         label: i18n.t('Designed by your team'),
         hint: i18n.t('Reports built outside the app'),
-        keys: [STANDARD_REPORT_SECTION_KEY],
+        keys: [STANDARD_REPORT_SECTION_KEY, STANDARD_REPORT_NEXT_SECTION_KEY],
     },
     {
         label: i18n.t('Files and links'),
@@ -54,6 +55,7 @@ const ICONS = {
     [REPORTING_RATE_SUMMARY_SECTION_KEY]: IconCheckmarkCircle24,
     [ORG_UNIT_DIST_REPORT_SECTION_KEY]: IconVisualizationColumn24,
     [STANDARD_REPORT_SECTION_KEY]: IconFileDocument24,
+    [STANDARD_REPORT_NEXT_SECTION_KEY]: IconStarFilled24,
     [RESOURCE_SECTION_KEY]: IconFolder24,
 }
 
@@ -71,6 +73,7 @@ const QUESTIONS = {
         'How your facilities break down'
     ),
     [STANDARD_REPORT_SECTION_KEY]: i18n.t('Run a report your team designed'),
+    [STANDARD_REPORT_NEXT_SECTION_KEY]: i18n.t('Redesign in progress'),
     [RESOURCE_SECTION_KEY]: i18n.t('Documents and web links'),
 }
 

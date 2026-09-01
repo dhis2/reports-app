@@ -49,6 +49,12 @@ exports[`Matches the snapshot 1`] = `
       path="/standard-report/:mode/:id([a-zA-Z][a-zA-Z0-9]{10})?"
     />
     <Route
+      component={[Function]}
+      exact={true}
+      key="standard-report-next"
+      path="/standard-report-next"
+    />
+    <Route
       component={
         Object {
           "$$typeof": Symbol(react.memo),

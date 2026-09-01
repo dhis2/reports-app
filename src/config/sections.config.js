@@ -5,6 +5,8 @@ export const DATA_SET_REPORT_SECTION_KEY = 'data-set-report'
 /* Prototype only — remove this key, its sectionOrder entry and its sections
  * entry to take the redesigned page back out of the menu. */
 export const DATA_SET_REPORT_NEXT_SECTION_KEY = 'data-set-report-next'
+/* Prototype only — same treatment as the data set report key above. */
+export const STANDARD_REPORT_NEXT_SECTION_KEY = 'standard-report-next'
 export const REPORTING_RATE_SUMMARY_SECTION_KEY = 'reporting-rate-summary'
 export const RESOURCE_SECTION_KEY = 'resource'
 export const ORG_UNIT_DIST_REPORT_SECTION_KEY =
@@ -13,6 +15,7 @@ export const DATA_APPROVAL_SECTION_KEY = 'data-approval'
 
 export const sectionOrder = [
     STANDARD_REPORT_SECTION_KEY,
+    STANDARD_REPORT_NEXT_SECTION_KEY,
     DATA_SET_REPORT_SECTION_KEY,
     DATA_SET_REPORT_NEXT_SECTION_KEY,
     REPORTING_RATE_SUMMARY_SECTION_KEY,
@@ -29,6 +32,19 @@ export const sections = {
             icon: 'bar_chart',
             description: i18n.t(
                 'View and add reports based on the JasperReports library. These can be based on report tables and can be designed in iReport.'
+            ),
+            actionText: i18n.t('View Reports'),
+            docs: 'using_reporting_standard_reports',
+        },
+    },
+    [STANDARD_REPORT_NEXT_SECTION_KEY]: {
+        key: STANDARD_REPORT_NEXT_SECTION_KEY,
+        path: `/${STANDARD_REPORT_NEXT_SECTION_KEY}`,
+        info: {
+            label: i18n.t('Standard Report (prototype)'),
+            icon: 'description',
+            description: i18n.t(
+                'Redesign prototype of the standard report, built on the current DHIS2 component library. HTML reports only.'
             ),
             actionText: i18n.t('View Reports'),
             docs: 'using_reporting_standard_reports',

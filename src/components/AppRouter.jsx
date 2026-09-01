@@ -7,6 +7,7 @@ import {
     ORG_UNIT_DIST_REPORT_SECTION_KEY,
     REPORTING_RATE_SUMMARY_SECTION_KEY,
     RESOURCE_SECTION_KEY,
+    STANDARD_REPORT_NEXT_SECTION_KEY,
     STANDARD_REPORT_SECTION_KEY,
 } from '../config/sections.config.js'
 import { DataSetReportNext } from '../pages/data-set-report-next/DataSetReportNext.jsx'
@@ -18,6 +19,7 @@ import { AddEditResource } from '../pages/resource/AddEditResource.jsx'
 import { Resource } from '../pages/Resource.jsx'
 import { ConnectedAddEditStdReport } from '../pages/standard-report/AddEditStdReport.jsx'
 import StyledHtmlReport from '../pages/standard-report/StyledHtmlReport.jsx'
+import { StandardReportNext } from '../pages/standard-report-next/StandardReportNext.jsx'
 import { StandardReport } from '../pages/StandardReport.jsx'
 import NoMatch from './NoMatch.jsx'
 
@@ -48,6 +50,12 @@ const AppRouter = () => (
                 // /edit/id or /new
                 path={`${standardReportPath}/:mode/:id(${ID_REGEXP})?`}
                 component={ConnectedAddEditStdReport}
+            />
+            <Route
+                exact
+                key={STANDARD_REPORT_NEXT_SECTION_KEY}
+                path={sections[STANDARD_REPORT_NEXT_SECTION_KEY].path}
+                component={StandardReportNext}
             />
             <Route
                 exact

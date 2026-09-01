@@ -32,8 +32,8 @@
     display: flex;
     align-items: center;
     padding: 10px 24px;
-    background: #ffffff;
-    border-bottom: 1px solid #d5dde5;
+    background: var(--white);
+    border-bottom: 1px solid var(--grey400);
 }
 
 .main {

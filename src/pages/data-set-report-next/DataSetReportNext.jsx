@@ -2,10 +2,12 @@ import { useConfig, useDataEngine, useDataQuery } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import {
     Button,
-    Card,
     CircularLoader,
+    DropdownButton,
+    FlyoutMenu,
     IconChevronLeft24,
     IconChevronRight24,
+    MenuItem,
     NoticeBox,
     OrganisationUnitTree,
     Radio,
@@ -13,6 +15,7 @@ import {
     SingleSelectField,
     SingleSelectOption,
 } from '@dhis2/ui'
+import PropTypes from 'prop-types'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { SectionSwitcher } from '../../components/shell/SectionSwitcher.jsx'
 import { DATA_SET_REPORT_NEXT_SECTION_KEY } from '../../config/sections.config.js'
@@ -139,6 +142,40 @@ const formTypeLabel = (formType) => {
     }
 }
 
+/*
+ * One optional filter. Both sources — data set dimensions and org unit group
+ * sets — reduce to the same {id, label, options} shape, so they render the
+ * same way; only where they sit in the form differs.
+ */
+const FilterSelect = ({ field, value, onChange }) => (
+    <SingleSelectField
+        clearable
+        dense
+        label={field.label}
+        placeholder={i18n.t('Any')}
+        selected={safeSelected(field.options, value)}
+        onChange={({ selected }) => onChange(field.id, selected)}
+    >
+        {field.options.map((option) => (
+            <SingleSelectOption
+                key={option.id}
+                value={option.id}
+                label={option.displayName}
+            />
+        ))}
+    </SingleSelectField>
+)
+
+FilterSelect.propTypes = {
+    field: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        label: PropTypes.string.isRequired,
+        options: PropTypes.array.isRequired,
+    }).isRequired,
+    onChange: PropTypes.func.isRequired,
+    value: PropTypes.string,
+}
+
 export const DataSetReportNext = () => {
     const { baseUrl } = useConfig()
     const engine = useDataEngine()
@@ -156,7 +193,7 @@ export const DataSetReportNext = () => {
     const [report, setReport] = useState(null)
     const [reportLoading, setReportLoading] = useState(false)
     const [reportError, setReportError] = useState(null)
-    const [filtersOpen, setFiltersOpen] = useState(false)
+    const [groupSetsOpen, setGroupSetsOpen] = useState(false)
     const [ouName, setOuName] = useState('')
     const [railCollapsed, setRailCollapsed] = useState(readRailCollapsed)
     const [viewMode, setViewMode] = useState(readViewMode)
@@ -196,21 +233,37 @@ export const DataSetReportNext = () => {
     const groupSets =
         groupSetsQuery.data?.groupSets?.organisationUnitGroupSets || []
 
-    /* Every optional filter, from both sources, in one shape. */
-    const filterFields = useMemo(
-        () => [
-            ...dimensions.map((dimension) => ({
+    /*
+     * The two filter sources stay apart, because they answer to different
+     * selections. Data set dimensions come from the chosen data set and sit
+     * under it; group sets slice the org unit hierarchy and sit under the
+     * tree. Pooling them into one "optional filters" bucket, as an earlier
+     * pass did, detaches each one from the choice that gives it meaning.
+     */
+    const dimensionFields = useMemo(
+        () =>
+            dimensions.map((dimension) => ({
                 id: dimension.id,
                 label: dimension.displayName,
                 options: dimension.items || [],
             })),
-            ...groupSets.map((groupSet) => ({
+        [dimensions]
+    )
+
+    const groupSetFields = useMemo(
+        () =>
+            groupSets.map((groupSet) => ({
                 id: groupSet.id,
                 label: groupSet.displayName,
                 options: groupSet.organisationUnitGroups || [],
             })),
-        ],
-        [dimensions, groupSets]
+        [groupSets]
+    )
+
+    /* Both sources together, for the filter chips and the pruning below. */
+    const filterFields = useMemo(
+        () => [...dimensionFields, ...groupSetFields],
+        [dimensionFields, groupSetFields]
     )
 
     const activeFilters = useMemo(
@@ -231,6 +284,37 @@ export const DataSetReportNext = () => {
                 })
                 .filter(Boolean),
         [filterFields, selection.filters]
+    )
+
+    /*
+     * Only the group set filters count here: the badge belongs to the
+     * collapsed area, so it must not report filters set elsewhere.
+     */
+    const groupSetFilterCount = useMemo(
+        () =>
+            groupSetFields.filter((field) => selection.filters[field.id])
+                .length,
+        [groupSetFields, selection.filters]
+    )
+
+    /*
+     * A filter restored from a link or from local storage would otherwise sit
+     * inside a shut area, shaping the report with only a badge to show for
+     * it. Opening on a non-zero count is a no-op once the area is already
+     * open, so this does not fight the user closing it again.
+     */
+    useEffect(() => {
+        if (groupSetFilterCount > 0) {
+            setGroupSetsOpen(true)
+        }
+    }, [groupSetFilterCount])
+
+    const onFilterChange = useCallback(
+        (fieldId, optionId) =>
+            update({
+                filters: { ...selection.filters, [fieldId]: optionId },
+            }),
+        [selection.filters, update]
     )
 
     const periodType = selection.periodType
@@ -545,7 +629,6 @@ export const DataSetReportNext = () => {
         lastDataSetId.current = ''
     }
 
-    const filterCount = activeFilters.length
     const downloads = report
         ? downloadUrls(baseUrl, {
               ds: report.snapshot.ds,
@@ -671,12 +754,14 @@ export const DataSetReportNext = () => {
                                 </div>
 
                                 <fieldset className={styles.scopeGroup}>
-                                    <legend>{i18n.t('What to include')}</legend>
+                                    <legend>
+                                        {i18n.t('Selection mode')}
+                                    </legend>
                                     <Radio
                                         dense
                                         name="scope"
                                         label={i18n.t(
-                                            'Everything below this unit, added up'
+                                            'Include units inside'
                                         )}
                                         checked={!selection.selectedUnitOnly}
                                         onChange={() =>
@@ -686,15 +771,96 @@ export const DataSetReportNext = () => {
                                     <Radio
                                         dense
                                         name="scope"
-                                        label={i18n.t(
-                                            'Only data recorded at this unit'
-                                        )}
+                                        label={i18n.t('Selected unit only')}
                                         checked={selection.selectedUnitOnly}
                                         onChange={() =>
                                             update({ selectedUnitOnly: true })
                                         }
                                     />
                                 </fieldset>
+
+                                {/*
+                                 * Group sets slice the hierarchy, so they stay
+                                 * with the tree above rather than becoming a
+                                 * separate kind of choice — but they are a
+                                 * narrowing most reports never need, so the
+                                 * area is shut until asked for. The count on
+                                 * the button is what keeps a collapsed filter
+                                 * from silently shaping the report. Group sets
+                                 * with no groups are dropped server-side; see
+                                 * GROUP_SETS_QUERY.
+                                 */}
+                                {groupSetFields.length > 0 && (
+                                    <div className={styles.disclosure}>
+                                        <button
+                                            type="button"
+                                            className={styles.disclosureButton}
+                                            aria-expanded={groupSetsOpen}
+                                            onClick={() =>
+                                                setGroupSetsOpen(!groupSetsOpen)
+                                            }
+                                        >
+                                            <svg
+                                                className={
+                                                    styles.disclosureChevron
+                                                }
+                                                viewBox="0 0 16 16"
+                                                aria-hidden="true"
+                                                focusable="false"
+                                            >
+                                                <path
+                                                    d="M6 3.5 10.5 8 6 12.5"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    strokeWidth="1.75"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                />
+                                            </svg>
+                                            <span
+                                                className={
+                                                    styles.disclosureLabel
+                                                }
+                                            >
+                                                {i18n.t(
+                                                    'Organisation unit filtering'
+                                                )}
+                                            </span>
+                                            {groupSetFilterCount > 0 && (
+                                                <span
+                                                    className={
+                                                        styles.countBadge
+                                                    }
+                                                >
+                                                    {groupSetFilterCount}
+                                                </span>
+                                            )}
+                                        </button>
+
+                                        {groupSetsOpen && (
+                                            <div
+                                                className={
+                                                    styles.disclosureBody
+                                                }
+                                            >
+                                                {groupSetFields.map((field) => (
+                                                    <FilterSelect
+                                                        key={field.id}
+                                                        field={field}
+                                                        value={
+                                                            selection.filters[
+                                                                field.id
+                                                            ]
+                                                        }
+                                                        onChange={
+                                                            onFilterChange
+                                                        }
+                                                    />
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
+                                )}
 
                                 <div>
                                     <SingleSelectField
@@ -732,6 +898,28 @@ export const DataSetReportNext = () => {
                                                     'rendered by the server'
                                                 )}`}
                                         </p>
+                                    )}
+
+                                    {/*
+                                     * Attribute dimensions belong to the data
+                                     * set, so they appear with it and vanish
+                                     * with it. There are rarely more than two.
+                                     */}
+                                    {dimensionFields.length > 0 && (
+                                        <div className={styles.subFields}>
+                                            {dimensionFields.map((field) => (
+                                                <FilterSelect
+                                                    key={field.id}
+                                                    field={field}
+                                                    value={
+                                                        selection.filters[
+                                                            field.id
+                                                        ]
+                                                    }
+                                                    onChange={onFilterChange}
+                                                />
+                                            ))}
+                                        </div>
                                     )}
                                 </div>
 
@@ -830,85 +1018,6 @@ export const DataSetReportNext = () => {
                                         />
                                     ))}
                                 </SingleSelectField>
-
-                                {filterFields.length > 0 && (
-                                    <div className={styles.disclosure}>
-                                        <button
-                                            type="button"
-                                            className={styles.disclosureButton}
-                                            aria-expanded={filtersOpen}
-                                            onClick={() =>
-                                                setFiltersOpen(!filtersOpen)
-                                            }
-                                        >
-                                            <span aria-hidden="true">
-                                                {filtersOpen ? '▾' : '▸'}
-                                            </span>
-                                            {i18n.t('Optional filters')}
-                                            {filterCount > 0 && (
-                                                <span
-                                                    className={
-                                                        styles.countBadge
-                                                    }
-                                                >
-                                                    {filterCount}
-                                                </span>
-                                            )}
-                                        </button>
-
-                                        {filtersOpen && (
-                                            <div
-                                                className={
-                                                    styles.disclosureBody
-                                                }
-                                            >
-                                                {filterFields.map((field) => (
-                                                    <SingleSelectField
-                                                        key={field.id}
-                                                        clearable
-                                                        label={field.label}
-                                                        placeholder={i18n.t(
-                                                            'Any'
-                                                        )}
-                                                        selected={safeSelected(
-                                                            field.options,
-                                                            selection.filters[
-                                                                field.id
-                                                            ]
-                                                        )}
-                                                        onChange={({
-                                                            selected,
-                                                        }) =>
-                                                            update({
-                                                                filters: {
-                                                                    ...selection.filters,
-                                                                    [field.id]:
-                                                                        selected,
-                                                                },
-                                                            })
-                                                        }
-                                                    >
-                                                        {field.options.map(
-                                                            (option) => (
-                                                                <SingleSelectOption
-                                                                    key={
-                                                                        option.id
-                                                                    }
-                                                                    value={
-                                                                        option.id
-                                                                    }
-                                                                    label={
-                                                                        option.displayName
-                                                                    }
-                                                                />
-                                                            )
-                                                        )}
-                                                    </SingleSelectField>
-                                                ))}
-                                            </div>
-                                        )}
-                                    </div>
-                                )}
                             </div>
 
                             {/*
@@ -942,58 +1051,50 @@ export const DataSetReportNext = () => {
                 {/* ---------------- output ---------------- */}
                 <section className={styles.output}>
                     {reportError && (
-                        <Card>
-                            <div className={styles.noticePad}>
-                                <NoticeBox
-                                    error
-                                    title={i18n.t(
-                                        'The report could not be built'
-                                    )}
-                                >
-                                    {reportError.message}
-                                </NoticeBox>
-                            </div>
-                        </Card>
+                        <div className={styles.noticePad}>
+                            <NoticeBox
+                                error
+                                title={i18n.t('The report could not be built')}
+                            >
+                                {reportError.message}
+                            </NoticeBox>
+                        </div>
                     )}
 
                     {reportLoading && (
-                        <Card>
-                            <div className={styles.centered}>
-                                <CircularLoader />
-                                <p style={{ marginTop: 16 }}>
-                                    {i18n.t(
-                                        'Building your report — large forms can take a moment.'
-                                    )}
-                                </p>
-                            </div>
-                        </Card>
+                        <div className={styles.centered}>
+                            <CircularLoader />
+                            <p style={{ marginTop: 16 }}>
+                                {i18n.t(
+                                    'Building your report — large forms can take a moment.'
+                                )}
+                            </p>
+                        </div>
                     )}
 
                     {!reportLoading && !report && !reportError && (
-                        <Card>
-                            <div className={styles.centered}>
-                                <h2>{i18n.t('No report yet')}</h2>
-                                <p>
+                        <div className={styles.centered}>
+                            <h2>{i18n.t('No report yet')}</h2>
+                            <p>
+                                {i18n.t(
+                                    'Choose an organisation unit, a data set and a period, then select Get report. You will get the data entry form for that period, filled in and ready to print.'
+                                )}
+                            </p>
+                            {restoredFromMemory && (
+                                <p
+                                    className={styles.help}
+                                    style={{ marginTop: 16 }}
+                                >
                                     {i18n.t(
-                                        'Choose an organisation unit, a data set and a period, then select Get report. You will get the data entry form for that period, filled in and ready to print.'
+                                        'Your options from last time are filled in already.'
                                     )}
                                 </p>
-                                {restoredFromMemory && (
-                                    <p
-                                        className={styles.help}
-                                        style={{ marginTop: 16 }}
-                                    >
-                                        {i18n.t(
-                                            'Your options from last time are filled in already.'
-                                        )}
-                                    </p>
-                                )}
-                            </div>
-                        </Card>
+                            )}
+                        </div>
                     )}
 
                     {!reportLoading && report && (
-                        <Card>
+                        <div>
                             {isStale && (
                                 <div className={styles.noticePad}>
                                     <NoticeBox
@@ -1023,34 +1124,22 @@ export const DataSetReportNext = () => {
                             )}
 
                             <div className={styles.summary}>
-                                <dl>
-                                    <div>
-                                        <dt>{i18n.t('Data set')}</dt>
-                                        <dd>{report.snapshot.dataSetName}</dd>
-                                    </div>
-                                    <div>
-                                        <dt>{i18n.t('Period')}</dt>
-                                        <dd>{report.snapshot.periodName}</dd>
-                                    </div>
-                                    <div>
-                                        <dt>{i18n.t('Organisation unit')}</dt>
-                                        <dd>{report.snapshot.orgUnitName}</dd>
-                                    </div>
-                                    <div>
-                                        <dt>{i18n.t('Includes')}</dt>
-                                        <dd>
-                                            {report.snapshot.selectedUnitOnly
-                                                ? i18n.t('This unit only')
-                                                : i18n.t('Sub-units')}
-                                        </dd>
-                                    </div>
-                                    <div>
-                                        <dt>{i18n.t('Generated')}</dt>
-                                        <dd>
-                                            {report.snapshot.generatedAt.toLocaleString()}
-                                        </dd>
-                                    </div>
-                                </dl>
+                                <p className={styles.summaryLine}>
+                                    {[
+                                        report.snapshot.dataSetName,
+                                        report.snapshot.periodName,
+                                        report.snapshot.selectedUnitOnly
+                                            ? report.snapshot.orgUnitName
+                                            : i18n.t(
+                                                  '{{orgUnit}} + units inside',
+                                                  {
+                                                      orgUnit: report.snapshot
+                                                          .orgUnitName,
+                                                  }
+                                              ),
+                                        report.snapshot.generatedAt.toLocaleString(),
+                                    ].join(' · ')}
+                                </p>
 
                                 <div className={styles.summaryActions}>
                                     <Button
@@ -1059,25 +1148,35 @@ export const DataSetReportNext = () => {
                                     >
                                         {i18n.t('Print')}
                                     </Button>
-                                    {downloads.map((file) => (
-                                        <a
-                                            key={file.extension}
-                                            href={file.url}
-                                            download
-                                            rel="noreferrer"
-                                            target={
-                                                file.extension === 'pdf'
-                                                    ? '_blank'
-                                                    : '_self'
+                                    {downloads.length > 0 && (
+                                        <DropdownButton
+                                            small
+                                            component={
+                                                <FlyoutMenu>
+                                                    {downloads.map((file) => (
+                                                        <MenuItem
+                                                            key={file.extension}
+                                                            label={i18n.t(
+                                                                '{{ext}}',
+                                                                {
+                                                                    ext: file.extension.toUpperCase(),
+                                                                }
+                                                            )}
+                                                            href={file.url}
+                                                            target={
+                                                                file.extension ===
+                                                                'pdf'
+                                                                    ? '_blank'
+                                                                    : '_self'
+                                                            }
+                                                        />
+                                                    ))}
+                                                </FlyoutMenu>
                                             }
                                         >
-                                            <Button small>
-                                                {i18n.t('Download {{ext}}', {
-                                                    ext: file.extension.toUpperCase(),
-                                                })}
-                                            </Button>
-                                        </a>
-                                    ))}
+                                            {i18n.t('Download...')}
+                                        </DropdownButton>
+                                    )}
                                 </div>
                             </div>
 
@@ -1121,44 +1220,6 @@ export const DataSetReportNext = () => {
                                         },
                                     ]}
                                 />
-
-                                {isStandardView &&
-                                    report.tables?.length > 1 && (
-                                        <nav className={styles.toc}>
-                                            <span>
-                                                {i18n.t('{{count}} sections', {
-                                                    count: report.tables.length,
-                                                })}
-                                            </span>
-                                            {/*
-                                             * Buttons, not anchors: the app uses
-                                             * hash routing, so href="#section-1"
-                                             * is read as a route change and
-                                             * navigates away from the report
-                                             * instead of scrolling to it.
-                                             */}
-                                            {report.tables.map((table) => (
-                                                <button
-                                                    type="button"
-                                                    key={table.id}
-                                                    className={styles.tocLink}
-                                                    onClick={() =>
-                                                        document
-                                                            .getElementById(
-                                                                table.id
-                                                            )
-                                                            ?.scrollIntoView({
-                                                                behavior:
-                                                                    'smooth',
-                                                                block: 'start',
-                                                            })
-                                                    }
-                                                >
-                                                    {table.title}
-                                                </button>
-                                            ))}
-                                        </nav>
-                                    )}
                             </div>
 
                             {/* ---------------- standard view ---------------- */}
@@ -1213,7 +1274,7 @@ export const DataSetReportNext = () => {
                                     />
                                 </div>
                             )}
-                        </Card>
+                        </div>
                     )}
                 </section>
             </div>

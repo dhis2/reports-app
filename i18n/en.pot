@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-09-01T09:35:38.379Z\n"
-"PO-Revision-Date: 2026-09-01T09:35:38.379Z\n"
+"POT-Creation-Date: 2026-09-01T12:47:11.644Z\n"
+"PO-Revision-Date: 2026-09-01T12:47:11.644Z\n"
 
 msgid "Updating Organisation Units Tree..."
 msgstr "Updating Organisation Units Tree..."
@@ -126,6 +126,16 @@ msgstr ""
 msgid "View Reports"
 msgstr "View Reports"
 
+msgid "Standard Report (prototype)"
+msgstr "Standard Report (prototype)"
+
+msgid ""
+"Redesign prototype of the standard report, built on the current DHIS2 "
+"component library. HTML reports only."
+msgstr ""
+"Redesign prototype of the standard report, built on the current DHIS2 "
+"component library. HTML reports only."
+
 msgid "Data Set Report"
 msgstr "Data Set Report"
 
@@ -206,6 +216,9 @@ msgstr "section form"
 msgid "default form"
 msgstr "default form"
 
+msgid "Any"
+msgstr "Any"
+
 msgid "Show report options"
 msgstr "Show report options"
 
@@ -218,14 +231,17 @@ msgstr "Organisation unit"
 msgid "Could not load organisation units."
 msgstr "Could not load organisation units."
 
-msgid "What to include"
-msgstr "What to include"
+msgid "Selection mode"
+msgstr "Selection mode"
 
-msgid "Everything below this unit, added up"
-msgstr "Everything below this unit, added up"
+msgid "Include units inside"
+msgstr "Include units inside"
 
-msgid "Only data recorded at this unit"
-msgstr "Only data recorded at this unit"
+msgid "Selected unit only"
+msgstr "Selected unit only"
+
+msgid "Organisation unit filtering"
+msgstr "Organisation unit filtering"
 
 msgid "No data set found"
 msgstr "No data set found"
@@ -264,12 +280,6 @@ msgstr "Period"
 msgid "Choose a period"
 msgstr "Choose a period"
 
-msgid "Optional filters"
-msgstr "Optional filters"
-
-msgid "Any"
-msgstr "Any"
-
 msgid "Get report"
 msgstr "Get report"
 
@@ -306,23 +316,17 @@ msgstr "The report below is still {{dataSet}} · {{period}} · {{orgUnit}}."
 msgid "Get report again"
 msgstr "Get report again"
 
-msgid "Includes"
-msgstr "Includes"
-
-msgid "This unit only"
-msgstr "This unit only"
-
-msgid "Sub-units"
-msgstr "Sub-units"
-
-msgid "Generated"
-msgstr "Generated"
+msgid "{{orgUnit}} + units inside"
+msgstr "{{orgUnit}} + units inside"
 
 msgid "Print"
 msgstr "Print"
 
-msgid "Download {{ext}}"
-msgstr "Download {{ext}}"
+msgid "{{ext}}"
+msgstr "{{ext}}"
+
+msgid "Download..."
+msgstr "Download..."
 
 msgid "Standard"
 msgstr "Standard"
@@ -540,6 +544,177 @@ msgstr "Cache until 6 AM tomorrow"
 msgid "Cache for two weeks"
 msgstr "Cache for two weeks"
 
+msgid "Not built yet"
+msgstr "Not built yet"
+
+msgid "New standard report"
+msgstr "New standard report"
+
+msgid "This will become the report creation form. Nothing is saved yet."
+msgstr "This will become the report creation form. Nothing is saved yet."
+
+msgid "Name"
+msgstr "Name"
+
+msgid "What people will see in the list"
+msgstr "What people will see in the list"
+
+msgid "Design file"
+msgstr "Design file"
+
+msgid "The HTML your team wrote, uploaded here"
+msgstr "The HTML your team wrote, uploaded here"
+
+msgid "Asks for"
+msgstr "Asks for"
+
+msgid ""
+"Whether running it should ask for a period, an organisation unit, both or "
+"neither"
+msgstr ""
+"Whether running it should ask for a period, an organisation unit, both or "
+"neither"
+
+msgid "Periods allowed"
+msgstr "Periods allowed"
+
+msgid "Which periods it may be run for"
+msgstr "Which periods it may be run for"
+
+msgid "Cache strategy"
+msgstr "Cache strategy"
+
+msgid "How long a generated report may be reused"
+msgstr "How long a generated report may be reused"
+
+msgid "Close"
+msgstr "Close"
+
+msgid "Edit report"
+msgstr "Edit report"
+
+msgid "Identifier"
+msgstr "Identifier"
+
+msgid "Nothing"
+msgstr "Nothing"
+
+msgid "All"
+msgstr "All"
+
+msgid "Everyone can view and edit"
+msgstr "Everyone can view and edit"
+
+msgid "Everyone can view"
+msgstr "Everyone can view"
+
+msgid "No public access"
+msgstr "No public access"
+
+msgid "Sharing settings"
+msgstr "Sharing settings"
+
+msgid ""
+"This will become the sharing editor. The settings below are the real ones "
+"for this report, shown read-only — nothing here changes them."
+msgstr ""
+"This will become the sharing editor. The settings below are the real ones "
+"for this report, shown read-only — nothing here changes them."
+
+msgid "Public access"
+msgstr "Public access"
+
+msgid "Shared with"
+msgstr "Shared with"
+
+msgid "Nobody in particular"
+msgstr "Nobody in particular"
+
+msgid "Search reports"
+msgstr "Search reports"
+
+msgid "Could not load the list of reports."
+msgstr "Could not load the list of reports."
+
+msgid "No report matches “{{search}}”."
+msgstr "No report matches “{{search}}”."
+
+msgid "There are no standard reports yet."
+msgstr "There are no standard reports yet."
+
+msgid "New standard report…"
+msgstr "New standard report…"
+
+msgid "Created"
+msgstr "Created"
+
+msgid "{{when}} by {{who}}"
+msgstr "{{when}} by {{who}}"
+
+msgid "Last changed"
+msgstr "Last changed"
+
+msgid "No period matches"
+msgstr "No period matches"
+
+msgid "No year matches"
+msgstr "No year matches"
+
+msgid "Reporting period"
+msgstr "Reporting period"
+
+msgid "No finished period of this type is available for {{year}}."
+msgstr "No finished period of this type is available for {{year}}."
+
+msgid "Back to all"
+msgstr "Back to all"
+
+msgid "This report takes no options — it ran as soon as you picked it."
+msgstr "This report takes no options — it ran as soon as you picked it."
+
+msgid "Generate"
+msgstr "Generate"
+
+msgid "Edit report…"
+msgstr "Edit report…"
+
+msgid "Manage sharing…"
+msgstr "Manage sharing…"
+
+msgid "Building your report…"
+msgstr "Building your report…"
+
+msgid "Fill in the options on the left, then select Generate."
+msgstr "Fill in the options on the left, then select Generate."
+
+msgid ""
+"Choose a report on the left. Most run straight away; the rest will ask you "
+"for a period or an organisation unit first."
+msgstr ""
+"Choose a report on the left. Most run straight away; the rest will ask you "
+"for a period or an organisation unit first."
+
+msgid "Your organisation unit from last time is filled in already."
+msgstr "Your organisation unit from last time is filled in already."
+
+msgid "The report below is still {{report}}."
+msgstr "The report below is still {{report}}."
+
+msgid "Generate again"
+msgstr "Generate again"
+
+msgid "just now"
+msgstr "just now"
+
+msgid "Asks for period and organisation unit"
+msgstr "Asks for period and organisation unit"
+
+msgid "Asks for a period"
+msgstr "Asks for a period"
+
+msgid "Asks for an organisation unit"
+msgstr "Asks for an organisation unit"
+
 msgid "An error occurred whole loading the data set options"
 msgstr "An error occurred whole loading the data set options"
 
@@ -627,9 +802,6 @@ msgstr "Count"
 msgid "Total"
 msgstr "Total"
 
-msgid "Name"
-msgstr "Name"
-
 msgid "Something went wrong when processing your request."
 msgstr "Something went wrong when processing your request."
 
@@ -681,9 +853,6 @@ msgstr "Actions"
 msgid "Delete"
 msgstr "Delete"
 
-msgid "Sharing settings"
-msgstr "Sharing settings"
-
 msgid "View Resource"
 msgstr "View Resource"
 
@@ -734,9 +903,6 @@ msgstr "Public can find, view and edit"
 
 msgid "Public can find and view"
 msgstr "Public can find and view"
-
-msgid "Close"
-msgstr "Close"
 
 msgid "week"
 msgstr "week"
@@ -1037,3 +1203,31 @@ msgstr "Upload file"
 
 msgid "Confirm delete"
 msgstr "Confirm delete"
+
+msgctxt "Application title"
+msgid "__MANIFEST_APP_TITLE"
+msgstr "Reports"
+
+msgctxt "Application description"
+msgid "__MANIFEST_APP_DESCRIPTION"
+msgstr ""
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Standard report"
+msgstr "Standard report"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Data set report"
+msgstr "Data set report"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Reporting rates summary"
+msgstr "Reporting rates summary"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Resources"
+msgstr "Resources"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Org unit distribution report"
+msgstr "Org unit distribution report"

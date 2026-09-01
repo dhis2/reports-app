@@ -37,7 +37,7 @@
     align-items: center;
     gap: 4px;
     padding: 12px 8px 12px 16px;
-    border-bottom: 1px solid #e8edf2;
+    border-bottom: 1px solid var(--grey300);
 }
 
 .railCollapse,
@@ -51,19 +51,19 @@
     background: none;
     border: 0;
     border-radius: 3px;
-    color: #6c7787;
+    color: var(--grey600);
     cursor: pointer;
 }
 
 .railCollapse:hover,
 .railExpand:hover {
-    background: #f3f5f7;
-    color: #1565c0;
+    background: var(--grey200);
+    color: var(--blue700);
 }
 
 .railCollapse:focus-visible,
 .railExpand:focus-visible {
-    outline: 2px solid #147cd7;
+    outline: 2px solid var(--blue600);
     outline-offset: -1px;
 }
 
@@ -113,8 +113,8 @@
     display: flex;
     flex-direction: column;
     min-height: 0;
-    background: #ffffff;
-    border-right: 1px solid #d5dde5;
+    background: var(--white);
+    border-right: 1px solid var(--grey400);
 }
 
 /*
@@ -172,8 +172,7 @@
     display: grid;
     gap: 8px;
     padding: 12px 16px;
-    background: #ffffff;
-    border-top: 1px solid #d5dde5;
+    border-top: 1px solid var(--grey400);
 }
 
 .output {
@@ -183,7 +182,7 @@
     display: grid;
     gap: 16px;
     align-content: start;
-    padding: 16px 24px 40px;
+    padding: 16px 16px 40px;
 }
 
 /*
@@ -196,6 +195,9 @@
  */
 .output > * {
     min-width: 0;
+    background: var(--white);
+    border: 1px solid var(--grey400);
+    border-radius: 3px;
 }
 
 /* ---------- form bits ---------- */
@@ -203,26 +205,26 @@
 .label {
     display: block;
     font-size: 14px;
-    color: #212934;
+    color: var(--grey900);
     margin-bottom: 4px;
 }
 
 .help {
     font-size: 12px;
-    color: #6c7787;
+    color: var(--grey600);
     margin: 4px 0 0;
 }
 
 .warnHelp {
     font-size: 12px;
-    color: #e56408;
+    color: var(--yellow700);
     margin: 4px 0 0;
 }
 
 .treeBox {
-    border: 1px solid #d5dde5;
+    border: 1px solid var(--grey400);
     border-radius: 3px;
-    background: #ffffff;
+    background: var(--white);
     max-height: 240px;
     overflow: auto;
     padding: 8px;
@@ -238,85 +240,139 @@
 
 .scopeGroup legend {
     font-size: 14px;
-    color: #212934;
+    color: var(--grey900);
     margin-bottom: 4px;
     padding: 0;
 }
 
-.disclosure {
-    border-top: 1px solid #e8edf2;
-    padding-top: 12px;
+/*
+ * Optional filters sit directly beneath the selection they narrow — the org
+ * unit tree, or the data set — rather than in a bucket of their own. The
+ * indent and rule are what say "these belong to the thing above".
+ */
+.subFields {
+    display: grid;
+    gap: 8px;
+    margin-top: 8px;
+    padding-left: 10px;
+    border-left: 2px solid var(--grey300);
 }
 
+/*
+ * The collapsed area for org unit group sets. It reads as a row of the org
+ * unit block, not as a link: the label keeps the weight and colour of the
+ * field labels around it, and only the chevron and the hover surface say it
+ * is pressable. Blue link-styling here would have out-shouted the org unit
+ * tree, which is the actual subject of this part of the form.
+ */
+.disclosure {
+}
+
+/*
+ * Pulled out to the full rail gutter and padded back in, so the hover surface
+ * spans the rail while the label still sits on the same left edge as every
+ * field above it.
+ */
 .disclosureButton {
-    appearance: none;
-    background: none;
-    border: 0;
-    padding: 0;
-    font: inherit;
-    font-size: 14px;
-    color: #1565c0;
-    cursor: pointer;
     display: flex;
     align-items: center;
     gap: 6px;
+    width: calc(100% + 16px);
+    margin: 0 -8px;
+    padding: 6px 8px;
+    appearance: none;
+    background: none;
+    border: 0;
+    border-radius: 3px;
+    font: inherit;
+    font-size: 14px;
+    color: var(--grey900);
+    text-align: left;
+    cursor: pointer;
 }
 
+.disclosureButton:hover {
+    background: var(--grey100);
+}
+
+.disclosureButton:hover .disclosureChevron {
+    color: var(--grey900);
+}
+
+.disclosureButton:focus-visible {
+    outline: 2px solid var(--blue600);
+    outline-offset: -1px;
+}
+
+.disclosureChevron {
+    flex: none;
+    width: 14px;
+    height: 14px;
+    margin-left: -2px;
+    color: var(--grey600);
+    transition: transform 100ms ease-out;
+}
+
+.disclosureButton[aria-expanded='true'] .disclosureChevron {
+    transform: rotate(90deg);
+}
+
+.disclosureLabel {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+/*
+ * Indented past the chevron so the fields hang under the label rather than
+ * under the control, which keeps the shut and open states reading as the
+ * same row with more beneath it.
+ */
 .disclosureBody {
     display: grid;
     gap: 12px;
-    padding-top: 12px;
+    padding: 12px 0 2px 20px;
 }
 
+/*
+ * The one thing that has to survive the area being shut: a filter is active
+ * and the report is narrower than the tree above suggests.
+ */
 .countBadge {
-    background: #e3f2fd;
-    color: #0d47a1;
-    border-radius: 10px;
+    flex: none;
+    min-width: 18px;
+    padding: 0 6px;
+    border-radius: 9px;
+    background: var(--blue100);
+    color: var(--blue800);
     font-size: 11px;
     font-weight: 500;
-    padding: 1px 7px;
+    line-height: 18px;
+    text-align: center;
 }
 
 /* ---------- summary strip ---------- */
 
 .summary {
     display: flex;
-    flex-wrap: wrap;
-    align-items: flex-end;
+    flex-wrap: nowrap;
+    align-items: flex-start;
     gap: 24px;
     padding: 12px 16px;
-    background: #f8f9fa;
-    border-bottom: 1px solid #d5dde5;
+    background: var(--grey100);
+    border-bottom: 1px solid var(--grey400);
 }
 
-.summary dl {
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px;
-}
-
-.summary dl > div {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-}
-
-.summary dt {
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #6c7787;
-}
-
-.summary dd {
+.summaryLine {
+    flex: 1 1 auto;
+    min-width: 0;
     margin: 0;
     font-size: 14px;
     font-weight: 500;
-    color: #212934;
+    color: var(--grey900);
 }
 
 .summaryActions {
+    flex: none;
     margin-left: auto;
     display: flex;
     gap: 8px;
@@ -334,10 +390,10 @@
     align-items: center;
     gap: 8px;
     padding: 8px 16px;
-    background: #fff8e1;
-    border-bottom: 1px solid #ffe082;
+    background: var(--yellow050);
+    border-bottom: 1px solid var(--yellow200);
     font-size: 13px;
-    color: #6f3205;
+    color: var(--yellow900);
 }
 
 .toolbar {
@@ -346,9 +402,9 @@
     align-items: center;
     gap: 16px;
     padding: 8px 16px;
-    border-bottom: 1px solid #e8edf2;
+    border-bottom: 1px solid var(--grey300);
     font-size: 13px;
-    color: #4a5768;
+    color: var(--grey700);
 }
 
 .toc {
@@ -361,22 +417,22 @@
 
 .tocLink {
     font: inherit;
-    color: #1565c0;
+    color: var(--blue700);
     text-decoration: none;
-    border: 1px solid #d5dde5;
+    border: 1px solid var(--grey400);
     border-radius: 12px;
     padding: 2px 10px;
-    background: #ffffff;
+    background: var(--white);
     cursor: pointer;
 }
 
 .tocLink:hover {
-    background: #f5fbff;
-    border-color: #c5e3fc;
+    background: var(--blue050);
+    border-color: var(--blue200);
 }
 
 .tocLink:focus-visible {
-    outline: 2px solid #147cd7;
+    outline: 2px solid var(--blue600);
     outline-offset: 1px;
 }
 
@@ -398,13 +454,13 @@
     margin: 0 0 8px;
     font-size: 15px;
     font-weight: 500;
-    color: #212934;
+    color: var(--grey900);
 }
 
 .sectionMeta {
     font-size: 12px;
     font-weight: 400;
-    color: #6c7787;
+    color: var(--grey600);
 }
 
 .tableScroll {
@@ -454,9 +510,9 @@ div.tableScroll td:first-child {
 }
 
 .customFrame {
-    border: 1px solid #d5dde5;
+    border: 1px solid var(--grey400);
     border-radius: 3px;
-    background: #ffffff;
+    background: var(--white);
 }
 
 /* ---------- states ---------- */
@@ -464,14 +520,14 @@ div.tableScroll td:first-child {
 .centered {
     padding: 48px 24px;
     text-align: center;
-    color: #4a5768;
+    color: var(--grey700);
 }
 
 .centered h2 {
     margin: 0 0 4px;
     font-size: 16px;
     font-weight: 500;
-    color: #212934;
+    color: var(--grey900);
 }
 
 .centered p {
@@ -511,8 +567,8 @@ div.tableScroll td:first-child {
     }
 
     .summary {
-        background: #ffffff;
-        border-bottom: 2px solid #212934;
+        background: var(--white);
+        border-bottom: 2px solid var(--grey900);
     }
 
     .section {
@@ -547,7 +603,7 @@ div.tableScroll td:first-child {
 
     .rail {
         border-right: 0;
-        border-bottom: 1px solid #d5dde5;
+        border-bottom: 1px solid var(--grey400);
     }
 
     .railScroll {

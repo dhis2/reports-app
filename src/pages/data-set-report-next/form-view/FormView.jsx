@@ -11,9 +11,10 @@
  * dimension filters are honoured because the server applied them before we saw
  * the data.
  */
-import { useAlert } from '@dhis2/app-runtime'
+// Commented out for prototype — not needed. See the matching useEffect below.
+// import { useAlert } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
-import { CircularLoader, NoticeBox } from '@dhis2/ui'
+import { CircularLoader, CssVariables, NoticeBox } from '@dhis2/ui'
 import PropTypes from 'prop-types'
 import React, { useEffect, useMemo } from 'react'
 import { buildValueIndex } from './buildValueIndex.js'
@@ -68,10 +69,11 @@ FormBody.propTypes = {
 
 export const FormView = ({ dataSetId, grids }) => {
     const { called, loading, error, metadata, fetch } = useFormMetadataQuery()
-    const { show: showUnmatchedWarning } = useAlert(
-        ({ message }) => message,
-        () => ({ warning: true })
-    )
+    // Commented out for prototype — not needed. See the matching useEffect below.
+    // const { show: showUnmatchedWarning } = useAlert(
+    //     ({ message }) => message,
+    //     () => ({ warning: true })
+    // )
 
     /* Lazy: nothing is fetched until someone actually asks for Form view. */
     useEffect(() => {
@@ -82,7 +84,7 @@ export const FormView = ({ dataSetId, grids }) => {
 
     const nameIndex = useMemo(() => buildValueIndex(grids), [grids])
 
-    const { values, matched, unmatched } = useMemo(
+    const { values, matched } = useMemo(
         () => resolveValues({ nameIndex, metadata, dataSetId }),
         [nameIndex, metadata, dataSetId]
     )
@@ -95,16 +97,17 @@ export const FormView = ({ dataSetId, grids }) => {
      * unmatched figure renders as an empty cell and looks like missing data.
      * Say so rather than letting someone read a wrong total off a printout.
      */
-    useEffect(() => {
-        if (unmatched > 0) {
-            showUnmatchedWarning({
-                message: i18n.t(
-                    '{{count}} values from this report could not be placed in the form and are not shown. Standard view shows all of them.',
-                    { count: unmatched }
-                ),
-            })
-        }
-    }, [unmatched, showUnmatchedWarning])
+    // Commented out for prototype — not needed.
+    // useEffect(() => {
+    //     if (unmatched > 0) {
+    //         showUnmatchedWarning({
+    //             message: i18n.t(
+    //                 '{{count}} values from this report could not be placed in the form and are not shown. Standard view shows all of them.',
+    //                 { count: unmatched }
+    //             ),
+    //         })
+    //     }
+    // }, [unmatched, showUnmatchedWarning])
 
     if (loading || !called) {
         return (
@@ -128,6 +131,21 @@ export const FormView = ({ dataSetId, grids }) => {
     return (
         <FormMetadataContext.Provider value={metadataContext}>
             <ReportValueContext.Provider value={valueState}>
+                {/*
+                 * The vendored stylesheets are written against the @dhis2/ui
+                 * custom properties — --colors-grey400 for every cell border,
+                 * --colors-grey800 for the section header bar, and so on. This
+                 * app never rendered CssVariables, so none of them existed and
+                 * every one of those rules silently did nothing: no borders, no
+                 * header bars, no greyed fills.
+                 *
+                 * It lives here rather than at the app root deliberately. The
+                 * declarations are :root-scoped and purely additive — nothing
+                 * else in this app reads these names — so scoping them to the
+                 * one view that needs them keeps the prototype from changing
+                 * any other page.
+                 */}
+                <CssVariables colors spacers theme />
                 <div className={styles.form}>
                     {matched === 0 && (
                         <NoticeBox title={i18n.t('Showing an empty form')}>

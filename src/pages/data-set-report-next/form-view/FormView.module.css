@@ -21,21 +21,40 @@
 }
 
 /*
- * The vendored table sets its own cell metrics; this only has to undo the
- * padding the entry field used to provide and put the figure where an input
- * would have been.
+ * Filtering rows is an editing affordance: it exists so somebody entering data
+ * into a long form can jump to the field they want. A report is a finished
+ * document, so the row is hidden rather than left sitting there doing nothing.
+ *
+ * Hidden from here rather than by cutting it out of the vendored section
+ * component, so that file stays byte-for-byte upstream. The input's id is the
+ * hook — `filter-input-${section.id}` is written in JSX, so unlike the CSS
+ * module class names around it, it is not hashed at build time.
+ */
+.form :global(tr:has([id^='filter-input-'])) {
+    display: none;
+}
+
+/*
+ * Matched to the upstream .dataEntryCell in
+ * aggregate-data-entry-app/src/data-workspace/data-entry-cell/data-entry-cell.module.css,
+ * which is not vendored because the rest of that file styles states a report
+ * cannot be in — sync, validation, min/max, focus, comments.
  */
 .cell {
     padding: 0;
-    border: 1px solid var(--colors-grey300);
-    background: var(--colors-white);
+    min-inline-size: 100px;
+    border: 1px solid var(--colors-grey400);
+    background: #fff;
+    font-size: 13px;
+    line-height: 15px;
+    color: var(--colors-grey900);
+    block-size: 100%;
 }
 
 .value,
 .empty,
 .greyed {
     display: block;
-    min-inline-size: 60px;
     padding: 6px 8px;
     text-align: end;
     /* tabular figures so columns of numbers line up */
@@ -44,27 +63,26 @@
     white-space: nowrap;
 }
 
-.value {
-    color: var(--colors-grey900);
-}
-
 .empty {
     color: var(--colors-grey500);
 }
 
 /*
- * A greyed field does not apply to this data element and combination. It has
- * to read differently from a field nobody filled in, especially on paper.
+ * A greyed field does not apply to this data element and combination. Same
+ * diagonal hatch upstream uses for a disabled cell, so it reads the way it
+ * does in data entry.
  */
 .greyed {
-    background: repeating-linear-gradient(
-        135deg,
-        var(--colors-grey100),
-        var(--colors-grey100) 4px,
-        var(--colors-grey200) 4px,
-        var(--colors-grey200) 8px
+    min-block-size: 27px;
+    background-color: var(--colors-grey200);
+    background-size: 8px 8px;
+    background-image: repeating-linear-gradient(
+        45deg,
+        var(--colors-grey300) 0,
+        var(--colors-grey300) 0.8px,
+        var(--colors-grey200) 0,
+        var(--colors-grey200) 50%
     );
-    min-block-size: 29px;
 }
 
 @media print {

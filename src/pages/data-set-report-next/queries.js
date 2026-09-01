@@ -31,11 +31,19 @@ export const ORG_UNIT_ROOTS_QUERY = {
     },
 }
 
+/*
+ * The `organisationUnitGroups:gt:0` filter is the one addition against the
+ * current page. Group sets with no groups render as a dropdown that opens an
+ * empty menu — the current page shows all of them, and on a typical instance
+ * that is most of them (64 group sets on the SL demo database, 4 of which
+ * have any groups). They cannot be selected, so they are not offered.
+ */
 export const GROUP_SETS_QUERY = {
     groupSets: {
         resource: 'organisationUnitGroupSets',
         params: {
             fields: 'id,displayName,organisationUnitGroups[id,displayName]',
+            filter: 'organisationUnitGroups:gt:0',
             order: 'displayName:asc',
             paging: false,
         },

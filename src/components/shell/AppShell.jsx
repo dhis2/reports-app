@@ -3,6 +3,7 @@ import React from 'react'
 import {
     DATA_SET_REPORT_NEXT_SECTION_KEY,
     sections,
+    STANDARD_REPORT_NEXT_SECTION_KEY,
 } from '../../config/sections.config.js'
 import styles from './AppShell.module.css'
 import { SectionSwitcher } from './SectionSwitcher.jsx'
@@ -28,7 +29,10 @@ import { SectionSwitcher } from './SectionSwitcher.jsx'
  * As the other pages are rebuilt they will do the same, and the switcher bar —
  * along with this constant — goes away entirely.
  */
-const SELF_MANAGED_LAYOUT = [DATA_SET_REPORT_NEXT_SECTION_KEY]
+const SELF_MANAGED_LAYOUT = [
+    DATA_SET_REPORT_NEXT_SECTION_KEY,
+    STANDARD_REPORT_NEXT_SECTION_KEY,
+]
 
 export const AppShell = ({ showNav, currentSection, children }) => {
     const isSelfManaged = SELF_MANAGED_LAYOUT.includes(currentSection)

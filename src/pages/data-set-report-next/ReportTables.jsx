@@ -1,4 +1,3 @@
-import i18n from '@dhis2/d2-i18n'
 import {
     DataTable,
     DataTableBody,
@@ -73,13 +72,7 @@ const ReportTable = ({ table }) => {
 
     return (
         <section className={styles.section} id={table.id}>
-            <h2 className={styles.sectionTitle}>
-                {table.title}
-                <span className={styles.sectionMeta}>
-                    {table.subtitle && `${table.subtitle} · `}
-                    {i18n.t('{{count}} rows', { count: rows.length })}
-                </span>
-            </h2>
+            <h2 className={styles.sectionTitle}>{table.title}</h2>
 
             {/*
              * Column widths are driven from here because the table uses
