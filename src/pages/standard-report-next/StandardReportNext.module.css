@@ -10,6 +10,7 @@
 
 .page {
     display: flex;
+    flex-direction: column;
     min-width: 0;
     min-height: 0;
     /*
@@ -17,18 +18,53 @@
      * by being a flex item — it has to claim it.
      */
     height: 100%;
+    background: var(--grey300);
 }
 
-.railHeader {
+/* ---------- top bar ---------- */
+
+/*
+ * One bar across the top of the page. The left half is where you are and
+ * whether the options are showing; the right half is context for what is
+ * currently on screen — the generated report's title, and what you can do
+ * to it. Below the bar is canvas, which is what lets the rail float.
+ */
+.topbar {
+    flex: none;
     display: flex;
     align-items: center;
-    gap: 4px;
-    padding: 12px 8px 12px 16px;
-    border-bottom: 1px solid var(--grey300);
+    gap: 8px;
+    min-height: 48px;
+    padding: 0 12px 0 8px;
+    background: var(--white);
+    border-bottom: 1px solid var(--grey400);
 }
 
-.railCollapse,
-.railExpand {
+/*
+ * The report-level actions. Right-aligned because the left of the bar is
+ * where you are and this is what you can do — the report's own title stays
+ * with the report, on the summary strip above it.
+ */
+.topbarActions {
+    flex: none;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/*
+ * A slim header inside the rail, holding nothing but the collapse control.
+ * No rule under it: it is a corner of the panel, not a section of it.
+ */
+.railHeader {
+    flex: none;
+    display: flex;
+    justify-content: flex-end;
+    padding: 6px 6px 0;
+}
+
+.railToggle {
     display: grid;
     place-items: center;
     flex: none;
@@ -42,22 +78,14 @@
     cursor: pointer;
 }
 
-.railCollapse:hover,
-.railExpand:hover {
+.railToggle:hover {
     background: var(--grey200);
     color: var(--blue700);
 }
 
-.railCollapse:focus-visible,
-.railExpand:focus-visible {
+.railToggle:focus-visible {
     outline: 2px solid var(--blue600);
     outline-offset: -1px;
-}
-
-/* The expand control only exists while the rail is collapsed. */
-.railExpand {
-    display: none;
-    margin: 12px auto 0;
 }
 
 .visuallyHidden {
@@ -74,39 +102,56 @@
 
 .work {
     display: grid;
+    /* 8px gutter + 312px of rail = the 320px the rail used to occupy. */
     grid-template-columns: 320px minmax(0, 1fr);
     flex: 1 1 auto;
     min-width: 0;
     min-height: 0;
 }
 
+/* Collapsed, the rail is only as wide as the control it still shows. */
 .workRailCollapsed {
-    grid-template-columns: 44px minmax(0, 1fr);
+    grid-template-columns: 48px minmax(0, 1fr);
 }
 
+/*
+ * Detached from the top bar and from the window: 8px of canvas on every side,
+ * so it reads as a panel resting on the page rather than as part of the frame.
+ */
 .rail {
     display: flex;
     flex-direction: column;
     min-height: 0;
     /*
-     * The rail's column is a fixed 320px, but its contents are not obliged to
-     * fit: flex and grid children default to min-width:auto and refuse to
-     * shrink below their intrinsic width. An org unit tree of deeply nested
-     * names is easily wider than that, and without this every ancestor grows
-     * to match and the whole rail scrolls sideways.
+     * The rail's column is fixed, but its contents are not obliged to fit:
+     * flex and grid children default to min-width:auto and refuse to shrink
+     * below their intrinsic width. An org unit tree of deeply nested names is
+     * easily wider than that, and without this every ancestor grows to match
+     * and the whole rail scrolls sideways.
      */
     min-width: 0;
+    margin: 8px 0 8px 8px;
     background: var(--white);
-    border-right: 1px solid var(--grey400);
+    border: 1px solid var(--grey400);
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(33, 41, 52, 0.06);
+    /* Keeps the internal scroll areas inside the rounded corners. */
+    overflow: hidden;
 }
 
-.railCollapsed .railHeader,
+/*
+ * Collapsed, the rail shrinks to just its own control — still a card on the
+ * canvas, so the way back is where the panel was rather than somewhere else
+ * on the page. Its contents stay mounted and hidden, so the list's search
+ * text and the org unit tree's expanded branches survive the round trip.
+ */
+.railCollapsed {
+    align-self: start;
+    padding-bottom: 6px;
+}
+
 .railCollapsed .railBody {
     display: none;
-}
-
-.railCollapsed .railExpand {
-    display: grid;
 }
 
 .railBody {
@@ -209,6 +254,14 @@
 }
 
 /*
+ * Positioning context for the row's overflow menu, which sits on top of the
+ * row's right edge rather than inside the row button.
+ */
+.rowWrap {
+    position: relative;
+}
+
+/*
  * A whole-row button rather than a link: choosing a report is what runs it,
  * and there is no separate address to open.
  */
@@ -254,6 +307,50 @@
     margin-top: 1px;
     font-size: 12px;
     color: var(--grey600);
+}
+
+/*
+ * Revealed on hover, and whenever it has keyboard focus or its menu is open.
+ * Transparent rather than hidden: visibility:hidden would take the button out
+ * of the tab order, and then :focus-within could never bring it back.
+ *
+ * A permanent column of dots down a list this narrow reads as clutter on
+ * every visit, to serve something people do rarely.
+ */
+.rowMenu {
+    position: absolute;
+    top: 5px;
+    right: 4px;
+    opacity: 0;
+}
+
+.rowWrap:hover .rowMenu,
+.rowMenu:focus-within,
+.rowMenuOpen {
+    opacity: 1;
+}
+
+.rowMenuButton {
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border: 0;
+    border-radius: 3px;
+    background: var(--white);
+    color: var(--grey600);
+    cursor: pointer;
+}
+
+.rowMenuButton:hover {
+    background: var(--grey300);
+    color: var(--grey900);
+}
+
+.rowMenuButton:focus-visible {
+    outline: 2px solid var(--blue600);
+    outline-offset: -1px;
 }
 
 .listState {
@@ -464,9 +561,9 @@
     min-height: 0;
     overflow-y: auto;
     display: grid;
-    gap: 16px;
+    gap: 8px;
     align-content: start;
-    padding: 16px 16px 40px;
+    padding: 8px 8px 40px;
 }
 
 /*
@@ -481,10 +578,16 @@
     border-radius: 3px;
 }
 
+/* ---------- summary strip ---------- */
+
+/*
+ * What was asked for, at the head of the report it produced. It belongs to
+ * the report rather than to the page, so it travels with the card — and onto
+ * the printout — while the buttons that act on it live in the top bar.
+ */
 .summary {
     display: flex;
-    flex-wrap: nowrap;
-    align-items: flex-start;
+    align-items: baseline;
     gap: 24px;
     padding: 12px 16px;
     background: var(--grey100);
@@ -500,12 +603,24 @@
     color: var(--grey900);
 }
 
-.summaryActions {
-    flex: none;
-    margin-left: auto;
+/*
+ * The waiting state. Loader and label as one centred stack rather than a
+ * loader floating over centred text: at this size the gap between them is
+ * what makes the two read as one object.
+ */
+.loading {
     display: flex;
-    gap: 8px;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 48px 24px;
+}
+
+.loadingText {
+    margin: 0;
+    font-size: 13px;
+    color: var(--grey600);
 }
 
 /* ---------- states ---------- */
@@ -533,11 +648,15 @@
     padding: 16px;
 }
 
+.staleOutput {
+    opacity: 0.75;
+}
+
 /* ---------- print ---------- */
 
 @media print {
     .rail,
-    .summaryActions {
+    .topbar {
         display: none;
     }
 
@@ -549,6 +668,12 @@
         height: auto;
         overflow: visible;
         padding: 0;
+        background: var(--white);
+    }
+
+    .summary {
+        background: var(--white);
+        border-bottom: 2px solid var(--grey900);
     }
 
     .output > * {

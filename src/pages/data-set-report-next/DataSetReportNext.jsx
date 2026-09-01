@@ -650,6 +650,55 @@ export const DataSetReportNext = () => {
 
     return (
         <div className={styles.page}>
+            {/* ---------------- top bar ---------------- */}
+            <header className={styles.topbar}>
+                {/*
+                 * Where you are. The section name is also the control for
+                 * switching section, so it stands in for a page heading
+                 * rather than adding one.
+                 */}
+                <SectionSwitcher
+                    currentSection={DATA_SET_REPORT_NEXT_SECTION_KEY}
+                />
+
+                {/*
+                 * What you can do with what is on screen. The report's own
+                 * title is not repeated here — it heads the report itself.
+                 */}
+                {report && (
+                    <div className={styles.topbarActions}>
+                        <Button small onClick={() => window.print()}>
+                            {i18n.t('Print')}
+                        </Button>
+                        {downloads.length > 0 && (
+                            <DropdownButton
+                                small
+                                component={
+                                    <FlyoutMenu>
+                                        {downloads.map((file) => (
+                                            <MenuItem
+                                                key={file.extension}
+                                                label={i18n.t('{{ext}}', {
+                                                    ext: file.extension.toUpperCase(),
+                                                })}
+                                                href={file.url}
+                                                target={
+                                                    file.extension === 'pdf'
+                                                        ? '_blank'
+                                                        : '_self'
+                                                }
+                                            />
+                                        ))}
+                                    </FlyoutMenu>
+                                }
+                            >
+                                {i18n.t('Download...')}
+                            </DropdownButton>
+                        )}
+                    </div>
+                )}
+            </header>
+
             <div
                 className={`${styles.work} ${
                     railCollapsed ? styles.workRailCollapsed : ''
@@ -662,46 +711,32 @@ export const DataSetReportNext = () => {
                     }`}
                 >
                     {/*
-                     * Shown only while collapsed. The form below stays
-                     * mounted and is hidden with CSS rather than unmounted,
-                     * so the org unit tree keeps whatever the user had
-                     * expanded.
-                     */}
-                    <button
-                        type="button"
-                        className={styles.railExpand}
-                        onClick={toggleRail}
-                        aria-expanded={false}
-                        aria-controls="report-options"
-                        title={i18n.t('Show report options')}
-                    >
-                        <IconChevronRight24 />
-                        <span className={styles.visuallyHidden}>
-                            {i18n.t('Show report options')}
-                        </span>
-                    </button>
-
-                    {/*
-                     * The section name lives here rather than as a page
-                     * heading: it is also the control for switching section,
-                     * so it earns its place at the top of the panel the page
-                     * already has.
+                     * The control lives in the panel it controls. Collapsed,
+                     * the panel shrinks to just this button, so the way back
+                     * is exactly where the way out was.
                      */}
                     <div className={styles.railHeader}>
-                        <SectionSwitcher
-                            currentSection={DATA_SET_REPORT_NEXT_SECTION_KEY}
-                        />
                         <button
                             type="button"
-                            className={styles.railCollapse}
+                            className={styles.railToggle}
                             onClick={toggleRail}
-                            aria-expanded={true}
+                            aria-expanded={!railCollapsed}
                             aria-controls="report-options"
-                            title={i18n.t('Hide report options')}
+                            title={
+                                railCollapsed
+                                    ? i18n.t('Show report options')
+                                    : i18n.t('Hide report options')
+                            }
                         >
-                            <IconChevronLeft24 />
+                            {railCollapsed ? (
+                                <IconChevronRight24 />
+                            ) : (
+                                <IconChevronLeft24 />
+                            )}
                             <span className={styles.visuallyHidden}>
-                                {i18n.t('Hide report options')}
+                                {railCollapsed
+                                    ? i18n.t('Show report options')
+                                    : i18n.t('Hide report options')}
                             </span>
                         </button>
                     </div>
@@ -754,15 +789,11 @@ export const DataSetReportNext = () => {
                                 </div>
 
                                 <fieldset className={styles.scopeGroup}>
-                                    <legend>
-                                        {i18n.t('Selection mode')}
-                                    </legend>
+                                    <legend>{i18n.t('Selection mode')}</legend>
                                     <Radio
                                         dense
                                         name="scope"
-                                        label={i18n.t(
-                                            'Include units inside'
-                                        )}
+                                        label={i18n.t('Include units inside')}
                                         checked={!selection.selectedUnitOnly}
                                         onChange={() =>
                                             update({ selectedUnitOnly: false })
@@ -1062,12 +1093,10 @@ export const DataSetReportNext = () => {
                     )}
 
                     {reportLoading && (
-                        <div className={styles.centered}>
-                            <CircularLoader />
-                            <p style={{ marginTop: 16 }}>
-                                {i18n.t(
-                                    'Building your report — large forms can take a moment.'
-                                )}
+                        <div className={styles.loading}>
+                            <CircularLoader small />
+                            <p className={styles.loadingText}>
+                                {i18n.t('Generating report...')}
                             </p>
                         </div>
                     )}
@@ -1093,36 +1122,28 @@ export const DataSetReportNext = () => {
                         </div>
                     )}
 
-                    {!reportLoading && report && (
-                        <div>
-                            {isStale && (
-                                <div className={styles.noticePad}>
-                                    <NoticeBox
-                                        warning
-                                        title={i18n.t('These options changed')}
-                                    >
-                                        {i18n.t(
-                                            'The report below is still {{dataSet}} · {{period}} · {{orgUnit}}.',
-                                            {
-                                                dataSet:
-                                                    report.snapshot.dataSetName,
-                                                period: report.snapshot
-                                                    .periodName,
-                                                orgUnit:
-                                                    report.snapshot.orgUnitName,
-                                            }
-                                        )}{' '}
-                                        <Button
-                                            small
-                                            onClick={onGenerate}
-                                            disabled={!canGenerate}
-                                        >
-                                            {i18n.t('Get report again')}
-                                        </Button>
-                                    </NoticeBox>
-                                </div>
-                            )}
+                    {!reportLoading && report && isStale && (
+                        <div className={styles.noticePad}>
+                            <NoticeBox
+                                warning
+                                title={i18n.t('These options changed')}
+                            >
+                                {i18n.t(
+                                    'The report below is still {{dataSet}} · {{period}} · {{orgUnit}}. Select Get report on the left to refresh it.',
+                                    {
+                                        dataSet: report.snapshot.dataSetName,
+                                        period: report.snapshot.periodName,
+                                        orgUnit: report.snapshot.orgUnitName,
+                                    }
+                                )}
+                            </NoticeBox>
+                        </div>
+                    )}
 
+                    {!reportLoading && report && (
+                        <div
+                            className={isStale ? styles.staleOutput : undefined}
+                        >
                             <div className={styles.summary}>
                                 <p className={styles.summaryLine}>
                                     {[
@@ -1133,51 +1154,14 @@ export const DataSetReportNext = () => {
                                             : i18n.t(
                                                   '{{orgUnit}} + units inside',
                                                   {
-                                                      orgUnit: report.snapshot
-                                                          .orgUnitName,
+                                                      orgUnit:
+                                                          report.snapshot
+                                                              .orgUnitName,
                                                   }
                                               ),
                                         report.snapshot.generatedAt.toLocaleString(),
                                     ].join(' · ')}
                                 </p>
-
-                                <div className={styles.summaryActions}>
-                                    <Button
-                                        small
-                                        onClick={() => window.print()}
-                                    >
-                                        {i18n.t('Print')}
-                                    </Button>
-                                    {downloads.length > 0 && (
-                                        <DropdownButton
-                                            small
-                                            component={
-                                                <FlyoutMenu>
-                                                    {downloads.map((file) => (
-                                                        <MenuItem
-                                                            key={file.extension}
-                                                            label={i18n.t(
-                                                                '{{ext}}',
-                                                                {
-                                                                    ext: file.extension.toUpperCase(),
-                                                                }
-                                                            )}
-                                                            href={file.url}
-                                                            target={
-                                                                file.extension ===
-                                                                'pdf'
-                                                                    ? '_blank'
-                                                                    : '_self'
-                                                            }
-                                                        />
-                                                    ))}
-                                                </FlyoutMenu>
-                                            }
-                                        >
-                                            {i18n.t('Download...')}
-                                        </DropdownButton>
-                                    )}
-                                </div>
                             </div>
 
                             {/*

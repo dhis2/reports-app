@@ -13,19 +13,19 @@ import { SectionSwitcher } from '../../components/shell/SectionSwitcher.jsx'
 import { STANDARD_REPORT_NEXT_SECTION_KEY } from '../../config/sections.config.js'
 import { HtmlReportView } from './HtmlReportView.jsx'
 import {
-    EditReportDialog,
-    NewReportDialog,
-    SharingDialog,
-} from './ReportActionDialogs.jsx'
-import { ReportMeta } from './ReportMeta.jsx'
-import {
     fetchHtmlReport,
     idFromPath,
     ORG_UNIT_NAME_QUERY,
     ME_QUERY,
     REPORTS_QUERY,
 } from './queries.js'
+import {
+    EditReportDialog,
+    NewReportDialog,
+    SharingDialog,
+} from './ReportActionDialogs.jsx'
 import { ReportList } from './ReportList.jsx'
+import { ReportMeta } from './ReportMeta.jsx'
 import { ReportParamsFields } from './ReportParamsFields.jsx'
 import { periodLabel, reportNeeds } from './reportShape.js'
 import styles from './StandardReportNext.module.css'
@@ -117,8 +117,21 @@ export const StandardReportNext = () => {
     const canEdit = Boolean(access.update)
     const canShare = Boolean(access.manage || access.externalize)
 
-    /* Which management dialog is open, if any. */
+    /*
+     * Which management dialog is open, and on what. The report has to travel
+     * with it: these are reachable from the list as well as from the rail, so
+     * the subject is not always the report currently open.
+     */
     const [dialog, setDialog] = useState(null)
+    const closeDialog = useCallback(() => setDialog(null), [])
+    const openEdit = useCallback(
+        (subject) => setDialog({ kind: 'edit', report: subject }),
+        []
+    )
+    const openSharing = useCallback(
+        (subject) => setDialog({ kind: 'sharing', report: subject }),
+        []
+    )
 
     /*
      * The org unit's name, for the summary line. Fetched rather than only
@@ -308,6 +321,30 @@ export const StandardReportNext = () => {
 
     return (
         <div className={styles.page}>
+            {/* ---------------- top bar ---------------- */}
+            <header className={styles.topbar}>
+                {/*
+                 * Where you are. The section name is also the control for
+                 * switching section, so it stands in for a page heading
+                 * rather than adding one.
+                 */}
+                <SectionSwitcher
+                    currentSection={STANDARD_REPORT_NEXT_SECTION_KEY}
+                />
+
+                {/*
+                 * What you can do with what is on screen. The report's own
+                 * title is not repeated here — it heads the report itself.
+                 */}
+                {report && (
+                    <div className={styles.topbarActions}>
+                        <Button small onClick={() => window.print()}>
+                            {i18n.t('Print')}
+                        </Button>
+                    </div>
+                )}
+            </header>
+
             <div
                 className={`${styles.work} ${
                     railCollapsed ? styles.workRailCollapsed : ''
@@ -319,35 +356,33 @@ export const StandardReportNext = () => {
                         railCollapsed ? styles.railCollapsed : ''
                     }`}
                 >
-                    <button
-                        type="button"
-                        className={styles.railExpand}
-                        onClick={toggleRail}
-                        aria-expanded={false}
-                        aria-controls="report-options"
-                        title={i18n.t('Show report options')}
-                    >
-                        <IconChevronRight24 />
-                        <span className={styles.visuallyHidden}>
-                            {i18n.t('Show report options')}
-                        </span>
-                    </button>
-
+                    {/*
+                     * The control lives in the panel it controls. Collapsed,
+                     * the panel shrinks to just this button, so the way back
+                     * is exactly where the way out was.
+                     */}
                     <div className={styles.railHeader}>
-                        <SectionSwitcher
-                            currentSection={STANDARD_REPORT_NEXT_SECTION_KEY}
-                        />
                         <button
                             type="button"
-                            className={styles.railCollapse}
+                            className={styles.railToggle}
                             onClick={toggleRail}
-                            aria-expanded={true}
+                            aria-expanded={!railCollapsed}
                             aria-controls="report-options"
-                            title={i18n.t('Hide report options')}
+                            title={
+                                railCollapsed
+                                    ? i18n.t('Show report options')
+                                    : i18n.t('Hide report options')
+                            }
                         >
-                            <IconChevronLeft24 />
+                            {railCollapsed ? (
+                                <IconChevronRight24 />
+                            ) : (
+                                <IconChevronLeft24 />
+                            )}
                             <span className={styles.visuallyHidden}>
-                                {i18n.t('Hide report options')}
+                                {railCollapsed
+                                    ? i18n.t('Show report options')
+                                    : i18n.t('Hide report options')}
                             </span>
                         </button>
                     </div>
@@ -365,7 +400,9 @@ export const StandardReportNext = () => {
                                 error={reportsResult.error}
                                 canCreate={canCreate}
                                 onSelect={onSelect}
-                                onCreate={() => setDialog('new')}
+                                onCreate={() => setDialog({ kind: 'new' })}
+                                onEdit={openEdit}
+                                onShare={openSharing}
                             />
                         ) : (
                             <form
@@ -460,8 +497,8 @@ export const StandardReportNext = () => {
                                                             small
                                                             secondary
                                                             onClick={() =>
-                                                                setDialog(
-                                                                    'edit'
+                                                                openEdit(
+                                                                    selected
                                                                 )
                                                             }
                                                         >
@@ -475,8 +512,8 @@ export const StandardReportNext = () => {
                                                             small
                                                             secondary
                                                             onClick={() =>
-                                                                setDialog(
-                                                                    'sharing'
+                                                                openSharing(
+                                                                    selected
                                                                 )
                                                             }
                                                         >
@@ -509,10 +546,10 @@ export const StandardReportNext = () => {
                     )}
 
                     {reportLoading && (
-                        <div className={styles.centered}>
-                            <CircularLoader />
-                            <p style={{ marginTop: 16 }}>
-                                {i18n.t('Building your report…')}
+                        <div className={styles.loading}>
+                            <CircularLoader small />
+                            <p className={styles.loadingText}>
+                                {i18n.t('Generating report…')}
                             </p>
                         </div>
                     )}
@@ -542,44 +579,30 @@ export const StandardReportNext = () => {
                         </div>
                     )}
 
-                    {!reportLoading && report && (
-                        <div>
-                            {isStale && (
-                                <div className={styles.noticePad}>
-                                    <NoticeBox
-                                        warning
-                                        title={i18n.t('These options changed')}
-                                    >
-                                        {i18n.t(
-                                            'The report below is still {{report}}.',
-                                            {
-                                                report: report.snapshot
-                                                    .reportName,
-                                            }
-                                        )}{' '}
-                                        <Button
-                                            small
-                                            onClick={onGenerate}
-                                            disabled={!canGenerate}
-                                        >
-                                            {i18n.t('Generate again')}
-                                        </Button>
-                                    </NoticeBox>
-                                </div>
-                            )}
+                    {!reportLoading && report && isStale && (
+                        <div className={styles.noticePad}>
+                            <NoticeBox
+                                warning
+                                title={i18n.t('These options changed')}
+                            >
+                                {i18n.t(
+                                    'The report below is still {{report}}. Select Generate on the left to refresh it.',
+                                    {
+                                        report: report.snapshot.reportName,
+                                    }
+                                )}
+                            </NoticeBox>
+                        </div>
+                    )}
 
+                    {!reportLoading && report && (
+                        <div
+                            className={isStale ? styles.staleOutput : undefined}
+                        >
                             <div className={styles.summary}>
                                 <p className={styles.summaryLine}>
                                     {summaryLine}
                                 </p>
-                                <div className={styles.summaryActions}>
-                                    <Button
-                                        small
-                                        onClick={() => window.print()}
-                                    >
-                                        {i18n.t('Print')}
-                                    </Button>
-                                </div>
                             </div>
 
                             <HtmlReportView html={report.html} />
@@ -588,22 +611,19 @@ export const StandardReportNext = () => {
                 </section>
             </div>
 
-            {dialog === 'new' && (
-                <NewReportDialog onClose={() => setDialog(null)} />
+            {dialog?.kind === 'new' && (
+                <NewReportDialog onClose={closeDialog} />
             )}
 
-            {dialog === 'edit' && selected && (
+            {dialog?.kind === 'edit' && dialog.report && (
                 <EditReportDialog
-                    report={selected}
-                    onClose={() => setDialog(null)}
+                    report={dialog.report}
+                    onClose={closeDialog}
                 />
             )}
 
-            {dialog === 'sharing' && selected && (
-                <SharingDialog
-                    report={selected}
-                    onClose={() => setDialog(null)}
-                />
+            {dialog?.kind === 'sharing' && dialog.report && (
+                <SharingDialog report={dialog.report} onClose={closeDialog} />
             )}
         </div>
     )

@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-09-01T12:47:11.644Z\n"
-"PO-Revision-Date: 2026-09-01T12:47:11.644Z\n"
+"POT-Creation-Date: 2026-09-01T13:08:26.899Z\n"
+"PO-Revision-Date: 2026-09-01T13:08:26.899Z\n"
 
 msgid "Updating Organisation Units Tree..."
 msgstr "Updating Organisation Units Tree..."
@@ -310,11 +310,12 @@ msgstr "Your options from last time are filled in already."
 msgid "These options changed"
 msgstr "These options changed"
 
-msgid "The report below is still {{dataSet}} · {{period}} · {{orgUnit}}."
-msgstr "The report below is still {{dataSet}} · {{period}} · {{orgUnit}}."
-
-msgid "Get report again"
-msgstr "Get report again"
+msgid ""
+"The report below is still {{dataSet}} · {{period}} · {{orgUnit}}. Select "
+"Get report on the left to refresh it."
+msgstr ""
+"The report below is still {{dataSet}} · {{period}} · {{orgUnit}}. Select "
+"Get report on the left to refresh it."
 
 msgid "{{orgUnit}} + units inside"
 msgstr "{{orgUnit}} + units inside"
@@ -666,6 +667,15 @@ msgstr "Reporting period"
 msgid "No finished period of this type is available for {{year}}."
 msgstr "No finished period of this type is available for {{year}}."
 
+msgid "Actions for {{name}}"
+msgstr "Actions for {{name}}"
+
+msgid "Edit report…"
+msgstr "Edit report…"
+
+msgid "Manage sharing…"
+msgstr "Manage sharing…"
+
 msgid "Back to all"
 msgstr "Back to all"
 
@@ -674,12 +684,6 @@ msgstr "This report takes no options — it ran as soon as you picked it."
 
 msgid "Generate"
 msgstr "Generate"
-
-msgid "Edit report…"
-msgstr "Edit report…"
-
-msgid "Manage sharing…"
-msgstr "Manage sharing…"
 
 msgid "Building your report…"
 msgstr "Building your report…"
@@ -697,11 +701,12 @@ msgstr ""
 msgid "Your organisation unit from last time is filled in already."
 msgstr "Your organisation unit from last time is filled in already."
 
-msgid "The report below is still {{report}}."
-msgstr "The report below is still {{report}}."
-
-msgid "Generate again"
-msgstr "Generate again"
+msgid ""
+"The report below is still {{report}}. Select Generate on the left to "
+"refresh it."
+msgstr ""
+"The report below is still {{report}}. Select Generate on the left to "
+"refresh it."
 
 msgid "just now"
 msgstr "just now"

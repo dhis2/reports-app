@@ -3,6 +3,7 @@ import { Button, CircularLoader, InputField, NoticeBox } from '@dhis2/ui'
 import PropTypes from 'prop-types'
 import React, { useMemo, useState } from 'react'
 import { needsCaption } from './reportShape.js'
+import { ReportRowMenu } from './ReportRowMenu.jsx'
 import styles from './StandardReportNext.module.css'
 
 /*
@@ -20,6 +21,8 @@ export const ReportList = ({
     canCreate,
     onSelect,
     onCreate,
+    onEdit,
+    onShare,
 }) => {
     const [search, setSearch] = useState('')
 
@@ -78,7 +81,7 @@ export const ReportList = ({
                         const caption = needsCaption(report)
 
                         return (
-                            <li key={report.id}>
+                            <li key={report.id} className={styles.rowWrap}>
                                 <button
                                     type="button"
                                     className={styles.row}
@@ -99,6 +102,18 @@ export const ReportList = ({
                                         </span>
                                     )}
                                 </button>
+
+                                {/*
+                                 * A sibling of the row rather than a child of
+                                 * it: a button inside a button is invalid,
+                                 * and nesting them would make every menu
+                                 * click also select the report.
+                                 */}
+                                <ReportRowMenu
+                                    report={report}
+                                    onEdit={onEdit}
+                                    onShare={onShare}
+                                />
                             </li>
                         )
                     })}
@@ -128,5 +143,7 @@ ReportList.propTypes = {
     error: PropTypes.object,
     loading: PropTypes.bool,
     onCreate: PropTypes.func,
+    onEdit: PropTypes.func,
     onSelect: PropTypes.func,
+    onShare: PropTypes.func,
 }
