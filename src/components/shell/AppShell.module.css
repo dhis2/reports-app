@@ -1,0 +1,76 @@
+/*
+ * Application shell — content area, plus a switcher bar for pages that have
+ * nowhere better to host it. Single column: there is no permanent navigation
+ * rail, so the one left rail on screen belongs to the tool. See AppShell.jsx.
+ *
+ * Sits inside the platform's own `.app-shell-app` wrapper, below the real
+ * DHIS2 header bar. Colour and spacing literals are @dhis2/ui token values.
+ */
+
+.shell {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+/*
+ * Pages that manage their own layout get an exact height instead of a minimum,
+ * so panes inside them can scroll independently rather than growing the page.
+ *
+ * Sized against the viewport rather than with height:100%, because the legacy
+ * D2UIApp wrapper sits between us and the platform's `.app-shell-app` and has
+ * no height of its own — a percentage would resolve against auto and be
+ * ignored. 48px is the DHIS2 header bar, which this content starts below.
+ * Once D2UIApp is gone this can become height:100%.
+ */
+.shellFlush {
+    height: calc(100vh - 48px);
+    min-height: 0;
+}
+
+.switcherBar {
+    display: flex;
+    align-items: center;
+    padding: 10px 24px;
+    background: #ffffff;
+    border-bottom: 1px solid #d5dde5;
+}
+
+.main {
+    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 0;
+    padding: 16px 24px 40px;
+}
+
+/* No padding, and the page fills the area edge to edge. */
+.mainFlush {
+    display: flex;
+    padding: 0;
+}
+
+.mainFlush > * {
+    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 0;
+}
+
+@media (max-width: 720px) {
+    .switcherBar {
+        padding: 8px 16px;
+    }
+
+    .main {
+        padding: 16px 16px 32px;
+    }
+}
+
+@media print {
+    .switcherBar {
+        display: none;
+    }
+
+    .main {
+        padding: 0;
+    }
+}

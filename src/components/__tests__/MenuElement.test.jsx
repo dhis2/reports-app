@@ -1,4 +1,4 @@
-import Paper from '@material-ui/core/Paper'
+import { Card } from '@dhis2/ui'
 import { shallow } from 'enzyme'
 import React from 'react'
 import {
@@ -23,8 +23,8 @@ describe('Test <MenuElement /> rendering:', () => {
         ownShallow()
     })
 
-    it('Renders a section on Paper.', () => {
-        expect(wrapper.find(Paper)).toHaveLength(1)
+    it('Renders a section on a Card.', () => {
+        expect(wrapper.find(Card)).toHaveLength(1)
     })
 
     it('Renders correct section title.', () => {

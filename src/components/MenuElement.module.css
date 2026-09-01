@@ -1,39 +1,50 @@
-.sectionTitleBar {
-    margin-top: 28px;
-    min-height: 42px;
-    flex-wrap: nowrap;
+/* Landing page section card. Token values from @dhis2/ui. */
+
+.card {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    gap: 8px;
+    height: 100%;
+    padding: 16px;
+    box-sizing: border-box;
 }
 
-.sectionName {
-    font-size: 24px;
-    text-align: left;
-    color: #000000;
+.sectionTitleBar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .sectionIcon {
-    float: right;
-    color: #757575;
-    font-size: 50px;
+    display: grid;
+    place-items: center;
+    color: #147cd7;
+    flex: none;
+}
+
+.sectionName {
+    font-size: 16px;
+    font-weight: 500;
+    color: #212934;
+}
+
+.sectionQuestion {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 500;
+    color: #4a5768;
 }
 
 .sectionDescription {
-    font-size: 14px;
-    text-align: left;
-    color: #757575;
-    margin-top: 38px;
-    margin-bottom: 38px;
-    display: block;
+    margin: 0;
+    font-size: 13px;
+    line-height: 18px;
+    color: #6c7787;
+    flex: 1 1 auto;
 }
 
 .sectionActionText {
-    position: absolute;
-    bottom: 20px;
-    display: block;
-    font-size: 16px;
-    font-weight: 600;
-    text-align: left;
-    color: #2196f3;
+    font-size: 13px;
+    font-weight: 500;
+    color: #147cd7;
 }

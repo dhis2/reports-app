@@ -62,6 +62,12 @@ exports[`Matches the snapshot 1`] = `
       path="/data-set-report"
     />
     <Route
+      component={[Function]}
+      exact={true}
+      key="data-set-report-next"
+      path="/data-set-report-next"
+    />
+    <Route
       component={
         Object {
           "$$typeof": Symbol(react.memo),

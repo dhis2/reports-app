@@ -4,27 +4,25 @@ body {
 }
 
 html {
-    background: #f3f3f3;
+    /* grey200 — the standard DHIS2 app background */
+    background: #f3f5f7;
     font-family: 'Roboto', sans-serif;
 }
 
+/*
+ * Legacy page headings. Still a bare-element rule because the five original
+ * pages render bare h1s through SectionHeadline; the weight and letter
+ * spacing are brought into line with the current DHIS2 type scale.
+ */
 h1 {
-    font-size: 24px;
-    font-weight: 300;
-    letter-spacing: 1.2px;
-    color: rgba(0, 0, 0, 0.87);
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: normal;
+    color: #212934;
     display: flex;
     align-items: center;
-    height: 48px;
-}
-
-.left-bar {
-    width: 295px;
-    position: fixed;
-    bottom: 0;
-    top: 0;
-    left: 0;
-    margin-top: 3rem;
+    height: auto;
+    margin: 0 0 16px;
 }
 
 .d2-ui-table {

@@ -2,6 +2,9 @@ import i18n from '../locales/index.js'
 
 export const STANDARD_REPORT_SECTION_KEY = 'standard-report'
 export const DATA_SET_REPORT_SECTION_KEY = 'data-set-report'
+/* Prototype only — remove this key, its sectionOrder entry and its sections
+ * entry to take the redesigned page back out of the menu. */
+export const DATA_SET_REPORT_NEXT_SECTION_KEY = 'data-set-report-next'
 export const REPORTING_RATE_SUMMARY_SECTION_KEY = 'reporting-rate-summary'
 export const RESOURCE_SECTION_KEY = 'resource'
 export const ORG_UNIT_DIST_REPORT_SECTION_KEY =
@@ -11,6 +14,7 @@ export const DATA_APPROVAL_SECTION_KEY = 'data-approval'
 export const sectionOrder = [
     STANDARD_REPORT_SECTION_KEY,
     DATA_SET_REPORT_SECTION_KEY,
+    DATA_SET_REPORT_NEXT_SECTION_KEY,
     REPORTING_RATE_SUMMARY_SECTION_KEY,
     RESOURCE_SECTION_KEY,
     ORG_UNIT_DIST_REPORT_SECTION_KEY,
@@ -38,6 +42,19 @@ export const sections = {
             icon: 'assignment',
             description: i18n.t(
                 'View data set reports. These reports are based on data entry screens and will produce a report with aggregated data.'
+            ),
+            actionText: i18n.t('Get Report'),
+            docs: 'using_reporting_dataset_reports',
+        },
+    },
+    [DATA_SET_REPORT_NEXT_SECTION_KEY]: {
+        key: DATA_SET_REPORT_NEXT_SECTION_KEY,
+        path: `/${DATA_SET_REPORT_NEXT_SECTION_KEY}`,
+        info: {
+            label: i18n.t('Data Set Report (prototype)'),
+            icon: 'assignment_turned_in',
+            description: i18n.t(
+                'Redesign prototype of the data set report, built on the current DHIS2 component library. Same endpoints, same output.'
             ),
             actionText: i18n.t('Get Report'),
             docs: 'using_reporting_dataset_reports',

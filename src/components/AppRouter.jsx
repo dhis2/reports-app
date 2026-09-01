@@ -2,12 +2,14 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import {
     sections,
+    DATA_SET_REPORT_NEXT_SECTION_KEY,
     DATA_SET_REPORT_SECTION_KEY,
     ORG_UNIT_DIST_REPORT_SECTION_KEY,
     REPORTING_RATE_SUMMARY_SECTION_KEY,
     RESOURCE_SECTION_KEY,
     STANDARD_REPORT_SECTION_KEY,
 } from '../config/sections.config.js'
+import { DataSetReportNext } from '../pages/data-set-report-next/DataSetReportNext.jsx'
 import { DataSetReport } from '../pages/DataSetReport.jsx'
 import Home from '../pages/home/Home.jsx'
 import { OrganisationUnitDistributionReport } from '../pages/OrganisationUnitDistributionReport.jsx'
@@ -52,6 +54,12 @@ const AppRouter = () => (
                 key={DATA_SET_REPORT_SECTION_KEY}
                 path={sections[DATA_SET_REPORT_SECTION_KEY].path}
                 component={DataSetReport}
+            />
+            <Route
+                exact
+                key={DATA_SET_REPORT_NEXT_SECTION_KEY}
+                path={sections[DATA_SET_REPORT_NEXT_SECTION_KEY].path}
+                component={DataSetReportNext}
             />
             <Route
                 exact

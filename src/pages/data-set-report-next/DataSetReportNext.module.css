@@ -1,0 +1,543 @@
+/*
+ * Layout B — persistent filter rail, full-width report.
+ *
+ * Values are the @dhis2/ui token values (colors.js / spacers.js), written as
+ * literals because this file is plain CSS and cannot import them.
+ *
+ * The `.title` rule deliberately re-states height, weight and letter-spacing:
+ * global.css styles bare h1 elements app-wide, and this has to win.
+ */
+
+/*
+ * App-style layout: the rail is flush to the top, left and bottom of the
+ * viewport and scrolls internally, with the actions pinned to its foot. The
+ * report column scrolls independently.
+ *
+ * This only works because the shell hands this page the full content area with
+ * no padding and an exact height — see AppShell's self-managed layout list.
+ * The platform's own `.app-shell-app` wrapper is the page scroll container and
+ * is exactly the viewport minus the 48px header bar, so `height: 100%` here
+ * resolves against that and nothing double-scrolls.
+ */
+.page {
+    display: flex;
+    min-width: 0;
+    min-height: 0;
+    /*
+     * AppRouter's <main> is display:block, so this cannot inherit its height
+     * by being a flex item — it has to claim it. <main> does have a definite
+     * height (the shell stretches it), so the percentage resolves.
+     */
+    height: 100%;
+}
+
+/* Holds the section name / switcher at the top of the options rail. */
+.railHeader {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 12px 8px 12px 16px;
+    border-bottom: 1px solid #e8edf2;
+}
+
+.railCollapse,
+.railExpand {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    background: none;
+    border: 0;
+    border-radius: 3px;
+    color: #6c7787;
+    cursor: pointer;
+}
+
+.railCollapse:hover,
+.railExpand:hover {
+    background: #f3f5f7;
+    color: #1565c0;
+}
+
+.railCollapse:focus-visible,
+.railExpand:focus-visible {
+    outline: 2px solid #147cd7;
+    outline-offset: -1px;
+}
+
+/* The expand control only exists while the rail is collapsed. */
+.railExpand {
+    display: none;
+    margin: 12px auto 0;
+}
+
+.visuallyHidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.work {
+    display: grid;
+    grid-template-columns: 320px minmax(0, 1fr);
+    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 0;
+    /*
+     * Deliberately not transitioned. Chrome would not interpolate between
+     * `320px minmax(0,1fr)` and `44px minmax(0,1fr)` and held the start value
+     * instead, so the collapse simply never applied. Snapping is correct and
+     * costs nothing here.
+     */
+}
+
+/*
+ * Collapsed: the rail keeps a narrow strip rather than disappearing, so the
+ * control to bring it back is always in the same place and does not have to
+ * live inside the report — which has no toolbar of its own before a report
+ * exists. Hands ~276px of the 320px to the report.
+ */
+.workRailCollapsed {
+    grid-template-columns: 44px minmax(0, 1fr);
+}
+
+.rail {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    background: #ffffff;
+    border-right: 1px solid #d5dde5;
+}
+
+/*
+ * Hidden with display:none rather than unmounted, so the org unit tree keeps
+ * whatever the user had expanded when the rail comes back.
+ */
+.railCollapsed .railHeader,
+.railCollapsed .railForm {
+    display: none;
+}
+
+.railCollapsed .railExpand {
+    display: grid;
+}
+
+.railForm {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    /* Without this a flex child refuses to shrink, so the scroll below never
+     * engages and the pinned actions get pushed off the bottom. */
+    min-height: 0;
+}
+
+.railScroll {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    display: grid;
+    gap: 16px;
+    align-content: start;
+    padding: 16px;
+}
+
+.railActions {
+    flex: none;
+    display: grid;
+    gap: 8px;
+    padding: 12px 16px;
+    background: #ffffff;
+    border-top: 1px solid #d5dde5;
+}
+
+.output {
+    min-width: 0;
+    min-height: 0;
+    overflow-y: auto;
+    display: grid;
+    gap: 16px;
+    align-content: start;
+    padding: 16px 24px 40px;
+}
+
+/*
+ * Grid and flex children default to min-width:auto, so they refuse to shrink
+ * below their content's intrinsic width. A wide report table then pushes the
+ * card — and every ancestor — out to the table's full width, which also stops
+ * .tableScroll below from ever becoming a scroll container, because there is
+ * nothing narrower to clip against. Letting the children shrink is what makes
+ * the horizontal scroll land on the table instead of the page.
+ */
+.output > * {
+    min-width: 0;
+}
+
+/* ---------- form bits ---------- */
+
+.label {
+    display: block;
+    font-size: 14px;
+    color: #212934;
+    margin-bottom: 4px;
+}
+
+.help {
+    font-size: 12px;
+    color: #6c7787;
+    margin: 4px 0 0;
+}
+
+.warnHelp {
+    font-size: 12px;
+    color: #e56408;
+    margin: 4px 0 0;
+}
+
+.treeBox {
+    border: 1px solid #d5dde5;
+    border-radius: 3px;
+    background: #ffffff;
+    max-height: 240px;
+    overflow: auto;
+    padding: 8px;
+}
+
+.scopeGroup {
+    display: grid;
+    gap: 4px;
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.scopeGroup legend {
+    font-size: 14px;
+    color: #212934;
+    margin-bottom: 4px;
+    padding: 0;
+}
+
+.disclosure {
+    border-top: 1px solid #e8edf2;
+    padding-top: 12px;
+}
+
+.disclosureButton {
+    appearance: none;
+    background: none;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    font-size: 14px;
+    color: #1565c0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.disclosureBody {
+    display: grid;
+    gap: 12px;
+    padding-top: 12px;
+}
+
+.countBadge {
+    background: #e3f2fd;
+    color: #0d47a1;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 1px 7px;
+}
+
+/* ---------- summary strip ---------- */
+
+.summary {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 24px;
+    padding: 12px 16px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #d5dde5;
+}
+
+.summary dl {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.summary dl > div {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.summary dt {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #6c7787;
+}
+
+.summary dd {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #212934;
+}
+
+.summaryActions {
+    margin-left: auto;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+/*
+ * Applied filters are shown here, not only inside the collapsed panel. A
+ * filtered report that looks like a full one is a data integrity problem,
+ * not a cosmetic one — so this also has to survive into print.
+ */
+.filterNote {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: #fff8e1;
+    border-bottom: 1px solid #ffe082;
+    font-size: 13px;
+    color: #6f3205;
+}
+
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    padding: 8px 16px;
+    border-bottom: 1px solid #e8edf2;
+    font-size: 13px;
+    color: #4a5768;
+}
+
+.toc {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+}
+
+.tocLink {
+    font: inherit;
+    color: #1565c0;
+    text-decoration: none;
+    border: 1px solid #d5dde5;
+    border-radius: 12px;
+    padding: 2px 10px;
+    background: #ffffff;
+    cursor: pointer;
+}
+
+.tocLink:hover {
+    background: #f5fbff;
+    border-color: #c5e3fc;
+}
+
+.tocLink:focus-visible {
+    outline: 2px solid #147cd7;
+    outline-offset: 1px;
+}
+
+/* ---------- report body ---------- */
+
+.reportBody {
+    padding: 16px;
+}
+
+.section + .section {
+    margin-top: 24px;
+}
+
+.sectionTitle {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 8px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #212934;
+}
+
+.sectionMeta {
+    font-size: 12px;
+    font-weight: 400;
+    color: #6c7787;
+}
+
+.tableScroll {
+    overflow-x: auto;
+    max-width: 100%;
+}
+
+/*
+ * @dhis2/ui's DataTableColumnHeader imposes a very large intrinsic minimum
+ * width per cell — measured at ~1160px — so under the default
+ * table-layout:auto a ten-column report lays itself out about 11600px wide and
+ * every value column ends up off screen. Neither width:auto nor max-content
+ * escapes it, because that width really is the table's min-content size.
+ *
+ * Fixed layout ignores content-based minimums, so we set the column widths
+ * ourselves: room for the data element name, a readable width for each value,
+ * and horizontal scrolling on the container when there are many columns.
+ * --table-min-width is set per table from its column count.
+ *
+ * The `div` prefix is needed to outrank DataTable's own table-layout:auto,
+ * which has the same class-plus-element specificity.
+ */
+div.tableScroll table {
+    table-layout: fixed;
+    width: 100%;
+    min-width: var(--table-min-width, 100%);
+}
+
+div.tableScroll th:first-child,
+div.tableScroll td:first-child {
+    width: 260px;
+}
+
+@media print {
+    /* Let a wide table shrink onto the page rather than run off it. */
+    div.tableScroll table {
+        min-width: 0;
+    }
+
+    div.tableScroll {
+        overflow-x: visible;
+    }
+}
+
+.figure {
+    font-variant-numeric: tabular-nums;
+}
+
+.customFrame {
+    border: 1px solid #d5dde5;
+    border-radius: 3px;
+    background: #ffffff;
+}
+
+/* ---------- states ---------- */
+
+.centered {
+    padding: 48px 24px;
+    text-align: center;
+    color: #4a5768;
+}
+
+.centered h2 {
+    margin: 0 0 4px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #212934;
+}
+
+.centered p {
+    margin: 0 auto;
+    max-width: 46ch;
+    font-size: 14px;
+}
+
+.resumeRow {
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+}
+
+.noticePad {
+    padding: 16px;
+}
+
+/* ---------- print ---------- */
+
+@media print {
+    .rail,
+    .toolbar,
+    .summaryActions {
+        display: none;
+    }
+
+    /* Undo the fixed-height panes so the whole report flows onto paper. */
+    .page,
+    .work,
+    .output {
+        display: block;
+        height: auto;
+        min-height: 0;
+        overflow: visible;
+        padding: 0;
+    }
+
+    .summary {
+        background: #ffffff;
+        border-bottom: 2px solid #212934;
+    }
+
+    .section {
+        break-inside: avoid;
+    }
+}
+
+/* ---------- narrow screens ---------- */
+
+/*
+ * Below this width the two panes stack and the page scrolls as one, rather
+ * than having two independent scroll areas in a viewport-height grid.
+ */
+@media (max-width: 900px) {
+    .page {
+        display: block;
+    }
+
+    .work,
+    .workRailCollapsed {
+        display: block;
+    }
+
+    /* Stacked, the rail is above the report, so collapse it upward. */
+    .railCollapsed {
+        border-bottom: 0;
+    }
+
+    .railCollapsed .railExpand {
+        margin: 8px 8px 8px 16px;
+    }
+
+    .rail {
+        border-right: 0;
+        border-bottom: 1px solid #d5dde5;
+    }
+
+    .railScroll {
+        overflow-y: visible;
+    }
+
+    .output {
+        overflow-y: visible;
+        padding: 16px;
+    }
+}
