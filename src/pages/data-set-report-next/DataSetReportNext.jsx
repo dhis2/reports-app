@@ -3,13 +3,13 @@ import i18n from '@dhis2/d2-i18n'
 import {
     Button,
     Card,
-    Checkbox,
     CircularLoader,
     IconChevronLeft24,
     IconChevronRight24,
     NoticeBox,
     OrganisationUnitTree,
     Radio,
+    SegmentedControl,
     SingleSelectField,
     SingleSelectOption,
 } from '@dhis2/ui'
@@ -19,6 +19,7 @@ import { DATA_SET_REPORT_NEXT_SECTION_KEY } from '../../config/sections.config.j
 import { fixedPeriodTranslations } from '../../utils/periods/fixedPeriods.js'
 import { CustomFormReport } from './CustomFormReport.jsx'
 import styles from './DataSetReportNext.module.css'
+import { FormView } from './form-view/index.js'
 import {
     dropUnopenedPeriods,
     generatePeriods,
@@ -86,6 +87,47 @@ const writeRailCollapsed = (collapsed) => {
     }
 }
 
+/*
+ * The two ways to read the same report.
+ *
+ * STANDARD is the summary grid this page has always shown. FORM is the data
+ * set drawn the way data entry draws it, which is what people asking for this
+ * actually mean when they say they want to see "the form".
+ *
+ * Which one you prefer is a habit, not a property of the report, so it is
+ * remembered locally and stays out of the URL for the same reason the rail
+ * state does.
+ */
+const VIEW_MODES = {
+    STANDARD: 'STANDARD',
+    FORM: 'FORM',
+}
+
+const VIEW_STORAGE_KEY = 'reports-app:data-set-report-next:view-mode'
+
+/*
+ * Standard is the default: it is what the page does today, so nobody's
+ * existing habit changes underneath them. The control is right above the
+ * report, so anyone who wants Form finds it once and then it sticks.
+ */
+const readViewMode = () => {
+    try {
+        return window.localStorage.getItem(VIEW_STORAGE_KEY) === VIEW_MODES.FORM
+            ? VIEW_MODES.FORM
+            : VIEW_MODES.STANDARD
+    } catch {
+        return VIEW_MODES.STANDARD
+    }
+}
+
+const writeViewMode = (mode) => {
+    try {
+        window.localStorage.setItem(VIEW_STORAGE_KEY, mode)
+    } catch {
+        // A remembered preference is a convenience, never worth an error.
+    }
+}
+
 const formTypeLabel = (formType) => {
     switch (formType) {
         case 'CUSTOM':
@@ -114,10 +156,15 @@ export const DataSetReportNext = () => {
     const [report, setReport] = useState(null)
     const [reportLoading, setReportLoading] = useState(false)
     const [reportError, setReportError] = useState(null)
-    const [hideEmptyRows, setHideEmptyRows] = useState(false)
     const [filtersOpen, setFiltersOpen] = useState(false)
     const [ouName, setOuName] = useState('')
     const [railCollapsed, setRailCollapsed] = useState(readRailCollapsed)
+    const [viewMode, setViewMode] = useState(readViewMode)
+
+    const onChangeViewMode = ({ value }) => {
+        setViewMode(value)
+        writeViewMode(value)
+    }
 
     const toggleRail = () => {
         setRailCollapsed((collapsed) => {
@@ -146,7 +193,8 @@ export const DataSetReportNext = () => {
     }, [rootsQuery.data])
 
     const dimensions = dimensionsQuery.data?.dimensions?.dimensions || []
-    const groupSets = groupSetsQuery.data?.groupSets?.organisationUnitGroupSets || []
+    const groupSets =
+        groupSetsQuery.data?.groupSets?.organisationUnitGroupSets || []
 
     /* Every optional filter, from both sources, in one shape. */
     const filterFields = useMemo(
@@ -400,11 +448,8 @@ export const DataSetReportNext = () => {
             remember(selection)
 
             try {
-                if (dataSet.formType === CUSTOM_FORM) {
-                    const html = await fetchCustomForm(baseUrl, request)
-                    setReport({ kind: 'custom', html, snapshot })
-                } else {
-                    const response = await engine.query(REPORT_QUERY, {
+                const queryGrids = () =>
+                    engine.query(REPORT_QUERY, {
                         variables: {
                             ds: request.ds,
                             pe: request.pe,
@@ -413,6 +458,29 @@ export const DataSetReportNext = () => {
                             filter: filtersToParams(request.filters),
                         },
                     })
+
+                if (dataSet.formType === CUSTOM_FORM) {
+                    /*
+                     * Both shapes are fetched for a custom form, because both
+                     * views are offered for it: Standard reads the grids, Form
+                     * shows the server-rendered HTML. Fetching them together
+                     * costs one extra request per report and buys a toggle
+                     * that never waits.
+                     */
+                    const [html, response] = await Promise.all([
+                        fetchCustomForm(baseUrl, request),
+                        queryGrids(),
+                    ])
+
+                    setReport({
+                        kind: 'custom',
+                        html,
+                        grids: response?.report,
+                        tables: transformTables(response?.report),
+                        snapshot,
+                    })
+                } else {
+                    const response = await queryGrids()
                     /*
                      * The endpoint returns the tables as a top-level array.
                      * The legacy page wraps it as `{ data, fileUrls }` before
@@ -422,6 +490,8 @@ export const DataSetReportNext = () => {
                      */
                     setReport({
                         kind: 'tables',
+                        /* the raw grids, which Form view matches against */
+                        grids: response?.report,
                         tables: transformTables(response?.report),
                         snapshot,
                     })
@@ -486,8 +556,14 @@ export const DataSetReportNext = () => {
           })
         : []
 
-    const valueCount =
-        report?.kind === 'tables' ? countValues(report.tables) : null
+    /*
+     * Grids are now fetched for custom-form data sets too, so this is no
+     * longer conditional on the report kind — a custom form has a Standard
+     * view like any other data set.
+     */
+    const valueCount = report?.tables ? countValues(report.tables) : null
+
+    const isStandardView = viewMode === VIEW_MODES.STANDARD
 
     return (
         <div className={styles.page}>
@@ -503,11 +579,11 @@ export const DataSetReportNext = () => {
                     }`}
                 >
                     {/*
-                      * Shown only while collapsed. The form below stays
-                      * mounted and is hidden with CSS rather than unmounted,
-                      * so the org unit tree keeps whatever the user had
-                      * expanded.
-                      */}
+                     * Shown only while collapsed. The form below stays
+                     * mounted and is hidden with CSS rather than unmounted,
+                     * so the org unit tree keeps whatever the user had
+                     * expanded.
+                     */}
                     <button
                         type="button"
                         className={styles.railExpand}
@@ -523,11 +599,11 @@ export const DataSetReportNext = () => {
                     </button>
 
                     {/*
-                      * The section name lives here rather than as a page
-                      * heading: it is also the control for switching section,
-                      * so it earns its place at the top of the panel the page
-                      * already has.
-                      */}
+                     * The section name lives here rather than as a page
+                     * heading: it is also the control for switching section,
+                     * so it earns its place at the top of the panel the page
+                     * already has.
+                     */}
                     <div className={styles.railHeader}>
                         <SectionSwitcher
                             currentSection={DATA_SET_REPORT_NEXT_SECTION_KEY}
@@ -553,266 +629,312 @@ export const DataSetReportNext = () => {
                         onSubmit={onGenerate}
                     >
                         <div className={styles.railScroll}>
-                            <div>
-                                <span className={styles.label}>
-                                    {i18n.t('Organisation unit')}
-                                </span>
-                                <div className={styles.treeBox}>
-                                    {rootsQuery.loading && <CircularLoader small />}
-                                    {rootsQuery.error && (
-                                        <NoticeBox error>
-                                            {i18n.t(
-                                                'Could not load organisation units.'
+                            <div className={styles.railFields}>
+                                <div>
+                                    <span className={styles.label}>
+                                        {i18n.t('Organisation unit')}
+                                    </span>
+                                    <div className={styles.treeBox}>
+                                        {rootsQuery.loading && (
+                                            <CircularLoader small />
+                                        )}
+                                        {rootsQuery.error && (
+                                            <NoticeBox error>
+                                                {i18n.t(
+                                                    'Could not load organisation units.'
+                                                )}
+                                            </NoticeBox>
+                                        )}
+                                        {!rootsQuery.loading &&
+                                            roots.length > 0 && (
+                                                <OrganisationUnitTree
+                                                    roots={roots}
+                                                    singleSelection
+                                                    selected={
+                                                        selection.ouPath
+                                                            ? [selection.ouPath]
+                                                            : []
+                                                    }
+                                                    initiallyExpanded={roots.map(
+                                                        (id) => `/${id}`
+                                                    )}
+                                                    onChange={({
+                                                        path,
+                                                        displayName,
+                                                    }) => {
+                                                        setOuName(displayName)
+                                                        update({ ouPath: path })
+                                                    }}
+                                                />
                                             )}
-                                        </NoticeBox>
-                                    )}
-                                    {!rootsQuery.loading && roots.length > 0 && (
-                                        <OrganisationUnitTree
-                                            roots={roots}
-                                            singleSelection
-                                            selected={
-                                                selection.ouPath
-                                                    ? [selection.ouPath]
-                                                    : []
-                                            }
-                                            initiallyExpanded={roots.map(
-                                                (id) => `/${id}`
-                                            )}
-                                            onChange={({ path, displayName }) => {
-                                                setOuName(displayName)
-                                                update({ ouPath: path })
-                                            }}
-                                        />
-                                    )}
+                                    </div>
                                 </div>
-                            </div>
 
-                            <fieldset className={styles.scopeGroup}>
-                                <legend>{i18n.t('What to include')}</legend>
-                                <Radio
-                                    dense
-                                    name="scope"
-                                    label={i18n.t(
-                                        'Everything below this unit, added up'
-                                    )}
-                                    checked={!selection.selectedUnitOnly}
-                                    onChange={() =>
-                                        update({ selectedUnitOnly: false })
-                                    }
-                                />
-                                <Radio
-                                    dense
-                                    name="scope"
-                                    label={i18n.t(
-                                        'Only data recorded at this unit'
-                                    )}
-                                    checked={selection.selectedUnitOnly}
-                                    onChange={() =>
-                                        update({ selectedUnitOnly: true })
-                                    }
-                                />
-                            </fieldset>
-
-                            <div>
-                                <SingleSelectField
-                                    filterable
-                                    noMatchText={i18n.t('No data set found')}
-                                    label={i18n.t('Data set')}
-                                    placeholder={i18n.t('Choose a data set')}
-                                    loading={dataSetsQuery.loading}
-                                    selected={safeSelected(
-                                        dataSets,
-                                        selection.dsId
-                                    )}
-                                    onChange={({ selected }) =>
-                                        update({ dsId: selected })
-                                    }
-                                >
-                                    {dataSets.map((candidate) => (
-                                        <SingleSelectOption
-                                            key={candidate.id}
-                                            value={candidate.id}
-                                            label={candidate.displayName}
-                                        />
-                                    ))}
-                                </SingleSelectField>
-                                {dataSet && (
-                                    <p className={styles.help}>
-                                        {dataSet.periodType} ·{' '}
-                                        {formTypeLabel(dataSet.formType)}
-                                        {dataSet.formType === CUSTOM_FORM &&
-                                            ` · ${i18n.t(
-                                                'rendered by the server'
-                                            )}`}
-                                    </p>
-                                )}
-                            </div>
-
-                            <div>
-                                <SingleSelectField
-                                    label={i18n.t('Period type')}
-                                    placeholder={i18n.t('Choose a period type')}
-                                    selected={safeSelected(
-                                        PERIOD_TYPE_OPTIONS,
-                                        periodType
-                                    )}
-                                    onChange={({ selected }) =>
-                                        update({ periodType: selected, pe: '' })
-                                    }
-                                >
-                                    {PERIOD_TYPE_OPTIONS.map((type) => (
-                                        <SingleSelectOption
-                                            key={type.id}
-                                            value={type.id}
-                                            label={type.displayName}
-                                        />
-                                    ))}
-                                </SingleSelectField>
-                                {periodTypeMismatch && (
-                                    <p className={styles.warnHelp}>
-                                        {i18n.t(
-                                            '{{name}} is collected {{periodType}}. A {{chosen}} report may come back empty.',
-                                            {
-                                                name: dataSet.displayName,
-                                                periodType:
-                                                    dataSet.periodType.toLowerCase(),
-                                                chosen: periodType.toLowerCase(),
-                                            }
+                                <fieldset className={styles.scopeGroup}>
+                                    <legend>{i18n.t('What to include')}</legend>
+                                    <Radio
+                                        dense
+                                        name="scope"
+                                        label={i18n.t(
+                                            'Everything below this unit, added up'
                                         )}
-                                    </p>
-                                )}
-                                {periodType && !supportsPeriodType(periodType) && (
-                                    <p className={styles.warnHelp}>
-                                        {i18n.t(
-                                            'This prototype cannot build a period list for {{periodType}} yet.',
-                                            { periodType }
-                                        )}
-                                    </p>
-                                )}
-                            </div>
-
-                            {needsYear(periodType) && (
-                                <SingleSelectField
-                                    filterable
-                                    noMatchText={i18n.t('No year found')}
-                                    label={i18n.t('Year')}
-                                    selected={safeSelected(
-                                        yearChoices,
-                                        String(selection.year)
-                                    )}
-                                    onChange={({ selected }) =>
-                                        update({
-                                            year: Number(selected),
-                                            pe: '',
-                                        })
-                                    }
-                                >
-                                    {yearChoices.map((year) => (
-                                        <SingleSelectOption
-                                            key={year.id}
-                                            value={year.id}
-                                            label={year.displayName}
-                                        />
-                                    ))}
-                                </SingleSelectField>
-                            )}
-
-                            <SingleSelectField
-                                label={i18n.t('Period')}
-                                placeholder={i18n.t('Choose a period')}
-                                selected={safeSelected(periods, selection.pe)}
-                                disabled={periods.length === 0}
-                                onChange={({ selected }) =>
-                                    update({ pe: selected })
-                                }
-                            >
-                                {periods.map((period) => (
-                                    <SingleSelectOption
-                                        key={period.id}
-                                        value={period.id}
-                                        label={period.name}
+                                        checked={!selection.selectedUnitOnly}
+                                        onChange={() =>
+                                            update({ selectedUnitOnly: false })
+                                        }
                                     />
-                                ))}
-                            </SingleSelectField>
+                                    <Radio
+                                        dense
+                                        name="scope"
+                                        label={i18n.t(
+                                            'Only data recorded at this unit'
+                                        )}
+                                        checked={selection.selectedUnitOnly}
+                                        onChange={() =>
+                                            update({ selectedUnitOnly: true })
+                                        }
+                                    />
+                                </fieldset>
 
-                            {filterFields.length > 0 && (
-                                <div className={styles.disclosure}>
-                                    <button
-                                        type="button"
-                                        className={styles.disclosureButton}
-                                        aria-expanded={filtersOpen}
-                                        onClick={() =>
-                                            setFiltersOpen(!filtersOpen)
+                                <div>
+                                    <SingleSelectField
+                                        filterable
+                                        noMatchText={i18n.t(
+                                            'No data set found'
+                                        )}
+                                        label={i18n.t('Data set')}
+                                        placeholder={i18n.t(
+                                            'Choose a data set'
+                                        )}
+                                        loading={dataSetsQuery.loading}
+                                        selected={safeSelected(
+                                            dataSets,
+                                            selection.dsId
+                                        )}
+                                        onChange={({ selected }) =>
+                                            update({ dsId: selected })
                                         }
                                     >
-                                        <span aria-hidden="true">
-                                            {filtersOpen ? '▾' : '▸'}
-                                        </span>
-                                        {i18n.t('Optional filters')}
-                                        {filterCount > 0 && (
-                                            <span className={styles.countBadge}>
-                                                {filterCount}
-                                            </span>
-                                        )}
-                                    </button>
-
-                                    {filtersOpen && (
-                                        <div className={styles.disclosureBody}>
-                                            {filterFields.map((field) => (
-                                                <SingleSelectField
-                                                    key={field.id}
-                                                    clearable
-                                                    label={field.label}
-                                                    placeholder={i18n.t('Any')}
-                                                    selected={safeSelected(
-                                                        field.options,
-                                                        selection.filters[
-                                                            field.id
-                                                        ]
-                                                    )}
-                                                    onChange={({ selected }) =>
-                                                        update({
-                                                            filters: {
-                                                                ...selection.filters,
-                                                                [field.id]:
-                                                                    selected,
-                                                            },
-                                                        })
-                                                    }
-                                                >
-                                                    {field.options.map(
-                                                        (option) => (
-                                                            <SingleSelectOption
-                                                                key={option.id}
-                                                                value={option.id}
-                                                                label={
-                                                                    option.displayName
-                                                                }
-                                                            />
-                                                        )
-                                                    )}
-                                                </SingleSelectField>
-                                            ))}
-                                        </div>
+                                        {dataSets.map((candidate) => (
+                                            <SingleSelectOption
+                                                key={candidate.id}
+                                                value={candidate.id}
+                                                label={candidate.displayName}
+                                            />
+                                        ))}
+                                    </SingleSelectField>
+                                    {dataSet && (
+                                        <p className={styles.help}>
+                                            {dataSet.periodType} ·{' '}
+                                            {formTypeLabel(dataSet.formType)}
+                                            {dataSet.formType === CUSTOM_FORM &&
+                                                ` · ${i18n.t(
+                                                    'rendered by the server'
+                                                )}`}
+                                        </p>
                                     )}
                                 </div>
-                            )}
 
-                        </div>
+                                <div>
+                                    <SingleSelectField
+                                        label={i18n.t('Period type')}
+                                        placeholder={i18n.t(
+                                            'Choose a period type'
+                                        )}
+                                        selected={safeSelected(
+                                            PERIOD_TYPE_OPTIONS,
+                                            periodType
+                                        )}
+                                        onChange={({ selected }) =>
+                                            update({
+                                                periodType: selected,
+                                                pe: '',
+                                            })
+                                        }
+                                    >
+                                        {PERIOD_TYPE_OPTIONS.map((type) => (
+                                            <SingleSelectOption
+                                                key={type.id}
+                                                value={type.id}
+                                                label={type.displayName}
+                                            />
+                                        ))}
+                                    </SingleSelectField>
+                                    {periodTypeMismatch && (
+                                        <p className={styles.warnHelp}>
+                                            {i18n.t(
+                                                '{{name}} is collected {{periodType}}. A {{chosen}} report may come back empty.',
+                                                {
+                                                    name: dataSet.displayName,
+                                                    periodType:
+                                                        dataSet.periodType.toLowerCase(),
+                                                    chosen: periodType.toLowerCase(),
+                                                }
+                                            )}
+                                        </p>
+                                    )}
+                                    {periodType &&
+                                        !supportsPeriodType(periodType) && (
+                                            <p className={styles.warnHelp}>
+                                                {i18n.t(
+                                                    'This prototype cannot build a period list for {{periodType}} yet.',
+                                                    { periodType }
+                                                )}
+                                            </p>
+                                        )}
+                                </div>
 
-                        {/* Pinned: stays reachable however long the form gets */}
-                        <div className={styles.railActions}>
-                            <Button
-                                primary
-                                type="submit"
-                                disabled={!canGenerate}
-                                loading={reportLoading}
-                            >
-                                {i18n.t('Get report')}
-                            </Button>
-                            <Button secondary type="button" onClick={onClear}>
-                                {i18n.t('Clear')}
-                            </Button>
+                                {needsYear(periodType) && (
+                                    <SingleSelectField
+                                        filterable
+                                        noMatchText={i18n.t('No year found')}
+                                        label={i18n.t('Year')}
+                                        selected={safeSelected(
+                                            yearChoices,
+                                            String(selection.year)
+                                        )}
+                                        onChange={({ selected }) =>
+                                            update({
+                                                year: Number(selected),
+                                                pe: '',
+                                            })
+                                        }
+                                    >
+                                        {yearChoices.map((year) => (
+                                            <SingleSelectOption
+                                                key={year.id}
+                                                value={year.id}
+                                                label={year.displayName}
+                                            />
+                                        ))}
+                                    </SingleSelectField>
+                                )}
+
+                                <SingleSelectField
+                                    label={i18n.t('Period')}
+                                    placeholder={i18n.t('Choose a period')}
+                                    selected={safeSelected(
+                                        periods,
+                                        selection.pe
+                                    )}
+                                    disabled={periods.length === 0}
+                                    onChange={({ selected }) =>
+                                        update({ pe: selected })
+                                    }
+                                >
+                                    {periods.map((period) => (
+                                        <SingleSelectOption
+                                            key={period.id}
+                                            value={period.id}
+                                            label={period.name}
+                                        />
+                                    ))}
+                                </SingleSelectField>
+
+                                {filterFields.length > 0 && (
+                                    <div className={styles.disclosure}>
+                                        <button
+                                            type="button"
+                                            className={styles.disclosureButton}
+                                            aria-expanded={filtersOpen}
+                                            onClick={() =>
+                                                setFiltersOpen(!filtersOpen)
+                                            }
+                                        >
+                                            <span aria-hidden="true">
+                                                {filtersOpen ? '▾' : '▸'}
+                                            </span>
+                                            {i18n.t('Optional filters')}
+                                            {filterCount > 0 && (
+                                                <span
+                                                    className={
+                                                        styles.countBadge
+                                                    }
+                                                >
+                                                    {filterCount}
+                                                </span>
+                                            )}
+                                        </button>
+
+                                        {filtersOpen && (
+                                            <div
+                                                className={
+                                                    styles.disclosureBody
+                                                }
+                                            >
+                                                {filterFields.map((field) => (
+                                                    <SingleSelectField
+                                                        key={field.id}
+                                                        clearable
+                                                        label={field.label}
+                                                        placeholder={i18n.t(
+                                                            'Any'
+                                                        )}
+                                                        selected={safeSelected(
+                                                            field.options,
+                                                            selection.filters[
+                                                                field.id
+                                                            ]
+                                                        )}
+                                                        onChange={({
+                                                            selected,
+                                                        }) =>
+                                                            update({
+                                                                filters: {
+                                                                    ...selection.filters,
+                                                                    [field.id]:
+                                                                        selected,
+                                                                },
+                                                            })
+                                                        }
+                                                    >
+                                                        {field.options.map(
+                                                            (option) => (
+                                                                <SingleSelectOption
+                                                                    key={
+                                                                        option.id
+                                                                    }
+                                                                    value={
+                                                                        option.id
+                                                                    }
+                                                                    label={
+                                                                        option.displayName
+                                                                    }
+                                                                />
+                                                            )
+                                                        )}
+                                                    </SingleSelectField>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
+                                )}
+                            </div>
+
+                            {/*
+                             * Sticky, not pinned: with a short form this sits
+                             * right after the fields, wherever that lands. Only
+                             * once the fields overflow and the rail scrolls
+                             * does it stick to the bottom of the scroll area,
+                             * so the button never needs to be scrolled to.
+                             */}
+                            <div className={styles.railActions}>
+                                <Button
+                                    primary
+                                    type="submit"
+                                    disabled={!canGenerate}
+                                    loading={reportLoading}
+                                >
+                                    {i18n.t('Get report')}
+                                </Button>
+                                <Button
+                                    secondary
+                                    type="button"
+                                    onClick={onClear}
+                                >
+                                    {i18n.t('Clear')}
+                                </Button>
+                            </div>
                         </div>
                     </form>
                 </aside>
@@ -824,7 +946,9 @@ export const DataSetReportNext = () => {
                             <div className={styles.noticePad}>
                                 <NoticeBox
                                     error
-                                    title={i18n.t('The report could not be built')}
+                                    title={i18n.t(
+                                        'The report could not be built'
+                                    )}
                                 >
                                     {reportError.message}
                                 </NoticeBox>
@@ -881,7 +1005,8 @@ export const DataSetReportNext = () => {
                                             {
                                                 dataSet:
                                                     report.snapshot.dataSetName,
-                                                period: report.snapshot.periodName,
+                                                period: report.snapshot
+                                                    .periodName,
                                                 orgUnit:
                                                     report.snapshot.orgUnitName,
                                             }
@@ -957,45 +1082,92 @@ export const DataSetReportNext = () => {
                             </div>
 
                             {/*
-                              * Applied filters stay visible, and stay on the
-                              * printout. A filtered report that looks like a
-                              * full one gets filed as the facility total.
-                              */}
+                             * Applied filters stay visible, and stay on the
+                             * printout. A filtered report that looks like a
+                             * full one gets filed as the facility total.
+                             */}
                             {report.snapshot.filterLabels?.length > 0 && (
                                 <div className={styles.filterNote}>
                                     <strong>{i18n.t('Filtered:')}</strong>
-                                    {report.snapshot.filterLabels.map((filter) => (
-                                        <span key={filter.label}>
-                                            {filter.label}: {filter.value}
-                                        </span>
-                                    ))}
+                                    {report.snapshot.filterLabels.map(
+                                        (filter) => (
+                                            <span key={filter.label}>
+                                                {filter.label}: {filter.value}
+                                            </span>
+                                        )
+                                    )}
                                 </div>
                             )}
 
-                            {report.kind === 'custom' && (
-                                <>
-                                    <div className={styles.noticePad}>
-                                        <NoticeBox
-                                            title={i18n.t('Custom form')}
-                                        >
-                                            {i18n.t(
-                                                'This data set uses a custom form. The layout below is built by the server, so it does not follow the styling of the rest of this page.'
-                                            )}
-                                        </NoticeBox>
-                                    </div>
-                                    <div className={styles.reportBody}>
-                                        <CustomFormReport
-                                            html={report.html}
-                                            baseUrl={baseUrl}
-                                        />
-                                    </div>
-                                </>
-                            )}
+                            {/*
+                             * The two views, and the options that belong to
+                             * whichever one is showing. This sits directly
+                             * above the report because it is about how the
+                             * report is drawn, not about what was asked for —
+                             * that is the summary strip above.
+                             */}
+                            <div className={styles.toolbar}>
+                                <SegmentedControl
+                                    selected={viewMode}
+                                    onChange={onChangeViewMode}
+                                    options={[
+                                        {
+                                            label: i18n.t('Standard'),
+                                            value: VIEW_MODES.STANDARD,
+                                        },
+                                        {
+                                            label: i18n.t('Form'),
+                                            value: VIEW_MODES.FORM,
+                                        },
+                                    ]}
+                                />
 
-                            {report.kind === 'tables' && valueCount === 0 && (
+                                {isStandardView &&
+                                    report.tables?.length > 1 && (
+                                        <nav className={styles.toc}>
+                                            <span>
+                                                {i18n.t('{{count}} sections', {
+                                                    count: report.tables.length,
+                                                })}
+                                            </span>
+                                            {/*
+                                             * Buttons, not anchors: the app uses
+                                             * hash routing, so href="#section-1"
+                                             * is read as a route change and
+                                             * navigates away from the report
+                                             * instead of scrolling to it.
+                                             */}
+                                            {report.tables.map((table) => (
+                                                <button
+                                                    type="button"
+                                                    key={table.id}
+                                                    className={styles.tocLink}
+                                                    onClick={() =>
+                                                        document
+                                                            .getElementById(
+                                                                table.id
+                                                            )
+                                                            ?.scrollIntoView({
+                                                                behavior:
+                                                                    'smooth',
+                                                                block: 'start',
+                                                            })
+                                                    }
+                                                >
+                                                    {table.title}
+                                                </button>
+                                            ))}
+                                        </nav>
+                                    )}
+                            </div>
+
+                            {/* ---------------- standard view ---------------- */}
+                            {isStandardView && valueCount === 0 && (
                                 <div className={styles.noticePad}>
                                     <NoticeBox
-                                        title={i18n.t('No data for this selection')}
+                                        title={i18n.t(
+                                            'No data for this selection'
+                                        )}
                                     >
                                         {i18n.t(
                                             'Nothing was recorded for {{dataSet}} at {{orgUnit}} in {{period}}. The form may not be used here, or the data may not be entered yet.',
@@ -1004,10 +1176,12 @@ export const DataSetReportNext = () => {
                                                     report.snapshot.dataSetName,
                                                 orgUnit:
                                                     report.snapshot.orgUnitName,
-                                                period: report.snapshot.periodName,
+                                                period: report.snapshot
+                                                    .periodName,
                                             }
                                         )}
-                                        {report.snapshot.filterLabels?.length > 0 &&
+                                        {report.snapshot.filterLabels?.length >
+                                            0 &&
                                             ` ${i18n.t(
                                                 'Your filters may also be too narrow.'
                                             )}`}
@@ -1015,67 +1189,29 @@ export const DataSetReportNext = () => {
                                 </div>
                             )}
 
-                            {report.kind === 'tables' && valueCount > 0 && (
-                                <>
-                                    <div className={styles.toolbar}>
-                                        <Checkbox
-                                            dense
-                                            label={i18n.t('Hide empty rows')}
-                                            checked={hideEmptyRows}
-                                            onChange={({ checked }) =>
-                                                setHideEmptyRows(checked)
-                                            }
-                                        />
-                                        {report.tables.length > 1 && (
-                                            <nav className={styles.toc}>
-                                                <span>
-                                                    {i18n.t('{{count}} sections', {
-                                                        count: report.tables
-                                                            .length,
-                                                    })}
-                                                </span>
-                                                {/*
-                                                  * Buttons, not anchors: the
-                                                  * app uses hash routing, so
-                                                  * href="#section-1" is read
-                                                  * as a route change and
-                                                  * navigates away from the
-                                                  * report instead of
-                                                  * scrolling to it.
-                                                  */}
-                                                {report.tables.map((table) => (
-                                                    <button
-                                                        type="button"
-                                                        key={table.id}
-                                                        className={styles.tocLink}
-                                                        onClick={() =>
-                                                            document
-                                                                .getElementById(
-                                                                    table.id
-                                                                )
-                                                                ?.scrollIntoView(
-                                                                    {
-                                                                        behavior:
-                                                                            'smooth',
-                                                                        block: 'start',
-                                                                    }
-                                                                )
-                                                        }
-                                                    >
-                                                        {table.title}
-                                                    </button>
-                                                ))}
-                                            </nav>
-                                        )}
-                                    </div>
+                            {isStandardView && valueCount > 0 && (
+                                <div className={styles.reportBody}>
+                                    <ReportTables tables={report.tables} />
+                                </div>
+                            )}
 
-                                    <div className={styles.reportBody}>
-                                        <ReportTables
-                                            tables={report.tables}
-                                            hideEmptyRows={hideEmptyRows}
-                                        />
-                                    </div>
-                                </>
+                            {/* ---------------- form view ---------------- */}
+                            {!isStandardView && report.kind === 'custom' && (
+                                <div className={styles.reportBody}>
+                                    <CustomFormReport
+                                        html={report.html}
+                                        baseUrl={baseUrl}
+                                    />
+                                </div>
+                            )}
+
+                            {!isStandardView && report.kind !== 'custom' && (
+                                <div className={styles.reportBody}>
+                                    <FormView
+                                        dataSetId={report.snapshot.ds}
+                                        grids={report.grids}
+                                    />
+                                </div>
                             )}
                         </Card>
                     )}

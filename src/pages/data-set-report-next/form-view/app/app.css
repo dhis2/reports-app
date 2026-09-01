@@ -1,0 +1,22 @@
+/*
+ * Shim for the Aggregate Data Entry app's src/app/app.css.
+ *
+ * Two vendored stylesheets do `composes: hideForPrint from '../app/app.css'`,
+ * so the class has to be resolvable at that path or the CSS module fails to
+ * build. Only the one composed class is reproduced here — the rest of that
+ * file styles the data entry app shell, which is not ours to bring over.
+ *
+ * The class is declared at the top level as well as inside the media query:
+ * `composes` resolves against top-level classes, so a declaration that exists
+ * only inside `@media print` is not reliably visible to it.
+ */
+.hideForPrint {
+    /* no screen effect; the print rule below does the work */
+    display: revert;
+}
+
+@media print {
+    .hideForPrint {
+        display: none !important;
+    }
+}

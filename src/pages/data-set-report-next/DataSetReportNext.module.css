@@ -139,17 +139,35 @@
     min-height: 0;
 }
 
+/*
+ * The single scroll region for the rail. Fields and actions both live inside
+ * it — see .railActions for why that is what makes the sticky footer work.
+ */
 .railScroll {
     flex: 1 1 auto;
     min-height: 0;
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.railFields {
     display: grid;
     gap: 16px;
     align-content: start;
     padding: 16px;
 }
 
+/*
+ * Sticky, scoped to .railScroll as its nearest scrolling ancestor. A short
+ * form leaves this in normal flow, right after the fields — it does not get
+ * pulled down to the bottom of the rail. A form long enough to make the rail
+ * scroll is the only case where "bottom: 0" ever engages, pinning this in
+ * view rather than requiring a scroll to reach it.
+ */
 .railActions {
+    position: sticky;
+    bottom: 0;
     flex: none;
     display: grid;
     gap: 8px;
@@ -539,5 +557,19 @@ div.tableScroll td:first-child {
     .output {
         overflow-y: visible;
         padding: 16px;
+    }
+}
+
+/*
+ * Form view reproduces the data entry form, which is a wide fixed-layout table.
+ * Let it scroll inside the report body rather than stretching the page.
+ */
+.reportBody :global(.wrapper) {
+    overflow-x: auto;
+}
+
+@media print {
+    .reportBody :global(.wrapper) {
+        overflow-x: visible;
     }
 }

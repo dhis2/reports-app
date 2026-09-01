@@ -1,0 +1,115 @@
+.cellBase {
+    border: 1px solid var(--colors-grey400) !important;
+    padding: 8px !important;
+    block-size: auto !important;
+    font-size: 13px !important;
+    line-height: 15px !important;
+}
+
+.tableHeader {
+    composes: cellBase;
+    background-color: var(--colors-grey200);
+    font-weight: 500;
+}
+
+.sectionRowCollapsed {
+    visibility: collapse;
+}
+
+.categoryNameHeader {
+    composes: tableHeader;
+    font-weight: 300;
+    text-align: end;
+}
+
+.dataElementName {
+    composes: cellBase;
+    min-inline-size: 240px;
+    max-inline-size: 350px;
+}
+
+.active {
+    background-color: var(--colors-grey300);
+}
+
+.tableCell {
+    composes: cellBase;
+    min-inline-size: 100px;
+}
+
+.hiddenByFilterCell {
+    color: var(--colors-grey600);
+    composes: cellBase;
+}
+
+.table td {
+    block-size: 32px;
+    padding-block: 8px;
+    padding-inline-start: 8px;
+    padding-inline-end: 8px;
+}
+
+.paddingCell {
+    composes: tableHeader;
+    background-color: var(--colors-grey200);
+    background-size: 8px 8px;
+    background-image: repeating-linear-gradient(
+        45deg,
+        var(--colors-grey300) 0,
+        var(--colors-grey300) 0.8px,
+        var(--colors-grey200) 0,
+        var(--colors-grey200) 50%
+    );
+}
+
+.totalCell,
+.indicatorCell {
+    composes: tableCell;
+    background: var(--colors-grey300);
+    text-align: end;
+}
+
+.indicatorCellNoncalculable {
+    composes: tableCell;
+    background: var(--colors-grey300);
+    text-align: center;
+    color: var(--colors-grey600);
+}
+
+.totalHeader {
+    composes: totalCell;
+    font-weight: initial;
+}
+
+.hidden {
+    display: none;
+}
+
+/* styles for pivoted table */
+.noWrap {
+    white-space: nowrap;
+}
+
+.pivotedHeader {
+    composes: tableHeader;
+    font-weight: 300;
+}
+
+.dataElementRowHeader {
+    composes: cellBase;
+    /* background-color: transparent !important; */
+    /* font-weight: 400; */
+    text-align: start;
+}
+
+.categoryOption {
+    font-weight: 500;
+}
+.dataElement {
+    font-weight: 400;
+    background-color: transparent;
+    text-align: start;
+}
+.category {
+    font-weight: 300;
+}

@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2025-09-24T07:43:05.475Z\n"
-"PO-Revision-Date: 2025-09-24T07:43:05.475Z\n"
+"POT-Creation-Date: 2026-09-01T09:35:38.379Z\n"
+"PO-Revision-Date: 2026-09-01T09:35:38.379Z\n"
 
 msgid "Updating Organisation Units Tree..."
 msgstr "Updating Organisation Units Tree..."
@@ -71,6 +71,48 @@ msgstr "No matches found"
 msgid "Type to search a report table"
 msgstr "Type to search a report table"
 
+msgid "Reports"
+msgstr "Reports"
+
+msgid "All reports"
+msgstr "All reports"
+
+msgid "Reports built for you"
+msgstr "Reports built for you"
+
+msgid "You choose the scope, the app knows the question"
+msgstr "You choose the scope, the app knows the question"
+
+msgid "Designed by your team"
+msgstr "Designed by your team"
+
+msgid "Reports built outside the app"
+msgstr "Reports built outside the app"
+
+msgid "Files and links"
+msgstr "Files and links"
+
+msgid "Not a report"
+msgstr "Not a report"
+
+msgid "A form, filled in, ready to print"
+msgstr "A form, filled in, ready to print"
+
+msgid "Redesign in progress"
+msgstr "Redesign in progress"
+
+msgid "Which offices sent their forms"
+msgstr "Which offices sent their forms"
+
+msgid "How your facilities break down"
+msgstr "How your facilities break down"
+
+msgid "Run a report your team designed"
+msgstr "Run a report your team designed"
+
+msgid "Documents and web links"
+msgstr "Documents and web links"
+
 msgid "Standard Report"
 msgstr "Standard Report"
 
@@ -96,6 +138,16 @@ msgstr ""
 
 msgid "Get Report"
 msgstr "Get Report"
+
+msgid "Data Set Report (prototype)"
+msgstr "Data Set Report (prototype)"
+
+msgid ""
+"Redesign prototype of the data set report, built on the current DHIS2 "
+"component library. Same endpoints, same output."
+msgstr ""
+"Redesign prototype of the data set report, built on the current DHIS2 "
+"component library. Same endpoints, same output."
 
 msgid "Reporting Rate Summary"
 msgstr "Reporting Rate Summary"
@@ -144,6 +196,223 @@ msgstr "Report period"
 
 msgid "Use data for selected unit only"
 msgstr "Use data for selected unit only"
+
+msgid "custom form"
+msgstr "custom form"
+
+msgid "section form"
+msgstr "section form"
+
+msgid "default form"
+msgstr "default form"
+
+msgid "Show report options"
+msgstr "Show report options"
+
+msgid "Hide report options"
+msgstr "Hide report options"
+
+msgid "Organisation unit"
+msgstr "Organisation unit"
+
+msgid "Could not load organisation units."
+msgstr "Could not load organisation units."
+
+msgid "What to include"
+msgstr "What to include"
+
+msgid "Everything below this unit, added up"
+msgstr "Everything below this unit, added up"
+
+msgid "Only data recorded at this unit"
+msgstr "Only data recorded at this unit"
+
+msgid "No data set found"
+msgstr "No data set found"
+
+msgid "Choose a data set"
+msgstr "Choose a data set"
+
+msgid "rendered by the server"
+msgstr "rendered by the server"
+
+msgid "Period type"
+msgstr "Period type"
+
+msgid "Choose a period type"
+msgstr "Choose a period type"
+
+msgid ""
+"{{name}} is collected {{periodType}}. A {{chosen}} report may come back "
+"empty."
+msgstr ""
+"{{name}} is collected {{periodType}}. A {{chosen}} report may come back "
+"empty."
+
+msgid "This prototype cannot build a period list for {{periodType}} yet."
+msgstr "This prototype cannot build a period list for {{periodType}} yet."
+
+msgid "No year found"
+msgstr "No year found"
+
+msgid "Year"
+msgstr "Year"
+
+msgid "Period"
+msgstr "Period"
+
+msgid "Choose a period"
+msgstr "Choose a period"
+
+msgid "Optional filters"
+msgstr "Optional filters"
+
+msgid "Any"
+msgstr "Any"
+
+msgid "Get report"
+msgstr "Get report"
+
+msgid "Clear"
+msgstr "Clear"
+
+msgid "The report could not be built"
+msgstr "The report could not be built"
+
+msgid "Building your report — large forms can take a moment."
+msgstr "Building your report — large forms can take a moment."
+
+msgid "No report yet"
+msgstr "No report yet"
+
+msgid ""
+"Choose an organisation unit, a data set and a period, then select Get "
+"report. You will get the data entry form for that period, filled in and "
+"ready to print."
+msgstr ""
+"Choose an organisation unit, a data set and a period, then select Get "
+"report. You will get the data entry form for that period, filled in and "
+"ready to print."
+
+msgid "Your options from last time are filled in already."
+msgstr "Your options from last time are filled in already."
+
+msgid "These options changed"
+msgstr "These options changed"
+
+msgid "The report below is still {{dataSet}} · {{period}} · {{orgUnit}}."
+msgstr "The report below is still {{dataSet}} · {{period}} · {{orgUnit}}."
+
+msgid "Get report again"
+msgstr "Get report again"
+
+msgid "Includes"
+msgstr "Includes"
+
+msgid "This unit only"
+msgstr "This unit only"
+
+msgid "Sub-units"
+msgstr "Sub-units"
+
+msgid "Generated"
+msgstr "Generated"
+
+msgid "Print"
+msgstr "Print"
+
+msgid "Download {{ext}}"
+msgstr "Download {{ext}}"
+
+msgid "Standard"
+msgstr "Standard"
+
+msgid "Form"
+msgstr "Form"
+
+msgid "No data for this selection"
+msgstr "No data for this selection"
+
+msgid ""
+"Nothing was recorded for {{dataSet}} at {{orgUnit}} in {{period}}. The form "
+"may not be used here, or the data may not be entered yet."
+msgstr ""
+"Nothing was recorded for {{dataSet}} at {{orgUnit}} in {{period}}. The form "
+"may not be used here, or the data may not be entered yet."
+
+msgid "Your filters may also be too narrow."
+msgstr "Your filters may also be too narrow."
+
+msgid "This data set is not available for form view"
+msgstr "This data set is not available for form view"
+
+msgid ""
+"The form structure for this data set was not returned by the server. This "
+"usually means the data set is not assigned to any organisation unit."
+msgstr ""
+"The form structure for this data set was not returned by the server. This "
+"usually means the data set is not assigned to any organisation unit."
+
+msgid "Loading form layout…"
+msgstr "Loading form layout…"
+
+msgid "Form view is not available"
+msgstr "Form view is not available"
+
+msgid ""
+"The form layout could not be loaded. Form view needs DHIS2 2.39 or later. "
+"Standard view still works."
+msgstr ""
+"The form layout could not be loaded. Form view needs DHIS2 2.39 or later. "
+"Standard view still works."
+
+msgid "Showing an empty form"
+msgstr "Showing an empty form"
+
+msgid ""
+"No values from this report appear in the form below. The form is shown as "
+"it looks in data entry, with every field blank."
+msgstr ""
+"No values from this report appear in the form below. The form is shown as "
+"it looks in data entry, with every field blank."
+
+msgid "Value"
+msgstr "Value"
+
+msgid "Totals"
+msgstr "Totals"
+
+msgid "This data set has no assigned Data Elements"
+msgstr "This data set has no assigned Data Elements"
+
+msgid ""
+"There are no Data Elements in this data set. Adds some Data Elements to use "
+"this data set."
+msgstr ""
+"There are no Data Elements in this data set. Adds some Data Elements to use "
+"this data set."
+
+msgid "This value cannot be calculated in this app"
+msgstr "This value cannot be calculated in this app"
+
+msgid ""
+"This expression is not mathematically calculable "
+"{{numeratorValue}}/{{denominatorValue}}"
+msgstr ""
+"This expression is not mathematically calculable "
+"{{numeratorValue}}/{{denominatorValue}}"
+
+msgid "Indicators"
+msgstr "Indicators"
+
+msgid "Values"
+msgstr "Values"
+
+msgid "Type here to filter rows in this section"
+msgstr "Type here to filter rows in this section"
+
+msgid "1 item hidden by filter"
+msgstr "1 item hidden by filter"
 
 msgid "Get Chart"
 msgstr "Get Chart"
@@ -768,31 +1037,3 @@ msgstr "Upload file"
 
 msgid "Confirm delete"
 msgstr "Confirm delete"
-
-msgctxt "Application title"
-msgid "__MANIFEST_APP_TITLE"
-msgstr "Reports"
-
-msgctxt "Application description"
-msgid "__MANIFEST_APP_DESCRIPTION"
-msgstr ""
-
-msgctxt "Title for shortcut used by command palette"
-msgid "__MANIFEST_SHORTCUT_Standard report"
-msgstr "Standard report"
-
-msgctxt "Title for shortcut used by command palette"
-msgid "__MANIFEST_SHORTCUT_Data set report"
-msgstr "Data set report"
-
-msgctxt "Title for shortcut used by command palette"
-msgid "__MANIFEST_SHORTCUT_Reporting rates summary"
-msgstr "Reporting rates summary"
-
-msgctxt "Title for shortcut used by command palette"
-msgid "__MANIFEST_SHORTCUT_Resources"
-msgstr "Resources"
-
-msgctxt "Title for shortcut used by command palette"
-msgid "__MANIFEST_SHORTCUT_Org unit distribution report"
-msgstr "Org unit distribution report"

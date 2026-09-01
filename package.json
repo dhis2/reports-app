@@ -47,6 +47,8 @@
         "connected-react-router": "^6.3.1",
         "d2": "^31.7.0",
         "d3-color": "^1.2.0",
+        "dompurify": "^3.4.14",
+        "expr-eval": "^2.0.2",
         "final-form": "^4.11.1",
         "flexboxgrid": "^6.3.1",
         "history": "^4.7.2",

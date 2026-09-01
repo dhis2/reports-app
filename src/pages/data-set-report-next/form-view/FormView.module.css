@@ -1,0 +1,79 @@
+/*
+ * Styling for the parts of Form view that are ours: the read-only cell and the
+ * wrapper around the vendored form. The form's own look — section headers,
+ * column headers, table borders — comes from the vendored stylesheets, because
+ * looking like data entry is the entire point of this view.
+ */
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.loading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 32px;
+    color: var(--colors-grey700);
+    font-size: 14px;
+}
+
+/*
+ * The vendored table sets its own cell metrics; this only has to undo the
+ * padding the entry field used to provide and put the figure where an input
+ * would have been.
+ */
+.cell {
+    padding: 0;
+    border: 1px solid var(--colors-grey300);
+    background: var(--colors-white);
+}
+
+.value,
+.empty,
+.greyed {
+    display: block;
+    min-inline-size: 60px;
+    padding: 6px 8px;
+    text-align: end;
+    /* tabular figures so columns of numbers line up */
+    font-feature-settings: 'tnum' 1;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.value {
+    color: var(--colors-grey900);
+}
+
+.empty {
+    color: var(--colors-grey500);
+}
+
+/*
+ * A greyed field does not apply to this data element and combination. It has
+ * to read differently from a field nobody filled in, especially on paper.
+ */
+.greyed {
+    background: repeating-linear-gradient(
+        135deg,
+        var(--colors-grey100),
+        var(--colors-grey100) 4px,
+        var(--colors-grey200) 4px,
+        var(--colors-grey200) 8px
+    );
+    min-block-size: 29px;
+}
+
+@media print {
+    .cell {
+        border: 1px solid #999;
+    }
+
+    .greyed {
+        /* print backgrounds are unreliable; a flat fill survives better */
+        background: #eee;
+    }
+}

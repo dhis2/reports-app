@@ -59,11 +59,6 @@ const VALUE_COLUMN_WIDTH = 100
 const isEmptyRow = (cells, headers) =>
     cells.every((cell, index) => headers[index]?.isLabel || cell === '')
 
-const visibleRows = (table, hideEmptyRows) =>
-    hideEmptyRows
-        ? table.rows.filter((cells) => !isEmptyRow(cells, table.headers))
-        : table.rows
-
 export const countValues = (tables) =>
     tables.reduce(
         (total, table) =>
@@ -73,9 +68,8 @@ export const countValues = (tables) =>
         0
     )
 
-const ReportTable = ({ table, hideEmptyRows }) => {
-    const rows = visibleRows(table, hideEmptyRows)
-    const hiddenCount = table.rows.length - rows.length
+const ReportTable = ({ table }) => {
+    const rows = table.rows
 
     return (
         <section className={styles.section} id={table.id}>
@@ -84,17 +78,13 @@ const ReportTable = ({ table, hideEmptyRows }) => {
                 <span className={styles.sectionMeta}>
                     {table.subtitle && `${table.subtitle} · `}
                     {i18n.t('{{count}} rows', { count: rows.length })}
-                    {hiddenCount > 0 &&
-                        ` · ${i18n.t('{{count}} empty rows hidden', {
-                            count: hiddenCount,
-                        })}`}
                 </span>
             </h2>
 
             {/*
-              * Column widths are driven from here because the table uses
-              * table-layout:fixed — see the note in the stylesheet for why.
-              */}
+             * Column widths are driven from here because the table uses
+             * table-layout:fixed — see the note in the stylesheet for why.
+             */}
             <div
                 className={styles.tableScroll}
                 style={{
@@ -150,23 +140,17 @@ const ReportTable = ({ table, hideEmptyRows }) => {
 }
 
 ReportTable.propTypes = {
-    hideEmptyRows: PropTypes.bool.isRequired,
     table: PropTypes.object.isRequired,
 }
 
-export const ReportTables = ({ tables, hideEmptyRows }) => (
+export const ReportTables = ({ tables }) => (
     <>
         {tables.map((table) => (
-            <ReportTable
-                key={table.id}
-                table={table}
-                hideEmptyRows={hideEmptyRows}
-            />
+            <ReportTable key={table.id} table={table} />
         ))}
     </>
 )
 
 ReportTables.propTypes = {
-    hideEmptyRows: PropTypes.bool.isRequired,
     tables: PropTypes.array.isRequired,
 }
