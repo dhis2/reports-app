@@ -13,12 +13,12 @@ export const ORG_UNIT_DIST_REPORT_SECTION_KEY =
     'organisation-unit-distribution-report'
 export const DATA_APPROVAL_SECTION_KEY = 'data-approval'
 
+/* The legacy standard report, data set report and reporting rate summary are
+ * still routed (so existing links keep working) but are no longer offered
+ * anywhere in the UI, so they are not listed here. */
 export const sectionOrder = [
-    STANDARD_REPORT_SECTION_KEY,
     STANDARD_REPORT_NEXT_SECTION_KEY,
-    DATA_SET_REPORT_SECTION_KEY,
     DATA_SET_REPORT_NEXT_SECTION_KEY,
-    REPORTING_RATE_SUMMARY_SECTION_KEY,
     RESOURCE_SECTION_KEY,
     ORG_UNIT_DIST_REPORT_SECTION_KEY,
 ]
@@ -41,10 +41,10 @@ export const sections = {
         key: STANDARD_REPORT_NEXT_SECTION_KEY,
         path: `/${STANDARD_REPORT_NEXT_SECTION_KEY}`,
         info: {
-            label: i18n.t('Standard Report (prototype)'),
+            label: i18n.t('Standard Report'),
             icon: 'description',
             description: i18n.t(
-                'Redesign prototype of the standard report, built on the current DHIS2 component library. HTML reports only.'
+                'Reports your team designed, run against current data.'
             ),
             actionText: i18n.t('View Reports'),
             docs: 'using_reporting_standard_reports',
@@ -67,10 +67,10 @@ export const sections = {
         key: DATA_SET_REPORT_NEXT_SECTION_KEY,
         path: `/${DATA_SET_REPORT_NEXT_SECTION_KEY}`,
         info: {
-            label: i18n.t('Data Set Report (prototype)'),
+            label: i18n.t('Data Set Report'),
             icon: 'assignment_turned_in',
             description: i18n.t(
-                'Redesign prototype of the data set report, built on the current DHIS2 component library. Same endpoints, same output.'
+                'A data entry form with aggregated data filled in, ready to print.'
             ),
             actionText: i18n.t('Get Report'),
             docs: 'using_reporting_dataset_reports',

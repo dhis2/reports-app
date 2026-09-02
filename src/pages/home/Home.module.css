@@ -1,7 +1,9 @@
 /* Landing page. Token values from @dhis2/ui. */
 
 .page {
-    max-width: 1100px;
+    /* Three cards to a row inside the shell's 24px gutters on a 1366 viewport,
+     * with room for the scrollbar. */
+    max-width: 1180px;
 }
 
 .intro {
@@ -25,46 +27,28 @@
     color: #4a5768;
 }
 
-.group + .group {
-    margin-top: 32px;
-}
-
-.groupTitle {
-    display: flex;
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin: 0 0 12px;
-    font-size: 12px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #6c7787;
-}
-
-.groupHint {
-    font-size: 12px;
-    font-weight: 400;
-    text-transform: none;
-    letter-spacing: normal;
-    color: #a0adba;
-}
-
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 12px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+@media (max-width: 1100px) {
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 720px) {
+    .grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
 }
 
 .cardLink {
-    text-decoration: none;
     display: block;
-    border-radius: 4px;
-}
-
-.cardLink:hover {
-    /* Card owns the surface, so lift the whole link rather than restyling it */
-    transform: translateY(-1px);
+    text-decoration: none;
+    border-radius: 6px;
 }
 
 .cardLink:focus-visible {
@@ -72,8 +56,68 @@
     outline-offset: 2px;
 }
 
+.card {
+    height: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    transition: box-shadow 100ms ease-out, transform 100ms ease-out;
+}
+
+/* The whole card is one link, so the hover state belongs to the card. */
+.cardLink:hover .card {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(33, 41, 52, 0.12);
+}
+
+.preview {
+    background: #f8f9fa;
+    border-radius: 4px;
+    padding: 8px 0;
+}
+
+.body {
+    padding: 16px 8px 8px;
+}
+
+.name {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0 0 6px;
+    height: auto;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: normal;
+    color: #212934;
+}
+
+.arrow {
+    display: grid;
+    place-items: center;
+    color: #a0adba;
+    transition: transform 100ms ease-out, color 100ms ease-out;
+}
+
+.cardLink:hover .arrow {
+    color: #147cd7;
+    transform: translateX(3px);
+}
+
+.description {
+    margin: 0;
+    font-size: 14px;
+    line-height: 20px;
+    color: #6c7787;
+}
+
 @media (prefers-reduced-motion: reduce) {
-    .cardLink:hover {
+    .card,
+    .arrow {
+        transition: none;
+    }
+
+    .cardLink:hover .card,
+    .cardLink:hover .arrow {
         transform: none;
     }
 }
