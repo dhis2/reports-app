@@ -2,12 +2,15 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 
 /*
- * The selection lives in the URL, so a report is linkable, survives a refresh
- * and works with the back button. The last selection is also remembered
- * locally, because people run the same report every month.
+ * The parameters for one report.
+ *
+ * Which report you are looking at is the route — /standard-report-next/:id —
+ * so this only carries what that report is being run *with*. Those live in
+ * the query string, so a run is linkable, survives a refresh and works with
+ * the back button.
  *
  * The app uses hash history, so the search string sits inside the hash:
- *   #/standard-report-next?id=Kvk9TrPBhlH&pt=Monthly&pe=202508&ou=/ImspTQPwCqd
+ *   #/standard-report-next/Kvk9TrPBhlH?pt=Monthly&pe=202508&ou=/ImspTQPwCqd
  *
  * `periodType` is the option chosen in the first period dropdown. For a true
  * relative period it is the answer on its own and `pe` matches it; for a fixed
@@ -16,7 +19,6 @@ import { useHistory, useLocation } from 'react-router-dom'
 const STORAGE_KEY = 'reports-app:standard-report-next:last'
 
 export const emptySelection = {
-    reportId: '',
     ouPath: '',
     periodType: '',
     year: new Date().getFullYear(),
@@ -26,12 +28,12 @@ export const emptySelection = {
 const fromSearch = (search) => {
     const params = new URLSearchParams(search)
 
-    if (!params.get('id')) {
+    /* Nothing of ours in the URL — this is a fresh visit, not a link. */
+    if (!params.get('ou') && !params.get('pe')) {
         return null
     }
 
     return {
-        reportId: params.get('id') || '',
         ouPath: params.get('ou') || '',
         periodType: params.get('pt') || '',
         year: Number(params.get('y')) || emptySelection.year,
@@ -42,9 +44,6 @@ const fromSearch = (search) => {
 const toSearch = (selection) => {
     const params = new URLSearchParams()
 
-    if (selection.reportId) {
-        params.set('id', selection.reportId)
-    }
     if (selection.ouPath) {
         params.set('ou', selection.ouPath)
     }
@@ -86,18 +85,16 @@ export const useStandardReportSelection = () => {
 
     /*
      * Read once on mount. The URL wins over what we remembered, so a link
-     * someone sent you always opens the report they meant.
-     *
-     * Only the org unit is restored from memory, never the report: selecting
-     * a report is what generates it, and a page that runs last month's report
-     * against the server the moment you open it is not what anyone asked for.
+     * someone sent you always opens the run they meant.
      */
     const remembered = useMemo(readRemembered, [])
     const restoredFromMemory = useRef(false)
+    const restoredFromUrl = useRef(false)
     const [selection, setSelection] = useState(() => {
         const fromUrl = fromSearch(location.search)
 
         if (fromUrl) {
+            restoredFromUrl.current = true
             return fromUrl
         }
 
@@ -124,30 +121,6 @@ export const useStandardReportSelection = () => {
         setSelection((current) => ({ ...current, ...changes }))
     }, [])
 
-    /*
-     * Changing report clears the parameters with it. The old period belonged
-     * to the old report's list of allowed periods and is very unlikely to be
-     * in the new one — carrying it over would silently hand the next report a
-     * value it never offered.
-     */
-    const selectReport = useCallback((reportId) => {
-        setSelection((current) => ({
-            ...current,
-            reportId,
-            periodType: '',
-            pe: '',
-        }))
-    }, [])
-
-    const clearReport = useCallback(() => {
-        setSelection((current) => ({
-            ...current,
-            reportId: '',
-            periodType: '',
-            pe: '',
-        }))
-    }, [])
-
     const remember = useCallback((value) => {
         writeRemembered({ ouPath: value.ouPath })
     }, [])
@@ -155,9 +128,14 @@ export const useStandardReportSelection = () => {
     return {
         selection,
         update,
-        selectReport,
-        clearReport,
         remember,
         restoredFromMemory: restoredFromMemory.current,
+        /*
+         * Whether the run was described by the link that opened the page. It
+         * is the difference between showing the report at once and waiting to
+         * be asked — a link that names a period means the report, not a form
+         * pre-filled with someone else's answer.
+         */
+        restoredFromUrl: restoredFromUrl.current,
     }
 }

@@ -5,7 +5,7 @@
  */
 
 import {
-    needsCaption,
+    needsSummary,
     periodOptionsForReport,
     reportNeeds,
 } from '../reportShape.js'
@@ -104,9 +104,9 @@ describe('periodOptionsForReport', () => {
     })
 })
 
-describe('needsCaption', () => {
-    it('says nothing for a report that asks for nothing', () => {
-        expect(needsCaption(htmlReport())).toBe('')
+describe('needsSummary', () => {
+    it('says so when a report asks for nothing', () => {
+        expect(needsSummary(htmlReport())).toMatch(/nothing/i)
     })
 
     it('names both when both are asked for', () => {
@@ -114,6 +114,6 @@ describe('needsCaption', () => {
             reportParams: { reportingPeriod: true, organisationUnit: true },
         })
 
-        expect(needsCaption(report)).toMatch(/period and organisation unit/i)
+        expect(needsSummary(report)).toMatch(/period, organisation unit/i)
     })
 })

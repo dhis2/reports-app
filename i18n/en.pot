@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-09-01T13:08:26.899Z\n"
-"PO-Revision-Date: 2026-09-01T13:08:26.899Z\n"
+"POT-Creation-Date: 2026-09-01T17:56:14.601Z\n"
+"PO-Revision-Date: 2026-09-01T17:56:14.602Z\n"
 
 msgid "Updating Organisation Units Tree..."
 msgstr "Updating Organisation Units Tree..."
@@ -219,6 +219,15 @@ msgstr "default form"
 msgid "Any"
 msgstr "Any"
 
+msgid "Print"
+msgstr "Print"
+
+msgid "{{ext}}"
+msgstr "{{ext}}"
+
+msgid "Download..."
+msgstr "Download..."
+
 msgid "Show report options"
 msgstr "Show report options"
 
@@ -289,8 +298,8 @@ msgstr "Clear"
 msgid "The report could not be built"
 msgstr "The report could not be built"
 
-msgid "Building your report — large forms can take a moment."
-msgstr "Building your report — large forms can take a moment."
+msgid "Generating report..."
+msgstr "Generating report..."
 
 msgid "No report yet"
 msgstr "No report yet"
@@ -319,15 +328,6 @@ msgstr ""
 
 msgid "{{orgUnit}} + units inside"
 msgstr "{{orgUnit}} + units inside"
-
-msgid "Print"
-msgstr "Print"
-
-msgid "{{ext}}"
-msgstr "{{ext}}"
-
-msgid "Download..."
-msgstr "Download..."
 
 msgid "Standard"
 msgstr "Standard"
@@ -631,29 +631,53 @@ msgstr "Shared with"
 msgid "Nobody in particular"
 msgstr "Nobody in particular"
 
-msgid "Search reports"
-msgstr "Search reports"
-
-msgid "Could not load the list of reports."
-msgstr "Could not load the list of reports."
-
-msgid "No report matches “{{search}}”."
-msgstr "No report matches “{{search}}”."
-
-msgid "There are no standard reports yet."
-msgstr "There are no standard reports yet."
-
 msgid "New standard report…"
 msgstr "New standard report…"
+
+msgid "Search by name"
+msgstr "Search by name"
+
+msgid "Anything"
+msgstr "Anything"
+
+msgid "Nothing — runs at once"
+msgstr "Nothing — runs at once"
+
+msgid "A period"
+msgstr "A period"
+
+msgid "An organisation unit"
+msgstr "An organisation unit"
+
+msgid "Loading reports…"
+msgstr "Loading reports…"
+
+msgid "Could not load the reports"
+msgstr "Could not load the reports"
+
+msgid "Report"
+msgstr "Report"
+
+msgid "Created by"
+msgstr "Created by"
 
 msgid "Created"
 msgstr "Created"
 
-msgid "{{when}} by {{who}}"
-msgstr "{{when}} by {{who}}"
-
 msgid "Last changed"
 msgstr "Last changed"
+
+msgid "Actions"
+msgstr "Actions"
+
+msgid "No report matches those filters."
+msgstr "No report matches those filters."
+
+msgid "There are no standard reports yet."
+msgstr "There are no standard reports yet."
+
+msgid "{{when}} by {{who}}"
+msgstr "{{when}} by {{who}}"
 
 msgid "No period matches"
 msgstr "No period matches"
@@ -676,27 +700,27 @@ msgstr "Edit report…"
 msgid "Manage sharing…"
 msgstr "Manage sharing…"
 
-msgid "Back to all"
-msgstr "Back to all"
-
-msgid "This report takes no options — it ran as soon as you picked it."
-msgstr "This report takes no options — it ran as soon as you picked it."
+msgid "This report takes no options — it ran as soon as you opened it."
+msgstr "This report takes no options — it ran as soon as you opened it."
 
 msgid "Generate"
 msgstr "Generate"
 
-msgid "Building your report…"
-msgstr "Building your report…"
+msgid "This report is not available"
+msgstr "This report is not available"
+
+msgid ""
+"It may have been deleted, or it may be a type this page cannot run. Go back "
+"to all reports to pick another."
+msgstr ""
+"It may have been deleted, or it may be a type this page cannot run. Go back "
+"to all reports to pick another."
+
+msgid "Generating report…"
+msgstr "Generating report…"
 
 msgid "Fill in the options on the left, then select Generate."
 msgstr "Fill in the options on the left, then select Generate."
-
-msgid ""
-"Choose a report on the left. Most run straight away; the rest will ask you "
-"for a period or an organisation unit first."
-msgstr ""
-"Choose a report on the left. Most run straight away; the rest will ask you "
-"for a period or an organisation unit first."
 
 msgid "Your organisation unit from last time is filled in already."
 msgstr "Your organisation unit from last time is filled in already."
@@ -711,14 +735,8 @@ msgstr ""
 msgid "just now"
 msgstr "just now"
 
-msgid "Asks for period and organisation unit"
-msgstr "Asks for period and organisation unit"
-
-msgid "Asks for a period"
-msgstr "Asks for a period"
-
-msgid "Asks for an organisation unit"
-msgstr "Asks for an organisation unit"
+msgid "Period, organisation unit"
+msgstr "Period, organisation unit"
 
 msgid "An error occurred whole loading the data set options"
 msgstr "An error occurred whole loading the data set options"
@@ -851,9 +869,6 @@ msgstr "Create"
 
 msgid "Edit"
 msgstr "Edit"
-
-msgid "Actions"
-msgstr "Actions"
 
 msgid "Delete"
 msgstr "Delete"

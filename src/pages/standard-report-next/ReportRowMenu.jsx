@@ -15,10 +15,10 @@ import styles from './StandardReportNext.module.css'
 /*
  * Per-row management, for people who have it.
  *
- * The same two actions live in the rail once a report is open. Having them
- * here as well is what makes the list a management surface rather than only a
- * picker: an admin tidying up several reports should not have to run each one
- * to get at its settings.
+ * The same two actions live in the rail once a report is open. Having them in
+ * the list as well is what makes it a management surface rather than only a
+ * picker: an admin tidying up several reports should not have to open each
+ * one to get at its settings.
  *
  * Hand-rolled on Layer and Popper rather than DropdownButton, because the
  * trigger has to be an icon with no label — the same reason SectionSwitcher
@@ -43,10 +43,7 @@ export const ReportRowMenu = ({ report, onEdit, onShare }) => {
     }
 
     return (
-        <div
-            ref={anchor}
-            className={`${styles.rowMenu} ${open ? styles.rowMenuOpen : ''}`}
-        >
+        <div ref={anchor} className={styles.rowMenu}>
             <button
                 type="button"
                 className={styles.rowMenuButton}

@@ -1,35 +1,31 @@
 import { useConfig, useDataQuery } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
-import {
-    Button,
-    CircularLoader,
-    IconArrowLeft16,
-    IconChevronLeft24,
-    IconChevronRight24,
-    NoticeBox,
-} from '@dhis2/ui'
+import { Button, CircularLoader, IconArrowLeft16, NoticeBox } from '@dhis2/ui'
+import PropTypes from 'prop-types'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useHistory } from 'react-router-dom'
+import { RailToggleIcon } from '../../components/shell/RailToggleIcon.jsx'
 import { SectionSwitcher } from '../../components/shell/SectionSwitcher.jsx'
-import { STANDARD_REPORT_NEXT_SECTION_KEY } from '../../config/sections.config.js'
+import {
+    sections,
+    STANDARD_REPORT_NEXT_SECTION_KEY,
+} from '../../config/sections.config.js'
 import { HtmlReportView } from './HtmlReportView.jsx'
 import {
     fetchHtmlReport,
     idFromPath,
-    ORG_UNIT_NAME_QUERY,
     ME_QUERY,
+    ORG_UNIT_NAME_QUERY,
     REPORTS_QUERY,
 } from './queries.js'
-import {
-    EditReportDialog,
-    NewReportDialog,
-    SharingDialog,
-} from './ReportActionDialogs.jsx'
-import { ReportList } from './ReportList.jsx'
+import { EditReportDialog, SharingDialog } from './ReportActionDialogs.jsx'
 import { ReportMeta } from './ReportMeta.jsx'
 import { ReportParamsFields } from './ReportParamsFields.jsx'
 import { periodLabel, reportNeeds } from './reportShape.js'
 import styles from './StandardReportNext.module.css'
 import { useStandardReportSelection } from './useStandardReportSelection.js'
+
+const basePath = sections[STANDARD_REPORT_NEXT_SECTION_KEY].path
 
 /*
  * Whether the options rail is collapsed is a per-viewer preference, not part
@@ -54,16 +50,20 @@ const writeRailCollapsed = (collapsed) => {
     }
 }
 
-export const StandardReportNext = () => {
+/*
+ * One report: its options on the rail, its output beside them.
+ *
+ * Which report this is comes from the route rather than from anything on the
+ * page — finding a report is the list's job, on its own full-width page, and
+ * by the time you are here that question is settled.
+ */
+export const StandardReportNext = ({ match }) => {
     const { baseUrl } = useConfig()
-    const {
-        selection,
-        update,
-        selectReport,
-        clearReport,
-        remember,
-        restoredFromMemory,
-    } = useStandardReportSelection()
+    const history = useHistory()
+    const reportId = match.params.id
+
+    const { selection, update, remember, restoredFromMemory, restoredFromUrl } =
+        useStandardReportSelection()
 
     const [railCollapsed, setRailCollapsed] = useState(readRailCollapsed)
     const toggleRail = () =>
@@ -74,9 +74,12 @@ export const StandardReportNext = () => {
 
     /* ---------------- data ---------------- */
 
+    /*
+     * The whole list again, rather than a single report by id. It is one
+     * cached request shared with the list page, and the report objects are
+     * identical either way.
+     */
     const reportsResult = useDataQuery(REPORTS_QUERY)
-    /* Memoised because an empty array literal is a new identity every render,
-     * which would invalidate everything derived from it below. */
     const reports = useMemo(
         () => reportsResult.data?.reports?.reports ?? [],
         [reportsResult.data]
@@ -91,22 +94,16 @@ export const StandardReportNext = () => {
         return units.map((unit) => unit.id)
     }, [meResult.data])
 
-    /*
-     * Creating is an authority, not an access flag on an existing report —
-     * either of the two report-add authorities will do, and ALL covers both.
-     */
-    const canCreate = useMemo(() => {
-        const authorities = meResult.data?.me?.authorities ?? []
-        return ['ALL', 'F_REPORT_PUBLIC_ADD', 'F_REPORT_PRIVATE_ADD'].some(
-            (authority) => authorities.includes(authority)
-        )
-    }, [meResult.data])
-
     const selected = useMemo(
-        () => reports.find((report) => report.id === selection.reportId),
-        [reports, selection.reportId]
+        () => reports.find((report) => report.id === reportId),
+        [reports, reportId]
     )
     const needs = useMemo(() => reportNeeds(selected), [selected])
+
+    /* The list has loaded and this id is not in it. */
+    const notFound = Boolean(
+        !reportsResult.loading && !reportsResult.error && !selected
+    )
 
     /*
      * Management is gated on the report's own access flags, exactly as the
@@ -117,21 +114,8 @@ export const StandardReportNext = () => {
     const canEdit = Boolean(access.update)
     const canShare = Boolean(access.manage || access.externalize)
 
-    /*
-     * Which management dialog is open, and on what. The report has to travel
-     * with it: these are reachable from the list as well as from the rail, so
-     * the subject is not always the report currently open.
-     */
     const [dialog, setDialog] = useState(null)
     const closeDialog = useCallback(() => setDialog(null), [])
-    const openEdit = useCallback(
-        (subject) => setDialog({ kind: 'edit', report: subject }),
-        []
-    )
-    const openSharing = useCallback(
-        (subject) => setDialog({ kind: 'sharing', report: subject }),
-        []
-    )
 
     /*
      * The org unit's name, for the summary line. Fetched rather than only
@@ -165,9 +149,9 @@ export const StandardReportNext = () => {
     const inFlight = useRef(null)
 
     /*
-     * Takes the report and the values explicitly rather than reading state.
-     * Selecting a parameterless report generates it in the same tick as the
-     * selection, and the state holding that selection has not landed yet.
+     * Takes the report and the values explicitly rather than reading state,
+     * because the first run happens as soon as the report resolves — before
+     * anything derived from it has landed.
      */
     const generate = useCallback(
         async (target, values) => {
@@ -175,11 +159,6 @@ export const StandardReportNext = () => {
                 return
             }
 
-            /*
-             * Selecting a report with no parameters runs it, so browsing the
-             * list fires a request per click. Abandoning the previous one
-             * means fast browsing costs one render rather than five.
-             */
             inFlight.current?.abort()
             const controller = new AbortController()
             inFlight.current = controller
@@ -226,15 +205,6 @@ export const StandardReportNext = () => {
 
     useEffect(() => () => inFlight.current?.abort(), [])
 
-    /* Take down whatever is on screen, and abandon anything still coming. */
-    const clearReportOutput = useCallback(() => {
-        inFlight.current?.abort()
-        inFlight.current = null
-        setReportLoading(false)
-        setReport(null)
-        setReportError(null)
-    }, [])
-
     const currentValues = () => ({
         ou: needs.orgUnit ? idFromPath(selection.ouPath) : '',
         ouName: needs.orgUnit ? ouName : '',
@@ -246,6 +216,37 @@ export const StandardReportNext = () => {
         Boolean(selected) &&
         (!needs.orgUnit || Boolean(selection.ouPath)) &&
         (!needs.period || Boolean(selection.pe))
+
+    /*
+     * Opening the page is the request. A report that asks for nothing runs on
+     * arrival — there is no second step to put a button on — and so does one
+     * whose parameters were named by the link that got you here, because a
+     * link to a run should show that run rather than a filled-in form.
+     *
+     * An org unit remembered from last time is deliberately not enough: that
+     * is our guess, not the visitor's instruction.
+     */
+    const autoRan = useRef(false)
+    useEffect(() => {
+        if (autoRan.current || !selected || reportLoading) {
+            return
+        }
+
+        const asksNothing = !needs.orgUnit && !needs.period
+
+        if (!asksNothing && !(restoredFromUrl && canGenerate)) {
+            return
+        }
+
+        /* Wait for the name, so the summary line is not born incomplete. */
+        if (needs.orgUnit && selection.ouPath && !ouName) {
+            return
+        }
+
+        autoRan.current = true
+        generate(selected, currentValues())
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [selected, needs, ouName, canGenerate, restoredFromUrl])
 
     const onGenerate = (event) => {
         event?.preventDefault()
@@ -259,46 +260,8 @@ export const StandardReportNext = () => {
     }
 
     /*
-     * Selection is the action for a report that asks for nothing — there is
-     * no second step to put a button on. A report that does ask for something
-     * switches the rail into its parameters instead and waits.
-     */
-    const onSelect = (candidate) => {
-        selectReport(candidate.id)
-        setDialog(null)
-
-        const candidateNeeds = reportNeeds(candidate)
-
-        if (!candidateNeeds.orgUnit && !candidateNeeds.period) {
-            generate(candidate, {
-                ou: '',
-                ouName: '',
-                pe: '',
-                peLabel: '',
-            })
-            return
-        }
-
-        /*
-         * This report cannot run yet, so nothing should be on screen. Leaving
-         * the previous report up while the rail asks for a period invites
-         * reading it as this report's output — a warning above it is not
-         * enough, because the numbers are what people look at.
-         */
-        clearReportOutput()
-    }
-
-    const onChangeReport = () => {
-        clearReport()
-        clearReportOutput()
-        setDialog(null)
-    }
-
-    /*
-     * Whether what is on screen still matches what the rail says. Only the
-     * parameters can drift now — choosing a different report clears the
-     * output outright — so this is the milder case: the same report, run
-     * against options the rail has since moved on from.
+     * Whether what is on screen still matches what the rail says: the same
+     * report, run against options the rail has since moved on from.
      */
     const isStale =
         Boolean(report) &&
@@ -357,11 +320,15 @@ export const StandardReportNext = () => {
                     }`}
                 >
                     {/*
-                     * The control lives in the panel it controls. Collapsed,
-                     * the panel shrinks to just this button, so the way back
-                     * is exactly where the way out was.
+                     * The panel says what it is, and carries the control that
+                     * puts it away. The rule under it runs the full width of
+                     * the rail, so the header reads as the panel's own bar
+                     * rather than as a first row of options.
                      */}
                     <div className={styles.railHeader}>
+                        <h2 className={styles.railTitle}>
+                            {i18n.t('Configure report')}
+                        </h2>
                         <button
                             type="button"
                             className={styles.railToggle}
@@ -374,11 +341,7 @@ export const StandardReportNext = () => {
                                     : i18n.t('Hide report options')
                             }
                         >
-                            {railCollapsed ? (
-                                <IconChevronRight24 />
-                            ) : (
-                                <IconChevronLeft24 />
-                            )}
+                            <RailToggleIcon collapsed={railCollapsed} />
                             <span className={styles.visuallyHidden}>
                                 {railCollapsed
                                     ? i18n.t('Show report options')
@@ -388,82 +351,74 @@ export const StandardReportNext = () => {
                     </div>
 
                     <div id="report-options" className={styles.railBody}>
-                        {/*
-                         * Two modes sharing one rail. Finding a report wants
-                         * the whole height; so does an org unit tree. They
-                         * never need it at the same time, so they take turns.
-                         */}
-                        {!selected ? (
-                            <ReportList
-                                reports={reports}
-                                loading={reportsResult.loading}
-                                error={reportsResult.error}
-                                canCreate={canCreate}
-                                onSelect={onSelect}
-                                onCreate={() => setDialog({ kind: 'new' })}
-                                onEdit={openEdit}
-                                onShare={openSharing}
-                            />
-                        ) : (
-                            <form
-                                className={styles.railForm}
-                                onSubmit={onGenerate}
-                            >
-                                <div className={styles.railScroll}>
-                                    <div className={styles.railFields}>
-                                        {/*
-                                         * Above the report rather than
-                                         * beside its name: leaving is a move
-                                         * back out of this report, not an
-                                         * edit to which report it is.
-                                         */}
-                                        <button
-                                            type="button"
-                                            className={styles.backToAll}
-                                            onClick={onChangeReport}
-                                        >
-                                            <IconArrowLeft16 />
-                                            {i18n.t('Back to all')}
-                                        </button>
-
-                                        <div className={styles.chosen}>
-                                            <span
-                                                className={styles.chosenName}
-                                                title={selected.displayName}
-                                            >
-                                                {selected.displayName}
-                                            </span>
-                                        </div>
-
-                                        <ReportParamsFields
-                                            report={selected}
-                                            needs={needs}
-                                            selection={selection}
-                                            update={update}
-                                            roots={roots}
-                                            rootsLoading={meResult.loading}
-                                            rootsError={meResult.error}
-                                            onOrgUnitName={setOuName}
-                                        />
-
-                                        {!needs.orgUnit && !needs.period && (
-                                            <p className={styles.help}>
-                                                {i18n.t(
-                                                    'This report takes no options — it ran as soon as you picked it.'
-                                                )}
-                                            </p>
-                                        )}
-
-                                        <ReportMeta report={selected} />
-                                    </div>
-
+                        <form className={styles.railForm} onSubmit={onGenerate}>
+                            <div className={styles.railScroll}>
+                                <div className={styles.railFields}>
                                     {/*
-                                     * Only shown when there is something to
-                                     * generate *with*. A parameterless report
-                                     * has already run; a button here would do
-                                     * nothing but repeat it.
+                                     * Above the report rather than beside its
+                                     * name: leaving is a move back out to the
+                                     * list, not an edit to which report this
+                                     * is.
                                      */}
-                                    {(needs.orgUnit ||
+                                    <button
+                                        type="button"
+                                        className={styles.backToAll}
+                                        onClick={() => history.push(basePath)}
+                                    >
+                                        <IconArrowLeft16 />
+                                        {i18n.t('All reports')}
+                                    </button>
+
+                                    {reportsResult.loading && (
+                                        <CircularLoader small />
+                                    )}
+
+                                    {selected && (
+                                        <>
+                                            <div className={styles.chosen}>
+                                                <span
+                                                    className={
+                                                        styles.chosenName
+                                                    }
+                                                    title={selected.displayName}
+                                                >
+                                                    {selected.displayName}
+                                                </span>
+                                            </div>
+
+                                            <ReportParamsFields
+                                                report={selected}
+                                                needs={needs}
+                                                selection={selection}
+                                                update={update}
+                                                roots={roots}
+                                                rootsLoading={meResult.loading}
+                                                rootsError={meResult.error}
+                                                onOrgUnitName={setOuName}
+                                            />
+
+                                            {!needs.orgUnit &&
+                                                !needs.period && (
+                                                    <p className={styles.help}>
+                                                        {i18n.t(
+                                                            'This report takes no options — it ran as soon as you opened it.'
+                                                        )}
+                                                    </p>
+                                                )}
+
+                                            <ReportMeta report={selected} />
+                                        </>
+                                    )}
+                                </div>
+
+                                {/*
+                                 * Only shown when there is something to
+                                 * generate *with*. A parameterless report has
+                                 * already run; a button here would do nothing
+                                 * but repeat it.
+                                 */}
+                                {selected &&
+                                    (needs.orgUnit ||
                                         needs.period ||
                                         canEdit ||
                                         canShare) && (
@@ -476,15 +431,15 @@ export const StandardReportNext = () => {
                                                     disabled={!canGenerate}
                                                     loading={reportLoading}
                                                 >
-                                                    {i18n.t('Generate')}
+                                                    {i18n.t('Get report')}
                                                 </Button>
                                             )}
 
                                             {/*
                                              * Changing the report is a
                                              * different kind of act from
-                                             * running it, so these sit
-                                             * apart and read quieter.
+                                             * running it, so these sit apart
+                                             * and read quieter.
                                              */}
                                             {(canEdit || canShare) && (
                                                 <div
@@ -497,9 +452,10 @@ export const StandardReportNext = () => {
                                                             small
                                                             secondary
                                                             onClick={() =>
-                                                                openEdit(
-                                                                    selected
-                                                                )
+                                                                setDialog({
+                                                                    kind: 'edit',
+                                                                    report: selected,
+                                                                })
                                                             }
                                                         >
                                                             {i18n.t(
@@ -512,9 +468,10 @@ export const StandardReportNext = () => {
                                                             small
                                                             secondary
                                                             onClick={() =>
-                                                                openSharing(
-                                                                    selected
-                                                                )
+                                                                setDialog({
+                                                                    kind: 'sharing',
+                                                                    report: selected,
+                                                                })
                                                             }
                                                         >
                                                             {i18n.t(
@@ -526,14 +483,26 @@ export const StandardReportNext = () => {
                                             )}
                                         </div>
                                     )}
-                                </div>
-                            </form>
-                        )}
+                            </div>
+                        </form>
                     </div>
                 </aside>
 
                 {/* ---------------- output ---------------- */}
                 <section className={styles.output}>
+                    {notFound && (
+                        <div className={styles.noticePad}>
+                            <NoticeBox
+                                error
+                                title={i18n.t('This report is not available')}
+                            >
+                                {i18n.t(
+                                    'It may have been deleted, or it may be a type this page cannot run. Go back to all reports to pick another.'
+                                )}
+                            </NoticeBox>
+                        </div>
+                    )}
+
                     {reportError && (
                         <div className={styles.noticePad}>
                             <NoticeBox
@@ -549,24 +518,20 @@ export const StandardReportNext = () => {
                         <div className={styles.loading}>
                             <CircularLoader small />
                             <p className={styles.loadingText}>
-                                {i18n.t('Generating report…')}
+                                {i18n.t('Getting report…')}
                             </p>
                         </div>
                     )}
 
-                    {!reportLoading && !report && !reportError && (
+                    {!reportLoading && !report && !reportError && !notFound && (
                         <div className={styles.centered}>
                             <h2>{i18n.t('No report yet')}</h2>
                             <p>
-                                {selected
-                                    ? i18n.t(
-                                          'Fill in the options on the left, then select Generate.'
-                                      )
-                                    : i18n.t(
-                                          'Choose a report on the left. Most run straight away; the rest will ask you for a period or an organisation unit first.'
-                                      )}
+                                {i18n.t(
+                                    'Fill in the options on the left, then select Get report.'
+                                )}
                             </p>
-                            {restoredFromMemory && !selected && (
+                            {restoredFromMemory && (
                                 <p
                                     className={styles.help}
                                     style={{ marginTop: 16 }}
@@ -586,7 +551,7 @@ export const StandardReportNext = () => {
                                 title={i18n.t('These options changed')}
                             >
                                 {i18n.t(
-                                    'The report below is still {{report}}. Select Generate on the left to refresh it.',
+                                    'The report below is still {{report}}. Select Get report on the left to refresh it.',
                                     {
                                         report: report.snapshot.reportName,
                                     }
@@ -611,10 +576,6 @@ export const StandardReportNext = () => {
                 </section>
             </div>
 
-            {dialog?.kind === 'new' && (
-                <NewReportDialog onClose={closeDialog} />
-            )}
-
             {dialog?.kind === 'edit' && dialog.report && (
                 <EditReportDialog
                     report={dialog.report}
@@ -627,4 +588,10 @@ export const StandardReportNext = () => {
             )}
         </div>
     )
+}
+
+StandardReportNext.propTypes = {
+    match: PropTypes.shape({
+        params: PropTypes.shape({ id: PropTypes.string }),
+    }).isRequired,
 }

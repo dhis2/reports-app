@@ -54,14 +54,34 @@
 }
 
 /*
- * A slim header inside the rail, holding nothing but the collapse control.
- * No rule under it: it is a corner of the panel, not a section of it.
+ * The panel's own bar: what it is on the left, the control that puts it away
+ * on the right, and a rule beneath that runs the full width of the card.
  */
 .railHeader {
     flex: none;
     display: flex;
-    justify-content: flex-end;
-    padding: 6px 6px 0;
+    align-items: center;
+    gap: 8px;
+    min-height: 40px;
+    padding: 0 4px 0 12px;
+    background: var(--grey050);
+    border-bottom: 1px solid var(--grey300);
+}
+
+.railTitle {
+    flex: 1 1 auto;
+    min-width: 0;
+    margin: 0;
+    /* Optically centred against the uppercase cap height, not the box. */
+    margin-block-start: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--grey800);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .railToggle {
@@ -74,7 +94,7 @@
     background: none;
     border: 0;
     border-radius: 3px;
-    color: var(--grey600);
+    color: var(--grey700);
     cursor: pointer;
 }
 
@@ -147,7 +167,15 @@
  */
 .railCollapsed {
     align-self: start;
-    padding-bottom: 6px;
+}
+
+.railCollapsed .railHeader {
+    padding: 0 6px;
+    border-bottom: 0;
+}
+
+.railCollapsed .railTitle {
+    display: none;
 }
 
 .railCollapsed .railBody {
@@ -207,7 +235,7 @@
     grid-template-columns: minmax(0, 1fr);
     gap: 16px;
     align-content: start;
-    padding: 16px;
+    padding: 12px;
 }
 
 /*
@@ -222,112 +250,133 @@
     display: grid;
     gap: 8px;
     padding: 12px 16px;
+    /* Opaque: sticky means the fields scroll underneath this. */
     background: var(--white);
     border-top: 1px solid var(--grey400);
 }
 
-/* ---------- browse mode ---------- */
+/* ---------- the list page ---------- */
 
-.browse {
-    display: flex;
-    flex-direction: column;
+/*
+ * The list gets the whole canvas: one card, inset by the same 8px as the
+ * rail, filling the height so the table scrolls inside it rather than
+ * scrolling the page out from under its own header.
+ */
+.browsePage {
     flex: 1 1 auto;
     min-height: 0;
     min-width: 0;
+    padding: 8px;
 }
 
-.searchRow {
-    flex: none;
-    padding: 12px 16px 8px;
-}
-
-.listScroll {
-    flex: 1 1 auto;
+.browseCard {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     min-height: 0;
-    overflow-y: auto;
-}
-
-.list {
-    list-style: none;
-    margin: 0;
-    padding: 0 8px 12px;
-}
-
-/*
- * Positioning context for the row's overflow menu, which sits on top of the
- * row's right edge rather than inside the row button.
- */
-.rowWrap {
-    position: relative;
+    background: var(--white);
+    border: 1px solid var(--grey400);
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(33, 41, 52, 0.06);
+    overflow: hidden;
 }
 
 /*
- * A whole-row button rather than a link: choosing a report is what runs it,
- * and there is no separate address to open.
+ * Search and filter, above the table they act on. Baseline-aligned rather
+ * than centred: the two controls have labels of different heights, and it is
+ * the input boxes that should line up.
  */
-.row {
-    display: block;
-    width: 100%;
-    /*
-     * The right inset is the space the per-report actions menu will occupy
-     * once management lands, so rows will not reflow when it arrives.
-     */
-    padding: 8px 40px 8px 8px;
-    border: 0;
-    border-radius: 3px;
-    background: none;
-    text-align: left;
-    font: inherit;
-    cursor: pointer;
+.browseToolbar {
+    flex: none;
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--grey300);
 }
 
-.row:hover {
-    background: var(--grey100);
+.browseSearch {
+    flex: 0 1 320px;
+    min-width: 0;
 }
 
-.row:focus-visible {
-    outline: 2px solid var(--blue600);
-    outline-offset: -2px;
-}
-
-.rowName {
-    display: block;
-    font-size: 14px;
-    color: var(--grey900);
-    /* Report names are free text and some are very long. Wrap, never clip. */
-    overflow-wrap: anywhere;
-}
-
-/*
- * What this report will ask for. Muted and secondary because it is absent on
- * most rows, and a chip on the minority would make the list look ragged.
- */
-.rowCaption {
-    display: block;
-    margin-top: 1px;
-    font-size: 12px;
+.browseCount {
+    margin: 0 0 6px;
+    font-size: 13px;
     color: var(--grey600);
 }
 
-/*
- * Revealed on hover, and whenever it has keyboard focus or its menu is open.
- * Transparent rather than hidden: visibility:hidden would take the button out
- * of the tab order, and then :focus-within could never bring it back.
- *
- * A permanent column of dots down a list this narrow reads as clutter on
- * every visit, to serve something people do rarely.
- */
-.rowMenu {
-    position: absolute;
-    top: 5px;
-    right: 4px;
-    opacity: 0;
+/* Pushed to the far end of the toolbar, away from what it does not act on. */
+.browseNew {
+    margin-left: auto;
+    padding-bottom: 1px;
 }
 
-.rowWrap:hover .rowMenu,
-.rowMenu:focus-within,
-.rowMenuOpen {
-    opacity: 1;
+.browseScroll {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: auto;
+}
+
+/*
+ * DataTableColumnHeader wraps its label and sort control in a flex container
+ * with no width of its own. Inside a table-layout:fixed cell Chrome sizes
+ * that container to its max-content — measured at ~1136px per header — so
+ * every column header overflowed its cell and the table reported a scroll
+ * width roughly twice the real one. Tying the container to the cell it is in
+ * is what makes the declared column widths hold.
+ */
+.browseScroll thead th > span {
+    width: 100%;
+}
+
+/*
+ * The report's name is the link — the rest of the row follows it on click,
+ * but only this can be tabbed to and opened in a new tab.
+ */
+.browseName {
+    color: var(--grey900);
+    font-weight: 500;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.browseName:hover {
+    color: var(--blue700);
+    text-decoration: underline;
+}
+
+.browseName:focus-visible {
+    outline: 2px solid var(--blue600);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* The cells that follow the name's link when clicked. */
+.browseCell {
+    cursor: pointer;
+}
+
+.browseQuiet {
+    color: var(--grey700);
+}
+
+.browseEmpty {
+    margin: 0;
+    padding: 32px 16px;
+    text-align: center;
+    font-size: 14px;
+    color: var(--grey600);
+}
+
+/* ---------- row menu ---------- */
+
+/*
+ * In the actions column of the list. Static rather than absolutely placed:
+ * the column exists for it, so it has nowhere else to be.
+ */
+.rowMenu {
+    display: inline-flex;
 }
 
 .rowMenuButton {
@@ -338,7 +387,7 @@
     padding: 0;
     border: 0;
     border-radius: 3px;
-    background: var(--white);
+    background: none;
     color: var(--grey600);
     cursor: pointer;
 }
@@ -351,31 +400,6 @@
 .rowMenuButton:focus-visible {
     outline: 2px solid var(--blue600);
     outline-offset: -1px;
-}
-
-.listState {
-    display: grid;
-    place-items: center;
-    padding: 24px 16px;
-}
-
-.listEmpty {
-    margin: 0;
-    padding: 16px;
-    font-size: 13px;
-    color: var(--grey600);
-}
-
-/*
- * Pinned to the foot of the rail, outside the list's scroll area, so it stays
- * put however far down the list you are.
- */
-.listActions {
-    flex: none;
-    display: grid;
-    padding: 12px 16px;
-    background: var(--white);
-    border-top: 1px solid var(--grey400);
 }
 
 /* ---------- configure mode ---------- */
@@ -531,14 +555,22 @@
     margin: 4px 0 0;
 }
 
+/*
+ * Drag-resizable, because how much tree you want visible depends on the
+ * hierarchy in front of you. This takes an explicit height rather than a
+ * max-height, which would clamp the drag partway down.
+ */
 .treeBox {
     min-width: 0;
     border: 1px solid var(--grey400);
     border-radius: 3px;
     background: var(--white);
-    max-height: 320px;
+    height: 240px;
+    min-height: 96px;
+    max-height: 70vh;
     overflow: auto;
     padding: 8px;
+    resize: vertical;
 }
 
 /*

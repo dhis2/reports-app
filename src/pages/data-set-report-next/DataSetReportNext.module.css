@@ -69,14 +69,33 @@
 }
 
 /*
- * A slim header inside the rail, holding nothing but the collapse control.
- * No rule under it: it is a corner of the panel, not a section of it.
+ * The panel's own bar: what it is on the left, the control that puts it away
+ * on the right, and a rule beneath that runs the full width of the card.
  */
 .railHeader {
     flex: none;
     display: flex;
-    justify-content: flex-end;
-    padding: 6px 6px 0;
+    align-items: center;
+    gap: 8px;
+    min-height: 40px;
+    padding: 0 4px 0 12px;
+    background: var(--grey050);
+    border-bottom: 1px solid var(--grey300);
+}
+
+.railTitle {
+    flex: 1 1 auto;
+    min-width: 0;
+    margin: 0;
+    margin-block-start: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--grey800);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .railToggle {
@@ -89,7 +108,7 @@
     background: none;
     border: 0;
     border-radius: 3px;
-    color: var(--grey600);
+    color: var(--grey700);
     cursor: pointer;
 }
 
@@ -154,7 +173,15 @@
  */
 .railCollapsed {
     align-self: start;
-    padding-bottom: 6px;
+}
+
+.railCollapsed .railHeader {
+    padding: 0 6px;
+    border-bottom: 0;
+}
+
+.railCollapsed .railTitle {
+    display: none;
 }
 
 .railCollapsed .railForm {
@@ -186,7 +213,7 @@
     display: grid;
     gap: 16px;
     align-content: start;
-    padding: 16px;
+    padding: 12px;
 }
 
 /*
@@ -203,6 +230,8 @@
     display: grid;
     gap: 8px;
     padding: 12px 16px;
+    /* Opaque: sticky means the fields scroll underneath this. */
+    background: var(--white);
     border-top: 1px solid var(--grey400);
 }
 
@@ -252,28 +281,63 @@
     margin: 4px 0 0;
 }
 
-.treeBox {
+/*
+ * The tree and its scope footer are one control, so one border goes around
+ * both. overflow:hidden keeps the scrolling tree inside the rounded corners.
+ */
+.treeCard {
     border: 1px solid var(--grey400);
     border-radius: 3px;
     background: var(--white);
-    max-height: 240px;
+    overflow: hidden;
+}
+
+/*
+ * Drag-resizable, because how much tree you want visible depends on the
+ * hierarchy in front of you — a flat two-level one needs far less than the
+ * five-level one an actual national instance has.
+ *
+ * This takes an explicit height rather than the max-height it used to have:
+ * a max-height would clamp the drag, so the handle would stop responding
+ * partway down.
+ */
+.treeBox {
+    height: 240px;
+    min-height: 96px;
+    max-height: 70vh;
     overflow: auto;
     padding: 8px;
+    resize: vertical;
 }
 
-.scopeGroup {
-    display: grid;
-    gap: 4px;
+/*
+ * How far the selected unit reaches, tacked onto the bottom of the tree. Two
+ * radios side by side — it is a choice between two whole phrasings, not a
+ * list, so it reads across rather than down.
+ */
+.treeFooter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 16px;
     border: 0;
+    border-top: 1px solid var(--grey300);
     margin: 0;
-    padding: 0;
+    padding: 8px 10px;
+    background: var(--grey050);
 }
 
-.scopeGroup legend {
-    font-size: 14px;
-    color: var(--grey900);
-    margin-bottom: 4px;
+/* Present for screen readers, which need the group to be named. */
+.srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
     padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 /*
@@ -308,9 +372,9 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    width: calc(100% + 16px);
-    margin: 0 -8px;
-    padding: 6px 8px;
+    width: 100%;
+    margin: 0;
+    padding: 6px;
     appearance: none;
     background: none;
     border: 0;
@@ -372,11 +436,10 @@
     flex: none;
     min-width: 18px;
     padding: 0 6px;
-    border-radius: 9px;
-    background: var(--blue100);
-    color: var(--blue800);
-    font-size: 11px;
-    font-weight: 500;
+    border-radius: 6px;
+    background: var(--grey100);
+    color: var(--grey900);
+    font-size: 12px;
     line-height: 18px;
     text-align: center;
 }
@@ -390,8 +453,8 @@
  */
 .summary {
     display: flex;
-    align-items: baseline;
-    gap: 24px;
+    flex-direction: column;
+    gap: 2px;
     padding: 12px 16px;
     background: var(--grey100);
     border-bottom: 1px solid var(--grey400);
@@ -407,20 +470,14 @@
 }
 
 /*
- * Applied filters are shown here, not only inside the collapsed panel. A
- * filtered report that looks like a full one is a data integrity problem,
- * not a cosmetic one — so this also has to survive into print.
+ * Applied filters, on the line under the summary. Quieter than the line
+ * above it, but it has to survive into print — a filtered report that looks
+ * like a full one is a data integrity problem, not a cosmetic one.
  */
-.filterNote {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 16px;
-    background: var(--yellow050);
-    border-bottom: 1px solid var(--yellow200);
+.filterLine {
+    margin: 0;
     font-size: 13px;
-    color: var(--yellow900);
+    color: var(--grey700);
 }
 
 .toolbar {

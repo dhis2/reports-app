@@ -19,6 +19,7 @@ import { AddEditResource } from '../pages/resource/AddEditResource.jsx'
 import { Resource } from '../pages/Resource.jsx'
 import { ConnectedAddEditStdReport } from '../pages/standard-report/AddEditStdReport.jsx'
 import StyledHtmlReport from '../pages/standard-report/StyledHtmlReport.jsx'
+import { ReportBrowse } from '../pages/standard-report-next/ReportBrowse.jsx'
 import { StandardReportNext } from '../pages/standard-report-next/StandardReportNext.jsx'
 import { StandardReport } from '../pages/StandardReport.jsx'
 import NoMatch from './NoMatch.jsx'
@@ -55,6 +56,12 @@ const AppRouter = () => (
                 exact
                 key={STANDARD_REPORT_NEXT_SECTION_KEY}
                 path={sections[STANDARD_REPORT_NEXT_SECTION_KEY].path}
+                component={ReportBrowse}
+            />
+            <Route
+                exact
+                key={`${STANDARD_REPORT_NEXT_SECTION_KEY}-report`}
+                path={`${sections[STANDARD_REPORT_NEXT_SECTION_KEY].path}/:id(${ID_REGEXP})`}
                 component={StandardReportNext}
             />
             <Route

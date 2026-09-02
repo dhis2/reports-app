@@ -65,21 +65,25 @@ export const reportNeeds = (report) => {
     }
 }
 
-/** The caption under a row in the list, so a click is never a coin flip. */
-export const needsCaption = (report) => {
+/**
+ * What the report will ask for, phrased for the "Asks for" column of the
+ * list. Short rather than sentence-shaped: it is read down a column, against
+ * the value on the row above it, not on its own.
+ */
+export const needsSummary = (report) => {
     const needs = reportNeeds(report)
 
     if (needs.period && needs.orgUnit) {
-        return i18n.t('Asks for period and organisation unit')
+        return i18n.t('Period, organisation unit')
     }
     if (needs.period) {
-        return i18n.t('Asks for a period')
+        return i18n.t('Period')
     }
     if (needs.orgUnit) {
-        return i18n.t('Asks for an organisation unit')
+        return i18n.t('Organisation unit')
     }
 
-    return ''
+    return i18n.t('Nothing')
 }
 
 /* Every fixed period type the app can actually build a period list for. */

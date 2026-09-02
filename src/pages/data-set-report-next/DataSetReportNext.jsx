@@ -5,8 +5,6 @@ import {
     CircularLoader,
     DropdownButton,
     FlyoutMenu,
-    IconChevronLeft24,
-    IconChevronRight24,
     MenuItem,
     NoticeBox,
     OrganisationUnitTree,
@@ -17,6 +15,7 @@ import {
 } from '@dhis2/ui'
 import PropTypes from 'prop-types'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { RailToggleIcon } from '../../components/shell/RailToggleIcon.jsx'
 import { SectionSwitcher } from '../../components/shell/SectionSwitcher.jsx'
 import { DATA_SET_REPORT_NEXT_SECTION_KEY } from '../../config/sections.config.js'
 import { fixedPeriodTranslations } from '../../utils/periods/fixedPeriods.js'
@@ -131,14 +130,47 @@ const writeViewMode = (mode) => {
     }
 }
 
-const formTypeLabel = (formType) => {
-    switch (formType) {
-        case 'CUSTOM':
-            return i18n.t('custom form')
-        case 'SECTION':
-            return i18n.t('section form')
+/*
+ * How often this data set is collected, as a whole sentence rather than the
+ * bare period type. Written out per type instead of interpolating the period
+ * name, because "Data collected {{Bi-Monthly}}" does not read as English and
+ * would not survive translation into languages that inflect it.
+ *
+ * The form type used to sit here too. It describes how the entry screen is
+ * drawn, which is the data entry clerk's concern — someone reading a report
+ * cannot act on it.
+ */
+const cadenceLabel = (periodType) => {
+    switch (periodType) {
+        case 'Daily':
+            return i18n.t('Data collected daily')
+        case 'Weekly':
+        case 'WeeklyWednesday':
+        case 'WeeklyThursday':
+        case 'WeeklySaturday':
+        case 'WeeklySunday':
+            return i18n.t('Data collected weekly')
+        case 'BiWeekly':
+            return i18n.t('Data collected every two weeks')
+        case 'Monthly':
+            return i18n.t('Data collected monthly')
+        case 'BiMonthly':
+            return i18n.t('Data collected every two months')
+        case 'Quarterly':
+        case 'QuarterlyNov':
+            return i18n.t('Data collected quarterly')
+        case 'SixMonthly':
+        case 'SixMonthlyApril':
+        case 'SixMonthlyNov':
+            return i18n.t('Data collected twice a year')
+        case 'Yearly':
+        case 'FinancialApril':
+        case 'FinancialJuly':
+        case 'FinancialOct':
+        case 'FinancialNov':
+            return i18n.t('Data collected yearly')
         default:
-            return i18n.t('default form')
+            return periodType
     }
 }
 
@@ -711,11 +743,15 @@ export const DataSetReportNext = () => {
                     }`}
                 >
                     {/*
-                     * The control lives in the panel it controls. Collapsed,
-                     * the panel shrinks to just this button, so the way back
-                     * is exactly where the way out was.
+                     * The panel says what it is, and carries the control that
+                     * puts it away. The rule under it runs the full width of
+                     * the rail, so the header reads as the panel's own bar
+                     * rather than as a first row of options.
                      */}
                     <div className={styles.railHeader}>
+                        <h2 className={styles.railTitle}>
+                            {i18n.t('Configure report')}
+                        </h2>
                         <button
                             type="button"
                             className={styles.railToggle}
@@ -728,11 +764,7 @@ export const DataSetReportNext = () => {
                                     : i18n.t('Hide report options')
                             }
                         >
-                            {railCollapsed ? (
-                                <IconChevronRight24 />
-                            ) : (
-                                <IconChevronLeft24 />
-                            )}
+                            <RailToggleIcon collapsed={railCollapsed} />
                             <span className={styles.visuallyHidden}>
                                 {railCollapsed
                                     ? i18n.t('Show report options')
@@ -752,63 +784,91 @@ export const DataSetReportNext = () => {
                                     <span className={styles.label}>
                                         {i18n.t('Organisation unit')}
                                     </span>
-                                    <div className={styles.treeBox}>
-                                        {rootsQuery.loading && (
-                                            <CircularLoader small />
-                                        )}
-                                        {rootsQuery.error && (
-                                            <NoticeBox error>
-                                                {i18n.t(
-                                                    'Could not load organisation units.'
-                                                )}
-                                            </NoticeBox>
-                                        )}
-                                        {!rootsQuery.loading &&
-                                            roots.length > 0 && (
-                                                <OrganisationUnitTree
-                                                    roots={roots}
-                                                    singleSelection
-                                                    selected={
-                                                        selection.ouPath
-                                                            ? [selection.ouPath]
-                                                            : []
-                                                    }
-                                                    initiallyExpanded={roots.map(
-                                                        (id) => `/${id}`
-                                                    )}
-                                                    onChange={({
-                                                        path,
-                                                        displayName,
-                                                    }) => {
-                                                        setOuName(displayName)
-                                                        update({ ouPath: path })
-                                                    }}
-                                                />
+                                    <div className={styles.treeCard}>
+                                        <div className={styles.treeBox}>
+                                            {rootsQuery.loading && (
+                                                <CircularLoader small />
                                             )}
+                                            {rootsQuery.error && (
+                                                <NoticeBox error>
+                                                    {i18n.t(
+                                                        'Could not load organisation units.'
+                                                    )}
+                                                </NoticeBox>
+                                            )}
+                                            {!rootsQuery.loading &&
+                                                roots.length > 0 && (
+                                                    <OrganisationUnitTree
+                                                        roots={roots}
+                                                        singleSelection
+                                                        selected={
+                                                            selection.ouPath
+                                                                ? [
+                                                                      selection.ouPath,
+                                                                  ]
+                                                                : []
+                                                        }
+                                                        initiallyExpanded={roots.map(
+                                                            (id) => `/${id}`
+                                                        )}
+                                                        onChange={({
+                                                            path,
+                                                            displayName,
+                                                        }) => {
+                                                            setOuName(
+                                                                displayName
+                                                            )
+                                                            update({
+                                                                ouPath: path,
+                                                            })
+                                                        }}
+                                                    />
+                                                )}
+                                        </div>
+
+                                        {/*
+                                         * Tacked onto the bottom of the tree
+                                         * rather than standing as a field of
+                                         * its own. It is not a separate thing
+                                         * to decide — it is how far down the
+                                         * hierarchy the unit you just picked
+                                         * reaches, so it belongs to the tree.
+                                         */}
+                                        <fieldset className={styles.treeFooter}>
+                                            <legend className={styles.srOnly}>
+                                                {i18n.t('Selection mode')}
+                                            </legend>
+                                            <Radio
+                                                dense
+                                                name="scope"
+                                                label={i18n.t(
+                                                    'Include units inside'
+                                                )}
+                                                checked={
+                                                    !selection.selectedUnitOnly
+                                                }
+                                                onChange={() =>
+                                                    update({
+                                                        selectedUnitOnly: false,
+                                                    })
+                                                }
+                                            />
+                                            <Radio
+                                                dense
+                                                name="scope"
+                                                label={i18n.t('Selection only')}
+                                                checked={
+                                                    selection.selectedUnitOnly
+                                                }
+                                                onChange={() =>
+                                                    update({
+                                                        selectedUnitOnly: true,
+                                                    })
+                                                }
+                                            />
+                                        </fieldset>
                                     </div>
                                 </div>
-
-                                <fieldset className={styles.scopeGroup}>
-                                    <legend>{i18n.t('Selection mode')}</legend>
-                                    <Radio
-                                        dense
-                                        name="scope"
-                                        label={i18n.t('Include units inside')}
-                                        checked={!selection.selectedUnitOnly}
-                                        onChange={() =>
-                                            update({ selectedUnitOnly: false })
-                                        }
-                                    />
-                                    <Radio
-                                        dense
-                                        name="scope"
-                                        label={i18n.t('Selected unit only')}
-                                        checked={selection.selectedUnitOnly}
-                                        onChange={() =>
-                                            update({ selectedUnitOnly: true })
-                                        }
-                                    />
-                                </fieldset>
 
                                 {/*
                                  * Group sets slice the hierarchy, so they stay
@@ -854,18 +914,25 @@ export const DataSetReportNext = () => {
                                                 }
                                             >
                                                 {i18n.t(
-                                                    'Organisation unit filtering'
+                                                    'Filter by org. unit group'
                                                 )}
                                             </span>
-                                            {groupSetFilterCount > 0 && (
-                                                <span
-                                                    className={
-                                                        styles.countBadge
-                                                    }
-                                                >
-                                                    {groupSetFilterCount}
-                                                </span>
-                                            )}
+                                            {/*
+                                             * Only when closed — open, the
+                                             * fields themselves already show
+                                             * what is set, so the badge is
+                                             * just a second copy of it.
+                                             */}
+                                            {!groupSetsOpen &&
+                                                groupSetFilterCount > 0 && (
+                                                    <span
+                                                        className={
+                                                            styles.countBadge
+                                                        }
+                                                    >
+                                                        {groupSetFilterCount}
+                                                    </span>
+                                                )}
                                         </button>
 
                                         {groupSetsOpen && (
@@ -922,12 +989,7 @@ export const DataSetReportNext = () => {
                                     </SingleSelectField>
                                     {dataSet && (
                                         <p className={styles.help}>
-                                            {dataSet.periodType} ·{' '}
-                                            {formTypeLabel(dataSet.formType)}
-                                            {dataSet.formType === CUSTOM_FORM &&
-                                                ` · ${i18n.t(
-                                                    'rendered by the server'
-                                                )}`}
+                                            {cadenceLabel(dataSet.periodType)}
                                         </p>
                                     )}
 
@@ -1160,27 +1222,26 @@ export const DataSetReportNext = () => {
                                                   }
                                               ),
                                         report.snapshot.generatedAt.toLocaleString(),
-                                    ].join(' · ')}
+                                    ].join(' \u00b7 ')}
                                 </p>
-                            </div>
 
-                            {/*
-                             * Applied filters stay visible, and stay on the
-                             * printout. A filtered report that looks like a
-                             * full one gets filed as the facility total.
-                             */}
-                            {report.snapshot.filterLabels?.length > 0 && (
-                                <div className={styles.filterNote}>
-                                    <strong>{i18n.t('Filtered:')}</strong>
-                                    {report.snapshot.filterLabels.map(
-                                        (filter) => (
-                                            <span key={filter.label}>
-                                                {filter.label}: {filter.value}
-                                            </span>
-                                        )
-                                    )}
-                                </div>
-                            )}
+                                {/*
+                                 * Applied filters sit on their own line under
+                                 * the summary, and travel onto the printout. A
+                                 * filtered report that looks like a full one
+                                 * gets filed as the facility total.
+                                 */}
+                                {report.snapshot.filterLabels?.length > 0 && (
+                                    <p className={styles.filterLine}>
+                                        {report.snapshot.filterLabels
+                                            .map(
+                                                (filter) =>
+                                                    `${filter.label}: ${filter.value}`
+                                            )
+                                            .join(' \u00b7 ')}
+                                    </p>
+                                )}
+                            </div>
 
                             {/*
                              * The two views, and the options that belong to

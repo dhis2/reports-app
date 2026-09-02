@@ -35,7 +35,15 @@ const SELF_MANAGED_LAYOUT = [
 ]
 
 export const AppShell = ({ showNav, currentSection, children }) => {
-    const isSelfManaged = SELF_MANAGED_LAYOUT.includes(currentSection)
+    /*
+     * `currentSection` is the whole path, so a page with a route beneath its
+     * section — /standard-report-next/<id> — does not match the section key
+     * on its own. Only the first segment decides who lays the page out; the
+     * switcher bar below still keys off the exact section, so nothing changes
+     * for the sub-routes of the pages that have not been rebuilt yet.
+     */
+    const baseSection = currentSection.split('/')[0]
+    const isSelfManaged = SELF_MANAGED_LAYOUT.includes(baseSection)
     const showSwitcherBar =
         showNav && Boolean(sections[currentSection]) && !isSelfManaged
 
