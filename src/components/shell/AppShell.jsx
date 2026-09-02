@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import {
     DATA_SET_REPORT_NEXT_SECTION_KEY,
+    ORG_UNIT_DIST_REPORT_NEXT_SECTION_KEY,
     sections,
     STANDARD_REPORT_NEXT_SECTION_KEY,
 } from '../../config/sections.config.js'
@@ -32,6 +33,7 @@ import { SectionSwitcher } from './SectionSwitcher.jsx'
 const SELF_MANAGED_LAYOUT = [
     DATA_SET_REPORT_NEXT_SECTION_KEY,
     STANDARD_REPORT_NEXT_SECTION_KEY,
+    ORG_UNIT_DIST_REPORT_NEXT_SECTION_KEY,
 ]
 
 export const AppShell = ({ showNav, currentSection, children }) => {

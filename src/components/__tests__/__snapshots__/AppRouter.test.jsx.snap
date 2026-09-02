@@ -133,6 +133,12 @@ exports[`Matches the snapshot 1`] = `
     />
     <Route
       component={[Function]}
+      exact={true}
+      key="organisation-unit-distribution-report-next"
+      path="/organisation-unit-distribution-report-next"
+    />
+    <Route
+      component={[Function]}
       key="no-match-route"
     />
   </Switch>

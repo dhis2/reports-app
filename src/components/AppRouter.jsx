@@ -4,6 +4,7 @@ import {
     sections,
     DATA_SET_REPORT_NEXT_SECTION_KEY,
     DATA_SET_REPORT_SECTION_KEY,
+    ORG_UNIT_DIST_REPORT_NEXT_SECTION_KEY,
     ORG_UNIT_DIST_REPORT_SECTION_KEY,
     REPORTING_RATE_SUMMARY_SECTION_KEY,
     RESOURCE_SECTION_KEY,
@@ -13,6 +14,7 @@ import {
 import { DataSetReportNext } from '../pages/data-set-report-next/DataSetReportNext.jsx'
 import { DataSetReport } from '../pages/DataSetReport.jsx'
 import Home from '../pages/home/Home.jsx'
+import { OrgUnitDistReportNext } from '../pages/organisation-unit-distribution-report-next/OrgUnitDistReportNext.jsx'
 import { OrganisationUnitDistributionReport } from '../pages/OrganisationUnitDistributionReport.jsx'
 import { ReportingRateSummary } from '../pages/ReportingRateSummary.jsx'
 import { AddEditResource } from '../pages/resource/AddEditResource.jsx'
@@ -100,6 +102,12 @@ const AppRouter = () => (
                 key={ORG_UNIT_DIST_REPORT_SECTION_KEY}
                 path={sections[ORG_UNIT_DIST_REPORT_SECTION_KEY].path}
                 component={OrganisationUnitDistributionReport}
+            />
+            <Route
+                exact
+                key={ORG_UNIT_DIST_REPORT_NEXT_SECTION_KEY}
+                path={sections[ORG_UNIT_DIST_REPORT_NEXT_SECTION_KEY].path}
+                component={OrgUnitDistReportNext}
             />
             <Route key="no-match-route" component={NoMatch} />
         </Switch>

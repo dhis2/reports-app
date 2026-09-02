@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-09-01T17:56:14.601Z\n"
-"PO-Revision-Date: 2026-09-01T17:56:14.602Z\n"
+"POT-Creation-Date: 2026-09-02T09:38:08.086Z\n"
+"PO-Revision-Date: 2026-09-02T09:38:08.087Z\n"
 
 msgid "Updating Organisation Units Tree..."
 msgstr "Updating Organisation Units Tree..."
@@ -71,6 +71,15 @@ msgstr "No matches found"
 msgid "Type to search a report table"
 msgstr "Type to search a report table"
 
+msgid "Configure and create a report to get started."
+msgstr "Configure and create a report to get started."
+
+msgid "Show report options"
+msgstr "Show report options"
+
+msgid "Hide report options"
+msgstr "Hide report options"
+
 msgid "Reports"
 msgstr "Reports"
 
@@ -98,12 +107,6 @@ msgstr "Not a report"
 msgid "A form, filled in, ready to print"
 msgstr "A form, filled in, ready to print"
 
-msgid "Redesign in progress"
-msgstr "Redesign in progress"
-
-msgid "Which offices sent their forms"
-msgstr "Which offices sent their forms"
-
 msgid "How your facilities break down"
 msgstr "How your facilities break down"
 
@@ -126,15 +129,8 @@ msgstr ""
 msgid "View Reports"
 msgstr "View Reports"
 
-msgid "Standard Report (prototype)"
-msgstr "Standard Report (prototype)"
-
-msgid ""
-"Redesign prototype of the standard report, built on the current DHIS2 "
-"component library. HTML reports only."
-msgstr ""
-"Redesign prototype of the standard report, built on the current DHIS2 "
-"component library. HTML reports only."
+msgid "Reports your team designed, run against current data."
+msgstr "Reports your team designed, run against current data."
 
 msgid "Data Set Report"
 msgstr "Data Set Report"
@@ -149,15 +145,8 @@ msgstr ""
 msgid "Get Report"
 msgstr "Get Report"
 
-msgid "Data Set Report (prototype)"
-msgstr "Data Set Report (prototype)"
-
-msgid ""
-"Redesign prototype of the data set report, built on the current DHIS2 "
-"component library. Same endpoints, same output."
-msgstr ""
-"Redesign prototype of the data set report, built on the current DHIS2 "
-"component library. Same endpoints, same output."
+msgid "A data entry form with aggregated data filled in, ready to print."
+msgstr "A data entry form with aggregated data filled in, ready to print."
 
 msgid "Reporting Rate Summary"
 msgstr "Reporting Rate Summary"
@@ -192,6 +181,13 @@ msgstr ""
 "Browse the organisation unit distribution report based on the organisation "
 "unit group sets and its groups."
 
+msgid ""
+"How the organisation units under one part of the hierarchy break down by "
+"group."
+msgstr ""
+"How the organisation units under one part of the hierarchy break down by "
+"group."
+
 msgid "Reporting Period"
 msgstr "Reporting Period"
 
@@ -207,14 +203,32 @@ msgstr "Report period"
 msgid "Use data for selected unit only"
 msgstr "Use data for selected unit only"
 
-msgid "custom form"
-msgstr "custom form"
+msgid "Report created {{when}}"
+msgstr "Report created {{when}}"
 
-msgid "section form"
-msgstr "section form"
+msgid "Data collected daily"
+msgstr "Data collected daily"
 
-msgid "default form"
-msgstr "default form"
+msgid "Data collected weekly"
+msgstr "Data collected weekly"
+
+msgid "Data collected every two weeks"
+msgstr "Data collected every two weeks"
+
+msgid "Data collected monthly"
+msgstr "Data collected monthly"
+
+msgid "Data collected every two months"
+msgstr "Data collected every two months"
+
+msgid "Data collected quarterly"
+msgstr "Data collected quarterly"
+
+msgid "Data collected twice a year"
+msgstr "Data collected twice a year"
+
+msgid "Data collected yearly"
+msgstr "Data collected yearly"
 
 msgid "Any"
 msgstr "Any"
@@ -228,11 +242,8 @@ msgstr "{{ext}}"
 msgid "Download..."
 msgstr "Download..."
 
-msgid "Show report options"
-msgstr "Show report options"
-
-msgid "Hide report options"
-msgstr "Hide report options"
+msgid "Configure report"
+msgstr "Configure report"
 
 msgid "Organisation unit"
 msgstr "Organisation unit"
@@ -246,11 +257,11 @@ msgstr "Selection mode"
 msgid "Include units inside"
 msgstr "Include units inside"
 
-msgid "Selected unit only"
-msgstr "Selected unit only"
+msgid "Selection only"
+msgstr "Selection only"
 
-msgid "Organisation unit filtering"
-msgstr "Organisation unit filtering"
+msgid "Filter by org. unit group"
+msgstr "Filter by org. unit group"
 
 msgid "No data set found"
 msgstr "No data set found"
@@ -258,33 +269,20 @@ msgstr "No data set found"
 msgid "Choose a data set"
 msgstr "Choose a data set"
 
-msgid "rendered by the server"
-msgstr "rendered by the server"
+msgid "Period"
+msgstr "Period"
 
-msgid "Period type"
-msgstr "Period type"
+msgid "Type"
+msgstr "Type"
 
-msgid "Choose a period type"
-msgstr "Choose a period type"
-
-msgid ""
-"{{name}} is collected {{periodType}}. A {{chosen}} report may come back "
-"empty."
-msgstr ""
-"{{name}} is collected {{periodType}}. A {{chosen}} report may come back "
-"empty."
-
-msgid "This prototype cannot build a period list for {{periodType}} yet."
-msgstr "This prototype cannot build a period list for {{periodType}} yet."
+msgid "Choose a type"
+msgstr "Choose a type"
 
 msgid "No year found"
 msgstr "No year found"
 
 msgid "Year"
 msgstr "Year"
-
-msgid "Period"
-msgstr "Period"
 
 msgid "Choose a period"
 msgstr "Choose a period"
@@ -295,39 +293,17 @@ msgstr "Get report"
 msgid "Clear"
 msgstr "Clear"
 
+msgid "Not updated with latest options"
+msgstr "Not updated with latest options"
+
 msgid "The report could not be built"
 msgstr "The report could not be built"
 
 msgid "Generating report..."
 msgstr "Generating report..."
 
-msgid "No report yet"
-msgstr "No report yet"
-
-msgid ""
-"Choose an organisation unit, a data set and a period, then select Get "
-"report. You will get the data entry form for that period, filled in and "
-"ready to print."
-msgstr ""
-"Choose an organisation unit, a data set and a period, then select Get "
-"report. You will get the data entry form for that period, filled in and "
-"ready to print."
-
-msgid "Your options from last time are filled in already."
-msgstr "Your options from last time are filled in already."
-
-msgid "These options changed"
-msgstr "These options changed"
-
-msgid ""
-"The report below is still {{dataSet}} · {{period}} · {{orgUnit}}. Select "
-"Get report on the left to refresh it."
-msgstr ""
-"The report below is still {{dataSet}} · {{period}} · {{orgUnit}}. Select "
-"Get report on the left to refresh it."
-
-msgid "{{orgUnit}} + units inside"
-msgstr "{{orgUnit}} + units inside"
+msgid "{{orgUnit}} and units inside"
+msgstr "{{orgUnit}} and units inside"
 
 msgid "Standard"
 msgstr "Standard"
@@ -421,6 +397,68 @@ msgstr "1 item hidden by filter"
 
 msgid "Get Chart"
 msgstr "Get Chart"
+
+msgid "Total"
+msgstr "Total"
+
+msgid "All of {{name}}"
+msgstr "All of {{name}}"
+
+msgid "1 organisation unit"
+msgstr "1 organisation unit"
+
+msgid "{{units}} organisation units"
+msgstr "{{units}} organisation units"
+
+msgid "1 sub-unit"
+msgstr "1 sub-unit"
+
+msgid "{{subUnits}} sub-units"
+msgstr "{{subUnits}} sub-units"
+
+msgid "created {{when}}"
+msgstr "created {{when}}"
+
+msgid "Group set"
+msgstr "Group set"
+
+msgid "Could not load organisation unit group sets."
+msgstr "Could not load organisation unit group sets."
+
+msgid "No group sets found"
+msgstr "No group sets found"
+
+msgid "Choose a group set"
+msgstr "Choose a group set"
+
+msgid ""
+"No group sets on this instance have any groups, so there is nothing to "
+"report on."
+msgstr ""
+"No group sets on this instance have any groups, so there is nothing to "
+"report on."
+
+msgid "The report failed"
+msgstr "The report failed"
+
+msgid "Getting report…"
+msgstr "Getting report…"
+
+msgid ""
+"No organisation units beneath this one belong to any group in this group "
+"set."
+msgstr ""
+"No organisation units beneath this one belong to any group in this group "
+"set."
+
+msgid "Table"
+msgstr "Table"
+
+msgid "Chart"
+msgstr "Chart"
+
+msgid "Organisation units"
+msgstr "Organisation units"
 
 msgid "Edit resource"
 msgstr "Edit resource"
@@ -631,23 +669,11 @@ msgstr "Shared with"
 msgid "Nobody in particular"
 msgstr "Nobody in particular"
 
-msgid "New standard report…"
-msgstr "New standard report…"
-
 msgid "Search by name"
 msgstr "Search by name"
 
-msgid "Anything"
-msgstr "Anything"
-
-msgid "Nothing — runs at once"
-msgstr "Nothing — runs at once"
-
-msgid "A period"
-msgstr "A period"
-
-msgid "An organisation unit"
-msgstr "An organisation unit"
+msgid "New standard report…"
+msgstr "New standard report…"
 
 msgid "Loading reports…"
 msgstr "Loading reports…"
@@ -657,6 +683,9 @@ msgstr "Could not load the reports"
 
 msgid "Report"
 msgstr "Report"
+
+msgid "Parameters"
+msgstr "Parameters"
 
 msgid "Created by"
 msgstr "Created by"
@@ -670,14 +699,11 @@ msgstr "Last changed"
 msgid "Actions"
 msgstr "Actions"
 
-msgid "No report matches those filters."
-msgstr "No report matches those filters."
+msgid "No report matches “{{search}}”."
+msgstr "No report matches “{{search}}”."
 
 msgid "There are no standard reports yet."
 msgstr "There are no standard reports yet."
-
-msgid "{{when}} by {{who}}"
-msgstr "{{when}} by {{who}}"
 
 msgid "No period matches"
 msgstr "No period matches"
@@ -700,11 +726,14 @@ msgstr "Edit report…"
 msgid "Manage sharing…"
 msgstr "Manage sharing…"
 
-msgid "This report takes no options — it ran as soon as you opened it."
-msgstr "This report takes no options — it ran as soon as you opened it."
+msgid "Template"
+msgstr "Template"
 
-msgid "Generate"
-msgstr "Generate"
+msgid "No parameters available. Period and org unit are set by the report."
+msgstr "No parameters available. Period and org unit are set by the report."
+
+msgid "Back to all templates"
+msgstr "Back to all templates"
 
 msgid "This report is not available"
 msgstr "This report is not available"
@@ -716,27 +745,14 @@ msgstr ""
 "It may have been deleted, or it may be a type this page cannot run. Go back "
 "to all reports to pick another."
 
-msgid "Generating report…"
-msgstr "Generating report…"
-
-msgid "Fill in the options on the left, then select Generate."
-msgstr "Fill in the options on the left, then select Generate."
-
-msgid "Your organisation unit from last time is filled in already."
-msgstr "Your organisation unit from last time is filled in already."
-
-msgid ""
-"The report below is still {{report}}. Select Generate on the left to "
-"refresh it."
-msgstr ""
-"The report below is still {{report}}. Select Generate on the left to "
-"refresh it."
-
 msgid "just now"
 msgstr "just now"
 
 msgid "Period, organisation unit"
 msgstr "Period, organisation unit"
+
+msgid "None"
+msgstr "None"
 
 msgid "An error occurred whole loading the data set options"
 msgstr "An error occurred whole loading the data set options"
@@ -821,9 +837,6 @@ msgstr "An error occurred while loading the report table options"
 
 msgid "Count"
 msgstr "Count"
-
-msgid "Total"
-msgstr "Total"
 
 msgid "Something went wrong when processing your request."
 msgstr "Something went wrong when processing your request."

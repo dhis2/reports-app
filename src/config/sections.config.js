@@ -11,16 +11,19 @@ export const REPORTING_RATE_SUMMARY_SECTION_KEY = 'reporting-rate-summary'
 export const RESOURCE_SECTION_KEY = 'resource'
 export const ORG_UNIT_DIST_REPORT_SECTION_KEY =
     'organisation-unit-distribution-report'
+/* Prototype only — same treatment as the data set report key above. */
+export const ORG_UNIT_DIST_REPORT_NEXT_SECTION_KEY =
+    'organisation-unit-distribution-report-next'
 export const DATA_APPROVAL_SECTION_KEY = 'data-approval'
 
-/* The legacy standard report, data set report and reporting rate summary are
- * still routed (so existing links keep working) but are no longer offered
- * anywhere in the UI, so they are not listed here. */
+/* The legacy standard report, data set report, reporting rate summary and org
+ * unit distribution report are still routed (so existing links keep working)
+ * but are no longer offered anywhere in the UI, so they are not listed here. */
 export const sectionOrder = [
     STANDARD_REPORT_NEXT_SECTION_KEY,
     DATA_SET_REPORT_NEXT_SECTION_KEY,
     RESOURCE_SECTION_KEY,
-    ORG_UNIT_DIST_REPORT_SECTION_KEY,
+    ORG_UNIT_DIST_REPORT_NEXT_SECTION_KEY,
 ]
 
 export const sections = {
@@ -109,6 +112,19 @@ export const sections = {
             label: i18n.t('Org unit distribution report'),
             description: i18n.t(
                 'Browse the organisation unit distribution report based on the organisation unit group sets and its groups.'
+            ),
+            actionText: i18n.t('Get Report'),
+            icon: 'device_hub',
+            docs: 'using_reporting_orgunit_distribution_reports',
+        },
+    },
+    [ORG_UNIT_DIST_REPORT_NEXT_SECTION_KEY]: {
+        key: ORG_UNIT_DIST_REPORT_NEXT_SECTION_KEY,
+        path: `/${ORG_UNIT_DIST_REPORT_NEXT_SECTION_KEY}`,
+        info: {
+            label: i18n.t('Org unit distribution report'),
+            description: i18n.t(
+                'How the organisation units under one part of the hierarchy break down by group.'
             ),
             actionText: i18n.t('Get Report'),
             icon: 'device_hub',

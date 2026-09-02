@@ -1,0 +1,157 @@
+/*
+ * What is specific to this report. Everything about the frame — the top bar,
+ * the rail and its collapse, the output pane and the stale badge — comes from
+ * components/shell/ReportRailLayout.module.css, which this page imports
+ * alongside this file.
+ *
+ * Values are the @dhis2/ui token values, written as literals because this
+ * file is plain CSS and cannot import them.
+ */
+
+/*
+ * The second line of the summary strip: how much the report covers and when
+ * it was built. Quieter than the line above it, but it prints, because a
+ * report with no date on it is a report you cannot trust twice.
+ */
+.summaryDetail {
+    margin: 0;
+    font-size: 13px;
+    color: var(--grey700);
+}
+
+/*
+ * Which shape the numbers are in. It sits with the report rather than on the
+ * rail: table and chart are the same request, so switching between them is a
+ * change of view, not a change of question.
+ */
+.viewBar {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    border-bottom: 1px solid var(--grey300);
+}
+
+.emptyReport {
+    margin: 0;
+    padding: 32px 16px;
+    text-align: center;
+    font-size: 14px;
+    color: var(--grey600);
+}
+
+/* ---------- table ---------- */
+
+.tableScroll {
+    overflow-x: auto;
+    max-width: 100%;
+}
+
+/*
+ * @dhis2/ui's DataTableColumnHeader imposes a very large intrinsic minimum
+ * width per cell, so under the default table-layout:auto a group set with many
+ * groups lays itself out thousands of pixels wide and every column but the
+ * first ends up off screen. Neither width:auto nor max-content escapes it,
+ * because that width really is the table's min-content size.
+ *
+ * Fixed layout ignores content-based minimums, so we set the column widths
+ * ourselves: room for the org unit name, a readable width per group, and
+ * horizontal scrolling on the container when there are many groups.
+ * --table-min-width is set from the column count in DistributionTable.
+ *
+ * The `div` prefix is needed to outrank DataTable's own table-layout:auto,
+ * which has the same class-plus-element specificity.
+ */
+div.tableScroll table {
+    table-layout: fixed;
+    width: 100%;
+    min-width: var(--table-min-width, 100%);
+}
+
+div.tableScroll th:first-child,
+div.tableScroll td:first-child {
+    width: 260px;
+}
+
+/*
+ * DataTableColumnHeader wraps its label in a span that takes the width of the
+ * table's intrinsic minimum — measured at 1136px per header, whatever the
+ * column is actually set to. The cell clips it, so nothing looks wrong, but
+ * the span still counts towards the row's scroll width: the container then
+ * reports about twice its own width and shows a horizontal scrollbar for a
+ * table that fits perfectly.
+ *
+ * Holding the span to its cell is what makes the scrollbar appear only when a
+ * report really is too wide.
+ */
+div.tableScroll thead th > span {
+    width: 100%;
+    min-width: 0;
+}
+
+/*
+ * A header's label is wrapped in three nested spans — container > top >
+ * content — and every one of them is a flex container. Flex items ignore the
+ * cell's text-align, so a header passed align="right" still renders its label
+ * at the left of the column, out of line with the figures beneath it.
+ *
+ * Justifying only the outer span is not enough: the one inside it stretches to
+ * the full width and packs its own child left again. Hence the descendant
+ * selector — each level has to point the same way.
+ *
+ * Every column but the first holds counts, so the first column is the whole of
+ * the exception: the org unit name reads from the left, like the names below
+ * it.
+ */
+div.tableScroll thead th:not(:first-child) span {
+    justify-content: flex-end;
+}
+
+.figure {
+    font-variant-numeric: tabular-nums;
+}
+
+/* The Total column, and every figure on the total row. */
+.rowTotal {
+    font-weight: 500;
+}
+
+.totalLabel {
+    font-weight: 500;
+}
+
+/* ---------- chart ---------- */
+
+/*
+ * chart.js is told not to maintain an aspect ratio, so the canvas takes the
+ * height of this box — which therefore has to have one. Tall enough for a
+ * legend beneath a dozen or so stacked bars.
+ */
+.chartBox {
+    height: 480px;
+    padding: 16px;
+}
+
+/* ---------- print ---------- */
+
+@media print {
+    .viewBar {
+        display: none;
+    }
+
+    /* Let a wide table shrink onto the page rather than run off it. */
+    div.tableScroll table {
+        min-width: 0;
+    }
+
+    div.tableScroll {
+        overflow-x: visible;
+    }
+
+    /*
+     * A canvas prints as a bitmap at whatever size it was laid out, so it is
+     * left at its on-screen height rather than being scaled and blurred.
+     */
+    .chartBox {
+        break-inside: avoid;
+    }
+}

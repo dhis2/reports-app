@@ -1,0 +1,495 @@
+/*
+ * The rail layout, shared: a top bar, a persistent options rail on the left
+ * that can be put away, and a full-height report column beside it.
+ *
+ * Lifted verbatim out of the data set report and standard report prototypes,
+ * which each grew their own copy of it. Only the page-agnostic rules moved —
+ * report-specific things (tables, charts, custom form frames) stay with their
+ * pages. Pages import this module directly alongside their own, because the
+ * rail's vocabulary (.group, .railScroll, .railActions) is what they fill in.
+ *
+ * Values are the @dhis2/ui token values (colors.js / spacers.js), written as
+ * literals because this file is plain CSS and cannot import them.
+ */
+
+/*
+ * App-style layout: the rail is flush to the top, left and bottom of the
+ * viewport and scrolls internally, with the actions pinned to its foot. The
+ * report column scrolls independently.
+ *
+ * This only works because the shell hands the page the full content area with
+ * no padding and an exact height — see AppShell's self-managed layout list.
+ * The platform's own `.app-shell-app` wrapper is the page scroll container and
+ * is exactly the viewport minus the 48px header bar, so `height: 100%` here
+ * resolves against that and nothing double-scrolls.
+ */
+.page {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 0;
+    /*
+     * AppRouter's <main> is display:block, so this cannot inherit its height
+     * by being a flex item — it has to claim it. <main> does have a definite
+     * height (the shell stretches it), so the percentage resolves.
+     */
+    height: 100%;
+    background: var(--grey300);
+}
+
+/* ---------- top bar ---------- */
+
+/*
+ * One bar across the top of the page. The left half is where you are — the
+ * section switcher. The right half is what you can do to whatever is
+ * currently on screen.
+ *
+ * Everything below the bar is canvas, so the rail can float on it rather
+ * than being welded to the bar's underside.
+ */
+.topbar {
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 48px;
+    padding: 0 12px 0 8px;
+    background: var(--white);
+    border-bottom: 1px solid var(--grey400);
+}
+
+/*
+ * The report-level actions. Right-aligned because the left of the bar is
+ * where you are and this is what you can do — the report's own title stays
+ * with the report, on the summary strip above it.
+ */
+.topbarActions {
+    flex: none;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ---------- rail ---------- */
+
+/*
+ * The panel's own bar: what it is on the left, the control that puts it away
+ * on the right, and a rule beneath that runs the full width of the card.
+ */
+.railHeader {
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 40px;
+    padding: 0 4px 0 12px;
+    background: var(--grey050);
+    border-bottom: 1px solid var(--grey300);
+}
+
+.railTitle {
+    flex: 1 1 auto;
+    min-width: 0;
+    margin: 0;
+    margin-block-start: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--grey800);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.railToggle {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    background: none;
+    border: 0;
+    border-radius: 3px;
+    color: var(--grey700);
+    cursor: pointer;
+}
+
+.railToggle:hover {
+    background: var(--grey200);
+    color: var(--blue700);
+}
+
+.railToggle:focus-visible {
+    outline: 2px solid var(--blue600);
+    outline-offset: -1px;
+}
+
+.visuallyHidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.work {
+    display: grid;
+    /* 8px gutter + 312px of rail = the 320px the rail used to occupy. */
+    grid-template-columns: 320px minmax(0, 1fr);
+    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 0;
+}
+
+/* Collapsed, the rail is only as wide as the control it still shows. */
+.workRailCollapsed {
+    grid-template-columns: 48px minmax(0, 1fr);
+}
+
+/*
+ * Detached from the top bar and from the window: 8px of canvas on every side,
+ * so it reads as a panel resting on the page rather than as part of the frame.
+ */
+.rail {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    margin: 8px 0 8px 8px;
+    background: var(--white);
+    border: 1px solid var(--grey400);
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(33, 41, 52, 0.06);
+    /* Keeps the internal scroll area inside the rounded corners. */
+    overflow: hidden;
+}
+
+/*
+ * Collapsed, the rail shrinks to just its own control — still a card on the
+ * canvas, so the way back is where the panel was rather than somewhere else
+ * on the page. Its contents stay mounted and hidden, so the org unit tree's
+ * expanded branches survive the round trip.
+ */
+.railCollapsed {
+    align-self: start;
+}
+
+.railCollapsed .railHeader {
+    padding: 0 6px;
+    border-bottom: 0;
+}
+
+.railCollapsed .railTitle {
+    display: none;
+}
+
+.railCollapsed .railBody {
+    display: none;
+}
+
+.railBody {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 0;
+}
+
+.railForm {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    /* Without this a flex child refuses to shrink, so the scroll below never
+     * engages and the pinned actions get pushed off the bottom. */
+    min-height: 0;
+}
+
+/*
+ * The single scroll region for the rail. Fields and actions both live inside
+ * it — see .railActions for why that is what makes the sticky footer work.
+ */
+.railScroll {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/*
+ * Groups own their own padding, so this holds none — that is what lets each
+ * divider run the full width of the rail instead of stopping short.
+ */
+.railFields {
+    display: grid;
+    align-content: start;
+}
+
+/*
+ * One question and its follow-ups. The gap inside a group is deliberately
+ * tighter than the space between groups: proximity is what says a follow-up
+ * belongs to the question above it rather than standing on its own.
+ */
+.group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px;
+    border-bottom: 1px solid var(--grey300);
+}
+
+.group:last-child {
+    border-bottom: 0;
+}
+
+.groupTitle {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--grey800);
+}
+
+/*
+ * Sticky, scoped to .railScroll as its nearest scrolling ancestor. A short
+ * form leaves this in normal flow, right after the fields — it does not get
+ * pulled down to the bottom of the rail. A form long enough to make the rail
+ * scroll is the only case where "bottom: 0" ever engages, pinning this in
+ * view rather than requiring a scroll to reach it.
+ */
+.railActions {
+    position: sticky;
+    bottom: 0;
+    flex: none;
+    display: grid;
+    gap: 8px;
+    padding: 12px 16px;
+    /* Opaque: sticky means the fields scroll underneath this. */
+    background: var(--white);
+    border-top: 1px solid var(--grey400);
+}
+
+/* ---------- form bits ---------- */
+
+.help {
+    font-size: 12px;
+    color: var(--grey600);
+    margin: 4px 0 0;
+}
+
+/*
+ * The tree, and anything tacked onto its foot, are one control, so one border
+ * goes around all of it. overflow:hidden keeps the scrolling tree inside the
+ * rounded corners.
+ */
+.treeCard {
+    border: 1px solid var(--grey400);
+    border-radius: 3px;
+    background: var(--white);
+    overflow: hidden;
+}
+
+/*
+ * Drag-resizable, because how much tree you want visible depends on the
+ * hierarchy in front of you — a flat two-level one needs far less than the
+ * five-level one an actual national instance has.
+ *
+ * This takes an explicit height rather than a max-height: a max-height would
+ * clamp the drag, so the handle would stop responding partway down.
+ */
+.treeBox {
+    height: 240px;
+    min-height: 96px;
+    max-height: 70vh;
+    overflow: auto;
+    padding: 8px;
+    resize: vertical;
+}
+
+/* ---------- output ---------- */
+
+/*
+ * Wraps the scrolling output so the stale badge has something to hang off:
+ * .output clips its own overflow, so the badge cannot be anchored there.
+ */
+.outputPane {
+    position: relative;
+    display: flex;
+    min-width: 0;
+    min-height: 0;
+}
+
+.outputPane > .output {
+    flex: 1 1 auto;
+}
+
+.output {
+    min-width: 0;
+    min-height: 0;
+    overflow-y: auto;
+    display: grid;
+    gap: 8px;
+    align-content: start;
+    padding: 8px 8px 40px;
+}
+
+/*
+ * Grid and flex children default to min-width:auto, so they refuse to shrink
+ * below their content's intrinsic width. A wide report table then pushes the
+ * card — and every ancestor — out to the table's full width, which also stops
+ * the table's own scroll container from ever engaging, because there is
+ * nothing narrower to clip against. Letting the children shrink is what makes
+ * the horizontal scroll land on the table instead of the page.
+ */
+.output > * {
+    min-width: 0;
+    background: var(--white);
+    border: 1px solid var(--grey400);
+    border-radius: 3px;
+}
+
+/*
+ * What was asked for, at the head of the report it produced. It belongs to
+ * the report rather than to the page, so it travels with the card — and onto
+ * the printout — while the buttons that act on it live in the top bar.
+ */
+.summary {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 12px 16px;
+    background: var(--grey100);
+    border-bottom: 1px solid var(--grey400);
+}
+
+.summaryLine {
+    flex: 1 1 auto;
+    min-width: 0;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--grey900);
+}
+
+/*
+ * The waiting state. Loader and label as one centred stack rather than a
+ * loader floating over centred text: at this size the gap between them is
+ * what makes the two read as one object.
+ */
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 48px 24px;
+}
+
+.loadingText {
+    margin: 0;
+    font-size: 13px;
+    color: var(--grey600);
+}
+
+.noticePad {
+    padding: 16px;
+}
+
+/*
+ * A tag stuck onto the report, not a message about the page. It overlaps the
+ * report's own top edge — .output holds 8px of canvas above the card — so it
+ * reads as attached to that report rather than as a row of it.
+ */
+.staleBadge {
+    position: absolute;
+    top: 4px;
+    right: 20px;
+    z-index: 2;
+    padding: 4px 8px;
+    background: var(--yellow100);
+    border: 1px solid var(--yellow400);
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(33, 41, 52, 0.12);
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 11px;
+    color: var(--yellow900);
+    white-space: nowrap;
+}
+
+.staleOutput {
+    opacity: 0.6;
+}
+
+/* ---------- print ---------- */
+
+@media print {
+    .rail,
+    .topbar {
+        display: none;
+    }
+
+    /* Undo the fixed-height panes so the whole report flows onto paper. */
+    .page,
+    .work,
+    .output {
+        display: block;
+        height: auto;
+        min-height: 0;
+        overflow: visible;
+        padding: 0;
+        background: var(--white);
+    }
+
+    .summary {
+        background: var(--white);
+        border-bottom: 2px solid var(--grey900);
+    }
+
+    .output > * {
+        border: 0;
+    }
+
+    .staleBadge {
+        display: none;
+    }
+
+    .staleOutput {
+        opacity: 1;
+    }
+}
+
+/* ---------- narrow screens ---------- */
+
+/*
+ * Below this width the two panes stack and the page scrolls as one, rather
+ * than having two independent scroll areas in a viewport-height grid.
+ */
+@media (max-width: 900px) {
+    .page {
+        display: block;
+    }
+
+    .work,
+    .workRailCollapsed {
+        display: block;
+    }
+
+    .rail {
+        margin: 8px;
+    }
+
+    .railScroll {
+        overflow-y: visible;
+    }
+
+    .output {
+        overflow-y: visible;
+        padding: 8px;
+    }
+}

@@ -7,7 +7,7 @@ import {
 } from '@dhis2/ui'
 import {
     DATA_SET_REPORT_NEXT_SECTION_KEY,
-    ORG_UNIT_DIST_REPORT_SECTION_KEY,
+    ORG_UNIT_DIST_REPORT_NEXT_SECTION_KEY,
     RESOURCE_SECTION_KEY,
     STANDARD_REPORT_NEXT_SECTION_KEY,
     sections,
@@ -27,7 +27,7 @@ const GROUPS = [
         hint: i18n.t('You choose the scope, the app knows the question'),
         keys: [
             DATA_SET_REPORT_NEXT_SECTION_KEY,
-            ORG_UNIT_DIST_REPORT_SECTION_KEY,
+            ORG_UNIT_DIST_REPORT_NEXT_SECTION_KEY,
         ],
     },
     {
@@ -44,7 +44,7 @@ const GROUPS = [
 
 const ICONS = {
     [DATA_SET_REPORT_NEXT_SECTION_KEY]: IconTable24,
-    [ORG_UNIT_DIST_REPORT_SECTION_KEY]: IconVisualizationColumn24,
+    [ORG_UNIT_DIST_REPORT_NEXT_SECTION_KEY]: IconVisualizationColumn24,
     [STANDARD_REPORT_NEXT_SECTION_KEY]: IconFileDocument24,
     [RESOURCE_SECTION_KEY]: IconFolder24,
 }
@@ -57,7 +57,7 @@ const QUESTIONS = {
     [DATA_SET_REPORT_NEXT_SECTION_KEY]: i18n.t(
         'A form, filled in, ready to print'
     ),
-    [ORG_UNIT_DIST_REPORT_SECTION_KEY]: i18n.t(
+    [ORG_UNIT_DIST_REPORT_NEXT_SECTION_KEY]: i18n.t(
         'How your facilities break down'
     ),
     [STANDARD_REPORT_NEXT_SECTION_KEY]: i18n.t(
