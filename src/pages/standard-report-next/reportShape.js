@@ -66,7 +66,7 @@ export const reportNeeds = (report) => {
 }
 
 /**
- * What the report will ask for, phrased for the "Asks for" column of the
+ * What the report will ask for, phrased for the "Parameters" column of the
  * list. Short rather than sentence-shaped: it is read down a column, against
  * the value on the row above it, not on its own.
  */
@@ -83,7 +83,7 @@ export const needsSummary = (report) => {
         return i18n.t('Organisation unit')
     }
 
-    return i18n.t('Nothing')
+    return i18n.t('None')
 }
 
 /* Every fixed period type the app can actually build a period list for. */

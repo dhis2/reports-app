@@ -19,8 +19,6 @@ import {
     ORG_UNIT_NAME_QUERY,
     REPORTS_QUERY,
 } from './queries.js'
-import { EditReportDialog, SharingDialog } from './ReportActionDialogs.jsx'
-import { ReportMeta } from './ReportMeta.jsx'
 import { ReportParamsFields } from './ReportParamsFields.jsx'
 import { periodLabel, reportNeeds } from './reportShape.js'
 import styles from './StandardReportNext.module.css'
@@ -127,18 +125,6 @@ export const StandardReportNext = ({ match }) => {
     const notFound = Boolean(
         !reportsResult.loading && !reportsResult.error && !selected
     )
-
-    /*
-     * Management is gated on the report's own access flags, exactly as the
-     * current page's context menu is. Most people can only read, so for most
-     * people these buttons never appear at all.
-     */
-    const access = selected?.access ?? {}
-    const canEdit = Boolean(access.update)
-    const canShare = Boolean(access.manage || access.externalize)
-
-    const [dialog, setDialog] = useState(null)
-    const closeDialog = useCallback(() => setDialog(null), [])
 
     /*
      * The org unit's name, for the summary line. Fetched rather than only
@@ -378,28 +364,15 @@ export const StandardReportNext = ({ match }) => {
                             <div className={styles.railScroll}>
                                 <div className={styles.railFields}>
                                     {/*
-                                     * Which report, and the way back out. Its
-                                     * own group, so the options below are
-                                     * plainly options *for* this report
-                                     * rather than more of the same list.
+                                     * Which report. Its own group, so the
+                                     * options below are plainly options *for*
+                                     * this report rather than more of the
+                                     * same list.
                                      */}
                                     <section className={styles.group}>
-                                        {/*
-                                         * Above the report rather than beside
-                                         * its name: leaving is a move back out
-                                         * to the list, not an edit to which
-                                         * report this is.
-                                         */}
-                                        <button
-                                            type="button"
-                                            className={styles.backToAll}
-                                            onClick={() =>
-                                                history.push(basePath)
-                                            }
-                                        >
-                                            <IconArrowLeft16 />
-                                            {i18n.t('All reports')}
-                                        </button>
+                                        <h3 className={styles.groupTitle}>
+                                            {i18n.t('Template')}
+                                        </h3>
 
                                         {reportsResult.loading && (
                                             <CircularLoader small />
@@ -432,98 +405,57 @@ export const StandardReportNext = ({ match }) => {
                                                 onOrgUnitName={setOuName}
                                             />
 
-                                            <section className={styles.group}>
-                                                {!needs.orgUnit &&
-                                                    !needs.period && (
+                                            {!needs.orgUnit &&
+                                                !needs.period && (
+                                                    <section
+                                                        className={
+                                                            styles.group
+                                                        }
+                                                    >
                                                         <p
                                                             className={
                                                                 styles.help
                                                             }
                                                         >
                                                             {i18n.t(
-                                                                'This report takes no options — it ran as soon as you opened it.'
+                                                                'No parameters available. Period and org unit are set by the report.'
                                                             )}
                                                         </p>
-                                                    )}
-
-                                                <ReportMeta report={selected} />
-                                            </section>
+                                                    </section>
+                                                )}
                                         </>
                                     )}
                                 </div>
 
-                                {/*
-                                 * Only shown when there is something to
-                                 * generate *with*. A parameterless report has
-                                 * already run; a button here would do nothing
-                                 * but repeat it.
-                                 */}
-                                {selected &&
-                                    (needs.orgUnit ||
-                                        needs.period ||
-                                        canEdit ||
-                                        canShare) && (
-                                        <div className={styles.railActions}>
-                                            {(needs.orgUnit ||
-                                                needs.period) && (
-                                                <Button
-                                                    primary
-                                                    type="submit"
-                                                    disabled={!canGenerate}
-                                                    loading={reportLoading}
-                                                >
-                                                    {i18n.t('Get report')}
-                                                </Button>
-                                            )}
-
-                                            {/*
-                                             * Changing the report is a
-                                             * different kind of act from
-                                             * running it, so these sit apart
-                                             * and read quieter.
-                                             */}
-                                            {(canEdit || canShare) && (
-                                                <div
-                                                    className={
-                                                        styles.manageActions
-                                                    }
-                                                >
-                                                    {canEdit && (
-                                                        <Button
-                                                            small
-                                                            secondary
-                                                            onClick={() =>
-                                                                setDialog({
-                                                                    kind: 'edit',
-                                                                    report: selected,
-                                                                })
-                                                            }
-                                                        >
-                                                            {i18n.t(
-                                                                'Edit report…'
-                                                            )}
-                                                        </Button>
-                                                    )}
-                                                    {canShare && (
-                                                        <Button
-                                                            small
-                                                            secondary
-                                                            onClick={() =>
-                                                                setDialog({
-                                                                    kind: 'sharing',
-                                                                    report: selected,
-                                                                })
-                                                            }
-                                                        >
-                                                            {i18n.t(
-                                                                'Manage sharing…'
-                                                            )}
-                                                        </Button>
-                                                    )}
-                                                </div>
-                                            )}
-                                        </div>
+                                <div className={styles.railActions}>
+                                    {/*
+                                     * Shown even for a parameterless report,
+                                     * which already ran on arrival: the data
+                                     * behind it can change after that, and
+                                     * this is how you ask for it again.
+                                     */}
+                                    {selected && (
+                                        <Button
+                                            primary
+                                            type="submit"
+                                            disabled={!canGenerate}
+                                            loading={reportLoading}
+                                        >
+                                            {i18n.t('Get report')}
+                                        </Button>
                                     )}
+
+                                    <Button
+                                        small
+                                        secondary
+                                        icon={<IconArrowLeft16 />}
+                                        onClick={() =>
+                                            history.push(basePath)
+                                        }
+                                    >
+                                        {i18n.t('Back to all templates')}
+                                    </Button>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -608,17 +540,6 @@ export const StandardReportNext = ({ match }) => {
                     </section>
                 </div>
             </div>
-
-            {dialog?.kind === 'edit' && dialog.report && (
-                <EditReportDialog
-                    report={dialog.report}
-                    onClose={closeDialog}
-                />
-            )}
-
-            {dialog?.kind === 'sharing' && dialog.report && (
-                <SharingDialog report={dialog.report} onClose={closeDialog} />
-            )}
         </div>
     )
 }

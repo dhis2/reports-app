@@ -260,11 +260,9 @@
 
 .groupTitle {
     margin: 0;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.6px;
-    text-transform: uppercase;
-    color: var(--grey600);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--grey800);
 }
 
 /*
@@ -433,68 +431,15 @@
 
 /* ---------- configure mode ---------- */
 
-/*
- * The way back out. Styled as a quiet text button rather than a full one:
- * it is the exit, and the primary action in this panel is Generate.
- */
-.backToAll {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    justify-self: start;
-    padding: 2px 6px 2px 2px;
-    border: 0;
-    border-radius: 3px;
-    background: none;
-    font: inherit;
-    font-size: 13px;
-    color: var(--blue700);
-    cursor: pointer;
-}
-
-.backToAll:hover {
-    background: var(--grey100);
-}
-
-.backToAll:focus-visible {
-    outline: 2px solid var(--blue600);
-    outline-offset: 1px;
-}
-
 /* The collapsed list: which report you picked. */
 .chosen {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    padding: 8px 10px;
-    background: var(--grey100);
-    border: 1px solid var(--grey300);
-    border-radius: 3px;
+    padding: 4px 0;
 }
 
 .chosenName {
-    flex: 1 1 auto;
-    min-width: 0;
     font-size: 14px;
     font-weight: 500;
     color: var(--grey900);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-/*
- * Management actions, beneath Generate. A rule separates them because they
- * act on the report itself rather than on this run of it — and because they
- * are the destructive-adjacent half of the panel.
- */
-.manageActions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 4px;
-    padding-top: 10px;
-    border-top: 1px solid var(--grey300);
 }
 
 /* ---------- management dialogs ---------- */
@@ -533,35 +478,6 @@
     overflow-wrap: anywhere;
 }
 
-/*
- * Where the report came from. Sits at the foot of the rail, separated by a
- * rule: it informs the choice of report without being part of running one.
- */
-.meta {
-    display: grid;
-    gap: 6px;
-    margin: 8px 0 0;
-    padding-top: 12px;
-    border-top: 1px solid var(--grey300);
-    font-size: 12px;
-    color: var(--grey600);
-}
-
-.metaRow {
-    display: flex;
-    gap: 6px;
-}
-
-.metaRow dt {
-    flex: none;
-    color: var(--grey700);
-}
-
-.metaRow dd {
-    margin: 0;
-    min-width: 0;
-}
-
 /* ---------- form bits ---------- */
 
 .label {
@@ -572,8 +488,9 @@
 }
 
 .help {
-    font-size: 12px;
-    color: var(--grey600);
+    font-size: 13px;
+    line-height: 17px;
+    color: var(--grey700);
     margin: 4px 0 0;
 }
 

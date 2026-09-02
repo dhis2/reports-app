@@ -261,7 +261,7 @@ export const ReportBrowse = () => {
                                             'auto'
                                         )}
                                         <DataTableColumnHeader width="200px">
-                                            {i18n.t('Asks for')}
+                                            {i18n.t('Parameters')}
                                         </DataTableColumnHeader>
                                         {header(
                                             COLUMNS.CREATED_BY,
