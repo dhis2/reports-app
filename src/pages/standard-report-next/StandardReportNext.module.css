@@ -229,13 +229,42 @@
     flex-direction: column;
 }
 
+/*
+ * Groups own their own padding, so this holds none — that is what lets each
+ * divider run the full width of the rail instead of stopping short.
+ */
 .railFields {
     display: grid;
     /* Explicit, so the column cannot size itself to the widest field. */
     grid-template-columns: minmax(0, 1fr);
-    gap: 16px;
+    align-content: start;
+}
+
+/*
+ * One question and its follow-ups. The gap inside a group is deliberately
+ * tighter than the space between groups: proximity is what says the year
+ * belongs to the period, not to the org unit above it.
+ */
+.group {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
     align-content: start;
     padding: 12px;
+    border-bottom: 1px solid var(--grey300);
+}
+
+.group:last-child {
+    border-bottom: 0;
+}
+
+.groupTitle {
+    margin: 0;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: var(--grey600);
 }
 
 /*
@@ -413,7 +442,6 @@
     align-items: center;
     gap: 4px;
     justify-self: start;
-    margin-bottom: -8px;
     padding: 2px 6px 2px 2px;
     border: 0;
     border-radius: 3px;
@@ -453,12 +481,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-}
-
-.periodGroup {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 8px;
 }
 
 /*
@@ -657,31 +679,49 @@
 
 /* ---------- states ---------- */
 
-.centered {
-    padding: 48px 24px;
-    text-align: center;
-    color: var(--grey700);
-}
-
-.centered h2 {
-    margin: 0 0 4px;
-    font-size: 16px;
-    font-weight: 500;
-    color: var(--grey900);
-}
-
-.centered p {
-    margin: 0 auto;
-    max-width: 46ch;
-    font-size: 14px;
-}
-
 .noticePad {
     padding: 16px;
 }
 
+/*
+ * Wraps the scrolling output so the stale badge has something to hang off:
+ * .output clips its own overflow, so the badge cannot be anchored there.
+ */
+.outputPane {
+    position: relative;
+    display: flex;
+    min-width: 0;
+    min-height: 0;
+}
+
+.outputPane > .output {
+    flex: 1 1 auto;
+}
+
+/*
+ * A tag stuck onto the report, not a message about the page. It overlaps the
+ * report's own top edge — .output holds 8px of canvas above the card — so it
+ * reads as attached to that report rather than as a row of it.
+ */
+.staleBadge {
+    position: absolute;
+    top: 4px;
+    right: 20px;
+    z-index: 2;
+    padding: 4px 8px;
+    background: var(--yellow100);
+    border: 1px solid var(--yellow400);
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(33, 41, 52, 0.12);
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 11px;
+    color: var(--yellow900);
+    white-space: nowrap;
+}
+
 .staleOutput {
-    opacity: 0.75;
+    opacity: 0.6;
 }
 
 /* ---------- print ---------- */

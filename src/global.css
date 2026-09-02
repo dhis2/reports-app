@@ -220,3 +220,35 @@ input {
     background-color: transparent;
     margin-bottom: 10px;
 }
+
+/*
+ * ---------- print ----------
+ *
+ * The DHIS2 header bar and the app-platform wrapper around it are rendered by
+ * @dhis2/app-adapter, outside this app's own components, so nothing here can
+ * reach them with a CSS module. They are addressed globally instead.
+ *
+ * The adapter's markup is:
+ *
+ *   div.app-shell-adapter
+ *     div          <- holds the header bar; no class of its own
+ *     div.app-shell-app  <- this app
+ *
+ * so the header's wrapper is identified by what it contains rather than by a
+ * class name it does not have. `:has()` is the only stable handle on it.
+ */
+@media print {
+    div.app-shell-adapter > div:not(.app-shell-app):has(header) {
+        display: none !important;
+    }
+
+    /*
+     * Both wrappers are sized to the viewport and scroll internally, which on
+     * paper would clip everything to a single screenful.
+     */
+    div.app-shell-adapter,
+    div.app-shell-app {
+        height: auto;
+        overflow: visible;
+    }
+}

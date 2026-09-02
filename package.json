@@ -41,7 +41,7 @@
         "@dhis2/d2-ui-org-unit-tree": "^7.0.8",
         "@dhis2/d2-ui-sharing-dialog": "^7.0.8",
         "@dhis2/d2-ui-table": "^7.0.8",
-        "@dhis2/ui": "^10.1.11",
+        "@dhis2/ui": "^10.15.0",
         "chart.js": "^2.7.3",
         "classnames": "^2.2.6",
         "connected-react-router": "^6.3.1",

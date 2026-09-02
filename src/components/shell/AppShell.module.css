@@ -73,4 +73,13 @@
     .main {
         padding: 0;
     }
+
+    /*
+     * The viewport-height shell exists so panes can scroll independently on
+     * screen. On paper there is no scrolling, and holding the height would
+     * cut the report off at one screenful.
+     */
+    .shellFlush {
+        height: auto;
+    }
 }

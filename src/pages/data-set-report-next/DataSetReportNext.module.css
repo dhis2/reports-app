@@ -209,11 +209,37 @@
     flex-direction: column;
 }
 
+/*
+ * Groups own their own padding, so this holds none — that is what lets each
+ * divider run the full width of the rail instead of stopping short.
+ */
 .railFields {
     display: grid;
-    gap: 16px;
     align-content: start;
+}
+
+/*
+ * One question and its follow-ups. The gap inside a group is deliberately
+ * tighter than the space between groups: proximity is what says the period
+ * type belongs to the period, not to the data set above it.
+ */
+.group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
     padding: 12px;
+    border-bottom: 1px solid var(--grey300);
+}
+
+.group:last-child {
+    border-bottom: 0;
+}
+
+.groupTitle {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--grey800);
 }
 
 /*
@@ -272,12 +298,6 @@
 .help {
     font-size: 12px;
     color: var(--grey600);
-    margin: 4px 0 0;
-}
-
-.warnHelp {
-    font-size: 12px;
-    color: var(--yellow700);
     margin: 4px 0 0;
 }
 
@@ -475,9 +495,9 @@
  * like a full one is a data integrity problem, not a cosmetic one.
  */
 .filterLine {
-    margin: 0;
+    margin: 6px 0 0 0;
     font-size: 13px;
-    color: var(--grey700);
+    color: var(--grey900);
 }
 
 .toolbar {
@@ -621,25 +641,6 @@ div.tableScroll td:first-child {
 
 /* ---------- states ---------- */
 
-.centered {
-    padding: 48px 24px;
-    text-align: center;
-    color: var(--grey700);
-}
-
-.centered h2 {
-    margin: 0 0 4px;
-    font-size: 16px;
-    font-weight: 500;
-    color: var(--grey900);
-}
-
-.centered p {
-    margin: 0 auto;
-    max-width: 46ch;
-    font-size: 14px;
-}
-
 .resumeRow {
     margin-top: 16px;
     display: flex;
@@ -650,8 +651,50 @@ div.tableScroll td:first-child {
     padding: 16px;
 }
 
+/*
+ * Stands on the canvas rather than in a card of its own — it is a note about
+ * the report below, not a thing in its own right. The tightening is the
+ * component's own `dense` variant (@dhis2/ui 10.15.0+).
+ */
+/*
+ * Wraps the scrolling output so the stale badge has something to hang off:
+ * .output clips its own overflow, so the badge cannot be anchored there.
+ */
+.outputPane {
+    position: relative;
+    display: flex;
+    min-width: 0;
+    min-height: 0;
+}
+
+.outputPane > .output {
+    flex: 1 1 auto;
+}
+
+/*
+ * A tag stuck onto the report, not a message about the page. It overlaps the
+ * report's own top edge — .output holds 8px of canvas above the card — so it
+ * reads as attached to that report rather than as a row of it.
+ */
+.staleBadge {
+    position: absolute;
+    top: 4px;
+    right: 20px;
+    z-index: 2;
+    padding: 4px 8px;
+    background: var(--yellow100);
+    border: 1px solid var(--yellow400);
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(33, 41, 52, 0.12);
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 11px;
+    color: var(--yellow900);
+    white-space: nowrap;
+}
+
 .staleOutput {
-    opacity: 0.75;
+    opacity: 0.6;
 }
 
 /* ---------- print ---------- */

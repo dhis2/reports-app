@@ -31,8 +31,8 @@ const UP_TO_YEAR = {
 /*
  * Known gap: d2 ships no generator for WeeklyWednesday, WeeklyThursday,
  * WeeklySaturday, WeeklySunday, BiWeekly, QuarterlyNov, SixMonthlyNov or
- * FinancialNov. Data sets using those are reported by `supportsPeriodType`
- * so the UI can say so plainly instead of showing an empty list.
+ * FinancialNov. `supportsPeriodType` reports those, and the period type
+ * select filters them out — offering one could only produce an empty list.
  */
 /*
  * How far back to offer periods. Instances routinely hold a decade or more of

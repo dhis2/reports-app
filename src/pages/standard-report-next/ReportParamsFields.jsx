@@ -71,10 +71,10 @@ export const ReportParamsFields = ({
     return (
         <>
             {needs.orgUnit && (
-                <div>
-                    <span className={styles.label}>
+                <section className={styles.group}>
+                    <h3 className={styles.groupTitle}>
                         {i18n.t('Organisation unit')}
-                    </span>
+                    </h3>
                     <div className={styles.treeBox}>
                         {rootsLoading && <CircularLoader small />}
                         {rootsError && (
@@ -97,15 +97,17 @@ export const ReportParamsFields = ({
                             />
                         )}
                     </div>
-                </div>
+                </section>
             )}
 
             {needs.period && (
-                <div className={styles.periodGroup}>
+                <section className={styles.group}>
+                    <h3 className={styles.groupTitle}>{i18n.t('Period')}</h3>
                     <SingleSelectField
                         dense
                         filterable={periodOptions.length > 8}
-                        label={i18n.t('Period')}
+                        /* "Period" is the group title above. */
+                        label={i18n.t('Type')}
                         selected={safeSelected(
                             periodOptions,
                             selection.periodType
@@ -195,7 +197,7 @@ export const ReportParamsFields = ({
                             )}
                         </div>
                     )}
-                </div>
+                </section>
             )}
         </>
     )

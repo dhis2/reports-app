@@ -13,9 +13,11 @@ import {
     SingleSelectField,
     SingleSelectOption,
 } from '@dhis2/ui'
+import cx from 'classnames'
 import PropTypes from 'prop-types'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { RailToggleIcon } from '../../components/shell/RailToggleIcon.jsx'
+import { ReportEmptyState } from '../../components/shell/ReportEmptyState.jsx'
 import { SectionSwitcher } from '../../components/shell/SectionSwitcher.jsx'
 import { DATA_SET_REPORT_NEXT_SECTION_KEY } from '../../config/sections.config.js'
 import { fixedPeriodTranslations } from '../../utils/periods/fixedPeriods.js'
@@ -48,13 +50,18 @@ import { useReportSelection } from './useReportSelection.js'
 const CUSTOM_FORM = 'CUSTOM'
 
 /*
- * Every period type the server can report, taken from the app's own
- * translation map rather than a hand-written list. A data set may use any of
- * them, and `selected` must always have a matching option — see safeSelected.
+ * The period types this page can actually offer, taken from the app's own
+ * translation map rather than a hand-written list, minus the ones d2 ships no
+ * period generator for — see periods.js. Choosing one of those could only
+ * ever produce an empty period list, so it is not offered at all.
+ *
+ * `selected` must always have a matching option here, so a data set using an
+ * unsupported type leaves the field empty rather than throwing — see
+ * safeSelected.
  */
-const PERIOD_TYPE_OPTIONS = Object.entries(fixedPeriodTranslations).map(
-    ([id, displayName]) => ({ id, displayName })
-)
+const PERIOD_TYPE_OPTIONS = Object.entries(fixedPeriodTranslations)
+    .filter(([id]) => supportsPeriodType(id))
+    .map(([id, displayName]) => ({ id, displayName }))
 
 /*
  * SingleSelectField throws if `selected` is not among its options, and the
@@ -129,6 +136,28 @@ const writeViewMode = (mode) => {
         // A remembered preference is a convenience, never worth an error.
     }
 }
+
+/*
+ * When the report was built. Short and numeric — it is a timestamp on a
+ * summary line, not a date anyone reads out. The locale decides the order of
+ * the parts, so this never hard-codes day-before-month.
+ */
+const createdLabel = (generatedAt) =>
+    i18n.t('Report created {{when}}', {
+        when: generatedAt.toLocaleString(undefined, {
+            day: '2-digit',
+            month: '2-digit',
+            year: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+        }),
+        /*
+         * i18next HTML-escapes interpolated values by default, which turns the
+         * slashes of a numeric date into &#x2F;. React escapes on render
+         * anyway, so escaping here only ever double-escapes.
+         */
+        interpolation: { escapeValue: false },
+    })
 
 /*
  * How often this data set is collected, as a whole sentence rather than the
@@ -211,8 +240,7 @@ FilterSelect.propTypes = {
 export const DataSetReportNext = () => {
     const { baseUrl } = useConfig()
     const engine = useDataEngine()
-    const { selection, update, reset, remember, restoredFromMemory } =
-        useReportSelection()
+    const { selection, update, reset, remember } = useReportSelection()
 
     const dataSetsQuery = useDataQuery(DATA_SETS_QUERY)
     const rootsQuery = useDataQuery(ORG_UNIT_ROOTS_QUERY)
@@ -524,10 +552,6 @@ export const DataSetReportNext = () => {
         selection.dsId && selection.pe && orgUnitId && !reportLoading
     )
 
-    const periodTypeMismatch = Boolean(
-        dataSet && periodType && dataSet.periodType !== periodType
-    )
-
     const onGenerate = useCallback(
         async (event) => {
             event?.preventDefault()
@@ -780,10 +804,17 @@ export const DataSetReportNext = () => {
                     >
                         <div className={styles.railScroll}>
                             <div className={styles.railFields}>
-                                <div>
-                                    <span className={styles.label}>
+                                {/*
+                                 * Three groups — where, which data, when.
+                                 * Each is one question with its own follow-ups
+                                 * hanging off it, so the gap inside a group is
+                                 * tighter than the space between groups, and a
+                                 * rule marks where one question ends.
+                                 */}
+                                <section className={styles.group}>
+                                    <h3 className={styles.groupTitle}>
                                         {i18n.t('Organisation unit')}
-                                    </span>
+                                    </h3>
                                     <div className={styles.treeCard}>
                                         <div className={styles.treeBox}>
                                             {rootsQuery.loading && (
@@ -868,105 +899,118 @@ export const DataSetReportNext = () => {
                                             />
                                         </fieldset>
                                     </div>
-                                </div>
 
-                                {/*
-                                 * Group sets slice the hierarchy, so they stay
-                                 * with the tree above rather than becoming a
-                                 * separate kind of choice — but they are a
-                                 * narrowing most reports never need, so the
-                                 * area is shut until asked for. The count on
-                                 * the button is what keeps a collapsed filter
-                                 * from silently shaping the report. Group sets
-                                 * with no groups are dropped server-side; see
-                                 * GROUP_SETS_QUERY.
-                                 */}
-                                {groupSetFields.length > 0 && (
-                                    <div className={styles.disclosure}>
-                                        <button
-                                            type="button"
-                                            className={styles.disclosureButton}
-                                            aria-expanded={groupSetsOpen}
-                                            onClick={() =>
-                                                setGroupSetsOpen(!groupSetsOpen)
-                                            }
-                                        >
-                                            <svg
+                                    {/*
+                                     * Group sets slice the hierarchy, so they stay
+                                     * with the tree above rather than becoming a
+                                     * separate kind of choice — but they are a
+                                     * narrowing most reports never need, so the
+                                     * area is shut until asked for. The count on
+                                     * the button is what keeps a collapsed filter
+                                     * from silently shaping the report. Group sets
+                                     * with no groups are dropped server-side; see
+                                     * GROUP_SETS_QUERY.
+                                     */}
+                                    {groupSetFields.length > 0 && (
+                                        <div className={styles.disclosure}>
+                                            <button
+                                                type="button"
                                                 className={
-                                                    styles.disclosureChevron
+                                                    styles.disclosureButton
                                                 }
-                                                viewBox="0 0 16 16"
-                                                aria-hidden="true"
-                                                focusable="false"
-                                            >
-                                                <path
-                                                    d="M6 3.5 10.5 8 6 12.5"
-                                                    fill="none"
-                                                    stroke="currentColor"
-                                                    strokeWidth="1.75"
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                />
-                                            </svg>
-                                            <span
-                                                className={
-                                                    styles.disclosureLabel
+                                                aria-expanded={groupSetsOpen}
+                                                onClick={() =>
+                                                    setGroupSetsOpen(
+                                                        !groupSetsOpen
+                                                    )
                                                 }
                                             >
-                                                {i18n.t(
-                                                    'Filter by org. unit group'
-                                                )}
-                                            </span>
-                                            {/*
-                                             * Only when closed — open, the
-                                             * fields themselves already show
-                                             * what is set, so the badge is
-                                             * just a second copy of it.
-                                             */}
-                                            {!groupSetsOpen &&
-                                                groupSetFilterCount > 0 && (
-                                                    <span
-                                                        className={
-                                                            styles.countBadge
-                                                        }
-                                                    >
-                                                        {groupSetFilterCount}
-                                                    </span>
-                                                )}
-                                        </button>
-
-                                        {groupSetsOpen && (
-                                            <div
-                                                className={
-                                                    styles.disclosureBody
-                                                }
-                                            >
-                                                {groupSetFields.map((field) => (
-                                                    <FilterSelect
-                                                        key={field.id}
-                                                        field={field}
-                                                        value={
-                                                            selection.filters[
-                                                                field.id
-                                                            ]
-                                                        }
-                                                        onChange={
-                                                            onFilterChange
-                                                        }
+                                                <svg
+                                                    className={
+                                                        styles.disclosureChevron
+                                                    }
+                                                    viewBox="0 0 16 16"
+                                                    aria-hidden="true"
+                                                    focusable="false"
+                                                >
+                                                    <path
+                                                        d="M6 3.5 10.5 8 6 12.5"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        strokeWidth="1.75"
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
                                                     />
-                                                ))}
-                                            </div>
-                                        )}
-                                    </div>
-                                )}
+                                                </svg>
+                                                <span
+                                                    className={
+                                                        styles.disclosureLabel
+                                                    }
+                                                >
+                                                    {i18n.t(
+                                                        'Filter by org. unit group'
+                                                    )}
+                                                </span>
+                                                {/*
+                                                 * Only when closed — open, the
+                                                 * fields themselves already show
+                                                 * what is set, so the badge is
+                                                 * just a second copy of it.
+                                                 */}
+                                                {!groupSetsOpen &&
+                                                    groupSetFilterCount > 0 && (
+                                                        <span
+                                                            className={
+                                                                styles.countBadge
+                                                            }
+                                                        >
+                                                            {
+                                                                groupSetFilterCount
+                                                            }
+                                                        </span>
+                                                    )}
+                                            </button>
 
-                                <div>
+                                            {groupSetsOpen && (
+                                                <div
+                                                    className={
+                                                        styles.disclosureBody
+                                                    }
+                                                >
+                                                    {groupSetFields.map(
+                                                        (field) => (
+                                                            <FilterSelect
+                                                                key={field.id}
+                                                                field={field}
+                                                                value={
+                                                                    selection
+                                                                        .filters[
+                                                                        field.id
+                                                                    ]
+                                                                }
+                                                                onChange={
+                                                                    onFilterChange
+                                                                }
+                                                            />
+                                                        )
+                                                    )}
+                                                </div>
+                                            )}
+                                        </div>
+                                    )}
+                                </section>
+
+                                <section className={styles.group}>
+                                    <h3 className={styles.groupTitle}>
+                                        {i18n.t('Data set')}
+                                    </h3>
                                     <SingleSelectField
                                         filterable
                                         noMatchText={i18n.t(
                                             'No data set found'
                                         )}
-                                        label={i18n.t('Data set')}
+                                        /* The group title above is this field's label. */
+                                        aria-label={i18n.t('Data set')}
                                         placeholder={i18n.t(
                                             'Choose a data set'
                                         )}
@@ -1014,14 +1058,16 @@ export const DataSetReportNext = () => {
                                             ))}
                                         </div>
                                     )}
-                                </div>
+                                </section>
 
-                                <div>
+                                <section className={styles.group}>
+                                    <h3 className={styles.groupTitle}>
+                                        {i18n.t('Period')}
+                                    </h3>
                                     <SingleSelectField
-                                        label={i18n.t('Period type')}
-                                        placeholder={i18n.t(
-                                            'Choose a period type'
-                                        )}
+                                        /* "Period" is the group title above. */
+                                        label={i18n.t('Type')}
+                                        placeholder={i18n.t('Choose a type')}
                                         selected={safeSelected(
                                             PERIOD_TYPE_OPTIONS,
                                             periodType
@@ -1041,76 +1087,55 @@ export const DataSetReportNext = () => {
                                             />
                                         ))}
                                     </SingleSelectField>
-                                    {periodTypeMismatch && (
-                                        <p className={styles.warnHelp}>
-                                            {i18n.t(
-                                                '{{name}} is collected {{periodType}}. A {{chosen}} report may come back empty.',
-                                                {
-                                                    name: dataSet.displayName,
-                                                    periodType:
-                                                        dataSet.periodType.toLowerCase(),
-                                                    chosen: periodType.toLowerCase(),
-                                                }
+                                    {needsYear(periodType) && (
+                                        <SingleSelectField
+                                            filterable
+                                            noMatchText={i18n.t(
+                                                'No year found'
                                             )}
-                                        </p>
+                                            label={i18n.t('Year')}
+                                            selected={safeSelected(
+                                                yearChoices,
+                                                String(selection.year)
+                                            )}
+                                            onChange={({ selected }) =>
+                                                update({
+                                                    year: Number(selected),
+                                                    pe: '',
+                                                })
+                                            }
+                                        >
+                                            {yearChoices.map((year) => (
+                                                <SingleSelectOption
+                                                    key={year.id}
+                                                    value={year.id}
+                                                    label={year.displayName}
+                                                />
+                                            ))}
+                                        </SingleSelectField>
                                     )}
-                                    {periodType &&
-                                        !supportsPeriodType(periodType) && (
-                                            <p className={styles.warnHelp}>
-                                                {i18n.t(
-                                                    'This prototype cannot build a period list for {{periodType}} yet.',
-                                                    { periodType }
-                                                )}
-                                            </p>
-                                        )}
-                                </div>
 
-                                {needsYear(periodType) && (
                                     <SingleSelectField
-                                        filterable
-                                        noMatchText={i18n.t('No year found')}
-                                        label={i18n.t('Year')}
+                                        label={i18n.t('Period')}
+                                        placeholder={i18n.t('Choose a period')}
                                         selected={safeSelected(
-                                            yearChoices,
-                                            String(selection.year)
+                                            periods,
+                                            selection.pe
                                         )}
+                                        disabled={periods.length === 0}
                                         onChange={({ selected }) =>
-                                            update({
-                                                year: Number(selected),
-                                                pe: '',
-                                            })
+                                            update({ pe: selected })
                                         }
                                     >
-                                        {yearChoices.map((year) => (
+                                        {periods.map((period) => (
                                             <SingleSelectOption
-                                                key={year.id}
-                                                value={year.id}
-                                                label={year.displayName}
+                                                key={period.id}
+                                                value={period.id}
+                                                label={period.name}
                                             />
                                         ))}
                                     </SingleSelectField>
-                                )}
-
-                                <SingleSelectField
-                                    label={i18n.t('Period')}
-                                    placeholder={i18n.t('Choose a period')}
-                                    selected={safeSelected(
-                                        periods,
-                                        selection.pe
-                                    )}
-                                    disabled={periods.length === 0}
-                                    onChange={({ selected }) =>
-                                        update({ pe: selected })
-                                    }
-                                >
-                                    {periods.map((period) => (
-                                        <SingleSelectOption
-                                            key={period.id}
-                                            value={period.id}
-                                            label={period.name}
-                                        />
-                                    ))}
-                                </SingleSelectField>
+                                </section>
                             </div>
 
                             {/*
@@ -1142,186 +1167,180 @@ export const DataSetReportNext = () => {
                 </aside>
 
                 {/* ---------------- output ---------------- */}
-                <section className={styles.output}>
-                    {reportError && (
-                        <div className={styles.noticePad}>
-                            <NoticeBox
-                                error
-                                title={i18n.t('The report could not be built')}
-                            >
-                                {reportError.message}
-                            </NoticeBox>
-                        </div>
-                    )}
-
-                    {reportLoading && (
-                        <div className={styles.loading}>
-                            <CircularLoader small />
-                            <p className={styles.loadingText}>
-                                {i18n.t('Generating report...')}
-                            </p>
-                        </div>
-                    )}
-
-                    {!reportLoading && !report && !reportError && (
-                        <div className={styles.centered}>
-                            <h2>{i18n.t('No report yet')}</h2>
-                            <p>
-                                {i18n.t(
-                                    'Choose an organisation unit, a data set and a period, then select Get report. You will get the data entry form for that period, filled in and ready to print.'
-                                )}
-                            </p>
-                            {restoredFromMemory && (
-                                <p
-                                    className={styles.help}
-                                    style={{ marginTop: 16 }}
-                                >
-                                    {i18n.t(
-                                        'Your options from last time are filled in already.'
-                                    )}
-                                </p>
-                            )}
-                        </div>
-                    )}
-
+                <div className={styles.outputPane}>
+                    {/*
+                     * Tagged onto the top of the output rather than announced
+                     * inside it. Changing an option is the ordinary start of
+                     * the next report, not a fault, so this labels what is on
+                     * screen instead of raising an alert about it.
+                     *
+                     * It lives outside .output because .output is the scroll
+                     * container, which clips anything hanging over its edge —
+                     * and out here it also stays put while the report scrolls.
+                     */}
                     {!reportLoading && report && isStale && (
-                        <div className={styles.noticePad}>
-                            <NoticeBox
-                                warning
-                                title={i18n.t('These options changed')}
-                            >
-                                {i18n.t(
-                                    'The report below is still {{dataSet}} · {{period}} · {{orgUnit}}. Select Get report on the left to refresh it.',
-                                    {
-                                        dataSet: report.snapshot.dataSetName,
-                                        period: report.snapshot.periodName,
-                                        orgUnit: report.snapshot.orgUnitName,
-                                    }
-                                )}
-                            </NoticeBox>
-                        </div>
+                        <span className={styles.staleBadge}>
+                            {i18n.t('Not updated with latest options')}
+                        </span>
                     )}
 
-                    {!reportLoading && report && (
-                        <div
-                            className={isStale ? styles.staleOutput : undefined}
-                        >
-                            <div className={styles.summary}>
-                                <p className={styles.summaryLine}>
-                                    {[
-                                        report.snapshot.dataSetName,
-                                        report.snapshot.periodName,
-                                        report.snapshot.selectedUnitOnly
-                                            ? report.snapshot.orgUnitName
-                                            : i18n.t(
-                                                  '{{orgUnit}} + units inside',
-                                                  {
-                                                      orgUnit:
-                                                          report.snapshot
-                                                              .orgUnitName,
-                                                  }
-                                              ),
-                                        report.snapshot.generatedAt.toLocaleString(),
-                                    ].join(' \u00b7 ')}
+                    <section className={styles.output}>
+                        {reportError && (
+                            <div className={styles.noticePad}>
+                                <NoticeBox
+                                    error
+                                    title={i18n.t(
+                                        'The report could not be built'
+                                    )}
+                                >
+                                    {reportError.message}
+                                </NoticeBox>
+                            </div>
+                        )}
+
+                        {reportLoading && (
+                            <div className={styles.loading}>
+                                <CircularLoader small />
+                                <p className={styles.loadingText}>
+                                    {i18n.t('Generating report...')}
                                 </p>
+                            </div>
+                        )}
+
+                        {!reportLoading && !report && !reportError && (
+                            <ReportEmptyState />
+                        )}
+
+                        {!reportLoading && report && (
+                            <div
+                                className={cx({
+                                    [styles.staleOutput]: isStale,
+                                })}
+                            >
+                                <div className={styles.summary}>
+                                    <p className={styles.summaryLine}>
+                                        {[
+                                            report.snapshot.dataSetName,
+                                            report.snapshot.periodName,
+                                            report.snapshot.selectedUnitOnly
+                                                ? report.snapshot.orgUnitName
+                                                : i18n.t(
+                                                      '{{orgUnit}} and units inside',
+                                                      {
+                                                          orgUnit:
+                                                              report.snapshot
+                                                                  .orgUnitName,
+                                                      }
+                                                  ),
+                                            createdLabel(
+                                                report.snapshot.generatedAt
+                                            ),
+                                        ].join(' \u00b7 ')}
+                                    </p>
+
+                                    {/*
+                                     * Applied filters sit on their own line under
+                                     * the summary, and travel onto the printout. A
+                                     * filtered report that looks like a full one
+                                     * gets filed as the facility total.
+                                     */}
+                                    {report.snapshot.filterLabels?.length >
+                                        0 && (
+                                        <p className={styles.filterLine}>
+                                            {report.snapshot.filterLabels
+                                                .map(
+                                                    (filter) =>
+                                                        `${filter.label}: ${filter.value}`
+                                                )
+                                                .join(' \u00b7 ')}
+                                        </p>
+                                    )}
+                                </div>
 
                                 {/*
-                                 * Applied filters sit on their own line under
-                                 * the summary, and travel onto the printout. A
-                                 * filtered report that looks like a full one
-                                 * gets filed as the facility total.
+                                 * The two views, and the options that belong to
+                                 * whichever one is showing. This sits directly
+                                 * above the report because it is about how the
+                                 * report is drawn, not about what was asked for —
+                                 * that is the summary strip above.
                                  */}
-                                {report.snapshot.filterLabels?.length > 0 && (
-                                    <p className={styles.filterLine}>
-                                        {report.snapshot.filterLabels
-                                            .map(
-                                                (filter) =>
-                                                    `${filter.label}: ${filter.value}`
-                                            )
-                                            .join(' \u00b7 ')}
-                                    </p>
-                                )}
-                            </div>
-
-                            {/*
-                             * The two views, and the options that belong to
-                             * whichever one is showing. This sits directly
-                             * above the report because it is about how the
-                             * report is drawn, not about what was asked for —
-                             * that is the summary strip above.
-                             */}
-                            <div className={styles.toolbar}>
-                                <SegmentedControl
-                                    selected={viewMode}
-                                    onChange={onChangeViewMode}
-                                    options={[
-                                        {
-                                            label: i18n.t('Standard'),
-                                            value: VIEW_MODES.STANDARD,
-                                        },
-                                        {
-                                            label: i18n.t('Form'),
-                                            value: VIEW_MODES.FORM,
-                                        },
-                                    ]}
-                                />
-                            </div>
-
-                            {/* ---------------- standard view ---------------- */}
-                            {isStandardView && valueCount === 0 && (
-                                <div className={styles.noticePad}>
-                                    <NoticeBox
-                                        title={i18n.t(
-                                            'No data for this selection'
-                                        )}
-                                    >
-                                        {i18n.t(
-                                            'Nothing was recorded for {{dataSet}} at {{orgUnit}} in {{period}}. The form may not be used here, or the data may not be entered yet.',
+                                <div className={styles.toolbar}>
+                                    <SegmentedControl
+                                        selected={viewMode}
+                                        onChange={onChangeViewMode}
+                                        options={[
                                             {
-                                                dataSet:
-                                                    report.snapshot.dataSetName,
-                                                orgUnit:
-                                                    report.snapshot.orgUnitName,
-                                                period: report.snapshot
-                                                    .periodName,
-                                            }
-                                        )}
-                                        {report.snapshot.filterLabels?.length >
-                                            0 &&
-                                            ` ${i18n.t(
-                                                'Your filters may also be too narrow.'
-                                            )}`}
-                                    </NoticeBox>
-                                </div>
-                            )}
-
-                            {isStandardView && valueCount > 0 && (
-                                <div className={styles.reportBody}>
-                                    <ReportTables tables={report.tables} />
-                                </div>
-                            )}
-
-                            {/* ---------------- form view ---------------- */}
-                            {!isStandardView && report.kind === 'custom' && (
-                                <div className={styles.reportBody}>
-                                    <CustomFormReport
-                                        html={report.html}
-                                        baseUrl={baseUrl}
+                                                label: i18n.t('Standard'),
+                                                value: VIEW_MODES.STANDARD,
+                                            },
+                                            {
+                                                label: i18n.t('Form'),
+                                                value: VIEW_MODES.FORM,
+                                            },
+                                        ]}
                                     />
                                 </div>
-                            )}
 
-                            {!isStandardView && report.kind !== 'custom' && (
-                                <div className={styles.reportBody}>
-                                    <FormView
-                                        dataSetId={report.snapshot.ds}
-                                        grids={report.grids}
-                                    />
-                                </div>
-                            )}
-                        </div>
-                    )}
-                </section>
+                                {/* ---------------- standard view ---------------- */}
+                                {isStandardView && valueCount === 0 && (
+                                    <div className={styles.noticePad}>
+                                        <NoticeBox
+                                            title={i18n.t(
+                                                'No data for this selection'
+                                            )}
+                                        >
+                                            {i18n.t(
+                                                'Nothing was recorded for {{dataSet}} at {{orgUnit}} in {{period}}. The form may not be used here, or the data may not be entered yet.',
+                                                {
+                                                    dataSet:
+                                                        report.snapshot
+                                                            .dataSetName,
+                                                    orgUnit:
+                                                        report.snapshot
+                                                            .orgUnitName,
+                                                    period: report.snapshot
+                                                        .periodName,
+                                                }
+                                            )}
+                                            {report.snapshot.filterLabels
+                                                ?.length > 0 &&
+                                                ` ${i18n.t(
+                                                    'Your filters may also be too narrow.'
+                                                )}`}
+                                        </NoticeBox>
+                                    </div>
+                                )}
+
+                                {isStandardView && valueCount > 0 && (
+                                    <div className={styles.reportBody}>
+                                        <ReportTables tables={report.tables} />
+                                    </div>
+                                )}
+
+                                {/* ---------------- form view ---------------- */}
+                                {!isStandardView &&
+                                    report.kind === 'custom' && (
+                                        <div className={styles.reportBody}>
+                                            <CustomFormReport
+                                                html={report.html}
+                                                baseUrl={baseUrl}
+                                            />
+                                        </div>
+                                    )}
+
+                                {!isStandardView &&
+                                    report.kind !== 'custom' && (
+                                        <div className={styles.reportBody}>
+                                            <FormView
+                                                dataSetId={report.snapshot.ds}
+                                                grids={report.grids}
+                                            />
+                                        </div>
+                                    )}
+                            </div>
+                        )}
+                    </section>
+                </div>
             </div>
         </div>
     )

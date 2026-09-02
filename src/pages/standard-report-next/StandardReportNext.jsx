@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { RailToggleIcon } from '../../components/shell/RailToggleIcon.jsx'
+import { ReportEmptyState } from '../../components/shell/ReportEmptyState.jsx'
 import { SectionSwitcher } from '../../components/shell/SectionSwitcher.jsx'
 import {
     sections,
@@ -51,6 +52,28 @@ const writeRailCollapsed = (collapsed) => {
 }
 
 /*
+ * When the report was built. Short and numeric — it is a timestamp on a
+ * summary line, not a date anyone reads out. The locale decides the order of
+ * the parts, so this never hard-codes day-before-month.
+ */
+const createdLabel = (generatedAt) =>
+    i18n.t('Report created {{when}}', {
+        when: generatedAt.toLocaleString(undefined, {
+            day: '2-digit',
+            month: '2-digit',
+            year: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+        }),
+        /*
+         * i18next HTML-escapes interpolated values by default, which turns the
+         * slashes of a numeric date into &#x2F;. React escapes on render
+         * anyway, so escaping here only ever double-escapes.
+         */
+        interpolation: { escapeValue: false },
+    })
+
+/*
  * One report: its options on the rail, its output beside them.
  *
  * Which report this is comes from the route rather than from anything on the
@@ -62,7 +85,7 @@ export const StandardReportNext = ({ match }) => {
     const history = useHistory()
     const reportId = match.params.id
 
-    const { selection, update, remember, restoredFromMemory, restoredFromUrl } =
+    const { selection, update, remember, restoredFromUrl } =
         useStandardReportSelection()
 
     const [railCollapsed, setRailCollapsed] = useState(readRailCollapsed)
@@ -274,7 +297,7 @@ export const StandardReportNext = ({ match }) => {
               report.snapshot.reportName,
               report.snapshot.ouName || null,
               report.snapshot.peLabel || report.snapshot.pe || null,
-              report.snapshot.generatedAt.toLocaleString(),
+              createdLabel(report.snapshot.generatedAt),
           ]
               .filter(Boolean)
               .join(' · ')
@@ -355,26 +378,34 @@ export const StandardReportNext = ({ match }) => {
                             <div className={styles.railScroll}>
                                 <div className={styles.railFields}>
                                     {/*
-                                     * Above the report rather than beside its
-                                     * name: leaving is a move back out to the
-                                     * list, not an edit to which report this
-                                     * is.
+                                     * Which report, and the way back out. Its
+                                     * own group, so the options below are
+                                     * plainly options *for* this report
+                                     * rather than more of the same list.
                                      */}
-                                    <button
-                                        type="button"
-                                        className={styles.backToAll}
-                                        onClick={() => history.push(basePath)}
-                                    >
-                                        <IconArrowLeft16 />
-                                        {i18n.t('All reports')}
-                                    </button>
+                                    <section className={styles.group}>
+                                        {/*
+                                         * Above the report rather than beside
+                                         * its name: leaving is a move back out
+                                         * to the list, not an edit to which
+                                         * report this is.
+                                         */}
+                                        <button
+                                            type="button"
+                                            className={styles.backToAll}
+                                            onClick={() =>
+                                                history.push(basePath)
+                                            }
+                                        >
+                                            <IconArrowLeft16 />
+                                            {i18n.t('All reports')}
+                                        </button>
 
-                                    {reportsResult.loading && (
-                                        <CircularLoader small />
-                                    )}
+                                        {reportsResult.loading && (
+                                            <CircularLoader small />
+                                        )}
 
-                                    {selected && (
-                                        <>
+                                        {selected && (
                                             <div className={styles.chosen}>
                                                 <span
                                                     className={
@@ -385,7 +416,11 @@ export const StandardReportNext = ({ match }) => {
                                                     {selected.displayName}
                                                 </span>
                                             </div>
+                                        )}
+                                    </section>
 
+                                    {selected && (
+                                        <>
                                             <ReportParamsFields
                                                 report={selected}
                                                 needs={needs}
@@ -397,16 +432,22 @@ export const StandardReportNext = ({ match }) => {
                                                 onOrgUnitName={setOuName}
                                             />
 
-                                            {!needs.orgUnit &&
-                                                !needs.period && (
-                                                    <p className={styles.help}>
-                                                        {i18n.t(
-                                                            'This report takes no options — it ran as soon as you opened it.'
-                                                        )}
-                                                    </p>
-                                                )}
+                                            <section className={styles.group}>
+                                                {!needs.orgUnit &&
+                                                    !needs.period && (
+                                                        <p
+                                                            className={
+                                                                styles.help
+                                                            }
+                                                        >
+                                                            {i18n.t(
+                                                                'This report takes no options — it ran as soon as you opened it.'
+                                                            )}
+                                                        </p>
+                                                    )}
 
-                                            <ReportMeta report={selected} />
+                                                <ReportMeta report={selected} />
+                                            </section>
                                         </>
                                     )}
                                 </div>
@@ -489,91 +530,83 @@ export const StandardReportNext = ({ match }) => {
                 </aside>
 
                 {/* ---------------- output ---------------- */}
-                <section className={styles.output}>
-                    {notFound && (
-                        <div className={styles.noticePad}>
-                            <NoticeBox
-                                error
-                                title={i18n.t('This report is not available')}
-                            >
-                                {i18n.t(
-                                    'It may have been deleted, or it may be a type this page cannot run. Go back to all reports to pick another.'
-                                )}
-                            </NoticeBox>
-                        </div>
+                <div className={styles.outputPane}>
+                    {/*
+                     * Tagged onto the top of the output rather than announced
+                     * inside it. Changing an option is the ordinary start of
+                     * the next report, not a fault, so this labels what is on
+                     * screen instead of raising an alert about it.
+                     *
+                     * It lives outside .output because .output is the scroll
+                     * container, which clips anything hanging over its edge —
+                     * and out here it also stays put while the report scrolls.
+                     */}
+                    {!reportLoading && report && isStale && (
+                        <span className={styles.staleBadge}>
+                            {i18n.t('Not updated with latest options')}
+                        </span>
                     )}
 
-                    {reportError && (
-                        <div className={styles.noticePad}>
-                            <NoticeBox
-                                error
-                                title={i18n.t('The report could not be built')}
-                            >
-                                {reportError.message}
-                            </NoticeBox>
-                        </div>
-                    )}
-
-                    {reportLoading && (
-                        <div className={styles.loading}>
-                            <CircularLoader small />
-                            <p className={styles.loadingText}>
-                                {i18n.t('Getting report…')}
-                            </p>
-                        </div>
-                    )}
-
-                    {!reportLoading && !report && !reportError && !notFound && (
-                        <div className={styles.centered}>
-                            <h2>{i18n.t('No report yet')}</h2>
-                            <p>
-                                {i18n.t(
-                                    'Fill in the options on the left, then select Get report.'
-                                )}
-                            </p>
-                            {restoredFromMemory && (
-                                <p
-                                    className={styles.help}
-                                    style={{ marginTop: 16 }}
+                    <section className={styles.output}>
+                        {notFound && (
+                            <div className={styles.noticePad}>
+                                <NoticeBox
+                                    error
+                                    title={i18n.t(
+                                        'This report is not available'
+                                    )}
                                 >
                                     {i18n.t(
-                                        'Your organisation unit from last time is filled in already.'
+                                        'It may have been deleted, or it may be a type this page cannot run. Go back to all reports to pick another.'
                                     )}
-                                </p>
-                            )}
-                        </div>
-                    )}
+                                </NoticeBox>
+                            </div>
+                        )}
 
-                    {!reportLoading && report && isStale && (
-                        <div className={styles.noticePad}>
-                            <NoticeBox
-                                warning
-                                title={i18n.t('These options changed')}
-                            >
-                                {i18n.t(
-                                    'The report below is still {{report}}. Select Get report on the left to refresh it.',
-                                    {
-                                        report: report.snapshot.reportName,
-                                    }
-                                )}
-                            </NoticeBox>
-                        </div>
-                    )}
+                        {reportError && (
+                            <div className={styles.noticePad}>
+                                <NoticeBox
+                                    error
+                                    title={i18n.t(
+                                        'The report could not be built'
+                                    )}
+                                >
+                                    {reportError.message}
+                                </NoticeBox>
+                            </div>
+                        )}
 
-                    {!reportLoading && report && (
-                        <div
-                            className={isStale ? styles.staleOutput : undefined}
-                        >
-                            <div className={styles.summary}>
-                                <p className={styles.summaryLine}>
-                                    {summaryLine}
+                        {reportLoading && (
+                            <div className={styles.loading}>
+                                <CircularLoader small />
+                                <p className={styles.loadingText}>
+                                    {i18n.t('Getting report…')}
                                 </p>
                             </div>
+                        )}
 
-                            <HtmlReportView html={report.html} />
-                        </div>
-                    )}
-                </section>
+                        {!reportLoading &&
+                            !report &&
+                            !reportError &&
+                            !notFound && <ReportEmptyState />}
+
+                        {!reportLoading && report && (
+                            <div
+                                className={
+                                    isStale ? styles.staleOutput : undefined
+                                }
+                            >
+                                <div className={styles.summary}>
+                                    <p className={styles.summaryLine}>
+                                        {summaryLine}
+                                    </p>
+                                </div>
+
+                                <HtmlReportView html={report.html} />
+                            </div>
+                        )}
+                    </section>
+                </div>
             </div>
 
             {dialog?.kind === 'edit' && dialog.report && (
