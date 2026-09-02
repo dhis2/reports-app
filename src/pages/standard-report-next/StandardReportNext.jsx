@@ -6,7 +6,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { RailToggleIcon } from '../../components/shell/RailToggleIcon.jsx'
 import { ReportEmptyState } from '../../components/shell/ReportEmptyState.jsx'
-import { SectionSwitcher } from '../../components/shell/SectionSwitcher.jsx'
+import { ReportBreadcrumb } from '../../components/shell/ReportBreadcrumb.jsx'
 import {
     sections,
     STANDARD_REPORT_NEXT_SECTION_KEY,
@@ -296,11 +296,9 @@ export const StandardReportNext = ({ match }) => {
             {/* ---------------- top bar ---------------- */}
             <header className={styles.topbar}>
                 {/*
-                 * Where you are. The section name is also the control for
-                 * switching section, so it stands in for a page heading
-                 * rather than adding one.
+                 * Where you are: the trail back to the report list.
                  */}
-                <SectionSwitcher
+                <ReportBreadcrumb
                     currentSection={STANDARD_REPORT_NEXT_SECTION_KEY}
                 />
 

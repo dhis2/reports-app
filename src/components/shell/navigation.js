@@ -1,11 +1,15 @@
 import i18n from '@dhis2/d2-i18n'
 import {
+    IconCalendar24,
     IconFileDocument24,
     IconFolder24,
     IconTable24,
     IconVisualizationColumn24,
+    IconVisualizationLine24,
 } from '@dhis2/ui'
 import {
+    COLD_CHAIN_FRIDGE_LOG_SECTION_KEY,
+    MALARIA_WEEKLY_BULLETIN_SECTION_KEY,
     DATA_SET_REPORT_NEXT_SECTION_KEY,
     ORG_UNIT_DIST_REPORT_NEXT_SECTION_KEY,
     RESOURCE_SECTION_KEY,
@@ -28,6 +32,8 @@ const GROUPS = [
         keys: [
             DATA_SET_REPORT_NEXT_SECTION_KEY,
             ORG_UNIT_DIST_REPORT_NEXT_SECTION_KEY,
+            COLD_CHAIN_FRIDGE_LOG_SECTION_KEY,
+            MALARIA_WEEKLY_BULLETIN_SECTION_KEY,
         ],
     },
     {
@@ -47,6 +53,8 @@ const ICONS = {
     [ORG_UNIT_DIST_REPORT_NEXT_SECTION_KEY]: IconVisualizationColumn24,
     [STANDARD_REPORT_NEXT_SECTION_KEY]: IconFileDocument24,
     [RESOURCE_SECTION_KEY]: IconFolder24,
+    [COLD_CHAIN_FRIDGE_LOG_SECTION_KEY]: IconCalendar24,
+    [MALARIA_WEEKLY_BULLETIN_SECTION_KEY]: IconVisualizationLine24,
 }
 
 /**
@@ -55,15 +63,21 @@ const ICONS = {
  */
 const QUESTIONS = {
     [DATA_SET_REPORT_NEXT_SECTION_KEY]: i18n.t(
-        'A form, filled in, ready to print'
+        'View or print data entered for a data set.'
     ),
     [ORG_UNIT_DIST_REPORT_NEXT_SECTION_KEY]: i18n.t(
-        'How your facilities break down'
+        'View organisation units by group.'
     ),
-    [STANDARD_REPORT_NEXT_SECTION_KEY]: i18n.t(
-        'Run a report your team designed'
+    [STANDARD_REPORT_NEXT_SECTION_KEY]: i18n.t('Run a predefined report.'),
+    [RESOURCE_SECTION_KEY]: i18n.t(
+        'Upload and manage documents and web links.'
     ),
-    [RESOURCE_SECTION_KEY]: i18n.t('Documents and web links'),
+    [COLD_CHAIN_FRIDGE_LOG_SECTION_KEY]: i18n.t(
+        'Check vaccine fridge daily temperatures for the month.'
+    ),
+    [MALARIA_WEEKLY_BULLETIN_SECTION_KEY]: i18n.t(
+        'MAL-NGO-2027 reporting summary.'
+    ),
 }
 
 /** The grouping, resolved against the section config. */

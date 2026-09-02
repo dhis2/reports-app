@@ -14,7 +14,7 @@ import {
 } from '@dhis2/ui'
 import React, { useCallback, useMemo, useState } from 'react'
 import { useHistory, Link } from 'react-router-dom'
-import { SectionSwitcher } from '../../components/shell/SectionSwitcher.jsx'
+import { ReportBreadcrumb } from '../../components/shell/ReportBreadcrumb.jsx'
 import {
     sections,
     STANDARD_REPORT_NEXT_SECTION_KEY,
@@ -180,7 +180,7 @@ export const ReportBrowse = () => {
         <div className={styles.page}>
             {/* ---------------- top bar ---------------- */}
             <header className={styles.topbar}>
-                <SectionSwitcher
+                <ReportBreadcrumb
                     currentSection={STANDARD_REPORT_NEXT_SECTION_KEY}
                 />
             </header>

@@ -21,7 +21,7 @@ import styles from './StandardReportNext.module.css'
  * one to get at its settings.
  *
  * Hand-rolled on Layer and Popper rather than DropdownButton, because the
- * trigger has to be an icon with no label — the same reason SectionSwitcher
+ * trigger has to be an icon with no label — the same reason ReportBreadcrumb
  * does it this way.
  */
 export const ReportRowMenu = ({ report, onEdit, onShare }) => {

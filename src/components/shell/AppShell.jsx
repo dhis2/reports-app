@@ -1,13 +1,15 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import {
+    COLD_CHAIN_FRIDGE_LOG_SECTION_KEY,
+    MALARIA_WEEKLY_BULLETIN_SECTION_KEY,
     DATA_SET_REPORT_NEXT_SECTION_KEY,
     ORG_UNIT_DIST_REPORT_NEXT_SECTION_KEY,
     sections,
     STANDARD_REPORT_NEXT_SECTION_KEY,
 } from '../../config/sections.config.js'
 import styles from './AppShell.module.css'
-import { SectionSwitcher } from './SectionSwitcher.jsx'
+import { ReportBreadcrumb } from './ReportBreadcrumb.jsx'
 
 /*
  * The platform renders the real DHIS2 header bar above this, so the shell owns
@@ -34,6 +36,8 @@ const SELF_MANAGED_LAYOUT = [
     DATA_SET_REPORT_NEXT_SECTION_KEY,
     STANDARD_REPORT_NEXT_SECTION_KEY,
     ORG_UNIT_DIST_REPORT_NEXT_SECTION_KEY,
+    COLD_CHAIN_FRIDGE_LOG_SECTION_KEY,
+    MALARIA_WEEKLY_BULLETIN_SECTION_KEY,
 ]
 
 export const AppShell = ({ showNav, currentSection, children }) => {
@@ -57,7 +61,7 @@ export const AppShell = ({ showNav, currentSection, children }) => {
         >
             {showSwitcherBar && (
                 <div className={styles.switcherBar}>
-                    <SectionSwitcher currentSection={currentSection} />
+                    <ReportBreadcrumb currentSection={currentSection} />
                 </div>
             )}
 

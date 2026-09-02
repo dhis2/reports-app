@@ -1,0 +1,228 @@
+/*
+ * Styled to look like a Word-document compliance template — the kind of .docx
+ * an NGO hands you to fill out each month. Black and white, Times New Roman,
+ * single-pixel table borders, numbered sections, sign-off rows.
+ */
+
+/* ---------- rail (unchanged from app chrome) ---------- */
+
+.weekInput {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 10px;
+    font: inherit;
+    color: var(--grey900, #212934);
+    background: var(--white, #fff);
+    border: 1px solid var(--grey500, #a0adba);
+    border-radius: 3px;
+}
+
+.weekInput:focus {
+    outline: none;
+    border-color: #1a73e8;
+    box-shadow: 0 0 0 1px #1a73e8;
+}
+
+/* ---------- the "page" ---------- */
+
+.sheet {
+    --serif: 'Times New Roman', Times, 'Liberation Serif', serif;
+
+    max-width: 760px;
+    margin: 16px auto;
+    padding: 40px 48px 36px;
+    background: #fff;
+    border: 1px solid #999;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.08);
+    font-family: var(--serif);
+    font-size: 12pt;
+    color: #000;
+    line-height: 1.4;
+}
+
+/* ---------- document header ---------- */
+
+.docHeader {
+    border-bottom: 2px solid #000;
+    padding-bottom: 10px;
+    margin-bottom: 14px;
+}
+
+.docHeaderTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.docOrg {
+    margin: 0;
+    font-family: var(--serif);
+    font-size: 10pt;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #333;
+}
+
+.docTitle {
+    margin: 2px 0 0;
+    font-family: var(--serif);
+    font-size: 16pt;
+    font-weight: bold;
+    color: #000;
+}
+
+.docRef {
+    margin: 0;
+    font-family: var(--serif);
+    font-size: 10pt;
+    color: #333;
+    text-align: right;
+    white-space: nowrap;
+}
+
+/* ---------- metadata fields table ---------- */
+
+.metaTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 18px;
+    font-family: var(--serif);
+    font-size: 10pt;
+}
+
+.metaTable td {
+    border: 1px solid #000;
+    padding: 4px 8px;
+}
+
+.metaLabel {
+    font-weight: bold;
+    background: #eee;
+    width: 16%;
+    white-space: nowrap;
+}
+
+.metaValue {
+    width: 34%;
+}
+
+/* ---------- numbered section headings ---------- */
+
+.sectionHead {
+    font-family: var(--serif);
+    font-size: 12pt;
+    font-weight: bold;
+    margin: 20px 0 8px;
+    padding: 0;
+    color: #000;
+    border: none;
+}
+
+/* ---------- body text ---------- */
+
+.bodyText {
+    font-family: var(--serif);
+    font-size: 11pt;
+    margin: 0 0 6px;
+    line-height: 1.5;
+    color: #000;
+}
+
+/* ---------- data tables ---------- */
+
+.dataTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 6px;
+    font-family: var(--serif);
+    font-size: 10pt;
+}
+
+.dataTable th,
+.dataTable td {
+    border: 1px solid #000;
+    padding: 4px 8px;
+    text-align: left;
+}
+
+.dataTable th {
+    background: #eee;
+    font-weight: bold;
+    font-size: 10pt;
+}
+
+.numCell {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+.totalRow td {
+    border-top: 2px solid #000;
+}
+
+/* ---------- sign-off table ---------- */
+
+.signTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 6px;
+    font-family: var(--serif);
+    font-size: 10pt;
+}
+
+.signTable th,
+.signTable td {
+    border: 1px solid #000;
+    padding: 6px 8px;
+    text-align: left;
+}
+
+.signTable th {
+    background: #eee;
+    font-weight: bold;
+}
+
+.signTable td:empty {
+    min-width: 100px;
+    height: 28px;
+}
+
+/* ---------- trend chart (SVG) ---------- */
+
+.trendSvg {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-bottom: 4px;
+}
+
+.axisLabel {
+    fill: #333;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 10px;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ---------- footer ---------- */
+
+.footer {
+    margin-top: 28px;
+    padding-top: 8px;
+    border-top: 1px solid #000;
+    font-family: var(--serif);
+    font-size: 8pt;
+    color: #333;
+    text-align: center;
+}
+
+/* ---------- print ---------- */
+
+@media print {
+    .sheet {
+        margin: 0;
+        padding: 0;
+        border: none;
+        box-shadow: none;
+        max-width: none;
+    }
+}

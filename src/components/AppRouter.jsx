@@ -2,6 +2,8 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import {
     sections,
+    COLD_CHAIN_FRIDGE_LOG_SECTION_KEY,
+    MALARIA_WEEKLY_BULLETIN_SECTION_KEY,
     DATA_SET_REPORT_NEXT_SECTION_KEY,
     DATA_SET_REPORT_SECTION_KEY,
     ORG_UNIT_DIST_REPORT_NEXT_SECTION_KEY,
@@ -11,9 +13,11 @@ import {
     STANDARD_REPORT_NEXT_SECTION_KEY,
     STANDARD_REPORT_SECTION_KEY,
 } from '../config/sections.config.js'
+import { ColdChainFridgeLog } from '../pages/cold-chain-fridge-log/ColdChainFridgeLog.jsx'
 import { DataSetReportNext } from '../pages/data-set-report-next/DataSetReportNext.jsx'
 import { DataSetReport } from '../pages/DataSetReport.jsx'
 import Home from '../pages/home/Home.jsx'
+import { MalariaWeeklyBulletin } from '../pages/malaria-weekly-bulletin/MalariaWeeklyBulletin.jsx'
 import { OrgUnitDistReportNext } from '../pages/organisation-unit-distribution-report-next/OrgUnitDistReportNext.jsx'
 import { OrganisationUnitDistributionReport } from '../pages/OrganisationUnitDistributionReport.jsx'
 import { ReportingRateSummary } from '../pages/ReportingRateSummary.jsx'
@@ -108,6 +112,18 @@ const AppRouter = () => (
                 key={ORG_UNIT_DIST_REPORT_NEXT_SECTION_KEY}
                 path={sections[ORG_UNIT_DIST_REPORT_NEXT_SECTION_KEY].path}
                 component={OrgUnitDistReportNext}
+            />
+            <Route
+                exact
+                key={COLD_CHAIN_FRIDGE_LOG_SECTION_KEY}
+                path={sections[COLD_CHAIN_FRIDGE_LOG_SECTION_KEY].path}
+                component={ColdChainFridgeLog}
+            />
+            <Route
+                exact
+                key={MALARIA_WEEKLY_BULLETIN_SECTION_KEY}
+                path={sections[MALARIA_WEEKLY_BULLETIN_SECTION_KEY].path}
+                component={MalariaWeeklyBulletin}
             />
             <Route key="no-match-route" component={NoMatch} />
         </Switch>

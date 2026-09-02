@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 import { RailToggleIcon } from './RailToggleIcon.jsx'
 import styles from './ReportRailLayout.module.css'
-import { SectionSwitcher } from './SectionSwitcher.jsx'
+import { ReportBreadcrumb } from './ReportBreadcrumb.jsx'
 
 /*
  * Whether the options rail is collapsed is a per-viewer preference, not part
@@ -67,11 +67,9 @@ export const ReportRailLayout = ({
             {/* ---------------- top bar ---------------- */}
             <header className={styles.topbar}>
                 {/*
-                 * Where you are. The section name is also the control for
-                 * switching section, so it stands in for a page heading
-                 * rather than adding one.
+                 * Where you are: the trail back to the report list.
                  */}
-                <SectionSwitcher currentSection={sectionKey} />
+                <ReportBreadcrumb currentSection={sectionKey} />
 
                 {actions && (
                     <div className={styles.topbarActions}>{actions}</div>
