@@ -14,7 +14,7 @@ import React from 'react'
 import styles from './StandardReportNext.module.css'
 
 /*
- * Stand-ins for the two management dialogs.
+ * Stand-ins for the management dialogs.
  *
  * Both are deliberately inert. The real versions are the existing
  * redux-connected AddEditStdReport form and the d2-ui SharingDialog, and
@@ -92,49 +92,6 @@ NewReportDialog.propTypes = {
     onClose: PropTypes.func.isRequired,
 }
 
-export const EditReportDialog = ({ report, onClose }) => (
-    <Modal onClose={onClose} position="middle">
-        <ModalTitle>{i18n.t('Edit report')}</ModalTitle>
-        <ModalContent>
-            <NotYet>
-                {i18n.t(
-                    'This will become the report editor: name, design file, cache strategy, which parameters the report asks for and which periods it allows. Nothing here can be changed yet.'
-                )}
-            </NotYet>
-
-            <Field label={i18n.t('Name')}>{report.displayName}</Field>
-            <Field label={i18n.t('Identifier')}>
-                <code>{report.id}</code>
-            </Field>
-            <Field label={i18n.t('Asks for')}>
-                {[
-                    report.reportParams?.reportingPeriod && i18n.t('Period'),
-                    report.reportParams?.organisationUnit &&
-                        i18n.t('Organisation unit'),
-                ]
-                    .filter(Boolean)
-                    .join(', ') || i18n.t('Nothing')}
-            </Field>
-            <Field label={i18n.t('Periods allowed')}>
-                {Object.entries(report.relativePeriods || {})
-                    .filter(([, allowed]) => allowed)
-                    .map(([key]) => key)
-                    .join(', ') || i18n.t('All')}
-            </Field>
-        </ModalContent>
-        <ModalActions>
-            <ButtonStrip end>
-                <Button onClick={onClose}>{i18n.t('Close')}</Button>
-            </ButtonStrip>
-        </ModalActions>
-    </Modal>
-)
-
-EditReportDialog.propTypes = {
-    report: PropTypes.object.isRequired,
-    onClose: PropTypes.func.isRequired,
-}
-
 /*
  * DHIS2 sharing strings are eight characters, of which only the first two —
  * metadata read and write — mean anything for a report.
@@ -196,6 +153,37 @@ export const SharingDialog = ({ report, onClose }) => {
 }
 
 SharingDialog.propTypes = {
+    report: PropTypes.object.isRequired,
+    onClose: PropTypes.func.isRequired,
+}
+
+export const DeleteReportDialog = ({ report, onClose }) => (
+    <Modal onClose={onClose} position="middle">
+        <ModalTitle>{i18n.t('Delete report')}</ModalTitle>
+        <ModalContent>
+            <NotYet>
+                {i18n.t(
+                    'This will become the delete confirmation. Nothing is deleted yet.'
+                )}
+            </NotYet>
+
+            <Field label={i18n.t('Name')}>{report.displayName}</Field>
+            <Field label={i18n.t('Identifier')}>
+                <code>{report.id}</code>
+            </Field>
+        </ModalContent>
+        <ModalActions>
+            <ButtonStrip end>
+                <Button onClick={onClose}>{i18n.t('Cancel')}</Button>
+                <Button destructive disabled>
+                    {i18n.t('Delete')}
+                </Button>
+            </ButtonStrip>
+        </ModalActions>
+    </Modal>
+)
+
+DeleteReportDialog.propTypes = {
     report: PropTypes.object.isRequired,
     onClose: PropTypes.func.isRequired,
 }

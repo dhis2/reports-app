@@ -25,6 +25,7 @@ import { CustomFormReport } from './CustomFormReport.jsx'
 import styles from './DataSetReportNext.module.css'
 import { FormView } from './form-view/index.js'
 import {
+    canReportAtPeriodType,
     dropUnopenedPeriods,
     generatePeriods,
     needsYear,
@@ -1115,6 +1116,13 @@ export const DataSetReportNext = () => {
                                     <h3 className={styles.groupTitle}>
                                         {i18n.t('Period')}
                                     </h3>
+                                    {/*
+                                     * Types shorter than the data set's own
+                                     * are shown but disabled: the data can be
+                                     * added up into a longer period and never
+                                     * split into a shorter one, so those can
+                                     * only ever return an empty report.
+                                     */}
                                     <SingleSelectField
                                         /* "Period" is the group title above. */
                                         label={i18n.t('Type')}
@@ -1135,6 +1143,12 @@ export const DataSetReportNext = () => {
                                                 key={type.id}
                                                 value={type.id}
                                                 label={type.displayName}
+                                                disabled={
+                                                    !canReportAtPeriodType(
+                                                        dataSet?.periodType,
+                                                        type.id
+                                                    )
+                                                }
                                             />
                                         ))}
                                     </SingleSelectField>
@@ -1232,6 +1246,16 @@ export const DataSetReportNext = () => {
                     {!reportLoading && report && isStale && (
                         <span className={styles.staleBadge}>
                             {i18n.t('Not updated with latest options')}
+                            {/* The badge says what is wrong; this is the one
+                             * thing you would do about it. */}
+                            <button
+                                type="button"
+                                className={styles.staleAction}
+                                onClick={onGenerate}
+                                disabled={!canGenerate}
+                            >
+                                {i18n.t('Update')}
+                            </button>
                         </span>
                     )}
 

@@ -1,16 +1,12 @@
 import { useConfig, useDataQuery } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
-import { Button, CircularLoader, IconArrowLeft16, NoticeBox } from '@dhis2/ui'
+import { Button, CircularLoader, NoticeBox } from '@dhis2/ui'
 import PropTypes from 'prop-types'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { useHistory } from 'react-router-dom'
 import { RailToggleIcon } from '../../components/shell/RailToggleIcon.jsx'
 import { ReportBreadcrumb } from '../../components/shell/ReportBreadcrumb.jsx'
 import { ReportEmptyState } from '../../components/shell/ReportEmptyState.jsx'
-import {
-    sections,
-    STANDARD_REPORT_NEXT_SECTION_KEY,
-} from '../../config/sections.config.js'
+import { STANDARD_REPORT_NEXT_SECTION_KEY } from '../../config/sections.config.js'
 import { DEMO_REPORTS, demoReportHtml, isDemoReport } from './demoReports.js'
 import { HtmlReportView } from './HtmlReportView.jsx'
 import { recordLastUsed } from './lastUsed.js'
@@ -25,8 +21,6 @@ import { ReportParamsFields } from './ReportParamsFields.jsx'
 import { periodLabel, reportNeeds } from './reportShape.js'
 import styles from './StandardReportNext.module.css'
 import { useStandardReportSelection } from './useStandardReportSelection.js'
-
-const basePath = sections[STANDARD_REPORT_NEXT_SECTION_KEY].path
 
 /*
  * Whether the options rail is collapsed is a per-viewer preference, not part
@@ -82,7 +76,6 @@ const createdLabel = (generatedAt) =>
  */
 export const StandardReportNext = ({ match }) => {
     const { baseUrl } = useConfig()
-    const history = useHistory()
     const reportId = match.params.id
 
     const { selection, update, remember, restoredFromUrl } =
@@ -314,8 +307,15 @@ export const StandardReportNext = ({ match }) => {
                 {/*
                  * Where you are: the trail back to the report list.
                  */}
+                {/*
+                 * With a report open its name is the whole trail — the
+                 * section name in between says nothing you need.
+                 */}
                 <ReportBreadcrumb
-                    currentSection={STANDARD_REPORT_NEXT_SECTION_KEY}
+                    currentSection={
+                        selected ? '' : STANDARD_REPORT_NEXT_SECTION_KEY
+                    }
+                    leaf={selected?.displayName}
                 />
 
                 {/*
@@ -456,15 +456,6 @@ export const StandardReportNext = ({ match }) => {
                                             {i18n.t('Get report')}
                                         </Button>
                                     )}
-
-                                    <Button
-                                        small
-                                        secondary
-                                        icon={<IconArrowLeft16 />}
-                                        onClick={() => history.push(basePath)}
-                                    >
-                                        {i18n.t('Back to all templates')}
-                                    </Button>
                                 </div>
                             </div>
                         </form>
@@ -486,6 +477,16 @@ export const StandardReportNext = ({ match }) => {
                     {!reportLoading && report && isStale && (
                         <span className={styles.staleBadge}>
                             {i18n.t('Not updated with latest options')}
+                            {/* The badge says what is wrong; this is the one
+                             * thing you would do about it. */}
+                            <button
+                                type="button"
+                                className={styles.staleAction}
+                                onClick={onGenerate}
+                                disabled={!canGenerate}
+                            >
+                                {i18n.t('Update')}
+                            </button>
                         </span>
                     )}
 

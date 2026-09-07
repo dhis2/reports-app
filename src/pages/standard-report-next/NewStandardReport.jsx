@@ -1,14 +1,18 @@
+import { useDataQuery } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import {
     Button,
     ButtonStrip,
     Checkbox,
+    CircularLoader,
     FileInputField,
     InputField,
+    NoticeBox,
     SingleSelectField,
     SingleSelectOption,
 } from '@dhis2/ui'
-import React, { useState } from 'react'
+import PropTypes from 'prop-types'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { ReportBreadcrumb } from '../../components/shell/ReportBreadcrumb.jsx'
 import {
@@ -18,30 +22,69 @@ import {
 import { reportParameterOptions } from '../../config/standardReport.js'
 import { RELATIVE_PERIODS } from '../../utils/periods/relativePeriods.js'
 import { cacheStrategies } from '../standard-report/standard.report.conf.js'
+import { DEMO_REPORTS, isDemoReport } from './demoReports.js'
 import styles from './NewStandardReport.module.css'
+import { REPORT_QUERY } from './queries.js'
 
 const basePath = sections[STANDARD_REPORT_NEXT_SECTION_KEY].path
 
+const EMPTY = {
+    name: '',
+    designContent: null,
+    designFileName: '',
+    relativePeriods: {},
+    reportParams: {},
+    cacheStrategy: 'RESPECT_SYSTEM_SETTING',
+}
+
 /*
- * Creating a standard report, as its own page rather than a dialog. The
- * fields are those the legacy add/edit form requires, less the report type:
- * Jasper is deprecated, so every report created here is an HTML report.
+ * Creating *or* editing a standard report, as its own page rather than a
+ * dialog. The fields are those the legacy add/edit form requires, less the
+ * report type: Jasper is deprecated, so every report here is an HTML report.
+ *
+ * One form for both, because the fields are the same either way — the only
+ * differences are what it opens with and what the save button claims to do.
+ * With an id in the route it loads that report and fills itself in; a design
+ * file is then optional, since the report already has one and leaving the
+ * field alone means keeping it.
  *
  * Prototype: the form validates and then returns to the list. Nothing is
  * posted to the API yet.
  */
-export const NewStandardReport = () => {
+export const NewStandardReport = ({ match }) => {
     const history = useHistory()
 
-    const [values, setValues] = useState({
-        name: '',
-        designContent: null,
-        designFileName: '',
-        relativePeriods: {},
-        reportParams: {},
-        cacheStrategy: 'RESPECT_SYSTEM_SETTING',
-    })
+    const reportId = match?.params?.id || ''
+    const editing = Boolean(reportId)
+    const demo = editing && isDemoReport(reportId)
+
+    const [values, setValues] = useState(EMPTY)
     const [errors, setErrors] = useState({})
+
+    const reportResult = useDataQuery(REPORT_QUERY, {
+        variables: { id: reportId },
+        lazy: !editing || demo,
+    })
+
+    const loaded = demo
+        ? DEMO_REPORTS.find((report) => report.id === reportId)
+        : reportResult.data?.report
+
+    /* Fill the form in once, when the report it is editing arrives. */
+    useEffect(() => {
+        if (!loaded) {
+            return
+        }
+
+        setValues({
+            ...EMPTY,
+            name: loaded.displayName || '',
+            designFileName: '',
+            relativePeriods: { ...(loaded.relativePeriods || {}) },
+            reportParams: { ...(loaded.reportParams || {}) },
+            cacheStrategy: loaded.cacheStrategy || EMPTY.cacheStrategy,
+        })
+    }, [loaded])
 
     const set = (name, value) =>
         setValues((current) => ({ ...current, [name]: value }))
@@ -58,7 +101,9 @@ export const NewStandardReport = () => {
         if (!values.name.trim()) {
             next.name = i18n.t('A name is required')
         }
-        if (!values.designContent) {
+        /* An existing report already has a design; not touching the field
+         * means keeping it. */
+        if (!editing && !values.designContent) {
             next.designContent = i18n.t('A design file is required')
         }
         if (!values.cacheStrategy) {
@@ -82,20 +127,47 @@ export const NewStandardReport = () => {
             <header className={styles.topbar}>
                 <ReportBreadcrumb
                     currentSection={STANDARD_REPORT_NEXT_SECTION_KEY}
-                    leaf={i18n.t('New standard report')}
+                    leaf={
+                        editing
+                            ? i18n.t('Edit standard report')
+                            : i18n.t('New standard report')
+                    }
                 />
             </header>
 
             <div className={styles.scroll}>
                 <div className={styles.column}>
                     <h1 className={styles.title}>
-                        {i18n.t('New standard report')}
+                        {editing
+                            ? i18n.t('Edit standard report')
+                            : i18n.t('New standard report')}
                     </h1>
                     <p className={styles.lede}>
-                        {i18n.t(
-                            'Register a report design so it can be run against current data. Fields marked with * are required.'
-                        )}
+                        {editing
+                            ? i18n.t(
+                                  'Change what this report is called, what it asks for before it runs, and how long a generated copy may be reused. Fields marked with * are required.'
+                              )
+                            : i18n.t(
+                                  'Register a report design so it can be run against current data. Fields marked with * are required.'
+                              )}
                     </p>
+
+                    {reportResult.loading && (
+                        <div className={styles.field}>
+                            <CircularLoader small />
+                        </div>
+                    )}
+
+                    {reportResult.error && (
+                        <div className={styles.field}>
+                            <NoticeBox
+                                error
+                                title={i18n.t('Could not load this report')}
+                            >
+                                {reportResult.error.message}
+                            </NoticeBox>
+                        </div>
+                    )}
 
                     {/* ---------------- identity and design ---------------- */}
                     <section className={styles.card}>
@@ -120,7 +192,7 @@ export const NewStandardReport = () => {
 
                         <div className={styles.field}>
                             <FileInputField
-                                required
+                                required={!editing}
                                 label={i18n.t('Design file')}
                                 name="designContent"
                                 buttonLabel={i18n.t('Select file')}
@@ -128,9 +200,13 @@ export const NewStandardReport = () => {
                                 validationText={errors.designContent}
                                 helpText={
                                     values.designFileName ||
-                                    i18n.t(
-                                        'The HTML design file that defines the report layout.'
-                                    )
+                                    (editing
+                                        ? i18n.t(
+                                              'Leave this alone to keep the design the report already has.'
+                                          )
+                                        : i18n.t(
+                                              'The HTML design file that defines the report layout.'
+                                          ))
                                 }
                                 onChange={({ files }) => {
                                     const file = files?.[0]
@@ -253,7 +329,9 @@ export const NewStandardReport = () => {
                 <div className={styles.actionsInner}>
                     <ButtonStrip>
                         <Button primary onClick={save}>
-                            {i18n.t('Create report')}
+                            {editing
+                                ? i18n.t('Save changes')
+                                : i18n.t('Create report')}
                         </Button>
                         <Button secondary onClick={cancel}>
                             {i18n.t('Cancel')}
@@ -263,4 +341,8 @@ export const NewStandardReport = () => {
             </footer>
         </div>
     )
+}
+
+NewStandardReport.propTypes = {
+    match: PropTypes.object,
 }

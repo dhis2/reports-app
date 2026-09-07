@@ -50,6 +50,27 @@ export const REPORTS_QUERY = {
 }
 
 /*
+ * One report, for the editor. The list query is enough to show a report but
+ * not to edit one: `cacheStrategy` is a setting nobody reading the list
+ * needs, so it is asked for here instead of widening every list request.
+ */
+export const REPORT_QUERY = {
+    report: {
+        resource: 'reports',
+        id: ({ id }) => id,
+        params: {
+            fields: [
+                'id',
+                'displayName',
+                'cacheStrategy',
+                'reportParams',
+                'relativePeriods',
+            ].join(','),
+        },
+    },
+}
+
+/*
  * Two questions of the same endpoint: where this user may look, and whether
  * they are allowed to create a report. Creating is an authority rather than a
  * per-object access flag, so it cannot come from the report list.

@@ -404,37 +404,18 @@
     color: var(--grey600);
 }
 
-/* ---------- row menu ---------- */
+/* ---------- row actions ---------- */
 
 /*
- * In the actions column of the list. Static rather than absolutely placed:
- * the column exists for it, so it has nowhere else to be.
+ * In the actions column of the list: the buttons spelled out, kept on one
+ * line so a row's height never depends on how many actions it has.
  */
-.rowMenu {
-    display: inline-flex;
-}
-
-.rowMenuButton {
-    display: grid;
-    place-items: center;
-    width: 28px;
-    height: 28px;
-    padding: 0;
-    border: 0;
-    border-radius: 3px;
-    background: none;
-    color: var(--grey600);
-    cursor: pointer;
-}
-
-.rowMenuButton:hover {
-    background: var(--grey300);
-    color: var(--grey900);
-}
-
-.rowMenuButton:focus-visible {
-    outline: 2px solid var(--blue600);
-    outline-offset: -1px;
+.rowActions {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    gap: 4px;
+    white-space: nowrap;
 }
 
 /* ---------- configure mode ---------- */
@@ -643,6 +624,25 @@
     line-height: 11px;
     color: var(--yellow900);
     white-space: nowrap;
+}
+
+/* The badge's own action: a link inside the tag, not a second control. */
+.staleAction {
+    margin-inline-start: 8px;
+    padding: 0;
+    background: none;
+    border: none;
+    font: inherit;
+    font-weight: 600;
+    color: var(--yellow900);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.staleAction:disabled {
+    opacity: 0.5;
+    cursor: default;
+    text-decoration: none;
 }
 
 .staleOutput {

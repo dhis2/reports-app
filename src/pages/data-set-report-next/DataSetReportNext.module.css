@@ -723,6 +723,25 @@ div.tableScroll thead th:last-child {
     white-space: nowrap;
 }
 
+/* The badge's own action: a link inside the tag, not a second control. */
+.staleAction {
+    margin-inline-start: 8px;
+    padding: 0;
+    background: none;
+    border: none;
+    font: inherit;
+    font-weight: 600;
+    color: var(--yellow900);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.staleAction:disabled {
+    opacity: 0.5;
+    cursor: default;
+    text-decoration: none;
+}
+
 .staleOutput {
     opacity: 0.6;
 }

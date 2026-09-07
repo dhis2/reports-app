@@ -23,9 +23,8 @@ import { DEMO_REPORTS } from './demoReports.js'
 import { readLastUsed } from './lastUsed.js'
 import { ME_QUERY, REPORTS_QUERY } from './queries.js'
 import { exactTime, timeAgo } from './relativeTime.js'
-import { EditReportDialog, SharingDialog } from './ReportActionDialogs.jsx'
-import { ReportRowMenu } from './ReportRowMenu.jsx'
-import { needsSummary } from './reportShape.js'
+import { DeleteReportDialog, SharingDialog } from './ReportActionDialogs.jsx'
+import { ReportRowActions } from './ReportRowActions.jsx'
 import styles from './StandardReportNext.module.css'
 
 const basePath = sections[STANDARD_REPORT_NEXT_SECTION_KEY].path
@@ -38,8 +37,6 @@ const basePath = sections[STANDARD_REPORT_NEXT_SECTION_KEY].path
 const COLUMNS = {
     NAME: 'displayName',
     LAST_USED: 'lastUsed',
-    CREATED_BY: 'createdBy',
-    CREATED: 'created',
     UPDATED: 'lastUpdated',
 }
 
@@ -47,10 +44,6 @@ const sortValue = (report, column, lastUsed) => {
     switch (column) {
         case COLUMNS.LAST_USED:
             return lastUsed[report.id] || ''
-        case COLUMNS.CREATED_BY:
-            return (report.createdBy?.displayName || '').toLowerCase()
-        case COLUMNS.CREATED:
-            return report.created || ''
         case COLUMNS.UPDATED:
             return report.lastUpdated || ''
         default:
@@ -114,12 +107,18 @@ export const ReportBrowse = () => {
 
     const [dialog, setDialog] = useState(null)
     const closeDialog = useCallback(() => setDialog(null), [])
+    /* Editing is a page of its own, not a dialog: the form is long, and it
+     * deserves a URL you can come back to. */
     const openEdit = useCallback(
-        (subject) => setDialog({ kind: 'edit', report: subject }),
-        []
+        (subject) => history.push(`${basePath}/${subject.id}/edit`),
+        [history]
     )
     const openSharing = useCallback(
         (subject) => setDialog({ kind: 'sharing', report: subject }),
+        []
+    )
+    const openDelete = useCallback(
+        (subject) => setDialog({ kind: 'delete', report: subject }),
         []
     )
 
@@ -211,9 +210,7 @@ export const ReportBrowse = () => {
         <div className={styles.page}>
             {/* ---------------- top bar ---------------- */}
             <header className={styles.topbar}>
-                <ReportBreadcrumb
-                    currentSection={STANDARD_REPORT_NEXT_SECTION_KEY}
-                />
+                <ReportBreadcrumb leaf={i18n.t('Manage standard reports')} />
             </header>
 
             {/* ---------------- the list ---------------- */}
@@ -293,22 +290,9 @@ export const ReportBrowse = () => {
                                             i18n.t('Report'),
                                             'auto'
                                         )}
-                                        <DataTableColumnHeader width="200px">
-                                            {i18n.t('Parameters')}
-                                        </DataTableColumnHeader>
                                         {header(
                                             COLUMNS.LAST_USED,
                                             i18n.t('Last used'),
-                                            '140px'
-                                        )}
-                                        {header(
-                                            COLUMNS.CREATED_BY,
-                                            i18n.t('Created by'),
-                                            '180px'
-                                        )}
-                                        {header(
-                                            COLUMNS.CREATED,
-                                            i18n.t('Created'),
                                             '140px'
                                         )}
                                         {header(
@@ -316,7 +300,7 @@ export const ReportBrowse = () => {
                                             i18n.t('Last changed'),
                                             '140px'
                                         )}
-                                        <DataTableColumnHeader width="48px">
+                                        <DataTableColumnHeader width="290px">
                                             <span
                                                 className={
                                                     styles.visuallyHidden
@@ -355,18 +339,6 @@ export const ReportBrowse = () => {
                                             <DataTableCell
                                                 className={styles.browseCell}
                                             >
-                                                <span
-                                                    className={
-                                                        styles.browseQuiet
-                                                    }
-                                                >
-                                                    {needsSummary(report)}
-                                                </span>
-                                            </DataTableCell>
-
-                                            <DataTableCell
-                                                className={styles.browseCell}
-                                            >
                                                 {whenLocal(
                                                     lastUsed[report.id]
                                                 ) || (
@@ -383,36 +355,25 @@ export const ReportBrowse = () => {
                                             <DataTableCell
                                                 className={styles.browseCell}
                                             >
-                                                {report.createdBy
-                                                    ?.displayName || '—'}
-                                            </DataTableCell>
-
-                                            <DataTableCell
-                                                className={styles.browseCell}
-                                            >
-                                                {when(report.created) || '—'}
-                                            </DataTableCell>
-
-                                            <DataTableCell
-                                                className={styles.browseCell}
-                                            >
                                                 {when(report.lastUpdated) ||
                                                     '—'}
                                             </DataTableCell>
 
                                             <DataTableCell
                                                 align="right"
-                                                /* The menu is its own
-                                                 * target, not a way into
+                                                /* The actions are their own
+                                                 * targets, not a way into
                                                  * the report. */
                                                 onClick={(event) =>
                                                     event.stopPropagation()
                                                 }
                                             >
-                                                <ReportRowMenu
+                                                <ReportRowActions
                                                     report={report}
+                                                    onView={open}
                                                     onEdit={openEdit}
                                                     onShare={openSharing}
+                                                    onDelete={openDelete}
                                                 />
                                             </DataTableCell>
                                         </DataTableRow>
@@ -437,15 +398,15 @@ export const ReportBrowse = () => {
                 </section>
             </div>
 
-            {dialog?.kind === 'edit' && dialog.report && (
-                <EditReportDialog
+            {dialog?.kind === 'sharing' && dialog.report && (
+                <SharingDialog report={dialog.report} onClose={closeDialog} />
+            )}
+
+            {dialog?.kind === 'delete' && dialog.report && (
+                <DeleteReportDialog
                     report={dialog.report}
                     onClose={closeDialog}
                 />
-            )}
-
-            {dialog?.kind === 'sharing' && dialog.report && (
-                <SharingDialog report={dialog.report} onClose={closeDialog} />
             )}
         </div>
     )

@@ -2,8 +2,8 @@ import i18n from '@dhis2/d2-i18n'
 import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 import { RailToggleIcon } from './RailToggleIcon.jsx'
-import styles from './ReportRailLayout.module.css'
 import { ReportBreadcrumb } from './ReportBreadcrumb.jsx'
+import styles from './ReportRailLayout.module.css'
 
 /*
  * Whether the options rail is collapsed is a per-viewer preference, not part
@@ -49,6 +49,8 @@ export const ReportRailLayout = ({
     railStorageKey,
     actions,
     staleNote,
+    onStaleAction,
+    staleActionDisabled,
     rail,
     children,
 }) => {
@@ -134,7 +136,21 @@ export const ReportRailLayout = ({
                      * and out here it also stays put while the report scrolls.
                      */}
                     {staleNote && (
-                        <span className={styles.staleBadge}>{staleNote}</span>
+                        <span className={styles.staleBadge}>
+                            {staleNote}
+                            {/* The badge says what is wrong; this is the one
+                             * thing you would do about it. */}
+                            {onStaleAction && (
+                                <button
+                                    type="button"
+                                    className={styles.staleAction}
+                                    onClick={onStaleAction}
+                                    disabled={staleActionDisabled}
+                                >
+                                    {i18n.t('Update')}
+                                </button>
+                            )}
+                        </span>
                     )}
 
                     <section className={styles.output}>{children}</section>
@@ -157,6 +173,10 @@ ReportRailLayout.propTypes = {
     actions: PropTypes.node,
     /** The report itself. */
     children: PropTypes.node,
+    /** Greys out that action while the form cannot be run. */
+    staleActionDisabled: PropTypes.bool,
     /** Text for the badge shown when the output no longer matches the form. */
     staleNote: PropTypes.string,
+    /** Called by the badge's Update action; omit for a badge with no action. */
+    onStaleAction: PropTypes.func,
 }

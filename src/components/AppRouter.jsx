@@ -71,6 +71,14 @@ const AppRouter = () => (
                 path={`${sections[STANDARD_REPORT_NEXT_SECTION_KEY].path}/new`}
                 component={NewStandardReport}
             />
+            {/* Before the report route, so /:id/edit is not read as a
+             * report id with something trailing it. */}
+            <Route
+                exact
+                key={`${STANDARD_REPORT_NEXT_SECTION_KEY}-edit`}
+                path={`${sections[STANDARD_REPORT_NEXT_SECTION_KEY].path}/:id(${ID_REGEXP})/edit`}
+                component={NewStandardReport}
+            />
             <Route
                 exact
                 key={`${STANDARD_REPORT_NEXT_SECTION_KEY}-report`}

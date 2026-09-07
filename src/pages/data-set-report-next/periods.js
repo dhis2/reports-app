@@ -46,6 +46,55 @@ export const supportsPeriodType = (periodType) =>
 
 export const needsYear = (periodType) => Boolean(BY_YEAR[periodType])
 
+/*
+ * Roughly how long each period type lasts, in days.
+ *
+ * Only used for comparing types with each other, so the values need to be in
+ * the right order rather than exact — a quarter as 91 days is close enough to
+ * sit between a bi-month and a six-month.
+ */
+const LENGTH_IN_DAYS = {
+    Daily: 1,
+    Weekly: 7,
+    WeeklyWednesday: 7,
+    WeeklyThursday: 7,
+    WeeklySaturday: 7,
+    WeeklySunday: 7,
+    BiWeekly: 14,
+    Monthly: 30,
+    BiMonthly: 60,
+    Quarterly: 91,
+    QuarterlyNov: 91,
+    SixMonthly: 182,
+    SixMonthlyApril: 182,
+    SixMonthlyNov: 182,
+    Yearly: 365,
+    FinancialApril: 365,
+    FinancialJuly: 365,
+    FinancialOct: 365,
+    FinancialNov: 365,
+}
+
+/**
+ * Whether a data set collected at `dataSetPeriodType` can be reported for
+ * `periodType`.
+ *
+ * Values can be added up into a longer period but never split into a shorter
+ * one: a monthly data set has a figure for August, and no way to say what
+ * part of it belonged to the 3rd. Asking for a shorter period than the data
+ * set's own returns an empty report, so those types are offered but disabled
+ * rather than left to fail.
+ *
+ * An unknown type on either side is allowed through — better to let the
+ * server refuse it than to hide a period type on a guess.
+ */
+export const canReportAtPeriodType = (dataSetPeriodType, periodType) => {
+    const collected = LENGTH_IN_DAYS[dataSetPeriodType]
+    const asked = LENGTH_IN_DAYS[periodType]
+
+    return !collected || !asked || asked >= collected
+}
+
 const today = () => new Date().toISOString().slice(0, 10)
 
 /**

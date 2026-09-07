@@ -408,6 +408,8 @@ export const OrgUnitDistReportNext = () => {
                     ? i18n.t('Not updated with latest options')
                     : undefined
             }
+            onStaleAction={onGenerate}
+            staleActionDisabled={!canGenerate}
             rail={rail}
         >
             {reportError && (
