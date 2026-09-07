@@ -377,34 +377,12 @@ export const StandardReportNext = ({ match }) => {
                         <form className={styles.railForm} onSubmit={onGenerate}>
                             <div className={styles.railScroll}>
                                 <div className={styles.railFields}>
-                                    {/*
-                                     * Which report. Its own group, so the
-                                     * options below are plainly options *for*
-                                     * this report rather than more of the
-                                     * same list.
-                                     */}
-                                    <section className={styles.group}>
-                                        <h3 className={styles.groupTitle}>
-                                            {i18n.t('Template')}
-                                        </h3>
-
-                                        {reportsResult.loading && (
-                                            <CircularLoader small />
-                                        )}
-
-                                        {selected && (
-                                            <div className={styles.chosen}>
-                                                <span
-                                                    className={
-                                                        styles.chosenName
-                                                    }
-                                                    title={selected.displayName}
-                                                >
-                                                    {selected.displayName}
-                                                </span>
-                                            </div>
-                                        )}
-                                    </section>
+                                    {/* Which report you are on is the
+                                     * breadcrumb's job; the rail is only the
+                                     * options for it. */}
+                                    {reportsResult.loading && (
+                                        <CircularLoader small />
+                                    )}
 
                                     {selected && (
                                         <>

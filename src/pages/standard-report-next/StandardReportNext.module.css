@@ -418,19 +418,6 @@
     white-space: nowrap;
 }
 
-/* ---------- configure mode ---------- */
-
-/* The collapsed list: which report you picked. */
-.chosen {
-    padding: 4px 0;
-}
-
-.chosenName {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--grey900);
-}
-
 /* ---------- management dialogs ---------- */
 
 .dialogNotice {
