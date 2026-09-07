@@ -62,12 +62,57 @@ const statusFor = (min, max) => {
     return DAY_STATUS.OK
 }
 
+const HOURS = 24
+
+/*
+ * One day's 24 hourly readings. A normal day drifts gently around the middle
+ * of the safe band with a slight midday warming; a spoilt day has an excursion
+ * pushed into a window of hours — this is what the day-trace chart draws, and
+ * the daily min/max on the calendar is read back off it, so the two can never
+ * disagree.
+ */
+const buildHourly = (rand, kind) => {
+    const centre = 4.5 + (rand() - 0.5) * 1.4
+
+    /* A warm excursion sits in the afternoon; a cold one runs overnight. */
+    const window =
+        kind === DAY_STATUS.WARM
+            ? { start: 11 + Math.floor(rand() * 4), peak: 9.5 + rand() * 3.5 }
+            : kind === DAY_STATUS.COLD
+            ? { start: 1 + Math.floor(rand() * 3), peak: -1.5 - rand() * 2.5 }
+            : null
+    const span = window ? 3 + Math.floor(rand() * 3) : 0
+    /* Centre the bump on a whole hour so one reading actually reaches the peak
+     * — otherwise the excursion only grazes the threshold and reads as mild. */
+    const mid = window ? Math.round(window.start + span / 2) : 0
+
+    const hourly = []
+    for (let hour = 0; hour < HOURS; hour++) {
+        /* Base diurnal wave, warmest mid-afternoon, plus a little noise. */
+        let temp =
+            centre +
+            0.6 * Math.sin(((hour - 6) / HOURS) * 2 * Math.PI) +
+            (rand() - 0.5) * 0.6
+
+        if (window && hour >= window.start && hour <= window.start + span) {
+            /* A triangular bump towards the peak, tallest at the middle of
+             * the window and tapering to the edges. */
+            const closeness = 1 - Math.abs(hour - mid) / (span / 2 + 0.5)
+            temp = temp + (window.peak - temp) * Math.max(closeness, 0)
+        }
+
+        hourly.push(round1(temp))
+    }
+    return { hourly, span }
+}
+
 /*
  * Build the month's daily readings for one facility.
  *
  * `month` is a `YYYY-MM` string (what the rail's month input produces).
- * Returns the facility, the days of that month as { date, day, weekday, min,
- * max, status, note }, and the excursions pulled out for the summary list.
+ * Returns the facility, the days of that month as { date, day, weekday,
+ * hourly, min, max, status, note }, and the excursions pulled out for the
+ * summary list.
  */
 export const buildFridgeLog = (facilityId, month) => {
     const facility = FACILITIES.find((f) => f.id === facilityId)
@@ -102,6 +147,7 @@ export const buildFridgeLog = (facilityId, month) => {
                 date,
                 day,
                 weekday,
+                hourly: null,
                 min: null,
                 max: null,
                 status: DAY_STATUS.MISSING,
@@ -110,29 +156,32 @@ export const buildFridgeLog = (facilityId, month) => {
             continue
         }
 
-        /* A normal day drifts gently around the middle of the safe band. */
-        const centre = 4.5 + (rand() - 0.5) * 1.6
-        const spread = 0.6 + rand() * 1.2
-        let min = round1(centre - spread)
-        let max = round1(centre + spread)
-        let note = null
+        /* What kind of day to draw — a plain one, or one carrying an
+         * engineered excursion so the demo always has something to open. */
+        const kind =
+            day === warmDay
+                ? DAY_STATUS.WARM
+                : day === coldDay
+                ? DAY_STATUS.COLD
+                : DAY_STATUS.OK
 
-        if (day === warmDay) {
-            max = round1(9.5 + rand() * 3) // door left open, power cut
-            note = `Peaked at ${max} °C for ${
-                2 + Math.floor(rand() * 4)
-            } h`
-        } else if (day === coldDay) {
-            min = round1(-1.5 - rand() * 2) // thermostat set too low, frozen
-            note = `Dropped to ${min} °C overnight`
+        const { hourly, span } = buildHourly(rand, kind)
+        const min = Math.min(...hourly)
+        const max = Math.max(...hourly)
+        const status = statusFor(min, max)
+
+        let note = null
+        if (status === DAY_STATUS.WARM) {
+            note = `Peaked at ${max} °C for about ${span} h` // door left open
+        } else if (status === DAY_STATUS.COLD) {
+            note = `Dropped to ${min} °C overnight` // thermostat too low
         }
 
-        const status = statusFor(min, max)
         if (status !== DAY_STATUS.OK) {
             excursions.push({ day, date, status, note, min, max })
         }
 
-        days.push({ date, day, weekday, min, max, status, note })
+        days.push({ date, day, weekday, hourly, min, max, status, note })
     }
 
     const logged = days.filter((d) => d.status !== DAY_STATUS.MISSING).length

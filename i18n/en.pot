@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-09-02T09:38:08.086Z\n"
-"PO-Revision-Date: 2026-09-02T09:38:08.087Z\n"
+"POT-Creation-Date: 2026-09-07T07:33:04.067Z\n"
+"PO-Revision-Date: 2026-09-07T07:33:04.067Z\n"
 
 msgid "Updating Organisation Units Tree..."
 msgstr "Updating Organisation Units Tree..."
@@ -71,6 +71,12 @@ msgstr "No matches found"
 msgid "Type to search a report table"
 msgstr "Type to search a report table"
 
+msgid "Breadcrumb"
+msgstr "Breadcrumb"
+
+msgid "Reports"
+msgstr "Reports"
+
 msgid "Configure and create a report to get started."
 msgstr "Configure and create a report to get started."
 
@@ -79,12 +85,6 @@ msgstr "Show report options"
 
 msgid "Hide report options"
 msgstr "Hide report options"
-
-msgid "Reports"
-msgstr "Reports"
-
-msgid "All reports"
-msgstr "All reports"
 
 msgid "Reports built for you"
 msgstr "Reports built for you"
@@ -98,23 +98,20 @@ msgstr "Designed by your team"
 msgid "Reports built outside the app"
 msgstr "Reports built outside the app"
 
-msgid "Files and links"
-msgstr "Files and links"
+msgid "View or print data entered for a data set."
+msgstr "View or print data entered for a data set."
 
-msgid "Not a report"
-msgstr "Not a report"
+msgid "View organisation units by group."
+msgstr "View organisation units by group."
 
-msgid "A form, filled in, ready to print"
-msgstr "A form, filled in, ready to print"
+msgid "Run a predefined report."
+msgstr "Run a predefined report."
 
-msgid "How your facilities break down"
-msgstr "How your facilities break down"
+msgid "Check vaccine fridge daily temperatures for the month."
+msgstr "Check vaccine fridge daily temperatures for the month."
 
-msgid "Run a report your team designed"
-msgstr "Run a report your team designed"
-
-msgid "Documents and web links"
-msgstr "Documents and web links"
+msgid "MAL-NGO-2027 reporting summary."
+msgstr "MAL-NGO-2027 reporting summary."
 
 msgid "Standard Report"
 msgstr "Standard Report"
@@ -128,6 +125,9 @@ msgstr ""
 
 msgid "View Reports"
 msgstr "View Reports"
+
+msgid "Standard report"
+msgstr "Standard report"
 
 msgid "Reports your team designed, run against current data."
 msgstr "Reports your team designed, run against current data."
@@ -145,6 +145,9 @@ msgstr ""
 msgid "Get Report"
 msgstr "Get Report"
 
+msgid "Data set report"
+msgstr "Data set report"
+
 msgid "A data entry form with aggregated data filled in, ready to print."
 msgstr "A data entry form with aggregated data filled in, ready to print."
 
@@ -158,8 +161,8 @@ msgstr ""
 "Browse the reporting rates of data sets by organisation unit and period "
 "based on various criteria for submission."
 
-msgid "Resource"
-msgstr "Resource"
+msgid "Resources"
+msgstr "Resources"
 
 msgid ""
 "View and add resources. These resources can be uploaded documents or URLs "
@@ -181,12 +184,34 @@ msgstr ""
 "Browse the organisation unit distribution report based on the organisation "
 "unit group sets and its groups."
 
+msgid "Organisation unit distribution report"
+msgstr "Organisation unit distribution report"
+
 msgid ""
 "How the organisation units under one part of the hierarchy break down by "
 "group."
 msgstr ""
 "How the organisation units under one part of the hierarchy break down by "
 "group."
+
+msgid "Cold chain fridge log"
+msgstr "Cold chain fridge log"
+
+msgid ""
+"Daily vaccine fridge temperatures for a facility and month, with cold-chain "
+"breaches flagged."
+msgstr ""
+"Daily vaccine fridge temperatures for a facility and month, with cold-chain "
+"breaches flagged."
+
+msgid "Get Log"
+msgstr "Get Log"
+
+msgid "Malaria weekly bulletin"
+msgstr "Malaria weekly bulletin"
+
+msgid "Get Bulletin"
+msgstr "Get Bulletin"
 
 msgid "Reporting Period"
 msgstr "Reporting Period"
@@ -196,6 +221,88 @@ msgstr "Organisation Unit"
 
 msgid "CONFIRM"
 msgstr "CONFIRM"
+
+msgid "Print"
+msgstr "Print"
+
+msgid "Facility"
+msgstr "Facility"
+
+msgid "Month"
+msgstr "Month"
+
+msgid "Get log"
+msgstr "Get log"
+
+msgid "Clear"
+msgstr "Clear"
+
+msgid "Configure log"
+msgstr "Configure log"
+
+msgid "Not updated with latest options"
+msgstr "Not updated with latest options"
+
+msgid "Low {{min}} °C · High {{max}} °C"
+msgstr "Low {{min}} °C · High {{max}} °C"
+
+msgid ""
+"Prototype — a plugin could push these readings back into DHIS2 as data "
+"values."
+msgstr ""
+"Prototype — a plugin could push these readings back into DHIS2 as data "
+"values."
+
+msgid "Import as data elements…"
+msgstr "Import as data elements…"
+
+msgid "Cold chain breaches"
+msgstr "Cold chain breaches"
+
+msgid "No cold chain breaches"
+msgstr "No cold chain breaches"
+
+msgid "The fridge stayed between 2 °C and 8 °C every day it was logged."
+msgstr "The fridge stayed between 2 °C and 8 °C every day it was logged."
+
+msgid "Mon"
+msgstr "Mon"
+
+msgid "Tue"
+msgstr "Tue"
+
+msgid "Wed"
+msgstr "Wed"
+
+msgid "Thu"
+msgstr "Thu"
+
+msgid "Fri"
+msgstr "Fri"
+
+msgid "Sat"
+msgstr "Sat"
+
+msgid "Sun"
+msgstr "Sun"
+
+msgid "View hourly trace"
+msgstr "View hourly trace"
+
+msgid "—"
+msgstr "—"
+
+msgid "In range (2–8 °C)"
+msgstr "In range (2–8 °C)"
+
+msgid "Too cold"
+msgstr "Too cold"
+
+msgid "Too warm"
+msgstr "Too warm"
+
+msgid "No reading"
+msgstr "No reading"
 
 msgid "Report period"
 msgstr "Report period"
@@ -232,9 +339,6 @@ msgstr "Data collected yearly"
 
 msgid "Any"
 msgstr "Any"
-
-msgid "Print"
-msgstr "Print"
 
 msgid "{{ext}}"
 msgstr "{{ext}}"
@@ -290,12 +394,6 @@ msgstr "Choose a period"
 msgid "Get report"
 msgstr "Get report"
 
-msgid "Clear"
-msgstr "Clear"
-
-msgid "Not updated with latest options"
-msgstr "Not updated with latest options"
-
 msgid "The report could not be built"
 msgstr "The report could not be built"
 
@@ -305,11 +403,11 @@ msgstr "Generating report..."
 msgid "{{orgUnit}} and units inside"
 msgstr "{{orgUnit}} and units inside"
 
-msgid "Standard"
-msgstr "Standard"
+msgid "Summary"
+msgstr "Summary"
 
-msgid "Form"
-msgstr "Form"
+msgid "Data entry form"
+msgstr "Data entry form"
 
 msgid "No data for this selection"
 msgstr "No data for this selection"
@@ -323,6 +421,9 @@ msgstr ""
 
 msgid "Your filters may also be too narrow."
 msgstr "Your filters may also be too narrow."
+
+msgid "Recently created reports"
+msgstr "Recently created reports"
 
 msgid "This data set is not available for form view"
 msgstr "This data set is not available for form view"
@@ -395,11 +496,156 @@ msgstr "Type here to filter rows in this section"
 msgid "1 item hidden by filter"
 msgstr "1 item hidden by filter"
 
-msgid "Get Chart"
-msgstr "Get Chart"
+msgid "Designed by {{name}}"
+msgstr "Designed by {{name}}"
+
+msgid "Search reports"
+msgstr "Search reports"
+
+msgid "Sort by"
+msgstr "Sort by"
+
+msgid "Name (A–Z)"
+msgstr "Name (A–Z)"
+
+msgid "Name (Z–A)"
+msgstr "Name (Z–A)"
+
+msgid "Recently used"
+msgstr "Recently used"
+
+msgid "Built-in reports"
+msgstr "Built-in reports"
+
+msgid "Custom reports"
+msgstr "Custom reports"
+
+msgid "Manage standard reports"
+msgstr "Manage standard reports"
+
+msgid "No reports match “{{term}}”."
+msgstr "No reports match “{{term}}”."
+
+msgid "about level with the week before"
+msgstr "about level with the week before"
+
+msgid "up {{pct}} on the week before"
+msgstr "up {{pct}} on the week before"
+
+msgid "down {{pct}} on the week before"
+msgstr "down {{pct}} on the week before"
+
+msgid "{{confirmed}} confirmed cases, {{trend}}. Test positivity {{positivity}}%."
+msgstr "{{confirmed}} confirmed cases, {{trend}}. Test positivity {{positivity}}%."
+
+msgid "Suspected"
+msgstr "Suspected"
+
+msgid "Tested"
+msgstr "Tested"
+
+msgid "Confirmed"
+msgstr "Confirmed"
+
+msgid "Positivity"
+msgstr "Positivity"
+
+msgid "Deaths"
+msgstr "Deaths"
+
+msgid "Epidemiological week"
+msgstr "Epidemiological week"
+
+msgid "Get bulletin"
+msgstr "Get bulletin"
+
+msgid "Configure bulletin"
+msgstr "Configure bulletin"
+
+msgid "National Malaria Control Programme"
+msgstr "National Malaria Control Programme"
+
+msgid "Weekly Malaria Surveillance Bulletin"
+msgstr "Weekly Malaria Surveillance Bulletin"
+
+msgid "Reporting unit"
+msgstr "Reporting unit"
+
+msgid "Epi week"
+msgstr "Epi week"
+
+msgid "W{{week}} / {{year}}"
+msgstr "W{{week}} / {{year}}"
+
+msgid "Prepared by"
+msgstr "Prepared by"
+
+msgid "Date"
+msgstr "Date"
+
+msgid "1. Summary"
+msgstr "1. Summary"
+
+msgid "2. Key indicators"
+msgstr "2. Key indicators"
+
+msgid "Indicator"
+msgstr "Indicator"
+
+msgid "This week"
+msgstr "This week"
+
+msgid "Prev. week"
+msgstr "Prev. week"
+
+msgid "% change"
+msgstr "% change"
+
+msgid "3. Confirmed cases — last {{n}} weeks"
+msgstr "3. Confirmed cases — last {{n}} weeks"
+
+msgid "4. Confirmed cases by age group"
+msgstr "4. Confirmed cases by age group"
+
+msgid "Age group"
+msgstr "Age group"
+
+msgid "Cases"
+msgstr "Cases"
+
+msgid "% of total"
+msgstr "% of total"
 
 msgid "Total"
 msgstr "Total"
+
+msgid "5. Review and approval"
+msgstr "5. Review and approval"
+
+msgid "Role"
+msgstr "Role"
+
+msgid "Name"
+msgstr "Name"
+
+msgid "Signature"
+msgstr "Signature"
+
+msgid "Surveillance Officer"
+msgstr "Surveillance Officer"
+
+msgid "District Medical Officer"
+msgstr "District Medical Officer"
+
+msgid ""
+"CONFIDENTIAL — For official use only. Compiled from routine HMIS "
+"surveillance data."
+msgstr ""
+"CONFIDENTIAL — For official use only. Compiled from routine HMIS "
+"surveillance data."
+
+msgid "Get Chart"
+msgstr "Get Chart"
 
 msgid "All of {{name}}"
 msgstr "All of {{name}}"
@@ -486,6 +732,9 @@ msgstr "Name*"
 
 msgid "Details"
 msgstr "Details"
+
+msgid "Resource"
+msgstr "Resource"
 
 msgid "Resource Type"
 msgstr "Resource Type"
@@ -583,23 +832,61 @@ msgstr "Cache until 6 AM tomorrow"
 msgid "Cache for two weeks"
 msgstr "Cache for two weeks"
 
-msgid "Not built yet"
-msgstr "Not built yet"
+msgid "A name is required"
+msgstr "A name is required"
+
+msgid "A design file is required"
+msgstr "A design file is required"
+
+msgid "A cache strategy is required"
+msgstr "A cache strategy is required"
 
 msgid "New standard report"
 msgstr "New standard report"
 
-msgid "This will become the report creation form. Nothing is saved yet."
-msgstr "This will become the report creation form. Nothing is saved yet."
+msgid ""
+"Register a report design so it can be run against current data. Fields "
+"marked with * are required."
+msgstr ""
+"Register a report design so it can be run against current data. Fields "
+"marked with * are required."
 
-msgid "Name"
-msgstr "Name"
-
-msgid "What people will see in the list"
-msgstr "What people will see in the list"
+msgid "Displayed in the standard report list."
+msgstr "Displayed in the standard report list."
 
 msgid "Design file"
 msgstr "Design file"
+
+msgid "The HTML design file that defines the report layout."
+msgstr "The HTML design file that defines the report layout."
+
+msgid "Selected parameters are requested when the report is run."
+msgstr "Selected parameters are requested when the report is run."
+
+msgid ""
+"Restrict the periods the report may be run for. If none are selected, all "
+"periods are permitted."
+msgstr ""
+"Restrict the periods the report may be run for. If none are selected, all "
+"periods are permitted."
+
+msgid "Cache strategy"
+msgstr "Cache strategy"
+
+msgid "How long a generated report may be reused before it is regenerated."
+msgstr "How long a generated report may be reused before it is regenerated."
+
+msgid "Create report"
+msgstr "Create report"
+
+msgid "Not built yet"
+msgstr "Not built yet"
+
+msgid "This will become the report creation form. Nothing is saved yet."
+msgstr "This will become the report creation form. Nothing is saved yet."
+
+msgid "What people will see in the list"
+msgstr "What people will see in the list"
 
 msgid "The HTML your team wrote, uploaded here"
 msgstr "The HTML your team wrote, uploaded here"
@@ -619,9 +906,6 @@ msgstr "Periods allowed"
 
 msgid "Which periods it may be run for"
 msgstr "Which periods it may be run for"
-
-msgid "Cache strategy"
-msgstr "Cache strategy"
 
 msgid "How long a generated report may be reused"
 msgstr "How long a generated report may be reused"
@@ -687,6 +971,9 @@ msgstr "Report"
 msgid "Parameters"
 msgstr "Parameters"
 
+msgid "Last used"
+msgstr "Last used"
+
 msgid "Created by"
 msgstr "Created by"
 
@@ -698,6 +985,9 @@ msgstr "Last changed"
 
 msgid "Actions"
 msgstr "Actions"
+
+msgid "Never"
+msgstr "Never"
 
 msgid "No report matches “{{search}}”."
 msgstr "No report matches “{{search}}”."
@@ -744,6 +1034,199 @@ msgid ""
 msgstr ""
 "It may have been deleted, or it may be a type this page cannot run. Go back "
 "to all reports to pick another."
+
+msgid "Ministry of Health, HMIS unit"
+msgstr "Ministry of Health, HMIS unit"
+
+msgid "Immunisation coverage summary"
+msgstr "Immunisation coverage summary"
+
+msgid "Facility reporting rates"
+msgstr "Facility reporting rates"
+
+msgid "Maternal health quarterly review"
+msgstr "Maternal health quarterly review"
+
+msgid ""
+"Figures are illustrative and provided for demonstration purposes. "
+"Aggregated from routine facility reporting."
+msgstr ""
+"Figures are illustrative and provided for demonstration purposes. "
+"Aggregated from routine facility reporting."
+
+msgid ""
+"Penta 3 coverage stands at <strong>88%</strong> and 142 of 148 facilities "
+"reported for the period. Measles 2 remains the lowest coverage of the "
+"schedule at 58%."
+msgstr ""
+"Penta 3 coverage stands at <strong>88%</strong> and 142 of 148 facilities "
+"reported for the period. Measles 2 remains the lowest coverage of the "
+"schedule at 58%."
+
+msgid "Coverage by antigen"
+msgstr "Coverage by antigen"
+
+msgid "Immunisation coverage by antigen (%)"
+msgstr "Immunisation coverage by antigen (%)"
+
+msgid "Coverage"
+msgstr "Coverage"
+
+msgid "Doses administered"
+msgstr "Doses administered"
+
+msgid "Antigen"
+msgstr "Antigen"
+
+msgid "Doses"
+msgstr "Doses"
+
+msgid "Target population"
+msgstr "Target population"
+
+msgid "All antigens"
+msgstr "All antigens"
+
+msgid ""
+"Coverage is doses administered against the projected surviving infant "
+"population for the period."
+msgstr ""
+"Coverage is doses administered against the projected surviving infant "
+"population for the period."
+
+msgid ""
+"The national reporting rate for the monthly summary form is "
+"<strong>93%</strong>, with 187 of 201 expected reports received. Koinadugu "
+"and Kambia remain below 80%."
+msgstr ""
+"The national reporting rate for the monthly summary form is "
+"<strong>93%</strong>, with 187 of 201 expected reports received. Koinadugu "
+"and Kambia remain below 80%."
+
+msgid "Completeness and timeliness by district"
+msgstr "Completeness and timeliness by district"
+
+msgid "Reporting rate and on-time reporting by district (%)"
+msgstr "Reporting rate and on-time reporting by district (%)"
+
+msgid "Reporting rate"
+msgstr "Reporting rate"
+
+msgid "Reported on time"
+msgstr "Reported on time"
+
+msgid "Reports received"
+msgstr "Reports received"
+
+msgid "District"
+msgstr "District"
+
+msgid "Facilities"
+msgstr "Facilities"
+
+msgid "Expected reports"
+msgstr "Expected reports"
+
+msgid "On time"
+msgstr "On time"
+
+msgid "National"
+msgstr "National"
+
+msgid ""
+"Expected reports are derived from facilities assigned to the data set for "
+"the period."
+msgstr ""
+"Expected reports are derived from facilities assigned to the data set for "
+"the period."
+
+msgid "ANC 1st visit"
+msgstr "ANC 1st visit"
+
+msgid "ANC 4th visit"
+msgstr "ANC 4th visit"
+
+msgid "Deliveries in a health facility"
+msgstr "Deliveries in a health facility"
+
+msgid "Skilled birth attendance"
+msgstr "Skilled birth attendance"
+
+msgid "Postnatal care within 48 hours"
+msgstr "Postnatal care within 48 hours"
+
+msgid "IPTp 3 doses"
+msgstr "IPTp 3 doses"
+
+msgid ""
+"ANC 4th visit coverage has risen for a fourth consecutive quarter to "
+"<strong>74%</strong>. Facility deliveries reached 15,870, and 18 of 21 "
+"maternal deaths were reviewed."
+msgstr ""
+"ANC 4th visit coverage has risen for a fourth consecutive quarter to "
+"<strong>74%</strong>. Facility deliveries reached 15,870, and 18 of 21 "
+"maternal deaths were reviewed."
+
+msgid "Trend over the last four quarters"
+msgstr "Trend over the last four quarters"
+
+msgid "Antenatal care and delivery coverage (%)"
+msgstr "Antenatal care and delivery coverage (%)"
+
+msgid "Indicators for the period"
+msgstr "Indicators for the period"
+
+msgid "Maternal health coverage for the quarter (%)"
+msgstr "Maternal health coverage for the quarter (%)"
+
+msgid "ANC 1"
+msgstr "ANC 1"
+
+msgid "ANC 4"
+msgstr "ANC 4"
+
+msgid "Facility delivery"
+msgstr "Facility delivery"
+
+msgid "Skilled birth"
+msgstr "Skilled birth"
+
+msgid "PNC 48h"
+msgstr "PNC 48h"
+
+msgid "IPTp 3"
+msgstr "IPTp 3"
+
+msgid ""
+"Coverage is measured against the expected number of pregnancies for the "
+"period."
+msgstr ""
+"Coverage is measured against the expected number of pregnancies for the "
+"period."
+
+msgid "Bo Government Hospital · Expanded Programme on Immunisation"
+msgstr "Bo Government Hospital · Expanded Programme on Immunisation"
+
+msgid "Routine immunisation performance against the projected infant population"
+msgstr "Routine immunisation performance against the projected infant population"
+
+msgid "Kenema District Health Management Team"
+msgstr "Kenema District Health Management Team"
+
+msgid "Completeness and timeliness of the monthly summary form"
+msgstr "Completeness and timeliness of the monthly summary form"
+
+msgid "Makeni Maternal and Child Health Centre"
+msgstr "Makeni Maternal and Child Health Centre"
+
+msgid "Antenatal care, delivery and postnatal indicators for the quarter"
+msgstr "Antenatal care, delivery and postnatal indicators for the quarter"
+
+msgid "All organisation units"
+msgstr "All organisation units"
+
+msgid "Current period"
+msgstr "Current period"
 
 msgid "just now"
 msgstr "just now"
@@ -1236,31 +1719,3 @@ msgstr "Upload file"
 
 msgid "Confirm delete"
 msgstr "Confirm delete"
-
-msgctxt "Application title"
-msgid "__MANIFEST_APP_TITLE"
-msgstr "Reports"
-
-msgctxt "Application description"
-msgid "__MANIFEST_APP_DESCRIPTION"
-msgstr ""
-
-msgctxt "Title for shortcut used by command palette"
-msgid "__MANIFEST_SHORTCUT_Standard report"
-msgstr "Standard report"
-
-msgctxt "Title for shortcut used by command palette"
-msgid "__MANIFEST_SHORTCUT_Data set report"
-msgstr "Data set report"
-
-msgctxt "Title for shortcut used by command palette"
-msgid "__MANIFEST_SHORTCUT_Reporting rates summary"
-msgstr "Reporting rates summary"
-
-msgctxt "Title for shortcut used by command palette"
-msgid "__MANIFEST_SHORTCUT_Resources"
-msgstr "Resources"
-
-msgctxt "Title for shortcut used by command palette"
-msgid "__MANIFEST_SHORTCUT_Org unit distribution report"
-msgstr "Org unit distribution report"

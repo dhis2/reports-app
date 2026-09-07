@@ -77,6 +77,30 @@
     justify-content: space-between;
     padding: 4px 5px;
     border: 1px solid rgba(0, 0, 0, 0.06);
+    /* The cells are buttons now — strip the default chrome, keep the layout. */
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition: box-shadow 0.08s ease;
+}
+
+.day:hover:not(:disabled) {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18);
+}
+
+.day:disabled {
+    cursor: default;
+}
+
+.day:focus-visible {
+    outline: 2px solid #1a73e8;
+    outline-offset: 1px;
+}
+
+/* The opened day, held with a ring so it reads against its status fill. */
+.daySelected,
+.daySelected:hover:not(:disabled) {
+    box-shadow: 0 0 0 2px #1a1a1a;
 }
 
 .dayNumber {
@@ -145,6 +169,51 @@
     height: 14px;
     border-radius: 3px;
     border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* ---------- day trace (drill-down) ---------- */
+
+.trace {
+    margin-top: 20px;
+    max-width: 720px;
+    padding: 14px 16px 8px;
+    border: 1px solid var(--grey300, #d5dde5);
+    border-radius: 4px;
+    background: var(--grey050, #fbfcfd);
+}
+
+.traceHead {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.traceTitle {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--grey900, #212934);
+}
+
+.traceSub {
+    margin: 2px 0 0;
+    font-size: 12px;
+    color: var(--grey700, #4a5768);
+    font-variant-numeric: tabular-nums;
+}
+
+.traceSvg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.traceAxis {
+    fill: var(--grey600, #6c7787);
+    font-size: 11px;
+    font-variant-numeric: tabular-nums;
 }
 
 /* ---------- excursions ---------- */

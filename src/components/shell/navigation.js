@@ -2,7 +2,6 @@ import i18n from '@dhis2/d2-i18n'
 import {
     IconCalendar24,
     IconFileDocument24,
-    IconFolder24,
     IconTable24,
     IconVisualizationColumn24,
     IconVisualizationLine24,
@@ -12,7 +11,6 @@ import {
     MALARIA_WEEKLY_BULLETIN_SECTION_KEY,
     DATA_SET_REPORT_NEXT_SECTION_KEY,
     ORG_UNIT_DIST_REPORT_NEXT_SECTION_KEY,
-    RESOURCE_SECTION_KEY,
     STANDARD_REPORT_NEXT_SECTION_KEY,
     sections,
 } from '../../config/sections.config.js'
@@ -41,18 +39,12 @@ const GROUPS = [
         hint: i18n.t('Reports built outside the app'),
         keys: [STANDARD_REPORT_NEXT_SECTION_KEY],
     },
-    {
-        label: i18n.t('Files and links'),
-        hint: i18n.t('Not a report'),
-        keys: [RESOURCE_SECTION_KEY],
-    },
 ]
 
 const ICONS = {
     [DATA_SET_REPORT_NEXT_SECTION_KEY]: IconTable24,
     [ORG_UNIT_DIST_REPORT_NEXT_SECTION_KEY]: IconVisualizationColumn24,
     [STANDARD_REPORT_NEXT_SECTION_KEY]: IconFileDocument24,
-    [RESOURCE_SECTION_KEY]: IconFolder24,
     [COLD_CHAIN_FRIDGE_LOG_SECTION_KEY]: IconCalendar24,
     [MALARIA_WEEKLY_BULLETIN_SECTION_KEY]: IconVisualizationLine24,
 }
@@ -69,9 +61,6 @@ const QUESTIONS = {
         'View organisation units by group.'
     ),
     [STANDARD_REPORT_NEXT_SECTION_KEY]: i18n.t('Run a predefined report.'),
-    [RESOURCE_SECTION_KEY]: i18n.t(
-        'Upload and manage documents and web links.'
-    ),
     [COLD_CHAIN_FRIDGE_LOG_SECTION_KEY]: i18n.t(
         'Check vaccine fridge daily temperatures for the month.'
     ),

@@ -1,9 +1,11 @@
 import i18n from '@dhis2/d2-i18n'
 import {
     Button,
+    IconDownload24,
     NoticeBox,
     SingleSelectField,
     SingleSelectOption,
+    Tooltip,
 } from '@dhis2/ui'
 import React, { useState } from 'react'
 import { ReportEmptyState } from '../../components/shell/ReportEmptyState.jsx'
@@ -11,6 +13,7 @@ import { ReportRailLayout } from '../../components/shell/ReportRailLayout.jsx'
 import railStyles from '../../components/shell/ReportRailLayout.module.css'
 import { COLD_CHAIN_FRIDGE_LOG_SECTION_KEY } from '../../config/sections.config.js'
 import styles from './ColdChainFridgeLog.module.css'
+import { DayTrace } from './DayTrace.jsx'
 import { FridgeCalendar } from './FridgeCalendar.jsx'
 import { buildFridgeLog, FACILITIES, DAY_STATUS } from './fridgeData.js'
 
@@ -41,6 +44,14 @@ const monthLabel = (log) =>
 const excursionDate = (date) =>
     date.toLocaleDateString(undefined, { day: 'numeric', month: 'short' })
 
+/* The heading over an opened day's trace, e.g. "Tuesday 12 September". */
+const dayLabel = (dayObj) =>
+    dayObj.date.toLocaleDateString(undefined, {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'long',
+    })
+
 export const ColdChainFridgeLog = () => {
     const [facilityId, setFacilityId] = useState(FACILITIES[0].id)
     const [month, setMonth] = useState(thisMonth)
@@ -52,12 +63,17 @@ export const ColdChainFridgeLog = () => {
      */
     const [log, setLog] = useState(null)
 
+    /* Which day's hourly trace is open beneath the calendar, if any. Per-view
+     * state, not part of the report — cleared whenever a new log is built. */
+    const [selectedDay, setSelectedDay] = useState(null)
+
     const canGenerate = Boolean(facilityId && month)
 
     const onGenerate = (event) => {
         event?.preventDefault()
         if (canGenerate) {
             setLog(buildFridgeLog(facilityId, month))
+            setSelectedDay(null)
         }
     }
 
@@ -65,11 +81,21 @@ export const ColdChainFridgeLog = () => {
         setFacilityId(FACILITIES[0].id)
         setMonth(thisMonth())
         setLog(null)
+        setSelectedDay(null)
     }
 
     const isStale = Boolean(
         log && (log.facility.id !== facilityId || log.month !== month)
     )
+
+    /* The opened day, resolved against the current log. A day with no hourly
+     * trace (a missing day) is never openable, so this is always chartable. */
+    const selectedDayObj =
+        log && selectedDay
+            ? log.days.find(
+                  (day) => day.day === selectedDay && day.hourly
+              )
+            : null
 
     const actions = log ? (
         <Button small onClick={() => window.print()}>
@@ -177,7 +203,54 @@ export const ColdChainFridgeLog = () => {
                     </div>
 
                     <div className={styles.body}>
-                        <FridgeCalendar log={log} />
+                        <FridgeCalendar
+                            log={log}
+                            selectedDay={selectedDay}
+                            onSelectDay={setSelectedDay}
+                        />
+
+                        {selectedDayObj && (
+                            <section className={styles.trace}>
+                                <div className={styles.traceHead}>
+                                    <div>
+                                        <h3 className={styles.traceTitle}>
+                                            {dayLabel(selectedDayObj)}
+                                        </h3>
+                                        <p className={styles.traceSub}>
+                                            {i18n.t(
+                                                'Low {{min}} °C · High {{max}} °C',
+                                                {
+                                                    min: selectedDayObj.min,
+                                                    max: selectedDayObj.max,
+                                                }
+                                            )}
+                                        </p>
+                                    </div>
+                                    {/*
+                                     * The hint that this is an application, not
+                                     * a printed report: an action a plugin can
+                                     * offer that an HTML template never could.
+                                     * Inert in the prototype — it only has to
+                                     * suggest the possibility.
+                                     */}
+                                    <Tooltip
+                                        content={i18n.t(
+                                            'Prototype — a plugin could push these readings back into DHIS2 as data values.'
+                                        )}
+                                    >
+                                        <Button
+                                            small
+                                            icon={<IconDownload24 />}
+                                            onClick={() => {}}
+                                        >
+                                            {i18n.t('Import as data elements…')}
+                                        </Button>
+                                    </Tooltip>
+                                </div>
+
+                                <DayTrace hourly={selectedDayObj.hourly} />
+                            </section>
+                        )}
 
                         {log.excursions.length > 0 ? (
                             <section className={styles.excursions}>

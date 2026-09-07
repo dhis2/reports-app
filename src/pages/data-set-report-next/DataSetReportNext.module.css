@@ -511,6 +511,14 @@
     color: var(--grey700);
 }
 
+/* Names what the control switches, rather than leaving it to be inferred. */
+.viewAsLabel {
+    flex: none;
+    margin-right: -8px;
+    font-size: 14px;
+    color: var(--grey700);
+}
+
 .toc {
     display: flex;
     flex-wrap: wrap;
@@ -573,19 +581,22 @@
 }
 
 /*
- * @dhis2/ui's DataTableColumnHeader imposes a very large intrinsic minimum
- * width per cell — measured at ~1160px — so under the default
- * table-layout:auto a ten-column report lays itself out about 11600px wide and
- * every value column ends up off screen. Neither width:auto nor max-content
- * escapes it, because that width really is the table's min-content size.
+ * Column widths are declared rather than left to the browser. Under
+ * table-layout:auto the label column is sized from the same pool as the
+ * values, and on a wide report it loses: a 22-column section leaves the data
+ * element name about 70px, which is unreadable, while each value column gets
+ * more room than a figure needs.
  *
- * Fixed layout ignores content-based minimums, so we set the column widths
- * ourselves: room for the data element name, a readable width for each value,
- * and horizontal scrolling on the container when there are many columns.
- * --table-min-width is set per table from its column count.
+ * Fixed layout lets us spend the width where it earns its keep instead: room
+ * for the data element name, a readable width for each value, and horizontal
+ * scrolling only once there are more columns than fit. --table-min-width is
+ * set per table from its column count, in ReportTables.jsx.
  *
  * The `div` prefix is needed to outrank DataTable's own table-layout:auto,
  * which has the same class-plus-element specificity.
+ *
+ * Note that a header's inner span needs its width taken back off it before
+ * any of this holds — see the flexboxgrid collision in src/global.css.
  */
 div.tableScroll table {
     table-layout: fixed;
@@ -596,6 +607,25 @@ div.tableScroll table {
 div.tableScroll th:first-child,
 div.tableScroll td:first-child {
     width: 260px;
+}
+
+/*
+ * Vertical rules between columns. A figure in the middle of a wide section
+ * belongs to a column, and without a rule to hold it there it reads as loose
+ * on the row.
+ *
+ * DataTableCell takes a `bordered` prop for this and the body cells use it;
+ * DataTableColumnHeader accepts no such prop and forwards nothing, so the
+ * header row is given the same edge here. The colour, and the transparent
+ * last edge that keeps the rightmost rule from doubling up with the table's
+ * own border, both match what `bordered` draws on the cells below.
+ */
+div.tableScroll thead th {
+    border-inline-end: 1px solid var(--grey300);
+}
+
+div.tableScroll thead th:last-child {
+    border-inline-end: 1px solid transparent;
 }
 
 @media print {

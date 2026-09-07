@@ -12,7 +12,7 @@ import styles from './ReportBreadcrumb.module.css'
  * a control; switching section is what the home page is for, so the bar says
  * where you are instead of doubling as navigation.
  */
-export const ReportBreadcrumb = ({ currentSection }) => {
+export const ReportBreadcrumb = ({ currentSection, leaf }) => {
     const section = sections[currentSection]
 
     return (
@@ -26,8 +26,26 @@ export const ReportBreadcrumb = ({ currentSection }) => {
                     <span className={styles.separator} aria-hidden="true">
                         <IconChevronRight16 />
                     </span>
+                    {/* With a leaf, the section becomes the way back to it. */}
+                    {leaf ? (
+                        <Link className={styles.root} to={section.path}>
+                            {section.info.label}
+                        </Link>
+                    ) : (
+                        <span className={styles.current} aria-current="page">
+                            {section.info.label}
+                        </span>
+                    )}
+                </>
+            )}
+
+            {leaf && (
+                <>
+                    <span className={styles.separator} aria-hidden="true">
+                        <IconChevronRight16 />
+                    </span>
                     <span className={styles.current} aria-current="page">
-                        {section.info.label}
+                        {leaf}
                     </span>
                 </>
             )}
@@ -37,6 +55,7 @@ export const ReportBreadcrumb = ({ currentSection }) => {
 
 ReportBreadcrumb.propTypes = {
     currentSection: PropTypes.string,
+    leaf: PropTypes.string,
 }
 
 ReportBreadcrumb.defaultProps = {

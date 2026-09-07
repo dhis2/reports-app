@@ -35,7 +35,7 @@ const cellClass = (status) => {
     }
 }
 
-export const FridgeCalendar = ({ log }) => {
+export const FridgeCalendar = ({ log, selectedDay, onSelectDay }) => {
     const leadOffset = (log.days[0].weekday + 6) % 7
 
     return (
@@ -54,24 +54,34 @@ export const FridgeCalendar = ({ log }) => {
                     <div key={`lead-${i}`} className={styles.dayEmpty} />
                 ))}
 
-                {log.days.map((day) => (
-                    <div
-                        key={day.day}
-                        className={`${styles.day} ${cellClass(day.status)}`}
-                        title={day.note || undefined}
-                    >
-                        <span className={styles.dayNumber}>{day.day}</span>
-                        {day.status === DAY_STATUS.MISSING ? (
-                            <span className={styles.dayReading}>
-                                {i18n.t('—')}
-                            </span>
-                        ) : (
-                            <span className={styles.dayReading}>
-                                {day.min}–{day.max}°
-                            </span>
-                        )}
-                    </div>
-                ))}
+                {log.days.map((day) => {
+                    const missing = day.status === DAY_STATUS.MISSING
+                    const selected = day.day === selectedDay
+                    return (
+                        <button
+                            type="button"
+                            key={day.day}
+                            className={`${styles.day} ${cellClass(
+                                day.status
+                            )} ${selected ? styles.daySelected : ''}`}
+                            title={day.note || i18n.t('View hourly trace')}
+                            disabled={missing}
+                            aria-pressed={selected}
+                            onClick={() => onSelectDay(day.day)}
+                        >
+                            <span className={styles.dayNumber}>{day.day}</span>
+                            {missing ? (
+                                <span className={styles.dayReading}>
+                                    {i18n.t('—')}
+                                </span>
+                            ) : (
+                                <span className={styles.dayReading}>
+                                    {day.min}–{day.max}°
+                                </span>
+                            )}
+                        </button>
+                    )
+                })}
             </div>
 
             <div className={styles.legend}>
@@ -121,4 +131,8 @@ FridgeCalendar.propTypes = {
             })
         ),
     }).isRequired,
+    /** Called with the day number when a cell is clicked. */
+    onSelectDay: PropTypes.func.isRequired,
+    /** The currently opened day, highlighted in the grid. */
+    selectedDay: PropTypes.number,
 }

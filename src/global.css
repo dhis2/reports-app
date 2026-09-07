@@ -222,6 +222,29 @@ input {
 }
 
 /*
+ * ---------- flexboxgrid / @dhis2/ui class collision ----------
+ *
+ * flexboxgrid is imported globally in AppWrapper for its .row and .col-*
+ * classes, and it also ships a fixed-width .container:
+ *
+ *   @media (min-width: 75em) { .container { width: 71rem } }   // 1136px
+ *
+ * @dhis2/ui's DataTableColumnHeader wraps every header label in
+ * `<span class="container">` and makes it display:flex, so that unrelated
+ * rule gives every column header a 1136px-wide child. The cell clips it, so
+ * nothing looks wrong, but the span still counts towards the scroll width of
+ * whatever scrolls the table: a report that fits its container reports
+ * roughly twice its own width and grows a horizontal scrollbar.
+ *
+ * Nothing in this app uses flexboxgrid's .container, so the width is taken
+ * back off the header span. Two classes plus an element outrank the bare
+ * .container; the media query adds no specificity of its own.
+ */
+th.DataTableColumnHeader > span.container {
+    width: auto;
+}
+
+/*
  * ---------- print ----------
  *
  * The DHIS2 header bar and the app-platform wrapper around it are rendered by

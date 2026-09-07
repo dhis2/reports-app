@@ -17,8 +17,8 @@ import cx from 'classnames'
 import PropTypes from 'prop-types'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { RailToggleIcon } from '../../components/shell/RailToggleIcon.jsx'
-import { ReportEmptyState } from '../../components/shell/ReportEmptyState.jsx'
 import { ReportBreadcrumb } from '../../components/shell/ReportBreadcrumb.jsx'
+import { ReportEmptyState } from '../../components/shell/ReportEmptyState.jsx'
 import { DATA_SET_REPORT_NEXT_SECTION_KEY } from '../../config/sections.config.js'
 import { fixedPeriodTranslations } from '../../utils/periods/fixedPeriods.js'
 import { CustomFormReport } from './CustomFormReport.jsx'
@@ -44,8 +44,10 @@ import {
     filtersToParams,
     idFromPath,
 } from './queries.js'
+import { addRecentReport, readRecentReports } from './recentReports.js'
+import { RecentReports } from './RecentReports.jsx'
 import { countValues, ReportTables, transformTables } from './ReportTables.jsx'
-import { useReportSelection } from './useReportSelection.js'
+import { emptySelection, useReportSelection } from './useReportSelection.js'
 
 const CUSTOM_FORM = 'CUSTOM'
 
@@ -257,6 +259,9 @@ export const DataSetReportNext = () => {
     const [ouName, setOuName] = useState('')
     const [railCollapsed, setRailCollapsed] = useState(readRailCollapsed)
     const [viewMode, setViewMode] = useState(readViewMode)
+    const [recent, setRecent] = useState(readRecentReports)
+    /* A recent report picked from the empty state, waiting on its options. */
+    const [pendingRun, setPendingRun] = useState(false)
 
     const onChangeViewMode = ({ value }) => {
         setViewMode(value)
@@ -504,6 +509,29 @@ export const DataSetReportNext = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dataSet, selection.dsId])
 
+    /*
+     * Picking a recent report refills the rail with what it asked for. The
+     * data set ref is moved along with it, so the effect above does not treat
+     * this as "new data set" and replace the period we just restored.
+     */
+    const onSelectRecent = useCallback(
+        (entry) => {
+            lastDataSetId.current = entry.dsId
+            setOuName(entry.orgUnitName || '')
+            setPendingRun(true)
+            update({
+                dsId: entry.dsId,
+                periodType: entry.periodType,
+                year: Number(entry.pe?.slice(0, 4)) || emptySelection.year,
+                pe: entry.pe,
+                ouPath: entry.ouPath,
+                selectedUnitOnly: Boolean(entry.selectedUnitOnly),
+                filters: entry.filters || {},
+            })
+        },
+        [update]
+    )
+
     /* Dimensions belong to a data set, so reload them when it changes. */
     useEffect(() => {
         if (selection.dsId) {
@@ -586,6 +614,19 @@ export const DataSetReportNext = () => {
             setReportLoading(true)
             setReportError(null)
             remember(selection)
+            setRecent(
+                addRecentReport({
+                    dsId: selection.dsId,
+                    dataSetName: snapshot.dataSetName,
+                    periodType: selection.periodType,
+                    pe: selection.pe,
+                    periodName: snapshot.periodName,
+                    ouPath: selection.ouPath,
+                    orgUnitName: snapshot.orgUnitName,
+                    selectedUnitOnly: selection.selectedUnitOnly,
+                    filters: selection.filters,
+                })
+            )
 
             try {
                 const queryGrids = () =>
@@ -656,6 +697,18 @@ export const DataSetReportNext = () => {
             selection,
         ]
     )
+
+    /*
+     * The data set has to be loaded before a report can be built, so a click
+     * on a recent report arms the run and this fires it once everything the
+     * request needs has arrived.
+     */
+    useEffect(() => {
+        if (pendingRun && canGenerate && dataSet?.id === selection.dsId) {
+            setPendingRun(false)
+            onGenerate()
+        }
+    }, [pendingRun, canGenerate, dataSet, selection.dsId, onGenerate])
 
     /*
      * Stale detection: the report on screen no longer matches the form. The
@@ -1206,7 +1259,13 @@ export const DataSetReportNext = () => {
                         )}
 
                         {!reportLoading && !report && !reportError && (
-                            <ReportEmptyState />
+                            <div>
+                                <ReportEmptyState />
+                                <RecentReports
+                                    entries={recent}
+                                    onSelect={onSelectRecent}
+                                />
+                            </div>
                         )}
 
                         {!reportLoading && report && (
@@ -1263,16 +1322,21 @@ export const DataSetReportNext = () => {
                                  * that is the summary strip above.
                                  */}
                                 <div className={styles.toolbar}>
+                                    <span className={styles.viewAsLabel}>
+                                        {i18n.t('View as:')}
+                                    </span>
                                     <SegmentedControl
                                         selected={viewMode}
                                         onChange={onChangeViewMode}
                                         options={[
                                             {
-                                                label: i18n.t('Standard'),
+                                                label: i18n.t('Summary'),
                                                 value: VIEW_MODES.STANDARD,
                                             },
                                             {
-                                                label: i18n.t('Form'),
+                                                label: i18n.t(
+                                                    'Data entry form'
+                                                ),
                                                 value: VIEW_MODES.FORM,
                                             },
                                         ]}

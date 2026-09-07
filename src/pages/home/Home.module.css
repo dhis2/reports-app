@@ -102,3 +102,96 @@
         transform: none;
     }
 }
+
+/* Search at the start of the row, sort at the end. The count sits between
+ * them and only appears under a search, so the two controls keep their
+ * places whether it is there or not. */
+.toolbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.search {
+    width: 320px;
+    max-width: 100%;
+}
+
+/* InputField carries bottom spacing meant for a stacked form. */
+.search > div,
+.sortSelect > div {
+    margin-bottom: 0;
+}
+
+.count {
+    margin: 0;
+    font-size: 13px;
+    color: #6c7787;
+}
+
+.sort {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-inline-start: auto;
+}
+
+.sortLabel {
+    font-size: 13px;
+    color: #4a5768;
+    white-space: nowrap;
+}
+
+.sortSelect {
+    width: 180px;
+}
+
+@media (max-width: 720px) {
+    .toolbar {
+        flex-wrap: wrap;
+    }
+
+    .search {
+        width: 100%;
+    }
+}
+
+/* Each group is a heading plus its own grid. The gap between groups is
+ * larger than the gap between cards, so the heading belongs to the grid
+ * under it rather than floating between the two. */
+.group + .group {
+    margin-top: 32px;
+}
+
+.groupHeader {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.groupTitle {
+    height: auto;
+    margin: 16px 0 8px 0;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--grey900);
+}
+
+.groupLink {
+    margin-inline-start: auto;
+    font-size: 13px;
+    color: #1a6ca6;
+    text-decoration: none;
+}
+
+.groupLink:hover {
+    text-decoration: underline;
+}
+
+.empty {
+    margin: 24px 0 0;
+    font-size: 14px;
+    color: #6c7787;
+}

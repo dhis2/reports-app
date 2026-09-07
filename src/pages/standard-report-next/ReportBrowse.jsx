@@ -19,13 +19,11 @@ import {
     sections,
     STANDARD_REPORT_NEXT_SECTION_KEY,
 } from '../../config/sections.config.js'
+import { DEMO_REPORTS } from './demoReports.js'
+import { readLastUsed } from './lastUsed.js'
 import { ME_QUERY, REPORTS_QUERY } from './queries.js'
 import { exactTime, timeAgo } from './relativeTime.js'
-import {
-    EditReportDialog,
-    NewReportDialog,
-    SharingDialog,
-} from './ReportActionDialogs.jsx'
+import { EditReportDialog, SharingDialog } from './ReportActionDialogs.jsx'
 import { ReportRowMenu } from './ReportRowMenu.jsx'
 import { needsSummary } from './reportShape.js'
 import styles from './StandardReportNext.module.css'
@@ -39,13 +37,16 @@ const basePath = sections[STANDARD_REPORT_NEXT_SECTION_KEY].path
  */
 const COLUMNS = {
     NAME: 'displayName',
+    LAST_USED: 'lastUsed',
     CREATED_BY: 'createdBy',
     CREATED: 'created',
     UPDATED: 'lastUpdated',
 }
 
-const sortValue = (report, column) => {
+const sortValue = (report, column, lastUsed) => {
     switch (column) {
+        case COLUMNS.LAST_USED:
+            return lastUsed[report.id] || ''
         case COLUMNS.CREATED_BY:
             return (report.createdBy?.displayName || '').toLowerCase()
         case COLUMNS.CREATED:
@@ -72,8 +73,12 @@ export const ReportBrowse = () => {
     const { fromServerDate } = useTimeZoneConversion()
 
     const reportsResult = useDataQuery(REPORTS_QUERY)
+    /* The demo designs sit in the list alongside the instance's own reports. */
     const reports = useMemo(
-        () => reportsResult.data?.reports?.reports ?? [],
+        () => [
+            ...DEMO_REPORTS,
+            ...(reportsResult.data?.reports?.reports ?? []),
+        ],
         [reportsResult.data]
     )
 
@@ -89,10 +94,22 @@ export const ReportBrowse = () => {
         )
     }, [meResult.data])
 
+    /*
+     * Read once, on arrival: this is the history as it stood when the list
+     * was opened, and a column that reshuffled itself under the cursor would
+     * be worse than one that is a moment out of date.
+     */
+    const [lastUsed] = useState(readLastUsed)
+
     const [search, setSearch] = useState('')
+    /*
+     * Most recently run first, so the list opens on what you were working on.
+     * Reports nobody has run sort to the bottom, alphabetically among
+     * themselves — an empty last-used value is smaller than any timestamp.
+     */
     const [sort, setSort] = useState({
-        column: COLUMNS.NAME,
-        direction: 'asc',
+        column: COLUMNS.LAST_USED,
+        direction: 'desc',
     })
 
     const [dialog, setDialog] = useState(null)
@@ -118,8 +135,8 @@ export const ReportBrowse = () => {
         const factor = sort.direction === 'asc' ? 1 : -1
 
         return [...filtered].sort((a, b) => {
-            const left = sortValue(a, sort.column)
-            const right = sortValue(b, sort.column)
+            const left = sortValue(a, sort.column, lastUsed)
+            const right = sortValue(b, sort.column, lastUsed)
 
             if (left === right) {
                 /* A stable second key, so equal timestamps are not arbitrary. */
@@ -128,7 +145,7 @@ export const ReportBrowse = () => {
 
             return left > right ? factor : -factor
         })
-    }, [reports, search, sort])
+    }, [reports, search, sort, lastUsed])
 
     const open = (report) => history.push(`${basePath}/${report.id}`)
 
@@ -170,6 +187,20 @@ export const ReportBrowse = () => {
          * ago look hours old. app-runtime knows the server's zone.
          */
         const date = fromServerDate(timestamp)
+
+        return <span title={exactTime(date)}>{timeAgo(date)}</span>
+    }
+
+    /*
+     * The last-used note is written by this browser, so unlike the server's
+     * timestamps it is already in client time and needs no conversion.
+     */
+    const whenLocal = (timestamp) => {
+        if (!timestamp) {
+            return null
+        }
+
+        const date = new Date(timestamp)
 
         return <span title={exactTime(date)}>{timeAgo(date)}</span>
     }
@@ -222,7 +253,9 @@ export const ReportBrowse = () => {
                             <div className={styles.browseNew}>
                                 <Button
                                     small
-                                    onClick={() => setDialog({ kind: 'new' })}
+                                    onClick={() =>
+                                        history.push(`${basePath}/new`)
+                                    }
                                 >
                                     {i18n.t('New standard report…')}
                                 </Button>
@@ -264,6 +297,11 @@ export const ReportBrowse = () => {
                                             {i18n.t('Parameters')}
                                         </DataTableColumnHeader>
                                         {header(
+                                            COLUMNS.LAST_USED,
+                                            i18n.t('Last used'),
+                                            '140px'
+                                        )}
+                                        {header(
                                             COLUMNS.CREATED_BY,
                                             i18n.t('Created by'),
                                             '180px'
@@ -292,7 +330,11 @@ export const ReportBrowse = () => {
 
                                 <DataTableBody>
                                     {rows.map((report) => (
-                                        <DataTableRow key={report.id}>
+                                        <DataTableRow
+                                            key={report.id}
+                                            className={styles.browseRow}
+                                            onClick={() => open(report)}
+                                        >
                                             {/*
                                              * A real link, not a cell that
                                              * happens to be clickable: it
@@ -312,7 +354,6 @@ export const ReportBrowse = () => {
 
                                             <DataTableCell
                                                 className={styles.browseCell}
-                                                onClick={() => open(report)}
                                             >
                                                 <span
                                                     className={
@@ -325,7 +366,22 @@ export const ReportBrowse = () => {
 
                                             <DataTableCell
                                                 className={styles.browseCell}
-                                                onClick={() => open(report)}
+                                            >
+                                                {whenLocal(
+                                                    lastUsed[report.id]
+                                                ) || (
+                                                    <span
+                                                        className={
+                                                            styles.browseQuiet
+                                                        }
+                                                    >
+                                                        {i18n.t('Never')}
+                                                    </span>
+                                                )}
+                                            </DataTableCell>
+
+                                            <DataTableCell
+                                                className={styles.browseCell}
                                             >
                                                 {report.createdBy
                                                     ?.displayName || '—'}
@@ -333,20 +389,26 @@ export const ReportBrowse = () => {
 
                                             <DataTableCell
                                                 className={styles.browseCell}
-                                                onClick={() => open(report)}
                                             >
                                                 {when(report.created) || '—'}
                                             </DataTableCell>
 
                                             <DataTableCell
                                                 className={styles.browseCell}
-                                                onClick={() => open(report)}
                                             >
                                                 {when(report.lastUpdated) ||
                                                     '—'}
                                             </DataTableCell>
 
-                                            <DataTableCell align="right">
+                                            <DataTableCell
+                                                align="right"
+                                                /* The menu is its own
+                                                 * target, not a way into
+                                                 * the report. */
+                                                onClick={(event) =>
+                                                    event.stopPropagation()
+                                                }
+                                            >
                                                 <ReportRowMenu
                                                     report={report}
                                                     onEdit={openEdit}
@@ -374,10 +436,6 @@ export const ReportBrowse = () => {
                     )}
                 </section>
             </div>
-
-            {dialog?.kind === 'new' && (
-                <NewReportDialog onClose={closeDialog} />
-            )}
 
             {dialog?.kind === 'edit' && dialog.report && (
                 <EditReportDialog

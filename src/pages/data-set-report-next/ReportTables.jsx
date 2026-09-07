@@ -112,6 +112,7 @@ const ReportTable = ({ table }) => {
                                         <DataTableCell
                                             key={`c-${table.id}-${rowIndex}-${cellIndex}`}
                                             align={isLabel ? 'left' : 'right'}
+                                            bordered
                                         >
                                             {isLabel ? (
                                                 cell

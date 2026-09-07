@@ -5,13 +5,15 @@ import PropTypes from 'prop-types'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { RailToggleIcon } from '../../components/shell/RailToggleIcon.jsx'
-import { ReportEmptyState } from '../../components/shell/ReportEmptyState.jsx'
 import { ReportBreadcrumb } from '../../components/shell/ReportBreadcrumb.jsx'
+import { ReportEmptyState } from '../../components/shell/ReportEmptyState.jsx'
 import {
     sections,
     STANDARD_REPORT_NEXT_SECTION_KEY,
 } from '../../config/sections.config.js'
+import { DEMO_REPORTS, demoReportHtml, isDemoReport } from './demoReports.js'
 import { HtmlReportView } from './HtmlReportView.jsx'
+import { recordLastUsed } from './lastUsed.js'
 import {
     fetchHtmlReport,
     idFromPath,
@@ -102,7 +104,10 @@ export const StandardReportNext = ({ match }) => {
      */
     const reportsResult = useDataQuery(REPORTS_QUERY)
     const reports = useMemo(
-        () => reportsResult.data?.reports?.reports ?? [],
+        () => [
+            ...DEMO_REPORTS,
+            ...(reportsResult.data?.reports?.reports ?? []),
+        ],
         [reportsResult.data]
     )
 
@@ -174,6 +179,8 @@ export const StandardReportNext = ({ match }) => {
 
             setReportLoading(true)
             setReportError(null)
+            /* Running it is what counts as using it. */
+            recordLastUsed(target.id)
 
             const snapshot = {
                 reportName: target.displayName,
@@ -185,6 +192,15 @@ export const StandardReportNext = ({ match }) => {
             }
 
             try {
+                /* A demo design is generated here rather than by the server. */
+                if (isDemoReport(target.id)) {
+                    setReport({
+                        html: demoReportHtml(target.id, snapshot),
+                        snapshot,
+                    })
+                    return
+                }
+
                 const html = await fetchHtmlReport(
                     baseUrl,
                     { id: target.id, ou: values.ou, pe: values.pe },
@@ -406,9 +422,7 @@ export const StandardReportNext = ({ match }) => {
                                             {!needs.orgUnit &&
                                                 !needs.period && (
                                                     <section
-                                                        className={
-                                                            styles.group
-                                                        }
+                                                        className={styles.group}
                                                     >
                                                         <p
                                                             className={
@@ -447,9 +461,7 @@ export const StandardReportNext = ({ match }) => {
                                         small
                                         secondary
                                         icon={<IconArrowLeft16 />}
-                                        onClick={() =>
-                                            history.push(basePath)
-                                        }
+                                        onClick={() => history.push(basePath)}
                                     >
                                         {i18n.t('Back to all templates')}
                                     </Button>

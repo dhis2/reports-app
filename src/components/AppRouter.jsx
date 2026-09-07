@@ -25,6 +25,7 @@ import { AddEditResource } from '../pages/resource/AddEditResource.jsx'
 import { Resource } from '../pages/Resource.jsx'
 import { ConnectedAddEditStdReport } from '../pages/standard-report/AddEditStdReport.jsx'
 import StyledHtmlReport from '../pages/standard-report/StyledHtmlReport.jsx'
+import { NewStandardReport } from '../pages/standard-report-next/NewStandardReport.jsx'
 import { ReportBrowse } from '../pages/standard-report-next/ReportBrowse.jsx'
 import { StandardReportNext } from '../pages/standard-report-next/StandardReportNext.jsx'
 import { StandardReport } from '../pages/StandardReport.jsx'
@@ -63,6 +64,12 @@ const AppRouter = () => (
                 key={STANDARD_REPORT_NEXT_SECTION_KEY}
                 path={sections[STANDARD_REPORT_NEXT_SECTION_KEY].path}
                 component={ReportBrowse}
+            />
+            <Route
+                exact
+                key={`${STANDARD_REPORT_NEXT_SECTION_KEY}-new`}
+                path={`${sections[STANDARD_REPORT_NEXT_SECTION_KEY].path}/new`}
+                component={NewStandardReport}
             />
             <Route
                 exact

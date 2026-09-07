@@ -379,7 +379,15 @@
     border-radius: 2px;
 }
 
-/* The cells that follow the name's link when clicked. */
+/* The whole row opens the report, so the whole row reads as clickable. */
+.browseRow {
+    cursor: pointer;
+}
+
+.browseRow:hover {
+    background: var(--grey100);
+}
+
 .browseCell {
     cursor: pointer;
 }
