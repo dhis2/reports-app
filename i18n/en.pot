@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-09-07T07:33:04.067Z\n"
-"PO-Revision-Date: 2026-09-07T07:33:04.067Z\n"
+"POT-Creation-Date: 2026-09-07T08:53:01.729Z\n"
+"PO-Revision-Date: 2026-09-07T08:53:01.729Z\n"
 
 msgid "Updating Organisation Units Tree..."
 msgstr "Updating Organisation Units Tree..."
@@ -74,8 +74,8 @@ msgstr "Type to search a report table"
 msgid "Breadcrumb"
 msgstr "Breadcrumb"
 
-msgid "Reports"
-msgstr "Reports"
+msgid "All reports"
+msgstr "All reports"
 
 msgid "Configure and create a report to get started."
 msgstr "Configure and create a report to get started."
@@ -85,6 +85,9 @@ msgstr "Show report options"
 
 msgid "Hide report options"
 msgstr "Hide report options"
+
+msgid "Update"
+msgstr "Update"
 
 msgid "Reports built for you"
 msgstr "Reports built for you"
@@ -496,32 +499,17 @@ msgstr "Type here to filter rows in this section"
 msgid "1 item hidden by filter"
 msgstr "1 item hidden by filter"
 
-msgid "Designed by {{name}}"
-msgstr "Designed by {{name}}"
-
 msgid "Search reports"
 msgstr "Search reports"
-
-msgid "Sort by"
-msgstr "Sort by"
-
-msgid "Name (A–Z)"
-msgstr "Name (A–Z)"
-
-msgid "Name (Z–A)"
-msgstr "Name (Z–A)"
-
-msgid "Recently used"
-msgstr "Recently used"
 
 msgid "Built-in reports"
 msgstr "Built-in reports"
 
-msgid "Custom reports"
-msgstr "Custom reports"
+msgid "Standard reports"
+msgstr "Standard reports"
 
-msgid "Manage standard reports"
-msgstr "Manage standard reports"
+msgid "Manage"
+msgstr "Manage"
 
 msgid "No reports match “{{term}}”."
 msgstr "No reports match “{{term}}”."
@@ -845,17 +833,30 @@ msgid "New standard report"
 msgstr "New standard report"
 
 msgid ""
+"Change what this report is called, what it asks for before it runs, and how "
+"long a generated copy may be reused. Fields marked with * are required."
+msgstr ""
+"Change what this report is called, what it asks for before it runs, and how "
+"long a generated copy may be reused. Fields marked with * are required."
+
+msgid ""
 "Register a report design so it can be run against current data. Fields "
 "marked with * are required."
 msgstr ""
 "Register a report design so it can be run against current data. Fields "
 "marked with * are required."
 
+msgid "Could not load this report"
+msgstr "Could not load this report"
+
 msgid "Displayed in the standard report list."
 msgstr "Displayed in the standard report list."
 
 msgid "Design file"
 msgstr "Design file"
+
+msgid "Leave this alone to keep the design the report already has."
+msgstr "Leave this alone to keep the design the report already has."
 
 msgid "The HTML design file that defines the report layout."
 msgstr "The HTML design file that defines the report layout."
@@ -875,6 +876,9 @@ msgstr "Cache strategy"
 
 msgid "How long a generated report may be reused before it is regenerated."
 msgstr "How long a generated report may be reused before it is regenerated."
+
+msgid "Save changes"
+msgstr "Save changes"
 
 msgid "Create report"
 msgstr "Create report"
@@ -913,18 +917,6 @@ msgstr "How long a generated report may be reused"
 msgid "Close"
 msgstr "Close"
 
-msgid "Edit report"
-msgstr "Edit report"
-
-msgid "Identifier"
-msgstr "Identifier"
-
-msgid "Nothing"
-msgstr "Nothing"
-
-msgid "All"
-msgstr "All"
-
 msgid "Everyone can view and edit"
 msgstr "Everyone can view and edit"
 
@@ -953,6 +945,21 @@ msgstr "Shared with"
 msgid "Nobody in particular"
 msgstr "Nobody in particular"
 
+msgid "Delete report"
+msgstr "Delete report"
+
+msgid "This will become the delete confirmation. Nothing is deleted yet."
+msgstr "This will become the delete confirmation. Nothing is deleted yet."
+
+msgid "Identifier"
+msgstr "Identifier"
+
+msgid "Delete"
+msgstr "Delete"
+
+msgid "Manage standard reports"
+msgstr "Manage standard reports"
+
 msgid "Search by name"
 msgstr "Search by name"
 
@@ -968,17 +975,8 @@ msgstr "Could not load the reports"
 msgid "Report"
 msgstr "Report"
 
-msgid "Parameters"
-msgstr "Parameters"
-
 msgid "Last used"
 msgstr "Last used"
-
-msgid "Created by"
-msgstr "Created by"
-
-msgid "Created"
-msgstr "Created"
 
 msgid "Last changed"
 msgstr "Last changed"
@@ -1007,23 +1005,14 @@ msgstr "Reporting period"
 msgid "No finished period of this type is available for {{year}}."
 msgstr "No finished period of this type is available for {{year}}."
 
-msgid "Actions for {{name}}"
-msgstr "Actions for {{name}}"
+msgid "View"
+msgstr "View"
 
-msgid "Edit report…"
-msgstr "Edit report…"
-
-msgid "Manage sharing…"
-msgstr "Manage sharing…"
-
-msgid "Template"
-msgstr "Template"
+msgid "Edit"
+msgstr "Edit"
 
 msgid "No parameters available. Period and org unit are set by the report."
 msgstr "No parameters available. Period and org unit are set by the report."
-
-msgid "Back to all templates"
-msgstr "Back to all templates"
 
 msgid "This report is not available"
 msgstr "This report is not available"
@@ -1362,12 +1351,6 @@ msgstr "ID"
 
 msgid "Create"
 msgstr "Create"
-
-msgid "Edit"
-msgstr "Edit"
-
-msgid "Delete"
-msgstr "Delete"
 
 msgid "View Resource"
 msgstr "View Resource"
@@ -1719,3 +1702,31 @@ msgstr "Upload file"
 
 msgid "Confirm delete"
 msgstr "Confirm delete"
+
+msgctxt "Application title"
+msgid "__MANIFEST_APP_TITLE"
+msgstr "Reports"
+
+msgctxt "Application description"
+msgid "__MANIFEST_APP_DESCRIPTION"
+msgstr ""
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Standard report"
+msgstr "Standard report"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Data set report"
+msgstr "Data set report"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Reporting rates summary"
+msgstr "Reporting rates summary"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Resources"
+msgstr "Resources"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Org unit distribution report"
+msgstr "Org unit distribution report"
