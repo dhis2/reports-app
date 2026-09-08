@@ -5,30 +5,6 @@ import { RailToggleIcon } from './RailToggleIcon.jsx'
 import { ReportBreadcrumb } from './ReportBreadcrumb.jsx'
 import styles from './ReportRailLayout.module.css'
 
-/*
- * Whether the options rail is collapsed is a per-viewer preference, not part
- * of what the report is — so it is remembered locally and deliberately kept
- * out of the URL, which stays a description of the report itself.
- *
- * The key is passed in rather than derived, so two pages sharing this layout
- * do not share one another's preference.
- */
-const readCollapsed = (key) => {
-    try {
-        return window.localStorage.getItem(key) === '1'
-    } catch {
-        return false
-    }
-}
-
-const writeCollapsed = (key, collapsed) => {
-    try {
-        window.localStorage.setItem(key, collapsed ? '1' : '0')
-    } catch {
-        // A remembered preference is a convenience, never worth an error.
-    }
-}
-
 /**
  * The chrome shared by the redesigned report pages: a top bar carrying the
  * section switcher and the actions for what is on screen, a collapsible
@@ -46,7 +22,6 @@ const writeCollapsed = (key, collapsed) => {
 export const ReportRailLayout = ({
     sectionKey,
     railTitle,
-    railStorageKey,
     actions,
     staleNote,
     onStaleAction,
@@ -54,15 +29,16 @@ export const ReportRailLayout = ({
     rail,
     children,
 }) => {
-    const [collapsed, setCollapsed] = useState(() =>
-        readCollapsed(railStorageKey)
-    )
+    /*
+     * Collapsing the rail is a thing you do to the report in front of you —
+     * to get it out of the way of this table, on this screen — not a standing
+     * preference. So it lasts as long as the page does: every report opens
+     * with its options in view, which is also the only state that explains
+     * itself to someone arriving.
+     */
+    const [collapsed, setCollapsed] = useState(false)
 
-    const toggle = () =>
-        setCollapsed((current) => {
-            writeCollapsed(railStorageKey, !current)
-            return !current
-        })
+    const toggle = () => setCollapsed((current) => !current)
 
     return (
         <div className={styles.page}>
@@ -163,8 +139,6 @@ export const ReportRailLayout = ({
 ReportRailLayout.propTypes = {
     /** The rail's contents — normally the page's <form>. */
     rail: PropTypes.node.isRequired,
-    /** Preference key for the collapsed state; unique per page. */
-    railStorageKey: PropTypes.string.isRequired,
     /** Heading for the options panel. */
     railTitle: PropTypes.string.isRequired,
     /** Section key, for the switcher in the top bar. */

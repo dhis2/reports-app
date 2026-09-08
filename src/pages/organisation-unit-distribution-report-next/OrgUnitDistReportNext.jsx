@@ -401,7 +401,6 @@ export const OrgUnitDistReportNext = () => {
         <ReportRailLayout
             sectionKey={ORG_UNIT_DIST_REPORT_NEXT_SECTION_KEY}
             railTitle={i18n.t('Configure report')}
-            railStorageKey="reports-app:org-unit-dist-report-next:rail-collapsed"
             actions={actions}
             staleNote={
                 !reportLoading && report && isStale

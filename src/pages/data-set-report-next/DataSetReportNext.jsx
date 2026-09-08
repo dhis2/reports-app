@@ -81,29 +81,6 @@ const safeSelected = (options, value) =>
     value && options.some((option) => option.id === value) ? value : ''
 
 /*
- * Whether the options rail is collapsed is a per-viewer preference, not part
- * of what the report is — so it is remembered locally and deliberately kept
- * out of the URL, which stays a description of the report itself.
- */
-const RAIL_STORAGE_KEY = 'reports-app:data-set-report-next:rail-collapsed'
-
-const readRailCollapsed = () => {
-    try {
-        return window.localStorage.getItem(RAIL_STORAGE_KEY) === '1'
-    } catch {
-        return false
-    }
-}
-
-const writeRailCollapsed = (collapsed) => {
-    try {
-        window.localStorage.setItem(RAIL_STORAGE_KEY, collapsed ? '1' : '0')
-    } catch {
-        // A remembered preference is a convenience, never worth an error.
-    }
-}
-
-/*
  * The two ways to read the same report.
  *
  * STANDARD is the summary grid this page has always shown. FORM is the data
@@ -266,7 +243,8 @@ export const DataSetReportNext = () => {
     const [reportError, setReportError] = useState(null)
     const [groupSetsOpen, setGroupSetsOpen] = useState(false)
     const [ouName, setOuName] = useState('')
-    const [railCollapsed, setRailCollapsed] = useState(readRailCollapsed)
+    /* Ephemeral, like the rail on every other report page — see toggleRail. */
+    const [railCollapsed, setRailCollapsed] = useState(false)
     const [viewMode, setViewMode] = useState(readViewMode)
     const [recent, setRecent] = useState(readRecentReports)
     /* A recent report picked from the empty state, waiting on its options. */
@@ -277,12 +255,14 @@ export const DataSetReportNext = () => {
         writeViewMode(value)
     }
 
-    const toggleRail = () => {
-        setRailCollapsed((collapsed) => {
-            writeRailCollapsed(!collapsed)
-            return !collapsed
-        })
-    }
+    /*
+     * Collapsing the options rail is a thing you do to the report in front of you
+     * — to get it out of the way of this table, on this screen — not a standing
+     * preference. So it lasts as long as the page does: every report opens with
+     * its options in view, which is also the only state that explains itself to
+     * someone arriving.
+     */
+    const toggleRail = () => setRailCollapsed((collapsed) => !collapsed)
 
     const dataSets = dataSetsQuery.data?.dataSets?.dataSets || []
     const dataSet = useMemo(

@@ -27,29 +27,6 @@ import styles from './StandardReportNext.module.css'
 import { useStandardReportSelection } from './useStandardReportSelection.js'
 
 /*
- * Whether the options rail is collapsed is a per-viewer preference, not part
- * of what the report is — so it is remembered locally and deliberately kept
- * out of the URL, which stays a description of the report itself.
- */
-const RAIL_STORAGE_KEY = 'reports-app:standard-report-next:rail-collapsed'
-
-const readRailCollapsed = () => {
-    try {
-        return window.localStorage.getItem(RAIL_STORAGE_KEY) === '1'
-    } catch {
-        return false
-    }
-}
-
-const writeRailCollapsed = (collapsed) => {
-    try {
-        window.localStorage.setItem(RAIL_STORAGE_KEY, collapsed ? '1' : '0')
-    } catch {
-        // A remembered preference is a convenience, never worth an error.
-    }
-}
-
-/*
  * When the report was built. Short and numeric — it is a timestamp on a
  * summary line, not a date anyone reads out. The locale decides the order of
  * the parts, so this never hard-codes day-before-month.
@@ -85,12 +62,15 @@ export const StandardReportNext = ({ match }) => {
     const { selection, update, remember, restoredFromUrl } =
         useStandardReportSelection()
 
-    const [railCollapsed, setRailCollapsed] = useState(readRailCollapsed)
-    const toggleRail = () =>
-        setRailCollapsed((collapsed) => {
-            writeRailCollapsed(!collapsed)
-            return !collapsed
-        })
+    /*
+     * Collapsing the options rail is a thing you do to the report in front of you
+     * — to get it out of the way of this table, on this screen — not a standing
+     * preference. So it lasts as long as the page does: every report opens with
+     * its options in view, which is also the only state that explains itself to
+     * someone arriving.
+     */
+    const [railCollapsed, setRailCollapsed] = useState(false)
+    const toggleRail = () => setRailCollapsed((collapsed) => !collapsed)
 
     /* ---------------- data ---------------- */
 

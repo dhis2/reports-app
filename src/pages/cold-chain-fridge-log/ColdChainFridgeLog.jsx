@@ -92,9 +92,7 @@ export const ColdChainFridgeLog = () => {
      * trace (a missing day) is never openable, so this is always chartable. */
     const selectedDayObj =
         log && selectedDay
-            ? log.days.find(
-                  (day) => day.day === selectedDay && day.hourly
-              )
+            ? log.days.find((day) => day.day === selectedDay && day.hourly)
             : null
 
     const actions = log ? (
@@ -114,9 +112,7 @@ export const ColdChainFridgeLog = () => {
                         <SingleSelectField
                             dense
                             selected={facilityId}
-                            onChange={({ selected }) =>
-                                setFacilityId(selected)
-                            }
+                            onChange={({ selected }) => setFacilityId(selected)}
                         >
                             {FACILITIES.map((facility) => (
                                 <SingleSelectOption
@@ -147,11 +143,7 @@ export const ColdChainFridgeLog = () => {
                 </div>
 
                 <div className={railStyles.railActions}>
-                    <Button
-                        primary
-                        type="submit"
-                        disabled={!canGenerate}
-                    >
+                    <Button primary type="submit" disabled={!canGenerate}>
                         {i18n.t('Get log')}
                     </Button>
                     <Button small secondary onClick={onClear}>
@@ -166,7 +158,6 @@ export const ColdChainFridgeLog = () => {
         <ReportRailLayout
             sectionKey={COLD_CHAIN_FRIDGE_LOG_SECTION_KEY}
             railTitle={i18n.t('Configure log')}
-            railStorageKey="reports-app:cold-chain-fridge-log:rail-collapsed"
             actions={actions}
             staleNote={
                 log && isStale
@@ -185,9 +176,12 @@ export const ColdChainFridgeLog = () => {
                         </p>
                         <p className={styles.summaryDetail}>
                             {log.excursions.length === 0
-                                ? i18n.t('{{count}} days logged · no breaches', {
-                                      count: log.logged,
-                                  })
+                                ? i18n.t(
+                                      '{{count}} days logged · no breaches',
+                                      {
+                                          count: log.logged,
+                                      }
+                                  )
                                 : i18n.t(
                                       '{{count}} days logged · {{breaches}} breach(es)',
                                       {

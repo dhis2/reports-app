@@ -207,7 +207,6 @@ export const MalariaWeeklyBulletin = () => {
         <ReportRailLayout
             sectionKey={MALARIA_WEEKLY_BULLETIN_SECTION_KEY}
             railTitle={i18n.t('Configure bulletin')}
-            railStorageKey="reports-app:malaria-weekly-bulletin:rail-collapsed"
             actions={actions}
             staleNote={
                 bulletin && isStale
@@ -339,10 +338,9 @@ export const MalariaWeeklyBulletin = () => {
 
                         {/* --- 3. trend --- */}
                         <h2 className={styles.sectionHead}>
-                            {i18n.t(
-                                '3. Confirmed cases — last {{n}} weeks',
-                                { n: bulletin.series.length }
-                            )}
+                            {i18n.t('3. Confirmed cases — last {{n}} weeks', {
+                                n: bulletin.series.length,
+                            })}
                         </h2>
                         <TrendChart series={bulletin.series} />
 
@@ -413,7 +411,9 @@ export const MalariaWeeklyBulletin = () => {
                                     <td />
                                 </tr>
                                 <tr>
-                                    <td>{i18n.t('District Medical Officer')}</td>
+                                    <td>
+                                        {i18n.t('District Medical Officer')}
+                                    </td>
                                     <td />
                                     <td />
                                     <td />
