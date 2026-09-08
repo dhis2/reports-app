@@ -532,10 +532,11 @@
  * the report rather than to the page, so it travels with the card — and onto
  * the printout — while the buttons that act on it live in the top bar.
  */
+/* Two lines: what was asked for, and when the answer was made. */
 .summary {
     display: flex;
-    align-items: baseline;
-    gap: 24px;
+    flex-direction: column;
+    gap: 2px;
     padding: 12px 16px;
     background: var(--grey100);
     border-bottom: 1px solid var(--grey400);
@@ -548,6 +549,16 @@
     font-size: 14px;
     font-weight: 500;
     color: var(--grey900);
+}
+
+/*
+ * The subtitle. Quieter than the line above it, but it has to survive into
+ * print: a report printed with no date on it cannot be filed.
+ */
+.subtitleLine {
+    margin: 6px 0 0 0;
+    font-size: 13px;
+    color: var(--grey700);
 }
 
 /*

@@ -7,6 +7,10 @@ import { RailToggleIcon } from '../../components/shell/RailToggleIcon.jsx'
 import { ReportBreadcrumb } from '../../components/shell/ReportBreadcrumb.jsx'
 import { ReportEmptyState } from '../../components/shell/ReportEmptyState.jsx'
 import { STANDARD_REPORT_NEXT_SECTION_KEY } from '../../config/sections.config.js'
+import {
+    analyticsLabel,
+    useAnalyticsGeneratedAt,
+} from '../../utils/analytics/analyticsGenerated.js'
 import { DEMO_REPORTS, demoReportHtml, isDemoReport } from './demoReports.js'
 import { HtmlReportView } from './HtmlReportView.jsx'
 import { recordLastUsed } from './lastUsed.js'
@@ -51,7 +55,7 @@ const writeRailCollapsed = (collapsed) => {
  * the parts, so this never hard-codes day-before-month.
  */
 const createdLabel = (generatedAt) =>
-    i18n.t('Report created {{when}}', {
+    i18n.t('Created {{when}}', {
         when: generatedAt.toLocaleString(undefined, {
             day: '2-digit',
             month: '2-digit',
@@ -287,12 +291,31 @@ export const StandardReportNext = ({ match }) => {
         (report.snapshot.ou !== currentValues().ou ||
             report.snapshot.pe !== currentValues().pe)
 
+    /* A property of the instance, not of this report — same answer on every
+     * report screen. */
+    const analyticsGeneratedAt = useAnalyticsGeneratedAt()
+
+    /* What was asked for: the report, and the two answers it was run
+     * against. */
     const summaryLine = report
         ? [
               report.snapshot.reportName,
               report.snapshot.ouName || null,
               report.snapshot.peLabel || report.snapshot.pe || null,
+          ]
+              .filter(Boolean)
+              .join(' · ')
+        : ''
+
+    /*
+     * The subtitle: when this copy was made, and how old the numbers in it
+     * are. Below the line above rather than on the end of it, because these
+     * are facts about the report rather than about what was asked for.
+     */
+    const subtitleLine = report
+        ? [
               createdLabel(report.snapshot.generatedAt),
+              analyticsLabel(analyticsGeneratedAt),
           ]
               .filter(Boolean)
               .join(' · ')
@@ -520,6 +543,9 @@ export const StandardReportNext = ({ match }) => {
                                 <div className={styles.summary}>
                                     <p className={styles.summaryLine}>
                                         {summaryLine}
+                                    </p>
+                                    <p className={styles.subtitleLine}>
+                                        {subtitleLine}
                                     </p>
                                 </div>
 

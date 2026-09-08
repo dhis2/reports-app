@@ -20,6 +20,10 @@ import { RailToggleIcon } from '../../components/shell/RailToggleIcon.jsx'
 import { ReportBreadcrumb } from '../../components/shell/ReportBreadcrumb.jsx'
 import { ReportEmptyState } from '../../components/shell/ReportEmptyState.jsx'
 import { DATA_SET_REPORT_NEXT_SECTION_KEY } from '../../config/sections.config.js'
+import {
+    analyticsLabel,
+    useAnalyticsGeneratedAt,
+} from '../../utils/analytics/analyticsGenerated.js'
 import { fixedPeriodTranslations } from '../../utils/periods/fixedPeriods.js'
 import { CustomFormReport } from './CustomFormReport.jsx'
 import styles from './DataSetReportNext.module.css'
@@ -146,7 +150,7 @@ const writeViewMode = (mode) => {
  * the parts, so this never hard-codes day-before-month.
  */
 const createdLabel = (generatedAt) =>
-    i18n.t('Report created {{when}}', {
+    i18n.t('Created {{when}}', {
         when: generatedAt.toLocaleString(undefined, {
             day: '2-digit',
             month: '2-digit',
@@ -241,6 +245,10 @@ FilterSelect.propTypes = {
 }
 
 export const DataSetReportNext = () => {
+    /* A property of the instance, not of this report — same answer on every
+     * report screen. */
+    const analyticsGeneratedAt = useAnalyticsGeneratedAt()
+
     const { baseUrl } = useConfig()
     const engine = useDataEngine()
     const { selection, update, reset, remember } = useReportSelection()
@@ -1313,29 +1321,41 @@ export const DataSetReportNext = () => {
                                                                   .orgUnitName,
                                                       }
                                                   ),
-                                            createdLabel(
-                                                report.snapshot.generatedAt
-                                            ),
-                                        ].join(' \u00b7 ')}
+                                        ]
+                                            .filter(Boolean)
+                                            .join(' \u00b7 ')}
                                     </p>
 
                                     {/*
-                                     * Applied filters sit on their own line under
-                                     * the summary, and travel onto the printout. A
-                                     * filtered report that looks like a full one
-                                     * gets filed as the facility total.
+                                     * The subtitle: what was applied to this
+                                     * report and when it was made. Filters
+                                     * first — they change what the numbers
+                                     * are, so they travel onto the printout;
+                                     * a filtered report that looks like a
+                                     * full one gets filed as the facility
+                                     * total. The two timestamps follow,
+                                     * being about the report rather than
+                                     * about its contents.
                                      */}
-                                    {report.snapshot.filterLabels?.length >
-                                        0 && (
-                                        <p className={styles.filterLine}>
-                                            {report.snapshot.filterLabels
-                                                .map(
-                                                    (filter) =>
-                                                        `${filter.label}: ${filter.value}`
-                                                )
-                                                .join(' \u00b7 ')}
-                                        </p>
-                                    )}
+                                    <p className={styles.subtitleLine}>
+                                        {[
+                                            ...(
+                                                report.snapshot.filterLabels ??
+                                                []
+                                            ).map(
+                                                (filter) =>
+                                                    `${filter.label}: ${filter.value}`
+                                            ),
+                                            createdLabel(
+                                                report.snapshot.generatedAt
+                                            ),
+                                            analyticsLabel(
+                                                analyticsGeneratedAt
+                                            ),
+                                        ]
+                                            .filter(Boolean)
+                                            .join(' \u00b7 ')}
+                                    </p>
                                 </div>
 
                                 {/*

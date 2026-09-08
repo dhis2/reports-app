@@ -490,14 +490,16 @@
 }
 
 /*
- * Applied filters, on the line under the summary. Quieter than the line
- * above it, but it has to survive into print — a filtered report that looks
- * like a full one is a data integrity problem, not a cosmetic one.
+ * The subtitle: applied filters, then when the report and the analytics
+ * behind it were made. Quieter than the line above it, but it has to survive
+ * into print — a filtered report that looks like a full one is a data
+ * integrity problem, not a cosmetic one, and a printout with no date on it
+ * cannot be filed.
  */
-.filterLine {
+.subtitleLine {
     margin: 6px 0 0 0;
     font-size: 13px;
-    color: var(--grey900);
+    color: var(--grey700);
 }
 
 .toolbar {
