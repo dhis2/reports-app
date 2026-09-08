@@ -11,6 +11,7 @@ import {
     DataTableRow,
     InputField,
     NoticeBox,
+    Pagination,
 } from '@dhis2/ui'
 import React, { useCallback, useMemo, useState } from 'react'
 import { useHistory, Link } from 'react-router-dom'
@@ -52,6 +53,19 @@ const sortValue = (report, column, lastUsed) => {
 }
 
 const nextDirection = (direction) => (direction === 'asc' ? 'desc' : 'asc')
+
+/*
+ * The list is held whole in memory, so paging it is a matter of showing less
+ * of it at a time rather than asking the server for more. Same sizes as the
+ * cards on the landing page, so the two lists of the same reports behave
+ * alike.
+ *
+ * DEMO ONLY — the default is five so the pager is visible on a database with
+ * a handful of reports. Put this back to 50 and drop '5' from the sizes
+ * before this is anything but a prototype.
+ */
+const DEFAULT_PAGE_SIZE = 5
+const PAGE_SIZES = ['5', '25', '50', '100']
 
 /*
  * The landing page for standard reports: the whole list, with room for what
@@ -105,6 +119,9 @@ export const ReportBrowse = () => {
         direction: 'desc',
     })
 
+    const [page, setPage] = useState(1)
+    const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE)
+
     const [dialog, setDialog] = useState(null)
     const closeDialog = useCallback(() => setDialog(null), [])
     /* Editing is a page of its own, not a dialog: the form is long, and it
@@ -146,9 +163,33 @@ export const ReportBrowse = () => {
         })
     }, [reports, search, sort, lastUsed])
 
+    /*
+     * Clamped rather than trusted: a search that narrows the list under the
+     * page you were on has to land on the last real page instead of an empty
+     * table.
+     */
+    const pageCount = Math.max(1, Math.ceil(rows.length / pageSize))
+    const currentPage = Math.min(page, pageCount)
+
+    /*
+     * Shown once the list is longer than the smallest page it could be cut
+     * into, rather than longer than the current page: picking 100 on a list
+     * of sixty would otherwise take the pager away with it and leave no way
+     * back to a shorter page.
+     */
+    const showPager = rows.length > Math.min(pageSize, Number(PAGE_SIZES[0]))
+
+    const pagedRows = useMemo(
+        () => rows.slice((currentPage - 1) * pageSize, currentPage * pageSize),
+        [rows, currentPage, pageSize]
+    )
+
     const open = (report) => history.push(`${basePath}/${report.id}`)
 
-    const onSort = (column) =>
+    /* Reordering the whole list makes the page you were on meaningless, so
+     * sorting starts again from the top — as does a new search. */
+    const onSort = (column) => {
+        setPage(1)
         setSort((current) => ({
             column,
             direction:
@@ -156,6 +197,7 @@ export const ReportBrowse = () => {
                     ? nextDirection(current.direction)
                     : 'asc',
         }))
+    }
 
     /*
      * DataTableColumnHeader wants a direction for every sortable column, and
@@ -222,7 +264,10 @@ export const ReportBrowse = () => {
                                 dense
                                 type="search"
                                 value={search}
-                                onChange={({ value }) => setSearch(value)}
+                                onChange={({ value }) => {
+                                    setSearch(value)
+                                    setPage(1)
+                                }}
                                 placeholder={i18n.t('Search by name')}
                             />
                         </div>
@@ -313,7 +358,7 @@ export const ReportBrowse = () => {
                                 </DataTableHead>
 
                                 <DataTableBody>
-                                    {rows.map((report) => (
+                                    {pagedRows.map((report) => (
                                         <DataTableRow
                                             key={report.id}
                                             className={styles.browseRow}
@@ -395,6 +440,36 @@ export const ReportBrowse = () => {
                             )}
                         </div>
                     )}
+
+                    {/*
+                     * Outside the scrolling area, so the pager stays where it
+                     * is while the table moves under it — a control that
+                     * scrolled away from the rows it governs would be a
+                     * control you have to go and find.
+                     */}
+                    {!reportsResult.loading &&
+                        !reportsResult.error &&
+                        showPager && (
+                            <div className={styles.browsePager}>
+                                <Pagination
+                                    className={styles.browsePagination}
+                                    page={currentPage}
+                                    pageSize={pageSize}
+                                    pageCount={pageCount}
+                                    pageLength={pagedRows.length}
+                                    total={rows.length}
+                                    pageSizes={PAGE_SIZES}
+                                    onPageChange={setPage}
+                                    onPageSizeChange={(size) => {
+                                        setPageSize(size)
+                                        /* The first row of the old page is not on
+                                         * the same page at a new size, so a resize
+                                         * starts again from the top. */
+                                        setPage(1)
+                                    }}
+                                />
+                            </div>
+                        )}
                 </section>
             </div>
 

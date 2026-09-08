@@ -664,3 +664,26 @@
         border: 0;
     }
 }
+
+/* ---------- browse pager ---------- */
+
+/*
+ * A footer to the card, matching the toolbar at its head: it holds its place
+ * while the table scrolls between them.
+ */
+.browsePager {
+    flex: none;
+    padding: 8px 16px;
+    border-top: 1px solid var(--grey300);
+}
+
+/*
+ * Lands on Pagination's own flex container, via its className prop. The page
+ * size sits at one edge and the page controls at the other, so the pager's
+ * ends line up with the ends of the table above it.
+ */
+.browsePagination {
+    width: 100%;
+    justify-content: space-between;
+    gap: 12px;
+}
