@@ -151,3 +151,26 @@
     font-size: 14px;
     color: #6c7787;
 }
+
+/* The pager belongs to the grid above it, so it sits closer to the cards
+ * than the next group's heading does. */
+.pager {
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid var(--grey300);
+}
+
+/*
+ * Lands on Pagination's own flex container, via its className prop.
+ *
+ * The pager spans the grid, with the page size at one edge and the page
+ * controls at the other, so its ends line up with the ends of the row of
+ * cards above it rather than trailing off in the middle. Pagination's own
+ * layout leaves that to a flex-grow on the size select, which is not enough
+ * here — space-between makes it a property of the row itself.
+ */
+.pagination {
+    width: 100%;
+    justify-content: space-between;
+    gap: 12px;
+}

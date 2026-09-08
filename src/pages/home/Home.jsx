@@ -1,6 +1,6 @@
 import { useDataQuery } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
-import { Button, IconSearch16, InputField } from '@dhis2/ui'
+import { Button, IconSearch16, InputField, Pagination } from '@dhis2/ui'
 import React, { useMemo, useState } from 'react'
 import { Link, useHistory, useLocation } from 'react-router-dom'
 import { navGroups } from '../../components/shell/navigation.js'
@@ -54,6 +54,23 @@ const STORAGE_KEY = 'reports-app:home:show-plugins'
  * rather than to the list that would have found it. */
 const standardReportPath = sections[STANDARD_REPORT_NEXT_SECTION_KEY].path
 
+/*
+ * Standard reports are the one group that can grow without limit — they are
+ * whatever the instance happens to have designed — so that grid is paged
+ * while the built-in one, a fixed handful, is not.
+ *
+ * Fifty is the real page size: roughly the point at which the grid stops
+ * being something you scan and starts being something you scroll past. The
+ * size select is there for instances where a wider page is genuinely easier
+ * to search by eye.
+ *
+ * DEMO ONLY — the default is five so the pager is visible on a database with
+ * a handful of reports. Put this back to 50 and drop '5' from the sizes
+ * before this is anything but a prototype.
+ */
+const DEFAULT_PAGE_SIZE = 5
+const PAGE_SIZES = ['5', '25', '50', '100']
+
 const readShowPlugins = () => {
     try {
         return window.localStorage.getItem(STORAGE_KEY) === '1'
@@ -99,11 +116,43 @@ const Home = () => {
             params.delete('q')
         }
 
+        /* A new search is a new set of results, so it starts at its first
+         * page rather than at whichever page the last search was left on. */
+        params.delete('page')
+
         const query = params.toString()
         history.replace(
             query ? `${location.pathname}?${query}` : location.pathname
         )
     }
+
+    /*
+     * The page number rides in the URL beside the search, for the same
+     * reason: a link to these results should come back to the same screen.
+     * Like the search it replaces the history entry, so back leaves the page
+     * rather than walking through every page you stepped over.
+     */
+    const requestedPage =
+        Number(new URLSearchParams(location.search).get('page')) || 1
+
+    const setPage = (value) => {
+        const params = new URLSearchParams(location.search)
+
+        if (value > 1) {
+            params.set('page', String(value))
+        } else {
+            params.delete('page')
+        }
+
+        const query = params.toString()
+        history.replace(
+            query ? `${location.pathname}?${query}` : location.pathname
+        )
+    }
+
+    /* The size is a viewing preference rather than part of the result set, so
+     * it stays out of the URL. */
+    const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE)
 
     /*
      * Read once, on arrival: a grid that reshuffled itself under the cursor
@@ -162,6 +211,28 @@ const Home = () => {
         [builtIn, term]
     )
     const visibleCustom = useMemo(() => arrange(custom, term), [custom, term])
+
+    /*
+     * Clamped rather than trusted: ?page=99 on a two-page list, or a search
+     * that narrows the list under the page you were on, must land on the last
+     * real page instead of an empty grid.
+     */
+    const pageCount = Math.max(1, Math.ceil(visibleCustom.length / pageSize))
+    const page = Math.min(Math.max(1, Math.floor(requestedPage)), pageCount)
+
+    /*
+     * Shown once the list is longer than the smallest page it could be cut
+     * into, rather than longer than the current page: picking 100 on a list
+     * of sixty would otherwise take the pager away with it and leave no way
+     * back to a shorter page.
+     */
+    const showPager =
+        visibleCustom.length > Math.min(pageSize, Number(PAGE_SIZES[0]))
+
+    const pagedCustom = useMemo(
+        () => visibleCustom.slice((page - 1) * pageSize, page * pageSize),
+        [visibleCustom, page, pageSize]
+    )
 
     const shown = visibleBuiltIn.length + visibleCustom.length
 
@@ -236,7 +307,29 @@ const Home = () => {
                             {i18n.t('Manage')}
                         </Button>
                     </div>
-                    {cardsFor(visibleCustom)}
+                    {cardsFor(pagedCustom)}
+
+                    {showPager && (
+                        <div className={styles.pager}>
+                            <Pagination
+                                className={styles.pagination}
+                                page={page}
+                                pageSize={pageSize}
+                                pageCount={pageCount}
+                                pageLength={pagedCustom.length}
+                                total={visibleCustom.length}
+                                pageSizes={PAGE_SIZES}
+                                onPageChange={setPage}
+                                onPageSizeChange={(size) => {
+                                    setPageSize(size)
+                                    /* The first row of the old page is not
+                                     * on the same page at a new size, so a
+                                     * resize starts again from the top. */
+                                    setPage(1)
+                                }}
+                            />
+                        </div>
+                    )}
                 </section>
             )}
 
