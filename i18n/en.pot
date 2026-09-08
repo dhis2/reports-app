@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-09-08T13:26:04.902Z\n"
-"PO-Revision-Date: 2026-09-08T13:26:04.902Z\n"
+"POT-Creation-Date: 2026-09-08T13:28:35.725Z\n"
+"PO-Revision-Date: 2026-09-08T13:28:35.725Z\n"
 
 msgid "Updating Organisation Units Tree..."
 msgstr "Updating Organisation Units Tree..."
@@ -975,17 +975,14 @@ msgstr "Could not load the reports"
 msgid "Report"
 msgstr "Report"
 
-msgid "Last used"
-msgstr "Last used"
+msgid "Created by"
+msgstr "Created by"
 
-msgid "Last changed"
-msgstr "Last changed"
+msgid "Last updated"
+msgstr "Last updated"
 
 msgid "Actions"
 msgstr "Actions"
-
-msgid "Never"
-msgstr "Never"
 
 msgid "No report matches “{{search}}”."
 msgstr "No report matches “{{search}}”."

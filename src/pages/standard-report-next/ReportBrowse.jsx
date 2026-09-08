@@ -21,7 +21,6 @@ import {
     STANDARD_REPORT_NEXT_SECTION_KEY,
 } from '../../config/sections.config.js'
 import { DEMO_REPORTS } from './demoReports.js'
-import { readLastUsed } from './lastUsed.js'
 import { ME_QUERY, REPORTS_QUERY } from './queries.js'
 import { exactTime, timeAgo } from './relativeTime.js'
 import { DeleteReportDialog, SharingDialog } from './ReportActionDialogs.jsx'
@@ -37,14 +36,19 @@ const basePath = sections[STANDARD_REPORT_NEXT_SECTION_KEY].path
  */
 const COLUMNS = {
     NAME: 'displayName',
-    LAST_USED: 'lastUsed',
+    CREATED_BY: 'createdBy',
     UPDATED: 'lastUpdated',
 }
 
-const sortValue = (report, column, lastUsed) => {
+/* Who wrote the report. `createdBy` is the author and never changes hands,
+ * which is what a list is for — sharing's `owner` is about who may change the
+ * report, and is an id rather than a name. */
+const authorName = (report) => report.createdBy?.displayName || ''
+
+const sortValue = (report, column) => {
     switch (column) {
-        case COLUMNS.LAST_USED:
-            return lastUsed[report.id] || ''
+        case COLUMNS.CREATED_BY:
+            return authorName(report).toLowerCase()
         case COLUMNS.UPDATED:
             return report.lastUpdated || ''
         default:
@@ -101,22 +105,14 @@ export const ReportBrowse = () => {
         )
     }, [meResult.data])
 
-    /*
-     * Read once, on arrival: this is the history as it stood when the list
-     * was opened, and a column that reshuffled itself under the cursor would
-     * be worse than one that is a moment out of date.
-     */
-    const [lastUsed] = useState(readLastUsed)
-
     const [search, setSearch] = useState('')
     /*
-     * Most recently run first, so the list opens on what you were working on.
-     * Reports nobody has run sort to the bottom, alphabetically among
-     * themselves — an empty last-used value is smaller than any timestamp.
+     * By name. Nothing the server knows about a report says which one you
+     * came here for, so the list opens in the order you can scan.
      */
     const [sort, setSort] = useState({
-        column: COLUMNS.LAST_USED,
-        direction: 'desc',
+        column: COLUMNS.NAME,
+        direction: 'asc',
     })
 
     const [page, setPage] = useState(1)
@@ -151,8 +147,8 @@ export const ReportBrowse = () => {
         const factor = sort.direction === 'asc' ? 1 : -1
 
         return [...filtered].sort((a, b) => {
-            const left = sortValue(a, sort.column, lastUsed)
-            const right = sortValue(b, sort.column, lastUsed)
+            const left = sortValue(a, sort.column)
+            const right = sortValue(b, sort.column)
 
             if (left === right) {
                 /* A stable second key, so equal timestamps are not arbitrary. */
@@ -161,7 +157,7 @@ export const ReportBrowse = () => {
 
             return left > right ? factor : -factor
         })
-    }, [reports, search, sort, lastUsed])
+    }, [reports, search, sort])
 
     /*
      * Clamped rather than trusted: a search that narrows the list under the
@@ -228,20 +224,6 @@ export const ReportBrowse = () => {
          * ago look hours old. app-runtime knows the server's zone.
          */
         const date = fromServerDate(timestamp)
-
-        return <span title={exactTime(date)}>{timeAgo(date)}</span>
-    }
-
-    /*
-     * The last-used note is written by this browser, so unlike the server's
-     * timestamps it is already in client time and needs no conversion.
-     */
-    const whenLocal = (timestamp) => {
-        if (!timestamp) {
-            return null
-        }
-
-        const date = new Date(timestamp)
 
         return <span title={exactTime(date)}>{timeAgo(date)}</span>
     }
@@ -336,13 +318,13 @@ export const ReportBrowse = () => {
                                             'auto'
                                         )}
                                         {header(
-                                            COLUMNS.LAST_USED,
-                                            i18n.t('Last used'),
-                                            '140px'
+                                            COLUMNS.CREATED_BY,
+                                            i18n.t('Created by'),
+                                            '180px'
                                         )}
                                         {header(
                                             COLUMNS.UPDATED,
-                                            i18n.t('Last changed'),
+                                            i18n.t('Last updated'),
                                             '140px'
                                         )}
                                         <DataTableColumnHeader width="290px">
@@ -384,17 +366,7 @@ export const ReportBrowse = () => {
                                             <DataTableCell
                                                 className={styles.browseCell}
                                             >
-                                                {whenLocal(
-                                                    lastUsed[report.id]
-                                                ) || (
-                                                    <span
-                                                        className={
-                                                            styles.browseQuiet
-                                                        }
-                                                    >
-                                                        {i18n.t('Never')}
-                                                    </span>
-                                                )}
+                                                {authorName(report) || '—'}
                                             </DataTableCell>
 
                                             <DataTableCell

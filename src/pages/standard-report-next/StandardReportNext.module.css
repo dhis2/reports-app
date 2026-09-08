@@ -392,10 +392,6 @@
     cursor: pointer;
 }
 
-.browseQuiet {
-    color: var(--grey700);
-}
-
 .browseEmpty {
     margin: 0;
     padding: 32px 16px;
