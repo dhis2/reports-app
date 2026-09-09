@@ -255,20 +255,6 @@ export const ReportBrowse = () => {
                         </div>
 
                         {/*
-                         * Only while searching. A permanent count is a
-                         * number nobody asked for; a count under a search is
-                         * the answer to "did that find anything".
-                         */}
-                        {isSearching && !reportsResult.loading && (
-                            <p className={styles.browseCount}>
-                                {i18n.t('{{count}} of {{total}} reports', {
-                                    count: rows.length,
-                                    total: reports.length,
-                                })}
-                            </p>
-                        )}
-
-                        {/*
                          * At the far end of the row that governs the list,
                          * not in the page's bar: it acts on the list, and the
                          * bar above belongs to the page.

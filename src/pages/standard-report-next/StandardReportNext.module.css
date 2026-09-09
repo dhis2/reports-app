@@ -327,12 +327,6 @@
     min-width: 0;
 }
 
-.browseCount {
-    margin: 0 0 6px;
-    font-size: 13px;
-    color: var(--grey600);
-}
-
 /* Pushed to the far end of the toolbar, away from what it does not act on. */
 .browseNew {
     margin-left: auto;
