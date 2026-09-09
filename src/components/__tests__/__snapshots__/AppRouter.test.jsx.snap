@@ -49,6 +49,18 @@ exports[`Matches the snapshot 1`] = `
       path="/standard-report/:mode/:id([a-zA-Z][a-zA-Z0-9]{10})?"
     />
     <Route
+      component={[Function]}
+      exact={true}
+      key="standard-report-next"
+      path="/standard-report-next"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      key="standard-report-next-report"
+      path="/standard-report-next/:id([a-zA-Z][a-zA-Z0-9]{10})"
+    />
+    <Route
       component={
         Object {
           "$$typeof": Symbol(react.memo),
@@ -60,6 +72,12 @@ exports[`Matches the snapshot 1`] = `
       exact={true}
       key="data-set-report"
       path="/data-set-report"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      key="data-set-report-next"
+      path="/data-set-report-next"
     />
     <Route
       component={
@@ -112,6 +130,12 @@ exports[`Matches the snapshot 1`] = `
       exact={true}
       key="organisation-unit-distribution-report"
       path="/organisation-unit-distribution-report"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      key="organisation-unit-distribution-report-next"
+      path="/organisation-unit-distribution-report-next"
     />
     <Route
       component={[Function]}

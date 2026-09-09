@@ -2,18 +2,39 @@ import i18n from '../locales/index.js'
 
 export const STANDARD_REPORT_SECTION_KEY = 'standard-report'
 export const DATA_SET_REPORT_SECTION_KEY = 'data-set-report'
+/* Prototype only — remove this key, its sectionOrder entry and its sections
+ * entry to take the redesigned page back out of the menu. */
+export const DATA_SET_REPORT_NEXT_SECTION_KEY = 'data-set-report-next'
+/* Prototype only — same treatment as the data set report key above. */
+export const STANDARD_REPORT_NEXT_SECTION_KEY = 'standard-report-next'
 export const REPORTING_RATE_SUMMARY_SECTION_KEY = 'reporting-rate-summary'
 export const RESOURCE_SECTION_KEY = 'resource'
 export const ORG_UNIT_DIST_REPORT_SECTION_KEY =
     'organisation-unit-distribution-report'
+/* Prototype only — same treatment as the data set report key above. */
+export const ORG_UNIT_DIST_REPORT_NEXT_SECTION_KEY =
+    'organisation-unit-distribution-report-next'
+/* Prototype only — a stand-in for a "report plugin" a local team might ship:
+ * a niche report the core app would never build, reusing the shared rail +
+ * output frame. Remove its key, sectionOrder entry and sections entry to drop
+ * it. */
+export const COLD_CHAIN_FRIDGE_LOG_SECTION_KEY = 'cold-chain-fridge-log'
+/* Prototype only — a second "report plugin" stand-in: a weekly malaria
+ * surveillance bulletin. Same treatment as the cold chain key above to drop
+ * it. */
+export const MALARIA_WEEKLY_BULLETIN_SECTION_KEY = 'malaria-weekly-bulletin'
 export const DATA_APPROVAL_SECTION_KEY = 'data-approval'
 
+/* The legacy standard report, data set report, reporting rate summary and org
+ * unit distribution report are still routed (so existing links keep working)
+ * but are no longer offered anywhere in the UI, so they are not listed here. */
 export const sectionOrder = [
-    STANDARD_REPORT_SECTION_KEY,
-    DATA_SET_REPORT_SECTION_KEY,
-    REPORTING_RATE_SUMMARY_SECTION_KEY,
+    STANDARD_REPORT_NEXT_SECTION_KEY,
+    DATA_SET_REPORT_NEXT_SECTION_KEY,
     RESOURCE_SECTION_KEY,
-    ORG_UNIT_DIST_REPORT_SECTION_KEY,
+    ORG_UNIT_DIST_REPORT_NEXT_SECTION_KEY,
+    COLD_CHAIN_FRIDGE_LOG_SECTION_KEY,
+    MALARIA_WEEKLY_BULLETIN_SECTION_KEY,
 ]
 
 export const sections = {
@@ -30,6 +51,19 @@ export const sections = {
             docs: 'using_reporting_standard_reports',
         },
     },
+    [STANDARD_REPORT_NEXT_SECTION_KEY]: {
+        key: STANDARD_REPORT_NEXT_SECTION_KEY,
+        path: `/${STANDARD_REPORT_NEXT_SECTION_KEY}`,
+        info: {
+            label: i18n.t('Standard report'),
+            icon: 'description',
+            description: i18n.t(
+                'Reports your team designed, run against current data.'
+            ),
+            actionText: i18n.t('View Reports'),
+            docs: 'using_reporting_standard_reports',
+        },
+    },
     [DATA_SET_REPORT_SECTION_KEY]: {
         key: DATA_SET_REPORT_SECTION_KEY,
         path: `/${DATA_SET_REPORT_SECTION_KEY}`,
@@ -38,6 +72,19 @@ export const sections = {
             icon: 'assignment',
             description: i18n.t(
                 'View data set reports. These reports are based on data entry screens and will produce a report with aggregated data.'
+            ),
+            actionText: i18n.t('Get Report'),
+            docs: 'using_reporting_dataset_reports',
+        },
+    },
+    [DATA_SET_REPORT_NEXT_SECTION_KEY]: {
+        key: DATA_SET_REPORT_NEXT_SECTION_KEY,
+        path: `/${DATA_SET_REPORT_NEXT_SECTION_KEY}`,
+        info: {
+            label: i18n.t('Data set report'),
+            icon: 'assignment_turned_in',
+            description: i18n.t(
+                'A data entry form with aggregated data filled in, ready to print.'
             ),
             actionText: i18n.t('Get Report'),
             docs: 'using_reporting_dataset_reports',
@@ -60,7 +107,7 @@ export const sections = {
         key: RESOURCE_SECTION_KEY,
         path: `/${RESOURCE_SECTION_KEY}`,
         info: {
-            label: i18n.t('Resource'),
+            label: i18n.t('Resources'),
             description: i18n.t(
                 'View and add resources. These resources can be uploaded documents or URLs on the web.'
             ),
@@ -80,6 +127,43 @@ export const sections = {
             actionText: i18n.t('Get Report'),
             icon: 'device_hub',
             docs: 'using_reporting_orgunit_distribution_reports',
+        },
+    },
+    [ORG_UNIT_DIST_REPORT_NEXT_SECTION_KEY]: {
+        key: ORG_UNIT_DIST_REPORT_NEXT_SECTION_KEY,
+        path: `/${ORG_UNIT_DIST_REPORT_NEXT_SECTION_KEY}`,
+        info: {
+            label: i18n.t('Organisation unit distribution report'),
+            description: i18n.t(
+                'How the organisation units under one part of the hierarchy break down by group.'
+            ),
+            actionText: i18n.t('Get Report'),
+            icon: 'device_hub',
+            docs: 'using_reporting_orgunit_distribution_reports',
+        },
+    },
+    [COLD_CHAIN_FRIDGE_LOG_SECTION_KEY]: {
+        key: COLD_CHAIN_FRIDGE_LOG_SECTION_KEY,
+        path: `/${COLD_CHAIN_FRIDGE_LOG_SECTION_KEY}`,
+        info: {
+            label: i18n.t('Cold chain fridge log'),
+            description: i18n.t(
+                'Daily vaccine fridge temperatures for a facility and month, with cold-chain breaches flagged.'
+            ),
+            actionText: i18n.t('Get Log'),
+            icon: 'ac_unit',
+        },
+    },
+    [MALARIA_WEEKLY_BULLETIN_SECTION_KEY]: {
+        key: MALARIA_WEEKLY_BULLETIN_SECTION_KEY,
+        path: `/${MALARIA_WEEKLY_BULLETIN_SECTION_KEY}`,
+        info: {
+            label: i18n.t('Malaria weekly bulletin'),
+            description: i18n.t(
+                'A weekly surveillance one-pager for an organisation unit: cases, positivity and trend, ready to print.'
+            ),
+            actionText: i18n.t('Get Bulletin'),
+            icon: 'coronavirus',
         },
     },
 }

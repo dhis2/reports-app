@@ -1,0 +1,17 @@
+.empty {
+    display: grid;
+    justify-items: center;
+    gap: 12px;
+    padding: 64px 24px;
+    color: var(--grey600);
+}
+
+.art {
+    width: 96px;
+    height: 96px;
+}
+
+.message {
+    margin: 0;
+    font-size: 14px;
+}

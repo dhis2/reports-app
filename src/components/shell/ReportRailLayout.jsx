@@ -1,0 +1,156 @@
+import i18n from '@dhis2/d2-i18n'
+import PropTypes from 'prop-types'
+import React, { useState } from 'react'
+import { RailToggleIcon } from './RailToggleIcon.jsx'
+import { ReportBreadcrumb } from './ReportBreadcrumb.jsx'
+import styles from './ReportRailLayout.module.css'
+
+/**
+ * The chrome shared by the redesigned report pages: a top bar carrying the
+ * section switcher and the actions for what is on screen, a collapsible
+ * options rail, and a report column that scrolls on its own.
+ *
+ * The page supplies the rail's contents and the report; everything about the
+ * frame — the collapse behaviour, the stale badge's anchoring, the print and
+ * narrow-screen rules — lives here. Pages import `ReportRailLayout.module.css`
+ * alongside their own stylesheet, because filling in the rail means using its
+ * vocabulary (`.railForm`, `.railScroll`, `.group`, `.railActions`).
+ *
+ * Requires the page's section to be listed in AppShell's SELF_MANAGED_LAYOUT,
+ * which is what hands it the full content area at an exact height.
+ */
+export const ReportRailLayout = ({
+    sectionKey,
+    railTitle,
+    actions,
+    staleNote,
+    onStaleAction,
+    staleActionDisabled,
+    rail,
+    children,
+}) => {
+    /*
+     * Collapsing the rail is a thing you do to the report in front of you —
+     * to get it out of the way of this table, on this screen — not a standing
+     * preference. So it lasts as long as the page does: every report opens
+     * with its options in view, which is also the only state that explains
+     * itself to someone arriving.
+     */
+    const [collapsed, setCollapsed] = useState(false)
+
+    const toggle = () => setCollapsed((current) => !current)
+
+    return (
+        <div className={styles.page}>
+            {/* ---------------- top bar ---------------- */}
+            <header className={styles.topbar}>
+                {/*
+                 * Where you are: the trail back to the report list.
+                 */}
+                <ReportBreadcrumb currentSection={sectionKey} />
+
+                {actions && (
+                    <div className={styles.topbarActions}>{actions}</div>
+                )}
+            </header>
+
+            <div
+                className={`${styles.work} ${
+                    collapsed ? styles.workRailCollapsed : ''
+                }`}
+            >
+                {/* ---------------- options rail ---------------- */}
+                <aside
+                    className={`${styles.rail} ${
+                        collapsed ? styles.railCollapsed : ''
+                    }`}
+                >
+                    {/*
+                     * The panel says what it is, and carries the control that
+                     * puts it away. The rule under it runs the full width of
+                     * the rail, so the header reads as the panel's own bar
+                     * rather than as a first row of options.
+                     */}
+                    <div className={styles.railHeader}>
+                        <h2 className={styles.railTitle}>{railTitle}</h2>
+                        <button
+                            type="button"
+                            className={styles.railToggle}
+                            onClick={toggle}
+                            aria-expanded={!collapsed}
+                            aria-controls="report-options"
+                            title={
+                                collapsed
+                                    ? i18n.t('Show report options')
+                                    : i18n.t('Hide report options')
+                            }
+                        >
+                            <RailToggleIcon collapsed={collapsed} />
+                            <span className={styles.visuallyHidden}>
+                                {collapsed
+                                    ? i18n.t('Show report options')
+                                    : i18n.t('Hide report options')}
+                            </span>
+                        </button>
+                    </div>
+
+                    <div id="report-options" className={styles.railBody}>
+                        {rail}
+                    </div>
+                </aside>
+
+                {/* ---------------- output ---------------- */}
+                <div className={styles.outputPane}>
+                    {/*
+                     * Tagged onto the top of the output rather than announced
+                     * inside it. Changing an option is the ordinary start of
+                     * the next report, not a fault, so this labels what is on
+                     * screen instead of raising an alert about it.
+                     *
+                     * It lives outside .output because .output is the scroll
+                     * container, which clips anything hanging over its edge —
+                     * and out here it also stays put while the report scrolls.
+                     */}
+                    {staleNote && (
+                        <span className={styles.staleBadge}>
+                            {staleNote}
+                            {/* The badge says what is wrong; this is the one
+                             * thing you would do about it. */}
+                            {onStaleAction && (
+                                <button
+                                    type="button"
+                                    className={styles.staleAction}
+                                    onClick={onStaleAction}
+                                    disabled={staleActionDisabled}
+                                >
+                                    {i18n.t('Update')}
+                                </button>
+                            )}
+                        </span>
+                    )}
+
+                    <section className={styles.output}>{children}</section>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+ReportRailLayout.propTypes = {
+    /** The rail's contents — normally the page's <form>. */
+    rail: PropTypes.node.isRequired,
+    /** Heading for the options panel. */
+    railTitle: PropTypes.string.isRequired,
+    /** Section key, for the switcher in the top bar. */
+    sectionKey: PropTypes.string.isRequired,
+    /** Top bar actions for whatever is on screen; omitted when there is none. */
+    actions: PropTypes.node,
+    /** The report itself. */
+    children: PropTypes.node,
+    /** Greys out that action while the form cannot be run. */
+    staleActionDisabled: PropTypes.bool,
+    /** Text for the badge shown when the output no longer matches the form. */
+    staleNote: PropTypes.string,
+    /** Called by the badge's Update action; omit for a badge with no action. */
+    onStaleAction: PropTypes.func,
+}

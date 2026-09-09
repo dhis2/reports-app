@@ -1,0 +1,290 @@
+/*
+ * What is specific to the cold-chain fridge log. The frame — top bar, rail,
+ * output pane, stale badge — comes from components/shell/ReportRailLayout, so
+ * this file only styles the rail's month input and the calendar output.
+ *
+ * Colours are written as literals: this is plain CSS and cannot import the
+ * @dhis2/ui tokens. Greys reuse the ui token values so they match the rest.
+ */
+
+/* ---------- rail ---------- */
+
+.monthInput {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 10px;
+    font: inherit;
+    color: var(--grey900, #212934);
+    background: var(--white, #fff);
+    border: 1px solid var(--grey500, #a0adba);
+    border-radius: 3px;
+}
+
+.monthInput:focus {
+    outline: none;
+    border-color: #1a73e8;
+    box-shadow: 0 0 0 1px #1a73e8;
+}
+
+/* ---------- summary ---------- */
+
+.summaryDetail {
+    margin: 0;
+    font-size: 13px;
+    color: var(--grey700, #4a5768);
+}
+
+.body {
+    padding: 16px;
+}
+
+/* ---------- calendar ---------- */
+
+.calendar {
+    max-width: 720px;
+}
+
+.weekdayRow,
+.grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+}
+
+.weekdayRow {
+    margin-bottom: 6px;
+}
+
+.weekday {
+    padding: 2px 0;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--grey600, #6c7787);
+    text-align: center;
+}
+
+.day,
+.dayEmpty {
+    aspect-ratio: 1 / 1;
+    border-radius: 4px;
+}
+
+.day {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 4px 5px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    /* The cells are buttons now — strip the default chrome, keep the layout. */
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition: box-shadow 0.08s ease;
+}
+
+.day:hover:not(:disabled) {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18);
+}
+
+.day:disabled {
+    cursor: default;
+}
+
+.day:focus-visible {
+    outline: 2px solid #1a73e8;
+    outline-offset: 1px;
+}
+
+/* The opened day, held with a ring so it reads against its status fill. */
+.daySelected,
+.daySelected:hover:not(:disabled) {
+    box-shadow: 0 0 0 2px #1a1a1a;
+}
+
+.dayNumber {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--grey700, #4a5768);
+}
+
+.dayReading {
+    font-size: 11px;
+    font-variant-numeric: tabular-nums;
+    color: var(--grey800, #404b5a);
+    align-self: flex-end;
+}
+
+/* Status fills. Green in range, blue too cold, red too warm. */
+.dayOk {
+    background: #e5f4e8;
+    border-color: #b6e0bf;
+}
+
+.dayCold {
+    background: #dbeafe;
+    border-color: #a9caf6;
+}
+
+.dayWarm {
+    background: #fde4e2;
+    border-color: #f6b7b1;
+}
+
+.dayMissing {
+    background: repeating-linear-gradient(
+        45deg,
+        #f3f5f7,
+        #f3f5f7 5px,
+        #e8ebee 5px,
+        #e8ebee 10px
+    );
+    border-color: var(--grey300, #d5dde5);
+}
+
+.dayEmpty {
+    background: transparent;
+}
+
+/* ---------- legend ---------- */
+
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    margin-top: 14px;
+}
+
+.legendItem {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    color: var(--grey700, #4a5768);
+}
+
+.swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* ---------- day trace (drill-down) ---------- */
+
+.trace {
+    margin-top: 20px;
+    max-width: 720px;
+    padding: 14px 16px 8px;
+    border: 1px solid var(--grey300, #d5dde5);
+    border-radius: 4px;
+    background: var(--grey050, #fbfcfd);
+}
+
+.traceHead {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.traceTitle {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--grey900, #212934);
+}
+
+.traceSub {
+    margin: 2px 0 0;
+    font-size: 12px;
+    color: var(--grey700, #4a5768);
+    font-variant-numeric: tabular-nums;
+}
+
+.traceSvg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.traceAxis {
+    fill: var(--grey600, #6c7787);
+    font-size: 11px;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ---------- excursions ---------- */
+
+.excursions {
+    margin-top: 24px;
+    max-width: 720px;
+}
+
+.excursionsTitle {
+    margin: 0 0 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--grey900, #212934);
+}
+
+.excursionList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: 1px solid var(--grey300, #d5dde5);
+    border-radius: 4px;
+}
+
+.excursionItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    font-size: 13px;
+}
+
+.excursionItem + .excursionItem {
+    border-top: 1px solid var(--grey200, #e8edf2);
+}
+
+.dot {
+    flex: 0 0 auto;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+}
+
+.dotWarm {
+    background: #d9524a;
+}
+
+.dotCold {
+    background: #3b82f6;
+}
+
+.excursionDate {
+    flex: 0 0 auto;
+    width: 52px;
+    font-weight: 600;
+    color: var(--grey900, #212934);
+    font-variant-numeric: tabular-nums;
+}
+
+.excursionNote {
+    color: var(--grey700, #4a5768);
+}
+
+/* ---------- print ---------- */
+
+@media print {
+    .legend {
+        break-inside: avoid;
+    }
+
+    .excursions {
+        break-inside: avoid;
+    }
+}
