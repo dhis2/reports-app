@@ -149,6 +149,22 @@
 }
 
 /*
+ * With the discussion open, a third column mirroring the rail: 312px of panel
+ * plus its 8px gutter. The data visualizer gives its details panel 380px, but
+ * it has no options rail on the other side — here that width is taken off a
+ * report that is already the widest thing on the page, and pushes its tables
+ * into horizontal scrolling. Matching the rail keeps the report the widest
+ * column and the page symmetrical.
+ */
+.workWithAside {
+    grid-template-columns: 320px minmax(0, 1fr) 320px;
+}
+
+.workWithAside.workRailCollapsed {
+    grid-template-columns: 48px minmax(0, 1fr) 320px;
+}
+
+/*
  * Detached from the top bar and from the window: 8px of canvas on every side,
  * so it reads as a panel resting on the page rather than as part of the frame.
  */
@@ -261,29 +277,49 @@
     border-top: 1px solid var(--grey400);
 }
 
+/*
+ * The frame the report sits in, not something that scrolls. It holds the
+ * canvas margin and stacks whatever the page puts in it; the overflow here
+ * is a backstop for the short states (a notice, the empty state and its
+ * recent-reports panel) that are laid out at their natural height.
+ */
 .output {
     min-width: 0;
     min-height: 0;
-    overflow-y: auto;
-    display: grid;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
     gap: 8px;
-    align-content: start;
-    padding: 8px 8px 40px;
+    padding: 8px;
 }
 
 /*
  * Grid and flex children default to min-width:auto, so they refuse to shrink
- * below their content's intrinsic width. A wide report table then pushes the
- * card — and every ancestor — out to the table's full width, which also stops
- * .tableScroll below from ever becoming a scroll container, because there is
- * nothing narrower to clip against. Letting the children shrink is what makes
- * the horizontal scroll land on the table instead of the page.
+ * below their content's intrinsic width. A wide report table would otherwise
+ * push the card — and every ancestor — out to the table's full width, which
+ * also stops .reportBody from ever becoming a scroll container, because there
+ * is nothing narrower to clip against.
  */
 .output > * {
+    flex: none;
     min-width: 0;
     background: var(--white);
     border: 1px solid var(--grey400);
     border-radius: 3px;
+}
+
+/*
+ * The report card holds its place: it fills the pane exactly and stays there,
+ * so the summary strip, the view switch and the frame around them are always
+ * where you left them. What moves is the report inside — see .reportBody.
+ */
+.output > .reportCard {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    /* Keeps the scroll region inside the card's rounded corners. */
+    overflow: hidden;
 }
 
 /* ---------- form bits ---------- */
@@ -472,6 +508,8 @@
  * the printout — while the buttons that act on it live in the top bar.
  */
 .summary {
+    /* Head of the card, above the scroll: it does not move with the report. */
+    flex: none;
     display: flex;
     flex-direction: column;
     gap: 2px;
@@ -481,7 +519,6 @@
 }
 
 .summaryLine {
-    flex: 1 1 auto;
     min-width: 0;
     margin: 0;
     font-size: 14px;
@@ -503,6 +540,8 @@
 }
 
 .toolbar {
+    /* Head of the card, above the scroll: it does not move with the report. */
+    flex: none;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -552,7 +591,15 @@
 
 /* ---------- report body ---------- */
 
+/*
+ * The one scroll region for the report, on both axes: a long report scrolls
+ * up through it and a wide one sideways, while the card around it stays put.
+ */
 .reportBody {
+    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 0;
+    overflow: auto;
     padding: 16px;
 }
 
@@ -577,9 +624,14 @@
     color: var(--grey600);
 }
 
+/*
+ * Not a scroll container any more, despite the name: the table is left free
+ * to be as wide as its columns need and the output pane carries the
+ * horizontal scroll for the whole report. Kept as the hook the column-width
+ * rules below hang off.
+ */
 .tableScroll {
-    overflow-x: auto;
-    max-width: 100%;
+    min-width: 0;
 }
 
 /*
@@ -590,9 +642,10 @@
  * more room than a figure needs.
  *
  * Fixed layout lets us spend the width where it earns its keep instead: room
- * for the data element name, a readable width for each value, and horizontal
- * scrolling only once there are more columns than fit. --table-min-width is
- * set per table from its column count, in ReportTables.jsx.
+ * for the data element name and a readable width for each value, with the
+ * output pane scrolling sideways once there are more columns than fit.
+ * --table-min-width is set per table from its column count, in
+ * ReportTables.jsx.
  *
  * The `div` prefix is needed to outrank DataTable's own table-layout:auto,
  * which has the same class-plus-element specificity.
@@ -684,6 +737,17 @@ div.tableScroll thead th:last-child {
 }
 
 /*
+ * The "no data" notice stands where the report would: inside the card, it
+ * takes the space the report body would have had rather than leaving the
+ * card's frame hanging empty below it.
+ */
+.reportCard > .noticePad {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: auto;
+}
+
+/*
  * Stands on the canvas rather than in a card of its own — it is a note about
  * the report below, not a thing in its own right. The tightening is the
  * component's own `dense` variant (@dhis2/ui 10.15.0+).
@@ -760,7 +824,9 @@ div.tableScroll thead th:last-child {
     /* Undo the fixed-height panes so the whole report flows onto paper. */
     .page,
     .work,
-    .output {
+    .output,
+    .output > .reportCard,
+    .reportBody {
         display: block;
         height: auto;
         min-height: 0;
@@ -804,21 +870,31 @@ div.tableScroll thead th:last-child {
     }
 
     .output {
-        overflow-y: visible;
+        overflow: visible;
         padding: 8px;
+    }
+
+    /*
+     * Stacked, the page is the scroll container again: the card takes its
+     * natural height and only the sideways scroll stays inside it.
+     */
+    .output > .reportCard {
+        flex: none;
+        display: block;
+        min-height: 0;
+    }
+
+    .reportBody {
+        overflow-y: visible;
     }
 }
 
 /*
- * Form view reproduces the data entry form, which is a wide fixed-layout table.
- * Let it scroll inside the report body rather than stretching the page.
+ * Form view reproduces the data entry form, which is a wide fixed-layout
+ * table. It does not scroll on its own: like the report tables, it is left
+ * free to be as wide as it needs and .reportBody is what carries it — one
+ * scrollbar for the report rather than one per form.
  */
 .reportBody :global(.wrapper) {
-    overflow-x: auto;
-}
-
-@media print {
-    .reportBody :global(.wrapper) {
-        overflow-x: visible;
-    }
+    min-width: 0;
 }

@@ -516,9 +516,9 @@ export const StandardReportNext = ({ match }) => {
 
                         {!reportLoading && report && (
                             <div
-                                className={
-                                    isStale ? styles.staleOutput : undefined
-                                }
+                                className={`${styles.reportCard} ${
+                                    isStale ? styles.staleOutput : ''
+                                }`}
                             >
                                 <div className={styles.summary}>
                                     <p className={styles.summaryLine}>
@@ -529,7 +529,14 @@ export const StandardReportNext = ({ match }) => {
                                     </p>
                                 </div>
 
-                                <HtmlReportView html={report.html} />
+                                {/*
+                                 * The report frame is as tall as the report it
+                                 * drew, so it is this that scrolls rather than
+                                 * the card around it.
+                                 */}
+                                <div className={styles.reportScroll}>
+                                    <HtmlReportView html={report.html} />
+                                </div>
                             </div>
                         )}
                     </section>

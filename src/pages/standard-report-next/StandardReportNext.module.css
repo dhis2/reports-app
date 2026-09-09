@@ -499,14 +499,20 @@
 
 /* ---------- output ---------- */
 
+/*
+ * The frame the report sits in, not something that scrolls. It holds the
+ * canvas margin and stacks whatever the page puts in it; the overflow here
+ * is a backstop for the short states — a notice, the empty state — that are
+ * laid out at their natural height.
+ */
 .output {
     min-width: 0;
     min-height: 0;
-    overflow-y: auto;
-    display: grid;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
     gap: 8px;
-    align-content: start;
-    padding: 8px 8px 40px;
+    padding: 8px;
 }
 
 /*
@@ -515,10 +521,37 @@
  * every ancestor, out to its full width.
  */
 .output > * {
+    flex: none;
     min-width: 0;
     background: var(--white);
     border: 1px solid var(--grey400);
     border-radius: 3px;
+}
+
+/*
+ * The report card holds its place: it fills the pane exactly and stays there,
+ * so the summary strip at its head and the frame around it are always where
+ * you left them. What moves is the report inside — see .reportScroll.
+ */
+.output > .reportCard {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    /* Keeps the scroll region inside the card's rounded corners. */
+    overflow: hidden;
+}
+
+/*
+ * The one scroll region for the report. The frame it holds is as tall as the
+ * report it drew, so this is what carries a long one, leaving the card, the
+ * rail and the top bar where they are.
+ */
+.reportScroll {
+    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 0;
+    overflow: auto;
 }
 
 /* ---------- summary strip ---------- */
@@ -530,6 +563,8 @@
  */
 /* Two lines: what was asked for, and when the answer was made. */
 .summary {
+    /* Head of the card, above the scroll: it does not move with the report. */
+    flex: none;
     display: flex;
     flex-direction: column;
     gap: 2px;
@@ -654,7 +689,9 @@
     /* Undo the fixed-height panes so the whole report flows onto paper. */
     .page,
     .work,
-    .output {
+    .output,
+    .output > .reportCard,
+    .reportScroll {
         display: block;
         height: auto;
         overflow: visible;

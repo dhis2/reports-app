@@ -1,0 +1,75 @@
+/*
+ * The interpretations sidebar: the same card as the options rail, on the other
+ * side of the report. Values are the @dhis2/ui tokens, written as literals
+ * because this is plain CSS — matching DataSetReportNext.module.css.
+ */
+
+.panel {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 0;
+    margin: 8px 8px 8px 0;
+    background: var(--white);
+    border: 1px solid var(--grey400);
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(33, 41, 52, 0.06);
+    /* Keeps the scroll area inside the rounded corners. */
+    overflow: hidden;
+}
+
+/*
+ * The one scroll region. InterpretationsUnit paints its own white background
+ * and bottom rule, so it needs nothing from here but room and a scrollbar.
+ */
+.body {
+    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 0;
+    overflow-y: auto;
+    /*
+     * overflow-y:auto makes overflow-x auto too, so anything a pixel too wide
+     * puts a horizontal scrollbar across the panel. Nothing in the unit is
+     * fixed-width, but the text people write is not under our control: a long
+     * URL or an unbroken string would otherwise widen the card.
+     */
+    overflow-wrap: anywhere;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    padding: 24px;
+}
+
+.notice {
+    padding: 12px;
+}
+
+/*
+ * The report as it appears beside a thread in the modal. The page's own report
+ * styles come with the markup; all this adds is the scroll it needs inside the
+ * modal's fixed height.
+ */
+.preview {
+    height: 100%;
+    overflow: auto;
+}
+
+/* The discussion is not part of the report; paper gets the report. */
+@media print {
+    .panel {
+        display: none;
+    }
+}
+
+/* Stacked below the report, it takes the same margin as the rail does. */
+@media (max-width: 900px) {
+    .panel {
+        margin: 8px;
+    }
+
+    .body {
+        overflow-y: visible;
+    }
+}

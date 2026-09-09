@@ -431,7 +431,11 @@ export const OrgUnitDistReportNext = () => {
             {!reportLoading && !report && !reportError && <ReportEmptyState />}
 
             {!reportLoading && report && (
-                <div className={isStale ? railStyles.staleOutput : undefined}>
+                <div
+                    className={`${railStyles.reportCard} ${
+                        isStale ? railStyles.staleOutput : ''
+                    }`}
+                >
                     <div className={railStyles.summary}>
                         <p className={railStyles.summaryLine}>{summaryLine}</p>
                         <p className={styles.summaryDetail}>{summaryDetail}</p>

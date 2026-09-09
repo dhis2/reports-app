@@ -25,6 +25,8 @@
  * change of view, not a change of question.
  */
 .viewBar {
+    /* Head of the card, above the scroll: it does not move with the report. */
+    flex: none;
     display: flex;
     align-items: center;
     padding: 8px 16px;
@@ -41,9 +43,16 @@
 
 /* ---------- table ---------- */
 
+/*
+ * The report's scroll region, both axes: a long list of org units scrolls up
+ * through it and a group set with many groups sideways, while the card around
+ * it stays put.
+ */
 .tableScroll {
-    overflow-x: auto;
-    max-width: 100%;
+    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 0;
+    overflow: auto;
 }
 
 /*
@@ -54,8 +63,8 @@
  * because that width really is the table's min-content size.
  *
  * Fixed layout ignores content-based minimums, so we set the column widths
- * ourselves: room for the org unit name, a readable width per group, and
- * horizontal scrolling on the container when there are many groups.
+ * ourselves: room for the org unit name and a readable width per group, with
+ * the output pane scrolling sideways when there are many groups.
  * --table-min-width is set from the column count in DistributionTable.
  *
  * The `div` prefix is needed to outrank DataTable's own table-layout:auto,
@@ -123,11 +132,17 @@ div.tableScroll thead th:not(:first-child) span {
 
 /*
  * chart.js is told not to maintain an aspect ratio, so the canvas takes the
- * height of this box — which therefore has to have one. Tall enough for a
- * legend beneath a dozen or so stacked bars.
+ * height of this box — which therefore has to have one.
+ *
+ * It also grows, so the chart fills what the card has left rather than
+ * sitting in a 480px band with the card's frame hanging empty below it. The
+ * declared height is still what carries it outside a flex context — print,
+ * and the stacked narrow layout — where nothing else would give it one.
  */
 .chartBox {
+    flex: 1 1 auto;
     height: 480px;
+    min-height: 240px;
     padding: 16px;
 }
 
@@ -143,8 +158,12 @@ div.tableScroll thead th:not(:first-child) span {
         min-width: 0;
     }
 
-    div.tableScroll {
-        overflow-x: visible;
+    /* Undo the on-screen scroll region so the whole table flows onto paper. */
+    .tableScroll {
+        display: block;
+        height: auto;
+        min-height: 0;
+        overflow: visible;
     }
 
     /*
@@ -153,5 +172,17 @@ div.tableScroll thead th:not(:first-child) span {
      */
     .chartBox {
         break-inside: avoid;
+    }
+}
+
+/* ---------- narrow screens ---------- */
+
+/*
+ * Below the rail layout's breakpoint the panes stack and the page is the
+ * scroll container again, so the table keeps only its sideways scroll.
+ */
+@media (max-width: 900px) {
+    .tableScroll {
+        overflow-y: visible;
     }
 }

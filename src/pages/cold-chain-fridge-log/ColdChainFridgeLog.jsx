@@ -169,7 +169,11 @@ export const ColdChainFridgeLog = () => {
             {!log && <ReportEmptyState />}
 
             {log && (
-                <div className={isStale ? railStyles.staleOutput : undefined}>
+                <div
+                    className={`${railStyles.reportCard} ${
+                        isStale ? railStyles.staleOutput : ''
+                    }`}
+                >
                     <div className={railStyles.summary}>
                         <p className={railStyles.summaryLine}>
                             {log.facility.name} · {monthLabel(log)}
@@ -196,7 +200,9 @@ export const ColdChainFridgeLog = () => {
                         </p>
                     </div>
 
-                    <div className={styles.body}>
+                    <div
+                        className={`${styles.body} ${railStyles.reportScroll}`}
+                    >
                         <FridgeCalendar
                             log={log}
                             selectedDay={selectedDay}

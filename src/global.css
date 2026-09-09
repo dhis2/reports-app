@@ -245,6 +245,32 @@ th.DataTableColumnHeader > span.container {
 }
 
 /*
+ * @dhis2/analytics' Interpretations components collide with the same rule, and
+ * with flexboxgrid's .row as well. Their styled-jsx blocks use `container` and
+ * `row` as local, semantic names — the interpretations sidebar's root element
+ * is `<div class="jsx-1418068143 container expanded">` — so the sidebar's
+ * content is pinned to 1136px inside a 312px panel and scrolls sideways, and
+ * the interpretation modal's two-column row picks up flexboxgrid's wrapping
+ * and negative margins.
+ *
+ * Every styled-jsx element carries a generated `jsx-…` class beside its own,
+ * which is the handle for saying "this container belongs to a component, not
+ * to the grid". Two classes outrank the bare one, so the media query the width
+ * lives in makes no difference — and unlike a CSS module this also reaches the
+ * modal, which portals out of the app's own markup.
+ */
+[class*='jsx-'].container,
+[class*='jsx-'].row {
+    width: auto;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+[class*='jsx-'].row {
+    flex-wrap: nowrap;
+}
+
+/*
  * ---------- print ----------
  *
  * The DHIS2 header bar and the app-platform wrapper around it are rendered by

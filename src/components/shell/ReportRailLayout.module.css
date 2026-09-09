@@ -328,29 +328,61 @@
     flex: 1 1 auto;
 }
 
+/*
+ * The frame the report sits in, not something that scrolls. It holds the
+ * canvas margin and stacks whatever the page puts in it; the overflow here
+ * is a backstop for the short states (a notice, the empty state and its
+ * recent-reports panel) that are laid out at their natural height.
+ */
 .output {
     min-width: 0;
     min-height: 0;
-    overflow-y: auto;
-    display: grid;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
     gap: 8px;
-    align-content: start;
-    padding: 8px 8px 40px;
+    padding: 8px;
 }
 
 /*
  * Grid and flex children default to min-width:auto, so they refuse to shrink
- * below their content's intrinsic width. A wide report table then pushes the
- * card — and every ancestor — out to the table's full width, which also stops
- * the table's own scroll container from ever engaging, because there is
- * nothing narrower to clip against. Letting the children shrink is what makes
- * the horizontal scroll land on the table instead of the page.
+ * below their content's intrinsic width. A wide report table would otherwise
+ * push the card — and every ancestor — out to the table's full width, which
+ * also stops .reportScroll from ever engaging, because there is nothing
+ * narrower to clip against.
  */
 .output > * {
+    flex: none;
     min-width: 0;
     background: var(--white);
     border: 1px solid var(--grey400);
     border-radius: 3px;
+}
+
+/*
+ * The report card holds its place: it fills the pane exactly and stays there,
+ * so the summary strip at its head and the frame around it are always where
+ * you left them. What moves is the report inside it — see .reportScroll.
+ */
+.output > .reportCard {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    /* Keeps the scroll region inside the card's rounded corners. */
+    overflow: hidden;
+}
+
+/*
+ * The one scroll region for the report, on both axes: a long report scrolls
+ * up through it and a wide one sideways, while the card, the rail and the top
+ * bar all stay put. Pages apply this to whatever holds their report body.
+ */
+.reportScroll {
+    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 0;
+    overflow: auto;
 }
 
 /*
@@ -359,6 +391,8 @@
  * the printout — while the buttons that act on it live in the top bar.
  */
 .summary {
+    /* Head of the card, above the scroll: it does not move with the report. */
+    flex: none;
     display: flex;
     flex-direction: column;
     gap: 2px;
@@ -368,7 +402,6 @@
 }
 
 .summaryLine {
-    flex: 1 1 auto;
     min-width: 0;
     margin: 0;
     font-size: 14px;
@@ -456,7 +489,9 @@
     /* Undo the fixed-height panes so the whole report flows onto paper. */
     .page,
     .work,
-    .output {
+    .output,
+    .output > .reportCard,
+    .reportScroll {
         display: block;
         height: auto;
         min-height: 0;
@@ -508,7 +543,21 @@
     }
 
     .output {
-        overflow-y: visible;
+        overflow: visible;
         padding: 8px;
+    }
+
+    /*
+     * Stacked, the page is the scroll container again: the card takes its
+     * natural height and only the sideways scroll stays inside it.
+     */
+    .output > .reportCard {
+        flex: none;
+        display: block;
+        min-height: 0;
+    }
+
+    .reportScroll {
+        overflow-y: visible;
     }
 }

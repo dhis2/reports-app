@@ -28,6 +28,7 @@ import { fixedPeriodTranslations } from '../../utils/periods/fixedPeriods.js'
 import { CustomFormReport } from './CustomFormReport.jsx'
 import styles from './DataSetReportNext.module.css'
 import { FormView } from './form-view/index.js'
+import { InterpretationsPanel } from './interpretations/InterpretationsPanel.jsx'
 import {
     canReportAtPeriodType,
     dropUnopenedPeriods,
@@ -245,6 +246,7 @@ export const DataSetReportNext = () => {
     const [ouName, setOuName] = useState('')
     /* Ephemeral, like the rail on every other report page — see toggleRail. */
     const [railCollapsed, setRailCollapsed] = useState(false)
+    const [showInterpretations, setShowInterpretations] = useState(false)
     const [viewMode, setViewMode] = useState(readViewMode)
     const [recent, setRecent] = useState(readRecentReports)
     /* A recent report picked from the empty state, waiting on its options. */
@@ -746,6 +748,14 @@ export const DataSetReportNext = () => {
 
     const isStandardView = viewMode === VIEW_MODES.STANDARD
 
+    /*
+     * The discussion is about a report, so it can only be open once there is
+     * one — and it closes itself when the report is cleared. Like the rail's
+     * collapse, whether it is open is about this screen right now rather than
+     * a standing preference, so it is not remembered.
+     */
+    const interpretationsOpen = showInterpretations && !!report
+
     return (
         <div className={styles.page}>
             {/* ---------------- top bar ---------------- */}
@@ -763,6 +773,15 @@ export const DataSetReportNext = () => {
                  */}
                 {report && (
                     <div className={styles.topbarActions}>
+                        <Button
+                            small
+                            secondary={interpretationsOpen}
+                            onClick={() =>
+                                setShowInterpretations(!interpretationsOpen)
+                            }
+                        >
+                            {i18n.t('Interpretations')}
+                        </Button>
                         <Button small onClick={() => window.print()}>
                             {i18n.t('Print')}
                         </Button>
@@ -797,8 +816,8 @@ export const DataSetReportNext = () => {
 
             <div
                 className={`${styles.work} ${
-                    railCollapsed ? styles.workRailCollapsed : ''
-                }`}
+                    interpretationsOpen ? styles.workWithAside : ''
+                } ${railCollapsed ? styles.workRailCollapsed : ''}`}
             >
                 {/* ---------------- filter rail ---------------- */}
                 <aside
@@ -1282,7 +1301,7 @@ export const DataSetReportNext = () => {
 
                         {!reportLoading && report && (
                             <div
-                                className={cx({
+                                className={cx(styles.reportCard, {
                                     [styles.staleOutput]: isStale,
                                 })}
                             >
@@ -1427,6 +1446,18 @@ export const DataSetReportNext = () => {
                         )}
                     </section>
                 </div>
+
+                {/* ---------------- interpretations ---------------- */}
+                {interpretationsOpen && (
+                    <InterpretationsPanel
+                        snapshot={report.snapshot}
+                        reportPreview={
+                            report.tables ? (
+                                <ReportTables tables={report.tables} />
+                            ) : null
+                        }
+                    />
+                )}
             </div>
         </div>
     )

@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-09-08T13:28:35.725Z\n"
-"PO-Revision-Date: 2026-09-08T13:28:35.725Z\n"
+"POT-Creation-Date: 2026-09-09T06:39:01.006Z\n"
+"PO-Revision-Date: 2026-09-09T06:39:01.007Z\n"
 
 msgid "Updating Organisation Units Tree..."
 msgstr "Updating Organisation Units Tree..."
@@ -343,6 +343,9 @@ msgstr "Data collected yearly"
 msgid "Any"
 msgstr "Any"
 
+msgid "Interpretations"
+msgstr "Interpretations"
+
 msgid "{{ext}}"
 msgstr "{{ext}}"
 
@@ -498,6 +501,12 @@ msgstr "Type here to filter rows in this section"
 
 msgid "1 item hidden by filter"
 msgstr "1 item hidden by filter"
+
+msgid "Could not load"
+msgstr "Could not load"
+
+msgid "Interpretations need your user account, which could not be loaded."
+msgstr "Interpretations need your user account, which could not be loaded."
 
 msgid "Search reports"
 msgstr "Search reports"
@@ -1337,9 +1346,6 @@ msgstr "Manage my apps"
 msgid "No results found"
 msgstr "No results found"
 
-msgid "Interpretations"
-msgstr "Interpretations"
-
 msgid "Messages"
 msgstr "Messages"
 
@@ -1702,31 +1708,3 @@ msgstr "Upload file"
 
 msgid "Confirm delete"
 msgstr "Confirm delete"
-
-msgctxt "Application title"
-msgid "__MANIFEST_APP_TITLE"
-msgstr "Reports"
-
-msgctxt "Application description"
-msgid "__MANIFEST_APP_DESCRIPTION"
-msgstr ""
-
-msgctxt "Title for shortcut used by command palette"
-msgid "__MANIFEST_SHORTCUT_Standard report"
-msgstr "Standard report"
-
-msgctxt "Title for shortcut used by command palette"
-msgid "__MANIFEST_SHORTCUT_Data set report"
-msgstr "Data set report"
-
-msgctxt "Title for shortcut used by command palette"
-msgid "__MANIFEST_SHORTCUT_Reporting rates summary"
-msgstr "Reporting rates summary"
-
-msgctxt "Title for shortcut used by command palette"
-msgid "__MANIFEST_SHORTCUT_Resources"
-msgstr "Resources"
-
-msgctxt "Title for shortcut used by command palette"
-msgid "__MANIFEST_SHORTCUT_Org unit distribution report"
-msgstr "Org unit distribution report"

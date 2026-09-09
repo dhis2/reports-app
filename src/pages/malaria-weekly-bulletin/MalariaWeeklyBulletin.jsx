@@ -218,215 +218,232 @@ export const MalariaWeeklyBulletin = () => {
             {!bulletin && <ReportEmptyState />}
 
             {bulletin && (
-                <div className={isStale ? railStyles.staleOutput : undefined}>
-                    <article className={styles.sheet}>
-                        {/* ---------------- doc header ---------------- */}
-                        <header className={styles.docHeader}>
-                            <div className={styles.docHeaderTop}>
-                                <div>
-                                    <p className={styles.docOrg}>
-                                        {i18n.t(
-                                            'National Malaria Control Programme'
-                                        )}
-                                    </p>
-                                    <p className={styles.docTitle}>
-                                        {i18n.t(
-                                            'Weekly Malaria Surveillance Bulletin'
-                                        )}
+                <div
+                    className={`${railStyles.reportCard} ${
+                        isStale ? railStyles.staleOutput : ''
+                    }`}
+                >
+                    {/*
+                     * The sheet is a fixed-width page, so it is the region
+                     * around it that scrolls — the card itself stays put.
+                     */}
+                    <div className={railStyles.reportScroll}>
+                        <article className={styles.sheet}>
+                            {/* ---------------- doc header ---------------- */}
+                            <header className={styles.docHeader}>
+                                <div className={styles.docHeaderTop}>
+                                    <div>
+                                        <p className={styles.docOrg}>
+                                            {i18n.t(
+                                                'National Malaria Control Programme'
+                                            )}
+                                        </p>
+                                        <p className={styles.docTitle}>
+                                            {i18n.t(
+                                                'Weekly Malaria Surveillance Bulletin'
+                                            )}
+                                        </p>
+                                    </div>
+                                    <p className={styles.docRef}>
+                                        MAL-WSB-
+                                        {String(current.week).padStart(2, '0')}/
+                                        {current.year}
                                     </p>
                                 </div>
-                                <p className={styles.docRef}>
-                                    MAL-WSB-
-                                    {String(current.week).padStart(2, '0')}/
-                                    {current.year}
-                                </p>
-                            </div>
-                        </header>
+                            </header>
 
-                        {/* --- meta fields --- */}
-                        <table className={styles.metaTable}>
-                            <tbody>
-                                <tr>
-                                    <td className={styles.metaLabel}>
-                                        {i18n.t('Reporting unit')}
-                                    </td>
-                                    <td className={styles.metaValue}>
-                                        {bulletin.orgUnitName}
-                                    </td>
-                                    <td className={styles.metaLabel}>
-                                        {i18n.t('Epi week')}
-                                    </td>
-                                    <td className={styles.metaValue}>
-                                        {i18n.t('W{{week}} / {{year}}', {
-                                            week: current.week,
-                                            year: current.year,
-                                        })}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className={styles.metaLabel}>
-                                        {i18n.t('Prepared by')}
-                                    </td>
-                                    <td className={styles.metaValue}>
-                                        {'_____________________'}
-                                    </td>
-                                    <td className={styles.metaLabel}>
-                                        {i18n.t('Date')}
-                                    </td>
-                                    <td className={styles.metaValue}>
-                                        {'____/____/________'}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                            {/* --- meta fields --- */}
+                            <table className={styles.metaTable}>
+                                <tbody>
+                                    <tr>
+                                        <td className={styles.metaLabel}>
+                                            {i18n.t('Reporting unit')}
+                                        </td>
+                                        <td className={styles.metaValue}>
+                                            {bulletin.orgUnitName}
+                                        </td>
+                                        <td className={styles.metaLabel}>
+                                            {i18n.t('Epi week')}
+                                        </td>
+                                        <td className={styles.metaValue}>
+                                            {i18n.t('W{{week}} / {{year}}', {
+                                                week: current.week,
+                                                year: current.year,
+                                            })}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td className={styles.metaLabel}>
+                                            {i18n.t('Prepared by')}
+                                        </td>
+                                        <td className={styles.metaValue}>
+                                            {'_____________________'}
+                                        </td>
+                                        <td className={styles.metaLabel}>
+                                            {i18n.t('Date')}
+                                        </td>
+                                        <td className={styles.metaValue}>
+                                            {'____/____/________'}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
 
-                        {/* --- 1. summary --- */}
-                        <h2 className={styles.sectionHead}>
-                            {i18n.t('1. Summary')}
-                        </h2>
-                        <p className={styles.bodyText}>
-                            {leadSentence(bulletin)}
-                        </p>
+                            {/* --- 1. summary --- */}
+                            <h2 className={styles.sectionHead}>
+                                {i18n.t('1. Summary')}
+                            </h2>
+                            <p className={styles.bodyText}>
+                                {leadSentence(bulletin)}
+                            </p>
 
-                        {/* --- 2. key indicators --- */}
-                        <h2 className={styles.sectionHead}>
-                            {i18n.t('2. Key indicators')}
-                        </h2>
-                        <table className={styles.dataTable}>
-                            <thead>
-                                <tr>
-                                    <th>{i18n.t('Indicator')}</th>
-                                    <th>{i18n.t('This week')}</th>
-                                    <th>{i18n.t('Prev. week')}</th>
-                                    <th>{i18n.t('% change')}</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {tiles.map((tile) => {
-                                    const hasChange =
-                                        tile.change !== null &&
-                                        Math.abs(tile.change) >= 0.005
-                                    return (
-                                        <tr key={tile.key}>
-                                            <td>{tile.label}</td>
-                                            <td className={styles.numCell}>
-                                                {tile.value}
-                                            </td>
-                                            <td className={styles.numCell}>
-                                                {tile.key === 'positivity'
-                                                    ? bulletin.previous
-                                                        ? `${Math.round(
-                                                              bulletin.previous
-                                                                  .positivity *
-                                                                  100
-                                                          )}%`
-                                                        : '—'
-                                                    : bulletin.previous?.[
-                                                          tile.key
-                                                      ] ?? '—'}
-                                            </td>
-                                            <td className={styles.numCell}>
-                                                {hasChange
-                                                    ? pctChange(tile.change)
-                                                    : '—'}
-                                            </td>
-                                        </tr>
-                                    )
-                                })}
-                            </tbody>
-                        </table>
+                            {/* --- 2. key indicators --- */}
+                            <h2 className={styles.sectionHead}>
+                                {i18n.t('2. Key indicators')}
+                            </h2>
+                            <table className={styles.dataTable}>
+                                <thead>
+                                    <tr>
+                                        <th>{i18n.t('Indicator')}</th>
+                                        <th>{i18n.t('This week')}</th>
+                                        <th>{i18n.t('Prev. week')}</th>
+                                        <th>{i18n.t('% change')}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {tiles.map((tile) => {
+                                        const hasChange =
+                                            tile.change !== null &&
+                                            Math.abs(tile.change) >= 0.005
+                                        return (
+                                            <tr key={tile.key}>
+                                                <td>{tile.label}</td>
+                                                <td className={styles.numCell}>
+                                                    {tile.value}
+                                                </td>
+                                                <td className={styles.numCell}>
+                                                    {tile.key === 'positivity'
+                                                        ? bulletin.previous
+                                                            ? `${Math.round(
+                                                                  bulletin
+                                                                      .previous
+                                                                      .positivity *
+                                                                      100
+                                                              )}%`
+                                                            : '—'
+                                                        : bulletin.previous?.[
+                                                              tile.key
+                                                          ] ?? '—'}
+                                                </td>
+                                                <td className={styles.numCell}>
+                                                    {hasChange
+                                                        ? pctChange(tile.change)
+                                                        : '—'}
+                                                </td>
+                                            </tr>
+                                        )
+                                    })}
+                                </tbody>
+                            </table>
 
-                        {/* --- 3. trend --- */}
-                        <h2 className={styles.sectionHead}>
-                            {i18n.t('3. Confirmed cases — last {{n}} weeks', {
-                                n: bulletin.series.length,
-                            })}
-                        </h2>
-                        <TrendChart series={bulletin.series} />
+                            {/* --- 3. trend --- */}
+                            <h2 className={styles.sectionHead}>
+                                {i18n.t(
+                                    '3. Confirmed cases — last {{n}} weeks',
+                                    {
+                                        n: bulletin.series.length,
+                                    }
+                                )}
+                            </h2>
+                            <TrendChart series={bulletin.series} />
 
-                        {/* --- 4. age breakdown --- */}
-                        <h2 className={styles.sectionHead}>
-                            {i18n.t('4. Confirmed cases by age group')}
-                        </h2>
-                        <table className={styles.dataTable}>
-                            <thead>
-                                <tr>
-                                    <th>{i18n.t('Age group')}</th>
-                                    <th>{i18n.t('Cases')}</th>
-                                    <th>{i18n.t('% of total')}</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {AGE_BANDS.map((band) => {
-                                    const count = current.ages[band.key]
-                                    const pct = current.confirmed
-                                        ? Math.round(
-                                              (count / current.confirmed) * 100
-                                          )
-                                        : 0
-                                    return (
-                                        <tr key={band.key}>
-                                            <td>{band.label}</td>
-                                            <td className={styles.numCell}>
-                                                {count}
-                                            </td>
-                                            <td className={styles.numCell}>
-                                                {pct}%
-                                            </td>
-                                        </tr>
-                                    )
-                                })}
-                                <tr className={styles.totalRow}>
-                                    <td>
-                                        <strong>{i18n.t('Total')}</strong>
-                                    </td>
-                                    <td className={styles.numCell}>
-                                        <strong>{current.confirmed}</strong>
-                                    </td>
-                                    <td className={styles.numCell}>
-                                        <strong>100%</strong>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                            {/* --- 4. age breakdown --- */}
+                            <h2 className={styles.sectionHead}>
+                                {i18n.t('4. Confirmed cases by age group')}
+                            </h2>
+                            <table className={styles.dataTable}>
+                                <thead>
+                                    <tr>
+                                        <th>{i18n.t('Age group')}</th>
+                                        <th>{i18n.t('Cases')}</th>
+                                        <th>{i18n.t('% of total')}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {AGE_BANDS.map((band) => {
+                                        const count = current.ages[band.key]
+                                        const pct = current.confirmed
+                                            ? Math.round(
+                                                  (count / current.confirmed) *
+                                                      100
+                                              )
+                                            : 0
+                                        return (
+                                            <tr key={band.key}>
+                                                <td>{band.label}</td>
+                                                <td className={styles.numCell}>
+                                                    {count}
+                                                </td>
+                                                <td className={styles.numCell}>
+                                                    {pct}%
+                                                </td>
+                                            </tr>
+                                        )
+                                    })}
+                                    <tr className={styles.totalRow}>
+                                        <td>
+                                            <strong>{i18n.t('Total')}</strong>
+                                        </td>
+                                        <td className={styles.numCell}>
+                                            <strong>{current.confirmed}</strong>
+                                        </td>
+                                        <td className={styles.numCell}>
+                                            <strong>100%</strong>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
 
-                        {/* --- 5. sign-off --- */}
-                        <h2 className={styles.sectionHead}>
-                            {i18n.t('5. Review and approval')}
-                        </h2>
-                        <table className={styles.signTable}>
-                            <thead>
-                                <tr>
-                                    <th>{i18n.t('Role')}</th>
-                                    <th>{i18n.t('Name')}</th>
-                                    <th>{i18n.t('Signature')}</th>
-                                    <th>{i18n.t('Date')}</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>{i18n.t('Surveillance Officer')}</td>
-                                    <td />
-                                    <td />
-                                    <td />
-                                </tr>
-                                <tr>
-                                    <td>
-                                        {i18n.t('District Medical Officer')}
-                                    </td>
-                                    <td />
-                                    <td />
-                                    <td />
-                                </tr>
-                            </tbody>
-                        </table>
+                            {/* --- 5. sign-off --- */}
+                            <h2 className={styles.sectionHead}>
+                                {i18n.t('5. Review and approval')}
+                            </h2>
+                            <table className={styles.signTable}>
+                                <thead>
+                                    <tr>
+                                        <th>{i18n.t('Role')}</th>
+                                        <th>{i18n.t('Name')}</th>
+                                        <th>{i18n.t('Signature')}</th>
+                                        <th>{i18n.t('Date')}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            {i18n.t('Surveillance Officer')}
+                                        </td>
+                                        <td />
+                                        <td />
+                                        <td />
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            {i18n.t('District Medical Officer')}
+                                        </td>
+                                        <td />
+                                        <td />
+                                        <td />
+                                    </tr>
+                                </tbody>
+                            </table>
 
-                        <p className={styles.footer}>
-                            {i18n.t(
-                                'CONFIDENTIAL — For official use only. Compiled from routine HMIS surveillance data.'
-                            )}
-                        </p>
-                    </article>
+                            <p className={styles.footer}>
+                                {i18n.t(
+                                    'CONFIDENTIAL — For official use only. Compiled from routine HMIS surveillance data.'
+                                )}
+                            </p>
+                        </article>
+                    </div>
                 </div>
             )}
         </ReportRailLayout>
