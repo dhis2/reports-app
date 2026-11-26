@@ -1,4 +1,3 @@
-# 
 # Translators:
 # Siddharth Agarwal, 2025
 # Rohit Wadhwani, 2026
@@ -659,7 +658,7 @@ msgid "Reporting week"
 msgstr ""
 
 msgid "Last Week"
-msgstr ""
+msgstr "पिछला सप्ताह"
 
 msgid "Last 2 weeks"
 msgstr ""
