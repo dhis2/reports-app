@@ -1,0 +1,55 @@
+/*
+ * Sits under the empty-state drawing, inside the same card. The divider is
+ * what separates "nothing here yet" from "here is a way in".
+ */
+.recent {
+    /* border-top: 1px solid var(--grey300); */
+    border: 1px solid var(--grey300);
+    border-radius: 8px;
+    padding: 16px 16px;
+    max-width: 520px;
+    margin: 0 auto 48px;
+}
+
+.heading {
+    margin: 0 0 16px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--grey700);
+}
+
+.list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 2px;
+}
+
+.item {
+    width: 100%;
+    display: block;
+    padding: 7px 10px;
+    border: none;
+    border-radius: 3px;
+    background: none;
+    text-align: start;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--grey700);
+    cursor: pointer;
+}
+
+.name {
+    font-weight: 500;
+    color: var(--grey900);
+}
+
+.item:hover {
+    background: var(--grey100);
+}
+
+.item:focus-visible {
+    outline: 2px solid var(--primary600, #1e88e5);
+    outline-offset: -2px;
+}

@@ -1,0 +1,97 @@
+/*
+ * Styling for the parts of Form view that are ours: the read-only cell and the
+ * wrapper around the vendored form. The form's own look — section headers,
+ * column headers, table borders — comes from the vendored stylesheets, because
+ * looking like data entry is the entire point of this view.
+ */
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.loading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 32px;
+    color: var(--colors-grey700);
+    font-size: 14px;
+}
+
+/*
+ * Filtering rows is an editing affordance: it exists so somebody entering data
+ * into a long form can jump to the field they want. A report is a finished
+ * document, so the row is hidden rather than left sitting there doing nothing.
+ *
+ * Hidden from here rather than by cutting it out of the vendored section
+ * component, so that file stays byte-for-byte upstream. The input's id is the
+ * hook — `filter-input-${section.id}` is written in JSX, so unlike the CSS
+ * module class names around it, it is not hashed at build time.
+ */
+.form :global(tr:has([id^='filter-input-'])) {
+    display: none;
+}
+
+/*
+ * Matched to the upstream .dataEntryCell in
+ * aggregate-data-entry-app/src/data-workspace/data-entry-cell/data-entry-cell.module.css,
+ * which is not vendored because the rest of that file styles states a report
+ * cannot be in — sync, validation, min/max, focus, comments.
+ */
+.cell {
+    padding: 0;
+    min-inline-size: 100px;
+    border: 1px solid var(--colors-grey400);
+    background: #fff;
+    font-size: 13px;
+    line-height: 15px;
+    color: var(--colors-grey900);
+    block-size: 100%;
+}
+
+.value,
+.empty,
+.greyed {
+    display: block;
+    padding: 6px 8px;
+    text-align: end;
+    /* tabular figures so columns of numbers line up */
+    font-feature-settings: 'tnum' 1;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.empty {
+    color: var(--colors-grey500);
+}
+
+/*
+ * A greyed field does not apply to this data element and combination. Same
+ * diagonal hatch upstream uses for a disabled cell, so it reads the way it
+ * does in data entry.
+ */
+.greyed {
+    min-block-size: 27px;
+    background-color: var(--colors-grey200);
+    background-size: 8px 8px;
+    background-image: repeating-linear-gradient(
+        45deg,
+        var(--colors-grey300) 0,
+        var(--colors-grey300) 0.8px,
+        var(--colors-grey200) 0,
+        var(--colors-grey200) 50%
+    );
+}
+
+@media print {
+    .cell {
+        border: 1px solid #999;
+    }
+
+    .greyed {
+        /* print backgrounds are unreliable; a flat fill survives better */
+        background: #eee;
+    }
+}

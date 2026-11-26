@@ -1,30 +1,115 @@
+:root {
+    /* @dhis2/ui-constants colors.js — kept as custom properties since that
+     * package ships JS tokens only, no CSS file to import. */
+    --blue900: #093371;
+    --blue800: #0d47a1;
+    --blue700: #1565c0;
+    --blue600: #147cd7;
+    --blue500: #2196f3;
+    --blue400: #42a5f5;
+    --blue300: #90caf9;
+    --blue200: #c5e3fc;
+    --blue100: #e3f2fd;
+    --blue050: #f5fbff;
+
+    --teal900: #00332b;
+    --teal800: #004d40;
+    --teal700: #00695c;
+    --teal600: #00796b;
+    --teal500: #00897b;
+    --teal400: #009688;
+    --teal300: #4db6ac;
+    --teal200: #b2dfdb;
+    --teal100: #e0f2f1;
+    --teal050: #f1f9f9;
+
+    --red900: #330202;
+    --red800: #891515;
+    --red700: #b71c1c;
+    --red600: #c62828;
+    --red500: #d32f2f;
+    --red400: #f44336;
+    --red300: #e57373;
+    --red200: #ffcdd2;
+    --red100: #ffe5e8;
+    --red050: #fff5f6;
+
+    --yellow900: #6f3205;
+    --yellow800: #bb460d;
+    --yellow700: #e56408;
+    --yellow600: #ff8302;
+    --yellow500: #ff9302;
+    --yellow400: #ffa902;
+    --yellow300: #ffc324;
+    --yellow200: #ffe082;
+    --yellow100: #ffecb3;
+    --yellow050: #fff8e1;
+
+    --green900: #103713;
+    --green800: #1b5e20;
+    --green700: #2e7d32;
+    --green600: #388e3c;
+    --green500: #43a047;
+    --green400: #4caf50;
+    --green300: #a5d6a7;
+    --green200: #c8e6c9;
+    --green100: #e8f5e9;
+    --green050: #f4fbf4;
+
+    --grey900: #212934;
+    --grey800: #404b5a;
+    --grey700: #4a5768;
+    --grey600: #6c7787;
+    --grey500: #a0adba;
+    --grey400: #d5dde5;
+    --grey300: #e8edf2;
+    --grey200: #f3f5f7;
+    --grey100: #f8f9fa;
+    --grey050: #fbfcfd;
+    --white: #ffffff;
+
+    /* spacers.js */
+    --dp4: 4px;
+    --dp8: 8px;
+    --dp12: 12px;
+    --dp16: 16px;
+    --dp24: 24px;
+    --dp32: 32px;
+    --dp48: 48px;
+    --dp64: 64px;
+    --dp96: 96px;
+    --dp128: 128px;
+    --dp192: 192px;
+    --dp256: 256px;
+    --dp384: 384px;
+    --dp512: 512px;
+    --dp640: 640px;
+}
+
 body {
     margin: 0;
     padding: 0;
 }
 
 html {
-    background: #f3f3f3;
+    background: var(--grey300);
     font-family: 'Roboto', sans-serif;
 }
 
+/*
+ * Legacy page headings. Still a bare-element rule because the five original
+ * pages render bare h1s through SectionHeadline; the weight and letter
+ * spacing are brought into line with the current DHIS2 type scale.
+ */
 h1 {
-    font-size: 24px;
-    font-weight: 300;
-    letter-spacing: 1.2px;
-    color: rgba(0, 0, 0, 0.87);
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: normal;
+    color: var(--grey900);
     display: flex;
     align-items: center;
-    height: 48px;
-}
-
-.left-bar {
-    width: 295px;
-    position: fixed;
-    bottom: 0;
-    top: 0;
-    left: 0;
-    margin-top: 3rem;
+    height: auto;
+    margin: 0 0 16px;
 }
 
 .d2-ui-table {
@@ -134,4 +219,85 @@ input {
     border: none;
     background-color: transparent;
     margin-bottom: 10px;
+}
+
+/*
+ * ---------- flexboxgrid / @dhis2/ui class collision ----------
+ *
+ * flexboxgrid is imported globally in AppWrapper for its .row and .col-*
+ * classes, and it also ships a fixed-width .container:
+ *
+ *   @media (min-width: 75em) { .container { width: 71rem } }   // 1136px
+ *
+ * @dhis2/ui's DataTableColumnHeader wraps every header label in
+ * `<span class="container">` and makes it display:flex, so that unrelated
+ * rule gives every column header a 1136px-wide child. The cell clips it, so
+ * nothing looks wrong, but the span still counts towards the scroll width of
+ * whatever scrolls the table: a report that fits its container reports
+ * roughly twice its own width and grows a horizontal scrollbar.
+ *
+ * Nothing in this app uses flexboxgrid's .container, so the width is taken
+ * back off the header span. Two classes plus an element outrank the bare
+ * .container; the media query adds no specificity of its own.
+ */
+th.DataTableColumnHeader > span.container {
+    width: auto;
+}
+
+/*
+ * @dhis2/analytics' Interpretations components collide with the same rule, and
+ * with flexboxgrid's .row as well. Their styled-jsx blocks use `container` and
+ * `row` as local, semantic names — the interpretations sidebar's root element
+ * is `<div class="jsx-1418068143 container expanded">` — so the sidebar's
+ * content is pinned to 1136px inside a 312px panel and scrolls sideways, and
+ * the interpretation modal's two-column row picks up flexboxgrid's wrapping
+ * and negative margins.
+ *
+ * Every styled-jsx element carries a generated `jsx-…` class beside its own,
+ * which is the handle for saying "this container belongs to a component, not
+ * to the grid". Two classes outrank the bare one, so the media query the width
+ * lives in makes no difference — and unlike a CSS module this also reaches the
+ * modal, which portals out of the app's own markup.
+ */
+[class*='jsx-'].container,
+[class*='jsx-'].row {
+    width: auto;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+[class*='jsx-'].row {
+    flex-wrap: nowrap;
+}
+
+/*
+ * ---------- print ----------
+ *
+ * The DHIS2 header bar and the app-platform wrapper around it are rendered by
+ * @dhis2/app-adapter, outside this app's own components, so nothing here can
+ * reach them with a CSS module. They are addressed globally instead.
+ *
+ * The adapter's markup is:
+ *
+ *   div.app-shell-adapter
+ *     div          <- holds the header bar; no class of its own
+ *     div.app-shell-app  <- this app
+ *
+ * so the header's wrapper is identified by what it contains rather than by a
+ * class name it does not have. `:has()` is the only stable handle on it.
+ */
+@media print {
+    div.app-shell-adapter > div:not(.app-shell-app):has(header) {
+        display: none !important;
+    }
+
+    /*
+     * Both wrappers are sized to the viewport and scroll internally, which on
+     * paper would clip everything to a single screenful.
+     */
+    div.app-shell-adapter,
+    div.app-shell-app {
+        height: auto;
+        overflow: visible;
+    }
 }

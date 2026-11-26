@@ -1,0 +1,9 @@
+/*
+ * No border of its own: the output pane already draws a card around this, and
+ * a second line inside it reads as a frame around a frame.
+ */
+.iframe {
+    display: block;
+    border: 0;
+    background: var(--white);
+}

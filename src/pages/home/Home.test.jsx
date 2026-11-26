@@ -1,21 +1,19 @@
 import { shallow } from 'enzyme'
 import React from 'react'
-import MenuElement from '../../components/MenuElement.jsx'
-import { sectionOrder } from '../../config/sections.config.js'
+import { navGroups } from '../../components/shell/navigation.js'
 import Home from './Home.jsx'
 
-jest.mock('@dhis2/d2-ui-org-unit-tree', () => ({
-    OrgUnitTree: 'OrgUnitTree',
-}))
+jest.mock('@dhis2/d2-ui-org-unit-tree', () => 'OrgUnitTree')
 
-const ownShallow = () => {
-    return shallow(<Home />, {
+const sectionCount = navGroups.reduce(
+    (total, group) => total + group.items.length,
+    0
+)
+
+const ownShallow = () =>
+    shallow(<Home />, {
         disableLifecycleMethods: true,
     })
-}
-
-////[> Mocks <]
-jest.mock('@dhis2/d2-ui-org-unit-tree', () => 'OrgUnitTree')
 
 describe('Test <Home /> rendering:', () => {
     let wrapper
@@ -28,7 +26,9 @@ describe('Test <Home /> rendering:', () => {
         ownShallow()
     })
 
-    it('Renders the correct number of elements.', () => {
-        expect(wrapper.find(MenuElement)).toHaveLength(sectionOrder.length)
+    it('Renders one card per section.', () => {
+        expect(wrapper.find('[data-test="menu-element"]')).toHaveLength(
+            sectionCount
+        )
     })
 })

@@ -1,0 +1,187 @@
+.table {
+    /* overrides fullwidth(100%)- UI-styling */
+    min-inline-size: 240px !important;
+    /* Weird req for allowing <td> cell contents to be 100% cell height */
+    block-size: 100% !important;
+}
+
+@media print {
+    .labelWrapper {
+        background-color: transparent !important;
+    }
+    .title,
+    .description {
+        color: black !important;
+    }
+}
+.headerCell {
+    padding: 0 !important;
+    block-size: auto !important;
+    border: 1px solid var(--colors-grey400) !important;
+}
+
+.labelWrapper {
+    background-color: var(--colors-grey800);
+    line-height: 20px;
+    padding: 4px 8px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.collapseIcon {
+    margin-inline-start: -4px;
+    padding: var(--spacers-dp4);
+    block-size: 24px;
+    inline-size: 24px;
+    align-self: flex-start;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.collapseIcon:hover {
+    background-color: var(--colors-grey900);
+}
+
+.collapseIcon:focus {
+    outline: 3px solid var(--theme-focus);
+}
+
+/* Prevent focus styles when mouse clicking */
+.collapseIcon:focus:not(:focus-visible) {
+    outline: none;
+}
+
+.title {
+    color: var(--colors-grey050);
+    font-weight: 400;
+    font-size: 14px;
+}
+.description {
+    color: var(--colors-grey300);
+    font-size: 13px;
+    margin-block-start: 2px;
+    font-weight: 300;
+}
+
+.filterWrapper {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    /* For input to fit full size for focus styles */
+    position: relative;
+}
+.filterInput {
+    block-size: 100%;
+    inline-size: 100%;
+    position: absolute;
+    inset-inline-start: 0;
+    /* Offset for 'Filter' icon and its padding */
+    padding-inline-start: 32px;
+    background: none;
+    border: none;
+    color: var(--colors-grey900);
+    font-size: 13px;
+    line-height: 15px !important;
+}
+.filterInput::placeholder {
+    color: var(--colors-grey600);
+}
+.filterInput:focus-visible {
+    outline: 3px solid var(--theme-focus);
+}
+
+.sectionsTitle {
+    margin: 0 0 var(--spacers-dp8) 0;
+    font-size: 1.125rem;
+    line-height: 1.3;
+    color: var(--colors-grey900);
+    max-inline-size: 1040px;
+}
+.sectionsSubtitle {
+    margin: 0;
+    font-size: 0.875em;
+    line-height: 1.3;
+    color: var(--colors-grey800);
+    max-inline-size: 1040px;
+}
+.sectionsCustomText {
+    inline-size: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 var(--spacers-dp4) 0;
+}
+.sectionsCustomText :global(a):link,
+.sectionsCustomText :global(a):visited {
+    color: var(--colors-blue700);
+}
+.sectionsCustomText :global(a):hover,
+.sectionsCustomText :global(a):active {
+    color: var(--colors-blue900);
+}
+.sectionsCustomText :global(a):focus {
+    outline-color: var(--theme-focus);
+}
+
+.sectionTab {
+    margin-block-end: 8px;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.sectionTab div {
+    display: inline-block;
+}
+
+.textStartLine {
+    align-items: flex-start;
+    text-align: start;
+}
+.textCenter {
+    align-items: center;
+    text-align: center;
+}
+.textEndLine {
+    align-items: flex-end;
+    text-align: end;
+}
+
+.verticalSectionTabWrapper .sectionTab div {
+    flex-direction: column;
+    display: flex;
+}
+
+.sectionTab button {
+    align-self: stretch;
+}
+
+.sectionTabWrapper {
+    display: flex;
+    gap: 6px;
+    flex-direction: column;
+    inline-size: 100%;
+}
+
+.verticalSectionTabWrapper {
+    flex-direction: row;
+}
+
+@media print {
+    .hideForPrint {
+        composes: hideForPrint from '../../app/app.css';
+    }
+}
+
+/* section description area */
+.sectionDescription {
+    margin: 12px 4px 8px;
+    font-size: 13px;
+    color: var(--colors-grey800);
+}
+
+.sectionDescription :global(a):link,
+.sectionDescription :global(a):visited,
+.sectionDescription :global(a):hover,
+.sectionDescription :global(a):active {
+    color: var(--colors-blue700);
+}

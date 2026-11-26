@@ -1,12 +1,9 @@
-import { Sidebar } from '@dhis2/d2-ui-core'
 import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import styles from './App.module.css'
 import AppRouter from './components/AppRouter.jsx'
 import { Loader } from './components/feedback/Loader.jsx'
-import { sectionOrder, sections } from './config/sections.config.js'
+import { AppShell } from './components/shell/AppShell.jsx'
 import { loadDataSetOptions } from './redux/actions/dataSet.js'
 import { loadOrganisationUnits } from './redux/actions/organisationUnits.js'
 import { loadPeriodTypes } from './redux/actions/reportPeriod.js'
@@ -15,18 +12,6 @@ import {
     getShowSidebar,
 } from './redux/selectors/sidebar/index.js'
 import './global.css'
-
-// is not "marked" as required but it's used by Sidebar
-const nonOnChangeSection = () => null
-const sidebarSections = sectionOrder.map((sectionKey) => {
-    const section = sections[sectionKey]
-    return {
-        ...section,
-        icon: section.info.icon,
-        label: section.info.label,
-        containerElement: <Link to={section.path} />,
-    }
-})
 
 class App extends PureComponent {
     getChildContext() {
@@ -40,26 +25,16 @@ class App extends PureComponent {
     }
 
     render() {
-        const wrapperClass = this.props.showSidebar
-            ? styles.contentWrapper
-            : styles.contentWrapperNoSidebar
-
         return (
-            <div>
-                {this.props.showSidebar && (
-                    <Sidebar
-                        sections={sidebarSections}
-                        onChangeSection={nonOnChangeSection}
-                        currentSection={this.props.currentSection}
-                    />
-                )}
-                <div className={wrapperClass}>
-                    <div className={styles.contentArea}>
-                        <AppRouter />
-                    </div>
-                </div>
+            <>
+                <AppShell
+                    showNav={this.props.showSidebar}
+                    currentSection={this.props.currentSection}
+                >
+                    <AppRouter />
+                </AppShell>
                 <Loader />
-            </div>
+            </>
         )
     }
 }
